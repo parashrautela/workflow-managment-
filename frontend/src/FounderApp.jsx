@@ -278,7 +278,7 @@ export default function FounderApp() {
             <form onSubmit={handleLogin} className="space-y-3.5">
               <div className="space-y-1.5 text-left">
                 <div className="relative flex items-center">
-                  <KeyRound className="absolute left-3.5 h-4 w-4 text-[#9c9791] pointer-events-none" />
+                  <KeyRound className="absolute left-4 h-4 w-4 text-[#9c9791] pointer-events-none" />
                   <Input
                     type={showPassword ? "text" : "password"}
                     placeholder="Enter founder password"
@@ -286,13 +286,13 @@ export default function FounderApp() {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                     autoFocus
-                    className="h-12 min-h-[48px] rounded-xl text-sm pl-10 pr-12 bg-[#faf9f8] border-[#dedbd5] focus:bg-white focus:ring-2 focus:ring-[#0075de]/25 focus:border-[#78b6e6]"
+                    className="h-12 min-h-[48px] rounded-full text-sm pl-11 pr-12 bg-[#faf9f8] border-[#dedbd5] focus:bg-white focus:ring-2 focus:ring-[#0075de]/25 focus:border-[#78b6e6]"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                     aria-label={showPassword ? "Hide password" : "Show password"}
-                    className="absolute right-0 top-0 bottom-0 w-12 h-12 flex items-center justify-center text-gray-400 hover:text-gray-600 focus:outline-none transition-colors active:scale-90"
+                    className="absolute right-1 top-0 bottom-0 w-12 h-12 flex items-center justify-center text-gray-400 hover:text-gray-600 focus:outline-none transition-colors active:scale-90"
                   >
                     {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
@@ -302,14 +302,14 @@ export default function FounderApp() {
               <Button
                 type="submit"
                 disabled={isLoggingIn}
-                className="w-full h-12 min-h-[48px] rounded-xl text-sm font-semibold shadow-xs hover:shadow active:scale-[0.98] transition-all gap-2"
+                className="w-full h-12 min-h-[48px] rounded-full text-sm font-semibold shadow-xs hover:shadow active:scale-[0.98] transition-all gap-2"
               >
                 {isLoggingIn ? "Authenticating…" : <><span>Open Studio Workspace</span> <ArrowRight className="h-4 w-4" /></>}
               </Button>
             </form>
 
             {loginError && (
-              <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-xs font-medium text-red-700 animate-in fade-in">
+              <div className="p-3.5 bg-red-50 border border-red-200 rounded-2xl text-xs font-medium text-red-700 animate-in fade-in">
                 {loginError}
               </div>
             )}

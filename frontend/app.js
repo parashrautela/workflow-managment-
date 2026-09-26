@@ -15864,7 +15864,7 @@ var require_react_jsx_runtime_production = /* @__PURE__ */ __commonJSMin(((expor
 var import_jsx_runtime = (/* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_react_jsx_runtime_production();
 })))();
-var buttonVariants = cva("inline-flex items-center justify-center whitespace-nowrap rounded-[14px] text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.97] touch-manipulation min-h-[44px]", {
+var buttonVariants = cva("inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.97] touch-manipulation min-h-[44px]", {
 	variants: {
 		variant: {
 			default: "bg-[#0075de] text-white shadow-xs hover:bg-[#005bab] active:bg-[#004e92]",
@@ -15877,10 +15877,10 @@ var buttonVariants = cva("inline-flex items-center justify-center whitespace-now
 			pill: "rounded-full bg-[#0075de] text-white shadow-xs hover:bg-[#005bab] active:bg-[#004e92]"
 		},
 		size: {
-			default: "h-11 px-4 py-2",
-			sm: "h-9 rounded-[10px] px-3 text-xs min-h-[36px]",
-			lg: "h-12 rounded-[14px] px-8 text-base min-h-[48px]",
-			icon: "h-10 w-10 min-h-[40px] min-w-[40px] rounded-[12px]",
+			default: "h-12 px-6 py-2 min-h-[48px]",
+			sm: "h-9 rounded-full px-4 text-xs min-h-[36px]",
+			lg: "h-14 rounded-full px-8 text-base min-h-[52px]",
+			icon: "h-11 w-11 min-h-[44px] min-w-[44px] rounded-full",
 			pill: "h-9 rounded-full px-4 text-xs min-h-[36px]"
 		}
 	},
@@ -16006,7 +16006,7 @@ DialogDescription.displayName = "DialogDescription";
 var Input = import_react.forwardRef(({ className, type, ...props }, ref) => {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
 		type,
-		className: cn("flex h-12 w-full rounded-[14px] border border-[#dfdcd8] bg-white px-3.5 py-2 text-sm sm:text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-[#aaa49e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0075de] focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 transition-all", className),
+		className: cn("flex h-12 w-full rounded-full border border-[#dfdcd8] bg-white px-5 py-2 text-sm sm:text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-[#aaa49e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0075de] focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 transition-all", className),
 		ref,
 		...props
 	});
@@ -16289,7 +16289,7 @@ function FounderApp() {
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "relative flex items-center",
 									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(KeyRound, { className: "absolute left-3.5 h-4 w-4 text-[#9c9791] pointer-events-none" }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(KeyRound, { className: "absolute left-4 h-4 w-4 text-[#9c9791] pointer-events-none" }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 											type: showPassword ? "text" : "password",
 											placeholder: "Enter founder password",
@@ -16297,13 +16297,13 @@ function FounderApp() {
 											onChange: (e) => setPassword(e.target.value),
 											required: true,
 											autoFocus: true,
-											className: "h-12 min-h-[48px] rounded-xl text-sm pl-10 pr-12 bg-[#faf9f8] border-[#dedbd5] focus:bg-white focus:ring-2 focus:ring-[#0075de]/25 focus:border-[#78b6e6]"
+											className: "h-12 min-h-[48px] rounded-full text-sm pl-11 pr-12 bg-[#faf9f8] border-[#dedbd5] focus:bg-white focus:ring-2 focus:ring-[#0075de]/25 focus:border-[#78b6e6]"
 										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 											type: "button",
 											onClick: () => setShowPassword(!showPassword),
 											"aria-label": showPassword ? "Hide password" : "Show password",
-											className: "absolute right-0 top-0 bottom-0 w-12 h-12 flex items-center justify-center text-gray-400 hover:text-gray-600 focus:outline-none transition-colors active:scale-90",
+											className: "absolute right-1 top-0 bottom-0 w-12 h-12 flex items-center justify-center text-gray-400 hover:text-gray-600 focus:outline-none transition-colors active:scale-90",
 											children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EyeOff, { className: "h-4 w-4" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eye, { className: "h-4 w-4" })
 										})
 									]
@@ -16311,7 +16311,7 @@ function FounderApp() {
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 								type: "submit",
 								disabled: isLoggingIn,
-								className: "w-full h-12 min-h-[48px] rounded-xl text-sm font-semibold shadow-xs hover:shadow active:scale-[0.98] transition-all gap-2",
+								className: "w-full h-12 min-h-[48px] rounded-full text-sm font-semibold shadow-xs hover:shadow active:scale-[0.98] transition-all gap-2",
 								children: isLoggingIn ? "Authenticating…" : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Open Studio Workspace" }),
 									" ",
@@ -16320,7 +16320,7 @@ function FounderApp() {
 							})]
 						}),
 						loginError && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "p-3 bg-red-50 border border-red-200 rounded-xl text-xs font-medium text-red-700 animate-in fade-in",
+							className: "p-3.5 bg-red-50 border border-red-200 rounded-2xl text-xs font-medium text-red-700 animate-in fade-in",
 							children: loginError
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
