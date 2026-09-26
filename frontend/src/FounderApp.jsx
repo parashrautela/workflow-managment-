@@ -753,7 +753,7 @@ export default function FounderApp() {
           <div className="grid grid-cols-2 gap-3">
             <div className="space-y-1">
               <label className="text-xs font-semibold">Phase</label>
-              <select name="phase" className="w-full h-12 px-3 border border-gray-300 rounded-lg text-sm bg-white outline-none">
+              <select name="phase" className="w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]">
                 <option>Design</option>
                 <option>Planning</option>
                 <option>Procurement</option>
@@ -764,7 +764,7 @@ export default function FounderApp() {
             </div>
             <div className="space-y-1">
               <label className="text-xs font-semibold">Status</label>
-              <select name="status" className="w-full h-12 px-3 border border-gray-300 rounded-lg text-sm bg-white outline-none">
+              <select name="status" className="w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]">
                 <option>Setup</option>
                 <option>On track</option>
                 <option>At risk</option>
@@ -813,7 +813,7 @@ export default function FounderApp() {
           </div>
           <div className="space-y-1">
             <label className="text-xs font-semibold">Role</label>
-            <select name="role" className="w-full h-12 px-3 border border-gray-300 rounded-lg text-sm bg-white outline-none">
+            <select name="role" className="w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]">
               <option>Project admin</option>
               <option>Designer</option>
               <option>Site supervisor</option>
@@ -852,7 +852,7 @@ export default function FounderApp() {
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-1">
                 <label className="text-xs font-semibold">Phase</label>
-                <select name="phase" defaultValue={selectedProject.phase} className="w-full h-12 px-3 border border-gray-300 rounded-lg text-sm bg-white outline-none">
+                <select name="phase" defaultValue={selectedProject.phase} className="w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]">
                   <option>Design</option>
                   <option>Planning</option>
                   <option>Procurement</option>
@@ -863,7 +863,7 @@ export default function FounderApp() {
               </div>
               <div className="space-y-1">
                 <label className="text-xs font-semibold">Status</label>
-                <select name="status" defaultValue={selectedProject.status} className="w-full h-12 px-3 border border-gray-300 rounded-lg text-sm bg-white outline-none">
+                <select name="status" defaultValue={selectedProject.status} className="w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]">
                   <option>Setup</option>
                   <option>On track</option>
                   <option>At risk</option>

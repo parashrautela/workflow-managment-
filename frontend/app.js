@@ -15864,22 +15864,24 @@ var require_react_jsx_runtime_production = /* @__PURE__ */ __commonJSMin(((expor
 var import_jsx_runtime = (/* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_react_jsx_runtime_production();
 })))();
-var buttonVariants = cva("inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.96] touch-manipulation min-h-[44px]", {
+var buttonVariants = cva("inline-flex items-center justify-center whitespace-nowrap rounded-[14px] text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.97] touch-manipulation min-h-[44px]", {
 	variants: {
 		variant: {
-			default: "bg-[#0075de] text-white shadow hover:bg-[#005bab] active:bg-[#004e92]",
-			destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
-			outline: "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
-			secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+			default: "bg-[#0075de] text-white shadow-xs hover:bg-[#005bab] active:bg-[#004e92]",
+			destructive: "bg-destructive text-destructive-foreground shadow-xs hover:bg-destructive/90",
+			outline: "border border-input bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",
+			secondary: "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
 			ghost: "hover:bg-accent hover:text-accent-foreground",
 			link: "text-primary underline-offset-4 hover:underline",
-			subtle: "border border-[#eae8e5] bg-white text-[#31302e] hover:bg-[#faf9f8] hover:border-[#dedbd6]"
+			subtle: "border border-[#eae8e5] bg-white text-[#31302e] hover:bg-[#faf9f8] hover:border-[#dedbd6]",
+			pill: "rounded-full bg-[#0075de] text-white shadow-xs hover:bg-[#005bab] active:bg-[#004e92]"
 		},
 		size: {
 			default: "h-11 px-4 py-2",
-			sm: "h-9 rounded-md px-3 text-xs min-h-[36px]",
-			lg: "h-12 rounded-lg px-8 text-base min-h-[48px]",
-			icon: "h-10 w-10 min-h-[40px] min-w-[40px]"
+			sm: "h-9 rounded-[10px] px-3 text-xs min-h-[36px]",
+			lg: "h-12 rounded-[14px] px-8 text-base min-h-[48px]",
+			icon: "h-10 w-10 min-h-[40px] min-w-[40px] rounded-[12px]",
+			pill: "h-9 rounded-full px-4 text-xs min-h-[36px]"
 		}
 	},
 	defaultVariants: {
@@ -15903,7 +15905,7 @@ Button.displayName = "Button";
 //#region frontend/src/components/ui/card.jsx
 var Card = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 	ref,
-	className: cn("rounded-xl border border-[#eae8e5] bg-white text-[#161615] shadow-sm transition-all", className),
+	className: cn("rounded-[24px] border border-[#eae8e5] bg-white text-[#161615] shadow-sm transition-all", className),
 	...props
 }));
 Card.displayName = "Card";
@@ -15969,7 +15971,7 @@ var Dialog = ({ open, onOpenChange, children }) => {
 			className: "fixed inset-0",
 			onClick: () => onOpenChange?.(false)
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "relative z-50 w-full sm:max-w-lg bg-white rounded-t-[24px] sm:rounded-2xl p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto animate-in slide-in-from-bottom-6 sm:zoom-in-95 duration-200",
+			className: "relative z-50 w-full sm:max-w-lg bg-white rounded-t-[32px] sm:rounded-[28px] p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto animate-in slide-in-from-bottom-6 sm:zoom-in-95 duration-200",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "sm:hidden w-10 h-1.5 bg-[#d5d2cc] rounded-full mx-auto -mt-2 mb-4" }),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
@@ -16004,7 +16006,7 @@ DialogDescription.displayName = "DialogDescription";
 var Input = import_react.forwardRef(({ className, type, ...props }, ref) => {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
 		type,
-		className: cn("flex h-12 w-full rounded-lg border border-[#dfdcd8] bg-white px-3.5 py-2 text-sm sm:text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-[#aaa49e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0075de] focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 transition-all", className),
+		className: cn("flex h-12 w-full rounded-[14px] border border-[#dfdcd8] bg-white px-3.5 py-2 text-sm sm:text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-[#aaa49e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0075de] focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 transition-all", className),
 		ref,
 		...props
 	});
@@ -17005,7 +17007,7 @@ function FounderApp() {
 									children: "Phase"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
 									name: "phase",
-									className: "w-full h-12 px-3 border border-gray-300 rounded-lg text-sm bg-white outline-none",
+									className: "w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]",
 									children: [
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Design" }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Planning" }),
@@ -17022,7 +17024,7 @@ function FounderApp() {
 									children: "Status"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
 									name: "status",
-									className: "w-full h-12 px-3 border border-gray-300 rounded-lg text-sm bg-white outline-none",
+									className: "w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]",
 									children: [
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Setup" }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "On track" }),
@@ -17119,7 +17121,7 @@ function FounderApp() {
 								children: "Role"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
 								name: "role",
-								className: "w-full h-12 px-3 border border-gray-300 rounded-lg text-sm bg-white outline-none",
+								className: "w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]",
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Project admin" }),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Designer" }),
@@ -17176,7 +17178,7 @@ function FounderApp() {
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
 									name: "phase",
 									defaultValue: selectedProject.phase,
-									className: "w-full h-12 px-3 border border-gray-300 rounded-lg text-sm bg-white outline-none",
+									className: "w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]",
 									children: [
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Design" }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Planning" }),
@@ -17194,7 +17196,7 @@ function FounderApp() {
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
 									name: "status",
 									defaultValue: selectedProject.status,
-									className: "w-full h-12 px-3 border border-gray-300 rounded-lg text-sm bg-white outline-none",
+									className: "w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]",
 									children: [
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Setup" }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "On track" }),

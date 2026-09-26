@@ -10,7 +10,7 @@ const Dialog = ({ open, onOpenChange, children }) => {
         className="fixed inset-0" 
         onClick={() => onOpenChange?.(false)} 
       />
-      <div className="relative z-50 w-full sm:max-w-lg bg-white rounded-t-[24px] sm:rounded-2xl p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto animate-in slide-in-from-bottom-6 sm:zoom-in-95 duration-200">
+      <div className="relative z-50 w-full sm:max-w-lg bg-white rounded-t-[32px] sm:rounded-[28px] p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto animate-in slide-in-from-bottom-6 sm:zoom-in-95 duration-200">
         <div className="sm:hidden w-10 h-1.5 bg-[#d5d2cc] rounded-full mx-auto -mt-2 mb-4" />
         <button
           onClick={() => onOpenChange?.(false)}
