@@ -24,10 +24,9 @@ The **Workflow Management Tool** provides teams with a clean, distraction-free e
 
 ### Prerequisites
 
-- Node.js (v18+ recommended)
-- npm / yarn / pnpm
+- Node.js (v20.6+ recommended)
 
-### Installation
+### Setup & Run Locally
 
 1. **Clone the repository:**
    ```bash
@@ -35,20 +34,20 @@ The **Workflow Management Tool** provides teams with a clean, distraction-free e
    cd workflow-managment-
    ```
 
-2. **Navigate to the frontend directory:**
+2. **Configure environment:**
    ```bash
-   cd frontend
+   cp .env.example .env
    ```
+   Open `.env` and set `FOUNDER_PASSWORD` to a secure password of at least 12 characters. Add `OPENAI_API_KEY` optionally for AI-powered Q&A responses.
 
-3. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-4. **Start the development server:**
+3. **Start the development server:**
    ```bash
    npm run dev
    ```
+   Or start in production mode with `npm start`.
+
+4. **Access the application:**
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 📄 License
 
