@@ -1,4 +1,10 @@
+@import "https://fonts.cdnfonts.com/css/sf-pro-display";
+
+
+@layer components;
+
 /*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
+
 @layer properties {
   @supports (((-webkit-hyphens: none)) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
     *, :before, :after, ::backdrop {
@@ -131,7 +137,6 @@
     --tracking-tight: -.025em;
     --tracking-wider: .05em;
     --tracking-widest: .1em;
-    --leading-tight: 1.25;
     --leading-snug: 1.375;
     --leading-relaxed: 1.625;
     --radius-sm: .25rem;
@@ -427,8 +432,6 @@
     font-family: -apple-system, BlinkMacSystemFont, SF Pro Display, SF Pro Text, SF Pro, Helvetica Neue, Helvetica, Arial, sans-serif;
   }
 }
-
-@layer components;
 
 @layer utilities {
   .\@container {
