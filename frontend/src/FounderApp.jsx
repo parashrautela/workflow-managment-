@@ -638,7 +638,7 @@ export default function FounderApp() {
                                         <ArrowRight className="h-3 w-3 text-gray-400 shrink-0" />
                                       </>
                                     ) : null}
-                                    <span className="font-medium text-gray-900 bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-100">
+                                    <span className="font-medium text-gray-900 bg-emerald-50 text-emerald-800 px-2.5 py-0.5 rounded-full border border-emerald-100">
                                       {change.newValue || change.value || "Cleared"}
                                     </span>
                                   </div>

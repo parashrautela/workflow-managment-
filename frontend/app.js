@@ -15941,12 +15941,12 @@ var CardFooter = import_react.forwardRef(({ className, ...props }, ref) => /* @_
 CardFooter.displayName = "CardFooter";
 //#endregion
 //#region frontend/src/components/ui/badge.jsx
-var badgeVariants = cva("inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2", {
+var badgeVariants = cva("inline-flex items-center rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-wider transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2", {
 	variants: { variant: {
-		default: "border-transparent bg-[#0075de] text-white shadow hover:bg-[#005bab]",
+		default: "border-transparent bg-[#0075de] text-white shadow-xs hover:bg-[#005bab]",
 		secondary: "border-transparent bg-[#f2f1ef] text-[#55514d] hover:bg-[#e8e7e5]",
 		destructive: "border-transparent bg-[#fbeae8] text-[#d13438]",
-		outline: "text-[#161615] border-[#eae8e5]",
+		outline: "text-[#161615] border-[#eae8e5] bg-white/70",
 		admin: "border-transparent bg-[#f2edf8] text-[#7662a3]",
 		designer: "border-transparent bg-[#edf5fc] text-[#0075de]",
 		supervisor: "border-transparent bg-[#e6f6f5] text-[#2a9d99]",
@@ -16828,7 +16828,7 @@ function FounderApp() {
 															className: "line-through text-gray-400 truncate max-w-[150px]",
 															children: change.oldValue
 														}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "h-3 w-3 text-gray-400 shrink-0" })] }) : null, /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-															className: "font-medium text-gray-900 bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-100",
+															className: "font-medium text-gray-900 bg-emerald-50 text-emerald-800 px-2.5 py-0.5 rounded-full border border-emerald-100",
 															children: change.newValue || change.value || "Cleared"
 														})]
 													})]

@@ -154,7 +154,6 @@
     --tracking-wider: .05em;
     --tracking-widest: .1em;
     --leading-tight: 1.25;
-    --leading-snug: 1.375;
     --leading-relaxed: 1.625;
     --radius-sm: .25rem;
     --radius-md: .375rem;
@@ -1323,11 +1322,6 @@
   .rounded-t {
     border-top-left-radius: .25rem;
     border-top-right-radius: .25rem;
-  }
-
-  .rounded-t-\[24px\] {
-    border-top-left-radius: 24px;
-    border-top-right-radius: 24px;
   }
 
   .rounded-t-\[32px\] {
@@ -2783,10 +2777,6 @@
     scale: var(--tw-scale-x) var(--tw-scale-y);
   }
 
-  .active\:scale-\[0\.96\]:active {
-    scale: .96;
-  }
-
   .active\:scale-\[0\.97\]:active {
     scale: .97;
   }
@@ -2857,10 +2847,6 @@
       border-inline-style: var(--tw-border-style);
       border-inline-start-width: calc(1px * var(--tw-divide-x-reverse));
       border-inline-end-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
-    }
-
-    .sm\:rounded-2xl {
-      border-radius: var(--radius-2xl);
     }
 
     .sm\:rounded-3xl {
