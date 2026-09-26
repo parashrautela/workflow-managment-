@@ -14,10 +14,11 @@ The **Workflow Management Tool** provides teams with a clean, distraction-free e
 - **Real-Time Collaboration**: Instant status updates and team activity feeds.
 - **Modern Design System**: Clean typography, crisp contrast, and warm canvas styling.
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack & Design
 
 - **Frontend**: Modern web technologies & design system
-- **Design Tokens**: Standardized color, spacing, and typography scales (see `frontend/DESIGN.md`)
+- **Figma Board**: [Figma Project Board](https://www.figma.com/board/UWscIC0R0NrqZyKUmmuGEB/Untitled?node-id=0-1&t=EMt7WHN72keLxW68-1)
+- **Design Tokens**: Standardized color, spacing, and typography scales (see [frontend/DESIGN.md](frontend/DESIGN.md))
 - **Architecture**: Modular and scalable architecture
 
 ## 🚀 Getting Started
