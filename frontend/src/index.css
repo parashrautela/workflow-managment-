@@ -22,20 +22,43 @@
     --input: 240 5.9% 90%;
     --ring: 211 100% 43.5%;
     --radius: 0.75rem;
+
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-optical-sizing: auto;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
 * {
   box-sizing: border-box;
+  font-family: inherit;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Roboto", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #f6f5f4;
   color: #161615;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+code, kbd, samp, pre, .font-mono {
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.022em;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", "Helvetica Neue", sans-serif;
+}
+
+.uppercase-tracking {
+  letter-spacing: 0.06em;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -45,3 +68,4 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+

@@ -132,12 +132,14 @@
     --tracking-wider: .05em;
     --tracking-widest: .1em;
     --leading-tight: 1.25;
+    --leading-snug: 1.375;
     --leading-relaxed: 1.625;
     --radius-sm: .25rem;
     --radius-md: .375rem;
     --radius-lg: .5rem;
     --radius-xl: .75rem;
     --radius-2xl: 1rem;
+    --radius-3xl: 1.5rem;
     --animate-spin: spin 1s linear infinite;
     --animate-bounce: bounce 1s infinite;
     --blur-sm: 8px;
@@ -417,6 +419,12 @@
     --input: 240 5.9% 90%;
     --ring: 211 100% 43.5%;
     --radius: .75rem;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-optical-sizing: auto;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: -apple-system, BlinkMacSystemFont, SF Pro Display, SF Pro Text, SF Pro, Helvetica Neue, Helvetica, Arial, sans-serif;
   }
 }
 
@@ -508,10 +516,6 @@
 
   .right-0 {
     right: 0;
-  }
-
-  .right-3 {
-    right: calc(var(--spacing) * 3);
   }
 
   .right-4 {
@@ -622,6 +626,10 @@
 
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
+  }
+
+  .mt-6 {
+    margin-top: calc(var(--spacing) * 6);
   }
 
   .mb-1 {
@@ -836,6 +844,10 @@
     min-height: 48px;
   }
 
+  .min-h-\[100dvh\] {
+    min-height: 100dvh;
+  }
+
   .min-h-screen {
     min-height: 100vh;
   }
@@ -920,8 +932,8 @@
     max-width: 160px;
   }
 
-  .max-w-\[420px\] {
-    max-width: 420px;
+  .max-w-\[400px\] {
+    max-width: 400px;
   }
 
   .max-w-md {
@@ -1191,6 +1203,10 @@
     border-radius: var(--radius-2xl);
   }
 
+  .rounded-3xl {
+    border-radius: var(--radius-3xl);
+  }
+
   .rounded-full {
     border-radius: 3.40282e38px;
   }
@@ -1363,6 +1379,10 @@
     border-color: #e3e1dd;
   }
 
+  .border-\[\#e5e3df\] {
+    border-color: #e5e3df;
+  }
+
   .border-\[\#e8e6e2\] {
     border-color: #e8e6e2;
   }
@@ -1413,8 +1433,14 @@
     border-color: var(--color-gray-300);
   }
 
-  .border-red-200 {
-    border-color: var(--color-red-200);
+  .border-red-200\/80 {
+    border-color: #ffcacacc;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-red-200\/80 {
+      border-color: color-mix(in oklab, var(--color-red-200) 80%, transparent);
+    }
   }
 
   .border-transparent {
@@ -1483,6 +1509,10 @@
 
   .bg-\[\#f6f5f4\]\/85 {
     background-color: oklab(97.0636% .000646859 .00158513 / .85);
+  }
+
+  .bg-\[\#faf9f8\] {
+    background-color: #faf9f8;
   }
 
   .bg-\[\#fbeae8\] {
@@ -1565,6 +1595,16 @@
 
   .bg-red-50 {
     background-color: var(--color-red-50);
+  }
+
+  .bg-red-50\/90 {
+    background-color: #fef2f2e6;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-red-50\/90 {
+      background-color: color-mix(in oklab, var(--color-red-50) 90%, transparent);
+    }
   }
 
   .bg-transparent {
@@ -1727,12 +1767,16 @@
     padding-top: calc(var(--spacing) * 6);
   }
 
+  .pt-\[max\(2rem\,env\(safe-area-inset-top\)\)\] {
+    padding-top: max(2rem, env(safe-area-inset-top));
+  }
+
   .pr-3 {
     padding-right: calc(var(--spacing) * 3);
   }
 
-  .pr-10 {
-    padding-right: calc(var(--spacing) * 10);
+  .pr-12 {
+    padding-right: calc(var(--spacing) * 12);
   }
 
   .pb-2 {
@@ -1749,6 +1793,14 @@
 
   .pb-\[env\(safe-area-inset-bottom\)\] {
     padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .pb-\[max\(2rem\,env\(safe-area-inset-bottom\)\)\] {
+    padding-bottom: max(2rem, env(safe-area-inset-bottom));
+  }
+
+  .pl-3\.5 {
+    padding-left: calc(var(--spacing) * 3.5);
   }
 
   .pl-6 {
@@ -1823,9 +1875,9 @@
     line-height: var(--leading-relaxed);
   }
 
-  .leading-tight {
-    --tw-leading: var(--leading-tight);
-    line-height: var(--leading-tight);
+  .leading-snug {
+    --tw-leading: var(--leading-snug);
+    line-height: var(--leading-snug);
   }
 
   .font-bold {
@@ -2164,6 +2216,16 @@
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
 
+  .shadow-black\/\[0\.04\] {
+    --tw-shadow-color: #0000000a;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .shadow-black\/\[0\.04\] {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-black) 4%, transparent) var(--tw-shadow-alpha), transparent);
+    }
+  }
+
   .outline {
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
@@ -2427,10 +2489,19 @@
     .hover\:underline:hover {
       text-decoration-line: underline;
     }
+
+    .hover\:shadow:hover {
+      --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, #0000001a), 0 1px 2px -1px var(--tw-shadow-color, #0000001a);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
   }
 
   .focus\:border-\[\#78b6e6\]:focus {
     border-color: #78b6e6;
+  }
+
+  .focus\:bg-white:focus {
+    background-color: var(--color-white);
   }
 
   .focus\:ring-2:focus {
@@ -2476,6 +2547,13 @@
     outline-style: none;
   }
 
+  .active\:scale-90:active {
+    --tw-scale-x: 90%;
+    --tw-scale-y: 90%;
+    --tw-scale-z: 90%;
+    scale: var(--tw-scale-x) var(--tw-scale-y);
+  }
+
   .active\:scale-95:active {
     --tw-scale-x: 95%;
     --tw-scale-y: 95%;
@@ -2485,6 +2563,10 @@
 
   .active\:scale-\[0\.96\]:active {
     scale: .96;
+  }
+
+  .active\:scale-\[0\.98\]:active {
+    scale: .98;
   }
 
   .active\:bg-\[\#004e92\]:active {
@@ -2635,15 +2717,31 @@
 
 * {
   box-sizing: border-box;
+  font-family: inherit;
 }
 
 body {
   color: #161615;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   background-color: #f6f5f4;
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, SF Pro Text, Inter, Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, SF Pro Display, SF Pro Text, SF Pro, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+code, kbd, samp, pre, .font-mono {
+  font-family: ui-monospace, SF Mono, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -.022em;
+  font-family: -apple-system, BlinkMacSystemFont, SF Pro Display, SF Pro, Helvetica Neue, sans-serif;
+}
+
+.uppercase-tracking {
+  letter-spacing: .06em;
 }
 
 .no-scrollbar::-webkit-scrollbar {

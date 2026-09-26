@@ -178,54 +178,69 @@ export default function FounderApp() {
 
   if (!isAuthenticated) {
     return (
-      <main className="min-h-screen grid place-items-center bg-[#f6f5f4] p-4 sm:p-6">
-        <Card className="w-full max-w-[420px] p-6 sm:p-8 rounded-2xl shadow-xl border-[#eae8e5] animate-in fade-in-50 zoom-in-95 duration-200">
-          <div className="flex items-center gap-2.5 font-bold text-base mb-6">
-            <span className="grid place-items-center w-8 h-8 rounded-lg bg-black text-white font-bold text-sm">i</span>
-            <span>studio iksha</span>
-          </div>
-          <span className="text-[10px] font-bold tracking-widest text-[#96918c] uppercase">PROJECT OPERATIONS</span>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#161615] mt-1 mb-2 leading-tight">
-            Good work starts<br />with a clear picture.
-          </h1>
-          <p className="text-xs sm:text-sm text-[#797570] leading-relaxed mb-6">
-            Sign in to your founder workspace to manage project operations, team rosters, and private client assistants.
-          </p>
+      <main className="min-h-[100dvh] flex flex-col justify-center items-center bg-[#f6f5f4] px-4 py-8 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(2rem,env(safe-area-inset-bottom))]">
+        <div className="w-full max-w-[400px]">
+          <Card className="p-6 sm:p-8 rounded-3xl shadow-xl shadow-black/[0.04] border-[#eae8e5] bg-white animate-in fade-in-50 zoom-in-95 duration-200">
+            {/* Header Brand */}
+            <div className="flex items-center gap-2.5 font-bold text-base mb-6">
+              <span className="grid place-items-center w-8 h-8 rounded-xl bg-black text-white font-bold text-sm shadow-xs">i</span>
+              <span className="tracking-tight text-[#161615]">studio iksha</span>
+            </div>
+            
+            <div className="space-y-1 mb-6">
+              <span className="text-[10px] font-bold tracking-widest text-[#96918c] uppercase">PROJECT OPERATIONS</span>
+              <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#161615] leading-snug">
+                Good work starts<br className="hidden xs:inline" /> with a clear picture.
+              </h1>
+              <p className="text-xs sm:text-sm text-[#797570] leading-relaxed pt-1">
+                Sign in to manage studio operations, project facts, team rosters, and client updates.
+              </p>
+            </div>
 
-          <form onSubmit={handleLogin} className="space-y-4">
-            <div className="space-y-1.5 text-left">
-              <label className="text-xs font-semibold text-[#4a4743]">Founder Password</label>
-              <div className="relative flex items-center">
-                <Input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Enter founder password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  autoFocus
-                  className="pr-10"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 text-gray-400 hover:text-gray-600 focus:outline-none p-1"
-                >
-                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                </button>
+            <form onSubmit={handleLogin} className="space-y-4">
+              <div className="space-y-1.5 text-left">
+                <label className="text-xs font-semibold text-[#4a4743]">Founder Password</label>
+                <div className="relative flex items-center">
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Enter founder password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    autoFocus
+                    className="h-12 min-h-[48px] rounded-xl text-sm pl-3.5 pr-12 bg-[#faf9f8] border-[#e5e3df] focus:bg-white focus:ring-2 focus:ring-[#0075de]/20"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                    className="absolute right-0 top-0 bottom-0 w-12 h-12 flex items-center justify-center text-gray-400 hover:text-gray-600 focus:outline-none transition-colors active:scale-90"
+                  >
+                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  </button>
+                </div>
               </div>
-            </div>
 
-            <Button type="submit" disabled={isLoggingIn} className="w-full gap-2">
-              {isLoggingIn ? "Signing In…" : <><span>Sign In to Workspace</span> <ArrowRight className="h-4 w-4" /></>}
-            </Button>
-          </form>
+              <Button
+                type="submit"
+                disabled={isLoggingIn}
+                className="w-full h-12 min-h-[48px] rounded-xl text-sm font-semibold shadow-sm hover:shadow active:scale-[0.98] transition-all gap-2"
+              >
+                {isLoggingIn ? "Signing In…" : <><span>Sign In to Workspace</span> <ArrowRight className="h-4 w-4" /></>}
+              </Button>
+            </form>
 
-          {loginError && (
-            <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-xs font-medium text-red-700">
-              {loginError}
-            </div>
-          )}
-        </Card>
+            {loginError && (
+              <div className="mt-4 p-3.5 bg-red-50/90 border border-red-200/80 rounded-xl text-xs font-medium text-red-700 animate-in fade-in">
+                {loginError}
+              </div>
+            )}
+          </Card>
+          
+          <div className="text-center mt-6 text-xs text-[#9a9590]">
+            🔒 Protected Workspace · Studio Iksha Operations
+          </div>
+        </div>
       </main>
     );
   }
