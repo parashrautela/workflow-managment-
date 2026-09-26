@@ -190,65 +190,65 @@ export default function FounderApp() {
 
   if (!isAuthenticated) {
     return (
-      <main className="min-h-[100dvh] flex flex-col justify-between bg-[#000000] text-white px-6 py-6 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))] relative overflow-x-hidden font-sans">
+      <main className="min-h-[100dvh] flex flex-col justify-between bg-[#f6f5f4] text-[#161615] px-6 py-6 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))] relative overflow-x-hidden font-sans">
         {/* Subtle Ambient Top Glow */}
-        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[340px] h-[340px] bg-gradient-to-b from-[#0071e3]/20 via-[#0071e3]/5 to-transparent rounded-full blur-3xl pointer-events-none -z-0" />
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[340px] h-[340px] bg-gradient-to-b from-[#0075de]/15 via-[#0075de]/5 to-transparent rounded-full blur-3xl pointer-events-none -z-0" />
 
-        {/* TOP SECTION: Hero Icon & Typography */}
-        <div className="flex-1 flex flex-col justify-center max-w-sm mx-auto w-full z-10 space-y-6 pt-4">
+        {/* TOP SECTION: Hero Brand Squircle & Typography */}
+        <div className="flex-1 flex flex-col justify-center max-w-sm mx-auto w-full z-10 space-y-6 pt-2">
           {/* Apple Squircle Brand Icon */}
-          <div className="w-20 h-20 rounded-[22px] bg-gradient-to-b from-[#2c2c2e] to-[#1c1c1e] p-[1px] shadow-2xl shadow-black/80 mx-auto grid place-items-center relative">
-            <div className="w-full h-full rounded-[21px] bg-[#1c1c1e]/90 backdrop-blur-xl flex flex-col items-center justify-center border border-white/10">
-              <span className="font-extrabold text-2xl text-white tracking-tighter">i</span>
-              <span className="text-[8px] font-bold tracking-widest text-[#0071e3] uppercase -mt-0.5">STUDIO</span>
+          <div className="w-20 h-20 rounded-[22px] bg-black p-[2px] shadow-xl shadow-black/10 mx-auto grid place-items-center relative">
+            <div className="w-full h-full rounded-[20px] bg-black flex flex-col items-center justify-center text-white">
+              <span className="font-extrabold text-2xl tracking-tighter">i</span>
+              <span className="text-[8px] font-bold tracking-widest text-[#0075de] uppercase -mt-0.5">STUDIO</span>
             </div>
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#0071e3]/30 to-[#62aef0]/20 rounded-[26px] blur-md -z-10 opacity-70" />
           </div>
 
           {/* Typography */}
-          <div className="text-center space-y-2.5">
-            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white leading-tight">
+          <div className="text-center space-y-2">
+            <span className="text-[10px] font-bold tracking-widest text-[#96918c] uppercase">PROJECT OPERATIONS</span>
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#161615] leading-tight">
               Welcome to Studio Iksha
             </h1>
-            <p className="text-sm sm:text-base text-[#8e8e93] leading-relaxed font-normal">
-              A unified control space for architectural project facts, site milestones, and private client portals.
+            <p className="text-xs sm:text-sm text-[#797570] leading-relaxed font-normal">
+              A unified workspace for interior & architecture project facts, site milestones, and private client portals.
             </p>
           </div>
 
           {/* Interactive Live Project Mock Preview */}
-          <div className="p-4 rounded-[20px] bg-[#1c1c1e]/80 border border-white/10 backdrop-blur-md space-y-2.5 shadow-lg shadow-black/40">
+          <Card className="p-4 rounded-[22px] border-[#eae8e5] bg-white shadow-sm space-y-2.5">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <strong className="text-xs font-semibold text-white">Kumar Residence</strong>
+                <strong className="text-xs font-semibold text-[#161615]">Kumar Residence</strong>
               </div>
-              <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/80 border border-emerald-800/60 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+              <Badge variant="success" className="text-[10px]">
                 On track
-              </span>
+              </Badge>
             </div>
-            <div className="text-xs text-[#aeaeb2] flex items-center justify-between pt-1 border-t border-white/5">
+            <div className="text-xs text-[#797570] flex items-center justify-between pt-1 border-t border-[#f0efed]">
               <span>Current Phase</span>
-              <strong className="text-white font-medium">Design & Execution</strong>
+              <strong className="text-[#161615] font-medium">Design & Execution</strong>
             </div>
-            <div className="text-xs text-[#8e8e93] truncate pt-0.5">
-              Latest: <span className="text-[#d1d1d6]">Framing review & 3D moodboards</span>
+            <div className="text-xs text-[#797570] truncate pt-0.5">
+              Latest: <span className="text-[#31302e] font-medium">Framing review & 3D moodboards</span>
             </div>
-          </div>
+          </Card>
         </div>
 
         {/* BOTTOM SECTION: Privacy Footnote + Auth Controls */}
-        <div className="w-full max-w-sm mx-auto z-10 space-y-4 pt-4">
+        <div className="w-full max-w-sm mx-auto z-10 space-y-3.5 pt-4">
           {/* Apple Privacy Footnote */}
-          <div className="flex items-start gap-3 px-1">
-            <div className="w-7 h-7 rounded-full bg-[#1c1c1e] text-[#0071e3] grid place-items-center shrink-0 mt-0.5 text-xs">
+          <div className="flex items-start gap-2.5 px-1">
+            <div className="w-7 h-7 rounded-full bg-[#edeae5] text-[#0075de] grid place-items-center shrink-0 mt-0.5 text-xs">
               👥
             </div>
-            <p className="text-[11px] text-[#8e8e93] leading-normal">
+            <p className="text-[11px] text-[#797570] leading-normal">
               Studio Iksha uses encrypted tokens and single-claim client links for zero-login client privacy.{" "}
               <button 
                 type="button" 
                 onClick={handleQuickFill}
-                className="text-[#0071e3] hover:underline font-medium inline"
+                className="text-[#0075de] hover:underline font-medium inline"
               >
                 Tap to quick-fill founder demo key.
               </button>
@@ -258,40 +258,40 @@ export default function FounderApp() {
           {/* Form */}
           <form onSubmit={handleLogin} className="space-y-3">
             <div className="relative flex items-center">
-              <KeyRound className="absolute left-4 h-4 w-4 text-[#8e8e93] pointer-events-none" />
-              <input
+              <KeyRound className="absolute left-4 h-4 w-4 text-[#9c9791] pointer-events-none" />
+              <Input
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter founder password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 autoFocus
-                className="w-full h-12 rounded-full text-sm pl-11 pr-12 bg-[#1c1c1e] text-white border border-white/15 placeholder:text-[#636366] focus:outline-none focus:ring-2 focus:ring-[#0071e3] focus:border-transparent transition-all"
+                className="h-12 min-h-[48px] rounded-full text-sm pl-11 pr-12 bg-white border-[#dfdcd8] focus:ring-2 focus:ring-[#0075de]/25 focus:border-[#78b6e6]"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
                 aria-label={showPassword ? "Hide password" : "Show password"}
-                className="absolute right-1 top-0 bottom-0 w-12 h-12 flex items-center justify-center text-[#8e8e93] hover:text-white focus:outline-none transition-colors active:scale-90"
+                className="absolute right-1 top-0 bottom-0 w-12 h-12 flex items-center justify-center text-gray-400 hover:text-gray-600 focus:outline-none transition-colors active:scale-90"
               >
                 {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               </button>
             </div>
 
             {loginError && (
-              <div className="p-3 bg-red-950/70 border border-red-800/80 rounded-2xl text-xs font-medium text-red-300 text-center animate-in fade-in">
+              <div className="p-3 bg-red-50 border border-red-200 rounded-2xl text-xs font-medium text-red-700 text-center animate-in fade-in">
                 {loginError}
               </div>
             )}
 
             {/* Apple Continue / Get Started Primary Button */}
-            <button
+            <Button
               type="submit"
               disabled={isLoggingIn}
-              className="w-full h-13 min-h-[50px] rounded-full bg-[#0071e3] hover:bg-[#0077ed] active:bg-[#005bb5] text-white font-semibold text-base shadow-lg shadow-[#0071e3]/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+              className="w-full h-12 min-h-[48px] rounded-full bg-[#0075de] hover:bg-[#005bab] active:bg-[#004e92] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition-all flex items-center justify-center gap-2"
             >
-              {isLoggingIn ? "Opening…" : "Continue"}
-            </button>
+              {isLoggingIn ? "Opening Workspace…" : "Continue"}
+            </Button>
           </form>
         </div>
       </main>

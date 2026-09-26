@@ -16117,62 +16117,70 @@ function FounderApp() {
 		}
 	};
 	if (!isAuthenticated) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
-		className: "min-h-[100dvh] flex flex-col justify-between bg-[#000000] text-white px-6 py-6 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))] relative overflow-x-hidden font-sans",
+		className: "min-h-[100dvh] flex flex-col justify-between bg-[#f6f5f4] text-[#161615] px-6 py-6 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))] relative overflow-x-hidden font-sans",
 		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute -top-24 left-1/2 -translate-x-1/2 w-[340px] h-[340px] bg-gradient-to-b from-[#0071e3]/20 via-[#0071e3]/5 to-transparent rounded-full blur-3xl pointer-events-none -z-0" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute -top-24 left-1/2 -translate-x-1/2 w-[340px] h-[340px] bg-gradient-to-b from-[#0075de]/15 via-[#0075de]/5 to-transparent rounded-full blur-3xl pointer-events-none -z-0" }),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex-1 flex flex-col justify-center max-w-sm mx-auto w-full z-10 space-y-6 pt-4",
+				className: "flex-1 flex flex-col justify-center max-w-sm mx-auto w-full z-10 space-y-6 pt-2",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "w-20 h-20 rounded-[22px] bg-gradient-to-b from-[#2c2c2e] to-[#1c1c1e] p-[1px] shadow-2xl shadow-black/80 mx-auto grid place-items-center relative",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "w-full h-full rounded-[21px] bg-[#1c1c1e]/90 backdrop-blur-xl flex flex-col items-center justify-center border border-white/10",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "w-20 h-20 rounded-[22px] bg-black p-[2px] shadow-xl shadow-black/10 mx-auto grid place-items-center relative",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "w-full h-full rounded-[20px] bg-black flex flex-col items-center justify-center text-white",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "font-extrabold text-2xl text-white tracking-tighter",
+								className: "font-extrabold text-2xl tracking-tighter",
 								children: "i"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[8px] font-bold tracking-widest text-[#0071e3] uppercase -mt-0.5",
+								className: "text-[8px] font-bold tracking-widest text-[#0075de] uppercase -mt-0.5",
 								children: "STUDIO"
 							})]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute -inset-1 bg-gradient-to-r from-[#0071e3]/30 to-[#62aef0]/20 rounded-[26px] blur-md -z-10 opacity-70" })]
+						})
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "text-center space-y-2.5",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-							className: "text-2xl sm:text-3xl font-bold tracking-tight text-white leading-tight",
-							children: "Welcome to Studio Iksha"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "text-sm sm:text-base text-[#8e8e93] leading-relaxed font-normal",
-							children: "A unified control space for architectural project facts, site milestones, and private client portals."
-						})]
+						className: "text-center space-y-2",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-[10px] font-bold tracking-widest text-[#96918c] uppercase",
+								children: "PROJECT OPERATIONS"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+								className: "text-2xl sm:text-3xl font-bold tracking-tight text-[#161615] leading-tight",
+								children: "Welcome to Studio Iksha"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs sm:text-sm text-[#797570] leading-relaxed font-normal",
+								children: "A unified workspace for interior & architecture project facts, site milestones, and private client portals."
+							})
+						]
 					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "p-4 rounded-[20px] bg-[#1c1c1e]/80 border border-white/10 backdrop-blur-md space-y-2.5 shadow-lg shadow-black/40",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
+						className: "p-4 rounded-[22px] border-[#eae8e5] bg-white shadow-sm space-y-2.5",
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "flex items-center justify-between",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "flex items-center gap-2",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "w-2 h-2 rounded-full bg-emerald-500 animate-pulse" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-										className: "text-xs font-semibold text-white",
+										className: "text-xs font-semibold text-[#161615]",
 										children: "Kumar Residence"
 									})]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "text-[10px] font-bold text-emerald-400 bg-emerald-950/80 border border-emerald-800/60 px-2.5 py-0.5 rounded-full uppercase tracking-wider",
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+									variant: "success",
+									className: "text-[10px]",
 									children: "On track"
 								})]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "text-xs text-[#aeaeb2] flex items-center justify-between pt-1 border-t border-white/5",
+								className: "text-xs text-[#797570] flex items-center justify-between pt-1 border-t border-[#f0efed]",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Current Phase" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-									className: "text-white font-medium",
+									className: "text-[#161615] font-medium",
 									children: "Design & Execution"
 								})]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "text-xs text-[#8e8e93] truncate pt-0.5",
+								className: "text-xs text-[#797570] truncate pt-0.5",
 								children: ["Latest: ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "text-[#d1d1d6]",
+									className: "text-[#31302e] font-medium",
 									children: "Framing review & 3D moodboards"
 								})]
 							})
@@ -16181,21 +16189,21 @@ function FounderApp() {
 				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "w-full max-w-sm mx-auto z-10 space-y-4 pt-4",
+				className: "w-full max-w-sm mx-auto z-10 space-y-3.5 pt-4",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex items-start gap-3 px-1",
+					className: "flex items-start gap-2.5 px-1",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "w-7 h-7 rounded-full bg-[#1c1c1e] text-[#0071e3] grid place-items-center shrink-0 mt-0.5 text-xs",
+						className: "w-7 h-7 rounded-full bg-[#edeae5] text-[#0075de] grid place-items-center shrink-0 mt-0.5 text-xs",
 						children: "👥"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-						className: "text-[11px] text-[#8e8e93] leading-normal",
+						className: "text-[11px] text-[#797570] leading-normal",
 						children: [
 							"Studio Iksha uses encrypted tokens and single-claim client links for zero-login client privacy.",
 							" ",
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 								type: "button",
 								onClick: handleQuickFill,
-								className: "text-[#0071e3] hover:underline font-medium inline",
+								className: "text-[#0075de] hover:underline font-medium inline",
 								children: "Tap to quick-fill founder demo key."
 							})
 						]
@@ -16207,34 +16215,34 @@ function FounderApp() {
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "relative flex items-center",
 							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(KeyRound, { className: "absolute left-4 h-4 w-4 text-[#8e8e93] pointer-events-none" }),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(KeyRound, { className: "absolute left-4 h-4 w-4 text-[#9c9791] pointer-events-none" }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 									type: showPassword ? "text" : "password",
 									placeholder: "Enter founder password",
 									value: password,
 									onChange: (e) => setPassword(e.target.value),
 									required: true,
 									autoFocus: true,
-									className: "w-full h-12 rounded-full text-sm pl-11 pr-12 bg-[#1c1c1e] text-white border border-white/15 placeholder:text-[#636366] focus:outline-none focus:ring-2 focus:ring-[#0071e3] focus:border-transparent transition-all"
+									className: "h-12 min-h-[48px] rounded-full text-sm pl-11 pr-12 bg-white border-[#dfdcd8] focus:ring-2 focus:ring-[#0075de]/25 focus:border-[#78b6e6]"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 									type: "button",
 									onClick: () => setShowPassword(!showPassword),
 									"aria-label": showPassword ? "Hide password" : "Show password",
-									className: "absolute right-1 top-0 bottom-0 w-12 h-12 flex items-center justify-center text-[#8e8e93] hover:text-white focus:outline-none transition-colors active:scale-90",
+									className: "absolute right-1 top-0 bottom-0 w-12 h-12 flex items-center justify-center text-gray-400 hover:text-gray-600 focus:outline-none transition-colors active:scale-90",
 									children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EyeOff, { className: "h-4 w-4" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eye, { className: "h-4 w-4" })
 								})
 							]
 						}),
 						loginError && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "p-3 bg-red-950/70 border border-red-800/80 rounded-2xl text-xs font-medium text-red-300 text-center animate-in fade-in",
+							className: "p-3 bg-red-50 border border-red-200 rounded-2xl text-xs font-medium text-red-700 text-center animate-in fade-in",
 							children: loginError
 						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 							type: "submit",
 							disabled: isLoggingIn,
-							className: "w-full h-13 min-h-[50px] rounded-full bg-[#0071e3] hover:bg-[#0077ed] active:bg-[#005bb5] text-white font-semibold text-base shadow-lg shadow-[#0071e3]/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2",
-							children: isLoggingIn ? "Opening…" : "Continue"
+							className: "w-full h-12 min-h-[48px] rounded-full bg-[#0075de] hover:bg-[#005bab] active:bg-[#004e92] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition-all flex items-center justify-center gap-2",
+							children: isLoggingIn ? "Opening Workspace…" : "Continue"
 						})
 					]
 				})]
