@@ -11675,7 +11675,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$17 = {
+var __iconData$18 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11686,8 +11686,8 @@ var __iconData$17 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$17.node;
-var ArrowRight = createLucideIcon(__iconData$17);
+__iconData$18.node;
+var ArrowRight = createLucideIcon(__iconData$18);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
@@ -11696,7 +11696,7 @@ var ArrowRight = createLucideIcon(__iconData$17);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$16 = {
+var __iconData$17 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -11723,8 +11723,8 @@ var __iconData$16 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$16.node;
-var CircleAlert = createLucideIcon(__iconData$16);
+__iconData$17.node;
+var CircleAlert = createLucideIcon(__iconData$17);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
@@ -11733,7 +11733,7 @@ var CircleAlert = createLucideIcon(__iconData$16);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$15 = {
+var __iconData$16 = {
 	name: "clock",
 	size: 24,
 	node: [["circle", {
@@ -11746,8 +11746,8 @@ var __iconData$15 = {
 		key: "mmk7yg"
 	}]]
 };
-__iconData$15.node;
-var Clock = createLucideIcon(__iconData$15);
+__iconData$16.node;
+var Clock = createLucideIcon(__iconData$16);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
@@ -11756,7 +11756,7 @@ var Clock = createLucideIcon(__iconData$15);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$14 = {
+var __iconData$15 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -11772,8 +11772,8 @@ var __iconData$14 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$14.node;
-var Copy = createLucideIcon(__iconData$14);
+__iconData$15.node;
+var Copy = createLucideIcon(__iconData$15);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye-off.mjs
 /**
@@ -11782,7 +11782,7 @@ var Copy = createLucideIcon(__iconData$14);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$13 = {
+var __iconData$14 = {
 	name: "eye-off",
 	size: 24,
 	node: [
@@ -11804,8 +11804,8 @@ var __iconData$13 = {
 		}]
 	]
 };
-__iconData$13.node;
-var EyeOff = createLucideIcon(__iconData$13);
+__iconData$14.node;
+var EyeOff = createLucideIcon(__iconData$14);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye.mjs
 /**
@@ -11814,7 +11814,7 @@ var EyeOff = createLucideIcon(__iconData$13);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$12 = {
+var __iconData$13 = {
 	name: "eye",
 	size: 24,
 	node: [["path", {
@@ -11827,8 +11827,8 @@ var __iconData$12 = {
 		key: "1v7zrd"
 	}]]
 };
-__iconData$12.node;
-var Eye = createLucideIcon(__iconData$12);
+__iconData$13.node;
+var Eye = createLucideIcon(__iconData$13);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
@@ -11837,7 +11837,7 @@ var Eye = createLucideIcon(__iconData$12);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$11 = {
+var __iconData$12 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -11859,8 +11859,8 @@ var __iconData$11 = {
 		}]
 	]
 };
-__iconData$11.node;
-var FolderKanban = createLucideIcon(__iconData$11);
+__iconData$12.node;
+var FolderKanban = createLucideIcon(__iconData$12);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/log-out.mjs
 /**
@@ -11869,7 +11869,7 @@ var FolderKanban = createLucideIcon(__iconData$11);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$10 = {
+var __iconData$11 = {
 	name: "log-out",
 	size: 24,
 	node: [
@@ -11887,8 +11887,8 @@ var __iconData$10 = {
 		}]
 	]
 };
-__iconData$10.node;
-var LogOut = createLucideIcon(__iconData$10);
+__iconData$11.node;
+var LogOut = createLucideIcon(__iconData$11);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/pen-line.mjs
 /**
@@ -11897,7 +11897,7 @@ var LogOut = createLucideIcon(__iconData$10);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$9 = {
+var __iconData$10 = {
 	name: "pen-line",
 	size: 24,
 	node: [["path", {
@@ -11909,8 +11909,8 @@ var __iconData$9 = {
 	}]],
 	aliases: ["edit-3"]
 };
-__iconData$9.node;
-var PenLine = createLucideIcon(__iconData$9);
+__iconData$10.node;
+var PenLine = createLucideIcon(__iconData$10);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/plus.mjs
 /**
@@ -11919,7 +11919,7 @@ var PenLine = createLucideIcon(__iconData$9);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$8 = {
+var __iconData$9 = {
 	name: "plus",
 	size: 24,
 	node: [["path", {
@@ -11930,8 +11930,8 @@ var __iconData$8 = {
 		key: "s699le"
 	}]]
 };
-__iconData$8.node;
-var Plus = createLucideIcon(__iconData$8);
+__iconData$9.node;
+var Plus = createLucideIcon(__iconData$9);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/refresh-cw.mjs
 /**
@@ -11940,7 +11940,7 @@ var Plus = createLucideIcon(__iconData$8);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$7 = {
+var __iconData$8 = {
 	name: "refresh-cw",
 	size: 24,
 	node: [
@@ -11962,8 +11962,37 @@ var __iconData$7 = {
 		}]
 	]
 };
+__iconData$8.node;
+var RefreshCw = createLucideIcon(__iconData$8);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/rotate-ccw-clock.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$7 = {
+	name: "rotate-ccw-clock",
+	size: 24,
+	node: [
+		["path", {
+			d: "M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8",
+			key: "1357e3"
+		}],
+		["path", {
+			d: "M3 3v5h5",
+			key: "1xhq8a"
+		}],
+		["path", {
+			d: "M12 7v5l4 2",
+			key: "1fdv2h"
+		}]
+	],
+	aliases: ["history"]
+};
 __iconData$7.node;
-var RefreshCw = createLucideIcon(__iconData$7);
+var RotateCcwClock = createLucideIcon(__iconData$7);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/search.mjs
 /**
@@ -15956,6 +15985,8 @@ function FounderApp() {
 	const [selectedProjectId, setSelectedProjectId] = (0, import_react.useState)(null);
 	const [activities, setActivities] = (0, import_react.useState)([]);
 	const [conversations, setConversations] = (0, import_react.useState)([]);
+	const [projectHistory, setProjectHistory] = (0, import_react.useState)([]);
+	const [isLoadingHistory, setIsLoadingHistory] = (0, import_react.useState)(false);
 	const [currentTab, setCurrentTab] = (0, import_react.useState)("projects");
 	const [searchQuery, setSearchQuery] = (0, import_react.useState)("");
 	const [isSidebarOpen, setIsSidebarOpen] = (0, import_react.useState)(false);
@@ -15998,11 +16029,26 @@ function FounderApp() {
 			setConversations([]);
 		}
 	};
+	const loadProjectHistory = async (projectId) => {
+		if (!projectId) return;
+		setIsLoadingHistory(true);
+		try {
+			const data = await api$1(`/api/founder/projects/${projectId}/history`);
+			setProjectHistory(data.history || []);
+		} catch {
+			setProjectHistory([]);
+		} finally {
+			setIsLoadingHistory(false);
+		}
+	};
 	(0, import_react.useEffect)(() => {
 		loadProjects();
 	}, []);
 	(0, import_react.useEffect)(() => {
-		if (selectedProjectId) loadConversations(selectedProjectId);
+		if (selectedProjectId) {
+			loadConversations(selectedProjectId);
+			loadProjectHistory(selectedProjectId);
+		}
 	}, [selectedProjectId]);
 	const handleLogin = async (e) => {
 		e.preventDefault();
@@ -16536,6 +16582,100 @@ function FounderApp() {
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
 								className: "p-5",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center justify-between mb-4",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase",
+											children: "UPDATE HISTORY"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h4", {
+											className: "text-sm sm:text-base font-semibold flex items-center gap-2 mt-0.5",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RotateCcwClock, { className: "h-4 w-4 text-[#0075de]" }), " Project Update Timeline"]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "text-xs text-gray-500",
+											children: "Record of field changes, milestones, and phase transitions over time."
+										})
+									] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										size: "sm",
+										variant: "subtle",
+										onClick: () => loadProjectHistory(selectedProject.id),
+										disabled: isLoadingHistory,
+										className: "gap-1",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: `h-3.5 w-3.5 ${isLoadingHistory ? "animate-spin" : ""}` }), " Refresh"]
+									})]
+								}), projectHistory.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "relative pl-6 space-y-6 before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-[#eae8e5]",
+									children: projectHistory.map((item, idx) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "relative group",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-white border-2 border-[#0075de] flex items-center justify-center shadow-xs",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-[#0075de]" })
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "bg-gray-50/80 hover:bg-gray-50 border border-gray-200/80 rounded-xl p-3.5 transition-colors space-y-2.5",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "flex items-center justify-between gap-2 flex-wrap text-xs",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+													className: "flex items-center gap-2",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+														className: "font-semibold text-gray-800",
+														children: item.changedFields?.length ? `${item.changedFields.length} field${item.changedFields.length > 1 ? "s" : ""} updated` : "Project update recorded"
+													}), item.status && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+														variant: item.status === "At risk" ? "destructive" : item.status === "On hold" ? "outline" : "success",
+														className: "text-[10px]",
+														children: item.status
+													})]
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+													className: "text-[11px] text-gray-400 flex items-center gap-1 font-mono",
+													children: [
+														/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock, { className: "h-3 w-3" }),
+														formatTime(item.timestamp || item.at),
+														" · ",
+														new Date(item.timestamp || item.at || Date.now()).toLocaleTimeString([], {
+															hour: "2-digit",
+															minute: "2-digit"
+														})
+													]
+												})]
+											}), item.changedFields && item.changedFields.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+												className: "space-y-1.5 pt-1",
+												children: item.changedFields.map((change, cIdx) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+													className: "text-xs bg-white rounded-lg p-2 border border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+														className: "font-medium text-gray-500 text-[11px]",
+														children: change.label || change.field
+													}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+														className: "flex items-center gap-2 flex-wrap text-xs",
+														children: [change.oldValue ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+															className: "line-through text-gray-400 truncate max-w-[150px]",
+															children: change.oldValue
+														}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "h-3 w-3 text-gray-400 shrink-0" })] }) : null, /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+															className: "font-medium text-gray-900 bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-100",
+															children: change.newValue || change.value || "Cleared"
+														})]
+													})]
+												}, cIdx))
+											})]
+										})]
+									}, item.id || idx))
+								}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "py-8 text-center text-xs text-gray-400 border border-dashed border-gray-200 rounded-xl space-y-1",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RotateCcwClock, { className: "h-6 w-6 text-gray-300 mx-auto mb-1" }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "font-medium text-gray-600",
+											children: "No update history recorded yet for this project."
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "text-[11px] text-gray-400",
+											children: "Updates saved in 'Edit Facts' will appear in this timeline."
+										})
+									]
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
+								className: "p-5",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "mb-4",
 									children: [
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
@@ -16841,6 +16981,7 @@ function FounderApp() {
 						try {
 							await patch(`/api/founder/projects/${selectedProject.id}`, Object.fromEntries(form));
 							await loadProjects();
+							await loadProjectHistory(selectedProject.id);
 							setIsEditFactsOpen(false);
 							showToast("Project facts updated.", "success");
 						} catch (err) {

@@ -19,7 +19,8 @@ import {
   Sparkles,
   Layers,
   Calendar,
-  Users
+  Users,
+  History
 } from "lucide-react";
 import { Button } from "./components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "./components/ui/card";
@@ -62,6 +63,8 @@ export default function FounderApp() {
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [activities, setActivities] = useState([]);
   const [conversations, setConversations] = useState([]);
+  const [projectHistory, setProjectHistory] = useState([]);
+  const [isLoadingHistory, setIsLoadingHistory] = useState(false);
   const [currentTab, setCurrentTab] = useState("projects");
   const [searchQuery, setSearchQuery] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -110,6 +113,20 @@ export default function FounderApp() {
     }
   };
 
+  const loadProjectHistory = async (projectId) => {
+    if (!projectId) return;
+    setIsLoadingHistory(true);
+    try {
+      const data = await api(`/api/founder/projects/${projectId}/history`);
+      setProjectHistory(data.history || []);
+    } catch {
+      // Graceful fallback for history if empty or uninitialized
+      setProjectHistory([]);
+    } finally {
+      setIsLoadingHistory(false);
+    }
+  };
+
   useEffect(() => {
     loadProjects();
   }, []);
@@ -117,6 +134,7 @@ export default function FounderApp() {
   useEffect(() => {
     if (selectedProjectId) {
       loadConversations(selectedProjectId);
+      loadProjectHistory(selectedProjectId);
     }
   }, [selectedProjectId]);
 
@@ -471,6 +489,82 @@ export default function FounderApp() {
                 </Button>
               </Card>
 
+              {/* Project Update History Timeline Card */}
+              <Card className="p-5">
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <span className="text-[10px] font-bold tracking-wider text-[#96918c] uppercase">UPDATE HISTORY</span>
+                    <h4 className="text-sm sm:text-base font-semibold flex items-center gap-2 mt-0.5">
+                      <History className="h-4 w-4 text-[#0075de]" /> Project Update Timeline
+                    </h4>
+                    <p className="text-xs text-gray-500">Record of field changes, milestones, and phase transitions over time.</p>
+                  </div>
+                  <Button size="sm" variant="subtle" onClick={() => loadProjectHistory(selectedProject.id)} disabled={isLoadingHistory} className="gap-1">
+                    <RefreshCw className={`h-3.5 w-3.5 ${isLoadingHistory ? 'animate-spin' : ''}`} /> Refresh
+                  </Button>
+                </div>
+
+                {projectHistory.length > 0 ? (
+                  <div className="relative pl-6 space-y-6 before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-[#eae8e5]">
+                    {projectHistory.map((item, idx) => (
+                      <div key={item.id || idx} className="relative group">
+                        {/* Timeline Node */}
+                        <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-white border-2 border-[#0075de] flex items-center justify-center shadow-xs">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#0075de]" />
+                        </div>
+
+                        <div className="bg-gray-50/80 hover:bg-gray-50 border border-gray-200/80 rounded-xl p-3.5 transition-colors space-y-2.5">
+                          <div className="flex items-center justify-between gap-2 flex-wrap text-xs">
+                            <div className="flex items-center gap-2">
+                              <span className="font-semibold text-gray-800">
+                                {item.changedFields?.length ? `${item.changedFields.length} field${item.changedFields.length > 1 ? "s" : ""} updated` : "Project update recorded"}
+                              </span>
+                              {item.status && (
+                                <Badge variant={item.status === "At risk" ? "destructive" : item.status === "On hold" ? "outline" : "success"} className="text-[10px]">
+                                  {item.status}
+                                </Badge>
+                              )}
+                            </div>
+                            <span className="text-[11px] text-gray-400 flex items-center gap-1 font-mono">
+                              <Clock className="h-3 w-3" />
+                              {formatTime(item.timestamp || item.at)} · {new Date(item.timestamp || item.at || Date.now()).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                            </span>
+                          </div>
+
+                          {/* Changed Fields Diff List */}
+                          {item.changedFields && item.changedFields.length > 0 && (
+                            <div className="space-y-1.5 pt-1">
+                              {item.changedFields.map((change, cIdx) => (
+                                <div key={cIdx} className="text-xs bg-white rounded-lg p-2 border border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                                  <span className="font-medium text-gray-500 text-[11px]">{change.label || change.field}</span>
+                                  <div className="flex items-center gap-2 flex-wrap text-xs">
+                                    {change.oldValue ? (
+                                      <>
+                                        <span className="line-through text-gray-400 truncate max-w-[150px]">{change.oldValue}</span>
+                                        <ArrowRight className="h-3 w-3 text-gray-400 shrink-0" />
+                                      </>
+                                    ) : null}
+                                    <span className="font-medium text-gray-900 bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-100">
+                                      {change.newValue || change.value || "Cleared"}
+                                    </span>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="py-8 text-center text-xs text-gray-400 border border-dashed border-gray-200 rounded-xl space-y-1">
+                    <History className="h-6 w-6 text-gray-300 mx-auto mb-1" />
+                    <p className="font-medium text-gray-600">No update history recorded yet for this project.</p>
+                    <p className="text-[11px] text-gray-400">Updates saved in 'Edit Facts' will appear in this timeline.</p>
+                  </div>
+                )}
+              </Card>
+
               {/* Transcript Card */}
               <Card className="p-5">
                 <div className="mb-4">
@@ -654,6 +748,7 @@ export default function FounderApp() {
             try {
               await patch(`/api/founder/projects/${selectedProject.id}`, Object.fromEntries(form));
               await loadProjects();
+              await loadProjectHistory(selectedProject.id);
               setIsEditFactsOpen(false);
               showToast("Project facts updated.", "success");
             } catch (err) {
