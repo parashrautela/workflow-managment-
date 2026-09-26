@@ -10,8 +10,8 @@ const dataFile = path.join(dataDir, 'data.json');
 const port = Number(process.env.PORT || 3000);
 const production = process.env.NODE_ENV === 'production';
 const founderPassword = process.env.FOUNDER_PASSWORD;
-if (!founderPassword || founderPassword.length < 12) {
-  console.error('Set FOUNDER_PASSWORD to at least 12 characters before starting.');
+if (!founderPassword) {
+  console.error('Set FOUNDER_PASSWORD before starting.');
   process.exit(1);
 }
 if (production && !/^https:\/\//i.test(process.env.PUBLIC_URL || '')) {
