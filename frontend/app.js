@@ -37,21 +37,23 @@ function getRoleBadgeClass(role = '') {
   return 'role-default';
 }
 
-function toast(message) {
+function toast(message, type = 'info') {
   const root = document.querySelector('#toast-root');
   if (!root) return;
-  root.innerHTML = `<div class="toast">${esc(message)}</div>`;
+  const icon = type === 'success' ? '✓' : type === 'error' ? '✕' : 'ℹ';
+  root.innerHTML = `<div class="toast toast-${type}"><span class="toast-icon">${icon}</span><span>${esc(message)}</span></div>`;
   setTimeout(() => { if (root) root.innerHTML = ''; }, 3200);
 }
 
 // ==========================================
-// FOUNDER APPLICATION (Mobile & Desktop Synergy)
+// FOUNDER APPLICATION (Audited Screen System)
 // ==========================================
 async function founderApp() {
   let projects = [];
   let activities = [];
   let currentTab = 'projects'; // 'projects' | 'activity'
   let searchQuery = '';
+  let selectedStatus = 'ALL';
 
   try {
     const data = await api('/api/founder/projects');
@@ -61,6 +63,7 @@ async function founderApp() {
     return renderLogin();
   }
 
+  // SCREEN 1: Founder Login
   function renderLogin() {
     app.innerHTML = `
       <main class="login-shell">
@@ -72,28 +75,54 @@ async function founderApp() {
           <span class="eyebrow">PROJECT OPERATIONS</span>
           <h1>Good work starts<br>with a clear picture.</h1>
           <p class="muted">Sign in to your founder workspace to manage project operations, team rosters, and private client assistants.</p>
-          <form id="login-form" class="stack">
-            <label>Founder password
-              <input name="password" type="password" autocomplete="current-password" placeholder="Enter founder password" required autofocus>
+          
+          <form id="login-form" class="stack" novalidate>
+            <label>
+              <span>Founder Password</span>
+              <div class="input-with-action">
+                <input id="founder-pwd" name="password" type="password" autocomplete="current-password" placeholder="Enter founder password" required autofocus>
+                <button type="button" class="pwd-toggle" aria-label="Toggle password visibility" id="pwd-toggle">👁</button>
+              </div>
             </label>
-            <button class="button primary" type="submit">Continue <span>→</span></button>
+            <button class="button primary full" type="submit" id="login-btn">
+              <span>Sign In to Workspace</span>
+              <span class="btn-arrow">→</span>
+            </button>
           </form>
-          <p class="error" id="login-error"></p>
+          <div class="error-container" id="login-error-container" style="display:none;">
+            <p class="error" id="login-error"></p>
+          </div>
         </section>
         <div class="login-note">A calm, unified operational workspace for Studio Iksha.</div>
       </main>
     `;
 
+    const pwdInput = document.querySelector('#founder-pwd');
+    const pwdToggle = document.querySelector('#pwd-toggle');
+    pwdToggle.addEventListener('click', () => {
+      const isPwd = pwdInput.type === 'password';
+      pwdInput.type = isPwd ? 'text' : 'password';
+      pwdToggle.textContent = isPwd ? '🙈' : '👁';
+    });
+
     document.querySelector('#login-form').addEventListener('submit', async (event) => {
       event.preventDefault();
-      const button = event.currentTarget.querySelector('button');
+      const button = document.querySelector('#login-btn');
+      const errContainer = document.querySelector('#login-error-container');
+      const errText = document.querySelector('#login-error');
+      
       button.disabled = true;
+      button.innerHTML = '<span class="btn-spinner"></span> Signing in…';
+      errContainer.style.display = 'none';
+
       try {
-        await post('/api/founder/login', { password: new FormData(event.currentTarget).get('password') });
+        await post('/api/founder/login', { password: pwdInput.value });
         await founderApp();
       } catch (error) {
-        document.querySelector('#login-error').textContent = error.message;
+        errText.textContent = error.message;
+        errContainer.style.display = 'block';
         button.disabled = false;
+        button.innerHTML = '<span>Sign In to Workspace</span> <span class="btn-arrow">→</span>';
       }
     });
   }
@@ -112,24 +141,30 @@ async function founderApp() {
     }
   }
 
+  // SCREEN 2 & 3: Founder Workspace Shell
   function renderShell(selectedId = projects[0]?.id) {
     const selected = projects.find((p) => p.id === selectedId) || projects[0];
     const filteredProjects = projects.filter((p) => {
-      return !searchQuery || p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.clientName.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesSearch = !searchQuery || 
+        p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+        p.clientName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (p.location && p.location.toLowerCase().includes(searchQuery.toLowerCase()));
+      const matchesStatus = selectedStatus === 'ALL' || (p.status || 'Setup').toLowerCase() === selectedStatus.toLowerCase();
+      return matchesSearch && matchesStatus;
     });
 
     app.innerHTML = `
       <div class="shell">
-        <!-- Desktop / Tablet Drawer Sidebar -->
+        <!-- Desktop / Tablet Sidebar -->
         <aside class="sidebar">
           <div class="brand">
             <span class="brand-mark">i</span>
             <span>studio iksha</span>
-            <button class="icon-button sidebar-toggle" aria-label="Toggle menu">✕</button>
+            <button class="icon-button sidebar-toggle" aria-label="Close menu">✕</button>
           </div>
 
           <div class="workspace-label">WORKSPACE</div>
-          <nav class="main-nav">
+          <nav class="main-nav" role="navigation">
             <button class="nav-item ${currentTab === 'projects' ? 'active' : ''}" id="nav-projects">
               <span class="nav-icon">▦</span>
               <span>Projects</span>
@@ -143,21 +178,24 @@ async function founderApp() {
 
           <div class="side-section">
             <span class="side-heading">PROJECTS</span>
-            <button class="icon-button" id="side-add" title="Create project" aria-label="Create project">+</button>
+            <button class="icon-button side-add-btn" id="side-add" title="Create project" aria-label="Create new project space">+</button>
           </div>
 
           <div class="sidebar-search">
-            <input type="text" id="project-search" placeholder="Filter projects…" value="${esc(searchQuery)}">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="project-search" placeholder="Search projects or clients…" value="${esc(searchQuery)}">
           </div>
 
-          <div class="project-nav">
+          <div class="project-nav" role="list">
             ${filteredProjects.map((p) => `
-              <button class="project-nav-item ${p.id === selected?.id && currentTab === 'projects' ? 'selected' : ''}" data-project="${esc(p.id)}">
+              <button class="project-nav-item ${p.id === selected?.id && currentTab === 'projects' ? 'selected' : ''}" data-project="${esc(p.id)}" role="listitem">
                 <span class="project-dot ${p.status === 'At risk' ? 'risk' : p.status === 'On hold' ? 'hold' : ''}"></span>
-                <span class="project-nav-name">${esc(p.name)}</span>
-                <span class="project-nav-client">${esc(p.clientName)}</span>
+                <div class="project-nav-info">
+                  <span class="project-nav-name">${esc(p.name)}</span>
+                  <span class="project-nav-client">${esc(p.clientName)}</span>
+                </div>
               </button>
-            `).join('') || '<div class="empty-nav">No matching projects.</div>'}
+            `).join('') || '<div class="empty-nav">No matching projects found.</div>'}
           </div>
 
           <div class="sidebar-bottom">
@@ -181,7 +219,7 @@ async function founderApp() {
             </div>
             <div class="topbar-right">
               <span class="secure-note"><i></i> Founder Session</span>
-              <button class="avatar" title="Founder">P</button>
+              <button class="avatar" title="Founder Profile">P</button>
             </div>
           </header>
 
@@ -190,13 +228,13 @@ async function founderApp() {
           </div>
         </main>
 
-        <!-- Mobile Bottom Tab Bar (iOS / Android M3) -->
-        <nav class="mobile-bottom-nav">
+        <!-- Mobile Bottom Tab Bar (Apple HIG / Android M3) -->
+        <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
           <button class="mobile-tab-btn ${currentTab === 'projects' ? 'active' : ''}" id="mobile-tab-projects">
             <span class="mobile-tab-icon">▦</span>
             <span>Projects</span>
           </button>
-          <button class="mobile-tab-btn" id="mobile-tab-add">
+          <button class="mobile-tab-btn" id="mobile-tab-add" aria-label="Add project">
             <span class="mobile-fab">+</span>
           </button>
           <button class="mobile-tab-btn ${currentTab === 'activity' ? 'active' : ''}" id="mobile-tab-activity">
@@ -209,7 +247,7 @@ async function founderApp() {
       <div id="toast-root"></div>
     `;
 
-    // Navigation switching
+    // Navigation Tab Switching
     document.querySelector('#nav-projects')?.addEventListener('click', () => {
       currentTab = 'projects';
       renderShell(selected?.id);
@@ -234,20 +272,25 @@ async function founderApp() {
 
     document.querySelector('#mobile-tab-add')?.addEventListener('click', showCreateProject);
 
-    // Search filter
+    // Live search
     document.querySelector('#project-search')?.addEventListener('input', (e) => {
       searchQuery = e.target.value;
       const navContainer = document.querySelector('.project-nav');
       const filtered = projects.filter((p) => {
-        return !searchQuery || p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.clientName.toLowerCase().includes(searchQuery.toLowerCase());
+        return !searchQuery || 
+          p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+          p.clientName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          (p.location && p.location.toLowerCase().includes(searchQuery.toLowerCase()));
       });
       navContainer.innerHTML = filtered.map((p) => `
         <button class="project-nav-item ${p.id === selected?.id && currentTab === 'projects' ? 'selected' : ''}" data-project="${esc(p.id)}">
           <span class="project-dot ${p.status === 'At risk' ? 'risk' : p.status === 'On hold' ? 'hold' : ''}"></span>
-          <span class="project-nav-name">${esc(p.name)}</span>
-          <span class="project-nav-client">${esc(p.clientName)}</span>
+          <div class="project-nav-info">
+            <span class="project-nav-name">${esc(p.name)}</span>
+            <span class="project-nav-client">${esc(p.clientName)}</span>
+          </div>
         </button>
-      `).join('') || '<div class="empty-nav">No matching projects.</div>';
+      `).join('') || '<div class="empty-nav">No matching projects found.</div>';
       attachProjectClickListeners();
     });
 
@@ -288,6 +331,7 @@ async function founderApp() {
     });
   }
 
+  // SCREEN 2: Empty Workspace Welcome
   function renderEmpty() {
     return `
       <section class="welcome">
@@ -298,12 +342,16 @@ async function founderApp() {
         </div>
         <span class="eyebrow">WORKSPACE OPERATIONS</span>
         <h1>Make room for<br>the work that matters.</h1>
-        <p class="muted">Create a project workspace to track phases, team rosters, and generate a secure assistant link for your client.</p>
-        <button id="new-project-empty" class="button primary">Create your first project <span>→</span></button>
+        <p class="muted">Create your first project workspace to track milestones, assign team members, and generate a secure client assistant link.</p>
+        <button id="new-project-empty" class="button primary">
+          <span>Create your first project</span>
+          <span>→</span>
+        </button>
       </section>
     `;
   }
 
+  // SCREEN 3: Active Project Workspace View
   function renderProjectView(project) {
     const status = project.status || 'Setup';
     return `
@@ -312,7 +360,7 @@ async function founderApp() {
           <div class="eyebrow">PROJECT WORKSPACE</div>
           <h1>${esc(project.name)}</h1>
           <div class="project-subline">
-            <span>${esc(project.location || 'Location not specified')}</span>
+            <span>📍 ${esc(project.location || 'Location not specified')}</span>
             <span class="dot-sep">·</span>
             <span>Client: <strong>${esc(project.clientName)}</strong></span>
             <span class="dot-sep">·</span>
@@ -332,7 +380,7 @@ async function founderApp() {
             <strong>Active Blocker (Visible to Client Assistant)</strong>
             <p>${esc(project.blocker)}</p>
           </div>
-          <button class="button small-outline" id="resolve-blocker" onclick="document.querySelector('#save-updates').click()">Update</button>
+          <button class="button small-outline" id="resolve-blocker" onclick="document.querySelector('#save-updates').click()">Update Blocker</button>
         </div>
       ` : ''}
 
@@ -376,7 +424,7 @@ async function founderApp() {
             <span class="task-glyph">↗</span>
           </div>
           <div class="progress-meta">
-            <span>Current Phase · ${esc(project.phase || 'Design')}</span>
+            <span>Current Phase · <strong>${esc(project.phase || 'Design')}</strong></span>
             <span class="status-badge-text ${status === 'At risk' ? 'risk' : ''}">${esc(status)}</span>
           </div>
           <div class="next-step">
@@ -406,7 +454,7 @@ async function founderApp() {
                 </div>
                 <span class="role-badge ${getRoleBadgeClass(member.role)}">${esc(member.role)}</span>
               </div>
-            `).join('') || '<div class="no-members">No team members assigned yet. Add designers, supervisors, or administrators.</div>'}
+            `).join('') || '<div class="no-members">No team members assigned yet. Add designers, site supervisors, or trade contractors.</div>'}
           </div>
         </section>
       </div>
@@ -422,7 +470,7 @@ async function founderApp() {
       <section class="card link-card">
         <div class="link-symbol">✧</div>
         <div class="link-copy">
-          <strong>Single-Claim Private Link</strong>
+          <strong>Single-Claim Bearer Security</strong>
           <span>The first person to open the link claims it for their browser session. Generating a replacement revokes the previous link.</span>
         </div>
         <div class="link-action">
@@ -434,25 +482,26 @@ async function founderApp() {
         <div>
           <span class="eyebrow">CLIENT ENGAGEMENT</span>
           <h2>Shared Conversation Transcript</h2>
-          <p class="muted">Review questions your client asked the project assistant. Clients are notified that this transcript is visible to the founder.</p>
+          <p class="muted">Review questions your client asked the project assistant. Clients are informed that this transcript is visible to the founder.</p>
         </div>
       </div>
 
       <section id="conversation-panel" class="card conversation-card">
-        <div class="conversation-empty">Loading client conversation transcript…</div>
+        <div class="conversation-empty"><span class="spinner-small"></span> Loading client conversation transcript…</div>
       </section>
     `;
   }
 
+  // SCREEN 4: Activity Log Feed
   function renderActivityView() {
     return `
       <div class="page-heading">
         <div>
           <div class="eyebrow">AUDIT & OPERATIONS</div>
           <h1>Workspace Activity Log</h1>
-          <p class="muted">Recent operations, project creations, member updates, and client link claims.</p>
+          <p class="muted">Live operational audit feed for project creations, updates, member assignments, and client link activity.</p>
         </div>
-        <button class="button subtle" id="refresh-activity">↻ Refresh</button>
+        <button class="button subtle" id="refresh-activity">↻ Refresh Feed</button>
       </div>
 
       <section class="card activity-card">
@@ -483,7 +532,7 @@ async function founderApp() {
               case 'client_link_created':
                 icon = '↗';
                 title = 'Client invite link generated';
-                detail = `New private link issued for ${esc(projectName)}`;
+                detail = `New single-claim private link issued for ${esc(projectName)}`;
                 break;
               case 'client_link_claimed':
                 icon = '✓';
@@ -535,27 +584,32 @@ async function founderApp() {
     }
   }
 
+  // SCREEN 5: Modal / Sheet - Create Project
   function showCreateProject() {
     const modal = document.querySelector('#modal-root');
     modal.innerHTML = `
       <div class="modal-backdrop">
-        <section class="modal">
-          <button class="icon-button modal-close" aria-label="Close">✕</button>
+        <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-project">
+          <button class="icon-button modal-close" aria-label="Close modal">✕</button>
           <span class="eyebrow">NEW PROJECT WORKSPACE</span>
-          <h2>Start a Project Space</h2>
+          <h2 id="modal-title-project">Start a Project Space</h2>
           <p class="muted">Set up the project facts. You can assign the team and create a client link immediately after.</p>
           <form id="project-form" class="stack">
-            <label>Project Name
+            <label>
+              <span>Project Name</span>
               <input name="name" placeholder="e.g. Kumar Residence" required autofocus>
             </label>
-            <label>Client Name
+            <label>
+              <span>Client Name</span>
               <input name="clientName" placeholder="e.g. Asha Kumar" required>
             </label>
-            <label>Location <span class="optional">OPTIONAL</span>
-              <input name="location" placeholder="City or site address">
+            <label>
+              <span>Location <span class="optional">OPTIONAL</span></span>
+              <input name="location" placeholder="e.g. Pune, Maharashtra">
             </label>
             <div class="form-pair">
-              <label>Current Phase
+              <label>
+                <span>Current Phase</span>
                 <select name="phase">
                   <option>Design</option>
                   <option>Planning</option>
@@ -565,7 +619,8 @@ async function founderApp() {
                   <option>Handover</option>
                 </select>
               </label>
-              <label>Status
+              <label>
+                <span>Status</span>
                 <select name="status">
                   <option>Setup</option>
                   <option>On track</option>
@@ -574,13 +629,15 @@ async function founderApp() {
                 </select>
               </label>
             </div>
-            <label>Recent Task <span class="optional">CLIENT-VISIBLE</span>
+            <label>
+              <span>Recent Task <span class="optional">CLIENT-VISIBLE</span></span>
               <input name="recentTask" placeholder="e.g. Completed 3D design moodboard and layout presentation">
             </label>
-            <label>Next Milestone <span class="optional">CLIENT-VISIBLE</span>
+            <label>
+              <span>Next Milestone <span class="optional">CLIENT-VISIBLE</span></span>
               <input name="nextMilestone" placeholder="e.g. Tile and plumbing fixtures material selection">
             </label>
-            <button class="button primary full" type="submit">Create Project Space <span>→</span></button>
+            <button class="button primary full" type="submit" id="create-proj-btn">Create Project Space <span>→</span></button>
           </form>
         </section>
       </div>
@@ -592,36 +649,45 @@ async function founderApp() {
     });
     modal.querySelector('#project-form').addEventListener('submit', async (event) => {
       event.preventDefault();
+      const btn = document.querySelector('#create-proj-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="btn-spinner"></span> Creating…';
       const input = Object.fromEntries(new FormData(event.currentTarget));
       try {
         const result = await post('/api/founder/projects', input);
         await loadProjects();
         modal.innerHTML = '';
         renderShell(result.project.id);
-        toast('Project space created successfully.');
+        toast('Project space created successfully.', 'success');
       } catch (error) {
-        toast(error.message);
+        toast(error.message, 'error');
+        btn.disabled = false;
+        btn.innerHTML = 'Create Project Space <span>→</span>';
       }
     });
   }
 
+  // SCREEN 6: Modal / Sheet - Add Member
   function showAddMember(project) {
     const modal = document.querySelector('#modal-root');
     modal.innerHTML = `
       <div class="modal-backdrop">
-        <section class="modal compact">
-          <button class="icon-button modal-close" aria-label="Close">✕</button>
+        <section class="modal compact" role="dialog" aria-modal="true">
+          <button class="icon-button modal-close" aria-label="Close modal">✕</button>
           <span class="eyebrow">PROJECT TEAM</span>
           <h2>Add Team Member</h2>
           <p class="muted">Add a team member to <strong>${esc(project.name)}</strong>.</p>
           <form id="member-form" class="stack">
-            <label>Full Name
+            <label>
+              <span>Full Name</span>
               <input name="name" placeholder="e.g. Rohan Mehta" required autofocus>
             </label>
-            <label>Designation
+            <label>
+              <span>Designation</span>
               <input name="designation" placeholder="e.g. Lead Interior Designer" required>
             </label>
-            <label>Project Role
+            <label>
+              <span>Project Role</span>
               <select name="role">
                 <option>Project admin</option>
                 <option>Designer</option>
@@ -633,7 +699,7 @@ async function founderApp() {
                 <option>Other</option>
               </select>
             </label>
-            <button class="button primary full" type="submit">Add to Project <span>→</span></button>
+            <button class="button primary full" type="submit" id="add-mbr-btn">Add to Project <span>→</span></button>
           </form>
         </section>
       </div>
@@ -645,50 +711,61 @@ async function founderApp() {
     });
     modal.querySelector('#member-form').addEventListener('submit', async (event) => {
       event.preventDefault();
+      const btn = document.querySelector('#add-mbr-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="btn-spinner"></span> Adding…';
       try {
         await post(`/api/founder/projects/${project.id}/members`, Object.fromEntries(new FormData(event.currentTarget)));
         await loadProjects();
         modal.innerHTML = '';
         renderShell(project.id);
-        toast('Team member added.');
+        toast('Team member added.', 'success');
       } catch (error) {
-        toast(error.message);
+        toast(error.message, 'error');
+        btn.disabled = false;
+        btn.innerHTML = 'Add to Project <span>→</span>';
       }
     });
   }
 
+  // SCREEN 7: Modal / Sheet - Edit Project Facts
   function showEditProject(project) {
     const modal = document.querySelector('#modal-root');
     modal.innerHTML = `
       <div class="modal-backdrop">
-        <section class="modal compact">
-          <button class="icon-button modal-close" aria-label="Close">✕</button>
+        <section class="modal compact" role="dialog" aria-modal="true">
+          <button class="icon-button modal-close" aria-label="Close modal">✕</button>
           <span class="eyebrow">PROJECT FACTS UPDATE</span>
           <h2>Update Client-Safe Facts</h2>
           <p class="muted">The client assistant responds strictly based on these recorded facts. Keep them accurate and clear.</p>
           <form id="edit-form" class="stack">
             <div class="form-pair">
-              <label>Current Phase
+              <label>
+                <span>Current Phase</span>
                 <select name="phase">
                   ${['Design', 'Planning', 'Procurement', 'Site execution', 'Finishing', 'Handover'].map((v) => `<option ${v === project.phase ? 'selected' : ''}>${v}</option>`).join('')}
                 </select>
               </label>
-              <label>Status
+              <label>
+                <span>Status</span>
                 <select name="status">
                   ${['Setup', 'On track', 'At risk', 'On hold', 'Completed'].map((v) => `<option ${v === project.status ? 'selected' : ''}>${v}</option>`).join('')}
                 </select>
               </label>
             </div>
-            <label>Recent Task
+            <label>
+              <span>Recent Task</span>
               <input name="recentTask" value="${esc(project.recentTask)}" placeholder="e.g. Electrical conduit routing completed on 2nd floor">
             </label>
-            <label>Next Milestone
+            <label>
+              <span>Next Milestone</span>
               <input name="nextMilestone" value="${esc(project.nextMilestone)}" placeholder="e.g. Flooring tile delivery and dry-laying review">
             </label>
-            <label>Blocker <span class="optional">CLIENT VISIBLE</span>
+            <label>
+              <span>Blocker <span class="optional">CLIENT VISIBLE</span></span>
               <input name="blocker" value="${esc(project.blocker)}" placeholder="e.g. Waiting on client confirmation for kitchen countertop stone">
             </label>
-            <button class="button primary full" type="submit">Save Project Facts <span>→</span></button>
+            <button class="button primary full" type="submit" id="save-facts-btn">Save Project Facts <span>→</span></button>
           </form>
         </section>
       </div>
@@ -700,25 +777,31 @@ async function founderApp() {
     });
     modal.querySelector('#edit-form').addEventListener('submit', async (event) => {
       event.preventDefault();
+      const btn = document.querySelector('#save-facts-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="btn-spinner"></span> Saving…';
       try {
         await patch(`/api/founder/projects/${project.id}`, Object.fromEntries(new FormData(event.currentTarget)));
         await loadProjects();
         modal.innerHTML = '';
         renderShell(project.id);
-        toast('Project facts updated.');
+        toast('Project facts updated.', 'success');
       } catch (error) {
-        toast(error.message);
+        toast(error.message, 'error');
+        btn.disabled = false;
+        btn.innerHTML = 'Save Project Facts <span>→</span>';
       }
     });
   }
 
+  // SCREEN 8: Modal / Sheet - Share Client Link
   async function createClientLink(project) {
     if (!project) return;
     try {
       const { link } = await post(`/api/founder/projects/${project.id}/invite`);
       showLinkModal(link, project);
     } catch (error) {
-      toast(error.message);
+      toast(error.message, 'error');
     }
   }
 
@@ -726,8 +809,8 @@ async function founderApp() {
     const modal = document.querySelector('#modal-root');
     modal.innerHTML = `
       <div class="modal-backdrop">
-        <section class="modal compact">
-          <button class="icon-button modal-close" aria-label="Close">✕</button>
+        <section class="modal compact" role="dialog" aria-modal="true">
+          <button class="icon-button modal-close" aria-label="Close modal">✕</button>
           <div class="success-mark">✓</div>
           <span class="eyebrow">PRIVATE CLIENT LINK</span>
           <h2>Link Ready to Share</h2>
@@ -748,16 +831,19 @@ async function founderApp() {
     modal.querySelector('#done-link-btn').onclick = () => { modal.innerHTML = ''; };
     modal.querySelector('#copy-link-btn').onclick = async () => {
       const field = document.querySelector('#invite-link-field');
+      const btn = document.querySelector('#copy-link-btn');
       if (field) {
         await navigator.clipboard.writeText(field.value);
-        toast('Private link copied to clipboard.');
+        btn.textContent = 'Copied!';
+        toast('Private link copied to clipboard.', 'success');
+        setTimeout(() => { if (btn) btn.textContent = 'Copy Link'; }, 2000);
       }
     };
   }
 }
 
 // ==========================================
-// CLIENT PORTAL (Mobile First)
+// CLIENT PORTAL (Audited Screen System)
 // ==========================================
 async function clientApp() {
   const token = decodeURIComponent(location.pathname.split('/')[2] || '');
@@ -771,9 +857,10 @@ async function clientApp() {
         <span class="private-pill"><i></i> PRIVATE CLIENT PORTAL</span>
       </header>
       <section id="client-content" class="client-content">
+        <!-- SCREEN 12: Loading State -->
         <div class="client-loading">
           <span class="spinner"></span>
-          <p>Connecting to your project space…</p>
+          <p>Connecting to your private project space…</p>
         </div>
       </section>
       <footer class="client-footer">
@@ -788,13 +875,15 @@ async function clientApp() {
     const { project } = await post('/api/client/claim', { token });
     renderChat(project);
   } catch (error) {
+    // SCREEN 11: Claim Error / Used Link
     content.innerHTML = `
       <section class="client-message">
         <div class="error-symbol">⚠️</div>
         <span class="eyebrow">LINK CLAIM NOTICE</span>
         <h1>Unable to Open Project Link</h1>
         <p class="muted">For privacy and security, each private client link can be claimed by one browser only. If you opened this link on another device or need a replacement, please ask your Studio Iksha project founder to issue a new link.</p>
-        <p class="error">${esc(error.message)}</p>
+        <p class="error-badge">${esc(error.message)}</p>
+        <button class="button secondary full" onclick="location.reload()">Retry Connection</button>
       </section>
     `;
   }
@@ -804,6 +893,7 @@ async function clientApp() {
     alert('Please contact your Studio Iksha project founder or site team for assistance.');
   });
 
+  // SCREEN 9 & 10: Client Welcome, Snapshot, and Chat Assistant
   function renderChat(project) {
     const firstName = esc(project.clientName.trim().split(/\s+/)[0]);
     content.innerHTML = `
@@ -813,6 +903,7 @@ async function clientApp() {
         <p class="muted">Stay up to date with real-time facts and milestone tracking for <strong>${esc(project.name)}</strong>.</p>
       </div>
 
+      <!-- SCREEN 9: Project Snapshot Card -->
       <section class="client-status card">
         <div class="client-status-top">
           <span class="eyebrow">PROJECT SNAPSHOT</span>
@@ -846,6 +937,7 @@ async function clientApp() {
         </div>
       </section>
 
+      <!-- SCREEN 10: Assistant Chat -->
       <section class="chat-card card">
         <div class="chat-heading">
           <span class="assistant-avatar">✳</span>
@@ -856,7 +948,7 @@ async function clientApp() {
           <span class="online-dot" title="Assistant Online"></span>
         </div>
 
-        <div id="messages" class="messages">
+        <div id="messages" class="messages" role="log" aria-live="polite">
           <div class="message assistant-message">
             <span class="message-avatar">✳</span>
             <div class="bubble">
@@ -947,7 +1039,7 @@ async function clientApp() {
   }
 }
 
-// Router initialization
+// Router
 if (location.pathname.startsWith('/c/')) {
   clientApp();
 } else {

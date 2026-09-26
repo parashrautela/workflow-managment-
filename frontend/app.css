@@ -57,13 +57,12 @@
   --teal-subtle: #e6f6f5;
 
   /* Apple Glass & Elevation */
-  --glass-bg: rgba(246, 245, 244, 0.82);
+  --glass-bg: rgba(246, 245, 244, 0.85);
   --glass-border: rgba(234, 232, 229, 0.8);
-  --modal-sheet-bg: #ffffff;
   --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-  --elevated-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --elevated-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
 
-  /* Spring Physics / Motion Curves */
+  /* Motion Curves */
   --spring-quick: cubic-bezier(0.25, 1, 0.5, 1);
   --spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -112,7 +111,7 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* Typography Scale (M3 & iOS Typography) */
+/* Typography & Brand */
 .brand {
   display: flex;
   align-items: center;
@@ -150,7 +149,7 @@ button:disabled {
   font-size: 13px;
 }
 
-/* Touch-Friendly Button Hierarchy (Min 44-48dp targets) */
+/* Button Hierarchy (M3 48dp target standard) */
 .button {
   border: 1px solid transparent;
   border-radius: var(--radius-sm);
@@ -202,7 +201,7 @@ button:disabled {
   background: #ffffff;
   color: var(--ink-secondary);
   border-color: var(--line);
-  min-height: 34px;
+  min-height: 36px;
   padding: 0 12px;
   font-size: 12px;
   border-radius: 8px;
@@ -210,6 +209,16 @@ button:disabled {
 
 .button.full {
   width: 100%;
+}
+
+.btn-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
 }
 
 .icon-button {
@@ -226,6 +235,84 @@ button:disabled {
 
 .icon-button:hover {
   background: #e8e6e3;
+}
+
+/* SCREEN 1: Login */
+.login-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  position: relative;
+  background: var(--canvas);
+  padding: var(--space-20);
+}
+
+.login-card {
+  width: min(420px, 100%);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: var(--space-32);
+  box-shadow: var(--elevated-shadow);
+  animation: modalPop 0.25s var(--spring-quick);
+}
+
+.login-card .brand {
+  margin-bottom: var(--space-32);
+}
+
+.login-card h1 {
+  font-size: 28px;
+  letter-spacing: -0.8px;
+  line-height: 1.15;
+  margin: var(--space-8) 0 var(--space-8);
+  font-weight: 700;
+}
+
+.input-with-action {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-with-action input {
+  width: 100%;
+  padding-right: 44px;
+}
+
+.pwd-toggle {
+  position: absolute;
+  right: 6px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #8c8781;
+}
+
+.error-container {
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: var(--red-subtle);
+  border-radius: 8px;
+}
+
+.error {
+  color: var(--red);
+  font-size: 12px;
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 550;
+}
+
+.login-note {
+  position: absolute;
+  bottom: 24px;
+  color: #9c9791;
+  font-size: 11px;
+  text-align: center;
 }
 
 /* Layout Shell */
@@ -317,17 +404,34 @@ button:disabled {
   color: #9a9590;
 }
 
+.side-add-btn {
+  background: #e5e3df;
+  font-weight: 700;
+  color: #333;
+}
+
 .sidebar-search {
+  position: relative;
+  display: flex;
+  align-items: center;
   padding: 0 6px 10px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  font-size: 11px;
+  color: #9e9a94;
+  pointer-events: none;
 }
 
 .sidebar-search input {
   width: 100%;
-  height: 34px;
+  height: 36px;
   border: 1px solid #dedbd6;
   border-radius: 8px;
   background: #ffffff;
-  padding: 0 10px;
+  padding: 0 10px 0 28px;
   font-size: 12px;
   outline: none;
   color: var(--ink);
@@ -372,11 +476,18 @@ button:disabled {
   font-weight: 600;
 }
 
-.project-nav-name {
+.project-nav-info {
+  display: grid;
+  gap: 1px;
   flex: 1;
+  min-width: 0;
+}
+
+.project-nav-name {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 12px;
 }
 
 .project-nav-client {
@@ -1166,7 +1277,7 @@ button:disabled {
   color: var(--green);
 }
 
-/* Toast (iOS Capsule Notification) */
+/* Toast System (Capsule Notifications) */
 .toast {
   position: fixed;
   z-index: 200;
@@ -1184,8 +1295,17 @@ button:disabled {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   animation: toastPop 0.25s var(--spring-bounce);
   max-width: 90vw;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
+
+.toast-icon {
+  font-weight: 700;
+}
+
+.toast-success .toast-icon { color: #4ade80; }
+.toast-error .toast-icon { color: #f87171; }
 
 @keyframes toastPop {
   from { transform: translate(-50%, 20px) scale(0.9); opacity: 0; }
@@ -1496,6 +1616,99 @@ button:disabled {
 .client-footer a {
   color: #79736d;
   text-decoration: none;
+}
+
+.client-loading {
+  display: grid;
+  place-items: center;
+  padding: 100px 0;
+  color: #8f8983;
+  font-size: 13px;
+  gap: 12px;
+}
+
+.spinner {
+  width: 26px;
+  height: 26px;
+  border: 2px solid #ddd;
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.spinner-small {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #ddd;
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.client-message {
+  max-width: 480px;
+  margin: 60px auto;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: var(--space-32);
+  box-shadow: var(--elevated-shadow);
+}
+
+.client-message h1 {
+  font-size: 24px;
+  letter-spacing: -0.7px;
+  margin: 8px 0;
+}
+
+.error-symbol {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #fdf3ec;
+  color: var(--amber);
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+
+.error-badge {
+  background: var(--red-subtle);
+  color: var(--red);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 550;
+  margin: 14px 0 20px;
+}
+
+.typing {
+  display: flex;
+  gap: 4px;
+  padding: 4px 2px;
+}
+
+.typing i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #9a9691;
+  animation: pulse 1s infinite alternate;
+}
+
+.typing i:nth-child(2) { animation-delay: 0.2s; }
+.typing i:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes pulse {
+  to { opacity: 0.25; transform: translateY(-2px); }
 }
 
 /* Mobile Bottom Tab Navigation (iOS TabBar & M3 NavigationBar) */
