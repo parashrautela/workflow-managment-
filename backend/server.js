@@ -1,6 +1,7 @@
 import http from 'node:http';
 import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { readFile, mkdir } from 'node:fs/promises';
+import { createStateStore } from './store.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -10,8 +11,8 @@ const dataFile = path.join(dataDir, 'data.json');
 const port = Number(process.env.PORT || 3000);
 const production = process.env.NODE_ENV === 'production';
 const founderPassword = process.env.FOUNDER_PASSWORD;
-if (!founderPassword || founderPassword.length < 12) {
-  console.error('Set FOUNDER_PASSWORD to at least 12 characters before starting.');
+if (!founderPassword) {
+  console.error('Set FOUNDER_PASSWORD before starting.');
   process.exit(1);
 }
 if (production && !/^https:\/\//i.test(process.env.PUBLIC_URL || '')) {
@@ -21,6 +22,7 @@ if (production && !/^https:\/\//i.test(process.env.PUBLIC_URL || '')) {
 
 const hash = (value) => createHash('sha256').update(value).digest('hex');
 const token = () => randomBytes(32).toString('base64url');
+const validIsoDate = (value) => !value || (/^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(new Date(`${value}T00:00:00.000Z`).getTime()) && new Date(`${value}T00:00:00.000Z`).toISOString().slice(0, 10) === value);
 const safeEqual = (a, b) => {
   const aa = Buffer.from(String(a)); const bb = Buffer.from(String(b));
   return aa.length === bb.length && timingSafeEqual(aa, bb);
@@ -28,16 +30,21 @@ const safeEqual = (a, b) => {
 const cookieValue = (req, name) => (req.headers.cookie || '').split(';').map((part) => part.trim()).find((part) => part.startsWith(`${name}=`))?.slice(name.length + 1) || '';
 const cookie = (name, value, maxAge) => `${name}=${value}; Path=/; HttpOnly; SameSite=Strict; Max-Age=${maxAge}${production ? '; Secure' : ''}`;
 const clearCookie = (name) => `${name}=; Path=/; HttpOnly; SameSite=Strict; Max-Age=0${production ? '; Secure' : ''}`;
-let state = { projects: [], founderSessions: [], invites: [], clientSessions: [], conversations: [], activity: [] };
 await mkdir(dataDir, { recursive: true });
-try { state = { ...state, ...JSON.parse(await readFile(dataFile, 'utf8')) }; } catch (error) { if (error.code !== 'ENOENT') throw error; }
-for (const key of ['projects', 'founderSessions', 'invites', 'clientSessions', 'conversations', 'activity']) if (!Array.isArray(state[key])) state[key] = [];
+const stateStore = await createStateStore({ dataFile, production });
+let state = stateStore.state;
+console.log(`Project data store connected: ${stateStore.kind}.`);
 let saveQueue = Promise.resolve();
 function save() {
-  saveQueue = saveQueue.then(() => writeFile(dataFile, JSON.stringify(state, null, 2), { mode: 0o600 }));
+  saveQueue = saveQueue.then(() => stateStore.save(state));
   return saveQueue;
 }
 const audit = (action, projectId, details = {}) => state.activity.unshift({ id: randomBytes(8).toString('hex'), action, projectId, details, at: new Date().toISOString() });
+function recordProjectUpdate(projectId, changes) {
+  const update = { id: randomBytes(8).toString('hex'), projectId, actor: 'Founder', changes, at: new Date().toISOString() };
+  state.projectUpdates.unshift(update);
+  return update;
+}
 const loginAttempts = new Map();
 const chatLimits = new Map();
 const json = (res, status, body, headers = {}) => { res.writeHead(status, { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', ...headers }); res.end(JSON.stringify(body)); };
@@ -46,7 +53,8 @@ async function body(req) {
   return raw ? JSON.parse(raw) : {};
 }
 function projectView(project) {
-  return { id: project.id, name: project.name, clientName: project.clientName, location: project.location, phase: project.phase, status: project.status, recentTask: project.recentTask, nextMilestone: project.nextMilestone, blocker: project.blocker, members: project.members, createdAt: project.createdAt };
+  const owner = project.members.find((member) => member.id === project.internalOwnerMemberId);
+  return { id: project.id, name: project.name, clientName: project.clientName, location: project.location, startDate: project.startDate || '', internalOwnerMemberId: project.internalOwnerMemberId || '', internalOwner: owner?.name || '', phase: project.phase, status: project.status, recentTask: project.recentTask, nextMilestone: project.nextMilestone, blocker: project.blocker, members: project.members, createdAt: project.createdAt };
 }
 function clientProjectView(project) {
   return { name: project.name, clientName: project.clientName, phase: project.phase, status: project.status, recentTask: project.recentTask, nextMilestone: project.nextMilestone, blocker: project.blocker };
@@ -119,15 +127,40 @@ const server = http.createServer(async (req, res) => {
     if (req.method === 'POST' && url.pathname === '/api/founder/projects') {
       const input = await body(req);
       if (!input.name?.trim() || !input.clientName?.trim()) return json(res, 400, { error: 'Project and client names are required.' });
-      const project = { id: `p_${randomBytes(8).toString('hex')}`, name: input.name.trim(), clientName: input.clientName.trim(), location: input.location?.trim() || '', phase: input.phase?.trim() || 'Design', status: input.status || 'Setup', recentTask: input.recentTask?.trim() || '', nextMilestone: input.nextMilestone?.trim() || '', blocker: '', members: [], createdAt: new Date().toISOString() };
+      if (input.startDate !== undefined && (typeof input.startDate !== 'string' || !validIsoDate(input.startDate))) return json(res, 400, { error: 'Start date must use YYYY-MM-DD.' });
+      const project = { id: `p_${randomBytes(8).toString('hex')}`, name: input.name.trim(), clientName: input.clientName.trim(), location: input.location?.trim() || '', startDate: input.startDate?.trim() || '', internalOwnerMemberId: '', phase: input.phase?.trim() || 'Design', status: input.status || 'Setup', recentTask: input.recentTask?.trim() || '', nextMilestone: input.nextMilestone?.trim() || '', blocker: '', members: [], createdAt: new Date().toISOString() };
       state.projects.unshift(project); audit('project_created', project.id); await save(); return json(res, 201, { project: projectView(project) });
     }
     const projectMatch = url.pathname.match(/^\/api\/founder\/projects\/([^/]+)$/);
     if (req.method === 'PATCH' && projectMatch) {
       const project = state.projects.find((item) => item.id === projectMatch[1]); if (!project) return json(res, 404, { error: 'Project not found.' });
       const input = await body(req); const allowed = ['phase', 'status', 'recentTask', 'nextMilestone', 'blocker'];
-      for (const key of allowed) if (typeof input[key] === 'string') project[key] = input[key].trim();
-      audit('project_update', project.id); await save(); return json(res, 200, { project: projectView(project) });
+      if (input.startDate !== undefined && (typeof input.startDate !== 'string' || !validIsoDate(input.startDate))) return json(res, 400, { error: 'Start date must use YYYY-MM-DD.' });
+      const updates = {};
+      if (input.startDate !== undefined) updates.startDate = input.startDate.trim();
+      if (input.internalOwnerMemberId !== undefined) {
+        const ownerId = String(input.internalOwnerMemberId || '').trim();
+        const owner = ownerId ? project.members.find((member) => member.id === ownerId) : null;
+        if (ownerId && (!owner || /client/i.test(owner.role))) return json(res, 400, { error: 'Project owner must be an internal member of this project.' });
+        updates.internalOwnerMemberId = ownerId;
+      }
+      for (const key of allowed) if (typeof input[key] === 'string') updates[key] = input[key].trim();
+      const changes = {};
+      for (const [key, value] of Object.entries(updates)) {
+        if (project[key] !== value) { changes[key] = { old: project[key] ?? '', new: value }; project[key] = value; }
+      }
+      if (Object.keys(changes).length) {
+        const update = recordProjectUpdate(project.id, changes);
+        audit('project_update', project.id, { updateId: update.id, changes });
+      }
+      await save(); return json(res, 200, { project: projectView(project) });
+    }
+    const updatesMatch = url.pathname.match(/^\/api\/founder\/projects\/([^/]+)\/updates$/);
+    if (req.method === 'GET' && updatesMatch) {
+      const project = state.projects.find((item) => item.id === updatesMatch[1]);
+      if (!project) return json(res, 404, { error: 'Project not found.' });
+      const updates = state.projectUpdates.filter((item) => item.projectId === project.id).slice(0, 50);
+      return json(res, 200, { updates });
     }
     const conversationMatch = url.pathname.match(/^\/api\/founder\/projects\/([^/]+)\/conversation$/);
     if (req.method === 'GET' && conversationMatch) {
