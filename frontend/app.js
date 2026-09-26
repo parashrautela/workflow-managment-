@@ -11675,7 +11675,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$18 = {
+var __iconData$22 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11686,8 +11686,26 @@ var __iconData$18 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$18.node;
-var ArrowRight = createLucideIcon(__iconData$18);
+__iconData$22.node;
+var ArrowRight = createLucideIcon(__iconData$22);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/check.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$21 = {
+	name: "check",
+	size: 24,
+	node: [["path", {
+		d: "M20 6 9 17l-5-5",
+		key: "1gmf2c"
+	}]]
+};
+__iconData$21.node;
+var Check = createLucideIcon(__iconData$21);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
@@ -11696,7 +11714,7 @@ var ArrowRight = createLucideIcon(__iconData$18);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$17 = {
+var __iconData$20 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -11723,8 +11741,8 @@ var __iconData$17 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$17.node;
-var CircleAlert = createLucideIcon(__iconData$17);
+__iconData$20.node;
+var CircleAlert = createLucideIcon(__iconData$20);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
@@ -11733,7 +11751,7 @@ var CircleAlert = createLucideIcon(__iconData$17);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$16 = {
+var __iconData$19 = {
 	name: "clock",
 	size: 24,
 	node: [["circle", {
@@ -11746,8 +11764,8 @@ var __iconData$16 = {
 		key: "mmk7yg"
 	}]]
 };
-__iconData$16.node;
-var Clock = createLucideIcon(__iconData$16);
+__iconData$19.node;
+var Clock = createLucideIcon(__iconData$19);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
@@ -11756,7 +11774,7 @@ var Clock = createLucideIcon(__iconData$16);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$15 = {
+var __iconData$18 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -11772,8 +11790,8 @@ var __iconData$15 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$15.node;
-var Copy = createLucideIcon(__iconData$15);
+__iconData$18.node;
+var Copy = createLucideIcon(__iconData$18);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye-off.mjs
 /**
@@ -11782,7 +11800,7 @@ var Copy = createLucideIcon(__iconData$15);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$14 = {
+var __iconData$17 = {
 	name: "eye-off",
 	size: 24,
 	node: [
@@ -11804,8 +11822,8 @@ var __iconData$14 = {
 		}]
 	]
 };
-__iconData$14.node;
-var EyeOff = createLucideIcon(__iconData$14);
+__iconData$17.node;
+var EyeOff = createLucideIcon(__iconData$17);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye.mjs
 /**
@@ -11814,7 +11832,7 @@ var EyeOff = createLucideIcon(__iconData$14);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$13 = {
+var __iconData$16 = {
 	name: "eye",
 	size: 24,
 	node: [["path", {
@@ -11827,8 +11845,8 @@ var __iconData$13 = {
 		key: "1v7zrd"
 	}]]
 };
-__iconData$13.node;
-var Eye = createLucideIcon(__iconData$13);
+__iconData$16.node;
+var Eye = createLucideIcon(__iconData$16);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
@@ -11837,7 +11855,7 @@ var Eye = createLucideIcon(__iconData$13);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$12 = {
+var __iconData$15 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -11859,8 +11877,32 @@ var __iconData$12 = {
 		}]
 	]
 };
-__iconData$12.node;
-var FolderKanban = createLucideIcon(__iconData$12);
+__iconData$15.node;
+var FolderKanban = createLucideIcon(__iconData$15);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/key-round.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$14 = {
+	name: "key-round",
+	size: 24,
+	node: [["path", {
+		d: "M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z",
+		key: "1s6t7t"
+	}], ["circle", {
+		cx: "16.5",
+		cy: "7.5",
+		r: ".5",
+		fill: "currentColor",
+		key: "w0ekpg"
+	}]]
+};
+__iconData$14.node;
+var KeyRound = createLucideIcon(__iconData$14);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/log-out.mjs
 /**
@@ -11869,7 +11911,7 @@ var FolderKanban = createLucideIcon(__iconData$12);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$11 = {
+var __iconData$13 = {
 	name: "log-out",
 	size: 24,
 	node: [
@@ -11887,8 +11929,8 @@ var __iconData$11 = {
 		}]
 	]
 };
-__iconData$11.node;
-var LogOut = createLucideIcon(__iconData$11);
+__iconData$13.node;
+var LogOut = createLucideIcon(__iconData$13);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/pen-line.mjs
 /**
@@ -11897,7 +11939,7 @@ var LogOut = createLucideIcon(__iconData$11);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$10 = {
+var __iconData$12 = {
 	name: "pen-line",
 	size: 24,
 	node: [["path", {
@@ -11909,8 +11951,8 @@ var __iconData$10 = {
 	}]],
 	aliases: ["edit-3"]
 };
-__iconData$10.node;
-var PenLine = createLucideIcon(__iconData$10);
+__iconData$12.node;
+var PenLine = createLucideIcon(__iconData$12);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/plus.mjs
 /**
@@ -11919,7 +11961,7 @@ var PenLine = createLucideIcon(__iconData$10);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$9 = {
+var __iconData$11 = {
 	name: "plus",
 	size: 24,
 	node: [["path", {
@@ -11930,8 +11972,8 @@ var __iconData$9 = {
 		key: "s699le"
 	}]]
 };
-__iconData$9.node;
-var Plus = createLucideIcon(__iconData$9);
+__iconData$11.node;
+var Plus = createLucideIcon(__iconData$11);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/refresh-cw.mjs
 /**
@@ -11940,7 +11982,7 @@ var Plus = createLucideIcon(__iconData$9);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$8 = {
+var __iconData$10 = {
 	name: "refresh-cw",
 	size: 24,
 	node: [
@@ -11962,8 +12004,8 @@ var __iconData$8 = {
 		}]
 	]
 };
-__iconData$8.node;
-var RefreshCw = createLucideIcon(__iconData$8);
+__iconData$10.node;
+var RefreshCw = createLucideIcon(__iconData$10);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/rotate-ccw-clock.mjs
 /**
@@ -11972,7 +12014,7 @@ var RefreshCw = createLucideIcon(__iconData$8);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$7 = {
+var __iconData$9 = {
 	name: "rotate-ccw-clock",
 	size: 24,
 	node: [
@@ -11991,8 +12033,8 @@ var __iconData$7 = {
 	],
 	aliases: ["history"]
 };
-__iconData$7.node;
-var RotateCcwClock = createLucideIcon(__iconData$7);
+__iconData$9.node;
+var RotateCcwClock = createLucideIcon(__iconData$9);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/search.mjs
 /**
@@ -12001,7 +12043,7 @@ var RotateCcwClock = createLucideIcon(__iconData$7);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$6 = {
+var __iconData$8 = {
 	name: "search",
 	size: 24,
 	node: [["path", {
@@ -12014,8 +12056,8 @@ var __iconData$6 = {
 		key: "4ej97u"
 	}]]
 };
-__iconData$6.node;
-var Search = createLucideIcon(__iconData$6);
+__iconData$8.node;
+var Search = createLucideIcon(__iconData$8);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/send.mjs
 /**
@@ -12024,7 +12066,7 @@ var Search = createLucideIcon(__iconData$6);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$5 = {
+var __iconData$7 = {
 	name: "send",
 	size: 24,
 	node: [["path", {
@@ -12035,8 +12077,8 @@ var __iconData$5 = {
 		key: "12cjpa"
 	}]]
 };
-__iconData$5.node;
-var Send = createLucideIcon(__iconData$5);
+__iconData$7.node;
+var Send = createLucideIcon(__iconData$7);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/share-2.mjs
 /**
@@ -12045,7 +12087,7 @@ var Send = createLucideIcon(__iconData$5);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$4 = {
+var __iconData$6 = {
 	name: "share-2",
 	size: 24,
 	node: [
@@ -12083,8 +12125,29 @@ var __iconData$4 = {
 		}]
 	]
 };
-__iconData$4.node;
-var Share2 = createLucideIcon(__iconData$4);
+__iconData$6.node;
+var Share2 = createLucideIcon(__iconData$6);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/shield-check.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$5 = {
+	name: "shield-check",
+	size: 24,
+	node: [["path", {
+		d: "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",
+		key: "oel41y"
+	}], ["path", {
+		d: "m9 12 2 2 4-4",
+		key: "dzmm74"
+	}]]
+};
+__iconData$5.node;
+var ShieldCheck = createLucideIcon(__iconData$5);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/sparkles.mjs
 /**
@@ -12093,7 +12156,7 @@ var Share2 = createLucideIcon(__iconData$4);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$3 = {
+var __iconData$4 = {
 	name: "sparkles",
 	size: 24,
 	node: [
@@ -12118,8 +12181,8 @@ var __iconData$3 = {
 	],
 	aliases: ["stars"]
 };
-__iconData$3.node;
-var Sparkles = createLucideIcon(__iconData$3);
+__iconData$4.node;
+var Sparkles = createLucideIcon(__iconData$4);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/triangle-alert.mjs
 /**
@@ -12128,7 +12191,7 @@ var Sparkles = createLucideIcon(__iconData$3);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$2 = {
+var __iconData$3 = {
 	name: "triangle-alert",
 	size: 24,
 	node: [
@@ -12147,8 +12210,8 @@ var __iconData$2 = {
 	],
 	aliases: ["alert-triangle"]
 };
-__iconData$2.node;
-var TriangleAlert = createLucideIcon(__iconData$2);
+__iconData$3.node;
+var TriangleAlert = createLucideIcon(__iconData$3);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/user-plus.mjs
 /**
@@ -12157,7 +12220,7 @@ var TriangleAlert = createLucideIcon(__iconData$2);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$1 = {
+var __iconData$2 = {
 	name: "user-plus",
 	size: 24,
 	node: [
@@ -12187,8 +12250,8 @@ var __iconData$1 = {
 		}]
 	]
 };
-__iconData$1.node;
-var UserPlus = createLucideIcon(__iconData$1);
+__iconData$2.node;
+var UserPlus = createLucideIcon(__iconData$2);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/x.mjs
 /**
@@ -12197,7 +12260,7 @@ var UserPlus = createLucideIcon(__iconData$1);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData = {
+var __iconData$1 = {
 	name: "x",
 	size: 24,
 	node: [["path", {
@@ -12208,8 +12271,26 @@ var __iconData = {
 		key: "d8bk6v"
 	}]]
 };
+__iconData$1.node;
+var X = createLucideIcon(__iconData$1);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/zap.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData = {
+	name: "zap",
+	size: 24,
+	node: [["path", {
+		d: "M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z",
+		key: "1v7up4"
+	}]]
+};
 __iconData.node;
-var X = createLucideIcon(__iconData);
+var Zap = createLucideIcon(__iconData);
 //#endregion
 //#region node_modules/clsx/dist/clsx.mjs
 var import_client = /* @__PURE__ */ __toESM(require_client(), 1);
@@ -15981,6 +16062,7 @@ function FounderApp() {
 	const [showPassword, setShowPassword] = (0, import_react.useState)(false);
 	const [loginError, setLoginError] = (0, import_react.useState)("");
 	const [isLoggingIn, setIsLoggingIn] = (0, import_react.useState)(false);
+	const [isQuickFilled, setIsQuickFilled] = (0, import_react.useState)(false);
 	const [projects, setProjects] = (0, import_react.useState)([]);
 	const [selectedProjectId, setSelectedProjectId] = (0, import_react.useState)(null);
 	const [activities, setActivities] = (0, import_react.useState)([]);
@@ -16063,6 +16145,12 @@ function FounderApp() {
 			setIsLoggingIn(false);
 		}
 	};
+	const handleQuickFill = () => {
+		setPassword("replace-with-a-long-random-password");
+		setIsQuickFilled(true);
+		showToast("Sample founder password loaded!", "success");
+		setTimeout(() => setIsQuickFilled(false), 2500);
+	};
 	const handleLogout = async () => {
 		await post$1("/api/founder/logout");
 		setIsAuthenticated(false);
@@ -16083,91 +16171,164 @@ function FounderApp() {
 			showToast(err.message, "error");
 		}
 	};
-	if (!isAuthenticated) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
-		className: "min-h-[100dvh] flex flex-col justify-center items-center bg-[#f6f5f4] px-4 py-8 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(2rem,env(safe-area-inset-bottom))]",
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "w-full max-w-[400px]",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-				className: "p-6 sm:p-8 rounded-3xl shadow-xl shadow-black/[0.04] border-[#eae8e5] bg-white animate-in fade-in-50 zoom-in-95 duration-200",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center gap-2.5 font-bold text-base mb-6",
+	if (!isAuthenticated) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
+		className: "min-h-[100dvh] flex flex-col justify-between bg-[#f8f7f5] relative overflow-x-hidden text-[#161615]",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-to-bl from-[#e9e6e1]/70 to-transparent rounded-full blur-3xl pointer-events-none -z-0" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute top-1/3 left-0 w-[240px] h-[240px] bg-gradient-to-tr from-[#ebe8e3]/60 to-transparent rounded-full blur-3xl pointer-events-none -z-0" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
+				className: "w-full px-5 sm:px-8 pt-[max(1.25rem,env(safe-area-inset-top))] pb-3 flex items-center justify-between z-10",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-center gap-2.5",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "grid place-items-center w-8 h-8 rounded-xl bg-black text-white font-bold text-sm shadow-xs",
+						children: "i"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "leading-tight",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "grid place-items-center w-8 h-8 rounded-xl bg-black text-white font-bold text-sm shadow-xs",
-							children: "i"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "tracking-tight text-[#161615]",
+							className: "font-bold tracking-tight text-sm text-[#161615] block",
 							children: "studio iksha"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "text-[10px] text-[#8a8580] tracking-wider uppercase font-medium",
+							children: "Operations"
 						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "space-y-1 mb-6",
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/80 border border-[#e5e3df] text-[11px] font-medium text-[#55514c] backdrop-blur-md shadow-2xs",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Online" })]
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+				className: "flex-1 flex flex-col justify-center px-5 sm:px-8 max-w-lg mx-auto w-full py-6 sm:py-10 z-10 space-y-6",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "space-y-3",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#edeae5] text-[#55514d] text-xs font-semibold tracking-wide uppercase-tracking",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "h-3.5 w-3.5 text-[#0075de]" }), " Founder Workspace"]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h1", {
+							className: "text-3xl sm:text-4xl font-extrabold tracking-tight text-[#161615] leading-[1.12]",
+							children: [
+								"Good work starts",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
+								"with a clear picture."
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-sm sm:text-base text-[#6b6762] leading-relaxed font-normal",
+							children: "A unified control space for interior and architecture projects. Record site facts, manage team rosters, and share frictionless client portals."
+						})
+					]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "grid grid-cols-2 gap-2.5 pt-1",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "p-3 bg-white/70 border border-[#eae8e5] rounded-2xl backdrop-blur-xs space-y-1",
 						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "w-6 h-6 rounded-lg bg-blue-50 text-[#0075de] flex items-center justify-center text-xs font-bold",
+								children: "⚡"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+								className: "text-xs font-semibold text-[#1e1d1c] block",
+								children: "Live Facts"
+							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[10px] font-bold tracking-widest text-[#96918c] uppercase",
-								children: "PROJECT OPERATIONS"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h1", {
-								className: "text-2xl sm:text-3xl font-bold tracking-tight text-[#161615] leading-snug",
-								children: [
-									"Good work starts",
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", { className: "hidden xs:inline" }),
-									" with a clear picture."
-								]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-xs sm:text-sm text-[#797570] leading-relaxed pt-1",
-								children: "Sign in to manage studio operations, project facts, team rosters, and client updates."
+								className: "text-[11px] text-[#7d7873] leading-tight block",
+								children: "Zero guesswork site updates"
 							})
 						]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-						onSubmit: handleLogin,
-						className: "space-y-4",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "space-y-1.5 text-left",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-								className: "text-xs font-semibold text-[#4a4743]",
-								children: "Founder Password"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "relative flex items-center",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									type: showPassword ? "text" : "password",
-									placeholder: "Enter founder password",
-									value: password,
-									onChange: (e) => setPassword(e.target.value),
-									required: true,
-									autoFocus: true,
-									className: "h-12 min-h-[48px] rounded-xl text-sm pl-3.5 pr-12 bg-[#faf9f8] border-[#e5e3df] focus:bg-white focus:ring-2 focus:ring-[#0075de]/20"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-									type: "button",
-									onClick: () => setShowPassword(!showPassword),
-									"aria-label": showPassword ? "Hide password" : "Show password",
-									className: "absolute right-0 top-0 bottom-0 w-12 h-12 flex items-center justify-center text-gray-400 hover:text-gray-600 focus:outline-none transition-colors active:scale-90",
-									children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EyeOff, { className: "h-4 w-4" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eye, { className: "h-4 w-4" })
-								})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "p-3 bg-white/70 border border-[#eae8e5] rounded-2xl backdrop-blur-xs space-y-1",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold",
+								children: "🔒"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+								className: "text-xs font-semibold text-[#1e1d1c] block",
+								children: "Single-Claim"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-[11px] text-[#7d7873] leading-tight block",
+								children: "Passwordless client access"
+							})
+						]
+					})]
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
+				className: "w-full max-w-lg mx-auto px-4 sm:px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] z-10",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
+					className: "p-5 sm:p-7 rounded-[28px] sm:rounded-3xl shadow-xl shadow-black/[0.04] border-[#e6e4e0] bg-white space-y-4",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "w-10 h-1 bg-[#d8d5cf] rounded-full mx-auto -mt-1 sm:hidden" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center justify-between",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+								className: "text-base font-bold text-[#161615]",
+								children: "Founder Sign In"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs text-[#807b75]",
+								children: "Enter password to access studio operations"
+							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								type: "button",
+								onClick: handleQuickFill,
+								className: `flex items-center gap-1 px-2.5 py-1.5 rounded-full text-[11px] font-medium transition-all active:scale-95 ${isQuickFilled ? "bg-emerald-100 text-emerald-800 border border-emerald-300" : "bg-[#f1efe9] hover:bg-[#eae7e0] text-[#55514d] border border-[#dedbd4]"}`,
+								title: "Fill demo credentials",
+								children: [isQuickFilled ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "h-3 w-3 text-emerald-700" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Zap, { className: "h-3 w-3 text-amber-600" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: isQuickFilled ? "Filled!" : "Quick fill" })]
 							})]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							type: "submit",
-							disabled: isLoggingIn,
-							className: "w-full h-12 min-h-[48px] rounded-xl text-sm font-semibold shadow-sm hover:shadow active:scale-[0.98] transition-all gap-2",
-							children: isLoggingIn ? "Signing In…" : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Sign In to Workspace" }),
-								" ",
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "h-4 w-4" })
-							] })
-						})]
-					}),
-					loginError && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "mt-4 p-3.5 bg-red-50/90 border border-red-200/80 rounded-xl text-xs font-medium text-red-700 animate-in fade-in",
-						children: loginError
-					})
-				]
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "text-center mt-6 text-xs text-[#9a9590]",
-				children: "🔒 Protected Workspace · Studio Iksha Operations"
-			})]
-		})
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+							onSubmit: handleLogin,
+							className: "space-y-3.5",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "space-y-1.5 text-left",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "relative flex items-center",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(KeyRound, { className: "absolute left-3.5 h-4 w-4 text-[#9c9791] pointer-events-none" }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+											type: showPassword ? "text" : "password",
+											placeholder: "Enter founder password",
+											value: password,
+											onChange: (e) => setPassword(e.target.value),
+											required: true,
+											autoFocus: true,
+											className: "h-12 min-h-[48px] rounded-xl text-sm pl-10 pr-12 bg-[#faf9f8] border-[#dedbd5] focus:bg-white focus:ring-2 focus:ring-[#0075de]/25 focus:border-[#78b6e6]"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+											type: "button",
+											onClick: () => setShowPassword(!showPassword),
+											"aria-label": showPassword ? "Hide password" : "Show password",
+											className: "absolute right-0 top-0 bottom-0 w-12 h-12 flex items-center justify-center text-gray-400 hover:text-gray-600 focus:outline-none transition-colors active:scale-90",
+											children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EyeOff, { className: "h-4 w-4" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eye, { className: "h-4 w-4" })
+										})
+									]
+								})
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								type: "submit",
+								disabled: isLoggingIn,
+								className: "w-full h-12 min-h-[48px] rounded-xl text-sm font-semibold shadow-xs hover:shadow active:scale-[0.98] transition-all gap-2",
+								children: isLoggingIn ? "Authenticating…" : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Open Studio Workspace" }),
+									" ",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "h-4 w-4" })
+								] })
+							})]
+						}),
+						loginError && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "p-3 bg-red-50 border border-red-200 rounded-xl text-xs font-medium text-red-700 animate-in fade-in",
+							children: loginError
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center justify-center gap-1.5 pt-1 text-[11px] text-[#9a9590]",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, { className: "h-3.5 w-3.5 text-[#8a8580]" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Encrypted Session · HttpOnly Token Security" })]
+						})
+					]
+				})
+			})
+		]
 	});
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "min-h-screen flex bg-[#f6f5f4] pb-[72px] md:pb-0",

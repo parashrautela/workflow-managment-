@@ -20,7 +20,11 @@ import {
   Layers,
   Calendar,
   Users,
-  History
+  History,
+  ShieldCheck,
+  Zap,
+  Building2,
+  KeyRound
 } from "lucide-react";
 import { Button } from "./components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "./components/ui/card";
@@ -58,6 +62,7 @@ export default function FounderApp() {
   const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState("");
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [isQuickFilled, setIsQuickFilled] = useState(false);
 
   const [projects, setProjects] = useState([]);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
@@ -152,6 +157,13 @@ export default function FounderApp() {
     }
   };
 
+  const handleQuickFill = () => {
+    setPassword("replace-with-a-long-random-password");
+    setIsQuickFilled(true);
+    showToast("Sample founder password loaded!", "success");
+    setTimeout(() => setIsQuickFilled(false), 2500);
+  };
+
   const handleLogout = async () => {
     await post("/api/founder/logout");
     setIsAuthenticated(false);
@@ -178,29 +190,95 @@ export default function FounderApp() {
 
   if (!isAuthenticated) {
     return (
-      <main className="min-h-[100dvh] flex flex-col justify-center items-center bg-[#f6f5f4] px-4 py-8 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(2rem,env(safe-area-inset-bottom))]">
-        <div className="w-full max-w-[400px]">
-          <Card className="p-6 sm:p-8 rounded-3xl shadow-xl shadow-black/[0.04] border-[#eae8e5] bg-white animate-in fade-in-50 zoom-in-95 duration-200">
-            {/* Header Brand */}
-            <div className="flex items-center gap-2.5 font-bold text-base mb-6">
-              <span className="grid place-items-center w-8 h-8 rounded-xl bg-black text-white font-bold text-sm shadow-xs">i</span>
-              <span className="tracking-tight text-[#161615]">studio iksha</span>
+      <main className="min-h-[100dvh] flex flex-col justify-between bg-[#f8f7f5] relative overflow-x-hidden text-[#161615]">
+        {/* Ambient Subtle Architectural Accent */}
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-to-bl from-[#e9e6e1]/70 to-transparent rounded-full blur-3xl pointer-events-none -z-0" />
+        <div className="absolute top-1/3 left-0 w-[240px] h-[240px] bg-gradient-to-tr from-[#ebe8e3]/60 to-transparent rounded-full blur-3xl pointer-events-none -z-0" />
+
+        {/* Top Header / Brand Bar */}
+        <header className="w-full px-5 sm:px-8 pt-[max(1.25rem,env(safe-area-inset-top))] pb-3 flex items-center justify-between z-10">
+          <div className="flex items-center gap-2.5">
+            <div className="grid place-items-center w-8 h-8 rounded-xl bg-black text-white font-bold text-sm shadow-xs">
+              i
             </div>
-            
-            <div className="space-y-1 mb-6">
-              <span className="text-[10px] font-bold tracking-widest text-[#96918c] uppercase">PROJECT OPERATIONS</span>
-              <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#161615] leading-snug">
-                Good work starts<br className="hidden xs:inline" /> with a clear picture.
-              </h1>
-              <p className="text-xs sm:text-sm text-[#797570] leading-relaxed pt-1">
-                Sign in to manage studio operations, project facts, team rosters, and client updates.
-              </p>
+            <div className="leading-tight">
+              <span className="font-bold tracking-tight text-sm text-[#161615] block">studio iksha</span>
+              <span className="text-[10px] text-[#8a8580] tracking-wider uppercase font-medium">Operations</span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/80 border border-[#e5e3df] text-[11px] font-medium text-[#55514c] backdrop-blur-md shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span>Online</span>
+          </div>
+        </header>
+
+        {/* Hero Presentation Section */}
+        <section className="flex-1 flex flex-col justify-center px-5 sm:px-8 max-w-lg mx-auto w-full py-6 sm:py-10 z-10 space-y-6">
+          <div className="space-y-3">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#edeae5] text-[#55514d] text-xs font-semibold tracking-wide uppercase-tracking">
+              <Sparkles className="h-3.5 w-3.5 text-[#0075de]" /> Founder Workspace
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#161615] leading-[1.12]">
+              Good work starts<br />with a clear picture.
+            </h1>
+            <p className="text-sm sm:text-base text-[#6b6762] leading-relaxed font-normal">
+              A unified control space for interior and architecture projects. Record site facts, manage team rosters, and share frictionless client portals.
+            </p>
+          </div>
+
+          {/* Interactive Feature Value Props */}
+          <div className="grid grid-cols-2 gap-2.5 pt-1">
+            <div className="p-3 bg-white/70 border border-[#eae8e5] rounded-2xl backdrop-blur-xs space-y-1">
+              <div className="w-6 h-6 rounded-lg bg-blue-50 text-[#0075de] flex items-center justify-center text-xs font-bold">
+                ⚡
+              </div>
+              <strong className="text-xs font-semibold text-[#1e1d1c] block">Live Facts</strong>
+              <span className="text-[11px] text-[#7d7873] leading-tight block">Zero guesswork site updates</span>
             </div>
 
-            <form onSubmit={handleLogin} className="space-y-4">
+            <div className="p-3 bg-white/70 border border-[#eae8e5] rounded-2xl backdrop-blur-xs space-y-1">
+              <div className="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold">
+                🔒
+              </div>
+              <strong className="text-xs font-semibold text-[#1e1d1c] block">Single-Claim</strong>
+              <span className="text-[11px] text-[#7d7873] leading-tight block">Passwordless client access</span>
+            </div>
+          </div>
+        </section>
+
+        {/* Apple-style Bottom Sheet Login Dock */}
+        <section className="w-full max-w-lg mx-auto px-4 sm:px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] z-10">
+          <Card className="p-5 sm:p-7 rounded-[28px] sm:rounded-3xl shadow-xl shadow-black/[0.04] border-[#e6e4e0] bg-white space-y-4">
+            {/* Grab Bar Indicator on Mobile */}
+            <div className="w-10 h-1 bg-[#d8d5cf] rounded-full mx-auto -mt-1 sm:hidden" />
+
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-base font-bold text-[#161615]">Founder Sign In</h2>
+                <p className="text-xs text-[#807b75]">Enter password to access studio operations</p>
+              </div>
+
+              {/* Sample Credentials Quick-Fill Chip */}
+              <button
+                type="button"
+                onClick={handleQuickFill}
+                className={`flex items-center gap-1 px-2.5 py-1.5 rounded-full text-[11px] font-medium transition-all active:scale-95 ${
+                  isQuickFilled 
+                    ? "bg-emerald-100 text-emerald-800 border border-emerald-300" 
+                    : "bg-[#f1efe9] hover:bg-[#eae7e0] text-[#55514d] border border-[#dedbd4]"
+                }`}
+                title="Fill demo credentials"
+              >
+                {isQuickFilled ? <Check className="h-3 w-3 text-emerald-700" /> : <Zap className="h-3 w-3 text-amber-600" />}
+                <span>{isQuickFilled ? "Filled!" : "Quick fill"}</span>
+              </button>
+            </div>
+
+            <form onSubmit={handleLogin} className="space-y-3.5">
               <div className="space-y-1.5 text-left">
-                <label className="text-xs font-semibold text-[#4a4743]">Founder Password</label>
                 <div className="relative flex items-center">
+                  <KeyRound className="absolute left-3.5 h-4 w-4 text-[#9c9791] pointer-events-none" />
                   <Input
                     type={showPassword ? "text" : "password"}
                     placeholder="Enter founder password"
@@ -208,7 +286,7 @@ export default function FounderApp() {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                     autoFocus
-                    className="h-12 min-h-[48px] rounded-xl text-sm pl-3.5 pr-12 bg-[#faf9f8] border-[#e5e3df] focus:bg-white focus:ring-2 focus:ring-[#0075de]/20"
+                    className="h-12 min-h-[48px] rounded-xl text-sm pl-10 pr-12 bg-[#faf9f8] border-[#dedbd5] focus:bg-white focus:ring-2 focus:ring-[#0075de]/25 focus:border-[#78b6e6]"
                   />
                   <button
                     type="button"
@@ -224,23 +302,24 @@ export default function FounderApp() {
               <Button
                 type="submit"
                 disabled={isLoggingIn}
-                className="w-full h-12 min-h-[48px] rounded-xl text-sm font-semibold shadow-sm hover:shadow active:scale-[0.98] transition-all gap-2"
+                className="w-full h-12 min-h-[48px] rounded-xl text-sm font-semibold shadow-xs hover:shadow active:scale-[0.98] transition-all gap-2"
               >
-                {isLoggingIn ? "Signing In…" : <><span>Sign In to Workspace</span> <ArrowRight className="h-4 w-4" /></>}
+                {isLoggingIn ? "Authenticating…" : <><span>Open Studio Workspace</span> <ArrowRight className="h-4 w-4" /></>}
               </Button>
             </form>
 
             {loginError && (
-              <div className="mt-4 p-3.5 bg-red-50/90 border border-red-200/80 rounded-xl text-xs font-medium text-red-700 animate-in fade-in">
+              <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-xs font-medium text-red-700 animate-in fade-in">
                 {loginError}
               </div>
             )}
+
+            <div className="flex items-center justify-center gap-1.5 pt-1 text-[11px] text-[#9a9590]">
+              <ShieldCheck className="h-3.5 w-3.5 text-[#8a8580]" />
+              <span>Encrypted Session · HttpOnly Token Security</span>
+            </div>
           </Card>
-          
-          <div className="text-center mt-6 text-xs text-[#9a9590]">
-            🔒 Protected Workspace · Studio Iksha Operations
-          </div>
-        </div>
+        </section>
       </main>
     );
   }
