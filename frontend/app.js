@@ -25,7 +25,7 @@ function formatTime(isoString) {
   if (diffMins < 60) return `${diffMins}m ago`;
   if (diffHours < 24) return `${diffHours}h ago`;
   if (diffDays < 7) return `${diffDays}d ago`;
-  return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+  return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
 }
 
 function getRoleBadgeClass(role = '') {
@@ -45,14 +45,13 @@ function toast(message) {
 }
 
 // ==========================================
-// FOUNDER APPLICATION
+// FOUNDER APPLICATION (Mobile & Desktop Synergy)
 // ==========================================
 async function founderApp() {
   let projects = [];
   let activities = [];
   let currentTab = 'projects'; // 'projects' | 'activity'
   let searchQuery = '';
-  let statusFilter = 'ALL';
 
   try {
     const data = await api('/api/founder/projects');
@@ -116,13 +115,12 @@ async function founderApp() {
   function renderShell(selectedId = projects[0]?.id) {
     const selected = projects.find((p) => p.id === selectedId) || projects[0];
     const filteredProjects = projects.filter((p) => {
-      const matchesSearch = !searchQuery || p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.clientName.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesStatus = statusFilter === 'ALL' || (p.status || 'Setup').toLowerCase() === statusFilter.toLowerCase();
-      return matchesSearch && matchesStatus;
+      return !searchQuery || p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.clientName.toLowerCase().includes(searchQuery.toLowerCase());
     });
 
     app.innerHTML = `
       <div class="shell">
+        <!-- Desktop / Tablet Drawer Sidebar -->
         <aside class="sidebar">
           <div class="brand">
             <span class="brand-mark">i</span>
@@ -172,6 +170,7 @@ async function founderApp() {
           </div>
         </aside>
 
+        <!-- Main Content Area -->
         <main class="main">
           <header class="topbar">
             <div class="breadcrumbs">
@@ -181,7 +180,7 @@ async function founderApp() {
               <strong>${currentTab === 'projects' ? (selected ? esc(selected.name) : 'Projects') : 'Activity Log'}</strong>
             </div>
             <div class="topbar-right">
-              <span class="secure-note"><i></i> Founder Session Active</span>
+              <span class="secure-note"><i></i> Founder Session</span>
               <button class="avatar" title="Founder">P</button>
             </div>
           </header>
@@ -190,30 +189,57 @@ async function founderApp() {
             ${currentTab === 'activity' ? renderActivityView() : (selected ? renderProjectView(selected) : renderEmpty())}
           </div>
         </main>
+
+        <!-- Mobile Bottom Tab Bar (iOS / Android M3) -->
+        <nav class="mobile-bottom-nav">
+          <button class="mobile-tab-btn ${currentTab === 'projects' ? 'active' : ''}" id="mobile-tab-projects">
+            <span class="mobile-tab-icon">▦</span>
+            <span>Projects</span>
+          </button>
+          <button class="mobile-tab-btn" id="mobile-tab-add">
+            <span class="mobile-fab">+</span>
+          </button>
+          <button class="mobile-tab-btn ${currentTab === 'activity' ? 'active' : ''}" id="mobile-tab-activity">
+            <span class="mobile-tab-icon">◷</span>
+            <span>Activity</span>
+          </button>
+        </nav>
       </div>
       <div id="modal-root"></div>
       <div id="toast-root"></div>
     `;
 
-    // Sidebar listeners
-    document.querySelector('#nav-projects').addEventListener('click', () => {
+    // Navigation switching
+    document.querySelector('#nav-projects')?.addEventListener('click', () => {
       currentTab = 'projects';
       renderShell(selected?.id);
     });
 
-    document.querySelector('#nav-activity').addEventListener('click', async () => {
+    document.querySelector('#mobile-tab-projects')?.addEventListener('click', () => {
+      currentTab = 'projects';
+      renderShell(selected?.id);
+    });
+
+    document.querySelector('#nav-activity')?.addEventListener('click', async () => {
       currentTab = 'activity';
       await loadActivities();
       renderShell(selected?.id);
     });
 
+    document.querySelector('#mobile-tab-activity')?.addEventListener('click', async () => {
+      currentTab = 'activity';
+      await loadActivities();
+      renderShell(selected?.id);
+    });
+
+    document.querySelector('#mobile-tab-add')?.addEventListener('click', showCreateProject);
+
+    // Search filter
     document.querySelector('#project-search')?.addEventListener('input', (e) => {
       searchQuery = e.target.value;
       const navContainer = document.querySelector('.project-nav');
       const filtered = projects.filter((p) => {
-        const matchesSearch = !searchQuery || p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.clientName.toLowerCase().includes(searchQuery.toLowerCase());
-        const matchesStatus = statusFilter === 'ALL' || (p.status || 'Setup').toLowerCase() === statusFilter.toLowerCase();
-        return matchesSearch && matchesStatus;
+        return !searchQuery || p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.clientName.toLowerCase().includes(searchQuery.toLowerCase());
       });
       navContainer.innerHTML = filtered.map((p) => `
         <button class="project-nav-item ${p.id === selected?.id && currentTab === 'projects' ? 'selected' : ''}" data-project="${esc(p.id)}">
@@ -256,6 +282,7 @@ async function founderApp() {
     document.querySelectorAll('[data-project]').forEach((el) => {
       el.addEventListener('click', () => {
         currentTab = 'projects';
+        document.querySelector('.sidebar')?.classList.remove('open');
         renderShell(el.dataset.project);
       });
     });
@@ -305,7 +332,7 @@ async function founderApp() {
             <strong>Active Blocker (Visible to Client Assistant)</strong>
             <p>${esc(project.blocker)}</p>
           </div>
-          <button class="button small-outline" id="resolve-blocker" onclick="document.querySelector('#save-updates').click()">Update Blocker</button>
+          <button class="button small-outline" id="resolve-blocker" onclick="document.querySelector('#save-updates').click()">Update</button>
         </div>
       ` : ''}
 
@@ -730,7 +757,7 @@ async function founderApp() {
 }
 
 // ==========================================
-// CLIENT PORTAL APPLICATION
+// CLIENT PORTAL (Mobile First)
 // ==========================================
 async function clientApp() {
   const token = decodeURIComponent(location.pathname.split('/')[2] || '');
