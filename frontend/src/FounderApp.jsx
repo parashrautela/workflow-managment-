@@ -190,136 +190,110 @@ export default function FounderApp() {
 
   if (!isAuthenticated) {
     return (
-      <main className="min-h-[100dvh] flex flex-col justify-between bg-[#f8f7f5] relative overflow-x-hidden text-[#161615]">
-        {/* Ambient Subtle Architectural Accent */}
-        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-to-bl from-[#e9e6e1]/70 to-transparent rounded-full blur-3xl pointer-events-none -z-0" />
-        <div className="absolute top-1/3 left-0 w-[240px] h-[240px] bg-gradient-to-tr from-[#ebe8e3]/60 to-transparent rounded-full blur-3xl pointer-events-none -z-0" />
+      <main className="min-h-[100dvh] flex flex-col justify-between bg-[#000000] text-white px-6 py-6 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))] relative overflow-x-hidden font-sans">
+        {/* Subtle Ambient Top Glow */}
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[340px] h-[340px] bg-gradient-to-b from-[#0071e3]/20 via-[#0071e3]/5 to-transparent rounded-full blur-3xl pointer-events-none -z-0" />
 
-        {/* Top Header / Brand Bar */}
-        <header className="w-full px-5 sm:px-8 pt-[max(1.25rem,env(safe-area-inset-top))] pb-3 flex items-center justify-between z-10">
-          <div className="flex items-center gap-2.5">
-            <div className="grid place-items-center w-8 h-8 rounded-xl bg-black text-white font-bold text-sm shadow-xs">
-              i
+        {/* TOP SECTION: Hero Icon & Typography */}
+        <div className="flex-1 flex flex-col justify-center max-w-sm mx-auto w-full z-10 space-y-6 pt-4">
+          {/* Apple Squircle Brand Icon */}
+          <div className="w-20 h-20 rounded-[22px] bg-gradient-to-b from-[#2c2c2e] to-[#1c1c1e] p-[1px] shadow-2xl shadow-black/80 mx-auto grid place-items-center relative">
+            <div className="w-full h-full rounded-[21px] bg-[#1c1c1e]/90 backdrop-blur-xl flex flex-col items-center justify-center border border-white/10">
+              <span className="font-extrabold text-2xl text-white tracking-tighter">i</span>
+              <span className="text-[8px] font-bold tracking-widest text-[#0071e3] uppercase -mt-0.5">STUDIO</span>
             </div>
-            <div className="leading-tight">
-              <span className="font-bold tracking-tight text-sm text-[#161615] block">studio iksha</span>
-              <span className="text-[10px] text-[#8a8580] tracking-wider uppercase font-medium">Operations</span>
-            </div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#0071e3]/30 to-[#62aef0]/20 rounded-[26px] blur-md -z-10 opacity-70" />
           </div>
 
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/80 border border-[#e5e3df] text-[11px] font-medium text-[#55514c] backdrop-blur-md shadow-2xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Online</span>
-          </div>
-        </header>
-
-        {/* Hero Presentation Section */}
-        <section className="flex-1 flex flex-col justify-center px-5 sm:px-8 max-w-lg mx-auto w-full py-6 sm:py-10 z-10 space-y-6">
-          <div className="space-y-3">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#edeae5] text-[#55514d] text-xs font-semibold tracking-wide uppercase-tracking">
-              <Sparkles className="h-3.5 w-3.5 text-[#0075de]" /> Founder Workspace
-            </div>
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#161615] leading-[1.12]">
-              Good work starts<br />with a clear picture.
+          {/* Typography */}
+          <div className="text-center space-y-2.5">
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white leading-tight">
+              Welcome to Studio Iksha
             </h1>
-            <p className="text-sm sm:text-base text-[#6b6762] leading-relaxed font-normal">
-              A unified control space for interior and architecture projects. Record site facts, manage team rosters, and share frictionless client portals.
+            <p className="text-sm sm:text-base text-[#8e8e93] leading-relaxed font-normal">
+              A unified control space for architectural project facts, site milestones, and private client portals.
             </p>
           </div>
 
-          {/* Interactive Feature Value Props */}
-          <div className="grid grid-cols-2 gap-2.5 pt-1">
-            <div className="p-3 bg-white/70 border border-[#eae8e5] rounded-2xl backdrop-blur-xs space-y-1">
-              <div className="w-6 h-6 rounded-lg bg-blue-50 text-[#0075de] flex items-center justify-center text-xs font-bold">
-                ⚡
+          {/* Interactive Live Project Mock Preview */}
+          <div className="p-4 rounded-[20px] bg-[#1c1c1e]/80 border border-white/10 backdrop-blur-md space-y-2.5 shadow-lg shadow-black/40">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <strong className="text-xs font-semibold text-white">Kumar Residence</strong>
               </div>
-              <strong className="text-xs font-semibold text-[#1e1d1c] block">Live Facts</strong>
-              <span className="text-[11px] text-[#7d7873] leading-tight block">Zero guesswork site updates</span>
+              <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/80 border border-emerald-800/60 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                On track
+              </span>
             </div>
-
-            <div className="p-3 bg-white/70 border border-[#eae8e5] rounded-2xl backdrop-blur-xs space-y-1">
-              <div className="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold">
-                🔒
-              </div>
-              <strong className="text-xs font-semibold text-[#1e1d1c] block">Single-Claim</strong>
-              <span className="text-[11px] text-[#7d7873] leading-tight block">Passwordless client access</span>
+            <div className="text-xs text-[#aeaeb2] flex items-center justify-between pt-1 border-t border-white/5">
+              <span>Current Phase</span>
+              <strong className="text-white font-medium">Design & Execution</strong>
+            </div>
+            <div className="text-xs text-[#8e8e93] truncate pt-0.5">
+              Latest: <span className="text-[#d1d1d6]">Framing review & 3D moodboards</span>
             </div>
           </div>
-        </section>
+        </div>
 
-        {/* Apple-style Bottom Sheet Login Dock */}
-        <section className="w-full max-w-lg mx-auto px-4 sm:px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] z-10">
-          <Card className="p-5 sm:p-7 rounded-[28px] sm:rounded-3xl shadow-xl shadow-black/[0.04] border-[#e6e4e0] bg-white space-y-4">
-            {/* Grab Bar Indicator on Mobile */}
-            <div className="w-10 h-1 bg-[#d8d5cf] rounded-full mx-auto -mt-1 sm:hidden" />
+        {/* BOTTOM SECTION: Privacy Footnote + Auth Controls */}
+        <div className="w-full max-w-sm mx-auto z-10 space-y-4 pt-4">
+          {/* Apple Privacy Footnote */}
+          <div className="flex items-start gap-3 px-1">
+            <div className="w-7 h-7 rounded-full bg-[#1c1c1e] text-[#0071e3] grid place-items-center shrink-0 mt-0.5 text-xs">
+              👥
+            </div>
+            <p className="text-[11px] text-[#8e8e93] leading-normal">
+              Studio Iksha uses encrypted tokens and single-claim client links for zero-login client privacy.{" "}
+              <button 
+                type="button" 
+                onClick={handleQuickFill}
+                className="text-[#0071e3] hover:underline font-medium inline"
+              >
+                Tap to quick-fill founder demo key.
+              </button>
+            </p>
+          </div>
 
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="text-base font-bold text-[#161615]">Founder Sign In</h2>
-                <p className="text-xs text-[#807b75]">Enter password to access studio operations</p>
-              </div>
-
-              {/* Sample Credentials Quick-Fill Chip */}
+          {/* Form */}
+          <form onSubmit={handleLogin} className="space-y-3">
+            <div className="relative flex items-center">
+              <KeyRound className="absolute left-4 h-4 w-4 text-[#8e8e93] pointer-events-none" />
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter founder password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                autoFocus
+                className="w-full h-12 rounded-full text-sm pl-11 pr-12 bg-[#1c1c1e] text-white border border-white/15 placeholder:text-[#636366] focus:outline-none focus:ring-2 focus:ring-[#0071e3] focus:border-transparent transition-all"
+              />
               <button
                 type="button"
-                onClick={handleQuickFill}
-                className={`flex items-center gap-1 px-2.5 py-1.5 rounded-full text-[11px] font-medium transition-all active:scale-95 ${
-                  isQuickFilled 
-                    ? "bg-emerald-100 text-emerald-800 border border-emerald-300" 
-                    : "bg-[#f1efe9] hover:bg-[#eae7e0] text-[#55514d] border border-[#dedbd4]"
-                }`}
-                title="Fill demo credentials"
+                onClick={() => setShowPassword(!showPassword)}
+                aria-label={showPassword ? "Hide password" : "Show password"}
+                className="absolute right-1 top-0 bottom-0 w-12 h-12 flex items-center justify-center text-[#8e8e93] hover:text-white focus:outline-none transition-colors active:scale-90"
               >
-                {isQuickFilled ? <Check className="h-3 w-3 text-emerald-700" /> : <Zap className="h-3 w-3 text-amber-600" />}
-                <span>{isQuickFilled ? "Filled!" : "Quick fill"}</span>
+                {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               </button>
             </div>
 
-            <form onSubmit={handleLogin} className="space-y-3.5">
-              <div className="space-y-1.5 text-left">
-                <div className="relative flex items-center">
-                  <KeyRound className="absolute left-4 h-4 w-4 text-[#9c9791] pointer-events-none" />
-                  <Input
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Enter founder password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    autoFocus
-                    className="h-12 min-h-[48px] rounded-full text-sm pl-11 pr-12 bg-[#faf9f8] border-[#dedbd5] focus:bg-white focus:ring-2 focus:ring-[#0075de]/25 focus:border-[#78b6e6]"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    aria-label={showPassword ? "Hide password" : "Show password"}
-                    className="absolute right-1 top-0 bottom-0 w-12 h-12 flex items-center justify-center text-gray-400 hover:text-gray-600 focus:outline-none transition-colors active:scale-90"
-                  >
-                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                  </button>
-                </div>
-              </div>
-
-              <Button
-                type="submit"
-                disabled={isLoggingIn}
-                className="w-full h-12 min-h-[48px] rounded-full text-sm font-semibold shadow-xs hover:shadow active:scale-[0.98] transition-all gap-2"
-              >
-                {isLoggingIn ? "Authenticating…" : <><span>Open Studio Workspace</span> <ArrowRight className="h-4 w-4" /></>}
-              </Button>
-            </form>
-
             {loginError && (
-              <div className="p-3.5 bg-red-50 border border-red-200 rounded-2xl text-xs font-medium text-red-700 animate-in fade-in">
+              <div className="p-3 bg-red-950/70 border border-red-800/80 rounded-2xl text-xs font-medium text-red-300 text-center animate-in fade-in">
                 {loginError}
               </div>
             )}
 
-            <div className="flex items-center justify-center gap-1.5 pt-1 text-[11px] text-[#9a9590]">
-              <ShieldCheck className="h-3.5 w-3.5 text-[#8a8580]" />
-              <span>Encrypted Session · HttpOnly Token Security</span>
-            </div>
-          </Card>
-        </section>
+            {/* Apple Continue / Get Started Primary Button */}
+            <button
+              type="submit"
+              disabled={isLoggingIn}
+              className="w-full h-13 min-h-[50px] rounded-full bg-[#0071e3] hover:bg-[#0077ed] active:bg-[#005bb5] text-white font-semibold text-base shadow-lg shadow-[#0071e3]/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+            >
+              {isLoggingIn ? "Opening…" : "Continue"}
+            </button>
+          </form>
+        </div>
       </main>
     );
   }
