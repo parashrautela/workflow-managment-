@@ -26,17 +26,18 @@ All routes below require the founder session.
 
 ### `GET /api/founder/projects`
 
-Returns `{ "projects": [...] }`. Each project includes `id`, `name`, `clientName`, `location`, `phase`, `status`, `recentTask`, `nextMilestone`, `blocker`, `members`, and `createdAt`.
+Returns `{ "projects": [...] }`. Each project includes `id`, `name`, `clientName`, `location`, `startDate`, `internalOwnerMemberId`, `internalOwner`, `phase`, `status`, `recentTask`, `nextMilestone`, `blocker`, `members`, and `createdAt`.
 
 ### `POST /api/founder/projects`
 
-Creates a project group. Required: `name`, `clientName`. Optional: `location`, `phase`, `status`, `recentTask`, `nextMilestone`.
+Creates a project group. Required: `name`, `clientName`. Optional: `location`, `startDate` (`YYYY-MM-DD`), `phase`, `status`, `recentTask`, `nextMilestone`. The founder assigns an internal owner after adding project members.
 
 ```json
 {
   "name": "Kumar Residence",
   "clientName": "Asha Kumar",
   "location": "Pune",
+  "startDate": "2026-10-01",
   "phase": "Design",
   "status": "Setup",
   "recentTask": "",
@@ -48,7 +49,11 @@ Success: `201 { "project": ... }`. Missing required fields: `400`.
 
 ### `PATCH /api/founder/projects/:projectId`
 
-Updates the client-facing project facts: `phase`, `status`, `recentTask`, `nextMilestone`, and `blocker`. Only string fields supplied in the body are changed. Success: `200 { "project": ... }`.
+Updates the client-facing project facts (`phase`, `status`, `recentTask`, `nextMilestone`, `blocker`), project `startDate`, and `internalOwnerMemberId`. Only supplied fields are changed. `startDate` must use `YYYY-MM-DD`; `internalOwnerMemberId` must belong to an internal member of the same project (or be an empty string to clear it). Each changed field is included in the project-update audit detail. Success: `200 { "project": ... }`.
+
+### `GET /api/founder/projects/:projectId/updates`
+
+Returns up to the latest 50 saved project updates, newest first. Updates are created when a PATCH changes one or more project fields; a no-op PATCH does not create an entry. Each item includes `id`, `projectId`, `actor`, `changes` (field names mapped to `{ old, new }`), and `at` (ISO timestamp). Success: `{ "updates": [...] }`. Missing project: `404`. Existing projects begin with an empty update history; new changes are recorded from deployment onward.
 
 ### `POST /api/founder/projects/:projectId/members`
 

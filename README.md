@@ -38,7 +38,7 @@ The **Workflow Management Tool** provides teams with a clean, distraction-free e
    ```bash
    cp .env.example .env
    ```
-   Open `.env` and set `FOUNDER_PASSWORD` to a secure password of at least 12 characters. Add `OPENAI_API_KEY` optionally for AI-powered Q&A responses.
+   Open `.env` and set `FOUNDER_PASSWORD` to a private password. Add `OPENAI_API_KEY` optionally for AI-powered Q&A responses. Add `DATABASE_URL` to use PostgreSQL; when running locally without it, the app stores data in `backend/data.json`.
 
 3. **Start the development server:**
    ```bash
