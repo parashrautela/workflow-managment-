@@ -501,10 +501,6 @@
     top: calc(var(--spacing) * .5);
   }
 
-  .top-1 {
-    top: var(--spacing);
-  }
-
   .top-1\/2 {
     top: 50%;
   }
@@ -515,6 +511,10 @@
 
   .top-\[-10\.56\%\] {
     top: -10.56%;
+  }
+
+  .top-\[-11\%\] {
+    top: -11%;
   }
 
   .top-\[50\%\] {
@@ -553,10 +553,6 @@
     left: calc(var(--spacing) * .5);
   }
 
-  .left-1 {
-    left: var(--spacing);
-  }
-
   .left-3 {
     left: calc(var(--spacing) * 3);
   }
@@ -567,6 +563,10 @@
 
   .left-\[-26\.94\%\] {
     left: -26.94%;
+  }
+
+  .left-\[-33\%\] {
+    left: -33%;
   }
 
   .left-\[50\%\] {
@@ -681,6 +681,10 @@
 
   .mr-2 {
     margin-right: calc(var(--spacing) * 2);
+  }
+
+  .mb-3 {
+    margin-bottom: calc(var(--spacing) * 3);
   }
 
   .mb-4 {
@@ -908,10 +912,6 @@
     height: calc(var(--spacing) * 12);
   }
 
-  .h-14 {
-    height: calc(var(--spacing) * 14);
-  }
-
   .h-16 {
     height: calc(var(--spacing) * 16);
   }
@@ -926,6 +926,10 @@
 
   .h-\[49px\] {
     height: 49px;
+  }
+
+  .h-\[111\%\] {
+    height: 111%;
   }
 
   .h-\[calc\(100\%-1px\)\] {
@@ -1006,6 +1010,10 @@
 
   .w-\[144\.67\%\] {
     width: 144.67%;
+  }
+
+  .w-\[160\.5\%\] {
+    width: 160.5%;
   }
 
   .w-\[min\(88vw\,19rem\)\] {
@@ -1732,6 +1740,10 @@
     background-image: linear-gradient(#0000 38%, #00000047 52%, #000000e0 66%, #000 78%);
   }
 
+  .bg-\[linear-gradient\(to_bottom\,transparent_42\%\,rgba\(0\,0\,0\,\.16\)_58\%\,rgba\(0\,0\,0\,\.72\)_78\%\,rgba\(0\,0\,0\,\.9\)_100\%\)\] {
+    background-image: linear-gradient(#0000 42%, #00000029 58%, #000000b8 78%, #000000e6 100%);
+  }
+
   .bg-repeat {
     background-repeat: repeat;
   }
@@ -1842,10 +1854,6 @@
     padding-block: calc(var(--spacing) * 16);
   }
 
-  .pt-2 {
-    padding-top: calc(var(--spacing) * 2);
-  }
-
   .pt-3 {
     padding-top: calc(var(--spacing) * 3);
   }
@@ -1864,6 +1872,10 @@
 
   .pb-20 {
     padding-bottom: calc(var(--spacing) * 20);
+  }
+
+  .pb-\[max\(12px\,env\(safe-area-inset-bottom\)\)\] {
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
   }
 
   .pb-\[max\(24px\,env\(safe-area-inset-bottom\)\)\] {
@@ -2017,6 +2029,10 @@
 
   .text-\[\#797979\] {
     color: #797979;
+  }
+
+  .text-\[\#a3a3a3\] {
+    color: #a3a3a3;
   }
 
   .text-\[CanvasText\] {
@@ -3135,6 +3151,10 @@
 
     .md\:min-h-\[min\(855px\,calc\(100dvh-3rem\)\)\] {
       min-height: min(855px, 100dvh - 3rem);
+    }
+
+    .md\:max-w-\[394px\] {
+      max-width: 394px;
     }
 
     .md\:rounded-2xl {

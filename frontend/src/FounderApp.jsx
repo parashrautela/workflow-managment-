@@ -158,22 +158,22 @@ export default function FounderApp() {
   if (authState === "checking") return <main className="grid min-h-dvh place-items-center p-6"><div className="w-full max-w-sm space-y-5"><Brand /><Skeleton className="h-24 w-full" /><Skeleton className="h-12 w-full" /></div></main>;
   if (authState === "signed-out") return (
     <main className="grid min-h-dvh place-items-center bg-black md:p-6">
-      <section className="relative isolate flex min-h-dvh w-full max-w-[394px] flex-col overflow-hidden rounded-[48px] bg-black text-white md:min-h-[min(855px,calc(100dvh-3rem))] md:shadow-2xl" aria-label="Studio Iksha founder access">
+      <section className="relative isolate flex min-h-dvh w-full flex-col overflow-hidden bg-black text-white md:min-h-[min(855px,calc(100dvh-3rem))] md:max-w-[394px] md:shadow-2xl" aria-label="Studio Iksha founder access">
         <img
           src="/assets/studio-iksha-access.png"
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute top-[-10.56%] left-[-26.94%] h-full w-[144.67%] max-w-none object-cover"
+          className="pointer-events-none absolute top-[-11%] left-[-33%] h-[111%] w-[160.5%] max-w-none object-cover"
         />
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_38%,rgba(0,0,0,.28)_52%,rgba(0,0,0,.88)_66%,#000_78%)]" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_42%,rgba(0,0,0,.16)_58%,rgba(0,0,0,.72)_78%,rgba(0,0,0,.9)_100%)]" />
 
-        <div className="relative z-10 mt-auto flex flex-col px-6 pb-[max(24px,env(safe-area-inset-bottom))]">
-          <div className="mb-8 space-y-0.5">
+        <div className="relative z-10 mt-auto flex flex-col px-6 pb-[max(12px,env(safe-area-inset-bottom))]">
+          <div className="mb-5 space-y-0.5">
             <p className="text-sm font-medium tracking-tight">Project Operations</p>
             <h1 className="text-[28px] leading-tight font-bold tracking-[-0.5px]">Welcome to Studio Iksha</h1>
           </div>
 
-          <div className="mb-4 text-[11px] leading-[1.4] text-[#7f7f7f]">
+          <div className="mb-3 text-[11px] leading-[1.4] text-[#a3a3a3]">
             <p>Studio Iksha uses encrypted tokens and single-claim client links for zero-login client privacy.</p>
             <span className="font-semibold text-[#157de0]">Read our Terms and Privacy Policy</span>
           </div>

@@ -22838,24 +22838,24 @@ function FounderApp() {
 	if (authState === "signed-out") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
 		className: "grid min-h-dvh place-items-center bg-black md:p-6",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-			className: "relative isolate flex min-h-dvh w-full max-w-[394px] flex-col overflow-hidden rounded-[48px] bg-black text-white md:min-h-[min(855px,calc(100dvh-3rem))] md:shadow-2xl",
+			className: "relative isolate flex min-h-dvh w-full flex-col overflow-hidden bg-black text-white md:min-h-[min(855px,calc(100dvh-3rem))] md:max-w-[394px] md:shadow-2xl",
 			"aria-label": "Studio Iksha founder access",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 					src: "/assets/studio-iksha-access.png",
 					alt: "",
 					"aria-hidden": "true",
-					className: "pointer-events-none absolute top-[-10.56%] left-[-26.94%] h-full w-[144.67%] max-w-none object-cover"
+					className: "pointer-events-none absolute top-[-11%] left-[-33%] h-[111%] w-[160.5%] max-w-none object-cover"
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 					"aria-hidden": "true",
-					className: "pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_38%,rgba(0,0,0,.28)_52%,rgba(0,0,0,.88)_66%,#000_78%)]"
+					className: "pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_42%,rgba(0,0,0,.16)_58%,rgba(0,0,0,.72)_78%,rgba(0,0,0,.9)_100%)]"
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "relative z-10 mt-auto flex flex-col px-6 pb-[max(24px,env(safe-area-inset-bottom))]",
+					className: "relative z-10 mt-auto flex flex-col px-6 pb-[max(12px,env(safe-area-inset-bottom))]",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "mb-8 space-y-0.5",
+							className: "mb-5 space-y-0.5",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-sm font-medium tracking-tight",
 								children: "Project Operations"
@@ -22865,7 +22865,7 @@ function FounderApp() {
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "mb-4 text-[11px] leading-[1.4] text-[#7f7f7f]",
+							className: "mb-3 text-[11px] leading-[1.4] text-[#a3a3a3]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Studio Iksha uses encrypted tokens and single-claim client links for zero-login client privacy." }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 								className: "font-semibold text-[#157de0]",
 								children: "Read our Terms and Privacy Policy"
