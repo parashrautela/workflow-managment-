@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
-  AlertTriangle, ArrowRight, Building2, Check, Clock3, Copy, FolderKanban,
+  AlertTriangle, ArrowRight, Building2, Check, Clock3, Copy, Eye, EyeOff, FolderKanban,
   History, KeyRound, LogOut, Menu, MessageSquare, Plus, RefreshCw,
   Search, Send, Share2, ShieldCheck, Sparkles, Users, UserPlus, X,
 } from "lucide-react";
@@ -82,6 +82,7 @@ function Field({ label, children }) {
 export default function FounderApp() {
   const [authState, setAuthState] = useState("checking");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState("");
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [projects, setProjects] = useState([]);
@@ -154,12 +155,60 @@ export default function FounderApp() {
   };
 
   if (authState === "checking") return <main className="grid min-h-dvh place-items-center p-6"><div className="w-full max-w-sm space-y-5"><Brand /><Skeleton className="h-24 w-full" /><Skeleton className="h-12 w-full" /></div></main>;
-  if (authState === "signed-out") return <main className="app-glow grid min-h-dvh items-center px-4 py-10 sm:px-8">
-    <div className="mx-auto grid w-full max-w-5xl gap-8 lg:grid-cols-2 lg:gap-16">
-      <div className="flex flex-col justify-center gap-6 px-2"><Brand /><Badge variant="secondary" className="mt-5 w-fit">Your project workspace</Badge><h1 className="max-w-lg text-4xl font-semibold tracking-tight sm:text-5xl">Keep every project conversation in one place.</h1><p className="max-w-md text-base leading-relaxed text-muted-foreground">Track progress, update project facts, and give clients a private place to ask questions.</p><div className="hidden items-center gap-3 text-sm text-muted-foreground lg:flex"><ShieldCheck className="size-4 text-primary" />Private client access, managed by your team</div></div>
-      <Card className="w-full self-center border-border/80 shadow-xl shadow-slate-900/5"><CardHeader className="space-y-1 pb-4"><CardTitle className="text-2xl">Welcome back</CardTitle><CardDescription>Sign in to Studio Iksha to open your workspace.</CardDescription></CardHeader><CardContent><form onSubmit={handleLogin} className="space-y-4"><Field label="Founder password"><div className="relative"><KeyRound className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" /><Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" className="h-11 pl-10" required /></div></Field>{loginError && <Alert variant="destructive"><AlertTriangle /><AlertDescription>{loginError}</AlertDescription></Alert>}<Button type="submit" className="h-11 w-full" disabled={isLoggingIn}>{isLoggingIn ? "Opening…" : "Open workspace"}<ArrowRight className="size-4" /></Button></form></CardContent></Card>
-    </div>
-  </main>;
+  if (authState === "signed-out") return (
+    <main className="grid min-h-dvh place-items-center bg-black md:p-6">
+      <section className="relative isolate flex min-h-dvh w-full max-w-[394px] flex-col overflow-hidden rounded-[48px] bg-black text-white md:min-h-[min(855px,calc(100dvh-3rem))] md:shadow-2xl" aria-label="Studio Iksha founder access">
+        <img
+          src="/assets/studio-iksha-access.png"
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute top-[-10.56%] left-[-26.94%] h-full w-[144.67%] max-w-none object-cover"
+        />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_38%,rgba(0,0,0,.28)_52%,rgba(0,0,0,.88)_66%,#000_78%)]" />
+
+        <div className="relative z-10 mt-auto flex flex-col px-6 pb-[max(24px,env(safe-area-inset-bottom))]">
+          <div className="mb-8 space-y-0.5">
+            <p className="text-sm font-medium tracking-tight">Project Operations</p>
+            <h1 className="text-[28px] leading-tight font-bold tracking-[-0.5px]">Welcome to Studio Iksha</h1>
+          </div>
+
+          <div className="mb-4 text-[11px] leading-[1.4] text-[#7f7f7f]">
+            <p>Studio Iksha uses encrypted tokens and single-claim client links for zero-login client privacy.</p>
+            <span className="font-semibold text-[#157de0]">Read our Terms and Privacy Policy</span>
+          </div>
+
+          <form onSubmit={handleLogin} className="space-y-2.5">
+            <label className="sr-only" htmlFor="founder-key">Founder key</label>
+            <div className="relative">
+              <KeyRound aria-hidden="true" className="pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-[#797979]" />
+              <Input
+                id="founder-key"
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                placeholder="Enter founder key"
+                autoComplete="current-password"
+                required
+                className="h-[49px] rounded-full border-[#373636] bg-[#1f1f1f] pr-12 pl-[43px] text-sm text-white shadow-none placeholder:text-[#797979] focus-visible:border-white/60 focus-visible:ring-white/20"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((visible) => !visible)}
+                aria-label={showPassword ? "Hide founder key" : "Show founder key"}
+                className="absolute top-1/2 right-3 grid size-10 -translate-y-1/2 place-items-center rounded-full text-[#797979] focus-visible:outline-2 focus-visible:outline-white"
+              >
+                {showPassword ? <EyeOff className="size-[15px]" /> : <Eye className="size-[15px]" />}
+              </button>
+            </div>
+            {loginError && <p role="alert" className="text-xs text-red-300">{loginError}</p>}
+            <Button type="submit" disabled={isLoggingIn} className="h-12 w-full rounded-full bg-[#f8f8f8] text-base font-semibold text-black shadow-none hover:bg-white">
+              {isLoggingIn ? "Opening…" : "Continue"}
+            </Button>
+          </form>
+        </div>
+      </section>
+    </main>
+  );
 
   const navigation = <div className="flex h-full flex-col gap-5">
     <Brand />

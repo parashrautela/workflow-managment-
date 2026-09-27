@@ -225,6 +225,7 @@ const server = http.createServer(async (req, res) => {
     if (req.method === 'GET' && url.pathname === '/sw.js') return sendFile(res, 'frontend/sw.js');
     if (req.method === 'GET' && url.pathname === '/manifest.webmanifest') return sendFile(res, 'frontend/manifest.webmanifest');
     if (req.method === 'GET' && ['/icons/icon-192.png', '/icons/icon-512.png', '/icons/apple-touch-icon.png'].includes(url.pathname)) return sendFile(res, `frontend${url.pathname}`);
+    if (req.method === 'GET' && url.pathname === '/assets/studio-iksha-access.png') return sendFile(res, 'frontend/assets/studio-iksha-access.png');
     if (req.method === 'GET' && url.pathname.startsWith('/c/')) return sendFile(res, 'frontend/client.html');
     res.writeHead(404); res.end('Not found');
   } catch (error) {

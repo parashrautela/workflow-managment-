@@ -11675,7 +11675,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$25 = {
+var __iconData$27 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11686,8 +11686,8 @@ var __iconData$25 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$25.node;
-var ArrowRight = createLucideIcon(__iconData$25);
+__iconData$27.node;
+var ArrowRight = createLucideIcon(__iconData$27);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
@@ -11696,7 +11696,7 @@ var ArrowRight = createLucideIcon(__iconData$25);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$24 = {
+var __iconData$26 = {
 	name: "arrow-up",
 	size: 24,
 	node: [["path", {
@@ -11707,8 +11707,8 @@ var __iconData$24 = {
 		key: "x0mq9r"
 	}]]
 };
-__iconData$24.node;
-var ArrowUp = createLucideIcon(__iconData$24);
+__iconData$26.node;
+var ArrowUp = createLucideIcon(__iconData$26);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
@@ -11717,7 +11717,7 @@ var ArrowUp = createLucideIcon(__iconData$24);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$23 = {
+var __iconData$25 = {
 	name: "building-complex",
 	size: 24,
 	node: [
@@ -11744,8 +11744,8 @@ var __iconData$23 = {
 	],
 	aliases: ["building-2"]
 };
-__iconData$23.node;
-var BuildingComplex = createLucideIcon(__iconData$23);
+__iconData$25.node;
+var BuildingComplex = createLucideIcon(__iconData$25);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/check.mjs
 /**
@@ -11754,7 +11754,7 @@ var BuildingComplex = createLucideIcon(__iconData$23);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$22 = {
+var __iconData$24 = {
 	name: "check",
 	size: 24,
 	node: [["path", {
@@ -11762,8 +11762,8 @@ var __iconData$22 = {
 		key: "1gmf2c"
 	}]]
 };
-__iconData$22.node;
-var Check = createLucideIcon(__iconData$22);
+__iconData$24.node;
+var Check = createLucideIcon(__iconData$24);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
 /**
@@ -11772,7 +11772,7 @@ var Check = createLucideIcon(__iconData$22);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$21 = {
+var __iconData$23 = {
 	name: "chevron-down",
 	size: 24,
 	node: [["path", {
@@ -11780,8 +11780,8 @@ var __iconData$21 = {
 		key: "qrunsl"
 	}]]
 };
-__iconData$21.node;
-var ChevronDown = createLucideIcon(__iconData$21);
+__iconData$23.node;
+var ChevronDown = createLucideIcon(__iconData$23);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
@@ -11790,7 +11790,7 @@ var ChevronDown = createLucideIcon(__iconData$21);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$20 = {
+var __iconData$22 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -11817,8 +11817,8 @@ var __iconData$20 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$20.node;
-var CircleAlert = createLucideIcon(__iconData$20);
+__iconData$22.node;
+var CircleAlert = createLucideIcon(__iconData$22);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
@@ -11827,7 +11827,7 @@ var CircleAlert = createLucideIcon(__iconData$20);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$19 = {
+var __iconData$21 = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -11841,8 +11841,8 @@ var __iconData$19 = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-__iconData$19.node;
-var CircleCheck = createLucideIcon(__iconData$19);
+__iconData$21.node;
+var CircleCheck = createLucideIcon(__iconData$21);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
@@ -11851,7 +11851,7 @@ var CircleCheck = createLucideIcon(__iconData$19);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$18 = {
+var __iconData$20 = {
 	name: "clock-3",
 	size: 24,
 	node: [["circle", {
@@ -11864,8 +11864,8 @@ var __iconData$18 = {
 		key: "135r8i"
 	}]]
 };
-__iconData$18.node;
-var Clock3 = createLucideIcon(__iconData$18);
+__iconData$20.node;
+var Clock3 = createLucideIcon(__iconData$20);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
@@ -11874,7 +11874,7 @@ var Clock3 = createLucideIcon(__iconData$18);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$17 = {
+var __iconData$19 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -11890,8 +11890,63 @@ var __iconData$17 = {
 		key: "zix9uf"
 	}]]
 };
+__iconData$19.node;
+var Copy = createLucideIcon(__iconData$19);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/eye-off.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$18 = {
+	name: "eye-off",
+	size: 24,
+	node: [
+		["path", {
+			d: "M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49",
+			key: "ct8e1f"
+		}],
+		["path", {
+			d: "M14.084 14.158a3 3 0 0 1-4.242-4.242",
+			key: "151rxh"
+		}],
+		["path", {
+			d: "M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143",
+			key: "13bj9a"
+		}],
+		["path", {
+			d: "m2 2 20 20",
+			key: "1ooewy"
+		}]
+	]
+};
+__iconData$18.node;
+var EyeOff = createLucideIcon(__iconData$18);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/eye.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$17 = {
+	name: "eye",
+	size: 24,
+	node: [["path", {
+		d: "M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0",
+		key: "1nclc0"
+	}], ["circle", {
+		cx: "12",
+		cy: "12",
+		r: "3",
+		key: "1v7zrd"
+	}]]
+};
 __iconData$17.node;
-var Copy = createLucideIcon(__iconData$17);
+var Eye = createLucideIcon(__iconData$17);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
@@ -19772,6 +19827,7 @@ function Field({ label, children }) {
 function FounderApp() {
 	const [authState, setAuthState] = (0, import_react.useState)("checking");
 	const [password, setPassword] = (0, import_react.useState)("");
+	const [showPassword, setShowPassword] = (0, import_react.useState)(false);
 	const [loginError, setLoginError] = (0, import_react.useState)("");
 	const [isLoggingIn, setIsLoggingIn] = (0, import_react.useState)(false);
 	const [projects, setProjects] = (0, import_react.useState)([]);
@@ -19891,70 +19947,92 @@ function FounderApp() {
 		})
 	});
 	if (authState === "signed-out") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
-		className: "app-glow grid min-h-dvh items-center px-4 py-10 sm:px-8",
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "mx-auto grid w-full max-w-5xl gap-8 lg:grid-cols-2 lg:gap-16",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-col justify-center gap-6 px-2",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Brand, {}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-						variant: "secondary",
-						className: "mt-5 w-fit",
-						children: "Your project workspace"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-						className: "max-w-lg text-4xl font-semibold tracking-tight sm:text-5xl",
-						children: "Keep every project conversation in one place."
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "max-w-md text-base leading-relaxed text-muted-foreground",
-						children: "Track progress, update project facts, and give clients a private place to ask questions."
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "hidden items-center gap-3 text-sm text-muted-foreground lg:flex",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, { className: "size-4 text-primary" }), "Private client access, managed by your team"]
-					})
-				]
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-				className: "w-full self-center border-border/80 shadow-xl shadow-slate-900/5",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, {
-					className: "space-y-1 pb-4",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
-						className: "text-2xl",
-						children: "Welcome back"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardDescription, { children: "Sign in to Studio Iksha to open your workspace." })]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-					onSubmit: handleLogin,
-					className: "space-y-4",
+		className: "grid min-h-dvh place-items-center bg-black md:p-6",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+			className: "relative isolate flex min-h-dvh w-full max-w-[394px] flex-col overflow-hidden rounded-[48px] bg-black text-white md:min-h-[min(855px,calc(100dvh-3rem))] md:shadow-2xl",
+			"aria-label": "Studio Iksha founder access",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+					src: "/assets/studio-iksha-access.png",
+					alt: "",
+					"aria-hidden": "true",
+					className: "pointer-events-none absolute top-[-10.56%] left-[-26.94%] h-full w-[144.67%] max-w-none object-cover"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					"aria-hidden": "true",
+					className: "pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_38%,rgba(0,0,0,.28)_52%,rgba(0,0,0,.88)_66%,#000_78%)]"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "relative z-10 mt-auto flex flex-col px-6 pb-[max(24px,env(safe-area-inset-bottom))]",
 					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-							label: "Founder password",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "relative",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(KeyRound, { className: "pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									type: "password",
-									value: password,
-									onChange: (e) => setPassword(e.target.value),
-									placeholder: "Enter your password",
-									className: "h-11 pl-10",
-									required: true
-								})]
-							})
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mb-8 space-y-0.5",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-sm font-medium tracking-tight",
+								children: "Project Operations"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+								className: "text-[28px] leading-tight font-bold tracking-[-0.5px]",
+								children: "Welcome to Studio Iksha"
+							})]
 						}),
-						loginError && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Alert, {
-							variant: "destructive",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertDescription, { children: loginError })]
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mb-4 text-[11px] leading-[1.4] text-[#7f7f7f]",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Studio Iksha uses encrypted tokens and single-claim client links for zero-login client privacy." }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "font-semibold text-[#157de0]",
+								children: "Read our Terms and Privacy Policy"
+							})]
 						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-							type: "submit",
-							className: "h-11 w-full",
-							disabled: isLoggingIn,
-							children: [isLoggingIn ? "Opening…" : "Open workspace", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-4" })]
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+							onSubmit: handleLogin,
+							className: "space-y-2.5",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
+									className: "sr-only",
+									htmlFor: "founder-key",
+									children: "Founder key"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "relative",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(KeyRound, {
+											"aria-hidden": "true",
+											className: "pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-[#797979]"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+											id: "founder-key",
+											type: showPassword ? "text" : "password",
+											value: password,
+											onChange: (event) => setPassword(event.target.value),
+											placeholder: "Enter founder key",
+											autoComplete: "current-password",
+											required: true,
+											className: "h-[49px] rounded-full border-[#373636] bg-[#1f1f1f] pr-12 pl-[43px] text-sm text-white shadow-none placeholder:text-[#797979] focus-visible:border-white/60 focus-visible:ring-white/20"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+											type: "button",
+											onClick: () => setShowPassword((visible) => !visible),
+											"aria-label": showPassword ? "Hide founder key" : "Show founder key",
+											className: "absolute top-1/2 right-3 grid size-10 -translate-y-1/2 place-items-center rounded-full text-[#797979] focus-visible:outline-2 focus-visible:outline-white",
+											children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EyeOff, { className: "size-[15px]" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eye, { className: "size-[15px]" })
+										})
+									]
+								}),
+								loginError && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									role: "alert",
+									className: "text-xs text-red-300",
+									children: loginError
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									type: "submit",
+									disabled: isLoggingIn,
+									className: "h-12 w-full rounded-full bg-[#f8f8f8] text-base font-semibold text-black shadow-none hover:bg-white",
+									children: isLoggingIn ? "Opening…" : "Continue"
+								})
+							]
 						})
 					]
-				}) })]
-			})]
+				})
+			]
 		})
 	});
 	const navigation = /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
