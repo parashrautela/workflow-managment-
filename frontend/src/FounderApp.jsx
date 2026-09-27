@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { 
   FolderKanban, 
+  MessageSquare,
   Clock, 
   Plus, 
   LogOut, 
@@ -329,6 +330,14 @@ export default function FounderApp() {
             <Clock className="h-4 w-4 text-[#77716b]" />
             <span className="flex-1 text-left">Activity Log</span>
           </button>
+          <button
+            onClick={() => { setCurrentTab("messages"); setIsSidebarOpen(false); }}
+            className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${currentTab === "messages" ? "bg-[#e5e3df] text-[#171716] font-semibold" : "text-[#625e59] hover:bg-[#e9e8e5]"}`}
+          >
+            <MessageSquare className="h-4 w-4 text-[#77716b]" />
+            <span className="flex-1 text-left">Messages</span>
+            {conversations.length > 0 && <span className="text-[10px] font-semibold bg-[#e0ded9] px-2 py-0.5 rounded-full">{conversations.length}</span>}
+          </button>
         </nav>
 
         <div className="flex items-center justify-between px-2 pt-6 pb-2">
@@ -388,7 +397,7 @@ export default function FounderApp() {
             <span>Workspace</span>
             <span className="text-gray-300">/</span>
             <strong className="text-[#34322f] truncate max-w-[160px] sm:max-w-xs">
-              {currentTab === "projects" ? (selectedProject ? selectedProject.name : "Projects") : "Activity Log"}
+              {currentTab === "projects" ? (selectedProject ? selectedProject.name : "Projects") : currentTab === "messages" ? "Messages" : "Activity Log"}
             </strong>
           </div>
           <div className="flex items-center gap-3">
@@ -401,7 +410,64 @@ export default function FounderApp() {
 
         {/* Content */}
         <main className="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-8 space-y-6">
-          {currentTab === "activity" ? (
+          {currentTab === "messages" ? (
+            <section className="flex min-h-[calc(100dvh-11rem)] flex-col gap-4">
+              <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+                <div>
+                  <span className="text-[10px] font-bold tracking-wider text-[#96918c] uppercase">PROJECT CONVERSATION</span>
+                  <h1 className="mt-1 text-2xl font-bold tracking-tight text-[#161615] sm:text-3xl">{selectedProject?.name || "Messages"}</h1>
+                  <p className="mt-1 text-xs text-[#797570]">Client questions and project assistant replies, in one place.</p>
+                </div>
+                <div className="flex gap-2">
+                  <Button variant="subtle" size="sm" onClick={() => loadConversations(selectedProject?.id)} disabled={!selectedProject} className="gap-1.5"><RefreshCw className="h-3.5 w-3.5" />Refresh</Button>
+                  <Button size="sm" onClick={handleCreateInvite} disabled={!selectedProject} className="gap-1.5"><Share2 className="h-3.5 w-3.5" />Share client link</Button>
+                </div>
+              </div>
+
+              <Card className="flex min-h-[min(68dvh,680px)] flex-1 flex-col overflow-hidden rounded-2xl border-[#e8e5e0] bg-white shadow-sm">
+                <div className="flex shrink-0 items-center justify-between border-b border-[#efeeec] px-4 py-3 sm:px-5">
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#e9f1fb] text-[#0075de]"><Sparkles className="h-4 w-4" /></div>
+                    <div><strong className="block text-sm font-semibold">Project Assistant</strong><span className="text-[10px] text-[#96918c]">Client Q&amp;A transcript</span></div>
+                  </div>
+                  <span className="rounded-full bg-[#edf4ee] px-2.5 py-1 text-[9px] font-semibold text-[#50745b]">{conversations.length} {conversations.length === 1 ? "exchange" : "exchanges"}</span>
+                </div>
+
+                <div className="chat-transcript flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto bg-[#fdfcfb] px-3 py-5 sm:px-7 sm:py-7" aria-live="polite" aria-label="Client conversation">
+                  {conversations.length ? [...conversations].reverse().map((item, idx) => (
+                    <div key={item.at || idx} className="space-y-4">
+                      <Message align="end">
+                        <MessageAvatar><Avatar className="h-8 w-8 rounded-full bg-[#eadfd2] text-[9px] text-[#67513c]">CL</Avatar></MessageAvatar>
+                        <MessageContent className="max-w-[88%] sm:max-w-[78%]">
+                          <MessageHeader className="justify-end"><span>{new Date(item.at).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}</span><span className="font-semibold text-[#343330]">{selectedProject?.clientName || "Client"}</span></MessageHeader>
+                          <Bubble align="end"><BubbleContent className="text-xs sm:text-sm">{item.question}</BubbleContent></Bubble>
+                        </MessageContent>
+                      </Message>
+                      <Message align="start">
+                        <MessageAvatar><Avatar className="h-8 w-8 rounded-xl bg-[#e9f1fb] text-[#0075de]">✳</Avatar></MessageAvatar>
+                        <MessageContent className="max-w-[88%] sm:max-w-[78%]">
+                          <MessageHeader><span className="font-semibold text-[#343330]">Project Assistant</span><span>Project facts</span></MessageHeader>
+                          <Bubble variant="secondary"><BubbleContent className="text-xs leading-relaxed sm:text-sm">{item.answer}</BubbleContent></Bubble>
+                        </MessageContent>
+                      </Message>
+                    </div>
+                  )) : (
+                    <div className="m-auto flex max-w-sm flex-col items-center px-5 py-10 text-center">
+                      <div className="mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-[#e9f1fb] text-[#0075de]"><MessageSquare className="h-6 w-6" /></div>
+                      <h2 className="text-base font-semibold text-[#282725]">Your project conversation starts here</h2>
+                      <p className="mt-2 text-xs leading-relaxed text-[#797570]">Share a private client link. Their questions and the assistant’s replies will appear in this thread for your team to review.</p>
+                      <Button onClick={handleCreateInvite} className="mt-5 gap-2"><Share2 className="h-4 w-4" />Create client link</Button>
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex shrink-0 items-center justify-between gap-3 border-t border-[#efeeec] bg-white px-4 py-3 sm:px-5">
+                  <p className="text-[10px] leading-relaxed text-[#89857f]">Client questions are answered from facts recorded in this project.</p>
+                  <Button variant="subtle" size="sm" onClick={handleCreateInvite} className="shrink-0 gap-1.5"><Share2 className="h-3.5 w-3.5" />Invite client</Button>
+                </div>
+              </Card>
+            </section>
+          ) : currentTab === "activity" ? (
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div>
@@ -452,6 +518,9 @@ export default function FounderApp() {
                   </div>
                 </div>
                 <div className="grid grid-cols-2 sm:flex items-center gap-2 w-full sm:w-auto">
+                  <Button variant="subtle" onClick={() => setCurrentTab("messages")} className="gap-1.5">
+                    <MessageSquare className="h-4 w-4" /> Messages{conversations.length > 0 ? ` (${conversations.length})` : ""}
+                  </Button>
                   <Button variant="subtle" onClick={() => setIsEditFactsOpen(true)} className="gap-1.5">
                     <Edit3 className="h-4 w-4" /> Edit Facts
                   </Button>
@@ -683,6 +752,13 @@ export default function FounderApp() {
         >
           <FolderKanban className="h-5 w-5" />
           <span>Projects</span>
+        </button>
+        <button
+          onClick={() => setCurrentTab("messages")}
+          className={`flex flex-col items-center gap-1 text-[10px] font-medium ${currentTab === "messages" ? "text-[#0075de] font-semibold" : "text-gray-500"}`}
+        >
+          <MessageSquare className="h-5 w-5" />
+          <span>Messages</span>
         </button>
         <button
           onClick={() => setIsCreateProjectOpen(true)}

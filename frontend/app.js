@@ -11675,7 +11675,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$20 = {
+var __iconData$21 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11686,8 +11686,8 @@ var __iconData$20 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$20.node;
-var ArrowRight = createLucideIcon(__iconData$20);
+__iconData$21.node;
+var ArrowRight = createLucideIcon(__iconData$21);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
@@ -11696,7 +11696,7 @@ var ArrowRight = createLucideIcon(__iconData$20);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$19 = {
+var __iconData$20 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -11723,8 +11723,8 @@ var __iconData$19 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$19.node;
-var CircleAlert = createLucideIcon(__iconData$19);
+__iconData$20.node;
+var CircleAlert = createLucideIcon(__iconData$20);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
@@ -11733,7 +11733,7 @@ var CircleAlert = createLucideIcon(__iconData$19);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$18 = {
+var __iconData$19 = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -11747,8 +11747,8 @@ var __iconData$18 = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-__iconData$18.node;
-var CircleCheck = createLucideIcon(__iconData$18);
+__iconData$19.node;
+var CircleCheck = createLucideIcon(__iconData$19);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
@@ -11757,7 +11757,7 @@ var CircleCheck = createLucideIcon(__iconData$18);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$17 = {
+var __iconData$18 = {
 	name: "clock",
 	size: 24,
 	node: [["circle", {
@@ -11770,8 +11770,8 @@ var __iconData$17 = {
 		key: "mmk7yg"
 	}]]
 };
-__iconData$17.node;
-var Clock = createLucideIcon(__iconData$17);
+__iconData$18.node;
+var Clock = createLucideIcon(__iconData$18);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
@@ -11780,7 +11780,7 @@ var Clock = createLucideIcon(__iconData$17);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$16 = {
+var __iconData$17 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -11796,8 +11796,8 @@ var __iconData$16 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$16.node;
-var Copy = createLucideIcon(__iconData$16);
+__iconData$17.node;
+var Copy = createLucideIcon(__iconData$17);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye-off.mjs
 /**
@@ -11806,7 +11806,7 @@ var Copy = createLucideIcon(__iconData$16);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$15 = {
+var __iconData$16 = {
 	name: "eye-off",
 	size: 24,
 	node: [
@@ -11828,8 +11828,8 @@ var __iconData$15 = {
 		}]
 	]
 };
-__iconData$15.node;
-var EyeOff = createLucideIcon(__iconData$15);
+__iconData$16.node;
+var EyeOff = createLucideIcon(__iconData$16);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye.mjs
 /**
@@ -11838,7 +11838,7 @@ var EyeOff = createLucideIcon(__iconData$15);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$14 = {
+var __iconData$15 = {
 	name: "eye",
 	size: 24,
 	node: [["path", {
@@ -11851,8 +11851,8 @@ var __iconData$14 = {
 		key: "1v7zrd"
 	}]]
 };
-__iconData$14.node;
-var Eye = createLucideIcon(__iconData$14);
+__iconData$15.node;
+var Eye = createLucideIcon(__iconData$15);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
@@ -11861,7 +11861,7 @@ var Eye = createLucideIcon(__iconData$14);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$13 = {
+var __iconData$14 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -11883,8 +11883,8 @@ var __iconData$13 = {
 		}]
 	]
 };
-__iconData$13.node;
-var FolderKanban = createLucideIcon(__iconData$13);
+__iconData$14.node;
+var FolderKanban = createLucideIcon(__iconData$14);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/key-round.mjs
 /**
@@ -11893,7 +11893,7 @@ var FolderKanban = createLucideIcon(__iconData$13);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$12 = {
+var __iconData$13 = {
 	name: "key-round",
 	size: 24,
 	node: [["path", {
@@ -11907,8 +11907,8 @@ var __iconData$12 = {
 		key: "w0ekpg"
 	}]]
 };
-__iconData$12.node;
-var KeyRound = createLucideIcon(__iconData$12);
+__iconData$13.node;
+var KeyRound = createLucideIcon(__iconData$13);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/log-out.mjs
 /**
@@ -11917,7 +11917,7 @@ var KeyRound = createLucideIcon(__iconData$12);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$11 = {
+var __iconData$12 = {
 	name: "log-out",
 	size: 24,
 	node: [
@@ -11935,8 +11935,26 @@ var __iconData$11 = {
 		}]
 	]
 };
+__iconData$12.node;
+var LogOut = createLucideIcon(__iconData$12);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/message-square.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$11 = {
+	name: "message-square",
+	size: 24,
+	node: [["path", {
+		d: "M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z",
+		key: "18887p"
+	}]]
+};
 __iconData$11.node;
-var LogOut = createLucideIcon(__iconData$11);
+var MessageSquare = createLucideIcon(__iconData$11);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/pen-line.mjs
 /**
@@ -16364,35 +16382,56 @@ function FounderApp() {
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
 						className: "space-y-1",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							onClick: () => {
-								setCurrentTab("projects");
-								setIsSidebarOpen(false);
-							},
-							className: `w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${currentTab === "projects" ? "bg-[#e5e3df] text-[#171716] font-semibold" : "text-[#625e59] hover:bg-[#e9e8e5]"}`,
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "h-4 w-4 text-[#77716b]" }),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								onClick: () => {
+									setCurrentTab("projects");
+									setIsSidebarOpen(false);
+								},
+								className: `w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${currentTab === "projects" ? "bg-[#e5e3df] text-[#171716] font-semibold" : "text-[#625e59] hover:bg-[#e9e8e5]"}`,
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "h-4 w-4 text-[#77716b]" }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "flex-1 text-left",
+										children: "Projects"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "text-[11px] font-bold bg-[#e0ded9] px-2 py-0.5 rounded-full",
+										children: projects.length
+									})
+								]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								onClick: () => {
+									setCurrentTab("activity");
+									loadActivities();
+									setIsSidebarOpen(false);
+								},
+								className: `w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${currentTab === "activity" ? "bg-[#e5e3df] text-[#171716] font-semibold" : "text-[#625e59] hover:bg-[#e9e8e5]"}`,
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock, { className: "h-4 w-4 text-[#77716b]" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "flex-1 text-left",
-									children: "Projects"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "text-[11px] font-bold bg-[#e0ded9] px-2 py-0.5 rounded-full",
-									children: projects.length
-								})
-							]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							onClick: () => {
-								setCurrentTab("activity");
-								loadActivities();
-								setIsSidebarOpen(false);
-							},
-							className: `w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${currentTab === "activity" ? "bg-[#e5e3df] text-[#171716] font-semibold" : "text-[#625e59] hover:bg-[#e9e8e5]"}`,
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock, { className: "h-4 w-4 text-[#77716b]" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "flex-1 text-left",
-								children: "Activity Log"
-							})]
-						})]
+									children: "Activity Log"
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								onClick: () => {
+									setCurrentTab("messages");
+									setIsSidebarOpen(false);
+								},
+								className: `w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${currentTab === "messages" ? "bg-[#e5e3df] text-[#171716] font-semibold" : "text-[#625e59] hover:bg-[#e9e8e5]"}`,
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "h-4 w-4 text-[#77716b]" }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "flex-1 text-left",
+										children: "Messages"
+									}),
+									conversations.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "text-[10px] font-semibold bg-[#e0ded9] px-2 py-0.5 rounded-full",
+										children: conversations.length
+									})
+								]
+							})
+						]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex items-center justify-between px-2 pt-6 pb-2",
@@ -16481,7 +16520,7 @@ function FounderApp() {
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
 								className: "text-[#34322f] truncate max-w-[160px] sm:max-w-xs",
-								children: currentTab === "projects" ? selectedProject ? selectedProject.name : "Projects" : "Activity Log"
+								children: currentTab === "projects" ? selectedProject ? selectedProject.name : "Projects" : currentTab === "messages" ? "Messages" : "Activity Log"
 							})
 						]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -16496,7 +16535,154 @@ function FounderApp() {
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
 					className: "flex-1 max-w-5xl w-full mx-auto p-4 sm:p-8 space-y-6",
-					children: currentTab === "activity" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					children: currentTab === "messages" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+						className: "flex min-h-[calc(100dvh-11rem)] flex-col gap-4",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex flex-col justify-between gap-3 sm:flex-row sm:items-end",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase",
+									children: "PROJECT CONVERSATION"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+									className: "mt-1 text-2xl font-bold tracking-tight text-[#161615] sm:text-3xl",
+									children: selectedProject?.name || "Messages"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "mt-1 text-xs text-[#797570]",
+									children: "Client questions and project assistant replies, in one place."
+								})
+							] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex gap-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+									variant: "subtle",
+									size: "sm",
+									onClick: () => loadConversations(selectedProject?.id),
+									disabled: !selectedProject,
+									className: "gap-1.5",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: "h-3.5 w-3.5" }), "Refresh"]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+									size: "sm",
+									onClick: handleCreateInvite,
+									disabled: !selectedProject,
+									className: "gap-1.5",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Share2, { className: "h-3.5 w-3.5" }), "Share client link"]
+								})]
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
+							className: "flex min-h-[min(68dvh,680px)] flex-1 flex-col overflow-hidden rounded-2xl border-[#e8e5e0] bg-white shadow-sm",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex shrink-0 items-center justify-between border-b border-[#efeeec] px-4 py-3 sm:px-5",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "flex items-center gap-3",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "grid h-9 w-9 place-items-center rounded-xl bg-[#e9f1fb] text-[#0075de]",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "h-4 w-4" })
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+											className: "block text-sm font-semibold",
+											children: "Project Assistant"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "text-[10px] text-[#96918c]",
+											children: "Client Q&A transcript"
+										})] })]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										className: "rounded-full bg-[#edf4ee] px-2.5 py-1 text-[9px] font-semibold text-[#50745b]",
+										children: [
+											conversations.length,
+											" ",
+											conversations.length === 1 ? "exchange" : "exchanges"
+										]
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "chat-transcript flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto bg-[#fdfcfb] px-3 py-5 sm:px-7 sm:py-7",
+									"aria-live": "polite",
+									"aria-label": "Client conversation",
+									children: conversations.length ? [...conversations].reverse().map((item, idx) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "space-y-4",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Message, {
+											align: "end",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, {
+												className: "h-8 w-8 rounded-full bg-[#eadfd2] text-[9px] text-[#67513c]",
+												children: "CL"
+											}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
+												className: "max-w-[88%] sm:max-w-[78%]",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageHeader, {
+													className: "justify-end",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: new Date(item.at).toLocaleTimeString([], {
+														hour: "numeric",
+														minute: "2-digit"
+													}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+														className: "font-semibold text-[#343330]",
+														children: selectedProject?.clientName || "Client"
+													})]
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
+													align: "end",
+													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, {
+														className: "text-xs sm:text-sm",
+														children: item.question
+													})
+												})]
+											})]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Message, {
+											align: "start",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, {
+												className: "h-8 w-8 rounded-xl bg-[#e9f1fb] text-[#0075de]",
+												children: "✳"
+											}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
+												className: "max-w-[88%] sm:max-w-[78%]",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "font-semibold text-[#343330]",
+													children: "Project Assistant"
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Project facts" })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
+													variant: "secondary",
+													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, {
+														className: "text-xs leading-relaxed sm:text-sm",
+														children: item.answer
+													})
+												})]
+											})]
+										})]
+									}, item.at || idx)) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "m-auto flex max-w-sm flex-col items-center px-5 py-10 text-center",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+												className: "mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-[#e9f1fb] text-[#0075de]",
+												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "h-6 w-6" })
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+												className: "text-base font-semibold text-[#282725]",
+												children: "Your project conversation starts here"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+												className: "mt-2 text-xs leading-relaxed text-[#797570]",
+												children: "Share a private client link. Their questions and the assistant’s replies will appear in this thread for your team to review."
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+												onClick: handleCreateInvite,
+												className: "mt-5 gap-2",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Share2, { className: "h-4 w-4" }), "Create client link"]
+											})
+										]
+									})
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex shrink-0 items-center justify-between gap-3 border-t border-[#efeeec] bg-white px-4 py-3 sm:px-5",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "text-[10px] leading-relaxed text-[#89857f]",
+										children: "Client questions are answered from facts recorded in this project."
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										variant: "subtle",
+										size: "sm",
+										onClick: handleCreateInvite,
+										className: "shrink-0 gap-1.5",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Share2, { className: "h-3.5 w-3.5" }), "Invite client"]
+									})]
+								})
+							]
+						})]
+					}) : currentTab === "activity" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "space-y-4",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "flex items-center justify-between",
@@ -16581,16 +16767,29 @@ function FounderApp() {
 									})
 								] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "grid grid-cols-2 sm:flex items-center gap-2 w-full sm:w-auto",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-										variant: "subtle",
-										onClick: () => setIsEditFactsOpen(true),
-										className: "gap-1.5",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PenLine, { className: "h-4 w-4" }), " Edit Facts"]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-										onClick: handleCreateInvite,
-										className: "gap-1.5",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Share2, { className: "h-4 w-4" }), " Share Link"]
-									})]
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+											variant: "subtle",
+											onClick: () => setCurrentTab("messages"),
+											className: "gap-1.5",
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "h-4 w-4" }),
+												" Messages",
+												conversations.length > 0 ? ` (${conversations.length})` : ""
+											]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+											variant: "subtle",
+											onClick: () => setIsEditFactsOpen(true),
+											className: "gap-1.5",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PenLine, { className: "h-4 w-4" }), " Edit Facts"]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+											onClick: handleCreateInvite,
+											className: "gap-1.5",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Share2, { className: "h-4 w-4" }), " Share Link"]
+										})
+									]
 								})]
 							}),
 							selectedProject.blocker && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -16949,6 +17148,11 @@ function FounderApp() {
 						onClick: () => setCurrentTab("projects"),
 						className: `flex flex-col items-center gap-1 text-[10px] font-medium ${currentTab === "projects" ? "text-[#0075de] font-semibold" : "text-gray-500"}`,
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "h-5 w-5" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Projects" })]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+						onClick: () => setCurrentTab("messages"),
+						className: `flex flex-col items-center gap-1 text-[10px] font-medium ${currentTab === "messages" ? "text-[#0075de] font-semibold" : "text-gray-500"}`,
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "h-5 w-5" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Messages" })]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 						onClick: () => setIsCreateProjectOpen(true),
