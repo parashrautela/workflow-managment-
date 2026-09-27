@@ -22493,39 +22493,40 @@ function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onShareClien
 	}, [open]);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		ref: rootRef,
-		className: "relative z-40 flex h-14 items-center justify-center overflow-visible",
+		className: "relative z-40 flex h-12 items-center justify-center overflow-visible",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Liquid, {
 			fill: "#202020",
 			blur: 7,
 			contrast: 18,
+			filterPadding: 200,
 			shadow: "0 6px 16px rgba(10, 20, 36, .22)",
-			className: "size-14 overflow-visible",
+			className: "size-12 overflow-visible",
 			children: [[
 				{
 					label: "New project",
 					Icon: FolderPlus,
-					x: -77,
-					y: -65,
+					x: -70,
+					y: -62,
 					onClick: onCreateProject
 				},
 				{
 					label: "Add member",
 					Icon: UserPlus,
-					x: -92,
-					y: -124,
+					x: -88,
+					y: -116,
 					onClick: onAddMember,
 					disabled: !hasProject
 				},
 				{
 					label: "Client link",
 					Icon: Link2,
-					x: -19,
-					y: -150,
+					x: -16,
+					y: -138,
 					onClick: onShareClientLink,
 					disabled: !hasProject
 				}
 			].map(({ label, Icon, x, y, onClick, disabled }, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Liquid.Item, {
-				className: "absolute left-1 top-1",
+				className: "absolute left-0.5 top-0.5",
 				x: open ? x : 0,
 				y: open ? y : 0,
 				scale: open ? 1 : 0,
@@ -22537,7 +22538,7 @@ function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onShareClien
 					title: label,
 					tabIndex: open && !disabled ? 0 : -1,
 					disabled,
-					className: "grid size-12 place-items-center rounded-full text-white outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-45",
+					className: "grid size-11 place-items-center rounded-full text-white outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-45",
 					style: { pointerEvents: open ? "auto" : "none" },
 					onClick: () => {
 						setOpen(false);
@@ -22554,10 +22555,10 @@ function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onShareClien
 					type: "button",
 					"aria-label": open ? "Close new actions" : "Open new actions",
 					"aria-expanded": open,
-					className: "grid size-14 place-items-center rounded-full border-2 border-white text-white outline-2 outline-offset-[-5px] outline-[#202020] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+					className: "grid size-12 place-items-center rounded-full border-2 border-white text-white outline-2 outline-offset-[-5px] outline-[#202020] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
 					onClick: () => setOpen((value) => !value),
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {
-						className: `size-6 transition-transform duration-300 ${open ? "rotate-45" : ""}`,
+						className: `size-5 transition-transform duration-300 ${open ? "rotate-45" : ""}`,
 						"aria-hidden": "true"
 					})
 				})
@@ -23449,7 +23450,7 @@ function FounderApp() {
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
-				className: "safe-bottom fixed inset-x-0 bottom-0 z-30 grid grid-cols-4 items-center border-t bg-card/95 px-2 pt-2 backdrop-blur md:hidden",
+				className: "safe-bottom fixed inset-x-0 bottom-0 z-30 grid grid-cols-4 items-center overflow-visible border-t bg-card/95 px-2 pt-3 backdrop-blur md:hidden",
 				"aria-label": "Mobile navigation",
 				children: [[
 					[
