@@ -69,7 +69,7 @@ function clientSession(req) {
 }
 function sendFile(res, filename) {
   const ext = path.extname(filename);
-  const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml' };
+  const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.webmanifest': 'application/manifest+json' };
   readFile(path.join(root, filename)).then((content) => { res.writeHead(200, { 'content-type': types[ext] || 'application/octet-stream', 'cache-control': 'no-cache' }); res.end(content); }).catch(() => { res.writeHead(404); res.end('Not found'); });
 }
 async function answerProjectQuestion(project, question) {
@@ -222,6 +222,9 @@ const server = http.createServer(async (req, res) => {
     if (req.method === 'GET' && url.pathname === '/') return sendFile(res, 'frontend/index.html');
     if (req.method === 'GET' && url.pathname === '/app.css') return sendFile(res, 'frontend/app.css');
     if (req.method === 'GET' && url.pathname === '/app.js') return sendFile(res, 'frontend/app.js');
+    if (req.method === 'GET' && url.pathname === '/sw.js') return sendFile(res, 'frontend/sw.js');
+    if (req.method === 'GET' && url.pathname === '/manifest.webmanifest') return sendFile(res, 'frontend/manifest.webmanifest');
+    if (req.method === 'GET' && ['/icons/icon-192.png', '/icons/icon-512.png', '/icons/apple-touch-icon.png'].includes(url.pathname)) return sendFile(res, `frontend${url.pathname}`);
     if (req.method === 'GET' && url.pathname.startsWith('/c/')) return sendFile(res, 'frontend/client.html');
     res.writeHead(404); res.end('Not found');
   } catch (error) {

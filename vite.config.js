@@ -7,6 +7,9 @@ import path from "node:path";
 
 export default defineConfig({
   mode: "production",
+  resolve: {
+    alias: { "@": path.resolve("frontend/src") },
+  },
   plugins: [
     react({
       jsxRuntime: "automatic",

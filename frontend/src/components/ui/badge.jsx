@@ -1,31 +1,45 @@
-import * as React from "react";
+import * as React from "react"
 import { cva } from "class-variance-authority";
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils"
+import { Slot } from "radix-ui"
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-wider transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3",
   {
     variants: {
       variant: {
-        default: "border-transparent bg-[#0075de] text-white shadow-xs hover:bg-[#005bab]",
-        secondary: "border-transparent bg-[#f2f1ef] text-[#55514d] hover:bg-[#e8e7e5]",
-        destructive: "border-transparent bg-[#fbeae8] text-[#d13438]",
-        outline: "text-[#161615] border-[#eae8e5] bg-white/70",
-        admin: "border-transparent bg-[#f2edf8] text-[#7662a3]",
-        designer: "border-transparent bg-[#edf5fc] text-[#0075de]",
-        supervisor: "border-transparent bg-[#e6f6f5] text-[#2a9d99]",
-        trade: "border-transparent bg-[#fdf3ec] text-[#dd5b00]",
-        success: "border-transparent bg-[#e7f3ec] text-[#1aae39]",
+        default: "bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
+        secondary:
+          "bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
+        destructive:
+          "bg-destructive text-white focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 [a&]:hover:bg-destructive/90",
+        outline:
+          "border-border text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+        ghost: "[a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 [a&]:hover:underline",
       },
     },
     defaultVariants: {
       variant: "default",
     },
   }
-);
+)
 
-function Badge({ className, variant, ...props }) {
-  return <div className={cn(badgeVariants({ variant }), className)} {...props} />;
+function Badge({
+  className,
+  variant = "default",
+  asChild = false,
+  ...props
+}) {
+  const Comp = asChild ? Slot.Root : "span"
+
+  return (
+    <Comp
+      data-slot="badge"
+      data-variant={variant}
+      className={cn(badgeVariants({ variant }), className)}
+      {...props} />
+  );
 }
 
-export { Badge, badgeVariants };
+export { Badge, badgeVariants }
