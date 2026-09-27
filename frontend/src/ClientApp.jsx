@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Sparkles, Send, AlertCircle, CheckCircle2 } from "lucide-react";
 import { Button } from "./components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent } from "./components/ui/card";
+import { Card } from "./components/ui/card";
 import { Badge } from "./components/ui/badge";
-import { Input } from "./components/ui/input";
+import { Avatar } from "./components/ui/avatar";
+import { Bubble, BubbleContent } from "./components/ui/bubble";
+import { Message, MessageAvatar, MessageContent, MessageFooter, MessageHeader } from "./components/ui/message";
 
 const api = async (url, options = {}) => {
   const response = await fetch(url, { credentials: "same-origin", ...options, headers: { "content-type": "application/json", ...(options.headers || {}) } });
@@ -23,20 +25,23 @@ export default function ClientApp() {
   const [isAsking, setIsAsking] = useState(false);
   const messagesEndRef = useRef(null);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  const scrollToBottom = () => messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages, isAsking]);
+  const loadHistory = async () => {
+    try {
+      const data = await api("/api/client/conversation");
+      if (data.messages) setMessages(data.messages);
+    } catch {
+      // The project chat remains usable if there is no saved history yet.
+    }
+  };
 
   useEffect(() => {
     const claimLink = async () => {
       try {
         const res = await post("/api/client/claim", { token });
         setProject(res.project);
-        loadHistory();
+        await loadHistory();
       } catch (err) {
         setError(err.message);
       }
@@ -44,35 +49,22 @@ export default function ClientApp() {
     claimLink();
   }, [token]);
 
-  const loadHistory = async () => {
-    try {
-      const data = await api("/api/client/conversation");
-      if (data.messages) {
-        setMessages(data.messages);
-      }
-    } catch {
-      // Graceful fallback
-    }
-  };
+  useEffect(() => { scrollToBottom(); }, [messages, isAsking]);
 
   const handleAsk = async (questionText) => {
-    const q = questionText || inputQuestion;
-    if (!q.trim() || isAsking) return;
+    const question = (questionText || inputQuestion).trim();
+    if (!question || isAsking) return;
 
-    const newMsg = { question: q, answer: null, at: new Date().toISOString() };
-    setMessages((prev) => [...prev, newMsg]);
+    const sentAt = new Date().toISOString();
+    setMessages((previous) => [...previous, { question, answer: null, at: sentAt }]);
     setInputQuestion("");
     setIsAsking(true);
 
     try {
-      const res = await post("/api/client/chat", { question: q });
-      setMessages((prev) => 
-        prev.map((m, idx) => idx === prev.length - 1 ? { ...m, answer: res.answer } : m)
-      );
+      const res = await post("/api/client/chat", { question });
+      setMessages((previous) => previous.map((message) => message.at === sentAt ? { ...message, answer: res.answer } : message));
     } catch (err) {
-      setMessages((prev) => 
-        prev.map((m, idx) => idx === prev.length - 1 ? { ...m, answer: `Error: ${err.message}` } : m)
-      );
+      setMessages((previous) => previous.map((message) => message.at === sentAt ? { ...message, answer: `I couldn’t get an answer just now: ${err.message}` } : message));
     } finally {
       setIsAsking(false);
     }
@@ -80,22 +72,14 @@ export default function ClientApp() {
 
   if (error) {
     return (
-      <main className="min-h-screen grid place-items-center bg-[#f6f5f4] p-4">
-        <Card className="w-full max-w-md p-6 sm:p-8 rounded-2xl shadow-xl text-center space-y-4">
-          <div className="w-12 h-12 rounded-full bg-amber-100 text-amber-600 grid place-items-center mx-auto text-xl font-bold">
-            <AlertCircle className="h-6 w-6" />
-          </div>
+      <main className="min-h-[100dvh] grid place-items-center bg-[#f6f5f4] p-4">
+        <Card className="w-full max-w-md space-y-4 rounded-2xl p-6 text-center shadow-xl sm:p-8">
+          <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-amber-100 text-amber-600"><AlertCircle className="h-6 w-6" /></div>
           <span className="text-[10px] font-bold tracking-widest text-[#96918c] uppercase">LINK CLAIM NOTICE</span>
-          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Unable to Open Link</h1>
-          <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
-            For privacy, each private client link can be claimed by one browser only. If you opened this link on another device or need a replacement, please contact your project founder.
-          </p>
-          <div className="p-3 bg-red-50 text-red-700 rounded-lg text-xs font-medium">
-            {error}
-          </div>
-          <Button variant="secondary" className="w-full" onClick={() => location.reload()}>
-            Retry Connection
-          </Button>
+          <h1 className="text-xl font-bold text-gray-900 sm:text-2xl">Unable to Open Link</h1>
+          <p className="text-xs leading-relaxed text-gray-500 sm:text-sm">For privacy, each private client link can be claimed by one browser only. If you opened this link on another device or need a replacement, please contact your project founder.</p>
+          <div className="rounded-lg bg-red-50 p-3 text-xs font-medium text-red-700">{error}</div>
+          <Button variant="secondary" className="w-full" onClick={() => location.reload()}>Retry Connection</Button>
         </Card>
       </main>
     );
@@ -103,172 +87,89 @@ export default function ClientApp() {
 
   if (!project) {
     return (
-      <main className="min-h-screen grid place-items-center bg-[#f6f5f4]">
-        <div className="text-center space-y-3">
-          <div className="w-7 h-7 border-2 border-gray-300 border-t-[#0075de] rounded-full animate-spin mx-auto" />
-          <p className="text-sm font-medium text-gray-500">Opening your private project space…</p>
-        </div>
+      <main className="grid min-h-[100dvh] place-items-center bg-[#f6f5f4]">
+        <div className="space-y-3 text-center"><div className="mx-auto h-7 w-7 animate-spin rounded-full border-2 border-gray-300 border-t-[#0075de]" /><p className="text-sm font-medium text-gray-500">Opening your private project space…</p></div>
       </main>
     );
   }
 
   const firstName = project.clientName?.trim().split(/\s+/)[0] || "there";
+  const askOnEnter = (event) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      handleAsk();
+    }
+  };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#f6f5f4] max-w-2xl mx-auto px-4 sm:px-6">
-      <header className="h-16 flex items-center justify-between border-b border-[#e8e6e3] shrink-0">
-        <div className="flex items-center gap-2.5 font-bold text-base">
-          <span className="grid place-items-center w-7 h-7 rounded-lg bg-black text-white font-bold text-xs">i</span>
-          <span>studio iksha</span>
-        </div>
-        <span className="text-[10px] font-bold text-gray-500 tracking-wider flex items-center gap-1.5 uppercase">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> Private Portal
-        </span>
+    <div className="client-chat-shell mx-auto flex h-[100dvh] min-h-[520px] w-full max-w-4xl flex-col overflow-hidden bg-[#f6f5f4] px-3 sm:px-6">
+      <header className="flex h-14 shrink-0 items-center justify-between border-b border-[#e8e6e3] sm:h-16">
+        <div className="flex items-center gap-2.5 text-sm font-bold sm:text-base"><span className="grid h-8 w-8 place-items-center rounded-xl bg-[#243d2e] text-xs text-white">i</span><span>studio iksha</span></div>
+        <span className="flex items-center gap-1.5 text-[9px] font-bold tracking-wider text-gray-500 uppercase sm:text-[10px]"><span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />Private Portal</span>
       </header>
 
-      <main className="flex-1 py-6 space-y-5">
-        <div>
-          <span className="text-[10px] font-bold tracking-widest text-[#96918c] uppercase">PROJECT SPACE</span>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#161615] mt-0.5">Hello, {firstName}.</h1>
-          <p className="text-xs sm:text-sm text-[#797570]">Stay up to date with real-time facts for <strong>{project.name}</strong>.</p>
+      <main className="flex min-h-0 flex-1 flex-col py-3 sm:py-5">
+        <div className="mb-3 flex shrink-0 items-center justify-between gap-3 px-1 sm:mb-4">
+          <div className="min-w-0"><span className="text-[9px] font-bold tracking-widest text-[#96918c] uppercase sm:text-[10px]">PROJECT SPACE</span><h1 className="mt-0.5 truncate text-xl font-bold tracking-tight text-[#161615] sm:text-2xl">{project.name}</h1></div>
+          <Badge variant={project.status === "At risk" ? "trade" : "success"} className="shrink-0 gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-current" />{project.status || "On track"}</Badge>
         </div>
 
-        {/* Project Snapshot */}
-        <Card className="p-5 space-y-4">
-          <div className="flex items-center justify-between">
-            <span className="text-[10px] font-bold tracking-wider text-[#96918c] uppercase">PROJECT SNAPSHOT</span>
-            <Badge variant={project.status === "At risk" ? "trade" : "success"} className="gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-current" />
-              {project.status || "On track"}
-            </Badge>
+        <Card className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border border-[#e9e6e1] bg-white shadow-[0_12px_40px_-32px_rgba(32,39,33,0.35)]">
+          <div className="flex shrink-0 items-center justify-between border-b border-[#efeeec] px-3 py-3 sm:px-5">
+            <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
+              <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#e9f1fb] text-[#0075de]"><Sparkles className="h-4 w-4" /></div>
+              <div className="min-w-0"><strong className="block truncate text-xs font-semibold sm:text-sm">Project Assistant</strong><span className="mt-0.5 block truncate text-[9px] text-gray-400 sm:text-[10px]">Ask about milestones, status, or project plans</span></div>
+            </div>
+            <span className="ml-2 flex shrink-0 items-center gap-1.5 text-[9px] text-gray-400"><span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />Online</span>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 pt-3 border-t border-[#efeeec]">
-            <div>
-              <span className="text-[10px] font-bold tracking-wider text-[#96918c] uppercase block">CURRENT PHASE</span>
-              <strong className="text-sm font-semibold block mt-0.5">{project.phase || "Design"}</strong>
-            </div>
-            <div>
-              <span className="text-[10px] font-bold tracking-wider text-[#96918c] uppercase block">RECENT TASK</span>
-              <strong className="text-sm font-semibold block mt-0.5">{project.recentTask || "Work in progress"}</strong>
-            </div>
-          </div>
+          <div className="chat-transcript flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-3 py-4 sm:gap-5 sm:px-6 sm:py-6" aria-live="polite" aria-label="Project conversation">
+            <Message align="start">
+              <MessageAvatar><Avatar className="h-8 w-8 rounded-xl bg-[#e9f1fb] text-[#0075de]">✳</Avatar></MessageAvatar>
+              <MessageContent className="max-w-[88%] sm:max-w-[80%]">
+                <MessageHeader><span className="font-semibold text-[#343330]">Project Assistant</span><span>Welcome</span></MessageHeader>
+                <Bubble variant="secondary"><BubbleContent className="text-xs sm:text-sm">Hi {firstName}! I can share live project updates for <strong>{project.name}</strong>. What would you like to know today?</BubbleContent></Bubble>
+              </MessageContent>
+            </Message>
 
-          {project.nextMilestone && (
-            <div className="pt-3 border-t border-[#efeeec]">
-              <span className="text-[10px] font-bold tracking-wider text-[#96918c] uppercase block">NEXT MILESTONE</span>
-              <strong className="text-sm font-semibold text-gray-800 block mt-0.5">{project.nextMilestone}</strong>
-            </div>
-          )}
-
-          {project.blocker && (
-            <div className="p-3 bg-[#fdf3ec] border border-[#f6cfb0] rounded-lg">
-              <span className="text-[10px] font-bold tracking-wider text-[#dd5b00] uppercase block">CURRENT BLOCKER</span>
-              <strong className="text-xs font-semibold text-[#8a3600] block mt-0.5">{project.blocker}</strong>
-            </div>
-          )}
-        </Card>
-
-        {/* Chat Assistant */}
-        <Card className="overflow-hidden flex flex-col">
-          <div className="p-4 border-b border-[#efeeec] flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#0075de] grid place-items-center">
-                <Sparkles className="h-4 w-4" />
-              </div>
-              <div>
-                <strong className="text-xs sm:text-sm font-semibold block">Project Assistant</strong>
-                <span className="text-[10px] text-gray-400">Ask anything about milestones, status, or phase</span>
-              </div>
-            </div>
-            <span className="w-2 h-2 rounded-full bg-emerald-500" title="Online" />
-          </div>
-
-          {/* Messages Feed */}
-          <div className="p-4 space-y-3.5 h-64 overflow-y-auto">
-            <div className="flex items-start gap-2 max-w-[88%]">
-              <div className="w-6 h-6 rounded-md bg-blue-50 text-[#0075de] grid place-items-center text-xs shrink-0 mt-0.5">✳</div>
-              <div className="p-3 bg-[#f2f1ee] rounded-2xl rounded-tl-sm text-xs sm:text-sm leading-relaxed text-gray-800">
-                Hi {firstName}! I can share live project updates for <strong>{project.name}</strong>. What would you like to know today?
-              </div>
-            </div>
-
-            {messages.map((m, idx) => (
-              <React.Fragment key={idx}>
-                <div className="flex justify-end">
-                  <div className="p-3 bg-[#0075de] text-white rounded-2xl rounded-tr-sm text-xs sm:text-sm max-w-[88%] leading-relaxed shadow-sm">
-                    {m.question}
-                  </div>
-                </div>
-                {m.answer && (
-                  <div className="flex items-start gap-2 max-w-[88%]">
-                    <div className="w-6 h-6 rounded-md bg-blue-50 text-[#0075de] grid place-items-center text-xs shrink-0 mt-0.5">✳</div>
-                    <div className="p-3 bg-[#f2f1ee] rounded-2xl rounded-tl-sm text-xs sm:text-sm leading-relaxed text-gray-800">
-                      {m.answer}
-                    </div>
-                  </div>
-                )}
+            {messages.map((message, index) => (
+              <React.Fragment key={message.at || index}>
+                <Message align="end">
+                  <MessageAvatar><Avatar className="h-8 w-8 rounded-full bg-[#eadfd2] text-[10px] font-semibold text-[#67513c]">{firstName.slice(0, 2).toUpperCase()}</Avatar></MessageAvatar>
+                  <MessageContent className="max-w-[88%] sm:max-w-[80%]">
+                    <MessageHeader className="justify-end"><span>{new Date(message.at).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}</span><span className="font-semibold text-[#343330]">You</span></MessageHeader>
+                    <Bubble align="end"><BubbleContent className="text-xs sm:text-sm">{message.question}</BubbleContent></Bubble>
+                    <MessageFooter className="text-right">Sent</MessageFooter>
+                  </MessageContent>
+                </Message>
+                {message.answer && <Message align="start">
+                  <MessageAvatar><Avatar className="h-8 w-8 rounded-xl bg-[#e9f1fb] text-[#0075de]">✳</Avatar></MessageAvatar>
+                  <MessageContent className="max-w-[88%] sm:max-w-[80%]">
+                    <MessageHeader><span className="font-semibold text-[#343330]">Project Assistant</span></MessageHeader>
+                    <Bubble variant="secondary"><BubbleContent className="text-xs sm:text-sm">{message.answer}</BubbleContent></Bubble>
+                  </MessageContent>
+                </Message>}
               </React.Fragment>
             ))}
 
-            {isAsking && (
-              <div className="flex items-start gap-2">
-                <div className="w-6 h-6 rounded-md bg-blue-50 text-[#0075de] grid place-items-center text-xs shrink-0">✳</div>
-                <div className="p-3 bg-[#f2f1ee] rounded-2xl text-xs flex gap-1.5 items-center">
-                  <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" />
-                  <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:0.2s]" />
-                  <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:0.4s]" />
-                </div>
-              </div>
-            )}
+            {isAsking && <Message align="start" role="status" aria-label="Project Assistant is responding">
+              <MessageAvatar><Avatar className="h-8 w-8 rounded-xl bg-[#e9f1fb] text-[#0075de]">✳</Avatar></MessageAvatar>
+              <MessageContent><MessageHeader><span className="font-semibold text-[#343330]">Project Assistant</span></MessageHeader><Bubble variant="secondary"><BubbleContent><span className="flex items-center gap-1.5 py-1"><span className="h-1.5 w-1.5 animate-bounce rounded-full bg-gray-400" /><span className="h-1.5 w-1.5 animate-bounce rounded-full bg-gray-400 [animation-delay:0.15s]" /><span className="h-1.5 w-1.5 animate-bounce rounded-full bg-gray-400 [animation-delay:0.3s]" /></span></BubbleContent></Bubble></MessageContent>
+            </Message>}
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Prompt Chips */}
-          <div className="px-4 pb-2 flex gap-2 overflow-x-auto no-scrollbar">
-            <button
-              onClick={() => handleAsk("How is the project going?")}
-              className="px-3 py-1.5 rounded-full bg-white border border-gray-200 text-xs text-gray-600 whitespace-nowrap hover:border-[#0075de] hover:text-[#0075de] transition-colors"
-            >
-              How is the project going?
-            </button>
-            <button
-              onClick={() => handleAsk("What phase are we currently in?")}
-              className="px-3 py-1.5 rounded-full bg-white border border-gray-200 text-xs text-gray-600 whitespace-nowrap hover:border-[#0075de] hover:text-[#0075de] transition-colors"
-            >
-              What phase are we in?
-            </button>
-            <button
-              onClick={() => handleAsk("What was the recent task?")}
-              className="px-3 py-1.5 rounded-full bg-white border border-gray-200 text-xs text-gray-600 whitespace-nowrap hover:border-[#0075de] hover:text-[#0075de] transition-colors"
-            >
-              Recent task?
-            </button>
+          <div className="flex shrink-0 gap-2 overflow-x-auto border-t border-[#f0efed] px-3 py-2.5 no-scrollbar sm:px-5">
+            {["How is the project going?", "What phase are we in?", "Recent task?"].map((question) => <button key={question} onClick={() => handleAsk(question)} disabled={isAsking} className="min-h-9 shrink-0 rounded-full border border-[#e8e5e0] bg-[#fcfbf9] px-3 text-[10px] text-[#65615c] transition hover:border-[#0075de] hover:text-[#0075de] disabled:opacity-50 sm:text-xs">{question}</button>)}
           </div>
 
-          {/* Form */}
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleAsk();
-            }}
-            className="p-3 border-t border-[#efeeec] flex items-center gap-2 bg-white"
-          >
-            <Input
-              value={inputQuestion}
-              onChange={(e) => setInputQuestion(e.target.value)}
-              placeholder="Ask about progress, status, or milestones…"
-              className="h-10 text-xs sm:text-sm rounded-full bg-transparent"
-            />
-            <Button type="submit" size="icon" disabled={!inputQuestion.trim() || isAsking} className="rounded-full shrink-0">
-              <Send className="h-4 w-4" />
-            </Button>
+          <form onSubmit={(event) => { event.preventDefault(); handleAsk(); }} className="flex shrink-0 items-end gap-2 border-t border-[#efeeec] bg-white px-2.5 py-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom))] sm:px-4 sm:py-3">
+            <textarea value={inputQuestion} onChange={(event) => setInputQuestion(event.target.value)} onKeyDown={askOnEnter} rows={1} aria-label="Ask a project question" placeholder="Ask about progress, status, or milestones…" className="min-h-11 max-h-32 min-w-0 flex-1 resize-y rounded-xl border border-[#e7e4df] bg-[#fcfbfa] px-3.5 py-3 text-xs leading-relaxed outline-none transition focus:border-[#9bc6ed] focus:ring-4 focus:ring-[#e9f3fc] placeholder:text-gray-400 sm:text-sm" />
+            <Button type="submit" size="icon" disabled={!inputQuestion.trim() || isAsking} aria-label="Send question" className="h-11 w-11 shrink-0 rounded-xl"><Send className="h-4 w-4" /></Button>
           </form>
         </Card>
 
-        <p className="text-[10px] text-center text-gray-400">
-          Updates reflect facts recorded by your project team. The founder can review this transcript.
-        </p>
+        <div className="hidden shrink-0 items-center justify-center gap-1.5 pt-3 text-[10px] text-gray-400 sm:flex"><CheckCircle2 className="h-3.5 w-3.5" />Updates reflect facts recorded by your project team. Your founder can review this transcript.</div>
       </main>
     </div>
   );

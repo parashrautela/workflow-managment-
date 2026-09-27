@@ -32,6 +32,8 @@ import { Badge } from "./components/ui/badge";
 import { Dialog, DialogHeader, DialogTitle, DialogDescription } from "./components/ui/dialog";
 import { Input } from "./components/ui/input";
 import { Avatar } from "./components/ui/avatar";
+import { Bubble, BubbleContent } from "./components/ui/bubble";
+import { Message, MessageAvatar, MessageContent, MessageHeader } from "./components/ui/message";
 
 const api = async (url, options = {}) => {
   const response = await fetch(url, { credentials: "same-origin", ...options, headers: { "content-type": "application/json", ...(options.headers || {}) } });
@@ -640,18 +642,23 @@ export default function FounderApp() {
                   <h4 className="text-sm sm:text-base font-semibold">Shared Conversation History</h4>
                   <p className="text-xs text-gray-500">Questions and assistant responses asked through the client link.</p>
                 </div>
-                <div className="space-y-3 max-h-64 overflow-y-auto">
+                <div className="chat-transcript space-y-4 max-h-80 overflow-y-auto rounded-xl bg-[#fcfbf9] p-3 sm:p-4">
                   {conversations.length ? conversations.map((item, idx) => (
-                    <div key={idx} className="p-3.5 bg-gray-50 rounded-xl space-y-2 border border-gray-100">
-                      <div className="flex items-center justify-between text-[11px] text-gray-400">
-                        <Badge variant="outline" className="text-[9px]">Client Question</Badge>
-                        <span>{new Date(item.at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</span>
-                      </div>
-                      <p className="text-xs font-semibold text-gray-800">{item.question}</p>
-                      <div className="p-2.5 bg-white rounded-lg border border-gray-200 text-xs text-gray-600 leading-relaxed">
-                        <span className="text-[9px] font-bold text-gray-400 block uppercase mb-1">ASSISTANT</span>
-                        {item.answer}
-                      </div>
+                    <div key={idx} className="space-y-3">
+                      <Message align="end">
+                        <MessageAvatar><Avatar className="h-7 w-7 rounded-full bg-[#eadfd2] text-[9px]">CL</Avatar></MessageAvatar>
+                        <MessageContent className="max-w-[88%] sm:max-w-[80%]">
+                          <MessageHeader className="justify-end"><span>{new Date(item.at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</span><Badge variant="outline" className="text-[9px]">Client</Badge></MessageHeader>
+                          <Bubble align="end"><BubbleContent className="text-xs">{item.question}</BubbleContent></Bubble>
+                        </MessageContent>
+                      </Message>
+                      <Message align="start">
+                        <MessageAvatar><Avatar className="h-7 w-7 rounded-xl bg-[#e9f1fb] text-[9px] text-[#0075de]">✳</Avatar></MessageAvatar>
+                        <MessageContent className="max-w-[88%] sm:max-w-[80%]">
+                          <MessageHeader><span className="font-semibold text-gray-700">Project Assistant</span></MessageHeader>
+                          <Bubble variant="secondary"><BubbleContent className="text-xs leading-relaxed">{item.answer}</BubbleContent></Bubble>
+                        </MessageContent>
+                      </Message>
                     </div>
                   )) : (
                     <div className="py-8 text-center text-xs text-gray-400">No client questions recorded yet.</div>

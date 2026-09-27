@@ -11675,7 +11675,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$19 = {
+var __iconData$20 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11686,8 +11686,8 @@ var __iconData$19 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$19.node;
-var ArrowRight = createLucideIcon(__iconData$19);
+__iconData$20.node;
+var ArrowRight = createLucideIcon(__iconData$20);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
@@ -11696,7 +11696,7 @@ var ArrowRight = createLucideIcon(__iconData$19);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$18 = {
+var __iconData$19 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -11723,8 +11723,32 @@ var __iconData$18 = {
 	],
 	aliases: ["alert-circle"]
 };
+__iconData$19.node;
+var CircleAlert = createLucideIcon(__iconData$19);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/circle-check.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$18 = {
+	name: "circle-check",
+	size: 24,
+	node: [["circle", {
+		cx: "12",
+		cy: "12",
+		r: "10",
+		key: "1mglay"
+	}], ["path", {
+		d: "m16 9-5.5 5.5L8 12",
+		key: "xofnsj"
+	}]],
+	aliases: ["check-circle-2"]
+};
 __iconData$18.node;
-var CircleAlert = createLucideIcon(__iconData$18);
+var CircleCheck = createLucideIcon(__iconData$18);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
@@ -15965,6 +15989,71 @@ var Avatar = import_react.forwardRef(({ className, children, ...props }, ref) =>
 }));
 Avatar.displayName = "Avatar";
 //#endregion
+//#region frontend/src/components/ui/bubble.jsx
+var bubbleVariants = cva("group/bubble relative flex w-fit max-w-[82%] min-w-0 flex-col", {
+	variants: { variant: {
+		default: "*:data-[slot=bubble-content]:bg-[#0075de] *:data-[slot=bubble-content]:text-white",
+		secondary: "*:data-[slot=bubble-content]:bg-[#f0efec] *:data-[slot=bubble-content]:text-[#282725]",
+		outline: "*:data-[slot=bubble-content]:border-[#e6e3df] *:data-[slot=bubble-content]:bg-white",
+		ghost: "max-w-full *:data-[slot=bubble-content]:bg-transparent *:data-[slot=bubble-content]:p-0"
+	} },
+	defaultVariants: { variant: "default" }
+});
+function Bubble({ className, variant = "default", align = "start", ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "bubble",
+		"data-variant": variant,
+		"data-align": align,
+		className: cn(bubbleVariants({ variant }), align === "end" && "ml-auto", className),
+		...props
+	});
+}
+function BubbleContent({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "bubble-content",
+		className: cn("w-fit max-w-full min-w-0 break-words rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed", className),
+		...props
+	});
+}
+//#endregion
+//#region frontend/src/components/ui/message.jsx
+function Message({ className, align = "start", ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "message",
+		"data-align": align,
+		className: cn("group/message flex min-w-0 gap-2.5 text-sm", align === "end" && "flex-row-reverse", className),
+		...props
+	});
+}
+function MessageAvatar({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "message-avatar",
+		className: cn("flex shrink-0 self-end", className),
+		...props
+	});
+}
+function MessageContent({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "message-content",
+		className: cn("flex min-w-0 max-w-full flex-col gap-1.5", className),
+		...props
+	});
+}
+function MessageHeader({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "message-header",
+		className: cn("flex items-center gap-2 px-1 text-[10px] text-[#89857f]", className),
+		...props
+	});
+}
+function MessageFooter({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "message-footer",
+		className: cn("px-1 text-[10px] text-[#89857f]", className),
+		...props
+	});
+}
+//#endregion
 //#region frontend/src/FounderApp.jsx
 var api$1 = async (url, options = {}) => {
 	const response = await fetch(url, {
@@ -16787,33 +16876,53 @@ function FounderApp() {
 										})
 									]
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "space-y-3 max-h-64 overflow-y-auto",
+									className: "chat-transcript space-y-4 max-h-80 overflow-y-auto rounded-xl bg-[#fcfbf9] p-3 sm:p-4",
 									children: conversations.length ? conversations.map((item, idx) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "p-3.5 bg-gray-50 rounded-xl space-y-2 border border-gray-100",
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "flex items-center justify-between text-[11px] text-gray-400",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-													variant: "outline",
-													className: "text-[9px]",
-													children: "Client Question"
-												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: new Date(item.at).toLocaleTimeString([], {
-													hour: "2-digit",
-													minute: "2-digit"
-												}) })]
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-												className: "text-xs font-semibold text-gray-800",
-												children: item.question
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "p-2.5 bg-white rounded-lg border border-gray-200 text-xs text-gray-600 leading-relaxed",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-													className: "text-[9px] font-bold text-gray-400 block uppercase mb-1",
-													children: "ASSISTANT"
-												}), item.answer]
-											})
-										]
+										className: "space-y-3",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Message, {
+											align: "end",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, {
+												className: "h-7 w-7 rounded-full bg-[#eadfd2] text-[9px]",
+												children: "CL"
+											}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
+												className: "max-w-[88%] sm:max-w-[80%]",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageHeader, {
+													className: "justify-end",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: new Date(item.at).toLocaleTimeString([], {
+														hour: "2-digit",
+														minute: "2-digit"
+													}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+														variant: "outline",
+														className: "text-[9px]",
+														children: "Client"
+													})]
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
+													align: "end",
+													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, {
+														className: "text-xs",
+														children: item.question
+													})
+												})]
+											})]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Message, {
+											align: "start",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, {
+												className: "h-7 w-7 rounded-xl bg-[#e9f1fb] text-[9px] text-[#0075de]",
+												children: "✳"
+											}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
+												className: "max-w-[88%] sm:max-w-[80%]",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageHeader, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "font-semibold text-gray-700",
+													children: "Project Assistant"
+												}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
+													variant: "secondary",
+													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, {
+														className: "text-xs leading-relaxed",
+														children: item.answer
+													})
+												})]
+											})]
+										})]
 									}, idx)) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 										className: "py-8 text-center text-xs text-gray-400",
 										children: "No client questions recorded yet."
@@ -17249,63 +17358,64 @@ function ClientApp() {
 	const [inputQuestion, setInputQuestion] = (0, import_react.useState)("");
 	const [isAsking, setIsAsking] = (0, import_react.useState)(false);
 	const messagesEndRef = (0, import_react.useRef)(null);
-	const scrollToBottom = () => {
-		messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-	};
-	(0, import_react.useEffect)(() => {
-		scrollToBottom();
-	}, [messages, isAsking]);
-	(0, import_react.useEffect)(() => {
-		const claimLink = async () => {
-			try {
-				const res = await post("/api/client/claim", { token });
-				setProject(res.project);
-				loadHistory();
-			} catch (err) {
-				setError(err.message);
-			}
-		};
-		claimLink();
-	}, [token]);
+	const scrollToBottom = () => messagesEndRef.current?.scrollIntoView({
+		behavior: "smooth",
+		block: "end"
+	});
 	const loadHistory = async () => {
 		try {
 			const data = await api("/api/client/conversation");
 			if (data.messages) setMessages(data.messages);
 		} catch {}
 	};
-	const handleAsk = async (questionText) => {
-		const q = questionText || inputQuestion;
-		if (!q.trim() || isAsking) return;
-		const newMsg = {
-			question: q,
-			answer: null,
-			at: (/* @__PURE__ */ new Date()).toISOString()
+	(0, import_react.useEffect)(() => {
+		const claimLink = async () => {
+			try {
+				const res = await post("/api/client/claim", { token });
+				setProject(res.project);
+				await loadHistory();
+			} catch (err) {
+				setError(err.message);
+			}
 		};
-		setMessages((prev) => [...prev, newMsg]);
+		claimLink();
+	}, [token]);
+	(0, import_react.useEffect)(() => {
+		scrollToBottom();
+	}, [messages, isAsking]);
+	const handleAsk = async (questionText) => {
+		const question = (questionText || inputQuestion).trim();
+		if (!question || isAsking) return;
+		const sentAt = (/* @__PURE__ */ new Date()).toISOString();
+		setMessages((previous) => [...previous, {
+			question,
+			answer: null,
+			at: sentAt
+		}]);
 		setInputQuestion("");
 		setIsAsking(true);
 		try {
-			const res = await post("/api/client/chat", { question: q });
-			setMessages((prev) => prev.map((m, idx) => idx === prev.length - 1 ? {
-				...m,
+			const res = await post("/api/client/chat", { question });
+			setMessages((previous) => previous.map((message) => message.at === sentAt ? {
+				...message,
 				answer: res.answer
-			} : m));
+			} : message));
 		} catch (err) {
-			setMessages((prev) => prev.map((m, idx) => idx === prev.length - 1 ? {
-				...m,
-				answer: `Error: ${err.message}`
-			} : m));
+			setMessages((previous) => previous.map((message) => message.at === sentAt ? {
+				...message,
+				answer: `I couldn’t get an answer just now: ${err.message}`
+			} : message));
 		} finally {
 			setIsAsking(false);
 		}
 	};
 	if (error) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
-		className: "min-h-screen grid place-items-center bg-[#f6f5f4] p-4",
+		className: "min-h-[100dvh] grid place-items-center bg-[#f6f5f4] p-4",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-			className: "w-full max-w-md p-6 sm:p-8 rounded-2xl shadow-xl text-center space-y-4",
+			className: "w-full max-w-md space-y-4 rounded-2xl p-6 text-center shadow-xl sm:p-8",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					className: "w-12 h-12 rounded-full bg-amber-100 text-amber-600 grid place-items-center mx-auto text-xl font-bold",
+					className: "mx-auto grid h-12 w-12 place-items-center rounded-full bg-amber-100 text-amber-600",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "h-6 w-6" })
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
@@ -17313,15 +17423,15 @@ function ClientApp() {
 					children: "LINK CLAIM NOTICE"
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-					className: "text-xl sm:text-2xl font-bold text-gray-900",
+					className: "text-xl font-bold text-gray-900 sm:text-2xl",
 					children: "Unable to Open Link"
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "text-xs sm:text-sm text-gray-500 leading-relaxed",
+					className: "text-xs leading-relaxed text-gray-500 sm:text-sm",
 					children: "For privacy, each private client link can be claimed by one browser only. If you opened this link on another device or need a replacement, please contact your project founder."
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					className: "p-3 bg-red-50 text-red-700 rounded-lg text-xs font-medium",
+					className: "rounded-lg bg-red-50 p-3 text-xs font-medium text-red-700",
 					children: error
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
@@ -17334,225 +17444,227 @@ function ClientApp() {
 		})
 	});
 	if (!project) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
-		className: "min-h-screen grid place-items-center bg-[#f6f5f4]",
+		className: "grid min-h-[100dvh] place-items-center bg-[#f6f5f4]",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "text-center space-y-3",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "w-7 h-7 border-2 border-gray-300 border-t-[#0075de] rounded-full animate-spin mx-auto" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "space-y-3 text-center",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "mx-auto h-7 w-7 animate-spin rounded-full border-2 border-gray-300 border-t-[#0075de]" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				className: "text-sm font-medium text-gray-500",
 				children: "Opening your private project space…"
 			})]
 		})
 	});
 	const firstName = project.clientName?.trim().split(/\s+/)[0] || "there";
+	const askOnEnter = (event) => {
+		if (event.key === "Enter" && !event.shiftKey) {
+			event.preventDefault();
+			handleAsk();
+		}
+	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "min-h-screen flex flex-col bg-[#f6f5f4] max-w-2xl mx-auto px-4 sm:px-6",
+		className: "client-chat-shell mx-auto flex h-[100dvh] min-h-[520px] w-full max-w-4xl flex-col overflow-hidden bg-[#f6f5f4] px-3 sm:px-6",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
-			className: "h-16 flex items-center justify-between border-b border-[#e8e6e3] shrink-0",
+			className: "flex h-14 shrink-0 items-center justify-between border-b border-[#e8e6e3] sm:h-16",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex items-center gap-2.5 font-bold text-base",
+				className: "flex items-center gap-2.5 text-sm font-bold sm:text-base",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "grid place-items-center w-7 h-7 rounded-lg bg-black text-white font-bold text-xs",
+					className: "grid h-8 w-8 place-items-center rounded-xl bg-[#243d2e] text-xs text-white",
 					children: "i"
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "studio iksha" })]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-				className: "text-[10px] font-bold text-gray-500 tracking-wider flex items-center gap-1.5 uppercase",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-emerald-500" }), " Private Portal"]
+				className: "flex items-center gap-1.5 text-[9px] font-bold tracking-wider text-gray-500 uppercase sm:text-[10px]",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "h-1.5 w-1.5 rounded-full bg-emerald-500" }), "Private Portal"]
 			})]
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
-			className: "flex-1 py-6 space-y-5",
+			className: "flex min-h-0 flex-1 flex-col py-3 sm:py-5",
 			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "text-[10px] font-bold tracking-widest text-[#96918c] uppercase",
-						children: "PROJECT SPACE"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h1", {
-						className: "text-2xl sm:text-3xl font-bold tracking-tight text-[#161615] mt-0.5",
-						children: [
-							"Hello, ",
-							firstName,
-							"."
-						]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-						className: "text-xs sm:text-sm text-[#797570]",
-						children: [
-							"Stay up to date with real-time facts for ",
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: project.name }),
-							"."
-						]
-					})
-				] }),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-					className: "p-5 space-y-4",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center justify-between",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase",
-								children: "PROJECT SNAPSHOT"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
-								variant: project.status === "At risk" ? "trade" : "success",
-								className: "gap-1.5",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-current" }), project.status || "On track"]
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "grid grid-cols-2 gap-4 pt-3 border-t border-[#efeeec]",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase block",
-								children: "CURRENT PHASE"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-								className: "text-sm font-semibold block mt-0.5",
-								children: project.phase || "Design"
-							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase block",
-								children: "RECENT TASK"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-								className: "text-sm font-semibold block mt-0.5",
-								children: project.recentTask || "Work in progress"
-							})] })]
-						}),
-						project.nextMilestone && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "pt-3 border-t border-[#efeeec]",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase block",
-								children: "NEXT MILESTONE"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-								className: "text-sm font-semibold text-gray-800 block mt-0.5",
-								children: project.nextMilestone
-							})]
-						}),
-						project.blocker && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "p-3 bg-[#fdf3ec] border border-[#f6cfb0] rounded-lg",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[10px] font-bold tracking-wider text-[#dd5b00] uppercase block",
-								children: "CURRENT BLOCKER"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-								className: "text-xs font-semibold text-[#8a3600] block mt-0.5",
-								children: project.blocker
-							})]
-						})
-					]
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mb-3 flex shrink-0 items-center justify-between gap-3 px-1 sm:mb-4",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "min-w-0",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "text-[9px] font-bold tracking-widest text-[#96918c] uppercase sm:text-[10px]",
+							children: "PROJECT SPACE"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+							className: "mt-0.5 truncate text-xl font-bold tracking-tight text-[#161615] sm:text-2xl",
+							children: project.name
+						})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
+						variant: project.status === "At risk" ? "trade" : "success",
+						className: "shrink-0 gap-1.5",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "h-1.5 w-1.5 rounded-full bg-current" }), project.status || "On track"]
+					})]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-					className: "overflow-hidden flex flex-col",
+					className: "flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border border-[#e9e6e1] bg-white shadow-[0_12px_40px_-32px_rgba(32,39,33,0.35)]",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "p-4 border-b border-[#efeeec] flex items-center justify-between",
+							className: "flex shrink-0 items-center justify-between border-b border-[#efeeec] px-3 py-3 sm:px-5",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center gap-3",
+								className: "flex min-w-0 items-center gap-2.5 sm:gap-3",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "w-8 h-8 rounded-lg bg-blue-50 text-[#0075de] grid place-items-center",
+									className: "grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#e9f1fb] text-[#0075de]",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "h-4 w-4" })
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-									className: "text-xs sm:text-sm font-semibold block",
-									children: "Project Assistant"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "text-[10px] text-gray-400",
-									children: "Ask anything about milestones, status, or phase"
-								})] })]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "w-2 h-2 rounded-full bg-emerald-500",
-								title: "Online"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "min-w-0",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+										className: "block truncate text-xs font-semibold sm:text-sm",
+										children: "Project Assistant"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "mt-0.5 block truncate text-[9px] text-gray-400 sm:text-[10px]",
+										children: "Ask about milestones, status, or project plans"
+									})]
+								})]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "ml-2 flex shrink-0 items-center gap-1.5 text-[9px] text-gray-400",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "h-1.5 w-1.5 rounded-full bg-emerald-500" }), "Online"]
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "p-4 space-y-3.5 h-64 overflow-y-auto",
+							className: "chat-transcript flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-3 py-4 sm:gap-5 sm:px-6 sm:py-6",
+							"aria-live": "polite",
+							"aria-label": "Project conversation",
 							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex items-start gap-2 max-w-[88%]",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "w-6 h-6 rounded-md bg-blue-50 text-[#0075de] grid place-items-center text-xs shrink-0 mt-0.5",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Message, {
+									align: "start",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, {
+										className: "h-8 w-8 rounded-xl bg-[#e9f1fb] text-[#0075de]",
 										children: "✳"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "p-3 bg-[#f2f1ee] rounded-2xl rounded-tl-sm text-xs sm:text-sm leading-relaxed text-gray-800",
-										children: [
-											"Hi ",
-											firstName,
-											"! I can share live project updates for ",
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: project.name }),
-											". What would you like to know today?"
-										]
+									}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
+										className: "max-w-[88%] sm:max-w-[80%]",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "font-semibold text-[#343330]",
+											children: "Project Assistant"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Welcome" })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
+											variant: "secondary",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(BubbleContent, {
+												className: "text-xs sm:text-sm",
+												children: [
+													"Hi ",
+													firstName,
+													"! I can share live project updates for ",
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: project.name }),
+													". What would you like to know today?"
+												]
+											})
+										})]
 									})]
 								}),
-								messages.map((m, idx) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_react.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "flex justify-end",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "p-3 bg-[#0075de] text-white rounded-2xl rounded-tr-sm text-xs sm:text-sm max-w-[88%] leading-relaxed shadow-sm",
-										children: m.question
-									})
-								}), m.answer && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex items-start gap-2 max-w-[88%]",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "w-6 h-6 rounded-md bg-blue-50 text-[#0075de] grid place-items-center text-xs shrink-0 mt-0.5",
-										children: "✳"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "p-3 bg-[#f2f1ee] rounded-2xl rounded-tl-sm text-xs sm:text-sm leading-relaxed text-gray-800",
-										children: m.answer
-									})]
-								})] }, idx)),
-								isAsking && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex items-start gap-2",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "w-6 h-6 rounded-md bg-blue-50 text-[#0075de] grid place-items-center text-xs shrink-0",
-										children: "✳"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "p-3 bg-[#f2f1ee] rounded-2xl text-xs flex gap-1.5 items-center",
+								messages.map((message, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_react.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Message, {
+									align: "end",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, {
+										className: "h-8 w-8 rounded-full bg-[#eadfd2] text-[10px] font-semibold text-[#67513c]",
+										children: firstName.slice(0, 2).toUpperCase()
+									}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
+										className: "max-w-[88%] sm:max-w-[80%]",
 										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" }),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:0.2s]" }),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:0.4s]" })
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageHeader, {
+												className: "justify-end",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: new Date(message.at).toLocaleTimeString([], {
+													hour: "numeric",
+													minute: "2-digit"
+												}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "font-semibold text-[#343330]",
+													children: "You"
+												})]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
+												align: "end",
+												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, {
+													className: "text-xs sm:text-sm",
+													children: message.question
+												})
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageFooter, {
+												className: "text-right",
+												children: "Sent"
+											})
 										]
 									})]
+								}), message.answer && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Message, {
+									align: "start",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, {
+										className: "h-8 w-8 rounded-xl bg-[#e9f1fb] text-[#0075de]",
+										children: "✳"
+									}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
+										className: "max-w-[88%] sm:max-w-[80%]",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageHeader, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "font-semibold text-[#343330]",
+											children: "Project Assistant"
+										}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
+											variant: "secondary",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, {
+												className: "text-xs sm:text-sm",
+												children: message.answer
+											})
+										})]
+									})]
+								})] }, message.at || index)),
+								isAsking && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Message, {
+									align: "start",
+									role: "status",
+									"aria-label": "Project Assistant is responding",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, {
+										className: "h-8 w-8 rounded-xl bg-[#e9f1fb] text-[#0075de]",
+										children: "✳"
+									}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageHeader, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "font-semibold text-[#343330]",
+										children: "Project Assistant"
+									}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
+										variant: "secondary",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+											className: "flex items-center gap-1.5 py-1",
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "h-1.5 w-1.5 animate-bounce rounded-full bg-gray-400" }),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "h-1.5 w-1.5 animate-bounce rounded-full bg-gray-400 [animation-delay:0.15s]" }),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "h-1.5 w-1.5 animate-bounce rounded-full bg-gray-400 [animation-delay:0.3s]" })
+											]
+										}) })
+									})] })]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { ref: messagesEndRef })
 							]
 						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "px-4 pb-2 flex gap-2 overflow-x-auto no-scrollbar",
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "flex shrink-0 gap-2 overflow-x-auto border-t border-[#f0efed] px-3 py-2.5 no-scrollbar sm:px-5",
 							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-									onClick: () => handleAsk("How is the project going?"),
-									className: "px-3 py-1.5 rounded-full bg-white border border-gray-200 text-xs text-gray-600 whitespace-nowrap hover:border-[#0075de] hover:text-[#0075de] transition-colors",
-									children: "How is the project going?"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-									onClick: () => handleAsk("What phase are we currently in?"),
-									className: "px-3 py-1.5 rounded-full bg-white border border-gray-200 text-xs text-gray-600 whitespace-nowrap hover:border-[#0075de] hover:text-[#0075de] transition-colors",
-									children: "What phase are we in?"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-									onClick: () => handleAsk("What was the recent task?"),
-									className: "px-3 py-1.5 rounded-full bg-white border border-gray-200 text-xs text-gray-600 whitespace-nowrap hover:border-[#0075de] hover:text-[#0075de] transition-colors",
-									children: "Recent task?"
-								})
-							]
+								"How is the project going?",
+								"What phase are we in?",
+								"Recent task?"
+							].map((question) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+								onClick: () => handleAsk(question),
+								disabled: isAsking,
+								className: "min-h-9 shrink-0 rounded-full border border-[#e8e5e0] bg-[#fcfbf9] px-3 text-[10px] text-[#65615c] transition hover:border-[#0075de] hover:text-[#0075de] disabled:opacity-50 sm:text-xs",
+								children: question
+							}, question))
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-							onSubmit: (e) => {
-								e.preventDefault();
+							onSubmit: (event) => {
+								event.preventDefault();
 								handleAsk();
 							},
-							className: "p-3 border-t border-[#efeeec] flex items-center gap-2 bg-white",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+							className: "flex shrink-0 items-end gap-2 border-t border-[#efeeec] bg-white px-2.5 py-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom))] sm:px-4 sm:py-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("textarea", {
 								value: inputQuestion,
-								onChange: (e) => setInputQuestion(e.target.value),
+								onChange: (event) => setInputQuestion(event.target.value),
+								onKeyDown: askOnEnter,
+								rows: 1,
+								"aria-label": "Ask a project question",
 								placeholder: "Ask about progress, status, or milestones…",
-								className: "h-10 text-xs sm:text-sm rounded-full bg-transparent"
+								className: "min-h-11 max-h-32 min-w-0 flex-1 resize-y rounded-xl border border-[#e7e4df] bg-[#fcfbfa] px-3.5 py-3 text-xs leading-relaxed outline-none transition focus:border-[#9bc6ed] focus:ring-4 focus:ring-[#e9f3fc] placeholder:text-gray-400 sm:text-sm"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 								type: "submit",
 								size: "icon",
 								disabled: !inputQuestion.trim() || isAsking,
-								className: "rounded-full shrink-0",
+								"aria-label": "Send question",
+								className: "h-11 w-11 shrink-0 rounded-xl",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Send, { className: "h-4 w-4" })
 							})]
 						})
 					]
 				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "text-[10px] text-center text-gray-400",
-					children: "Updates reflect facts recorded by your project team. The founder can review this transcript."
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "hidden shrink-0 items-center justify-center gap-1.5 pt-3 text-[10px] text-gray-400 sm:flex",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "h-3.5 w-3.5" }), "Updates reflect facts recorded by your project team. Your founder can review this transcript."]
 				})
 			]
 		})]

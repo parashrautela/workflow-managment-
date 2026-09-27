@@ -5,12 +5,25 @@
   "type": "module",
   "scripts": {
     "start": "node backend/server.js",
-    "dev": "node --env-file=.env --watch backend/server.js"
+    "dev": "node --env-file=.env --watch backend/server.js",
+    "build": "vite build"
   },
   "engines": {
     "node": ">=20"
   },
   "dependencies": {
-    "pg": "^8.23.0"
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.48.0",
+    "pg": "^8.23.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tailwind-merge": "^3.7.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^6.1.1",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.1"
   }
 }
