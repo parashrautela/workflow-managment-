@@ -509,10 +509,6 @@
     top: calc(var(--spacing) * 4);
   }
 
-  .top-\[-10\.56\%\] {
-    top: -10.56%;
-  }
-
   .top-\[-11\%\] {
     top: -11%;
   }
@@ -559,10 +555,6 @@
 
   .left-4 {
     left: calc(var(--spacing) * 4);
-  }
-
-  .left-\[-26\.94\%\] {
-    left: -26.94%;
   }
 
   .left-\[-33\%\] {
@@ -693,10 +685,6 @@
 
   .mb-5 {
     margin-bottom: calc(var(--spacing) * 5);
-  }
-
-  .mb-8 {
-    margin-bottom: calc(var(--spacing) * 8);
   }
 
   .ml-auto {
@@ -1008,10 +996,6 @@
     width: calc(var(--spacing) * 64);
   }
 
-  .w-\[144\.67\%\] {
-    width: 144.67%;
-  }
-
   .w-\[160\.5\%\] {
     width: 160.5%;
   }
@@ -1046,10 +1030,6 @@
 
   .max-w-\[88\%\] {
     max-width: 88%;
-  }
-
-  .max-w-\[394px\] {
-    max-width: 394px;
   }
 
   .max-w-\[calc\(100\%-2rem\)\] {
@@ -1407,10 +1387,6 @@
     border-radius: calc(var(--radius) + 8px);
   }
 
-  .rounded-\[48px\] {
-    border-radius: 48px;
-  }
-
   .rounded-\[inherit\] {
     border-radius: inherit;
   }
@@ -1736,10 +1712,6 @@
     background-color: #0000;
   }
 
-  .bg-\[linear-gradient\(to_bottom\,transparent_38\%\,rgba\(0\,0\,0\,\.28\)_52\%\,rgba\(0\,0\,0\,\.88\)_66\%\,\#000_78\%\)\] {
-    background-image: linear-gradient(#0000 38%, #00000047 52%, #000000e0 66%, #000 78%);
-  }
-
   .bg-\[linear-gradient\(to_bottom\,transparent_42\%\,rgba\(0\,0\,0\,\.16\)_58\%\,rgba\(0\,0\,0\,\.72\)_78\%\,rgba\(0\,0\,0\,\.9\)_100\%\)\] {
     background-image: linear-gradient(#0000 42%, #00000029 58%, #000000b8 78%, #000000e6 100%);
   }
@@ -1878,10 +1850,6 @@
     padding-bottom: max(12px, env(safe-area-inset-bottom));
   }
 
-  .pb-\[max\(24px\,env\(safe-area-inset-bottom\)\)\] {
-    padding-bottom: max(24px, env(safe-area-inset-bottom));
-  }
-
   .pl-9 {
     padding-left: calc(var(--spacing) * 9);
   }
@@ -2017,10 +1985,6 @@
 
   .whitespace-nowrap {
     white-space: nowrap;
-  }
-
-  .text-\[\#7f7f7f\] {
-    color: #7f7f7f;
   }
 
   .text-\[\#157de0\] {
@@ -3579,6 +3543,7 @@
 }
 
 :root {
+  color-scheme: light;
   --background: #f8f9fb;
   --foreground: #17202b;
   --card: #fff;
@@ -3598,6 +3563,15 @@
   --input: #dce4ee;
   --ring: #2166d1;
   --radius: .875rem;
+}
+
+:root.founder-login {
+  color-scheme: dark;
+  background: #101010;
+}
+
+:root.founder-login body {
+  background: #101010;
 }
 
 .app-glow {

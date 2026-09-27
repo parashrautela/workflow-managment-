@@ -27,6 +27,7 @@
 }
 
 :root {
+  color-scheme: light;
   --background: #f8f9fb;
   --foreground: #17202b;
   --card: #ffffff;
@@ -46,6 +47,15 @@
   --input: #dce4ee;
   --ring: #2166d1;
   --radius: 0.875rem;
+}
+
+:root.founder-login {
+  color-scheme: dark;
+  background: #101010;
+}
+
+:root.founder-login body {
+  background: #101010;
 }
 
 @layer base {

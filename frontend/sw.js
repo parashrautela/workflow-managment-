@@ -1,4 +1,4 @@
-const CACHE_NAME = 'studio-iksha-shell-v2';
+const CACHE_NAME = 'studio-iksha-shell-v3';
 const APP_SHELL = [
   '/',
   '/client.html',

@@ -22776,6 +22776,13 @@ function FounderApp() {
 	(0, import_react.useEffect)(() => {
 		loadProjectDetails(selectedProjectId);
 	}, [selectedProjectId]);
+	(0, import_react.useEffect)(() => {
+		const isLogin = authState === "signed-out";
+		document.documentElement.classList.toggle("founder-login", isLogin);
+		const themeColor = document.querySelector("meta[name=\"theme-color\"]");
+		if (themeColor) themeColor.content = isLogin ? "#101010" : "#f6f5f4";
+		return () => document.documentElement.classList.remove("founder-login");
+	}, [authState]);
 	const openTab = (tab) => {
 		setCurrentTab(tab);
 		setSidebarOpen(false);
@@ -22895,7 +22902,7 @@ function FounderApp() {
 											placeholder: "Enter founder key",
 											autoComplete: "current-password",
 											required: true,
-											className: "h-[49px] rounded-full border-[#373636] bg-[#1f1f1f] pr-12 pl-[43px] text-sm text-white shadow-none placeholder:text-[#797979] focus-visible:border-white/60 focus-visible:ring-white/20"
+											className: "h-[49px] rounded-full border-[#373636] bg-[#1f1f1f] pr-12 pl-[43px] text-base text-white shadow-none placeholder:text-[#797979] focus-visible:border-white/60 focus-visible:ring-white/20"
 										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 											type: "button",
