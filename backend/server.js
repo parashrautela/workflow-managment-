@@ -128,29 +128,38 @@ function founderAssistantAnswer(question) {
   const q = question.toLowerCase();
   const named = state.projects.filter((project) => q.includes(project.name.toLowerCase()) || q.includes(project.clientName.toLowerCase()));
   const wantsCompleted = /complet|finish|done/.test(q);
+  const wantsAll = /all projects|every project|entire workspace/.test(q);
   const wantsBlockers = /block|risk|issue|delay/.test(q);
   const wantsTeam = /team|member|employee|working on|assigned/.test(q);
   const wantsMilestones = /milestone|next|upcoming|deadline/.test(q);
   const wantsClientQuestions = /client question|client ask|conversation/.test(q);
   const wantsActivity = /activit|change|update history|recent update/.test(q);
-  let projects = named.length ? named : state.projects.filter((project) => wantsCompleted ? project.status === 'Completed' : project.status !== 'Completed');
-  if (!named.length && wantsBlockers) projects = projects.filter((project) => project.blocker || project.status === 'At risk');
-  if (!projects.length) return state.projects.length ? 'I could not find a matching project or recorded update. Try a project name, or ask about ongoing projects, blockers, team members, or milestones.' : 'There are no projects in the workspace yet.';
   if (wantsActivity && !named.length) {
-    const entries = state.activity.slice(0, 8).map((item) => `${state.projects.find((project) => project.id === item.projectId)?.name || item.details?.name || 'Workspace'}: ${item.action.replace(/_/g, ' ')} on ${new Date(item.at).toLocaleDateString()}`);
-    return entries.length ? entries.join('\n') : 'No activity has been recorded yet.';
+    const entries = state.activity.slice(0, 8).map((item) => `- ${state.projects.find((project) => project.id === item.projectId)?.name || item.details?.name || 'Workspace'}: ${item.action.replace(/_/g, ' ')} · ${new Date(item.at).toLocaleDateString()}`);
+    return entries.length ? ['# Recent activity', ...entries].join('\n') : '# Recent activity\nNo activity has been recorded yet.';
   }
-  const lines = projects.slice(0, 20).map((project) => {
-    const heading = `${project.name} (${project.clientName})`;
+  let projects = named.length ? named : state.projects.filter((project) => wantsCompleted ? project.status === 'Completed' : wantsAll || project.status !== 'Completed');
+  if (!named.length && wantsBlockers) projects = projects.filter((project) => project.blocker || project.status === 'At risk');
+  if (!projects.length) return state.projects.length ? '# No matching projects\nTry a project name, or ask about ongoing projects, blockers, team members, or milestones.' : '# No projects yet\nCreate a project to start tracking progress here.';
+  const title = wantsClientQuestions ? 'Client questions' : wantsTeam ? 'Project teams' : wantsMilestones ? 'Next milestones' : wantsBlockers ? 'Blockers and risks' : wantsCompleted ? 'Completed projects' : wantsAll ? 'All projects' : 'Ongoing projects';
+  const lines = [`# ${named.length === 1 ? 'Project details' : title}`, `${projects.length} ${projects.length === 1 ? 'project' : 'projects'} found in saved workspace records.`];
+  for (const project of projects.slice(0, 20)) {
+    lines.push('', `## ${project.name}`);
     if (wantsClientQuestions) {
-      const questions = state.conversations.filter((item) => item.projectId === project.id).slice(-3).map((item) => item.question);
-      return `${heading}: ${questions.length ? `Recent client questions: ${questions.join(' | ')}` : 'No client questions yet.'}`;
+      const questions = state.conversations.filter((item) => item.projectId === project.id).slice(-3).reverse();
+      if (questions.length) questions.forEach((item) => lines.push(`- ${item.question}`));
+      else lines.push('- No client questions recorded.');
+      continue;
     }
-    if (wantsTeam) return `${heading}: ${project.members?.length ? project.members.map((member) => `${member.name} (${member.role})`).join(', ') : 'No team members assigned.'}`;
-    if (wantsMilestones) return `${heading}: ${project.nextMilestone || 'No next milestone recorded.'}`;
-    if (wantsBlockers) return `${heading}: ${project.blocker || (project.status === 'At risk' ? 'Marked at risk; no blocker details recorded.' : 'No blocker recorded.')}`;
-    return `${heading}: ${project.status || 'Setup'} · ${project.phase || 'Phase not set'}. Location: ${project.location || 'not recorded'}. Recent work: ${project.recentTask || 'not recorded'}. Next: ${project.nextMilestone || 'not recorded'}. Blocker: ${project.blocker || 'none recorded'}. Team: ${project.members?.length ? project.members.map((member) => member.name).join(', ') : 'none assigned'}.`;
-  });
+    if (wantsTeam) {
+      if (project.members?.length) project.members.forEach((member) => lines.push(`- ${member.name} — ${member.role || member.designation || 'Team member'}`));
+      else lines.push('- No team members assigned.');
+      continue;
+    }
+    if (wantsMilestones) { lines.push(`- Next milestone: ${project.nextMilestone || 'Not recorded'}`, `- Current phase: ${project.phase || 'Not recorded'}`); continue; }
+    if (wantsBlockers) { lines.push(`- Status: ${project.status || 'Setup'}`, `- Blocker: ${project.blocker || 'Marked at risk; details not recorded'}`); continue; }
+    lines.push(`- Client: ${project.clientName || 'Not recorded'}`, `- Status: ${project.status || 'Setup'} · ${project.phase || 'Phase not set'}`, `- Location: ${project.location || 'Not recorded'}`, `- Recent work: ${project.recentTask || 'Not recorded'}`, `- Next milestone: ${project.nextMilestone || 'Not recorded'}`, `- Blocker: ${project.blocker || 'None recorded'}`, `- Team: ${project.members?.length ? project.members.map((member) => member.name).join(', ') : 'No one assigned'}`);
+  }
   if (projects.length > 20) lines.push(`${projects.length - 20} more matching projects. Ask for a project by name.`);
   return lines.join('\n');
 }

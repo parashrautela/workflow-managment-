@@ -11668,6 +11668,27 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 	return Component;
 }
 //#endregion
+//#region node_modules/lucide-react/dist/esm/icons/arrow-left.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$31 = {
+	name: "arrow-left",
+	size: 24,
+	node: [["path", {
+		d: "m12 19-7-7 7-7",
+		key: "1l729n"
+	}], ["path", {
+		d: "M19 12H5",
+		key: "x3x0zl"
+	}]]
+};
+__iconData$31.node;
+var ArrowLeft = createLucideIcon(__iconData$31);
+//#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -24714,7 +24735,58 @@ var suggestions = [
 	"What milestones are next?",
 	"Who is working on each project?"
 ];
-function FounderAssistant() {
+function FormattedAnswer({ answer }) {
+	const blocks = [];
+	for (const rawLine of String(answer || "").split("\n")) {
+		const line = rawLine.trim();
+		if (!line) continue;
+		if (line.startsWith("# ")) blocks.push({
+			type: "title",
+			text: line.slice(2)
+		});
+		else if (line.startsWith("## ")) blocks.push({
+			type: "heading",
+			text: line.slice(3)
+		});
+		else if (line.startsWith("- ")) {
+			const previous = blocks.at(-1);
+			if (previous?.type === "list") previous.items.push(line.slice(2));
+			else blocks.push({
+				type: "list",
+				items: [line.slice(2)]
+			});
+		} else blocks.push({
+			type: "paragraph",
+			text: line
+		});
+	}
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "space-y-2.5",
+		children: blocks.map((block, index) => block.type === "title" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+			className: "text-sm font-semibold text-foreground",
+			children: block.text
+		}, index) : block.type === "heading" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+			className: "border-t border-border/70 pt-2.5 text-sm font-semibold text-foreground first:border-0 first:pt-0",
+			children: block.text
+		}, index) : block.type === "list" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+			className: "space-y-1.5 pl-4 text-sm marker:text-primary",
+			children: block.items.map((item, itemIndex) => {
+				const colon = item.indexOf(":");
+				return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
+					className: "list-disc pl-0.5",
+					children: colon > 0 && colon < 24 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+						className: "font-semibold",
+						children: item.slice(0, colon + 1)
+					}), item.slice(colon + 1)] }) : item
+				}, itemIndex);
+			})
+		}, index) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "text-sm text-muted-foreground",
+			children: block.text
+		}, index))
+	});
+}
+function FounderAssistant({ onBack }) {
 	const [messages, setMessages] = (0, import_react.useState)([]);
 	const [draft, setDraft] = (0, import_react.useState)("");
 	const [busy, setBusy] = (0, import_react.useState)(false);
@@ -24759,151 +24831,154 @@ function FounderAssistant() {
 		}
 	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "space-y-5",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "flex items-center gap-4",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-				className: "grid size-16 shrink-0 place-items-center rounded-2xl bg-primary/5",
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
-					state: busy ? "working" : "breathing",
-					size: 64,
-					speed: busy ? .65 : .35,
-					theme: "light",
-					color: "#2166d1",
-					"aria-label": busy ? "Assistant thinking" : "Founder assistant"
-				})
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "text-xs font-semibold uppercase tracking-wider text-primary",
-					children: "Founder workspace"
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-					className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
-					children: "Ask Studio Iksha"
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "mt-1 text-sm text-muted-foreground",
-					children: "Explore facts across every ongoing project."
-				})
-			] })]
-		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-			className: "flex min-h-[min(72dvh,680px)] flex-col gap-0 overflow-hidden p-0",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex items-center justify-between gap-3 border-b px-4 py-3",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "text-sm font-semibold",
-						children: "Project assistant"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-						className: "flex items-center gap-1.5 text-xs text-muted-foreground",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LockKeyhole, { className: "size-3.5" }), "Founder only"]
-					})]
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					ref: scrollRef,
-					className: "chat-scroll min-h-72 max-h-[55dvh] flex-1 space-y-5 overflow-y-auto px-4 py-5 sm:px-6",
-					"aria-label": "Founder assistant conversation",
-					"aria-live": "polite",
-					children: [
-						!messages.length && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "mx-auto flex max-w-sm flex-col items-center py-10 text-center",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
-									state: "breathing",
-									size: 64,
-									speed: .3,
-									theme: "light",
-									color: "#2166d1",
-									"aria-hidden": "true"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-									className: "mt-5 text-sm font-semibold",
-									children: "Your projects, one question away"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "mt-2 text-xs leading-relaxed text-muted-foreground",
-									children: "Ask about progress, blockers, milestones, team assignments, or recent client questions. Answers come from the facts in this workspace."
-								})
-							]
-						}),
-						messages.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "space-y-3",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Message, {
-								align: "end",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
-									className: "max-w-[88%] sm:max-w-[75%]",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageHeader, {
-										className: "justify-end",
-										children: "You"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
-										align: "end",
-										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, { children: item.question })
-									})]
-								})
-							}), item.answer && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Message, {
-								align: "start",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
-									className: "max-w-[92%] sm:max-w-[82%]",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageHeader, { children: "Studio Iksha" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
-										variant: "secondary",
-										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, {
-											className: "whitespace-pre-wrap leading-relaxed",
-											children: item.answer
-										})
-									})]
-								})
-							})]
-						}, item.id)),
-						busy && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center gap-2 text-xs text-muted-foreground",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
-								state: "working",
-								size: 20,
-								speed: .65,
+		className: "flex h-dvh min-h-0 flex-col overflow-hidden bg-background",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
+			className: "shrink-0 border-b bg-card",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mx-auto flex h-16 max-w-4xl items-center gap-3 px-3 sm:px-6",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "ghost",
+						size: "icon",
+						onClick: onBack,
+						"aria-label": "Back to projects",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { className: "size-5" })
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
+						state: busy ? "working" : "breathing",
+						size: 32,
+						speed: busy ? .6 : .3,
+						theme: "light",
+						color: "#2166d1",
+						"aria-hidden": "true"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "min-w-0 flex-1",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+							className: "truncate text-sm font-semibold",
+							children: "Ask Studio Iksha"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-xs text-muted-foreground",
+							children: "Your project workspace assistant"
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LockKeyhole, {
+						className: "size-4 text-muted-foreground",
+						"aria-label": "Founder only"
+					})
+				]
+			})
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
+			className: "mx-auto flex min-h-0 w-full max-w-4xl flex-1 flex-col bg-card md:border-x",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				ref: scrollRef,
+				className: "chat-scroll min-h-0 flex-1 space-y-5 overflow-y-auto px-4 py-5 sm:px-6",
+				"aria-label": "Founder assistant conversation",
+				"aria-live": "polite",
+				children: [
+					!messages.length && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mx-auto flex max-w-sm flex-col items-center py-10 text-center",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
+								state: "breathing",
+								size: 64,
+								speed: .3,
 								theme: "light",
 								color: "#2166d1",
 								"aria-hidden": "true"
-							}), "Reading your project records…"]
-						})
-					]
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					className: "no-scrollbar flex gap-2 overflow-x-auto border-t px-4 py-3",
-					children: suggestions.map((suggestion) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						variant: "outline",
-						size: "sm",
-						className: "shrink-0 rounded-full",
-						disabled: busy,
-						onClick: (event) => ask(event, suggestion),
-						children: suggestion
-					}, suggestion))
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-					onSubmit: ask,
-					className: "flex items-end gap-2 border-t p-3 sm:px-5",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
-						value: draft,
-						onChange: (event) => setDraft(event.target.value),
-						rows: 1,
-						maxLength: 1e3,
-						placeholder: "Ask about your projects…",
-						"aria-label": "Ask the founder assistant",
-						className: "max-h-32 min-h-11 flex-1 resize-none"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						type: "submit",
-						size: "icon-lg",
-						className: "size-11",
-						disabled: !draft.trim() || busy,
-						"aria-label": "Send question",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUp, { className: "size-5" })
-					})]
-				}),
-				error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					role: "alert",
-					className: "px-4 pb-3 text-xs text-destructive",
-					children: error
-				})
-			]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+								className: "mt-5 text-sm font-semibold",
+								children: "Your projects, one question away"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-2 text-xs leading-relaxed text-muted-foreground",
+								children: "Ask about progress, blockers, milestones, team assignments, or recent client questions. Answers come from saved project facts."
+							})
+						]
+					}),
+					messages.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "space-y-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Message, {
+							align: "end",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
+								className: "max-w-[88%] sm:max-w-[75%]",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageHeader, {
+									className: "justify-end",
+									children: "You"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
+									align: "end",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, { children: item.question })
+								})]
+							})
+						}), item.answer && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Message, {
+							align: "start",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
+								className: "max-w-[92%] sm:max-w-[82%]",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageHeader, { children: "Studio Iksha" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
+									variant: "secondary",
+									className: "max-w-full",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, {
+										className: "w-full p-4",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormattedAnswer, { answer: item.answer })
+									})
+								})]
+							})
+						})]
+					}, item.id)),
+					busy && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center gap-2 text-xs text-muted-foreground",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
+							state: "working",
+							size: 20,
+							speed: .65,
+							theme: "light",
+							color: "#2166d1",
+							"aria-hidden": "true"
+						}), "Reading your project records…"]
+					})
+				]
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "safe-bottom shrink-0 border-t bg-card",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "no-scrollbar flex gap-2 overflow-x-auto px-4 py-3 sm:px-6",
+						children: suggestions.map((suggestion) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							size: "sm",
+							className: "shrink-0 rounded-full",
+							disabled: busy,
+							onClick: (event) => ask(event, suggestion),
+							children: suggestion
+						}, suggestion))
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+						onSubmit: ask,
+						className: "flex items-end gap-2 border-t px-3 pt-3 sm:px-5",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+							value: draft,
+							onChange: (event) => setDraft(event.target.value),
+							rows: 1,
+							maxLength: 1e3,
+							placeholder: "Ask about your projects…",
+							"aria-label": "Ask the founder assistant",
+							className: "max-h-32 min-h-11 flex-1 resize-none"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							type: "submit",
+							size: "icon-lg",
+							className: "size-11",
+							disabled: !draft.trim() || busy,
+							"aria-label": "Send question",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUp, { className: "size-5" })
+						})]
+					}),
+					error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						role: "alert",
+						className: "px-4 pt-2 text-xs text-destructive",
+						children: error
+					})
+				]
+			})]
 		})]
 	});
 }
@@ -25628,6 +25703,7 @@ function FounderApp() {
 			})
 		]
 	});
+	if (currentTab === "assistant") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderAssistant, { onBack: () => openTab("projects") });
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "app-glow min-h-dvh bg-background pb-20 md:pb-0",
 		children: [
@@ -25689,7 +25765,7 @@ function FounderApp() {
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
 					className: "mx-auto w-full max-w-6xl space-y-5 px-4 py-6 sm:px-7 sm:py-8",
-					children: currentTab === "assistant" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderAssistant, {}) : currentTab === "employees" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmployeeManager, {
+					children: currentTab === "employees" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmployeeManager, {
 						employees,
 						projects,
 						onAdd: () => setMemberOpen(true)
