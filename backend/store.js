@@ -9,6 +9,11 @@ const emptyState = () => ({
   conversations: [],
   projectUpdates: [],
   activity: [],
+  employees: [],
+  employeeSessions: [],
+  founderChat: [],
+  teamMessages: [],
+  trashedProjects: [],
 });
 
 function normalizeState(value = {}) {

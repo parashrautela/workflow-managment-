@@ -26,7 +26,7 @@ All routes below require the founder session.
 
 ### `GET /api/founder/projects`
 
-Returns `{ "projects": [...] }`. Each project includes `id`, `name`, `clientName`, `location`, `startDate`, `internalOwnerMemberId`, `internalOwner`, `phase`, `status`, `recentTask`, `nextMilestone`, `blocker`, `members`, and `createdAt`.
+Returns `{ "projects": [...] }`. Each project includes `id`, `name`, `clientName`, `location`, `startDate`, `internalOwnerMemberId`, `internalOwner`, `phase`, `status`, `recentTask`, `nextMilestone`, `blocker`, `members`, `createdAt`, and `completedAt`.
 
 ### `POST /api/founder/projects`
 
@@ -81,6 +81,18 @@ Returns the latest 30 client question-and-answer pairs, newest first:
 
 Returns the latest 40 basic audit events: `{ "activity": [...] }`.
 
+## Employees, team chat, and founder assistant
+
+The founder creates an employee account with `POST /api/founder/employees` using `name`, `designation`, optional `email` and `phone`, `role`, and `projectId`. The response includes a login link, employee ID, and generated password. The password is returned once and only a salted hash is saved. `GET /api/founder/employees` returns employee profiles and active project IDs, without passwords.
+
+To add the same person to another project, send `{ "employeeId": "EMP-...", "role": "Designer" }` to `POST /api/founder/projects/:projectId/employees`. The employee keeps the same login details.
+
+Employees sign in with `POST /api/employee/login` using `{ "employeeId", "password" }` and sign out with `POST /api/employee/logout`. The employee session uses a seven-day HTTP-only cookie. `GET /api/employee/me` returns only their profile and currently assigned projects. Employees cannot edit project facts. They can read and send messages in an assigned project's group chat through `GET` and `POST /api/employee/projects/:projectId/team-chat`, where POST accepts `{ "message": "..." }`. The founder uses `GET` and `POST /api/founder/projects/:projectId/team-chat` for the same conversation. The team chat is separate from the client Q&A.
+
+`GET /api/founder/assistant` returns recent founder chat history. `POST /api/founder/assistant` accepts `{ "question": "..." }` and answers from the workspace's saved project facts. This assistant runs locally on the server and does not send founder records to an external model.
+
+The founder can finish a project with `POST /api/founder/projects/:projectId/complete`. `POST /api/founder/projects/:projectId/trash` removes it from active workspaces while preserving its records. `GET /api/founder/trash` lists those projects, and `POST /api/founder/trash/:projectId/restore` restores one. Client and employee project access is unavailable while a project is in Trash.
+
 ## Client link and assistant
 
 The client does not create an account or enter an email. Opening `/c/:token` claims the invite in that browser and sets an HTTP-only, SameSite=Strict cookie that lasts 30 days. The first browser to claim the invite wins. A second browser gets `410`; the founder must create a replacement link if the wrong person claimed it. The mechanism guarantees one claimant, but cannot verify the claimant’s real-world identity.
@@ -109,4 +121,4 @@ Errors use `{ "error": "Human-readable message" }`. Relevant status codes are `4
 
 ## Current storage and runtime notes
 
-V1 stores projects, memberships, invites, sessions, conversations, and audit events in `backend/data.json`. Session identifiers and invite tokens are hashed before storage. The JSON store is suitable only for a single-process pilot; it is not shared between app instances and does not provide database backups or robust concurrent-write guarantees. Client sessions are browser-bound, so opening the invite later in another browser requires the founder to issue a replacement link.
+Production stores app state in PostgreSQL through `DATABASE_URL`. Local development can use `backend/data.json`. Session identifiers and invite tokens are hashed before storage. Employee passwords use salted scrypt hashes. Client sessions are browser-bound, so opening the invite later in another browser requires the founder to issue a replacement link.

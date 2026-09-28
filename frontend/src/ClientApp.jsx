@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/card";
 import { Message, MessageAvatar, MessageContent, MessageFooter, MessageHeader } from "@/components/ui/message";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Textarea } from "@/components/ui/textarea";
+import { ThinkingOrb } from "thinking-orbs";
 
 const api = async (url, options = {}) => {
   const response = await fetch(url, { credentials: "same-origin", ...options, headers: { "content-type": "application/json", ...(options.headers || {}) } });
@@ -76,7 +77,7 @@ export default function ClientApp() {
         <div className="chat-scroll min-h-0 flex-1 space-y-5 overflow-y-auto px-4 py-5 sm:px-6" aria-label="Project conversation" aria-live="polite">
           <Message align="start"><MessageAvatar><AssistantAvatar /></MessageAvatar><MessageContent className="max-w-[88%] sm:max-w-[75%]"><MessageHeader>Project Assistant</MessageHeader><Bubble variant="secondary"><BubbleContent>Hi {firstName}! I can share the latest updates for <strong>{project.name}</strong>. What would you like to know?</BubbleContent></Bubble></MessageContent></Message>
           {messages.map((item, index) => <React.Fragment key={item.pendingId || item.at || index}><Message align="end"><MessageAvatar><ClientAvatar name={firstName} /></MessageAvatar><MessageContent className="max-w-[88%] sm:max-w-[75%]"><MessageHeader className="justify-end">{time(item.at)} · You</MessageHeader><Bubble align="end"><BubbleContent>{item.question}</BubbleContent></Bubble><MessageFooter>Sent</MessageFooter></MessageContent></Message>{item.answer && <Message align="start"><MessageAvatar><AssistantAvatar /></MessageAvatar><MessageContent className="max-w-[88%] sm:max-w-[75%]"><MessageHeader>Project Assistant</MessageHeader><Bubble variant="secondary"><BubbleContent>{item.answer}</BubbleContent></Bubble></MessageContent></Message>}</React.Fragment>)}
-          {isAsking && <Message align="start" role="status" aria-label="Project Assistant is responding"><MessageAvatar><AssistantAvatar /></MessageAvatar><MessageContent><MessageHeader>Project Assistant</MessageHeader><Bubble variant="secondary"><BubbleContent><span className="flex gap-1 py-1"><span className="size-1.5 animate-bounce rounded-full bg-muted-foreground" /><span className="size-1.5 animate-bounce rounded-full bg-muted-foreground [animation-delay:150ms]" /><span className="size-1.5 animate-bounce rounded-full bg-muted-foreground [animation-delay:300ms]" /></span></BubbleContent></Bubble></MessageContent></Message>}
+          {isAsking && <Message align="start" role="status" aria-label="Project Assistant is responding"><MessageAvatar><AssistantAvatar /></MessageAvatar><MessageContent><MessageHeader>Project Assistant</MessageHeader><Bubble variant="secondary"><BubbleContent><ThinkingOrb state="working" size={20} speed={0.6} theme="light" color="#2166d1" aria-hidden="true" /></BubbleContent></Bubble></MessageContent></Message>}
           <div ref={endRef} />
         </div>
         <div className="no-scrollbar flex gap-2 overflow-x-auto border-t px-4 py-3 sm:px-6">{["How is the project going?", "What phase are we in?", "What comes next?"].map((suggestion) => <Button key={suggestion} variant="outline" size="sm" className="shrink-0 rounded-full" onClick={() => ask(suggestion)} disabled={isAsking}>{suggestion}</Button>)}</div>

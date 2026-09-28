@@ -11675,7 +11675,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$29 = {
+var __iconData$30 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11686,8 +11686,8 @@ var __iconData$29 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$29.node;
-var ArrowRight = createLucideIcon(__iconData$29);
+__iconData$30.node;
+var ArrowRight = createLucideIcon(__iconData$30);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
@@ -11696,7 +11696,7 @@ var ArrowRight = createLucideIcon(__iconData$29);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$28 = {
+var __iconData$29 = {
 	name: "arrow-up",
 	size: 24,
 	node: [["path", {
@@ -11707,8 +11707,8 @@ var __iconData$28 = {
 		key: "x0mq9r"
 	}]]
 };
-__iconData$28.node;
-var ArrowUp = createLucideIcon(__iconData$28);
+__iconData$29.node;
+var ArrowUp = createLucideIcon(__iconData$29);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
@@ -11717,7 +11717,7 @@ var ArrowUp = createLucideIcon(__iconData$28);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$27 = {
+var __iconData$28 = {
 	name: "building-complex",
 	size: 24,
 	node: [
@@ -11744,8 +11744,8 @@ var __iconData$27 = {
 	],
 	aliases: ["building-2"]
 };
-__iconData$27.node;
-var BuildingComplex = createLucideIcon(__iconData$27);
+__iconData$28.node;
+var BuildingComplex = createLucideIcon(__iconData$28);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/check.mjs
 /**
@@ -11754,7 +11754,7 @@ var BuildingComplex = createLucideIcon(__iconData$27);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$26 = {
+var __iconData$27 = {
 	name: "check",
 	size: 24,
 	node: [["path", {
@@ -11762,8 +11762,8 @@ var __iconData$26 = {
 		key: "1gmf2c"
 	}]]
 };
-__iconData$26.node;
-var Check = createLucideIcon(__iconData$26);
+__iconData$27.node;
+var Check = createLucideIcon(__iconData$27);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
 /**
@@ -11772,7 +11772,7 @@ var Check = createLucideIcon(__iconData$26);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$25 = {
+var __iconData$26 = {
 	name: "chevron-down",
 	size: 24,
 	node: [["path", {
@@ -11780,8 +11780,8 @@ var __iconData$25 = {
 		key: "qrunsl"
 	}]]
 };
-__iconData$25.node;
-var ChevronDown = createLucideIcon(__iconData$25);
+__iconData$26.node;
+var ChevronDown = createLucideIcon(__iconData$26);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
@@ -11790,7 +11790,7 @@ var ChevronDown = createLucideIcon(__iconData$25);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$24 = {
+var __iconData$25 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -11817,8 +11817,8 @@ var __iconData$24 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$24.node;
-var CircleAlert = createLucideIcon(__iconData$24);
+__iconData$25.node;
+var CircleAlert = createLucideIcon(__iconData$25);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
@@ -11827,7 +11827,7 @@ var CircleAlert = createLucideIcon(__iconData$24);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$23 = {
+var __iconData$24 = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -11841,8 +11841,8 @@ var __iconData$23 = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-__iconData$23.node;
-var CircleCheck = createLucideIcon(__iconData$23);
+__iconData$24.node;
+var CircleCheck = createLucideIcon(__iconData$24);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
@@ -11851,7 +11851,7 @@ var CircleCheck = createLucideIcon(__iconData$23);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$22 = {
+var __iconData$23 = {
 	name: "clock-3",
 	size: 24,
 	node: [["circle", {
@@ -11864,8 +11864,8 @@ var __iconData$22 = {
 		key: "135r8i"
 	}]]
 };
-__iconData$22.node;
-var Clock3 = createLucideIcon(__iconData$22);
+__iconData$23.node;
+var Clock3 = createLucideIcon(__iconData$23);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
@@ -11874,7 +11874,7 @@ var Clock3 = createLucideIcon(__iconData$22);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$21 = {
+var __iconData$22 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -11890,8 +11890,8 @@ var __iconData$21 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$21.node;
-var Copy = createLucideIcon(__iconData$21);
+__iconData$22.node;
+var Copy = createLucideIcon(__iconData$22);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye-off.mjs
 /**
@@ -11900,7 +11900,7 @@ var Copy = createLucideIcon(__iconData$21);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$20 = {
+var __iconData$21 = {
 	name: "eye-off",
 	size: 24,
 	node: [
@@ -11922,8 +11922,8 @@ var __iconData$20 = {
 		}]
 	]
 };
-__iconData$20.node;
-var EyeOff = createLucideIcon(__iconData$20);
+__iconData$21.node;
+var EyeOff = createLucideIcon(__iconData$21);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye.mjs
 /**
@@ -11932,7 +11932,7 @@ var EyeOff = createLucideIcon(__iconData$20);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$19 = {
+var __iconData$20 = {
 	name: "eye",
 	size: 24,
 	node: [["path", {
@@ -11945,8 +11945,8 @@ var __iconData$19 = {
 		key: "1v7zrd"
 	}]]
 };
-__iconData$19.node;
-var Eye = createLucideIcon(__iconData$19);
+__iconData$20.node;
+var Eye = createLucideIcon(__iconData$20);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
@@ -11955,7 +11955,7 @@ var Eye = createLucideIcon(__iconData$19);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$18 = {
+var __iconData$19 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -11977,8 +11977,8 @@ var __iconData$18 = {
 		}]
 	]
 };
-__iconData$18.node;
-var FolderKanban = createLucideIcon(__iconData$18);
+__iconData$19.node;
+var FolderKanban = createLucideIcon(__iconData$19);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/folder-plus.mjs
 /**
@@ -11987,7 +11987,7 @@ var FolderKanban = createLucideIcon(__iconData$18);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$17 = {
+var __iconData$18 = {
 	name: "folder-plus",
 	size: 24,
 	node: [
@@ -12005,8 +12005,8 @@ var __iconData$17 = {
 		}]
 	]
 };
-__iconData$17.node;
-var FolderPlus = createLucideIcon(__iconData$17);
+__iconData$18.node;
+var FolderPlus = createLucideIcon(__iconData$18);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/key-round.mjs
 /**
@@ -12015,7 +12015,7 @@ var FolderPlus = createLucideIcon(__iconData$17);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$16 = {
+var __iconData$17 = {
 	name: "key-round",
 	size: 24,
 	node: [["path", {
@@ -12029,8 +12029,8 @@ var __iconData$16 = {
 		key: "w0ekpg"
 	}]]
 };
-__iconData$16.node;
-var KeyRound = createLucideIcon(__iconData$16);
+__iconData$17.node;
+var KeyRound = createLucideIcon(__iconData$17);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/link-2.mjs
 /**
@@ -12039,7 +12039,7 @@ var KeyRound = createLucideIcon(__iconData$16);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$15 = {
+var __iconData$16 = {
 	name: "link-2",
 	size: 24,
 	node: [
@@ -12060,8 +12060,8 @@ var __iconData$15 = {
 		}]
 	]
 };
-__iconData$15.node;
-var Link2 = createLucideIcon(__iconData$15);
+__iconData$16.node;
+var Link2 = createLucideIcon(__iconData$16);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/lock-keyhole.mjs
 /**
@@ -12070,7 +12070,7 @@ var Link2 = createLucideIcon(__iconData$15);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$14 = {
+var __iconData$15 = {
 	name: "lock-keyhole",
 	size: 24,
 	node: [
@@ -12094,8 +12094,8 @@ var __iconData$14 = {
 		}]
 	]
 };
-__iconData$14.node;
-var LockKeyhole = createLucideIcon(__iconData$14);
+__iconData$15.node;
+var LockKeyhole = createLucideIcon(__iconData$15);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/log-out.mjs
 /**
@@ -12104,7 +12104,7 @@ var LockKeyhole = createLucideIcon(__iconData$14);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$13 = {
+var __iconData$14 = {
 	name: "log-out",
 	size: 24,
 	node: [
@@ -12122,8 +12122,8 @@ var __iconData$13 = {
 		}]
 	]
 };
-__iconData$13.node;
-var LogOut = createLucideIcon(__iconData$13);
+__iconData$14.node;
+var LogOut = createLucideIcon(__iconData$14);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/menu.mjs
 /**
@@ -12132,7 +12132,7 @@ var LogOut = createLucideIcon(__iconData$13);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$12 = {
+var __iconData$13 = {
 	name: "menu",
 	size: 24,
 	node: [
@@ -12150,8 +12150,8 @@ var __iconData$12 = {
 		}]
 	]
 };
-__iconData$12.node;
-var Menu = createLucideIcon(__iconData$12);
+__iconData$13.node;
+var Menu = createLucideIcon(__iconData$13);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/message-square.mjs
 /**
@@ -12160,7 +12160,7 @@ var Menu = createLucideIcon(__iconData$12);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$11 = {
+var __iconData$12 = {
 	name: "message-square",
 	size: 24,
 	node: [["path", {
@@ -12168,8 +12168,8 @@ var __iconData$11 = {
 		key: "18887p"
 	}]]
 };
-__iconData$11.node;
-var MessageSquare = createLucideIcon(__iconData$11);
+__iconData$12.node;
+var MessageSquare = createLucideIcon(__iconData$12);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/plus.mjs
 /**
@@ -12178,7 +12178,7 @@ var MessageSquare = createLucideIcon(__iconData$11);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$10 = {
+var __iconData$11 = {
 	name: "plus",
 	size: 24,
 	node: [["path", {
@@ -12189,8 +12189,8 @@ var __iconData$10 = {
 		key: "s699le"
 	}]]
 };
-__iconData$10.node;
-var Plus = createLucideIcon(__iconData$10);
+__iconData$11.node;
+var Plus = createLucideIcon(__iconData$11);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/refresh-cw.mjs
 /**
@@ -12199,7 +12199,7 @@ var Plus = createLucideIcon(__iconData$10);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$9 = {
+var __iconData$10 = {
 	name: "refresh-cw",
 	size: 24,
 	node: [
@@ -12221,8 +12221,8 @@ var __iconData$9 = {
 		}]
 	]
 };
-__iconData$9.node;
-var RefreshCw = createLucideIcon(__iconData$9);
+__iconData$10.node;
+var RefreshCw = createLucideIcon(__iconData$10);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/rotate-ccw-clock.mjs
 /**
@@ -12231,7 +12231,7 @@ var RefreshCw = createLucideIcon(__iconData$9);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$8 = {
+var __iconData$9 = {
 	name: "rotate-ccw-clock",
 	size: 24,
 	node: [
@@ -12250,8 +12250,8 @@ var __iconData$8 = {
 	],
 	aliases: ["history"]
 };
-__iconData$8.node;
-var RotateCcwClock = createLucideIcon(__iconData$8);
+__iconData$9.node;
+var RotateCcwClock = createLucideIcon(__iconData$9);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/search.mjs
 /**
@@ -12260,7 +12260,7 @@ var RotateCcwClock = createLucideIcon(__iconData$8);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$7 = {
+var __iconData$8 = {
 	name: "search",
 	size: 24,
 	node: [["path", {
@@ -12273,8 +12273,8 @@ var __iconData$7 = {
 		key: "4ej97u"
 	}]]
 };
-__iconData$7.node;
-var Search = createLucideIcon(__iconData$7);
+__iconData$8.node;
+var Search = createLucideIcon(__iconData$8);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/share-2.mjs
 /**
@@ -12283,7 +12283,7 @@ var Search = createLucideIcon(__iconData$7);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$6 = {
+var __iconData$7 = {
 	name: "share-2",
 	size: 24,
 	node: [
@@ -12321,8 +12321,8 @@ var __iconData$6 = {
 		}]
 	]
 };
-__iconData$6.node;
-var Share2 = createLucideIcon(__iconData$6);
+__iconData$7.node;
+var Share2 = createLucideIcon(__iconData$7);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/shield-check.mjs
 /**
@@ -12331,7 +12331,7 @@ var Share2 = createLucideIcon(__iconData$6);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$5 = {
+var __iconData$6 = {
 	name: "shield-check",
 	size: 24,
 	node: [["path", {
@@ -12342,8 +12342,8 @@ var __iconData$5 = {
 		key: "dzmm74"
 	}]]
 };
-__iconData$5.node;
-var ShieldCheck = createLucideIcon(__iconData$5);
+__iconData$6.node;
+var ShieldCheck = createLucideIcon(__iconData$6);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/sparkles.mjs
 /**
@@ -12352,7 +12352,7 @@ var ShieldCheck = createLucideIcon(__iconData$5);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$4 = {
+var __iconData$5 = {
 	name: "sparkles",
 	size: 24,
 	node: [
@@ -12377,8 +12377,45 @@ var __iconData$4 = {
 	],
 	aliases: ["stars"]
 };
+__iconData$5.node;
+var Sparkles = createLucideIcon(__iconData$5);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/trash.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$4 = {
+	name: "trash",
+	size: 24,
+	node: [
+		["path", {
+			d: "M10 11v6",
+			key: "nco0om"
+		}],
+		["path", {
+			d: "M14 11v6",
+			key: "outv1u"
+		}],
+		["path", {
+			d: "M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6",
+			key: "miytrc"
+		}],
+		["path", {
+			d: "M3 6h18",
+			key: "d0wm0j"
+		}],
+		["path", {
+			d: "M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2",
+			key: "e791ji"
+		}]
+	],
+	aliases: ["trash-2"]
+};
 __iconData$4.node;
-var Sparkles = createLucideIcon(__iconData$4);
+var Trash = createLucideIcon(__iconData$4);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/triangle-alert.mjs
 /**
@@ -19523,7 +19560,7 @@ function DialogContent({ className, children, showCloseButton = true, ...props }
 		"data-slot": "dialog-portal",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogOverlay, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent$1, {
 			"data-slot": "dialog-content",
-			className: cn("fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-200 outline-none data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg", className),
+			className: cn("fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-150 outline-none data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0 sm:max-w-lg", className),
 			...props,
 			children: [children, showCloseButton && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogClose, {
 				"data-slot": "dialog-close",
@@ -20450,7 +20487,7 @@ function ImageMeltItem({ src, opts, registry, children }) {
 	});
 }
 var useIsoLayoutEffect = typeof window !== "undefined" ? import_react.useLayoutEffect : import_react.useEffect;
-function useReducedMotion() {
+function useReducedMotion$1() {
 	const [reduced, setReduced] = (0, import_react.useState)(false);
 	(0, import_react.useEffect)(() => {
 		const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -22021,7 +22058,7 @@ function supportsLinear() {
 	if (linearOK == null) linearOK = typeof CSS !== "undefined" && typeof CSS.supports === "function" && CSS.supports("transition-timing-function", "linear(0, 1)");
 	return linearOK;
 }
-var cache = /* @__PURE__ */ new Map();
+var cache$1 = /* @__PURE__ */ new Map();
 var evalCache = /* @__PURE__ */ new Map();
 function easingFunction(spec) {
 	let fn = evalCache.get(spec);
@@ -22077,14 +22114,14 @@ function resolveTransition(t, reducedMotion = false) {
 		...cfg
 	};
 	const key = `${spring.stiffness}/${spring.damping}/${spring.mass}/${supportsLinear()}`;
-	let resolved = cache.get(key);
+	let resolved = cache$1.get(key);
 	if (!resolved) {
 		const sim = simulate(spring);
 		resolved = {
 			duration: Math.round(sim.duration * 1e3),
 			easing: supportsLinear() ? `linear(${sim.values.join(", ")})` : sim.overshoots ? "cubic-bezier(0.34, 1.56, 0.64, 1)" : "cubic-bezier(0.22, 1, 0.36, 1)"
 		};
-		cache.set(key, resolved);
+		cache$1.set(key, resolved);
 	}
 	return resolved;
 }
@@ -22111,7 +22148,7 @@ function MirroredItem({ x = 0, y = 0, scale = 1, transition = "smooth", delay = 
 	const wrapRef = (0, import_react.useRef)(null);
 	const blobRef = (0, import_react.useRef)(null);
 	const [box, setBox] = (0, import_react.useState)(null);
-	const reduced = useReducedMotion();
+	const reduced = useReducedMotion$1();
 	const tKey = transitionKey(transition);
 	const { duration, easing } = (0, import_react.useMemo)(() => resolveTransition(transition, reduced), [tKey, reduced]);
 	useIsoLayoutEffect(() => {
@@ -22470,8 +22507,8 @@ var Liquid = Object.assign(GooeyRoot, { Item: LiquidItem });
 //#endregion
 //#region frontend/src/components/GooeyNewButton.jsx
 var transition = {
-	duration: 500,
-	ease: "cubic-bezier(0.34, 1.56, 0.64, 1)"
+	duration: 280,
+	ease: "cubic-bezier(0.22, 1, 0.36, 1)"
 };
 function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onShareClientLink }) {
 	const [open, setOpen] = (0, import_react.useState)(false);
@@ -22496,10 +22533,10 @@ function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onShareClien
 		className: "relative z-40 flex h-12 items-center justify-center overflow-visible",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Liquid, {
 			fill: "#202020",
-			blur: 7,
+			blur: 5,
 			contrast: 18,
 			filterPadding: 200,
-			shadow: "0 6px 16px rgba(10, 20, 36, .22)",
+			shadow: "0 4px 12px rgba(10, 20, 36, .18)",
 			className: "size-12 overflow-visible",
 			children: [[
 				{
@@ -22525,13 +22562,13 @@ function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onShareClien
 					onClick: onShareClientLink,
 					disabled: !hasProject
 				}
-			].map(({ label, Icon, x, y, onClick, disabled }, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Liquid.Item, {
+			].map(({ label, Icon, x, y, onClick, disabled }) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Liquid.Item, {
 				className: "absolute left-0.5 top-0.5",
 				x: open ? x : 0,
 				y: open ? y : 0,
 				scale: open ? 1 : 0,
 				transition,
-				delay: open ? index * 35 : 0,
+				delay: 0,
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 					type: "button",
 					"aria-label": label,
@@ -22558,7 +22595,7 @@ function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onShareClien
 					className: "grid size-12 place-items-center rounded-full border-2 border-white text-white outline-2 outline-offset-[-5px] outline-[#202020] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
 					onClick: () => setOpen((value) => !value),
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {
-						className: `size-5 transition-transform duration-300 ${open ? "rotate-45" : ""}`,
+						className: `size-5 transition-transform duration-200 ease-out ${open ? "rotate-45" : ""}`,
 						"aria-hidden": "true"
 					})
 				})
@@ -22567,6 +22604,2459 @@ function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onShareClien
 			className: "sr-only",
 			children: "New actions"
 		})]
+	});
+}
+//#endregion
+//#region frontend/src/components/EmployeeManager.jsx
+var roles = [
+	"Project admin",
+	"Designer",
+	"Site supervisor",
+	"Site team",
+	"Contractor",
+	"Trade worker",
+	"Other"
+];
+function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpdated }) {
+	const [projectId, setProjectId] = (0, import_react.useState)(defaultProjectId || "");
+	const [credentials, setCredentials] = (0, import_react.useState)(null);
+	const [busy, setBusy] = (0, import_react.useState)(false);
+	const [error, setError] = (0, import_react.useState)("");
+	const [copied, setCopied] = (0, import_react.useState)(false);
+	(0, import_react.useEffect)(() => {
+		if (open) {
+			setProjectId(defaultProjectId || projects[0]?.id || "");
+			setCredentials(null);
+			setError("");
+			setCopied(false);
+		}
+	}, [open, defaultProjectId]);
+	const submit = async (event, existing) => {
+		event.preventDefault();
+		setBusy(true);
+		setError("");
+		const data = Object.fromEntries(new FormData(event.currentTarget));
+		const url = existing ? `/api/founder/projects/${projectId}/employees` : "/api/founder/employees";
+		try {
+			const response = await fetch(url, {
+				method: "POST",
+				credentials: "same-origin",
+				headers: { "content-type": "application/json" },
+				body: JSON.stringify(existing ? data : {
+					...data,
+					projectId
+				})
+			});
+			const result = await response.json();
+			if (!response.ok) throw new Error(result.error || "Could not save employee.");
+			await onUpdated();
+			if (existing) onOpenChange(false);
+			else setCredentials(result.credentials);
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	const copy = async () => {
+		if (!credentials) return;
+		try {
+			await navigator.clipboard.writeText(`Studio Iksha employee access\nLink: ${credentials.link}\nEmployee ID: ${credentials.employeeId}\nPassword: ${credentials.password}`);
+			setCopied(true);
+		} catch {
+			setError("Could not copy. Select and copy the details below.");
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+		open,
+		onOpenChange,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
+			className: "max-h-[90dvh] overflow-y-auto",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: credentials ? "Employee access is ready" : "Add employee" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: credentials ? "Copy these details now. The password is shown only once." : "Give an employee access to one project, or assign an existing employee ID to another." })] }),
+				credentials ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "space-y-3",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-1 text-xs font-medium",
+							children: ["Employee login link", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								value: credentials.link,
+								readOnly: true,
+								className: "font-mono text-xs"
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-1 text-xs font-medium",
+							children: ["Employee ID", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								value: credentials.employeeId,
+								readOnly: true,
+								className: "font-mono"
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-1 text-xs font-medium",
+							children: ["Password", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								value: credentials.password,
+								readOnly: true,
+								className: "font-mono"
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "rounded-xl bg-amber-50 p-3 text-xs text-amber-900",
+							children: "Share the password privately with the employee. It cannot be viewed again after closing this window."
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+							className: "h-11 w-full",
+							onClick: copy,
+							children: [copied ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Copy, {}), copied ? "Copied" : "Copy link and credentials"]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							className: "w-full",
+							onClick: () => onOpenChange(false),
+							children: "Done"
+						})
+					]
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "space-y-4",
+					children: [projects.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "grid gap-1.5 text-sm font-medium",
+						children: ["Project", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
+							value: projectId,
+							onChange: (event) => setProjectId(event.target.value),
+							className: "w-full",
+							children: projects.map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: project.id,
+								children: project.name
+							}, project.id))
+						})]
+					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "rounded-xl bg-muted p-3 text-sm text-muted-foreground",
+						children: "Create a project before adding employees."
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Tabs, {
+						defaultValue: "new",
+						className: "gap-4",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
+								className: "w-full",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
+									value: "new",
+									children: "New employee"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
+									value: "existing",
+									children: "Existing ID"
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
+								value: "new",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+									onSubmit: (event) => submit(event, false),
+									className: "space-y-3",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+											className: "grid gap-1 text-xs font-medium",
+											children: ["Full name", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+												name: "name",
+												required: true,
+												maxLength: 120,
+												placeholder: "Aarav Sharma"
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+											className: "grid gap-1 text-xs font-medium",
+											children: ["Designation", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+												name: "designation",
+												required: true,
+												maxLength: 120,
+												placeholder: "Interior designer"
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "grid grid-cols-2 gap-3",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+												className: "grid gap-1 text-xs font-medium",
+												children: ["Email (optional)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+													name: "email",
+													type: "email",
+													maxLength: 200,
+													placeholder: "name@example.com"
+												})]
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+												className: "grid gap-1 text-xs font-medium",
+												children: ["Phone (optional)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+													name: "phone",
+													type: "tel",
+													maxLength: 40,
+													placeholder: "+91…"
+												})]
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+											className: "grid gap-1 text-xs font-medium",
+											children: ["Project role", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
+												name: "role",
+												className: "w-full",
+												children: roles.map((role) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: role }, role))
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+											type: "submit",
+											className: "h-11 w-full",
+											disabled: busy || !projectId,
+											children: "Create employee access"
+										})
+									]
+								})
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
+								value: "existing",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+									onSubmit: (event) => submit(event, true),
+									className: "space-y-3",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+											className: "grid gap-1 text-xs font-medium",
+											children: ["Existing employee ID", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+												name: "employeeId",
+												required: true,
+												placeholder: "EMP-XXXXXXXXXX",
+												autoCapitalize: "characters"
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+											className: "grid gap-1 text-xs font-medium",
+											children: ["Role on this project", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
+												name: "role",
+												className: "w-full",
+												children: roles.map((role) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: role }, role))
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "text-xs leading-relaxed text-muted-foreground",
+											children: "The employee keeps the same login ID and password. This project appears in their workspace after assignment."
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+											type: "submit",
+											className: "h-11 w-full",
+											disabled: busy || !projectId,
+											children: "Assign to project"
+										})
+									]
+								})
+							})
+						]
+					})]
+				}),
+				error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					role: "alert",
+					className: "text-xs text-destructive",
+					children: error
+				})
+			]
+		})
+	});
+}
+function EmployeeManager({ employees, projects, onAdd }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "space-y-5",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "flex flex-wrap items-start justify-between gap-3",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "text-xs font-semibold uppercase tracking-wider text-primary",
+					children: "Team access"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+					className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
+					children: "Employees"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "mt-1 text-sm text-muted-foreground",
+					children: "One employee ID can belong to several projects."
+				})
+			] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+				onClick: onAdd,
+				disabled: !projects.length,
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(UserPlus, {}), "Add employee"]
+			})]
+		}), employees.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "grid gap-3 sm:grid-cols-2",
+			children: employees.map((employee) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+				className: "space-y-3 p-4",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-start gap-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "grid size-10 shrink-0 place-items-center rounded-full bg-primary/10 text-primary",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { className: "size-5" })
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "min-w-0 flex-1",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+								className: "truncate text-sm font-semibold",
+								children: employee.name
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs text-muted-foreground",
+								children: employee.designation
+							})]
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "font-mono text-xs text-muted-foreground",
+						children: employee.id
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "flex flex-wrap gap-1.5",
+						children: employee.projectIds?.length ? employee.projectIds.map((id) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+							variant: "secondary",
+							children: projects.find((project) => project.id === id)?.name || "Project"
+						}, id)) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "text-xs text-muted-foreground",
+							children: "No active projects"
+						})
+					})
+				]
+			}) }, employee.id))
+		}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+			className: "py-12 text-center",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { className: "mx-auto size-9 text-muted-foreground/50" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+					className: "mt-3 text-sm font-semibold",
+					children: "No employee accounts yet"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "mt-1 text-xs text-muted-foreground",
+					children: "Add a team member to generate their login link and credentials."
+				})
+			]
+		}) })]
+	});
+}
+//#endregion
+//#region node_modules/thinking-orbs/dist/index-B8WsUNf5.js
+function lerp(a, b, f) {
+	return a + (b - a) * f;
+}
+function frac(x) {
+	return x - Math.floor(x);
+}
+function vnoise(x, y) {
+	const xi = Math.floor(x);
+	const yi = Math.floor(y);
+	let fx = x - xi;
+	let fy = y - yi;
+	fx = fx * fx * (3 - 2 * fx);
+	fy = fy * fy * (3 - 2 * fy);
+	const a = hashD(xi, yi);
+	const b = hashD(xi + 1, yi);
+	const c = hashD(xi, yi + 1);
+	const d = hashD(xi + 1, yi + 1);
+	return a + (b - a) * fx + (c - a) * fy + (a - b - c + d) * fx * fy;
+}
+function hashD(a, b) {
+	const h = Math.sin(a * 12.9898 + b * 78.233) * 43758.5453;
+	return h - Math.floor(h);
+}
+function fibDir(i, n) {
+	const golden = Math.PI * (3 - Math.sqrt(5));
+	const y = 1 - 2 * (i + .5) / n;
+	const rad = Math.sqrt(1 - y * y);
+	const a = i * golden;
+	return [
+		rad * Math.cos(a),
+		y,
+		rad * Math.sin(a)
+	];
+}
+function angleDelta(a, b) {
+	return Math.atan2(Math.sin(a - b), Math.cos(a - b));
+}
+function makeProj(yaw, tilt, cx, cy, scale) {
+	const st = Math.sin(tilt);
+	const ct = Math.cos(tilt);
+	const sy = Math.sin(yaw);
+	const cyw = Math.cos(yaw);
+	return (x, y, z) => {
+		const x1 = x * cyw + z * sy;
+		const z1 = -x * sy + z * cyw;
+		const y1 = y * ct - z1 * st;
+		const z2 = y * st + z1 * ct;
+		return [
+			cx + x1 * scale,
+			cy - y1 * scale,
+			z2
+		];
+	};
+}
+function inkColor(w, alpha, dark, tint) {
+	if (!tint) {
+		const g = Math.round((dark ? 1 - w : w) * 255);
+		return `rgba(${g},${g},${g},${alpha})`;
+	}
+	const ramp = (c) => Math.round(dark ? c * (1 - w) : c + (255 - c) * w);
+	return `rgba(${ramp(tint.r)},${ramp(tint.g)},${ramp(tint.b)},${alpha})`;
+}
+function paint(ctx, dots, dark, rMin = .3, tint) {
+	for (const d of dots) {
+		const alpha = d.a ?? 1;
+		ctx.fillStyle = inkColor(Math.min(1, Math.max(0, d.white)), alpha, dark, tint);
+		ctx.beginPath();
+		ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+		ctx.fill();
+	}
+}
+function paintLines(ctx, lines, dark, tint) {
+	for (const l of lines) {
+		const alpha = l.a ?? 1;
+		ctx.strokeStyle = inkColor(Math.min(1, Math.max(0, l.white)), alpha, dark, tint);
+		ctx.lineWidth = l.w;
+		ctx.beginPath();
+		ctx.moveTo(l.x1, l.y1);
+		ctx.lineTo(l.x2, l.y2);
+		ctx.stroke();
+	}
+}
+function finalizeFrame(dots, lines, rMin = .3) {
+	const visible = [];
+	for (const d of dots) {
+		if ((d.a ?? 1) < .02) continue;
+		d.r = Math.max(rMin, d.r);
+		visible.push(d);
+	}
+	visible.sort((a, b) => a.z - b.z);
+	return {
+		dots: visible,
+		lines: lines.filter((l) => (l.a ?? 1) >= .02)
+	};
+}
+function paintFrame(ctx, frame, dark, tint) {
+	if (frame.lines.length) paintLines(ctx, frame.lines, dark, tint);
+	paint(ctx, frame.dots, dark, .3, tint);
+}
+function radiusScale(size, pow) {
+	return (size / 300) ** pow;
+}
+var COUNT_PAIRS = [
+	["latRings", "lonDensity"],
+	["rings", "lonDensity"],
+	["lanes", "segs"]
+];
+var COUNT_KEYS = [
+	"orbitN",
+	"ghostN",
+	"nodeN",
+	"strandN",
+	"signals"
+];
+var ICON_DENSITY_KEYS = ["iconD"];
+var RADIUS_KEYS = [
+	"rBase",
+	"rDepth",
+	"rActive",
+	"rDot",
+	"ghostR",
+	"partR",
+	"partRDepth",
+	"nodeR",
+	"nodeRDepth"
+];
+function scaleCounts(opts, scale) {
+	const out = { ...opts };
+	const done = /* @__PURE__ */ new Set();
+	const rt = Math.sqrt(scale);
+	for (const [a, b] of COUNT_PAIRS) {
+		const va = out[a];
+		const vb = out[b];
+		if (va != null && vb != null && !done.has(a) && !done.has(b)) {
+			out[a] = Math.max(2, Math.round(va * rt));
+			out[b] = Math.max(2, Math.round(vb * rt));
+			done.add(a);
+			done.add(b);
+		}
+	}
+	for (const k of COUNT_KEYS) {
+		const v = out[k];
+		if (v != null && v !== 0 && !done.has(k)) out[k] = Math.max(1, Math.round(v * scale));
+	}
+	for (const k of ICON_DENSITY_KEYS) {
+		const v = out[k];
+		if (v != null) out[k] = Math.max(.02, v * scale);
+	}
+	return out;
+}
+function scaleRadii(opts, scale) {
+	const out = { ...opts };
+	for (const k of RADIUS_KEYS) {
+		const v = out[k];
+		if (v != null) out[k] = v * scale;
+	}
+	out.rSizeMul = (out.rSizeMul ?? 1) * scale;
+	return out;
+}
+var BASE_PROFILES = {
+	globe: {
+		latRings: 17,
+		lonDensity: 44,
+		rBase: .6,
+		rDepth: 1.7,
+		rBoost: 1,
+		inkFar: .62,
+		inkSpan: .54,
+		rsPow: .6,
+		rMin: .3
+	},
+	orbits: {
+		orbitN: 12,
+		ghostN: 40,
+		ghostR: .9,
+		ghostA: .5,
+		particles: 3,
+		partR: 1.2,
+		partRDepth: 1.6,
+		rsPow: .6,
+		rMin: .3
+	},
+	rubik: {
+		latRings: 15,
+		lonDensity: 40,
+		moveCount: 14,
+		rBase: .6,
+		rDepth: 1.7,
+		rActive: .3,
+		inkFar: .62,
+		inkSpan: .54,
+		rsPow: .6,
+		rMin: .3
+	},
+	wave: {
+		rings: 15,
+		lonDensity: 40,
+		rBase: .6,
+		rDepth: 1.7,
+		rsPow: .6,
+		rMin: .3
+	},
+	web: {
+		nodeN: 30,
+		thr: .72,
+		signals: 5,
+		nodeR: 1.4,
+		nodeRDepth: 1.8,
+		lineW: .8,
+		rsPow: .6,
+		rMin: .3
+	},
+	braid: {
+		strandN: 52,
+		turns: 3,
+		ghostN: 150,
+		rBase: 1.2,
+		rDepth: 1.8,
+		rsPow: .6,
+		rMin: .3
+	},
+	ribbon: {
+		lanes: 5,
+		segs: 88,
+		ghostN: 150,
+		rBase: 1.1,
+		rDepth: 1.7,
+		rsPow: .6,
+		rMin: .3
+	},
+	ring: {
+		lanes: 5,
+		segs: 88,
+		ghostN: 0,
+		faceOn: 1,
+		rBase: 1.1,
+		rDepth: 1.7,
+		rsPow: .6,
+		rMin: .3
+	},
+	morph: {
+		rDot: .021,
+		iconD: 1,
+		rMin: .25
+	}
+};
+var frameBraid = (size, t, o) => {
+	const cx = size / 2;
+	const cy = size / 2;
+	const R = size / 2 * .76;
+	const pt = makeProj(t * .4, .3, cx, cy, 1);
+	const rs = radiusScale(size, o.rsPow ?? .6);
+	const dots = [];
+	const ghostN = o.ghostN ?? 150;
+	for (let i = 0; i < ghostN; i++) {
+		const d = fibDir(i, ghostN);
+		const [px, py, z] = pt(d[0] * R, d[1] * R, d[2] * R);
+		const depth = (z / R + 1) / 2;
+		dots.push({
+			x: px,
+			y: py,
+			z,
+			r: .8 * rs,
+			white: .78,
+			a: .1 + .22 * depth
+		});
+	}
+	const strandN = o.strandN ?? 52;
+	const turns = o.turns ?? 3;
+	for (let s = 0; s < 3; s++) {
+		const phase = s / 3 * 2 * Math.PI;
+		for (let i = 0; i < strandN; i++) {
+			const u = (frac(i / strandN + t * .045) * 2 - 1) * .96;
+			const surf = Math.sqrt(Math.max(0, 1 - u * u));
+			const endFade = Math.min(1, (1 - Math.abs(u)) / .1);
+			const a = u * Math.PI * turns + phase;
+			const weave = 1 + .075 * Math.sin(u * Math.PI * turns * 2 + phase * 2 + t * .8);
+			const rr = surf * R * weave;
+			const [px, py, zr] = pt(Math.cos(a) * rr, u * R * weave, Math.sin(a) * rr);
+			const depth = (zr / R + 1) / 2;
+			dots.push({
+				x: px,
+				y: py,
+				z: zr,
+				r: ((o.rBase ?? 1.2) + (o.rDepth ?? 1.8) * depth) * rs,
+				white: .55 - .45 * depth,
+				a: endFade * (.45 + .55 * depth)
+			});
+		}
+	}
+	return finalizeFrame(dots, [], o.rMin);
+};
+function solveCycle(time, count, slotDur, rest) {
+	const tc = time % (2 * count * slotDur + rest);
+	const amount = new Array(count).fill(0);
+	let active = -1;
+	if (tc < 2 * count * slotDur) {
+		const slot = Math.floor(tc / slotDur);
+		const p = (tc - slot * slotDur) / slotDur;
+		const ep = 1 - (1 - Math.min(1, p / .7)) ** 3;
+		if (slot < count) {
+			for (let i = 0; i < slot; i++) amount[i] = 1;
+			amount[slot] = ep;
+			active = slot;
+		} else {
+			const u = 2 * count - 1 - slot;
+			for (let i = 0; i < u; i++) amount[i] = 1;
+			amount[u] = 1 - ep;
+			active = u;
+		}
+	}
+	return {
+		amount,
+		active
+	};
+}
+function applyMoves(pt3, moves, sc) {
+	let [x, y, z] = pt3;
+	let inActive = false;
+	for (let i = 0; i < moves.length; i++) {
+		if (sc.amount[i] <= 0) continue;
+		const mv = moves[i];
+		const coord = mv.axis === 0 ? x : mv.axis === 1 ? y : z;
+		if (coord < mv.lo || coord >= mv.hi) continue;
+		if (i === sc.active) inActive = true;
+		const a = mv.ang * sc.amount[i];
+		const ca = Math.cos(a);
+		const sa = Math.sin(a);
+		if (mv.axis === 0) {
+			const y2 = y * ca - z * sa;
+			z = y * sa + z * ca;
+			y = y2;
+		} else if (mv.axis === 1) {
+			const x2 = x * ca + z * sa;
+			z = -x * sa + z * ca;
+			x = x2;
+		} else {
+			const x2 = x * ca - y * sa;
+			y = x * sa + y * ca;
+			x = x2;
+		}
+	}
+	return [
+		x,
+		y,
+		z,
+		inActive
+	];
+}
+function makeMoves(count) {
+	const moves = [];
+	for (let i = 0; i < count; i++) {
+		const axis = Math.min(2, Math.floor(hashD(i, 2.3) * 3));
+		const lo = -1 + .5 * Math.min(3, Math.floor(hashD(i, 5.9) * 4));
+		const dir = hashD(i, 7.7) < .5 ? 1 : -1;
+		moves.push({
+			axis,
+			lo,
+			hi: lo + .5,
+			ang: dir * Math.PI / 2
+		});
+	}
+	return moves;
+}
+var frameGlobe = (size, t, o) => {
+	const spin = .5;
+	const cx = size / 2;
+	const cy = size / 2;
+	const radius = size / 2 * .82;
+	const tilt = .4 + .06 * Math.sin(t * .35);
+	const pt = makeProj(t * spin, tilt, cx, cy, radius);
+	const scan = t * (spin + 1.2 * (o.scanMul ?? 1));
+	const rs = radiusScale(size, o.rsPow ?? .6);
+	const dimBase = o.dimBase ?? 1;
+	const dots = [];
+	const latRings = o.latRings ?? 17;
+	const lonDensity = o.lonDensity ?? 44;
+	for (let li = 0; li <= latRings; li++) {
+		const lat = -Math.PI / 2 + li / latRings * Math.PI;
+		const cosLat = Math.cos(lat);
+		const sinLat = Math.sin(lat);
+		const lonCount = Math.max(1, Math.round(Math.abs(cosLat) * lonDensity));
+		for (let lj = 0; lj < lonCount; lj++) {
+			const lon = lj / lonCount * 2 * Math.PI;
+			const [px, py, z] = pt(cosLat * Math.cos(lon), sinLat, cosLat * Math.sin(lon));
+			const depth = (z + 1) / 2;
+			const d = angleDelta(lon + t * spin, scan);
+			const boost = Math.exp(-(d * d) / .18) * Math.max(0, z);
+			dots.push({
+				x: px,
+				y: py,
+				z,
+				r: ((o.rBase ?? .6) + (o.rDepth ?? 1.7) * depth + (o.rBoost ?? 1) * boost) * rs,
+				white: (o.inkFar ?? .62) - (o.inkSpan ?? .54) * depth,
+				a: dimBase + (1 - dimBase) * Math.min(1, boost)
+			});
+		}
+	}
+	return finalizeFrame(dots, [], o.rMin);
+};
+var frameRubik = (size, t, o) => {
+	const cx = size / 2;
+	const cy = size / 2;
+	const R = size / 2 * .82;
+	const pt = makeProj(t * .55, .35 + .1 * Math.sin(t * .9), cx, cy, R);
+	const rs = radiusScale(size, o.rsPow ?? .6);
+	const moveCount = o.moveCount ?? 14;
+	const moves = makeMoves(moveCount);
+	const sc = solveCycle(t, moveCount, .42, 1.2);
+	const dots = [];
+	const latRings = o.latRings ?? 15;
+	const lonDensity = o.lonDensity ?? 40;
+	for (let li = 0; li <= latRings; li++) {
+		const lat = -Math.PI / 2 + li / latRings * Math.PI;
+		const cosLat = Math.cos(lat);
+		const sinLat = Math.sin(lat);
+		const lonCount = Math.max(1, Math.round(Math.abs(cosLat) * lonDensity));
+		for (let lj = 0; lj < lonCount; lj++) {
+			const lon = lj / lonCount * 2 * Math.PI;
+			const [x, y, z, inActive] = applyMoves([
+				cosLat * Math.cos(lon),
+				sinLat,
+				cosLat * Math.sin(lon)
+			], moves, sc);
+			const [px, py, zr] = pt(x, y, z);
+			const depth = (zr + 1) / 2;
+			dots.push({
+				x: px,
+				y: py,
+				z: zr,
+				r: ((o.rBase ?? .6) + (o.rDepth ?? 1.7) * depth + (inActive ? o.rActive ?? .3 : 0)) * rs,
+				white: (o.inkFar ?? .62) - (o.inkSpan ?? .54) * depth - (inActive ? .14 : 0)
+			});
+		}
+	}
+	return finalizeFrame(dots, [], o.rMin);
+};
+var frameWave = (size, t, o) => {
+	const cx = size / 2;
+	const cy = size / 2;
+	const R = size / 2 * .874;
+	const pt = makeProj(t * .18, .38, cx, cy, 1);
+	const rs = radiusScale(size, o.rsPow ?? .6);
+	const dots = [];
+	const rings = o.rings ?? 15;
+	const lonDensity = o.lonDensity ?? 40;
+	for (let ri = 0; ri <= rings; ri++) {
+		const lat = -Math.PI / 2 + ri / rings * Math.PI;
+		const cosLat = Math.cos(lat);
+		const sinLat = Math.sin(lat);
+		const w = .62 * Math.sin(t * 2.1 - ri * .52) + .38 * Math.sin(t * 1.27 + ri * .83);
+		const rr = R * (.88 + .105 * w);
+		const lonCount = Math.max(1, Math.round(Math.abs(cosLat) * lonDensity));
+		for (let lj = 0; lj < lonCount; lj++) {
+			const lon = lj / lonCount * 2 * Math.PI;
+			const [px, py, z] = pt(cosLat * Math.cos(lon) * rr, sinLat * rr, cosLat * Math.sin(lon) * rr);
+			const depth = (z / R + 1) / 2;
+			const crest = Math.max(0, w);
+			dots.push({
+				x: px,
+				y: py,
+				z,
+				r: ((o.rBase ?? .6) + (o.rDepth ?? 1.7) * depth) * (1 + .4 * crest) * rs,
+				white: .66 - .56 * depth - .1 * crest
+			});
+		}
+	}
+	return finalizeFrame(dots, [], o.rMin);
+};
+function smoothE(x) {
+	return x * x * (3 - 2 * x);
+}
+function polyPath(verts) {
+	const V = verts.length;
+	const L = [];
+	let total = 0;
+	for (let i = 0; i < V; i++) {
+		const a = verts[i];
+		const b = verts[(i + 1) % V];
+		const l = Math.hypot(b[0] - a[0], b[1] - a[1]);
+		L.push(l);
+		total += l;
+	}
+	return (f) => {
+		let target = f * total;
+		let i = 0;
+		while (target > L[i] && i < V - 1) {
+			target -= L[i];
+			i++;
+		}
+		const a = verts[i];
+		const b = verts[(i + 1) % V];
+		const ff = L[i] ? Math.min(1, target / L[i]) : 0;
+		return [a[0] + (b[0] - a[0]) * ff, a[1] + (b[1] - a[1]) * ff];
+	};
+}
+var CIRCLE = (f) => {
+	const a = -Math.PI / 2 + f * 2 * Math.PI;
+	return [Math.cos(a) * .24, Math.sin(a) * .24];
+};
+var CYCLE = [
+	CIRCLE,
+	polyPath([
+		[0, -.26],
+		[.24, .16],
+		[-.24, .16]
+	]),
+	polyPath([
+		[0, -.2],
+		[.2, -.2],
+		[.2, .2],
+		[-.2, .2],
+		[-.2, -.2]
+	])
+];
+function morphN(d) {
+	return Math.max(6, Math.round(34 * d));
+}
+var HOLD = 1.4;
+var MORPH = .9;
+var SEG = 2.3;
+var frameMorph = (size, t, o) => {
+	const K = CYCLE.length;
+	const tc = t % (SEG * K);
+	const held = o.shape != null && o.shape >= 0 && o.shape < K ? Math.floor(o.shape) : -1;
+	const k = held >= 0 ? held : Math.floor(tc / SEG);
+	const local = held >= 0 ? t % SEG : tc - k * SEG;
+	const m = held >= 0 ? 0 : local > HOLD ? smoothE((local - HOLD) / MORPH) : 0;
+	const sprd = o.spread ?? 1;
+	const pA = CYCLE[k];
+	const pB = held >= 0 ? pA : CYCLE[(k + 1) % K];
+	const M = 160;
+	const pts = [];
+	for (let i = 0; i < M; i++) {
+		const f = i / M;
+		const a = pA(f);
+		const b = pB(f);
+		pts.push([(a[0] + (b[0] - a[0]) * m) * sprd, (a[1] + (b[1] - a[1]) * m) * sprd]);
+	}
+	const L = [];
+	let total = 0;
+	for (let i = 0; i < M; i++) {
+		const a = pts[i];
+		const b = pts[(i + 1) % M];
+		const l = Math.hypot(b[0] - a[0], b[1] - a[1]);
+		L.push(l);
+		total += l;
+	}
+	const n = morphN(o.iconD ?? 1);
+	const re = (o.rDot ?? .021) * 1.35 * sprd;
+	const pulse = 1 + .02 * Math.sin(local * 3.1);
+	const dots = [];
+	const c2 = size / 2;
+	let seg = 0;
+	let acc = 0;
+	for (let k2 = 0; k2 < n; k2++) {
+		const target = k2 / n * total;
+		while (acc + L[seg] < target && seg < 159) {
+			acc += L[seg];
+			seg++;
+		}
+		const a = pts[seg];
+		const b = pts[(seg + 1) % M];
+		const f = L[seg] ? Math.min(1, (target - acc) / L[seg]) : 0;
+		const x = (a[0] + (b[0] - a[0]) * f) * pulse;
+		const y = (a[1] + (b[1] - a[1]) * f) * pulse;
+		dots.push({
+			x: c2 + x * size,
+			y: c2 + y * size,
+			z: 0,
+			r: Math.max(.35, re * size),
+			white: .1
+		});
+	}
+	return finalizeFrame(dots, [], o.rMin);
+};
+var frameOrbits = (size, t, o) => {
+	const cx = size / 2;
+	const cy = size / 2;
+	const R = size / 2 * .82;
+	const pt = makeProj(t * .12, .3, cx, cy, 1);
+	const rs = radiusScale(size, o.rsPow ?? .6);
+	const dots = [];
+	const orbitN = o.orbitN ?? 12;
+	const ghostN = o.ghostN ?? 40;
+	const particles = o.particles ?? 3;
+	for (let orb = 0; orb < orbitN; orb++) {
+		const h1 = hashD(orb, 1.7);
+		const h2 = hashD(orb, 5.2);
+		const h3 = hashD(orb, 8.9);
+		const ro = R * (.45 + .52 * h1);
+		const th = h1 * 2 * Math.PI;
+		const phi = Math.acos(2 * h2 - 1);
+		const nx = Math.sin(phi) * Math.cos(th);
+		const ny = Math.cos(phi);
+		const nz = Math.sin(phi) * Math.sin(th);
+		let ux = -ny;
+		let uy = nx;
+		const uz = 0;
+		const ul = Math.max(1e-6, Math.sqrt(ux * ux + uy * uy));
+		ux /= ul;
+		uy /= ul;
+		const vx = ny * uz - nz * uy;
+		const vy = nz * ux - nx * uz;
+		const vz = nx * uy - ny * ux;
+		const speed = (.25 + .55 * h3) * (h3 > .5 ? 1 : -1);
+		for (let k = 0; k < ghostN; k++) {
+			const a = k / ghostN * 2 * Math.PI;
+			const [px, py, z] = pt((ux * Math.cos(a) + vx * Math.sin(a)) * ro, (uy * Math.cos(a) + vy * Math.sin(a)) * ro, (uz * Math.cos(a) + vz * Math.sin(a)) * ro);
+			const depth = (z / ro + 1) / 2;
+			dots.push({
+				x: px,
+				y: py,
+				z,
+				r: (o.ghostR ?? .9) * rs,
+				white: .72,
+				a: (o.ghostA ?? .5) * (.4 + .6 * depth)
+			});
+		}
+		for (let m = 0; m < particles; m++) {
+			const a = t * speed + m / particles * 2 * Math.PI + h2 * 6;
+			const [px, py, z] = pt((ux * Math.cos(a) + vx * Math.sin(a)) * ro, (uy * Math.cos(a) + vy * Math.sin(a)) * ro, (uz * Math.cos(a) + vz * Math.sin(a)) * ro);
+			const depth = (z / ro + 1) / 2;
+			dots.push({
+				x: px,
+				y: py,
+				z,
+				r: ((o.partR ?? 1.2) + (o.partRDepth ?? 1.6) * depth) * rs,
+				white: .3 - .22 * depth
+			});
+		}
+	}
+	return finalizeFrame(dots, [], o.rMin);
+};
+var frameRibbon = (size, t, o) => {
+	const cx = size / 2;
+	const cy = size / 2;
+	const R = size / 2 * .78;
+	const spin = o.spin ?? 1;
+	const pt = makeProj(t * .1 * spin, .3, cx, cy, 1);
+	const rs = radiusScale(size, o.rsPow ?? .6);
+	const dots = [];
+	const ghostN = o.ghostN ?? 150;
+	for (let i = 0; i < ghostN; i++) {
+		const d = fibDir(i, ghostN);
+		const [px, py, z] = pt(d[0] * R, d[1] * R, d[2] * R);
+		const depth = (z / R + 1) / 2;
+		dots.push({
+			x: px,
+			y: py,
+			z,
+			r: .8 * rs,
+			white: .78,
+			a: .1 + .22 * depth
+		});
+	}
+	const ya = t * .24 * spin;
+	const ta = o.faceOn ? -.3 : .55 + .3 * Math.sin(t * .18) * spin;
+	const ux = Math.cos(ya);
+	const uy = 0;
+	const uz = Math.sin(ya);
+	const vx = -uz * Math.sin(ta);
+	const vy = Math.cos(ta);
+	const vz = ux * Math.sin(ta);
+	const nx = uy * vz - uz * vy;
+	const ny = uz * vx - ux * vz;
+	const nz = ux * vy - uy * vx;
+	const wobAmp = .23 * (o.wobMul ?? 1);
+	const baseR = o.faceOn ? R / (1 + .85 * wobAmp) : R;
+	const baseLanes = o.lanes ?? 5;
+	const segs = o.segs ?? 88;
+	const lanes = Math.max(1, Math.round(baseLanes * (o.bandMul ?? 1)));
+	for (let w = 0; w < lanes; w++) {
+		const laneOff = (w - (lanes - 1) / 2) * .075;
+		const edge = Math.abs(w - (lanes - 1) / 2) / Math.max(1, (lanes - 1) / 2);
+		for (let k = 0; k < segs; k++) {
+			const a = k / segs * 2 * Math.PI;
+			const wob = (.16 * Math.sin(a * 3 - t * 1.7 + w * .22) + .07 * Math.sin(a * 5 + t * 1.1)) * (o.wobMul ?? 1);
+			const radial = o.faceOn ? 1 + wob : 1;
+			const off = o.faceOn ? laneOff : laneOff + wob;
+			const x = ux * Math.cos(a) + vx * Math.sin(a) + nx * off;
+			const y = uy * Math.cos(a) + vy * Math.sin(a) + ny * off;
+			const z = uz * Math.cos(a) + vz * Math.sin(a) + nz * off;
+			const l = Math.sqrt(x * x + y * y + z * z);
+			const rr = baseR * radial;
+			const [px, py, zr] = pt(x / l * rr, y / l * rr, z / l * rr);
+			const depth = (zr / R + 1) / 2;
+			dots.push({
+				x: px,
+				y: py,
+				z: zr,
+				r: ((o.rBase ?? 1.1) + (o.rDepth ?? 1.7) * depth) * (1 - .25 * edge) * rs,
+				white: .52 - .44 * depth + .18 * edge,
+				a: .4 + .6 * depth
+			});
+		}
+	}
+	return finalizeFrame(dots, [], o.rMin);
+};
+var frameWeb = (size, t, o) => {
+	const cx = size / 2;
+	const cy = size / 2;
+	const R = size / 2 * .8 * (o.spread ?? 1);
+	const pt = makeProj(t * .12, .32, cx, cy, R);
+	const rs = radiusScale(size, o.rsPow ?? .6);
+	const nodeN = o.nodeN ?? 30;
+	const thr = o.thr ?? .72;
+	const nodeR = o.nodeR ?? 1.4;
+	const nodeRDepth = o.nodeRDepth ?? 1.8;
+	const nodes = [];
+	for (let i = 0; i < nodeN; i++) {
+		const d = fibDir(i, nodeN);
+		const x = d[0] + .3 * (vnoise(i * .31 + 9, t * .24) - .5) * 2;
+		const y = d[1] + .3 * (vnoise(i * .53 + 27, t * .21) - .5) * 2;
+		const z = d[2] + .3 * (vnoise(i * .77 + 55, t * .27) - .5) * 2;
+		const l = Math.sqrt(x * x + y * y + z * z);
+		nodes.push([
+			x / l,
+			y / l,
+			z / l
+		]);
+	}
+	const lines = [];
+	const dots = [];
+	for (let i = 0; i < nodeN; i++) for (let j = i + 1; j < nodeN; j++) {
+		const dx = nodes[i][0] - nodes[j][0];
+		const dy = nodes[i][1] - nodes[j][1];
+		const dz = nodes[i][2] - nodes[j][2];
+		const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+		if (dist >= thr) continue;
+		const [x1, y1, z1] = pt(nodes[i][0], nodes[i][1], nodes[i][2]);
+		const [x2, y2, z2] = pt(nodes[j][0], nodes[j][1], nodes[j][2]);
+		const depth = ((z1 + z2) / 2 + 1) / 2;
+		lines.push({
+			x1,
+			y1,
+			x2,
+			y2,
+			white: .42,
+			a: (1 - dist / thr) * (.3 + .55 * depth),
+			w: Math.max(.6, (o.lineW ?? .8) * rs)
+		});
+	}
+	for (let i = 0; i < nodeN; i++) {
+		const [px, py, z] = pt(nodes[i][0], nodes[i][1], nodes[i][2]);
+		const depth = (z + 1) / 2;
+		const pulse = 1 + .25 * Math.sin(t * 1.4 + i * 2.7);
+		dots.push({
+			x: px,
+			y: py,
+			z,
+			r: (nodeR + nodeRDepth * depth) * pulse * rs,
+			white: .55 - .45 * depth
+		});
+	}
+	const signals = o.signals ?? 5;
+	for (let s = 0; s < signals; s++) {
+		const seg = Math.floor(t * .55 + s * 7.31);
+		const a = Math.floor(hashD(seg, s * 3.1 + 1.7) * nodeN);
+		const b = Math.floor(hashD(seg, s * 5.7 + 4.2) * nodeN);
+		if (a === b) continue;
+		const f = frac(t * .55 + s * 7.31);
+		const x = lerp(nodes[a][0], nodes[b][0], f);
+		const y = lerp(nodes[a][1], nodes[b][1], f);
+		const z = lerp(nodes[a][2], nodes[b][2], f);
+		const l = Math.max(1e-6, Math.sqrt(x * x + y * y + z * z));
+		const [px, py, zr] = pt(x / l, y / l, z / l);
+		const depth = (zr + 1) / 2;
+		dots.push({
+			x: px,
+			y: py,
+			z: zr,
+			r: (nodeR * 1.5 + nodeRDepth * depth) * rs,
+			white: .05,
+			a: .5 + .5 * depth
+		});
+	}
+	return finalizeFrame(dots, lines, o.rMin);
+};
+var MODE_FRAMES = {
+	orbits: frameOrbits,
+	globe: frameGlobe,
+	rubik: frameRubik,
+	wave: frameWave,
+	web: frameWeb,
+	braid: frameBraid,
+	ribbon: frameRibbon,
+	ring: frameRibbon,
+	morph: frameMorph
+};
+Object.fromEntries(Object.entries(MODE_FRAMES).map(([key, frame]) => [key, (ctx, size, t, dark, opts) => paintFrame(ctx, frame(size, t, opts), dark)]));
+var STATE_TO_MODE = {
+	working: "orbits",
+	searching: "globe",
+	solving: "rubik",
+	listening: "wave",
+	connecting: "web",
+	weaving: "braid",
+	composing: "ribbon",
+	breathing: "ring",
+	shaping: "morph"
+};
+var PRESETS = {
+	orbits: {
+		64: {
+			speed: 1.885,
+			count: 1,
+			size: 1
+		},
+		32: {
+			speed: 2.9072,
+			count: .4251,
+			size: 1.6849
+		},
+		20: {
+			speed: 3.9,
+			count: .238,
+			size: 2.4
+		}
+	},
+	globe: {
+		64: {
+			speed: 2.015,
+			count: .42,
+			size: 1.15,
+			extra: {
+				scanMul: 4.08,
+				dimBase: .45
+			}
+		},
+		32: {
+			speed: 2.3803,
+			count: .1839,
+			size: 1.4769,
+			extra: {
+				scanMul: 4.2301,
+				dimBase: .45
+			}
+		},
+		20: {
+			speed: 2.665,
+			count: .105,
+			size: 1.75,
+			extra: {
+				scanMul: 4.335,
+				dimBase: .45
+			}
+		}
+	},
+	rubik: {
+		64: {
+			speed: 1.82,
+			count: .35,
+			size: 1.05
+		},
+		32: {
+			speed: 1.8964,
+			count: .1537,
+			size: 1.4951
+		},
+		20: {
+			speed: 1.95,
+			count: .088,
+			size: 1.9
+		}
+	},
+	wave: {
+		64: {
+			speed: 4.388,
+			count: .341,
+			size: 1
+		},
+		32: {
+			speed: 4.1512,
+			count: .169,
+			size: 1.3232
+		},
+		20: {
+			speed: 3.998,
+			count: .105,
+			size: 1.6
+		}
+	},
+	web: {
+		64: {
+			speed: 3.315,
+			count: 1.35,
+			size: .95
+		},
+		32: {
+			speed: 5.0104,
+			count: .4942,
+			size: 1.2571
+		},
+		20: {
+			speed: 6.63,
+			count: .25,
+			size: 1.52
+		}
+	},
+	braid: {
+		64: {
+			speed: 1.625,
+			count: .5,
+			size: 1
+		},
+		32: {
+			speed: 2.2234,
+			count: .2056,
+			size: 1.2011
+		},
+		20: {
+			speed: 2.75,
+			count: .1125,
+			size: 1.36
+		}
+	},
+	ribbon: {
+		64: {
+			speed: 2.34,
+			count: .25,
+			size: .85,
+			extra: {
+				spin: 0,
+				bandMul: 3.9,
+				wobMul: 1
+			}
+		},
+		32: {
+			speed: 2.7776,
+			count: .0969,
+			size: .9766,
+			extra: {
+				spin: 0,
+				bandMul: 4.49,
+				wobMul: 1
+			}
+		},
+		20: {
+			speed: 3.12,
+			count: .051,
+			size: 1.073,
+			extra: {
+				spin: 0,
+				bandMul: 4.94,
+				wobMul: 1
+			}
+		}
+	},
+	ring: {
+		64: {
+			speed: 3.24,
+			count: .25,
+			size: .956,
+			extra: {
+				spin: 0,
+				bandMul: 3.627,
+				wobMul: .368
+			}
+		},
+		32: {
+			speed: 3.5517,
+			count: .0678,
+			size: 1.31,
+			extra: {
+				spin: 0,
+				bandMul: 3.8265,
+				wobMul: .4751
+			}
+		},
+		20: {
+			speed: 3.78,
+			count: .028,
+			size: 1.622,
+			extra: {
+				spin: 0,
+				bandMul: 3.968,
+				wobMul: .565
+			}
+		}
+	},
+	morph: {
+		64: {
+			speed: 2.405,
+			count: .702,
+			size: .395,
+			extra: { spread: 1.45 }
+		},
+		32: {
+			speed: 2.2057,
+			count: .5937,
+			size: .6916,
+			extra: { spread: 1.45 }
+		},
+		20: {
+			speed: 2.08,
+			count: .53,
+			size: 1.011,
+			extra: { spread: 1.45 }
+		}
+	}
+};
+var cache = /* @__PURE__ */ new Map();
+function resolvePreset(state, size) {
+	const key = `${state}-${size}`;
+	const hit = cache.get(key);
+	if (hit) return hit;
+	const mode = STATE_TO_MODE[state];
+	const preset = PRESETS[mode][size];
+	let opts = { ...BASE_PROFILES[mode] };
+	if (preset.count !== 1) opts = scaleCounts(opts, preset.count);
+	if (preset.size !== 1) opts = scaleRadii(opts, preset.size);
+	if (preset.extra) opts = {
+		...opts,
+		...preset.extra
+	};
+	const resolved = {
+		mode,
+		speed: preset.speed,
+		opts
+	};
+	cache.set(key, resolved);
+	return resolved;
+}
+//#endregion
+//#region node_modules/thinking-orbs/dist/index.es.js
+function ancestorTheme(el) {
+	let node = el;
+	while (node) {
+		const attr = node.getAttribute("data-theme");
+		if (attr === "dark") return true;
+		if (attr === "light") return false;
+		if (node.classList.contains("dark")) return true;
+		if (node.classList.contains("light")) return false;
+		node = node.parentElement;
+	}
+	return null;
+}
+function systemDark() {
+	return typeof matchMedia === "undefined" || matchMedia("(prefers-color-scheme: dark)").matches;
+}
+function useResolvedDark(theme, hostRef) {
+	const [dark, setDark] = (0, import_react.useState)(true);
+	(0, import_react.useEffect)(() => {
+		if (theme === "dark") {
+			setDark(true);
+			return;
+		}
+		if (theme === "light") {
+			setDark(false);
+			return;
+		}
+		const resolve = () => {
+			const fromTree = ancestorTheme(hostRef.current);
+			setDark(fromTree ?? systemDark());
+		};
+		resolve();
+		const mq2 = typeof matchMedia !== "undefined" ? matchMedia("(prefers-color-scheme: dark)") : null;
+		const onMq = () => resolve();
+		mq2?.addEventListener("change", onMq);
+		let mo = null;
+		if (typeof MutationObserver !== "undefined" && hostRef.current) {
+			mo = new MutationObserver(resolve);
+			mo.observe(document.documentElement, {
+				attributes: true,
+				attributeFilter: ["class", "data-theme"],
+				subtree: true
+			});
+		}
+		return () => {
+			mq2?.removeEventListener("change", onMq);
+			mo?.disconnect();
+		};
+	}, [theme, hostRef]);
+	return dark;
+}
+function useReducedMotion() {
+	const [reduced, setReduced] = (0, import_react.useState)(false);
+	(0, import_react.useEffect)(() => {
+		if (typeof matchMedia === "undefined") return;
+		const mq2 = matchMedia("(prefers-reduced-motion: reduce)");
+		setReduced(mq2.matches);
+		const on = (e2) => setReduced(e2.matches);
+		mq2.addEventListener("change", on);
+		return () => mq2.removeEventListener("change", on);
+	}, []);
+	return reduced;
+}
+var GRAVITY_DEFAULTS = Object.freeze({
+	reach: 160,
+	strength: 11,
+	deform: 19,
+	taper: 1.95,
+	curve: 2.8,
+	falloff: 24,
+	smoothing: .3,
+	handover: .6,
+	squash: 1.2,
+	blur: 1,
+	fadeMs: 180
+});
+var tuning = null;
+var sprite = null;
+var spriteImg = null;
+var src = null;
+var srcDpr = 0;
+var spriteDpr = 0;
+var disabled = false;
+var disabledReason = "";
+var slowFrames = 0;
+function setGravitySprite(next) {
+	if (next === sprite) return;
+	sprite = next;
+	spriteImg = null;
+	src = null;
+	disabled = false;
+	slowFrames = 0;
+	spriteDpr = typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1;
+	hideCursor();
+	if (!next || typeof Image === "undefined") return;
+	const img = new Image();
+	img.decoding = "async";
+	img.onload = () => {
+		if (sprite !== next) return;
+		spriteImg = img;
+		kick();
+	};
+	img.src = next.src;
+}
+var instances = /* @__PURE__ */ new Set();
+var tracking = false;
+var raf = 0;
+var last = 0;
+var px = NaN;
+var py = NaN;
+var lpx = 0;
+var lpy = 0;
+var uS = 0;
+var near = null;
+var pointerIsMouse = true;
+var typing = false;
+function attachGravity(el, options = true) {
+	const o = options === true ? {} : options;
+	if (o.sprite) setGravitySprite(o.sprite);
+	const inst = {
+		el,
+		opts: {
+			reach: Math.max(1, o.reach ?? GRAVITY_DEFAULTS.reach),
+			strength: Math.max(0, Math.min(64, o.strength ?? GRAVITY_DEFAULTS.strength)),
+			deform: Math.max(0, Math.min(32, o.deform ?? GRAVITY_DEFAULTS.deform)),
+			taper: Math.max(1, Math.min(4, o.taper ?? GRAVITY_DEFAULTS.taper)),
+			curve: Math.max(1, Math.min(4, o.curve ?? GRAVITY_DEFAULTS.curve)),
+			falloff: Math.max(2, Math.min(200, o.falloff ?? GRAVITY_DEFAULTS.falloff)),
+			smoothing: clamp01(o.smoothing ?? GRAVITY_DEFAULTS.smoothing),
+			handover: clamp01(o.handover ?? GRAVITY_DEFAULTS.handover),
+			squash: Math.max(0, Math.min(3, o.squash ?? GRAVITY_DEFAULTS.squash)),
+			blur: Math.max(0, Math.min(24, o.blur ?? GRAVITY_DEFAULTS.blur)),
+			fadeMs: Math.max(1, o.fadeMs ?? GRAVITY_DEFAULTS.fadeMs)
+		}
+	};
+	instances.add(inst);
+	ensureTracking();
+	kick();
+	return () => {
+		instances.delete(inst);
+		if (near === inst) near = null;
+		if (instances.size === 0) queueMicrotask(() => {
+			if (instances.size === 0) stopTracking();
+		});
+	};
+}
+var clamp01 = (v2) => Math.max(0, Math.min(1, v2));
+var effective = (inst) => tuning ? {
+	...inst.opts,
+	...tuning
+} : inst.opts;
+var mq = (q) => typeof window.matchMedia === "function" && window.matchMedia(q).matches;
+function swapBlockedBy() {
+	if (disabled) return disabledReason || "disabled by a fail-safe";
+	if (!sprite) return "no pointer sprite set";
+	if (!spriteImg) return "pointer sprite still loading";
+	if (mq("(prefers-reduced-motion: reduce)")) return "prefers-reduced-motion is on";
+	if (mq("(forced-colors: active)")) return "forced colours are active";
+	if (!mq("(pointer: fine)") || !mq("(hover: hover)")) return "no fine pointer";
+	if ((window.devicePixelRatio || 1) !== spriteDpr) return "display scale changed since the sprite was set — reload";
+	const vv = window.visualViewport;
+	if (vv && Math.abs(vv.scale - 1) > .001) return "page is zoomed";
+	return null;
+}
+function swapAllowed() {
+	return swapBlockedBy() === null;
+}
+function ensureTracking() {
+	if (tracking || instances.size === 0 || typeof document === "undefined") return;
+	if (!mq("(pointer: fine)")) return;
+	tracking = true;
+	document.addEventListener("pointermove", onMove, { passive: true });
+	document.addEventListener("pointerleave", onLeave);
+	document.addEventListener("pointercancel", onLeave);
+	document.addEventListener("keydown", onKey, { passive: true });
+	document.addEventListener("visibilitychange", onLeave);
+	window.addEventListener("blur", onLeave);
+}
+function stopTracking() {
+	if (!tracking) return;
+	tracking = false;
+	document.removeEventListener("pointermove", onMove);
+	document.removeEventListener("pointerleave", onLeave);
+	document.removeEventListener("pointercancel", onLeave);
+	document.removeEventListener("keydown", onKey);
+	document.removeEventListener("visibilitychange", onLeave);
+	window.removeEventListener("blur", onLeave);
+	if (raf !== 0) {
+		cancelAnimationFrame(raf);
+		raf = 0;
+	}
+	near = null;
+	uS = 0;
+	hideCursor();
+	if (curEl) {
+		curEl.remove();
+		curEl = null;
+		curCanvas = null;
+		curCtx = null;
+	}
+	if (hideStyle) {
+		hideStyle.remove();
+		hideStyle = null;
+	}
+}
+function onMove(e2) {
+	pointerIsMouse = e2.pointerType === "mouse" || e2.pointerType === "";
+	typing = false;
+	moveSeq++;
+	px = lpx = e2.clientX;
+	py = lpy = e2.clientY;
+	if (releasePending) {
+		releasePending = false;
+		hideSprite();
+		amp = 0;
+		bend = 0;
+		wcx = wcy = NaN;
+	}
+	kick();
+}
+function onKey() {
+	typing = true;
+	hideCursor();
+}
+function onLeave() {
+	px = py = NaN;
+	kick();
+}
+function kick() {
+	if (!tracking || raf !== 0) return;
+	last = performance.now();
+	raf = requestAnimationFrame(step);
+}
+var curEl = null;
+var curCanvas = null;
+var curCtx = null;
+var curShown = false;
+var HIDE_CLASS = "thinking-orb-gravity-hide";
+var hideStyle = null;
+var hiding = false;
+var naturalCursor = /* @__PURE__ */ new WeakMap();
+var moveSeq = 0;
+var claimMove = -1;
+var stepSeq = 0;
+var claimStep = -1;
+function ensureCursor() {
+	if (curEl) return true;
+	const el = document.createElement("div");
+	el.className = "thinking-orb-gravity-cursor";
+	el.setAttribute("aria-hidden", "true");
+	el.style.cssText = "position:fixed;left:0;top:0;pointer-events:none;z-index:2147483001;will-change:transform;display:none";
+	const c2 = document.createElement("canvas");
+	c2.style.display = "block";
+	el.appendChild(c2);
+	document.body.appendChild(el);
+	const ctx = c2.getContext("2d");
+	if (!ctx) {
+		el.remove();
+		return false;
+	}
+	curEl = el;
+	curCanvas = c2;
+	curCtx = ctx;
+	curDpr = 0;
+	return true;
+}
+function ensureHideStyle() {
+	if (hideStyle) return;
+	hideStyle = document.createElement("style");
+	hideStyle.textContent = `html.${HIDE_CLASS}, html.${HIDE_CLASS} * { cursor: none !important; }`;
+	document.head.appendChild(hideStyle);
+}
+function cursorOf(el) {
+	const cached = naturalCursor.get(el);
+	if (cached) return cached;
+	const root = document.documentElement;
+	const had = root.classList.contains(HIDE_CLASS);
+	if (had) root.classList.remove(HIDE_CLASS);
+	const cur = getComputedStyle(el).cursor;
+	if (had) root.classList.add(HIDE_CLASS);
+	naturalCursor.set(el, cur);
+	return cur;
+}
+function claimCursor(x, y) {
+	const target = document.elementFromPoint(x, y);
+	if (!target) return false;
+	const cur = cursorOf(target);
+	if (cur !== "auto" && cur !== "default") {
+		releaseCursor();
+		return false;
+	}
+	if (!hiding) {
+		ensureHideStyle();
+		document.documentElement.classList.add(HIDE_CLASS);
+		hiding = true;
+		claimMove = moveSeq;
+		claimStep = stepSeq;
+	}
+	return true;
+}
+function releaseCursor() {
+	if (!hiding) return;
+	document.documentElement.classList.remove(HIDE_CLASS);
+	hiding = false;
+	claimMove = -1;
+}
+function hideSprite() {
+	if (curEl && curShown) {
+		curEl.style.display = "none";
+		curShown = false;
+	}
+}
+var LINGER_MS = 500;
+var lastReach = Number.NEGATIVE_INFINITY;
+var releasePending = false;
+function hideCursor() {
+	releasePending = false;
+	releaseCursor();
+	hideSprite();
+	amp = 0;
+	bend = 0;
+	wcx = wcy = NaN;
+}
+var _c = {
+	cx: 0,
+	cy: 0,
+	r: 0
+};
+var amp = 0;
+var bend = 0;
+var wcx = NaN;
+var wcy = NaN;
+var PAD = 48;
+var PASSES = 10;
+var refCanvas = null;
+var refCtx = null;
+var bentCanvas = null;
+var bentCtx = null;
+var bentData = null;
+var curDpr = 0;
+var curW = 0;
+var curH = 0;
+function readSprite(dpr) {
+	if (!spriteImg || !sprite) return null;
+	const c2 = document.createElement("canvas");
+	c2.width = Math.ceil(sprite.width * dpr);
+	c2.height = Math.ceil(sprite.height * dpr);
+	const g2 = c2.getContext("2d", { willReadFrequently: true });
+	if (!g2) return null;
+	g2.scale(dpr, dpr);
+	g2.drawImage(spriteImg, 0, 0, sprite.width, sprite.height);
+	return g2.getImageData(0, 0, c2.width, c2.height);
+}
+function bendSprite(B, taper, P, hx, hy, cxo, cyo) {
+	if (!src || !bentData) return;
+	const OW = bentData.width, OH = bentData.height;
+	const S2 = src, SW = S2.width, SH = S2.height, sd = S2.data;
+	const od = bentData.data;
+	od.fill(0);
+	const L = Math.max(1, Math.hypot(SW, SH));
+	const tdx = cxo - hx, tdy = cyo - hy;
+	const tdl = Math.hypot(tdx, tdy) || 1;
+	const tux = tdx / tdl, tuy = tdy / tdl;
+	const x1 = Math.max(0, Math.floor(P + Math.min(0, B * tux) - 3)), x2 = Math.min(OW, Math.ceil(P + SW + Math.max(0, B * tux) + 3));
+	const y1 = Math.max(0, Math.floor(P + Math.min(0, B * tuy) - 3)), y2 = Math.min(OH, Math.ceil(P + SH + Math.max(0, B * tuy) + 3));
+	for (let y = y1; y < y2; y++) for (let x = x1; x < x2; x++) {
+		const i2 = (y * OW + x) * 4;
+		let sx = x - P, sy = y - P;
+		if (B > .01) {
+			let qx = x, qy = y;
+			let m2 = 0, dx = 0, dy = 0, dl = 1;
+			for (let it = 0; it < 7; it++) {
+				const s = Math.hypot(qx - hx, qy - hy) / L;
+				m2 = B * Math.pow(Math.min(1, s), taper);
+				dx = cxo - qx;
+				dy = cyo - qy;
+				dl = Math.hypot(dx, dy) || 1;
+				qx += (x - m2 * dx / dl - qx) * .5;
+				qy += (y - m2 * dy / dl - qy) * .5;
+			}
+			const ex = qx + m2 * dx / dl - x, ey = qy + m2 * dy / dl - y;
+			if (ex * ex + ey * ey > 2.25) {
+				od[i2] = od[i2 + 1] = od[i2 + 2] = od[i2 + 3] = 0;
+				continue;
+			}
+			sx = qx - P;
+			sy = qy - P;
+		}
+		const x0 = Math.floor(sx), y0 = Math.floor(sy);
+		if (x0 < -1 || y0 < -1 || x0 >= SW || y0 >= SH) {
+			od[i2] = od[i2 + 1] = od[i2 + 2] = od[i2 + 3] = 0;
+			continue;
+		}
+		const fx = sx - x0, fy = sy - y0;
+		let r = 0, g2 = 0, b2 = 0, a = 0;
+		for (let k = 0; k < 4; k++) {
+			const xx = x0 + (k & 1), yy = y0 + (k >> 1);
+			if (xx < 0 || yy < 0 || xx >= SW || yy >= SH) continue;
+			const wgt = (k & 1 ? fx : 1 - fx) * (k >> 1 ? fy : 1 - fy);
+			const j = (yy * SW + xx) * 4;
+			const wa = wgt * sd[j + 3];
+			r += sd[j] * wa;
+			g2 += sd[j + 1] * wa;
+			b2 += sd[j + 2] * wa;
+			a += wa;
+		}
+		if (a > 0) {
+			od[i2] = r / a;
+			od[i2 + 1] = g2 / a;
+			od[i2 + 2] = b2 / a;
+			od[i2 + 3] = a;
+		} else od[i2] = od[i2 + 1] = od[i2 + 2] = od[i2 + 3] = 0;
+	}
+}
+function drawCursor(inst, w, dt) {
+	if (!curCtx || !curCanvas || !curEl || !sprite || !spriteImg) return;
+	const sp = sprite;
+	const o = effective(inst);
+	const dpr = Math.min(3, window.devicePixelRatio || 1);
+	if (!refCanvas) {
+		refCanvas = document.createElement("canvas");
+		refCtx = refCanvas.getContext("2d");
+	}
+	if (!bentCanvas) {
+		bentCanvas = document.createElement("canvas");
+		bentCtx = bentCanvas.getContext("2d");
+	}
+	if (!refCtx || !bentCtx) return;
+	if (!src || srcDpr !== dpr) {
+		src = readSprite(dpr);
+		srcDpr = dpr;
+	}
+	if (!src) return;
+	if (dpr !== curDpr || sp.width !== curW || sp.height !== curH) {
+		curDpr = dpr;
+		curW = sp.width;
+		curH = sp.height;
+		const OW2 = Math.ceil((sp.width + 96) * dpr), OH2 = Math.ceil((sp.height + 96) * dpr);
+		curCanvas.width = refCanvas.width = bentCanvas.width = OW2;
+		curCanvas.height = refCanvas.height = bentCanvas.height = OH2;
+		curCanvas.style.width = `${sp.width + 96}px`;
+		curCanvas.style.height = `${sp.height + 96}px`;
+		bentData = bentCtx.createImageData(OW2, OH2);
+	}
+	const OW = curCanvas.width, OH = curCanvas.height;
+	const k = Math.pow(w, o.curve);
+	const ease = 1 - Math.exp(-dt / (.012 + o.smoothing * .14));
+	amp += (o.strength * k - amp) * ease;
+	bend += (o.deform * k - bend) * ease;
+	let A = amp * dpr, B = bend * dpr;
+	if (Number.isNaN(wcx)) {
+		wcx = _c.cx;
+		wcy = _c.cy;
+	} else {
+		const swing = 1 - Math.exp(-dt / (.05 + o.handover * .6));
+		wcx += (_c.cx - wcx) * swing;
+		wcy += (_c.cy - wcy) * swing;
+	}
+	const P = PAD * dpr;
+	const hx = P + sp.hotX * dpr, hy = P + sp.hotY * dpr;
+	const cxo = hx + (wcx - lpx) * dpr, cyo = hy + (wcy - lpy) * dpr;
+	const dTip = Math.hypot(cxo - hx, cyo - hy) || 1;
+	const ux = (cxo - hx) / dTip, uy = (cyo - hy) / dTip;
+	const F = o.falloff * dpr;
+	if (o.squash > 0) {
+		const axL = Math.hypot(sp.width * .5 - sp.hotX, sp.height - sp.hotY) || 1;
+		const axx = (sp.width * .5 - sp.hotX) / axL, axy = (sp.height - sp.hotY) / axL;
+		const against = Math.max(0, -(ux * axx + uy * axy));
+		const gain = 1 + o.squash * against;
+		A *= gain;
+		B *= gain;
+	}
+	const grow = Math.ceil(Math.max(B, 1)) + 4;
+	const bx1 = Math.floor(Math.min(P, P + ux * A) - grow), by1 = Math.floor(Math.min(P, P + uy * A) - grow);
+	const bx2 = Math.ceil(Math.max(P, P + ux * A) + sp.width * dpr + grow), by2 = Math.ceil(Math.max(P, P + uy * A) + sp.height * dpr + grow);
+	const rx = Math.max(0, bx1), ry = Math.max(0, by1);
+	const rw = Math.min(OW, bx2) - rx, rh = Math.min(OH, by2) - ry;
+	if (B > .01) {
+		bendSprite(B, o.taper, P, hx, hy, cxo, cyo);
+		bentCtx.putImageData(bentData, 0, 0, rx, ry, rw, rh);
+	} else {
+		bentCtx.setTransform(1, 0, 0, 1, 0, 0);
+		bentCtx.clearRect(0, 0, OW, OH);
+		bentCtx.drawImage(spriteImg, P, P, sp.width * dpr, sp.height * dpr);
+	}
+	const ctx = curCtx, rctx = refCtx;
+	ctx.setTransform(1, 0, 0, 1, 0, 0);
+	ctx.clearRect(0, 0, OW, OH);
+	ctx.globalAlpha = 1;
+	ctx.globalCompositeOperation = "source-over";
+	ctx.drawImage(bentCanvas, 0, 0);
+	if (A > .5) {
+		const bcx = P + sp.width * dpr * .42, bcy = P + sp.height * dpr * .5;
+		const half = F / 2;
+		const mask = rctx.createLinearGradient(bcx - ux * half, bcy - uy * half, bcx + ux * half, bcy + uy * half);
+		mask.addColorStop(0, "rgba(0,0,0,0)");
+		mask.addColorStop(1, "rgba(0,0,0,1)");
+		for (let i2 = PASSES; i2 >= 1; i2--) {
+			const t = i2 / PASSES;
+			rctx.setTransform(1, 0, 0, 1, 0, 0);
+			rctx.globalCompositeOperation = "source-over";
+			rctx.globalAlpha = 1;
+			rctx.clearRect(rx, ry, rw, rh);
+			rctx.drawImage(bentCanvas, rx, ry, rw, rh, rx + ux * A * t, ry + uy * A * t, rw, rh);
+			rctx.globalCompositeOperation = "destination-in";
+			rctx.fillStyle = mask;
+			rctx.fillRect(rx, ry, rw, rh);
+			ctx.globalCompositeOperation = "destination-over";
+			ctx.globalAlpha = Math.pow(1 - t, 1.6) * .9;
+			if (o.blur > 0) ctx.filter = `blur(${(o.blur * Math.sqrt(t) * dpr).toFixed(2)}px)`;
+			ctx.drawImage(refCanvas, rx, ry, rw, rh, rx, ry, rw, rh);
+		}
+		ctx.filter = "none";
+		ctx.globalAlpha = 1;
+		ctx.globalCompositeOperation = "source-over";
+	}
+	curEl.style.transform = `translate3d(${(lpx - sp.hotX - PAD).toFixed(2)}px,${(lpy - sp.hotY - PAD).toFixed(2)}px,0)`;
+	if (!curShown) {
+		curEl.style.display = "";
+		curShown = true;
+	}
+}
+function step(now) {
+	raf = 0;
+	if (!tracking) return;
+	const t0 = performance.now();
+	try {
+		stepInner(now);
+	} catch (err) {
+		disabled = true;
+		disabledReason = `disabled after an error (${err instanceof Error ? err.message : String(err)})`;
+		hideCursor();
+		near = null;
+		if (typeof console !== "undefined") console.warn("thinking-orbs: gravity disabled after error", err);
+		return;
+	}
+	const took = performance.now() - t0;
+	if (took > 12) {
+		if (++slowFrames >= 30 && !disabled) {
+			disabled = true;
+			disabledReason = `disabled after slow frames (~${Math.round(took)}ms each)`;
+			hideCursor();
+		}
+	} else slowFrames = 0;
+}
+function stepInner(now) {
+	const dt = Math.min(.05, Math.max(.001, (now - last) / 1e3));
+	last = now;
+	stepSeq++;
+	let best = null;
+	let u = 0;
+	if (!Number.isNaN(px) && swapAllowed()) {
+		let bestEdge = Number.POSITIVE_INFINITY;
+		for (const inst of instances) {
+			if (!inst.el.isConnected) continue;
+			const r = inst.el.getBoundingClientRect();
+			if (r.width <= 0) continue;
+			const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+			const orbR = Math.min(r.width, r.height) / 2;
+			const reach = effective(inst).reach;
+			if (px < cx - orbR - reach || px > cx + orbR + reach || py < cy - orbR - reach || py > cy + orbR + reach) continue;
+			const edge = Math.hypot(px - cx, py - cy) - orbR;
+			if (edge <= reach && edge < bestEdge) {
+				bestEdge = edge;
+				best = inst;
+				_c.cx = cx;
+				_c.cy = cy;
+				_c.r = orbR;
+			}
+		}
+		if (best) {
+			const t = 1 - Math.max(0, bestEdge) / effective(best).reach;
+			u = t * t * (3 - 2 * t);
+			lastReach = now;
+		}
+	}
+	const nearest = near ?? best;
+	const fade = nearest ? effective(nearest).fadeMs : GRAVITY_DEFAULTS.fadeMs;
+	const a = 1 - Math.exp(-(dt * 1e3) / (fade / 3));
+	uS += (u - uS) * a;
+	if (best && best !== near) near = best;
+	if (!best && uS < .002) {
+		uS = 0;
+		if (near && hiding && !releasePending && pointerIsMouse && !typing && !Number.isNaN(px)) {
+			if (now - lastReach < LINGER_MS) {
+				if (claimCursor(px, py)) drawCursor(near, 0, dt);
+				else hideSprite();
+				raf = requestAnimationFrame(step);
+				return;
+			}
+			if (curShown) {
+				releaseCursor();
+				releasePending = true;
+				near = null;
+				return;
+			}
+		}
+		near = null;
+		hideCursor();
+		return;
+	}
+	if (!near) return;
+	if (uS > .002 && pointerIsMouse && !typing && !Number.isNaN(px) && ensureCursor() && claimCursor(px, py)) {
+		if (claimMove === moveSeq && stepSeq - claimStep < 2 && !curShown) hideSprite();
+		else drawCursor(near, uS, dt);
+	} else if (uS > .002 && !Number.isNaN(px) && pointerIsMouse && !typing) hideSprite();
+	else hideCursor();
+	raf = requestAnimationFrame(step);
+}
+function parseTint(color) {
+	if (!color) return void 0;
+	const hex = color.trim().match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
+	if (hex) {
+		let h2 = hex[1];
+		if (h2.length === 3) h2 = h2.replace(/./g, (c2) => c2 + c2);
+		const n = parseInt(h2, 16);
+		return {
+			r: n >> 16 & 255,
+			g: n >> 8 & 255,
+			b: n & 255
+		};
+	}
+	const fn = color.trim().match(/^rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/i);
+	if (fn) return {
+		r: Number(fn[1]),
+		g: Number(fn[2]),
+		b: Number(fn[3])
+	};
+}
+var LABELS = {
+	working: "Working…",
+	searching: "Searching…",
+	solving: "Solving…",
+	listening: "Listening…",
+	connecting: "Connecting…",
+	weaving: "Weaving…",
+	composing: "Composing…",
+	breathing: "Thinking…",
+	shaping: "Shaping…"
+};
+function ThinkingOrb({ state = "working", size = 64, theme = "auto", speed = 1, paused = false, color, dots = 1, dotSize = 1, opts: optsOverride, frame: customFrame, gravity, style, "aria-label": ariaLabel, ...rest }) {
+	const ref = (0, import_react.useRef)(null);
+	const optsKey = optsOverride ? JSON.stringify(optsOverride) : "";
+	const dark = useResolvedDark(theme, ref);
+	const gravityKey = gravity ? JSON.stringify(gravity) : "";
+	(0, import_react.useEffect)(() => {
+		const canvas = ref.current;
+		if (!canvas || !gravity) return;
+		return attachGravity(canvas, gravity === true ? true : gravity);
+	}, [gravityKey]);
+	const reduced = useReducedMotion();
+	(0, import_react.useEffect)(() => {
+		const canvas = ref.current;
+		if (!canvas) return;
+		const dpr = Math.min(2, typeof devicePixelRatio !== "undefined" && devicePixelRatio || 1);
+		canvas.width = Math.round(size * dpr);
+		canvas.height = Math.round(size * dpr);
+		const ctx = canvas.getContext("2d");
+		if (!ctx) return;
+		const { mode, speed: baseSpeed, opts: presetOpts } = resolvePreset(state, size);
+		let opts = dots !== 1 ? scaleCounts(presetOpts, Math.max(.1, dots)) : presetOpts;
+		if (dotSize !== 1) opts = scaleRadii(opts, Math.max(.1, dotSize));
+		if (optsOverride) opts = {
+			...opts,
+			...optsOverride
+		};
+		const frameFn = customFrame ?? MODE_FRAMES[mode];
+		const tint = parseTint(color);
+		const effSpeed = baseSpeed * speed;
+		const frame = (tSec) => {
+			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+			ctx.clearRect(0, 0, size, size);
+			paintFrame(ctx, frameFn(size, tSec, opts), dark, tint);
+		};
+		if (reduced) {
+			frame(.6);
+			return;
+		}
+		let raf2 = 0;
+		let running = false;
+		const loop = () => {
+			frame(performance.now() / 1e3 * effSpeed);
+			if (running) raf2 = requestAnimationFrame(loop);
+		};
+		const start = () => {
+			if (running || paused) return;
+			running = true;
+			raf2 = requestAnimationFrame(loop);
+		};
+		const stop = () => {
+			running = false;
+			cancelAnimationFrame(raf2);
+		};
+		frame(performance.now() / 1e3 * effSpeed);
+		let visible = true;
+		const io = typeof IntersectionObserver !== "undefined" ? new IntersectionObserver(([entry]) => {
+			visible = entry.isIntersecting;
+			if (visible && document.visibilityState !== "hidden") start();
+			else stop();
+		}) : null;
+		io?.observe(canvas);
+		const onVis = () => {
+			if (document.visibilityState === "hidden") stop();
+			else if (visible) start();
+		};
+		document.addEventListener("visibilitychange", onVis);
+		if (!io) start();
+		return () => {
+			stop();
+			io?.disconnect();
+			document.removeEventListener("visibilitychange", onVis);
+		};
+	}, [
+		state,
+		size,
+		dark,
+		speed,
+		paused,
+		reduced,
+		color,
+		dots,
+		dotSize,
+		optsKey,
+		customFrame
+	]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("canvas", {
+		ref,
+		role: "img",
+		"aria-label": ariaLabel ?? LABELS[state],
+		style: {
+			width: size,
+			height: size,
+			display: "block",
+			...style
+		},
+		...rest
+	});
+}
+//#endregion
+//#region frontend/src/components/ui/textarea.jsx
+function Textarea({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("textarea", {
+		"data-slot": "textarea",
+		className: cn("flex field-sizing-content min-h-16 w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:aria-invalid:ring-destructive/40", className),
+		...props
+	});
+}
+//#endregion
+//#region frontend/src/components/FounderAssistant.jsx
+var suggestions = [
+	"Summarize all ongoing projects",
+	"Which projects have blockers?",
+	"What milestones are next?",
+	"Who is working on each project?"
+];
+function FounderAssistant() {
+	const [messages, setMessages] = (0, import_react.useState)([]);
+	const [draft, setDraft] = (0, import_react.useState)("");
+	const [busy, setBusy] = (0, import_react.useState)(false);
+	const [error, setError] = (0, import_react.useState)("");
+	const scrollRef = (0, import_react.useRef)(null);
+	(0, import_react.useEffect)(() => {
+		fetch("/api/founder/assistant", { credentials: "same-origin" }).then((response) => response.json()).then((data) => setMessages(data.messages || [])).catch(() => setError("Could not load earlier questions."));
+	}, []);
+	(0, import_react.useEffect)(() => {
+		if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+	}, [messages.length, busy]);
+	const ask = async (event, suggestion) => {
+		event?.preventDefault();
+		const question = (suggestion || draft).trim();
+		if (!question || busy) return;
+		setDraft("");
+		setBusy(true);
+		setError("");
+		const pending = {
+			id: `pending-${Date.now()}`,
+			question,
+			answer: null,
+			at: (/* @__PURE__ */ new Date()).toISOString()
+		};
+		setMessages((current) => [...current, pending]);
+		try {
+			const response = await fetch("/api/founder/assistant", {
+				method: "POST",
+				credentials: "same-origin",
+				headers: { "content-type": "application/json" },
+				body: JSON.stringify({ question })
+			});
+			const data = await response.json();
+			if (!response.ok) throw new Error(data.error || "Could not answer right now.");
+			setMessages((current) => current.map((item) => item.id === pending.id ? data.message : item));
+		} catch (problem) {
+			setMessages((current) => current.filter((item) => item.id !== pending.id));
+			setDraft(question);
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "space-y-5",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "flex items-center gap-4",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				className: "grid size-16 shrink-0 place-items-center rounded-2xl bg-primary/5",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
+					state: busy ? "working" : "breathing",
+					size: 64,
+					speed: busy ? .65 : .35,
+					theme: "light",
+					color: "#2166d1",
+					"aria-label": busy ? "Assistant thinking" : "Founder assistant"
+				})
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "text-xs font-semibold uppercase tracking-wider text-primary",
+					children: "Founder workspace"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+					className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
+					children: "Ask Studio Iksha"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "mt-1 text-sm text-muted-foreground",
+					children: "Explore facts across every ongoing project."
+				})
+			] })]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
+			className: "flex min-h-[min(72dvh,680px)] flex-col gap-0 overflow-hidden p-0",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-center justify-between gap-3 border-b px-4 py-3",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-sm font-semibold",
+						children: "Project assistant"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						className: "flex items-center gap-1.5 text-xs text-muted-foreground",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LockKeyhole, { className: "size-3.5" }), "Founder only"]
+					})]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					ref: scrollRef,
+					className: "chat-scroll min-h-72 max-h-[55dvh] flex-1 space-y-5 overflow-y-auto px-4 py-5 sm:px-6",
+					"aria-label": "Founder assistant conversation",
+					"aria-live": "polite",
+					children: [
+						!messages.length && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mx-auto flex max-w-sm flex-col items-center py-10 text-center",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
+									state: "breathing",
+									size: 64,
+									speed: .3,
+									theme: "light",
+									color: "#2166d1",
+									"aria-hidden": "true"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+									className: "mt-5 text-sm font-semibold",
+									children: "Your projects, one question away"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "mt-2 text-xs leading-relaxed text-muted-foreground",
+									children: "Ask about progress, blockers, milestones, team assignments, or recent client questions. Answers come from the facts in this workspace."
+								})
+							]
+						}),
+						messages.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "space-y-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Message, {
+								align: "end",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
+									className: "max-w-[88%] sm:max-w-[75%]",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageHeader, {
+										className: "justify-end",
+										children: "You"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
+										align: "end",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, { children: item.question })
+									})]
+								})
+							}), item.answer && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Message, {
+								align: "start",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
+									className: "max-w-[92%] sm:max-w-[82%]",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageHeader, { children: "Studio Iksha" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
+										variant: "secondary",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, {
+											className: "whitespace-pre-wrap leading-relaxed",
+											children: item.answer
+										})
+									})]
+								})
+							})]
+						}, item.id)),
+						busy && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center gap-2 text-xs text-muted-foreground",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
+								state: "working",
+								size: 20,
+								speed: .65,
+								theme: "light",
+								color: "#2166d1",
+								"aria-hidden": "true"
+							}), "Reading your project records…"]
+						})
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "no-scrollbar flex gap-2 overflow-x-auto border-t px-4 py-3",
+					children: suggestions.map((suggestion) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						size: "sm",
+						className: "shrink-0 rounded-full",
+						disabled: busy,
+						onClick: (event) => ask(event, suggestion),
+						children: suggestion
+					}, suggestion))
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+					onSubmit: ask,
+					className: "flex items-end gap-2 border-t p-3 sm:px-5",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+						value: draft,
+						onChange: (event) => setDraft(event.target.value),
+						rows: 1,
+						maxLength: 1e3,
+						placeholder: "Ask about your projects…",
+						"aria-label": "Ask the founder assistant",
+						className: "max-h-32 min-h-11 flex-1 resize-none"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						type: "submit",
+						size: "icon-lg",
+						className: "size-11",
+						disabled: !draft.trim() || busy,
+						"aria-label": "Send question",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUp, { className: "size-5" })
+					})]
+				}),
+				error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					role: "alert",
+					className: "px-4 pb-3 text-xs text-destructive",
+					children: error
+				})
+			]
+		})]
+	});
+}
+//#endregion
+//#region frontend/src/components/TeamChat.jsx
+function TeamChat({ endpoint, currentActor }) {
+	const [messages, setMessages] = (0, import_react.useState)([]);
+	const [draft, setDraft] = (0, import_react.useState)("");
+	const [sending, setSending] = (0, import_react.useState)(false);
+	const [error, setError] = (0, import_react.useState)("");
+	const scrollRef = (0, import_react.useRef)(null);
+	(0, import_react.useEffect)(() => {
+		let active = true;
+		setMessages([]);
+		const refresh = async () => {
+			if (document.visibilityState === "hidden") return;
+			try {
+				const response = await fetch(endpoint, { credentials: "same-origin" });
+				const data = await response.json();
+				if (!response.ok) throw new Error(data.error || "Could not load team chat.");
+				if (active) {
+					setMessages(data.messages || []);
+					setError("");
+				}
+			} catch (problem) {
+				if (active) setError(problem.message);
+			}
+		};
+		refresh();
+		const timer = setInterval(refresh, 6e3);
+		return () => {
+			active = false;
+			clearInterval(timer);
+		};
+	}, [endpoint]);
+	(0, import_react.useEffect)(() => {
+		const container = scrollRef.current;
+		if (container) container.scrollTop = container.scrollHeight;
+	}, [messages.length]);
+	const send = async (event) => {
+		event.preventDefault();
+		const message = draft.trim();
+		if (!message || sending) return;
+		setSending(true);
+		setError("");
+		try {
+			const response = await fetch(endpoint, {
+				method: "POST",
+				credentials: "same-origin",
+				headers: { "content-type": "application/json" },
+				body: JSON.stringify({ message })
+			});
+			const data = await response.json();
+			if (!response.ok) throw new Error(data.error || "Could not send message.");
+			setMessages((current) => current.some((item) => item.id === data.message.id) ? current : [...current, data.message]);
+			setDraft("");
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setSending(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
+		className: "flex min-h-[420px] gap-0 overflow-hidden p-0",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex items-center gap-3 border-b px-4 py-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "grid size-9 place-items-center rounded-xl bg-primary/10 text-primary",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-4" })
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+					className: "text-sm font-semibold",
+					children: "Project team chat"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "text-xs text-muted-foreground",
+					children: "Founder and assigned employees"
+				})] })]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				ref: scrollRef,
+				className: "chat-scroll min-h-64 max-h-[50dvh] flex-1 space-y-4 overflow-y-auto px-4 py-5",
+				"aria-label": "Project team messages",
+				"aria-live": "polite",
+				children: messages.length ? messages.map((item) => {
+					const own = item.senderId === currentActor;
+					return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Message, {
+						align: own ? "end" : "start",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
+							className: "bg-secondary text-xs font-semibold text-secondary-foreground",
+							children: item.senderName?.slice(0, 2).toUpperCase() || "TM"
+						}) }) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
+							className: "max-w-[88%] sm:max-w-[75%]",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageHeader, {
+								className: own ? "justify-end" : "",
+								children: [
+									own ? "You" : item.senderName,
+									" · ",
+									new Date(item.at).toLocaleTimeString([], {
+										hour: "numeric",
+										minute: "2-digit"
+									})
+								]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
+								align: own ? "end" : "start",
+								variant: own ? void 0 : "secondary",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, {
+									className: "whitespace-pre-wrap",
+									children: item.text
+								})
+							})]
+						})]
+					}, item.id);
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex h-56 flex-col items-center justify-center text-center",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "mb-3 size-8 text-muted-foreground/50" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-sm font-medium",
+							children: "Start the team conversation"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-1 max-w-xs text-xs text-muted-foreground",
+							children: "Updates and questions shared here stay with this project team."
+						})
+					]
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+				onSubmit: send,
+				className: "flex items-end gap-2 border-t p-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+					value: draft,
+					onChange: (event) => setDraft(event.target.value),
+					rows: 1,
+					maxLength: 2e3,
+					placeholder: "Message your team…",
+					"aria-label": "Message your team",
+					className: "max-h-28 min-h-11 flex-1 resize-none"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					type: "submit",
+					size: "icon-lg",
+					"aria-label": "Send team message",
+					disabled: !draft.trim() || sending,
+					className: "size-11",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUp, { className: "size-5" })
+				})]
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "px-4 pb-3 text-xs text-destructive",
+				children: error
+			})
+		]
 	});
 }
 //#endregion
@@ -22720,6 +25210,8 @@ function FounderApp() {
 	const [loginError, setLoginError] = (0, import_react.useState)("");
 	const [isLoggingIn, setIsLoggingIn] = (0, import_react.useState)(false);
 	const [projects, setProjects] = (0, import_react.useState)([]);
+	const [employees, setEmployees] = (0, import_react.useState)([]);
+	const [trashedProjects, setTrashedProjects] = (0, import_react.useState)([]);
 	const [selectedProjectId, setSelectedProjectId] = (0, import_react.useState)(null);
 	const [activities, setActivities] = (0, import_react.useState)([]);
 	const [conversations, setConversations] = (0, import_react.useState)([]);
@@ -22730,6 +25222,7 @@ function FounderApp() {
 	const [createOpen, setCreateOpen] = (0, import_react.useState)(false);
 	const [memberOpen, setMemberOpen] = (0, import_react.useState)(false);
 	const [factsOpen, setFactsOpen] = (0, import_react.useState)(false);
+	const [trashConfirmOpen, setTrashConfirmOpen] = (0, import_react.useState)(false);
 	const [shareLink, setShareLink] = (0, import_react.useState)(null);
 	const [notice, setNotice] = (0, import_react.useState)(null);
 	const [busy, setBusy] = (0, import_react.useState)(false);
@@ -22760,15 +25253,31 @@ function FounderApp() {
 			setActivities([]);
 		}
 	};
+	const loadEmployees = async () => {
+		try {
+			const data = await api$1("/api/founder/employees");
+			setEmployees(data.employees || []);
+		} catch {
+			setEmployees([]);
+		}
+	};
+	const loadTrash = async () => {
+		try {
+			const data = await api$1("/api/founder/trash");
+			setTrashedProjects(data.projects || []);
+		} catch {
+			setTrashedProjects([]);
+		}
+	};
 	const loadProjectDetails = async (id) => {
 		if (!id) {
 			setConversations([]);
 			setProjectHistory([]);
 			return;
 		}
-		const [conversation, history] = await Promise.allSettled([api$1(`/api/founder/projects/${id}/conversation`), api$1(`/api/founder/projects/${id}/history`)]);
+		const [conversation, history] = await Promise.allSettled([api$1(`/api/founder/projects/${id}/conversation`), api$1(`/api/founder/projects/${id}/updates`)]);
 		setConversations(conversation.status === "fulfilled" ? conversation.value.messages || [] : []);
-		setProjectHistory(history.status === "fulfilled" ? history.value.history || [] : []);
+		setProjectHistory(history.status === "fulfilled" ? history.value.updates || [] : []);
 	};
 	(0, import_react.useEffect)(() => {
 		loadProjects();
@@ -22787,6 +25296,8 @@ function FounderApp() {
 		setCurrentTab(tab);
 		setSidebarOpen(false);
 		if (tab === "activity") loadActivities();
+		if (tab === "employees") loadEmployees();
+		if (tab === "trash") loadTrash();
 	};
 	const handleLogin = async (event) => {
 		event.preventDefault();
@@ -22811,6 +25322,36 @@ function FounderApp() {
 		try {
 			const data = await post$1(`/api/founder/projects/${selectedProject.id}/invite`);
 			setShareLink(data.link);
+		} catch (error) {
+			showNotice(error.message, true);
+		}
+	};
+	const completeProject = async () => {
+		if (!selectedProject) return;
+		try {
+			await post$1(`/api/founder/projects/${selectedProject.id}/complete`);
+			await loadProjects();
+			showNotice("Project marked complete.");
+		} catch (error) {
+			showNotice(error.message, true);
+		}
+	};
+	const moveToTrash = async () => {
+		if (!selectedProject) return;
+		try {
+			await post$1(`/api/founder/projects/${selectedProject.id}/trash`);
+			setTrashConfirmOpen(false);
+			await loadProjects();
+			showNotice("Project moved to Trash. You can restore it later.");
+		} catch (error) {
+			showNotice(error.message, true);
+		}
+	};
+	const restoreProject = async (id) => {
+		try {
+			await post$1(`/api/founder/trash/${id}/restore`);
+			await Promise.all([loadProjects(), loadTrash()]);
+			showNotice("Project restored.");
 		} catch (error) {
 			showNotice(error.message, true);
 		}
@@ -22945,14 +25486,29 @@ function FounderApp() {
 						"Projects"
 					],
 					[
+						"assistant",
+						Sparkles,
+						"Founder assistant"
+					],
+					[
 						"messages",
 						MessageSquare,
-						"Messages"
+						"Client messages"
+					],
+					[
+						"employees",
+						Users,
+						"Employees"
 					],
 					[
 						"activity",
 						Clock3,
 						"Activity log"
+					],
+					[
+						"trash",
+						Trash,
+						"Trash"
 					]
 				].map(([id, Icon, label]) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 					variant: currentTab === id ? "secondary" : "ghost",
@@ -22996,27 +25552,54 @@ function FounderApp() {
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "min-h-0 flex-1 space-y-1 overflow-y-auto",
-				children: [filteredProjects.map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-					variant: project.id === selectedProject?.id ? "outline" : "ghost",
-					className: "h-auto w-full justify-start px-3 py-2.5 text-left",
-					onClick: () => {
-						setSelectedProjectId(project.id);
-						openTab("projects");
-					},
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: `size-2 shrink-0 rounded-full ${project.status === "At risk" ? "bg-amber-500" : "bg-emerald-500"}` }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-						className: "min-w-0 flex-1",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "block truncate text-sm font-medium",
+				className: "min-h-0 flex-1 space-y-4 overflow-y-auto",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "space-y-1",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "px-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground",
+							children: "Ongoing"
+						}),
+						filteredProjects.filter((project) => project.status !== "Completed").map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+							variant: project.id === selectedProject?.id && currentTab === "projects" ? "outline" : "ghost",
+							className: "h-auto w-full justify-start px-3 py-2.5 text-left",
+							onClick: () => {
+								setSelectedProjectId(project.id);
+								openTab("projects");
+							},
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: `size-2 shrink-0 rounded-full ${project.status === "At risk" ? "bg-amber-500" : "bg-emerald-500"}` }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "min-w-0 flex-1",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "block truncate text-sm font-medium",
+									children: project.name
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "block truncate text-xs font-normal text-muted-foreground",
+									children: project.clientName
+								})]
+							})]
+						}, project.id)),
+						!filteredProjects.some((project) => project.status !== "Completed") && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "px-2 text-xs text-muted-foreground",
+							children: "No ongoing projects"
+						})
+					]
+				}), filteredProjects.some((project) => project.status === "Completed") && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "space-y-1",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "px-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground",
+						children: "Completed"
+					}), filteredProjects.filter((project) => project.status === "Completed").map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+						variant: project.id === selectedProject?.id && currentTab === "projects" ? "outline" : "ghost",
+						className: "h-auto w-full justify-start px-3 py-2.5 text-left",
+						onClick: () => {
+							setSelectedProjectId(project.id);
+							openTab("projects");
+						},
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-4 shrink-0 text-emerald-600" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "min-w-0 flex-1 truncate text-sm",
 							children: project.name
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "block truncate text-xs font-normal text-muted-foreground",
-							children: project.clientName
 						})]
-					})]
-				}, project.id)), !filteredProjects.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "px-2 text-xs text-muted-foreground",
-					children: "No projects found."
+					}, project.id))]
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Separator, {}),
@@ -23081,7 +25664,14 @@ function FounderApp() {
 							className: "min-w-0",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 								className: "text-xs text-muted-foreground",
-								children: ["Workspace / ", currentTab === "activity" ? "Activity" : currentTab === "messages" ? "Messages" : "Projects"]
+								children: ["Workspace / ", {
+									projects: "Projects",
+									assistant: "Assistant",
+									messages: "Client messages",
+									employees: "Employees",
+									activity: "Activity",
+									trash: "Trash"
+								}[currentTab]]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
 								className: "block truncate text-sm",
 								children: selectedProject?.name || "Studio Iksha"
@@ -23099,7 +25689,54 @@ function FounderApp() {
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
 					className: "mx-auto w-full max-w-6xl space-y-5 px-4 py-6 sm:px-7 sm:py-8",
-					children: currentTab === "messages" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					children: currentTab === "assistant" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderAssistant, {}) : currentTab === "employees" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmployeeManager, {
+						employees,
+						projects,
+						onAdd: () => setMemberOpen(true)
+					}) : currentTab === "trash" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "space-y-5",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs font-semibold uppercase tracking-wider text-primary",
+								children: "Recoverable projects"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+								className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
+								children: "Trash"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-1 text-sm text-muted-foreground",
+								children: "Projects here are hidden from employees and clients. Restore them whenever you need to."
+							})
+						] }), trashedProjects.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "grid gap-3 sm:grid-cols-2",
+							children: trashedProjects.map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+								className: "flex items-center gap-3 p-4",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "size-5 shrink-0 text-muted-foreground" }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "min-w-0 flex-1",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "truncate text-sm font-semibold",
+											children: project.name
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "truncate text-xs text-muted-foreground",
+											children: project.clientName
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+										variant: "outline",
+										size: "sm",
+										onClick: () => restoreProject(project.id),
+										children: "Restore"
+									})
+								]
+							}) }, project.id))
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
+							className: "py-10 text-center text-sm text-muted-foreground",
+							children: "Trash is empty."
+						}) })]
+					}) : currentTab === "messages" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex flex-wrap items-start justify-between gap-3",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
@@ -23301,13 +25938,20 @@ function FounderApp() {
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
 									className: "w-full sm:w-fit",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
-										value: "overview",
-										children: "Overview"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
-										value: "history",
-										children: "Update history"
-									})]
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
+											value: "overview",
+											children: "Overview"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
+											value: "team",
+											children: "Team chat"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
+											value: "history",
+											children: "History"
+										})
+									]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
 									value: "overview",
@@ -23392,6 +26036,13 @@ function FounderApp() {
 									})]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
+									value: "team",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TeamChat, {
+										endpoint: `/api/founder/projects/${selectedProject.id}/team-chat`,
+										currentActor: "founder"
+									}, selectedProject.id)
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
 									value: "history",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, {
 										className: "flex flex-row items-start justify-between",
@@ -23407,27 +26058,27 @@ function FounderApp() {
 											className: "rounded-lg border bg-muted/30 p-4",
 											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 												className: "flex flex-wrap items-center justify-between gap-2",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", {
 													className: "text-sm",
-													children: item.changedFields?.length ? `${item.changedFields.length} fields updated` : "Project update"
+													children: [Object.keys(item.changes || {}).length, " fields updated"]
 												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 													className: "text-xs text-muted-foreground",
-													children: niceDate(item.timestamp || item.at)
+													children: niceDate(item.at)
 												})]
-											}), item.changedFields?.map((change, changeIndex) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											}), Object.entries(item.changes || {}).map(([field, change]) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 												className: "mt-2 flex flex-wrap items-center gap-2 text-xs",
 												children: [
 													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-														className: "text-muted-foreground",
-														children: change.label || change.field
+														className: "capitalize text-muted-foreground",
+														children: field.replace(/([A-Z])/g, " $1")
 													}),
 													/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-3" }),
 													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 														className: "font-medium",
-														children: change.newValue || change.value || "Cleared"
+														children: String(change.new || "Cleared")
 													})
 												]
-											}, changeIndex))]
+											}, field))]
 										}, item.id || index)) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 											className: "py-8 text-center text-sm text-muted-foreground",
 											children: "No updates recorded yet."
@@ -23435,7 +26086,30 @@ function FounderApp() {
 									})] })
 								})
 							]
-						})
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+							className: "flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+								className: "text-sm font-semibold",
+								children: "Project controls"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-1 text-xs text-muted-foreground",
+								children: "Complete finished work or move a project to recoverable Trash."
+							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex flex-wrap gap-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+									variant: "outline",
+									onClick: completeProject,
+									disabled: selectedProject.status === "Completed",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, {}), selectedProject.status === "Completed" ? "Completed" : "Mark complete"]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+									variant: "outline",
+									className: "text-destructive hover:text-destructive",
+									onClick: () => setTrashConfirmOpen(true),
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trash, {}), "Move to Trash"]
+								})]
+							})]
+						}) })
 					] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
 						className: "flex flex-col items-center gap-4 py-16 text-center",
 						children: [
@@ -23561,56 +26235,31 @@ function FounderApp() {
 					})]
 				})
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmployeeDialog, {
 				open: memberOpen,
 				onOpenChange: setMemberOpen,
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Add team member" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [
-					"Assign someone to ",
+				projects,
+				defaultProjectId: selectedProject?.id,
+				onUpdated: () => Promise.all([loadProjects(), loadEmployees()])
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				open: trashConfirmOpen,
+				onOpenChange: setTrashConfirmOpen,
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogTitle, { children: [
+					"Move ",
 					selectedProject?.name,
-					"."
-				] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-					onSubmit: (e) => saveForm(e, `/api/founder/projects/${selectedProject?.id}/members`, "POST", () => setMemberOpen(false), "Member added."),
-					className: "space-y-4",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-							label: "Full name",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								name: "name",
-								required: true
-							})
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-							label: "Designation",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								name: "designation",
-								placeholder: "Lead interior designer",
-								required: true
-							})
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-							label: "Role",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
-								name: "role",
-								className: "w-full",
-								children: [
-									"Project admin",
-									"Designer",
-									"Site supervisor",
-									"Site team",
-									"Contractor",
-									"Trade worker",
-									"Client",
-									"Other"
-								].map((option) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: option }, option))
-							})
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							type: "submit",
-							className: "h-11 w-full",
-							disabled: busy,
-							children: "Add member"
-						})
-					]
+					" to Trash?"
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "The project will leave active workspaces and team chat. You can restore it from Trash later." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex justify-end gap-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						onClick: () => setTrashConfirmOpen(false),
+						children: "Cancel"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "destructive",
+						onClick: moveToTrash,
+						children: "Move to Trash"
+					})]
 				})] })
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
@@ -23722,15 +26371,6 @@ function FounderApp() {
 				children: [notice.error ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(X, { className: "mr-2 inline size-4 text-destructive" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "mr-2 inline size-4 text-emerald-600" }), notice.message]
 			})
 		]
-	});
-}
-//#endregion
-//#region frontend/src/components/ui/textarea.jsx
-function Textarea({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("textarea", {
-		"data-slot": "textarea",
-		className: cn("flex field-sizing-content min-h-16 w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:aria-invalid:ring-destructive/40", className),
-		...props
 	});
 }
 //#endregion
@@ -24001,13 +26641,13 @@ function ClientApp() {
 									"aria-label": "Project Assistant is responding",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AssistantAvatar, {}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageHeader, { children: "Project Assistant" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
 										variant: "secondary",
-										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "flex gap-1 py-1",
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 animate-bounce rounded-full bg-muted-foreground" }),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 animate-bounce rounded-full bg-muted-foreground [animation-delay:150ms]" }),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 animate-bounce rounded-full bg-muted-foreground [animation-delay:300ms]" })
-											]
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
+											state: "working",
+											size: 20,
+											speed: .6,
+											theme: "light",
+											color: "#2166d1",
+											"aria-hidden": "true"
 										}) })
 									})] })]
 								}),
@@ -24067,10 +26707,367 @@ function ClientApp() {
 	});
 }
 //#endregion
+//#region frontend/src/EmployeeApp.jsx
+var request = async (url, options = {}) => {
+	const response = await fetch(url, {
+		credentials: "same-origin",
+		...options,
+		headers: {
+			"content-type": "application/json",
+			...options.headers || {}
+		}
+	});
+	const data = await response.json().catch(() => ({}));
+	if (!response.ok) throw new Error(data.error || "Request failed.");
+	return data;
+};
+function EmployeeApp() {
+	const [auth, setAuth] = (0, import_react.useState)("checking");
+	const [employeeId, setEmployeeId] = (0, import_react.useState)(new URLSearchParams(location.search).get("id") || "");
+	const [password, setPassword] = (0, import_react.useState)("");
+	const [showPassword, setShowPassword] = (0, import_react.useState)(false);
+	const [employee, setEmployee] = (0, import_react.useState)(null);
+	const [projects, setProjects] = (0, import_react.useState)([]);
+	const [selectedId, setSelectedId] = (0, import_react.useState)(null);
+	const [error, setError] = (0, import_react.useState)("");
+	const [busy, setBusy] = (0, import_react.useState)(false);
+	const load = async () => {
+		try {
+			const data = await request("/api/employee/me");
+			setEmployee(data.employee);
+			setProjects(data.projects || []);
+			setSelectedId((current) => (data.projects || []).some((project) => project.id === current) ? current : data.projects?.[0]?.id || null);
+			setAuth("signed-in");
+		} catch {
+			setAuth("signed-out");
+		}
+	};
+	(0, import_react.useEffect)(() => {
+		load();
+	}, []);
+	const selected = projects.find((project) => project.id === selectedId);
+	const login = async (event) => {
+		event.preventDefault();
+		setBusy(true);
+		setError("");
+		try {
+			await request("/api/employee/login", {
+				method: "POST",
+				body: JSON.stringify({
+					employeeId,
+					password
+				})
+			});
+			await load();
+			setPassword("");
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	const logout = async () => {
+		await request("/api/employee/logout", { method: "POST" });
+		setAuth("signed-out");
+		setEmployee(null);
+		setProjects([]);
+	};
+	if (auth === "checking") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
+		className: "grid min-h-dvh place-items-center bg-background p-6",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "w-full max-w-md space-y-4",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-12 w-48" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-52 w-full" })]
+		})
+	});
+	if (auth === "signed-out") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
+		className: "flex min-h-dvh flex-col bg-[#101419] text-white [color-scheme:dark]",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mx-auto flex w-full max-w-md flex-1 flex-col justify-end px-6 pb-[max(32px,env(safe-area-inset-bottom))] pt-20",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mb-auto",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "grid size-12 place-items-center rounded-2xl bg-primary text-2xl font-bold",
+							children: "i"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-5 text-xs font-semibold uppercase tracking-[.2em] text-blue-300",
+							children: "Studio Iksha · Team access"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+							className: "mt-3 text-4xl font-semibold tracking-tight",
+							children: "Welcome to your workspace"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-3 text-sm leading-relaxed text-white/60",
+							children: "Sign in to see the projects you work on and talk with your project team."
+						})
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+					onSubmit: login,
+					className: "mt-12 space-y-4 rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-2 text-xs font-medium text-white/70",
+							children: ["Employee ID", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								value: employeeId,
+								onChange: (event) => setEmployeeId(event.target.value),
+								autoCapitalize: "characters",
+								autoComplete: "username",
+								required: true,
+								placeholder: "EMP-XXXXXXXXXX",
+								className: "h-12 border-white/15 bg-white/10 text-base text-white placeholder:text-white/35"
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-2 text-xs font-medium text-white/70",
+							children: ["Password", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "relative",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									value: password,
+									onChange: (event) => setPassword(event.target.value),
+									type: showPassword ? "text" : "password",
+									autoComplete: "current-password",
+									required: true,
+									placeholder: "Enter your password",
+									className: "h-12 border-white/15 bg-white/10 pr-12 text-base text-white placeholder:text-white/35"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+									type: "button",
+									"aria-label": showPassword ? "Hide password" : "Show password",
+									onClick: () => setShowPassword((value) => !value),
+									className: "absolute inset-y-0 right-0 grid w-12 place-items-center text-white/60",
+									children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EyeOff, { className: "size-4" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eye, { className: "size-4" })
+								})]
+							})]
+						}),
+						error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							role: "alert",
+							className: "text-xs text-red-300",
+							children: error
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							type: "submit",
+							disabled: busy,
+							className: "h-12 w-full text-sm font-semibold",
+							children: busy ? "Signing in…" : "Continue"
+						})
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "mt-5 text-center text-xs text-white/40",
+					children: "Your founder provides your employee ID and password."
+				})
+			]
+		})
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "app-glow min-h-dvh bg-background pb-[max(24px,env(safe-area-inset-bottom))]",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
+			className: "sticky top-0 z-20 border-b bg-card/95 px-4 py-4 backdrop-blur",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mx-auto flex max-w-5xl items-center gap-3",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "grid size-9 place-items-center rounded-xl bg-primary text-lg font-bold text-primary-foreground",
+						children: "i"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "min-w-0 flex-1",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "truncate text-sm font-semibold",
+							children: "Studio Iksha"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "truncate text-xs text-muted-foreground",
+							children: [employee?.name, " · Team workspace"]
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "ghost",
+						size: "icon",
+						"aria-label": "Sign out",
+						onClick: logout,
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LogOut, { className: "size-4" })
+					})
+				]
+			})
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
+			className: "mx-auto max-w-5xl space-y-6 px-4 py-6 sm:px-6",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs font-semibold uppercase tracking-wider text-primary",
+						children: "My workspace"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+						className: "mt-1 text-2xl font-semibold tracking-tight",
+						children: "Your projects"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "mt-1 text-sm text-muted-foreground",
+						children: [
+							"You are assigned to ",
+							projects.length,
+							" ",
+							projects.length === 1 ? "project" : "projects",
+							"."
+						]
+					})
+				] }),
+				projects.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "grid gap-3 sm:grid-cols-2",
+					children: projects.map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						onClick: () => setSelectedId(project.id),
+						className: `rounded-2xl border bg-card p-4 text-left shadow-sm transition-colors duration-200 hover:border-primary/40 ${selectedId === project.id ? "border-primary ring-2 ring-primary/10" : ""}`,
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-start gap-3",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "grid size-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "size-5" })
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "min-w-0 flex-1",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+										className: "block truncate text-sm",
+										children: project.name
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "mt-1 truncate text-xs text-muted-foreground",
+										children: project.location || project.clientName
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+									variant: "secondary",
+									children: project.status || "Setup"
+								})
+							]
+						})
+					}, project.id))
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+					className: "py-12 text-center",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "mx-auto size-9 text-muted-foreground/50" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-3 text-sm font-semibold",
+							children: "No projects assigned yet"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-1 text-xs text-muted-foreground",
+							children: "Ask your founder to add your employee ID to a project."
+						})
+					]
+				}) }),
+				selected && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+					className: "space-y-4",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center justify-between gap-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-xs font-semibold uppercase tracking-wider text-primary",
+							children: "Selected project"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+							className: "mt-1 text-xl font-semibold",
+							children: selected.name
+						})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+							variant: "outline",
+							children: selected.status
+						})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Tabs, {
+						defaultValue: "overview",
+						className: "gap-4",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
+								className: "w-full sm:w-fit",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
+									value: "overview",
+									children: "Overview"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+									value: "chat",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-4" }), "Team chat"]
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
+								value: "overview",
+								className: "space-y-3",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "grid grid-cols-2 gap-3",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
+											className: "pb-2",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
+												className: "text-xs text-muted-foreground",
+												children: "Current phase"
+											})
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
+											className: "text-sm font-semibold",
+											children: selected.phase || "Not set"
+										})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
+											className: "pb-2",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
+												className: "text-xs text-muted-foreground",
+												children: "Team members"
+											})
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
+											className: "text-sm font-semibold",
+											children: selected.members?.length || 0
+										})] })]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+										className: "space-y-4 p-5",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "flex items-center gap-2 text-primary",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(BuildingComplex, { className: "size-4" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+													className: "text-sm font-semibold",
+													children: "Current work"
+												})]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+												className: "text-sm",
+												children: selected.recentTask || "No recent work recorded yet."
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "border-t pt-4",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+													className: "text-xs text-muted-foreground",
+													children: "Next milestone"
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+													className: "mt-1 text-sm font-medium",
+													children: selected.nextMilestone || "Not scheduled"
+												})]
+											}),
+											selected.blocker && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "rounded-xl bg-amber-50 p-3 text-sm text-amber-900",
+												children: ["Blocker: ", selected.blocker]
+											})
+										]
+									}) }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+										className: "flex items-center gap-2 text-xs text-muted-foreground",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-4" }), "Project facts are managed by the founder."]
+									})
+								]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
+								value: "chat",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TeamChat, {
+									endpoint: `/api/employee/projects/${selected.id}/team-chat`,
+									currentActor: employee.id
+								}, selected.id)
+							})
+						]
+					})]
+				})
+			]
+		})]
+	});
+}
+//#endregion
 //#region frontend/src/main.jsx
 var rootElement = document.getElementById("app");
 if (rootElement) {
 	const isClientView = window.location.pathname.startsWith("/c/");
-	import_client.createRoot(rootElement).render(/* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react.StrictMode, { children: isClientView ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClientApp, {}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderApp, {}) }));
+	import_client.createRoot(rootElement).render(/* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react.StrictMode, { children: isClientView ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClientApp, {}) : window.location.pathname.startsWith("/employee") ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmployeeApp, {}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderApp, {}) }));
 }
 //#endregion

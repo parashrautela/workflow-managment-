@@ -1,5 +1,5 @@
 import http from 'node:http';
-import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
+import { createHash, randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
 import { readFile, mkdir } from 'node:fs/promises';
 import { createStateStore } from './store.js';
 import path from 'node:path';
@@ -22,6 +22,9 @@ if (production && !/^https:\/\//i.test(process.env.PUBLIC_URL || '')) {
 
 const hash = (value) => createHash('sha256').update(value).digest('hex');
 const token = () => randomBytes(32).toString('base64url');
+const employeeId = () => `EMP-${randomBytes(5).toString('hex').toUpperCase()}`;
+const employeePassword = () => randomBytes(15).toString('base64url');
+const passwordHash = (password, salt) => scryptSync(password, salt, 64).toString('hex');
 const validIsoDate = (value) => !value || (/^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(new Date(`${value}T00:00:00.000Z`).getTime()) && new Date(`${value}T00:00:00.000Z`).toISOString().slice(0, 10) === value);
 const safeEqual = (a, b) => {
   const aa = Buffer.from(String(a)); const bb = Buffer.from(String(b));
@@ -47,14 +50,33 @@ function recordProjectUpdate(projectId, changes) {
 }
 const loginAttempts = new Map();
 const chatLimits = new Map();
+const employeeLoginAttempts = new Map();
+const founderChatLimits = new Map();
+const teamChatLimits = new Map();
+function canSendTeamMessage(actor, projectId) {
+  const key = `${actor}:${projectId}`;
+  const entry = teamChatLimits.get(key) || { count: 0, resetAt: Date.now() + 60_000 };
+  if (entry.resetAt <= Date.now()) { entry.count = 0; entry.resetAt = Date.now() + 60_000; }
+  if (entry.count >= 20) return false;
+  entry.count += 1; teamChatLimits.set(key, entry);
+  return true;
+}
 const json = (res, status, body, headers = {}) => { res.writeHead(status, { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', ...headers }); res.end(JSON.stringify(body)); };
 async function body(req) {
   let raw = ''; for await (const chunk of req) { raw += chunk; if (raw.length > 1_000_000) throw new Error('Request too large'); }
   return raw ? JSON.parse(raw) : {};
 }
 function projectView(project) {
-  const owner = project.members.find((member) => member.id === project.internalOwnerMemberId);
-  return { id: project.id, name: project.name, clientName: project.clientName, location: project.location, startDate: project.startDate || '', internalOwnerMemberId: project.internalOwnerMemberId || '', internalOwner: owner?.name || '', phase: project.phase, status: project.status, recentTask: project.recentTask, nextMilestone: project.nextMilestone, blocker: project.blocker, members: project.members, createdAt: project.createdAt };
+  const owner = (project.members || []).find((member) => member.id === project.internalOwnerMemberId);
+  return { id: project.id, name: project.name, clientName: project.clientName, location: project.location, startDate: project.startDate || '', internalOwnerMemberId: project.internalOwnerMemberId || '', internalOwner: owner?.name || '', phase: project.phase, status: project.status, recentTask: project.recentTask, nextMilestone: project.nextMilestone, blocker: project.blocker, members: project.members || [], createdAt: project.createdAt, completedAt: project.completedAt || null };
+}
+function employeeView(employee) {
+  return { id: employee.id, name: employee.name, designation: employee.designation, email: employee.email || '', phone: employee.phone || '', createdAt: employee.createdAt, projectIds: state.projects.filter((project) => project.members?.some((member) => member.employeeId === employee.id)).map((project) => project.id) };
+}
+function employeeSession(req) {
+  const sid = cookieValue(req, 'iksha_employee');
+  const session = state.employeeSessions.find((item) => safeEqual(item.idHash, hash(sid)) && item.expiresAt > Date.now());
+  return session ? state.employees.find((item) => item.id === session.employeeId) : null;
 }
 function clientProjectView(project) {
   return { name: project.name, clientName: project.clientName, phase: project.phase, status: project.status, recentTask: project.recentTask, nextMilestone: project.nextMilestone, blocker: project.blocker };
@@ -102,6 +124,37 @@ async function answerProjectQuestion(project, question) {
   return `The project is ${facts.overall_status}, currently in ${facts.current_phase}. The latest task recorded is ${facts.recent_task}. Ask me about the current phase, recent task, blocker, or next milestone.`;
 }
 
+function founderAssistantAnswer(question) {
+  const q = question.toLowerCase();
+  const named = state.projects.filter((project) => q.includes(project.name.toLowerCase()) || q.includes(project.clientName.toLowerCase()));
+  const wantsCompleted = /complet|finish|done/.test(q);
+  const wantsBlockers = /block|risk|issue|delay/.test(q);
+  const wantsTeam = /team|member|employee|working on|assigned/.test(q);
+  const wantsMilestones = /milestone|next|upcoming|deadline/.test(q);
+  const wantsClientQuestions = /client question|client ask|conversation/.test(q);
+  const wantsActivity = /activit|change|update history|recent update/.test(q);
+  let projects = named.length ? named : state.projects.filter((project) => wantsCompleted ? project.status === 'Completed' : project.status !== 'Completed');
+  if (!named.length && wantsBlockers) projects = projects.filter((project) => project.blocker || project.status === 'At risk');
+  if (!projects.length) return state.projects.length ? 'I could not find a matching project or recorded update. Try a project name, or ask about ongoing projects, blockers, team members, or milestones.' : 'There are no projects in the workspace yet.';
+  if (wantsActivity && !named.length) {
+    const entries = state.activity.slice(0, 8).map((item) => `${state.projects.find((project) => project.id === item.projectId)?.name || item.details?.name || 'Workspace'}: ${item.action.replace(/_/g, ' ')} on ${new Date(item.at).toLocaleDateString()}`);
+    return entries.length ? entries.join('\n') : 'No activity has been recorded yet.';
+  }
+  const lines = projects.slice(0, 20).map((project) => {
+    const heading = `${project.name} (${project.clientName})`;
+    if (wantsClientQuestions) {
+      const questions = state.conversations.filter((item) => item.projectId === project.id).slice(-3).map((item) => item.question);
+      return `${heading}: ${questions.length ? `Recent client questions: ${questions.join(' | ')}` : 'No client questions yet.'}`;
+    }
+    if (wantsTeam) return `${heading}: ${project.members?.length ? project.members.map((member) => `${member.name} (${member.role})`).join(', ') : 'No team members assigned.'}`;
+    if (wantsMilestones) return `${heading}: ${project.nextMilestone || 'No next milestone recorded.'}`;
+    if (wantsBlockers) return `${heading}: ${project.blocker || (project.status === 'At risk' ? 'Marked at risk; no blocker details recorded.' : 'No blocker recorded.')}`;
+    return `${heading}: ${project.status || 'Setup'} · ${project.phase || 'Phase not set'}. Location: ${project.location || 'not recorded'}. Recent work: ${project.recentTask || 'not recorded'}. Next: ${project.nextMilestone || 'not recorded'}. Blocker: ${project.blocker || 'none recorded'}. Team: ${project.members?.length ? project.members.map((member) => member.name).join(', ') : 'none assigned'}.`;
+  });
+  if (projects.length > 20) lines.push(`${projects.length - 20} more matching projects. Ask for a project by name.`);
+  return lines.join('\n');
+}
+
 const server = http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
@@ -122,8 +175,125 @@ const server = http.createServer(async (req, res) => {
       const sid = cookieValue(req, 'iksha_founder'); state.founderSessions = state.founderSessions.filter((session) => !safeEqual(session.idHash, hash(sid))); await save();
       return json(res, 200, { ok: true }, { 'set-cookie': clearCookie('iksha_founder') });
     }
+    if (req.method === 'POST' && url.pathname === '/api/employee/login') {
+      const input = await body(req);
+      const id = String(input.employeeId || '').trim().toUpperCase();
+      const employee = state.employees.find((item) => item.id === id);
+      const attemptKey = `${req.socket.remoteAddress || 'unknown'}:${id}`;
+      const attempts = employeeLoginAttempts.get(attemptKey) || { count: 0, lockedUntil: 0 };
+      if (attempts.lockedUntil > Date.now()) return json(res, 429, { error: 'Too many attempts. Try again in a few minutes.' });
+      if (!employee || !safeEqual(employee.passwordHash, passwordHash(String(input.password || ''), employee.passwordSalt))) {
+        attempts.count += 1;
+        if (attempts.count >= 8) { attempts.count = 0; attempts.lockedUntil = Date.now() + 10 * 60 * 1000; }
+        employeeLoginAttempts.set(attemptKey, attempts);
+        return json(res, 401, { error: 'Employee ID or password is incorrect.' });
+      }
+      employeeLoginAttempts.delete(attemptKey);
+      const sessionId = token();
+      state.employeeSessions = state.employeeSessions.filter((session) => session.expiresAt > Date.now());
+      state.employeeSessions.push({ idHash: hash(sessionId), employeeId: employee.id, expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000 });
+      await save();
+      return json(res, 200, { employee: employeeView(employee) }, { 'set-cookie': cookie('iksha_employee', sessionId, 604800) });
+    }
+    if (req.method === 'POST' && url.pathname === '/api/employee/logout') {
+      const sid = cookieValue(req, 'iksha_employee');
+      state.employeeSessions = state.employeeSessions.filter((session) => !safeEqual(session.idHash, hash(sid)));
+      await save();
+      return json(res, 200, { ok: true }, { 'set-cookie': clearCookie('iksha_employee') });
+    }
+    if (req.method === 'GET' && url.pathname === '/api/employee/me') {
+      const employee = employeeSession(req);
+      if (!employee) return json(res, 401, { error: 'Employee sign-in required.' });
+      const projects = state.projects.filter((project) => project.members?.some((member) => member.employeeId === employee.id));
+      return json(res, 200, { employee: employeeView(employee), projects: projects.map(projectView) });
+    }
+    const employeeChatMatch = url.pathname.match(/^\/api\/employee\/projects\/([^/]+)\/team-chat$/);
+    if (employeeChatMatch) {
+      const employee = employeeSession(req);
+      if (!employee) return json(res, 401, { error: 'Employee sign-in required.' });
+      const project = state.projects.find((item) => item.id === employeeChatMatch[1] && item.members?.some((member) => member.employeeId === employee.id));
+      if (!project) return json(res, 404, { error: 'Project not found in your workspace.' });
+      if (req.method === 'GET') return json(res, 200, { messages: state.teamMessages.filter((item) => item.projectId === project.id).slice(-80) });
+      if (req.method === 'POST') {
+        const input = await body(req); const text = String(input.message || '').trim();
+        if (!text || text.length > 2000) return json(res, 400, { error: 'Enter a message under 2,000 characters.' });
+        if (!canSendTeamMessage(employee.id, project.id)) return json(res, 429, { error: 'Too many messages. Please wait a minute.' });
+        const message = { id: randomBytes(8).toString('hex'), projectId: project.id, senderId: employee.id, senderName: employee.name, senderRole: 'employee', text, at: new Date().toISOString() };
+        state.teamMessages.push(message); audit('team_message', project.id, { sender: employee.name }); await save();
+        return json(res, 201, { message });
+      }
+    }
+    if (url.pathname.startsWith('/api/employee/')) return json(res, 404, { error: 'Not found.' });
     if (url.pathname.startsWith('/api/founder/') && !founder(req)) return json(res, 401, { error: 'Founder session required.' });
+    if (req.method === 'GET' && url.pathname === '/api/founder/employees') return json(res, 200, { employees: state.employees.map(employeeView) });
+    if (req.method === 'POST' && url.pathname === '/api/founder/employees') {
+      const input = await body(req);
+      const project = state.projects.find((item) => item.id === input.projectId);
+      if (!project) return json(res, 404, { error: 'Select a project for this employee.' });
+      const name = String(input.name || '').trim(); const designation = String(input.designation || '').trim(); const role = String(input.role || 'Team member').trim();
+      const email = String(input.email || '').trim(); const phone = String(input.phone || '').trim();
+      if (!name || !designation || !role || name.length > 120 || designation.length > 120 || email.length > 200 || phone.length > 40) return json(res, 400, { error: 'Enter a name, designation, and role using the requested lengths.' });
+      const id = employeeId(); const password = employeePassword(); const salt = randomBytes(16).toString('hex');
+      const employee = { id, name, designation, email, phone, passwordSalt: salt, passwordHash: passwordHash(password, salt), createdAt: new Date().toISOString() };
+      state.employees.push(employee);
+      (project.members ||= []).push({ id: randomBytes(8).toString('hex'), employeeId: id, name, designation, role });
+      audit('employee_created', project.id, { employeeId: id }); await save();
+      const base = process.env.PUBLIC_URL || `http://localhost:${port}`;
+      return json(res, 201, { employee: employeeView(employee), credentials: { employeeId: id, password, link: `${base.replace(/\/$/, '')}/employee?id=${encodeURIComponent(id)}` } });
+    }
+    if (req.method === 'GET' && url.pathname === '/api/founder/assistant') return json(res, 200, { messages: state.founderChat.slice(-40) });
+    if (req.method === 'POST' && url.pathname === '/api/founder/assistant') {
+      const sid = cookieValue(req, 'iksha_founder'); const key = hash(sid);
+      const limit = founderChatLimits.get(key) || { count: 0, resetAt: Date.now() + 60 * 60 * 1000 };
+      if (limit.resetAt <= Date.now()) { limit.count = 0; limit.resetAt = Date.now() + 60 * 60 * 1000; }
+      if (limit.count >= 60) return json(res, 429, { error: 'Assistant limit reached. Try again later.' });
+      const input = await body(req); const question = String(input.question || '').trim();
+      if (!question || question.length > 1000) return json(res, 400, { error: 'Enter a question under 1,000 characters.' });
+      limit.count += 1; founderChatLimits.set(key, limit);
+      const answer = founderAssistantAnswer(question);
+      const message = { id: randomBytes(8).toString('hex'), question, answer, at: new Date().toISOString() };
+      state.founderChat.push(message); state.founderChat = state.founderChat.slice(-200); await save();
+      return json(res, 200, { message });
+    }
+    const assignEmployeeMatch = url.pathname.match(/^\/api\/founder\/projects\/([^/]+)\/employees$/);
+    if (req.method === 'POST' && assignEmployeeMatch) {
+      const project = state.projects.find((item) => item.id === assignEmployeeMatch[1]);
+      if (!project) return json(res, 404, { error: 'Project not found.' });
+      const input = await body(req); const id = String(input.employeeId || '').trim().toUpperCase();
+      const employee = state.employees.find((item) => item.id === id);
+      if (!employee) return json(res, 404, { error: 'No employee has that ID.' });
+      if (project.members?.some((member) => member.employeeId === id)) return json(res, 409, { error: 'This employee is already assigned to this project.' });
+      const role = String(input.role || 'Team member').trim();
+      if (!role || role.length > 80) return json(res, 400, { error: 'Enter a valid project role.' });
+      const member = { id: randomBytes(8).toString('hex'), employeeId: id, name: employee.name, designation: employee.designation, role };
+      (project.members ||= []).push(member); audit('employee_assigned', project.id, { employeeId: id }); await save();
+      return json(res, 201, { member });
+    }
+    const founderChatMatch = url.pathname.match(/^\/api\/founder\/projects\/([^/]+)\/team-chat$/);
+    if (founderChatMatch) {
+      const project = state.projects.find((item) => item.id === founderChatMatch[1]);
+      if (!project) return json(res, 404, { error: 'Project not found.' });
+      if (req.method === 'GET') return json(res, 200, { messages: state.teamMessages.filter((item) => item.projectId === project.id).slice(-80) });
+      if (req.method === 'POST') {
+        const input = await body(req); const text = String(input.message || '').trim();
+        if (!text || text.length > 2000) return json(res, 400, { error: 'Enter a message under 2,000 characters.' });
+        if (!canSendTeamMessage('founder', project.id)) return json(res, 429, { error: 'Too many messages. Please wait a minute.' });
+        const message = { id: randomBytes(8).toString('hex'), projectId: project.id, senderId: 'founder', senderName: 'Founder', senderRole: 'founder', text, at: new Date().toISOString() };
+        state.teamMessages.push(message); audit('team_message', project.id, { sender: 'Founder' }); await save();
+        return json(res, 201, { message });
+      }
+    }
     if (req.method === 'GET' && url.pathname === '/api/founder/projects') return json(res, 200, { projects: state.projects.map(projectView) });
+    if (req.method === 'GET' && url.pathname === '/api/founder/trash') return json(res, 200, { projects: state.trashedProjects.map(projectView) });
+    const restoreMatch = url.pathname.match(/^\/api\/founder\/trash\/([^/]+)\/restore$/);
+    if (req.method === 'POST' && restoreMatch) {
+      const project = state.trashedProjects.find((item) => item.id === restoreMatch[1]);
+      if (!project) return json(res, 404, { error: 'Project not found in Trash.' });
+      state.trashedProjects = state.trashedProjects.filter((item) => item.id !== project.id);
+      delete project.trashedAt; state.projects.unshift(project);
+      audit('project_restored', project.id, { name: project.name }); await save();
+      return json(res, 200, { project: projectView(project) });
+    }
     if (req.method === 'POST' && url.pathname === '/api/founder/projects') {
       const input = await body(req);
       if (!input.name?.trim() || !input.clientName?.trim()) return json(res, 400, { error: 'Project and client names are required.' });
@@ -132,6 +302,24 @@ const server = http.createServer(async (req, res) => {
       state.projects.unshift(project); audit('project_created', project.id); await save(); return json(res, 201, { project: projectView(project) });
     }
     const projectMatch = url.pathname.match(/^\/api\/founder\/projects\/([^/]+)$/);
+    const completeMatch = url.pathname.match(/^\/api\/founder\/projects\/([^/]+)\/complete$/);
+    if (req.method === 'POST' && completeMatch) {
+      const project = state.projects.find((item) => item.id === completeMatch[1]);
+      if (!project) return json(res, 404, { error: 'Project not found.' });
+      const old = project.status;
+      project.status = 'Completed'; project.completedAt = project.completedAt || new Date().toISOString();
+      if (old !== 'Completed') { recordProjectUpdate(project.id, { status: { old, new: 'Completed' } }); audit('project_completed', project.id, { name: project.name }); }
+      await save(); return json(res, 200, { project: projectView(project) });
+    }
+    const trashMatch = url.pathname.match(/^\/api\/founder\/projects\/([^/]+)\/trash$/);
+    if (req.method === 'POST' && trashMatch) {
+      const project = state.projects.find((item) => item.id === trashMatch[1]);
+      if (!project) return json(res, 404, { error: 'Project not found.' });
+      state.projects = state.projects.filter((item) => item.id !== project.id);
+      project.trashedAt = new Date().toISOString(); state.trashedProjects.unshift(project);
+      audit('project_moved_to_trash', project.id, { name: project.name }); await save();
+      return json(res, 200, { ok: true });
+    }
     if (req.method === 'PATCH' && projectMatch) {
       const project = state.projects.find((item) => item.id === projectMatch[1]); if (!project) return json(res, 404, { error: 'Project not found.' });
       const input = await body(req); const allowed = ['phase', 'status', 'recentTask', 'nextMilestone', 'blocker'];
@@ -145,6 +333,8 @@ const server = http.createServer(async (req, res) => {
         updates.internalOwnerMemberId = ownerId;
       }
       for (const key of allowed) if (typeof input[key] === 'string') updates[key] = input[key].trim();
+      if (updates.status === 'Completed' && project.status !== 'Completed') updates.completedAt = new Date().toISOString();
+      if (updates.status && updates.status !== 'Completed' && project.status === 'Completed') updates.completedAt = null;
       const changes = {};
       for (const [key, value] of Object.entries(updates)) {
         if (project[key] !== value) { changes[key] = { old: project[key] ?? '', new: value }; project[key] = value; }
@@ -188,6 +378,8 @@ const server = http.createServer(async (req, res) => {
     if (req.method === 'POST' && url.pathname === '/api/client/claim') {
       const input = await body(req); const invite = state.invites.find((item) => safeEqual(item.tokenHash, hash(input.token || '')));
       if (!invite) return json(res, 404, { error: 'This client link is invalid or has been replaced.' });
+      const invitedProject = state.projects.find((item) => item.id === invite.projectId);
+      if (!invitedProject) return json(res, 404, { error: 'This project is no longer available.' });
       const existingSession = clientSession(req);
       if (invite.claimedAt && (!existingSession || existingSession.inviteId !== invite.id || !safeEqual(invite.sessionHash, existingSession.idHash))) return json(res, 410, { error: 'This private client link has already been claimed.' });
       let session = existingSession;
@@ -196,7 +388,7 @@ const server = http.createServer(async (req, res) => {
         invite.claimedAt = Date.now(); invite.sessionHash = session.idHash; state.clientSessions.push(session); audit('client_link_claimed', invite.projectId); await save();
         res.setHeader('set-cookie', cookie('iksha_client', id, 2592000));
       }
-      return json(res, 200, { project: clientProjectView(state.projects.find((item) => item.id === invite.projectId)) }, {});
+      return json(res, 200, { project: clientProjectView(invitedProject) }, {});
     }
     if (req.method === 'GET' && url.pathname === '/api/client/project') {
       const session = clientSession(req); if (!session) return json(res, 401, { error: 'Open your private project link to continue.' });
@@ -204,6 +396,7 @@ const server = http.createServer(async (req, res) => {
     }
     if (req.method === 'GET' && url.pathname === '/api/client/conversation') {
       const session = clientSession(req); if (!session) return json(res, 401, { error: 'Open your private project link to continue.' });
+      if (!state.projects.some((project) => project.id === session.projectId)) return json(res, 404, { error: 'Project not found.' });
       return json(res, 200, { messages: state.conversations.filter((item) => item.projectId === session.projectId).slice(-30) });
     }
     if (req.method === 'POST' && url.pathname === '/api/client/chat') {
@@ -220,6 +413,7 @@ const server = http.createServer(async (req, res) => {
     }
     if (req.method === 'GET' && url.pathname.startsWith('/api/')) return json(res, 404, { error: 'Not found.' });
     if (req.method === 'GET' && url.pathname === '/') return sendFile(res, 'frontend/index.html');
+    if (req.method === 'GET' && (url.pathname === '/employee' || url.pathname === '/employee/')) return sendFile(res, 'frontend/index.html');
     if (req.method === 'GET' && url.pathname === '/app.css') return sendFile(res, 'frontend/app.css');
     if (req.method === 'GET' && url.pathname === '/app.js') return sendFile(res, 'frontend/app.js');
     if (req.method === 'GET' && url.pathname === '/sw.js') return sendFile(res, 'frontend/sw.js');

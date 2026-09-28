@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Liquid } from "liquid-gooey";
 import { FolderPlus, Link2, Plus, UserPlus } from "lucide-react";
 
-const transition = { duration: 500, ease: "cubic-bezier(0.34, 1.56, 0.64, 1)" };
+const transition = { duration: 280, ease: "cubic-bezier(0.22, 1, 0.36, 1)" };
 
 export function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onShareClientLink }) {
   const [open, setOpen] = useState(false);
@@ -31,15 +31,15 @@ export function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onSha
   ];
 
   return <div ref={rootRef} className="relative z-40 flex h-12 items-center justify-center overflow-visible">
-    <Liquid fill="#202020" blur={7} contrast={18} filterPadding={200} shadow="0 6px 16px rgba(10, 20, 36, .22)" className="size-12 overflow-visible">
-      {actions.map(({ label, Icon, x, y, onClick, disabled }, index) => <Liquid.Item
+    <Liquid fill="#202020" blur={5} contrast={18} filterPadding={200} shadow="0 4px 12px rgba(10, 20, 36, .18)" className="size-12 overflow-visible">
+      {actions.map(({ label, Icon, x, y, onClick, disabled }) => <Liquid.Item
         key={label}
         className="absolute left-0.5 top-0.5"
         x={open ? x : 0}
         y={open ? y : 0}
         scale={open ? 1 : 0}
         transition={transition}
-        delay={open ? index * 35 : 0}
+        delay={0}
       >
         <button
           type="button"
@@ -59,7 +59,7 @@ export function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onSha
           aria-expanded={open}
           className="grid size-12 place-items-center rounded-full border-2 border-white text-white outline-2 outline-offset-[-5px] outline-[#202020] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           onClick={() => setOpen((value) => !value)}
-        ><Plus className={`size-5 transition-transform duration-300 ${open ? "rotate-45" : ""}`} aria-hidden="true" /></button>
+        ><Plus className={`size-5 transition-transform duration-200 ease-out ${open ? "rotate-45" : ""}`} aria-hidden="true" /></button>
       </Liquid.Item>
     </Liquid>
     <span className="sr-only">New actions</span>
