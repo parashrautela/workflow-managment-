@@ -1,5 +1,26 @@
 # V1 API contract
 
+## Telegram decision requests
+
+Set the same `INTEGRATION_SHARED_SECRET` in both services. In the Telegram bot,
+set `WEB_APP_URL` to this web app's HTTPS origin. In this web app, set
+`GROUP_BOT_TOKEN` to the project group bot's token for publishing and attachment
+preview. Link each web project to its Telegram group chat ID on the founder's
+**Needs attention** screen. The Telegram bot's `/start` response shows the ID.
+
+The bot sends `POST /api/integrations/telegram/requests` with
+`Authorization: Bearer <INTEGRATION_SHARED_SECRET>`. The payload uses the
+`DecisionRequests` Sheet fields plus `TelegramProjectID`. Requests are
+deduplicated by `RequestID` and linked by `GroupChatID`; an unlinked group
+returns `409` so the bot can tell the user to retry after linking.
+
+The founder session protects `GET /api/founder/decision-requests`,
+`GET /api/founder/decision-requests/:id/attachments/:index`, and
+`POST /api/founder/decision-requests/:id/{comment,publish,resolve}`.
+Publish sends a reply to the original Telegram message and updates the request
+only if Telegram accepts the message. `Published` remains open until a founder
+marks the work `Done`. Internal comments never go to Telegram.
+
 Base URL is the same origin that serves the web app. All request and response bodies use JSON. The browser should send requests with same-origin credentials enabled so the session cookies are included.
 
 ## Founder session

@@ -11,6 +11,7 @@ const dataFile = path.join(dataDir, 'data.json');
 const port = Number(process.env.PORT || 3000);
 const production = process.env.NODE_ENV === 'production';
 const founderPassword = process.env.FOUNDER_PASSWORD;
+const integrationSecret = process.env.INTEGRATION_SHARED_SECRET || '';
 if (!founderPassword) {
   console.error('Set FOUNDER_PASSWORD before starting.');
   process.exit(1);
@@ -38,6 +39,7 @@ const stateStore = await createStateStore({ dataFile, production });
 let state = stateStore.state;
 console.log(`Project data store connected: ${stateStore.kind}.`);
 let saveQueue = Promise.resolve();
+const publishingRequests = new Set();
 function save() {
   saveQueue = saveQueue.then(() => stateStore.save(state));
   return saveQueue;
@@ -62,13 +64,14 @@ function canSendTeamMessage(actor, projectId) {
   return true;
 }
 const json = (res, status, body, headers = {}) => { res.writeHead(status, { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', ...headers }); res.end(JSON.stringify(body)); };
+const shortText = (value, limit) => typeof value === 'string' && value.length <= limit ? value : null;
 async function body(req) {
   let raw = ''; for await (const chunk of req) { raw += chunk; if (raw.length > 1_000_000) throw new Error('Request too large'); }
   return raw ? JSON.parse(raw) : {};
 }
 function projectView(project) {
   const owner = (project.members || []).find((member) => member.id === project.internalOwnerMemberId);
-  return { id: project.id, name: project.name, clientName: project.clientName, location: project.location, startDate: project.startDate || '', internalOwnerMemberId: project.internalOwnerMemberId || '', internalOwner: owner?.name || '', phase: project.phase, status: project.status, recentTask: project.recentTask, nextMilestone: project.nextMilestone, blocker: project.blocker, members: project.members || [], createdAt: project.createdAt, completedAt: project.completedAt || null };
+  return { id: project.id, name: project.name, clientName: project.clientName, location: project.location, startDate: project.startDate || '', telegramGroupChatId: project.telegramGroupChatId || '', internalOwnerMemberId: project.internalOwnerMemberId || '', internalOwner: owner?.name || '', phase: project.phase, status: project.status, recentTask: project.recentTask, nextMilestone: project.nextMilestone, blocker: project.blocker, members: project.members || [], createdAt: project.createdAt, completedAt: project.completedAt || null };
 }
 function employeeView(employee) {
   return { id: employee.id, name: employee.name, designation: employee.designation, email: employee.email || '', phone: employee.phone || '', createdAt: employee.createdAt, projectIds: state.projects.filter((project) => project.members?.some((member) => member.employeeId === employee.id)).map((project) => project.id) };
@@ -167,6 +170,28 @@ function founderAssistantAnswer(question) {
 const server = http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+    if (req.method === 'POST' && url.pathname === '/api/integrations/telegram/requests') {
+      const supplied = (req.headers.authorization || '').replace(/^Bearer /i, '');
+      if (!integrationSecret || !safeEqual(supplied, integrationSecret)) return json(res, 401, { error: 'Integration authentication required.' });
+      const input = await body(req);
+      const groupId = String(input.GroupChatID || '');
+      const project = state.projects.find((item) => item.telegramGroupChatId === groupId);
+      if (!project) return json(res, 409, { error: 'Link this Telegram group to a web app project first.' });
+      const id = shortText(input.RequestID, 120);
+      const requestType = input.RequestType;
+      const message = shortText(input.OriginalMessage, 4000);
+      const context = shortText(input.RequestContext, 2000);
+      const sender = shortText(input.OriginalSenderName, 160);
+      if (!id || !/^REQ--?\d+-\d+-(approval|question)$/.test(id) || !['Approval', 'Question'].includes(requestType) || message === null || context === null || !sender || !/^[-]?\d+$/.test(groupId) || !/^\d+$/.test(String(input.SourceMessageID || ''))) return json(res, 400, { error: 'Invalid Telegram request.' });
+      const existing = state.decisionRequests.find((item) => item.id === id);
+      if (existing) return existing.projectId === project.id ? json(res, 200, { request: existing, created: false }) : json(res, 409, { error: 'Request ID belongs to another project.' });
+      let attachments;
+      try { attachments = JSON.parse(input.AttachmentsJSON || '[]'); } catch { attachments = null; }
+      if (!Array.isArray(attachments) || attachments.length > 8 || attachments.some((item) => typeof item.fileId !== 'string' || item.fileId.length > 300)) return json(res, 400, { error: 'Invalid attachments.' });
+      const request = { id, projectId: project.id, groupChatId: groupId, telegramProjectId: shortText(input.TelegramProjectID, 100) || '', sourceMessageId: String(input.SourceMessageID), commandMessageId: String(input.CommandMessageID || ''), requestedByName: shortText(input.RequestedByName, 160) || 'Unknown', requestedByRole: shortText(input.RequestedByRole, 100) || '', originalSenderName: sender, requestType, originalMessage: message, context, attachments, status: 'Pending', createdAt: new Date().toISOString(), comments: [], response: '', publishedMessageId: '', publishedAt: '', resolvedAt: '' };
+      state.decisionRequests.unshift(request); audit('decision_request_received', project.id, { requestId: id }); await save();
+      return json(res, 201, { request, created: true });
+    }
     if (req.method === 'POST' && url.pathname === '/api/founder/login') {
       const ip = req.socket.remoteAddress || 'unknown'; const attempts = loginAttempts.get(ip) || { count: 0, lockedUntil: 0 };
       if (attempts.lockedUntil > Date.now()) return json(res, 429, { error: 'Too many attempts. Try again in a few minutes.' });
@@ -234,6 +259,62 @@ const server = http.createServer(async (req, res) => {
     }
     if (url.pathname.startsWith('/api/employee/')) return json(res, 404, { error: 'Not found.' });
     if (url.pathname.startsWith('/api/founder/') && !founder(req)) return json(res, 401, { error: 'Founder session required.' });
+    if (req.method === 'GET' && url.pathname === '/api/founder/decision-requests') {
+      return json(res, 200, { requests: state.decisionRequests.filter((item) => state.projects.some((project) => project.id === item.projectId)) });
+    }
+    const attachmentMatch = url.pathname.match(/^\/api\/founder\/decision-requests\/([^/]+)\/attachments\/(\d+)$/);
+    if (req.method === 'GET' && attachmentMatch) {
+      const request = state.decisionRequests.find((item) => item.id === decodeURIComponent(attachmentMatch[1]));
+      if (!request || !state.projects.some((project) => project.id === request.projectId)) return json(res, 404, { error: 'Request not found.' });
+      const attachment = request.attachments[Number(attachmentMatch[2])];
+      if (!attachment || !process.env.GROUP_BOT_TOKEN) return json(res, 404, { error: 'Attachment unavailable.' });
+      const fileLookup = await fetch(`https://api.telegram.org/bot${process.env.GROUP_BOT_TOKEN}/getFile`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ file_id: attachment.fileId }), signal: AbortSignal.timeout(10_000) });
+      const fileInfo = await fileLookup.json();
+      if (!fileInfo.ok || !fileInfo.result?.file_path || fileInfo.result.file_size > 20_000_000) return json(res, 502, { error: 'Telegram attachment unavailable or too large.' });
+      const fileResponse = await fetch(`https://api.telegram.org/file/bot${process.env.GROUP_BOT_TOKEN}/${fileInfo.result.file_path}`, { signal: AbortSignal.timeout(20_000) });
+      if (!fileResponse.ok) return json(res, 502, { error: 'Could not load Telegram attachment.' });
+      const bytes = Buffer.from(await fileResponse.arrayBuffer());
+      if (bytes.length > 20_000_000) return json(res, 502, { error: 'Attachment too large.' });
+      const allowedTypes = { 'image/jpeg': 'image/jpeg', 'image/png': 'image/png', 'application/pdf': 'application/pdf' };
+      const mime = attachment.type === 'Photo' ? 'image/jpeg' : allowedTypes[attachment.mimeType] || 'application/octet-stream';
+      res.writeHead(200, { 'content-type': mime, 'content-disposition': 'inline', 'cache-control': 'private, no-store', 'x-content-type-options': 'nosniff' });
+      return res.end(bytes);
+    }
+    const decisionAction = url.pathname.match(/^\/api\/founder\/decision-requests\/([^/]+)\/(comment|publish|resolve)$/);
+    if (req.method === 'POST' && decisionAction) {
+      const request = state.decisionRequests.find((item) => item.id === decodeURIComponent(decisionAction[1]));
+      if (!request || !state.projects.some((project) => project.id === request.projectId)) return json(res, 404, { error: 'Request not found.' });
+      const action = decisionAction[2];
+      if (action === 'comment') {
+        const input = await body(req); const text = String(input.text || '').trim();
+        if (!text || text.length > 2000) return json(res, 400, { error: 'Enter an internal comment under 2,000 characters.' });
+        (request.comments ||= []).push({ id: randomBytes(8).toString('hex'), author: 'Founder', text, at: new Date().toISOString() });
+        audit('decision_request_comment', request.projectId, { requestId: request.id }); await save(); return json(res, 200, { request });
+      }
+      if (action === 'resolve') {
+        if (publishingRequests.has(request.id)) return json(res, 409, { error: 'Wait for Telegram publishing to finish.' });
+        if (request.status === 'Done') return json(res, 200, { request });
+        request.status = 'Done'; request.resolvedAt = new Date().toISOString();
+        audit('decision_request_resolved', request.projectId, { requestId: request.id }); await save(); return json(res, 200, { request });
+      }
+      if (request.status === 'Done') return json(res, 409, { error: 'This request is already done.' });
+      if (request.publishedMessageId) return json(res, 409, { error: 'A response was already published.' });
+      if (publishingRequests.has(request.id)) return json(res, 409, { error: 'This response is already being published.' });
+      const input = await body(req); const answer = String(input.response || '').trim();
+      if (!answer || answer.length > 3000) return json(res, 400, { error: 'Enter a response under 3,000 characters.' });
+      if (!process.env.GROUP_BOT_TOKEN) return json(res, 503, { error: 'Telegram publishing is not configured.' });
+      const project = state.projects.find((item) => item.id === request.projectId);
+      if (project.telegramGroupChatId !== request.groupChatId) return json(res, 409, { error: 'Project group mapping changed. Check the linked group.' });
+      publishingRequests.add(request.id);
+      try {
+        const telegramResponse = await fetch(`https://api.telegram.org/bot${process.env.GROUP_BOT_TOKEN}/sendMessage`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ chat_id: request.groupChatId, text: answer, reply_parameters: { message_id: Number(request.sourceMessageId), allow_sending_without_reply: false } }), signal: AbortSignal.timeout(10_000) });
+        const telegramResult = await telegramResponse.json();
+        if (!telegramResponse.ok || !telegramResult.ok) return json(res, 502, { error: 'Telegram did not accept the response. Check bot access to the group.' });
+        request.status = 'Published'; request.response = answer; request.publishedMessageId = String(telegramResult.result.message_id); request.publishedAt = new Date().toISOString();
+        audit('decision_request_published', request.projectId, { requestId: request.id, telegramMessageId: request.publishedMessageId }); await save();
+        return json(res, 200, { request });
+      } finally { publishingRequests.delete(request.id); }
+    }
     if (req.method === 'GET' && url.pathname === '/api/founder/employees') return json(res, 200, { employees: state.employees.map(employeeView) });
     if (req.method === 'POST' && url.pathname === '/api/founder/employees') {
       const input = await body(req);
@@ -307,7 +388,7 @@ const server = http.createServer(async (req, res) => {
       const input = await body(req);
       if (!input.name?.trim() || !input.clientName?.trim()) return json(res, 400, { error: 'Project and client names are required.' });
       if (input.startDate !== undefined && (typeof input.startDate !== 'string' || !validIsoDate(input.startDate))) return json(res, 400, { error: 'Start date must use YYYY-MM-DD.' });
-      const project = { id: `p_${randomBytes(8).toString('hex')}`, name: input.name.trim(), clientName: input.clientName.trim(), location: input.location?.trim() || '', startDate: input.startDate?.trim() || '', internalOwnerMemberId: '', phase: input.phase?.trim() || 'Design', status: input.status || 'Setup', recentTask: input.recentTask?.trim() || '', nextMilestone: input.nextMilestone?.trim() || '', blocker: '', members: [], createdAt: new Date().toISOString() };
+      const project = { id: `p_${randomBytes(8).toString('hex')}`, name: input.name.trim(), clientName: input.clientName.trim(), location: input.location?.trim() || '', startDate: input.startDate?.trim() || '', telegramGroupChatId: '', internalOwnerMemberId: '', phase: input.phase?.trim() || 'Design', status: input.status || 'Setup', recentTask: input.recentTask?.trim() || '', nextMilestone: input.nextMilestone?.trim() || '', blocker: '', members: [], createdAt: new Date().toISOString() };
       state.projects.unshift(project); audit('project_created', project.id); await save(); return json(res, 201, { project: projectView(project) });
     }
     const projectMatch = url.pathname.match(/^\/api\/founder\/projects\/([^/]+)$/);
@@ -335,6 +416,12 @@ const server = http.createServer(async (req, res) => {
       if (input.startDate !== undefined && (typeof input.startDate !== 'string' || !validIsoDate(input.startDate))) return json(res, 400, { error: 'Start date must use YYYY-MM-DD.' });
       const updates = {};
       if (input.startDate !== undefined) updates.startDate = input.startDate.trim();
+      if (input.telegramGroupChatId !== undefined) {
+        const groupId = String(input.telegramGroupChatId).trim();
+        if (groupId && !/^-?\d{1,25}$/.test(groupId)) return json(res, 400, { error: 'Enter a numeric Telegram group chat ID.' });
+        if (groupId && state.projects.some((item) => item.id !== project.id && item.telegramGroupChatId === groupId)) return json(res, 409, { error: 'This Telegram group is linked to another project.' });
+        updates.telegramGroupChatId = groupId;
+      }
       if (input.internalOwnerMemberId !== undefined) {
         const ownerId = String(input.internalOwnerMemberId || '').trim();
         const owner = ownerId ? project.members.find((member) => member.id === ownerId) : null;
