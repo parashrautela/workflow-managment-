@@ -13,6 +13,7 @@ const emptyState = () => ({
   employeeSessions: [],
   founderChat: [],
   teamMessages: [],
+  decisionRequests: [],
   trashedProjects: [],
 });
 
