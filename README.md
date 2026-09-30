@@ -12,7 +12,7 @@ The **Workflow Management Tool** provides teams with a clean, distraction-free e
 - **Client portal**: Share a private link for project questions and assistant replies based on recorded facts.
 - **Conversation review**: Founders can review the client Q&A transcript in Messages.
 - **Installable app**: PWA metadata lets supported browsers open the site as a standalone app.
-- **Telegram decision inbox**: Link a project group, review `/approval` and `/question` requests, discuss privately, publish a reply to the original Telegram message, and mark the work done.
+- **Telegram decision inbox**: A conversation view for `/approval` and `/question` requests, with private notes, a separate Telegram reply composer, and completion tracking. Link each project group from its settings panel. The first version shows marked requests, not every group message.
 - **UI system**: Responsive screens built with shadcn/ui components and Tailwind CSS.
 
 ## 🛠️ Tech Stack & Design
