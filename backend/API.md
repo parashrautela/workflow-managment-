@@ -5,8 +5,33 @@
 Set the same `INTEGRATION_SHARED_SECRET` in both services. In the Telegram bot,
 set `WEB_APP_URL` to this web app's HTTPS origin. In this web app, set
 `GROUP_BOT_TOKEN` to the project group bot's token for publishing and attachment
-preview. Link each web project to its Telegram group chat ID on the founder's
-**Needs attention** screen. The Telegram bot's `/start` response shows the ID.
+preview, and `BOT_BRIDGE_URL` to the Telegram bot service's HTTPS origin. New
+projects can be linked from **Group setup**; existing projects can be linked by
+Telegram group chat ID on the founder's **Needs attention** screen. The Telegram
+bot's `/start` response shows the ID.
+
+## Telegram group setup
+
+The bot sends authenticated `POST /api/integrations/telegram/groups/snapshot`
+with `{ "groups": [{ "groupChatId", "title", "status", "members": [...] }] }`.
+Each member has `telegramUserId`, `telegramName`, `membershipStatus`,
+`assignedName`, and `assignedRole`. Snapshots update the founder's group roster.
+
+These routes require the founder session:
+
+- `GET /api/founder/telegram-groups` lists discovered groups and members.
+- `POST /api/founder/telegram-groups/:groupId/members/:userId` accepts
+  `{ "name": "...", "role": "..." }`, updates the bot's Google Sheet roster, and
+  has the bot announce the assignment in Telegram.
+- `POST /api/founder/telegram-groups/:groupId/create-project` accepts
+  `{ "projectName": "...", "startDate": "YYYY-MM-DD" }`. A Client role must
+  already be assigned. It creates a linked shell in both services; the bot's
+  existing workflow-plan selection then generates tasks.
+
+The bot bridge uses `Authorization: Bearer <INTEGRATION_SHARED_SECRET>` and
+exposes `POST /api/integrations/web/group-members` and
+`POST /api/integrations/web/projects`. Set `BOT_BRIDGE_PORT` on the bot if it
+cannot use the hosting platform's `PORT`.
 
 The bot sends `POST /api/integrations/telegram/requests` with
 `Authorization: Bearer <INTEGRATION_SHARED_SECRET>`. The payload uses the

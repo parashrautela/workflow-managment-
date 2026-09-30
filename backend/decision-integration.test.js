@@ -4,6 +4,7 @@ import { mkdtemp, cp, rm, symlink, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import net from 'node:net';
+import http from 'node:http';
 import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
@@ -31,7 +32,18 @@ globalThis.fetch = async (url, options) => {
   return originalFetch(url, options);
 };`);
   const port = await freePort();
-  const child = spawn(process.execPath, ['--import', path.join(root, 'mock-telegram.js'), path.join(root, 'backend/server.js')], { cwd: root, env: { ...process.env, PORT: String(port), FOUNDER_PASSWORD: 'test-password', INTEGRATION_SHARED_SECRET: 'test-secret', GROUP_BOT_TOKEN: 'test-bot-token', DATABASE_URL: '', NODE_ENV: 'test' }, stdio: 'ignore' });
+  const bridge = http.createServer(async (req, res) => {
+    assert.equal(req.headers.authorization, 'Bearer test-secret');
+    let raw = ''; for await (const part of req) raw += part;
+    const input = JSON.parse(raw);
+    res.setHeader('content-type', 'application/json');
+    if (req.url.endsWith('/group-members')) { assert.equal(input.groupChatId, '-456'); res.end(JSON.stringify({ ok: true, changed: true })); }
+    else if (req.url.endsWith('/projects')) { assert.equal(input.clientName, 'Asha Kumar'); res.end(JSON.stringify({ projectId: 'P999', projectName: input.projectName })); }
+    else { res.statusCode = 404; res.end('{}'); }
+  });
+  await new Promise((resolve) => bridge.listen(0, '127.0.0.1', resolve));
+  const bridgeUrl = `http://127.0.0.1:${bridge.address().port}`;
+  const child = spawn(process.execPath, ['--import', path.join(root, 'mock-telegram.js'), path.join(root, 'backend/server.js')], { cwd: root, env: { ...process.env, PORT: String(port), FOUNDER_PASSWORD: 'test-password', INTEGRATION_SHARED_SECRET: 'test-secret', GROUP_BOT_TOKEN: 'test-bot-token', BOT_BRIDGE_URL: bridgeUrl, DATABASE_URL: '', NODE_ENV: 'test' }, stdio: 'ignore' });
   const base = `http://127.0.0.1:${port}`;
   const call = async (route, method = 'GET', value, headers = {}) => {
     const response = await fetch(base + route, { method, headers: { 'content-type': 'application/json', ...headers }, ...(value === undefined ? {} : { body: JSON.stringify(value) }) });
@@ -50,11 +62,11 @@ globalThis.fetch = async (url, options) => {
     const projectId = project.data.project.id;
     const payload = { RequestID: 'REQ--123-10-approval', GroupChatID: '-123', SourceMessageID: '10', RequestType: 'Approval', OriginalMessage: 'Approve lights?', RequestContext: '', OriginalSenderName: 'Client', RequestedByName: 'Designer', AttachmentsJSON: '[]' };
     assert.equal((await call('/api/integrations/telegram/requests', 'POST', payload)).status, 401);
-    const bridge = { authorization: 'Bearer test-secret' };
-    assert.equal((await call('/api/integrations/telegram/requests', 'POST', payload, bridge)).status, 409);
+    const bridgeHeaders = { authorization: 'Bearer test-secret' };
+    assert.equal((await call('/api/integrations/telegram/requests', 'POST', payload, bridgeHeaders)).status, 409);
     assert.equal((await call(`/api/founder/projects/${projectId}`, 'PATCH', { telegramGroupChatId: '-123' }, cookie)).status, 200);
-    assert.equal((await call('/api/integrations/telegram/requests', 'POST', payload, bridge)).status, 201);
-    assert.equal((await call('/api/integrations/telegram/requests', 'POST', payload, bridge)).status, 200);
+    assert.equal((await call('/api/integrations/telegram/requests', 'POST', payload, bridgeHeaders)).status, 201);
+    assert.equal((await call('/api/integrations/telegram/requests', 'POST', payload, bridgeHeaders)).status, 200);
     assert.equal((await call('/api/founder/decision-requests')).status, 401);
     const inbox = await call('/api/founder/decision-requests', 'GET', undefined, cookie);
     assert.equal(inbox.data.requests.length, 1);
@@ -68,8 +80,21 @@ globalThis.fetch = async (url, options) => {
     assert.equal(finalInbox.data.requests[0].status, 'Done');
     assert.equal(finalInbox.data.requests[0].publishedMessageId, '99');
     assert.equal(finalInbox.data.requests[0].comments[0].text, 'Check dimensions');
+    const snapshot = { groups: [{ groupChatId: '-456', title: 'New Site Group', status: 'Available', members: [{ telegramUserId: '123', telegramName: 'Asha', membershipStatus: 'Active', assignedName: '', assignedRole: '' }, { telegramUserId: '124', telegramName: 'Painter', membershipStatus: 'Active', assignedName: '', assignedRole: '' }] }] };
+    assert.equal((await call('/api/integrations/telegram/groups/snapshot', 'POST', snapshot)).status, 401);
+    assert.equal((await call('/api/integrations/telegram/groups/snapshot', 'POST', snapshot, bridgeHeaders)).status, 200);
+    assert.equal((await call('/api/founder/telegram-groups')).status, 401);
+    const discovered = await call('/api/founder/telegram-groups', 'GET', undefined, cookie);
+    assert.equal(discovered.data.groups[0].members.length, 2);
+    assert.equal((await call('/api/founder/telegram-groups/-456/create-project', 'POST', { projectName: 'New Site Group', startDate: '2026-09-30' }, cookie)).status, 400);
+    assert.equal((await call('/api/founder/telegram-groups/-456/members/123', 'POST', { name: 'Asha Kumar', role: 'Client' }, cookie)).status, 200);
+    const created = await call('/api/founder/telegram-groups/-456/create-project', 'POST', { projectName: 'New Site Group', startDate: '2026-09-30' }, cookie);
+    assert.equal(created.status, 201);
+    assert.equal(created.data.project.telegramGroupChatId, '-456');
+    assert.equal((await call('/api/founder/telegram-groups/-456/create-project', 'POST', { projectName: 'New Site Group', startDate: '2026-09-30' }, cookie)).status, 409);
   } finally {
     child.kill();
+    await new Promise((resolve) => bridge.close(resolve));
     await rm(root, { recursive: true, force: true });
   }
 });
