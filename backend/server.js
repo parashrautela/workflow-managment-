@@ -12,6 +12,7 @@ const port = Number(process.env.PORT || 3000);
 const production = process.env.NODE_ENV === 'production';
 const founderPassword = process.env.FOUNDER_PASSWORD;
 const integrationSecret = process.env.INTEGRATION_SHARED_SECRET || '';
+const botBridgeUrl = process.env.BOT_BRIDGE_URL?.replace(/\/$/, '') || '';
 if (!founderPassword) {
   console.error('Set FOUNDER_PASSWORD before starting.');
   process.exit(1);
@@ -65,13 +66,21 @@ function canSendTeamMessage(actor, projectId) {
 }
 const json = (res, status, body, headers = {}) => { res.writeHead(status, { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', ...headers }); res.end(JSON.stringify(body)); };
 const shortText = (value, limit) => typeof value === 'string' && value.length <= limit ? value : null;
+async function callBotBridge(route, payload) {
+  if (!botBridgeUrl || !integrationSecret) throw new Error('Bot integration is not configured.');
+  const response = await fetch(`${botBridgeUrl}${route}`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${integrationSecret}` }, body: JSON.stringify(payload), signal: AbortSignal.timeout(15_000) });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.error || 'Telegram bot did not accept the update.');
+  return data;
+}
 async function body(req) {
   let raw = ''; for await (const chunk of req) { raw += chunk; if (raw.length > 1_000_000) throw new Error('Request too large'); }
   return raw ? JSON.parse(raw) : {};
 }
 function projectView(project) {
   const owner = (project.members || []).find((member) => member.id === project.internalOwnerMemberId);
-  return { id: project.id, name: project.name, clientName: project.clientName, location: project.location, startDate: project.startDate || '', telegramGroupChatId: project.telegramGroupChatId || '', internalOwnerMemberId: project.internalOwnerMemberId || '', internalOwner: owner?.name || '', phase: project.phase, status: project.status, recentTask: project.recentTask, nextMilestone: project.nextMilestone, blocker: project.blocker, members: project.members || [], createdAt: project.createdAt, completedAt: project.completedAt || null };
+  const telegramMembers = state.telegramGroups.find((group) => group.groupChatId === project.telegramGroupChatId)?.members.filter((member) => member.membershipStatus === 'Active') || [];
+  return { id: project.id, name: project.name, clientName: project.clientName, location: project.location, startDate: project.startDate || '', telegramGroupChatId: project.telegramGroupChatId || '', telegramProjectId: project.telegramProjectId || '', telegramSetupPending: Boolean(project.telegramSetupPending), telegramMembers, internalOwnerMemberId: project.internalOwnerMemberId || '', internalOwner: owner?.name || '', phase: project.phase, status: project.status, recentTask: project.recentTask, nextMilestone: project.nextMilestone, blocker: project.blocker, members: project.members || [], createdAt: project.createdAt, completedAt: project.completedAt || null };
 }
 function employeeView(employee) {
   return { id: employee.id, name: employee.name, designation: employee.designation, email: employee.email || '', phone: employee.phone || '', createdAt: employee.createdAt, projectIds: state.projects.filter((project) => project.members?.some((member) => member.employeeId === employee.id)).map((project) => project.id) };
@@ -170,6 +179,32 @@ function founderAssistantAnswer(question) {
 const server = http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+    if (req.method === 'POST' && url.pathname === '/api/integrations/telegram/groups/snapshot') {
+      const supplied = (req.headers.authorization || '').replace(/^Bearer /i, '');
+      if (!integrationSecret || !safeEqual(supplied, integrationSecret)) return json(res, 401, { error: 'Integration authentication required.' });
+      const input = await body(req);
+      if (!Array.isArray(input.groups) || input.groups.length > 100) return json(res, 400, { error: 'Invalid group snapshot.' });
+      for (const group of input.groups) {
+        const groupChatId = String(group.groupChatId || '');
+        if (!/^-?\d+$/.test(groupChatId) || !shortText(group.title, 128) || !Array.isArray(group.members) || group.members.length > 1000) return json(res, 400, { error: 'Invalid Telegram group.' });
+        const members = [];
+        for (const member of group.members) {
+          const telegramUserId = String(member.telegramUserId || '');
+          if (!/^\d+$/.test(telegramUserId) || !shortText(member.telegramName, 160) || !['Active', 'Left'].includes(member.membershipStatus)) return json(res, 400, { error: 'Invalid Telegram member.' });
+          members.push({ telegramUserId, telegramName: member.telegramName, membershipStatus: member.membershipStatus, assignedName: shortText(member.assignedName, 100) || '', assignedRole: shortText(member.assignedRole, 80) || '' });
+        }
+        const existing = state.telegramGroups.find((item) => item.groupChatId === groupChatId);
+        if (existing) { existing.title = group.title; existing.status = group.status; existing.members = members; existing.lastSeenAt = new Date().toISOString(); }
+        else state.telegramGroups.push({ groupChatId, title: group.title, status: group.status, members, lastSeenAt: new Date().toISOString() });
+        const linkedProject = state.projects.find((project) => project.telegramGroupChatId === groupChatId);
+        if (!linkedProject) {
+          const project = { id: `p_${randomBytes(8).toString('hex')}`, name: group.title, clientName: 'Client pending', location: '', startDate: '', telegramGroupChatId: groupChatId, telegramProjectId: '', telegramSetupPending: true, internalOwnerMemberId: '', phase: 'Setup', status: 'Needs setup', recentTask: '', nextMilestone: '', blocker: '', members: [], createdAt: new Date().toISOString() };
+          state.projects.unshift(project);
+          audit('telegram_project_discovered', project.id, { groupChatId });
+        } else if (linkedProject.telegramSetupPending) linkedProject.name = group.title;
+      }
+      await save(); return json(res, 200, { ok: true });
+    }
     if (req.method === 'POST' && url.pathname === '/api/integrations/telegram/requests') {
       const supplied = (req.headers.authorization || '').replace(/^Bearer /i, '');
       if (!integrationSecret || !safeEqual(supplied, integrationSecret)) return json(res, 401, { error: 'Integration authentication required.' });
@@ -259,6 +294,42 @@ const server = http.createServer(async (req, res) => {
     }
     if (url.pathname.startsWith('/api/employee/')) return json(res, 404, { error: 'Not found.' });
     if (url.pathname.startsWith('/api/founder/') && !founder(req)) return json(res, 401, { error: 'Founder session required.' });
+    if (req.method === 'GET' && url.pathname === '/api/founder/telegram-groups') {
+      return json(res, 200, { groups: state.telegramGroups.map((group) => ({ ...group, projectId: state.projects.find((project) => project.telegramGroupChatId === group.groupChatId)?.id || '' })) });
+    }
+    const telegramMemberMatch = url.pathname.match(/^\/api\/founder\/telegram-groups\/(-?\d+)\/members\/(\d+)$/);
+    if (req.method === 'POST' && telegramMemberMatch) {
+      const group = state.telegramGroups.find((item) => item.groupChatId === telegramMemberMatch[1]);
+      const member = group?.members.find((item) => item.telegramUserId === telegramMemberMatch[2] && item.membershipStatus === 'Active');
+      if (!member) return json(res, 404, { error: 'Active Telegram member not found.' });
+      const input = await body(req); const name = String(input.name || '').trim(); const role = String(input.role || '').trim();
+      if (!name || !role || name.length > 100 || role.length > 80) return json(res, 400, { error: 'Enter a name and role.' });
+      try { await callBotBridge('/api/integrations/web/group-members', { groupChatId: group.groupChatId, telegramUserId: member.telegramUserId, name, role }); }
+      catch (error) { return json(res, 502, { error: error.message }); }
+      member.assignedName = name; member.assignedRole = role;
+      audit('telegram_member_role_assigned', state.projects.find((project) => project.telegramGroupChatId === group.groupChatId)?.id || '', { groupChatId: group.groupChatId, telegramUserId: member.telegramUserId }); await save();
+      return json(res, 200, { member });
+    }
+    const telegramProjectMatch = url.pathname.match(/^\/api\/founder\/telegram-groups\/(-?\d+)\/create-project$/);
+    if (req.method === 'POST' && telegramProjectMatch) {
+      const group = state.telegramGroups.find((item) => item.groupChatId === telegramProjectMatch[1]);
+      if (!group) return json(res, 404, { error: 'Telegram group not found.' });
+      const existingProject = state.projects.find((project) => project.telegramGroupChatId === group.groupChatId);
+      if (existingProject && !existingProject.telegramSetupPending) return json(res, 409, { error: 'This group already has a completed project setup.' });
+      const client = group.members.find((member) => member.membershipStatus === 'Active' && /\bclient\b/i.test(member.assignedRole));
+      if (!client) return json(res, 400, { error: 'Assign a Client role before creating the project.' });
+      const input = await body(req); const projectName = String(input.projectName || group.title).trim();
+      const startDate = String(input.startDate || '').trim();
+      if (!projectName || projectName.length > 120 || !validIsoDate(startDate) || !startDate) return json(res, 400, { error: 'Enter a project name and valid start date.' });
+      let botProject;
+      try { botProject = await callBotBridge('/api/integrations/web/projects', { groupChatId: group.groupChatId, projectName, clientName: client.assignedName || client.telegramName, startDate }); }
+      catch (error) { return json(res, 502, { error: error.message }); }
+      const project = existingProject || { id: `p_${randomBytes(8).toString('hex')}`, telegramGroupChatId: group.groupChatId, location: '', internalOwnerMemberId: '', recentTask: '', nextMilestone: '', blocker: '', members: [], createdAt: new Date().toISOString() };
+      Object.assign(project, { name: projectName, clientName: client.assignedName || client.telegramName, startDate, telegramProjectId: botProject.projectId, telegramSetupPending: false, phase: 'Setup', status: 'Setup' });
+      if (!existingProject) state.projects.unshift(project);
+      audit('project_created_from_telegram', project.id, { groupChatId: group.groupChatId, botProjectId: botProject.projectId }); await save();
+      return json(res, 201, { project: projectView(project) });
+    }
     if (req.method === 'GET' && url.pathname === '/api/founder/decision-requests') {
       return json(res, 200, { requests: state.decisionRequests.filter((item) => state.projects.some((project) => project.id === item.projectId)) });
     }

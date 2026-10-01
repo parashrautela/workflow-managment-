@@ -14,6 +14,7 @@ const emptyState = () => ({
   founderChat: [],
   teamMessages: [],
   decisionRequests: [],
+  telegramGroups: [],
   trashedProjects: [],
 });
 
