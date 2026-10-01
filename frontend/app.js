@@ -25773,6 +25773,7 @@ function TelegramGroups({ projects, onProjectsChanged }) {
 	const activeMembers = group?.members.filter((member) => member.membershipStatus === "Active") || [];
 	const pendingCount = activeMembers.filter((member) => !member.assignedRole).length;
 	const linkedProject = projects.find((project) => project.telegramGroupChatId === group?.groupChatId);
+	const needsSetup = !linkedProject || linkedProject.telegramSetupPending;
 	const run = async (work, message) => {
 		setBusy(true);
 		setError("");
@@ -25883,7 +25884,7 @@ function TelegramGroups({ projects, onProjectsChanged }) {
 								]
 							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 								className: "rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground",
-								children: linkedProject ? `Linked to ${linkedProject.name}` : "New group"
+								children: needsSetup ? "Project needs setup" : `Linked to ${linkedProject.name}`
 							})]
 						}),
 						pendingCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
@@ -25974,14 +25975,14 @@ function TelegramGroups({ projects, onProjectsChanged }) {
 							id: "project-role-suggestions",
 							children: suggestedRoles.map((role) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { value: role }, role))
 						}),
-						!linkedProject && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						needsSetup && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "space-y-3 border-t pt-4",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 								className: "text-sm font-semibold",
-								children: "Create project from this group"
+								children: "Finish project setup"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-xs text-muted-foreground",
-								children: "Assign a Client first. The project will be linked in both the web app and bot."
+								children: "Assign a Client first, then connect this visible web project to the bot's workflow."
 							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "grid gap-2 sm:grid-cols-[minmax(0,1fr)_160px_auto]",
 								children: [
@@ -26004,7 +26005,7 @@ function TelegramGroups({ projects, onProjectsChanged }) {
 										className: "self-end",
 										onClick: createProject,
 										disabled: busy || !activeMembers.some((member) => /\bclient\b/i.test(member.assignedRole)),
-										children: "Create project"
+										children: "Finish setup"
 									})
 								]
 							})]
@@ -26251,6 +26252,18 @@ function FounderApp() {
 	(0, import_react.useEffect)(() => {
 		loadProjects();
 	}, []);
+	(0, import_react.useEffect)(() => {
+		if (authState !== "signed-in") return;
+		const timer = setInterval(async () => {
+			if (document.visibilityState !== "visible") return;
+			try {
+				const data = await api$1("/api/founder/projects");
+				setProjects(data.projects || []);
+				setSelectedProjectId((current) => (data.projects || []).some((project) => project.id === current) ? current : data.projects?.[0]?.id || null);
+			} catch {}
+		}, 1e4);
+		return () => clearInterval(timer);
+	}, [authState]);
 	(0, import_react.useEffect)(() => {
 		loadProjectDetails(selectedProjectId);
 	}, [selectedProjectId]);
@@ -26546,7 +26559,7 @@ function FounderApp() {
 								setSelectedProjectId(project.id);
 								openTab("projects");
 							},
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: `size-2 shrink-0 rounded-full ${project.status === "At risk" ? "bg-amber-500" : "bg-emerald-500"}` }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: `size-2 shrink-0 rounded-full ${project.status === "At risk" || project.telegramSetupPending ? "bg-amber-500" : "bg-emerald-500"}` }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 								className: "min-w-0 flex-1",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "block truncate text-sm font-medium",
@@ -26669,9 +26682,28 @@ function FounderApp() {
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {}), "New project"]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, { name: "Project Founder" })]
 					})]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
 					className: "mx-auto w-full max-w-6xl space-y-5 px-4 py-6 sm:px-7 sm:py-8",
-					children: currentTab === "groups" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TelegramGroups, {
+					children: [currentTab === "projects" && projects.some((project) => project.telegramSetupPending) && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Alert, {
+						className: "border-amber-200 bg-amber-50 text-amber-900",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, {}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertTitle, { children: "New project from Telegram" }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AlertDescription, {
+								className: "flex flex-wrap items-center justify-between gap-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+									projects.filter((project) => project.telegramSetupPending).map((project) => project.name).join(", "),
+									" ",
+									projects.filter((project) => project.telegramSetupPending).length === 1 ? "is" : "are",
+									" waiting for names, roles, and a Client."
+								] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+									size: "sm",
+									onClick: () => openTab("groups"),
+									children: ["Set up project", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {})]
+								})]
+							})
+						]
+					}), currentTab === "groups" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TelegramGroups, {
 						projects,
 						onProjectsChanged: loadProjects
 					}) : currentTab === "decisions" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DecisionInbox, {
@@ -26893,6 +26925,21 @@ function FounderApp() {
 									})
 								]
 							})]
+						}),
+						selectedProject.telegramSetupPending && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Alert, {
+							className: "border-amber-200 bg-amber-50 text-amber-900",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, {}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertTitle, { children: "New Telegram project needs setup" }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AlertDescription, {
+									className: "flex flex-wrap items-center justify-between gap-3",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "This group has been discovered. Assign the people and a Client role to finish connecting its workflow." }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										size: "sm",
+										onClick: () => openTab("groups"),
+										children: ["Set up group", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {})]
+									})]
+								})
+							]
 						}),
 						selectedProject.blocker && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Alert, {
 							className: "border-amber-200 bg-amber-50 text-amber-900",
@@ -27144,7 +27191,7 @@ function FounderApp() {
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {}), "Create project"]
 							})
 						]
-					}) })
+					}) })]
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {

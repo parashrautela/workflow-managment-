@@ -16,6 +16,9 @@ The bot sends authenticated `POST /api/integrations/telegram/groups/snapshot`
 with `{ "groups": [{ "groupChatId", "title", "status", "members": [...] }] }`.
 Each member has `telegramUserId`, `telegramName`, `membershipStatus`,
 `assignedName`, and `assignedRole`. Snapshots update the founder's group roster.
+The first snapshot for an unlinked group also creates one web project named after
+the Telegram group with `telegramSetupPending: true` and status `Needs setup`.
+Repeated snapshots do not create duplicate projects.
 
 These routes require the founder session:
 
@@ -25,8 +28,9 @@ These routes require the founder session:
   has the bot announce the assignment in Telegram.
 - `POST /api/founder/telegram-groups/:groupId/create-project` accepts
   `{ "projectName": "...", "startDate": "YYYY-MM-DD" }`. A Client role must
-  already be assigned. It creates a linked shell in both services; the bot's
-  existing workflow-plan selection then generates tasks.
+  already be assigned. It finishes the pending web project and creates a linked
+  shell in the bot service; the bot's existing workflow-plan selection then
+  generates tasks.
 
 The bot bridge uses `Authorization: Bearer <INTEGRATION_SHARED_SECRET>` and
 exposes `POST /api/integrations/web/group-members` and

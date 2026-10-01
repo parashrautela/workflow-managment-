@@ -83,6 +83,14 @@ globalThis.fetch = async (url, options) => {
     const snapshot = { groups: [{ groupChatId: '-456', title: 'New Site Group', status: 'Available', members: [{ telegramUserId: '123', telegramName: 'Asha', membershipStatus: 'Active', assignedName: '', assignedRole: '' }, { telegramUserId: '124', telegramName: 'Painter', membershipStatus: 'Active', assignedName: '', assignedRole: '' }] }] };
     assert.equal((await call('/api/integrations/telegram/groups/snapshot', 'POST', snapshot)).status, 401);
     assert.equal((await call('/api/integrations/telegram/groups/snapshot', 'POST', snapshot, bridgeHeaders)).status, 200);
+    const pending = await call('/api/founder/projects', 'GET', undefined, cookie);
+    const pendingProject = pending.data.projects.find((item) => item.telegramGroupChatId === '-456');
+    assert.equal(pendingProject.name, 'New Site Group');
+    assert.equal(pendingProject.status, 'Needs setup');
+    assert.equal(pendingProject.telegramSetupPending, true);
+    assert.equal(pendingProject.telegramMembers.length, 2);
+    assert.equal((await call('/api/integrations/telegram/groups/snapshot', 'POST', snapshot, bridgeHeaders)).status, 200);
+    assert.equal((await call('/api/founder/projects', 'GET', undefined, cookie)).data.projects.filter((item) => item.telegramGroupChatId === '-456').length, 1);
     assert.equal((await call('/api/founder/telegram-groups')).status, 401);
     const discovered = await call('/api/founder/telegram-groups', 'GET', undefined, cookie);
     assert.equal(discovered.data.groups[0].members.length, 2);
@@ -90,6 +98,8 @@ globalThis.fetch = async (url, options) => {
     assert.equal((await call('/api/founder/telegram-groups/-456/members/123', 'POST', { name: 'Asha Kumar', role: 'Client' }, cookie)).status, 200);
     const created = await call('/api/founder/telegram-groups/-456/create-project', 'POST', { projectName: 'New Site Group', startDate: '2026-09-30' }, cookie);
     assert.equal(created.status, 201);
+    assert.equal(created.data.project.id, pendingProject.id);
+    assert.equal(created.data.project.telegramSetupPending, false);
     assert.equal(created.data.project.telegramGroupChatId, '-456');
     assert.equal((await call('/api/founder/telegram-groups/-456/create-project', 'POST', { projectName: 'New Site Group', startDate: '2026-09-30' }, cookie)).status, 409);
   } finally {

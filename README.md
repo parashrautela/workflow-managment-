@@ -13,7 +13,7 @@ The **Workflow Management Tool** provides teams with a clean, distraction-free e
 - **Conversation review**: Founders can review the client Q&A transcript in Messages.
 - **Installable app**: PWA metadata lets supported browsers open the site as a standalone app.
 - **Telegram decision inbox**: A conversation view for `/approval` and `/question` requests, with private notes, a separate Telegram reply composer, and completion tracking. Link each project group from its settings panel. The first version shows marked requests, not every group message.
-- **Telegram group setup**: New groups and observed members appear in the founder app. Assign project names and roles, then create a project linked to that Telegram group. The bot announces role assignments in the group.
+- **Telegram group setup**: A newly discovered group appears immediately as a project needing setup on the founder home screen. Assign member names and roles, then finish its bot workflow setup. The bot announces role assignments in the group.
 - **UI system**: Responsive screens built with shadcn/ui components and Tailwind CSS.
 
 ## 🛠️ Tech Stack & Design

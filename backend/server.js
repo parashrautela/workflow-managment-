@@ -80,7 +80,7 @@ async function body(req) {
 function projectView(project) {
   const owner = (project.members || []).find((member) => member.id === project.internalOwnerMemberId);
   const telegramMembers = state.telegramGroups.find((group) => group.groupChatId === project.telegramGroupChatId)?.members.filter((member) => member.membershipStatus === 'Active') || [];
-  return { id: project.id, name: project.name, clientName: project.clientName, location: project.location, startDate: project.startDate || '', telegramGroupChatId: project.telegramGroupChatId || '', telegramProjectId: project.telegramProjectId || '', telegramMembers, internalOwnerMemberId: project.internalOwnerMemberId || '', internalOwner: owner?.name || '', phase: project.phase, status: project.status, recentTask: project.recentTask, nextMilestone: project.nextMilestone, blocker: project.blocker, members: project.members || [], createdAt: project.createdAt, completedAt: project.completedAt || null };
+  return { id: project.id, name: project.name, clientName: project.clientName, location: project.location, startDate: project.startDate || '', telegramGroupChatId: project.telegramGroupChatId || '', telegramProjectId: project.telegramProjectId || '', telegramSetupPending: Boolean(project.telegramSetupPending), telegramMembers, internalOwnerMemberId: project.internalOwnerMemberId || '', internalOwner: owner?.name || '', phase: project.phase, status: project.status, recentTask: project.recentTask, nextMilestone: project.nextMilestone, blocker: project.blocker, members: project.members || [], createdAt: project.createdAt, completedAt: project.completedAt || null };
 }
 function employeeView(employee) {
   return { id: employee.id, name: employee.name, designation: employee.designation, email: employee.email || '', phone: employee.phone || '', createdAt: employee.createdAt, projectIds: state.projects.filter((project) => project.members?.some((member) => member.employeeId === employee.id)).map((project) => project.id) };
@@ -196,6 +196,12 @@ const server = http.createServer(async (req, res) => {
         const existing = state.telegramGroups.find((item) => item.groupChatId === groupChatId);
         if (existing) { existing.title = group.title; existing.status = group.status; existing.members = members; existing.lastSeenAt = new Date().toISOString(); }
         else state.telegramGroups.push({ groupChatId, title: group.title, status: group.status, members, lastSeenAt: new Date().toISOString() });
+        const linkedProject = state.projects.find((project) => project.telegramGroupChatId === groupChatId);
+        if (!linkedProject) {
+          const project = { id: `p_${randomBytes(8).toString('hex')}`, name: group.title, clientName: 'Client pending', location: '', startDate: '', telegramGroupChatId: groupChatId, telegramProjectId: '', telegramSetupPending: true, internalOwnerMemberId: '', phase: 'Setup', status: 'Needs setup', recentTask: '', nextMilestone: '', blocker: '', members: [], createdAt: new Date().toISOString() };
+          state.projects.unshift(project);
+          audit('telegram_project_discovered', project.id, { groupChatId });
+        } else if (linkedProject.telegramSetupPending) linkedProject.name = group.title;
       }
       await save(); return json(res, 200, { ok: true });
     }
@@ -308,7 +314,8 @@ const server = http.createServer(async (req, res) => {
     if (req.method === 'POST' && telegramProjectMatch) {
       const group = state.telegramGroups.find((item) => item.groupChatId === telegramProjectMatch[1]);
       if (!group) return json(res, 404, { error: 'Telegram group not found.' });
-      if (state.projects.some((project) => project.telegramGroupChatId === group.groupChatId)) return json(res, 409, { error: 'This group already has a web project.' });
+      const existingProject = state.projects.find((project) => project.telegramGroupChatId === group.groupChatId);
+      if (existingProject && !existingProject.telegramSetupPending) return json(res, 409, { error: 'This group already has a completed project setup.' });
       const client = group.members.find((member) => member.membershipStatus === 'Active' && /\bclient\b/i.test(member.assignedRole));
       if (!client) return json(res, 400, { error: 'Assign a Client role before creating the project.' });
       const input = await body(req); const projectName = String(input.projectName || group.title).trim();
@@ -317,8 +324,10 @@ const server = http.createServer(async (req, res) => {
       let botProject;
       try { botProject = await callBotBridge('/api/integrations/web/projects', { groupChatId: group.groupChatId, projectName, clientName: client.assignedName || client.telegramName, startDate }); }
       catch (error) { return json(res, 502, { error: error.message }); }
-      const project = { id: `p_${randomBytes(8).toString('hex')}`, name: projectName, clientName: client.assignedName || client.telegramName, location: '', startDate, telegramGroupChatId: group.groupChatId, telegramProjectId: botProject.projectId, internalOwnerMemberId: '', phase: 'Setup', status: 'Setup', recentTask: '', nextMilestone: '', blocker: '', members: [], createdAt: new Date().toISOString() };
-      state.projects.unshift(project); audit('project_created_from_telegram', project.id, { groupChatId: group.groupChatId, botProjectId: botProject.projectId }); await save();
+      const project = existingProject || { id: `p_${randomBytes(8).toString('hex')}`, telegramGroupChatId: group.groupChatId, location: '', internalOwnerMemberId: '', recentTask: '', nextMilestone: '', blocker: '', members: [], createdAt: new Date().toISOString() };
+      Object.assign(project, { name: projectName, clientName: client.assignedName || client.telegramName, startDate, telegramProjectId: botProject.projectId, telegramSetupPending: false, phase: 'Setup', status: 'Setup' });
+      if (!existingProject) state.projects.unshift(project);
+      audit('project_created_from_telegram', project.id, { groupChatId: group.groupChatId, botProjectId: botProject.projectId }); await save();
       return json(res, 201, { project: projectView(project) });
     }
     if (req.method === 'GET' && url.pathname === '/api/founder/decision-requests') {
