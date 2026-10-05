@@ -2,12 +2,14 @@ import http from 'node:http';
 import { createHash, randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
 import { readFile, mkdir } from 'node:fs/promises';
 import { createStateStore } from './store.js';
+import { loadTelegramAttachment } from './telegram-media.js';
+import { ApiError, createPilotRoutes, initializePilot, projectSummary } from './pilot.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dataDir = path.join(root, 'backend');
-const dataFile = path.join(dataDir, 'data.json');
+const dataFile = process.env.APP_DATA_FILE || path.join(dataDir, 'data.json');
 const port = Number(process.env.PORT || 3000);
 const production = process.env.NODE_ENV === 'production';
 const founderPassword = process.env.FOUNDER_PASSWORD;
@@ -38,11 +40,13 @@ const clearCookie = (name) => `${name}=; Path=/; HttpOnly; SameSite=Strict; Max-
 await mkdir(dataDir, { recursive: true });
 const stateStore = await createStateStore({ dataFile, production });
 let state = stateStore.state;
+if (initializePilot(state)) await stateStore.save(state);
 console.log(`Project data store connected: ${stateStore.kind}.`);
 let saveQueue = Promise.resolve();
 const publishingRequests = new Set();
 function save() {
-  saveQueue = saveQueue.then(() => stateStore.save(state));
+  const snapshot = structuredClone(state);
+  saveQueue = saveQueue.catch(() => {}).then(() => stateStore.save(snapshot));
   return saveQueue;
 }
 const audit = (action, projectId, details = {}) => state.activity.unshift({ id: randomBytes(8).toString('hex'), action, projectId, details, at: new Date().toISOString() });
@@ -74,21 +78,21 @@ async function callBotBridge(route, payload) {
   return data;
 }
 async function body(req) {
-  let raw = ''; for await (const chunk of req) { raw += chunk; if (raw.length > 1_000_000) throw new Error('Request too large'); }
-  return raw ? JSON.parse(raw) : {};
+  let raw = ''; for await (const chunk of req) { raw += chunk; if (raw.length > 1_000_000) throw new ApiError('Request too large.',413); }
+  try { const value = raw ? JSON.parse(raw) : {}; if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error(); return value; } catch { throw new ApiError('Invalid JSON object.',400); }
 }
 function projectView(project) {
   const owner = (project.members || []).find((member) => member.id === project.internalOwnerMemberId);
   const telegramMembers = state.telegramGroups.find((group) => group.groupChatId === project.telegramGroupChatId)?.members.filter((member) => member.membershipStatus === 'Active') || [];
-  return { id: project.id, name: project.name, clientName: project.clientName, location: project.location, startDate: project.startDate || '', telegramGroupChatId: project.telegramGroupChatId || '', telegramProjectId: project.telegramProjectId || '', telegramSetupPending: Boolean(project.telegramSetupPending), telegramMembers, internalOwnerMemberId: project.internalOwnerMemberId || '', internalOwner: owner?.name || '', phase: project.phase, status: project.status, recentTask: project.recentTask, nextMilestone: project.nextMilestone, blocker: project.blocker, members: project.members || [], createdAt: project.createdAt, completedAt: project.completedAt || null };
+  return { ...projectSummary(state, project), clientTelegramId: project.clientTelegramId || '', id: project.id, name: project.name, clientName: project.clientName, location: project.location, startDate: project.startDate || '', telegramGroupChatId: project.telegramGroupChatId || '', telegramProjectId: project.telegramProjectId || '', telegramSetupPending: Boolean(project.telegramSetupPending), telegramMembers, internalOwnerMemberId: project.internalOwnerMemberId || '', internalOwner: owner?.name || '', phase: project.phase, status: project.status, recentTask: project.recentTask, nextMilestone: project.nextMilestone, blocker: project.blocker, members: project.members || [], createdAt: project.createdAt, completedAt: project.completedAt || null };
 }
 function employeeView(employee) {
-  return { id: employee.id, name: employee.name, designation: employee.designation, email: employee.email || '', phone: employee.phone || '', createdAt: employee.createdAt, projectIds: state.projects.filter((project) => project.members?.some((member) => member.employeeId === employee.id)).map((project) => project.id) };
+  return { active: employee.active !== false, id: employee.id, name: employee.name, designation: employee.designation, email: employee.email || '', phone: employee.phone || '', createdAt: employee.createdAt, projectIds: state.projects.filter((project) => project.members?.some((member) => member.employeeId === employee.id)).map((project) => project.id) };
 }
 function employeeSession(req) {
   const sid = cookieValue(req, 'iksha_employee');
   const session = state.employeeSessions.find((item) => safeEqual(item.idHash, hash(sid)) && item.expiresAt > Date.now());
-  return session ? state.employees.find((item) => item.id === session.employeeId) : null;
+  return session ? state.employees.find((item) => item.id === session.employeeId && item.active !== false) : null;
 }
 function clientProjectView(project) {
   return { name: project.name, clientName: project.clientName, phase: project.phase, status: project.status, recentTask: project.recentTask, nextMilestone: project.nextMilestone, blocker: project.blocker };
@@ -176,9 +180,14 @@ function founderAssistantAnswer(question) {
   return lines.join('\n');
 }
 
-const server = http.createServer(async (req, res) => {
+const pilotRoutes = createPilotRoutes({ getState: () => state, founder, employeeSession, body, json, save, audit, projectView });
+async function handleRequest(req, res) {
+  let before = structuredClone(state);
   try {
     const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+    res.setHeader('x-content-type-options', 'nosniff');
+    res.setHeader('referrer-policy', 'no-referrer');
+    if (!['GET','HEAD'].includes(req.method) && url.pathname.startsWith('/api/') && !url.pathname.startsWith('/api/integrations/') && req.headers.origin && req.headers.origin !== (process.env.PUBLIC_URL?.replace(/\/$/, '') || `http://${req.headers.host}`)) return json(res,403,{error:'Origin is not allowed.'});
     if (req.method === 'POST' && url.pathname === '/api/integrations/telegram/groups/snapshot') {
       const supplied = (req.headers.authorization || '').replace(/^Bearer /i, '');
       if (!integrationSecret || !safeEqual(supplied, integrationSecret)) return json(res, 401, { error: 'Integration authentication required.' });
@@ -212,18 +221,24 @@ const server = http.createServer(async (req, res) => {
       const groupId = String(input.GroupChatID || '');
       const project = state.projects.find((item) => item.telegramGroupChatId === groupId);
       if (!project) return json(res, 409, { error: 'Link this Telegram group to a web app project first.' });
+      if (project.telegramProjectId && project.telegramProjectId !== String(input.TelegramProjectID || '')) return json(res,409,{error:'Telegram project mapping does not match.'});
+      if (input.AutomaticClientQuery === true) {
+        const clientId = project.clientTelegramId || state.telegramGroups.find((g) => g.groupChatId === groupId)?.members.find((m) => m.membershipStatus === 'Active' && /\bclient\b/i.test(m.assignedRole))?.telegramUserId;
+        if (!clientId || clientId !== String(input.OriginalSenderTelegramID || '')) return json(res,403,{error:'Message is not from the assigned client.'});
+      }
       const id = shortText(input.RequestID, 120);
       const requestType = input.RequestType;
-      const message = shortText(input.OriginalMessage, 4000);
+      const message = shortText(input.OriginalMessage, 4096);
       const context = shortText(input.RequestContext, 2000);
       const sender = shortText(input.OriginalSenderName, 160);
       if (!id || !/^REQ--?\d+-\d+-(approval|question)$/.test(id) || !['Approval', 'Question'].includes(requestType) || message === null || context === null || !sender || !/^[-]?\d+$/.test(groupId) || !/^\d+$/.test(String(input.SourceMessageID || ''))) return json(res, 400, { error: 'Invalid Telegram request.' });
+      if (id !== `REQ-${groupId}-${input.SourceMessageID}-${requestType.toLowerCase()}`) return json(res,400,{error:'Request identity does not match its source.'});
       const existing = state.decisionRequests.find((item) => item.id === id);
       if (existing) return existing.projectId === project.id ? json(res, 200, { request: existing, created: false }) : json(res, 409, { error: 'Request ID belongs to another project.' });
       let attachments;
       try { attachments = JSON.parse(input.AttachmentsJSON || '[]'); } catch { attachments = null; }
-      if (!Array.isArray(attachments) || attachments.length > 8 || attachments.some((item) => typeof item.fileId !== 'string' || item.fileId.length > 300)) return json(res, 400, { error: 'Invalid attachments.' });
-      const request = { id, projectId: project.id, groupChatId: groupId, telegramProjectId: shortText(input.TelegramProjectID, 100) || '', sourceMessageId: String(input.SourceMessageID), commandMessageId: String(input.CommandMessageID || ''), requestedByName: shortText(input.RequestedByName, 160) || 'Unknown', requestedByRole: shortText(input.RequestedByRole, 100) || '', originalSenderName: sender, requestType, originalMessage: message, context, attachments, status: 'Pending', createdAt: new Date().toISOString(), comments: [], response: '', publishedMessageId: '', publishedAt: '', resolvedAt: '' };
+      if (!Array.isArray(attachments) || attachments.length > 8 || attachments.some((item) => !item || typeof item !== 'object' || typeof item.type !== 'string' || item.type.length > 40 || typeof item.fileId !== 'string' || !item.fileId || item.fileId.length > 300 || ['fileName','mimeType'].some((key) => item[key] !== undefined && (typeof item[key] !== 'string' || item[key].length > 200)))) return json(res, 400, { error: 'Invalid attachments.' });
+      const request = { id, projectId: project.id, groupChatId: groupId, telegramProjectId: shortText(input.TelegramProjectID, 100) || '', sourceMessageId: String(input.SourceMessageID), commandMessageId: String(input.CommandMessageID || ''), requestedByName: shortText(input.RequestedByName, 160) || 'Unknown', requestedByRole: shortText(input.RequestedByRole, 100) || '', originalSenderName: sender, originalSenderTelegramId: String(input.OriginalSenderTelegramID || ''), automaticClientQuery: input.AutomaticClientQuery === true, requestType, originalMessage: message, context, attachments, status: 'Pending', createdAt: new Date().toISOString(), comments: [], response: '', publishedMessageId: '', publishedAt: '', resolvedAt: '' };
       state.decisionRequests.unshift(request); audit('decision_request_received', project.id, { requestId: id }); await save();
       return json(res, 201, { request, created: true });
     }
@@ -251,7 +266,7 @@ const server = http.createServer(async (req, res) => {
       const attemptKey = `${req.socket.remoteAddress || 'unknown'}:${id}`;
       const attempts = employeeLoginAttempts.get(attemptKey) || { count: 0, lockedUntil: 0 };
       if (attempts.lockedUntil > Date.now()) return json(res, 429, { error: 'Too many attempts. Try again in a few minutes.' });
-      if (!employee || !safeEqual(employee.passwordHash, passwordHash(String(input.password || ''), employee.passwordSalt))) {
+      if (!employee || employee.active === false || !safeEqual(employee.passwordHash, passwordHash(String(input.password || ''), employee.passwordSalt))) {
         attempts.count += 1;
         if (attempts.count >= 8) { attempts.count = 0; attempts.lockedUntil = Date.now() + 10 * 60 * 1000; }
         employeeLoginAttempts.set(attemptKey, attempts);
@@ -275,6 +290,20 @@ const server = http.createServer(async (req, res) => {
       if (!employee) return json(res, 401, { error: 'Employee sign-in required.' });
       const projects = state.projects.filter((project) => project.members?.some((member) => member.employeeId === employee.id));
       return json(res, 200, { employee: employeeView(employee), projects: projects.map(projectView) });
+    }
+    if (await pilotRoutes(req, res, url)) return;
+    const attachmentMatch = url.pathname.match(/^\/api\/(founder|employee)\/decision-requests\/([^/]+)\/attachments\/(\d+)$/);
+    if (req.method === 'GET' && attachmentMatch) {
+      const namespace = attachmentMatch[1]; const employee = namespace === 'employee' ? employeeSession(req) : null;
+      if (namespace === 'founder' ? !founder(req) : !employee) return json(res,401,{error:'Staff session required.'});
+      const request = state.decisionRequests.find((r) => r.id === decodeURIComponent(attachmentMatch[2]));
+      const project = request && state.projects.find((p) => p.id === request.projectId && (namespace === 'founder' || p.members?.some((m) => m.employeeId === employee.id)));
+      if (!project) return json(res,404,{error:'Request not found in your workspace.'});
+      const attachment = request.attachments[Number(attachmentMatch[3])];
+      if (!attachment) return json(res,404,{error:'Attachment not found.'});
+      const file = await loadTelegramAttachment(attachment, process.env.GROUP_BOT_TOKEN);
+      res.writeHead(200,{'content-type':file.mime,'content-disposition':file.inline ? 'inline' : 'attachment','cache-control':'private, no-store','content-security-policy':"default-src 'none'; sandbox"});
+      return res.end(file.bytes);
     }
     const employeeChatMatch = url.pathname.match(/^\/api\/employee\/projects\/([^/]+)\/team-chat$/);
     if (employeeChatMatch) {
@@ -325,31 +354,13 @@ const server = http.createServer(async (req, res) => {
       try { botProject = await callBotBridge('/api/integrations/web/projects', { groupChatId: group.groupChatId, projectName, clientName: client.assignedName || client.telegramName, startDate }); }
       catch (error) { return json(res, 502, { error: error.message }); }
       const project = existingProject || { id: `p_${randomBytes(8).toString('hex')}`, telegramGroupChatId: group.groupChatId, location: '', internalOwnerMemberId: '', recentTask: '', nextMilestone: '', blocker: '', members: [], createdAt: new Date().toISOString() };
-      Object.assign(project, { name: projectName, clientName: client.assignedName || client.telegramName, startDate, telegramProjectId: botProject.projectId, telegramSetupPending: false, phase: 'Setup', status: 'Setup' });
+      Object.assign(project, { name: projectName, clientName: client.assignedName || client.telegramName, clientTelegramId: client.telegramUserId, startDate, telegramProjectId: botProject.projectId, telegramSetupPending: false, phase: 'Setup', status: 'Setup' });
       if (!existingProject) state.projects.unshift(project);
       audit('project_created_from_telegram', project.id, { groupChatId: group.groupChatId, botProjectId: botProject.projectId }); await save();
       return json(res, 201, { project: projectView(project) });
     }
     if (req.method === 'GET' && url.pathname === '/api/founder/decision-requests') {
       return json(res, 200, { requests: state.decisionRequests.filter((item) => state.projects.some((project) => project.id === item.projectId)) });
-    }
-    const attachmentMatch = url.pathname.match(/^\/api\/founder\/decision-requests\/([^/]+)\/attachments\/(\d+)$/);
-    if (req.method === 'GET' && attachmentMatch) {
-      const request = state.decisionRequests.find((item) => item.id === decodeURIComponent(attachmentMatch[1]));
-      if (!request || !state.projects.some((project) => project.id === request.projectId)) return json(res, 404, { error: 'Request not found.' });
-      const attachment = request.attachments[Number(attachmentMatch[2])];
-      if (!attachment || !process.env.GROUP_BOT_TOKEN) return json(res, 404, { error: 'Attachment unavailable.' });
-      const fileLookup = await fetch(`https://api.telegram.org/bot${process.env.GROUP_BOT_TOKEN}/getFile`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ file_id: attachment.fileId }), signal: AbortSignal.timeout(10_000) });
-      const fileInfo = await fileLookup.json();
-      if (!fileInfo.ok || !fileInfo.result?.file_path || fileInfo.result.file_size > 20_000_000) return json(res, 502, { error: 'Telegram attachment unavailable or too large.' });
-      const fileResponse = await fetch(`https://api.telegram.org/file/bot${process.env.GROUP_BOT_TOKEN}/${fileInfo.result.file_path}`, { signal: AbortSignal.timeout(20_000) });
-      if (!fileResponse.ok) return json(res, 502, { error: 'Could not load Telegram attachment.' });
-      const bytes = Buffer.from(await fileResponse.arrayBuffer());
-      if (bytes.length > 20_000_000) return json(res, 502, { error: 'Attachment too large.' });
-      const allowedTypes = { 'image/jpeg': 'image/jpeg', 'image/png': 'image/png', 'application/pdf': 'application/pdf' };
-      const mime = attachment.type === 'Photo' ? 'image/jpeg' : allowedTypes[attachment.mimeType] || 'application/octet-stream';
-      res.writeHead(200, { 'content-type': mime, 'content-disposition': 'inline', 'cache-control': 'private, no-store', 'x-content-type-options': 'nosniff' });
-      return res.end(bytes);
     }
     const decisionAction = url.pathname.match(/^\/api\/founder\/decision-requests\/([^/]+)\/(comment|publish|resolve)$/);
     if (req.method === 'POST' && decisionAction) {
@@ -369,19 +380,40 @@ const server = http.createServer(async (req, res) => {
         audit('decision_request_resolved', request.projectId, { requestId: request.id }); await save(); return json(res, 200, { request });
       }
       if (request.status === 'Done') return json(res, 409, { error: 'This request is already done.' });
-      if (request.publishedMessageId) return json(res, 409, { error: 'A response was already published.' });
+      if (['Sending','Unknown'].includes(request.deliveryStatus)) return json(res,409,{error:'Delivery is pending or uncertain. Check Telegram before any further send.'});
+      if (request.publishedMessageId) {
+        const retry = await body(req);
+        if (retry.idempotencyKey && retry.idempotencyKey === request.publishKey && retry.response === request.response) return json(res,200,{request});
+        return json(res,409,{error:'A response was already published.'});
+      }
       if (publishingRequests.has(request.id)) return json(res, 409, { error: 'This response is already being published.' });
       const input = await body(req); const answer = String(input.response || '').trim();
       if (!answer || answer.length > 3000) return json(res, 400, { error: 'Enter a response under 3,000 characters.' });
       if (!process.env.GROUP_BOT_TOKEN) return json(res, 503, { error: 'Telegram publishing is not configured.' });
       const project = state.projects.find((item) => item.id === request.projectId);
       if (project.telegramGroupChatId !== request.groupChatId) return json(res, 409, { error: 'Project group mapping changed. Check the linked group.' });
+      if (input.idempotencyKey !== undefined && (typeof input.idempotencyKey !== 'string' || !input.idempotencyKey.trim() || input.idempotencyKey.length > 128)) return json(res,400,{error:'Invalid idempotency key.'});
+      if (request.publishKey && input.idempotencyKey && request.publishKey === input.idempotencyKey && request.response !== answer) return json(res,409,{error:'This key belongs to a different response.'});
+      request.deliveryStatus = 'Sending'; request.response = answer; request.publishKey = input.idempotencyKey || request.id; request.deliveryError = '';
+      await save();
+      before = structuredClone(state); // Never roll back a possibly delivered message to Pending.
       publishingRequests.add(request.id);
       try {
-        const telegramResponse = await fetch(`https://api.telegram.org/bot${process.env.GROUP_BOT_TOKEN}/sendMessage`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ chat_id: request.groupChatId, text: answer, reply_parameters: { message_id: Number(request.sourceMessageId), allow_sending_without_reply: false } }), signal: AbortSignal.timeout(10_000) });
-        const telegramResult = await telegramResponse.json();
-        if (!telegramResponse.ok || !telegramResult.ok) return json(res, 502, { error: 'Telegram did not accept the response. Check bot access to the group.' });
-        request.status = 'Published'; request.response = answer; request.publishedMessageId = String(telegramResult.result.message_id); request.publishedAt = new Date().toISOString();
+        let telegramResult;
+        try {
+          const telegramResponse = await fetch(`https://api.telegram.org/bot${process.env.GROUP_BOT_TOKEN}/sendMessage`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ chat_id: request.groupChatId, text: answer, reply_parameters: { message_id: Number(request.sourceMessageId), allow_sending_without_reply: true } }), signal: AbortSignal.timeout(10_000), redirect: 'error' });
+          telegramResult = await telegramResponse.json();
+          if (!telegramResponse.ok || !telegramResult.ok) {
+            request.deliveryStatus = telegramResult.ok === false && telegramResponse.status < 500 ? 'Failed' : 'Unknown';
+            request.deliveryError = request.deliveryStatus === 'Failed' ? 'Telegram rejected the response. Check bot access before retrying.' : 'Delivery is uncertain. Check Telegram before sending again.';
+            await save(); return json(res,502,{error:request.deliveryError,request});
+          }
+          if (!Number.isSafeInteger(telegramResult.result?.message_id) || telegramResult.result.message_id <= 0) throw new Error('Missing message ID');
+        } catch {
+          request.deliveryStatus = 'Unknown'; request.deliveryError = 'Delivery is uncertain. Check Telegram before sending again.';
+          await save(); return json(res,502,{error:request.deliveryError,request});
+        }
+        request.status = 'Published'; request.deliveryStatus = 'Sent'; request.publishedMessageId = String(telegramResult.result.message_id); request.publishedAt = new Date().toISOString();
         audit('decision_request_published', request.projectId, { requestId: request.id, telegramMessageId: request.publishedMessageId }); await save();
         return json(res, 200, { request });
       } finally { publishingRequests.delete(request.id); }
@@ -421,7 +453,7 @@ const server = http.createServer(async (req, res) => {
       const project = state.projects.find((item) => item.id === assignEmployeeMatch[1]);
       if (!project) return json(res, 404, { error: 'Project not found.' });
       const input = await body(req); const id = String(input.employeeId || '').trim().toUpperCase();
-      const employee = state.employees.find((item) => item.id === id);
+      const employee = state.employees.find((item) => item.id === id && item.active !== false);
       if (!employee) return json(res, 404, { error: 'No employee has that ID.' });
       if (project.members?.some((member) => member.employeeId === id)) return json(res, 409, { error: 'This employee is already assigned to this project.' });
       const role = String(input.role || 'Team member').trim();
@@ -457,9 +489,10 @@ const server = http.createServer(async (req, res) => {
     }
     if (req.method === 'POST' && url.pathname === '/api/founder/projects') {
       const input = await body(req);
-      if (!input.name?.trim() || !input.clientName?.trim()) return json(res, 400, { error: 'Project and client names are required.' });
+      if (typeof input.name !== 'string' || !input.name.trim() || input.name.length > 120 || (input.clientName !== undefined && (typeof input.clientName !== 'string' || input.clientName.length > 120))) return json(res, 400, { error: 'Enter a project name and an optional client name under 121 characters.' });
+      if (input.status && input.status !== 'Setup') return json(res,409,{error:'Create in Setup and start a workflow after assigning a client.'});
       if (input.startDate !== undefined && (typeof input.startDate !== 'string' || !validIsoDate(input.startDate))) return json(res, 400, { error: 'Start date must use YYYY-MM-DD.' });
-      const project = { id: `p_${randomBytes(8).toString('hex')}`, name: input.name.trim(), clientName: input.clientName.trim(), location: input.location?.trim() || '', startDate: input.startDate?.trim() || '', telegramGroupChatId: '', internalOwnerMemberId: '', phase: input.phase?.trim() || 'Design', status: input.status || 'Setup', recentTask: input.recentTask?.trim() || '', nextMilestone: input.nextMilestone?.trim() || '', blocker: '', members: [], createdAt: new Date().toISOString() };
+      const project = { id: `p_${randomBytes(8).toString('hex')}`, name: input.name.trim(), clientName: input.clientName?.trim() || '', location: input.location?.trim() || '', startDate: input.startDate?.trim() || '', telegramGroupChatId: '', internalOwnerMemberId: '', phase: input.phase?.trim() || 'Design', status: input.status || 'Setup', recentTask: input.recentTask?.trim() || '', nextMilestone: input.nextMilestone?.trim() || '', blocker: '', members: [], createdAt: new Date().toISOString() };
       state.projects.unshift(project); audit('project_created', project.id); await save(); return json(res, 201, { project: projectView(project) });
     }
     const projectMatch = url.pathname.match(/^\/api\/founder\/projects\/([^/]+)$/);
@@ -500,6 +533,7 @@ const server = http.createServer(async (req, res) => {
         updates.internalOwnerMemberId = ownerId;
       }
       for (const key of allowed) if (typeof input[key] === 'string') updates[key] = input[key].trim();
+      if (updates.status && !['Setup','Needs setup','Completed'].includes(updates.status) && !project.workflowStartedAt && ['Setup','Needs setup'].includes(project.status)) return json(res,409,{error:'Assign a client and start a workflow before activating this project.'});
       if (updates.status === 'Completed' && project.status !== 'Completed') updates.completedAt = new Date().toISOString();
       if (updates.status && updates.status !== 'Completed' && project.status === 'Completed') updates.completedAt = null;
       const changes = {};
@@ -590,7 +624,13 @@ const server = http.createServer(async (req, res) => {
     if (req.method === 'GET' && url.pathname.startsWith('/c/')) return sendFile(res, 'frontend/client.html');
     res.writeHead(404); res.end('Not found');
   } catch (error) {
-    console.error(error); json(res, 500, { error: 'Something went wrong. Please try again.' });
+    state = before;
+    const status = error instanceof ApiError ? error.status : 500;
+    if (status === 500) console.error('Request failed.');
+    json(res, status, { error: status === 500 ? 'Something went wrong. Please try again.' : error.message });
   }
-});
+}
+// Single writer prevents overlapping mutations and makes persistence rollback deterministic.
+let requestQueue = Promise.resolve();
+const server = http.createServer((req,res) => { requestQueue = requestQueue.catch(() => {}).then(() => handleRequest(req,res)); });
 server.listen(port, () => console.log(`Studio Iksha V1 listening on http://localhost:${port}`));

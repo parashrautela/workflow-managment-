@@ -1,8 +1,11 @@
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile, rename, unlink } from 'node:fs/promises';
 import { Pool } from 'pg';
 
 const emptyState = () => ({
   projects: [],
+  tasks: [],
+  taskMessages: [],
+  readPositions: [],
   founderSessions: [],
   invites: [],
   clientSessions: [],
@@ -43,7 +46,11 @@ export async function createStateStore({ dataFile, production }) {
     return {
       state,
       async save(nextState) {
-        await writeFile(dataFile, JSON.stringify(nextState, null, 2), { mode: 0o600 });
+        const temporary = `${dataFile}.tmp`;
+        try {
+          await writeFile(temporary, JSON.stringify(nextState, null, 2), { mode: 0o600 });
+          await rename(temporary, dataFile);
+        } finally { await unlink(temporary).catch(() => {}); }
       },
       async close() {},
       kind: 'local JSON file',

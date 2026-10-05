@@ -172,3 +172,143 @@ Errors use `{ "error": "Human-readable message" }`. Relevant status codes are `4
 ## Current storage and runtime notes
 
 Production stores app state in PostgreSQL through `DATABASE_URL`. Local development can use `backend/data.json`. Session identifiers and invite tokens are hashed before storage. Employee passwords use salted scrypt hashes. Client sessions are browser-bound, so opening the invite later in another browser requires the founder to issue a replacement link.
+
+## Pilot backend additions (6 October 2026)
+
+These routes use the existing staff cookies and `{ "error": "..." }` failures.
+IDs are opaque strings; timestamps use UTC ISO 8601; dates use `YYYY-MM-DD`.
+Clients stay in Telegram. Only founders can manage assignments and publish.
+The existing JSON/PostgreSQL state is extended additively; legacy projects and
+sessions remain readable. Run one web service replica: this state store has a
+single application writer. Production PostgreSQL verification is still required.
+
+### Setup and workflow
+
+- `POST /api/founder/projects`: `name` required, `clientName` optional. New
+  projects start in `Setup`; creating active work directly is rejected.
+- `POST /api/founder/projects/:id/client`:
+  `{ "clientName": "Maya", "clientTelegramId": "42" }`. Telegram ID is optional
+  for internal setup, required to identify automatic client intake unless the
+  group's active Client roster provides it. Replacement locks after workflow start.
+- `GET /api/{founder|employee}/workflows`: `{ workflows: [...] }`, with stage
+  previews. Initial templates are `PILOT-DESIGN-V1` and `PILOT-PAINTING-V1`.
+- `POST /api/founder/projects/:id/workflow/start`:
+  `{ "workflowId": "PILOT-DESIGN-V1", "startDate": "2026-10-07",
+  "assigneeId": "EMP-..." }`. Requires a client, generates stages/tasks/deadlines,
+  and returns `{ project }`. Repeating the same workflow is idempotent; switching
+  it returns `409`. Omit assignee to assign the founder.
+- `GET /api/{founder|employee}/projects/:id/workspace`:
+  `{ project, tasks, requests }`. Membership protects employee access.
+- Project responses add `workflowId`, `workflowStartedAt`, `stages`, `progress`,
+  `currentStage`, `deadline`, `upcomingDeadlines`, `taskCount`, `openQueryCount`,
+  and `clientTelegramId`. Existing response fields remain available.
+
+These pilot templates create internal web coordination tasks. They do not
+replace or synchronize the separate Sheets/bot operational workflow. Complete
+bot Client-role assignment and its existing workflow-plan picker too, so the bot
+stores the explicitly approved `ClientTelegramID` needed for ordinary-message intake.
+
+### Tasks and threads
+
+- `GET /api/{founder|employee}/projects/:id/tasks`: `{ tasks }`.
+- `POST /api/founder/projects/:id/tasks`: accepts `title`, optional `description`,
+  `assigneeId` (employee ID, `founder`, or empty), `deadline`, `stageId`, `status`.
+  Workflow must be started. Returns `201 { task }`.
+- `GET /api/{founder|employee}/tasks/:id`: `{ task }`.
+- `PATCH /api/{founder|employee}/tasks/:id`: partial updates of the same fields.
+  Founder or current assignee may update; only founder may change assignee.
+- `DELETE /api/founder/tasks/:id`: soft deletion, preserving query/history links.
+- `GET /api/{founder|employee}/tasks/:id/messages?after=<message-id>&limit=100`:
+  `{ messages, pagination: { hasMore, nextCursor } }`. Omit `after` for the first
+  page. IDs are opaque; `limit` is 1–100. GET has no read side effects.
+- `POST /api/{founder|employee}/tasks/:id/messages`:
+  `{ "text": "Site check booked", "attachmentUrl": "https://..." }`.
+  Attachments are HTTPS references. Returns `201 { message }`.
+- `POST /api/{founder|employee}/tasks/:id/read`:
+  `{ "lastMessageId": "..." }`. Persistent per-user monotonic read cursor.
+  Notification aggregation is deferred; storing this cursor does not implement
+  a complete notification inbox.
+
+Task statuses: `Open`, `In progress`, `Blocked`, `Completed`, `Cancelled`.
+Completed/cancelled threads must be reopened before new messages. A task has
+`sourceQueryId` when converted from a client query.
+
+### Client query discussion and decisions
+
+- `GET /api/employee/decision-requests`: assigned-project requests only.
+- `GET /api/{founder|employee}/decision-requests/:id`: `{ request }` including
+  internal `comments`, attachment metadata, source IDs, decision/delivery fields.
+- `POST /api/{founder|employee}/decision-requests/:id/comment`: `{ "text": "..." }`.
+- `POST /api/founder/decision-requests/:id/approve`: `{}`.
+- `POST /api/founder/decision-requests/:id/reject`: `{ "reason": "Outside scope" }`.
+- `POST /api/founder/decision-requests/:id/convert`: task fields. Returns
+  `{ request, task }`. Retrying returns the same linked task and keeps discussion.
+  Rejected/Done requests cannot be converted; workflow must be started.
+- `GET /api/{founder|employee}/decision-requests/:id/attachments/:index`:
+  authenticated Telegram media content. Use this route as an image URL with the
+  same-origin cookie. Non-image content downloads. No raw media is stored in
+  the core database; the bot token never appears in a client URL. The bounded
+  proxy fetches fresh Telegram file paths and supports up to 20 MB. Independent
+  cloud archival of Telegram media is deferred.
+
+Approve, reject, convert, and internal comments never send messages externally.
+Retain the existing explicit Publish confirmation in the UI. Publish remains
+`POST /api/founder/decision-requests/:id/publish` with
+`{ "response": "Final reply", "idempotencyKey": "unique-reply-key" }`.
+The key is optional for compatibility but new consumers should always supply it.
+Identical completed key/body retries return the saved result; legacy keyless
+repeats still return `409`. `deliveryStatus` is `Sending`, `Sent`, `Failed`, or
+`Unknown`. `Failed` means an explicit Telegram rejection and may be retried.
+`Unknown` means timeout, invalid response, or interruption: check the Telegram
+group manually, and do not offer automatic retry. No reconciliation UI/API for
+Unknown is included yet. Telegram does not provide exactly-once send semantics.
+One successful final reply is allowed per query. Decision status is separate
+from delivery; publishing does not complete a task.
+
+### Access revocation
+
+- `DELETE /api/founder/projects/:id/members/:memberId` removes project access and
+  clears that employee's task assignments in this project. Other projects stay
+  available; authored history remains.
+- `POST /api/founder/employees/:employeeId/disable` ends all employee sessions,
+  blocks future login/assignment, and clears task ownership. Employee responses
+  add `active`. Drive permission synchronization remains deferred.
+
+### Automatic Telegram intake and deployment
+
+The Telegram repository keeps its existing single polling worker. It captures
+ordinary text/media from the approved assigned client as `Question` requests,
+using the existing authenticated integration endpoint. There is no new webhook
+or second polling instance. `/question` and `/approval` still work.
+`AutomaticClientQuery: true` additionally verifies the sender against the web
+client/group roster. Group and bot-project mappings must match. Persisted Sheet
+requests retry web sync each minute until acknowledged; duplicate deliveries do
+not create duplicate queries. New Sheet columns are additive.
+
+Before pilot: merge both reviewed changes, verify `WEB_APP_URL` on the bot,
+`BOT_BRIDGE_URL` and `GROUP_BOT_TOKEN` on the web service, matching
+`INTEGRATION_SHARED_SECRET`, and `PUBLIC_URL` set to the exact HTTPS web origin.
+Use a single instance of each service and preserve the production database.
+Existing UI APIs remain; the frontend developer must connect the new task,
+workflow, employee-query, and revocation controls. New projects cannot bypass
+workflow setup with a status PATCH. Existing legacy active projects remain editable.
+
+Offline acceptance (mocked Telegram, isolated JSON databases):
+
+```sh
+node --test backend/decision-integration.test.js backend/pilot-integration.test.js backend/telegram-media.test.js
+```
+
+Optional isolated sample data, without touching the normal file or PostgreSQL:
+
+```sh
+node backend/seed-pilot.js /tmp/iksha-pilot-demo.json
+# Set your own FOUNDER_PASSWORD, unset DATABASE_URL, then:
+APP_DATA_FILE=/tmp/iksha-pilot-demo.json node backend/server.js
+```
+
+Seed refuses to overwrite existing data and prints temporary sample staff
+credentials. It creates a sample project/client and two employees; available
+workflow templates are served by the API. Complete a live two-service Telegram
+text/photo/reply check after deployment: offline tests do not prove live bot
+permissions, environment variables, PostgreSQL connectivity, or UI integration.
