@@ -278,26 +278,28 @@ export default function EmployeeApp() {
             </div>
 
             <Tabs defaultValue="tasks" className="gap-4">
-              <TabsList className="flex flex-wrap w-full justify-start h-auto gap-1 bg-muted/60 p-1 rounded-xl">
-                <TabsTrigger value="tasks" className="font-semibold text-xs px-3 py-2">
-                  <CheckCircle2 className="size-4 mr-1.5" />
-                  Tasks ({tasks.length})
-                </TabsTrigger>
-                <TabsTrigger value="queries" className="font-semibold text-xs px-3 py-2">
-                  <AlertCircle className="size-4 mr-1.5 text-amber-600" />
-                  Client Queries ({projectQueries.length})
-                  {pendingQueriesCount > 0 && (
-                    <Badge variant="secondary" className="ml-1.5 size-4 p-0 text-[10px] justify-center bg-amber-200 text-amber-900">
-                      {pendingQueriesCount}
-                    </Badge>
-                  )}
-                </TabsTrigger>
-                <TabsTrigger value="chat" className="font-semibold text-xs px-3 py-2">
-                  <MessageSquare className="size-4 mr-1.5 text-blue-600" />
-                  Team Chat
-                </TabsTrigger>
-                <TabsTrigger value="overview" className="font-semibold text-xs px-3 py-2">Overview</TabsTrigger>
-              </TabsList>
+              <div className="overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
+                <TabsList className="inline-flex sm:flex sm:flex-wrap w-max sm:w-full justify-start min-h-11 h-auto gap-1 bg-muted/60 p-1 rounded-xl">
+                  <TabsTrigger value="tasks" className="font-semibold text-xs px-3 py-2 shrink-0">
+                    <CheckCircle2 className="size-4 mr-1.5" />
+                    Tasks ({tasks.length})
+                  </TabsTrigger>
+                  <TabsTrigger value="queries" className="font-semibold text-xs px-3 py-2 shrink-0">
+                    <AlertCircle className="size-4 mr-1.5 text-amber-600" />
+                    Client Queries ({projectQueries.length})
+                    {pendingQueriesCount > 0 && (
+                      <Badge variant="secondary" className="ml-1.5 size-4 p-0 text-[10px] justify-center bg-amber-200 text-amber-900">
+                        {pendingQueriesCount}
+                      </Badge>
+                    )}
+                  </TabsTrigger>
+                  <TabsTrigger value="chat" className="font-semibold text-xs px-3 py-2 shrink-0">
+                    <MessageSquare className="size-4 mr-1.5 text-blue-600" />
+                    Team Chat
+                  </TabsTrigger>
+                  <TabsTrigger value="overview" className="font-semibold text-xs px-3 py-2 shrink-0">Overview</TabsTrigger>
+                </TabsList>
+              </div>
 
               {/* Tasks Tab */}
               <TabsContent value="tasks" className="space-y-3">

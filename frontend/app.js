@@ -22945,7 +22945,7 @@ function Tabs({ className, orientation = "horizontal", ...props }) {
 		...props
 	});
 }
-var tabsListVariants = cva("group/tabs-list inline-flex w-fit items-center justify-center rounded-lg p-[3px] text-muted-foreground group-data-[orientation=horizontal]/tabs:h-9 group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col data-[variant=line]:rounded-none", {
+var tabsListVariants = cva("group/tabs-list inline-flex w-fit items-center justify-center rounded-lg p-[3px] text-muted-foreground min-h-9 h-auto group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col data-[variant=line]:rounded-none", {
 	variants: { variant: {
 		default: "bg-muted",
 		line: "gap-1 bg-transparent"
@@ -22963,7 +22963,7 @@ function TabsList({ className, variant = "default", ...props }) {
 function TabsTrigger({ className, ...props }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trigger, {
 		"data-slot": "tabs-trigger",
-		className: cn("relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium whitespace-nowrap text-foreground/60 transition-all group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:justify-start hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 group-data-[variant=default]/tabs-list:data-[state=active]:shadow-sm group-data-[variant=line]/tabs-list:data-[state=active]:shadow-none dark:text-muted-foreground dark:hover:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4", "group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:border-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent", "data-[state=active]:bg-background data-[state=active]:text-foreground dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 dark:data-[state=active]:text-foreground", "after:absolute after:bg-foreground after:opacity-0 after:transition-opacity group-data-[orientation=horizontal]/tabs:after:inset-x-0 group-data-[orientation=horizontal]/tabs:after:bottom-[-5px] group-data-[orientation=horizontal]/tabs:after:h-0.5 group-data-[orientation=vertical]/tabs:after:inset-y-0 group-data-[orientation=vertical]/tabs:after:-right-1 group-data-[orientation=vertical]/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-[state=active]:after:opacity-100", className),
+		className: cn("relative inline-flex min-h-7 flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent px-2.5 py-1.5 text-sm font-medium whitespace-nowrap text-foreground/60 transition-all group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:justify-start hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 group-data-[variant=default]/tabs-list:data-[state=active]:shadow-sm group-data-[variant=line]/tabs-list:data-[state=active]:shadow-none dark:text-muted-foreground dark:hover:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4", "group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:border-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent", "data-[state=active]:bg-background data-[state=active]:text-foreground dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 dark:data-[state=active]:text-foreground", "after:absolute after:bg-foreground after:opacity-0 after:transition-opacity group-data-[orientation=horizontal]/tabs:after:inset-x-0 group-data-[orientation=horizontal]/tabs:after:bottom-[-5px] group-data-[orientation=horizontal]/tabs:after:h-0.5 group-data-[orientation=vertical]/tabs:after:inset-y-0 group-data-[orientation=vertical]/tabs:after:-right-1 group-data-[orientation=vertical]/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-[state=active]:after:opacity-100", className),
 		...props
 	});
 }
@@ -29010,65 +29010,68 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 				onValueChange: setActiveTab,
 				className: "space-y-4",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
-						className: "flex flex-wrap w-full justify-start h-auto gap-1 bg-muted/60 p-1 rounded-xl",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
-								value: "tasks",
-								className: "font-semibold text-xs px-3.5 py-2",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 mr-1.5 text-primary" }),
-									"Tasks (",
-									tasks.length,
-									")"
-								]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
-								value: "chat",
-								className: "font-semibold text-xs px-3.5 py-2",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 mr-1.5 text-blue-600" }), "Internal Project Chat"]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
-								value: "schedule",
-								className: "font-semibold text-xs px-3.5 py-2",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-3.5 mr-1.5 text-amber-600" }),
-									"Schedule & Stages (",
-									stages.length,
-									")"
-								]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
-								value: "queries",
-								className: "font-semibold text-xs px-3.5 py-2",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-3.5 mr-1.5 text-red-500" }),
-									"Client Queries (",
-									projectQueries.length,
-									")",
-									pendingQueriesCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-										variant: "secondary",
-										className: "ml-1.5 size-4 p-0 text-[10px] justify-center bg-amber-200 text-amber-900",
-										children: pendingQueriesCount
-									})
-								]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
-								value: "files",
-								className: "font-semibold text-xs px-3.5 py-2",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "size-3.5 mr-1.5 text-emerald-600" }), "Files & Drive"]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
-								value: "team",
-								className: "font-semibold text-xs px-3.5 py-2",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { className: "size-3.5 mr-1.5 text-indigo-600" }),
-									"Team & Access (",
-									project.members?.length || 0,
-									")"
-								]
-							})
-						]
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
+							className: "inline-flex sm:flex sm:flex-wrap w-max sm:w-full justify-start min-h-11 h-auto gap-1 bg-muted/60 p-1 rounded-xl",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+									value: "tasks",
+									className: "font-semibold text-xs px-3.5 py-2 shrink-0",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 mr-1.5 text-primary" }),
+										"Tasks (",
+										tasks.length,
+										")"
+									]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+									value: "chat",
+									className: "font-semibold text-xs px-3.5 py-2 shrink-0",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 mr-1.5 text-blue-600" }), "Internal Project Chat"]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+									value: "schedule",
+									className: "font-semibold text-xs px-3.5 py-2 shrink-0",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-3.5 mr-1.5 text-amber-600" }),
+										"Schedule & Stages (",
+										stages.length,
+										")"
+									]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+									value: "queries",
+									className: "font-semibold text-xs px-3.5 py-2 shrink-0",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-3.5 mr-1.5 text-red-500" }),
+										"Client Queries (",
+										projectQueries.length,
+										")",
+										pendingQueriesCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+											variant: "secondary",
+											className: "ml-1.5 size-4 p-0 text-[10px] justify-center bg-amber-200 text-amber-900",
+											children: pendingQueriesCount
+										})
+									]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+									value: "files",
+									className: "font-semibold text-xs px-3.5 py-2 shrink-0",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "size-3.5 mr-1.5 text-emerald-600" }), "Files & Drive"]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+									value: "team",
+									className: "font-semibold text-xs px-3.5 py-2 shrink-0",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { className: "size-3.5 mr-1.5 text-indigo-600" }),
+										"Team & Access (",
+										project.members?.length || 0,
+										")"
+									]
+								})
+							]
+						})
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
 						value: "tasks",
@@ -29077,21 +29080,21 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex flex-wrap items-center gap-2 flex-1",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "relative min-w-44 flex-1 max-w-sm",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-												value: taskSearch,
-												onChange: (e) => setTaskSearch(e.target.value),
-												placeholder: "Search tasks, deliverables…",
-												className: "pl-8 text-xs h-9"
-											})]
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+									className: "grid grid-cols-1 sm:flex sm:flex-wrap sm:items-center gap-2 flex-1",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "relative w-full sm:w-auto sm:min-w-44 sm:flex-1 sm:max-w-sm",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+											value: taskSearch,
+											onChange: (e) => setTaskSearch(e.target.value),
+											placeholder: "Search tasks, deliverables…",
+											className: "pl-8 text-xs h-9 w-full"
+										})]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "grid grid-cols-2 sm:flex sm:items-center gap-2 w-full sm:w-auto",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
 											value: taskStatusFilter,
 											onChange: (e) => setTaskStatusFilter(e.target.value),
-											className: "text-xs h-9 w-32",
+											className: "text-xs h-9 w-full sm:w-32",
 											children: [
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
 													value: "all",
@@ -29122,11 +29125,10 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 													children: "Cancelled"
 												})
 											]
-										}),
-										stages.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+										}), stages.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
 											value: taskStageFilter,
 											onChange: (e) => setTaskStageFilter(e.target.value),
-											className: "text-xs h-9 w-44",
+											className: "text-xs h-9 w-full sm:w-44",
 											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
 												value: "all",
 												children: "All Stages"
@@ -29134,21 +29136,23 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 												value: st.id,
 												children: st.name
 											}, st.id))]
-										})
-									]
+										})]
+									})]
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex items-center gap-2",
+									className: "flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 										variant: "outline",
 										size: "sm",
 										onClick: loadProjectTasks,
 										disabled: loadingTasks,
+										className: "flex-1 sm:flex-initial",
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: `size-3.5 mr-1.5 ${loadingTasks ? "animate-spin" : ""}` }), "Refresh"]
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 										size: "sm",
 										onClick: () => setCreateTaskOpen(true),
 										disabled: !hasWorkflowStarted,
 										title: !hasWorkflowStarted ? "Start a workflow before adding custom tasks." : void 0,
+										className: "flex-1 sm:flex-initial",
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-3.5 mr-1" }), " Add Task"]
 									})]
 								})]
@@ -30038,68 +30042,71 @@ function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectPr
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex flex-wrap items-center gap-1.5 bg-muted/60 p-1 rounded-xl text-xs",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							type: "button",
-							onClick: () => setFilter("all"),
-							className: `rounded-lg px-3 py-1.5 font-medium transition-all ${filter === "all" ? "bg-card text-foreground shadow-2xs font-semibold" : "text-muted-foreground hover:text-foreground"}`,
-							children: [
-								"All (",
-								projects.length,
-								")"
-							]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							type: "button",
-							onClick: () => setFilter("ongoing"),
-							className: `rounded-lg px-3 py-1.5 font-medium transition-all ${filter === "ongoing" ? "bg-card text-foreground shadow-2xs font-semibold" : "text-muted-foreground hover:text-foreground"}`,
-							children: [
-								"Ongoing (",
-								ongoingCount,
-								")"
-							]
-						}),
-						needsSetupCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							type: "button",
-							onClick: () => setFilter("needs_setup"),
-							className: `rounded-lg px-3 py-1.5 font-medium transition-all flex items-center gap-1 ${filter === "needs_setup" ? "bg-amber-100 text-amber-900 font-semibold" : "text-amber-800 hover:text-amber-900"}`,
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-3" }),
-								"Needs Setup (",
-								needsSetupCount,
-								")"
-							]
-						}),
-						atRiskCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							type: "button",
-							onClick: () => setFilter("at_risk"),
-							className: `rounded-lg px-3 py-1.5 font-medium transition-all ${filter === "at_risk" ? "bg-red-100 text-red-900 font-semibold" : "text-red-700 hover:text-red-900"}`,
-							children: [
-								"At Risk (",
-								atRiskCount,
-								")"
-							]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							type: "button",
-							onClick: () => setFilter("completed"),
-							className: `rounded-lg px-3 py-1.5 font-medium transition-all ${filter === "completed" ? "bg-card text-foreground shadow-2xs font-semibold" : "text-muted-foreground hover:text-foreground"}`,
-							children: [
-								"Completed (",
-								completedCount,
-								")"
-							]
-						})
-					]
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "inline-flex sm:flex sm:flex-wrap items-center gap-1.5 bg-muted/60 p-1 rounded-xl text-xs w-max sm:w-auto",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								type: "button",
+								onClick: () => setFilter("all"),
+								className: `rounded-lg px-3 py-1.5 font-medium transition-all shrink-0 ${filter === "all" ? "bg-card text-foreground shadow-2xs font-semibold" : "text-muted-foreground hover:text-foreground"}`,
+								children: [
+									"All (",
+									projects.length,
+									")"
+								]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								type: "button",
+								onClick: () => setFilter("ongoing"),
+								className: `rounded-lg px-3 py-1.5 font-medium transition-all shrink-0 ${filter === "ongoing" ? "bg-card text-foreground shadow-2xs font-semibold" : "text-muted-foreground hover:text-foreground"}`,
+								children: [
+									"Ongoing (",
+									ongoingCount,
+									")"
+								]
+							}),
+							needsSetupCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								type: "button",
+								onClick: () => setFilter("needs_setup"),
+								className: `rounded-lg px-3 py-1.5 font-medium transition-all shrink-0 flex items-center gap-1 ${filter === "needs_setup" ? "bg-amber-100 text-amber-900 font-semibold" : "text-amber-800 hover:text-amber-900"}`,
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-3" }),
+									"Needs Setup (",
+									needsSetupCount,
+									")"
+								]
+							}),
+							atRiskCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								type: "button",
+								onClick: () => setFilter("at_risk"),
+								className: `rounded-lg px-3 py-1.5 font-medium transition-all shrink-0 ${filter === "at_risk" ? "bg-red-100 text-red-900 font-semibold" : "text-red-700 hover:text-red-900"}`,
+								children: [
+									"At Risk (",
+									atRiskCount,
+									")"
+								]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								type: "button",
+								onClick: () => setFilter("completed"),
+								className: `rounded-lg px-3 py-1.5 font-medium transition-all shrink-0 ${filter === "completed" ? "bg-card text-foreground shadow-2xs font-semibold" : "text-muted-foreground hover:text-foreground"}`,
+								children: [
+									"Completed (",
+									completedCount,
+									")"
+								]
+							})
+						]
+					})
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "relative min-w-56 max-w-xs",
+					className: "relative w-full sm:w-auto sm:min-w-56 sm:max-w-xs",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 						value: search,
 						onChange: (e) => setSearch(e.target.value),
 						placeholder: "Search projects by name, client, location…",
-						className: "pl-8 text-xs h-9"
+						className: "pl-8 text-xs h-9 w-full"
 					})]
 				})]
 			}),
@@ -31836,45 +31843,48 @@ function EmployeeApp() {
 							defaultValue: "tasks",
 							className: "gap-4",
 							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
-									className: "flex flex-wrap w-full justify-start h-auto gap-1 bg-muted/60 p-1 rounded-xl",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
-											value: "tasks",
-											className: "font-semibold text-xs px-3 py-2",
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-4 mr-1.5" }),
-												"Tasks (",
-												tasks.length,
-												")"
-											]
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
-											value: "queries",
-											className: "font-semibold text-xs px-3 py-2",
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 mr-1.5 text-amber-600" }),
-												"Client Queries (",
-												projectQueries.length,
-												")",
-												pendingQueriesCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-													variant: "secondary",
-													className: "ml-1.5 size-4 p-0 text-[10px] justify-center bg-amber-200 text-amber-900",
-													children: pendingQueriesCount
-												})
-											]
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
-											value: "chat",
-											className: "font-semibold text-xs px-3 py-2",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-4 mr-1.5 text-blue-600" }), "Team Chat"]
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
-											value: "overview",
-											className: "font-semibold text-xs px-3 py-2",
-											children: "Overview"
-										})
-									]
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
+										className: "inline-flex sm:flex sm:flex-wrap w-max sm:w-full justify-start min-h-11 h-auto gap-1 bg-muted/60 p-1 rounded-xl",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+												value: "tasks",
+												className: "font-semibold text-xs px-3 py-2 shrink-0",
+												children: [
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-4 mr-1.5" }),
+													"Tasks (",
+													tasks.length,
+													")"
+												]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+												value: "queries",
+												className: "font-semibold text-xs px-3 py-2 shrink-0",
+												children: [
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 mr-1.5 text-amber-600" }),
+													"Client Queries (",
+													projectQueries.length,
+													")",
+													pendingQueriesCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+														variant: "secondary",
+														className: "ml-1.5 size-4 p-0 text-[10px] justify-center bg-amber-200 text-amber-900",
+														children: pendingQueriesCount
+													})
+												]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+												value: "chat",
+												className: "font-semibold text-xs px-3 py-2 shrink-0",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-4 mr-1.5 text-blue-600" }), "Team Chat"]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
+												value: "overview",
+												className: "font-semibold text-xs px-3 py-2 shrink-0",
+												children: "Overview"
+											})
+										]
+									})
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
 									value: "tasks",

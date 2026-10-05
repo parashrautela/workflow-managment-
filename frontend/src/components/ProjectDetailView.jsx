@@ -559,86 +559,91 @@ export function ProjectDetailView({
 
       {/* Tabs System */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
-        <TabsList className="flex flex-wrap w-full justify-start h-auto gap-1 bg-muted/60 p-1 rounded-xl">
-          <TabsTrigger value="tasks" className="font-semibold text-xs px-3.5 py-2">
-            <CheckCircle2 className="size-3.5 mr-1.5 text-primary" />
-            Tasks ({tasks.length})
-          </TabsTrigger>
-          <TabsTrigger value="chat" className="font-semibold text-xs px-3.5 py-2">
-            <MessageSquare className="size-3.5 mr-1.5 text-blue-600" />
-            Internal Project Chat
-          </TabsTrigger>
-          <TabsTrigger value="schedule" className="font-semibold text-xs px-3.5 py-2">
-            <Calendar className="size-3.5 mr-1.5 text-amber-600" />
-            Schedule &amp; Stages ({stages.length})
-          </TabsTrigger>
-          <TabsTrigger value="queries" className="font-semibold text-xs px-3.5 py-2">
-            <AlertCircle className="size-3.5 mr-1.5 text-red-500" />
-            Client Queries ({projectQueries.length})
-            {pendingQueriesCount > 0 && (
-              <Badge variant="secondary" className="ml-1.5 size-4 p-0 text-[10px] justify-center bg-amber-200 text-amber-900">
-                {pendingQueriesCount}
-              </Badge>
-            )}
-          </TabsTrigger>
-          <TabsTrigger value="files" className="font-semibold text-xs px-3.5 py-2">
-            <FolderKanban className="size-3.5 mr-1.5 text-emerald-600" />
-            Files &amp; Drive
-          </TabsTrigger>
-          <TabsTrigger value="team" className="font-semibold text-xs px-3.5 py-2">
-            <Users className="size-3.5 mr-1.5 text-indigo-600" />
-            Team &amp; Access ({project.members?.length || 0})
-          </TabsTrigger>
-        </TabsList>
+        <div className="overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
+          <TabsList className="inline-flex sm:flex sm:flex-wrap w-max sm:w-full justify-start min-h-11 h-auto gap-1 bg-muted/60 p-1 rounded-xl">
+            <TabsTrigger value="tasks" className="font-semibold text-xs px-3.5 py-2 shrink-0">
+              <CheckCircle2 className="size-3.5 mr-1.5 text-primary" />
+              Tasks ({tasks.length})
+            </TabsTrigger>
+            <TabsTrigger value="chat" className="font-semibold text-xs px-3.5 py-2 shrink-0">
+              <MessageSquare className="size-3.5 mr-1.5 text-blue-600" />
+              Internal Project Chat
+            </TabsTrigger>
+            <TabsTrigger value="schedule" className="font-semibold text-xs px-3.5 py-2 shrink-0">
+              <Calendar className="size-3.5 mr-1.5 text-amber-600" />
+              Schedule &amp; Stages ({stages.length})
+            </TabsTrigger>
+            <TabsTrigger value="queries" className="font-semibold text-xs px-3.5 py-2 shrink-0">
+              <AlertCircle className="size-3.5 mr-1.5 text-red-500" />
+              Client Queries ({projectQueries.length})
+              {pendingQueriesCount > 0 && (
+                <Badge variant="secondary" className="ml-1.5 size-4 p-0 text-[10px] justify-center bg-amber-200 text-amber-900">
+                  {pendingQueriesCount}
+                </Badge>
+              )}
+            </TabsTrigger>
+            <TabsTrigger value="files" className="font-semibold text-xs px-3.5 py-2 shrink-0">
+              <FolderKanban className="size-3.5 mr-1.5 text-emerald-600" />
+              Files &amp; Drive
+            </TabsTrigger>
+            <TabsTrigger value="team" className="font-semibold text-xs px-3.5 py-2 shrink-0">
+              <Users className="size-3.5 mr-1.5 text-indigo-600" />
+              Team &amp; Access ({project.members?.length || 0})
+            </TabsTrigger>
+          </TabsList>
+        </div>
 
         {/* ----------------- TAB 1: TASKS ----------------- */}
         <TabsContent value="tasks" className="space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <div className="flex flex-wrap items-center gap-2 flex-1">
-              <div className="relative min-w-44 flex-1 max-w-sm">
+            <div className="grid grid-cols-1 sm:flex sm:flex-wrap sm:items-center gap-2 flex-1">
+              <div className="relative w-full sm:w-auto sm:min-w-44 sm:flex-1 sm:max-w-sm">
                 <Search className="pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-muted-foreground" />
                 <Input
                   value={taskSearch}
                   onChange={(e) => setTaskSearch(e.target.value)}
                   placeholder="Search tasks, deliverables…"
-                  className="pl-8 text-xs h-9"
+                  className="pl-8 text-xs h-9 w-full"
                 />
               </div>
 
-              <NativeSelect
-                value={taskStatusFilter}
-                onChange={(e) => setTaskStatusFilter(e.target.value)}
-                className="text-xs h-9 w-32"
-              >
-                <option value="all">All States</option>
-                <option value="open">All Open</option>
-                <option value="Open">Open</option>
-                <option value="In progress">In Progress</option>
-                <option value="Blocked">Blocked</option>
-                <option value="Completed">Completed</option>
-                <option value="Cancelled">Cancelled</option>
-              </NativeSelect>
-
-              {stages.length > 0 && (
+              <div className="grid grid-cols-2 sm:flex sm:items-center gap-2 w-full sm:w-auto">
                 <NativeSelect
-                  value={taskStageFilter}
-                  onChange={(e) => setTaskStageFilter(e.target.value)}
-                  className="text-xs h-9 w-44"
+                  value={taskStatusFilter}
+                  onChange={(e) => setTaskStatusFilter(e.target.value)}
+                  className="text-xs h-9 w-full sm:w-32"
                 >
-                  <option value="all">All Stages</option>
-                  {stages.map((st) => (
-                    <option key={st.id} value={st.id}>{st.name}</option>
-                  ))}
+                  <option value="all">All States</option>
+                  <option value="open">All Open</option>
+                  <option value="Open">Open</option>
+                  <option value="In progress">In Progress</option>
+                  <option value="Blocked">Blocked</option>
+                  <option value="Completed">Completed</option>
+                  <option value="Cancelled">Cancelled</option>
                 </NativeSelect>
-              )}
+
+                {stages.length > 0 && (
+                  <NativeSelect
+                    value={taskStageFilter}
+                    onChange={(e) => setTaskStageFilter(e.target.value)}
+                    className="text-xs h-9 w-full sm:w-44"
+                  >
+                    <option value="all">All Stages</option>
+                    {stages.map((st) => (
+                      <option key={st.id} value={st.id}>{st.name}</option>
+                    ))}
+                  </NativeSelect>
+                )}
+              </div>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={loadProjectTasks}
                 disabled={loadingTasks}
+                className="flex-1 sm:flex-initial"
               >
                 <RefreshCw className={`size-3.5 mr-1.5 ${loadingTasks ? "animate-spin" : ""}`} />
                 Refresh
@@ -648,6 +653,7 @@ export function ProjectDetailView({
                 onClick={() => setCreateTaskOpen(true)}
                 disabled={!hasWorkflowStarted}
                 title={!hasWorkflowStarted ? "Start a workflow before adding custom tasks." : undefined}
+                className="flex-1 sm:flex-initial"
               >
                 <Plus className="size-3.5 mr-1" /> Add Task
               </Button>

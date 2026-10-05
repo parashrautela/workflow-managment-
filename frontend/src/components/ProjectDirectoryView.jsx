@@ -76,56 +76,58 @@ export function ProjectDirectoryView({
 
       {/* Filter Tabs & Search Bar (Actionable 21) */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div className="flex flex-wrap items-center gap-1.5 bg-muted/60 p-1 rounded-xl text-xs">
-          <button
-            type="button"
-            onClick={() => setFilter("all")}
-            className={`rounded-lg px-3 py-1.5 font-medium transition-all ${filter === "all" ? "bg-card text-foreground shadow-2xs font-semibold" : "text-muted-foreground hover:text-foreground"}`}
-          >
-            All ({projects.length})
-          </button>
-          <button
-            type="button"
-            onClick={() => setFilter("ongoing")}
-            className={`rounded-lg px-3 py-1.5 font-medium transition-all ${filter === "ongoing" ? "bg-card text-foreground shadow-2xs font-semibold" : "text-muted-foreground hover:text-foreground"}`}
-          >
-            Ongoing ({ongoingCount})
-          </button>
-          {needsSetupCount > 0 && (
+        <div className="overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div className="inline-flex sm:flex sm:flex-wrap items-center gap-1.5 bg-muted/60 p-1 rounded-xl text-xs w-max sm:w-auto">
             <button
               type="button"
-              onClick={() => setFilter("needs_setup")}
-              className={`rounded-lg px-3 py-1.5 font-medium transition-all flex items-center gap-1 ${filter === "needs_setup" ? "bg-amber-100 text-amber-900 font-semibold" : "text-amber-800 hover:text-amber-900"}`}
+              onClick={() => setFilter("all")}
+              className={`rounded-lg px-3 py-1.5 font-medium transition-all shrink-0 ${filter === "all" ? "bg-card text-foreground shadow-2xs font-semibold" : "text-muted-foreground hover:text-foreground"}`}
             >
-              <AlertCircle className="size-3" />
-              Needs Setup ({needsSetupCount})
+              All ({projects.length})
             </button>
-          )}
-          {atRiskCount > 0 && (
             <button
               type="button"
-              onClick={() => setFilter("at_risk")}
-              className={`rounded-lg px-3 py-1.5 font-medium transition-all ${filter === "at_risk" ? "bg-red-100 text-red-900 font-semibold" : "text-red-700 hover:text-red-900"}`}
+              onClick={() => setFilter("ongoing")}
+              className={`rounded-lg px-3 py-1.5 font-medium transition-all shrink-0 ${filter === "ongoing" ? "bg-card text-foreground shadow-2xs font-semibold" : "text-muted-foreground hover:text-foreground"}`}
             >
-              At Risk ({atRiskCount})
+              Ongoing ({ongoingCount})
             </button>
-          )}
-          <button
-            type="button"
-            onClick={() => setFilter("completed")}
-            className={`rounded-lg px-3 py-1.5 font-medium transition-all ${filter === "completed" ? "bg-card text-foreground shadow-2xs font-semibold" : "text-muted-foreground hover:text-foreground"}`}
-          >
-            Completed ({completedCount})
-          </button>
+            {needsSetupCount > 0 && (
+              <button
+                type="button"
+                onClick={() => setFilter("needs_setup")}
+                className={`rounded-lg px-3 py-1.5 font-medium transition-all shrink-0 flex items-center gap-1 ${filter === "needs_setup" ? "bg-amber-100 text-amber-900 font-semibold" : "text-amber-800 hover:text-amber-900"}`}
+              >
+                <AlertCircle className="size-3" />
+                Needs Setup ({needsSetupCount})
+              </button>
+            )}
+            {atRiskCount > 0 && (
+              <button
+                type="button"
+                onClick={() => setFilter("at_risk")}
+                className={`rounded-lg px-3 py-1.5 font-medium transition-all shrink-0 ${filter === "at_risk" ? "bg-red-100 text-red-900 font-semibold" : "text-red-700 hover:text-red-900"}`}
+              >
+                At Risk ({atRiskCount})
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={() => setFilter("completed")}
+              className={`rounded-lg px-3 py-1.5 font-medium transition-all shrink-0 ${filter === "completed" ? "bg-card text-foreground shadow-2xs font-semibold" : "text-muted-foreground hover:text-foreground"}`}
+            >
+              Completed ({completedCount})
+            </button>
+          </div>
         </div>
 
-        <div className="relative min-w-56 max-w-xs">
+        <div className="relative w-full sm:w-auto sm:min-w-56 sm:max-w-xs">
           <Search className="pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search projects by name, client, location…"
-            className="pl-8 text-xs h-9"
+            className="pl-8 text-xs h-9 w-full"
           />
         </div>
       </div>
