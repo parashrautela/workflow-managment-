@@ -67,6 +67,10 @@ export function TaskThreadDrawer({
   useEffect(() => {
     if (open && initialTask?.id) {
       setTask(initialTask);
+      setMessages([]);
+      setCommentText("");
+      setAttachmentUrl("");
+      setShowAttachmentInput(false);
       setEditTitle(initialTask.title || "");
       setEditDesc(initialTask.description || "");
       setEditStatus(initialTask.status || "Open");
@@ -90,9 +94,8 @@ export function TaskThreadDrawer({
       if (list.length > 0) {
         markTaskRead(taskId, list[list.length - 1].id, namespace).catch(() => {});
       }
-    } catch {
-      // If messages endpoint returns empty or fails gracefully
-      setMessages([]);
+    } catch (problem) {
+      setError(problem.message || "Could not refresh this thread. Please retry.");
     } finally {
       setLoadingMessages(false);
     }
@@ -205,9 +208,9 @@ export function TaskThreadDrawer({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[92dvh] w-full max-w-2xl overflow-hidden p-0 sm:rounded-2xl">
+      <DialogContent className="flex max-h-[92dvh] max-w-2xl flex-col gap-0 overflow-hidden p-0 sm:max-w-2xl sm:rounded-2xl">
         {/* Header */}
-        <div className="border-b bg-card px-5 py-4">
+        <div className="shrink-0 border-b bg-card px-5 py-4 pr-12">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0 flex-1">
               <div className="flex flex-wrap items-center gap-2">
@@ -223,7 +226,7 @@ export function TaskThreadDrawer({
                   </Badge>
                 )}
               </div>
-              <DialogTitle className="mt-2 text-lg font-semibold tracking-tight text-foreground">
+              <DialogTitle className="mt-2 break-words text-lg font-semibold tracking-tight text-foreground [overflow-wrap:anywhere]">
                 {task.title}
               </DialogTitle>
             </div>
@@ -257,7 +260,7 @@ export function TaskThreadDrawer({
         )}
 
         {/* Content Body */}
-        <div className="chat-scroll max-h-[calc(92dvh-200px)] space-y-4 overflow-y-auto p-5">
+        <div className="chat-scroll min-h-0 flex-1 space-y-4 overflow-y-auto p-5">
           {/* Editing Mode */}
           {isEditing ? (
             <div className="space-y-3.5 rounded-xl border bg-muted/20 p-4">
@@ -486,7 +489,7 @@ export function TaskThreadDrawer({
 
         {/* Message Input Footer / Reopen Banner */}
         {isClosed ? (
-          <div className="flex items-center justify-between gap-3 border-t bg-amber-50/70 p-3 sm:px-5 text-xs text-amber-900">
+          <div className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-t bg-amber-50/70 p-3 sm:px-5 text-xs text-amber-900">
             <span className="flex items-center gap-1.5">
               <Lock className="size-3.5 text-amber-700 shrink-0" />
               This task is {task.status.toLowerCase()}. Reopen it to send new messages.
@@ -496,7 +499,7 @@ export function TaskThreadDrawer({
             </Button>
           </div>
         ) : (
-          <form onSubmit={handleSendMessage} className="space-y-2 border-t bg-muted/20 p-3 sm:px-5">
+          <form onSubmit={handleSendMessage} className="shrink-0 space-y-2 border-t bg-muted/20 p-3 sm:px-5">
             {showAttachmentInput && (
               <div className="flex items-center gap-2">
                 <Input
@@ -537,6 +540,7 @@ export function TaskThreadDrawer({
                 onChange={(e) => setCommentText(e.target.value)}
                 rows={1}
                 maxLength={2000}
+                aria-label="Task comment"
                 placeholder="Post team update or task comment…"
                 className="min-h-9 max-h-24 flex-1 resize-none text-xs"
                 disabled={sendingMessage}
@@ -545,6 +549,7 @@ export function TaskThreadDrawer({
               <Button
                 type="submit"
                 size="icon"
+                aria-label="Send task comment"
                 disabled={!commentText.trim() || sendingMessage}
                 className="size-9 shrink-0"
               >

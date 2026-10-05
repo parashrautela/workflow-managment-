@@ -26,7 +26,14 @@ import { ProjectDirectoryView } from "@/components/ProjectDirectoryView";
 const api = async (url, options = {}) => {
   const response = await fetch(url, { credentials: "same-origin", ...options, headers: { "content-type": "application/json", ...(options.headers || {}) } });
   const data = await response.json().catch(() => ({}));
-  if (!response.ok) throw new Error(data.error || "Request failed.");
+  if (!response.ok) {
+    const error = new Error(data.error || "Request failed.");
+    error.status = response.status;
+    if (response.status === 401 && !url.endsWith("/login")) {
+      window.dispatchEvent(new CustomEvent("studio-iksha:unauthorized", { detail: { url } }));
+    }
+    throw error;
+  }
   return data;
 };
 const post = (url, data = {}) => api(url, { method: "POST", body: JSON.stringify(data) });
@@ -92,7 +99,7 @@ export default function FounderApp() {
   const filteredProjects = projects.filter((project) => `${project.name} ${project.clientName} ${project.location || ""}`.toLowerCase().includes(searchQuery.toLowerCase()));
 
   // Unread badge counts (Actionable 9)
-  const pendingDecisionsCount = decisionRequests.filter((r) => r.status !== "Done").length;
+  const pendingDecisionsCount = decisionRequests.filter((r) => !["Done", "Rejected"].includes(r.status)).length;
   const pendingGroupsCount = projects.filter((p) => p.telegramSetupPending).length;
 
   const showNotice = (message, error = false) => {
@@ -105,8 +112,13 @@ export default function FounderApp() {
       const data = await api("/api/founder/projects");
       setProjects(data.projects || []);
       setAuthState("signed-in");
-    } catch {
-      setAuthState("signed-out");
+    } catch (error) {
+      if (error.status === 401) setAuthState("signed-out");
+      else {
+        setLoginError("Could not connect to the workspace. Please retry.");
+        setAuthState((current) => current === "checking" ? "signed-out" : current);
+        showNotice("Could not refresh projects. Please retry.", true);
+      }
     }
   };
 
@@ -115,7 +127,7 @@ export default function FounderApp() {
       const data = await api("/api/founder/decision-requests");
       setDecisionRequests(data.requests || []);
     } catch {
-      setDecisionRequests([]);
+      // Preserve the last loaded queries during temporary connection failures.
     }
   };
 
@@ -619,12 +631,14 @@ export default function FounderApp() {
           ) : currentTab === "projects" && viewMode === "detail" && selectedProject ? (
             /* Actionables 1, 3, 4, 5, 6, 7, 8, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20: Detailed Project Workspace */
             <ProjectDetailView
+              key={selectedProject.id}
               project={selectedProject}
               allProjects={projects}
               employees={employees}
               decisionRequests={decisionRequests}
               onBackToDirectory={() => setViewMode("directory")}
               onProjectUpdated={loadProjects}
+              onQueriesUpdated={loadDecisionRequests}
               onOpenInviteModal={handleInvite}
               onOpenTrashModal={() => setTrashConfirmOpen(true)}
               onOpenFactsModal={() => setFactsOpen(true)}

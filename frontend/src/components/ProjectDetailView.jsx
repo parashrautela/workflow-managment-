@@ -29,9 +29,8 @@ import {
   assignClient, removeProjectMember
 } from "@/lib/api";
 import {
-  getProjectWorkflow, updateProjectWorkflow, updateDriveSettings,
-  addDriveLink, setMemberDriveAccess, computeStageSchedule,
-  updateStageDuration, reorderStage
+  getProjectWorkflow, updateDriveSettings,
+  addDriveLink, setMemberDriveAccess, computeStageSchedule
 } from "@/lib/projectWorkflowStore";
 
 const statusBadgeStyles = {
@@ -64,6 +63,7 @@ export function ProjectDetailView({
   decisionRequests = [],
   onBackToDirectory,
   onProjectUpdated,
+  onQueriesUpdated,
   onOpenInviteModal,
   onOpenTrashModal,
   onOpenFactsModal,
@@ -106,9 +106,7 @@ export function ProjectDetailView({
   const [newTaskDeadline, setNewTaskDeadline] = useState("");
   const [newTaskStatus, setNewTaskStatus] = useState("Open");
 
-  // Stage editing & reordering state (Actionables 15, 16)
-  const [editingStageId, setEditingStageId] = useState(null);
-  const [editingStageDuration, setEditingStageDuration] = useState("");
+  // Executive briefing visibility
   const [tldrExpanded, setTldrExpanded] = useState(true);
 
   const [notice, setNotice] = useState(null);
@@ -119,9 +117,9 @@ export function ProjectDetailView({
   };
 
   // Load project tasks from API or workspace
-  const loadProjectTasks = useCallback(async () => {
+  const loadProjectTasks = useCallback(async ({ background = false } = {}) => {
     if (!project?.id) return;
-    setLoadingTasks(true);
+    if (!background) setLoadingTasks(true);
     try {
       // First try workspace endpoint
       const wsData = await fetchProjectWorkspace(project.id, "founder").catch(() => null);
@@ -135,16 +133,13 @@ export function ProjectDetailView({
         setTasks(tData.tasks);
         return;
       }
-      // Fallback to local workflow store
-      const localData = getProjectWorkflow(project.id, project);
-      setTasks(localData?.tasks || []);
+      showNotice("Could not refresh tasks. Please retry; your last loaded tasks are still shown.", true);
     } catch {
-      const localData = getProjectWorkflow(project.id, project);
-      setTasks(localData?.tasks || []);
+      showNotice("Could not refresh tasks. Please retry.", true);
     } finally {
       setLoadingTasks(false);
     }
-  }, [project?.id, project]);
+  }, [project?.id]);
 
   useEffect(() => {
     if (project?.id) {
@@ -155,12 +150,19 @@ export function ProjectDetailView({
       setClientTelegramIdInput(project.clientTelegramId || "");
       loadProjectTasks();
     }
-  }, [project?.id, project, loadProjectTasks]);
+  }, [project?.id, loadProjectTasks]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (document.visibilityState === "visible") loadProjectTasks({ background: true });
+    }, 8000);
+    return () => clearInterval(timer);
+  }, [loadProjectTasks]);
 
   if (!project) return null;
 
-  // Stages from localWorkflow or project
-  const stages = localWorkflow?.stages && localWorkflow.stages.length > 0 ? localWorkflow.stages : (project.stages || []);
+  // Use the saved server workflow, rather than an old browser template cache.
+  const stages = project.stages || [];
   const schedule = computeStageSchedule(project.startDate || project.createdAt, stages);
 
   // Telegram client queries linked to this project
@@ -170,15 +172,15 @@ export function ProjectDetailView({
   // TL;DR metrics
   const blockedTasks = tasks.filter((t) => t.status === "Blocked");
   const inProgressTasksCount = tasks.filter((t) => t.status === "In progress" || t.status === "in_progress").length;
-  const currentStage = stages[0];
-  const currentStageSchedule = schedule[0];
+  const currentStage = stages.find((stage) => stage.name === project.currentStage) || stages[0];
+  const currentStageSchedule = schedule.find((stage) => stage.id === currentStage?.id);
   const latestQuery = projectQueries[0];
 
   // Client assignment check: required for pilot workflow start
   const isClientAssigned = Boolean(
     project.clientName &&
     project.clientName.trim() !== "" &&
-    project.clientName !== "Unassigned Client" &&
+    !["Unassigned Client", "Client pending"].includes(project.clientName) &&
     !project.telegramSetupPending
   );
 
@@ -201,7 +203,8 @@ export function ProjectDetailView({
   });
 
   const completedTasksCount = tasks.filter((t) => t.status === "Completed" || t.status === "completed").length;
-  const progressPercent = tasks.length ? Math.round((completedTasksCount / tasks.length) * 100) : (project.progress || 0);
+  const activeTaskCount = tasks.filter((task) => !["Cancelled", "cancelled"].includes(task.status)).length;
+  const progressPercent = activeTaskCount ? Math.round((completedTasksCount / activeTaskCount) * 100) : 0;
 
   // Assign Client submission
   const handleAssignClientSubmit = async (e) => {
@@ -301,23 +304,6 @@ export function ProjectDetailView({
     setLocalWorkflow(getProjectWorkflow(project.id, project));
   };
 
-  // Stage duration editing (Actionable 15)
-  const handleSaveStageDuration = (stageId) => {
-    const days = parseInt(editingStageDuration, 10);
-    if (!days || days < 1) return;
-    updateStageDuration(project.id, stageId, days);
-    setEditingStageId(null);
-    setLocalWorkflow(getProjectWorkflow(project.id, project));
-    showNotice(`Updated stage duration to ${days} days.`);
-  };
-
-  // Stage reordering (Actionable 16)
-  const handleReorderStage = (stageId, direction) => {
-    reorderStage(project.id, stageId, direction);
-    setLocalWorkflow(getProjectWorkflow(project.id, project));
-    showNotice(`Stage moved ${direction}.`);
-  };
-
   // Member Drive access control (Actionable 20)
   const handleDriveAccessChange = (memberId, level) => {
     setMemberDriveAccess(project.id, memberId, level);
@@ -344,7 +330,7 @@ export function ProjectDetailView({
 
       {/* Navigation Header */}
       <div className="flex flex-col gap-3 rounded-2xl border bg-card p-4 sm:p-5 shadow-xs">
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <Button
             variant="ghost"
             size="sm"
@@ -368,7 +354,7 @@ export function ProjectDetailView({
         <div className="flex flex-wrap items-baseline justify-between gap-3 pt-1">
           <div>
             <div className="flex flex-wrap items-center gap-2.5">
-              <h1 className="text-2xl font-bold tracking-tight sm:text-3xl text-foreground">
+              <h1 className="min-w-0 break-words text-2xl font-bold tracking-tight sm:text-3xl text-foreground [overflow-wrap:anywhere]">
                 {project.name}
               </h1>
               <Badge variant="outline" className={statusBadgeStyles[project.status] || "border-muted"}>
@@ -658,7 +644,7 @@ export function ProjectDetailView({
           <div className="rounded-xl border bg-card p-3">
             <div className="flex items-center justify-between text-xs font-semibold mb-1.5">
               <span>Task Completion Progress</span>
-              <span>{completedTasksCount} of {tasks.length} completed ({progressPercent}%)</span>
+              <span>{completedTasksCount} of {activeTaskCount} completed ({progressPercent}%)</span>
             </div>
             <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
               <div
@@ -828,64 +814,9 @@ export function ProjectDetailView({
                     </div>
 
                     <div className="flex flex-wrap items-center gap-2.5">
-                      {/* Actionable 15: Editable Stage Duration */}
-                      {editingStageId === st.id ? (
-                        <div className="flex items-center gap-1.5 rounded-lg border bg-muted/40 px-2 py-1">
-                          <span className="text-[11px] text-muted-foreground font-medium">Days:</span>
-                          <Input
-                            type="number"
-                            min="1"
-                            max="365"
-                            value={editingStageDuration}
-                            onChange={(e) => setEditingStageDuration(e.target.value)}
-                            className="h-6 w-14 text-xs text-center p-0.5"
-                            autoFocus
-                          />
-                          <Button size="icon-sm" className="h-6 w-6" onClick={() => handleSaveStageDuration(st.id)}>
-                            <Check className="size-3" />
-                          </Button>
-                          <Button size="icon-sm" variant="ghost" className="h-6 w-6" onClick={() => setEditingStageId(null)}>
-                            <X className="size-3" />
-                          </Button>
-                        </div>
-                      ) : (
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setEditingStageId(st.id);
-                            setEditingStageDuration(String(st.durationDays || 7));
-                          }}
-                          className="flex items-center gap-1 rounded-md border border-dashed px-2 py-1 text-xs font-medium text-muted-foreground hover:border-primary hover:text-foreground transition-colors"
-                          title="Click to adjust stage duration"
-                        >
-                          <span>{st.durationDays} day{st.durationDays === 1 ? "" : "s"}</span>
-                          <span className="text-[10px] text-primary">✎</span>
-                        </button>
-                      )}
-
-                      {/* Actionable 16: Stage Reordering */}
-                      <div className="flex items-center rounded-md border bg-muted/20">
-                        <Button
-                          variant="ghost"
-                          size="icon-sm"
-                          className="h-6 w-6 rounded-none p-0 text-muted-foreground hover:text-foreground disabled:opacity-30"
-                          disabled={idx === 0}
-                          onClick={() => handleReorderStage(st.id, "up")}
-                          title="Move stage earlier"
-                        >
-                          <ChevronUp className="size-3.5" />
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="icon-sm"
-                          className="h-6 w-6 rounded-none p-0 text-muted-foreground hover:text-foreground disabled:opacity-30"
-                          disabled={idx === stages.length - 1}
-                          onClick={() => handleReorderStage(st.id, "down")}
-                          title="Move stage later"
-                        >
-                          <ChevronDown className="size-3.5" />
-                        </Button>
-                      </div>
+                      <span className="rounded-md border px-2 py-1 text-xs text-muted-foreground">
+                        {st.durationDays} day{st.durationDays === 1 ? "" : "s"}
+                      </span>
 
                       {/* Actionable 17: Scheduled Timeline */}
                       {stSchedule && (
@@ -945,6 +876,7 @@ export function ProjectDetailView({
                   projectMembers={project.members || []}
                   isFounder={true}
                   onQueryChanged={() => {
+                    if (onQueriesUpdated) onQueriesUpdated();
                     if (onProjectUpdated) onProjectUpdated();
                     loadProjectTasks();
                   }}

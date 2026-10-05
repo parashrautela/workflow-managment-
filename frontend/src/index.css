@@ -88,3 +88,11 @@
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+[data-slot="dialog-content"] { width: calc(100vw - 2rem); }
+[data-slot="dialog-title"] { overflow-wrap: anywhere; line-height: 1.35; }
+[data-slot="dialog-content"] input, [data-slot="dialog-content"] textarea,
+[data-slot="dialog-content"] select { min-width: 0; }
+@media (max-width: 639px) {
+  [data-slot="dialog-content"] { max-width: calc(100vw - 2rem); }
+}

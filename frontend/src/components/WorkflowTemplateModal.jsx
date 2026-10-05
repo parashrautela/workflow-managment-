@@ -77,8 +77,8 @@ export function WorkflowTemplateModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[92dvh] w-full max-w-3xl overflow-hidden p-0 sm:rounded-2xl">
-        <div className="border-b bg-card px-6 py-4">
+      <DialogContent className="flex max-h-[92dvh] max-w-3xl flex-col gap-0 overflow-hidden p-0 sm:max-w-3xl sm:rounded-2xl">
+        <div className="shrink-0 border-b bg-card px-6 py-4 pr-12">
           <div className="flex items-center gap-2.5">
             <span className="grid size-9 place-items-center rounded-xl bg-primary/10 text-primary">
               <Layers className="size-5" />
@@ -106,9 +106,9 @@ export function WorkflowTemplateModal({
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-[270px_1fr] max-h-[calc(92dvh-170px)] overflow-hidden">
+        <div className="grid min-h-0 flex-1 grid-cols-1 overflow-y-auto md:grid-cols-[270px_1fr] md:overflow-hidden">
           {/* Left: Template Selector List */}
-          <div className="chat-scroll overflow-y-auto border-r bg-muted/20 p-3 space-y-2">
+          <div className="chat-scroll min-w-0 md:overflow-y-auto border-r bg-muted/20 p-3 space-y-2">
             <p className="px-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
               Available Templates ({workflows.length})
             </p>
@@ -149,7 +149,7 @@ export function WorkflowTemplateModal({
           </div>
 
           {/* Right: Selected Template Details & Configuration */}
-          <div className="chat-scroll overflow-y-auto p-5 space-y-5">
+          <div className="chat-scroll min-w-0 md:overflow-y-auto p-5 space-y-5">
             {selectedTemplate ? (
               <>
                 <div>
@@ -247,11 +247,11 @@ export function WorkflowTemplateModal({
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between border-t bg-muted/20 px-6 py-3">
+        <div className="flex shrink-0 flex-col items-stretch justify-between gap-3 border-t bg-muted/20 px-6 py-3 sm:flex-row sm:items-center">
           <p className="text-xs text-muted-foreground">
             Starting a workflow locks the template and creates active stages and tasks.
           </p>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <Button variant="outline" onClick={() => onOpenChange(false)} disabled={submitting}>
               Cancel
             </Button>

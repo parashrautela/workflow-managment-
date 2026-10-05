@@ -47,10 +47,10 @@ export async function request(url, options = {}) {
     
     // 401 Session expired or missing
     if (response.status === 401) {
-      if (typeof window !== "undefined") {
+      if (!url.endsWith("/login") && typeof window !== "undefined") {
         window.dispatchEvent(new CustomEvent("studio-iksha:unauthorized", { detail: { url } }));
       }
-      throw new ApiError("Session expired or unauthorized. Please sign in again.", 401, data);
+      throw new ApiError(errorMsg, 401, data);
     }
 
     // 403 Forbidden / Permission denied

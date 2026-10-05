@@ -55,12 +55,21 @@ export default function EmployeeApp() {
       setProjects(data.projects || []);
       setSelectedId((current) => (data.projects || []).some((project) => project.id === current) ? current : data.projects?.[0]?.id || null);
       setAuth("signed-in");
-    } catch {
-      setAuth("signed-out");
+    } catch (problem) {
+      if (problem.status === 401) setAuth("signed-out");
+      else {
+        setError("Could not connect to the workspace. Please retry.");
+        setAuth((current) => current === "checking" ? "signed-out" : current);
+      }
     }
   };
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => {
+    load();
+    const expired = () => setAuth("signed-out");
+    window.addEventListener("studio-iksha:unauthorized", expired);
+    return () => window.removeEventListener("studio-iksha:unauthorized", expired);
+  }, []);
 
   const selected = projects.find((project) => project.id === selectedId);
 
@@ -68,22 +77,22 @@ export default function EmployeeApp() {
   const loadWorkspaceData = useCallback(async () => {
     if (!selected?.id) return;
     setLoadingWorkspace(true);
+    setError("");
     try {
       // 1. Load tasks (via workspace or tasks endpoint)
       const wsData = await fetchProjectWorkspace(selected.id, "employee").catch(() => null);
       if (wsData && Array.isArray(wsData.tasks)) {
         setTasks(wsData.tasks);
       } else {
-        const tData = await fetchTasks(selected.id, "employee").catch(() => ({ tasks: [] }));
+        const tData = await fetchTasks(selected.id, "employee");
         setTasks(tData.tasks || []);
       }
 
       // 2. Load decision requests for assigned projects
-      const decData = await fetchDecisionRequests("employee").catch(() => ({ requests: [] }));
+      const decData = await fetchDecisionRequests("employee");
       setDecisionRequests(decData.requests || []);
-    } catch {
-      setTasks([]);
-      setDecisionRequests([]);
+    } catch (problem) {
+      setError(problem.message || "Could not refresh the workspace. Please retry.");
     } finally {
       setLoadingWorkspace(false);
     }
@@ -218,6 +227,7 @@ export default function EmployeeApp() {
       </header>
 
       <main className="mx-auto max-w-5xl space-y-6 px-4 py-6 sm:px-6">
+        {error && <p role="alert" className="rounded-xl border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">{error}</p>}
         <div>
           <p className="text-xs font-semibold uppercase tracking-wider text-primary">My workspace</p>
           <h1 className="mt-1 text-2xl font-semibold tracking-tight">Your projects</h1>
@@ -307,13 +317,14 @@ export default function EmployeeApp() {
                     return (
                       <div
                         key={t.id}
-                        className="flex items-center justify-between gap-3 rounded-xl border bg-card p-3.5 shadow-2xs hover:border-primary/40 transition-colors"
+                        className="flex flex-col items-stretch justify-between gap-3 rounded-xl border bg-card p-3.5 sm:flex-row sm:items-center shadow-2xs hover:border-primary/40 transition-colors"
                       >
                         <div className="flex items-center gap-3 min-w-0 flex-1">
                           <button
                             type="button"
+                            aria-label={`Toggle completion for ${t.title}`}
                             onClick={() => handleToggleTaskStatus(t)}
-                            className={`grid size-5 place-items-center rounded-md border transition-colors ${
+                            className={`grid size-5 shrink-0 place-items-center rounded-md border transition-colors ${
                               isCompleted ? "bg-emerald-600 border-emerald-600 text-white" : "border-muted-foreground/30 hover:border-primary"
                             }`}
                           >
@@ -321,7 +332,7 @@ export default function EmployeeApp() {
                           </button>
                           <div className="min-w-0 flex-1">
                             <p
-                              className={`text-sm font-semibold cursor-pointer hover:text-primary transition-colors ${
+                              className={`break-words text-sm font-semibold cursor-pointer hover:text-primary transition-colors ${
                                 isCompleted ? "line-through text-muted-foreground" : "text-foreground"
                               }`}
                               onClick={() => {
@@ -332,7 +343,7 @@ export default function EmployeeApp() {
                               {t.title}
                             </p>
                             <p className="text-[11px] text-muted-foreground">
-                              {t.stageName || "General"}
+                              {selected.stages?.find((stage) => stage.id === t.stageId)?.name || t.stageName || "General"}
                               {t.deadline && ` · Due: ${t.deadline}`}
                             </p>
                           </div>

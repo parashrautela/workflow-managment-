@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { NativeSelect } from "@/components/ui/native-select";
-import { getProjectWorkflow } from "@/lib/projectWorkflowStore";
 
 const statusBadgeStyles = {
   "On track": "border-emerald-200 bg-emerald-50 text-emerald-800",
@@ -30,7 +29,7 @@ export function ProjectDirectoryView({
   const [filter, setFilter] = useState("all"); // 'all' | 'ongoing' | 'needs_setup' | 'at_risk' | 'completed'
 
   const ongoingCount = projects.filter((p) => p.status !== "Completed").length;
-  const needsSetupCount = projects.filter((p) => p.telegramSetupPending || !p.clientName || p.clientName === "Unassigned Client").length;
+  const needsSetupCount = projects.filter((p) => p.telegramSetupPending || !p.clientName || ["Unassigned Client", "Client pending"].includes(p.clientName)).length;
   const atRiskCount = projects.filter((p) => p.status === "At risk").length;
   const completedCount = projects.filter((p) => p.status === "Completed").length;
 
@@ -38,7 +37,7 @@ export function ProjectDirectoryView({
     if (filter === "ongoing" && project.status === "Completed") return false;
     if (filter === "completed" && project.status !== "Completed") return false;
     if (filter === "at_risk" && project.status !== "At risk") return false;
-    if (filter === "needs_setup" && !project.telegramSetupPending && project.clientName && project.clientName !== "Unassigned Client") return false;
+    if (filter === "needs_setup" && !project.telegramSetupPending && project.clientName && !["Unassigned Client", "Client pending"].includes(project.clientName)) return false;
 
     if (search.trim()) {
       const q = search.toLowerCase();
@@ -134,12 +133,10 @@ export function ProjectDirectoryView({
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.length ? (
           filtered.map((project) => {
-            const wf = getProjectWorkflow(project.id, project);
-            const projectTasks = wf?.tasks || [];
-            const doneTasks = projectTasks.filter((t) => t.status === "completed").length;
-            const progress = projectTasks.length ? Math.round((doneTasks / projectTasks.length) * 100) : 0;
-            const pendingQueries = decisionRequests.filter((q) => q.projectId === project.id && q.status !== "Done").length;
-            const isMissingClient = !project.clientName || project.clientName === "Unassigned Client" || project.telegramSetupPending;
+            const taskCount = project.taskCount || 0;
+            const progress = project.progress || 0;
+            const pendingQueries = decisionRequests.filter((q) => q.projectId === project.id && !["Done", "Rejected"].includes(q.status)).length;
+            const isMissingClient = !project.clientName || ["Unassigned Client", "Client pending"].includes(project.clientName) || project.telegramSetupPending;
 
             return (
               <Card
@@ -185,10 +182,10 @@ export function ProjectDirectoryView({
                   )}
 
                   {/* Task progress bar */}
-                  {projectTasks.length > 0 && (
+                  {taskCount > 0 && (
                     <div className="space-y-1">
                       <div className="flex items-center justify-between text-[11px] text-muted-foreground">
-                        <span>Tasks: {doneTasks}/{projectTasks.length}</span>
+                        <span>Tasks: {taskCount}</span>
                         <span>{progress}%</span>
                       </div>
                       <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">

@@ -238,19 +238,28 @@ function computeTaskDueDate(startDateStr, stageIndex, stages) {
 // Compute stage start and end dates based on project start date
 export function computeStageSchedule(startDateStr, stages = []) {
   if (!stages || !stages.length) return [];
-  const base = startDateStr ? new Date(`${startDateStr}T00:00:00`) : new Date();
-  let currentOffsetDays = 0;
+  // Accept both date-only starts and the ISO createdAt fallback. Use UTC so
+  // deadlines do not shift a day when the browser is in another timezone.
+  const parseDate = (value) => {
+    if (!value) return null;
+    const date = new Date(value);
+    return Number.isFinite(date.getTime()) ? date : null;
+  };
+  let cursor = parseDate(startDateStr) || new Date();
 
   return stages.map((stage) => {
-    const start = new Date(base.getTime() + currentOffsetDays * 86400000);
-    const end = new Date(start.getTime() + (stage.durationDays || 1) * 86400000);
-    currentOffsetDays += stage.durationDays || 1;
+    const start = parseDate(stage.startDate) || cursor;
+    const duration = Number(stage.durationDays);
+    const end = parseDate(stage.deadline || stage.endDate) ||
+      new Date(start.getTime() + (Number.isFinite(duration) && duration > 0 ? duration : 1) * 86400000);
+    cursor = end;
+    const label = (date) => date.toLocaleDateString(undefined, { month: "short", day: "numeric", timeZone: "UTC" });
     return {
       ...stage,
       startDate: start.toISOString().slice(0, 10),
       endDate: end.toISOString().slice(0, 10),
-      startLabel: start.toLocaleDateString(undefined, { month: "short", day: "numeric" }),
-      endLabel: end.toLocaleDateString(undefined, { month: "short", day: "numeric" })
+      startLabel: label(start),
+      endLabel: label(end)
     };
   });
 }
