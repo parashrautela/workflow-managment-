@@ -30,7 +30,8 @@ import {
 } from "@/lib/api";
 import {
   getProjectWorkflow, updateProjectWorkflow, updateDriveSettings,
-  addDriveLink, setMemberDriveAccess, computeStageSchedule
+  addDriveLink, setMemberDriveAccess, computeStageSchedule,
+  updateStageDuration, reorderStage
 } from "@/lib/projectWorkflowStore";
 
 const statusBadgeStyles = {
@@ -105,6 +106,11 @@ export function ProjectDetailView({
   const [newTaskDeadline, setNewTaskDeadline] = useState("");
   const [newTaskStatus, setNewTaskStatus] = useState("Open");
 
+  // Stage editing & reordering state (Actionables 15, 16)
+  const [editingStageId, setEditingStageId] = useState(null);
+  const [editingStageDuration, setEditingStageDuration] = useState("");
+  const [tldrExpanded, setTldrExpanded] = useState(true);
+
   const [notice, setNotice] = useState(null);
 
   const showNotice = (message, error = false) => {
@@ -153,13 +159,20 @@ export function ProjectDetailView({
 
   if (!project) return null;
 
-  // Stages from project or local fallback
-  const stages = project.stages && project.stages.length > 0 ? project.stages : localWorkflow?.stages || [];
+  // Stages from localWorkflow or project
+  const stages = localWorkflow?.stages && localWorkflow.stages.length > 0 ? localWorkflow.stages : (project.stages || []);
   const schedule = computeStageSchedule(project.startDate || project.createdAt, stages);
 
   // Telegram client queries linked to this project
   const projectQueries = decisionRequests.filter((req) => req.projectId === project.id);
   const pendingQueriesCount = projectQueries.filter((q) => !["Done", "Rejected"].includes(q.status)).length;
+
+  // TL;DR metrics
+  const blockedTasks = tasks.filter((t) => t.status === "Blocked");
+  const inProgressTasksCount = tasks.filter((t) => t.status === "In progress" || t.status === "in_progress").length;
+  const currentStage = stages[0];
+  const currentStageSchedule = schedule[0];
+  const latestQuery = projectQueries[0];
 
   // Client assignment check: required for pilot workflow start
   const isClientAssigned = Boolean(
@@ -286,6 +299,30 @@ export function ProjectDetailView({
     setNewLinkUrl("");
     setAddDriveLinkOpen(false);
     setLocalWorkflow(getProjectWorkflow(project.id, project));
+  };
+
+  // Stage duration editing (Actionable 15)
+  const handleSaveStageDuration = (stageId) => {
+    const days = parseInt(editingStageDuration, 10);
+    if (!days || days < 1) return;
+    updateStageDuration(project.id, stageId, days);
+    setEditingStageId(null);
+    setLocalWorkflow(getProjectWorkflow(project.id, project));
+    showNotice(`Updated stage duration to ${days} days.`);
+  };
+
+  // Stage reordering (Actionable 16)
+  const handleReorderStage = (stageId, direction) => {
+    reorderStage(project.id, stageId, direction);
+    setLocalWorkflow(getProjectWorkflow(project.id, project));
+    showNotice(`Stage moved ${direction}.`);
+  };
+
+  // Member Drive access control (Actionable 20)
+  const handleDriveAccessChange = (memberId, level) => {
+    setMemberDriveAccess(project.id, memberId, level);
+    setLocalWorkflow(getProjectWorkflow(project.id, project));
+    showNotice(`Updated Drive permission to ${level}.`);
   };
 
   const getAssigneeName = (assigneeId) => {
@@ -422,6 +459,103 @@ export function ProjectDetailView({
           </CardContent>
         </Card>
       )}
+
+      {/* Actionable 10: Conversation TL;DR & Executive Briefing */}
+      <Card className="border-border/60 bg-card/60 shadow-2xs overflow-hidden">
+        <div className="flex items-center justify-between border-b px-4 py-2.5 bg-muted/20">
+          <div className="flex items-center gap-2">
+            <span className="grid size-6 place-items-center rounded-md bg-primary/10 text-primary">
+              <Sparkles className="size-3.5" />
+            </span>
+            <span className="text-xs font-bold tracking-tight">Project TL;DR &amp; Executive Briefing</span>
+          </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="h-6 px-2 text-[11px] text-muted-foreground hover:text-foreground"
+            onClick={() => setTldrExpanded(!tldrExpanded)}
+          >
+            {tldrExpanded ? "Hide Briefing" : "Show Briefing"}
+            {tldrExpanded ? <ChevronUp className="size-3 ml-1" /> : <ChevronDown className="size-3 ml-1" />}
+          </Button>
+        </div>
+        {tldrExpanded && (
+          <CardContent className="p-4 space-y-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {/* Telegram Query Status */}
+              <div className="rounded-xl border bg-background/80 p-3 space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">Client Queries</span>
+                  {pendingQueriesCount > 0 ? (
+                    <Badge variant="outline" className="border-amber-300 bg-amber-50 text-amber-900 text-[10px]">
+                      {pendingQueriesCount} Pending
+                    </Badge>
+                  ) : (
+                    <Badge variant="outline" className="border-emerald-300 bg-emerald-50 text-emerald-800 text-[10px]">
+                      Up to date
+                    </Badge>
+                  )}
+                </div>
+                <p className="text-xs font-medium text-foreground">
+                  {pendingQueriesCount > 0
+                    ? `${pendingQueriesCount} query awaiting team discussion or reply to Telegram.`
+                    : "No unresolved client inquiries."}
+                </p>
+                {latestQuery && (
+                  <p className="text-[11px] text-muted-foreground line-clamp-1 italic">
+                    Latest: &ldquo;{latestQuery.originalMessage || latestQuery.context}&rdquo;
+                  </p>
+                )}
+              </div>
+
+              {/* Tasks & Blockers Status */}
+              <div className="rounded-xl border bg-background/80 p-3 space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">Tasks &amp; Blockers</span>
+                  {blockedTasks.length > 0 ? (
+                    <Badge variant="destructive" className="text-[10px]">
+                      {blockedTasks.length} Blocked
+                    </Badge>
+                  ) : (
+                    <Badge variant="outline" className="text-[10px] text-muted-foreground">
+                      {inProgressTasksCount} Active
+                    </Badge>
+                  )}
+                </div>
+                <p className="text-xs font-medium text-foreground">
+                  {blockedTasks.length > 0
+                    ? `${blockedTasks.length} task flagged as blocked!`
+                    : `${inProgressTasksCount} active deliverables, ${completedTasksCount} done (${progressPercent}%).`}
+                </p>
+                {blockedTasks.length > 0 && (
+                  <p className="text-[11px] text-destructive line-clamp-1">
+                    Blocked: {blockedTasks[0].title}
+                  </p>
+                )}
+              </div>
+
+              {/* Active Stage & Next Milestone */}
+              <div className="rounded-xl border bg-background/80 p-3 space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">Stage &amp; Milestone</span>
+                  <Badge variant="secondary" className="text-[10px]">
+                    {currentStage ? currentStage.name : "Setup"}
+                  </Badge>
+                </div>
+                <p className="text-xs font-medium text-foreground">
+                  {currentStage
+                    ? `Current pipeline: ${currentStage.name}${currentStageSchedule?.endDate ? ` (Target: ${currentStageSchedule.endLabel})` : ""}`
+                    : "Assign client to start workflow pipeline."}
+                </p>
+                <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+                  <Clock className="size-3 text-primary" />
+                  <span>{stages.length} workflow stages scheduled</span>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        )}
+      </Card>
 
       {/* Tabs System */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
@@ -681,20 +815,82 @@ export function ProjectDetailView({
 
           {stages.length > 0 ? (
             <div className="space-y-3">
-              {stages.map((st, idx) => (
-                <div key={st.id || idx} className="rounded-xl border bg-card p-4 space-y-2">
-                  <div className="flex items-center justify-between">
+              {stages.map((st, idx) => {
+                const stSchedule = schedule[idx];
+                return (
+                <div key={st.id || idx} className="rounded-xl border bg-card p-4 space-y-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                     <div className="flex items-center gap-2">
                       <span className="grid size-6 place-items-center rounded-full bg-primary/10 text-primary text-xs font-bold">
                         {idx + 1}
                       </span>
                       <h4 className="font-semibold text-sm">{st.name}</h4>
                     </div>
-                    <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                      <span>Duration: {st.durationDays} day{st.durationDays === 1 ? "" : "s"}</span>
-                      {st.deadline && (
-                        <span className="font-mono bg-muted/50 px-2 py-0.5 rounded">
-                          Due: {st.deadline}
+
+                    <div className="flex flex-wrap items-center gap-2.5">
+                      {/* Actionable 15: Editable Stage Duration */}
+                      {editingStageId === st.id ? (
+                        <div className="flex items-center gap-1.5 rounded-lg border bg-muted/40 px-2 py-1">
+                          <span className="text-[11px] text-muted-foreground font-medium">Days:</span>
+                          <Input
+                            type="number"
+                            min="1"
+                            max="365"
+                            value={editingStageDuration}
+                            onChange={(e) => setEditingStageDuration(e.target.value)}
+                            className="h-6 w-14 text-xs text-center p-0.5"
+                            autoFocus
+                          />
+                          <Button size="icon-sm" className="h-6 w-6" onClick={() => handleSaveStageDuration(st.id)}>
+                            <Check className="size-3" />
+                          </Button>
+                          <Button size="icon-sm" variant="ghost" className="h-6 w-6" onClick={() => setEditingStageId(null)}>
+                            <X className="size-3" />
+                          </Button>
+                        </div>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setEditingStageId(st.id);
+                            setEditingStageDuration(String(st.durationDays || 7));
+                          }}
+                          className="flex items-center gap-1 rounded-md border border-dashed px-2 py-1 text-xs font-medium text-muted-foreground hover:border-primary hover:text-foreground transition-colors"
+                          title="Click to adjust stage duration"
+                        >
+                          <span>{st.durationDays} day{st.durationDays === 1 ? "" : "s"}</span>
+                          <span className="text-[10px] text-primary">✎</span>
+                        </button>
+                      )}
+
+                      {/* Actionable 16: Stage Reordering */}
+                      <div className="flex items-center rounded-md border bg-muted/20">
+                        <Button
+                          variant="ghost"
+                          size="icon-sm"
+                          className="h-6 w-6 rounded-none p-0 text-muted-foreground hover:text-foreground disabled:opacity-30"
+                          disabled={idx === 0}
+                          onClick={() => handleReorderStage(st.id, "up")}
+                          title="Move stage earlier"
+                        >
+                          <ChevronUp className="size-3.5" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon-sm"
+                          className="h-6 w-6 rounded-none p-0 text-muted-foreground hover:text-foreground disabled:opacity-30"
+                          disabled={idx === stages.length - 1}
+                          onClick={() => handleReorderStage(st.id, "down")}
+                          title="Move stage later"
+                        >
+                          <ChevronDown className="size-3.5" />
+                        </Button>
+                      </div>
+
+                      {/* Actionable 17: Scheduled Timeline */}
+                      {stSchedule && (
+                        <span className="font-mono text-xs bg-muted/60 px-2 py-1 rounded text-muted-foreground">
+                          {stSchedule.startLabel} – {stSchedule.endLabel}
                         </span>
                       )}
                     </div>
@@ -713,7 +909,8 @@ export function ProjectDetailView({
                     ))}
                   </div>
                 </div>
-              ))}
+              );
+            })}
             </div>
           ) : (
             <Card>
@@ -882,8 +1079,13 @@ export function ProjectDetailView({
 
           <div className="space-y-2.5">
             {project.members && project.members.length > 0 ? (
-              project.members.map((member, idx) => (
-                <Card key={member.id || member.employeeId || idx}>
+              project.members.map((member, idx) => {
+                const memberId = member.employeeId || member.id;
+                const driveAccess = localWorkflow?.memberAccess?.[memberId]?.driveAccess || "viewer";
+                const memberTasksCount = tasks.filter((t) => t.assigneeId === memberId).length;
+
+                return (
+                <Card key={memberId || idx}>
                   <CardContent className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
                       <Avatar className="size-9">
@@ -895,24 +1097,44 @@ export function ProjectDetailView({
                         <p className="text-xs font-semibold text-foreground">{member.name}</p>
                         <p className="text-[11px] text-muted-foreground">{member.designation || member.role || "Member"}</p>
                       </div>
-                      <Badge variant="secondary" className="text-xs ml-2">
+                      <Badge variant="secondary" className="text-xs ml-1">
                         {member.role || "Designer"}
                       </Badge>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-wrap items-center gap-3 pt-2 sm:pt-0 border-t sm:border-t-0">
+                      {/* Actionable 20: Display & Toggle Project & Drive Permissions */}
+                      <div className="flex items-center gap-1.5">
+                        <FolderKanban className="size-3.5 text-muted-foreground" />
+                        <span className="text-[11px] font-medium text-muted-foreground">Drive:</span>
+                        <NativeSelect
+                          value={driveAccess}
+                          onChange={(e) => handleDriveAccessChange(memberId, e.target.value)}
+                          className="h-7 text-xs w-28"
+                        >
+                          <option value="viewer">Viewer</option>
+                          <option value="editor">Editor</option>
+                          <option value="none">No Access</option>
+                        </NativeSelect>
+                      </div>
+
+                      <span className="text-xs text-muted-foreground">
+                        {memberTasksCount} task{memberTasksCount === 1 ? "" : "s"}
+                      </span>
+
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="text-destructive hover:bg-destructive/10 text-xs"
+                        className="text-destructive hover:bg-destructive/10 text-xs h-7"
                         onClick={() => handleRemoveMember(member)}
                       >
-                        <Trash2 className="size-3.5 mr-1" /> Remove from Project
+                        <Trash2 className="size-3.5 mr-1" /> Remove
                       </Button>
                     </div>
                   </CardContent>
                 </Card>
-              ))
+              );
+            })
             ) : (
               <Card>
                 <CardContent className="py-10 text-center text-xs text-muted-foreground">
