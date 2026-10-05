@@ -303,7 +303,7 @@ export function ClientQueryCard({
                           <img
                             src={mediaUrl}
                             alt={att.fileName || `Attachment ${idx + 1}`}
-                            className="max-h-56 max-w-sm rounded-xl object-contain transition-transform group-hover:scale-102"
+                            className="max-h-56 max-w-full rounded-xl object-contain transition-transform group-hover:scale-102"
                             onError={(e) => {
                               // If image loading fails, replace with fallback box
                               e.currentTarget.style.display = "none";
@@ -592,7 +592,7 @@ export function ClientQueryCard({
               />
             </label>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <label className="grid gap-1.5 text-xs font-semibold">
                 Project Stage
                 <NativeSelect

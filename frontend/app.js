@@ -17458,16 +17458,7 @@ function useControllableState({ prop, defaultProp, onChange = /* @__PURE__ */ __
 		onChange
 	});
 	const isControlled = prop !== void 0;
-	const value = isControlled ? prop : uncontrolledProp;
-	{
-		const isControlledRef = import_react.useRef(prop !== void 0);
-		import_react.useEffect(() => {
-			const wasControlled = isControlledRef.current;
-			if (wasControlled !== isControlled) console.warn(`${caller} is changing from ${wasControlled ? "controlled" : "uncontrolled"} to ${isControlled ? "controlled" : "uncontrolled"}. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.`);
-			isControlledRef.current = isControlled;
-		}, [isControlled, caller]);
-	}
-	return [value, import_react.useCallback((nextValue) => {
+	return [isControlled ? prop : uncontrolledProp, import_react.useCallback((nextValue) => {
 		if (isControlled) {
 			const value2 = isFunction(nextValue) ? nextValue(prop) : nextValue;
 			if (value2 !== prop) onChangeRef.current?.(value2);
@@ -17509,14 +17500,6 @@ function useControllableStateReducer(reducer, userArgs, initialArg, init) {
 	const { prop: controlledState, defaultProp, onChange: onChangeProp, caller } = userArgs;
 	const isControlled = controlledState !== void 0;
 	const onChange = useEffectEvent(onChangeProp);
-	{
-		const isControlledRef = import_react.useRef(controlledState !== void 0);
-		import_react.useEffect(() => {
-			const wasControlled = isControlledRef.current;
-			if (wasControlled !== isControlled) console.warn(`${caller} is changing from ${wasControlled ? "controlled" : "uncontrolled"} to ${isControlled ? "controlled" : "uncontrolled"}. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.`);
-			isControlledRef.current = isControlled;
-		}, [isControlled, caller]);
-	}
 	const args = [{
 		...initialArg,
 		state: defaultProp
@@ -19408,29 +19391,10 @@ function getImageLoadingStatus(image) {
 }
 __name$4(getImageLoadingStatus, "getImageLoadingStatus");
 function useImageCount() {
-	let state = STATIC_IMAGE_COUNT_STATE;
-	{
-		state = import_react.useState(0);
-		const [imageCount] = state;
-		const hasWarnedRef = import_react.useRef(false);
-		import_react.useEffect(() => {
-			if (imageCount > 1 && !hasWarnedRef.current) {
-				hasWarnedRef.current = true;
-				console.warn("Avatar: Only one `Avatar.Image` component should be rendered per `Avatar.Root`, but multiple were detected. This will lead to unexpected behavior.");
-			}
-		}, [imageCount]);
-	}
-	return state;
+	return STATIC_IMAGE_COUNT_STATE;
 }
 __name$4(useImageCount, "useImageCount");
-function useUpdateImageCount(setImageCount) {
-	import_react.useEffect(() => {
-		setImageCount((imageCount) => imageCount + 1);
-		return () => {
-			setImageCount((imageCount) => imageCount - 1);
-		};
-	}, [setImageCount]);
-}
+function useUpdateImageCount(setImageCount) {}
 __name$4(useUpdateImageCount, "useUpdateImageCount");
 //#endregion
 //#region node_modules/@radix-ui/react-use-is-hydrated/dist/index.mjs
@@ -19966,7 +19930,7 @@ function DialogContent({ className, children, showCloseButton = true, ...props }
 		"data-slot": "dialog-portal",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogOverlay, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent$1, {
 			"data-slot": "dialog-content",
-			className: cn("fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-150 outline-none data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0 sm:max-w-lg", className),
+			className: cn("fixed top-[50%] left-[50%] z-50 grid w-[calc(100%-2rem)] max-w-lg max-h-[calc(100dvh-2rem)] overflow-y-auto translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-150 outline-none data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0 sm:max-w-lg", className),
 			...props,
 			children: [children, showCloseButton && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogClose, {
 				"data-slot": "dialog-close",
@@ -19982,7 +19946,7 @@ function DialogContent({ className, children, showCloseButton = true, ...props }
 function DialogHeader({ className, ...props }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		"data-slot": "dialog-header",
-		className: cn("flex flex-col gap-2 text-center sm:text-left", className),
+		className: cn("flex min-w-0 flex-col gap-2 pr-6 text-left", className),
 		...props
 	});
 }
@@ -22945,7 +22909,7 @@ function Tabs({ className, orientation = "horizontal", ...props }) {
 		...props
 	});
 }
-var tabsListVariants = cva("group/tabs-list inline-flex w-fit items-center justify-center rounded-lg p-[3px] text-muted-foreground group-data-[orientation=horizontal]/tabs:h-9 group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col data-[variant=line]:rounded-none", {
+var tabsListVariants = cva("group/tabs-list inline-flex w-fit items-center justify-center rounded-lg p-[3px] text-muted-foreground h-9 group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col data-[variant=line]:rounded-none", {
 	variants: { variant: {
 		default: "bg-muted",
 		line: "gap-1 bg-transparent"
@@ -22963,7 +22927,7 @@ function TabsList({ className, variant = "default", ...props }) {
 function TabsTrigger({ className, ...props }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trigger, {
 		"data-slot": "tabs-trigger",
-		className: cn("relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium whitespace-nowrap text-foreground/60 transition-all group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:justify-start hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 group-data-[variant=default]/tabs-list:data-[state=active]:shadow-sm group-data-[variant=line]/tabs-list:data-[state=active]:shadow-none dark:text-muted-foreground dark:hover:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4", "group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:border-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent", "data-[state=active]:bg-background data-[state=active]:text-foreground dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 dark:data-[state=active]:text-foreground", "after:absolute after:bg-foreground after:opacity-0 after:transition-opacity group-data-[orientation=horizontal]/tabs:after:inset-x-0 group-data-[orientation=horizontal]/tabs:after:bottom-[-5px] group-data-[orientation=horizontal]/tabs:after:h-0.5 group-data-[orientation=vertical]/tabs:after:inset-y-0 group-data-[orientation=vertical]/tabs:after:-right-1 group-data-[orientation=vertical]/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-[state=active]:after:opacity-100", className),
+		className: cn("relative inline-flex min-h-8 flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium whitespace-nowrap text-foreground/60 transition-all group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:justify-start hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 group-data-[variant=default]/tabs-list:data-[state=active]:shadow-sm group-data-[variant=line]/tabs-list:data-[state=active]:shadow-none dark:text-muted-foreground dark:hover:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4", "group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:border-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent", "data-[state=active]:bg-background data-[state=active]:text-foreground dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 dark:data-[state=active]:text-foreground", "after:absolute after:bg-foreground after:opacity-0 after:transition-opacity group-data-[orientation=horizontal]/tabs:after:inset-x-0 group-data-[orientation=horizontal]/tabs:after:bottom-[-5px] group-data-[orientation=horizontal]/tabs:after:h-0.5 group-data-[orientation=vertical]/tabs:after:inset-y-0 group-data-[orientation=vertical]/tabs:after:-right-1 group-data-[orientation=vertical]/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-[state=active]:after:opacity-100", className),
 		...props
 	});
 }
@@ -23013,8 +22977,8 @@ async function request(url, options = {}) {
 	if (!response.ok) {
 		const errorMsg = data.error || data.message || `Request failed with status ${response.status}`;
 		if (response.status === 401) {
-			if (typeof window !== "undefined") window.dispatchEvent(new CustomEvent("studio-iksha:unauthorized", { detail: { url } }));
-			throw new ApiError("Session expired or unauthorized. Please sign in again.", 401, data);
+			if (!url.endsWith("/login") && typeof window !== "undefined") window.dispatchEvent(new CustomEvent("studio-iksha:unauthorized", { detail: { url } }));
+			throw new ApiError(errorMsg, 401, data);
 		}
 		if (response.status === 403) throw new ApiError(errorMsg || "Restricted action: You do not have permission to perform this update.", 403, data);
 		if (response.status === 404) throw new ApiError(errorMsg || "Record or access is no longer available in your workspace.", 404, data);
@@ -26977,6 +26941,10 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 	(0, import_react.useEffect)(() => {
 		if (open && initialTask?.id) {
 			setTask(initialTask);
+			setMessages([]);
+			setCommentText("");
+			setAttachmentUrl("");
+			setShowAttachmentInput(false);
 			setEditTitle(initialTask.title || "");
 			setEditDesc(initialTask.description || "");
 			setEditStatus(initialTask.status || "Open");
@@ -26994,8 +26962,8 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 			const list = (await fetchTaskMessages(taskId, "", 100, namespace)).messages || [];
 			setMessages(list);
 			if (list.length > 0) markTaskRead(taskId, list[list.length - 1].id, namespace).catch(() => {});
-		} catch {
-			setMessages([]);
+		} catch (problem) {
+			setError(problem.message || "Could not refresh this thread. Please retry.");
 		} finally {
 			setLoadingMessages(false);
 		}
@@ -27092,10 +27060,10 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 		open,
 		onOpenChange,
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
-			className: "max-h-[92dvh] w-full max-w-2xl overflow-hidden p-0 sm:rounded-2xl",
+			className: "flex max-h-[92dvh] max-w-2xl flex-col gap-0 overflow-hidden p-0 sm:max-w-2xl sm:rounded-2xl",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					className: "border-b bg-card px-5 py-4",
+					className: "shrink-0 border-b bg-card px-5 py-4 pr-12",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex items-start justify-between gap-3",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -27119,7 +27087,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 									})
 								]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, {
-								className: "mt-2 text-lg font-semibold tracking-tight text-foreground",
+								className: "mt-2 break-words text-lg font-semibold tracking-tight text-foreground [overflow-wrap:anywhere]",
 								children: task.title
 							})]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
@@ -27142,7 +27110,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: error })]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "chat-scroll max-h-[calc(92dvh-200px)] space-y-4 overflow-y-auto p-5",
+					className: "chat-scroll min-h-0 flex-1 space-y-4 overflow-y-auto p-5",
 					children: [isEditing ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "space-y-3.5 rounded-xl border bg-muted/20 p-4",
 						children: [
@@ -27414,7 +27382,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 					})]
 				}),
 				isClosed ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex items-center justify-between gap-3 border-t bg-amber-50/70 p-3 sm:px-5 text-xs text-amber-900",
+					className: "flex shrink-0 flex-wrap items-center justify-between gap-3 border-t bg-amber-50/70 p-3 sm:px-5 text-xs text-amber-900",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 						className: "flex items-center gap-1.5",
 						children: [
@@ -27432,7 +27400,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 					})]
 				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 					onSubmit: handleSendMessage,
-					className: "space-y-2 border-t bg-muted/20 p-3 sm:px-5",
+					className: "shrink-0 space-y-2 border-t bg-muted/20 p-3 sm:px-5",
 					children: [showAttachmentInput && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex items-center gap-2",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
@@ -27468,6 +27436,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 								onChange: (e) => setCommentText(e.target.value),
 								rows: 1,
 								maxLength: 2e3,
+								"aria-label": "Task comment",
 								placeholder: "Post team update or task comment…",
 								className: "min-h-9 max-h-24 flex-1 resize-none text-xs",
 								disabled: sendingMessage
@@ -27475,6 +27444,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 								type: "submit",
 								size: "icon",
+								"aria-label": "Send task comment",
 								disabled: !commentText.trim() || sendingMessage,
 								className: "size-9 shrink-0",
 								children: sendingMessage ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-4 animate-spin" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Send, { className: "size-4" })
@@ -27746,7 +27716,7 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 													src: mediaUrl,
 													alt: att.fileName || `Attachment ${idx + 1}`,
-													className: "max-h-56 max-w-sm rounded-xl object-contain transition-transform group-hover:scale-102",
+													className: "max-h-56 max-w-full rounded-xl object-contain transition-transform group-hover:scale-102",
 													onError: (e) => {
 														e.currentTarget.style.display = "none";
 													}
@@ -27995,7 +27965,7 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "grid grid-cols-2 gap-3",
+							className: "grid grid-cols-1 gap-3 sm:grid-cols-2",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 								className: "grid gap-1.5 text-xs font-semibold",
 								children: ["Project Stage", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
@@ -28140,10 +28110,10 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 		open,
 		onOpenChange,
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
-			className: "max-h-[92dvh] w-full max-w-3xl overflow-hidden p-0 sm:rounded-2xl",
+			className: "flex max-h-[92dvh] max-w-3xl flex-col gap-0 overflow-hidden p-0 sm:max-w-3xl sm:rounded-2xl",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					className: "border-b bg-card px-6 py-4",
+					className: "shrink-0 border-b bg-card px-6 py-4 pr-12",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex items-center gap-2.5",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
@@ -28167,9 +28137,9 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0 text-amber-700" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Client assignment required: Assign a client to unlock starting this workflow." })]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "grid grid-cols-1 md:grid-cols-[270px_1fr] max-h-[calc(92dvh-170px)] overflow-hidden",
+					className: "grid min-h-0 flex-1 grid-cols-1 overflow-y-auto md:grid-cols-[270px_1fr] md:overflow-hidden",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "chat-scroll overflow-y-auto border-r bg-muted/20 p-3 space-y-2",
+						className: "chat-scroll min-w-0 md:overflow-y-auto border-r bg-muted/20 p-3 space-y-2",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 							className: "px-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground",
 							children: [
@@ -28213,7 +28183,7 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 							}, tmpl.id);
 						})]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "chat-scroll overflow-y-auto p-5 space-y-5",
+						className: "chat-scroll min-w-0 md:overflow-y-auto p-5 space-y-5",
 						children: selectedTemplate ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "flex items-center justify-between gap-2",
@@ -28315,12 +28285,12 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 					})]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex items-center justify-between border-t bg-muted/20 px-6 py-3",
+					className: "flex shrink-0 flex-col items-stretch justify-between gap-3 border-t bg-muted/20 px-6 py-3 sm:flex-row sm:items-center",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-xs text-muted-foreground",
 						children: "Starting a workflow locks the template and creates active stages and tasks."
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex gap-2",
+						className: "flex flex-wrap gap-2",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 							variant: "outline",
 							onClick: () => onOpenChange(false),
@@ -28411,7 +28381,7 @@ function getProjectWorkflow(projectId, project = null) {
 	saveStorage(`project_${projectId}`, initial);
 	return initial;
 }
-function updateProjectWorkflow(projectId, updates) {
+function updateProjectWorkflow$1(projectId, updates) {
 	const current = getProjectWorkflow(projectId);
 	if (!current) return null;
 	const updated = {
@@ -28424,60 +28394,35 @@ function updateProjectWorkflow(projectId, updates) {
 }
 function computeStageSchedule(startDateStr, stages = []) {
 	if (!stages || !stages.length) return [];
-	const base = startDateStr ? /* @__PURE__ */ new Date(`${startDateStr}T00:00:00`) : /* @__PURE__ */ new Date();
-	let currentOffsetDays = 0;
+	const parseDate = (value) => {
+		if (!value) return null;
+		const date = new Date(value);
+		return Number.isFinite(date.getTime()) ? date : null;
+	};
+	let cursor = parseDate(startDateStr) || /* @__PURE__ */ new Date();
 	return stages.map((stage) => {
-		const start = new Date(base.getTime() + currentOffsetDays * 864e5);
-		const end = new Date(start.getTime() + (stage.durationDays || 1) * 864e5);
-		currentOffsetDays += stage.durationDays || 1;
+		const start = parseDate(stage.startDate) || cursor;
+		const duration = Number(stage.durationDays);
+		const end = parseDate(stage.deadline || stage.endDate) || new Date(start.getTime() + (Number.isFinite(duration) && duration > 0 ? duration : 1) * 864e5);
+		cursor = end;
+		const label = (date) => date.toLocaleDateString(void 0, {
+			month: "short",
+			day: "numeric",
+			timeZone: "UTC"
+		});
 		return {
 			...stage,
 			startDate: start.toISOString().slice(0, 10),
 			endDate: end.toISOString().slice(0, 10),
-			startLabel: start.toLocaleDateString(void 0, {
-				month: "short",
-				day: "numeric"
-			}),
-			endLabel: end.toLocaleDateString(void 0, {
-				month: "short",
-				day: "numeric"
-			})
+			startLabel: label(start),
+			endLabel: label(end)
 		};
 	});
-}
-function updateStageDuration(projectId, stageId, newDurationDays) {
-	const current = getProjectWorkflow(projectId);
-	if (!current) return null;
-	const days = Math.max(1, parseInt(newDurationDays, 10) || 1);
-	return updateProjectWorkflow(projectId, { stages: (current.stages || []).map((s) => s.id === stageId ? {
-		...s,
-		durationDays: days
-	} : s) });
-}
-function reorderStage(projectId, stageId, direction) {
-	const current = getProjectWorkflow(projectId);
-	if (!current || !current.stages) return null;
-	const list = [...current.stages];
-	const idx = list.findIndex((s) => s.id === stageId);
-	if (idx < 0) return null;
-	if (direction === "up" && idx > 0) {
-		const temp = list[idx - 1];
-		list[idx - 1] = list[idx];
-		list[idx] = temp;
-	} else if (direction === "down" && idx < list.length - 1) {
-		const temp = list[idx + 1];
-		list[idx + 1] = list[idx];
-		list[idx] = temp;
-	}
-	return updateProjectWorkflow(projectId, { stages: list.map((item, index) => ({
-		...item,
-		order: index + 1
-	})) });
 }
 function updateDriveSettings(projectId, folderUrl, links = null) {
 	const current = getProjectWorkflow(projectId);
 	if (!current) return null;
-	return updateProjectWorkflow(projectId, { drive: {
+	return updateProjectWorkflow$1(projectId, { drive: {
 		...current.drive,
 		folderUrl: folderUrl !== void 0 ? folderUrl : current.drive?.folderUrl || "",
 		links: links || current.drive?.links || []
@@ -28499,7 +28444,7 @@ function addDriveLink(projectId, name, category, url) {
 function setMemberDriveAccess(projectId, memberId, level) {
 	const current = getProjectWorkflow(projectId);
 	if (!current) return null;
-	return updateProjectWorkflow(projectId, { memberAccess: {
+	return updateProjectWorkflow$1(projectId, { memberAccess: {
 		...current.memberAccess || {},
 		[memberId]: {
 			driveAccess: level,
@@ -28529,7 +28474,7 @@ var taskStatusColors$1 = {
 	"completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
 	"cancelled": "bg-red-50 text-red-700 border-red-200"
 };
-function ProjectDetailView({ project, allProjects = [], employees = [], decisionRequests = [], onBackToDirectory, onProjectUpdated, onOpenInviteModal, onOpenTrashModal, onOpenFactsModal, onOpenMemberModal }) {
+function ProjectDetailView({ project, allProjects = [], employees = [], decisionRequests = [], onBackToDirectory, onProjectUpdated, onQueriesUpdated, onOpenInviteModal, onOpenTrashModal, onOpenFactsModal, onOpenMemberModal }) {
 	const [localWorkflow, setLocalWorkflow] = (0, import_react.useState)(() => getProjectWorkflow(project?.id, project));
 	const [tasks, setTasks] = (0, import_react.useState)([]);
 	const [loadingTasks, setLoadingTasks] = (0, import_react.useState)(false);
@@ -28558,8 +28503,6 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	const [newTaskAssigneeId, setNewTaskAssigneeId] = (0, import_react.useState)("founder");
 	const [newTaskDeadline, setNewTaskDeadline] = (0, import_react.useState)("");
 	const [newTaskStatus, setNewTaskStatus] = (0, import_react.useState)("Open");
-	const [editingStageId, setEditingStageId] = (0, import_react.useState)(null);
-	const [editingStageDuration, setEditingStageDuration] = (0, import_react.useState)("");
 	const [tldrExpanded, setTldrExpanded] = (0, import_react.useState)(true);
 	const [notice, setNotice] = (0, import_react.useState)(null);
 	const showNotice = (message, error = false) => {
@@ -28569,9 +28512,9 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 		});
 		setTimeout(() => setNotice(null), 3500);
 	};
-	const loadProjectTasks = (0, import_react.useCallback)(async () => {
+	const loadProjectTasks = (0, import_react.useCallback)(async ({ background = false } = {}) => {
 		if (!project?.id) return;
-		setLoadingTasks(true);
+		if (!background) setLoadingTasks(true);
 		try {
 			const wsData = await fetchProjectWorkspace(project.id, "founder").catch(() => null);
 			if (wsData && Array.isArray(wsData.tasks)) {
@@ -28583,15 +28526,13 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 				setTasks(tData.tasks);
 				return;
 			}
-			const localData = getProjectWorkflow(project.id, project);
-			setTasks(localData?.tasks || []);
+			showNotice("Could not refresh tasks. Please retry; your last loaded tasks are still shown.", true);
 		} catch {
-			const localData = getProjectWorkflow(project.id, project);
-			setTasks(localData?.tasks || []);
+			showNotice("Could not refresh tasks. Please retry.", true);
 		} finally {
 			setLoadingTasks(false);
 		}
-	}, [project?.id, project]);
+	}, [project?.id]);
 	(0, import_react.useEffect)(() => {
 		if (project?.id) {
 			const localData = getProjectWorkflow(project.id, project);
@@ -28601,22 +28542,24 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 			setClientTelegramIdInput(project.clientTelegramId || "");
 			loadProjectTasks();
 		}
-	}, [
-		project?.id,
-		project,
-		loadProjectTasks
-	]);
+	}, [project?.id, loadProjectTasks]);
+	(0, import_react.useEffect)(() => {
+		const timer = setInterval(() => {
+			if (document.visibilityState === "visible") loadProjectTasks({ background: true });
+		}, 8e3);
+		return () => clearInterval(timer);
+	}, [loadProjectTasks]);
 	if (!project) return null;
-	const stages = localWorkflow?.stages && localWorkflow.stages.length > 0 ? localWorkflow.stages : project.stages || [];
+	const stages = project.stages || [];
 	const schedule = computeStageSchedule(project.startDate || project.createdAt, stages);
 	const projectQueries = decisionRequests.filter((req) => req.projectId === project.id);
 	const pendingQueriesCount = projectQueries.filter((q) => !["Done", "Rejected"].includes(q.status)).length;
 	const blockedTasks = tasks.filter((t) => t.status === "Blocked");
 	const inProgressTasksCount = tasks.filter((t) => t.status === "In progress" || t.status === "in_progress").length;
-	const currentStage = stages[0];
-	const currentStageSchedule = schedule[0];
+	const currentStage = stages.find((stage) => stage.name === project.currentStage) || stages[0];
+	const currentStageSchedule = schedule.find((stage) => stage.id === currentStage?.id);
 	const latestQuery = projectQueries[0];
-	const isClientAssigned = Boolean(project.clientName && project.clientName.trim() !== "" && project.clientName !== "Unassigned Client" && !project.telegramSetupPending);
+	const isClientAssigned = Boolean(project.clientName && project.clientName.trim() !== "" && !["Unassigned Client", "Client pending"].includes(project.clientName) && !project.telegramSetupPending);
 	const hasWorkflowStarted = Boolean(project.workflowStartedAt || project.workflowId || stages.length > 0 && project.status !== "Setup");
 	const filteredTasks = tasks.filter((t) => {
 		if (taskStatusFilter === "open" && (t.status === "Completed" || t.status === "completed")) return false;
@@ -28629,7 +28572,8 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 		return true;
 	});
 	const completedTasksCount = tasks.filter((t) => t.status === "Completed" || t.status === "completed").length;
-	const progressPercent = tasks.length ? Math.round(completedTasksCount / tasks.length * 100) : project.progress || 0;
+	const activeTaskCount = tasks.filter((task) => !["Cancelled", "cancelled"].includes(task.status)).length;
+	const progressPercent = activeTaskCount ? Math.round(completedTasksCount / activeTaskCount * 100) : 0;
 	const handleAssignClientSubmit = async (e) => {
 		e.preventDefault();
 		if (!clientNameInput.trim() || assigningClient) return;
@@ -28713,19 +28657,6 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 		setAddDriveLinkOpen(false);
 		setLocalWorkflow(getProjectWorkflow(project.id, project));
 	};
-	const handleSaveStageDuration = (stageId) => {
-		const days = parseInt(editingStageDuration, 10);
-		if (!days || days < 1) return;
-		updateStageDuration(project.id, stageId, days);
-		setEditingStageId(null);
-		setLocalWorkflow(getProjectWorkflow(project.id, project));
-		showNotice(`Updated stage duration to ${days} days.`);
-	};
-	const handleReorderStage = (stageId, direction) => {
-		reorderStage(project.id, stageId, direction);
-		setLocalWorkflow(getProjectWorkflow(project.id, project));
-		showNotice(`Stage moved ${direction}.`);
-	};
 	const handleDriveAccessChange = (memberId, level) => {
 		setMemberDriveAccess(project.id, memberId, level);
 		setLocalWorkflow(getProjectWorkflow(project.id, project));
@@ -28748,7 +28679,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex flex-col gap-3 rounded-2xl border bg-card p-4 sm:p-5 shadow-xs",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex items-center justify-between gap-3",
+					className: "flex flex-wrap items-center justify-between gap-3",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 						variant: "ghost",
 						size: "sm",
@@ -28774,7 +28705,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 						className: "flex flex-wrap items-center gap-2.5",
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-								className: "text-2xl font-bold tracking-tight sm:text-3xl text-foreground",
+								className: "min-w-0 break-words text-2xl font-bold tracking-tight sm:text-3xl text-foreground [overflow-wrap:anywhere]",
 								children: project.name
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
@@ -29160,7 +29091,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Task Completion Progress" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
 										completedTasksCount,
 										" of ",
-										tasks.length,
+										activeTaskCount,
 										" completed (",
 										progressPercent,
 										"%)"
@@ -29328,83 +29259,21 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 											})]
 										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 											className: "flex flex-wrap items-center gap-2.5",
-											children: [
-												editingStageId === st.id ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-													className: "flex items-center gap-1.5 rounded-lg border bg-muted/40 px-2 py-1",
-													children: [
-														/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-															className: "text-[11px] text-muted-foreground font-medium",
-															children: "Days:"
-														}),
-														/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-															type: "number",
-															min: "1",
-															max: "365",
-															value: editingStageDuration,
-															onChange: (e) => setEditingStageDuration(e.target.value),
-															className: "h-6 w-14 text-xs text-center p-0.5",
-															autoFocus: true
-														}),
-														/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-															size: "icon-sm",
-															className: "h-6 w-6",
-															onClick: () => handleSaveStageDuration(st.id),
-															children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3" })
-														}),
-														/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-															size: "icon-sm",
-															variant: "ghost",
-															className: "h-6 w-6",
-															onClick: () => setEditingStageId(null),
-															children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(X, { className: "size-3" })
-														})
-													]
-												}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-													type: "button",
-													onClick: () => {
-														setEditingStageId(st.id);
-														setEditingStageDuration(String(st.durationDays || 7));
-													},
-													className: "flex items-center gap-1 rounded-md border border-dashed px-2 py-1 text-xs font-medium text-muted-foreground hover:border-primary hover:text-foreground transition-colors",
-													title: "Click to adjust stage duration",
-													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
-														st.durationDays,
-														" day",
-														st.durationDays === 1 ? "" : "s"
-													] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-														className: "text-[10px] text-primary",
-														children: "✎"
-													})]
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-													className: "flex items-center rounded-md border bg-muted/20",
-													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-														variant: "ghost",
-														size: "icon-sm",
-														className: "h-6 w-6 rounded-none p-0 text-muted-foreground hover:text-foreground disabled:opacity-30",
-														disabled: idx === 0,
-														onClick: () => handleReorderStage(st.id, "up"),
-														title: "Move stage earlier",
-														children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronUp, { className: "size-3.5" })
-													}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-														variant: "ghost",
-														size: "icon-sm",
-														className: "h-6 w-6 rounded-none p-0 text-muted-foreground hover:text-foreground disabled:opacity-30",
-														disabled: idx === stages.length - 1,
-														onClick: () => handleReorderStage(st.id, "down"),
-														title: "Move stage later",
-														children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, { className: "size-3.5" })
-													})]
-												}),
-												stSchedule && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-													className: "font-mono text-xs bg-muted/60 px-2 py-1 rounded text-muted-foreground",
-													children: [
-														stSchedule.startLabel,
-														" – ",
-														stSchedule.endLabel
-													]
-												})
-											]
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+												className: "rounded-md border px-2 py-1 text-xs text-muted-foreground",
+												children: [
+													st.durationDays,
+													" day",
+													st.durationDays === 1 ? "" : "s"
+												]
+											}), stSchedule && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+												className: "font-mono text-xs bg-muted/60 px-2 py-1 rounded text-muted-foreground",
+												children: [
+													stSchedule.startLabel,
+													" – ",
+													stSchedule.endLabel
+												]
+											})]
 										})]
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 										className: "pl-8 space-y-1",
@@ -29458,6 +29327,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 								projectMembers: project.members || [],
 								isFounder: true,
 								onQueryChanged: () => {
+									if (onQueriesUpdated) onQueriesUpdated();
 									if (onProjectUpdated) onProjectUpdated();
 									loadProjectTasks();
 								},
@@ -29999,14 +29869,14 @@ function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectPr
 	const [search, setSearch] = (0, import_react.useState)("");
 	const [filter, setFilter] = (0, import_react.useState)("all");
 	const ongoingCount = projects.filter((p) => p.status !== "Completed").length;
-	const needsSetupCount = projects.filter((p) => p.telegramSetupPending || !p.clientName || p.clientName === "Unassigned Client").length;
+	const needsSetupCount = projects.filter((p) => p.telegramSetupPending || !p.clientName || ["Unassigned Client", "Client pending"].includes(p.clientName)).length;
 	const atRiskCount = projects.filter((p) => p.status === "At risk").length;
 	const completedCount = projects.filter((p) => p.status === "Completed").length;
 	const filtered = projects.filter((project) => {
 		if (filter === "ongoing" && project.status === "Completed") return false;
 		if (filter === "completed" && project.status !== "Completed") return false;
 		if (filter === "at_risk" && project.status !== "At risk") return false;
-		if (filter === "needs_setup" && !project.telegramSetupPending && project.clientName && project.clientName !== "Unassigned Client") return false;
+		if (filter === "needs_setup" && !project.telegramSetupPending && project.clientName && !["Unassigned Client", "Client pending"].includes(project.clientName)) return false;
 		if (search.trim()) {
 			const q = search.toLowerCase();
 			return project.name?.toLowerCase().includes(q) || (project.clientName || "").toLowerCase().includes(q) || (project.location || "").toLowerCase().includes(q) || (project.phase || "").toLowerCase().includes(q);
@@ -30106,11 +29976,10 @@ function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectPr
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "grid gap-4 sm:grid-cols-2 lg:grid-cols-3",
 				children: filtered.length ? filtered.map((project) => {
-					const projectTasks = getProjectWorkflow(project.id, project)?.tasks || [];
-					const doneTasks = projectTasks.filter((t) => t.status === "completed").length;
-					const progress = projectTasks.length ? Math.round(doneTasks / projectTasks.length * 100) : 0;
-					const pendingQueries = decisionRequests.filter((q) => q.projectId === project.id && q.status !== "Done").length;
-					const isMissingClient = !project.clientName || project.clientName === "Unassigned Client" || project.telegramSetupPending;
+					const taskCount = project.taskCount || 0;
+					const progress = project.progress || 0;
+					const pendingQueries = decisionRequests.filter((q) => q.projectId === project.id && !["Done", "Rejected"].includes(q.status)).length;
+					const isMissingClient = !project.clientName || ["Unassigned Client", "Client pending"].includes(project.clientName) || project.telegramSetupPending;
 					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
 						onClick: () => onSelectProject(project.id),
 						className: `group cursor-pointer overflow-hidden transition-all duration-200 hover:border-primary/50 hover:shadow-md ${isMissingClient ? "border-amber-300/80 bg-amber-50/20" : ""}`,
@@ -30154,16 +30023,11 @@ function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectPr
 									className: "rounded-lg bg-amber-100/70 border border-amber-200 p-2 text-[11px] text-amber-900 flex items-center gap-1.5",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-3.5 shrink-0 text-amber-700" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Setup needed: Client role must be assigned to start." })]
 								}),
-								projectTasks.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								taskCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "space-y-1",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "flex items-center justify-between text-[11px] text-muted-foreground",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
-											"Tasks: ",
-											doneTasks,
-											"/",
-											projectTasks.length
-										] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [progress, "%"] })]
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: ["Tasks: ", taskCount] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [progress, "%"] })]
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 										className: "h-1.5 w-full overflow-hidden rounded-full bg-muted",
 										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
@@ -30215,7 +30079,12 @@ var api$1 = async (url, options = {}) => {
 		}
 	});
 	const data = await response.json().catch(() => ({}));
-	if (!response.ok) throw new Error(data.error || "Request failed.");
+	if (!response.ok) {
+		const error = new Error(data.error || "Request failed.");
+		error.status = response.status;
+		if (response.status === 401 && !url.endsWith("/login")) window.dispatchEvent(new CustomEvent("studio-iksha:unauthorized", { detail: { url } }));
+		throw error;
+	}
 	return data;
 };
 var post$1 = (url, data = {}) => api$1(url, {
@@ -30305,7 +30174,7 @@ function FounderApp() {
 	const [busy, setBusy] = (0, import_react.useState)(false);
 	const selectedProject = projects.find((p) => p.id === selectedProjectId) || null;
 	const filteredProjects = projects.filter((project) => `${project.name} ${project.clientName} ${project.location || ""}`.toLowerCase().includes(searchQuery.toLowerCase()));
-	const pendingDecisionsCount = decisionRequests.filter((r) => r.status !== "Done").length;
+	const pendingDecisionsCount = decisionRequests.filter((r) => !["Done", "Rejected"].includes(r.status)).length;
 	const pendingGroupsCount = projects.filter((p) => p.telegramSetupPending).length;
 	const showNotice = (message, error = false) => {
 		setNotice({
@@ -30319,17 +30188,20 @@ function FounderApp() {
 			const data = await api$1("/api/founder/projects");
 			setProjects(data.projects || []);
 			setAuthState("signed-in");
-		} catch {
-			setAuthState("signed-out");
+		} catch (error) {
+			if (error.status === 401) setAuthState("signed-out");
+			else {
+				setLoginError("Could not connect to the workspace. Please retry.");
+				setAuthState((current) => current === "checking" ? "signed-out" : current);
+				showNotice("Could not refresh projects. Please retry.", true);
+			}
 		}
 	};
 	const loadDecisionRequests = async () => {
 		try {
 			const data = await api$1("/api/founder/decision-requests");
 			setDecisionRequests(data.requests || []);
-		} catch {
-			setDecisionRequests([]);
-		}
+		} catch {}
 	};
 	const loadActivities = async () => {
 		try {
@@ -30907,11 +30779,12 @@ function FounderApp() {
 						decisionRequests,
 						onBackToDirectory: () => setViewMode("directory"),
 						onProjectUpdated: loadProjects,
+						onQueriesUpdated: loadDecisionRequests,
 						onOpenInviteModal: handleInvite,
 						onOpenTrashModal: () => setTrashConfirmOpen(true),
 						onOpenFactsModal: () => setFactsOpen(true),
 						onOpenMemberModal: () => setMemberOpen(true)
-					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+					}, selectedProject.id) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
 						className: "flex flex-col items-center gap-4 py-16 text-center",
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "size-10 text-primary" }),
@@ -31548,29 +31421,36 @@ function EmployeeApp() {
 			setProjects(data.projects || []);
 			setSelectedId((current) => (data.projects || []).some((project) => project.id === current) ? current : data.projects?.[0]?.id || null);
 			setAuth("signed-in");
-		} catch {
-			setAuth("signed-out");
+		} catch (problem) {
+			if (problem.status === 401) setAuth("signed-out");
+			else {
+				setError("Could not connect to the workspace. Please retry.");
+				setAuth((current) => current === "checking" ? "signed-out" : current);
+			}
 		}
 	};
 	(0, import_react.useEffect)(() => {
 		load();
+		const expired = () => setAuth("signed-out");
+		window.addEventListener("studio-iksha:unauthorized", expired);
+		return () => window.removeEventListener("studio-iksha:unauthorized", expired);
 	}, []);
 	const selected = projects.find((project) => project.id === selectedId);
 	const loadWorkspaceData = (0, import_react.useCallback)(async () => {
 		if (!selected?.id) return;
 		setLoadingWorkspace(true);
+		setError("");
 		try {
 			const wsData = await fetchProjectWorkspace(selected.id, "employee").catch(() => null);
 			if (wsData && Array.isArray(wsData.tasks)) setTasks(wsData.tasks);
 			else {
-				const tData = await fetchTasks(selected.id, "employee").catch(() => ({ tasks: [] }));
+				const tData = await fetchTasks(selected.id, "employee");
 				setTasks(tData.tasks || []);
 			}
-			const decData = await fetchDecisionRequests("employee").catch(() => ({ requests: [] }));
+			const decData = await fetchDecisionRequests("employee");
 			setDecisionRequests(decData.requests || []);
-		} catch {
-			setTasks([]);
-			setDecisionRequests([]);
+		} catch (problem) {
+			setError(problem.message || "Could not refresh the workspace. Please retry.");
 		} finally {
 			setLoadingWorkspace(false);
 		}
@@ -31743,6 +31623,11 @@ function EmployeeApp() {
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
 			className: "mx-auto max-w-5xl space-y-6 px-4 py-6 sm:px-6",
 			children: [
+				error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					role: "alert",
+					className: "rounded-xl border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive",
+					children: error
+				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-xs font-semibold uppercase tracking-wider text-primary",
@@ -31882,18 +31767,19 @@ function EmployeeApp() {
 									children: tasks.length ? tasks.map((t) => {
 										const isCompleted = t.status === "Completed" || t.status === "completed";
 										return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "flex items-center justify-between gap-3 rounded-xl border bg-card p-3.5 shadow-2xs hover:border-primary/40 transition-colors",
+											className: "flex flex-col items-stretch justify-between gap-3 rounded-xl border bg-card p-3.5 sm:flex-row sm:items-center shadow-2xs hover:border-primary/40 transition-colors",
 											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 												className: "flex items-center gap-3 min-w-0 flex-1",
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 													type: "button",
+													"aria-label": `Toggle completion for ${t.title}`,
 													onClick: () => handleToggleTaskStatus(t),
-													className: `grid size-5 place-items-center rounded-md border transition-colors ${isCompleted ? "bg-emerald-600 border-emerald-600 text-white" : "border-muted-foreground/30 hover:border-primary"}`,
+													className: `grid size-5 shrink-0 place-items-center rounded-md border transition-colors ${isCompleted ? "bg-emerald-600 border-emerald-600 text-white" : "border-muted-foreground/30 hover:border-primary"}`,
 													children: isCompleted && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5" })
 												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 													className: "min-w-0 flex-1",
 													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-														className: `text-sm font-semibold cursor-pointer hover:text-primary transition-colors ${isCompleted ? "line-through text-muted-foreground" : "text-foreground"}`,
+														className: `break-words text-sm font-semibold cursor-pointer hover:text-primary transition-colors ${isCompleted ? "line-through text-muted-foreground" : "text-foreground"}`,
 														onClick: () => {
 															setSelectedTask(t);
 															setTaskDrawerOpen(true);
@@ -31901,7 +31787,7 @@ function EmployeeApp() {
 														children: t.title
 													}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 														className: "text-[11px] text-muted-foreground",
-														children: [t.stageName || "General", t.deadline && ` · Due: ${t.deadline}`]
+														children: [selected.stages?.find((stage) => stage.id === t.stageId)?.name || t.stageName || "General", t.deadline && ` · Due: ${t.deadline}`]
 													})]
 												})]
 											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
