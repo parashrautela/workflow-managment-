@@ -470,7 +470,7 @@ export default function FounderApp() {
   if (currentTab === "assistant") return <FounderAssistant onBack={() => openTab("projects")} />;
 
   return (
-    <div className="app-glow min-h-dvh bg-background pb-20 md:pb-0">
+    <div className="app-glow min-h-dvh bg-background pb-28 md:pb-0 overflow-x-hidden">
       {/* Desktop Sidebar Navigation */}
       <aside className="fixed inset-y-0 left-0 hidden w-64 border-r bg-card p-5 md:block">
         {navigation}

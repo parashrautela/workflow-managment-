@@ -1653,6 +1653,10 @@
     overflow-x: auto;
   }
 
+  .overflow-x-hidden {
+    overflow-x: hidden;
+  }
+
   .overflow-y-auto {
     overflow-y: auto;
   }
@@ -2605,6 +2609,10 @@
 
   .pb-20 {
     padding-bottom: calc(var(--spacing) * 20);
+  }
+
+  .pb-28 {
+    padding-bottom: calc(var(--spacing) * 28);
   }
 
   .pb-\[max\(12px\,env\(safe-area-inset-bottom\)\)\] {
@@ -4204,6 +4212,10 @@
 
     .sm\:min-w-56 {
       min-width: calc(var(--spacing) * 56);
+    }
+
+    .sm\:min-w-64 {
+      min-width: calc(var(--spacing) * 64);
     }
 
     .sm\:flex-1 {

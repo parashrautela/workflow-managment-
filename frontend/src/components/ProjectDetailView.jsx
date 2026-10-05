@@ -418,7 +418,7 @@ export function ProjectDetailView({
             </span>
             <Button
               size="sm"
-              className="bg-amber-600 hover:bg-amber-700 text-white shrink-0"
+              className="bg-amber-600 hover:bg-amber-700 text-white shrink-0 w-full sm:w-auto"
               onClick={() => {
                 setClientNameInput(project.clientName && project.clientName !== "Unassigned Client" ? project.clientName : "");
                 setClientTelegramIdInput(project.clientTelegramId || "");
@@ -450,7 +450,7 @@ export function ProjectDetailView({
               </div>
             </div>
             <Button
-              className="shrink-0"
+              className="shrink-0 w-full sm:w-auto"
               onClick={() => setTemplateModalOpen(true)}
             >
               <Layers className="size-4 mr-1.5" />
@@ -1021,20 +1021,22 @@ export function ProjectDetailView({
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 w-full sm:w-auto">
                   {isEditingDriveFolder ? (
-                    <div className="flex gap-2 w-full sm:w-auto">
+                    <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
                       <Input
                         value={driveFolderInput}
                         onChange={(e) => setDriveFolderInput(e.target.value)}
                         placeholder="https://drive.google.com/drive/folders/..."
-                        className="h-8 text-xs min-w-64"
+                        className="h-8 text-xs w-full sm:min-w-64"
                       />
-                      <Button size="sm" onClick={handleSaveDriveFolder}>Save</Button>
-                      <Button size="sm" variant="ghost" onClick={() => setIsEditingDriveFolder(false)}>Cancel</Button>
+                      <div className="flex gap-2">
+                        <Button size="sm" onClick={handleSaveDriveFolder} className="flex-1 sm:flex-initial">Save</Button>
+                        <Button size="sm" variant="ghost" onClick={() => setIsEditingDriveFolder(false)} className="flex-1 sm:flex-initial">Cancel</Button>
+                      </div>
                     </div>
                   ) : (
-                    <Button variant="outline" size="sm" onClick={() => setIsEditingDriveFolder(true)}>
+                    <Button variant="outline" size="sm" onClick={() => setIsEditingDriveFolder(true)} className="w-full sm:w-auto">
                       <LinkIcon className="size-3.5 mr-1" /> Edit Folder URL
                     </Button>
                   )}

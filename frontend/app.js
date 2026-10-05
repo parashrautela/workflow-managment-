@@ -28858,7 +28858,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 						className: "mt-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-amber-800",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "This project is in Setup. Assign a client name and optional Telegram user ID to unlock starting the workflow pipeline and receiving client queries." }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 							size: "sm",
-							className: "bg-amber-600 hover:bg-amber-700 text-white shrink-0",
+							className: "bg-amber-600 hover:bg-amber-700 text-white shrink-0 w-full sm:w-auto",
 							onClick: () => {
 								setClientNameInput(project.clientName && project.clientName !== "Unassigned Client" ? project.clientName : "");
 								setClientTelegramIdInput(project.clientTelegramId || "");
@@ -28886,7 +28886,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							children: "Choose a battle-tested Studio Iksha pilot template (Design pilot, Painting pilot) to generate sequential stages, deadlines, and starter tasks."
 						})] })]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						className: "shrink-0",
+						className: "shrink-0 w-full sm:w-auto",
 						onClick: () => setTemplateModalOpen(true),
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { className: "size-4 mr-1.5" }), "Select & Start Workflow"]
 					})]
@@ -29543,32 +29543,34 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 												})
 											] })]
 										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-											className: "flex items-center gap-2",
+											className: "flex items-center gap-2 w-full sm:w-auto",
 											children: isEditingDriveFolder ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "flex gap-2 w-full sm:w-auto",
-												children: [
-													/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-														value: driveFolderInput,
-														onChange: (e) => setDriveFolderInput(e.target.value),
-														placeholder: "https://drive.google.com/drive/folders/...",
-														className: "h-8 text-xs min-w-64"
-													}),
-													/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+												className: "flex flex-col sm:flex-row gap-2 w-full sm:w-auto",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+													value: driveFolderInput,
+													onChange: (e) => setDriveFolderInput(e.target.value),
+													placeholder: "https://drive.google.com/drive/folders/...",
+													className: "h-8 text-xs w-full sm:min-w-64"
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+													className: "flex gap-2",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 														size: "sm",
 														onClick: handleSaveDriveFolder,
+														className: "flex-1 sm:flex-initial",
 														children: "Save"
-													}),
-													/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+													}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 														size: "sm",
 														variant: "ghost",
 														onClick: () => setIsEditingDriveFolder(false),
+														className: "flex-1 sm:flex-initial",
 														children: "Cancel"
-													})
-												]
+													})]
+												})]
 											}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 												variant: "outline",
 												size: "sm",
 												onClick: () => setIsEditingDriveFolder(true),
+												className: "w-full sm:w-auto",
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, { className: "size-3.5 mr-1" }), " Edit Folder URL"]
 											})
 										})]
@@ -30731,7 +30733,7 @@ function FounderApp() {
 	});
 	if (currentTab === "assistant") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderAssistant, { onBack: () => openTab("projects") });
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "app-glow min-h-dvh bg-background pb-20 md:pb-0",
+		className: "app-glow min-h-dvh bg-background pb-28 md:pb-0 overflow-x-hidden",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("aside", {
 				className: "fixed inset-y-0 left-0 hidden w-64 border-r bg-card p-5 md:block",
