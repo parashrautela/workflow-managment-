@@ -1,37 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { 
-  FolderKanban, 
-  Clock, 
-  Plus, 
-  LogOut, 
-  Search, 
-  Share2, 
-  AlertTriangle, 
-  UserPlus, 
-  Edit3, 
-  Check, 
-  Copy, 
-  RefreshCw, 
-  Lock, 
-  ArrowRight,
-  Eye,
-  EyeOff,
-  Sparkles,
-  Layers,
-  Calendar,
-  Users,
-  History,
-  ShieldCheck,
-  Zap,
-  Building2,
-  KeyRound
+import React, { useEffect, useState } from "react";
+import {
+  AlertTriangle, ArrowRight, Building2, Check, CheckCircle2, Clock3, Copy, Eye, EyeOff, FolderKanban,
+  History, KeyRound, LogOut, Menu, MessageSquare, Plus, RefreshCw,
+  Search, Send, Share2, ShieldCheck, Sparkles, Trash2, Users, UserPlus, X,
 } from "lucide-react";
-import { Button } from "./components/ui/button";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "./components/ui/card";
-import { Badge } from "./components/ui/badge";
-import { Dialog, DialogHeader, DialogTitle, DialogDescription } from "./components/ui/dialog";
-import { Input } from "./components/ui/input";
-import { Avatar } from "./components/ui/avatar";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Bubble, BubbleContent } from "@/components/ui/bubble";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Message, MessageAvatar, MessageContent, MessageHeader } from "@/components/ui/message";
+import { NativeSelect } from "@/components/ui/native-select";
+import { Separator } from "@/components/ui/separator";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { GooeyNewButton } from "@/components/GooeyNewButton";
+import { EmployeeDialog, EmployeeManager } from "@/components/EmployeeManager";
+import { FounderAssistant } from "@/components/FounderAssistant";
+import { TeamChat } from "@/components/TeamChat";
+import { DecisionInbox } from "@/components/DecisionInbox";
+import { TelegramGroups } from "@/components/TelegramGroups";
 
 const api = async (url, options = {}) => {
   const response = await fetch(url, { credentials: "same-origin", ...options, headers: { "content-type": "application/json", ...(options.headers || {}) } });
@@ -39,860 +31,281 @@ const api = async (url, options = {}) => {
   if (!response.ok) throw new Error(data.error || "Request failed.");
   return data;
 };
-
 const post = (url, data = {}) => api(url, { method: "POST", body: JSON.stringify(data) });
 const patch = (url, data = {}) => api(url, { method: "PATCH", body: JSON.stringify(data) });
-
 const initials = (name = "") => name.trim().split(/\s+/).map((part) => part[0]).slice(0, 2).join("").toUpperCase() || "P";
+const niceDate = (value) => value ? new Date(value).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }) : "";
+const niceTime = (value) => value ? new Date(value).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) : "";
+const phaseOptions = ["Design", "Planning", "Procurement", "Site execution", "Finishing", "Handover"];
+const statusOptions = ["Setup", "On track", "At risk", "On hold", "Completed"];
 
-function formatTime(isoString) {
-  if (!isoString) return "";
-  const date = new Date(isoString);
-  const diffMins = Math.floor((Date.now() - date) / 60000);
-  if (diffMins < 1) return "Just now";
-  if (diffMins < 60) return `${diffMins}m ago`;
-  const diffHours = Math.floor(diffMins / 60);
-  if (diffHours < 24) return `${diffHours}h ago`;
-  return date.toLocaleDateString(undefined, { month: "short", day: "numeric" });
+function Brand({ compact = false }) {
+  return <div className="flex items-center gap-2.5">
+    <div className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-lg font-bold text-primary-foreground shadow-sm">i</div>
+    {!compact && <div className="leading-tight"><strong className="block text-sm tracking-tight">studio iksha</strong><span className="text-[10px] text-muted-foreground">Project operations</span></div>}
+  </div>;
+}
+
+function StatusBadge({ status }) {
+  const tone = status === "At risk" ? "border-amber-200 bg-amber-50 text-amber-800" : status === "On hold" ? "border-slate-200 bg-slate-100 text-slate-700" : "border-emerald-200 bg-emerald-50 text-emerald-800";
+  return <Badge variant="outline" className={tone}><span className="size-1.5 rounded-full bg-current" />{status || "On track"}</Badge>;
+}
+
+function InitialAvatar({ name, className = "" }) {
+  return <Avatar className={className}><AvatarFallback className="bg-accent font-semibold text-accent-foreground">{initials(name)}</AvatarFallback></Avatar>;
+}
+
+function ConversationThread({ conversations, project, large = false }) {
+  if (!conversations.length) return <div className="flex min-h-72 flex-col items-center justify-center px-5 py-12 text-center">
+    <div className="mb-4 grid size-14 place-items-center rounded-2xl bg-accent text-primary"><MessageSquare className="size-6" /></div>
+    <h3 className="font-semibold">Your conversation starts here</h3>
+    <p className="mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground">Share the private client link. Questions and the assistant’s replies will appear here.</p>
+  </div>;
+  return <div className={`chat-scroll space-y-6 overflow-y-auto p-4 sm:p-6 ${large ? "min-h-0 flex-1" : "max-h-96"}`} aria-label="Client conversation" aria-live="polite">
+    {conversations.map((item, index) => <div key={item.at || index} className="space-y-4">
+      <Message align="end">
+        <MessageAvatar><InitialAvatar name={project?.clientName || "Client"} /></MessageAvatar>
+        <MessageContent className="max-w-[88%] sm:max-w-[75%]">
+          <MessageHeader className="justify-end gap-2">{niceTime(item.at)} · {project?.clientName || "Client"}</MessageHeader>
+          <Bubble align="end"><BubbleContent>{item.question}</BubbleContent></Bubble>
+        </MessageContent>
+      </Message>
+      <Message align="start">
+        <MessageAvatar><Avatar><AvatarFallback className="bg-primary/10 text-primary"><Sparkles className="size-4" /></AvatarFallback></Avatar></MessageAvatar>
+        <MessageContent className="max-w-[88%] sm:max-w-[75%]">
+          <MessageHeader>Project Assistant</MessageHeader>
+          <Bubble variant="secondary"><BubbleContent>{item.answer}</BubbleContent></Bubble>
+        </MessageContent>
+      </Message>
+    </div>)}
+  </div>;
+}
+
+function Field({ label, children }) {
+  return <label className="grid gap-1.5 text-sm font-medium">{label}{children}</label>;
 }
 
 export default function FounderApp() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authState, setAuthState] = useState("checking");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState("");
   const [isLoggingIn, setIsLoggingIn] = useState(false);
-  const [isQuickFilled, setIsQuickFilled] = useState(false);
-
   const [projects, setProjects] = useState([]);
+  const [employees, setEmployees] = useState([]);
+  const [trashedProjects, setTrashedProjects] = useState([]);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [activities, setActivities] = useState([]);
   const [conversations, setConversations] = useState([]);
   const [projectHistory, setProjectHistory] = useState([]);
-  const [isLoadingHistory, setIsLoadingHistory] = useState(false);
   const [currentTab, setCurrentTab] = useState("projects");
   const [searchQuery, setSearchQuery] = useState("");
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [createOpen, setCreateOpen] = useState(false);
+  const [memberOpen, setMemberOpen] = useState(false);
+  const [factsOpen, setFactsOpen] = useState(false);
+  const [trashConfirmOpen, setTrashConfirmOpen] = useState(false);
+  const [shareLink, setShareLink] = useState(null);
+  const [notice, setNotice] = useState(null);
+  const [busy, setBusy] = useState(false);
 
-  // Modals
-  const [isCreateProjectOpen, setIsCreateProjectOpen] = useState(false);
-  const [isAddMemberOpen, setIsAddMemberOpen] = useState(false);
-  const [isEditFactsOpen, setIsEditFactsOpen] = useState(false);
-  const [shareLinkData, setShareLinkData] = useState(null);
-  const [toastMessage, setToastMessage] = useState(null);
-
-  const showToast = (msg, type = "info") => {
-    setToastMessage({ text: msg, type });
-    setTimeout(() => setToastMessage(null), 3200);
+  const selectedProject = projects.find((p) => p.id === selectedProjectId) || projects[0];
+  const filteredProjects = projects.filter((project) => `${project.name} ${project.clientName} ${project.location || ""}`.toLowerCase().includes(searchQuery.toLowerCase()));
+  const showNotice = (message, error = false) => {
+    setNotice({ message, error });
+    setTimeout(() => setNotice(null), 3500);
   };
-
   const loadProjects = async () => {
     try {
       const data = await api("/api/founder/projects");
       setProjects(data.projects || []);
-      if (!selectedProjectId && data.projects?.length) {
-        setSelectedProjectId(data.projects[0].id);
-      }
-      setIsAuthenticated(true);
-    } catch {
-      setIsAuthenticated(false);
-    }
+      setSelectedProjectId((current) => (data.projects || []).some((p) => p.id === current) ? current : data.projects?.[0]?.id || null);
+      setAuthState("signed-in");
+    } catch { setAuthState("signed-out"); }
   };
-
   const loadActivities = async () => {
-    try {
-      const data = await api("/api/founder/activity");
-      setActivities(data.activity || []);
-    } catch {
-      setActivities([]);
-    }
+    try { const data = await api("/api/founder/activity"); setActivities(data.activity || []); }
+    catch { setActivities([]); }
   };
-
-  const loadConversations = async (projectId) => {
-    if (!projectId) return;
-    try {
-      const data = await api(`/api/founder/projects/${projectId}/conversation`);
-      setConversations(data.messages || []);
-    } catch {
-      setConversations([]);
-    }
+  const loadEmployees = async () => { try { const data = await api("/api/founder/employees"); setEmployees(data.employees || []); } catch { setEmployees([]); } };
+  const loadTrash = async () => { try { const data = await api("/api/founder/trash"); setTrashedProjects(data.projects || []); } catch { setTrashedProjects([]); } };
+  const loadProjectDetails = async (id) => {
+    if (!id) { setConversations([]); setProjectHistory([]); return; }
+    const [conversation, history] = await Promise.allSettled([
+      api(`/api/founder/projects/${id}/conversation`),
+      api(`/api/founder/projects/${id}/updates`),
+    ]);
+    setConversations(conversation.status === "fulfilled" ? conversation.value.messages || [] : []);
+    setProjectHistory(history.status === "fulfilled" ? history.value.updates || [] : []);
   };
-
-  const loadProjectHistory = async (projectId) => {
-    if (!projectId) return;
-    setIsLoadingHistory(true);
-    try {
-      const data = await api(`/api/founder/projects/${projectId}/history`);
-      setProjectHistory(data.history || []);
-    } catch {
-      // Graceful fallback for history if empty or uninitialized
-      setProjectHistory([]);
-    } finally {
-      setIsLoadingHistory(false);
-    }
-  };
-
+  useEffect(() => { loadProjects(); }, []);
   useEffect(() => {
-    loadProjects();
-  }, []);
-
+    if (authState !== "signed-in") return;
+    const timer = setInterval(async () => {
+      if (document.visibilityState !== "visible") return;
+      try {
+        const data = await api("/api/founder/projects");
+        setProjects(data.projects || []);
+        setSelectedProjectId((current) => (data.projects || []).some((project) => project.id === current) ? current : data.projects?.[0]?.id || null);
+      } catch { /* Keep the current screen during a temporary refresh failure. */ }
+    }, 10000);
+    return () => clearInterval(timer);
+  }, [authState]);
+  useEffect(() => { loadProjectDetails(selectedProjectId); }, [selectedProjectId]);
   useEffect(() => {
-    if (selectedProjectId) {
-      loadConversations(selectedProjectId);
-      loadProjectHistory(selectedProjectId);
-    }
-  }, [selectedProjectId]);
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setIsLoggingIn(true);
-    setLoginError("");
-    try {
-      await post("/api/founder/login", { password });
-      await loadProjects();
-    } catch (err) {
-      setLoginError(err.message);
-    } finally {
-      setIsLoggingIn(false);
-    }
+    const isLogin = authState === "signed-out";
+    document.documentElement.classList.toggle("founder-login", isLogin);
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) themeColor.content = isLogin ? "#101010" : "#f6f5f4";
+    return () => document.documentElement.classList.remove("founder-login");
+  }, [authState]);
+  const openTab = (tab) => { setCurrentTab(tab); setSidebarOpen(false); if (tab === "activity") loadActivities(); if (tab === "employees") loadEmployees(); if (tab === "trash") loadTrash(); };
+  const handleLogin = async (event) => {
+    event.preventDefault(); setIsLoggingIn(true); setLoginError("");
+    try { await post("/api/founder/login", { password }); await loadProjects(); }
+    catch (error) { setLoginError(error.message); }
+    finally { setIsLoggingIn(false); }
   };
-
-  const handleQuickFill = () => {
-    setPassword("replace-with-a-long-random-password");
-    setIsQuickFilled(true);
-    showToast("Sample founder password loaded!", "success");
-    setTimeout(() => setIsQuickFilled(false), 2500);
-  };
-
-  const handleLogout = async () => {
-    await post("/api/founder/logout");
-    setIsAuthenticated(false);
-    setPassword("");
-  };
-
-  const selectedProject = projects.find((p) => p.id === selectedProjectId) || projects[0];
-
-  const filteredProjects = projects.filter((p) => {
-    if (!searchQuery) return true;
-    const q = searchQuery.toLowerCase();
-    return p.name.toLowerCase().includes(q) || p.clientName.toLowerCase().includes(q) || (p.location && p.location.toLowerCase().includes(q));
-  });
-
-  const handleCreateInvite = async () => {
+  const handleLogout = async () => { await post("/api/founder/logout"); setAuthState("signed-out"); setPassword(""); };
+  const handleInvite = async () => {
     if (!selectedProject) return;
+    try { const data = await post(`/api/founder/projects/${selectedProject.id}/invite`); setShareLink(data.link); }
+    catch (error) { showNotice(error.message, true); }
+  };
+  const completeProject = async () => {
+    if (!selectedProject) return;
+    try { await post(`/api/founder/projects/${selectedProject.id}/complete`); await loadProjects(); showNotice("Project marked complete."); }
+    catch (error) { showNotice(error.message, true); }
+  };
+  const moveToTrash = async () => {
+    if (!selectedProject) return;
+    try { await post(`/api/founder/projects/${selectedProject.id}/trash`); setTrashConfirmOpen(false); await loadProjects(); showNotice("Project moved to Trash. You can restore it later."); }
+    catch (error) { showNotice(error.message, true); }
+  };
+  const restoreProject = async (id) => {
+    try { await post(`/api/founder/trash/${id}/restore`); await Promise.all([loadProjects(), loadTrash()]); showNotice("Project restored."); }
+    catch (error) { showNotice(error.message, true); }
+  };
+  const saveForm = async (event, url, method, after, success) => {
+    event.preventDefault(); setBusy(true);
     try {
-      const { link } = await post(`/api/founder/projects/${selectedProject.id}/invite`);
-      setShareLinkData(link);
-    } catch (err) {
-      showToast(err.message, "error");
-    }
+      const data = await (method === "PATCH" ? patch : post)(url, Object.fromEntries(new FormData(event.currentTarget)));
+      await loadProjects();
+      if (data.project?.id) setSelectedProjectId(data.project.id);
+      if (selectedProjectId) await loadProjectDetails(selectedProjectId);
+      after(); showNotice(success);
+    } catch (error) { showNotice(error.message, true); }
+    finally { setBusy(false); }
   };
 
-  if (!isAuthenticated) {
-    return (
-      <main className="min-h-[100dvh] flex flex-col justify-between bg-[#f6f5f4] text-[#161615] px-6 py-6 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))] relative overflow-x-hidden font-sans">
-        {/* Subtle Ambient Top Glow */}
-        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[340px] h-[340px] bg-gradient-to-b from-[#0075de]/15 via-[#0075de]/5 to-transparent rounded-full blur-3xl pointer-events-none -z-0" />
+  if (authState === "checking") return <main className="grid min-h-dvh place-items-center p-6"><div className="w-full max-w-sm space-y-5"><Brand /><Skeleton className="h-24 w-full" /><Skeleton className="h-12 w-full" /></div></main>;
+  if (authState === "signed-out") return (
+    <main className="grid min-h-dvh place-items-center bg-black md:p-6">
+      <section className="relative isolate flex min-h-dvh w-full flex-col overflow-hidden bg-black text-white md:min-h-[min(855px,calc(100dvh-3rem))] md:max-w-[394px] md:shadow-2xl" aria-label="Studio Iksha founder access">
+        <img
+          src="/assets/studio-iksha-access.png"
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute top-[-11%] left-[-33%] h-[111%] w-[160.5%] max-w-none object-cover"
+        />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_42%,rgba(0,0,0,.16)_58%,rgba(0,0,0,.72)_78%,rgba(0,0,0,.9)_100%)]" />
 
-        {/* TOP SECTION: Hero Brand Squircle & Typography */}
-        <div className="flex-1 flex flex-col justify-center max-w-sm mx-auto w-full z-10 space-y-6 pt-2">
-          {/* Apple Squircle Brand Icon */}
-          <div className="w-20 h-20 rounded-[22px] bg-black p-[2px] shadow-xl shadow-black/10 mx-auto grid place-items-center relative">
-            <div className="w-full h-full rounded-[20px] bg-black flex flex-col items-center justify-center text-white">
-              <span className="font-extrabold text-2xl tracking-tighter">i</span>
-              <span className="text-[8px] font-bold tracking-widest text-[#0075de] uppercase -mt-0.5">STUDIO</span>
-            </div>
+        <div className="relative z-10 mt-auto flex flex-col px-6 pb-[max(12px,env(safe-area-inset-bottom))]">
+          <div className="mb-5 space-y-0.5">
+            <p className="text-sm font-medium tracking-tight">Project Operations</p>
+            <h1 className="text-[28px] leading-tight font-bold tracking-[-0.5px]">Welcome to Studio Iksha</h1>
           </div>
 
-          {/* Typography */}
-          <div className="text-center space-y-2">
-            <span className="text-[10px] font-bold tracking-widest text-[#96918c] uppercase">PROJECT OPERATIONS</span>
-            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#161615] leading-tight">
-              Welcome to Studio Iksha
-            </h1>
-            <p className="text-xs sm:text-sm text-[#797570] leading-relaxed font-normal">
-              A unified workspace for interior & architecture project facts, site milestones, and private client portals.
-            </p>
+          <div className="mb-3 text-[11px] leading-[1.4] text-[#a3a3a3]">
+            <p>Studio Iksha uses encrypted tokens and single-claim client links for zero-login client privacy.</p>
+            <span className="font-semibold text-[#157de0]">Read our Terms and Privacy Policy</span>
           </div>
 
-          {/* Interactive Live Project Mock Preview */}
-          <Card className="p-4 rounded-[22px] border-[#eae8e5] bg-white shadow-sm space-y-2.5">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <strong className="text-xs font-semibold text-[#161615]">Kumar Residence</strong>
-              </div>
-              <Badge variant="success" className="text-[10px]">
-                On track
-              </Badge>
-            </div>
-            <div className="text-xs text-[#797570] flex items-center justify-between pt-1 border-t border-[#f0efed]">
-              <span>Current Phase</span>
-              <strong className="text-[#161615] font-medium">Design & Execution</strong>
-            </div>
-            <div className="text-xs text-[#797570] truncate pt-0.5">
-              Latest: <span className="text-[#31302e] font-medium">Framing review & 3D moodboards</span>
-            </div>
-          </Card>
-        </div>
-
-        {/* BOTTOM SECTION: Privacy Footnote + Auth Controls */}
-        <div className="w-full max-w-sm mx-auto z-10 space-y-3.5 pt-4">
-          {/* Apple Privacy Footnote */}
-          <div className="flex items-start gap-2.5 px-1">
-            <div className="w-7 h-7 rounded-full bg-[#edeae5] text-[#0075de] grid place-items-center shrink-0 mt-0.5 text-xs">
-              👥
-            </div>
-            <p className="text-[11px] text-[#797570] leading-normal">
-              Studio Iksha uses encrypted tokens and single-claim client links for zero-login client privacy.{" "}
-              <button 
-                type="button" 
-                onClick={handleQuickFill}
-                className="text-[#0075de] hover:underline font-medium inline"
-              >
-                Tap to quick-fill founder demo key.
-              </button>
-            </p>
-          </div>
-
-          {/* Form */}
-          <form onSubmit={handleLogin} className="space-y-3">
-            <div className="relative flex items-center">
-              <KeyRound className="absolute left-4 h-4 w-4 text-[#9c9791] pointer-events-none" />
+          <form onSubmit={handleLogin} className="space-y-2.5">
+            <label className="sr-only" htmlFor="founder-key">Founder key</label>
+            <div className="relative">
+              <KeyRound aria-hidden="true" className="pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-[#797979]" />
               <Input
+                id="founder-key"
                 type={showPassword ? "text" : "password"}
-                placeholder="Enter founder password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(event) => setPassword(event.target.value)}
+                placeholder="Enter founder key"
+                autoComplete="current-password"
                 required
-                autoFocus
-                className="h-12 min-h-[48px] rounded-full text-sm pl-11 pr-12 bg-white border-[#dfdcd8] focus:ring-2 focus:ring-[#0075de]/25 focus:border-[#78b6e6]"
+                className="h-[49px] rounded-full border-[#373636] bg-[#1f1f1f] pr-12 pl-[43px] text-base text-white shadow-none placeholder:text-[#797979] focus-visible:border-white/60 focus-visible:ring-white/20"
               />
               <button
                 type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                aria-label={showPassword ? "Hide password" : "Show password"}
-                className="absolute right-1 top-0 bottom-0 w-12 h-12 flex items-center justify-center text-gray-400 hover:text-gray-600 focus:outline-none transition-colors active:scale-90"
+                onClick={() => setShowPassword((visible) => !visible)}
+                aria-label={showPassword ? "Hide founder key" : "Show founder key"}
+                className="absolute top-1/2 right-3 grid size-10 -translate-y-1/2 place-items-center rounded-full text-[#797979] focus-visible:outline-2 focus-visible:outline-white"
               >
-                {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                {showPassword ? <EyeOff className="size-[15px]" /> : <Eye className="size-[15px]" />}
               </button>
             </div>
-
-            {loginError && (
-              <div className="p-3 bg-red-50 border border-red-200 rounded-2xl text-xs font-medium text-red-700 text-center animate-in fade-in">
-                {loginError}
-              </div>
-            )}
-
-            {/* Apple Continue / Get Started Primary Button */}
-            <Button
-              type="submit"
-              disabled={isLoggingIn}
-              className="w-full h-12 min-h-[48px] rounded-full bg-[#0075de] hover:bg-[#005bab] active:bg-[#004e92] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition-all flex items-center justify-center gap-2"
-            >
-              {isLoggingIn ? "Opening Workspace…" : "Continue"}
+            {loginError && <p role="alert" className="text-xs text-red-300">{loginError}</p>}
+            <Button type="submit" disabled={isLoggingIn} className="h-12 w-full rounded-full bg-[#f8f8f8] text-base font-semibold text-black shadow-none hover:bg-white">
+              {isLoggingIn ? "Opening…" : "Continue"}
             </Button>
           </form>
         </div>
-      </main>
-    );
-  }
-
-  return (
-    <div className="min-h-screen flex bg-[#f6f5f4] pb-[72px] md:pb-0">
-      {/* Sidebar */}
-      <aside className={`fixed md:sticky top-0 z-40 h-screen w-[270px] bg-[#f1f0ee] border-r border-[#e8e6e2] p-4 flex flex-col transition-transform duration-200 ${isSidebarOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full md:translate-x-0"}`}>
-        <div className="flex items-center justify-between pb-6 px-2">
-          <div className="flex items-center gap-2.5 font-bold text-base">
-            <span className="grid place-items-center w-8 h-8 rounded-lg bg-black text-white font-bold text-sm">i</span>
-            <span>studio iksha</span>
-          </div>
-          <button onClick={() => setIsSidebarOpen(false)} className="md:hidden p-1.5 text-gray-500 hover:bg-gray-200 rounded-lg">✕</button>
-        </div>
-
-        <div className="text-[10px] font-bold tracking-widest text-[#9a9590] px-2 mb-2">WORKSPACE</div>
-        <nav className="space-y-1">
-          <button
-            onClick={() => { setCurrentTab("projects"); setIsSidebarOpen(false); }}
-            className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${currentTab === "projects" ? "bg-[#e5e3df] text-[#171716] font-semibold" : "text-[#625e59] hover:bg-[#e9e8e5]"}`}
-          >
-            <FolderKanban className="h-4 w-4 text-[#77716b]" />
-            <span className="flex-1 text-left">Projects</span>
-            <span className="text-[11px] font-bold bg-[#e0ded9] px-2 py-0.5 rounded-full">{projects.length}</span>
-          </button>
-          <button
-            onClick={() => { setCurrentTab("activity"); loadActivities(); setIsSidebarOpen(false); }}
-            className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${currentTab === "activity" ? "bg-[#e5e3df] text-[#171716] font-semibold" : "text-[#625e59] hover:bg-[#e9e8e5]"}`}
-          >
-            <Clock className="h-4 w-4 text-[#77716b]" />
-            <span className="flex-1 text-left">Activity Log</span>
-          </button>
-        </nav>
-
-        <div className="flex items-center justify-between px-2 pt-6 pb-2">
-          <span className="text-[10px] font-bold tracking-wider text-[#9a9590]">PROJECTS</span>
-          <button onClick={() => setIsCreateProjectOpen(true)} className="p-1 text-[#333] hover:bg-[#e0ded9] rounded-md font-bold">
-            <Plus className="h-4 w-4" />
-          </button>
-        </div>
-
-        <div className="relative mb-2 px-1">
-          <Search className="absolute left-3.5 top-2.5 h-3.5 w-3.5 text-gray-400 pointer-events-none" />
-          <input
-            type="text"
-            placeholder="Search projects…"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full h-8 pl-8 pr-3 text-xs bg-white border border-[#dedbd6] rounded-md outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]"
-          />
-        </div>
-
-        <div className="flex-1 overflow-y-auto space-y-1 px-1">
-          {filteredProjects.map((p) => (
-            <button
-              key={p.id}
-              onClick={() => { setSelectedProjectId(p.id); setCurrentTab("projects"); setIsSidebarOpen(false); }}
-              className={`w-full text-left flex items-center gap-2 px-2.5 py-2 rounded-lg text-xs transition-colors ${p.id === selectedProject?.id && currentTab === "projects" ? "bg-[#e2e0dc] text-black font-semibold" : "text-[#55514d] hover:bg-[#e9e8e5]"}`}
-            >
-              <span className={`w-2 h-2 rounded-full shrink-0 ${p.status === "At risk" ? "bg-amber-500" : p.status === "On hold" ? "bg-gray-400" : "bg-emerald-500"}`} />
-              <div className="flex-1 truncate">
-                <div className="truncate font-medium">{p.name}</div>
-                <div className="text-[10px] text-gray-400 truncate">{p.clientName}</div>
-              </div>
-            </button>
-          ))}
-        </div>
-
-        <div className="pt-4 border-t border-[#e3e1dd] flex items-center gap-2.5 px-1">
-          <Avatar className="h-8 w-8">P</Avatar>
-          <div className="flex-1 min-w-0">
-            <div className="text-xs font-semibold truncate">Project Founder</div>
-            <div className="text-[10px] text-gray-500 truncate">Workspace Owner</div>
-          </div>
-          <button onClick={handleLogout} className="p-1.5 text-gray-500 hover:text-red-600 rounded-lg hover:bg-gray-200">
-            <LogOut className="h-4 w-4" />
-          </button>
-        </div>
-      </aside>
-
-      {/* Main Area */}
-      <div className="flex-1 min-w-0 flex flex-col">
-        {/* Sticky Glass Topbar */}
-        <header className="sticky top-0 z-20 h-14 bg-[#f6f5f4]/85 backdrop-blur-md border-b border-[#eae8e5] px-4 sm:px-8 flex items-center justify-between">
-          <div className="flex items-center gap-2 text-xs sm:text-sm text-[#8a8580]">
-            <button onClick={() => setIsSidebarOpen(true)} className="md:hidden p-1.5 -ml-1.5 text-gray-700 hover:bg-gray-200 rounded-lg">
-              ☰
-            </button>
-            <span>Workspace</span>
-            <span className="text-gray-300">/</span>
-            <strong className="text-[#34322f] truncate max-w-[160px] sm:max-w-xs">
-              {currentTab === "projects" ? (selectedProject ? selectedProject.name : "Projects") : "Activity Log"}
-            </strong>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="hidden sm:flex items-center gap-1.5 text-xs text-[#8a8580]">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> Private Session
-            </span>
-            <Avatar className="h-7 w-7 text-xs">P</Avatar>
-          </div>
-        </header>
-
-        {/* Content */}
-        <main className="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-8 space-y-6">
-          {currentTab === "activity" ? (
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className="text-[10px] font-bold tracking-wider text-[#96918c] uppercase">AUDIT & OPERATIONS</span>
-                  <h1 className="text-2xl font-bold tracking-tight text-[#161615]">Activity Log</h1>
-                </div>
-                <Button variant="subtle" size="sm" onClick={loadActivities} className="gap-1.5">
-                  <RefreshCw className="h-3.5 w-3.5" /> Refresh
-                </Button>
-              </div>
-
-              <Card className="p-4 sm:p-6 divide-y divide-[#f0efed]">
-                {activities.length ? activities.map((act) => {
-                  const proj = projects.find((p) => p.id === act.projectId);
-                  return (
-                    <div key={act.id || act.at} className="py-3.5 flex items-start gap-3.5 first:pt-0 last:pb-0">
-                      <div className="p-2 rounded-lg bg-[#f2f1ef] text-sm shrink-0">
-                        {act.action === "project_created" ? "✦" : act.action === "member_added" ? "👤" : act.action === "client_link_claimed" ? "✓" : "⚡"}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 flex-wrap mb-1">
-                          <strong className="text-xs sm:text-sm font-semibold">{act.action.replace(/_/g, " ")}</strong>
-                          {proj && <Badge variant="secondary" className="text-[10px]">{proj.name}</Badge>}
-                          <span className="text-xs text-gray-400 ml-auto">{formatTime(act.at)}</span>
-                        </div>
-                        <p className="text-xs text-[#716c66]">{act.details?.name || act.details?.clientName || proj?.name || "Workspace update"}</p>
-                      </div>
-                    </div>
-                  );
-                }) : (
-                  <div className="py-12 text-center text-sm text-gray-400">No activity events recorded yet.</div>
-                )}
-              </Card>
-            </div>
-          ) : selectedProject ? (
-            <div className="space-y-6">
-              {/* Heading */}
-              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-                <div>
-                  <span className="text-[10px] font-bold tracking-wider text-[#96918c] uppercase">PROJECT WORKSPACE</span>
-                  <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#161615] mt-1">{selectedProject.name}</h1>
-                  <div className="flex items-center gap-2 text-xs sm:text-sm text-[#89847f] mt-1 flex-wrap">
-                    <span>📍 {selectedProject.location || "Location not specified"}</span>
-                    <span>·</span>
-                    <span>Client: <strong className="text-gray-700">{selectedProject.clientName}</strong></span>
-                    <span>·</span>
-                    <span>Created {new Date(selectedProject.createdAt).toLocaleDateString()}</span>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 sm:flex items-center gap-2 w-full sm:w-auto">
-                  <Button variant="subtle" onClick={() => setIsEditFactsOpen(true)} className="gap-1.5">
-                    <Edit3 className="h-4 w-4" /> Edit Facts
-                  </Button>
-                  <Button onClick={handleCreateInvite} className="gap-1.5">
-                    <Share2 className="h-4 w-4" /> Share Link
-                  </Button>
-                </div>
-              </div>
-
-              {/* Blocker Alert Banner */}
-              {selectedProject.blocker && (
-                <div className="flex items-center gap-3 p-4 bg-[#fdf3ec] border border-[#f6cfb0] rounded-xl text-amber-900 shadow-sm">
-                  <AlertTriangle className="h-5 w-5 text-[#dd5b00] shrink-0" />
-                  <div className="flex-1 min-w-0">
-                    <strong className="block text-xs font-bold text-[#8a3600]">Active Blocker (Client Visible)</strong>
-                    <p className="text-xs sm:text-sm text-[#523410] truncate">{selectedProject.blocker}</p>
-                  </div>
-                  <Button size="sm" variant="subtle" onClick={() => setIsEditFactsOpen(true)}>Update</Button>
-                </div>
-              )}
-
-              {/* Ribbon */}
-              <Card className="p-4 sm:p-6 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:divide-x divide-[#efeeec]">
-                <div className="space-y-1">
-                  <span className="text-[10px] font-bold tracking-wider text-[#96918c] uppercase">STATUS</span>
-                  <div className="flex items-center gap-2">
-                    <span className={`w-2 h-2 rounded-full ${selectedProject.status === "At risk" ? "bg-amber-500" : "bg-emerald-500"}`} />
-                    <strong className="text-xs sm:text-sm font-semibold">{selectedProject.status || "On track"}</strong>
-                  </div>
-                </div>
-                <div className="space-y-1 sm:pl-4">
-                  <span className="text-[10px] font-bold tracking-wider text-[#96918c] uppercase">CURRENT PHASE</span>
-                  <div className="text-xs sm:text-sm font-semibold truncate">{selectedProject.phase || "Design"}</div>
-                </div>
-                <div className="space-y-1 sm:pl-4">
-                  <span className="text-[10px] font-bold tracking-wider text-[#96918c] uppercase">NEXT MILESTONE</span>
-                  <div className="text-xs sm:text-sm font-semibold truncate">{selectedProject.nextMilestone || "Not scheduled"}</div>
-                </div>
-                <div className="space-y-1 sm:pl-4">
-                  <span className="text-[10px] font-bold tracking-wider text-[#96918c] uppercase">TEAM</span>
-                  <div className="text-xs sm:text-sm font-semibold">{selectedProject.members?.length || 0} Members</div>
-                </div>
-              </Card>
-
-              {/* Grid Cards */}
-              <div className="grid sm:grid-cols-2 gap-4">
-                {/* Progress Card */}
-                <Card className="p-5 flex flex-col justify-between">
-                  <div>
-                    <span className="text-[10px] font-bold tracking-wider text-[#96918c] uppercase">RECENT IN PROGRESS</span>
-                    <h3 className="text-sm sm:text-base font-semibold mt-1 mb-3">{selectedProject.recentTask || "No recent task recorded"}</h3>
-                  </div>
-                  <div className="pt-4 border-t border-[#efeeec] flex items-center gap-2 text-xs">
-                    <span className="p-1.5 rounded-lg bg-emerald-50 text-emerald-700">◎</span>
-                    <div className="truncate">
-                      <span className="text-[10px] uppercase text-gray-400 block font-bold">UP NEXT</span>
-                      <strong className="truncate font-semibold">{selectedProject.nextMilestone || "Milestone not recorded"}</strong>
-                    </div>
-                  </div>
-                </Card>
-
-                {/* Team Card */}
-                <Card className="p-5">
-                  <div className="flex items-center justify-between mb-4">
-                    <div>
-                      <span className="text-[10px] font-bold tracking-wider text-[#96918c] uppercase">TEAM ROSTER</span>
-                      <h3 className="text-sm sm:text-base font-semibold">Project Team ({selectedProject.members?.length || 0})</h3>
-                    </div>
-                    <Button size="sm" variant="subtle" onClick={() => setIsAddMemberOpen(true)} className="gap-1">
-                      <UserPlus className="h-3.5 w-3.5" /> Add
-                    </Button>
-                  </div>
-                  <div className="space-y-2.5 max-h-48 overflow-y-auto">
-                    {selectedProject.members?.length ? selectedProject.members.map((m, i) => (
-                      <div key={m.id || i} className="flex items-center gap-3 py-1.5 border-b border-[#f0efed] last:border-0">
-                        <Avatar className="h-7 w-7 text-xs">{initials(m.name)}</Avatar>
-                        <div className="flex-1 truncate">
-                          <strong className="text-xs font-semibold block truncate">{m.name}</strong>
-                          <span className="text-[10px] text-gray-400 block truncate">{m.designation}</span>
-                        </div>
-                        <Badge variant={m.role.toLowerCase().includes("admin") ? "admin" : m.role.toLowerCase().includes("designer") ? "designer" : "secondary"} className="text-[9px]">
-                          {m.role}
-                        </Badge>
-                      </div>
-                    )) : (
-                      <div className="py-4 text-center text-xs text-gray-400">No members assigned yet.</div>
-                    )}
-                  </div>
-                </Card>
-              </div>
-
-              {/* Client Assistant Link Card */}
-              <Card className="p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <div className="flex items-center gap-3.5">
-                  <div className="p-2.5 rounded-xl bg-blue-50 text-[#0075de]">
-                    <Sparkles className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-semibold">Single-Claim Client Link</h4>
-                    <p className="text-xs text-gray-500">The first browser to open claims access. No passwords or app installation required.</p>
-                  </div>
-                </div>
-                <Button onClick={handleCreateInvite} variant="secondary" className="w-full sm:w-auto shrink-0">
-                  Generate Link →
-                </Button>
-              </Card>
-
-              {/* Project Update History Timeline Card */}
-              <Card className="p-5">
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <span className="text-[10px] font-bold tracking-wider text-[#96918c] uppercase">UPDATE HISTORY</span>
-                    <h4 className="text-sm sm:text-base font-semibold flex items-center gap-2 mt-0.5">
-                      <History className="h-4 w-4 text-[#0075de]" /> Project Update Timeline
-                    </h4>
-                    <p className="text-xs text-gray-500">Record of field changes, milestones, and phase transitions over time.</p>
-                  </div>
-                  <Button size="sm" variant="subtle" onClick={() => loadProjectHistory(selectedProject.id)} disabled={isLoadingHistory} className="gap-1">
-                    <RefreshCw className={`h-3.5 w-3.5 ${isLoadingHistory ? 'animate-spin' : ''}`} /> Refresh
-                  </Button>
-                </div>
-
-                {projectHistory.length > 0 ? (
-                  <div className="relative pl-6 space-y-6 before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-[#eae8e5]">
-                    {projectHistory.map((item, idx) => (
-                      <div key={item.id || idx} className="relative group">
-                        {/* Timeline Node */}
-                        <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-white border-2 border-[#0075de] flex items-center justify-center shadow-xs">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#0075de]" />
-                        </div>
-
-                        <div className="bg-gray-50/80 hover:bg-gray-50 border border-gray-200/80 rounded-xl p-3.5 transition-colors space-y-2.5">
-                          <div className="flex items-center justify-between gap-2 flex-wrap text-xs">
-                            <div className="flex items-center gap-2">
-                              <span className="font-semibold text-gray-800">
-                                {item.changedFields?.length ? `${item.changedFields.length} field${item.changedFields.length > 1 ? "s" : ""} updated` : "Project update recorded"}
-                              </span>
-                              {item.status && (
-                                <Badge variant={item.status === "At risk" ? "destructive" : item.status === "On hold" ? "outline" : "success"} className="text-[10px]">
-                                  {item.status}
-                                </Badge>
-                              )}
-                            </div>
-                            <span className="text-[11px] text-gray-400 flex items-center gap-1 font-mono">
-                              <Clock className="h-3 w-3" />
-                              {formatTime(item.timestamp || item.at)} · {new Date(item.timestamp || item.at || Date.now()).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-                            </span>
-                          </div>
-
-                          {/* Changed Fields Diff List */}
-                          {item.changedFields && item.changedFields.length > 0 && (
-                            <div className="space-y-1.5 pt-1">
-                              {item.changedFields.map((change, cIdx) => (
-                                <div key={cIdx} className="text-xs bg-white rounded-lg p-2 border border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
-                                  <span className="font-medium text-gray-500 text-[11px]">{change.label || change.field}</span>
-                                  <div className="flex items-center gap-2 flex-wrap text-xs">
-                                    {change.oldValue ? (
-                                      <>
-                                        <span className="line-through text-gray-400 truncate max-w-[150px]">{change.oldValue}</span>
-                                        <ArrowRight className="h-3 w-3 text-gray-400 shrink-0" />
-                                      </>
-                                    ) : null}
-                                    <span className="font-medium text-gray-900 bg-emerald-50 text-emerald-800 px-2.5 py-0.5 rounded-full border border-emerald-100">
-                                      {change.newValue || change.value || "Cleared"}
-                                    </span>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="py-8 text-center text-xs text-gray-400 border border-dashed border-gray-200 rounded-xl space-y-1">
-                    <History className="h-6 w-6 text-gray-300 mx-auto mb-1" />
-                    <p className="font-medium text-gray-600">No update history recorded yet for this project.</p>
-                    <p className="text-[11px] text-gray-400">Updates saved in 'Edit Facts' will appear in this timeline.</p>
-                  </div>
-                )}
-              </Card>
-
-              {/* Transcript Card */}
-              <Card className="p-5">
-                <div className="mb-4">
-                  <span className="text-[10px] font-bold tracking-wider text-[#96918c] uppercase">CLIENT TRANSCRIPT</span>
-                  <h4 className="text-sm sm:text-base font-semibold">Shared Conversation History</h4>
-                  <p className="text-xs text-gray-500">Questions and assistant responses asked through the client link.</p>
-                </div>
-                <div className="space-y-3 max-h-64 overflow-y-auto">
-                  {conversations.length ? conversations.map((item, idx) => (
-                    <div key={idx} className="p-3.5 bg-gray-50 rounded-xl space-y-2 border border-gray-100">
-                      <div className="flex items-center justify-between text-[11px] text-gray-400">
-                        <Badge variant="outline" className="text-[9px]">Client Question</Badge>
-                        <span>{new Date(item.at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</span>
-                      </div>
-                      <p className="text-xs font-semibold text-gray-800">{item.question}</p>
-                      <div className="p-2.5 bg-white rounded-lg border border-gray-200 text-xs text-gray-600 leading-relaxed">
-                        <span className="text-[9px] font-bold text-gray-400 block uppercase mb-1">ASSISTANT</span>
-                        {item.answer}
-                      </div>
-                    </div>
-                  )) : (
-                    <div className="py-8 text-center text-xs text-gray-400">No client questions recorded yet.</div>
-                  )}
-                </div>
-              </Card>
-            </div>
-          ) : (
-            <div className="py-16 text-center space-y-4">
-              <h2 className="text-xl font-bold">No Projects Found</h2>
-              <Button onClick={() => setIsCreateProjectOpen(true)}>Create Your First Project</Button>
-            </div>
-          )}
-        </main>
-      </div>
-
-      {/* Mobile Bottom Navigation */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-white/90 backdrop-blur-lg border-t border-gray-200 flex items-center justify-around z-30 px-2 pb-[env(safe-area-inset-bottom)]">
-        <button
-          onClick={() => setCurrentTab("projects")}
-          className={`flex flex-col items-center gap-1 text-[10px] font-medium ${currentTab === "projects" ? "text-[#0075de] font-semibold" : "text-gray-500"}`}
-        >
-          <FolderKanban className="h-5 w-5" />
-          <span>Projects</span>
-        </button>
-        <button
-          onClick={() => setIsCreateProjectOpen(true)}
-          className="w-11 h-11 rounded-full bg-[#0075de] text-white grid place-items-center shadow-lg -mt-4 active:scale-95"
-        >
-          <Plus className="h-6 w-6" />
-        </button>
-        <button
-          onClick={() => { setCurrentTab("activity"); loadActivities(); }}
-          className={`flex flex-col items-center gap-1 text-[10px] font-medium ${currentTab === "activity" ? "text-[#0075de] font-semibold" : "text-gray-500"}`}
-        >
-          <Clock className="h-5 w-5" />
-          <span>Activity</span>
-        </button>
-      </nav>
-
-      {/* MODAL 1: Create Project */}
-      <Dialog open={isCreateProjectOpen} onOpenChange={setIsCreateProjectOpen}>
-        <DialogHeader>
-          <span className="text-[10px] font-bold tracking-widest text-[#96918c] uppercase">NEW WORKSPACE</span>
-          <DialogTitle>Start a Project Space</DialogTitle>
-          <DialogDescription>Set up the basics. You can assign the team and share a client link next.</DialogDescription>
-        </DialogHeader>
-        <form onSubmit={async (e) => {
-          e.preventDefault();
-          const form = new FormData(e.currentTarget);
-          try {
-            const res = await post("/api/founder/projects", Object.fromEntries(form));
-            await loadProjects();
-            setSelectedProjectId(res.project.id);
-            setIsCreateProjectOpen(false);
-            showToast("Project created successfully!", "success");
-          } catch (err) {
-            showToast(err.message, "error");
-          }
-        }} className="space-y-4">
-          <div className="space-y-1">
-            <label className="text-xs font-semibold">Project Name</label>
-            <Input name="name" placeholder="e.g. Kumar Residence" required autoFocus />
-          </div>
-          <div className="space-y-1">
-            <label className="text-xs font-semibold">Client Name</label>
-            <Input name="clientName" placeholder="e.g. Asha Kumar" required />
-          </div>
-          <div className="space-y-1">
-            <label className="text-xs font-semibold">Location</label>
-            <Input name="location" placeholder="e.g. Pune, Maharashtra" />
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            <div className="space-y-1">
-              <label className="text-xs font-semibold">Phase</label>
-              <select name="phase" className="w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]">
-                <option>Design</option>
-                <option>Planning</option>
-                <option>Procurement</option>
-                <option>Site execution</option>
-                <option>Finishing</option>
-                <option>Handover</option>
-              </select>
-            </div>
-            <div className="space-y-1">
-              <label className="text-xs font-semibold">Status</label>
-              <select name="status" className="w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]">
-                <option>Setup</option>
-                <option>On track</option>
-                <option>At risk</option>
-                <option>On hold</option>
-              </select>
-            </div>
-          </div>
-          <div className="space-y-1">
-            <label className="text-xs font-semibold">Recent Task</label>
-            <Input name="recentTask" placeholder="e.g. 3D Moodboards completed" />
-          </div>
-          <div className="space-y-1">
-            <label className="text-xs font-semibold">Next Milestone</label>
-            <Input name="nextMilestone" placeholder="e.g. Material selection review" />
-          </div>
-          <Button type="submit" className="w-full">Create Project Space</Button>
-        </form>
-      </Dialog>
-
-      {/* MODAL 2: Add Member */}
-      <Dialog open={isAddMemberOpen} onOpenChange={setIsAddMemberOpen}>
-        <DialogHeader>
-          <span className="text-[10px] font-bold tracking-widest text-[#96918c] uppercase">PROJECT TEAM</span>
-          <DialogTitle>Add Team Member</DialogTitle>
-          <DialogDescription>Assign a team member to {selectedProject?.name}.</DialogDescription>
-        </DialogHeader>
-        <form onSubmit={async (e) => {
-          e.preventDefault();
-          const form = new FormData(e.currentTarget);
-          try {
-            await post(`/api/founder/projects/${selectedProject.id}/members`, Object.fromEntries(form));
-            await loadProjects();
-            setIsAddMemberOpen(false);
-            showToast("Member added!", "success");
-          } catch (err) {
-            showToast(err.message, "error");
-          }
-        }} className="space-y-4">
-          <div className="space-y-1">
-            <label className="text-xs font-semibold">Full Name</label>
-            <Input name="name" placeholder="e.g. Rohan Mehta" required autoFocus />
-          </div>
-          <div className="space-y-1">
-            <label className="text-xs font-semibold">Designation</label>
-            <Input name="designation" placeholder="e.g. Lead Interior Designer" required />
-          </div>
-          <div className="space-y-1">
-            <label className="text-xs font-semibold">Role</label>
-            <select name="role" className="w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]">
-              <option>Project admin</option>
-              <option>Designer</option>
-              <option>Site supervisor</option>
-              <option>Site team</option>
-              <option>Contractor</option>
-              <option>Trade worker</option>
-              <option>Client</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <Button type="submit" className="w-full">Add to Team</Button>
-        </form>
-      </Dialog>
-
-      {/* MODAL 3: Edit Facts */}
-      <Dialog open={isEditFactsOpen} onOpenChange={setIsEditFactsOpen}>
-        <DialogHeader>
-          <span className="text-[10px] font-bold tracking-widest text-[#96918c] uppercase">FACTS UPDATE</span>
-          <DialogTitle>Update Project Facts</DialogTitle>
-          <DialogDescription>The client assistant responds using these exact recorded facts.</DialogDescription>
-        </DialogHeader>
-        {selectedProject && (
-          <form onSubmit={async (e) => {
-            e.preventDefault();
-            const form = new FormData(e.currentTarget);
-            try {
-              await patch(`/api/founder/projects/${selectedProject.id}`, Object.fromEntries(form));
-              await loadProjects();
-              await loadProjectHistory(selectedProject.id);
-              setIsEditFactsOpen(false);
-              showToast("Project facts updated.", "success");
-            } catch (err) {
-              showToast(err.message, "error");
-            }
-          }} className="space-y-4">
-            <div className="grid grid-cols-2 gap-3">
-              <div className="space-y-1">
-                <label className="text-xs font-semibold">Phase</label>
-                <select name="phase" defaultValue={selectedProject.phase} className="w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]">
-                  <option>Design</option>
-                  <option>Planning</option>
-                  <option>Procurement</option>
-                  <option>Site execution</option>
-                  <option>Finishing</option>
-                  <option>Handover</option>
-                </select>
-              </div>
-              <div className="space-y-1">
-                <label className="text-xs font-semibold">Status</label>
-                <select name="status" defaultValue={selectedProject.status} className="w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]">
-                  <option>Setup</option>
-                  <option>On track</option>
-                  <option>At risk</option>
-                  <option>On hold</option>
-                  <option>Completed</option>
-                </select>
-              </div>
-            </div>
-            <div className="space-y-1">
-              <label className="text-xs font-semibold">Recent Task</label>
-              <Input name="recentTask" defaultValue={selectedProject.recentTask} placeholder="e.g. Framing completed on 2nd floor" />
-            </div>
-            <div className="space-y-1">
-              <label className="text-xs font-semibold">Next Milestone</label>
-              <Input name="nextMilestone" defaultValue={selectedProject.nextMilestone} placeholder="e.g. Tile deliveries" />
-            </div>
-            <div className="space-y-1">
-              <label className="text-xs font-semibold">Blocker (Client Visible)</label>
-              <Input name="blocker" defaultValue={selectedProject.blocker} placeholder="e.g. Awaiting client tile selection" />
-            </div>
-            <Button type="submit" className="w-full">Save Project Facts</Button>
-          </form>
-        )}
-      </Dialog>
-
-      {/* MODAL 4: Share Link */}
-      <Dialog open={!!shareLinkData} onOpenChange={() => setShareLinkData(null)}>
-        <DialogHeader>
-          <div className="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 grid place-items-center mb-2 text-lg">✓</div>
-          <span className="text-[10px] font-bold tracking-widest text-[#96918c] uppercase">CLIENT ACCESS</span>
-          <DialogTitle>Private Link Ready</DialogTitle>
-          <DialogDescription>Send this to {selectedProject?.clientName}. The first browser to open it claims access.</DialogDescription>
-        </DialogHeader>
-        <div className="space-y-4">
-          <div className="flex gap-2 p-2 bg-gray-50 border border-gray-200 rounded-xl">
-            <input readOnly value={shareLinkData || ""} className="flex-1 bg-transparent text-xs sm:text-sm font-mono px-2 outline-none" />
-            <Button size="sm" onClick={() => {
-              navigator.clipboard.writeText(shareLinkData);
-              showToast("Link copied to clipboard!", "success");
-            }} className="gap-1">
-              <Copy className="h-3.5 w-3.5" /> Copy
-            </Button>
-          </div>
-          <p className="text-xs text-gray-500">🔒 Single-claim bearer link · No password required</p>
-          <Button variant="secondary" className="w-full" onClick={() => setShareLinkData(null)}>Done</Button>
-        </div>
-      </Dialog>
-
-      {/* Toast Notification */}
-      {toastMessage && (
-        <div className="fixed bottom-20 md:bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 bg-gray-900/95 backdrop-blur text-white text-xs font-medium rounded-full shadow-2xl flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2">
-          <span>{toastMessage.type === "success" ? "✓" : "ℹ"}</span>
-          <span>{toastMessage.text}</span>
-        </div>
-      )}
-    </div>
+      </section>
+    </main>
   );
+
+  const navigation = <div className="flex h-full flex-col gap-5">
+    <Brand />
+    <nav className="grid gap-1" aria-label="Workspace">
+      {[["projects", FolderKanban, "Projects"], ["groups", Users, "Telegram groups"], ["decisions", CheckCircle2, "Needs attention"], ["assistant", Sparkles, "Founder assistant"], ["messages", MessageSquare, "Client messages"], ["employees", Users, "Employees"], ["activity", Clock3, "Activity log"], ["trash", Trash2, "Trash"]].map(([id, Icon, label]) => <Button key={id} variant={currentTab === id ? "secondary" : "ghost"} className={`h-10 justify-start gap-3 ${currentTab === id ? "text-primary" : "text-muted-foreground"}`} onClick={() => openTab(id)}><Icon className="size-4" />{label}{id === "messages" && conversations.length > 0 && <Badge variant="outline" className="ml-auto">{conversations.length}</Badge>}</Button>)}
+    </nav>
+    <Separator />
+    <div className="flex items-center justify-between"><span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Projects</span><Button size="icon-sm" variant="ghost" aria-label="Create project" onClick={() => { setCreateOpen(true); setSidebarOpen(false); }}><Plus /></Button></div>
+    <div className="relative"><Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" /><Input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Find project" className="pl-9" /></div>
+    <div className="min-h-0 flex-1 space-y-4 overflow-y-auto">
+      <div className="space-y-1"><p className="px-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Ongoing</p>{filteredProjects.filter((project) => project.status !== "Completed").map((project) => <Button key={project.id} variant={project.id === selectedProject?.id && currentTab === "projects" ? "outline" : "ghost"} className="h-auto w-full justify-start px-3 py-2.5 text-left" onClick={() => { setSelectedProjectId(project.id); openTab("projects"); }}><span className={`size-2 shrink-0 rounded-full ${project.status === "At risk" || project.telegramSetupPending ? "bg-amber-500" : "bg-emerald-500"}`} /><span className="min-w-0 flex-1"><span className="block truncate text-sm font-medium">{project.name}</span><span className="block truncate text-xs font-normal text-muted-foreground">{project.clientName}</span></span></Button>)}{!filteredProjects.some((project) => project.status !== "Completed") && <p className="px-2 text-xs text-muted-foreground">No ongoing projects</p>}</div>
+      {filteredProjects.some((project) => project.status === "Completed") && <div className="space-y-1"><p className="px-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Completed</p>{filteredProjects.filter((project) => project.status === "Completed").map((project) => <Button key={project.id} variant={project.id === selectedProject?.id && currentTab === "projects" ? "outline" : "ghost"} className="h-auto w-full justify-start px-3 py-2.5 text-left" onClick={() => { setSelectedProjectId(project.id); openTab("projects"); }}><CheckCircle2 className="size-4 shrink-0 text-emerald-600" /><span className="min-w-0 flex-1 truncate text-sm">{project.name}</span></Button>)}</div>}
+    </div>
+    <Separator /><div className="flex items-center gap-2"><InitialAvatar name="Project Founder" /><div className="min-w-0 flex-1"><p className="truncate text-xs font-semibold">Project Founder</p><p className="text-xs text-muted-foreground">Workspace owner</p></div><Button variant="ghost" size="icon-sm" aria-label="Sign out" onClick={handleLogout}><LogOut /></Button></div>
+  </div>;
+
+  if (currentTab === "assistant") return <FounderAssistant onBack={() => openTab("projects")} />;
+
+  return <div className="app-glow min-h-dvh bg-background pb-20 md:pb-0">
+    <aside className="fixed inset-y-0 left-0 hidden w-64 border-r bg-card p-5 md:block">{navigation}</aside>
+    <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}><SheetContent side="left" className="w-[min(88vw,19rem)] gap-0 p-5"><SheetHeader className="sr-only"><SheetTitle>Workspace navigation</SheetTitle><SheetDescription>Choose a project or section</SheetDescription></SheetHeader>{navigation}</SheetContent></Sheet>
+    <div className="md:pl-64">
+      <header className="sticky top-0 z-20 flex h-16 items-center justify-between border-b bg-card/95 px-4 backdrop-blur sm:px-7"><div className="flex min-w-0 items-center gap-3"><Button variant="ghost" size="icon" className="md:hidden" aria-label="Open navigation" onClick={() => setSidebarOpen(true)}><Menu /></Button><div className="min-w-0"><p className="text-xs text-muted-foreground">Workspace / {{ projects: "Projects", groups: "Telegram groups", decisions: "Needs attention", assistant: "Assistant", messages: "Client messages", employees: "Employees", activity: "Activity", trash: "Trash" }[currentTab]}</p><strong className="block truncate text-sm">{selectedProject?.name || "Studio Iksha"}</strong></div></div><div className="flex items-center gap-2"><Button variant="outline" size="sm" className="hidden sm:inline-flex" onClick={() => setCreateOpen(true)}><Plus />New project</Button><InitialAvatar name="Project Founder" /></div></header>
+      <main className="mx-auto w-full max-w-6xl space-y-5 px-4 py-6 sm:px-7 sm:py-8">
+        {currentTab === "projects" && projects.some((project) => project.telegramSetupPending) && <Alert className="border-amber-200 bg-amber-50 text-amber-900"><Users /><AlertTitle>New project from Telegram</AlertTitle><AlertDescription className="flex flex-wrap items-center justify-between gap-3"><span>{projects.filter((project) => project.telegramSetupPending).map((project) => project.name).join(", ")} {projects.filter((project) => project.telegramSetupPending).length === 1 ? "is" : "are"} waiting for names, roles, and a Client.</span><Button size="sm" onClick={() => openTab("groups")}>Set up project<ArrowRight /></Button></AlertDescription></Alert>}
+        {currentTab === "groups" ? <TelegramGroups projects={projects} onProjectsChanged={loadProjects} /> : currentTab === "decisions" ? <DecisionInbox projects={projects} onProjectsChanged={loadProjects} /> : currentTab === "employees" ? <EmployeeManager employees={employees} projects={projects} onAdd={() => setMemberOpen(true)} /> : currentTab === "trash" ? <div className="space-y-5"><div><p className="text-xs font-semibold uppercase tracking-wider text-primary">Recoverable projects</p><h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">Trash</h1><p className="mt-1 text-sm text-muted-foreground">Projects here are hidden from employees and clients. Restore them whenever you need to.</p></div>{trashedProjects.length ? <div className="grid gap-3 sm:grid-cols-2">{trashedProjects.map((project) => <Card key={project.id}><CardContent className="flex items-center gap-3 p-4"><FolderKanban className="size-5 shrink-0 text-muted-foreground" /><div className="min-w-0 flex-1"><p className="truncate text-sm font-semibold">{project.name}</p><p className="truncate text-xs text-muted-foreground">{project.clientName}</p></div><Button variant="outline" size="sm" onClick={() => restoreProject(project.id)}>Restore</Button></CardContent></Card>)}</div> : <Card><CardContent className="py-10 text-center text-sm text-muted-foreground">Trash is empty.</CardContent></Card>}</div> : currentTab === "messages" ? <>
+          <div className="flex flex-wrap items-start justify-between gap-3"><div><p className="text-xs font-semibold uppercase tracking-wider text-primary">Client conversation</p><h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">Messages</h1><p className="mt-1 text-sm text-muted-foreground">{selectedProject?.name || "Select a project"} · client questions and project assistant replies</p></div><div className="flex gap-2"><Button variant="outline" size="sm" onClick={() => loadProjectDetails(selectedProject?.id)} disabled={!selectedProject}><RefreshCw />Refresh</Button><Button size="sm" onClick={handleInvite} disabled={!selectedProject}><Share2 />Share client link</Button></div></div>
+          <Card className="flex min-h-[min(72dvh,720px)] flex-col overflow-hidden"><div className="flex items-center gap-3 border-b px-4 py-3 sm:px-6"><Avatar><AvatarFallback className="bg-primary/10 text-primary"><Sparkles className="size-4" /></AvatarFallback></Avatar><div className="flex-1"><p className="text-sm font-semibold">Project Assistant</p><p className="text-xs text-muted-foreground">Private client Q&amp;A</p></div><Badge variant="secondary">{conversations.length} exchanges</Badge></div><ConversationThread conversations={conversations} project={selectedProject} large /><div className="flex items-center justify-between gap-3 border-t bg-muted/30 px-4 py-3 text-xs text-muted-foreground sm:px-6"><span>Replies use the facts recorded for this project.</span><Button variant="outline" size="sm" onClick={handleInvite} disabled={!selectedProject}><Share2 />Invite</Button></div></Card>
+        </> : currentTab === "activity" ? <>
+          <div className="flex items-start justify-between gap-3"><div><p className="text-xs font-semibold uppercase tracking-wider text-primary">Workspace log</p><h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">Activity</h1><p className="mt-1 text-sm text-muted-foreground">Recent updates across your projects.</p></div><Button variant="outline" size="sm" onClick={loadActivities}><RefreshCw />Refresh</Button></div>
+          <Card><CardContent className="divide-y pt-5">{activities.length ? activities.map((item, index) => <div key={item.id || index} className="flex gap-3 py-4 first:pt-0"><span className="grid size-9 shrink-0 place-items-center rounded-lg bg-secondary text-primary"><History className="size-4" /></span><div className="min-w-0 flex-1"><div className="flex flex-wrap items-center gap-2"><strong className="text-sm capitalize">{item.action?.replace(/_/g, " ")}</strong><Badge variant="secondary">{projects.find((p) => p.id === item.projectId)?.name || "Workspace"}</Badge><span className="ml-auto text-xs text-muted-foreground">{niceDate(item.at)}</span></div><p className="mt-1 text-sm text-muted-foreground">{item.details?.name || item.details?.clientName || "Project updated"}</p></div></div>) : <p className="py-10 text-center text-sm text-muted-foreground">No activity recorded yet.</p>}</CardContent></Card>
+        </> : selectedProject ? <>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"><div><p className="text-xs font-semibold uppercase tracking-wider text-primary">Project workspace</p><h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">{selectedProject.name}</h1><p className="mt-1 text-sm text-muted-foreground">{selectedProject.location || "Location not set"} · {selectedProject.clientName} · Created {niceDate(selectedProject.createdAt)}</p></div><div className="grid grid-cols-2 gap-2 sm:flex"><Button variant="outline" onClick={() => openTab("messages")}><MessageSquare />Messages</Button><Button variant="outline" onClick={() => setFactsOpen(true)}>Edit facts</Button><Button className="col-span-2" onClick={handleInvite}><Share2 />Share client link</Button></div></div>
+          {selectedProject.telegramSetupPending && <Alert className="border-amber-200 bg-amber-50 text-amber-900"><Users /><AlertTitle>New Telegram project needs setup</AlertTitle><AlertDescription className="flex flex-wrap items-center justify-between gap-3"><span>This group has been discovered. Assign the people and a Client role to finish connecting its workflow.</span><Button size="sm" onClick={() => openTab("groups")}>Set up group<ArrowRight /></Button></AlertDescription></Alert>}
+          {selectedProject.blocker && <Alert className="border-amber-200 bg-amber-50 text-amber-900"><AlertTriangle /><AlertTitle>Active blocker</AlertTitle><AlertDescription>{selectedProject.blocker}</AlertDescription></Alert>}
+          <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">{[["Status", <StatusBadge status={selectedProject.status} />], ["Current phase", selectedProject.phase || "Design"], ["Next milestone", selectedProject.nextMilestone || "Not scheduled"], ["Team", selectedProject.telegramMembers?.length ? `${selectedProject.telegramMembers.length} in Telegram` : `${selectedProject.members?.length || 0} members`]].map(([label, value]) => <Card key={label}><CardContent className="space-y-3 p-4 sm:p-5"><p className="text-xs text-muted-foreground">{label}</p><div className="line-clamp-2 text-sm font-semibold sm:text-base">{value}</div></CardContent></Card>)}</div>
+          <Tabs defaultValue="overview" className="gap-4"><TabsList className="w-full sm:w-fit"><TabsTrigger value="overview">Overview</TabsTrigger><TabsTrigger value="team">Team chat</TabsTrigger><TabsTrigger value="history">History</TabsTrigger></TabsList>
+            <TabsContent value="overview" className="space-y-4"><div className="grid gap-4 lg:grid-cols-2"><Card><CardHeader><CardTitle className="flex items-center gap-2"><Building2 className="size-4 text-primary" />Current work</CardTitle><CardDescription>Recent progress and what comes next</CardDescription></CardHeader><CardContent><p className="text-sm font-medium">{selectedProject.recentTask || "No recent task recorded"}</p><Separator className="my-4" /><p className="text-xs text-muted-foreground">Next milestone</p><p className="mt-1 text-sm font-medium">{selectedProject.nextMilestone || "No milestone recorded"}</p></CardContent></Card><Card><CardHeader className="flex flex-row items-center justify-between"><div><CardTitle className="flex items-center gap-2"><Users className="size-4 text-primary" />Web app team</CardTitle><CardDescription>{selectedProject.members?.length || 0} members assigned</CardDescription></div><Button variant="outline" size="sm" onClick={() => setMemberOpen(true)}><UserPlus />Add</Button></CardHeader><CardContent className="space-y-3">{selectedProject.members?.length ? selectedProject.members.map((member, index) => <div key={member.id || index} className="flex items-center gap-3"><InitialAvatar name={member.name} /><div className="min-w-0 flex-1"><p className="truncate text-sm font-medium">{member.name}</p><p className="truncate text-xs text-muted-foreground">{member.designation}</p></div><Badge variant="secondary">{member.role}</Badge></div>) : <p className="py-4 text-sm text-muted-foreground">No members assigned yet.</p>}</CardContent></Card></div><Card className="border-primary/20 bg-accent/30"><CardContent className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between"><div className="flex items-start gap-3"><span className="grid size-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary"><MessageSquare className="size-5" /></span><div><h2 className="font-semibold">Client conversation</h2><p className="mt-1 text-sm text-muted-foreground">Review questions and share a private access link.</p></div></div><Button onClick={() => openTab("messages")}>Open messages<ArrowRight /></Button></CardContent></Card></TabsContent>
+            <TabsContent value="team"><TeamChat key={selectedProject.id} endpoint={`/api/founder/projects/${selectedProject.id}/team-chat`} currentActor="founder" /></TabsContent>
+            <TabsContent value="history"><Card><CardHeader className="flex flex-row items-start justify-between"><div><CardTitle>Project update history</CardTitle><CardDescription>Saved changes to project facts</CardDescription></div><Button variant="outline" size="sm" onClick={() => loadProjectDetails(selectedProject.id)}><RefreshCw />Refresh</Button></CardHeader><CardContent className="space-y-3">{projectHistory.length ? projectHistory.map((item, index) => <div key={item.id || index} className="rounded-lg border bg-muted/30 p-4"><div className="flex flex-wrap items-center justify-between gap-2"><strong className="text-sm">{Object.keys(item.changes || {}).length} fields updated</strong><span className="text-xs text-muted-foreground">{niceDate(item.at)}</span></div>{Object.entries(item.changes || {}).map(([field, change]) => <div key={field} className="mt-2 flex flex-wrap items-center gap-2 text-xs"><span className="capitalize text-muted-foreground">{field.replace(/([A-Z])/g, " $1")}</span><ArrowRight className="size-3" /><span className="font-medium">{String(change.new || "Cleared")}</span></div>)}</div>) : <p className="py-8 text-center text-sm text-muted-foreground">No updates recorded yet.</p>}</CardContent></Card></TabsContent>
+          </Tabs>
+          {selectedProject.telegramGroupChatId && <Card><CardHeader><CardTitle className="flex items-center gap-2"><Users className="size-4 text-primary" />Telegram group team</CardTitle><CardDescription>{selectedProject.telegramMembers?.length || 0} people observed in the linked group</CardDescription></CardHeader><CardContent className="space-y-3">{selectedProject.telegramMembers?.length ? selectedProject.telegramMembers.map((member) => <div key={member.telegramUserId} className="flex items-center gap-3"><InitialAvatar name={member.assignedName || member.telegramName} /><div className="min-w-0 flex-1"><p className="truncate text-sm font-medium">{member.assignedName || member.telegramName}</p><p className="truncate text-xs text-muted-foreground">{member.telegramName}</p></div><Badge variant="secondary">{member.assignedRole || "Role pending"}</Badge></div>) : <p className="text-sm text-muted-foreground">Members will appear when the bot observes them in Telegram.</p>}</CardContent></Card>}
+          <Card><CardContent className="flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between"><div><h2 className="text-sm font-semibold">Project controls</h2><p className="mt-1 text-xs text-muted-foreground">Complete finished work or move a project to recoverable Trash.</p></div><div className="flex flex-wrap gap-2"><Button variant="outline" onClick={completeProject} disabled={selectedProject.status === "Completed"}><CheckCircle2 />{selectedProject.status === "Completed" ? "Completed" : "Mark complete"}</Button><Button variant="outline" className="text-destructive hover:text-destructive" onClick={() => setTrashConfirmOpen(true)}><Trash2 />Move to Trash</Button></div></CardContent></Card>
+        </> : <Card><CardContent className="flex flex-col items-center gap-4 py-16 text-center"><FolderKanban className="size-10 text-primary" /><h1 className="text-xl font-semibold">Start your first project</h1><p className="text-sm text-muted-foreground">Create a workspace to manage updates and client questions.</p><Button onClick={() => setCreateOpen(true)}><Plus />Create project</Button></CardContent></Card>}
+      </main>
+    </div>
+    <nav className="safe-bottom fixed inset-x-0 bottom-0 z-30 grid grid-cols-4 items-center overflow-visible border-t bg-card/95 px-2 pt-3 backdrop-blur md:hidden" aria-label="Mobile navigation">{[["projects", FolderKanban, "Projects"], ["groups", Users, "Groups"], ["decisions", CheckCircle2, "Decisions"]].map(([id, Icon, label]) => <Button key={id} variant="ghost" className={`h-12 flex-col gap-0.5 text-[10px] ${currentTab === id ? "text-primary" : "text-muted-foreground"}`} onClick={() => openTab(id)}><Icon className="size-4" />{label}</Button>)}<GooeyNewButton hasProject={!!selectedProject} onCreateProject={() => setCreateOpen(true)} onAddMember={() => setMemberOpen(true)} onShareClientLink={handleInvite} /></nav>
+
+    <Dialog open={createOpen} onOpenChange={setCreateOpen}><DialogContent className="max-h-[90dvh] overflow-y-auto"><DialogHeader><DialogTitle>Create project</DialogTitle><DialogDescription>Set up the basics. You can add team members and invite the client next.</DialogDescription></DialogHeader><form onSubmit={(e) => saveForm(e, "/api/founder/projects", "POST", () => setCreateOpen(false), "Project created.")} className="space-y-4"><Field label="Project name"><Input name="name" placeholder="Kumar Residence" required /></Field><Field label="Client name"><Input name="clientName" placeholder="Asha Kumar" required /></Field><Field label="Location"><Input name="location" placeholder="Pune, Maharashtra" /></Field><div className="grid grid-cols-2 gap-3"><Field label="Phase"><NativeSelect name="phase" className="w-full">{phaseOptions.map((option) => <option key={option}>{option}</option>)}</NativeSelect></Field><Field label="Status"><NativeSelect name="status" className="w-full">{statusOptions.slice(0, 4).map((option) => <option key={option}>{option}</option>)}</NativeSelect></Field></div><Field label="Recent task"><Input name="recentTask" placeholder="3D moodboards completed" /></Field><Field label="Next milestone"><Input name="nextMilestone" placeholder="Material selection review" /></Field><Button type="submit" className="h-11 w-full" disabled={busy}>Create project</Button></form></DialogContent></Dialog>
+    <EmployeeDialog open={memberOpen} onOpenChange={setMemberOpen} projects={projects} defaultProjectId={selectedProject?.id} onUpdated={() => Promise.all([loadProjects(), loadEmployees()])} />
+    <Dialog open={trashConfirmOpen} onOpenChange={setTrashConfirmOpen}><DialogContent><DialogHeader><DialogTitle>Move {selectedProject?.name} to Trash?</DialogTitle><DialogDescription>The project will leave active workspaces and team chat. You can restore it from Trash later.</DialogDescription></DialogHeader><div className="flex justify-end gap-2"><Button variant="outline" onClick={() => setTrashConfirmOpen(false)}>Cancel</Button><Button variant="destructive" onClick={moveToTrash}>Move to Trash</Button></div></DialogContent></Dialog>
+    <Dialog open={factsOpen} onOpenChange={setFactsOpen}><DialogContent className="max-h-[90dvh] overflow-y-auto"><DialogHeader><DialogTitle>Update project facts</DialogTitle><DialogDescription>The project assistant uses these facts when answering client questions.</DialogDescription></DialogHeader>{selectedProject && <form key={selectedProject.id} onSubmit={(e) => saveForm(e, `/api/founder/projects/${selectedProject.id}`, "PATCH", () => setFactsOpen(false), "Project facts updated.")} className="space-y-4"><div className="grid grid-cols-2 gap-3"><Field label="Phase"><NativeSelect name="phase" defaultValue={selectedProject.phase} className="w-full">{phaseOptions.map((option) => <option key={option}>{option}</option>)}</NativeSelect></Field><Field label="Status"><NativeSelect name="status" defaultValue={selectedProject.status} className="w-full">{statusOptions.map((option) => <option key={option}>{option}</option>)}</NativeSelect></Field></div><Field label="Recent task"><Input name="recentTask" defaultValue={selectedProject.recentTask} /></Field><Field label="Next milestone"><Input name="nextMilestone" defaultValue={selectedProject.nextMilestone} /></Field><Field label="Blocker visible to client"><Input name="blocker" defaultValue={selectedProject.blocker} placeholder="None" /></Field><Button type="submit" className="h-11 w-full" disabled={busy}>Save changes</Button></form>}</DialogContent></Dialog>
+    <Dialog open={!!shareLink} onOpenChange={() => setShareLink(null)}><DialogContent><DialogHeader><DialogTitle>Client link ready</DialogTitle><DialogDescription>Send this link to {selectedProject?.clientName}. The first browser to open it claims access.</DialogDescription></DialogHeader><div className="space-y-4"><div className="flex gap-2"><Input value={shareLink || ""} readOnly aria-label="Client link" className="min-w-0 font-mono text-xs" /><Button variant="outline" onClick={async () => { try { await navigator.clipboard.writeText(shareLink); showNotice("Link copied."); } catch { showNotice("Could not copy link.", true); } }}><Copy />Copy</Button></div><p className="flex items-center gap-2 text-xs text-muted-foreground"><ShieldCheck className="size-4" />Private single-claim access</p><Button className="w-full" onClick={() => setShareLink(null)}>Done</Button></div></DialogContent></Dialog>
+    {notice && <div role="status" className="fixed right-4 bottom-24 z-[60] max-w-sm rounded-lg border bg-card px-4 py-3 text-sm shadow-lg md:bottom-4">{notice.error ? <X className="mr-2 inline size-4 text-destructive" /> : <Check className="mr-2 inline size-4 text-emerald-600" />}{notice.message}</div>}
+  </div>;
 }

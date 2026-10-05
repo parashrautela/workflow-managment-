@@ -8,15 +8,17 @@ The **Workflow Management Tool** provides teams with a clean, distraction-free e
 
 ## ✨ Features
 
-- **Workflow Builder**: Visual pipeline to design and execute business workflows.
-- **Task & Project Tracking**: Flexible boards, lists, and timeline views for all your team tasks.
-- **Role-Based Access Control**: Granular permissions for admins, managers, and contributors.
-- **Real-Time Collaboration**: Instant status updates and team activity feeds.
-- **Modern Design System**: Clean typography, crisp contrast, and warm canvas styling.
+- **Project workspaces**: Track status, phase, recent work, milestones, team members, and update history.
+- **Client portal**: Share a private link for project questions and assistant replies based on recorded facts.
+- **Conversation review**: Founders can review the client Q&A transcript in Messages.
+- **Installable app**: PWA metadata lets supported browsers open the site as a standalone app.
+- **Telegram decision inbox**: A conversation view for `/approval` and `/question` requests, with private notes, a separate Telegram reply composer, and completion tracking. Link each project group from its settings panel. The first version shows marked requests, not every group message.
+- **Telegram group setup**: A newly discovered group appears immediately as a project needing setup on the founder home screen. Assign member names and roles, then finish its bot workflow setup. The bot announces role assignments in the group.
+- **UI system**: Responsive screens built with shadcn/ui components and Tailwind CSS.
 
 ## 🛠️ Tech Stack & Design
 
-- **Frontend**: Modern web technologies & design system
+- **Frontend**: React, Vite, Tailwind CSS v4, and shadcn/ui registry components
 - **Figma Board**: [Figma Project Board](https://www.figma.com/board/UWscIC0R0NrqZyKUmmuGEB/Untitled?node-id=0-1&t=EMt7WHN72keLxW68-1)
 - **Design Tokens**: Standardized color, spacing, and typography scales (see [frontend/DESIGN.md](frontend/DESIGN.md))
 - **Architecture**: Modular and scalable architecture
@@ -39,7 +41,7 @@ The **Workflow Management Tool** provides teams with a clean, distraction-free e
    ```bash
    cp .env.example .env
    ```
-   Open `.env` and set `FOUNDER_PASSWORD` to a private password. Add `OPENAI_API_KEY` optionally for AI-powered Q&A responses. Add `DATABASE_URL` to use PostgreSQL; when running locally without it, the app stores data in `backend/data.json`.
+   Open `.env` and set `FOUNDER_PASSWORD` to a private password. Add `OPENAI_API_KEY` optionally for AI-powered Q&A responses. Add `DATABASE_URL` to use PostgreSQL; when running locally without it, the app stores data in `backend/data.json`. For Telegram group setup, set `BOT_BRIDGE_URL` to the Telegram bot service's HTTPS origin and use the same `INTEGRATION_SHARED_SECRET` in both services. The bot needs `WEB_APP_URL` pointed at this app.
 
 3. **Start the development server:**
    ```bash
@@ -49,6 +51,10 @@ The **Workflow Management Tool** provides teams with a clean, distraction-free e
 
 4. **Access the application:**
    Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### UI components
+
+The frontend uses shadcn/ui components in `frontend/src/components/ui` with the configuration in `components.json`. To add another component, run `npx shadcn@latest add <component>` from the repository root, then run `npm run build` to refresh `frontend/app.js` and `frontend/app.css`.
 
 ## 📄 License
 

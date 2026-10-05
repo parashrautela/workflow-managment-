@@ -1,6 +1,6 @@
 //#region \0rolldown/runtime.js
 var __create = Object.create;
-var __defProp = Object.defineProperty;
+var __defProp$22 = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
@@ -9,14 +9,14 @@ var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).expor
 var __copyProps = (to, from, except, desc) => {
 	if (from && typeof from === "object" || typeof from === "function") for (var keys = __getOwnPropNames(from), i = 0, n = keys.length, key; i < n; i++) {
 		key = keys[i];
-		if (!__hasOwnProp.call(to, key) && key !== except) __defProp(to, key, {
+		if (!__hasOwnProp.call(to, key) && key !== except) __defProp$22(to, key, {
 			get: ((k) => from[k]).bind(null, key),
 			enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
 		});
 	}
 	return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp.call(mod, "default") ? __defProp(target, "default", {
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp.call(mod, "default") ? __defProp$22(target, "default", {
 	value: mod,
 	enumerable: true
 }) : target, mod));
@@ -11668,6 +11668,27 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 	return Component;
 }
 //#endregion
+//#region node_modules/lucide-react/dist/esm/icons/arrow-left.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$34 = {
+	name: "arrow-left",
+	size: 24,
+	node: [["path", {
+		d: "m12 19-7-7 7-7",
+		key: "1l729n"
+	}], ["path", {
+		d: "M19 12H5",
+		key: "x3x0zl"
+	}]]
+};
+__iconData$34.node;
+var ArrowLeft = createLucideIcon(__iconData$34);
+//#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11675,7 +11696,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$19 = {
+var __iconData$33 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11686,8 +11707,102 @@ var __iconData$19 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$19.node;
-var ArrowRight = createLucideIcon(__iconData$19);
+__iconData$33.node;
+var ArrowRight = createLucideIcon(__iconData$33);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$32 = {
+	name: "arrow-up",
+	size: 24,
+	node: [["path", {
+		d: "m5 12 7-7 7 7",
+		key: "hav0vg"
+	}], ["path", {
+		d: "M12 19V5",
+		key: "x0mq9r"
+	}]]
+};
+__iconData$32.node;
+var ArrowUp = createLucideIcon(__iconData$32);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/building-complex.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$31 = {
+	name: "building-complex",
+	size: 24,
+	node: [
+		["path", {
+			d: "M10 12h4",
+			key: "a56b0p"
+		}],
+		["path", {
+			d: "M10 8h4",
+			key: "1sr2af"
+		}],
+		["path", {
+			d: "M14 21v-3a2 2 0 0 0-4 0v3",
+			key: "1rgiei"
+		}],
+		["path", {
+			d: "M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2",
+			key: "secmi2"
+		}],
+		["path", {
+			d: "M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16",
+			key: "16ra0t"
+		}]
+	],
+	aliases: ["building-2"]
+};
+__iconData$31.node;
+var BuildingComplex = createLucideIcon(__iconData$31);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/check.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$30 = {
+	name: "check",
+	size: 24,
+	node: [["path", {
+		d: "M20 6 9 17l-5-5",
+		key: "1gmf2c"
+	}]]
+};
+__iconData$30.node;
+var Check = createLucideIcon(__iconData$30);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$29 = {
+	name: "chevron-down",
+	size: 24,
+	node: [["path", {
+		d: "m6 9 6 6 6-6",
+		key: "qrunsl"
+	}]]
+};
+__iconData$29.node;
+var ChevronDown = createLucideIcon(__iconData$29);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
@@ -11696,7 +11811,7 @@ var ArrowRight = createLucideIcon(__iconData$19);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$18 = {
+var __iconData$28 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -11723,18 +11838,18 @@ var __iconData$18 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$18.node;
-var CircleAlert = createLucideIcon(__iconData$18);
+__iconData$28.node;
+var CircleAlert = createLucideIcon(__iconData$28);
 //#endregion
-//#region node_modules/lucide-react/dist/esm/icons/clock.mjs
+//#region node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$17 = {
-	name: "clock",
+var __iconData$27 = {
+	name: "circle-check",
 	size: 24,
 	node: [["circle", {
 		cx: "12",
@@ -11742,12 +11857,36 @@ var __iconData$17 = {
 		r: "10",
 		key: "1mglay"
 	}], ["path", {
-		d: "M12 6v6l4 2",
-		key: "mmk7yg"
+		d: "m16 9-5.5 5.5L8 12",
+		key: "xofnsj"
+	}]],
+	aliases: ["check-circle-2"]
+};
+__iconData$27.node;
+var CircleCheck = createLucideIcon(__iconData$27);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/clock-3.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$26 = {
+	name: "clock-3",
+	size: 24,
+	node: [["circle", {
+		cx: "12",
+		cy: "12",
+		r: "10",
+		key: "1mglay"
+	}], ["path", {
+		d: "M12 6v6h4",
+		key: "135r8i"
 	}]]
 };
-__iconData$17.node;
-var Clock = createLucideIcon(__iconData$17);
+__iconData$26.node;
+var Clock3 = createLucideIcon(__iconData$26);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
@@ -11756,7 +11895,7 @@ var Clock = createLucideIcon(__iconData$17);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$16 = {
+var __iconData$25 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -11772,8 +11911,36 @@ var __iconData$16 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$16.node;
-var Copy = createLucideIcon(__iconData$16);
+__iconData$25.node;
+var Copy = createLucideIcon(__iconData$25);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/external-link.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$24 = {
+	name: "external-link",
+	size: 24,
+	node: [
+		["path", {
+			d: "M15 3h6v6",
+			key: "1q9fwt"
+		}],
+		["path", {
+			d: "M10 14 21 3",
+			key: "gplh6r"
+		}],
+		["path", {
+			d: "M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6",
+			key: "a6xqqp"
+		}]
+	]
+};
+__iconData$24.node;
+var ExternalLink = createLucideIcon(__iconData$24);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye-off.mjs
 /**
@@ -11782,7 +11949,7 @@ var Copy = createLucideIcon(__iconData$16);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$15 = {
+var __iconData$23 = {
 	name: "eye-off",
 	size: 24,
 	node: [
@@ -11804,8 +11971,8 @@ var __iconData$15 = {
 		}]
 	]
 };
-__iconData$15.node;
-var EyeOff = createLucideIcon(__iconData$15);
+__iconData$23.node;
+var EyeOff = createLucideIcon(__iconData$23);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye.mjs
 /**
@@ -11814,7 +11981,7 @@ var EyeOff = createLucideIcon(__iconData$15);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$14 = {
+var __iconData$22 = {
 	name: "eye",
 	size: 24,
 	node: [["path", {
@@ -11827,8 +11994,8 @@ var __iconData$14 = {
 		key: "1v7zrd"
 	}]]
 };
-__iconData$14.node;
-var Eye = createLucideIcon(__iconData$14);
+__iconData$22.node;
+var Eye = createLucideIcon(__iconData$22);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
@@ -11837,7 +12004,7 @@ var Eye = createLucideIcon(__iconData$14);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$13 = {
+var __iconData$21 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -11859,8 +12026,36 @@ var __iconData$13 = {
 		}]
 	]
 };
-__iconData$13.node;
-var FolderKanban = createLucideIcon(__iconData$13);
+__iconData$21.node;
+var FolderKanban = createLucideIcon(__iconData$21);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/folder-plus.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$20 = {
+	name: "folder-plus",
+	size: 24,
+	node: [
+		["path", {
+			d: "M12 10v6",
+			key: "1bos4e"
+		}],
+		["path", {
+			d: "M9 13h6",
+			key: "1uhe8q"
+		}],
+		["path", {
+			d: "M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z",
+			key: "1kt360"
+		}]
+	]
+};
+__iconData$20.node;
+var FolderPlus = createLucideIcon(__iconData$20);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/key-round.mjs
 /**
@@ -11869,7 +12064,7 @@ var FolderKanban = createLucideIcon(__iconData$13);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$12 = {
+var __iconData$19 = {
 	name: "key-round",
 	size: 24,
 	node: [["path", {
@@ -11883,8 +12078,73 @@ var __iconData$12 = {
 		key: "w0ekpg"
 	}]]
 };
-__iconData$12.node;
-var KeyRound = createLucideIcon(__iconData$12);
+__iconData$19.node;
+var KeyRound = createLucideIcon(__iconData$19);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/link-2.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$18 = {
+	name: "link-2",
+	size: 24,
+	node: [
+		["path", {
+			d: "M9 17H7A5 5 0 0 1 7 7h2",
+			key: "8i5ue5"
+		}],
+		["path", {
+			d: "M15 7h2a5 5 0 1 1 0 10h-2",
+			key: "1b9ql8"
+		}],
+		["line", {
+			x1: "8",
+			x2: "16",
+			y1: "12",
+			y2: "12",
+			key: "1jonct"
+		}]
+	]
+};
+__iconData$18.node;
+var Link2 = createLucideIcon(__iconData$18);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/lock-keyhole.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$17 = {
+	name: "lock-keyhole",
+	size: 24,
+	node: [
+		["circle", {
+			cx: "12",
+			cy: "16",
+			r: "1",
+			key: "1au0dj"
+		}],
+		["rect", {
+			x: "3",
+			y: "10",
+			width: "18",
+			height: "12",
+			rx: "2",
+			key: "6s8ecr"
+		}],
+		["path", {
+			d: "M7 10V7a5 5 0 0 1 10 0v3",
+			key: "1pqi11"
+		}]
+	]
+};
+__iconData$17.node;
+var LockKeyhole = createLucideIcon(__iconData$17);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/log-out.mjs
 /**
@@ -11893,7 +12153,7 @@ var KeyRound = createLucideIcon(__iconData$12);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$11 = {
+var __iconData$16 = {
 	name: "log-out",
 	size: 24,
 	node: [
@@ -11911,30 +12171,54 @@ var __iconData$11 = {
 		}]
 	]
 };
-__iconData$11.node;
-var LogOut = createLucideIcon(__iconData$11);
+__iconData$16.node;
+var LogOut = createLucideIcon(__iconData$16);
 //#endregion
-//#region node_modules/lucide-react/dist/esm/icons/pen-line.mjs
+//#region node_modules/lucide-react/dist/esm/icons/menu.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$10 = {
-	name: "pen-line",
+var __iconData$15 = {
+	name: "menu",
+	size: 24,
+	node: [
+		["path", {
+			d: "M4 5h16",
+			key: "1tepv9"
+		}],
+		["path", {
+			d: "M4 12h16",
+			key: "1lakjw"
+		}],
+		["path", {
+			d: "M4 19h16",
+			key: "1djgab"
+		}]
+	]
+};
+__iconData$15.node;
+var Menu = createLucideIcon(__iconData$15);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/message-square.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$14 = {
+	name: "message-square",
 	size: 24,
 	node: [["path", {
-		d: "M13 21h8",
-		key: "1jsn5i"
-	}], ["path", {
-		d: "M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z",
-		key: "1a8usu"
-	}]],
-	aliases: ["edit-3"]
+		d: "M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z",
+		key: "18887p"
+	}]]
 };
-__iconData$10.node;
-var PenLine = createLucideIcon(__iconData$10);
+__iconData$14.node;
+var MessageSquare = createLucideIcon(__iconData$14);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/plus.mjs
 /**
@@ -11943,7 +12227,7 @@ var PenLine = createLucideIcon(__iconData$10);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$9 = {
+var __iconData$13 = {
 	name: "plus",
 	size: 24,
 	node: [["path", {
@@ -11954,8 +12238,8 @@ var __iconData$9 = {
 		key: "s699le"
 	}]]
 };
-__iconData$9.node;
-var Plus = createLucideIcon(__iconData$9);
+__iconData$13.node;
+var Plus = createLucideIcon(__iconData$13);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/refresh-cw.mjs
 /**
@@ -11964,7 +12248,7 @@ var Plus = createLucideIcon(__iconData$9);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$8 = {
+var __iconData$12 = {
 	name: "refresh-cw",
 	size: 24,
 	node: [
@@ -11986,8 +12270,8 @@ var __iconData$8 = {
 		}]
 	]
 };
-__iconData$8.node;
-var RefreshCw = createLucideIcon(__iconData$8);
+__iconData$12.node;
+var RefreshCw = createLucideIcon(__iconData$12);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/rotate-ccw-clock.mjs
 /**
@@ -11996,7 +12280,7 @@ var RefreshCw = createLucideIcon(__iconData$8);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$7 = {
+var __iconData$11 = {
 	name: "rotate-ccw-clock",
 	size: 24,
 	node: [
@@ -12015,8 +12299,8 @@ var __iconData$7 = {
 	],
 	aliases: ["history"]
 };
-__iconData$7.node;
-var RotateCcwClock = createLucideIcon(__iconData$7);
+__iconData$11.node;
+var RotateCcwClock = createLucideIcon(__iconData$11);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/search.mjs
 /**
@@ -12025,7 +12309,7 @@ var RotateCcwClock = createLucideIcon(__iconData$7);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$6 = {
+var __iconData$10 = {
 	name: "search",
 	size: 24,
 	node: [["path", {
@@ -12038,8 +12322,8 @@ var __iconData$6 = {
 		key: "4ej97u"
 	}]]
 };
-__iconData$6.node;
-var Search = createLucideIcon(__iconData$6);
+__iconData$10.node;
+var Search = createLucideIcon(__iconData$10);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/send.mjs
 /**
@@ -12048,7 +12332,7 @@ var Search = createLucideIcon(__iconData$6);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$5 = {
+var __iconData$9 = {
 	name: "send",
 	size: 24,
 	node: [["path", {
@@ -12059,8 +12343,44 @@ var __iconData$5 = {
 		key: "12cjpa"
 	}]]
 };
-__iconData$5.node;
-var Send = createLucideIcon(__iconData$5);
+__iconData$9.node;
+var Send = createLucideIcon(__iconData$9);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/settings-2.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$8 = {
+	name: "settings-2",
+	size: 24,
+	node: [
+		["path", {
+			d: "M14 17H5",
+			key: "gfn3mx"
+		}],
+		["path", {
+			d: "M19 7h-9",
+			key: "6i9tg"
+		}],
+		["circle", {
+			cx: "17",
+			cy: "17",
+			r: "3",
+			key: "18b49y"
+		}],
+		["circle", {
+			cx: "7",
+			cy: "7",
+			r: "3",
+			key: "dfmy0x"
+		}]
+	]
+};
+__iconData$8.node;
+var Settings2 = createLucideIcon(__iconData$8);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/share-2.mjs
 /**
@@ -12069,7 +12389,7 @@ var Send = createLucideIcon(__iconData$5);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$4 = {
+var __iconData$7 = {
 	name: "share-2",
 	size: 24,
 	node: [
@@ -12107,8 +12427,29 @@ var __iconData$4 = {
 		}]
 	]
 };
-__iconData$4.node;
-var Share2 = createLucideIcon(__iconData$4);
+__iconData$7.node;
+var Share2 = createLucideIcon(__iconData$7);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/shield-check.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$6 = {
+	name: "shield-check",
+	size: 24,
+	node: [["path", {
+		d: "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",
+		key: "oel41y"
+	}], ["path", {
+		d: "m9 12 2 2 4-4",
+		key: "dzmm74"
+	}]]
+};
+__iconData$6.node;
+var ShieldCheck = createLucideIcon(__iconData$6);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/sparkles.mjs
 /**
@@ -12117,7 +12458,7 @@ var Share2 = createLucideIcon(__iconData$4);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$3 = {
+var __iconData$5 = {
 	name: "sparkles",
 	size: 24,
 	node: [
@@ -12142,8 +12483,45 @@ var __iconData$3 = {
 	],
 	aliases: ["stars"]
 };
-__iconData$3.node;
-var Sparkles = createLucideIcon(__iconData$3);
+__iconData$5.node;
+var Sparkles = createLucideIcon(__iconData$5);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/trash.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$4 = {
+	name: "trash",
+	size: 24,
+	node: [
+		["path", {
+			d: "M10 11v6",
+			key: "nco0om"
+		}],
+		["path", {
+			d: "M14 11v6",
+			key: "outv1u"
+		}],
+		["path", {
+			d: "M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6",
+			key: "miytrc"
+		}],
+		["path", {
+			d: "M3 6h18",
+			key: "d0wm0j"
+		}],
+		["path", {
+			d: "M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2",
+			key: "e791ji"
+		}]
+	],
+	aliases: ["trash-2"]
+};
+__iconData$4.node;
+var Trash = createLucideIcon(__iconData$4);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/triangle-alert.mjs
 /**
@@ -12152,7 +12530,7 @@ var Sparkles = createLucideIcon(__iconData$3);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$2 = {
+var __iconData$3 = {
 	name: "triangle-alert",
 	size: 24,
 	node: [
@@ -12171,8 +12549,8 @@ var __iconData$2 = {
 	],
 	aliases: ["alert-triangle"]
 };
-__iconData$2.node;
-var TriangleAlert = createLucideIcon(__iconData$2);
+__iconData$3.node;
+var TriangleAlert = createLucideIcon(__iconData$3);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/user-plus.mjs
 /**
@@ -12181,7 +12559,7 @@ var TriangleAlert = createLucideIcon(__iconData$2);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$1 = {
+var __iconData$2 = {
 	name: "user-plus",
 	size: 24,
 	node: [
@@ -12211,8 +12589,42 @@ var __iconData$1 = {
 		}]
 	]
 };
+__iconData$2.node;
+var UserPlus = createLucideIcon(__iconData$2);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/users.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$1 = {
+	name: "users",
+	size: 24,
+	node: [
+		["path", {
+			d: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2",
+			key: "1yyitq"
+		}],
+		["path", {
+			d: "M16 3.128a4 4 0 0 1 0 7.744",
+			key: "16gr8j"
+		}],
+		["path", {
+			d: "M22 21v-2a4 4 0 0 0-3-3.87",
+			key: "kshegd"
+		}],
+		["circle", {
+			cx: "9",
+			cy: "7",
+			r: "4",
+			key: "nufk8"
+		}]
+	]
+};
 __iconData$1.node;
-var UserPlus = createLucideIcon(__iconData$1);
+var Users = createLucideIcon(__iconData$1);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/x.mjs
 /**
@@ -15768,6 +16180,215 @@ function cn(...inputs) {
 	return twMerge(clsx(inputs));
 }
 //#endregion
+//#region node_modules/react/cjs/react-jsx-dev-runtime.production.js
+/**
+* @license React
+* react-jsx-dev-runtime.production.js
+*
+* Copyright (c) Meta Platforms, Inc. and affiliates.
+*
+* This source code is licensed under the MIT license found in the
+* LICENSE file in the root directory of this source tree.
+*/
+var require_react_jsx_dev_runtime_production = /* @__PURE__ */ __commonJSMin(((exports) => {
+	exports.Fragment = Symbol.for("react.fragment");
+	exports.jsxDEV = void 0;
+}));
+//#endregion
+//#region frontend/src/components/ui/alert.jsx
+var import_jsx_dev_runtime = (/* @__PURE__ */ __commonJSMin(((exports, module) => {
+	module.exports = require_react_jsx_dev_runtime_production();
+})))();
+var _jsxFileName$24 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/alert.jsx";
+var alertVariants = cva("relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-lg border px-4 py-3 text-sm has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current", {
+	variants: { variant: {
+		default: "bg-card text-card-foreground",
+		destructive: "bg-card text-destructive *:data-[slot=alert-description]:text-destructive/90 [&>svg]:text-current"
+	} },
+	defaultVariants: { variant: "default" }
+});
+function Alert({ className, variant, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		"data-slot": "alert",
+		role: "alert",
+		className: cn(alertVariants({ variant }), className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$24,
+		lineNumber: 27,
+		columnNumber: 5
+	}, this);
+}
+function AlertTitle({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		"data-slot": "alert-title",
+		className: cn("col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$24,
+		lineNumber: 40,
+		columnNumber: 5
+	}, this);
+}
+function AlertDescription({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		"data-slot": "alert-description",
+		className: cn("col-start-2 grid justify-items-start gap-1 text-sm text-muted-foreground [&_p]:leading-relaxed", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$24,
+		lineNumber: 52,
+		columnNumber: 5
+	}, this);
+}
+//#endregion
+//#region node_modules/@radix-ui/react-compose-refs/dist/index.mjs
+var __defProp$21 = Object.defineProperty;
+var __name$21 = (target, value) => __defProp$21(target, "name", {
+	value,
+	configurable: true
+});
+function setRef$1(ref, value) {
+	if (typeof ref === "function") return ref(value);
+	else if (ref !== null && ref !== void 0) ref.current = value;
+}
+__name$21(setRef$1, "setRef");
+function composeRefs(...refs) {
+	return (node) => {
+		let hasCleanup = false;
+		const cleanups = refs.map((ref) => {
+			const cleanup = setRef$1(ref, node);
+			if (!hasCleanup && typeof cleanup == "function") hasCleanup = true;
+			return cleanup;
+		});
+		if (hasCleanup) return () => {
+			for (let i = 0; i < cleanups.length; i++) {
+				const cleanup = cleanups[i];
+				if (typeof cleanup == "function") cleanup();
+				else setRef$1(refs[i], null);
+			}
+		};
+	};
+}
+__name$21(composeRefs, "composeRefs");
+function useComposedRefs(...refs) {
+	return import_react.useCallback(composeRefs(...refs), refs);
+}
+__name$21(useComposedRefs, "useComposedRefs");
+//#endregion
+//#region node_modules/@radix-ui/react-slot/dist/index.mjs
+var __defProp$20 = Object.defineProperty;
+var __name$20 = (target, value) => __defProp$20(target, "name", {
+	value,
+	configurable: true
+});
+// @__NO_SIDE_EFFECTS__
+function createSlot(ownerName) {
+	const Slot2 = import_react.forwardRef((props, forwardedRef) => {
+		let { children, ...slotProps } = props;
+		let slottableElement = null;
+		let hasSlottable = false;
+		const newChildren = [];
+		if (isLazyComponent(children) && typeof use === "function") children = use(children._payload);
+		import_react.Children.forEach(children, (maybeSlottable) => {
+			if (isSlottable(maybeSlottable)) {
+				hasSlottable = true;
+				const slottable = maybeSlottable;
+				let child = "child" in slottable.props ? slottable.props.child : slottable.props.children;
+				if (isLazyComponent(child) && typeof use === "function") child = use(child._payload);
+				slottableElement = getSlottableElementFromSlottable(slottable, child);
+				newChildren.push(slottableElement?.props?.children);
+			} else newChildren.push(maybeSlottable);
+		});
+		if (slottableElement) slottableElement = import_react.cloneElement(slottableElement, void 0, newChildren);
+		else if (!hasSlottable && import_react.Children.count(children) === 1 && import_react.isValidElement(children)) slottableElement = children;
+		const slottableElementRef = slottableElement ? getElementRef$1(slottableElement) : void 0;
+		const composedRef = useComposedRefs(forwardedRef, slottableElementRef);
+		if (!slottableElement) {
+			if (children || children === 0) throw new Error(hasSlottable ? createSlottableError(ownerName) : createSlotError(ownerName));
+			return children;
+		}
+		const mergedProps = mergeProps(slotProps, slottableElement.props ?? {});
+		if (slottableElement.type !== import_react.Fragment) mergedProps.ref = forwardedRef ? composedRef : slottableElementRef;
+		return import_react.cloneElement(slottableElement, mergedProps);
+	});
+	Slot2.displayName = `${ownerName}.Slot`;
+	return Slot2;
+}
+__name$20(createSlot, "createSlot");
+var Slot$1 = /* @__PURE__ */ createSlot("Slot");
+var SLOTTABLE_IDENTIFIER = Symbol.for("radix.slottable");
+// @__NO_SIDE_EFFECTS__
+function createSlottable(ownerName) {
+	const Slottable2 = /* @__PURE__ */ __name$20((props) => "child" in props ? props.children(props.child) : props.children, "Slottable");
+	Slottable2.displayName = `${ownerName}.Slottable`;
+	Slottable2.__radixId = SLOTTABLE_IDENTIFIER;
+	return Slottable2;
+}
+__name$20(createSlottable, "createSlottable");
+var getSlottableElementFromSlottable = /* @__PURE__ */ __name$20((slottable, child) => {
+	if ("child" in slottable.props) {
+		const child2 = slottable.props.child;
+		if (!import_react.isValidElement(child2)) return null;
+		return import_react.cloneElement(child2, void 0, slottable.props.children(child2.props.children));
+	}
+	return import_react.isValidElement(child) ? child : null;
+}, "getSlottableElementFromSlottable");
+function mergeProps(slotProps, childProps) {
+	const overrideProps = { ...childProps };
+	for (const propName in childProps) {
+		const slotPropValue = slotProps[propName];
+		const childPropValue = childProps[propName];
+		if (/^on[A-Z]/.test(propName)) {
+			if (slotPropValue && childPropValue) overrideProps[propName] = (...args) => {
+				const result = childPropValue(...args);
+				slotPropValue(...args);
+				return result;
+			};
+			else if (slotPropValue) overrideProps[propName] = slotPropValue;
+		} else if (propName === "style") overrideProps[propName] = {
+			...slotPropValue,
+			...childPropValue
+		};
+		else if (propName === "className") overrideProps[propName] = [slotPropValue, childPropValue].filter(Boolean).join(" ");
+	}
+	return {
+		...slotProps,
+		...overrideProps
+	};
+}
+__name$20(mergeProps, "mergeProps");
+function getElementRef$1(element) {
+	let getter = Object.getOwnPropertyDescriptor(element.props, "ref")?.get;
+	let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
+	if (mayWarn) return element.ref;
+	getter = Object.getOwnPropertyDescriptor(element, "ref")?.get;
+	mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
+	if (mayWarn) return element.props.ref;
+	return element.props.ref || element.ref;
+}
+__name$20(getElementRef$1, "getElementRef");
+function isSlottable(child) {
+	return import_react.isValidElement(child) && typeof child.type === "function" && "__radixId" in child.type && child.type.__radixId === SLOTTABLE_IDENTIFIER;
+}
+__name$20(isSlottable, "isSlottable");
+var REACT_LAZY_TYPE = Symbol.for("react.lazy");
+function isLazyComponent(element) {
+	return element != null && typeof element === "object" && "$$typeof" in element && element.$$typeof === REACT_LAZY_TYPE && "_payload" in element && isPromiseLike(element._payload);
+}
+__name$20(isLazyComponent, "isLazyComponent");
+function isPromiseLike(value) {
+	return typeof value === "object" && value !== null && "then" in value;
+}
+__name$20(isPromiseLike, "isPromiseLike");
+var createSlotError = /* @__PURE__ */ __name$20((ownerName) => {
+	return `${ownerName} failed to slot onto its children. Expected a single React element child or \`Slottable\`.`;
+}, "createSlotError");
+var createSlottableError = /* @__PURE__ */ __name$20((ownerName) => {
+	return `${ownerName} failed to slot onto its \`Slottable\`. Expected \`Slottable\` to receive a single React element child.`;
+}, "createSlottableError");
+var use = import_react[" use ".trim().toString()];
+//#endregion
 //#region node_modules/react/cjs/react-jsx-runtime.production.js
 /**
 * @license React
@@ -15803,28 +16424,3258 @@ var require_react_jsx_runtime_production = /* @__PURE__ */ __commonJSMin(((expor
 	exports.jsxs = jsxProd;
 }));
 //#endregion
-//#region frontend/src/components/ui/button.jsx
-var import_jsx_runtime = (/* @__PURE__ */ __commonJSMin(((exports, module) => {
+//#region node_modules/react/jsx-runtime.js
+var require_jsx_runtime = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_react_jsx_runtime_production();
-})))();
-var buttonVariants = cva("inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.97] touch-manipulation min-h-[44px]", {
+}));
+//#endregion
+//#region node_modules/@radix-ui/react-primitive/dist/index.mjs
+var import_react_dom = /* @__PURE__ */ __toESM(require_react_dom(), 1);
+var import_jsx_runtime = require_jsx_runtime();
+var __defProp$19 = Object.defineProperty;
+var __name$19 = (target, value) => __defProp$19(target, "name", {
+	value,
+	configurable: true
+});
+var Primitive = [
+	"a",
+	"button",
+	"div",
+	"form",
+	"h2",
+	"h3",
+	"img",
+	"input",
+	"label",
+	"li",
+	"nav",
+	"ol",
+	"p",
+	"select",
+	"span",
+	"svg",
+	"ul"
+].reduce((primitive, node) => {
+	const Slot = /* @__PURE__ */ createSlot(`Primitive.${node}`);
+	const Node = import_react.forwardRef((props, forwardedRef) => {
+		const { asChild, ...primitiveProps } = props;
+		const Comp = asChild ? Slot : node;
+		if (typeof window !== "undefined") window[Symbol.for("radix-ui")] = true;
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Comp, {
+			...primitiveProps,
+			ref: forwardedRef
+		});
+	});
+	Node.displayName = `Primitive.${node}`;
+	return {
+		...primitive,
+		[node]: Node
+	};
+}, {});
+function dispatchDiscreteCustomEvent(target, event) {
+	if (target) import_react_dom.flushSync(() => target.dispatchEvent(event));
+}
+__name$19(dispatchDiscreteCustomEvent, "dispatchDiscreteCustomEvent");
+//#endregion
+//#region node_modules/@radix-ui/react-context/dist/index.mjs
+var __defProp$18 = Object.defineProperty;
+var __name$18 = (target, value) => __defProp$18(target, "name", {
+	value,
+	configurable: true
+});
+// @__NO_SIDE_EFFECTS__
+function createContext2(rootComponentName, defaultContext) {
+	const Context = import_react.createContext(defaultContext);
+	Context.displayName = rootComponentName + "Context";
+	const Provider = /* @__PURE__ */ __name$18((props) => {
+		const { children, ...context } = props;
+		const value = import_react.useMemo(() => context, Object.values(context));
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Context.Provider, {
+			value,
+			children
+		});
+	}, "Provider");
+	Provider.displayName = rootComponentName + "Provider";
+	function useContext2(consumerName, options = {}) {
+		const { optional = false } = options;
+		const context = import_react.useContext(Context);
+		if (context) return context;
+		if (defaultContext !== void 0) return defaultContext;
+		if (optional) return void 0;
+		throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
+	}
+	__name$18(useContext2, "useContext");
+	return [Provider, useContext2];
+}
+__name$18(createContext2, "createContext");
+// @__NO_SIDE_EFFECTS__
+function createContextScope(scopeName, createContextScopeDeps = []) {
+	let defaultContexts = [];
+	function createContext3(rootComponentName, defaultContext) {
+		const BaseContext = import_react.createContext(defaultContext);
+		BaseContext.displayName = rootComponentName + "Context";
+		const index = defaultContexts.length;
+		defaultContexts = [...defaultContexts, defaultContext];
+		const Provider = /* @__PURE__ */ __name$18((props) => {
+			const { scope, children, ...context } = props;
+			const Context = scope?.[scopeName]?.[index] || BaseContext;
+			const value = import_react.useMemo(() => context, Object.values(context));
+			return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Context.Provider, {
+				value,
+				children
+			});
+		}, "Provider");
+		Provider.displayName = rootComponentName + "Provider";
+		function useContext2(consumerName, scope, options = {}) {
+			const { optional = false } = options;
+			const Context = scope?.[scopeName]?.[index] || BaseContext;
+			const context = import_react.useContext(Context);
+			if (context) return context;
+			if (defaultContext !== void 0) return defaultContext;
+			if (optional) return void 0;
+			throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
+		}
+		__name$18(useContext2, "useContext");
+		return [Provider, useContext2];
+	}
+	__name$18(createContext3, "createContext");
+	const createScope = /* @__PURE__ */ __name$18(() => {
+		const scopeContexts = defaultContexts.map((defaultContext) => {
+			return import_react.createContext(defaultContext);
+		});
+		return /* @__PURE__ */ __name$18(function useScope(scope) {
+			const contexts = scope?.[scopeName] || scopeContexts;
+			return import_react.useMemo(() => ({ [`__scope${scopeName}`]: {
+				...scope,
+				[scopeName]: contexts
+			} }), [scope, contexts]);
+		}, "useScope");
+	}, "createScope");
+	createScope.scopeName = scopeName;
+	return [createContext3, composeContextScopes(createScope, ...createContextScopeDeps)];
+}
+__name$18(createContextScope, "createContextScope");
+function composeContextScopes(...scopes) {
+	const baseScope = scopes[0];
+	if (scopes.length === 1) return baseScope;
+	const createScope = /* @__PURE__ */ __name$18(() => {
+		const scopeHooks = scopes.map((createScope2) => ({
+			useScope: createScope2(),
+			scopeName: createScope2.scopeName
+		}));
+		return /* @__PURE__ */ __name$18(function useComposedScopes(overrideScopes) {
+			const nextScopes = scopeHooks.reduce((nextScopes2, { useScope, scopeName }) => {
+				const currentScope = useScope(overrideScopes)[`__scope${scopeName}`];
+				return {
+					...nextScopes2,
+					...currentScope
+				};
+			}, {});
+			return import_react.useMemo(() => ({ [`__scope${baseScope.scopeName}`]: nextScopes }), [nextScopes]);
+		}, "useComposedScopes");
+	}, "createScope");
+	createScope.scopeName = baseScope.scopeName;
+	return createScope;
+}
+__name$18(composeContextScopes, "composeContextScopes");
+//#endregion
+//#region node_modules/@radix-ui/react-collection/dist/index.mjs
+var __defProp$17 = Object.defineProperty;
+var __name$17 = (target, value) => __defProp$17(target, "name", {
+	value,
+	configurable: true
+});
+// @__NO_SIDE_EFFECTS__
+function createCollection(name) {
+	const PROVIDER_NAME = name + "CollectionProvider";
+	const [createCollectionContext, createCollectionScope] = /* @__PURE__ */ createContextScope(PROVIDER_NAME);
+	const [CollectionProviderImpl, useCollectionContext] = createCollectionContext(PROVIDER_NAME, {
+		collectionRef: { current: null },
+		itemMap: /* @__PURE__ */ new Map()
+	});
+	const CollectionProvider = /* @__PURE__ */ __name$17((props) => {
+		const { scope, children } = props;
+		const ref = import_react.useRef(null);
+		const itemMap = import_react.useRef(/* @__PURE__ */ new Map()).current;
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CollectionProviderImpl, {
+			scope,
+			itemMap,
+			collectionRef: ref,
+			children
+		});
+	}, "CollectionProvider");
+	CollectionProvider.displayName = PROVIDER_NAME;
+	const COLLECTION_SLOT_NAME = name + "CollectionSlot";
+	const CollectionSlotImpl = /* @__PURE__ */ createSlot(COLLECTION_SLOT_NAME);
+	const CollectionSlot = import_react.forwardRef((props, forwardedRef) => {
+		const { scope, children } = props;
+		const composedRefs = useComposedRefs(forwardedRef, useCollectionContext(COLLECTION_SLOT_NAME, scope).collectionRef);
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CollectionSlotImpl, {
+			ref: composedRefs,
+			children
+		});
+	});
+	CollectionSlot.displayName = COLLECTION_SLOT_NAME;
+	const ITEM_SLOT_NAME = name + "CollectionItemSlot";
+	const ITEM_DATA_ATTR = "data-radix-collection-item";
+	const CollectionItemSlotImpl = /* @__PURE__ */ createSlot(ITEM_SLOT_NAME);
+	const CollectionItemSlot = import_react.forwardRef((props, forwardedRef) => {
+		const { scope, children, ...itemData } = props;
+		const ref = import_react.useRef(null);
+		const composedRefs = useComposedRefs(forwardedRef, ref);
+		const context = useCollectionContext(ITEM_SLOT_NAME, scope);
+		import_react.useEffect(() => {
+			context.itemMap.set(ref, {
+				ref,
+				...itemData
+			});
+			return () => void context.itemMap.delete(ref);
+		});
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CollectionItemSlotImpl, {
+			[ITEM_DATA_ATTR]: "",
+			ref: composedRefs,
+			children
+		});
+	});
+	CollectionItemSlot.displayName = ITEM_SLOT_NAME;
+	function useCollection(scope) {
+		const context = useCollectionContext(name + "CollectionConsumer", scope);
+		return import_react.useCallback(() => {
+			const collectionNode = context.collectionRef.current;
+			if (!collectionNode) return [];
+			const orderedNodes = Array.from(collectionNode.querySelectorAll(`[${ITEM_DATA_ATTR}]`));
+			return Array.from(context.itemMap.values()).sort((a, b) => orderedNodes.indexOf(a.ref.current) - orderedNodes.indexOf(b.ref.current));
+		}, [context.collectionRef, context.itemMap]);
+	}
+	__name$17(useCollection, "useCollection");
+	return [
+		{
+			Provider: CollectionProvider,
+			Slot: CollectionSlot,
+			ItemSlot: CollectionItemSlot
+		},
+		useCollection,
+		createCollectionScope
+	];
+}
+__name$17(createCollection, "createCollection");
+var __instanciated = /* @__PURE__ */ new WeakMap();
+var OrderedDict = class _OrderedDict extends Map {
+	static {
+		__name$17(this, "OrderedDict");
+	}
+	#keys;
+	constructor(entries) {
+		super(entries);
+		this.#keys = [...super.keys()];
+		__instanciated.set(this, true);
+	}
+	set(key, value) {
+		if (__instanciated.get(this)) {
+			if (this.has(key)) this.#keys[this.#keys.indexOf(key)] = key;
+			else this.#keys.push(key);
+		}
+		super.set(key, value);
+		return this;
+	}
+	insert(index, key, value) {
+		const has = this.has(key);
+		const length = this.#keys.length;
+		const relativeIndex = toSafeInteger(index);
+		let actualIndex = relativeIndex >= 0 ? relativeIndex : length + relativeIndex;
+		const safeIndex = actualIndex < 0 || actualIndex >= length ? -1 : actualIndex;
+		if (safeIndex === this.size || has && safeIndex === this.size - 1 || safeIndex === -1) {
+			this.set(key, value);
+			return this;
+		}
+		const size = this.size + (has ? 0 : 1);
+		if (relativeIndex < 0) actualIndex++;
+		const keys = [...this.#keys];
+		let nextValue;
+		let shouldSkip = false;
+		for (let i = actualIndex; i < size; i++) if (actualIndex === i) {
+			let nextKey = keys[i];
+			if (keys[i] === key) nextKey = keys[i + 1];
+			if (has) this.delete(key);
+			nextValue = this.get(nextKey);
+			this.set(key, value);
+		} else {
+			if (!shouldSkip && keys[i - 1] === key) shouldSkip = true;
+			const currentKey = keys[shouldSkip ? i : i - 1];
+			const currentValue = nextValue;
+			nextValue = this.get(currentKey);
+			this.delete(currentKey);
+			this.set(currentKey, currentValue);
+		}
+		return this;
+	}
+	with(index, key, value) {
+		const copy = new _OrderedDict(this);
+		copy.insert(index, key, value);
+		return copy;
+	}
+	before(key) {
+		const index = this.#keys.indexOf(key) - 1;
+		if (index < 0) return;
+		return this.entryAt(index);
+	}
+	/**
+	* Sets a new key-value pair at the position before the given key.
+	*/
+	setBefore(key, newKey, value) {
+		const index = this.#keys.indexOf(key);
+		if (index === -1) return this;
+		return this.insert(index, newKey, value);
+	}
+	after(key) {
+		let index = this.#keys.indexOf(key);
+		index = index === -1 || index === this.size - 1 ? -1 : index + 1;
+		if (index === -1) return;
+		return this.entryAt(index);
+	}
+	/**
+	* Sets a new key-value pair at the position after the given key.
+	*/
+	setAfter(key, newKey, value) {
+		const index = this.#keys.indexOf(key);
+		if (index === -1) return this;
+		return this.insert(index + 1, newKey, value);
+	}
+	first() {
+		return this.entryAt(0);
+	}
+	last() {
+		return this.entryAt(-1);
+	}
+	clear() {
+		this.#keys = [];
+		return super.clear();
+	}
+	delete(key) {
+		const deleted = super.delete(key);
+		if (deleted) this.#keys.splice(this.#keys.indexOf(key), 1);
+		return deleted;
+	}
+	deleteAt(index) {
+		const key = this.keyAt(index);
+		if (key !== void 0) return this.delete(key);
+		return false;
+	}
+	at(index) {
+		const key = at(this.#keys, index);
+		if (key !== void 0) return this.get(key);
+	}
+	entryAt(index) {
+		const key = at(this.#keys, index);
+		if (key !== void 0) return [key, this.get(key)];
+	}
+	indexOf(key) {
+		return this.#keys.indexOf(key);
+	}
+	keyAt(index) {
+		return at(this.#keys, index);
+	}
+	from(key, offset) {
+		const index = this.indexOf(key);
+		if (index === -1) return;
+		let dest = index + offset;
+		if (dest < 0) dest = 0;
+		if (dest >= this.size) dest = this.size - 1;
+		return this.at(dest);
+	}
+	keyFrom(key, offset) {
+		const index = this.indexOf(key);
+		if (index === -1) return;
+		let dest = index + offset;
+		if (dest < 0) dest = 0;
+		if (dest >= this.size) dest = this.size - 1;
+		return this.keyAt(dest);
+	}
+	find(predicate, thisArg) {
+		let index = 0;
+		for (const entry of this) {
+			if (Reflect.apply(predicate, thisArg, [
+				entry,
+				index,
+				this
+			])) return entry;
+			index++;
+		}
+	}
+	findIndex(predicate, thisArg) {
+		let index = 0;
+		for (const entry of this) {
+			if (Reflect.apply(predicate, thisArg, [
+				entry,
+				index,
+				this
+			])) return index;
+			index++;
+		}
+		return -1;
+	}
+	filter(predicate, thisArg) {
+		const entries = [];
+		let index = 0;
+		for (const entry of this) {
+			if (Reflect.apply(predicate, thisArg, [
+				entry,
+				index,
+				this
+			])) entries.push(entry);
+			index++;
+		}
+		return new _OrderedDict(entries);
+	}
+	map(callbackfn, thisArg) {
+		const entries = [];
+		let index = 0;
+		for (const entry of this) {
+			entries.push([entry[0], Reflect.apply(callbackfn, thisArg, [
+				entry,
+				index,
+				this
+			])]);
+			index++;
+		}
+		return new _OrderedDict(entries);
+	}
+	reduce(...args) {
+		const [callbackfn, initialValue] = args;
+		let index = 0;
+		let accumulator = initialValue ?? this.at(0);
+		for (const entry of this) {
+			if (index === 0 && args.length === 1) accumulator = entry;
+			else accumulator = Reflect.apply(callbackfn, this, [
+				accumulator,
+				entry,
+				index,
+				this
+			]);
+			index++;
+		}
+		return accumulator;
+	}
+	reduceRight(...args) {
+		const [callbackfn, initialValue] = args;
+		let accumulator = initialValue ?? this.at(-1);
+		for (let index = this.size - 1; index >= 0; index--) {
+			const entry = this.at(index);
+			if (index === this.size - 1 && args.length === 1) accumulator = entry;
+			else accumulator = Reflect.apply(callbackfn, this, [
+				accumulator,
+				entry,
+				index,
+				this
+			]);
+		}
+		return accumulator;
+	}
+	toSorted(compareFn) {
+		const entries = [...this.entries()].sort(compareFn);
+		return new _OrderedDict(entries);
+	}
+	toReversed() {
+		const reversed = new _OrderedDict();
+		for (let index = this.size - 1; index >= 0; index--) {
+			const key = this.keyAt(index);
+			const element = this.get(key);
+			reversed.set(key, element);
+		}
+		return reversed;
+	}
+	toSpliced(...args) {
+		const entries = [...this.entries()];
+		entries.splice(...args);
+		return new _OrderedDict(entries);
+	}
+	slice(start, end) {
+		const result = new _OrderedDict();
+		let stop = this.size - 1;
+		if (start === void 0) return result;
+		if (start < 0) start = start + this.size;
+		if (end !== void 0 && end > 0) stop = end - 1;
+		for (let index = start; index <= stop; index++) {
+			const key = this.keyAt(index);
+			const element = this.get(key);
+			result.set(key, element);
+		}
+		return result;
+	}
+	every(predicate, thisArg) {
+		let index = 0;
+		for (const entry of this) {
+			if (!Reflect.apply(predicate, thisArg, [
+				entry,
+				index,
+				this
+			])) return false;
+			index++;
+		}
+		return true;
+	}
+	some(predicate, thisArg) {
+		let index = 0;
+		for (const entry of this) {
+			if (Reflect.apply(predicate, thisArg, [
+				entry,
+				index,
+				this
+			])) return true;
+			index++;
+		}
+		return false;
+	}
+};
+function at(array, index) {
+	if ("at" in Array.prototype) return Array.prototype.at.call(array, index);
+	const actualIndex = toSafeIndex(array, index);
+	return actualIndex === -1 ? void 0 : array[actualIndex];
+}
+__name$17(at, "at");
+function toSafeIndex(array, index) {
+	const length = array.length;
+	const relativeIndex = toSafeInteger(index);
+	const actualIndex = relativeIndex >= 0 ? relativeIndex : length + relativeIndex;
+	return actualIndex < 0 || actualIndex >= length ? -1 : actualIndex;
+}
+__name$17(toSafeIndex, "toSafeIndex");
+function toSafeInteger(number) {
+	return number !== number || number === 0 ? 0 : Math.trunc(number);
+}
+__name$17(toSafeInteger, "toSafeInteger");
+// @__NO_SIDE_EFFECTS__
+function createCollection2(name) {
+	const PROVIDER_NAME = name + "CollectionProvider";
+	const [createCollectionContext, createCollectionScope] = /* @__PURE__ */ createContextScope(PROVIDER_NAME);
+	const [CollectionContextProvider, useCollectionContext] = createCollectionContext(PROVIDER_NAME, {
+		collectionElement: null,
+		collectionRef: { current: null },
+		collectionRefObject: { current: null },
+		itemMap: new OrderedDict(),
+		setItemMap: /* @__PURE__ */ __name$17(() => void 0, "setItemMap")
+	});
+	const CollectionProvider = /* @__PURE__ */ __name$17(({ state, ...props }) => {
+		return state ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CollectionProviderImpl, {
+			...props,
+			state
+		}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CollectionInit, { ...props });
+	}, "CollectionProvider");
+	CollectionProvider.displayName = PROVIDER_NAME;
+	const CollectionInit = /* @__PURE__ */ __name$17((props) => {
+		const state = useInitCollection();
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CollectionProviderImpl, {
+			...props,
+			state
+		});
+	}, "CollectionInit");
+	CollectionInit.displayName = PROVIDER_NAME + "Init";
+	const CollectionProviderImpl = /* @__PURE__ */ __name$17((props) => {
+		const { scope, children, state } = props;
+		const ref = import_react.useRef(null);
+		const [collectionElement, setCollectionElement] = import_react.useState(null);
+		const composeRefs = useComposedRefs(ref, setCollectionElement);
+		const [itemMap, setItemMap] = state;
+		import_react.useEffect(() => {
+			if (!collectionElement) return;
+			const observer = getChildListObserver(() => {});
+			observer.observe(collectionElement, {
+				childList: true,
+				subtree: true
+			});
+			return () => {
+				observer.disconnect();
+			};
+		}, [collectionElement]);
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CollectionContextProvider, {
+			scope,
+			itemMap,
+			setItemMap,
+			collectionRef: composeRefs,
+			collectionRefObject: ref,
+			collectionElement,
+			children
+		});
+	}, "CollectionProviderImpl");
+	CollectionProviderImpl.displayName = PROVIDER_NAME + "Impl";
+	const COLLECTION_SLOT_NAME = name + "CollectionSlot";
+	const CollectionSlotImpl = /* @__PURE__ */ createSlot(COLLECTION_SLOT_NAME);
+	const CollectionSlot = import_react.forwardRef((props, forwardedRef) => {
+		const { scope, children } = props;
+		const composedRefs = useComposedRefs(forwardedRef, useCollectionContext(COLLECTION_SLOT_NAME, scope).collectionRef);
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CollectionSlotImpl, {
+			ref: composedRefs,
+			children
+		});
+	});
+	CollectionSlot.displayName = COLLECTION_SLOT_NAME;
+	const ITEM_SLOT_NAME = name + "CollectionItemSlot";
+	const ITEM_DATA_ATTR = "data-radix-collection-item";
+	const CollectionItemSlotImpl = /* @__PURE__ */ createSlot(ITEM_SLOT_NAME);
+	const CollectionItemSlot = import_react.forwardRef((props, forwardedRef) => {
+		const { scope, children, ...itemData } = props;
+		const ref = import_react.useRef(null);
+		const [element, setElement] = import_react.useState(null);
+		const composedRefs = useComposedRefs(forwardedRef, ref, setElement);
+		const { setItemMap } = useCollectionContext(ITEM_SLOT_NAME, scope);
+		const itemDataRef = import_react.useRef(itemData);
+		if (!shallowEqual(itemDataRef.current, itemData)) itemDataRef.current = itemData;
+		const memoizedItemData = itemDataRef.current;
+		import_react.useEffect(() => {
+			const itemData2 = memoizedItemData;
+			setItemMap((map) => {
+				if (!element) return map;
+				if (!map.has(element)) {
+					map.set(element, {
+						...itemData2,
+						element
+					});
+					return map.toSorted(sortByDocumentPosition);
+				}
+				return map.set(element, {
+					...itemData2,
+					element
+				}).toSorted(sortByDocumentPosition);
+			});
+			return () => {
+				setItemMap((map) => {
+					if (!element || !map.has(element)) return map;
+					map.delete(element);
+					return new OrderedDict(map);
+				});
+			};
+		}, [
+			element,
+			memoizedItemData,
+			setItemMap
+		]);
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CollectionItemSlotImpl, {
+			[ITEM_DATA_ATTR]: "",
+			ref: composedRefs,
+			children
+		});
+	});
+	CollectionItemSlot.displayName = ITEM_SLOT_NAME;
+	function useInitCollection() {
+		return import_react.useState(new OrderedDict());
+	}
+	__name$17(useInitCollection, "useInitCollection");
+	function useCollection(scope) {
+		const { itemMap } = useCollectionContext(name + "CollectionConsumer", scope);
+		return itemMap;
+	}
+	__name$17(useCollection, "useCollection");
+	return [{
+		Provider: CollectionProvider,
+		Slot: CollectionSlot,
+		ItemSlot: CollectionItemSlot
+	}, {
+		createCollectionScope,
+		useCollection,
+		useInitCollection
+	}];
+}
+__name$17(createCollection2, "createCollection");
+function shallowEqual(a, b) {
+	if (a === b) return true;
+	if (typeof a !== "object" || typeof b !== "object") return false;
+	if (a == null || b == null) return false;
+	const keysA = Object.keys(a);
+	const keysB = Object.keys(b);
+	if (keysA.length !== keysB.length) return false;
+	for (const key of keysA) {
+		if (!Object.prototype.hasOwnProperty.call(b, key)) return false;
+		if (a[key] !== b[key]) return false;
+	}
+	return true;
+}
+__name$17(shallowEqual, "shallowEqual");
+function isElementPreceding(a, b) {
+	return !!(b.compareDocumentPosition(a) & Node.DOCUMENT_POSITION_PRECEDING);
+}
+__name$17(isElementPreceding, "isElementPreceding");
+function sortByDocumentPosition(a, b) {
+	return !a[1].element || !b[1].element ? 0 : isElementPreceding(a[1].element, b[1].element) ? -1 : 1;
+}
+__name$17(sortByDocumentPosition, "sortByDocumentPosition");
+function getChildListObserver(callback) {
+	return new MutationObserver((mutationsList) => {
+		for (const mutation of mutationsList) if (mutation.type === "childList") {
+			callback();
+			return;
+		}
+	});
+}
+__name$17(getChildListObserver, "getChildListObserver");
+//#endregion
+//#region node_modules/@radix-ui/primitive/dist/index.mjs
+var __defProp$16 = Object.defineProperty;
+var __name$16 = (target, value) => __defProp$16(target, "name", {
+	value,
+	configurable: true
+});
+var canUseDOM = !!(typeof window !== "undefined" && window.document && window.document.createElement);
+function composeEventHandlers(originalEventHandler, ourEventHandler, { checkForDefaultPrevented = true } = {}) {
+	return /* @__PURE__ */ __name$16(function handleEvent(event) {
+		originalEventHandler?.(event);
+		if (checkForDefaultPrevented === false || !event || !event.defaultPrevented) return ourEventHandler?.(event);
+	}, "handleEvent");
+}
+__name$16(composeEventHandlers, "composeEventHandlers");
+function getOwnerWindow(element) {
+	if (!canUseDOM) throw new Error("Cannot access window outside of the DOM");
+	return element?.ownerDocument?.defaultView ?? window;
+}
+__name$16(getOwnerWindow, "getOwnerWindow");
+function getOwnerDocument(element) {
+	if (!canUseDOM) throw new Error("Cannot access document outside of the DOM");
+	return element?.ownerDocument ?? document;
+}
+__name$16(getOwnerDocument, "getOwnerDocument");
+function getActiveElement(node, activeDescendant = false) {
+	const { activeElement } = getOwnerDocument(node);
+	if (!activeElement?.nodeName) return null;
+	if (isFrame(activeElement) && activeElement.contentDocument) return getActiveElement(activeElement.contentDocument.body, activeDescendant);
+	if (activeDescendant) {
+		const id = activeElement.getAttribute("aria-activedescendant");
+		if (id) {
+			const element = getOwnerDocument(activeElement).getElementById(id);
+			if (element) return element;
+		}
+	}
+	return activeElement;
+}
+__name$16(getActiveElement, "getActiveElement");
+function isFrame(element) {
+	return element.tagName === "IFRAME";
+}
+__name$16(isFrame, "isFrame");
+//#endregion
+//#region node_modules/@radix-ui/react-use-layout-effect/dist/index.mjs
+var useLayoutEffect2 = globalThis?.document ? import_react.useLayoutEffect : () => {};
+//#endregion
+//#region node_modules/@radix-ui/react-use-effect-event/dist/index.mjs
+var __defProp$15 = Object.defineProperty;
+var __name$15 = (target, value) => __defProp$15(target, "name", {
+	value,
+	configurable: true
+});
+var useReactEffectEvent = import_react[" useEffectEvent ".trim().toString()];
+var useReactInsertionEffect = import_react[" useInsertionEffect ".trim().toString()];
+function useEffectEvent(callback) {
+	if (typeof useReactEffectEvent === "function") return useReactEffectEvent(callback);
+	const ref = import_react.useRef(() => {
+		throw new Error("Cannot call an event handler while rendering.");
+	});
+	if (typeof useReactInsertionEffect === "function") useReactInsertionEffect(() => {
+		ref.current = callback;
+	});
+	else useLayoutEffect2(() => {
+		ref.current = callback;
+	});
+	return import_react.useMemo(() => ((...args) => ref.current?.(...args)), []);
+}
+__name$15(useEffectEvent, "useEffectEvent");
+//#endregion
+//#region node_modules/@radix-ui/react-use-controllable-state/dist/index.mjs
+var __defProp$14 = Object.defineProperty;
+var __name$14 = (target, value) => __defProp$14(target, "name", {
+	value,
+	configurable: true
+});
+var useInsertionEffect = import_react[" useInsertionEffect ".trim().toString()] || useLayoutEffect2;
+function useControllableState({ prop, defaultProp, onChange = /* @__PURE__ */ __name$14(() => {}, "onChange"), caller }) {
+	const [uncontrolledProp, setUncontrolledProp, onChangeRef] = useUncontrolledState({
+		defaultProp,
+		onChange
+	});
+	const isControlled = prop !== void 0;
+	const value = isControlled ? prop : uncontrolledProp;
+	{
+		const isControlledRef = import_react.useRef(prop !== void 0);
+		import_react.useEffect(() => {
+			const wasControlled = isControlledRef.current;
+			if (wasControlled !== isControlled) console.warn(`${caller} is changing from ${wasControlled ? "controlled" : "uncontrolled"} to ${isControlled ? "controlled" : "uncontrolled"}. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.`);
+			isControlledRef.current = isControlled;
+		}, [isControlled, caller]);
+	}
+	return [value, import_react.useCallback((nextValue) => {
+		if (isControlled) {
+			const value2 = isFunction(nextValue) ? nextValue(prop) : nextValue;
+			if (value2 !== prop) onChangeRef.current?.(value2);
+		} else setUncontrolledProp(nextValue);
+	}, [
+		isControlled,
+		prop,
+		setUncontrolledProp,
+		onChangeRef
+	])];
+}
+__name$14(useControllableState, "useControllableState");
+function useUncontrolledState({ defaultProp, onChange }) {
+	const [value, setValue] = import_react.useState(defaultProp);
+	const prevValueRef = import_react.useRef(value);
+	const onChangeRef = import_react.useRef(onChange);
+	useInsertionEffect(() => {
+		onChangeRef.current = onChange;
+	}, [onChange]);
+	import_react.useEffect(() => {
+		if (prevValueRef.current !== value) {
+			onChangeRef.current?.(value);
+			prevValueRef.current = value;
+		}
+	}, [value, prevValueRef]);
+	return [
+		value,
+		setValue,
+		onChangeRef
+	];
+}
+__name$14(useUncontrolledState, "useUncontrolledState");
+function isFunction(value) {
+	return typeof value === "function";
+}
+__name$14(isFunction, "isFunction");
+var SYNC_STATE = Symbol("RADIX:SYNC_STATE");
+function useControllableStateReducer(reducer, userArgs, initialArg, init) {
+	const { prop: controlledState, defaultProp, onChange: onChangeProp, caller } = userArgs;
+	const isControlled = controlledState !== void 0;
+	const onChange = useEffectEvent(onChangeProp);
+	{
+		const isControlledRef = import_react.useRef(controlledState !== void 0);
+		import_react.useEffect(() => {
+			const wasControlled = isControlledRef.current;
+			if (wasControlled !== isControlled) console.warn(`${caller} is changing from ${wasControlled ? "controlled" : "uncontrolled"} to ${isControlled ? "controlled" : "uncontrolled"}. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.`);
+			isControlledRef.current = isControlled;
+		}, [isControlled, caller]);
+	}
+	const args = [{
+		...initialArg,
+		state: defaultProp
+	}];
+	if (init) args.push(init);
+	const [internalState, dispatch] = import_react.useReducer((state2, action) => {
+		if (action.type === SYNC_STATE) return {
+			...state2,
+			state: action.state
+		};
+		const next = reducer(state2, action);
+		if (isControlled && !Object.is(next.state, state2.state)) onChange(next.state);
+		return next;
+	}, ...args);
+	const uncontrolledState = internalState.state;
+	const prevValueRef = import_react.useRef(uncontrolledState);
+	import_react.useEffect(() => {
+		if (prevValueRef.current !== uncontrolledState) {
+			prevValueRef.current = uncontrolledState;
+			if (!isControlled) onChange(uncontrolledState);
+		}
+	}, [
+		uncontrolledState,
+		prevValueRef,
+		isControlled
+	]);
+	const state = import_react.useMemo(() => {
+		if (controlledState !== void 0) return {
+			...internalState,
+			state: controlledState
+		};
+		return internalState;
+	}, [internalState, controlledState]);
+	import_react.useEffect(() => {
+		if (isControlled && !Object.is(controlledState, internalState.state)) dispatch({
+			type: SYNC_STATE,
+			state: controlledState
+		});
+	}, [
+		controlledState,
+		internalState.state,
+		isControlled
+	]);
+	return [state, dispatch];
+}
+__name$14(useControllableStateReducer, "useControllableStateReducer");
+//#endregion
+//#region node_modules/@radix-ui/react-presence/dist/index.mjs
+var __defProp$13 = Object.defineProperty;
+var __name$13 = (target, value) => __defProp$13(target, "name", {
+	value,
+	configurable: true
+});
+function useStateMachine(initialState, machine) {
+	return import_react.useReducer((state, event) => {
+		return machine[state][event] ?? state;
+	}, initialState);
+}
+__name$13(useStateMachine, "useStateMachine");
+var Presence = /* @__PURE__ */ __name$13((props) => {
+	const { present, children } = props;
+	const presence = usePresence(present);
+	const child = typeof children === "function" ? children({ present: presence.isPresent }) : import_react.Children.only(children);
+	const ref = useStableComposedRefs(presence.ref, getElementRef(child));
+	return typeof children === "function" || presence.isPresent ? import_react.cloneElement(child, { ref }) : null;
+}, "Presence");
+function usePresence(present) {
+	const [node, setNode] = import_react.useState();
+	const stylesRef = import_react.useRef(null);
+	const prevPresentRef = import_react.useRef(present);
+	const prevAnimationNameRef = import_react.useRef("none");
+	const mountAnimationNameRef = import_react.useRef(void 0);
+	const [state, send] = useStateMachine(present ? "mounted" : "unmounted", {
+		mounted: {
+			UNMOUNT: "unmounted",
+			ANIMATION_OUT: "unmountSuspended"
+		},
+		unmountSuspended: {
+			MOUNT: "mounted",
+			ANIMATION_END: "unmounted"
+		},
+		unmounted: { MOUNT: "mounted" }
+	});
+	import_react.useEffect(() => {
+		if (state === "mounted") {
+			prevAnimationNameRef.current = mountAnimationNameRef.current ?? getAnimationName(stylesRef.current);
+			mountAnimationNameRef.current = void 0;
+		} else prevAnimationNameRef.current = "none";
+	}, [state]);
+	useLayoutEffect2(() => {
+		const styles = stylesRef.current;
+		const wasPresent = prevPresentRef.current;
+		if (wasPresent !== present) {
+			const prevAnimationName = prevAnimationNameRef.current;
+			const currentAnimationName = getAnimationName(styles);
+			if (present) {
+				mountAnimationNameRef.current = currentAnimationName;
+				send("MOUNT");
+			} else if (currentAnimationName === "none" || styles?.display === "none") send("UNMOUNT");
+			else if (wasPresent && prevAnimationName !== currentAnimationName) send("ANIMATION_OUT");
+			else send("UNMOUNT");
+			prevPresentRef.current = present;
+		}
+	}, [present, send]);
+	useLayoutEffect2(() => {
+		if (node) {
+			let timeoutId;
+			const ownerWindow = node.ownerDocument.defaultView ?? window;
+			const handleAnimationEnd = /* @__PURE__ */ __name$13((event) => {
+				const isCurrentAnimation = getAnimationName(stylesRef.current).includes(CSS.escape(event.animationName));
+				if (event.target === node && isCurrentAnimation) {
+					send("ANIMATION_END");
+					if (!prevPresentRef.current) {
+						const currentFillMode = node.style.animationFillMode;
+						node.style.animationFillMode = "forwards";
+						timeoutId = ownerWindow.setTimeout(() => {
+							if (node.style.animationFillMode === "forwards") node.style.animationFillMode = currentFillMode;
+						});
+					}
+				}
+			}, "handleAnimationEnd");
+			const handleAnimationStart = /* @__PURE__ */ __name$13((event) => {
+				if (event.target === node) prevAnimationNameRef.current = getAnimationName(stylesRef.current);
+			}, "handleAnimationStart");
+			node.addEventListener("animationstart", handleAnimationStart);
+			node.addEventListener("animationcancel", handleAnimationEnd);
+			node.addEventListener("animationend", handleAnimationEnd);
+			return () => {
+				ownerWindow.clearTimeout(timeoutId);
+				node.removeEventListener("animationstart", handleAnimationStart);
+				node.removeEventListener("animationcancel", handleAnimationEnd);
+				node.removeEventListener("animationend", handleAnimationEnd);
+			};
+		} else send("ANIMATION_END");
+	}, [node, send]);
+	return {
+		isPresent: ["mounted", "unmountSuspended"].includes(state),
+		ref: import_react.useCallback((node2) => {
+			if (node2) {
+				const styles = getComputedStyle(node2);
+				stylesRef.current = styles;
+				mountAnimationNameRef.current = getAnimationName(styles);
+			} else stylesRef.current = null;
+			setNode(node2);
+		}, [])
+	};
+}
+__name$13(usePresence, "usePresence");
+function setRef(ref, value) {
+	if (typeof ref === "function") return ref(value);
+	else if (ref !== null && ref !== void 0) ref.current = value;
+}
+__name$13(setRef, "setRef");
+function useStableComposedRefs(...refs) {
+	const refsRef = import_react.useRef(refs);
+	refsRef.current = refs;
+	return import_react.useCallback((node) => {
+		const currentRefs = refsRef.current;
+		let hasCleanup = false;
+		const cleanups = currentRefs.map((ref) => {
+			const cleanup = setRef(ref, node);
+			if (!hasCleanup && typeof cleanup === "function") hasCleanup = true;
+			return cleanup;
+		});
+		if (hasCleanup) return () => {
+			for (let i = 0; i < cleanups.length; i++) {
+				const cleanup = cleanups[i];
+				if (typeof cleanup === "function") cleanup();
+				else setRef(currentRefs[i], null);
+			}
+		};
+	}, []);
+}
+__name$13(useStableComposedRefs, "useStableComposedRefs");
+function getAnimationName(styles) {
+	return styles?.animationName || "none";
+}
+__name$13(getAnimationName, "getAnimationName");
+function getElementRef(element) {
+	let getter = Object.getOwnPropertyDescriptor(element.props, "ref")?.get;
+	let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
+	if (mayWarn) return element.ref;
+	getter = Object.getOwnPropertyDescriptor(element, "ref")?.get;
+	mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
+	if (mayWarn) return element.props.ref;
+	return element.props.ref || element.ref;
+}
+__name$13(getElementRef, "getElementRef");
+//#endregion
+//#region node_modules/@radix-ui/react-id/dist/index.mjs
+var __defProp$12 = Object.defineProperty;
+var __name$12 = (target, value) => __defProp$12(target, "name", {
+	value,
+	configurable: true
+});
+var useReactId = import_react[" useId ".trim().toString()] || (() => void 0);
+var count$1 = 0;
+function useId$1(deterministicId) {
+	const [id, setId] = import_react.useState(useReactId());
+	useLayoutEffect2(() => {
+		if (!deterministicId) setId((reactId) => reactId ?? String(count$1++));
+	}, [deterministicId]);
+	return deterministicId || (id ? `radix-${id}` : "");
+}
+__name$12(useId$1, "useId");
+//#endregion
+//#region node_modules/@radix-ui/react-direction/dist/index.mjs
+var __defProp$11 = Object.defineProperty;
+var __name$11 = (target, value) => __defProp$11(target, "name", {
+	value,
+	configurable: true
+});
+var DirectionContext = import_react.createContext(void 0);
+function useDirection(localDir) {
+	const globalDir = import_react.useContext(DirectionContext);
+	return localDir || globalDir || "ltr";
+}
+__name$11(useDirection, "useDirection");
+//#endregion
+//#region node_modules/@radix-ui/react-use-callback-ref/dist/index.mjs
+var __defProp$10 = Object.defineProperty;
+var __name$10 = (target, value) => __defProp$10(target, "name", {
+	value,
+	configurable: true
+});
+function useCallbackRef$1(callback) {
+	const callbackRef = import_react.useRef(callback);
+	import_react.useEffect(() => {
+		callbackRef.current = callback;
+	});
+	return import_react.useMemo(() => ((...args) => callbackRef.current?.(...args)), []);
+}
+__name$10(useCallbackRef$1, "useCallbackRef");
+//#endregion
+//#region node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs
+var __defProp$9 = Object.defineProperty;
+var __name$9 = (target, value) => __defProp$9(target, "name", {
+	value,
+	configurable: true
+});
+var CONTEXT_UPDATE = "dismissableLayer.update";
+var POINTER_DOWN_OUTSIDE = "dismissableLayer.pointerDownOutside";
+var FOCUS_OUTSIDE = "dismissableLayer.focusOutside";
+var originalBodyPointerEvents;
+var DismissableLayerContext = import_react.createContext({
+	layers: /* @__PURE__ */ new Set(),
+	layersWithOutsidePointerEventsDisabled: /* @__PURE__ */ new Set(),
+	branches: /* @__PURE__ */ new Set(),
+	dismissableSurfaces: /* @__PURE__ */ new Set()
+});
+var DismissableLayer = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$9(function DismissableLayer2(props, forwardedRef) {
+	const { disableOutsidePointerEvents = false, deferPointerDownOutside = false, onEscapeKeyDown, onPointerDownOutside, onFocusOutside, onInteractOutside, onDismiss, ...layerProps } = props;
+	const context = import_react.useContext(DismissableLayerContext);
+	const [node, setNode] = import_react.useState(null);
+	const ownerDocument = node?.ownerDocument ?? globalThis?.document;
+	const [, force] = import_react.useState({});
+	const composedRefs = useComposedRefs(forwardedRef, setNode);
+	const layers = Array.from(context.layers);
+	const [highestLayerWithOutsidePointerEventsDisabled] = [...context.layersWithOutsidePointerEventsDisabled].slice(-1);
+	const highestLayerWithOutsidePointerEventsDisabledIndex = highestLayerWithOutsidePointerEventsDisabled ? layers.indexOf(highestLayerWithOutsidePointerEventsDisabled) : -1;
+	const index = node ? layers.indexOf(node) : -1;
+	const isBodyPointerEventsDisabled = context.layersWithOutsidePointerEventsDisabled.size > 0;
+	const isPointerEventsEnabled = index >= highestLayerWithOutsidePointerEventsDisabledIndex;
+	const isDeferredPointerDownOutsideRef = import_react.useRef(false);
+	const pointerDownOutside = usePointerDownOutside((event) => {
+		onPointerDownOutside?.(event);
+		onInteractOutside?.(event);
+		if (!event.defaultPrevented) onDismiss?.();
+	}, {
+		ownerDocument,
+		deferPointerDownOutside,
+		isDeferredPointerDownOutsideRef,
+		dismissableSurfaces: context.dismissableSurfaces,
+		shouldHandlePointerDownOutside: import_react.useCallback((target) => {
+			if (!(target instanceof Node)) return false;
+			const isPointerDownOnBranch = [...context.branches].some((branch) => branch.contains(target));
+			return isPointerEventsEnabled && !isPointerDownOnBranch;
+		}, [context.branches, isPointerEventsEnabled])
+	});
+	const focusOutside = useFocusOutside((event) => {
+		if (deferPointerDownOutside && isDeferredPointerDownOutsideRef.current) return;
+		const target = event.target;
+		if ([...context.branches].some((branch) => branch.contains(target))) return;
+		onFocusOutside?.(event);
+		onInteractOutside?.(event);
+		if (!event.defaultPrevented) onDismiss?.();
+	}, ownerDocument);
+	const isHighestLayer = node ? index === layers.length - 1 : false;
+	const handleKeyDown = useCallbackRef$1((event) => {
+		if (event.key !== "Escape") return;
+		onEscapeKeyDown?.(event);
+		if (!event.defaultPrevented && onDismiss) {
+			event.preventDefault();
+			onDismiss();
+		}
+	});
+	import_react.useEffect(() => {
+		if (!isHighestLayer) return;
+		ownerDocument.addEventListener("keydown", handleKeyDown, { capture: true });
+		return () => ownerDocument.removeEventListener("keydown", handleKeyDown, { capture: true });
+	}, [
+		ownerDocument,
+		isHighestLayer,
+		handleKeyDown
+	]);
+	import_react.useEffect(() => {
+		if (!node) return;
+		if (disableOutsidePointerEvents) {
+			if (context.layersWithOutsidePointerEventsDisabled.size === 0) {
+				originalBodyPointerEvents = ownerDocument.body.style.pointerEvents;
+				ownerDocument.body.style.pointerEvents = "none";
+			}
+			context.layersWithOutsidePointerEventsDisabled.add(node);
+		}
+		context.layers.add(node);
+		dispatchUpdate();
+		return () => {
+			if (disableOutsidePointerEvents) {
+				context.layersWithOutsidePointerEventsDisabled.delete(node);
+				if (context.layersWithOutsidePointerEventsDisabled.size === 0) ownerDocument.body.style.pointerEvents = originalBodyPointerEvents;
+			}
+		};
+	}, [
+		node,
+		ownerDocument,
+		disableOutsidePointerEvents,
+		context
+	]);
+	import_react.useEffect(() => {
+		return () => {
+			if (!node) return;
+			context.layers.delete(node);
+			context.layersWithOutsidePointerEventsDisabled.delete(node);
+			dispatchUpdate();
+		};
+	}, [node, context]);
+	import_react.useEffect(() => {
+		const handleUpdate = /* @__PURE__ */ __name$9(() => force({}), "handleUpdate");
+		document.addEventListener(CONTEXT_UPDATE, handleUpdate);
+		return () => document.removeEventListener(CONTEXT_UPDATE, handleUpdate);
+	}, []);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+		...layerProps,
+		ref: composedRefs,
+		style: {
+			pointerEvents: isBodyPointerEventsDisabled ? isPointerEventsEnabled ? "auto" : "none" : void 0,
+			...props.style
+		},
+		onFocusCapture: composeEventHandlers(props.onFocusCapture, focusOutside.onFocusCapture),
+		onBlurCapture: composeEventHandlers(props.onBlurCapture, focusOutside.onBlurCapture),
+		onPointerDownCapture: composeEventHandlers(props.onPointerDownCapture, pointerDownOutside.onPointerDownCapture)
+	});
+}, "DismissableLayer"));
+function useDismissableLayerSurface() {
+	const context = import_react.useContext(DismissableLayerContext);
+	const [node, setNode] = import_react.useState(null);
+	import_react.useEffect(() => {
+		if (!node) return;
+		context.dismissableSurfaces.add(node);
+		return () => {
+			context.dismissableSurfaces.delete(node);
+		};
+	}, [node, context.dismissableSurfaces]);
+	return setNode;
+}
+__name$9(useDismissableLayerSurface, "useDismissableLayerSurface");
+var IS_TRUE = /* @__PURE__ */ __name$9(() => true, "IS_TRUE");
+function usePointerDownOutside(onPointerDownOutside, args) {
+	const { ownerDocument = globalThis?.document, deferPointerDownOutside = false, isDeferredPointerDownOutsideRef, dismissableSurfaces, shouldHandlePointerDownOutside = IS_TRUE } = args;
+	const handlePointerDownOutside = useCallbackRef$1(onPointerDownOutside);
+	const isPointerInsideReactTreeRef = import_react.useRef(false);
+	const isPointerDownOutsideRef = import_react.useRef(false);
+	const interceptedOutsideInteractionEventsRef = import_react.useRef(/* @__PURE__ */ new Map());
+	const handleClickRef = import_react.useRef(() => {});
+	import_react.useEffect(() => {
+		function resetOutsideInteraction() {
+			isPointerDownOutsideRef.current = false;
+			isDeferredPointerDownOutsideRef.current = false;
+			interceptedOutsideInteractionEventsRef.current.clear();
+		}
+		__name$9(resetOutsideInteraction, "resetOutsideInteraction");
+		function isOutsideInteractionIntercepted() {
+			return Array.from(interceptedOutsideInteractionEventsRef.current.values()).some(Boolean);
+		}
+		__name$9(isOutsideInteractionIntercepted, "isOutsideInteractionIntercepted");
+		function handleInteractionCapture(event) {
+			if (!isPointerDownOutsideRef.current) return;
+			const target = event.target;
+			if (!(target instanceof Node && [...dismissableSurfaces].some((surface) => surface.contains(target)))) interceptedOutsideInteractionEventsRef.current.set(event.type, true);
+			if (event.type === "click") window.setTimeout(() => {
+				if (isPointerDownOutsideRef.current) handleClickRef.current();
+			}, 0);
+		}
+		__name$9(handleInteractionCapture, "handleInteractionCapture");
+		function handleInteractionBubble(event) {
+			if (isPointerDownOutsideRef.current) interceptedOutsideInteractionEventsRef.current.set(event.type, false);
+		}
+		__name$9(handleInteractionBubble, "handleInteractionBubble");
+		const handlePointerDown = /* @__PURE__ */ __name$9((event) => {
+			if (event.target && !isPointerInsideReactTreeRef.current) {
+				let handleAndDispatchPointerDownOutsideEvent2 = function() {
+					ownerDocument.removeEventListener("click", handleClickRef.current);
+					const wasOutsideInteractionIntercepted = isOutsideInteractionIntercepted();
+					resetOutsideInteraction();
+					if (!wasOutsideInteractionIntercepted) handleAndDispatchCustomEvent(POINTER_DOWN_OUTSIDE, handlePointerDownOutside, eventDetail, { discrete: true });
+				};
+				__name$9(handleAndDispatchPointerDownOutsideEvent2, "handleAndDispatchPointerDownOutsideEvent");
+				if (!shouldHandlePointerDownOutside(event.target)) {
+					ownerDocument.removeEventListener("click", handleClickRef.current);
+					resetOutsideInteraction();
+					isPointerInsideReactTreeRef.current = false;
+					return;
+				}
+				const eventDetail = { originalEvent: event };
+				isPointerDownOutsideRef.current = true;
+				isDeferredPointerDownOutsideRef.current = deferPointerDownOutside && event.button === 0;
+				interceptedOutsideInteractionEventsRef.current.clear();
+				if (!deferPointerDownOutside || event.button !== 0) handleAndDispatchPointerDownOutsideEvent2();
+				else {
+					ownerDocument.removeEventListener("click", handleClickRef.current);
+					handleClickRef.current = handleAndDispatchPointerDownOutsideEvent2;
+					ownerDocument.addEventListener("click", handleClickRef.current, { once: true });
+				}
+			} else {
+				ownerDocument.removeEventListener("click", handleClickRef.current);
+				resetOutsideInteraction();
+			}
+			isPointerInsideReactTreeRef.current = false;
+		}, "handlePointerDown");
+		const outsideInteractionEvents = [
+			"pointerup",
+			"mousedown",
+			"mouseup",
+			"touchstart",
+			"touchend",
+			"click"
+		];
+		for (const eventName of outsideInteractionEvents) {
+			ownerDocument.addEventListener(eventName, handleInteractionCapture, true);
+			ownerDocument.addEventListener(eventName, handleInteractionBubble);
+		}
+		const timerId = window.setTimeout(() => {
+			ownerDocument.addEventListener("pointerdown", handlePointerDown);
+		}, 0);
+		return () => {
+			window.clearTimeout(timerId);
+			ownerDocument.removeEventListener("pointerdown", handlePointerDown);
+			ownerDocument.removeEventListener("click", handleClickRef.current);
+			for (const eventName of outsideInteractionEvents) {
+				ownerDocument.removeEventListener(eventName, handleInteractionCapture, true);
+				ownerDocument.removeEventListener(eventName, handleInteractionBubble);
+			}
+		};
+	}, [
+		ownerDocument,
+		handlePointerDownOutside,
+		deferPointerDownOutside,
+		isDeferredPointerDownOutsideRef,
+		dismissableSurfaces,
+		shouldHandlePointerDownOutside
+	]);
+	return { onPointerDownCapture: /* @__PURE__ */ __name$9(() => isPointerInsideReactTreeRef.current = true, "onPointerDownCapture") };
+}
+__name$9(usePointerDownOutside, "usePointerDownOutside");
+function useFocusOutside(onFocusOutside, ownerDocument = globalThis?.document) {
+	const handleFocusOutside = useCallbackRef$1(onFocusOutside);
+	const isFocusInsideReactTreeRef = import_react.useRef(false);
+	import_react.useEffect(() => {
+		const handleFocus = /* @__PURE__ */ __name$9((event) => {
+			if (event.target && !isFocusInsideReactTreeRef.current) handleAndDispatchCustomEvent(FOCUS_OUTSIDE, handleFocusOutside, { originalEvent: event }, { discrete: false });
+		}, "handleFocus");
+		ownerDocument.addEventListener("focusin", handleFocus);
+		return () => ownerDocument.removeEventListener("focusin", handleFocus);
+	}, [ownerDocument, handleFocusOutside]);
+	return {
+		onFocusCapture: /* @__PURE__ */ __name$9(() => isFocusInsideReactTreeRef.current = true, "onFocusCapture"),
+		onBlurCapture: /* @__PURE__ */ __name$9(() => isFocusInsideReactTreeRef.current = false, "onBlurCapture")
+	};
+}
+__name$9(useFocusOutside, "useFocusOutside");
+function dispatchUpdate() {
+	const event = new CustomEvent(CONTEXT_UPDATE);
+	document.dispatchEvent(event);
+}
+__name$9(dispatchUpdate, "dispatchUpdate");
+function handleAndDispatchCustomEvent(name, handler, detail, { discrete }) {
+	const target = detail.originalEvent.target;
+	const event = new CustomEvent(name, {
+		bubbles: false,
+		cancelable: true,
+		detail
+	});
+	if (handler) target.addEventListener(name, handler, { once: true });
+	if (discrete) dispatchDiscreteCustomEvent(target, event);
+	else target.dispatchEvent(event);
+}
+__name$9(handleAndDispatchCustomEvent, "handleAndDispatchCustomEvent");
+//#endregion
+//#region node_modules/@radix-ui/react-focus-scope/dist/index.mjs
+var __defProp$8 = Object.defineProperty;
+var __name$8 = (target, value) => __defProp$8(target, "name", {
+	value,
+	configurable: true
+});
+var AUTOFOCUS_ON_MOUNT = "focusScope.autoFocusOnMount";
+var AUTOFOCUS_ON_UNMOUNT = "focusScope.autoFocusOnUnmount";
+var EVENT_OPTIONS$1 = {
+	bubbles: false,
+	cancelable: true
+};
+var FocusScope = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$8(function FocusScope2(props, forwardedRef) {
+	const { loop = false, trapped = false, onMountAutoFocus: onMountAutoFocusProp, onUnmountAutoFocus: onUnmountAutoFocusProp, ...scopeProps } = props;
+	const [container, setContainer] = import_react.useState(null);
+	const onMountAutoFocus = useCallbackRef$1(onMountAutoFocusProp);
+	const onUnmountAutoFocus = useCallbackRef$1(onUnmountAutoFocusProp);
+	const lastFocusedElementRef = import_react.useRef(null);
+	const composedRefs = useComposedRefs(forwardedRef, setContainer);
+	const focusScope = import_react.useRef({
+		paused: false,
+		pause() {
+			this.paused = true;
+		},
+		resume() {
+			this.paused = false;
+		}
+	}).current;
+	import_react.useEffect(() => {
+		if (trapped) {
+			let handleFocusIn2 = function(event) {
+				if (focusScope.paused || !container) return;
+				const target = event.target;
+				if (container.contains(target)) lastFocusedElementRef.current = target;
+				else focus(lastFocusedElementRef.current, { select: true });
+			}, handleFocusOut2 = function(event) {
+				if (focusScope.paused || !container) return;
+				const relatedTarget = event.relatedTarget;
+				if (relatedTarget === null) return;
+				if (!container.contains(relatedTarget)) focus(lastFocusedElementRef.current, { select: true });
+			}, handleMutations2 = function(mutations) {
+				if (document.activeElement !== document.body) return;
+				for (const mutation of mutations) if (mutation.removedNodes.length > 0) focus(container);
+			};
+			__name$8(handleFocusIn2, "handleFocusIn");
+			__name$8(handleFocusOut2, "handleFocusOut");
+			__name$8(handleMutations2, "handleMutations");
+			document.addEventListener("focusin", handleFocusIn2);
+			document.addEventListener("focusout", handleFocusOut2);
+			const mutationObserver = new MutationObserver(handleMutations2);
+			if (container) mutationObserver.observe(container, {
+				childList: true,
+				subtree: true
+			});
+			return () => {
+				document.removeEventListener("focusin", handleFocusIn2);
+				document.removeEventListener("focusout", handleFocusOut2);
+				mutationObserver.disconnect();
+			};
+		}
+	}, [
+		trapped,
+		container,
+		focusScope.paused
+	]);
+	import_react.useEffect(() => {
+		if (container) {
+			focusScopesStack.add(focusScope);
+			const previouslyFocusedElement = document.activeElement;
+			if (!container.contains(previouslyFocusedElement)) {
+				const mountEvent = new CustomEvent(AUTOFOCUS_ON_MOUNT, EVENT_OPTIONS$1);
+				container.addEventListener(AUTOFOCUS_ON_MOUNT, onMountAutoFocus);
+				container.dispatchEvent(mountEvent);
+				if (!mountEvent.defaultPrevented) {
+					focusFirst$1(removeLinks(getTabbableCandidates(container)), { select: true });
+					if (document.activeElement === previouslyFocusedElement) focus(container);
+				}
+			}
+			return () => {
+				container.removeEventListener(AUTOFOCUS_ON_MOUNT, onMountAutoFocus);
+				setTimeout(() => {
+					const unmountEvent = new CustomEvent(AUTOFOCUS_ON_UNMOUNT, EVENT_OPTIONS$1);
+					container.addEventListener(AUTOFOCUS_ON_UNMOUNT, onUnmountAutoFocus);
+					container.dispatchEvent(unmountEvent);
+					if (!unmountEvent.defaultPrevented) focus(previouslyFocusedElement ?? document.body, { select: true });
+					container.removeEventListener(AUTOFOCUS_ON_UNMOUNT, onUnmountAutoFocus);
+					focusScopesStack.remove(focusScope);
+				}, 0);
+			};
+		}
+	}, [
+		container,
+		onMountAutoFocus,
+		onUnmountAutoFocus,
+		focusScope
+	]);
+	const handleKeyDown = import_react.useCallback((event) => {
+		if (!loop && !trapped) return;
+		if (focusScope.paused) return;
+		const isTabKey = event.key === "Tab" && !event.altKey && !event.ctrlKey && !event.metaKey;
+		const focusedElement = document.activeElement;
+		if (isTabKey && focusedElement) {
+			const container2 = event.currentTarget;
+			const [first, last] = getTabbableEdges(container2);
+			if (!(first && last)) {
+				if (focusedElement === container2) event.preventDefault();
+			} else if (!event.shiftKey && focusedElement === last) {
+				event.preventDefault();
+				if (loop) focus(first, { select: true });
+			} else if (event.shiftKey && focusedElement === first) {
+				event.preventDefault();
+				if (loop) focus(last, { select: true });
+			}
+		}
+	}, [
+		loop,
+		trapped,
+		focusScope.paused
+	]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+		tabIndex: -1,
+		...scopeProps,
+		ref: composedRefs,
+		onKeyDown: handleKeyDown
+	});
+}, "FocusScope"));
+function focusFirst$1(candidates, { select = false } = {}) {
+	const previouslyFocusedElement = document.activeElement;
+	for (const candidate of candidates) {
+		focus(candidate, { select });
+		if (document.activeElement !== previouslyFocusedElement) return;
+	}
+}
+__name$8(focusFirst$1, "focusFirst");
+function getTabbableEdges(container) {
+	const candidates = getTabbableCandidates(container);
+	return [findVisible(candidates, container), findVisible(candidates.reverse(), container)];
+}
+__name$8(getTabbableEdges, "getTabbableEdges");
+function getTabbableCandidates(container) {
+	const nodes = [];
+	const walker = document.createTreeWalker(container, NodeFilter.SHOW_ELEMENT, { acceptNode: /* @__PURE__ */ __name$8((node) => {
+		const isHiddenInput = node.tagName === "INPUT" && node.type === "hidden";
+		if (node.disabled || node.hidden || isHiddenInput) return NodeFilter.FILTER_SKIP;
+		return node.tabIndex >= 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+	}, "acceptNode") });
+	while (walker.nextNode()) nodes.push(walker.currentNode);
+	return nodes;
+}
+__name$8(getTabbableCandidates, "getTabbableCandidates");
+function findVisible(elements, container) {
+	const canUseCheckVisibility = typeof container.checkVisibility === "function" && container.checkVisibility({ checkVisibilityCSS: true });
+	for (const element of elements) if (!(canUseCheckVisibility ? !element.checkVisibility({ checkVisibilityCSS: true }) : isHidden(element, { upTo: container }))) return element;
+}
+__name$8(findVisible, "findVisible");
+function isHidden(node, { upTo }) {
+	if (getComputedStyle(node).visibility === "hidden") return true;
+	while (node) {
+		if (upTo !== void 0 && node === upTo) return false;
+		if (getComputedStyle(node).display === "none") return true;
+		node = node.parentElement;
+	}
+	return false;
+}
+__name$8(isHidden, "isHidden");
+function isSelectableInput(element) {
+	return element instanceof HTMLInputElement && "select" in element;
+}
+__name$8(isSelectableInput, "isSelectableInput");
+function focus(element, { select = false } = {}) {
+	if (element && element.focus) {
+		const previouslyFocusedElement = document.activeElement;
+		element.focus({ preventScroll: true });
+		if (element !== previouslyFocusedElement && isSelectableInput(element) && select) element.select();
+	}
+}
+__name$8(focus, "focus");
+var focusScopesStack = createFocusScopesStack();
+function createFocusScopesStack() {
+	let stack = [];
+	return {
+		add(focusScope) {
+			const activeFocusScope = stack[0];
+			if (focusScope !== activeFocusScope) activeFocusScope?.pause();
+			stack = arrayRemove(stack, focusScope);
+			stack.unshift(focusScope);
+		},
+		remove(focusScope) {
+			stack = arrayRemove(stack, focusScope);
+			stack[0]?.resume();
+		}
+	};
+}
+__name$8(createFocusScopesStack, "createFocusScopesStack");
+function arrayRemove(array, item) {
+	const updatedArray = [...array];
+	const index = updatedArray.indexOf(item);
+	if (index !== -1) updatedArray.splice(index, 1);
+	return updatedArray;
+}
+__name$8(arrayRemove, "arrayRemove");
+function removeLinks(items) {
+	return items.filter((item) => item.tagName !== "A");
+}
+__name$8(removeLinks, "removeLinks");
+//#endregion
+//#region node_modules/@radix-ui/react-portal/dist/index.mjs
+var __defProp$7 = Object.defineProperty;
+var __name$7 = (target, value) => __defProp$7(target, "name", {
+	value,
+	configurable: true
+});
+var Portal = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$7(function Portal2(props, forwardedRef) {
+	const { container: containerProp, ...portalProps } = props;
+	const [mounted, setMounted] = import_react.useState(false);
+	useLayoutEffect2(() => setMounted(true), []);
+	const container = containerProp || mounted && globalThis?.document?.body;
+	return container ? import_react_dom.createPortal(/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+		...portalProps,
+		ref: forwardedRef
+	}), container) : null;
+}, "Portal"));
+//#endregion
+//#region node_modules/@radix-ui/react-focus-guards/dist/index.mjs
+var __defProp$6 = Object.defineProperty;
+var __name$6 = (target, value) => __defProp$6(target, "name", {
+	value,
+	configurable: true
+});
+var count = 0;
+var guards = null;
+function FocusGuards(props) {
+	useFocusGuards();
+	return props.children;
+}
+__name$6(FocusGuards, "FocusGuards");
+function useFocusGuards() {
+	import_react.useEffect(() => {
+		if (!guards) guards = {
+			start: createFocusGuard(),
+			end: createFocusGuard()
+		};
+		const { start, end } = guards;
+		if (document.body.firstElementChild !== start) document.body.insertAdjacentElement("afterbegin", start);
+		if (document.body.lastElementChild !== end) document.body.insertAdjacentElement("beforeend", end);
+		count++;
+		return () => {
+			if (count === 1) {
+				guards?.start.remove();
+				guards?.end.remove();
+				guards = null;
+			}
+			count = Math.max(0, count - 1);
+		};
+	}, []);
+}
+__name$6(useFocusGuards, "useFocusGuards");
+function createFocusGuard() {
+	const element = document.createElement("span");
+	element.setAttribute("data-radix-focus-guard", "");
+	element.tabIndex = 0;
+	element.style.outline = "none";
+	element.style.opacity = "0";
+	element.style.position = "fixed";
+	element.style.pointerEvents = "none";
+	return element;
+}
+__name$6(createFocusGuard, "createFocusGuard");
+//#endregion
+//#region node_modules/tslib/tslib.es6.mjs
+var __assign = function() {
+	__assign = Object.assign || function __assign(t) {
+		for (var s, i = 1, n = arguments.length; i < n; i++) {
+			s = arguments[i];
+			for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+		}
+		return t;
+	};
+	return __assign.apply(this, arguments);
+};
+function __rest(s, e) {
+	var t = {};
+	for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+	if (s != null && typeof Object.getOwnPropertySymbols === "function") {
+		for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+	}
+	return t;
+}
+function __spreadArray(to, from, pack) {
+	if (pack || arguments.length === 2) {
+		for (var i = 0, l = from.length, ar; i < l; i++) if (ar || !(i in from)) {
+			if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+			ar[i] = from[i];
+		}
+	}
+	return to.concat(ar || Array.prototype.slice.call(from));
+}
+//#endregion
+//#region node_modules/react-remove-scroll-bar/dist/es2015/constants.js
+var zeroRightClassName = "right-scroll-bar-position";
+var fullWidthClassName = "width-before-scroll-bar";
+var noScrollbarsClassName = "with-scroll-bars-hidden";
+/**
+* Name of a CSS variable containing the amount of "hidden" scrollbar
+* ! might be undefined ! use will fallback!
+*/
+var removedBarSizeVariable = "--removed-body-scroll-bar-size";
+//#endregion
+//#region node_modules/use-callback-ref/dist/es2015/assignRef.js
+/**
+* Assigns a value for a given ref, no matter of the ref format
+* @param {RefObject} ref - a callback function or ref object
+* @param value - a new value
+*
+* @see https://github.com/theKashey/use-callback-ref#assignref
+* @example
+* const refObject = useRef();
+* const refFn = (ref) => {....}
+*
+* assignRef(refObject, "refValue");
+* assignRef(refFn, "refValue");
+*/
+function assignRef(ref, value) {
+	if (typeof ref === "function") ref(value);
+	else if (ref) ref.current = value;
+	return ref;
+}
+//#endregion
+//#region node_modules/use-callback-ref/dist/es2015/useRef.js
+/**
+* creates a MutableRef with ref change callback
+* @param initialValue - initial ref value
+* @param {Function} callback - a callback to run when value changes
+*
+* @example
+* const ref = useCallbackRef(0, (newValue, oldValue) => console.log(oldValue, '->', newValue);
+* ref.current = 1;
+* // prints 0 -> 1
+*
+* @see https://reactjs.org/docs/hooks-reference.html#useref
+* @see https://github.com/theKashey/use-callback-ref#usecallbackref---to-replace-reactuseref
+* @returns {MutableRefObject}
+*/
+function useCallbackRef(initialValue, callback) {
+	var ref = (0, import_react.useState)(function() {
+		return {
+			value: initialValue,
+			callback,
+			facade: {
+				get current() {
+					return ref.value;
+				},
+				set current(value) {
+					var last = ref.value;
+					if (last !== value) {
+						ref.value = value;
+						ref.callback(value, last);
+					}
+				}
+			}
+		};
+	})[0];
+	ref.callback = callback;
+	return ref.facade;
+}
+//#endregion
+//#region node_modules/use-callback-ref/dist/es2015/useMergeRef.js
+var useIsomorphicLayoutEffect = typeof window !== "undefined" ? import_react.useLayoutEffect : import_react.useEffect;
+var currentValues = /* @__PURE__ */ new WeakMap();
+/**
+* Merges two or more refs together providing a single interface to set their value
+* @param {RefObject|Ref} refs
+* @returns {MutableRefObject} - a new ref, which translates all changes to {refs}
+*
+* @see {@link mergeRefs} a version without buit-in memoization
+* @see https://github.com/theKashey/use-callback-ref#usemergerefs
+* @example
+* const Component = React.forwardRef((props, ref) => {
+*   const ownRef = useRef();
+*   const domRef = useMergeRefs([ref, ownRef]); // 👈 merge together
+*   return <div ref={domRef}>...</div>
+* }
+*/
+function useMergeRefs(refs, defaultValue) {
+	var callbackRef = useCallbackRef(defaultValue || null, function(newValue) {
+		return refs.forEach(function(ref) {
+			return assignRef(ref, newValue);
+		});
+	});
+	useIsomorphicLayoutEffect(function() {
+		var oldValue = currentValues.get(callbackRef);
+		if (oldValue) {
+			var prevRefs_1 = new Set(oldValue);
+			var nextRefs_1 = new Set(refs);
+			var current_1 = callbackRef.current;
+			prevRefs_1.forEach(function(ref) {
+				if (!nextRefs_1.has(ref)) assignRef(ref, null);
+			});
+			nextRefs_1.forEach(function(ref) {
+				if (!prevRefs_1.has(ref)) assignRef(ref, current_1);
+			});
+		}
+		currentValues.set(callbackRef, refs);
+	}, [refs]);
+	return callbackRef;
+}
+//#endregion
+//#region node_modules/use-sidecar/dist/es2015/medium.js
+function ItoI(a) {
+	return a;
+}
+function innerCreateMedium(defaults, middleware) {
+	if (middleware === void 0) middleware = ItoI;
+	var buffer = [];
+	var assigned = false;
+	return {
+		read: function() {
+			if (assigned) throw new Error("Sidecar: could not `read` from an `assigned` medium. `read` could be used only with `useMedium`.");
+			if (buffer.length) return buffer[buffer.length - 1];
+			return defaults;
+		},
+		useMedium: function(data) {
+			var item = middleware(data, assigned);
+			buffer.push(item);
+			return function() {
+				buffer = buffer.filter(function(x) {
+					return x !== item;
+				});
+			};
+		},
+		assignSyncMedium: function(cb) {
+			assigned = true;
+			while (buffer.length) {
+				var cbs = buffer;
+				buffer = [];
+				cbs.forEach(cb);
+			}
+			buffer = {
+				push: function(x) {
+					return cb(x);
+				},
+				filter: function() {
+					return buffer;
+				}
+			};
+		},
+		assignMedium: function(cb) {
+			assigned = true;
+			var pendingQueue = [];
+			if (buffer.length) {
+				var cbs = buffer;
+				buffer = [];
+				cbs.forEach(cb);
+				pendingQueue = buffer;
+			}
+			var executeQueue = function() {
+				var cbs = pendingQueue;
+				pendingQueue = [];
+				cbs.forEach(cb);
+			};
+			var cycle = function() {
+				return Promise.resolve().then(executeQueue);
+			};
+			cycle();
+			buffer = {
+				push: function(x) {
+					pendingQueue.push(x);
+					cycle();
+				},
+				filter: function(filter) {
+					pendingQueue = pendingQueue.filter(filter);
+					return buffer;
+				}
+			};
+		}
+	};
+}
+function createSidecarMedium(options) {
+	if (options === void 0) options = {};
+	var medium = innerCreateMedium(null);
+	medium.options = __assign({
+		async: true,
+		ssr: false
+	}, options);
+	return medium;
+}
+//#endregion
+//#region node_modules/use-sidecar/dist/es2015/exports.js
+var SideCar = function(_a) {
+	var sideCar = _a.sideCar, rest = __rest(_a, ["sideCar"]);
+	if (!sideCar) throw new Error("Sidecar: please provide `sideCar` property to import the right car");
+	var Target = sideCar.read();
+	if (!Target) throw new Error("Sidecar medium not found");
+	return import_react.createElement(Target, __assign({}, rest));
+};
+SideCar.isSideCarExport = true;
+function exportSidecar(medium, exported) {
+	medium.useMedium(exported);
+	return SideCar;
+}
+//#endregion
+//#region node_modules/react-remove-scroll/dist/es2015/medium.js
+var effectCar = createSidecarMedium();
+//#endregion
+//#region node_modules/react-remove-scroll/dist/es2015/UI.js
+var nothing = function() {};
+/**
+* Removes scrollbar from the page and contain the scroll within the Lock
+*/
+var RemoveScroll = import_react.forwardRef(function(props, parentRef) {
+	var ref = import_react.useRef(null);
+	var _a = import_react.useState({
+		onScrollCapture: nothing,
+		onWheelCapture: nothing,
+		onTouchMoveCapture: nothing
+	}), callbacks = _a[0], setCallbacks = _a[1];
+	var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noRelative = props.noRelative, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? "div" : _b, gapMode = props.gapMode, rest = __rest(props, [
+		"forwardProps",
+		"children",
+		"className",
+		"removeScrollBar",
+		"enabled",
+		"shards",
+		"sideCar",
+		"noRelative",
+		"noIsolation",
+		"inert",
+		"allowPinchZoom",
+		"as",
+		"gapMode"
+	]);
+	var SideCar = sideCar;
+	var containerRef = useMergeRefs([ref, parentRef]);
+	var containerProps = __assign(__assign({}, rest), callbacks);
+	return import_react.createElement(import_react.Fragment, null, enabled && import_react.createElement(SideCar, {
+		sideCar: effectCar,
+		removeScrollBar,
+		shards,
+		noRelative,
+		noIsolation,
+		inert,
+		setCallbacks,
+		allowPinchZoom: !!allowPinchZoom,
+		lockRef: ref,
+		gapMode
+	}), forwardProps ? import_react.cloneElement(import_react.Children.only(children), __assign(__assign({}, containerProps), { ref: containerRef })) : import_react.createElement(Container, __assign({}, containerProps, {
+		className,
+		ref: containerRef
+	}), children));
+});
+RemoveScroll.defaultProps = {
+	enabled: true,
+	removeScrollBar: true,
+	inert: false
+};
+RemoveScroll.classNames = {
+	fullWidth: fullWidthClassName,
+	zeroRight: zeroRightClassName
+};
+var getNonce = function() {
+	if (typeof __webpack_nonce__ !== "undefined") return __webpack_nonce__;
+};
+//#endregion
+//#region node_modules/react-style-singleton/dist/es2015/singleton.js
+function makeStyleTag() {
+	if (!document) return null;
+	var tag = document.createElement("style");
+	tag.type = "text/css";
+	var nonce = getNonce();
+	if (nonce) tag.setAttribute("nonce", nonce);
+	return tag;
+}
+function injectStyles(tag, css) {
+	if (tag.styleSheet) tag.styleSheet.cssText = css;
+	else tag.appendChild(document.createTextNode(css));
+}
+function insertStyleTag(tag) {
+	(document.head || document.getElementsByTagName("head")[0]).appendChild(tag);
+}
+var stylesheetSingleton = function() {
+	var counter = 0;
+	var stylesheet = null;
+	return {
+		add: function(style) {
+			if (counter == 0) {
+				if (stylesheet = makeStyleTag()) {
+					injectStyles(stylesheet, style);
+					insertStyleTag(stylesheet);
+				}
+			}
+			counter++;
+		},
+		remove: function() {
+			counter--;
+			if (!counter && stylesheet) {
+				stylesheet.parentNode && stylesheet.parentNode.removeChild(stylesheet);
+				stylesheet = null;
+			}
+		}
+	};
+};
+//#endregion
+//#region node_modules/react-style-singleton/dist/es2015/hook.js
+/**
+* creates a hook to control style singleton
+* @see {@link styleSingleton} for a safer component version
+* @example
+* ```tsx
+* const useStyle = styleHookSingleton();
+* ///
+* useStyle('body { overflow: hidden}');
+*/
+var styleHookSingleton = function() {
+	var sheet = stylesheetSingleton();
+	return function(styles, isDynamic) {
+		import_react.useEffect(function() {
+			sheet.add(styles);
+			return function() {
+				sheet.remove();
+			};
+		}, [styles && isDynamic]);
+	};
+};
+//#endregion
+//#region node_modules/react-style-singleton/dist/es2015/component.js
+/**
+* create a Component to add styles on demand
+* - styles are added when first instance is mounted
+* - styles are removed when the last instance is unmounted
+* - changing styles in runtime does nothing unless dynamic is set. But with multiple components that can lead to the undefined behavior
+*/
+var styleSingleton = function() {
+	var useStyle = styleHookSingleton();
+	var Sheet = function(_a) {
+		var styles = _a.styles, dynamic = _a.dynamic;
+		useStyle(styles, dynamic);
+		return null;
+	};
+	return Sheet;
+};
+//#endregion
+//#region node_modules/react-remove-scroll-bar/dist/es2015/utils.js
+var zeroGap = {
+	left: 0,
+	top: 0,
+	right: 0,
+	gap: 0
+};
+var parse = function(x) {
+	return parseInt(x || "", 10) || 0;
+};
+var getOffset = function(gapMode) {
+	var cs = window.getComputedStyle(document.body);
+	var left = cs[gapMode === "padding" ? "paddingLeft" : "marginLeft"];
+	var top = cs[gapMode === "padding" ? "paddingTop" : "marginTop"];
+	var right = cs[gapMode === "padding" ? "paddingRight" : "marginRight"];
+	return [
+		parse(left),
+		parse(top),
+		parse(right)
+	];
+};
+var getGapWidth = function(gapMode) {
+	if (gapMode === void 0) gapMode = "margin";
+	if (typeof window === "undefined") return zeroGap;
+	var offsets = getOffset(gapMode);
+	var documentWidth = document.documentElement.clientWidth;
+	var windowWidth = window.innerWidth;
+	return {
+		left: offsets[0],
+		top: offsets[1],
+		right: offsets[2],
+		gap: Math.max(0, windowWidth - documentWidth + offsets[2] - offsets[0])
+	};
+};
+//#endregion
+//#region node_modules/react-remove-scroll-bar/dist/es2015/component.js
+var Style = styleSingleton();
+var lockAttribute = "data-scroll-locked";
+var getStyles = function(_a, allowRelative, gapMode, important) {
+	var left = _a.left, top = _a.top, right = _a.right, gap = _a.gap;
+	if (gapMode === void 0) gapMode = "margin";
+	return "\n  .".concat(noScrollbarsClassName, " {\n   overflow: hidden ").concat(important, ";\n   padding-right: ").concat(gap, "px ").concat(important, ";\n  }\n  body[").concat(lockAttribute, "] {\n    overflow: hidden ").concat(important, ";\n    overscroll-behavior: contain;\n    ").concat([
+		allowRelative && "position: relative ".concat(important, ";"),
+		gapMode === "margin" && "\n    padding-left: ".concat(left, "px;\n    padding-top: ").concat(top, "px;\n    padding-right: ").concat(right, "px;\n    margin-left:0;\n    margin-top:0;\n    margin-right: ").concat(gap, "px ").concat(important, ";\n    "),
+		gapMode === "padding" && "padding-right: ".concat(gap, "px ").concat(important, ";")
+	].filter(Boolean).join(""), "\n  }\n  \n  .").concat(zeroRightClassName, " {\n    right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName, " {\n    margin-right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(zeroRightClassName, " .").concat(zeroRightClassName, " {\n    right: 0 ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName, " .").concat(fullWidthClassName, " {\n    margin-right: 0 ").concat(important, ";\n  }\n  \n  body[").concat(lockAttribute, "] {\n    ").concat(removedBarSizeVariable, ": ").concat(gap, "px;\n  }\n");
+};
+var getCurrentUseCounter = function() {
+	var counter = parseInt(document.body.getAttribute("data-scroll-locked") || "0", 10);
+	return isFinite(counter) ? counter : 0;
+};
+var useLockAttribute = function() {
+	import_react.useEffect(function() {
+		document.body.setAttribute(lockAttribute, (getCurrentUseCounter() + 1).toString());
+		return function() {
+			var newCounter = getCurrentUseCounter() - 1;
+			if (newCounter <= 0) document.body.removeAttribute(lockAttribute);
+			else document.body.setAttribute(lockAttribute, newCounter.toString());
+		};
+	}, []);
+};
+/**
+* Removes page scrollbar and blocks page scroll when mounted
+*/
+var RemoveScrollBar = function(_a) {
+	var noRelative = _a.noRelative, noImportant = _a.noImportant, _b = _a.gapMode, gapMode = _b === void 0 ? "margin" : _b;
+	useLockAttribute();
+	var gap = import_react.useMemo(function() {
+		return getGapWidth(gapMode);
+	}, [gapMode]);
+	return import_react.createElement(Style, { styles: getStyles(gap, !noRelative, gapMode, !noImportant ? "!important" : "") });
+};
+//#endregion
+//#region node_modules/react-remove-scroll/dist/es2015/aggresiveCapture.js
+var passiveSupported = false;
+if (typeof window !== "undefined") try {
+	var options = Object.defineProperty({}, "passive", { get: function() {
+		passiveSupported = true;
+		return true;
+	} });
+	window.addEventListener("test", options, options);
+	window.removeEventListener("test", options, options);
+} catch (err) {
+	passiveSupported = false;
+}
+var nonPassive = passiveSupported ? { passive: false } : false;
+//#endregion
+//#region node_modules/react-remove-scroll/dist/es2015/handleScroll.js
+var alwaysContainsScroll = function(node) {
+	return node.tagName === "TEXTAREA";
+};
+var elementCanBeScrolled = function(node, overflow) {
+	if (!(node instanceof Element)) return false;
+	var styles = window.getComputedStyle(node);
+	return styles[overflow] !== "hidden" && !(styles.overflowY === styles.overflowX && !alwaysContainsScroll(node) && styles[overflow] === "visible");
+};
+var elementCouldBeVScrolled = function(node) {
+	return elementCanBeScrolled(node, "overflowY");
+};
+var elementCouldBeHScrolled = function(node) {
+	return elementCanBeScrolled(node, "overflowX");
+};
+var locationCouldBeScrolled = function(axis, node) {
+	var ownerDocument = node.ownerDocument;
+	var current = node;
+	do {
+		if (typeof ShadowRoot !== "undefined" && current instanceof ShadowRoot) current = current.host;
+		if (elementCouldBeScrolled(axis, current)) {
+			var _a = getScrollVariables(axis, current);
+			if (_a[1] > _a[2]) return true;
+		}
+		current = current.parentNode;
+	} while (current && current !== ownerDocument.body);
+	return false;
+};
+var getVScrollVariables = function(_a) {
+	return [
+		_a.scrollTop,
+		_a.scrollHeight,
+		_a.clientHeight
+	];
+};
+var getHScrollVariables = function(_a) {
+	return [
+		_a.scrollLeft,
+		_a.scrollWidth,
+		_a.clientWidth
+	];
+};
+var elementCouldBeScrolled = function(axis, node) {
+	return axis === "v" ? elementCouldBeVScrolled(node) : elementCouldBeHScrolled(node);
+};
+var getScrollVariables = function(axis, node) {
+	return axis === "v" ? getVScrollVariables(node) : getHScrollVariables(node);
+};
+var getDirectionFactor = function(axis, direction) {
+	/**
+	* If the element's direction is rtl (right-to-left), then scrollLeft is 0 when the scrollbar is at its rightmost position,
+	* and then increasingly negative as you scroll towards the end of the content.
+	* @see https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollLeft
+	*/
+	return axis === "h" && direction === "rtl" ? -1 : 1;
+};
+var handleScroll = function(axis, endTarget, event, sourceDelta, noOverscroll) {
+	var directionFactor = getDirectionFactor(axis, window.getComputedStyle(endTarget).direction);
+	var delta = directionFactor * sourceDelta;
+	var target = event.target;
+	var targetInLock = endTarget.contains(target);
+	var shouldCancelScroll = false;
+	var isDeltaPositive = delta > 0;
+	var availableScroll = 0;
+	var availableScrollTop = 0;
+	do {
+		if (!target) break;
+		var _a = getScrollVariables(axis, target), position = _a[0];
+		var elementScroll = _a[1] - _a[2] - directionFactor * position;
+		if (position || elementScroll) {
+			if (elementCouldBeScrolled(axis, target)) {
+				availableScroll += elementScroll;
+				availableScrollTop += position;
+			}
+		}
+		var parent_1 = target.parentNode;
+		target = parent_1 && parent_1.nodeType === Node.DOCUMENT_FRAGMENT_NODE ? parent_1.host : parent_1;
+	} while (!targetInLock && target !== document.body || targetInLock && (endTarget.contains(target) || endTarget === target));
+	if (isDeltaPositive && (noOverscroll && Math.abs(availableScroll) < 1 || !noOverscroll && delta > availableScroll)) shouldCancelScroll = true;
+	else if (!isDeltaPositive && (noOverscroll && Math.abs(availableScrollTop) < 1 || !noOverscroll && -delta > availableScrollTop)) shouldCancelScroll = true;
+	return shouldCancelScroll;
+};
+//#endregion
+//#region node_modules/react-remove-scroll/dist/es2015/SideEffect.js
+var getTouchXY = function(event) {
+	return "changedTouches" in event ? [event.changedTouches[0].clientX, event.changedTouches[0].clientY] : [0, 0];
+};
+var getDeltaXY = function(event) {
+	return [event.deltaX, event.deltaY];
+};
+var extractRef = function(ref) {
+	return ref && "current" in ref ? ref.current : ref;
+};
+var deltaCompare = function(x, y) {
+	return x[0] === y[0] && x[1] === y[1];
+};
+var generateStyle = function(id) {
+	return "\n  .block-interactivity-".concat(id, " {pointer-events: none;}\n  .allow-interactivity-").concat(id, " {pointer-events: all;}\n");
+};
+var idCounter = 0;
+var lockStack = [];
+function RemoveScrollSideCar(props) {
+	var shouldPreventQueue = import_react.useRef([]);
+	var touchStartRef = import_react.useRef([0, 0]);
+	var activeAxis = import_react.useRef();
+	var id = import_react.useState(idCounter++)[0];
+	var Style = import_react.useState(styleSingleton)[0];
+	var lastProps = import_react.useRef(props);
+	import_react.useEffect(function() {
+		lastProps.current = props;
+	}, [props]);
+	import_react.useEffect(function() {
+		if (props.inert) {
+			document.body.classList.add("block-interactivity-".concat(id));
+			var allow_1 = __spreadArray([props.lockRef.current], (props.shards || []).map(extractRef), true).filter(Boolean);
+			allow_1.forEach(function(el) {
+				return el.classList.add("allow-interactivity-".concat(id));
+			});
+			return function() {
+				document.body.classList.remove("block-interactivity-".concat(id));
+				allow_1.forEach(function(el) {
+					return el.classList.remove("allow-interactivity-".concat(id));
+				});
+			};
+		}
+	}, [
+		props.inert,
+		props.lockRef.current,
+		props.shards
+	]);
+	var shouldCancelEvent = import_react.useCallback(function(event, parent) {
+		if ("touches" in event && event.touches.length === 2 || event.type === "wheel" && event.ctrlKey) return !lastProps.current.allowPinchZoom;
+		var touch = getTouchXY(event);
+		var touchStart = touchStartRef.current;
+		var deltaX = "deltaX" in event ? event.deltaX : touchStart[0] - touch[0];
+		var deltaY = "deltaY" in event ? event.deltaY : touchStart[1] - touch[1];
+		var currentAxis;
+		var target = event.target;
+		var moveDirection = Math.abs(deltaX) > Math.abs(deltaY) ? "h" : "v";
+		if ("touches" in event && moveDirection === "h" && target.type === "range") return false;
+		var selection = window.getSelection();
+		var anchorNode = selection && selection.anchorNode;
+		if (anchorNode ? anchorNode === target || anchorNode.contains(target) : false) return false;
+		var canBeScrolledInMainDirection = locationCouldBeScrolled(moveDirection, target);
+		if (!canBeScrolledInMainDirection) return true;
+		if (canBeScrolledInMainDirection) currentAxis = moveDirection;
+		else {
+			currentAxis = moveDirection === "v" ? "h" : "v";
+			canBeScrolledInMainDirection = locationCouldBeScrolled(moveDirection, target);
+		}
+		if (!canBeScrolledInMainDirection) return false;
+		if (!activeAxis.current && "changedTouches" in event && (deltaX || deltaY)) activeAxis.current = currentAxis;
+		if (!currentAxis) return true;
+		var cancelingAxis = activeAxis.current || currentAxis;
+		return handleScroll(cancelingAxis, parent, event, cancelingAxis === "h" ? deltaX : deltaY, true);
+	}, []);
+	var shouldPrevent = import_react.useCallback(function(_event) {
+		var event = _event;
+		if (!lockStack.length || lockStack[lockStack.length - 1] !== Style) return;
+		var delta = "deltaY" in event ? getDeltaXY(event) : getTouchXY(event);
+		var sourceEvent = shouldPreventQueue.current.filter(function(e) {
+			return e.name === event.type && (e.target === event.target || event.target === e.shadowParent) && deltaCompare(e.delta, delta);
+		})[0];
+		if (sourceEvent && sourceEvent.should) {
+			if (event.cancelable) event.preventDefault();
+			return;
+		}
+		if (!sourceEvent) {
+			var shardNodes = (lastProps.current.shards || []).map(extractRef).filter(Boolean).filter(function(node) {
+				return node.contains(event.target);
+			});
+			if (shardNodes.length > 0 ? shouldCancelEvent(event, shardNodes[0]) : !lastProps.current.noIsolation) {
+				if (event.cancelable) event.preventDefault();
+			}
+		}
+	}, []);
+	var shouldCancel = import_react.useCallback(function(name, delta, target, should) {
+		var event = {
+			name,
+			delta,
+			target,
+			should,
+			shadowParent: getOutermostShadowParent(target)
+		};
+		shouldPreventQueue.current.push(event);
+		setTimeout(function() {
+			shouldPreventQueue.current = shouldPreventQueue.current.filter(function(e) {
+				return e !== event;
+			});
+		}, 1);
+	}, []);
+	var scrollTouchStart = import_react.useCallback(function(event) {
+		touchStartRef.current = getTouchXY(event);
+		activeAxis.current = void 0;
+	}, []);
+	var scrollWheel = import_react.useCallback(function(event) {
+		shouldCancel(event.type, getDeltaXY(event), event.target, shouldCancelEvent(event, props.lockRef.current));
+	}, []);
+	var scrollTouchMove = import_react.useCallback(function(event) {
+		shouldCancel(event.type, getTouchXY(event), event.target, shouldCancelEvent(event, props.lockRef.current));
+	}, []);
+	import_react.useEffect(function() {
+		lockStack.push(Style);
+		props.setCallbacks({
+			onScrollCapture: scrollWheel,
+			onWheelCapture: scrollWheel,
+			onTouchMoveCapture: scrollTouchMove
+		});
+		document.addEventListener("wheel", shouldPrevent, nonPassive);
+		document.addEventListener("touchmove", shouldPrevent, nonPassive);
+		document.addEventListener("touchstart", scrollTouchStart, nonPassive);
+		return function() {
+			lockStack = lockStack.filter(function(inst) {
+				return inst !== Style;
+			});
+			document.removeEventListener("wheel", shouldPrevent, nonPassive);
+			document.removeEventListener("touchmove", shouldPrevent, nonPassive);
+			document.removeEventListener("touchstart", scrollTouchStart, nonPassive);
+		};
+	}, []);
+	var removeScrollBar = props.removeScrollBar, inert = props.inert;
+	return import_react.createElement(import_react.Fragment, null, inert ? import_react.createElement(Style, { styles: generateStyle(id) }) : null, removeScrollBar ? import_react.createElement(RemoveScrollBar, {
+		noRelative: props.noRelative,
+		gapMode: props.gapMode
+	}) : null);
+}
+function getOutermostShadowParent(node) {
+	var shadowParent = null;
+	while (node !== null) {
+		if (node instanceof ShadowRoot) {
+			shadowParent = node.host;
+			node = node.host;
+		}
+		node = node.parentNode;
+	}
+	return shadowParent;
+}
+//#endregion
+//#region node_modules/react-remove-scroll/dist/es2015/sidecar.js
+var sidecar_default = exportSidecar(effectCar, RemoveScrollSideCar);
+//#endregion
+//#region node_modules/react-remove-scroll/dist/es2015/Combination.js
+var ReactRemoveScroll = import_react.forwardRef(function(props, ref) {
+	return import_react.createElement(RemoveScroll, __assign({}, props, {
+		ref,
+		sideCar: sidecar_default
+	}));
+});
+ReactRemoveScroll.classNames = RemoveScroll.classNames;
+//#endregion
+//#region node_modules/aria-hidden/dist/es2015/index.js
+var getDefaultParent = function(originalTarget) {
+	if (typeof document === "undefined") return null;
+	return (Array.isArray(originalTarget) ? originalTarget[0] : originalTarget).ownerDocument.body;
+};
+var counterMap = /* @__PURE__ */ new WeakMap();
+var uncontrolledNodes = /* @__PURE__ */ new WeakMap();
+var markerMap = {};
+var lockCount = 0;
+var unwrapHost = function(node) {
+	return node && (node.host || unwrapHost(node.parentNode));
+};
+var correctTargets = function(parent, targets) {
+	return targets.map(function(target) {
+		if (parent.contains(target)) return target;
+		var correctedTarget = unwrapHost(target);
+		if (correctedTarget && parent.contains(correctedTarget)) return correctedTarget;
+		console.error("aria-hidden", target, "in not contained inside", parent, ". Doing nothing");
+		return null;
+	}).filter(function(x) {
+		return Boolean(x);
+	});
+};
+/**
+* Marks everything except given node(or nodes) as aria-hidden
+* @param {Element | Element[]} originalTarget - elements to keep on the page
+* @param [parentNode] - top element, defaults to document.body
+* @param {String} [markerName] - a special attribute to mark every node
+* @param {String} [controlAttribute] - html Attribute to control
+* @return {Undo} undo command
+*/
+var applyAttributeToOthers = function(originalTarget, parentNode, markerName, controlAttribute) {
+	var targets = correctTargets(parentNode, Array.isArray(originalTarget) ? originalTarget : [originalTarget]);
+	if (!markerMap[markerName]) markerMap[markerName] = /* @__PURE__ */ new WeakMap();
+	var markerCounter = markerMap[markerName];
+	var hiddenNodes = [];
+	var elementsToKeep = /* @__PURE__ */ new Set();
+	var elementsToStop = new Set(targets);
+	var keep = function(el) {
+		if (!el || elementsToKeep.has(el)) return;
+		elementsToKeep.add(el);
+		keep(el.parentNode);
+	};
+	targets.forEach(keep);
+	var deep = function(parent) {
+		if (!parent || elementsToStop.has(parent)) return;
+		Array.prototype.forEach.call(parent.children, function(node) {
+			if (elementsToKeep.has(node)) deep(node);
+			else try {
+				var attr = node.getAttribute(controlAttribute);
+				var alreadyHidden = attr !== null && attr !== "false";
+				var counterValue = (counterMap.get(node) || 0) + 1;
+				var markerValue = (markerCounter.get(node) || 0) + 1;
+				counterMap.set(node, counterValue);
+				markerCounter.set(node, markerValue);
+				hiddenNodes.push(node);
+				if (counterValue === 1 && alreadyHidden) uncontrolledNodes.set(node, true);
+				if (markerValue === 1) node.setAttribute(markerName, "true");
+				if (!alreadyHidden) node.setAttribute(controlAttribute, "true");
+			} catch (e) {
+				console.error("aria-hidden: cannot operate on ", node, e);
+			}
+		});
+	};
+	deep(parentNode);
+	elementsToKeep.clear();
+	lockCount++;
+	return function() {
+		hiddenNodes.forEach(function(node) {
+			var counterValue = counterMap.get(node) - 1;
+			var markerValue = markerCounter.get(node) - 1;
+			counterMap.set(node, counterValue);
+			markerCounter.set(node, markerValue);
+			if (!counterValue) {
+				if (!uncontrolledNodes.has(node)) node.removeAttribute(controlAttribute);
+				uncontrolledNodes.delete(node);
+			}
+			if (!markerValue) node.removeAttribute(markerName);
+		});
+		lockCount--;
+		if (!lockCount) {
+			counterMap = /* @__PURE__ */ new WeakMap();
+			counterMap = /* @__PURE__ */ new WeakMap();
+			uncontrolledNodes = /* @__PURE__ */ new WeakMap();
+			markerMap = {};
+		}
+	};
+};
+/**
+* Marks everything except given node(or nodes) as aria-hidden
+* @param {Element | Element[]} originalTarget - elements to keep on the page
+* @param [parentNode] - top element, defaults to document.body
+* @param {String} [markerName] - a special attribute to mark every node
+* @return {Undo} undo command
+*/
+var hideOthers = function(originalTarget, parentNode, markerName) {
+	if (markerName === void 0) markerName = "data-aria-hidden";
+	var targets = Array.from(Array.isArray(originalTarget) ? originalTarget : [originalTarget]);
+	var activeParentNode = parentNode || getDefaultParent(originalTarget);
+	if (!activeParentNode) return function() {
+		return null;
+	};
+	targets.push.apply(targets, Array.from(activeParentNode.querySelectorAll("[aria-live], script")));
+	return applyAttributeToOthers(targets, activeParentNode, markerName, "aria-hidden");
+};
+//#endregion
+//#region node_modules/@radix-ui/react-dialog/dist/index.mjs
+var __defProp$5 = Object.defineProperty;
+var __name$5 = (target, value) => __defProp$5(target, "name", {
+	value,
+	configurable: true
+});
+var DIALOG_NAME = "Dialog";
+var [createDialogContext, createDialogScope] = /* @__PURE__ */ createContextScope(DIALOG_NAME);
+var [DialogProvider, useDialogContext] = createDialogContext(DIALOG_NAME);
+var Dialog$1 = /* @__PURE__ */ __name$5((props) => {
+	const { __scopeDialog, children, open: openProp, defaultOpen, onOpenChange, modal = true } = props;
+	const triggerRef = import_react.useRef(null);
+	const contentRef = import_react.useRef(null);
+	const [open, setOpen] = useControllableState({
+		prop: openProp,
+		defaultProp: defaultOpen ?? false,
+		onChange: onOpenChange,
+		caller: DIALOG_NAME
+	});
+	const [titleCount, setTitleCount] = import_react.useState(0);
+	const [descriptionCount, setDescriptionCount] = import_react.useState(0);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogProvider, {
+		scope: __scopeDialog,
+		triggerRef,
+		contentRef,
+		contentId: useId$1(),
+		titleId: useId$1(),
+		descriptionId: useId$1(),
+		titlePresent: titleCount > 0,
+		descriptionPresent: descriptionCount > 0,
+		setTitleCount,
+		setDescriptionCount,
+		open,
+		onOpenChange: setOpen,
+		onOpenToggle: import_react.useCallback(() => setOpen((prevOpen) => !prevOpen), [setOpen]),
+		modal,
+		children
+	});
+}, "Dialog");
+var PORTAL_NAME = "DialogPortal";
+var [PortalProvider, usePortalContext] = createDialogContext(PORTAL_NAME, { forceMount: void 0 });
+var DialogPortal$1 = /* @__PURE__ */ __name$5((props) => {
+	const { __scopeDialog, forceMount, children, container } = props;
+	const context = useDialogContext(PORTAL_NAME, __scopeDialog);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PortalProvider, {
+		scope: __scopeDialog,
+		forceMount,
+		children: import_react.Children.map(children, (child) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Presence, {
+			present: forceMount || context.open,
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Portal, {
+				asChild: true,
+				container,
+				children: child
+			})
+		}))
+	});
+}, "DialogPortal");
+var OVERLAY_NAME = "DialogOverlay";
+var DialogOverlay$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$5(function DialogOverlay2(props, forwardedRef) {
+	const portalContext = usePortalContext(OVERLAY_NAME, props.__scopeDialog);
+	const { forceMount = portalContext.forceMount, ...overlayProps } = props;
+	const context = useDialogContext(OVERLAY_NAME, props.__scopeDialog);
+	return context.modal ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Presence, {
+		present: forceMount || context.open,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogOverlayImpl, {
+			...overlayProps,
+			ref: forwardedRef
+		})
+	}) : null;
+}, "DialogOverlay"));
+var Slot = /* @__PURE__ */ createSlot("DialogOverlay.RemoveScroll");
+var DialogOverlayImpl = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$5(function DialogOverlayImpl2(props, forwardedRef) {
+	const { __scopeDialog, ...overlayProps } = props;
+	const context = useDialogContext(OVERLAY_NAME, __scopeDialog);
+	const composedRefs = useComposedRefs(forwardedRef, useDismissableLayerSurface());
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ReactRemoveScroll, {
+		as: Slot,
+		allowPinchZoom: true,
+		shards: [context.contentRef],
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+			"data-state": getState(context.open),
+			...overlayProps,
+			ref: composedRefs,
+			style: {
+				pointerEvents: "auto",
+				...overlayProps.style
+			}
+		})
+	});
+}, "DialogOverlayImpl"));
+var CONTENT_NAME$1 = "DialogContent";
+var DialogContent$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$5(function DialogContent2(props, forwardedRef) {
+	const portalContext = usePortalContext(CONTENT_NAME$1, props.__scopeDialog);
+	const { forceMount = portalContext.forceMount, ...contentProps } = props;
+	const context = useDialogContext(CONTENT_NAME$1, props.__scopeDialog);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Presence, {
+		present: forceMount || context.open,
+		children: context.modal ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogContentModal, {
+			...contentProps,
+			ref: forwardedRef
+		}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogContentNonModal, {
+			...contentProps,
+			ref: forwardedRef
+		})
+	});
+}, "DialogContent"));
+var DialogContentModal = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$5(function DialogContentModal2(props, forwardedRef) {
+	const context = useDialogContext(CONTENT_NAME$1, props.__scopeDialog);
+	const contentRef = import_react.useRef(null);
+	const composedRefs = useComposedRefs(forwardedRef, context.contentRef, contentRef);
+	import_react.useEffect(() => {
+		const content = contentRef.current;
+		if (content) return hideOthers(content);
+	}, []);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogContentImpl, {
+		...props,
+		ref: composedRefs,
+		trapFocus: context.open,
+		disableOutsidePointerEvents: context.open,
+		onCloseAutoFocus: composeEventHandlers(props.onCloseAutoFocus, (event) => {
+			event.preventDefault();
+			context.triggerRef.current?.focus();
+		}),
+		onPointerDownOutside: composeEventHandlers(props.onPointerDownOutside, (event) => {
+			const originalEvent = event.detail.originalEvent;
+			const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
+			if (originalEvent.button === 2 || ctrlLeftClick) event.preventDefault();
+		}),
+		onFocusOutside: composeEventHandlers(props.onFocusOutside, (event) => event.preventDefault())
+	});
+}, "DialogContentModal"));
+var DialogContentNonModal = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$5(function DialogContentNonModal2(props, forwardedRef) {
+	const context = useDialogContext(CONTENT_NAME$1, props.__scopeDialog);
+	const hasInteractedOutsideRef = import_react.useRef(false);
+	const hasPointerDownOutsideRef = import_react.useRef(false);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogContentImpl, {
+		...props,
+		ref: forwardedRef,
+		trapFocus: false,
+		disableOutsidePointerEvents: false,
+		onCloseAutoFocus: (event) => {
+			props.onCloseAutoFocus?.(event);
+			if (!event.defaultPrevented) {
+				if (!hasInteractedOutsideRef.current) context.triggerRef.current?.focus();
+				event.preventDefault();
+			}
+			hasInteractedOutsideRef.current = false;
+			hasPointerDownOutsideRef.current = false;
+		},
+		onInteractOutside: (event) => {
+			props.onInteractOutside?.(event);
+			if (!event.defaultPrevented) {
+				hasInteractedOutsideRef.current = true;
+				if (event.detail.originalEvent.type === "pointerdown") hasPointerDownOutsideRef.current = true;
+			}
+			const target = event.target;
+			if (context.triggerRef.current?.contains(target)) event.preventDefault();
+			if (event.detail.originalEvent.type === "focusin" && hasPointerDownOutsideRef.current) event.preventDefault();
+		}
+	});
+}, "DialogContentNonModal"));
+var DialogContentImpl = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$5(function DialogContentImpl2(props, forwardedRef) {
+	const { __scopeDialog, trapFocus, onOpenAutoFocus, onCloseAutoFocus, ...contentProps } = props;
+	const context = useDialogContext(CONTENT_NAME$1, __scopeDialog);
+	useFocusGuards();
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_jsx_runtime.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FocusScope, {
+		asChild: true,
+		loop: true,
+		trapped: trapFocus,
+		onMountAutoFocus: onOpenAutoFocus,
+		onUnmountAutoFocus: onCloseAutoFocus,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DismissableLayer, {
+			role: "dialog",
+			id: context.contentId,
+			"aria-describedby": context.descriptionPresent ? context.descriptionId : void 0,
+			"aria-labelledby": context.titlePresent ? context.titleId : void 0,
+			"data-state": getState(context.open),
+			...contentProps,
+			ref: forwardedRef,
+			deferPointerDownOutside: true,
+			onDismiss: () => context.onOpenChange(false)
+		})
+	}) });
+}, "DialogContentImpl"));
+var TITLE_NAME = "DialogTitle";
+var DialogTitle$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$5(function DialogTitle2(props, forwardedRef) {
+	const { __scopeDialog, ...titleProps } = props;
+	const context = useDialogContext(TITLE_NAME, __scopeDialog);
+	const { setTitleCount } = context;
+	useLayoutEffect2(() => {
+		setTitleCount((count) => count + 1);
+		return () => setTitleCount((count) => count - 1);
+	}, [setTitleCount]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.h2, {
+		id: context.titleId,
+		...titleProps,
+		ref: forwardedRef
+	});
+}, "DialogTitle"));
+var DESCRIPTION_NAME = "DialogDescription";
+var DialogDescription$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$5(function DialogDescription2(props, forwardedRef) {
+	const { __scopeDialog, ...descriptionProps } = props;
+	const context = useDialogContext(DESCRIPTION_NAME, __scopeDialog);
+	const { setDescriptionCount } = context;
+	useLayoutEffect2(() => {
+		setDescriptionCount((count) => count + 1);
+		return () => setDescriptionCount((count) => count - 1);
+	}, [setDescriptionCount]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.p, {
+		id: context.descriptionId,
+		...descriptionProps,
+		ref: forwardedRef
+	});
+}, "DialogDescription"));
+var CLOSE_NAME = "DialogClose";
+var DialogClose = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$5(function DialogClose2(props, forwardedRef) {
+	const { __scopeDialog, ...closeProps } = props;
+	const context = useDialogContext(CLOSE_NAME, __scopeDialog);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.button, {
+		type: "button",
+		...closeProps,
+		ref: forwardedRef,
+		onClick: composeEventHandlers(props.onClick, () => context.onOpenChange(false))
+	});
+}, "DialogClose"));
+function getState(open) {
+	return open ? "open" : "closed";
+}
+__name$5(getState, "getState");
+//#endregion
+//#region node_modules/@radix-ui/react-avatar/dist/index.mjs
+var __defProp$4 = Object.defineProperty;
+var __name$4 = (target, value) => __defProp$4(target, "name", {
+	value,
+	configurable: true
+});
+var AVATAR_NAME = "Avatar";
+var [createAvatarContext, createAvatarScope] = /* @__PURE__ */ createContextScope(AVATAR_NAME);
+var STATIC_IMAGE_COUNT_STATE = [0, () => void 0];
+var [AvatarProvider, useAvatarContext] = createAvatarContext(AVATAR_NAME);
+var Avatar$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$4(function Avatar2(props, forwardedRef) {
+	const { __scopeAvatar, ...avatarProps } = props;
+	const [imageLoadingStatus, setImageLoadingStatus] = import_react.useState("idle");
+	const [imageCount, setImageCount] = useImageCount();
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarProvider, {
+		scope: __scopeAvatar,
+		imageLoadingStatus,
+		setImageLoadingStatus,
+		imageCount,
+		setImageCount,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.span, {
+			...avatarProps,
+			ref: forwardedRef
+		})
+	});
+}, "Avatar"));
+var FALLBACK_NAME = "AvatarFallback";
+var AvatarFallback$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$4(function AvatarFallback2(props, forwardedRef) {
+	const { __scopeAvatar, delayMs, ...fallbackProps } = props;
+	const context = useAvatarContext(FALLBACK_NAME, __scopeAvatar);
+	const [canRender, setCanRender] = import_react.useState(delayMs === void 0);
+	import_react.useEffect(() => {
+		if (delayMs !== void 0) {
+			const timerId = window.setTimeout(() => setCanRender(true), delayMs);
+			return () => window.clearTimeout(timerId);
+		}
+	}, [delayMs]);
+	return canRender && context.imageLoadingStatus !== "loaded" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.span, {
+		...fallbackProps,
+		ref: forwardedRef
+	}) : null;
+}, "AvatarFallback"));
+function useImageLoadingStatus(src, { loadingStatus, setLoadingStatus, referrerPolicy, crossOrigin }) {
+	useLayoutEffect2(() => {
+		if (!src) {
+			setLoadingStatus("error");
+			return;
+		}
+		const image = new window.Image();
+		const handleLoad = /* @__PURE__ */ __name$4((event) => {
+			const image2 = event.currentTarget;
+			setLoadingStatus(getImageLoadingStatus(image2));
+		}, "handleLoad");
+		const handleError = /* @__PURE__ */ __name$4(() => setLoadingStatus("error"), "handleError");
+		image.addEventListener("load", handleLoad);
+		image.addEventListener("error", handleError);
+		if (referrerPolicy) image.referrerPolicy = referrerPolicy;
+		image.crossOrigin = crossOrigin ?? null;
+		image.src = src;
+		setLoadingStatus(getImageLoadingStatus(image));
+		return () => {
+			image.removeEventListener("load", handleLoad);
+			image.removeEventListener("error", handleError);
+			setLoadingStatus("idle");
+		};
+	}, [
+		src,
+		crossOrigin,
+		referrerPolicy,
+		setLoadingStatus
+	]);
+	return loadingStatus;
+}
+__name$4(useImageLoadingStatus, "useImageLoadingStatus");
+function getImageLoadingStatus(image) {
+	return image.complete ? image.naturalWidth > 0 ? "loaded" : "error" : "loading";
+}
+__name$4(getImageLoadingStatus, "getImageLoadingStatus");
+function useImageCount() {
+	let state = STATIC_IMAGE_COUNT_STATE;
+	{
+		state = import_react.useState(0);
+		const [imageCount] = state;
+		const hasWarnedRef = import_react.useRef(false);
+		import_react.useEffect(() => {
+			if (imageCount > 1 && !hasWarnedRef.current) {
+				hasWarnedRef.current = true;
+				console.warn("Avatar: Only one `Avatar.Image` component should be rendered per `Avatar.Root`, but multiple were detected. This will lead to unexpected behavior.");
+			}
+		}, [imageCount]);
+	}
+	return state;
+}
+__name$4(useImageCount, "useImageCount");
+function useUpdateImageCount(setImageCount) {
+	import_react.useEffect(() => {
+		setImageCount((imageCount) => imageCount + 1);
+		return () => {
+			setImageCount((imageCount) => imageCount - 1);
+		};
+	}, [setImageCount]);
+}
+__name$4(useUpdateImageCount, "useUpdateImageCount");
+//#endregion
+//#region node_modules/@radix-ui/react-use-is-hydrated/dist/index.mjs
+var __defProp$3 = Object.defineProperty;
+var __name$3 = (target, value) => __defProp$3(target, "name", {
+	value,
+	configurable: true
+});
+var _isHydrated = false;
+function useIsHydrated() {
+	const [isHydrated, setIsHydrated] = import_react.useState(_isHydrated);
+	import_react.useEffect(() => {
+		if (!_isHydrated) {
+			_isHydrated = true;
+			setIsHydrated(true);
+		}
+	}, []);
+	return isHydrated;
+}
+__name$3(useIsHydrated, "useIsHydrated");
+var useReactSyncExternalStore = import_react[" useSyncExternalStore ".trim().toString()];
+function subscribe() {
+	return () => {};
+}
+__name$3(subscribe, "subscribe");
+function useIsHydratedModern() {
+	return useReactSyncExternalStore(subscribe, () => true, () => false);
+}
+__name$3(useIsHydratedModern, "useIsHydratedModern");
+var useIsHydrated2 = typeof useReactSyncExternalStore === "function" ? useIsHydratedModern : useIsHydrated;
+//#endregion
+//#region node_modules/@radix-ui/react-roving-focus/dist/index.mjs
+var __defProp$2 = Object.defineProperty;
+var __name$2 = (target, value) => __defProp$2(target, "name", {
+	value,
+	configurable: true
+});
+var ENTRY_FOCUS = "rovingFocusGroup.onEntryFocus";
+var EVENT_OPTIONS = {
+	bubbles: false,
+	cancelable: true
+};
+var GROUP_NAME = "RovingFocusGroup";
+var [Collection, useCollection, createCollectionScope] = /* @__PURE__ */ createCollection(GROUP_NAME);
+var [createRovingFocusGroupContext, createRovingFocusGroupScope] = /* @__PURE__ */ createContextScope(GROUP_NAME, [createCollectionScope]);
+var [RovingFocusProvider, useRovingFocusContext] = createRovingFocusGroupContext(GROUP_NAME);
+var RovingFocusGroup = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$2(function RovingFocusGroup2(props, forwardedRef) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Collection.Provider, {
+		scope: props.__scopeRovingFocusGroup,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Collection.Slot, {
+			scope: props.__scopeRovingFocusGroup,
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RovingFocusGroupImpl, {
+				...props,
+				ref: forwardedRef
+			})
+		})
+	});
+}, "RovingFocusGroup"));
+var RovingFocusGroupImpl = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$2(function RovingFocusGroupImpl2(props, forwardedRef) {
+	const { __scopeRovingFocusGroup, orientation, loop = false, dir, currentTabStopId: currentTabStopIdProp, defaultCurrentTabStopId, onCurrentTabStopIdChange, onEntryFocus, preventScrollOnEntryFocus = false, ...groupProps } = props;
+	const ref = import_react.useRef(null);
+	const composedRefs = useComposedRefs(forwardedRef, ref);
+	const direction = useDirection(dir);
+	const [currentTabStopId, setCurrentTabStopId] = useControllableState({
+		prop: currentTabStopIdProp,
+		defaultProp: defaultCurrentTabStopId ?? null,
+		onChange: onCurrentTabStopIdChange,
+		caller: GROUP_NAME
+	});
+	const [isTabbingBackOut, setIsTabbingBackOut] = import_react.useState(false);
+	const handleEntryFocus = useCallbackRef$1(onEntryFocus);
+	const getItems = useCollection(__scopeRovingFocusGroup);
+	const isClickFocusRef = import_react.useRef(false);
+	const [focusableItemsCount, setFocusableItemsCount] = import_react.useState(0);
+	import_react.useEffect(() => {
+		const node = ref.current;
+		if (node) {
+			node.addEventListener(ENTRY_FOCUS, handleEntryFocus);
+			return () => node.removeEventListener(ENTRY_FOCUS, handleEntryFocus);
+		}
+	}, [handleEntryFocus]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RovingFocusProvider, {
+		scope: __scopeRovingFocusGroup,
+		orientation,
+		dir: direction,
+		loop,
+		currentTabStopId,
+		onItemFocus: import_react.useCallback((tabStopId) => setCurrentTabStopId(tabStopId), [setCurrentTabStopId]),
+		onItemShiftTab: import_react.useCallback(() => setIsTabbingBackOut(true), []),
+		onFocusableItemAdd: import_react.useCallback(() => setFocusableItemsCount((prevCount) => prevCount + 1), []),
+		onFocusableItemRemove: import_react.useCallback(() => setFocusableItemsCount((prevCount) => prevCount - 1), []),
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+			tabIndex: isTabbingBackOut || focusableItemsCount === 0 ? -1 : 0,
+			"data-orientation": orientation,
+			...groupProps,
+			ref: composedRefs,
+			style: {
+				outline: "none",
+				...props.style
+			},
+			onMouseDown: composeEventHandlers(props.onMouseDown, () => {
+				isClickFocusRef.current = true;
+			}),
+			onFocus: composeEventHandlers(props.onFocus, (event) => {
+				const isKeyboardFocus = !isClickFocusRef.current;
+				if (event.target === event.currentTarget && isKeyboardFocus && !isTabbingBackOut) {
+					const entryFocusEvent = new CustomEvent(ENTRY_FOCUS, EVENT_OPTIONS);
+					event.currentTarget.dispatchEvent(entryFocusEvent);
+					if (!entryFocusEvent.defaultPrevented) {
+						const items = getItems().filter((item) => item.focusable);
+						focusFirst([
+							items.find((item) => item.active),
+							items.find((item) => item.id === currentTabStopId),
+							...items
+						].filter(Boolean).map((item) => item.ref.current), preventScrollOnEntryFocus);
+					}
+				}
+				isClickFocusRef.current = false;
+			}),
+			onBlur: composeEventHandlers(props.onBlur, () => setIsTabbingBackOut(false))
+		})
+	});
+}, "RovingFocusGroupImpl"));
+var ITEM_NAME = "RovingFocusGroupItem";
+var RovingFocusGroupItem = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$2(function RovingFocusGroupItem2(props, forwardedRef) {
+	const { __scopeRovingFocusGroup, focusable = true, active = false, tabStopId, children, ...itemProps } = props;
+	const autoId = useId$1();
+	const id = tabStopId || autoId;
+	const context = useRovingFocusContext(ITEM_NAME, __scopeRovingFocusGroup);
+	const isCurrentTabStop = context.currentTabStopId === id;
+	const getItems = useCollection(__scopeRovingFocusGroup);
+	const { onFocusableItemAdd, onFocusableItemRemove, currentTabStopId } = context;
+	const isHydrated = useIsHydrated2();
+	useLayoutEffect2(() => {
+		if (!isHydrated || !focusable) return;
+		onFocusableItemAdd();
+		return () => onFocusableItemRemove();
+	}, [
+		isHydrated,
+		focusable,
+		onFocusableItemAdd,
+		onFocusableItemRemove
+	]);
+	import_react.useEffect(() => {
+		if (isHydrated || !focusable) return;
+		onFocusableItemAdd();
+		return () => onFocusableItemRemove();
+	}, [
+		isHydrated,
+		focusable,
+		onFocusableItemAdd,
+		onFocusableItemRemove
+	]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Collection.ItemSlot, {
+		scope: __scopeRovingFocusGroup,
+		id,
+		focusable,
+		active,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.span, {
+			tabIndex: isCurrentTabStop ? 0 : -1,
+			"data-orientation": context.orientation,
+			...itemProps,
+			ref: forwardedRef,
+			onMouseDown: composeEventHandlers(props.onMouseDown, (event) => {
+				if (!focusable) event.preventDefault();
+				else context.onItemFocus(id);
+			}),
+			onFocus: composeEventHandlers(props.onFocus, () => context.onItemFocus(id)),
+			onKeyDown: composeEventHandlers(props.onKeyDown, (event) => {
+				if (event.key === "Tab" && event.shiftKey) {
+					context.onItemShiftTab();
+					return;
+				}
+				if (event.target !== event.currentTarget) return;
+				const focusIntent = getFocusIntent(event, context.orientation, context.dir);
+				if (focusIntent !== void 0) {
+					if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+					event.preventDefault();
+					let candidateNodes = getItems().filter((item) => item.focusable).map((item) => item.ref.current);
+					if (focusIntent === "last") candidateNodes.reverse();
+					else if (focusIntent === "prev" || focusIntent === "next") {
+						if (focusIntent === "prev") candidateNodes.reverse();
+						const currentIndex = candidateNodes.indexOf(event.currentTarget);
+						candidateNodes = context.loop ? wrapArray(candidateNodes, currentIndex + 1) : candidateNodes.slice(currentIndex + 1);
+					}
+					setTimeout(() => focusFirst(candidateNodes));
+				}
+			}),
+			children: typeof children === "function" ? children({
+				isCurrentTabStop,
+				hasTabStop: currentTabStopId != null
+			}) : children
+		})
+	});
+}, "RovingFocusGroupItem"));
+var MAP_KEY_TO_FOCUS_INTENT = {
+	ArrowLeft: "prev",
+	ArrowUp: "prev",
+	ArrowRight: "next",
+	ArrowDown: "next",
+	PageUp: "first",
+	Home: "first",
+	PageDown: "last",
+	End: "last"
+};
+function getDirectionAwareKey(key, dir) {
+	if (dir !== "rtl") return key;
+	return key === "ArrowLeft" ? "ArrowRight" : key === "ArrowRight" ? "ArrowLeft" : key;
+}
+__name$2(getDirectionAwareKey, "getDirectionAwareKey");
+function getFocusIntent(event, orientation, dir) {
+	const key = getDirectionAwareKey(event.key, dir);
+	if (orientation === "vertical" && ["ArrowLeft", "ArrowRight"].includes(key)) return void 0;
+	if (orientation === "horizontal" && ["ArrowUp", "ArrowDown"].includes(key)) return void 0;
+	return MAP_KEY_TO_FOCUS_INTENT[key];
+}
+__name$2(getFocusIntent, "getFocusIntent");
+function focusFirst(candidates, preventScroll = false) {
+	const PREVIOUSLY_FOCUSED_ELEMENT = document.activeElement;
+	for (const candidate of candidates) {
+		if (candidate === PREVIOUSLY_FOCUSED_ELEMENT) return;
+		candidate.focus({ preventScroll });
+		if (document.activeElement !== PREVIOUSLY_FOCUSED_ELEMENT) return;
+	}
+}
+__name$2(focusFirst, "focusFirst");
+function wrapArray(array, startIndex) {
+	return array.map((_, index) => array[(startIndex + index) % array.length]);
+}
+__name$2(wrapArray, "wrapArray");
+var Root$1 = RovingFocusGroup;
+var Item = RovingFocusGroupItem;
+//#endregion
+//#region node_modules/@radix-ui/react-separator/dist/index.mjs
+var __defProp$1 = Object.defineProperty;
+var __name$1 = (target, value) => __defProp$1(target, "name", {
+	value,
+	configurable: true
+});
+var DEFAULT_ORIENTATION = "horizontal";
+var ORIENTATIONS = ["horizontal", "vertical"];
+var Separator$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$1(function Separator2(props, forwardedRef) {
+	const { decorative, orientation: orientationProp = DEFAULT_ORIENTATION, ...domProps } = props;
+	const orientation = isValidOrientation(orientationProp) ? orientationProp : DEFAULT_ORIENTATION;
+	const semanticProps = decorative ? { role: "none" } : {
+		"aria-orientation": orientation === "vertical" ? orientation : void 0,
+		role: "separator"
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+		"data-orientation": orientation,
+		...semanticProps,
+		...domProps,
+		ref: forwardedRef
+	});
+}, "Separator"));
+function isValidOrientation(orientation) {
+	return ORIENTATIONS.includes(orientation);
+}
+__name$1(isValidOrientation, "isValidOrientation");
+var Root = Separator$1;
+//#endregion
+//#region node_modules/@radix-ui/react-tabs/dist/index.mjs
+var __defProp = Object.defineProperty;
+var __name = (target, value) => __defProp(target, "name", {
+	value,
+	configurable: true
+});
+var TABS_NAME = "Tabs";
+var [createTabsContext, createTabsScope] = /* @__PURE__ */ createContextScope(TABS_NAME, [createRovingFocusGroupScope]);
+var useRovingFocusGroupScope = createRovingFocusGroupScope();
+var [TabsProvider, useTabsContext] = createTabsContext(TABS_NAME);
+var Tabs$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name(function Tabs2(props, forwardedRef) {
+	const { __scopeTabs, value: valueProp, onValueChange, defaultValue, orientation = "horizontal", dir, activationMode = "automatic", ...tabsProps } = props;
+	const direction = useDirection(dir);
+	const [value, setValue] = useControllableState({
+		prop: valueProp,
+		onChange: onValueChange,
+		defaultProp: defaultValue ?? "",
+		caller: TABS_NAME
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsProvider, {
+		scope: __scopeTabs,
+		baseId: useId$1(),
+		value,
+		onValueChange: setValue,
+		orientation,
+		dir: direction,
+		activationMode,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+			dir: direction,
+			"data-orientation": orientation,
+			...tabsProps,
+			ref: forwardedRef
+		})
+	});
+}, "Tabs"));
+var TAB_LIST_NAME = "TabsList";
+var TabsList$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name(function TabsList2(props, forwardedRef) {
+	const { __scopeTabs, loop = true, ...listProps } = props;
+	const context = useTabsContext(TAB_LIST_NAME, __scopeTabs);
+	const rovingFocusGroupScope = useRovingFocusGroupScope(__scopeTabs);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Root$1, {
+		asChild: true,
+		...rovingFocusGroupScope,
+		orientation: context.orientation,
+		dir: context.dir,
+		loop,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+			role: "tablist",
+			"aria-orientation": context.orientation,
+			...listProps,
+			ref: forwardedRef
+		})
+	});
+}, "TabsList"));
+var TRIGGER_NAME = "TabsTrigger";
+var TabsTrigger$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name(function TabsTrigger2(props, forwardedRef) {
+	const { __scopeTabs, value, disabled = false, ...triggerProps } = props;
+	const context = useTabsContext(TRIGGER_NAME, __scopeTabs);
+	const rovingFocusGroupScope = useRovingFocusGroupScope(__scopeTabs);
+	const triggerId = makeTriggerId(context.baseId, value);
+	const contentId = makeContentId(context.baseId, value);
+	const isSelected = value === context.value;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Item, {
+		asChild: true,
+		...rovingFocusGroupScope,
+		focusable: !disabled,
+		active: isSelected,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.button, {
+			type: "button",
+			role: "tab",
+			"aria-selected": isSelected,
+			"aria-controls": contentId,
+			"data-state": isSelected ? "active" : "inactive",
+			"data-disabled": disabled ? "" : void 0,
+			disabled,
+			id: triggerId,
+			...triggerProps,
+			ref: forwardedRef,
+			onMouseDown: composeEventHandlers(props.onMouseDown, (event) => {
+				if (!disabled && event.button === 0 && event.ctrlKey === false) context.onValueChange(value);
+				else event.preventDefault();
+			}),
+			onKeyDown: composeEventHandlers(props.onKeyDown, (event) => {
+				if (disabled || event.target !== event.currentTarget) return;
+				if ([" ", "Enter"].includes(event.key)) context.onValueChange(value);
+			}),
+			onFocus: composeEventHandlers(props.onFocus, () => {
+				const isAutomaticActivation = context.activationMode !== "manual";
+				if (!isSelected && !disabled && isAutomaticActivation) context.onValueChange(value);
+			})
+		})
+	});
+}, "TabsTrigger"));
+var CONTENT_NAME = "TabsContent";
+var TabsContent$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name(function TabsContent2(props, forwardedRef) {
+	const { __scopeTabs, value, forceMount, children, ...contentProps } = props;
+	const context = useTabsContext(CONTENT_NAME, __scopeTabs);
+	const triggerId = makeTriggerId(context.baseId, value);
+	const contentId = makeContentId(context.baseId, value);
+	const isSelected = value === context.value;
+	const isMountAnimationPreventedRef = import_react.useRef(isSelected);
+	import_react.useEffect(() => {
+		const rAF = requestAnimationFrame(() => isMountAnimationPreventedRef.current = false);
+		return () => cancelAnimationFrame(rAF);
+	}, []);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Presence, {
+		present: forceMount || isSelected,
+		children: ({ present }) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+			"data-state": isSelected ? "active" : "inactive",
+			"data-orientation": context.orientation,
+			role: "tabpanel",
+			"aria-labelledby": triggerId,
+			hidden: !present,
+			id: contentId,
+			tabIndex: 0,
+			...contentProps,
+			ref: forwardedRef,
+			style: {
+				...props.style,
+				animationDuration: isMountAnimationPreventedRef.current ? "0s" : void 0
+			},
+			children: present && children
+		})
+	});
+}, "TabsContent"));
+function makeTriggerId(baseId, value) {
+	return `${baseId}-trigger-${value}`;
+}
+__name(makeTriggerId, "makeTriggerId");
+function makeContentId(baseId, value) {
+	return `${baseId}-content-${value}`;
+}
+__name(makeContentId, "makeContentId");
+var Root2 = Tabs$1;
+var List = TabsList$1;
+var Trigger = TabsTrigger$1;
+var Content = TabsContent$1;
+//#endregion
+//#region frontend/src/components/ui/avatar.jsx
+var _jsxFileName$23 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/avatar.jsx";
+function Avatar({ className, size = "default", ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Avatar$1, {
+		"data-slot": "avatar",
+		"data-size": size,
+		className: cn("group/avatar relative flex size-8 shrink-0 overflow-hidden rounded-full select-none data-[size=lg]:size-10 data-[size=sm]:size-6", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$23,
+		lineNumber: 13,
+		columnNumber: 5
+	}, this);
+}
+function AvatarFallback({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AvatarFallback$1, {
+		"data-slot": "avatar-fallback",
+		className: cn("flex size-full items-center justify-center rounded-full bg-muted text-sm text-muted-foreground group-data-[size=sm]/avatar:text-xs", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$23,
+		lineNumber: 41,
+		columnNumber: 5
+	}, this);
+}
+//#endregion
+//#region frontend/src/components/ui/badge.jsx
+var _jsxFileName$22 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/badge.jsx";
+var badgeVariants = cva("inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3", {
+	variants: { variant: {
+		default: "bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
+		secondary: "bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
+		destructive: "bg-destructive text-white focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 [a&]:hover:bg-destructive/90",
+		outline: "border-border text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+		ghost: "[a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+		link: "text-primary underline-offset-4 [a&]:hover:underline"
+	} },
+	defaultVariants: { variant: "default" }
+});
+function Badge({ className, variant = "default", asChild = false, ...props }) {
+	const Comp = asChild ? Slot$1 : "span";
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Comp, {
+		"data-slot": "badge",
+		"data-variant": variant,
+		className: cn(badgeVariants({ variant }), className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$22,
+		lineNumber: 37,
+		columnNumber: 5
+	}, this);
+}
+//#endregion
+//#region frontend/src/components/ui/bubble.jsx
+var _jsxFileName$21 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/bubble.jsx";
+var bubbleVariants = cva("group/bubble relative flex w-fit max-w-[80%] min-w-0 flex-col gap-1 group-data-[align=end]/message:self-end data-[align=end]:self-end data-[variant=ghost]:max-w-full", {
+	variants: { variant: {
+		default: "*:data-[slot=bubble-content]:bg-primary *:data-[slot=bubble-content]:text-primary-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-primary/80",
+		secondary: "*:data-[slot=bubble-content]:bg-secondary *:data-[slot=bubble-content]:text-secondary-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)]",
+		muted: "*:data-[slot=bubble-content]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[color-mix(in_oklch,var(--muted),var(--foreground)_5%)]",
+		tinted: "*:data-[slot=bubble-content]:bg-[oklch(from_var(--primary)_0.93_calc(c*0.4)_h)] *:data-[slot=bubble-content]:text-foreground dark:*:data-[slot=bubble-content]:bg-[oklch(from_var(--primary)_0.3_calc(c*0.4)_h)] [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[oklch(from_var(--primary)_0.88_calc(c*0.5)_h)] dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-[oklch(from_var(--primary)_0.35_calc(c*0.5)_h)]",
+		outline: "*:data-[slot=bubble-content]:border-border *:data-[slot=bubble-content]:bg-background [&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:text-foreground dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-input/30",
+		ghost: "border-none *:data-[slot=bubble-content]:rounded-none *:data-[slot=bubble-content]:bg-transparent *:data-[slot=bubble-content]:p-0 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:text-foreground dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted/50",
+		destructive: "*:data-[slot=bubble-content]:bg-destructive/10 *:data-[slot=bubble-content]:text-destructive dark:*:data-[slot=bubble-content]:bg-destructive/20 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-destructive/20 dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-destructive/30"
+	} },
+	defaultVariants: { variant: "default" }
+});
+function Bubble({ variant = "default", align = "start", className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		"data-slot": "bubble",
+		"data-variant": variant,
+		"data-align": align,
+		className: cn(bubbleVariants({ variant }), className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$21,
+		lineNumber: 52,
+		columnNumber: 5
+	}, this);
+}
+function BubbleContent({ asChild = false, className, ...props }) {
+	const Comp = asChild ? Slot$1 : "div";
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Comp, {
+		"data-slot": "bubble-content",
+		className: cn("w-fit max-w-full min-w-0 overflow-hidden rounded-xl border border-transparent px-3 py-2 text-sm leading-relaxed wrap-break-word group-data-[align=end]/bubble:self-end [button]:text-left [button,a]:transition-colors [button,a]:outline-none [button,a]:focus-visible:border-ring [button,a]:focus-visible:ring-3 [button,a]:focus-visible:ring-ring/50", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$21,
+		lineNumber: 69,
+		columnNumber: 5
+	}, this);
+}
+//#endregion
+//#region frontend/src/components/ui/button.jsx
+var _jsxFileName$20 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/button.jsx";
+var buttonVariants = cva("inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4", {
 	variants: {
 		variant: {
-			default: "bg-[#0075de] text-white shadow-xs hover:bg-[#005bab] active:bg-[#004e92]",
-			destructive: "bg-destructive text-destructive-foreground shadow-xs hover:bg-destructive/90",
-			outline: "border border-input bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",
-			secondary: "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
-			ghost: "hover:bg-accent hover:text-accent-foreground",
-			link: "text-primary underline-offset-4 hover:underline",
-			subtle: "border border-[#eae8e5] bg-white text-[#31302e] hover:bg-[#faf9f8] hover:border-[#dedbd6]",
-			pill: "rounded-full bg-[#0075de] text-white shadow-xs hover:bg-[#005bab] active:bg-[#004e92]"
+			default: "bg-primary text-primary-foreground hover:bg-primary/90",
+			destructive: "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40",
+			outline: "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
+			secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+			ghost: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+			link: "text-primary underline-offset-4 hover:underline"
 		},
 		size: {
-			default: "h-12 px-6 py-2 min-h-[48px]",
-			sm: "h-9 rounded-full px-4 text-xs min-h-[36px]",
-			lg: "h-14 rounded-full px-8 text-base min-h-[52px]",
-			icon: "h-11 w-11 min-h-[44px] min-w-[44px] rounded-full",
-			pill: "h-9 rounded-full px-4 text-xs min-h-[36px]"
+			default: "h-9 px-4 py-2 has-[>svg]:px-3",
+			xs: "h-6 gap-1 rounded-md px-2 text-xs has-[>svg]:px-1.5 [&_svg:not([class*='size-'])]:size-3",
+			sm: "h-8 gap-1.5 rounded-md px-3 has-[>svg]:px-2.5",
+			lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
+			icon: "size-9",
+			"icon-xs": "size-6 rounded-md [&_svg:not([class*='size-'])]:size-3",
+			"icon-sm": "size-8",
+			"icon-lg": "size-10"
 		}
 	},
 	defaultVariants: {
@@ -15832,140 +19683,7873 @@ var buttonVariants = cva("inline-flex items-center justify-center whitespace-now
 		size: "default"
 	}
 });
-var Button = import_react.forwardRef(({ className, variant, size, asChild = false, ...props }, ref) => {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+function Button({ className, variant = "default", size = "default", asChild = false, ...props }) {
+	const Comp = asChild ? Slot$1 : "button";
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Comp, {
+		"data-slot": "button",
+		"data-variant": variant,
+		"data-size": size,
 		className: cn(buttonVariants({
 			variant,
 			size,
 			className
 		})),
-		ref,
 		...props
-	});
-});
-Button.displayName = "Button";
+	}, void 0, false, {
+		fileName: _jsxFileName$20,
+		lineNumber: 50,
+		columnNumber: 5
+	}, this);
+}
 //#endregion
 //#region frontend/src/components/ui/card.jsx
-var Card = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-	ref,
-	className: cn("rounded-[24px] border border-[#eae8e5] bg-white text-[#161615] shadow-sm transition-all", className),
-	...props
-}));
-Card.displayName = "Card";
-var CardHeader = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-	ref,
-	className: cn("flex flex-col space-y-1.5 p-5 sm:p-6", className),
-	...props
-}));
-CardHeader.displayName = "CardHeader";
-var CardTitle = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-	ref,
-	className: cn("font-semibold leading-none tracking-tight text-base sm:text-lg", className),
-	...props
-}));
-CardTitle.displayName = "CardTitle";
-var CardDescription = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-	ref,
-	className: cn("text-xs sm:text-sm text-[#797570] leading-relaxed", className),
-	...props
-}));
-CardDescription.displayName = "CardDescription";
-var CardContent = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-	ref,
-	className: cn("p-5 pt-0 sm:p-6 sm:pt-0", className),
-	...props
-}));
-CardContent.displayName = "CardContent";
-var CardFooter = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-	ref,
-	className: cn("flex items-center p-5 pt-0 sm:p-6 sm:pt-0", className),
-	...props
-}));
-CardFooter.displayName = "CardFooter";
-//#endregion
-//#region frontend/src/components/ui/badge.jsx
-var badgeVariants = cva("inline-flex items-center rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-wider transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2", {
-	variants: { variant: {
-		default: "border-transparent bg-[#0075de] text-white shadow-xs hover:bg-[#005bab]",
-		secondary: "border-transparent bg-[#f2f1ef] text-[#55514d] hover:bg-[#e8e7e5]",
-		destructive: "border-transparent bg-[#fbeae8] text-[#d13438]",
-		outline: "text-[#161615] border-[#eae8e5] bg-white/70",
-		admin: "border-transparent bg-[#f2edf8] text-[#7662a3]",
-		designer: "border-transparent bg-[#edf5fc] text-[#0075de]",
-		supervisor: "border-transparent bg-[#e6f6f5] text-[#2a9d99]",
-		trade: "border-transparent bg-[#fdf3ec] text-[#dd5b00]",
-		success: "border-transparent bg-[#e7f3ec] text-[#1aae39]"
-	} },
-	defaultVariants: { variant: "default" }
-});
-function Badge({ className, variant, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		className: cn(badgeVariants({ variant }), className),
+var _jsxFileName$19 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/card.jsx";
+function Card({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		"data-slot": "card",
+		className: cn("flex flex-col gap-6 rounded-xl border bg-card py-6 text-card-foreground shadow-sm", className),
 		...props
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$19,
+		lineNumber: 9,
+		columnNumber: 5
+	}, this);
+}
+function CardHeader({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		"data-slot": "card-header",
+		className: cn("@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$19,
+		lineNumber: 24,
+		columnNumber: 5
+	}, this);
+}
+function CardTitle({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		"data-slot": "card-title",
+		className: cn("leading-none font-semibold", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$19,
+		lineNumber: 39,
+		columnNumber: 5
+	}, this);
+}
+function CardDescription({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		"data-slot": "card-description",
+		className: cn("text-sm text-muted-foreground", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$19,
+		lineNumber: 51,
+		columnNumber: 5
+	}, this);
+}
+function CardContent({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		"data-slot": "card-content",
+		className: cn("px-6", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$19,
+		lineNumber: 77,
+		columnNumber: 11
+	}, this);
 }
 //#endregion
 //#region frontend/src/components/ui/dialog.jsx
-var Dialog = ({ open, onOpenChange, children }) => {
-	if (!open) return null;
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/45 backdrop-blur-sm animate-in fade-in-0 duration-200",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-			className: "fixed inset-0",
-			onClick: () => onOpenChange?.(false)
-		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "relative z-50 w-full sm:max-w-lg bg-white rounded-t-[32px] sm:rounded-[28px] p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto animate-in slide-in-from-bottom-6 sm:zoom-in-95 duration-200",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "sm:hidden w-10 h-1.5 bg-[#d5d2cc] rounded-full mx-auto -mt-2 mb-4" }),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-					onClick: () => onOpenChange?.(false),
-					className: "absolute right-4 top-4 rounded-full p-2 text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors focus:outline-none",
-					"aria-label": "Close",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(X, { className: "h-5 w-5" })
-				}),
-				children
-			]
-		})]
-	});
-};
-var DialogHeader = ({ className, ...props }) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-	className: cn("flex flex-col space-y-1.5 text-left mb-5", className),
-	...props
-});
-var DialogTitle = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-	ref,
-	className: cn("text-xl sm:text-2xl font-semibold tracking-tight text-[#161615]", className),
-	...props
-}));
-DialogTitle.displayName = "DialogTitle";
-var DialogDescription = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-	ref,
-	className: cn("text-xs sm:text-sm text-[#797570] leading-relaxed", className),
-	...props
-}));
-DialogDescription.displayName = "DialogDescription";
+var _jsxFileName$18 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/dialog.jsx";
+function Dialog({ ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Dialog$1, {
+		"data-slot": "dialog",
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$18,
+		lineNumber: 11,
+		columnNumber: 10
+	}, this);
+}
+function DialogPortal({ ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogPortal$1, {
+		"data-slot": "dialog-portal",
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$18,
+		lineNumber: 23,
+		columnNumber: 10
+	}, this);
+}
+function DialogOverlay({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogOverlay$1, {
+		"data-slot": "dialog-overlay",
+		className: cn("fixed inset-0 z-50 bg-black/50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$18,
+		lineNumber: 37,
+		columnNumber: 5
+	}, this);
+}
+function DialogContent({ className, children, showCloseButton = true, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogPortal, {
+		"data-slot": "dialog-portal",
+		children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogOverlay, {}, void 0, false, {
+			fileName: _jsxFileName$18,
+			lineNumber: 55,
+			columnNumber: 7
+		}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogContent$1, {
+			"data-slot": "dialog-content",
+			className: cn("fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-150 outline-none data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0 sm:max-w-lg", className),
+			...props,
+			children: [children, showCloseButton && /* @__PURE__ */ (void 0)(DialogClose, {
+				"data-slot": "dialog-close",
+				className: "absolute top-4 right-4 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+				children: [/* @__PURE__ */ (void 0)(X, {}, void 0, false, {
+					fileName: _jsxFileName$18,
+					lineNumber: 68,
+					columnNumber: 13
+				}, this), /* @__PURE__ */ (void 0)("span", {
+					className: "sr-only",
+					children: "Close"
+				}, void 0, false, {
+					fileName: _jsxFileName$18,
+					lineNumber: 69,
+					columnNumber: 13
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$18,
+				lineNumber: 65,
+				columnNumber: 11
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$18,
+			lineNumber: 56,
+			columnNumber: 7
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$18,
+		lineNumber: 54,
+		columnNumber: 5
+	}, this);
+}
+function DialogHeader({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		"data-slot": "dialog-header",
+		className: cn("flex flex-col gap-2 text-center sm:text-left", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$18,
+		lineNumber: 82,
+		columnNumber: 5
+	}, this);
+}
+function DialogTitle({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogTitle$1, {
+		"data-slot": "dialog-title",
+		className: cn("text-lg leading-none font-semibold", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$18,
+		lineNumber: 115,
+		columnNumber: 5
+	}, this);
+}
+function DialogDescription({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogDescription$1, {
+		"data-slot": "dialog-description",
+		className: cn("text-sm text-muted-foreground", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$18,
+		lineNumber: 127,
+		columnNumber: 5
+	}, this);
+}
 //#endregion
 //#region frontend/src/components/ui/input.jsx
-var Input = import_react.forwardRef(({ className, type, ...props }, ref) => {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+var _jsxFileName$17 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/input.jsx";
+function Input({ className, type, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("input", {
 		type,
-		className: cn("flex h-12 w-full rounded-full border border-[#dfdcd8] bg-white px-5 py-2 text-sm sm:text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-[#aaa49e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0075de] focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 transition-all", className),
-		ref,
+		"data-slot": "input",
+		className: cn("h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30", "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50", "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40", className),
 		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$17,
+		lineNumber: 10,
+		columnNumber: 5
+	}, this);
+}
+//#endregion
+//#region frontend/src/components/ui/message.jsx
+var _jsxFileName$16 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/message.jsx";
+function Message({ className, align = "start", ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		"data-slot": "message",
+		"data-align": align,
+		className: cn("group/message relative flex w-full min-w-0 gap-2 text-sm data-[align=end]:flex-row-reverse", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$16,
+		lineNumber: 22,
+		columnNumber: 5
+	}, this);
+}
+function MessageAvatar({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		"data-slot": "message-avatar",
+		className: cn("flex w-fit min-w-8 shrink-0 items-center justify-center self-end overflow-hidden rounded-full bg-muted group-has-data-[slot=message-footer]/message:-translate-y-8", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$16,
+		lineNumber: 38,
+		columnNumber: 5
+	}, this);
+}
+function MessageContent({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		"data-slot": "message-content",
+		className: cn("flex w-full min-w-0 flex-col gap-2.5 wrap-break-word group-data-[align=end]/message:*:data-slot:self-end", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$16,
+		lineNumber: 53,
+		columnNumber: 5
+	}, this);
+}
+function MessageHeader({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		"data-slot": "message-header",
+		className: cn("flex max-w-full min-w-0 items-center px-3 text-xs font-medium text-muted-foreground group-has-data-[variant=ghost]/message:px-0", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$16,
+		lineNumber: 68,
+		columnNumber: 5
+	}, this);
+}
+function MessageFooter({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		"data-slot": "message-footer",
+		className: cn("flex max-w-full min-w-0 items-center px-3 text-xs font-medium text-muted-foreground group-has-data-[variant=ghost]/message:px-0 group-data-[align=end]/message:justify-end", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$16,
+		lineNumber: 83,
+		columnNumber: 5
+	}, this);
+}
+//#endregion
+//#region frontend/src/components/ui/native-select.jsx
+var _jsxFileName$15 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/native-select.jsx";
+function NativeSelect({ className, size = "default", ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		className: "group/native-select relative w-fit has-[select:disabled]:opacity-50",
+		"data-slot": "native-select-wrapper",
+		children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("select", {
+			"data-slot": "native-select",
+			"data-size": size,
+			className: cn("h-9 w-full min-w-0 appearance-none rounded-md border border-input bg-transparent px-3 py-2 pr-9 text-sm shadow-xs transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed data-[size=sm]:h-8 data-[size=sm]:py-1 dark:bg-input/30 dark:hover:bg-input/50", "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50", "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40", className),
+			...props
+		}, void 0, false, {
+			fileName: _jsxFileName$15,
+			lineNumber: 14,
+			columnNumber: 7
+		}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ChevronDown, {
+			className: "pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-muted-foreground opacity-50 select-none",
+			"aria-hidden": "true",
+			"data-slot": "native-select-icon"
+		}, void 0, false, {
+			fileName: _jsxFileName$15,
+			lineNumber: 24,
+			columnNumber: 7
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$15,
+		lineNumber: 11,
+		columnNumber: 5
+	}, this);
+}
+//#endregion
+//#region frontend/src/components/ui/separator.jsx
+var _jsxFileName$14 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/separator.jsx";
+function Separator({ className, orientation = "horizontal", decorative = true, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Root, {
+		"data-slot": "separator",
+		decorative,
+		orientation,
+		className: cn("shrink-0 bg-border data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$14,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
+}
+//#endregion
+//#region frontend/src/components/ui/sheet.jsx
+var _jsxFileName$13 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/sheet.jsx";
+function Sheet({ ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Dialog$1, {
+		"data-slot": "sheet",
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$13,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
+}
+function SheetPortal({ ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogPortal$1, {
+		"data-slot": "sheet-portal",
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$13,
+		lineNumber: 27,
+		columnNumber: 10
+	}, this);
+}
+function SheetOverlay({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogOverlay$1, {
+		"data-slot": "sheet-overlay",
+		className: cn("fixed inset-0 z-50 bg-black/50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$13,
+		lineNumber: 35,
+		columnNumber: 5
+	}, this);
+}
+function SheetContent({ className, children, side = "right", showCloseButton = true, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(SheetPortal, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(SheetOverlay, {}, void 0, false, {
+		fileName: _jsxFileName$13,
+		lineNumber: 54,
+		columnNumber: 7
+	}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogContent$1, {
+		"data-slot": "sheet-content",
+		className: cn("fixed z-50 flex flex-col gap-4 bg-background shadow-lg transition ease-in-out data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:animate-in data-[state=open]:duration-500", side === "right" && "inset-y-0 right-0 h-full w-3/4 border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm", side === "left" && "inset-y-0 left-0 h-full w-3/4 border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm", side === "top" && "inset-x-0 top-0 h-auto border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top", side === "bottom" && "inset-x-0 bottom-0 h-auto border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom", className),
+		...props,
+		children: [children, showCloseButton && /* @__PURE__ */ (void 0)(DialogClose, {
+			className: "absolute top-4 right-4 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-secondary",
+			children: [/* @__PURE__ */ (void 0)(X, { className: "size-4" }, void 0, false, {
+				fileName: _jsxFileName$13,
+				lineNumber: 74,
+				columnNumber: 13
+			}, this), /* @__PURE__ */ (void 0)("span", {
+				className: "sr-only",
+				children: "Close"
+			}, void 0, false, {
+				fileName: _jsxFileName$13,
+				lineNumber: 75,
+				columnNumber: 13
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$13,
+			lineNumber: 72,
+			columnNumber: 11
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$13,
+		lineNumber: 55,
+		columnNumber: 7
+	}, this)] }, void 0, true, {
+		fileName: _jsxFileName$13,
+		lineNumber: 53,
+		columnNumber: 5
+	}, this);
+}
+function SheetHeader({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		"data-slot": "sheet-header",
+		className: cn("flex flex-col gap-1.5 p-4", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$13,
+		lineNumber: 88,
+		columnNumber: 5
+	}, this);
+}
+function SheetTitle({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogTitle$1, {
+		"data-slot": "sheet-title",
+		className: cn("font-semibold text-foreground", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$13,
+		lineNumber: 112,
+		columnNumber: 5
+	}, this);
+}
+function SheetDescription({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogDescription$1, {
+		"data-slot": "sheet-description",
+		className: cn("text-sm text-muted-foreground", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$13,
+		lineNumber: 124,
+		columnNumber: 5
+	}, this);
+}
+//#endregion
+//#region frontend/src/components/ui/skeleton.jsx
+var _jsxFileName$12 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/skeleton.jsx";
+function Skeleton({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		"data-slot": "skeleton",
+		className: cn("animate-pulse rounded-md bg-accent", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$12,
+		lineNumber: 8,
+		columnNumber: 5
+	}, this);
+}
+//#endregion
+//#region frontend/src/components/ui/tabs.jsx
+var _jsxFileName$11 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/tabs.jsx";
+function Tabs({ className, orientation = "horizontal", ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Root2, {
+		"data-slot": "tabs",
+		"data-orientation": orientation,
+		orientation,
+		className: cn("group/tabs flex gap-2 data-[orientation=horizontal]:flex-col", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$11,
+		lineNumber: 14,
+		columnNumber: 5
+	}, this);
+}
+var tabsListVariants = cva("group/tabs-list inline-flex w-fit items-center justify-center rounded-lg p-[3px] text-muted-foreground group-data-[orientation=horizontal]/tabs:h-9 group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col data-[variant=line]:rounded-none", {
+	variants: { variant: {
+		default: "bg-muted",
+		line: "gap-1 bg-transparent"
+	} },
+	defaultVariants: { variant: "default" }
+});
+function TabsList({ className, variant = "default", ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(List, {
+		"data-slot": "tabs-list",
+		"data-variant": variant,
+		className: cn(tabsListVariants({ variant }), className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$11,
+		lineNumber: 44,
+		columnNumber: 5
+	}, this);
+}
+function TabsTrigger({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Trigger, {
+		"data-slot": "tabs-trigger",
+		className: cn("relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium whitespace-nowrap text-foreground/60 transition-all group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:justify-start hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 group-data-[variant=default]/tabs-list:data-[state=active]:shadow-sm group-data-[variant=line]/tabs-list:data-[state=active]:shadow-none dark:text-muted-foreground dark:hover:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4", "group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:border-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent", "data-[state=active]:bg-background data-[state=active]:text-foreground dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 dark:data-[state=active]:text-foreground", "after:absolute after:bg-foreground after:opacity-0 after:transition-opacity group-data-[orientation=horizontal]/tabs:after:inset-x-0 group-data-[orientation=horizontal]/tabs:after:bottom-[-5px] group-data-[orientation=horizontal]/tabs:after:h-0.5 group-data-[orientation=vertical]/tabs:after:inset-y-0 group-data-[orientation=vertical]/tabs:after:-right-1 group-data-[orientation=vertical]/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-[state=active]:after:opacity-100", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$11,
+		lineNumber: 57,
+		columnNumber: 5
+	}, this);
+}
+function TabsContent({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Content, {
+		"data-slot": "tabs-content",
+		className: cn("flex-1 outline-none", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$11,
+		lineNumber: 75,
+		columnNumber: 5
+	}, this);
+}
+//#endregion
+//#region node_modules/liquid-gooey/dist/index.js
+var GooeyContext = (0, import_react.createContext)(null);
+function useGooeyContext() {
+	const ctx = (0, import_react.useContext)(GooeyContext);
+	if (!ctx) throw new Error("<Gooey.Item> must be rendered inside a <Gooey> group.");
+	return ctx;
+}
+var BINARIZE = "1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 60 -29.5";
+function InsetPass({ i, s }) {
+	const parts = [];
+	let src = "bin";
+	if (s.spread !== 0) {
+		parts.push(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feMorphology", {
+			in: src,
+			operator: s.spread > 0 ? "erode" : "dilate",
+			radius: Math.abs(s.spread),
+			result: `s${i}-er`
+		}, "er"));
+		src = `s${i}-er`;
+	}
+	if (s.x !== 0 || s.y !== 0) {
+		parts.push(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feOffset", {
+			in: src,
+			dx: s.x,
+			dy: s.y,
+			result: `s${i}-o`
+		}, "o"));
+		src = `s${i}-o`;
+	}
+	if (s.blur > 0) {
+		parts.push(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", {
+			in: src,
+			stdDeviation: s.blur / 2,
+			result: `s${i}-b`
+		}, "b"));
+		src = `s${i}-b`;
+	}
+	parts.push(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
+		in: "bin",
+		in2: src,
+		operator: "out",
+		result: `s${i}-band`
+	}, "band"), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feFlood", {
+		floodColor: s.color,
+		result: `s${i}-c`
+	}, "c"), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
+		in: `s${i}-c`,
+		in2: `s${i}-band`,
+		operator: "in",
+		result: `s${i}`
+	}, "f"));
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_jsx_runtime.Fragment, { children: parts });
+}
+function ShadowPass({ i, s }) {
+	const parts = [];
+	let src = "shape";
+	if (s.spread !== 0) {
+		parts.push(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feMorphology", {
+			in: "bin",
+			operator: s.spread > 0 ? "dilate" : "erode",
+			radius: Math.abs(s.spread),
+			result: `s${i}-sp`
+		}, "sp"));
+		src = `s${i}-sp`;
+	}
+	if (s.blur > 0) {
+		parts.push(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", {
+			in: src,
+			stdDeviation: s.blur / 2,
+			result: `s${i}-b`
+		}, "b"));
+		src = `s${i}-b`;
+	}
+	if (s.x !== 0 || s.y !== 0) {
+		parts.push(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feOffset", {
+			in: src,
+			dx: s.x,
+			dy: s.y,
+			result: `s${i}-o`
+		}, "o"));
+		src = `s${i}-o`;
+	}
+	parts.push(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feFlood", {
+		floodColor: s.color,
+		result: `s${i}-c`
+	}, "c"), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
+		in: `s${i}-c`,
+		in2: src,
+		operator: "in",
+		result: `s${i}`
+	}, "f"));
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_jsx_runtime.Fragment, { children: parts });
+}
+function GooFilterPrimitives({ blur, contrast, shadows, waviness = 0, wavinessFreq = .018 }) {
+	const wavy = waviness > 0;
+	const intercept = Math.round((.5 - contrast * (5 / 12)) * 100) / 100;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", {
+			in: "SourceGraphic",
+			stdDeviation: blur,
+			result: "blur"
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feColorMatrix", {
+			in: "blur",
+			type: "matrix",
+			values: `1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 ${contrast} ${intercept}`,
+			result: "goo"
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
+			in: "SourceGraphic",
+			in2: "goo",
+			operator: "atop",
+			result: wavy ? "shape-raw" : "shape"
+		}),
+		wavy && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feTurbulence", {
+			type: "fractalNoise",
+			baseFrequency: wavinessFreq,
+			numOctaves: 2,
+			seed: "7",
+			result: "wave-noise"
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feDisplacementMap", {
+			in: "shape-raw",
+			in2: "wave-noise",
+			scale: waviness * 2,
+			xChannelSelector: "R",
+			yChannelSelector: "G",
+			result: "shape"
+		})] }),
+		shadows.some((s) => s.inset || s.spread !== 0) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feColorMatrix", {
+			in: "shape",
+			type: "matrix",
+			values: BINARIZE,
+			result: "bin"
+		}),
+		shadows.map((s, i) => s.inset ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InsetPass, {
+			i,
+			s
+		}, i) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShadowPass, {
+			i,
+			s
+		}, i)),
+		shadows.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("feMerge", { children: [
+			shadows.map((s, i) => !s.inset ? i : -1).filter((i) => i >= 0).reverse().map((i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feMergeNode", { in: `s${i}` }, i)),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feMergeNode", { in: "shape" }),
+			shadows.map((s, i) => s.inset ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feMergeNode", { in: `s${i}` }, i) : null)
+		] })
+	] });
+}
+var IMAGE_MELT_DEFAULTS = {
+	blur: 7,
+	contrast: 40,
+	reach: .8,
+	fade: 17,
+	warp: 0,
+	mix: 1,
+	mixBlur: 8,
+	gravity: 1.9,
+	waviness: 12
+};
+function createImageMeltRegistry() {
+	const set = /* @__PURE__ */ new Set();
+	const subs = /* @__PURE__ */ new Set();
+	const notify = () => subs.forEach((f) => f());
+	return {
+		register(entry) {
+			set.add(entry);
+			notify();
+			return () => {
+				set.delete(entry);
+				notify();
+			};
+		},
+		subscribe(fn) {
+			subs.add(fn);
+			return () => subs.delete(fn);
+		},
+		entries: () => [...set]
+	};
+}
+function readGeom(group, el) {
+	const gr = group.getBoundingClientRect();
+	const r = el.getBoundingClientRect();
+	const cs = getComputedStyle(el);
+	const rad = parseFloat(cs.borderTopLeftRadius) || 0;
+	return {
+		x: r.left - gr.left,
+		y: r.top - gr.top,
+		w: r.width,
+		h: r.height,
+		r: Math.min(rad, r.width / 2, r.height / 2)
+	};
+}
+var geomKey = (g) => `${Math.round(g.x * 2)},${Math.round(g.y * 2)},${Math.round(g.w)},${Math.round(g.h)},${Math.round(g.r)}`;
+function useEasedValue(target, rate = 14) {
+	const [value, setValue] = (0, import_react.useState)(target);
+	const st = (0, import_react.useRef)({
+		value: target,
+		target,
+		raf: 0,
+		last: 0
+	});
+	(0, import_react.useEffect)(() => {
+		const s = st.current;
+		s.target = target;
+		if (s.raf) return;
+		s.last = performance.now();
+		const tick = (now) => {
+			const dt = Math.min(.05, (now - s.last) / 1e3);
+			s.last = now;
+			const k = 1 - Math.exp(-rate * dt);
+			s.value += (s.target - s.value) * k;
+			if (Math.abs(s.value - s.target) < .004) s.value = s.target;
+			setValue(s.value);
+			s.raf = s.value === s.target ? 0 : requestAnimationFrame(tick);
+		};
+		s.raf = requestAnimationFrame(tick);
+		return () => {
+			if (s.raf) cancelAnimationFrame(s.raf);
+			s.raf = 0;
+		};
+	}, [target, rate]);
+	return value;
+}
+function MeltPair({ a, b, srcA, srcB, opts, width, height }) {
+	const uid = `lgm-${(0, import_react.useId)().replace(/[^a-zA-Z0-9_-]/g, "")}`;
+	const { blur: gooBlur, contrast, reach, fade, warp, mix, mixBlur, gravity, waviness } = opts;
+	const ca = {
+		x: a.x + a.w / 2,
+		y: a.y + a.h / 2
+	};
+	const cb = {
+		x: b.x + b.w / 2,
+		y: b.y + b.h / 2
+	};
+	const gap = Math.max(0, Math.hypot(Math.max(Math.abs(ca.x - cb.x) - (a.w + b.w) / 2, 0), Math.max(Math.abs(ca.y - cb.y) - (a.h + b.h) / 2, 0)));
+	const near = Math.max(0, Math.min(1, 1 - gap / Math.max(8, gooBlur * 2.6)));
+	const prox = useEasedValue(near * near * (3 - 2 * near));
+	const intercept = Math.round((.5 - contrast * (5 / 12)) * 100) / 100;
+	const rA = Math.hypot(a.w, a.h) / 2 * reach * prox;
+	const rB = Math.hypot(b.w, b.h) / 2 * reach * prox;
+	const seam = {
+		x: (ca.x + cb.x) / 2,
+		y: (ca.y + cb.y) / 2
+	};
+	const dxc = cb.x - ca.x;
+	const dyc = cb.y - ca.y;
+	const dc = Math.max(.001, Math.hypot(dxc, dyc));
+	const tx = -dyc / dc;
+	const ty = dxc / dc;
+	const ovx = Math.max(0, (a.w + b.w) / 2 - Math.abs(dxc));
+	const ovy = Math.max(0, (a.h + b.h) / 2 - Math.abs(dyc));
+	const tanHalf = .5 * (ovx * Math.abs(tx) + ovy * Math.abs(ty)) * prox;
+	const seamDeg = Math.round(Math.atan2(ty, tx) * 180 / Math.PI);
+	const mixAmt = Math.round(mix * prox * 100) / 100;
+	const blurEff = Math.round((2 + (gooBlur - 2) * prox) * 10) / 10;
+	const warpEff = Math.round(warp * prox * 10) / 10;
+	const colorBlur = Math.round(blurEff * 2.5 * 10) / 10;
+	const edgeSoft = Math.round((.4 + (2 + gooBlur * .8) * prox) * 10) / 10;
+	const gA = `translate(${a.x}, ${a.y})`;
+	const gB = `translate(${b.x}, ${b.y})`;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+		"aria-hidden": "true",
+		focusable: "false",
+		"data-gooey-imagemelt": "",
+		width,
+		height,
+		viewBox: `0 0 ${width} ${height}`,
+		style: {
+			position: "absolute",
+			inset: 0,
+			overflow: "visible",
+			pointerEvents: "none"
+		},
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("defs", { children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("pattern", {
+					id: `${uid}-pa`,
+					patternUnits: "userSpaceOnUse",
+					width: a.w,
+					height: a.h,
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("image", {
+						href: srcA,
+						width: a.w,
+						height: a.h,
+						preserveAspectRatio: "xMidYMid slice"
+					})
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("pattern", {
+					id: `${uid}-pb`,
+					patternUnits: "userSpaceOnUse",
+					width: b.w,
+					height: b.h,
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("image", {
+						href: srcB,
+						width: b.w,
+						height: b.h,
+						preserveAspectRatio: "xMidYMid slice"
+					})
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("filter", {
+					id: `${uid}-goo`,
+					x: "-15%",
+					y: "-15%",
+					width: "130%",
+					height: "130%",
+					colorInterpolationFilters: "sRGB",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", {
+							in: "SourceGraphic",
+							stdDeviation: blurEff,
+							result: "b"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feColorMatrix", {
+							in: "b",
+							type: "matrix",
+							values: `1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 ${contrast} ${intercept}`,
+							result: "goo"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", {
+							in: "SourceGraphic",
+							stdDeviation: colorBlur,
+							result: "bc"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
+							in: "bc",
+							in2: "goo",
+							operator: "in",
+							result: "mix"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feTurbulence", {
+							type: "fractalNoise",
+							baseFrequency: (2 + waviness * 1.2) / 1e3,
+							numOctaves: "2",
+							seed: "4",
+							result: "wn"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feDisplacementMap", {
+							in: "mix",
+							in2: "wn",
+							scale: warpEff,
+							xChannelSelector: "R",
+							yChannelSelector: "G",
+							result: "warped"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
+							in: "warped",
+							in2: "warped",
+							operator: "over",
+							result: "s1"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
+							in: "s1",
+							in2: "s1",
+							operator: "over",
+							result: "s2"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
+							in: "s2",
+							in2: "s2",
+							operator: "over",
+							result: "solid"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", {
+							in: "solid",
+							stdDeviation: "0.6"
+						})
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("filter", {
+					id: `${uid}-soft`,
+					x: "-60%",
+					y: "-60%",
+					width: "220%",
+					height: "220%",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", { stdDeviation: fade })
+				}),
+				mixAmt > .01 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("filter", {
+					id: `${uid}-marble`,
+					x: "-25%",
+					y: "-25%",
+					width: "150%",
+					height: "150%",
+					colorInterpolationFilters: "sRGB",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", {
+							in: "SourceGraphic",
+							stdDeviation: mixBlur,
+							result: "c"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feTurbulence", {
+							type: "fractalNoise",
+							baseFrequency: "0.011",
+							numOctaves: "2",
+							seed: "5",
+							result: "n1"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feDisplacementMap", {
+							in: "c",
+							in2: "n1",
+							scale: mixAmt * 90,
+							xChannelSelector: "R",
+							yChannelSelector: "G",
+							result: "d1"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feTurbulence", {
+							type: "fractalNoise",
+							baseFrequency: "0.019",
+							numOctaves: "2",
+							seed: "11",
+							result: "n2"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feDisplacementMap", {
+							in: "d1",
+							in2: "n2",
+							scale: mixAmt * 50,
+							xChannelSelector: "R",
+							yChannelSelector: "G",
+							result: "d2"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
+							in: "d2",
+							in2: "d2",
+							operator: "over",
+							result: "m1"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
+							in: "m1",
+							in2: "m1",
+							operator: "over",
+							result: "m2"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", {
+							in: "m2",
+							stdDeviation: "0.6",
+							result: "marble"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", {
+							in: "SourceGraphic",
+							stdDeviation: blurEff,
+							result: "mb"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feColorMatrix", {
+							in: "mb",
+							type: "matrix",
+							values: `1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 ${contrast} ${intercept}`,
+							result: "mg"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feTurbulence", {
+							type: "fractalNoise",
+							baseFrequency: (2 + waviness * 1.2) / 1e3,
+							numOctaves: "2",
+							seed: "4",
+							result: "mwn"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feDisplacementMap", {
+							in: "mg",
+							in2: "mwn",
+							scale: warpEff,
+							xChannelSelector: "R",
+							yChannelSelector: "G",
+							result: "mshape"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
+							in: "marble",
+							in2: "mshape",
+							operator: "in"
+						})
+					]
+				}),
+				mixAmt > .01 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("mask", {
+					id: `${uid}-marblemask`,
+					maskUnits: "userSpaceOnUse",
+					x: "0",
+					y: "0",
+					width,
+					height,
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+						filter: `url(#${uid}-soft)`,
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ellipse", {
+							cx: seam.x,
+							cy: seam.y,
+							rx: (rA + rB) / 2 + tanHalf,
+							ry: (rA + rB) / 2 * gravity,
+							transform: `rotate(${seamDeg}, ${seam.x}, ${seam.y})`,
+							fill: "#fff"
+						})
+					})
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("filter", {
+					id: `${uid}-edge`,
+					x: "-40%",
+					y: "-40%",
+					width: "180%",
+					height: "180%",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", { stdDeviation: edgeSoft })
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("mask", {
+					id: `${uid}-ma`,
+					maskUnits: "userSpaceOnUse",
+					x: "0",
+					y: "0",
+					width,
+					height,
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+						filter: `url(#${uid}-edge)`,
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+							transform: gA,
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+								width: a.w,
+								height: a.h,
+								rx: a.r,
+								fill: "#fff"
+							})
+						})
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+						filter: `url(#${uid}-soft)`,
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ellipse", {
+							cx: seam.x,
+							cy: seam.y,
+							rx: rB + tanHalf,
+							ry: rB,
+							transform: `rotate(${seamDeg}, ${seam.x}, ${seam.y})`,
+							fill: "#000"
+						})
+					})]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("mask", {
+					id: `${uid}-mb`,
+					maskUnits: "userSpaceOnUse",
+					x: "0",
+					y: "0",
+					width,
+					height,
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+						filter: `url(#${uid}-edge)`,
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+							transform: gB,
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+								width: b.w,
+								height: b.h,
+								rx: b.r,
+								fill: "#fff"
+							})
+						})
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+						filter: `url(#${uid}-soft)`,
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ellipse", {
+							cx: seam.x,
+							cy: seam.y,
+							rx: rA + tanHalf,
+							ry: rA,
+							transform: `rotate(${seamDeg}, ${seam.x}, ${seam.y})`,
+							fill: "#000"
+						})
+					})]
+				})
+			] }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+				filter: `url(#${uid}-goo)`,
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+					transform: gA,
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+						width: a.w,
+						height: a.h,
+						rx: a.r,
+						fill: `url(#${uid}-pa)`
+					})
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+					transform: gB,
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+						width: b.w,
+						height: b.h,
+						rx: b.r,
+						fill: `url(#${uid}-pb)`
+					})
+				})]
+			}),
+			mixAmt > .01 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+				mask: `url(#${uid}-marblemask)`,
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+					filter: `url(#${uid}-marble)`,
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+						transform: gA,
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+							width: a.w,
+							height: a.h,
+							rx: a.r,
+							fill: `url(#${uid}-pa)`
+						})
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+						transform: gB,
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+							width: b.w,
+							height: b.h,
+							rx: b.r,
+							fill: `url(#${uid}-pb)`
+						})
+					})]
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+				mask: `url(#${uid}-ma)`,
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+					transform: gA,
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+						width: a.w,
+						height: a.h,
+						rx: a.r,
+						fill: `url(#${uid}-pa)`
+					})
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+				mask: `url(#${uid}-mb)`,
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+					transform: gB,
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+						width: b.w,
+						height: b.h,
+						rx: b.r,
+						fill: `url(#${uid}-pb)`
+					})
+				})
+			})
+		]
+	});
+}
+function ImageMeltLayer({ registry }) {
+	const { getGroup } = useGooeyContext();
+	const [, bump] = (0, import_react.useState)(0);
+	const [geoms, setGeoms] = (0, import_react.useState)(null);
+	const keyRef = (0, import_react.useRef)("");
+	(0, import_react.useEffect)(() => registry.subscribe(() => bump((v) => v + 1)), [registry]);
+	const pair = registry.entries().slice(0, 2);
+	const active = pair.length === 2;
+	(0, import_react.useEffect)(() => {
+		if (!active) {
+			setGeoms(null);
+			keyRef.current = "";
+			return;
+		}
+		let raf = 0;
+		const tick = () => {
+			const group2 = getGroup();
+			if (group2) {
+				const a = readGeom(group2, pair[0].el);
+				const b = readGeom(group2, pair[1].el);
+				const key = geomKey(a) + "|" + geomKey(b);
+				if (key !== keyRef.current) {
+					keyRef.current = key;
+					setGeoms({
+						a,
+						b
+					});
+				}
+			}
+			raf = requestAnimationFrame(tick);
+		};
+		raf = requestAnimationFrame(tick);
+		return () => cancelAnimationFrame(raf);
+	}, [
+		active,
+		pair[0]?.el,
+		pair[1]?.el,
+		getGroup
+	]);
+	if (!active || !geoms) return null;
+	const group = getGroup();
+	const w = group?.offsetWidth ?? 0;
+	const h = group?.offsetHeight ?? 0;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MeltPair, {
+		a: geoms.a,
+		b: geoms.b,
+		srcA: pair[0].src,
+		srcB: pair[1].src,
+		opts: pair[0].opts,
+		width: w,
+		height: h
+	});
+}
+function ImageMeltItem({ src, opts, registry, children }) {
+	const hostRef = (0, import_react.useRef)(null);
+	(0, import_react.useEffect)(() => {
+		const target = hostRef.current?.firstElementChild;
+		if (!target) return;
+		const img = src ?? target.querySelector("img")?.src ?? target.src;
+		if (!img) return;
+		const prevOpacity = target.style.opacity;
+		target.style.opacity = "0";
+		const unregister = registry.register({
+			el: target,
+			src: img,
+			opts
+		});
+		return () => {
+			target.style.opacity = prevOpacity;
+			unregister();
+		};
+	}, [
+		src,
+		opts,
+		registry
+	]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+		ref: hostRef,
+		style: { display: "contents" },
+		children
+	});
+}
+var useIsoLayoutEffect = typeof window !== "undefined" ? import_react.useLayoutEffect : import_react.useEffect;
+function useReducedMotion$1() {
+	const [reduced, setReduced] = (0, import_react.useState)(false);
+	(0, import_react.useEffect)(() => {
+		const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+		setReduced(mq.matches);
+		const onChange = (e) => setReduced(e.matches);
+		mq.addEventListener("change", onChange);
+		return () => mq.removeEventListener("change", onChange);
+	}, []);
+	return reduced;
+}
+function offsetTo(el, ancestor) {
+	let x = 0;
+	let y = 0;
+	let node = el;
+	while (node && node !== ancestor && ancestor.contains(node)) {
+		x += node.offsetLeft;
+		y += node.offsetTop;
+		node = node.offsetParent;
+	}
+	return {
+		x,
+		y
+	};
+}
+function measureRadius(el, w, h) {
+	const cs = getComputedStyle(el);
+	const parse = (v) => {
+		const first = v.split(" ")[0];
+		if (first.endsWith("%")) return (parseFloat(first) || 0) / 100 * Math.min(w, h);
+		return parseFloat(first) || 0;
+	};
+	return [
+		parse(cs.borderTopLeftRadius),
+		parse(cs.borderTopRightRadius),
+		parse(cs.borderBottomRightRadius),
+		parse(cs.borderBottomLeftRadius)
+	];
+}
+function normalizeRadius(r) {
+	return typeof r === "number" ? [
+		r,
+		r,
+		r,
+		r
+	] : r;
+}
+function roundedRectPath(x, y, w, h, radii) {
+	let [tl, tr, br, bl] = radii.map((v) => Math.max(0, v));
+	const f = Math.min(1, w / Math.max(1e-6, tl + tr), w / Math.max(1e-6, bl + br), h / Math.max(1e-6, tl + bl), h / Math.max(1e-6, tr + br));
+	tl *= f;
+	tr *= f;
+	br *= f;
+	bl *= f;
+	return `M ${x + tl} ${y} H ${x + w - tr} A ${tr} ${tr} 0 0 1 ${x + w} ${y + tr} V ${y + h - br} A ${br} ${br} 0 0 1 ${x + w - br} ${y + h} H ${x + bl} A ${bl} ${bl} 0 0 1 ${x} ${y + h - bl} V ${y + tl} A ${tl} ${tl} 0 0 1 ${x + tl} ${y} Z`;
+}
+var viteHot = void 0;
+if (viteHot) viteHot.accept(() => viteHot.invalidate());
+var EVOLVE_DEFAULTS = {
+	massStiffness: 320,
+	massDamping: 17,
+	sizeStiffness: 170,
+	sizeDamping: 11.5,
+	radiusStiffness: 900,
+	radiusDamping: 60,
+	contentBlur: 7,
+	roundness: 1,
+	cornerDuration: 460,
+	cornerDelay: 0,
+	cornerEase: "cubic-bezier(0.3, 1.05, 0.4, 1)",
+	anticipation: 90,
+	travel: 32
+};
+var easeCache = /* @__PURE__ */ new Map();
+function easingFn(spec) {
+	let fn = easeCache.get(spec);
+	if (fn) return fn;
+	const m = /cubic-bezier\(([^)]+)\)/.exec(spec);
+	if (m) {
+		const [x1, y1, x2, y2] = m[1].split(",").map(Number);
+		fn = (t) => {
+			if (t <= 0) return 0;
+			if (t >= 1) return 1;
+			let lo = 0;
+			let hi = 1;
+			for (let i = 0; i < 24; i++) {
+				const mid = (lo + hi) / 2;
+				if (3 * mid * (1 - mid) * (1 - mid) * x1 + 3 * mid * mid * (1 - mid) * x2 + mid ** 3 < t) lo = mid;
+				else hi = mid;
+			}
+			const u = (lo + hi) / 2;
+			return 3 * u * (1 - u) * (1 - u) * y1 + 3 * u * u * (1 - u) * y2 + u ** 3;
+		};
+	} else if (spec === "ease-in-out") fn = easingFn("cubic-bezier(0.42, 0, 0.58, 1)");
+	else fn = (t) => Math.min(1, Math.max(0, t));
+	easeCache.set(spec, fn);
+	return fn;
+}
+var MOVE_DEFAULTS = {
+	stiffness: 380,
+	damping: 18,
+	stretch: .18,
+	tail: .46,
+	force: .5,
+	bend: 0,
+	bendX: 0
+};
+var MELT_LAYERS = 3;
+function cornerTotalOf(eo) {
+	return Math.max(0, eo.cornerDelay) + Math.max(1, eo.cornerDuration);
+}
+function pillRadius(r, w, h) {
+	return Math.max(0, Math.min(r, Math.min(w, h) / 2));
+}
+function springStep(cur, vel, target, k, c, dt) {
+	const v = vel + (k * (target - cur) - c * vel) * dt;
+	return [cur + v * dt, v];
+}
+function springSteps(cur, vel, target, k, c, dt) {
+	let n = Math.max(1, Math.ceil(dt * 60));
+	const h = dt / n;
+	let p = cur;
+	let v = vel;
+	while (n-- > 0) {
+		const step = springStep(p, v, target, k, c, h);
+		p = step[0];
+		v = step[1];
+	}
+	return [p, v];
+}
+function q(v, step) {
+	return Math.round(v / step) * step;
+}
+var SVG_NS = "http://www.w3.org/2000/svg";
+var meltCounter = 0;
+function smoothstep(t) {
+	const c = Math.min(1, Math.max(0, t));
+	return c * c * (3 - 2 * c);
+}
+function svg(tag, attrs) {
+	const el = document.createElementNS(SVG_NS, tag);
+	for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+	return el;
+}
+function downscaleHref(el) {
+	try {
+		if (!el.complete || !el.naturalWidth) return null;
+		const dw = Math.max(2, Math.min(el.naturalWidth, Math.round((el.offsetWidth || 40) * 3)));
+		const dh = Math.max(2, Math.min(el.naturalHeight, Math.round((el.offsetHeight || 40) * 3)));
+		if (el.naturalWidth <= dw * 1.5) return null;
+		const cv = document.createElement("canvas");
+		cv.width = dw;
+		cv.height = dh;
+		const c2 = cv.getContext("2d");
+		if (!c2) return null;
+		const scale = Math.max(dw / el.naturalWidth, dh / el.naturalHeight);
+		const sw = dw / scale;
+		const sh = dh / scale;
+		c2.drawImage(el, (el.naturalWidth - sw) / 2, (el.naturalHeight - sh) / 2, sw, sh, 0, 0, dw, dh);
+		return cv.toDataURL();
+	} catch {
+		return null;
+	}
+}
+var ObserveEngine = class {
+	constructor(getGroup) {
+		this.getGroup = getGroup;
+		/** Goo blur of the owning group; used to derive the default blend range. */
+		this.gooBlur = 6;
+		this.items = /* @__PURE__ */ new Set();
+		this.awake = false;
+		this.clean = 0;
+		this.raf = 0;
+		this.sourcesReady = false;
+		this.mo = null;
+		this.interval = null;
+		this.removeListeners = [];
+		this.wake = () => {
+			this.clean = 0;
+			if (this.awake || this.items.size === 0) return;
+			this.awake = true;
+			this.raf = requestAnimationFrame(this.loop);
+		};
+		this.lastNow = 0;
+		/** EMA of the raw frame interval (ms) — the melt write pass consults it to
+		*  pick its cadence: every frame while the clock is healthy, backed off to
+		*  ~28fps when frames are dropping (WebKit under CPU-raster load is exactly
+		*  the case that degrades the clock). Seeded at 60Hz-healthy. */
+		this.frameEma = 17;
+		this.loop = (now) => {
+			if (this.items.size === 0) {
+				this.awake = false;
+				this.lastNow = 0;
+				return;
+			}
+			const dt = this.lastNow ? Math.min(.25, Math.max(1 / 240, (now - this.lastNow) / 1e3)) : 1 / 60;
+			if (this.lastNow) this.frameEma += (Math.min(now - this.lastNow, 80) - this.frameEma) * .12;
+			this.lastNow = now;
+			if (this.measureAll(dt)) this.clean = 0;
+			else this.clean++;
+			if (this.clean > 30) {
+				this.awake = false;
+				this.lastNow = 0;
+				return;
+			}
+			this.raf = requestAnimationFrame(this.loop);
+		};
+	}
+	add(t) {
+		const item = {
+			...t,
+			baseW: t.target.offsetWidth || 1,
+			baseH: t.target.offsetHeight || 1,
+			radiusPx: this.resolveRadius(t),
+			last: null,
+			frame: null,
+			lastBlend: null,
+			melt: null,
+			sim: null,
+			motionEnv: 0,
+			tPrev: null,
+			tvx: 0,
+			tvy: 0,
+			lead01: 0,
+			cornerT0: 0,
+			lastTargetMoveT: 0,
+			lastTargetSize: null,
+			morphActive: false,
+			round01: 0,
+			tailEl: null,
+			tailMidA: null,
+			tailMidB: null,
+			tailPhase: 0,
+			bendCur: 0,
+			bendCurX: 0,
+			bendPathEl: null,
+			lastBendD: null,
+			lastBendVars: null,
+			tailX: 0,
+			tailY: 0,
+			tailVx: 0,
+			tailVy: 0,
+			tailR: 0,
+			contentBlurred: false,
+			lastPaint: null,
+			lastTail: null,
+			lastBi: t.blobInset ?? 0,
+			biSmooth: null,
+			meltFade: 0,
+			meltRel: null,
+			meltOp: 1,
+			meltPhase: 0,
+			meltPrev: null,
+			meltGeom: null,
+			meltWroteAt: 0,
+			meltAxis: null,
+			meltHostLast: null,
+			ro: new ResizeObserver(() => {
+				item.baseW = t.target.offsetWidth || 1;
+				item.baseH = t.target.offsetHeight || 1;
+				item.radiusPx = this.resolveRadius(t);
+				this.syncMelt(item);
+				this.wake();
+			})
+		};
+		item.ro.observe(t.target);
+		this.items.add(item);
+		this.refreshMelt(item);
+		if (t.dynamics?.move) {
+			const tail = svg("circle", {
+				cx: "0",
+				cy: "0",
+				r: "0"
+			});
+			const midA = svg("circle", {
+				cx: "0",
+				cy: "0",
+				r: "0"
+			});
+			const midB = svg("circle", {
+				cx: "0",
+				cy: "0",
+				r: "0"
+			});
+			t.blob.parentNode?.insertBefore(tail, t.blob);
+			t.blob.parentNode?.insertBefore(midA, t.blob);
+			t.blob.parentNode?.insertBefore(midB, t.blob);
+			item.tailEl = tail;
+			item.tailMidA = midA;
+			item.tailMidB = midB;
+			const bendPath = svg("path", { d: "" });
+			t.blob.parentNode?.insertBefore(bendPath, t.blob);
+			item.bendPathEl = bendPath;
+		}
+		this.ensureSources();
+		this.measureAll();
+		this.wake();
+		return () => {
+			item.ro.disconnect();
+			this.items.delete(item);
+			this.clearBlend(item);
+			if (item.contentBlurred) item.target.style.removeProperty("filter");
+			item.tailEl?.remove();
+			item.tailMidA?.remove();
+			item.tailMidB?.remove();
+			item.bendPathEl?.remove();
+		};
+	}
+	dispose() {
+		cancelAnimationFrame(this.raf);
+		this.mo?.disconnect();
+		this.removeListeners.forEach((off) => off());
+		this.removeListeners = [];
+		if (this.interval) clearInterval(this.interval);
+		this.items.forEach((i) => i.ro.disconnect());
+		this.items.clear();
+		this.awake = false;
+		this.sourcesReady = false;
+	}
+	resolveRadius(t) {
+		if (t.radius != null) return t.radius;
+		return measureRadius(t.target, t.target.offsetWidth, t.target.offsetHeight)[0];
+	}
+	/** (Re)build the warped-image SVG structure for a melt item. Two graded
+	*  warp layers share ONE noise field (same frequency + seed): a wide gentle
+	*  ripple and a tight strong core. Same field, different displacement
+	*  scales → the layers align and read as a single liquid getting deeper
+	*  toward the contact. The noise frequency is derived from the melt zone,
+	*  so several ripple wavelengths fit across it — a fixed low frequency
+	*  displaces the whole zone as one chunk, which reads as a shifted ghost
+	*  copy instead of liquid. */
+	/** Resize response. The melt DOM only needs REBUILDING when the set of
+	*  images changes; a resize alone just makes the cached corner radii stale.
+	*
+	*  Rebuilding on every resize tore down and recreated three turbulence
+	*  filters plus a pattern + <image> per photo, and WebKit re-decodes and
+	*  re-rasterises all of it synchronously. The pill resizes the moment the
+	*  hover gap opens — i.e. exactly as the flight begins — so that landed as
+	*  a ~120ms main-thread stall. CSS transitions keep running on the
+	*  compositor through a stall, but the silhouette is written from this
+	*  loop, so the liquid froze while the content sailed on: the timing
+	*  mismatch, and it never showed in Chromium because the rebuild is cheap
+	*  enough there to fit in a frame. */
+	syncMelt(item) {
+		if (!item.blend) return;
+		const melt = item.melt;
+		const t = item.target;
+		const imgs = t instanceof HTMLImageElement ? [t] : Array.from(t.querySelectorAll("img"));
+		if (!(!!melt && melt.entries.length === imgs.length && melt.entries.every((e, i) => e.el === imgs[i]))) {
+			this.refreshMelt(item);
+			return;
+		}
+		for (const entry of melt.entries) {
+			entry.radiusPx = measureRadius(entry.el, entry.el.offsetWidth, entry.el.offsetHeight)[0];
+			entry.lastGeom = null;
+		}
+	}
+	refreshMelt(item) {
+		const blend = item.blend;
+		if (!blend) return;
+		const host = blend.host;
+		while (host.firstChild) host.removeChild(host.firstChild);
+		const t = item.target;
+		const imgs = t instanceof HTMLImageElement ? [t] : Array.from(t.querySelectorAll("img"));
+		const uid = `gooey-melt-${++meltCounter}`;
+		const seed = String(meltCounter * 7 % 100);
+		const zone = blend.zone ?? this.gooBlur * 2.2 + 4;
+		const freqK = Math.max(.2, blend.warpFreq ?? 1);
+		const bf = Math.min(.3, Math.max(.01, freqK / (zone * 1.1))).toFixed(4);
+		const octaves = String(Math.max(1, Math.round(blend.detail ?? 2)));
+		const noiseType = blend.warpStyle ?? "fractalNoise";
+		const defs = svg("defs", {});
+		const gradient = svg("radialGradient", { id: `${uid}-g` });
+		gradient.append(svg("stop", {
+			offset: "0%",
+			"stop-color": "#fff"
+		}), svg("stop", {
+			offset: "55%",
+			"stop-color": "#fff"
+		}), svg("stop", {
+			offset: "78%",
+			"stop-color": "#fff",
+			"stop-opacity": "0.55"
+		}), svg("stop", {
+			offset: "100%",
+			"stop-color": "#fff",
+			"stop-opacity": "0"
+		}));
+		defs.append(gradient);
+		const mkLayer = (suffix) => {
+			const filter = svg("filter", {
+				id: `${uid}-f${suffix}`,
+				filterUnits: "userSpaceOnUse",
+				x: "0",
+				y: "0",
+				width: "0",
+				height: "0",
+				"color-interpolation-filters": "sRGB"
+			});
+			const turb = svg("feTurbulence", {
+				type: noiseType,
+				baseFrequency: bf,
+				numOctaves: octaves,
+				seed,
+				result: "noise0"
+			});
+			filter.append(turb);
+			const noiseOffset = svg("feOffset", {
+				in: "noise0",
+				dx: "0",
+				dy: "0",
+				result: "noise"
+			});
+			const disp = svg("feDisplacementMap", {
+				in: "SourceGraphic",
+				in2: "noise",
+				scale: "0",
+				xChannelSelector: "R",
+				yChannelSelector: "G",
+				result: "disp"
+			});
+			filter.append(noiseOffset);
+			const blurEl = svg("feGaussianBlur", {
+				in: "disp",
+				stdDeviation: "0",
+				result: "soft"
+			});
+			const sat = svg("feColorMatrix", {
+				in: "soft",
+				type: "saturate",
+				values: "1.2",
+				result: "col"
+			});
+			const erode = svg("feColorMatrix", {
+				in: "noise",
+				type: "matrix",
+				values: "0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0 1",
+				result: "erode"
+			});
+			const clip = svg("feComposite", {
+				in: "col",
+				in2: "erode",
+				operator: "in"
+			});
+			filter.append(disp, blurEl, sat, erode, clip);
+			const mask = svg("mask", {
+				id: `${uid}-m${suffix}`,
+				maskUnits: "userSpaceOnUse",
+				x: "-10000",
+				y: "-10000",
+				width: "20000",
+				height: "20000"
+			});
+			const circle = svg("circle", {
+				cx: "0",
+				cy: "0",
+				r: "0",
+				fill: `url(#${uid}-g)`
+			});
+			mask.append(circle);
+			defs.append(filter, mask);
+			const gl = svg("g", {});
+			gl.setAttribute("mask", `url(#${uid}-m${suffix})`);
+			gl.setAttribute("opacity", "0");
+			const filtered = svg("g", {});
+			filtered.setAttribute("filter", `url(#${uid}-f${suffix})`);
+			const shift = svg("g", {});
+			filtered.append(shift);
+			gl.append(filtered);
+			return {
+				filter,
+				disp,
+				blurEl,
+				erode,
+				turb,
+				noiseOffset,
+				circle,
+				gl,
+				shift
+			};
+		};
+		const layers = Array.from({ length: MELT_LAYERS }, (_, i) => mkLayer(`l${i}`));
+		host.append(defs, ...layers.map((l) => l.gl));
+		let seam = null;
+		if ((blend.seamBlur ?? 1) > 0) {
+			const filter = svg("filter", {
+				id: `${uid}-fs`,
+				filterUnits: "userSpaceOnUse",
+				x: "0",
+				y: "0",
+				width: "0",
+				height: "0",
+				"color-interpolation-filters": "sRGB"
+			});
+			const blurEl = svg("feGaussianBlur", {
+				in: "SourceGraphic",
+				stdDeviation: "0"
+			});
+			filter.append(blurEl);
+			const mask = svg("mask", {
+				id: `${uid}-ms`,
+				maskUnits: "userSpaceOnUse",
+				x: "-10000",
+				y: "-10000",
+				width: "20000",
+				height: "20000"
+			});
+			const circle = svg("circle", {
+				cx: "0",
+				cy: "0",
+				r: "0",
+				fill: `url(#${uid}-g)`
+			});
+			mask.append(circle);
+			defs.append(filter, mask);
+			const gl = svg("g", {});
+			gl.setAttribute("mask", `url(#${uid}-ms)`);
+			gl.setAttribute("opacity", "0");
+			const filtered = svg("g", {});
+			filtered.setAttribute("filter", `url(#${uid}-fs)`);
+			gl.append(filtered);
+			host.insertBefore(gl, defs.nextSibling);
+			seam = {
+				gl,
+				filter,
+				blurEl,
+				circle
+			};
+		}
+		const entries = imgs.map((el, i) => {
+			const pattern = svg("pattern", {
+				id: `${uid}-p${i}`,
+				patternUnits: "userSpaceOnUse",
+				x: "0",
+				y: "0",
+				width: "1",
+				height: "1"
+			});
+			const image = svg("image", {
+				width: "1",
+				height: "1",
+				preserveAspectRatio: "xMidYMid slice"
+			});
+			image.setAttribute("href", el.currentSrc || el.src);
+			pattern.append(image);
+			defs.append(pattern);
+			const rects = layers.map((l) => {
+				const rect = svg("rect", {
+					x: "0",
+					y: "0",
+					width: "0",
+					height: "0",
+					fill: `url(#${uid}-p${i})`
+				});
+				l.shift.append(rect);
+				return rect;
+			});
+			if (seam) {
+				const rect = svg("rect", {
+					x: "0",
+					y: "0",
+					width: "0",
+					height: "0",
+					fill: `url(#${uid}-p${i})`
+				});
+				seam.gl.firstElementChild.append(rect);
+				rects.push(rect);
+			}
+			return {
+				el,
+				rects,
+				pattern,
+				image,
+				radiusPx: measureRadius(el, el.offsetWidth, el.offsetHeight)[0],
+				lowRes: false,
+				measured: null,
+				lastGeom: null,
+				lastHole: null
+			};
+		});
+		host.setAttribute("opacity", "0");
+		item.melt = {
+			layers,
+			entries,
+			seam
+		};
+		if (blend.surface === "image" && imgs[0]) {
+			const bp = svg("pattern", {
+				id: `${uid}-bp`,
+				patternUnits: "objectBoundingBox",
+				patternContentUnits: "objectBoundingBox",
+				width: "1",
+				height: "1"
+			});
+			const bpImage = svg("image", {
+				width: "1",
+				height: "1",
+				preserveAspectRatio: "xMidYMid slice"
+			});
+			bpImage.setAttribute("href", imgs[0].currentSrc || imgs[0].src);
+			bp.append(bpImage);
+			defs.append(bp);
+			item.blob.setAttribute("fill", `url(#${uid}-bp)`);
+		} else item.blob.removeAttribute("fill");
+	}
+	/** Remove all melt traces: hide the warped overlay, restore image masks. */
+	clearBlend(item) {
+		item.blend?.host.setAttribute("opacity", "0");
+		item.meltHostLast = null;
+		item.meltWroteAt = 0;
+		item.meltAxis = null;
+		for (const layer of item.melt?.layers ?? []) layer.last = void 0;
+		if (item.melt?.seam) {
+			item.melt.seam.last = void 0;
+			item.melt.seam.gl.setAttribute("opacity", "0");
+		}
+		for (const entry of item.melt?.entries ?? []) {
+			entry.el.style.removeProperty("mask-image");
+			entry.el.style.removeProperty("-webkit-mask-image");
+			entry.el.style.removeProperty("mask-composite");
+			entry.el.style.removeProperty("-webkit-mask-composite");
+			entry.lastHole = null;
+			entry.lastGeom = null;
+		}
+	}
+	measureAll(dt = 1 / 60) {
+		const group = this.getGroup();
+		if (!group || this.items.size === 0) return false;
+		const g = group.getBoundingClientRect();
+		let changed = false;
+		for (const item of this.items) {
+			const r = item.target.getBoundingClientRect();
+			item.frame = {
+				x: r.left - g.left,
+				y: r.top - g.top,
+				w: r.width,
+				h: r.height
+			};
+		}
+		for (const item of this.items) {
+			if (!item.blend || !item.melt) continue;
+			for (const entry of item.melt.entries) {
+				const ir = entry.el.getBoundingClientRect();
+				entry.measured = {
+					x: ir.left - g.left,
+					y: ir.top - g.top,
+					w: ir.width,
+					h: ir.height,
+					ow: entry.el.offsetWidth,
+					oh: entry.el.offsetHeight
+				};
+			}
+		}
+		for (const item of this.items) if (this.writeBlob(item, dt)) changed = true;
+		for (const item of this.items) if (item.blend && this.writeBlend(item, dt)) changed = true;
+		return changed;
+	}
+	/** Effective blob inset: bridgeGrow pulls it toward negative (a visible
+	*  liquid coat) as the nearest neighbour approaches.
+	*
+	*  Smoothed on a time constant rather than tracking proximity instantly.
+	*  The raw value is a function of the dragged neighbour's position, so it
+	*  moves as fast as the pointer does and lands on a different value every
+	*  frame; the blob grows symmetrically from it, so that per-frame step is
+	*  visible on the silhouette's far edge as a size flicker. It stayed small
+	*  enough to read as smooth at 60fps, but a frame-rate drop multiplies the
+	*  per-frame delta — which is why the pill's left edge flashed in Safari
+	*  and not in Chromium. dt-based smoothing makes the growth rate identical
+	*  at any frame rate. */
+	effectiveInset(item, dt) {
+		let bi = item.blobInset ?? 0;
+		const grow = item.bridgeGrow ?? 0;
+		if (grow > 0 && item.frame) {
+			const f = item.frame;
+			const range = Math.max(14, this.gooBlur * 3);
+			let best = Infinity;
+			for (const other of this.items) {
+				if (other === item || !other.frame) continue;
+				const o = other.frame;
+				const dx = Math.max(o.x - (f.x + f.w), f.x - (o.x + o.w), 0);
+				const dy = Math.max(o.y - (f.y + f.h), f.y - (o.y + o.h), 0);
+				const gap = Math.hypot(dx, dy);
+				if (gap < best) best = gap;
+			}
+			if (best < range) bi -= grow * smoothstep(1 - best / range);
+		}
+		if (grow <= 0) {
+			item.biSmooth = bi;
+			return bi;
+		}
+		if (item.biSmooth === null) item.biSmooth = bi;
+		else item.biSmooth += (bi - item.biSmooth) * Math.min(1, dt * 18);
+		return item.biSmooth;
+	}
+	writeBlob(item, dt) {
+		const f = item.frame;
+		const dyn = item.dynamics;
+		if (!dyn || !dyn.evolve && !dyn.move) {
+			const bi2 = this.effectiveInset(item, dt);
+			const last = item.last;
+			const frameChanged = !last || Math.abs(last.x - f.x) >= .05 || Math.abs(last.y - f.y) >= .05 || Math.abs(last.w - f.w) >= .05 || Math.abs(last.h - f.h) >= .05;
+			const biChanged = Math.abs(bi2 - item.lastBi) >= .05;
+			if (!frameChanged && !biChanged) return false;
+			item.blob.style.transform = `translate(${f.x + bi2}px, ${f.y + bi2}px)`;
+			if (frameChanged || biChanged) {
+				const bw2 = Math.max(0, f.w - bi2 * 2);
+				const bh2 = Math.max(0, f.h - bi2 * 2);
+				item.blob.setAttribute("width", String(bw2));
+				item.blob.setAttribute("height", String(bh2));
+				const scale = item.baseW > 0 ? f.w / item.baseW : 1;
+				item.blob.setAttribute("rx", String(pillRadius(item.radiusPx * scale - bi2, bw2, bh2)));
+			}
+			item.lastPaint = null;
+			item.last = f;
+			item.lastBi = bi2;
+			return true;
+		}
+		const tcx = f.x + f.w / 2;
+		const tcy = f.y + f.h / 2;
+		let tr;
+		if (dyn.evolve) {
+			const ow = item.target.offsetWidth;
+			const oh = item.target.offsetHeight;
+			tr = measureRadius(item.target, ow, oh)[0];
+		} else tr = item.radiusPx * (item.baseW > 0 ? f.w / item.baseW : 1);
+		if (!item.sim) item.sim = {
+			cx: tcx,
+			cy: tcy,
+			w: f.w,
+			h: f.h,
+			r: tr,
+			vcx: 0,
+			vcy: 0,
+			vw: 0,
+			vh: 0,
+			vr: 0
+		};
+		const s = item.sim;
+		if (dyn.move) {
+			const mo = dyn.moveOpts ?? MOVE_DEFAULTS;
+			[s.cx, s.vcx] = springSteps(s.cx, s.vcx, tcx, mo.stiffness, mo.damping, dt);
+			[s.cy, s.vcy] = springSteps(s.cy, s.vcy, tcy, mo.stiffness, mo.damping, dt);
+		} else if (dyn.evolve) {
+			const eo = dyn.evolveOpts ?? EVOLVE_DEFAULTS;
+			const rawVx = item.tPrev ? (tcx - item.tPrev.cx) / dt : 0;
+			const rawVy = item.tPrev ? (tcy - item.tPrev.cy) / dt : 0;
+			item.tvx = item.tvx * .7 + rawVx * .3;
+			item.tvy = item.tvy * .7 + rawVy * .3;
+			item.tPrev = {
+				cx: tcx,
+				cy: tcy
+			};
+			const remX = tcx - s.cx;
+			const remY = tcy - s.cy;
+			const rem = Math.hypot(remX, remY);
+			const vMag = Math.hypot(item.tvx, item.tvy);
+			let dx = 0;
+			let dy = 0;
+			if (vMag > .001) {
+				dx = item.tvx / vMag;
+				dy = item.tvy / vMag;
+			} else if (rem > .001) {
+				dx = remX / rem;
+				dy = remY / rem;
+			}
+			const tau = Math.max(0, eo.anticipation) / 1e3;
+			const k = tau > 0 ? 1 - Math.exp(-dt / tau) : 1;
+			item.lead01 += ((rem > .5 ? 1 : 0) - item.lead01) * k;
+			const reach = Math.min(Math.max(0, eo.travel) * item.lead01, rem);
+			const ox = dx * reach;
+			const oy = dy * reach;
+			[s.cx, s.vcx] = springSteps(s.cx, s.vcx, tcx + ox, eo.massStiffness, eo.massDamping, dt);
+			[s.cy, s.vcy] = springSteps(s.cy, s.vcy, tcy + oy, eo.massStiffness, eo.massDamping, dt);
+		} else {
+			s.cx = tcx;
+			s.cy = tcy;
+			s.vcx = 0;
+			s.vcy = 0;
+		}
+		if (dyn.evolve) {
+			const eo = dyn.evolveOpts ?? EVOLVE_DEFAULTS;
+			[s.w, s.vw] = springSteps(s.w, s.vw, f.w, eo.sizeStiffness, eo.sizeDamping, dt);
+			[s.h, s.vh] = springSteps(s.h, s.vh, f.h, eo.sizeStiffness, eo.sizeDamping, dt);
+			[s.r, s.vr] = springSteps(s.r, s.vr, tr, eo.radiusStiffness, eo.radiusDamping, dt);
+		} else {
+			s.w = f.w;
+			s.h = f.h;
+			s.r = tr;
+			s.vw = 0;
+			s.vh = 0;
+			s.vr = 0;
+		}
+		let extra = "";
+		const speed = Math.hypot(s.vcx, s.vcy);
+		if (dyn.move && speed > 2) {
+			const st = Math.min((dyn.moveOpts ?? MOVE_DEFAULTS).stretch, speed * 6e-4);
+			const a = Math.round(Math.atan2(s.vcy, s.vcx) * 100) / 100;
+			extra += ` rotate(${a}rad) scale(${(1 + st).toFixed(3)}, ${(1 / (1 + st * .65)).toFixed(3)}) rotate(${-a}rad)`;
+		}
+		if (dyn.move && item.tailEl) {
+			const round = (v) => Math.round(v * 10) / 10;
+			if (item.tailR === 0 && Math.abs(item.tailX) < .001 && Math.abs(item.tailY) < .001) {
+				item.tailX = s.cx;
+				item.tailY = s.cy;
+			}
+			[item.tailX, item.tailVx] = springSteps(item.tailX, item.tailVx, s.cx, 170, 22, dt);
+			[item.tailY, item.tailVy] = springSteps(item.tailY, item.tailVy, s.cy, 170, 22, dt);
+			const bi2 = item.blobInset ?? 0;
+			const ux = speed > .001 ? s.vcx / speed : 1;
+			const uy = speed > .001 ? s.vcy / speed : 0;
+			const perp = Math.max(4, Math.abs(ux) * s.h + Math.abs(uy) * s.w - bi2 * 2);
+			const halfAlong = (Math.abs(ux) * s.w + Math.abs(uy) * s.h) / 2;
+			const base = perp / 2;
+			const lagX = item.tailX - s.cx;
+			const lagY = item.tailY - s.cy;
+			const lag = Math.hypot(lagX, lagY);
+			const mo = dyn.moveOpts ?? MOVE_DEFAULTS;
+			const maxLag = halfAlong + base * (.2 + mo.force * 1.6);
+			if (lag > maxLag) {
+				item.tailX = s.cx + lagX / lag * maxLag;
+				item.tailY = s.cy + lagY / lag * maxLag;
+			}
+			const tailK = mo.tail;
+			const onset = Math.max(0, Math.min(1, (speed - 20) / 120));
+			const targetR = base * tailK * onset;
+			item.tailR += (targetR - item.tailR) * Math.min(1, dt * 10);
+			if (item.tailR < .3) {
+				if (item.lastTail !== "hidden") {
+					item.tailEl.setAttribute("r", "0");
+					item.tailMidA?.setAttribute("r", "0");
+					item.tailMidB?.setAttribute("r", "0");
+					item.lastTail = "hidden";
+				}
+			} else {
+				item.tailPhase += speed * dt * .045;
+				const wob = item.tailR * .16;
+				const px = -uy;
+				const py = ux;
+				const w1 = Math.sin(item.tailPhase) * wob;
+				const w2 = Math.sin(item.tailPhase + 2.4) * -wob;
+				const aX = s.cx + lagX * .45 + px * w1;
+				const aY = s.cy + lagY * .45 + py * w1;
+				const bX = s.cx + lagX * .75 + px * w2;
+				const bY = s.cy + lagY * .75 + py * w2;
+				const tail = `${round(item.tailX)},${round(item.tailY)},${round(item.tailR)},${round(aX)},${round(aY)},${round(bX)},${round(bY)}`;
+				if (tail !== item.lastTail) {
+					item.tailEl.setAttribute("cx", String(round(item.tailX)));
+					item.tailEl.setAttribute("cy", String(round(item.tailY)));
+					item.tailEl.setAttribute("r", String(round(item.tailR)));
+					if (item.tailMidA) {
+						item.tailMidA.setAttribute("cx", String(round(aX)));
+						item.tailMidA.setAttribute("cy", String(round(aY)));
+						item.tailMidA.setAttribute("r", String(round(item.tailR * .62)));
+					}
+					if (item.tailMidB) {
+						item.tailMidB.setAttribute("cx", String(round(bX)));
+						item.tailMidB.setAttribute("cy", String(round(bY)));
+						item.tailMidB.setAttribute("r", String(round(item.tailR * .4)));
+					}
+					item.lastTail = tail;
+				}
+			}
+		}
+		let renderR = Math.max(0, s.r);
+		let cornerActive = false;
+		if (dyn.evolve) {
+			const eo = dyn.evolveOpts ?? EVOLVE_DEFAULTS;
+			const now = performance.now();
+			const prevSize = item.lastTargetSize;
+			if ((prevSize ? Math.abs(f.w - prevSize.w) + Math.abs(f.h - prevSize.h) : 0) > .5) {
+				if (!item.morphActive) {
+					item.cornerT0 = now;
+					item.morphActive = true;
+				}
+				item.lastTargetMoveT = now;
+			} else if (item.morphActive && now - item.lastTargetMoveT > 150 && now - item.cornerT0 > cornerTotalOf(eo)) item.morphActive = false;
+			item.lastTargetSize = {
+				w: f.w,
+				h: f.h
+			};
+			const cornerTotal = cornerTotalOf(eo);
+			let target01 = 0;
+			if (item.cornerT0 > 0 && eo.roundness > 0 && now - item.cornerT0 < cornerTotal) {
+				const p = Math.min(1, Math.max(0, (now - item.cornerT0 - Math.max(0, eo.cornerDelay)) / Math.max(1, eo.cornerDuration)));
+				const eased = easingFn(eo.cornerEase)(p);
+				target01 = Math.min(1, Math.max(0, (1 - eased) * eo.roundness));
+			}
+			const maxStep = dt * 8;
+			item.round01 += Math.max(-maxStep, Math.min(maxStep, target01 - item.round01));
+			cornerActive = item.cornerT0 > 0 && now - item.cornerT0 < cornerTotal + 80 || Math.abs(target01 - item.round01) > .004 || item.round01 > .004;
+			if (item.round01 > .001) {
+				const roundTarget = Math.max(Math.min(s.w, s.h) / 2, renderR);
+				renderR = renderR + (roundTarget - renderR) * item.round01;
+				renderR = Math.max(renderR, tr);
+			}
+			const motionRaw = Math.min(1, (Math.hypot(s.vcx, s.vcy) + Math.abs(s.vw) + Math.abs(s.vh)) / 420);
+			item.motionEnv = Math.max(motionRaw, item.motionEnv - dt * 1.9);
+			const motion = item.motionEnv;
+			const blurPx = motion * motion * Math.max(0, eo.contentBlur);
+			if (blurPx > .3) {
+				item.target.style.filter = `blur(${blurPx.toFixed(1)}px)`;
+				item.contentBlurred = true;
+			} else if (item.contentBlurred) {
+				item.target.style.removeProperty("filter");
+				item.contentBlurred = false;
+			}
+		}
+		const bi = item.blobInset ?? 0;
+		const bw = Math.max(0, s.w - bi * 2);
+		const bh = Math.max(0, s.h - bi * 2);
+		const paintRx = pillRadius(renderR - bi, bw, bh);
+		let bendD = "";
+		if (dyn.move && item.bendPathEl) {
+			const mo = dyn.moveOpts ?? MOVE_DEFAULTS;
+			const cap = Math.min(bw, bh) * .5;
+			const bTy = Math.max(-cap, Math.min(cap, s.vcy * .05)) * mo.bend;
+			const capX = Math.min(bw, bh) * .9;
+			const bTx = Math.max(-capX, Math.min(capX, s.vcx * .09)) * mo.bendX;
+			item.bendCur += (bTy - item.bendCur) * Math.min(1, dt * 9);
+			item.bendCurX += (bTx - item.bendCurX) * Math.min(1, dt * 9);
+			const bvx = Math.round(item.bendCurX * 10) / 10;
+			const bvy = Math.round(item.bendCur * 10) / 10;
+			const bendVars = `${bvx},${bvy}`;
+			if (bendVars !== item.lastBendVars) {
+				item.target.style.setProperty("--lg-bend-x", `${bvx}px`);
+				item.target.style.setProperty("--lg-bend-y", `${bvy}px`);
+				item.target.style.setProperty("--lg-bend-xn", String(bvx));
+				item.target.style.setProperty("--lg-bend-yn", String(bvy));
+				item.lastBendVars = bendVars;
+			}
+			if ((Math.abs(item.bendCur) > .5 || Math.abs(item.bendCurX) > .5) && bw > 1 && bh > 1) {
+				const r = Math.min(paintRx, bw / 2, bh / 2);
+				const cy = Math.round(item.bendCur * 2 * 10) / 10;
+				const k = item.bendCurX;
+				const rxR = Math.max(r * .2, Math.min(r * 3, k > 0 ? r - .8 * k : r + 1.6 * -k));
+				const rxL = Math.max(r * .2, Math.min(r * 3, k > 0 ? r + 1.6 * k : r - .8 * -k));
+				const K = .5523;
+				const f2 = (v) => Math.round(v * 10) / 10;
+				bendD = `M ${f2(rxL)} 0 Q ${f2(bw / 2)} ${cy} ${f2(bw - rxR)} 0 C ${f2(bw - rxR + K * rxR)} 0 ${f2(bw)} ${f2(r - K * r)} ${f2(bw)} ${f2(r)} L ${f2(bw)} ${f2(bh - r)} C ${f2(bw)} ${f2(bh - r + K * r)} ${f2(bw - rxR + K * rxR)} ${f2(bh)} ${f2(bw - rxR)} ${f2(bh)} Q ${f2(bw / 2)} ${f2(bh + item.bendCur * 2)} ${f2(rxL)} ${f2(bh)} C ${f2(rxL - K * rxL)} ${f2(bh)} 0 ${f2(bh - r + K * r)} 0 ${f2(bh - r)} L 0 ${f2(r)} C 0 ${f2(r - K * r)} ${f2(rxL - K * rxL)} 0 ${f2(rxL)} 0 Z`;
+			}
+		}
+		const bending = bendD !== "";
+		const paint = {
+			t: `translate(${s.cx - s.w / 2 + bi}px, ${s.cy - s.h / 2 + bi}px)` + extra,
+			w: bending ? "0" : String(bw),
+			h: String(bh),
+			rx: String(paintRx)
+		};
+		const lp = item.lastPaint;
+		if (!lp || lp.t !== paint.t) item.blob.style.transform = paint.t;
+		if (!lp || lp.w !== paint.w) item.blob.setAttribute("width", paint.w);
+		if (!lp || lp.h !== paint.h) item.blob.setAttribute("height", paint.h);
+		if (!lp || lp.rx !== paint.rx) item.blob.setAttribute("rx", paint.rx);
+		item.lastPaint = paint;
+		if (item.bendPathEl) {
+			if (bendD !== (item.lastBendD ?? "")) {
+				item.bendPathEl.setAttribute("d", bendD);
+				item.lastBendD = bendD;
+			}
+			if (bending) item.bendPathEl.style.transform = paint.t;
+		}
+		item.last = f;
+		return !(Math.abs(s.cx - tcx) < .05 && Math.abs(s.cy - tcy) < .05 && Math.abs(s.w - f.w) < .05 && Math.abs(s.h - f.h) < .05 && Math.abs(s.r - tr) < .05 && speed < 1 && Math.abs(s.vw) + Math.abs(s.vh) + Math.abs(s.vr) < 1 && item.motionEnv < .01 && item.tailR < .3 && !cornerActive);
+	}
+	/** Nearest-neighbour proximity → a liquid warp-melt at the contact point.
+	*  The strength is ONE smoothed value: fast attack while approaching, and
+	*  a gradual `releaseMs` decay whenever the target drops — whether from a
+	*  drag release (`active: false`), moving out of range, or absorption. No
+	*  path clears instantly. */
+	writeBlend(item, dt) {
+		const f = item.frame;
+		const blend = item.blend;
+		const melt = item.melt;
+		if (!melt) return false;
+		const range = blend.range ?? Math.max(10, this.gooBlur * 2.5);
+		let bestGap = Infinity;
+		let bestOther = null;
+		for (const other of this.items) {
+			if (other === item || !other.frame) continue;
+			const o2 = other.frame;
+			const dx = Math.max(o2.x - (f.x + f.w), f.x - (o2.x + o2.w), 0);
+			const dy = Math.max(o2.y - (f.y + f.h), f.y - (o2.y + o2.h), 0);
+			const gap = Math.hypot(dx, dy);
+			if (gap < bestGap) {
+				bestGap = gap;
+				bestOther = o2;
+			}
+		}
+		let embed = 0;
+		let contactSpan = 0;
+		if (bestOther && bestGap === 0) {
+			const o2 = bestOther;
+			const ox = Math.min(f.x + f.w, o2.x + o2.w) - Math.max(f.x, o2.x);
+			const oy = Math.min(f.y + f.h, o2.y + o2.h) - Math.max(f.y, o2.y);
+			const span = Math.max(1, Math.min(f.w, f.h, o2.w, o2.h));
+			embed = Math.max(0, Math.min(ox, oy)) / span;
+			contactSpan = Math.max(0, Math.max(ox, oy));
+		}
+		let sTarget = 0;
+		if (bestOther && bestGap < range && blend.active !== false) {
+			const sRaw = smoothstep(Math.min(1, (1 - bestGap / range) / .65));
+			const strength = Math.max(0, Math.min(1, blend.strength ?? 1));
+			const sink = Math.max(.01, blend.sink ?? .45);
+			const sunk = smoothstep(Math.max(0, Math.min(1, (embed - sink * .2) / Math.max(.01, sink * .8))));
+			sTarget = Math.pow(sRaw, 1.25) * strength * (1 - sunk);
+		}
+		if (sTarget >= item.meltFade) {
+			item.meltFade += (sTarget - item.meltFade) * Math.min(1, dt * 16);
+			item.meltRel = null;
+		} else if (sTarget > .02) {
+			item.meltFade += (sTarget - item.meltFade) * Math.min(1, dt * 6);
+			item.meltRel = null;
+		} else {
+			const relMs = Math.max(40, Math.max(blend.releaseMs ?? 240, blend.fadeMs ?? blend.releaseMs ?? 240));
+			if (!item.meltRel) item.meltRel = {
+				from: item.meltFade,
+				t: 0
+			};
+			const rel2 = item.meltRel;
+			rel2.t += dt * 1e3;
+			const k = Math.min(1, rel2.t / relMs);
+			item.meltFade = sTarget + (rel2.from - sTarget) * (1 - k) * (1 - k);
+		}
+		if (sTarget === 0 && item.meltFade < .001) item.meltFade = 0;
+		const s = item.meltFade;
+		if (s <= .001) {
+			if (item.lastBlend && item.lastBlend.s !== 0) {
+				this.clearBlend(item);
+				item.lastBlend = {
+					cx: 0,
+					cy: 0,
+					s: 0,
+					d: 0,
+					pk: ""
+				};
+				return true;
+			}
+			return false;
+		}
+		let o = bestOther;
+		if ((!o || bestGap >= range) && item.meltGeom) o = item.meltGeom.o;
+		if (!o) return false;
+		const cx = f.x + f.w < o.x ? (f.x + f.w + o.x) / 2 : o.x + o.w < f.x ? (o.x + o.w + f.x) / 2 : (Math.max(f.x, o.x) + Math.min(f.x + f.w, o.x + o.w)) / 2;
+		const cy = f.y + f.h < o.y ? (f.y + f.h + o.y) / 2 : o.y + o.h < f.y ? (o.y + o.h + f.y) / 2 : (Math.max(f.y, o.y) + Math.min(f.y + f.h, o.y + o.h)) / 2;
+		item.meltGeom = { o: { ...o } };
+		const rel = item.meltRel;
+		const fadeMs = Math.max(40, blend.fadeMs ?? blend.releaseMs ?? 240);
+		const fadeK = rel ? Math.min(1, rel.t / fadeMs) : 0;
+		const relFade = rel ? (1 - fadeK) * (1 - fadeK) : 1;
+		const sStruct = rel ? Math.min(1, rel.from * (.55 + .45 * (1 - fadeK))) : s;
+		const eStruct = sStruct * sStruct * (3 - 2 * sStruct);
+		item.meltOp = relFade < item.meltOp ? relFade : item.meltOp + (relFade - item.meltOp) * Math.min(1, dt * 16);
+		const zone = blend.zone ?? this.gooBlur * 2.2 + 4;
+		const d = Math.min(Math.min(f.w, f.h) * .9, zone * (.7 + .6 * sStruct));
+		const flowSpeed = Math.max(0, blend.flowSpeed ?? 26);
+		const prevPos = item.meltPrev;
+		const moveSpeed = prevPos ? Math.hypot(f.x - prevPos.x, f.y - prevPos.y) / Math.max(.001, dt) : 0;
+		item.meltPrev = {
+			x: f.x,
+			y: f.y
+		};
+		const phaseAdv = Math.min(dt, 1 / 24) * flowSpeed * .12 * Math.min(1, moveSpeed / 40);
+		item.meltPhase += phaseAdv;
+		const lb = item.lastBlend;
+		const paramKey = `${blend.seamBlur ?? ""}/${blend.strength ?? ""}/${blend.warp}/${blend.blur}/${blend.mix ?? ""}/${blend.gravity ?? ""}`;
+		if (phaseAdv < 1e-4 && lb && lb.pk === paramKey && Math.abs(lb.cx - cx) < .05 && Math.abs(lb.cy - cy) < .05 && Math.abs(lb.s - s) < .005 && Math.abs(lb.d - d) < .05) return false;
+		const nowMs = performance.now();
+		if (this.frameEma > 20 && nowMs - item.meltWroteAt < 35) return true;
+		item.meltWroteAt = nowMs;
+		const round = (v) => Math.round(v * 10) / 10;
+		const host = blend.host;
+		const n = melt.layers.length;
+		const ncx = o.x + o.w / 2;
+		const ncy = o.y + o.h / 2;
+		const gdx = ncx - cx;
+		const gdy = ncy - cy;
+		const gdl = Math.hypot(gdx, gdy) || 1;
+		const gux = gdx / gdl;
+		const guy = gdy / gdl;
+		const gAmt = Math.max(0, blend.gravity ?? 25) * eStruct;
+		const gDeg = round(Math.atan2(guy, gux) * 180 / Math.PI);
+		const r3 = (v) => Math.round(v * 1e3) / 1e3;
+		const taper = Math.max(0, Math.min(1, blend.taper ?? .65));
+		const freqK = Math.max(.2, blend.warpFreq ?? 1);
+		const zoneBase = blend.zone ?? this.gooBlur * 2.2 + 4;
+		const bfBase = Math.min(.3, Math.max(.01, freqK / (zoneBase * 1.1)));
+		const alongF = (bfBase * .35).toFixed(4);
+		const acrossF = (bfBase * 1.6).toFixed(4);
+		const ax = Math.abs(gux);
+		const ay = Math.abs(guy);
+		const axis = item.meltAxis === "x" ? ay > ax * 1.25 ? "y" : "x" : item.meltAxis === "y" ? ax > ay * 1.25 ? "x" : "y" : ax >= ay ? "x" : "y";
+		item.meltAxis = axis;
+		const bfStr = axis === "x" ? `${alongF} ${acrossF}` : `${acrossF} ${alongF}`;
+		const bx = cx + gux * d * .05;
+		const by = cy + guy * d * .05;
+		const layerVals = melt.layers.map((_, i) => {
+			const t = n > 1 ? i / (n - 1) : 1;
+			const blurK = .15 + .85 * Math.pow(t, 1.4);
+			const warpK = .45 + .55 * t;
+			const pr = .7 + .45 * t;
+			const oa = 6 * Math.sin(item.meltPhase * pr);
+			const ob = 2 * Math.sin(item.meltPhase * pr * 1.31 + 1.7);
+			return [
+				String(q(blend.warp * warpK * eStruct, .25)),
+				String(q(blend.blur * blurK * eStruct, .25)),
+				String(q(gux * oa - guy * ob, .5)),
+				String(q(guy * oa + gux * ob, .5)),
+				String(q(bx, .5)),
+				String(q(by, .5)),
+				String(q(d * (.95 - .55 * t), .5)),
+				String(q(Math.min(1, eStruct * (.75 + .25 * t)), .02))
+			];
+		});
+		const anchorX = cx - gux * d;
+		const anchorY = cy - guy * d;
+		const settle = 1 - .45 * smoothstep(Math.min(1, embed * 2.2));
+		const kFlow = Math.min(2.2, (gAmt + bestGap) / Math.max(8, 2 * d)) * (.5 + taper) * settle;
+		const flow = (k) => {
+			const sx = r3(1 + kFlow * k);
+			const sy = r3(1 / (1 + kFlow * .35 * k));
+			return `translate(${round(anchorX)}, ${round(anchorY)}) rotate(${gDeg}) scale(${sx}, ${sy}) rotate(${-gDeg}) translate(${round(-anchorX)}, ${round(-anchorY)})`;
+		};
+		const mixAmt = Math.max(0, Math.min(1, blend.mix ?? 0)) * eStruct;
+		const erodeRow = (amt) => {
+			if (amt < .002) return "0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0 1";
+			const k = r3(1 + 4 * amt);
+			return `0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  ${k} 0 0 0 ${r3(1 - k * (.38 + .12 * amt))}`;
+		};
+		const elong = q(1 + Math.min(1.8, bestGap / Math.max(8, 2 * d)), .05);
+		const zoneT = elong > 1.001 ? `translate(${round(bx)}, ${round(by)}) rotate(${gDeg}) scale(${r3(elong)}, 1) rotate(${-gDeg}) translate(${round(-bx)}, ${round(-by)})` : "";
+		const spread = blend.blur * 2.5 + blend.warp + gAmt * .5 + kFlow * d + 8;
+		const rr = q(d * 1.15 * elong + spread, 8);
+		const regionX = String(q(bx - rr, 8));
+		const regionY = String(q(by - rr, 8));
+		const regionW = String(q(rr * 2, 8));
+		melt.layers.forEach((layer, i) => {
+			const t = n > 1 ? i / (n - 1) : 1;
+			const v = layerVals[i];
+			const shiftT = flow(.4 + .6 * t);
+			const erodeV = erodeRow(q(mixAmt * (.15 + .85 * t), .01));
+			const fp = v.join(",") + "|" + bfStr + "|" + shiftT + "|" + erodeV + "|" + zoneT + "|" + regionX + "," + regionY + "," + regionW;
+			if (layer.last === fp) return;
+			layer.last = fp;
+			layer.filter.setAttribute("x", regionX);
+			layer.filter.setAttribute("y", regionY);
+			layer.filter.setAttribute("width", regionW);
+			layer.filter.setAttribute("height", regionW);
+			layer.disp.setAttribute("scale", v[0]);
+			layer.blurEl.setAttribute("stdDeviation", v[1]);
+			if (layer.turb.getAttribute("baseFrequency") !== bfStr) layer.turb.setAttribute("baseFrequency", bfStr);
+			layer.noiseOffset.setAttribute("dx", v[2]);
+			layer.noiseOffset.setAttribute("dy", v[3]);
+			layer.circle.setAttribute("cx", v[4]);
+			layer.circle.setAttribute("cy", v[5]);
+			layer.circle.setAttribute("r", v[6]);
+			if (zoneT) layer.circle.setAttribute("transform", zoneT);
+			else layer.circle.removeAttribute("transform");
+			layer.gl.setAttribute("opacity", v[7]);
+			layer.shift.setAttribute("transform", shiftT);
+			layer.erode.setAttribute("values", erodeV);
+		});
+		if (melt.seam) {
+			const seam = melt.seam;
+			const sBlur = q((blend.seamBlur ?? blend.blur * 1.6) * eStruct, .25);
+			const sOp = q(Math.min(1, eStruct * 1.2) * .55, .02);
+			const sR = q(d * 1.25, .5);
+			const fp = `${sBlur}|${sOp}|${q(bx, .5)},${q(by, .5)},${sR}|${zoneT}|${regionX},${regionY},${regionW}`;
+			if (seam.last !== fp) {
+				seam.last = fp;
+				seam.filter.setAttribute("x", regionX);
+				seam.filter.setAttribute("y", regionY);
+				seam.filter.setAttribute("width", regionW);
+				seam.filter.setAttribute("height", regionW);
+				seam.blurEl.setAttribute("stdDeviation", String(sBlur));
+				seam.circle.setAttribute("cx", String(q(bx, .5)));
+				seam.circle.setAttribute("cy", String(q(by, .5)));
+				seam.circle.setAttribute("r", String(sR));
+				if (zoneT) seam.circle.setAttribute("transform", zoneT);
+				else seam.circle.removeAttribute("transform");
+				seam.gl.setAttribute("opacity", String(sOp));
+			}
+		}
+		const icx = f.x + f.w / 2;
+		const icy = f.y + f.h / 2;
+		const ang = Math.atan2(cy - icy, cx - icx);
+		const pull = blend.pull * sStruct;
+		const hostStr = r3(item.meltOp).toString() + `|translate(${round(Math.cos(ang) * pull)}px, ${round(Math.sin(ang) * pull)}px)`;
+		if (hostStr !== item.meltHostLast) {
+			item.meltHostLast = hostStr;
+			const parts = hostStr.split("|");
+			host.setAttribute("opacity", parts[0]);
+			host.style.transform = parts[1];
+		}
+		const bridgeRange = Math.max(10, this.gooBlur * 2.5);
+		const sBridge = bestOther ? bestGap < bridgeRange ? smoothstep(1 - bestGap / bridgeRange) : 0 : s;
+		const holeAlpha = q(Math.max(0, 1 - Math.min(s, sBridge) * 2.2), .05).toFixed(2);
+		const holeMid = (Math.round((1 + 2 * Number(holeAlpha)) / 3 * 20) / 20).toFixed(2);
+		for (const entry of melt.entries) {
+			if (!entry.lowRes) {
+				const lo = downscaleHref(entry.el);
+				if (lo) {
+					entry.image.setAttribute("href", lo);
+					entry.lowRes = true;
+				} else if (entry.el.complete && entry.el.naturalWidth) entry.lowRes = true;
+			}
+			const ir = entry.measured;
+			if (!ir || ir.w < 1 || ir.h < 1) continue;
+			const ix = ir.x;
+			const iy = ir.y;
+			const kx = (ir.ow || ir.w) / ir.w;
+			const geom = `${round(ix)},${round(iy)},${round(ir.w)},${round(ir.h)},${round(pillRadius(entry.radiusPx / (kx || 1), ir.w, ir.h))}`;
+			if (geom !== entry.lastGeom) {
+				entry.lastGeom = geom;
+				for (const rect of entry.rects) {
+					rect.setAttribute("x", String(round(ix)));
+					rect.setAttribute("y", String(round(iy)));
+					rect.setAttribute("width", String(round(ir.w)));
+					rect.setAttribute("height", String(round(ir.h)));
+					rect.setAttribute("rx", String(round(pillRadius(entry.radiusPx / (kx || 1), ir.w, ir.h))));
+				}
+				entry.pattern.setAttribute("x", String(round(ix)));
+				entry.pattern.setAttribute("y", String(round(iy)));
+				entry.pattern.setAttribute("width", String(round(ir.w)));
+				entry.pattern.setAttribute("height", String(round(ir.h)));
+				entry.image.setAttribute("width", String(round(ir.w)));
+				entry.image.setAttribute("height", String(round(ir.h)));
+			}
+			const ky = (ir.oh || ir.h) / ir.h;
+			if (Math.hypot(Math.max(ix - cx, cx - (ix + ir.w), 0), Math.max(iy - cy, cy - (iy + ir.h), 0)) > d) {
+				if (entry.lastHole !== null) {
+					entry.lastHole = null;
+					entry.el.style.removeProperty("mask-image");
+					entry.el.style.removeProperty("-webkit-mask-image");
+					entry.el.style.removeProperty("mask-composite");
+					entry.el.style.removeProperty("-webkit-mask-composite");
+				}
+				continue;
+			}
+			const ow = ir.ow || ir.w;
+			const oh = ir.oh || ir.h;
+			const rim = Math.min(ow, oh) / 2;
+			let lx = (cx - ix) * kx;
+			let ly = (cy - iy) * ky;
+			let vx = lx - ow / 2;
+			let vy = ly - oh / 2;
+			const vlen = Math.hypot(vx, vy);
+			if (vlen < rim) {
+				if (vlen < .001) {
+					vx = gux;
+					vy = guy;
+				} else {
+					vx /= vlen;
+					vy /= vlen;
+				}
+				lx = ow / 2 + vx * rim;
+				ly = oh / 2 + vy * rim;
+			}
+			const hx = Math.round(lx);
+			const hy = Math.round(ly);
+			const hd = q(Math.min(Math.max(d, contactSpan * .75) * Math.min(kx, ky), rim), 1);
+			const far = round(Math.max(Math.hypot(hx, hy), Math.hypot(hx - ow, hy), Math.hypot(hx, hy - oh), Math.hypot(hx - ow, hy - oh))) + 2;
+			let hole;
+			if (bestGap === 0 && contactSpan > 4 && bestOther) {
+				const o2 = bestOther;
+				const ncx2 = (o2.x + o2.w / 2 - ix) * kx;
+				const ncy2 = (o2.y + o2.h / 2 - iy) * ky;
+				const ovx0 = (Math.max(f.x, o2.x) - ix) * kx;
+				const ovy0 = (Math.max(f.y, o2.y) - iy) * ky;
+				const ovx1 = (Math.min(f.x + f.w, o2.x + o2.w) - ix) * kx;
+				const ovy1 = (Math.min(f.y + f.h, o2.y + o2.h) - iy) * ky;
+				const rEnd = Math.round(Math.max(Math.hypot(ovx0 - ncx2, ovy0 - ncy2), Math.hypot(ovx1 - ncx2, ovy0 - ncy2), Math.hypot(ovx0 - ncx2, ovy1 - ncy2), Math.hypot(ovx1 - ncx2, ovy1 - ncy2)) + 3);
+				const band = Math.round(Math.min(rim * 2.6, Math.max(hd, (blend.seamBlur ?? blend.blur * 1.6) * 3.2)));
+				const rCore = Math.max(0, rEnd - band);
+				const farR = Math.round(Math.max(Math.hypot(ncx2, ncy2), Math.hypot(ncx2 - ow, ncy2), Math.hypot(ncx2, ncy2 - oh), Math.hypot(ncx2 - ow, ncy2 - oh))) + 2;
+				hole = `radial-gradient(circle at ${Math.round(ncx2)}px ${Math.round(ncy2)}px, rgba(255,255,255,${holeAlpha}) ${rCore}px, #fff ${rEnd}px, #fff ${farR}px)`;
+			} else hole = `radial-gradient(circle at ${hx}px ${hy}px, rgba(255,255,255,${holeAlpha}) ${round(hd * .2)}px, rgba(255,255,255,${holeMid}) ${round(hd * .45)}px, #fff ${round(hd * .78)}px, #fff ${far}px)`;
+			if (hole !== entry.lastHole) {
+				entry.lastHole = hole;
+				entry.el.style.setProperty("mask-image", hole);
+				entry.el.style.setProperty("-webkit-mask-image", hole);
+				entry.el.style.removeProperty("mask-composite");
+				entry.el.style.removeProperty("-webkit-mask-composite");
+			}
+		}
+		item.lastBlend = {
+			cx,
+			cy,
+			s,
+			d,
+			pk: paramKey
+		};
+		return true;
+	}
+	ensureSources() {
+		if (this.sourcesReady) return;
+		const group = this.getGroup();
+		if (!group) return;
+		this.sourcesReady = true;
+		this.mo = new MutationObserver((muts) => {
+			for (const m of muts) {
+				const t = m.target;
+				if (!(t instanceof Element) || !t.closest("[data-gooey-svg], [data-gooey-overlay]")) {
+					this.wake();
+					return;
+				}
+			}
+		});
+		this.mo.observe(group, {
+			attributes: true,
+			childList: true,
+			subtree: true,
+			attributeFilter: ["style", "class"]
+		});
+		const wake = () => this.wake();
+		for (const type of [
+			"transitionrun",
+			"animationstart",
+			"pointerdown"
+		]) {
+			group.addEventListener(type, wake, true);
+			this.removeListeners.push(() => group.removeEventListener(type, wake, true));
+		}
+		window.addEventListener("scroll", wake, {
+			capture: true,
+			passive: true
+		});
+		this.removeListeners.push(() => window.removeEventListener("scroll", wake, true));
+		this.interval = setInterval(() => {
+			if (!this.awake && this.measureAll()) this.wake();
+		}, 300);
+	}
+};
+function splitTop(s, sep) {
+	const parts = [];
+	let depth = 0;
+	let cur = "";
+	for (const ch of s) {
+		if (ch === "(") depth++;
+		else if (ch === ")") depth--;
+		if (depth === 0 && (sep === "," ? ch === "," : /\s/.test(ch))) {
+			if (cur.trim()) parts.push(cur.trim());
+			cur = "";
+		} else cur += ch;
+	}
+	if (cur.trim()) parts.push(cur.trim());
+	return parts;
+}
+var LENGTH = /^[+-]?(\d+\.?\d*|\.\d+)(px)?$/;
+function parseShadow(input) {
+	if (!input || input.trim() === "" || input.trim() === "none") return [];
+	const out = [];
+	for (const layer of splitTop(input, ",")) {
+		const tokens = splitTop(layer, " ");
+		if (tokens.length === 0) continue;
+		const inset = tokens.includes("inset");
+		const nums = [];
+		const colorParts = [];
+		for (const tok of tokens) {
+			if (tok === "inset") continue;
+			if (nums.length < 4 && LENGTH.test(tok)) nums.push(parseFloat(tok));
+			else colorParts.push(tok);
+		}
+		const [x = 0, y = 0, blur = 0, spread = 0] = nums;
+		out.push({
+			x,
+			y,
+			blur,
+			spread,
+			color: colorParts.join(" ") || "rgba(0, 0, 0, 0.35)",
+			inset
+		});
+	}
+	return out;
+}
+var GooeyRoot = (0, import_react.forwardRef)(function Gooey({ blur = 6, contrast = 18, fill = "#fff", shadow, filterPadding = 24, waviness = 0, wavinessFreq = .018, filter: customFilter, className, style, children, ...rest }, fwd) {
+	const groupRef = (0, import_react.useRef)(null);
+	const [portal, setPortal] = (0, import_react.useState)(null);
+	const [meltPortal, setMeltPortal] = (0, import_react.useState)(null);
+	const [size, setSize] = (0, import_react.useState)({
+		w: 0,
+		h: 0
+	});
+	const setRefs = (0, import_react.useCallback)((node) => {
+		groupRef.current = node;
+		if (typeof fwd === "function") fwd(node);
+		else if (fwd) fwd.current = node;
+	}, [fwd]);
+	const filterId = `gooey-${(0, import_react.useId)().replace(/[^a-zA-Z0-9_-]/g, "")}`;
+	const shadows = (0, import_react.useMemo)(() => parseShadow(shadow), [shadow]);
+	useIsoLayoutEffect(() => {
+		const el = groupRef.current;
+		if (!el) return;
+		const measure = () => setSize((prev) => prev.w === el.offsetWidth && prev.h === el.offsetHeight ? prev : {
+			w: el.offsetWidth,
+			h: el.offsetHeight
+		});
+		measure();
+		const ro = new ResizeObserver(measure);
+		ro.observe(el);
+		return () => ro.disconnect();
+	}, []);
+	const engine = (0, import_react.useMemo)(() => new ObserveEngine(() => groupRef.current), []);
+	const imageMelt = (0, import_react.useMemo)(() => createImageMeltRegistry(), []);
+	(0, import_react.useEffect)(() => () => engine.dispose(), [engine]);
+	(0, import_react.useEffect)(() => {
+		engine.gooBlur = blur;
+	}, [engine, blur]);
+	const ctx = (0, import_react.useMemo)(() => ({
+		portal,
+		meltPortal,
+		fill,
+		getGroup: () => groupRef.current,
+		engine,
+		imageMelt
+	}), [
+		portal,
+		meltPortal,
+		fill,
+		engine,
+		imageMelt
+	]);
+	const svgShadows = shadows.filter((s) => s.inset || s.spread !== 0);
+	const cssShadowFilter = shadows.filter((s) => !s.inset && s.spread === 0).map((s) => `drop-shadow(${s.x}px ${s.y}px ${s.blur}px ${s.color})`).join(" ");
+	const shadowExtent = svgShadows.reduce((m, s) => Math.max(m, Math.max(Math.abs(s.x), Math.abs(s.y)) + s.blur * 1.5 + Math.max(0, s.spread)), 0);
+	const pad = Math.ceil(blur * 3 + shadowExtent + filterPadding);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		...rest,
+		ref: setRefs,
+		className,
+		style: {
+			position: "relative",
+			isolation: "isolate",
+			...style
+		},
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+				"aria-hidden": "true",
+				focusable: "false",
+				"data-gooey-svg": "",
+				style: {
+					position: "absolute",
+					inset: 0,
+					width: "100%",
+					height: "100%",
+					overflow: "visible",
+					pointerEvents: "none",
+					zIndex: -1,
+					filter: cssShadowFilter || void 0,
+					willChange: "filter, transform"
+				},
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("defs", { children: customFilter ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("filter", {
+					id: filterId,
+					filterUnits: "userSpaceOnUse",
+					x: -pad,
+					y: -pad,
+					width: size.w + pad * 2,
+					height: size.h + pad * 2,
+					colorInterpolationFilters: "sRGB",
+					dangerouslySetInnerHTML: { __html: customFilter }
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("filter", {
+					id: filterId,
+					filterUnits: "userSpaceOnUse",
+					x: -pad,
+					y: -pad,
+					width: size.w + pad * 2,
+					height: size.h + pad * 2,
+					colorInterpolationFilters: "sRGB",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GooFilterPrimitives, {
+						blur,
+						contrast,
+						shadows: svgShadows,
+						waviness,
+						wavinessFreq
+					})
+				}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+					id: `${filterId}-sil`,
+					ref: setPortal,
+					filter: `url(#${filterId})`,
+					style: { fill }
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+				"aria-hidden": "true",
+				focusable: "false",
+				"data-gooey-overlay": "",
+				style: {
+					position: "absolute",
+					inset: 0,
+					width: "100%",
+					height: "100%",
+					overflow: "visible",
+					pointerEvents: "none",
+					zIndex: 9999
+				},
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("defs", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("mask", {
+					id: `${filterId}-meltmask`,
+					maskUnits: "userSpaceOnUse",
+					x: -pad,
+					y: -pad,
+					width: size.w + pad * 2,
+					height: size.h + pad * 2,
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("use", { href: `#${filterId}-sil` })
+				}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+					mask: `url(#${filterId}-meltmask)`,
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", { ref: setMeltPortal })
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(GooeyContext.Provider, {
+				value: ctx,
+				children: [children, /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ImageMeltLayer, { registry: imageMelt })]
+			})
+		]
 	});
 });
-Input.displayName = "Input";
+var presets = {
+	snappy: {
+		stiffness: 480,
+		damping: 34,
+		mass: 1
+	},
+	smooth: {
+		stiffness: 190,
+		damping: 26,
+		mass: 1
+	},
+	bouncy: {
+		stiffness: 320,
+		damping: 17,
+		mass: 1
+	}
+};
+var DT = 1 / 240;
+function simulate(c) {
+	let x = 0;
+	let v = 0;
+	let t = 0;
+	let settledAt = -1;
+	let max = 0;
+	const xs = [0];
+	while (t < 10) {
+		const a = (-c.stiffness * (x - 1) - c.damping * v) / c.mass;
+		v += a * DT;
+		x += v * DT;
+		t += DT;
+		xs.push(x);
+		if (x > max) max = x;
+		if (Math.abs(x - 1) < .001 && Math.abs(v) < .02) {
+			if (settledAt < 0) settledAt = t;
+			if (t - settledAt >= .064) break;
+		} else settledAt = -1;
+	}
+	const duration = settledAt > 0 ? settledAt : t;
+	const n = Math.round(Math.min(120, Math.max(24, duration * 90)));
+	const lastIdx = Math.min(xs.length - 1, duration / DT);
+	const values = [];
+	for (let i = 0; i <= n; i++) {
+		const idx = Math.min(xs.length - 1, Math.round(i / n * lastIdx));
+		values.push(Math.round(xs[idx] * 1e4) / 1e4);
+	}
+	values[values.length - 1] = 1;
+	return {
+		duration,
+		values,
+		overshoots: max > 1.001
+	};
+}
+var linearOK = null;
+function supportsLinear() {
+	if (linearOK == null) linearOK = typeof CSS !== "undefined" && typeof CSS.supports === "function" && CSS.supports("transition-timing-function", "linear(0, 1)");
+	return linearOK;
+}
+var cache$1 = /* @__PURE__ */ new Map();
+var evalCache = /* @__PURE__ */ new Map();
+function easingFunction(spec) {
+	let fn = evalCache.get(spec);
+	if (fn) return fn;
+	const lin = /^linear\(([^)]+)\)$/.exec(spec.trim());
+	const bez = /^cubic-bezier\(([^)]+)\)$/.exec(spec.trim());
+	if (lin) {
+		const values = lin[1].split(",").map(Number);
+		fn = (t) => {
+			if (t <= 0) return values[0];
+			if (t >= 1) return values[values.length - 1];
+			const f = t * (values.length - 1);
+			const i = Math.floor(f);
+			return values[i] + (values[i + 1] - values[i]) * (f - i);
+		};
+	} else if (bez) {
+		const [x1, y1, x2, y2] = bez[1].split(",").map(Number);
+		fn = (t) => {
+			if (t <= 0) return 0;
+			if (t >= 1) return 1;
+			let lo = 0;
+			let hi = 1;
+			for (let i = 0; i < 24; i++) {
+				const mid = (lo + hi) / 2;
+				if (3 * mid * (1 - mid) * (1 - mid) * x1 + 3 * mid * mid * (1 - mid) * x2 + mid ** 3 < t) lo = mid;
+				else hi = mid;
+			}
+			const u = (lo + hi) / 2;
+			return 3 * u * (1 - u) * (1 - u) * y1 + 3 * u * u * (1 - u) * y2 + u ** 3;
+		};
+	} else if (spec === "ease") fn = easingFunction("cubic-bezier(0.25, 0.1, 0.25, 1)");
+	else if (spec === "ease-in") fn = easingFunction("cubic-bezier(0.42, 0, 1, 1)");
+	else if (spec === "ease-out") fn = easingFunction("cubic-bezier(0, 0, 0.58, 1)");
+	else if (spec === "ease-in-out") fn = easingFunction("cubic-bezier(0.42, 0, 0.58, 1)");
+	else fn = (t) => Math.min(1, Math.max(0, t));
+	evalCache.set(spec, fn);
+	return fn;
+}
+function resolveTransition(t, reducedMotion = false) {
+	if (reducedMotion) return {
+		duration: 0,
+		easing: "linear"
+	};
+	const cfg = t ?? "smooth";
+	if (typeof cfg === "object" && "duration" in cfg) return {
+		duration: cfg.duration,
+		easing: cfg.ease ?? "cubic-bezier(0.22, 1, 0.36, 1)"
+	};
+	const spring = typeof cfg === "string" ? presets[cfg] : {
+		stiffness: 300,
+		damping: 24,
+		mass: 1,
+		...cfg
+	};
+	const key = `${spring.stiffness}/${spring.damping}/${spring.mass}/${supportsLinear()}`;
+	let resolved = cache$1.get(key);
+	if (!resolved) {
+		const sim = simulate(spring);
+		resolved = {
+			duration: Math.round(sim.duration * 1e3),
+			easing: supportsLinear() ? `linear(${sim.values.join(", ")})` : sim.overshoots ? "cubic-bezier(0.34, 1.56, 0.64, 1)" : "cubic-bezier(0.22, 1, 0.36, 1)"
+		};
+		cache$1.set(key, resolved);
+	}
+	return resolved;
+}
+function toEffects(effect) {
+	return Array.isArray(effect) ? effect : effect ? [effect] : [];
+}
+function GooeyItem(props) {
+	const ctx = useGooeyContext();
+	return props.observe || toEffects(props.effect).some((e) => e !== "morph") ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ObservedItem, {
+		...props,
+		ctx
+	}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MirroredItem, {
+		...props,
+		ctx
+	});
+}
+function transitionKey(t) {
+	return typeof t === "string" ? t : JSON.stringify(t ?? null);
+}
+function sameBox(a, b) {
+	return !!a && a.x === b.x && a.y === b.y && a.w === b.w && a.h === b.h && a.r.every((v, i) => v === b.r[i]);
+}
+function MirroredItem({ x = 0, y = 0, scale = 1, transition = "smooth", delay = 0, radius, className, style, children, ctx }) {
+	const wrapRef = (0, import_react.useRef)(null);
+	const blobRef = (0, import_react.useRef)(null);
+	const [box, setBox] = (0, import_react.useState)(null);
+	const reduced = useReducedMotion$1();
+	const tKey = transitionKey(transition);
+	const { duration, easing } = (0, import_react.useMemo)(() => resolveTransition(transition, reduced), [tKey, reduced]);
+	useIsoLayoutEffect(() => {
+		const el = wrapRef.current;
+		const group = ctx.getGroup();
+		if (!el || !group) return;
+		const measure = () => {
+			const base = offsetTo(el, group);
+			const w = el.offsetWidth;
+			const h = el.offsetHeight;
+			const target = el.firstElementChild ?? el;
+			const r = radius != null ? normalizeRadius(radius) : measureRadius(target, w, h);
+			const next = {
+				x: base.x,
+				y: base.y,
+				w,
+				h,
+				r
+			};
+			setBox((prev) => sameBox(prev, next) ? prev : next);
+		};
+		measure();
+		const ro = new ResizeObserver(measure);
+		ro.observe(el);
+		ro.observe(group);
+		return () => ro.disconnect();
+	}, [ctx, radius == null ? "" : JSON.stringify(radius)]);
+	const cur = (0, import_react.useRef)(null);
+	const writeTransform = (px, py, ps) => {
+		const t = `translate(${px}px, ${py}px)` + (ps !== 1 ? ` scale(${ps})` : "");
+		if (wrapRef.current) wrapRef.current.style.transform = t;
+		if (blobRef.current) blobRef.current.style.transform = t;
+	};
+	useIsoLayoutEffect(() => {
+		const from = cur.current;
+		if (!from || duration <= 0 || from.x === x && from.y === y && from.s === scale) {
+			cur.current = {
+				x,
+				y,
+				s: scale
+			};
+			writeTransform(x, y, scale);
+			return;
+		}
+		const f = { ...from };
+		const ease = easingFunction(easing);
+		const start = performance.now() + delay;
+		let raf = 0;
+		const tick = (now) => {
+			const p = Math.min(1, Math.max(0, (now - start) / duration));
+			const e = ease(p);
+			const cx = f.x + (x - f.x) * e;
+			const cy = f.y + (y - f.y) * e;
+			const cs = f.s + (scale - f.s) * e;
+			cur.current = {
+				x: cx,
+				y: cy,
+				s: cs
+			};
+			writeTransform(cx, cy, cs);
+			if (p < 1) raf = requestAnimationFrame(tick);
+		};
+		raf = requestAnimationFrame(tick);
+		return () => cancelAnimationFrame(raf);
+	}, [
+		x,
+		y,
+		scale,
+		duration,
+		easing,
+		delay
+	]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		ref: wrapRef,
+		className,
+		style: {
+			display: "inline-block",
+			...style,
+			willChange: "transform"
+		},
+		children
+	}), ctx.portal && box && (0, import_react_dom.createPortal)(renderBlob(box, {
+		transformBox: "fill-box",
+		transformOrigin: "center",
+		willChange: "transform"
+	}, (el) => {
+		blobRef.current = el;
+		if (el) {
+			const c = cur.current ?? {
+				x,
+				y,
+				s: scale
+			};
+			el.style.transform = `translate(${c.x}px, ${c.y}px)` + (c.s !== 1 ? ` scale(${c.s})` : "");
+		}
+	}), ctx.portal)] });
+}
+function renderBlob(box, style, setRef) {
+	const [tl, tr, br, bl] = box.r;
+	if (tl === tr && tr === br && br === bl) {
+		const rx = Math.max(0, Math.min(tl, Math.min(box.w, box.h) / 2));
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+			ref: setRef,
+			x: box.x,
+			y: box.y,
+			width: box.w,
+			height: box.h,
+			rx,
+			style
+		});
+	}
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+		ref: setRef,
+		d: roundedRectPath(box.x, box.y, box.w, box.h, box.r),
+		style
+	});
+}
+function ObservedItem({ radius, blobInset, bridgeGrow, contactBlur, effect, evolve, move, className, style, children, ctx }) {
+	const hostRef = (0, import_react.useRef)(null);
+	const blobRef = (0, import_react.useRef)(null);
+	const meltRef = (0, import_react.useRef)(null);
+	const blendRef = (0, import_react.useRef)(null);
+	const opts = typeof contactBlur === "object" ? contactBlur : {};
+	const blendBlur = opts.blur ?? 8;
+	const blendWarp = opts.warp ?? 26;
+	const blendPull = opts.pull ?? 4;
+	const blendRange = opts.range;
+	const blendZone = opts.zone;
+	const blendMix = opts.mix ?? 0;
+	const blendGravity = opts.gravity ?? 60;
+	const blendTaper = opts.taper ?? 1;
+	const blendWarpFreq = opts.warpFreq ?? 1.7;
+	const blendFlowSpeed = opts.flowSpeed ?? 22;
+	const blendWarpStyle = opts.warpStyle ?? "fractalNoise";
+	const blendDetail = opts.detail ?? 2;
+	const blendActive = opts.active !== false;
+	const blendRelease = opts.releaseMs ?? 240;
+	const blendFade = opts.fadeMs;
+	const blendStrength = opts.strength ?? 1;
+	const blendSink = opts.sink;
+	const blendSurface = opts.surface;
+	const blendSeamBlur = opts.seamBlur;
+	const effects = toEffects(effect);
+	const dynamics = {
+		evolve: effects.includes("evolve"),
+		move: effects.includes("move"),
+		evolveOpts: {
+			...EVOLVE_DEFAULTS,
+			...evolve
+		},
+		moveOpts: {
+			...MOVE_DEFAULTS,
+			...move
+		}
+	};
+	const hasDynamics = dynamics.evolve || dynamics.move;
+	useIsoLayoutEffect(() => {
+		const host = hostRef.current;
+		const blob = blobRef.current;
+		const target = host?.firstElementChild ?? null;
+		if (!target || !blob) return;
+		const blend = contactBlur && meltRef.current ? {
+			host: meltRef.current,
+			blur: blendBlur,
+			warp: blendWarp,
+			pull: blendPull,
+			range: blendRange,
+			zone: blendZone,
+			mix: blendMix,
+			gravity: blendGravity,
+			taper: blendTaper,
+			warpFreq: blendWarpFreq,
+			flowSpeed: blendFlowSpeed,
+			warpStyle: blendWarpStyle,
+			detail: blendDetail,
+			active: blendActive,
+			releaseMs: blendRelease,
+			fadeMs: blendFade,
+			strength: blendStrength,
+			sink: blendSink,
+			surface: blendSurface,
+			seamBlur: blendSeamBlur
+		} : void 0;
+		blendRef.current = blend ?? null;
+		return ctx.engine.add({
+			target,
+			blob,
+			radius: radius == null ? void 0 : normalizeRadius(radius)[0],
+			blobInset,
+			bridgeGrow,
+			blend,
+			dynamics: hasDynamics ? dynamics : void 0
+		});
+	}, [
+		ctx,
+		radius == null ? "" : JSON.stringify(radius),
+		contactBlur ? `${blendBlur}/${blendWarp}/${blendPull}/${blendRange ?? "auto"}/${blendZone ?? "auto"}/${blendMix}/${blendGravity}/${blendTaper}/${blendWarpFreq}/${blendFlowSpeed}/${blendWarpStyle}/${blendDetail}/${blendSurface ?? "liquid"}/${(blendSeamBlur ?? 1) > 0 ? "seam" : "noseam"}` : "",
+		effects.join(",") + (dynamics.evolve ? JSON.stringify(dynamics.evolveOpts) : "") + (dynamics.move ? JSON.stringify(dynamics.moveOpts) : ""),
+		blobInset,
+		bridgeGrow
+	]);
+	(0, import_react.useEffect)(() => {
+		if (!blendRef.current) return;
+		blendRef.current.active = blendActive;
+		blendRef.current.releaseMs = blendRelease;
+		blendRef.current.fadeMs = blendFade;
+		blendRef.current.strength = blendStrength;
+		blendRef.current.sink = blendSink;
+		blendRef.current.seamBlur = blendSeamBlur;
+		ctx.engine.wake();
+	}, [
+		ctx,
+		blendActive,
+		blendRelease,
+		blendFade,
+		blendStrength,
+		blendSink,
+		blendSeamBlur
+	]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+			ref: hostRef,
+			className,
+			style: {
+				display: "contents",
+				...style
+			},
+			children
+		}),
+		ctx.portal && (0, import_react_dom.createPortal)(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+			ref: blobRef,
+			x: 0,
+			y: 0,
+			width: 0,
+			height: 0,
+			style: {
+				willChange: "transform",
+				transformBox: "fill-box",
+				transformOrigin: "center"
+			}
+		}), ctx.portal),
+		contactBlur !== void 0 && contactBlur !== false && ctx.meltPortal && (0, import_react_dom.createPortal)(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+			ref: meltRef,
+			opacity: 0
+		}), ctx.meltPortal)
+	] });
+}
+function zeta(bounce) {
+	return Math.max(.12, 1 - 1.1 * Math.min(1, Math.max(0, bounce)));
+}
+function mapMorphSprings(t) {
+	const s = Math.max(.25, t?.speed ?? 1);
+	const k = zeta(t?.bounce ?? .5) / zeta(.5);
+	return {
+		massStiffness: EVOLVE_DEFAULTS.massStiffness * s * s,
+		massDamping: EVOLVE_DEFAULTS.massDamping * s * k,
+		sizeStiffness: EVOLVE_DEFAULTS.sizeStiffness * s * s,
+		sizeDamping: EVOLVE_DEFAULTS.sizeDamping * s * k,
+		radiusStiffness: EVOLVE_DEFAULTS.radiusStiffness * s * s,
+		radiusDamping: EVOLVE_DEFAULTS.radiusDamping * s,
+		cornerDuration: EVOLVE_DEFAULTS.cornerDuration / s,
+		contentBlur: t?.contentBlur ?? EVOLVE_DEFAULTS.contentBlur
+	};
+}
+function mapDissolve(d) {
+	return {
+		warp: 26,
+		blur: 8,
+		mix: .7,
+		gravity: 60,
+		taper: 1,
+		warpFreq: 1.7,
+		flowSpeed: 22,
+		detail: 2,
+		zone: 18,
+		range: 49,
+		releaseMs: 110,
+		strength: typeof d === "number" ? Math.min(1, Math.max(0, d)) : 1
+	};
+}
+function mapMove(t) {
+	const p = Math.min(1, Math.max(0, t?.springiness ?? .5));
+	const stiffness = MOVE_DEFAULTS.stiffness * Math.pow(10, p - .5);
+	return {
+		stiffness,
+		damping: MOVE_DEFAULTS.damping * Math.sqrt(stiffness / MOVE_DEFAULTS.stiffness) * (zeta(t?.wobble ?? .5) / zeta(.5)),
+		stretch: .5 * Math.min(1, Math.max(0, t?.stretch ?? .36)),
+		tail: .8 * Math.min(1, Math.max(0, t?.trail ?? .575)),
+		...t?.advanced
+	};
+}
+function mapBend(t) {
+	return {
+		...mapMove({
+			springiness: 1,
+			stretch: 0,
+			trail: 0
+		}),
+		bend: Math.min(1, Math.max(0, t?.vertical ?? .6)),
+		bendX: Math.min(1, Math.max(0, t?.horizontal ?? .35)),
+		...t?.advanced
+	};
+}
+function MeltItem({ melt, children }) {
+	const { imageMelt } = useGooeyContext();
+	const { src, ...tuning } = melt ?? {};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ImageMeltItem, {
+		src,
+		opts: {
+			...IMAGE_MELT_DEFAULTS,
+			...tuning
+		},
+		registry: imageMelt,
+		children
+	});
+}
+function LiquidItem(props) {
+	const { effect = "morph", morph, move, bend, melt, dissolve, observe, ...rest } = props;
+	if (effect === "melt") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MeltItem, {
+		melt,
+		children: rest.children
+	});
+	if (effect === "bend") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GooeyItem, {
+		...rest,
+		observe: true,
+		effect: "move",
+		move: mapBend(bend)
+	});
+	if (effect === "move") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GooeyItem, {
+		...rest,
+		observe: true,
+		effect: "move",
+		move: mapMove(move)
+	});
+	const adv = morph?.advanced;
+	const shape = !!morph?.shape;
+	const contactBlur = dissolve !== void 0 && dissolve !== false ? typeof dissolve === "object" ? {
+		...mapDissolve(true),
+		...dissolve
+	} : mapDissolve(dissolve) : void 0;
+	const evolve = shape ? {
+		...mapMorphSprings(morph),
+		...adv?.evolve
+	} : void 0;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GooeyItem, {
+		...rest,
+		observe: observe || shape || !!contactBlur || void 0,
+		effect: shape ? "evolve" : void 0,
+		evolve,
+		contactBlur,
+		blobInset: adv?.blobInset,
+		bridgeGrow: adv?.bridgeGrow
+	});
+}
+var Liquid = Object.assign(GooeyRoot, { Item: LiquidItem });
 //#endregion
-//#region frontend/src/components/ui/avatar.jsx
-var Avatar = import_react.forwardRef(({ className, children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-	ref,
-	className: cn("relative flex h-9 w-9 shrink-0 overflow-hidden rounded-full items-center justify-center font-bold text-xs bg-[#d9d0c4] text-[#42372b] select-none", className),
-	...props,
-	children
-}));
-Avatar.displayName = "Avatar";
+//#region frontend/src/components/GooeyNewButton.jsx
+var _jsxFileName$10 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/GooeyNewButton.jsx";
+var transition = {
+	duration: 280,
+	ease: "cubic-bezier(0.22, 1, 0.36, 1)"
+};
+function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onShareClientLink }) {
+	const [open, setOpen] = (0, import_react.useState)(false);
+	const rootRef = (0, import_react.useRef)(null);
+	(0, import_react.useEffect)(() => {
+		if (!open) return;
+		const closeOnOutsidePress = (event) => {
+			if (!rootRef.current?.contains(event.target)) setOpen(false);
+		};
+		const closeOnEscape = (event) => {
+			if (event.key === "Escape") setOpen(false);
+		};
+		document.addEventListener("pointerdown", closeOnOutsidePress);
+		document.addEventListener("keydown", closeOnEscape);
+		return () => {
+			document.removeEventListener("pointerdown", closeOnOutsidePress);
+			document.removeEventListener("keydown", closeOnEscape);
+		};
+	}, [open]);
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		ref: rootRef,
+		className: "relative z-40 flex h-12 items-center justify-center overflow-visible",
+		children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Liquid, {
+			fill: "#202020",
+			blur: 5,
+			contrast: 18,
+			filterPadding: 200,
+			shadow: "0 4px 12px rgba(10, 20, 36, .18)",
+			className: "size-12 overflow-visible",
+			children: [[
+				{
+					label: "New project",
+					Icon: FolderPlus,
+					x: -70,
+					y: -62,
+					onClick: onCreateProject
+				},
+				{
+					label: "Add member",
+					Icon: UserPlus,
+					x: -88,
+					y: -116,
+					onClick: onAddMember,
+					disabled: !hasProject
+				},
+				{
+					label: "Client link",
+					Icon: Link2,
+					x: -16,
+					y: -138,
+					onClick: onShareClientLink,
+					disabled: !hasProject
+				}
+			].map(({ label, Icon, x, y, onClick, disabled }) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Liquid.Item, {
+				className: "absolute left-0.5 top-0.5",
+				x: open ? x : 0,
+				y: open ? y : 0,
+				scale: open ? 1 : 0,
+				transition,
+				delay: 0,
+				children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", {
+					type: "button",
+					"aria-label": label,
+					title: label,
+					tabIndex: open && !disabled ? 0 : -1,
+					disabled,
+					className: "grid size-11 place-items-center rounded-full text-white outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-45",
+					style: { pointerEvents: open ? "auto" : "none" },
+					onClick: () => {
+						setOpen(false);
+						onClick();
+					},
+					children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Icon, {
+						className: "size-5",
+						"aria-hidden": "true"
+					}, void 0, false, {
+						fileName: _jsxFileName$10,
+						lineNumber: 53,
+						columnNumber: 10
+					}, this)
+				}, void 0, false, {
+					fileName: _jsxFileName$10,
+					lineNumber: 44,
+					columnNumber: 9
+				}, this)
+			}, label, false, {
+				fileName: _jsxFileName$10,
+				lineNumber: 35,
+				columnNumber: 66
+			}, this)), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Liquid.Item, {
+				className: "absolute inset-0",
+				children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", {
+					type: "button",
+					"aria-label": open ? "Close new actions" : "Open new actions",
+					"aria-expanded": open,
+					className: "grid size-12 place-items-center rounded-full border-2 border-white text-white outline-2 outline-offset-[-5px] outline-[#202020] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+					onClick: () => setOpen((value) => !value),
+					children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Plus, {
+						className: `size-5 transition-transform duration-200 ease-out ${open ? "rotate-45" : ""}`,
+						"aria-hidden": "true"
+					}, void 0, false, {
+						fileName: _jsxFileName$10,
+						lineNumber: 62,
+						columnNumber: 10
+					}, this)
+				}, void 0, false, {
+					fileName: _jsxFileName$10,
+					lineNumber: 56,
+					columnNumber: 9
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$10,
+				lineNumber: 55,
+				columnNumber: 7
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$10,
+			lineNumber: 34,
+			columnNumber: 5
+		}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+			className: "sr-only",
+			children: "New actions"
+		}, void 0, false, {
+			fileName: _jsxFileName$10,
+			lineNumber: 65,
+			columnNumber: 5
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$10,
+		lineNumber: 33,
+		columnNumber: 10
+	}, this);
+}
+//#endregion
+//#region frontend/src/components/EmployeeManager.jsx
+var _jsxFileName$9 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/EmployeeManager.jsx";
+var roles = [
+	"Project admin",
+	"Designer",
+	"Site supervisor",
+	"Site team",
+	"Contractor",
+	"Trade worker",
+	"Other"
+];
+function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpdated }) {
+	const [projectId, setProjectId] = (0, import_react.useState)(defaultProjectId || "");
+	const [credentials, setCredentials] = (0, import_react.useState)(null);
+	const [busy, setBusy] = (0, import_react.useState)(false);
+	const [error, setError] = (0, import_react.useState)("");
+	const [copied, setCopied] = (0, import_react.useState)(false);
+	(0, import_react.useEffect)(() => {
+		if (open) {
+			setProjectId(defaultProjectId || projects[0]?.id || "");
+			setCredentials(null);
+			setError("");
+			setCopied(false);
+		}
+	}, [open, defaultProjectId]);
+	const submit = async (event, existing) => {
+		event.preventDefault();
+		setBusy(true);
+		setError("");
+		const data = Object.fromEntries(new FormData(event.currentTarget));
+		const url = existing ? `/api/founder/projects/${projectId}/employees` : "/api/founder/employees";
+		try {
+			const response = await fetch(url, {
+				method: "POST",
+				credentials: "same-origin",
+				headers: { "content-type": "application/json" },
+				body: JSON.stringify(existing ? data : {
+					...data,
+					projectId
+				})
+			});
+			const result = await response.json();
+			if (!response.ok) throw new Error(result.error || "Could not save employee.");
+			await onUpdated();
+			if (existing) onOpenChange(false);
+			else setCredentials(result.credentials);
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	const copy = async () => {
+		if (!credentials) return;
+		try {
+			await navigator.clipboard.writeText(`Studio Iksha employee access\nLink: ${credentials.link}\nEmployee ID: ${credentials.employeeId}\nPassword: ${credentials.password}`);
+			setCopied(true);
+		} catch {
+			setError("Could not copy. Select and copy the details below.");
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Dialog, {
+		open,
+		onOpenChange,
+		children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogContent, {
+			className: "max-h-[90dvh] overflow-y-auto",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogTitle, { children: credentials ? "Employee access is ready" : "Add employee" }, void 0, false, {
+					fileName: _jsxFileName$9,
+					lineNumber: 43,
+					columnNumber: 129
+				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogDescription, { children: credentials ? "Copy these details now. The password is shown only once." : "Give an employee access to one project, or assign an existing employee ID to another." }, void 0, false, {
+					fileName: _jsxFileName$9,
+					lineNumber: 43,
+					columnNumber: 215
+				}, this)] }, void 0, true, {
+					fileName: _jsxFileName$9,
+					lineNumber: 43,
+					columnNumber: 115
+				}, this),
+				credentials ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					className: "space-y-3",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+							className: "grid gap-1 text-xs font-medium",
+							children: ["Employee login link", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+								value: credentials.link,
+								readOnly: true,
+								className: "font-mono text-xs"
+							}, void 0, false, {
+								fileName: _jsxFileName$9,
+								lineNumber: 44,
+								columnNumber: 116
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$9,
+							lineNumber: 44,
+							columnNumber: 47
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+							className: "grid gap-1 text-xs font-medium",
+							children: ["Employee ID", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+								value: credentials.employeeId,
+								readOnly: true,
+								className: "font-mono"
+							}, void 0, false, {
+								fileName: _jsxFileName$9,
+								lineNumber: 44,
+								columnNumber: 258
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$9,
+							lineNumber: 44,
+							columnNumber: 197
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+							className: "grid gap-1 text-xs font-medium",
+							children: ["Password", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+								value: credentials.password,
+								readOnly: true,
+								className: "font-mono"
+							}, void 0, false, {
+								fileName: _jsxFileName$9,
+								lineNumber: 44,
+								columnNumber: 395
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$9,
+							lineNumber: 44,
+							columnNumber: 337
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							className: "rounded-xl bg-amber-50 p-3 text-xs text-amber-900",
+							children: "Share the password privately with the employee. It cannot be viewed again after closing this window."
+						}, void 0, false, {
+							fileName: _jsxFileName$9,
+							lineNumber: 44,
+							columnNumber: 472
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+							className: "h-11 w-full",
+							onClick: copy,
+							children: [copied ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Check, {}, void 0, false, {
+								fileName: _jsxFileName$9,
+								lineNumber: 44,
+								columnNumber: 698
+							}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Copy, {}, void 0, false, {
+								fileName: _jsxFileName$9,
+								lineNumber: 44,
+								columnNumber: 710
+							}, this), copied ? "Copied" : "Copy link and credentials"]
+						}, void 0, true, {
+							fileName: _jsxFileName$9,
+							lineNumber: 44,
+							columnNumber: 641
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+							variant: "outline",
+							className: "w-full",
+							onClick: () => onOpenChange(false),
+							children: "Done"
+						}, void 0, false, {
+							fileName: _jsxFileName$9,
+							lineNumber: 44,
+							columnNumber: 777
+						}, this)
+					]
+				}, void 0, true, {
+					fileName: _jsxFileName$9,
+					lineNumber: 44,
+					columnNumber: 20
+				}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					className: "space-y-4",
+					children: [projects.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+						className: "grid gap-1.5 text-sm font-medium",
+						children: ["Project", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(NativeSelect, {
+							value: projectId,
+							onChange: (event) => setProjectId(event.target.value),
+							className: "w-full",
+							children: projects.map((project) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", {
+								value: project.id,
+								children: project.name
+							}, project.id, false, {
+								fileName: _jsxFileName$9,
+								lineNumber: 45,
+								columnNumber: 218
+							}, this))
+						}, void 0, false, {
+							fileName: _jsxFileName$9,
+							lineNumber: 45,
+							columnNumber: 85
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$9,
+						lineNumber: 45,
+						columnNumber: 26
+					}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						className: "rounded-xl bg-muted p-3 text-sm text-muted-foreground",
+						children: "Create a project before adding employees."
+					}, void 0, false, {
+						fileName: _jsxFileName$9,
+						lineNumber: 45,
+						columnNumber: 313
+					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Tabs, {
+						defaultValue: "new",
+						className: "gap-4",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsList, {
+								className: "w-full",
+								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsTrigger, {
+									value: "new",
+									children: "New employee"
+								}, void 0, false, {
+									fileName: _jsxFileName$9,
+									lineNumber: 46,
+									columnNumber: 79
+								}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsTrigger, {
+									value: "existing",
+									children: "Existing ID"
+								}, void 0, false, {
+									fileName: _jsxFileName$9,
+									lineNumber: 46,
+									columnNumber: 130
+								}, this)]
+							}, void 0, true, {
+								fileName: _jsxFileName$9,
+								lineNumber: 46,
+								columnNumber: 50
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsContent, {
+								value: "new",
+								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("form", {
+									onSubmit: (event) => submit(event, false),
+									className: "space-y-3",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+											className: "grid gap-1 text-xs font-medium",
+											children: ["Full name", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+												name: "name",
+												required: true,
+												maxLength: 120,
+												placeholder: "Aarav Sharma"
+											}, void 0, false, {
+												fileName: _jsxFileName$9,
+												lineNumber: 47,
+												columnNumber: 164
+											}, this)]
+										}, void 0, true, {
+											fileName: _jsxFileName$9,
+											lineNumber: 47,
+											columnNumber: 105
+										}, this),
+										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+											className: "grid gap-1 text-xs font-medium",
+											children: ["Designation", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+												name: "designation",
+												required: true,
+												maxLength: 120,
+												placeholder: "Interior designer"
+											}, void 0, false, {
+												fileName: _jsxFileName$9,
+												lineNumber: 47,
+												columnNumber: 306
+											}, this)]
+										}, void 0, true, {
+											fileName: _jsxFileName$9,
+											lineNumber: 47,
+											columnNumber: 245
+										}, this),
+										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+											className: "grid grid-cols-2 gap-3",
+											children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+												className: "grid gap-1 text-xs font-medium",
+												children: ["Email (optional)", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+													name: "email",
+													type: "email",
+													maxLength: 200,
+													placeholder: "name@example.com"
+												}, void 0, false, {
+													fileName: _jsxFileName$9,
+													lineNumber: 47,
+													columnNumber: 505
+												}, this)]
+											}, void 0, true, {
+												fileName: _jsxFileName$9,
+												lineNumber: 47,
+												columnNumber: 439
+											}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+												className: "grid gap-1 text-xs font-medium",
+												children: ["Phone (optional)", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+													name: "phone",
+													type: "tel",
+													maxLength: 40,
+													placeholder: "+91…"
+												}, void 0, false, {
+													fileName: _jsxFileName$9,
+													lineNumber: 47,
+													columnNumber: 661
+												}, this)]
+											}, void 0, true, {
+												fileName: _jsxFileName$9,
+												lineNumber: 47,
+												columnNumber: 595
+											}, this)]
+										}, void 0, true, {
+											fileName: _jsxFileName$9,
+											lineNumber: 47,
+											columnNumber: 399
+										}, this),
+										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+											className: "grid gap-1 text-xs font-medium",
+											children: ["Project role", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(NativeSelect, {
+												name: "role",
+												className: "w-full",
+												children: roles.map((role) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { children: role }, role, false, {
+													fileName: _jsxFileName$9,
+													lineNumber: 47,
+													columnNumber: 870
+												}, this))
+											}, void 0, false, {
+												fileName: _jsxFileName$9,
+												lineNumber: 47,
+												columnNumber: 804
+											}, this)]
+										}, void 0, true, {
+											fileName: _jsxFileName$9,
+											lineNumber: 47,
+											columnNumber: 742
+										}, this),
+										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+											type: "submit",
+											className: "h-11 w-full",
+											disabled: busy || !projectId,
+											children: "Create employee access"
+										}, void 0, false, {
+											fileName: _jsxFileName$9,
+											lineNumber: 47,
+											columnNumber: 929
+										}, this)
+									]
+								}, void 0, true, {
+									fileName: _jsxFileName$9,
+									lineNumber: 47,
+									columnNumber: 34
+								}, this)
+							}, void 0, false, {
+								fileName: _jsxFileName$9,
+								lineNumber: 47,
+								columnNumber: 9
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsContent, {
+								value: "existing",
+								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("form", {
+									onSubmit: (event) => submit(event, true),
+									className: "space-y-3",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+											className: "grid gap-1 text-xs font-medium",
+											children: ["Existing employee ID", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+												name: "employeeId",
+												required: true,
+												placeholder: "EMP-XXXXXXXXXX",
+												autoCapitalize: "characters"
+											}, void 0, false, {
+												fileName: _jsxFileName$9,
+												lineNumber: 48,
+												columnNumber: 179
+											}, this)]
+										}, void 0, true, {
+											fileName: _jsxFileName$9,
+											lineNumber: 48,
+											columnNumber: 109
+										}, this),
+										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+											className: "grid gap-1 text-xs font-medium",
+											children: ["Role on this project", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(NativeSelect, {
+												name: "role",
+												className: "w-full",
+												children: roles.map((role) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { children: role }, role, false, {
+													fileName: _jsxFileName$9,
+													lineNumber: 48,
+													columnNumber: 416
+												}, this))
+											}, void 0, false, {
+												fileName: _jsxFileName$9,
+												lineNumber: 48,
+												columnNumber: 350
+											}, this)]
+										}, void 0, true, {
+											fileName: _jsxFileName$9,
+											lineNumber: 48,
+											columnNumber: 280
+										}, this),
+										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+											className: "text-xs leading-relaxed text-muted-foreground",
+											children: "The employee keeps the same login ID and password. This project appears in their workspace after assignment."
+										}, void 0, false, {
+											fileName: _jsxFileName$9,
+											lineNumber: 48,
+											columnNumber: 475
+										}, this),
+										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+											type: "submit",
+											className: "h-11 w-full",
+											disabled: busy || !projectId,
+											children: "Assign to project"
+										}, void 0, false, {
+											fileName: _jsxFileName$9,
+											lineNumber: 48,
+											columnNumber: 648
+										}, this)
+									]
+								}, void 0, true, {
+									fileName: _jsxFileName$9,
+									lineNumber: 48,
+									columnNumber: 39
+								}, this)
+							}, void 0, false, {
+								fileName: _jsxFileName$9,
+								lineNumber: 48,
+								columnNumber: 9
+							}, this)
+						]
+					}, void 0, true, {
+						fileName: _jsxFileName$9,
+						lineNumber: 46,
+						columnNumber: 7
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$9,
+					lineNumber: 44,
+					columnNumber: 880
+				}, this),
+				error && /* @__PURE__ */ (void 0)("p", {
+					role: "alert",
+					className: "text-xs text-destructive",
+					children: error
+				}, void 0, false, {
+					fileName: _jsxFileName$9,
+					lineNumber: 51,
+					columnNumber: 15
+				}, this)
+			]
+		}, void 0, true, {
+			fileName: _jsxFileName$9,
+			lineNumber: 43,
+			columnNumber: 58
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$9,
+		lineNumber: 43,
+		columnNumber: 10
+	}, this);
+}
+function EmployeeManager({ employees, projects, onAdd }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		className: "space-y-5",
+		children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+			className: "flex flex-wrap items-start justify-between gap-3",
+			children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+					className: "text-xs font-semibold uppercase tracking-wider text-primary",
+					children: "Team access"
+				}, void 0, false, {
+					fileName: _jsxFileName$9,
+					lineNumber: 56,
+					columnNumber: 108
+				}, this),
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+					className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
+					children: "Employees"
+				}, void 0, false, {
+					fileName: _jsxFileName$9,
+					lineNumber: 56,
+					columnNumber: 198
+				}, this),
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+					className: "mt-1 text-sm text-muted-foreground",
+					children: "One employee ID can belong to several projects."
+				}, void 0, false, {
+					fileName: _jsxFileName$9,
+					lineNumber: 56,
+					columnNumber: 283
+				}, this)
+			] }, void 0, true, {
+				fileName: _jsxFileName$9,
+				lineNumber: 56,
+				columnNumber: 103
+			}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+				onClick: onAdd,
+				disabled: !projects.length,
+				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(UserPlus, {}, void 0, false, {
+					fileName: _jsxFileName$9,
+					lineNumber: 56,
+					columnNumber: 442
+				}, this), "Add employee"]
+			}, void 0, true, {
+				fileName: _jsxFileName$9,
+				lineNumber: 56,
+				columnNumber: 390
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$9,
+			lineNumber: 56,
+			columnNumber: 37
+		}, this), employees.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+			className: "grid gap-3 sm:grid-cols-2",
+			children: employees.map((employee) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
+				className: "space-y-3 p-4",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						className: "flex items-start gap-3",
+						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+							className: "grid size-10 shrink-0 place-items-center rounded-full bg-primary/10 text-primary",
+							children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Users, { className: "size-5" }, void 0, false, {
+								fileName: _jsxFileName$9,
+								lineNumber: 57,
+								columnNumber: 299
+							}, this)
+						}, void 0, false, {
+							fileName: _jsxFileName$9,
+							lineNumber: 57,
+							columnNumber: 200
+						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "min-w-0 flex-1",
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", {
+								className: "truncate text-sm font-semibold",
+								children: employee.name
+							}, void 0, false, {
+								fileName: _jsxFileName$9,
+								lineNumber: 57,
+								columnNumber: 366
+							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								className: "text-xs text-muted-foreground",
+								children: employee.designation
+							}, void 0, false, {
+								fileName: _jsxFileName$9,
+								lineNumber: 57,
+								columnNumber: 433
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$9,
+							lineNumber: 57,
+							columnNumber: 334
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$9,
+						lineNumber: 57,
+						columnNumber: 160
+					}, this),
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						className: "font-mono text-xs text-muted-foreground",
+						children: employee.id
+					}, void 0, false, {
+						fileName: _jsxFileName$9,
+						lineNumber: 57,
+						columnNumber: 516
+					}, this),
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						className: "flex flex-wrap gap-1.5",
+						children: employee.projectIds?.length ? employee.projectIds.map((id) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Badge, {
+							variant: "secondary",
+							children: projects.find((project) => project.id === id)?.name || "Project"
+						}, id, false, {
+							fileName: _jsxFileName$9,
+							lineNumber: 57,
+							columnNumber: 691
+						}, this)) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+							className: "text-xs text-muted-foreground",
+							children: "No active projects"
+						}, void 0, false, {
+							fileName: _jsxFileName$9,
+							lineNumber: 57,
+							columnNumber: 805
+						}, this)
+					}, void 0, false, {
+						fileName: _jsxFileName$9,
+						lineNumber: 57,
+						columnNumber: 588
+					}, this)
+				]
+			}, void 0, true, {
+				fileName: _jsxFileName$9,
+				lineNumber: 57,
+				columnNumber: 121
+			}, this) }, employee.id, false, {
+				fileName: _jsxFileName$9,
+				lineNumber: 57,
+				columnNumber: 97
+			}, this))
+		}, void 0, false, {
+			fileName: _jsxFileName$9,
+			lineNumber: 57,
+			columnNumber: 25
+		}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
+			className: "py-12 text-center",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Users, { className: "mx-auto size-9 text-muted-foreground/50" }, void 0, false, {
+					fileName: _jsxFileName$9,
+					lineNumber: 57,
+					columnNumber: 966
+				}, this),
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", {
+					className: "mt-3 text-sm font-semibold",
+					children: "No employee accounts yet"
+				}, void 0, false, {
+					fileName: _jsxFileName$9,
+					lineNumber: 57,
+					columnNumber: 1027
+				}, this),
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+					className: "mt-1 text-xs text-muted-foreground",
+					children: "Add a team member to generate their login link and credentials."
+				}, void 0, false, {
+					fileName: _jsxFileName$9,
+					lineNumber: 57,
+					columnNumber: 1099
+				}, this)
+			]
+		}, void 0, true, {
+			fileName: _jsxFileName$9,
+			lineNumber: 57,
+			columnNumber: 923
+		}, this) }, void 0, false, {
+			fileName: _jsxFileName$9,
+			lineNumber: 57,
+			columnNumber: 917
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$9,
+		lineNumber: 56,
+		columnNumber: 10
+	}, this);
+}
+//#endregion
+//#region node_modules/thinking-orbs/dist/index-B8WsUNf5.js
+function lerp(a, b, f) {
+	return a + (b - a) * f;
+}
+function frac(x) {
+	return x - Math.floor(x);
+}
+function vnoise(x, y) {
+	const xi = Math.floor(x);
+	const yi = Math.floor(y);
+	let fx = x - xi;
+	let fy = y - yi;
+	fx = fx * fx * (3 - 2 * fx);
+	fy = fy * fy * (3 - 2 * fy);
+	const a = hashD(xi, yi);
+	const b = hashD(xi + 1, yi);
+	const c = hashD(xi, yi + 1);
+	const d = hashD(xi + 1, yi + 1);
+	return a + (b - a) * fx + (c - a) * fy + (a - b - c + d) * fx * fy;
+}
+function hashD(a, b) {
+	const h = Math.sin(a * 12.9898 + b * 78.233) * 43758.5453;
+	return h - Math.floor(h);
+}
+function fibDir(i, n) {
+	const golden = Math.PI * (3 - Math.sqrt(5));
+	const y = 1 - 2 * (i + .5) / n;
+	const rad = Math.sqrt(1 - y * y);
+	const a = i * golden;
+	return [
+		rad * Math.cos(a),
+		y,
+		rad * Math.sin(a)
+	];
+}
+function angleDelta(a, b) {
+	return Math.atan2(Math.sin(a - b), Math.cos(a - b));
+}
+function makeProj(yaw, tilt, cx, cy, scale) {
+	const st = Math.sin(tilt);
+	const ct = Math.cos(tilt);
+	const sy = Math.sin(yaw);
+	const cyw = Math.cos(yaw);
+	return (x, y, z) => {
+		const x1 = x * cyw + z * sy;
+		const z1 = -x * sy + z * cyw;
+		const y1 = y * ct - z1 * st;
+		const z2 = y * st + z1 * ct;
+		return [
+			cx + x1 * scale,
+			cy - y1 * scale,
+			z2
+		];
+	};
+}
+function inkColor(w, alpha, dark, tint) {
+	if (!tint) {
+		const g = Math.round((dark ? 1 - w : w) * 255);
+		return `rgba(${g},${g},${g},${alpha})`;
+	}
+	const ramp = (c) => Math.round(dark ? c * (1 - w) : c + (255 - c) * w);
+	return `rgba(${ramp(tint.r)},${ramp(tint.g)},${ramp(tint.b)},${alpha})`;
+}
+function paint(ctx, dots, dark, rMin = .3, tint) {
+	for (const d of dots) {
+		const alpha = d.a ?? 1;
+		ctx.fillStyle = inkColor(Math.min(1, Math.max(0, d.white)), alpha, dark, tint);
+		ctx.beginPath();
+		ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+		ctx.fill();
+	}
+}
+function paintLines(ctx, lines, dark, tint) {
+	for (const l of lines) {
+		const alpha = l.a ?? 1;
+		ctx.strokeStyle = inkColor(Math.min(1, Math.max(0, l.white)), alpha, dark, tint);
+		ctx.lineWidth = l.w;
+		ctx.beginPath();
+		ctx.moveTo(l.x1, l.y1);
+		ctx.lineTo(l.x2, l.y2);
+		ctx.stroke();
+	}
+}
+function finalizeFrame(dots, lines, rMin = .3) {
+	const visible = [];
+	for (const d of dots) {
+		if ((d.a ?? 1) < .02) continue;
+		d.r = Math.max(rMin, d.r);
+		visible.push(d);
+	}
+	visible.sort((a, b) => a.z - b.z);
+	return {
+		dots: visible,
+		lines: lines.filter((l) => (l.a ?? 1) >= .02)
+	};
+}
+function paintFrame(ctx, frame, dark, tint) {
+	if (frame.lines.length) paintLines(ctx, frame.lines, dark, tint);
+	paint(ctx, frame.dots, dark, .3, tint);
+}
+function radiusScale(size, pow) {
+	return (size / 300) ** pow;
+}
+var COUNT_PAIRS = [
+	["latRings", "lonDensity"],
+	["rings", "lonDensity"],
+	["lanes", "segs"]
+];
+var COUNT_KEYS = [
+	"orbitN",
+	"ghostN",
+	"nodeN",
+	"strandN",
+	"signals"
+];
+var ICON_DENSITY_KEYS = ["iconD"];
+var RADIUS_KEYS = [
+	"rBase",
+	"rDepth",
+	"rActive",
+	"rDot",
+	"ghostR",
+	"partR",
+	"partRDepth",
+	"nodeR",
+	"nodeRDepth"
+];
+function scaleCounts(opts, scale) {
+	const out = { ...opts };
+	const done = /* @__PURE__ */ new Set();
+	const rt = Math.sqrt(scale);
+	for (const [a, b] of COUNT_PAIRS) {
+		const va = out[a];
+		const vb = out[b];
+		if (va != null && vb != null && !done.has(a) && !done.has(b)) {
+			out[a] = Math.max(2, Math.round(va * rt));
+			out[b] = Math.max(2, Math.round(vb * rt));
+			done.add(a);
+			done.add(b);
+		}
+	}
+	for (const k of COUNT_KEYS) {
+		const v = out[k];
+		if (v != null && v !== 0 && !done.has(k)) out[k] = Math.max(1, Math.round(v * scale));
+	}
+	for (const k of ICON_DENSITY_KEYS) {
+		const v = out[k];
+		if (v != null) out[k] = Math.max(.02, v * scale);
+	}
+	return out;
+}
+function scaleRadii(opts, scale) {
+	const out = { ...opts };
+	for (const k of RADIUS_KEYS) {
+		const v = out[k];
+		if (v != null) out[k] = v * scale;
+	}
+	out.rSizeMul = (out.rSizeMul ?? 1) * scale;
+	return out;
+}
+var BASE_PROFILES = {
+	globe: {
+		latRings: 17,
+		lonDensity: 44,
+		rBase: .6,
+		rDepth: 1.7,
+		rBoost: 1,
+		inkFar: .62,
+		inkSpan: .54,
+		rsPow: .6,
+		rMin: .3
+	},
+	orbits: {
+		orbitN: 12,
+		ghostN: 40,
+		ghostR: .9,
+		ghostA: .5,
+		particles: 3,
+		partR: 1.2,
+		partRDepth: 1.6,
+		rsPow: .6,
+		rMin: .3
+	},
+	rubik: {
+		latRings: 15,
+		lonDensity: 40,
+		moveCount: 14,
+		rBase: .6,
+		rDepth: 1.7,
+		rActive: .3,
+		inkFar: .62,
+		inkSpan: .54,
+		rsPow: .6,
+		rMin: .3
+	},
+	wave: {
+		rings: 15,
+		lonDensity: 40,
+		rBase: .6,
+		rDepth: 1.7,
+		rsPow: .6,
+		rMin: .3
+	},
+	web: {
+		nodeN: 30,
+		thr: .72,
+		signals: 5,
+		nodeR: 1.4,
+		nodeRDepth: 1.8,
+		lineW: .8,
+		rsPow: .6,
+		rMin: .3
+	},
+	braid: {
+		strandN: 52,
+		turns: 3,
+		ghostN: 150,
+		rBase: 1.2,
+		rDepth: 1.8,
+		rsPow: .6,
+		rMin: .3
+	},
+	ribbon: {
+		lanes: 5,
+		segs: 88,
+		ghostN: 150,
+		rBase: 1.1,
+		rDepth: 1.7,
+		rsPow: .6,
+		rMin: .3
+	},
+	ring: {
+		lanes: 5,
+		segs: 88,
+		ghostN: 0,
+		faceOn: 1,
+		rBase: 1.1,
+		rDepth: 1.7,
+		rsPow: .6,
+		rMin: .3
+	},
+	morph: {
+		rDot: .021,
+		iconD: 1,
+		rMin: .25
+	}
+};
+var frameBraid = (size, t, o) => {
+	const cx = size / 2;
+	const cy = size / 2;
+	const R = size / 2 * .76;
+	const pt = makeProj(t * .4, .3, cx, cy, 1);
+	const rs = radiusScale(size, o.rsPow ?? .6);
+	const dots = [];
+	const ghostN = o.ghostN ?? 150;
+	for (let i = 0; i < ghostN; i++) {
+		const d = fibDir(i, ghostN);
+		const [px, py, z] = pt(d[0] * R, d[1] * R, d[2] * R);
+		const depth = (z / R + 1) / 2;
+		dots.push({
+			x: px,
+			y: py,
+			z,
+			r: .8 * rs,
+			white: .78,
+			a: .1 + .22 * depth
+		});
+	}
+	const strandN = o.strandN ?? 52;
+	const turns = o.turns ?? 3;
+	for (let s = 0; s < 3; s++) {
+		const phase = s / 3 * 2 * Math.PI;
+		for (let i = 0; i < strandN; i++) {
+			const u = (frac(i / strandN + t * .045) * 2 - 1) * .96;
+			const surf = Math.sqrt(Math.max(0, 1 - u * u));
+			const endFade = Math.min(1, (1 - Math.abs(u)) / .1);
+			const a = u * Math.PI * turns + phase;
+			const weave = 1 + .075 * Math.sin(u * Math.PI * turns * 2 + phase * 2 + t * .8);
+			const rr = surf * R * weave;
+			const [px, py, zr] = pt(Math.cos(a) * rr, u * R * weave, Math.sin(a) * rr);
+			const depth = (zr / R + 1) / 2;
+			dots.push({
+				x: px,
+				y: py,
+				z: zr,
+				r: ((o.rBase ?? 1.2) + (o.rDepth ?? 1.8) * depth) * rs,
+				white: .55 - .45 * depth,
+				a: endFade * (.45 + .55 * depth)
+			});
+		}
+	}
+	return finalizeFrame(dots, [], o.rMin);
+};
+function solveCycle(time, count, slotDur, rest) {
+	const tc = time % (2 * count * slotDur + rest);
+	const amount = new Array(count).fill(0);
+	let active = -1;
+	if (tc < 2 * count * slotDur) {
+		const slot = Math.floor(tc / slotDur);
+		const p = (tc - slot * slotDur) / slotDur;
+		const ep = 1 - (1 - Math.min(1, p / .7)) ** 3;
+		if (slot < count) {
+			for (let i = 0; i < slot; i++) amount[i] = 1;
+			amount[slot] = ep;
+			active = slot;
+		} else {
+			const u = 2 * count - 1 - slot;
+			for (let i = 0; i < u; i++) amount[i] = 1;
+			amount[u] = 1 - ep;
+			active = u;
+		}
+	}
+	return {
+		amount,
+		active
+	};
+}
+function applyMoves(pt3, moves, sc) {
+	let [x, y, z] = pt3;
+	let inActive = false;
+	for (let i = 0; i < moves.length; i++) {
+		if (sc.amount[i] <= 0) continue;
+		const mv = moves[i];
+		const coord = mv.axis === 0 ? x : mv.axis === 1 ? y : z;
+		if (coord < mv.lo || coord >= mv.hi) continue;
+		if (i === sc.active) inActive = true;
+		const a = mv.ang * sc.amount[i];
+		const ca = Math.cos(a);
+		const sa = Math.sin(a);
+		if (mv.axis === 0) {
+			const y2 = y * ca - z * sa;
+			z = y * sa + z * ca;
+			y = y2;
+		} else if (mv.axis === 1) {
+			const x2 = x * ca + z * sa;
+			z = -x * sa + z * ca;
+			x = x2;
+		} else {
+			const x2 = x * ca - y * sa;
+			y = x * sa + y * ca;
+			x = x2;
+		}
+	}
+	return [
+		x,
+		y,
+		z,
+		inActive
+	];
+}
+function makeMoves(count) {
+	const moves = [];
+	for (let i = 0; i < count; i++) {
+		const axis = Math.min(2, Math.floor(hashD(i, 2.3) * 3));
+		const lo = -1 + .5 * Math.min(3, Math.floor(hashD(i, 5.9) * 4));
+		const dir = hashD(i, 7.7) < .5 ? 1 : -1;
+		moves.push({
+			axis,
+			lo,
+			hi: lo + .5,
+			ang: dir * Math.PI / 2
+		});
+	}
+	return moves;
+}
+var frameGlobe = (size, t, o) => {
+	const spin = .5;
+	const cx = size / 2;
+	const cy = size / 2;
+	const radius = size / 2 * .82;
+	const tilt = .4 + .06 * Math.sin(t * .35);
+	const pt = makeProj(t * spin, tilt, cx, cy, radius);
+	const scan = t * (spin + 1.2 * (o.scanMul ?? 1));
+	const rs = radiusScale(size, o.rsPow ?? .6);
+	const dimBase = o.dimBase ?? 1;
+	const dots = [];
+	const latRings = o.latRings ?? 17;
+	const lonDensity = o.lonDensity ?? 44;
+	for (let li = 0; li <= latRings; li++) {
+		const lat = -Math.PI / 2 + li / latRings * Math.PI;
+		const cosLat = Math.cos(lat);
+		const sinLat = Math.sin(lat);
+		const lonCount = Math.max(1, Math.round(Math.abs(cosLat) * lonDensity));
+		for (let lj = 0; lj < lonCount; lj++) {
+			const lon = lj / lonCount * 2 * Math.PI;
+			const [px, py, z] = pt(cosLat * Math.cos(lon), sinLat, cosLat * Math.sin(lon));
+			const depth = (z + 1) / 2;
+			const d = angleDelta(lon + t * spin, scan);
+			const boost = Math.exp(-(d * d) / .18) * Math.max(0, z);
+			dots.push({
+				x: px,
+				y: py,
+				z,
+				r: ((o.rBase ?? .6) + (o.rDepth ?? 1.7) * depth + (o.rBoost ?? 1) * boost) * rs,
+				white: (o.inkFar ?? .62) - (o.inkSpan ?? .54) * depth,
+				a: dimBase + (1 - dimBase) * Math.min(1, boost)
+			});
+		}
+	}
+	return finalizeFrame(dots, [], o.rMin);
+};
+var frameRubik = (size, t, o) => {
+	const cx = size / 2;
+	const cy = size / 2;
+	const R = size / 2 * .82;
+	const pt = makeProj(t * .55, .35 + .1 * Math.sin(t * .9), cx, cy, R);
+	const rs = radiusScale(size, o.rsPow ?? .6);
+	const moveCount = o.moveCount ?? 14;
+	const moves = makeMoves(moveCount);
+	const sc = solveCycle(t, moveCount, .42, 1.2);
+	const dots = [];
+	const latRings = o.latRings ?? 15;
+	const lonDensity = o.lonDensity ?? 40;
+	for (let li = 0; li <= latRings; li++) {
+		const lat = -Math.PI / 2 + li / latRings * Math.PI;
+		const cosLat = Math.cos(lat);
+		const sinLat = Math.sin(lat);
+		const lonCount = Math.max(1, Math.round(Math.abs(cosLat) * lonDensity));
+		for (let lj = 0; lj < lonCount; lj++) {
+			const lon = lj / lonCount * 2 * Math.PI;
+			const [x, y, z, inActive] = applyMoves([
+				cosLat * Math.cos(lon),
+				sinLat,
+				cosLat * Math.sin(lon)
+			], moves, sc);
+			const [px, py, zr] = pt(x, y, z);
+			const depth = (zr + 1) / 2;
+			dots.push({
+				x: px,
+				y: py,
+				z: zr,
+				r: ((o.rBase ?? .6) + (o.rDepth ?? 1.7) * depth + (inActive ? o.rActive ?? .3 : 0)) * rs,
+				white: (o.inkFar ?? .62) - (o.inkSpan ?? .54) * depth - (inActive ? .14 : 0)
+			});
+		}
+	}
+	return finalizeFrame(dots, [], o.rMin);
+};
+var frameWave = (size, t, o) => {
+	const cx = size / 2;
+	const cy = size / 2;
+	const R = size / 2 * .874;
+	const pt = makeProj(t * .18, .38, cx, cy, 1);
+	const rs = radiusScale(size, o.rsPow ?? .6);
+	const dots = [];
+	const rings = o.rings ?? 15;
+	const lonDensity = o.lonDensity ?? 40;
+	for (let ri = 0; ri <= rings; ri++) {
+		const lat = -Math.PI / 2 + ri / rings * Math.PI;
+		const cosLat = Math.cos(lat);
+		const sinLat = Math.sin(lat);
+		const w = .62 * Math.sin(t * 2.1 - ri * .52) + .38 * Math.sin(t * 1.27 + ri * .83);
+		const rr = R * (.88 + .105 * w);
+		const lonCount = Math.max(1, Math.round(Math.abs(cosLat) * lonDensity));
+		for (let lj = 0; lj < lonCount; lj++) {
+			const lon = lj / lonCount * 2 * Math.PI;
+			const [px, py, z] = pt(cosLat * Math.cos(lon) * rr, sinLat * rr, cosLat * Math.sin(lon) * rr);
+			const depth = (z / R + 1) / 2;
+			const crest = Math.max(0, w);
+			dots.push({
+				x: px,
+				y: py,
+				z,
+				r: ((o.rBase ?? .6) + (o.rDepth ?? 1.7) * depth) * (1 + .4 * crest) * rs,
+				white: .66 - .56 * depth - .1 * crest
+			});
+		}
+	}
+	return finalizeFrame(dots, [], o.rMin);
+};
+function smoothE(x) {
+	return x * x * (3 - 2 * x);
+}
+function polyPath(verts) {
+	const V = verts.length;
+	const L = [];
+	let total = 0;
+	for (let i = 0; i < V; i++) {
+		const a = verts[i];
+		const b = verts[(i + 1) % V];
+		const l = Math.hypot(b[0] - a[0], b[1] - a[1]);
+		L.push(l);
+		total += l;
+	}
+	return (f) => {
+		let target = f * total;
+		let i = 0;
+		while (target > L[i] && i < V - 1) {
+			target -= L[i];
+			i++;
+		}
+		const a = verts[i];
+		const b = verts[(i + 1) % V];
+		const ff = L[i] ? Math.min(1, target / L[i]) : 0;
+		return [a[0] + (b[0] - a[0]) * ff, a[1] + (b[1] - a[1]) * ff];
+	};
+}
+var CIRCLE = (f) => {
+	const a = -Math.PI / 2 + f * 2 * Math.PI;
+	return [Math.cos(a) * .24, Math.sin(a) * .24];
+};
+var CYCLE = [
+	CIRCLE,
+	polyPath([
+		[0, -.26],
+		[.24, .16],
+		[-.24, .16]
+	]),
+	polyPath([
+		[0, -.2],
+		[.2, -.2],
+		[.2, .2],
+		[-.2, .2],
+		[-.2, -.2]
+	])
+];
+function morphN(d) {
+	return Math.max(6, Math.round(34 * d));
+}
+var HOLD = 1.4;
+var MORPH = .9;
+var SEG = 2.3;
+var frameMorph = (size, t, o) => {
+	const K = CYCLE.length;
+	const tc = t % (SEG * K);
+	const held = o.shape != null && o.shape >= 0 && o.shape < K ? Math.floor(o.shape) : -1;
+	const k = held >= 0 ? held : Math.floor(tc / SEG);
+	const local = held >= 0 ? t % SEG : tc - k * SEG;
+	const m = held >= 0 ? 0 : local > HOLD ? smoothE((local - HOLD) / MORPH) : 0;
+	const sprd = o.spread ?? 1;
+	const pA = CYCLE[k];
+	const pB = held >= 0 ? pA : CYCLE[(k + 1) % K];
+	const M = 160;
+	const pts = [];
+	for (let i = 0; i < M; i++) {
+		const f = i / M;
+		const a = pA(f);
+		const b = pB(f);
+		pts.push([(a[0] + (b[0] - a[0]) * m) * sprd, (a[1] + (b[1] - a[1]) * m) * sprd]);
+	}
+	const L = [];
+	let total = 0;
+	for (let i = 0; i < M; i++) {
+		const a = pts[i];
+		const b = pts[(i + 1) % M];
+		const l = Math.hypot(b[0] - a[0], b[1] - a[1]);
+		L.push(l);
+		total += l;
+	}
+	const n = morphN(o.iconD ?? 1);
+	const re = (o.rDot ?? .021) * 1.35 * sprd;
+	const pulse = 1 + .02 * Math.sin(local * 3.1);
+	const dots = [];
+	const c2 = size / 2;
+	let seg = 0;
+	let acc = 0;
+	for (let k2 = 0; k2 < n; k2++) {
+		const target = k2 / n * total;
+		while (acc + L[seg] < target && seg < 159) {
+			acc += L[seg];
+			seg++;
+		}
+		const a = pts[seg];
+		const b = pts[(seg + 1) % M];
+		const f = L[seg] ? Math.min(1, (target - acc) / L[seg]) : 0;
+		const x = (a[0] + (b[0] - a[0]) * f) * pulse;
+		const y = (a[1] + (b[1] - a[1]) * f) * pulse;
+		dots.push({
+			x: c2 + x * size,
+			y: c2 + y * size,
+			z: 0,
+			r: Math.max(.35, re * size),
+			white: .1
+		});
+	}
+	return finalizeFrame(dots, [], o.rMin);
+};
+var frameOrbits = (size, t, o) => {
+	const cx = size / 2;
+	const cy = size / 2;
+	const R = size / 2 * .82;
+	const pt = makeProj(t * .12, .3, cx, cy, 1);
+	const rs = radiusScale(size, o.rsPow ?? .6);
+	const dots = [];
+	const orbitN = o.orbitN ?? 12;
+	const ghostN = o.ghostN ?? 40;
+	const particles = o.particles ?? 3;
+	for (let orb = 0; orb < orbitN; orb++) {
+		const h1 = hashD(orb, 1.7);
+		const h2 = hashD(orb, 5.2);
+		const h3 = hashD(orb, 8.9);
+		const ro = R * (.45 + .52 * h1);
+		const th = h1 * 2 * Math.PI;
+		const phi = Math.acos(2 * h2 - 1);
+		const nx = Math.sin(phi) * Math.cos(th);
+		const ny = Math.cos(phi);
+		const nz = Math.sin(phi) * Math.sin(th);
+		let ux = -ny;
+		let uy = nx;
+		const uz = 0;
+		const ul = Math.max(1e-6, Math.sqrt(ux * ux + uy * uy));
+		ux /= ul;
+		uy /= ul;
+		const vx = ny * uz - nz * uy;
+		const vy = nz * ux - nx * uz;
+		const vz = nx * uy - ny * ux;
+		const speed = (.25 + .55 * h3) * (h3 > .5 ? 1 : -1);
+		for (let k = 0; k < ghostN; k++) {
+			const a = k / ghostN * 2 * Math.PI;
+			const [px, py, z] = pt((ux * Math.cos(a) + vx * Math.sin(a)) * ro, (uy * Math.cos(a) + vy * Math.sin(a)) * ro, (uz * Math.cos(a) + vz * Math.sin(a)) * ro);
+			const depth = (z / ro + 1) / 2;
+			dots.push({
+				x: px,
+				y: py,
+				z,
+				r: (o.ghostR ?? .9) * rs,
+				white: .72,
+				a: (o.ghostA ?? .5) * (.4 + .6 * depth)
+			});
+		}
+		for (let m = 0; m < particles; m++) {
+			const a = t * speed + m / particles * 2 * Math.PI + h2 * 6;
+			const [px, py, z] = pt((ux * Math.cos(a) + vx * Math.sin(a)) * ro, (uy * Math.cos(a) + vy * Math.sin(a)) * ro, (uz * Math.cos(a) + vz * Math.sin(a)) * ro);
+			const depth = (z / ro + 1) / 2;
+			dots.push({
+				x: px,
+				y: py,
+				z,
+				r: ((o.partR ?? 1.2) + (o.partRDepth ?? 1.6) * depth) * rs,
+				white: .3 - .22 * depth
+			});
+		}
+	}
+	return finalizeFrame(dots, [], o.rMin);
+};
+var frameRibbon = (size, t, o) => {
+	const cx = size / 2;
+	const cy = size / 2;
+	const R = size / 2 * .78;
+	const spin = o.spin ?? 1;
+	const pt = makeProj(t * .1 * spin, .3, cx, cy, 1);
+	const rs = radiusScale(size, o.rsPow ?? .6);
+	const dots = [];
+	const ghostN = o.ghostN ?? 150;
+	for (let i = 0; i < ghostN; i++) {
+		const d = fibDir(i, ghostN);
+		const [px, py, z] = pt(d[0] * R, d[1] * R, d[2] * R);
+		const depth = (z / R + 1) / 2;
+		dots.push({
+			x: px,
+			y: py,
+			z,
+			r: .8 * rs,
+			white: .78,
+			a: .1 + .22 * depth
+		});
+	}
+	const ya = t * .24 * spin;
+	const ta = o.faceOn ? -.3 : .55 + .3 * Math.sin(t * .18) * spin;
+	const ux = Math.cos(ya);
+	const uy = 0;
+	const uz = Math.sin(ya);
+	const vx = -uz * Math.sin(ta);
+	const vy = Math.cos(ta);
+	const vz = ux * Math.sin(ta);
+	const nx = uy * vz - uz * vy;
+	const ny = uz * vx - ux * vz;
+	const nz = ux * vy - uy * vx;
+	const wobAmp = .23 * (o.wobMul ?? 1);
+	const baseR = o.faceOn ? R / (1 + .85 * wobAmp) : R;
+	const baseLanes = o.lanes ?? 5;
+	const segs = o.segs ?? 88;
+	const lanes = Math.max(1, Math.round(baseLanes * (o.bandMul ?? 1)));
+	for (let w = 0; w < lanes; w++) {
+		const laneOff = (w - (lanes - 1) / 2) * .075;
+		const edge = Math.abs(w - (lanes - 1) / 2) / Math.max(1, (lanes - 1) / 2);
+		for (let k = 0; k < segs; k++) {
+			const a = k / segs * 2 * Math.PI;
+			const wob = (.16 * Math.sin(a * 3 - t * 1.7 + w * .22) + .07 * Math.sin(a * 5 + t * 1.1)) * (o.wobMul ?? 1);
+			const radial = o.faceOn ? 1 + wob : 1;
+			const off = o.faceOn ? laneOff : laneOff + wob;
+			const x = ux * Math.cos(a) + vx * Math.sin(a) + nx * off;
+			const y = uy * Math.cos(a) + vy * Math.sin(a) + ny * off;
+			const z = uz * Math.cos(a) + vz * Math.sin(a) + nz * off;
+			const l = Math.sqrt(x * x + y * y + z * z);
+			const rr = baseR * radial;
+			const [px, py, zr] = pt(x / l * rr, y / l * rr, z / l * rr);
+			const depth = (zr / R + 1) / 2;
+			dots.push({
+				x: px,
+				y: py,
+				z: zr,
+				r: ((o.rBase ?? 1.1) + (o.rDepth ?? 1.7) * depth) * (1 - .25 * edge) * rs,
+				white: .52 - .44 * depth + .18 * edge,
+				a: .4 + .6 * depth
+			});
+		}
+	}
+	return finalizeFrame(dots, [], o.rMin);
+};
+var frameWeb = (size, t, o) => {
+	const cx = size / 2;
+	const cy = size / 2;
+	const R = size / 2 * .8 * (o.spread ?? 1);
+	const pt = makeProj(t * .12, .32, cx, cy, R);
+	const rs = radiusScale(size, o.rsPow ?? .6);
+	const nodeN = o.nodeN ?? 30;
+	const thr = o.thr ?? .72;
+	const nodeR = o.nodeR ?? 1.4;
+	const nodeRDepth = o.nodeRDepth ?? 1.8;
+	const nodes = [];
+	for (let i = 0; i < nodeN; i++) {
+		const d = fibDir(i, nodeN);
+		const x = d[0] + .3 * (vnoise(i * .31 + 9, t * .24) - .5) * 2;
+		const y = d[1] + .3 * (vnoise(i * .53 + 27, t * .21) - .5) * 2;
+		const z = d[2] + .3 * (vnoise(i * .77 + 55, t * .27) - .5) * 2;
+		const l = Math.sqrt(x * x + y * y + z * z);
+		nodes.push([
+			x / l,
+			y / l,
+			z / l
+		]);
+	}
+	const lines = [];
+	const dots = [];
+	for (let i = 0; i < nodeN; i++) for (let j = i + 1; j < nodeN; j++) {
+		const dx = nodes[i][0] - nodes[j][0];
+		const dy = nodes[i][1] - nodes[j][1];
+		const dz = nodes[i][2] - nodes[j][2];
+		const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+		if (dist >= thr) continue;
+		const [x1, y1, z1] = pt(nodes[i][0], nodes[i][1], nodes[i][2]);
+		const [x2, y2, z2] = pt(nodes[j][0], nodes[j][1], nodes[j][2]);
+		const depth = ((z1 + z2) / 2 + 1) / 2;
+		lines.push({
+			x1,
+			y1,
+			x2,
+			y2,
+			white: .42,
+			a: (1 - dist / thr) * (.3 + .55 * depth),
+			w: Math.max(.6, (o.lineW ?? .8) * rs)
+		});
+	}
+	for (let i = 0; i < nodeN; i++) {
+		const [px, py, z] = pt(nodes[i][0], nodes[i][1], nodes[i][2]);
+		const depth = (z + 1) / 2;
+		const pulse = 1 + .25 * Math.sin(t * 1.4 + i * 2.7);
+		dots.push({
+			x: px,
+			y: py,
+			z,
+			r: (nodeR + nodeRDepth * depth) * pulse * rs,
+			white: .55 - .45 * depth
+		});
+	}
+	const signals = o.signals ?? 5;
+	for (let s = 0; s < signals; s++) {
+		const seg = Math.floor(t * .55 + s * 7.31);
+		const a = Math.floor(hashD(seg, s * 3.1 + 1.7) * nodeN);
+		const b = Math.floor(hashD(seg, s * 5.7 + 4.2) * nodeN);
+		if (a === b) continue;
+		const f = frac(t * .55 + s * 7.31);
+		const x = lerp(nodes[a][0], nodes[b][0], f);
+		const y = lerp(nodes[a][1], nodes[b][1], f);
+		const z = lerp(nodes[a][2], nodes[b][2], f);
+		const l = Math.max(1e-6, Math.sqrt(x * x + y * y + z * z));
+		const [px, py, zr] = pt(x / l, y / l, z / l);
+		const depth = (zr + 1) / 2;
+		dots.push({
+			x: px,
+			y: py,
+			z: zr,
+			r: (nodeR * 1.5 + nodeRDepth * depth) * rs,
+			white: .05,
+			a: .5 + .5 * depth
+		});
+	}
+	return finalizeFrame(dots, lines, o.rMin);
+};
+var MODE_FRAMES = {
+	orbits: frameOrbits,
+	globe: frameGlobe,
+	rubik: frameRubik,
+	wave: frameWave,
+	web: frameWeb,
+	braid: frameBraid,
+	ribbon: frameRibbon,
+	ring: frameRibbon,
+	morph: frameMorph
+};
+Object.fromEntries(Object.entries(MODE_FRAMES).map(([key, frame]) => [key, (ctx, size, t, dark, opts) => paintFrame(ctx, frame(size, t, opts), dark)]));
+var STATE_TO_MODE = {
+	working: "orbits",
+	searching: "globe",
+	solving: "rubik",
+	listening: "wave",
+	connecting: "web",
+	weaving: "braid",
+	composing: "ribbon",
+	breathing: "ring",
+	shaping: "morph"
+};
+var PRESETS = {
+	orbits: {
+		64: {
+			speed: 1.885,
+			count: 1,
+			size: 1
+		},
+		32: {
+			speed: 2.9072,
+			count: .4251,
+			size: 1.6849
+		},
+		20: {
+			speed: 3.9,
+			count: .238,
+			size: 2.4
+		}
+	},
+	globe: {
+		64: {
+			speed: 2.015,
+			count: .42,
+			size: 1.15,
+			extra: {
+				scanMul: 4.08,
+				dimBase: .45
+			}
+		},
+		32: {
+			speed: 2.3803,
+			count: .1839,
+			size: 1.4769,
+			extra: {
+				scanMul: 4.2301,
+				dimBase: .45
+			}
+		},
+		20: {
+			speed: 2.665,
+			count: .105,
+			size: 1.75,
+			extra: {
+				scanMul: 4.335,
+				dimBase: .45
+			}
+		}
+	},
+	rubik: {
+		64: {
+			speed: 1.82,
+			count: .35,
+			size: 1.05
+		},
+		32: {
+			speed: 1.8964,
+			count: .1537,
+			size: 1.4951
+		},
+		20: {
+			speed: 1.95,
+			count: .088,
+			size: 1.9
+		}
+	},
+	wave: {
+		64: {
+			speed: 4.388,
+			count: .341,
+			size: 1
+		},
+		32: {
+			speed: 4.1512,
+			count: .169,
+			size: 1.3232
+		},
+		20: {
+			speed: 3.998,
+			count: .105,
+			size: 1.6
+		}
+	},
+	web: {
+		64: {
+			speed: 3.315,
+			count: 1.35,
+			size: .95
+		},
+		32: {
+			speed: 5.0104,
+			count: .4942,
+			size: 1.2571
+		},
+		20: {
+			speed: 6.63,
+			count: .25,
+			size: 1.52
+		}
+	},
+	braid: {
+		64: {
+			speed: 1.625,
+			count: .5,
+			size: 1
+		},
+		32: {
+			speed: 2.2234,
+			count: .2056,
+			size: 1.2011
+		},
+		20: {
+			speed: 2.75,
+			count: .1125,
+			size: 1.36
+		}
+	},
+	ribbon: {
+		64: {
+			speed: 2.34,
+			count: .25,
+			size: .85,
+			extra: {
+				spin: 0,
+				bandMul: 3.9,
+				wobMul: 1
+			}
+		},
+		32: {
+			speed: 2.7776,
+			count: .0969,
+			size: .9766,
+			extra: {
+				spin: 0,
+				bandMul: 4.49,
+				wobMul: 1
+			}
+		},
+		20: {
+			speed: 3.12,
+			count: .051,
+			size: 1.073,
+			extra: {
+				spin: 0,
+				bandMul: 4.94,
+				wobMul: 1
+			}
+		}
+	},
+	ring: {
+		64: {
+			speed: 3.24,
+			count: .25,
+			size: .956,
+			extra: {
+				spin: 0,
+				bandMul: 3.627,
+				wobMul: .368
+			}
+		},
+		32: {
+			speed: 3.5517,
+			count: .0678,
+			size: 1.31,
+			extra: {
+				spin: 0,
+				bandMul: 3.8265,
+				wobMul: .4751
+			}
+		},
+		20: {
+			speed: 3.78,
+			count: .028,
+			size: 1.622,
+			extra: {
+				spin: 0,
+				bandMul: 3.968,
+				wobMul: .565
+			}
+		}
+	},
+	morph: {
+		64: {
+			speed: 2.405,
+			count: .702,
+			size: .395,
+			extra: { spread: 1.45 }
+		},
+		32: {
+			speed: 2.2057,
+			count: .5937,
+			size: .6916,
+			extra: { spread: 1.45 }
+		},
+		20: {
+			speed: 2.08,
+			count: .53,
+			size: 1.011,
+			extra: { spread: 1.45 }
+		}
+	}
+};
+var cache = /* @__PURE__ */ new Map();
+function resolvePreset(state, size) {
+	const key = `${state}-${size}`;
+	const hit = cache.get(key);
+	if (hit) return hit;
+	const mode = STATE_TO_MODE[state];
+	const preset = PRESETS[mode][size];
+	let opts = { ...BASE_PROFILES[mode] };
+	if (preset.count !== 1) opts = scaleCounts(opts, preset.count);
+	if (preset.size !== 1) opts = scaleRadii(opts, preset.size);
+	if (preset.extra) opts = {
+		...opts,
+		...preset.extra
+	};
+	const resolved = {
+		mode,
+		speed: preset.speed,
+		opts
+	};
+	cache.set(key, resolved);
+	return resolved;
+}
+//#endregion
+//#region node_modules/thinking-orbs/dist/index.es.js
+function ancestorTheme(el) {
+	let node = el;
+	while (node) {
+		const attr = node.getAttribute("data-theme");
+		if (attr === "dark") return true;
+		if (attr === "light") return false;
+		if (node.classList.contains("dark")) return true;
+		if (node.classList.contains("light")) return false;
+		node = node.parentElement;
+	}
+	return null;
+}
+function systemDark() {
+	return typeof matchMedia === "undefined" || matchMedia("(prefers-color-scheme: dark)").matches;
+}
+function useResolvedDark(theme, hostRef) {
+	const [dark, setDark] = (0, import_react.useState)(true);
+	(0, import_react.useEffect)(() => {
+		if (theme === "dark") {
+			setDark(true);
+			return;
+		}
+		if (theme === "light") {
+			setDark(false);
+			return;
+		}
+		const resolve = () => {
+			const fromTree = ancestorTheme(hostRef.current);
+			setDark(fromTree ?? systemDark());
+		};
+		resolve();
+		const mq2 = typeof matchMedia !== "undefined" ? matchMedia("(prefers-color-scheme: dark)") : null;
+		const onMq = () => resolve();
+		mq2?.addEventListener("change", onMq);
+		let mo = null;
+		if (typeof MutationObserver !== "undefined" && hostRef.current) {
+			mo = new MutationObserver(resolve);
+			mo.observe(document.documentElement, {
+				attributes: true,
+				attributeFilter: ["class", "data-theme"],
+				subtree: true
+			});
+		}
+		return () => {
+			mq2?.removeEventListener("change", onMq);
+			mo?.disconnect();
+		};
+	}, [theme, hostRef]);
+	return dark;
+}
+function useReducedMotion() {
+	const [reduced, setReduced] = (0, import_react.useState)(false);
+	(0, import_react.useEffect)(() => {
+		if (typeof matchMedia === "undefined") return;
+		const mq2 = matchMedia("(prefers-reduced-motion: reduce)");
+		setReduced(mq2.matches);
+		const on = (e2) => setReduced(e2.matches);
+		mq2.addEventListener("change", on);
+		return () => mq2.removeEventListener("change", on);
+	}, []);
+	return reduced;
+}
+var GRAVITY_DEFAULTS = Object.freeze({
+	reach: 160,
+	strength: 11,
+	deform: 19,
+	taper: 1.95,
+	curve: 2.8,
+	falloff: 24,
+	smoothing: .3,
+	handover: .6,
+	squash: 1.2,
+	blur: 1,
+	fadeMs: 180
+});
+var tuning = null;
+var sprite = null;
+var spriteImg = null;
+var src = null;
+var srcDpr = 0;
+var spriteDpr = 0;
+var disabled = false;
+var disabledReason = "";
+var slowFrames = 0;
+function setGravitySprite(next) {
+	if (next === sprite) return;
+	sprite = next;
+	spriteImg = null;
+	src = null;
+	disabled = false;
+	slowFrames = 0;
+	spriteDpr = typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1;
+	hideCursor();
+	if (!next || typeof Image === "undefined") return;
+	const img = new Image();
+	img.decoding = "async";
+	img.onload = () => {
+		if (sprite !== next) return;
+		spriteImg = img;
+		kick();
+	};
+	img.src = next.src;
+}
+var instances = /* @__PURE__ */ new Set();
+var tracking = false;
+var raf = 0;
+var last = 0;
+var px = NaN;
+var py = NaN;
+var lpx = 0;
+var lpy = 0;
+var uS = 0;
+var near = null;
+var pointerIsMouse = true;
+var typing = false;
+function attachGravity(el, options = true) {
+	const o = options === true ? {} : options;
+	if (o.sprite) setGravitySprite(o.sprite);
+	const inst = {
+		el,
+		opts: {
+			reach: Math.max(1, o.reach ?? GRAVITY_DEFAULTS.reach),
+			strength: Math.max(0, Math.min(64, o.strength ?? GRAVITY_DEFAULTS.strength)),
+			deform: Math.max(0, Math.min(32, o.deform ?? GRAVITY_DEFAULTS.deform)),
+			taper: Math.max(1, Math.min(4, o.taper ?? GRAVITY_DEFAULTS.taper)),
+			curve: Math.max(1, Math.min(4, o.curve ?? GRAVITY_DEFAULTS.curve)),
+			falloff: Math.max(2, Math.min(200, o.falloff ?? GRAVITY_DEFAULTS.falloff)),
+			smoothing: clamp01(o.smoothing ?? GRAVITY_DEFAULTS.smoothing),
+			handover: clamp01(o.handover ?? GRAVITY_DEFAULTS.handover),
+			squash: Math.max(0, Math.min(3, o.squash ?? GRAVITY_DEFAULTS.squash)),
+			blur: Math.max(0, Math.min(24, o.blur ?? GRAVITY_DEFAULTS.blur)),
+			fadeMs: Math.max(1, o.fadeMs ?? GRAVITY_DEFAULTS.fadeMs)
+		}
+	};
+	instances.add(inst);
+	ensureTracking();
+	kick();
+	return () => {
+		instances.delete(inst);
+		if (near === inst) near = null;
+		if (instances.size === 0) queueMicrotask(() => {
+			if (instances.size === 0) stopTracking();
+		});
+	};
+}
+var clamp01 = (v2) => Math.max(0, Math.min(1, v2));
+var effective = (inst) => tuning ? {
+	...inst.opts,
+	...tuning
+} : inst.opts;
+var mq = (q) => typeof window.matchMedia === "function" && window.matchMedia(q).matches;
+function swapBlockedBy() {
+	if (disabled) return disabledReason || "disabled by a fail-safe";
+	if (!sprite) return "no pointer sprite set";
+	if (!spriteImg) return "pointer sprite still loading";
+	if (mq("(prefers-reduced-motion: reduce)")) return "prefers-reduced-motion is on";
+	if (mq("(forced-colors: active)")) return "forced colours are active";
+	if (!mq("(pointer: fine)") || !mq("(hover: hover)")) return "no fine pointer";
+	if ((window.devicePixelRatio || 1) !== spriteDpr) return "display scale changed since the sprite was set — reload";
+	const vv = window.visualViewport;
+	if (vv && Math.abs(vv.scale - 1) > .001) return "page is zoomed";
+	return null;
+}
+function swapAllowed() {
+	return swapBlockedBy() === null;
+}
+function ensureTracking() {
+	if (tracking || instances.size === 0 || typeof document === "undefined") return;
+	if (!mq("(pointer: fine)")) return;
+	tracking = true;
+	document.addEventListener("pointermove", onMove, { passive: true });
+	document.addEventListener("pointerleave", onLeave);
+	document.addEventListener("pointercancel", onLeave);
+	document.addEventListener("keydown", onKey, { passive: true });
+	document.addEventListener("visibilitychange", onLeave);
+	window.addEventListener("blur", onLeave);
+}
+function stopTracking() {
+	if (!tracking) return;
+	tracking = false;
+	document.removeEventListener("pointermove", onMove);
+	document.removeEventListener("pointerleave", onLeave);
+	document.removeEventListener("pointercancel", onLeave);
+	document.removeEventListener("keydown", onKey);
+	document.removeEventListener("visibilitychange", onLeave);
+	window.removeEventListener("blur", onLeave);
+	if (raf !== 0) {
+		cancelAnimationFrame(raf);
+		raf = 0;
+	}
+	near = null;
+	uS = 0;
+	hideCursor();
+	if (curEl) {
+		curEl.remove();
+		curEl = null;
+		curCanvas = null;
+		curCtx = null;
+	}
+	if (hideStyle) {
+		hideStyle.remove();
+		hideStyle = null;
+	}
+}
+function onMove(e2) {
+	pointerIsMouse = e2.pointerType === "mouse" || e2.pointerType === "";
+	typing = false;
+	moveSeq++;
+	px = lpx = e2.clientX;
+	py = lpy = e2.clientY;
+	if (releasePending) {
+		releasePending = false;
+		hideSprite();
+		amp = 0;
+		bend = 0;
+		wcx = wcy = NaN;
+	}
+	kick();
+}
+function onKey() {
+	typing = true;
+	hideCursor();
+}
+function onLeave() {
+	px = py = NaN;
+	kick();
+}
+function kick() {
+	if (!tracking || raf !== 0) return;
+	last = performance.now();
+	raf = requestAnimationFrame(step);
+}
+var curEl = null;
+var curCanvas = null;
+var curCtx = null;
+var curShown = false;
+var HIDE_CLASS = "thinking-orb-gravity-hide";
+var hideStyle = null;
+var hiding = false;
+var naturalCursor = /* @__PURE__ */ new WeakMap();
+var moveSeq = 0;
+var claimMove = -1;
+var stepSeq = 0;
+var claimStep = -1;
+function ensureCursor() {
+	if (curEl) return true;
+	const el = document.createElement("div");
+	el.className = "thinking-orb-gravity-cursor";
+	el.setAttribute("aria-hidden", "true");
+	el.style.cssText = "position:fixed;left:0;top:0;pointer-events:none;z-index:2147483001;will-change:transform;display:none";
+	const c2 = document.createElement("canvas");
+	c2.style.display = "block";
+	el.appendChild(c2);
+	document.body.appendChild(el);
+	const ctx = c2.getContext("2d");
+	if (!ctx) {
+		el.remove();
+		return false;
+	}
+	curEl = el;
+	curCanvas = c2;
+	curCtx = ctx;
+	curDpr = 0;
+	return true;
+}
+function ensureHideStyle() {
+	if (hideStyle) return;
+	hideStyle = document.createElement("style");
+	hideStyle.textContent = `html.${HIDE_CLASS}, html.${HIDE_CLASS} * { cursor: none !important; }`;
+	document.head.appendChild(hideStyle);
+}
+function cursorOf(el) {
+	const cached = naturalCursor.get(el);
+	if (cached) return cached;
+	const root = document.documentElement;
+	const had = root.classList.contains(HIDE_CLASS);
+	if (had) root.classList.remove(HIDE_CLASS);
+	const cur = getComputedStyle(el).cursor;
+	if (had) root.classList.add(HIDE_CLASS);
+	naturalCursor.set(el, cur);
+	return cur;
+}
+function claimCursor(x, y) {
+	const target = document.elementFromPoint(x, y);
+	if (!target) return false;
+	const cur = cursorOf(target);
+	if (cur !== "auto" && cur !== "default") {
+		releaseCursor();
+		return false;
+	}
+	if (!hiding) {
+		ensureHideStyle();
+		document.documentElement.classList.add(HIDE_CLASS);
+		hiding = true;
+		claimMove = moveSeq;
+		claimStep = stepSeq;
+	}
+	return true;
+}
+function releaseCursor() {
+	if (!hiding) return;
+	document.documentElement.classList.remove(HIDE_CLASS);
+	hiding = false;
+	claimMove = -1;
+}
+function hideSprite() {
+	if (curEl && curShown) {
+		curEl.style.display = "none";
+		curShown = false;
+	}
+}
+var LINGER_MS = 500;
+var lastReach = Number.NEGATIVE_INFINITY;
+var releasePending = false;
+function hideCursor() {
+	releasePending = false;
+	releaseCursor();
+	hideSprite();
+	amp = 0;
+	bend = 0;
+	wcx = wcy = NaN;
+}
+var _c = {
+	cx: 0,
+	cy: 0,
+	r: 0
+};
+var amp = 0;
+var bend = 0;
+var wcx = NaN;
+var wcy = NaN;
+var PAD = 48;
+var PASSES = 10;
+var refCanvas = null;
+var refCtx = null;
+var bentCanvas = null;
+var bentCtx = null;
+var bentData = null;
+var curDpr = 0;
+var curW = 0;
+var curH = 0;
+function readSprite(dpr) {
+	if (!spriteImg || !sprite) return null;
+	const c2 = document.createElement("canvas");
+	c2.width = Math.ceil(sprite.width * dpr);
+	c2.height = Math.ceil(sprite.height * dpr);
+	const g2 = c2.getContext("2d", { willReadFrequently: true });
+	if (!g2) return null;
+	g2.scale(dpr, dpr);
+	g2.drawImage(spriteImg, 0, 0, sprite.width, sprite.height);
+	return g2.getImageData(0, 0, c2.width, c2.height);
+}
+function bendSprite(B, taper, P, hx, hy, cxo, cyo) {
+	if (!src || !bentData) return;
+	const OW = bentData.width, OH = bentData.height;
+	const S2 = src, SW = S2.width, SH = S2.height, sd = S2.data;
+	const od = bentData.data;
+	od.fill(0);
+	const L = Math.max(1, Math.hypot(SW, SH));
+	const tdx = cxo - hx, tdy = cyo - hy;
+	const tdl = Math.hypot(tdx, tdy) || 1;
+	const tux = tdx / tdl, tuy = tdy / tdl;
+	const x1 = Math.max(0, Math.floor(P + Math.min(0, B * tux) - 3)), x2 = Math.min(OW, Math.ceil(P + SW + Math.max(0, B * tux) + 3));
+	const y1 = Math.max(0, Math.floor(P + Math.min(0, B * tuy) - 3)), y2 = Math.min(OH, Math.ceil(P + SH + Math.max(0, B * tuy) + 3));
+	for (let y = y1; y < y2; y++) for (let x = x1; x < x2; x++) {
+		const i2 = (y * OW + x) * 4;
+		let sx = x - P, sy = y - P;
+		if (B > .01) {
+			let qx = x, qy = y;
+			let m2 = 0, dx = 0, dy = 0, dl = 1;
+			for (let it = 0; it < 7; it++) {
+				const s = Math.hypot(qx - hx, qy - hy) / L;
+				m2 = B * Math.pow(Math.min(1, s), taper);
+				dx = cxo - qx;
+				dy = cyo - qy;
+				dl = Math.hypot(dx, dy) || 1;
+				qx += (x - m2 * dx / dl - qx) * .5;
+				qy += (y - m2 * dy / dl - qy) * .5;
+			}
+			const ex = qx + m2 * dx / dl - x, ey = qy + m2 * dy / dl - y;
+			if (ex * ex + ey * ey > 2.25) {
+				od[i2] = od[i2 + 1] = od[i2 + 2] = od[i2 + 3] = 0;
+				continue;
+			}
+			sx = qx - P;
+			sy = qy - P;
+		}
+		const x0 = Math.floor(sx), y0 = Math.floor(sy);
+		if (x0 < -1 || y0 < -1 || x0 >= SW || y0 >= SH) {
+			od[i2] = od[i2 + 1] = od[i2 + 2] = od[i2 + 3] = 0;
+			continue;
+		}
+		const fx = sx - x0, fy = sy - y0;
+		let r = 0, g2 = 0, b2 = 0, a = 0;
+		for (let k = 0; k < 4; k++) {
+			const xx = x0 + (k & 1), yy = y0 + (k >> 1);
+			if (xx < 0 || yy < 0 || xx >= SW || yy >= SH) continue;
+			const wgt = (k & 1 ? fx : 1 - fx) * (k >> 1 ? fy : 1 - fy);
+			const j = (yy * SW + xx) * 4;
+			const wa = wgt * sd[j + 3];
+			r += sd[j] * wa;
+			g2 += sd[j + 1] * wa;
+			b2 += sd[j + 2] * wa;
+			a += wa;
+		}
+		if (a > 0) {
+			od[i2] = r / a;
+			od[i2 + 1] = g2 / a;
+			od[i2 + 2] = b2 / a;
+			od[i2 + 3] = a;
+		} else od[i2] = od[i2 + 1] = od[i2 + 2] = od[i2 + 3] = 0;
+	}
+}
+function drawCursor(inst, w, dt) {
+	if (!curCtx || !curCanvas || !curEl || !sprite || !spriteImg) return;
+	const sp = sprite;
+	const o = effective(inst);
+	const dpr = Math.min(3, window.devicePixelRatio || 1);
+	if (!refCanvas) {
+		refCanvas = document.createElement("canvas");
+		refCtx = refCanvas.getContext("2d");
+	}
+	if (!bentCanvas) {
+		bentCanvas = document.createElement("canvas");
+		bentCtx = bentCanvas.getContext("2d");
+	}
+	if (!refCtx || !bentCtx) return;
+	if (!src || srcDpr !== dpr) {
+		src = readSprite(dpr);
+		srcDpr = dpr;
+	}
+	if (!src) return;
+	if (dpr !== curDpr || sp.width !== curW || sp.height !== curH) {
+		curDpr = dpr;
+		curW = sp.width;
+		curH = sp.height;
+		const OW2 = Math.ceil((sp.width + 96) * dpr), OH2 = Math.ceil((sp.height + 96) * dpr);
+		curCanvas.width = refCanvas.width = bentCanvas.width = OW2;
+		curCanvas.height = refCanvas.height = bentCanvas.height = OH2;
+		curCanvas.style.width = `${sp.width + 96}px`;
+		curCanvas.style.height = `${sp.height + 96}px`;
+		bentData = bentCtx.createImageData(OW2, OH2);
+	}
+	const OW = curCanvas.width, OH = curCanvas.height;
+	const k = Math.pow(w, o.curve);
+	const ease = 1 - Math.exp(-dt / (.012 + o.smoothing * .14));
+	amp += (o.strength * k - amp) * ease;
+	bend += (o.deform * k - bend) * ease;
+	let A = amp * dpr, B = bend * dpr;
+	if (Number.isNaN(wcx)) {
+		wcx = _c.cx;
+		wcy = _c.cy;
+	} else {
+		const swing = 1 - Math.exp(-dt / (.05 + o.handover * .6));
+		wcx += (_c.cx - wcx) * swing;
+		wcy += (_c.cy - wcy) * swing;
+	}
+	const P = PAD * dpr;
+	const hx = P + sp.hotX * dpr, hy = P + sp.hotY * dpr;
+	const cxo = hx + (wcx - lpx) * dpr, cyo = hy + (wcy - lpy) * dpr;
+	const dTip = Math.hypot(cxo - hx, cyo - hy) || 1;
+	const ux = (cxo - hx) / dTip, uy = (cyo - hy) / dTip;
+	const F = o.falloff * dpr;
+	if (o.squash > 0) {
+		const axL = Math.hypot(sp.width * .5 - sp.hotX, sp.height - sp.hotY) || 1;
+		const axx = (sp.width * .5 - sp.hotX) / axL, axy = (sp.height - sp.hotY) / axL;
+		const against = Math.max(0, -(ux * axx + uy * axy));
+		const gain = 1 + o.squash * against;
+		A *= gain;
+		B *= gain;
+	}
+	const grow = Math.ceil(Math.max(B, 1)) + 4;
+	const bx1 = Math.floor(Math.min(P, P + ux * A) - grow), by1 = Math.floor(Math.min(P, P + uy * A) - grow);
+	const bx2 = Math.ceil(Math.max(P, P + ux * A) + sp.width * dpr + grow), by2 = Math.ceil(Math.max(P, P + uy * A) + sp.height * dpr + grow);
+	const rx = Math.max(0, bx1), ry = Math.max(0, by1);
+	const rw = Math.min(OW, bx2) - rx, rh = Math.min(OH, by2) - ry;
+	if (B > .01) {
+		bendSprite(B, o.taper, P, hx, hy, cxo, cyo);
+		bentCtx.putImageData(bentData, 0, 0, rx, ry, rw, rh);
+	} else {
+		bentCtx.setTransform(1, 0, 0, 1, 0, 0);
+		bentCtx.clearRect(0, 0, OW, OH);
+		bentCtx.drawImage(spriteImg, P, P, sp.width * dpr, sp.height * dpr);
+	}
+	const ctx = curCtx, rctx = refCtx;
+	ctx.setTransform(1, 0, 0, 1, 0, 0);
+	ctx.clearRect(0, 0, OW, OH);
+	ctx.globalAlpha = 1;
+	ctx.globalCompositeOperation = "source-over";
+	ctx.drawImage(bentCanvas, 0, 0);
+	if (A > .5) {
+		const bcx = P + sp.width * dpr * .42, bcy = P + sp.height * dpr * .5;
+		const half = F / 2;
+		const mask = rctx.createLinearGradient(bcx - ux * half, bcy - uy * half, bcx + ux * half, bcy + uy * half);
+		mask.addColorStop(0, "rgba(0,0,0,0)");
+		mask.addColorStop(1, "rgba(0,0,0,1)");
+		for (let i2 = PASSES; i2 >= 1; i2--) {
+			const t = i2 / PASSES;
+			rctx.setTransform(1, 0, 0, 1, 0, 0);
+			rctx.globalCompositeOperation = "source-over";
+			rctx.globalAlpha = 1;
+			rctx.clearRect(rx, ry, rw, rh);
+			rctx.drawImage(bentCanvas, rx, ry, rw, rh, rx + ux * A * t, ry + uy * A * t, rw, rh);
+			rctx.globalCompositeOperation = "destination-in";
+			rctx.fillStyle = mask;
+			rctx.fillRect(rx, ry, rw, rh);
+			ctx.globalCompositeOperation = "destination-over";
+			ctx.globalAlpha = Math.pow(1 - t, 1.6) * .9;
+			if (o.blur > 0) ctx.filter = `blur(${(o.blur * Math.sqrt(t) * dpr).toFixed(2)}px)`;
+			ctx.drawImage(refCanvas, rx, ry, rw, rh, rx, ry, rw, rh);
+		}
+		ctx.filter = "none";
+		ctx.globalAlpha = 1;
+		ctx.globalCompositeOperation = "source-over";
+	}
+	curEl.style.transform = `translate3d(${(lpx - sp.hotX - PAD).toFixed(2)}px,${(lpy - sp.hotY - PAD).toFixed(2)}px,0)`;
+	if (!curShown) {
+		curEl.style.display = "";
+		curShown = true;
+	}
+}
+function step(now) {
+	raf = 0;
+	if (!tracking) return;
+	const t0 = performance.now();
+	try {
+		stepInner(now);
+	} catch (err) {
+		disabled = true;
+		disabledReason = `disabled after an error (${err instanceof Error ? err.message : String(err)})`;
+		hideCursor();
+		near = null;
+		if (typeof console !== "undefined") console.warn("thinking-orbs: gravity disabled after error", err);
+		return;
+	}
+	const took = performance.now() - t0;
+	if (took > 12) {
+		if (++slowFrames >= 30 && !disabled) {
+			disabled = true;
+			disabledReason = `disabled after slow frames (~${Math.round(took)}ms each)`;
+			hideCursor();
+		}
+	} else slowFrames = 0;
+}
+function stepInner(now) {
+	const dt = Math.min(.05, Math.max(.001, (now - last) / 1e3));
+	last = now;
+	stepSeq++;
+	let best = null;
+	let u = 0;
+	if (!Number.isNaN(px) && swapAllowed()) {
+		let bestEdge = Number.POSITIVE_INFINITY;
+		for (const inst of instances) {
+			if (!inst.el.isConnected) continue;
+			const r = inst.el.getBoundingClientRect();
+			if (r.width <= 0) continue;
+			const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+			const orbR = Math.min(r.width, r.height) / 2;
+			const reach = effective(inst).reach;
+			if (px < cx - orbR - reach || px > cx + orbR + reach || py < cy - orbR - reach || py > cy + orbR + reach) continue;
+			const edge = Math.hypot(px - cx, py - cy) - orbR;
+			if (edge <= reach && edge < bestEdge) {
+				bestEdge = edge;
+				best = inst;
+				_c.cx = cx;
+				_c.cy = cy;
+				_c.r = orbR;
+			}
+		}
+		if (best) {
+			const t = 1 - Math.max(0, bestEdge) / effective(best).reach;
+			u = t * t * (3 - 2 * t);
+			lastReach = now;
+		}
+	}
+	const nearest = near ?? best;
+	const fade = nearest ? effective(nearest).fadeMs : GRAVITY_DEFAULTS.fadeMs;
+	const a = 1 - Math.exp(-(dt * 1e3) / (fade / 3));
+	uS += (u - uS) * a;
+	if (best && best !== near) near = best;
+	if (!best && uS < .002) {
+		uS = 0;
+		if (near && hiding && !releasePending && pointerIsMouse && !typing && !Number.isNaN(px)) {
+			if (now - lastReach < LINGER_MS) {
+				if (claimCursor(px, py)) drawCursor(near, 0, dt);
+				else hideSprite();
+				raf = requestAnimationFrame(step);
+				return;
+			}
+			if (curShown) {
+				releaseCursor();
+				releasePending = true;
+				near = null;
+				return;
+			}
+		}
+		near = null;
+		hideCursor();
+		return;
+	}
+	if (!near) return;
+	if (uS > .002 && pointerIsMouse && !typing && !Number.isNaN(px) && ensureCursor() && claimCursor(px, py)) {
+		if (claimMove === moveSeq && stepSeq - claimStep < 2 && !curShown) hideSprite();
+		else drawCursor(near, uS, dt);
+	} else if (uS > .002 && !Number.isNaN(px) && pointerIsMouse && !typing) hideSprite();
+	else hideCursor();
+	raf = requestAnimationFrame(step);
+}
+function parseTint(color) {
+	if (!color) return void 0;
+	const hex = color.trim().match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
+	if (hex) {
+		let h2 = hex[1];
+		if (h2.length === 3) h2 = h2.replace(/./g, (c2) => c2 + c2);
+		const n = parseInt(h2, 16);
+		return {
+			r: n >> 16 & 255,
+			g: n >> 8 & 255,
+			b: n & 255
+		};
+	}
+	const fn = color.trim().match(/^rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/i);
+	if (fn) return {
+		r: Number(fn[1]),
+		g: Number(fn[2]),
+		b: Number(fn[3])
+	};
+}
+var LABELS = {
+	working: "Working…",
+	searching: "Searching…",
+	solving: "Solving…",
+	listening: "Listening…",
+	connecting: "Connecting…",
+	weaving: "Weaving…",
+	composing: "Composing…",
+	breathing: "Thinking…",
+	shaping: "Shaping…"
+};
+function ThinkingOrb({ state = "working", size = 64, theme = "auto", speed = 1, paused = false, color, dots = 1, dotSize = 1, opts: optsOverride, frame: customFrame, gravity, style, "aria-label": ariaLabel, ...rest }) {
+	const ref = (0, import_react.useRef)(null);
+	const optsKey = optsOverride ? JSON.stringify(optsOverride) : "";
+	const dark = useResolvedDark(theme, ref);
+	const gravityKey = gravity ? JSON.stringify(gravity) : "";
+	(0, import_react.useEffect)(() => {
+		const canvas = ref.current;
+		if (!canvas || !gravity) return;
+		return attachGravity(canvas, gravity === true ? true : gravity);
+	}, [gravityKey]);
+	const reduced = useReducedMotion();
+	(0, import_react.useEffect)(() => {
+		const canvas = ref.current;
+		if (!canvas) return;
+		const dpr = Math.min(2, typeof devicePixelRatio !== "undefined" && devicePixelRatio || 1);
+		canvas.width = Math.round(size * dpr);
+		canvas.height = Math.round(size * dpr);
+		const ctx = canvas.getContext("2d");
+		if (!ctx) return;
+		const { mode, speed: baseSpeed, opts: presetOpts } = resolvePreset(state, size);
+		let opts = dots !== 1 ? scaleCounts(presetOpts, Math.max(.1, dots)) : presetOpts;
+		if (dotSize !== 1) opts = scaleRadii(opts, Math.max(.1, dotSize));
+		if (optsOverride) opts = {
+			...opts,
+			...optsOverride
+		};
+		const frameFn = customFrame ?? MODE_FRAMES[mode];
+		const tint = parseTint(color);
+		const effSpeed = baseSpeed * speed;
+		const frame = (tSec) => {
+			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+			ctx.clearRect(0, 0, size, size);
+			paintFrame(ctx, frameFn(size, tSec, opts), dark, tint);
+		};
+		if (reduced) {
+			frame(.6);
+			return;
+		}
+		let raf2 = 0;
+		let running = false;
+		const loop = () => {
+			frame(performance.now() / 1e3 * effSpeed);
+			if (running) raf2 = requestAnimationFrame(loop);
+		};
+		const start = () => {
+			if (running || paused) return;
+			running = true;
+			raf2 = requestAnimationFrame(loop);
+		};
+		const stop = () => {
+			running = false;
+			cancelAnimationFrame(raf2);
+		};
+		frame(performance.now() / 1e3 * effSpeed);
+		let visible = true;
+		const io = typeof IntersectionObserver !== "undefined" ? new IntersectionObserver(([entry]) => {
+			visible = entry.isIntersecting;
+			if (visible && document.visibilityState !== "hidden") start();
+			else stop();
+		}) : null;
+		io?.observe(canvas);
+		const onVis = () => {
+			if (document.visibilityState === "hidden") stop();
+			else if (visible) start();
+		};
+		document.addEventListener("visibilitychange", onVis);
+		if (!io) start();
+		return () => {
+			stop();
+			io?.disconnect();
+			document.removeEventListener("visibilitychange", onVis);
+		};
+	}, [
+		state,
+		size,
+		dark,
+		speed,
+		paused,
+		reduced,
+		color,
+		dots,
+		dotSize,
+		optsKey,
+		customFrame
+	]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("canvas", {
+		ref,
+		role: "img",
+		"aria-label": ariaLabel ?? LABELS[state],
+		style: {
+			width: size,
+			height: size,
+			display: "block",
+			...style
+		},
+		...rest
+	});
+}
+//#endregion
+//#region frontend/src/components/ui/textarea.jsx
+var _jsxFileName$8 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/textarea.jsx";
+function Textarea({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("textarea", {
+		"data-slot": "textarea",
+		className: cn("flex field-sizing-content min-h-16 w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:aria-invalid:ring-destructive/40", className),
+		...props
+	}, void 0, false, {
+		fileName: _jsxFileName$8,
+		lineNumber: 9,
+		columnNumber: 5
+	}, this);
+}
+//#endregion
+//#region frontend/src/components/FounderAssistant.jsx
+var _jsxFileName$7 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/FounderAssistant.jsx";
+var suggestions = [
+	"Summarize all ongoing projects",
+	"Which projects have blockers?",
+	"What milestones are next?",
+	"Who is working on each project?"
+];
+function FormattedAnswer({ answer }) {
+	const blocks = [];
+	for (const rawLine of String(answer || "").split("\n")) {
+		const line = rawLine.trim();
+		if (!line) continue;
+		if (line.startsWith("# ")) blocks.push({
+			type: "title",
+			text: line.slice(2)
+		});
+		else if (line.startsWith("## ")) blocks.push({
+			type: "heading",
+			text: line.slice(3)
+		});
+		else if (line.startsWith("- ")) {
+			const previous = blocks.at(-1);
+			if (previous?.type === "list") previous.items.push(line.slice(2));
+			else blocks.push({
+				type: "list",
+				items: [line.slice(2)]
+			});
+		} else blocks.push({
+			type: "paragraph",
+			text: line
+		});
+	}
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		className: "space-y-2.5",
+		children: blocks.map((block, index) => block.type === "title" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", {
+			className: "text-sm font-semibold text-foreground",
+			children: block.text
+		}, index, false, {
+			fileName: _jsxFileName$7,
+			lineNumber: 30,
+			columnNumber: 60
+		}, this) : block.type === "heading" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h3", {
+			className: "border-t border-border/70 pt-2.5 text-sm font-semibold text-foreground first:border-0 first:pt-0",
+			children: block.text
+		}, index, false, {
+			fileName: _jsxFileName$7,
+			lineNumber: 30,
+			columnNumber: 173
+		}, this) : block.type === "list" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("ul", {
+			className: "space-y-1.5 pl-4 text-sm marker:text-primary",
+			children: block.items.map((item, itemIndex) => {
+				const colon = item.indexOf(":");
+				return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("li", {
+					className: "list-disc pl-0.5",
+					children: colon > 0 && colon < 24 ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_jsx_dev_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("strong", {
+						className: "font-semibold",
+						children: item.slice(0, colon + 1)
+					}, void 0, false, {
+						fileName: _jsxFileName$7,
+						lineNumber: 30,
+						columnNumber: 573
+					}, this), item.slice(colon + 1)] }, void 0, true, {
+						fileName: _jsxFileName$7,
+						lineNumber: 30,
+						columnNumber: 571
+					}, this) : item
+				}, itemIndex, false, {
+					fileName: _jsxFileName$7,
+					lineNumber: 30,
+					columnNumber: 495
+				}, this);
+			})
+		}, index, false, {
+			fileName: _jsxFileName$7,
+			lineNumber: 30,
+			columnNumber: 342
+		}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+			className: "text-sm text-muted-foreground",
+			children: block.text
+		}, index, false, {
+			fileName: _jsxFileName$7,
+			lineNumber: 30,
+			columnNumber: 694
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName$7,
+		lineNumber: 29,
+		columnNumber: 10
+	}, this);
+}
+function FounderAssistant({ onBack }) {
+	const [messages, setMessages] = (0, import_react.useState)([]);
+	const [draft, setDraft] = (0, import_react.useState)("");
+	const [busy, setBusy] = (0, import_react.useState)(false);
+	const [error, setError] = (0, import_react.useState)("");
+	const scrollRef = (0, import_react.useRef)(null);
+	(0, import_react.useEffect)(() => {
+		fetch("/api/founder/assistant", { credentials: "same-origin" }).then((response) => response.json()).then((data) => setMessages(data.messages || [])).catch(() => setError("Could not load earlier questions."));
+	}, []);
+	(0, import_react.useEffect)(() => {
+		if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+	}, [messages.length, busy]);
+	const ask = async (event, suggestion) => {
+		event?.preventDefault();
+		const question = (suggestion || draft).trim();
+		if (!question || busy) return;
+		setDraft("");
+		setBusy(true);
+		setError("");
+		const pending = {
+			id: `pending-${Date.now()}`,
+			question,
+			answer: null,
+			at: (/* @__PURE__ */ new Date()).toISOString()
+		};
+		setMessages((current) => [...current, pending]);
+		try {
+			const response = await fetch("/api/founder/assistant", {
+				method: "POST",
+				credentials: "same-origin",
+				headers: { "content-type": "application/json" },
+				body: JSON.stringify({ question })
+			});
+			const data = await response.json();
+			if (!response.ok) throw new Error(data.error || "Could not answer right now.");
+			setMessages((current) => current.map((item) => item.id === pending.id ? data.message : item));
+		} catch (problem) {
+			setMessages((current) => current.filter((item) => item.id !== pending.id));
+			setDraft(question);
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		className: "flex h-dvh min-h-0 flex-col overflow-hidden bg-background",
+		children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("header", {
+			className: "shrink-0 border-b bg-card",
+			children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				className: "mx-auto flex h-16 max-w-4xl items-center gap-3 px-3 sm:px-6",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+						variant: "ghost",
+						size: "icon",
+						onClick: onBack,
+						"aria-label": "Back to projects",
+						children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ArrowLeft, { className: "size-5" }, void 0, false, {
+							fileName: _jsxFileName$7,
+							lineNumber: 63,
+							columnNumber: 211
+						}, this)
+					}, void 0, false, {
+						fileName: _jsxFileName$7,
+						lineNumber: 63,
+						columnNumber: 128
+					}, this),
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ThinkingOrb, {
+						state: busy ? "working" : "breathing",
+						size: 32,
+						speed: busy ? .6 : .3,
+						theme: "light",
+						color: "#2166d1",
+						"aria-hidden": "true"
+					}, void 0, false, {
+						fileName: _jsxFileName$7,
+						lineNumber: 63,
+						columnNumber: 252
+					}, this),
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						className: "min-w-0 flex-1",
+						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+							className: "truncate text-sm font-semibold",
+							children: "Ask Studio Iksha"
+						}, void 0, false, {
+							fileName: _jsxFileName$7,
+							lineNumber: 63,
+							columnNumber: 422
+						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							className: "text-xs text-muted-foreground",
+							children: "Your project workspace assistant"
+						}, void 0, false, {
+							fileName: _jsxFileName$7,
+							lineNumber: 63,
+							columnNumber: 490
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$7,
+						lineNumber: 63,
+						columnNumber: 390
+					}, this),
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(LockKeyhole, {
+						className: "size-4 text-muted-foreground",
+						"aria-label": "Founder only"
+					}, void 0, false, {
+						fileName: _jsxFileName$7,
+						lineNumber: 63,
+						columnNumber: 577
+					}, this)
+				]
+			}, void 0, true, {
+				fileName: _jsxFileName$7,
+				lineNumber: 63,
+				columnNumber: 51
+			}, this)
+		}, void 0, false, {
+			fileName: _jsxFileName$7,
+			lineNumber: 63,
+			columnNumber: 5
+		}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("main", {
+			className: "mx-auto flex min-h-0 w-full max-w-4xl flex-1 flex-col bg-card md:border-x",
+			children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				ref: scrollRef,
+				className: "chat-scroll min-h-0 flex-1 space-y-5 overflow-y-auto px-4 py-5 sm:px-6",
+				"aria-label": "Founder assistant conversation",
+				"aria-live": "polite",
+				children: [
+					!messages.length && /* @__PURE__ */ (void 0)("div", {
+						className: "mx-auto flex max-w-sm flex-col items-center py-10 text-center",
+						children: [
+							/* @__PURE__ */ (void 0)(ThinkingOrb, {
+								state: "breathing",
+								size: 64,
+								speed: .3,
+								theme: "light",
+								color: "#2166d1",
+								"aria-hidden": "true"
+							}, void 0, false, {
+								fileName: _jsxFileName$7,
+								lineNumber: 66,
+								columnNumber: 109
+							}, this),
+							/* @__PURE__ */ (void 0)("h2", {
+								className: "mt-5 text-sm font-semibold",
+								children: "Your projects, one question away"
+							}, void 0, false, {
+								fileName: _jsxFileName$7,
+								lineNumber: 66,
+								columnNumber: 213
+							}, this),
+							/* @__PURE__ */ (void 0)("p", {
+								className: "mt-2 text-xs leading-relaxed text-muted-foreground",
+								children: "Ask about progress, blockers, milestones, team assignments, or recent client questions. Answers come from saved project facts."
+							}, void 0, false, {
+								fileName: _jsxFileName$7,
+								lineNumber: 66,
+								columnNumber: 293
+							}, this)
+						]
+					}, void 0, true, {
+						fileName: _jsxFileName$7,
+						lineNumber: 66,
+						columnNumber: 30
+					}, this),
+					messages.map((item) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						className: "space-y-3",
+						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Message, {
+							align: "end",
+							children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageContent, {
+								className: "max-w-[88%] sm:max-w-[75%]",
+								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageHeader, {
+									className: "justify-end",
+									children: "You"
+								}, void 0, false, {
+									fileName: _jsxFileName$7,
+									lineNumber: 67,
+									columnNumber: 150
+								}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Bubble, {
+									align: "end",
+									children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(BubbleContent, { children: item.question }, void 0, false, {
+										fileName: _jsxFileName$7,
+										lineNumber: 67,
+										columnNumber: 228
+									}, this)
+								}, void 0, false, {
+									fileName: _jsxFileName$7,
+									lineNumber: 67,
+									columnNumber: 208
+								}, this)]
+							}, void 0, true, {
+								fileName: _jsxFileName$7,
+								lineNumber: 67,
+								columnNumber: 95
+							}, this)
+						}, void 0, false, {
+							fileName: _jsxFileName$7,
+							lineNumber: 67,
+							columnNumber: 74
+						}, this), item.answer && /* @__PURE__ */ (void 0)(Message, {
+							align: "start",
+							children: /* @__PURE__ */ (void 0)(MessageContent, {
+								className: "max-w-[92%] sm:max-w-[82%]",
+								children: [/* @__PURE__ */ (void 0)(MessageHeader, { children: "Studio Iksha" }, void 0, false, {
+									fileName: _jsxFileName$7,
+									lineNumber: 67,
+									columnNumber: 404
+								}, this), /* @__PURE__ */ (void 0)(Bubble, {
+									variant: "secondary",
+									className: "max-w-full",
+									children: /* @__PURE__ */ (void 0)(BubbleContent, {
+										className: "w-full p-4",
+										children: /* @__PURE__ */ (void 0)(FormattedAnswer, { answer: item.answer }, void 0, false, {
+											fileName: _jsxFileName$7,
+											lineNumber: 67,
+											columnNumber: 536
+										}, this)
+									}, void 0, false, {
+										fileName: _jsxFileName$7,
+										lineNumber: 67,
+										columnNumber: 498
+									}, this)
+								}, void 0, false, {
+									fileName: _jsxFileName$7,
+									lineNumber: 67,
+									columnNumber: 447
+								}, this)]
+							}, void 0, true, {
+								fileName: _jsxFileName$7,
+								lineNumber: 67,
+								columnNumber: 349
+							}, this)
+						}, void 0, false, {
+							fileName: _jsxFileName$7,
+							lineNumber: 67,
+							columnNumber: 326
+						}, this)]
+					}, item.id, true, {
+						fileName: _jsxFileName$7,
+						lineNumber: 67,
+						columnNumber: 33
+					}, this)),
+					busy && /* @__PURE__ */ (void 0)("div", {
+						className: "flex items-center gap-2 text-xs text-muted-foreground",
+						children: [/* @__PURE__ */ (void 0)(ThinkingOrb, {
+							state: "working",
+							size: 20,
+							speed: .65,
+							theme: "light",
+							color: "#2166d1",
+							"aria-hidden": "true"
+						}, void 0, false, {
+							fileName: _jsxFileName$7,
+							lineNumber: 68,
+							columnNumber: 89
+						}, this), "Reading your project records…"]
+					}, void 0, true, {
+						fileName: _jsxFileName$7,
+						lineNumber: 68,
+						columnNumber: 18
+					}, this)
+				]
+			}, void 0, true, {
+				fileName: _jsxFileName$7,
+				lineNumber: 65,
+				columnNumber: 7
+			}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				className: "safe-bottom shrink-0 border-t bg-card",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						className: "no-scrollbar flex gap-2 overflow-x-auto px-4 py-3 sm:px-6",
+						children: suggestions.map((suggestion) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+							variant: "outline",
+							size: "sm",
+							className: "shrink-0 rounded-full",
+							disabled: busy,
+							onClick: (event) => ask(event, suggestion),
+							children: suggestion
+						}, suggestion, false, {
+							fileName: _jsxFileName$7,
+							lineNumber: 70,
+							columnNumber: 170
+						}, this))
+					}, void 0, false, {
+						fileName: _jsxFileName$7,
+						lineNumber: 70,
+						columnNumber: 62
+					}, this),
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("form", {
+						onSubmit: ask,
+						className: "flex items-end gap-2 border-t px-3 pt-3 sm:px-5",
+						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Textarea, {
+							value: draft,
+							onChange: (event) => setDraft(event.target.value),
+							rows: 1,
+							maxLength: 1e3,
+							placeholder: "Ask about your projects…",
+							"aria-label": "Ask the founder assistant",
+							className: "max-h-32 min-h-11 flex-1 resize-none"
+						}, void 0, false, {
+							fileName: _jsxFileName$7,
+							lineNumber: 70,
+							columnNumber: 427
+						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+							type: "submit",
+							size: "icon-lg",
+							className: "size-11",
+							disabled: !draft.trim() || busy,
+							"aria-label": "Send question",
+							children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ArrowUp, { className: "size-5" }, void 0, false, {
+								fileName: _jsxFileName$7,
+								lineNumber: 70,
+								columnNumber: 774
+							}, this)
+						}, void 0, false, {
+							fileName: _jsxFileName$7,
+							lineNumber: 70,
+							columnNumber: 657
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$7,
+						lineNumber: 70,
+						columnNumber: 346
+					}, this),
+					error && /* @__PURE__ */ (void 0)("p", {
+						role: "alert",
+						className: "px-4 pt-2 text-xs text-destructive",
+						children: error
+					}, void 0, false, {
+						fileName: _jsxFileName$7,
+						lineNumber: 70,
+						columnNumber: 830
+					}, this)
+				]
+			}, void 0, true, {
+				fileName: _jsxFileName$7,
+				lineNumber: 70,
+				columnNumber: 7
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$7,
+			lineNumber: 64,
+			columnNumber: 5
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$7,
+		lineNumber: 62,
+		columnNumber: 10
+	}, this);
+}
+//#endregion
+//#region frontend/src/components/TeamChat.jsx
+var _jsxFileName$6 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/TeamChat.jsx";
+function TeamChat({ endpoint, currentActor }) {
+	const [messages, setMessages] = (0, import_react.useState)([]);
+	const [draft, setDraft] = (0, import_react.useState)("");
+	const [sending, setSending] = (0, import_react.useState)(false);
+	const [error, setError] = (0, import_react.useState)("");
+	const scrollRef = (0, import_react.useRef)(null);
+	(0, import_react.useEffect)(() => {
+		let active = true;
+		setMessages([]);
+		const refresh = async () => {
+			if (document.visibilityState === "hidden") return;
+			try {
+				const response = await fetch(endpoint, { credentials: "same-origin" });
+				const data = await response.json();
+				if (!response.ok) throw new Error(data.error || "Could not load team chat.");
+				if (active) {
+					setMessages(data.messages || []);
+					setError("");
+				}
+			} catch (problem) {
+				if (active) setError(problem.message);
+			}
+		};
+		refresh();
+		const timer = setInterval(refresh, 6e3);
+		return () => {
+			active = false;
+			clearInterval(timer);
+		};
+	}, [endpoint]);
+	(0, import_react.useEffect)(() => {
+		const container = scrollRef.current;
+		if (container) container.scrollTop = container.scrollHeight;
+	}, [messages.length]);
+	const send = async (event) => {
+		event.preventDefault();
+		const message = draft.trim();
+		if (!message || sending) return;
+		setSending(true);
+		setError("");
+		try {
+			const response = await fetch(endpoint, {
+				method: "POST",
+				credentials: "same-origin",
+				headers: { "content-type": "application/json" },
+				body: JSON.stringify({ message })
+			});
+			const data = await response.json();
+			if (!response.ok) throw new Error(data.error || "Could not send message.");
+			setMessages((current) => current.some((item) => item.id === data.message.id) ? current : [...current, data.message]);
+			setDraft("");
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setSending(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, {
+		className: "flex min-h-[420px] gap-0 overflow-hidden p-0",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				className: "flex items-center gap-3 border-b px-4 py-3",
+				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+					className: "grid size-9 place-items-center rounded-xl bg-primary/10 text-primary",
+					children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageSquare, { className: "size-4" }, void 0, false, {
+						fileName: _jsxFileName$6,
+						lineNumber: 55,
+						columnNumber: 152
+					}, this)
+				}, void 0, false, {
+					fileName: _jsxFileName$6,
+					lineNumber: 55,
+					columnNumber: 65
+				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", {
+					className: "text-sm font-semibold",
+					children: "Project team chat"
+				}, void 0, false, {
+					fileName: _jsxFileName$6,
+					lineNumber: 55,
+					columnNumber: 200
+				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+					className: "text-xs text-muted-foreground",
+					children: "Founder and assigned employees"
+				}, void 0, false, {
+					fileName: _jsxFileName$6,
+					lineNumber: 55,
+					columnNumber: 260
+				}, this)] }, void 0, true, {
+					fileName: _jsxFileName$6,
+					lineNumber: 55,
+					columnNumber: 195
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$6,
+				lineNumber: 55,
+				columnNumber: 5
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				ref: scrollRef,
+				className: "chat-scroll min-h-64 max-h-[50dvh] flex-1 space-y-4 overflow-y-auto px-4 py-5",
+				"aria-label": "Project team messages",
+				"aria-live": "polite",
+				children: messages.length ? messages.map((item) => {
+					const own = item.senderId === currentActor;
+					return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Message, {
+						align: own ? "end" : "start",
+						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Avatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AvatarFallback, {
+							className: "bg-secondary text-xs font-semibold text-secondary-foreground",
+							children: item.senderName?.slice(0, 2).toUpperCase() || "TM"
+						}, void 0, false, {
+							fileName: _jsxFileName$6,
+							lineNumber: 60,
+							columnNumber: 34
+						}, this) }, void 0, false, {
+							fileName: _jsxFileName$6,
+							lineNumber: 60,
+							columnNumber: 26
+						}, this) }, void 0, false, {
+							fileName: _jsxFileName$6,
+							lineNumber: 60,
+							columnNumber: 11
+						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageContent, {
+							className: "max-w-[88%] sm:max-w-[75%]",
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageHeader, {
+								className: own ? "justify-end" : "",
+								children: [
+									own ? "You" : item.senderName,
+									" · ",
+									new Date(item.at).toLocaleTimeString([], {
+										hour: "numeric",
+										minute: "2-digit"
+									})
+								]
+							}, void 0, true, {
+								fileName: _jsxFileName$6,
+								lineNumber: 61,
+								columnNumber: 66
+							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Bubble, {
+								align: own ? "end" : "start",
+								variant: own ? void 0 : "secondary",
+								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(BubbleContent, {
+									className: "whitespace-pre-wrap",
+									children: item.text
+								}, void 0, false, {
+									fileName: _jsxFileName$6,
+									lineNumber: 61,
+									columnNumber: 328
+								}, this)
+							}, void 0, false, {
+								fileName: _jsxFileName$6,
+								lineNumber: 61,
+								columnNumber: 250
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$6,
+							lineNumber: 61,
+							columnNumber: 11
+						}, this)]
+					}, item.id, true, {
+						fileName: _jsxFileName$6,
+						lineNumber: 59,
+						columnNumber: 16
+					}, this);
+				}) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					className: "flex h-56 flex-col items-center justify-center text-center",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageSquare, { className: "mb-3 size-8 text-muted-foreground/50" }, void 0, false, {
+							fileName: _jsxFileName$6,
+							lineNumber: 63,
+							columnNumber: 88
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							className: "text-sm font-medium",
+							children: "Start the team conversation"
+						}, void 0, false, {
+							fileName: _jsxFileName$6,
+							lineNumber: 63,
+							columnNumber: 154
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							className: "mt-1 max-w-xs text-xs text-muted-foreground",
+							children: "Updates and questions shared here stay with this project team."
+						}, void 0, false, {
+							fileName: _jsxFileName$6,
+							lineNumber: 63,
+							columnNumber: 220
+						}, this)
+					]
+				}, void 0, true, {
+					fileName: _jsxFileName$6,
+					lineNumber: 63,
+					columnNumber: 12
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$6,
+				lineNumber: 56,
+				columnNumber: 5
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("form", {
+				onSubmit: send,
+				className: "flex items-end gap-2 border-t p-3",
+				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Textarea, {
+					value: draft,
+					onChange: (event) => setDraft(event.target.value),
+					rows: 1,
+					maxLength: 2e3,
+					placeholder: "Message your team…",
+					"aria-label": "Message your team",
+					className: "max-h-28 min-h-11 flex-1 resize-none"
+				}, void 0, false, {
+					fileName: _jsxFileName$6,
+					lineNumber: 65,
+					columnNumber: 73
+				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+					type: "submit",
+					size: "icon-lg",
+					"aria-label": "Send team message",
+					disabled: !draft.trim() || sending,
+					className: "size-11",
+					children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ArrowUp, { className: "size-5" }, void 0, false, {
+						fileName: _jsxFileName$6,
+						lineNumber: 65,
+						columnNumber: 413
+					}, this)
+				}, void 0, false, {
+					fileName: _jsxFileName$6,
+					lineNumber: 65,
+					columnNumber: 289
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$6,
+				lineNumber: 65,
+				columnNumber: 5
+			}, this),
+			error && /* @__PURE__ */ (void 0)("p", {
+				role: "alert",
+				className: "px-4 pb-3 text-xs text-destructive",
+				children: error
+			}, void 0, false, {
+				fileName: _jsxFileName$6,
+				lineNumber: 66,
+				columnNumber: 15
+			}, this)
+		]
+	}, void 0, true, {
+		fileName: _jsxFileName$6,
+		lineNumber: 54,
+		columnNumber: 10
+	}, this);
+}
+//#endregion
+//#region frontend/src/components/DecisionInbox.jsx
+var _jsxFileName$5 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/DecisionInbox.jsx";
+async function api$3(url, method = "GET", data) {
+	const response = await fetch(url, {
+		method,
+		credentials: "same-origin",
+		headers: { "content-type": "application/json" },
+		...data === void 0 ? {} : { body: JSON.stringify(data) }
+	});
+	const result = await response.json().catch(() => ({}));
+	if (!response.ok) throw new Error(result.error || "Request failed.");
+	return result;
+}
+var when = (value) => value ? new Date(value).toLocaleString([], {
+	month: "short",
+	day: "numeric",
+	hour: "numeric",
+	minute: "2-digit"
+}) : "";
+var initials$1 = (name = "") => name.trim().split(/\s+/).map((part) => part[0]).slice(0, 2).join("").toUpperCase() || "?";
+var preview = (item) => item.originalMessage || item.context || (item.attachments?.length ? "Attachment" : "Request");
+function DecisionInbox({ projects, onProjectsChanged }) {
+	const [requests, setRequests] = (0, import_react.useState)([]);
+	const [selectedId, setSelectedId] = (0, import_react.useState)("");
+	const [mobileThread, setMobileThread] = (0, import_react.useState)(false);
+	const [filter, setFilter] = (0, import_react.useState)("Open");
+	const [projectFilter, setProjectFilter] = (0, import_react.useState)("All projects");
+	const [search, setSearch] = (0, import_react.useState)("");
+	const [mode, setMode] = (0, import_react.useState)("internal");
+	const [drafts, setDrafts] = (0, import_react.useState)({});
+	const [notes, setNotes] = (0, import_react.useState)({});
+	const [settingsOpen, setSettingsOpen] = (0, import_react.useState)(false);
+	const [settingsProjectId, setSettingsProjectId] = (0, import_react.useState)("");
+	const [groupId, setGroupId] = (0, import_react.useState)("");
+	const [error, setError] = (0, import_react.useState)("");
+	const [notice, setNotice] = (0, import_react.useState)("");
+	const [busy, setBusy] = (0, import_react.useState)(false);
+	const scrollRef = (0, import_react.useRef)(null);
+	const load = async () => {
+		try {
+			const data = await api$3("/api/founder/decision-requests");
+			setRequests(data.requests || []);
+			setError("");
+		} catch (failure) {
+			setError(failure.message);
+		}
+	};
+	(0, import_react.useEffect)(() => {
+		load();
+		const timer = setInterval(() => {
+			if (document.visibilityState === "visible") load();
+		}, 1e4);
+		return () => clearInterval(timer);
+	}, []);
+	(0, import_react.useEffect)(() => {
+		const project = projects.find((item) => item.id === settingsProjectId) || projects[0];
+		if (project) {
+			setSettingsProjectId(project.id);
+			setGroupId(project.telegramGroupChatId || "");
+		}
+	}, [projects, settingsProjectId]);
+	const visible = requests.filter((item) => {
+		if (filter === "Open" && item.status === "Done") return false;
+		if (filter === "Done" && item.status !== "Done") return false;
+		if (projectFilter !== "All projects" && item.projectId !== projectFilter) return false;
+		return `${projects.find((candidate) => candidate.id === item.projectId)?.name || ""} ${item.originalSenderName} ${item.originalMessage} ${item.context}`.toLowerCase().includes(search.toLowerCase());
+	});
+	const selected = visible.find((item) => item.id === selectedId) || visible[0];
+	const selectedProject = projects.find((item) => item.id === selected?.projectId);
+	const openCount = requests.filter((item) => item.status !== "Done").length;
+	const text = selected ? mode === "internal" ? notes[selected.id] || "" : drafts[selected.id] || "" : "";
+	const followUps = selected ? [...(selected.comments || []).map((comment) => ({
+		type: "comment",
+		at: comment.at,
+		value: comment
+	})), ...selected.response ? [{
+		type: "response",
+		at: selected.publishedAt,
+		value: selected.response
+	}] : []].sort((left, right) => new Date(left.at).getTime() - new Date(right.at).getTime()) : [];
+	(0, import_react.useEffect)(() => {
+		if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+	}, [
+		selected?.id,
+		selected?.comments?.length,
+		selected?.status
+	]);
+	(0, import_react.useEffect)(() => {
+		if (selected?.status !== "Pending") setMode("internal");
+	}, [selected?.id, selected?.status]);
+	(0, import_react.useEffect)(() => {
+		if (!visible.length) setMobileThread(false);
+	}, [visible.length]);
+	const run = async (action, success) => {
+		setBusy(true);
+		setError("");
+		setNotice("");
+		try {
+			await action();
+			await load();
+			setNotice(success);
+			return true;
+		} catch (failure) {
+			setError(failure.message);
+			return false;
+		} finally {
+			setBusy(false);
+		}
+	};
+	const saveGroup = () => run(async () => {
+		await api$3(`/api/founder/projects/${settingsProjectId}`, "PATCH", { telegramGroupChatId: groupId.trim() });
+		await onProjectsChanged();
+	}, "Telegram group linked to this project.");
+	const send = async (event) => {
+		event.preventDefault();
+		if (!selected || !text.trim() || busy) return;
+		const kind = mode === "internal" ? "comment" : "publish";
+		if (await run(() => api$3(`/api/founder/decision-requests/${encodeURIComponent(selected.id)}/${kind}`, "POST", kind === "comment" ? { text: text.trim() } : { response: text.trim() }), kind === "comment" ? "Private note saved." : "Reply published to Telegram.")) {
+			if (kind === "comment") setNotes((current) => ({
+				...current,
+				[selected.id]: ""
+			}));
+			else {
+				setDrafts((current) => ({
+					...current,
+					[selected.id]: ""
+				}));
+				setMode("internal");
+			}
+		}
+	};
+	const markDone = () => selected && run(() => api$3(`/api/founder/decision-requests/${encodeURIComponent(selected.id)}/resolve`, "POST", {}), "Request marked done.");
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		className: "space-y-4",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				className: "flex flex-wrap items-start justify-between gap-3",
+				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						className: "text-xs font-semibold uppercase tracking-wider text-primary",
+						children: "Telegram workspace"
+					}, void 0, false, {
+						fileName: _jsxFileName$5,
+						lineNumber: 96,
+						columnNumber: 76
+					}, this),
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+						className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
+						children: "Decision inbox"
+					}, void 0, false, {
+						fileName: _jsxFileName$5,
+						lineNumber: 96,
+						columnNumber: 173
+					}, this),
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						className: "mt-1 text-sm text-muted-foreground",
+						children: [
+							openCount,
+							" conversation",
+							openCount === 1 ? "" : "s",
+							" need attention."
+						]
+					}, void 0, true, {
+						fileName: _jsxFileName$5,
+						lineNumber: 96,
+						columnNumber: 263
+					}, this)
+				] }, void 0, true, {
+					fileName: _jsxFileName$5,
+					lineNumber: 96,
+					columnNumber: 71
+				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					className: "flex gap-2",
+					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+						variant: "outline",
+						size: "sm",
+						onClick: load,
+						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(RefreshCw, {}, void 0, false, {
+							fileName: _jsxFileName$5,
+							lineNumber: 96,
+							columnNumber: 470
+						}, this), "Refresh"]
+					}, void 0, true, {
+						fileName: _jsxFileName$5,
+						lineNumber: 96,
+						columnNumber: 419
+					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+						variant: "outline",
+						size: "sm",
+						onClick: () => setSettingsOpen((current) => !current),
+						"aria-expanded": settingsOpen,
+						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Settings2, {}, void 0, false, {
+							fileName: _jsxFileName$5,
+							lineNumber: 96,
+							columnNumber: 619
+						}, this), "Group links"]
+					}, void 0, true, {
+						fileName: _jsxFileName$5,
+						lineNumber: 96,
+						columnNumber: 499
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$5,
+					lineNumber: 96,
+					columnNumber: 391
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$5,
+				lineNumber: 96,
+				columnNumber: 5
+			}, this),
+			error && /* @__PURE__ */ (void 0)("p", {
+				role: "alert",
+				className: "rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800",
+				children: error
+			}, void 0, false, {
+				fileName: _jsxFileName$5,
+				lineNumber: 97,
+				columnNumber: 15
+			}, this),
+			notice && /* @__PURE__ */ (void 0)("p", {
+				role: "status",
+				className: "rounded-lg border border-green-200 bg-green-50 p-3 text-sm text-green-800",
+				children: notice
+			}, void 0, false, {
+				fileName: _jsxFileName$5,
+				lineNumber: 98,
+				columnNumber: 16
+			}, this),
+			settingsOpen && /* @__PURE__ */ (void 0)("div", {
+				className: "flex flex-wrap items-end gap-3 rounded-xl border bg-card p-4",
+				children: [
+					/* @__PURE__ */ (void 0)("label", {
+						className: "min-w-44 flex-1 space-y-1 text-xs font-medium",
+						children: ["Web project", /* @__PURE__ */ (void 0)(NativeSelect, {
+							value: settingsProjectId,
+							onChange: (event) => setSettingsProjectId(event.target.value),
+							className: "w-full",
+							children: projects.map((project) => /* @__PURE__ */ (void 0)("option", {
+								value: project.id,
+								children: project.name
+							}, project.id, false, {
+								fileName: _jsxFileName$5,
+								lineNumber: 99,
+								columnNumber: 325
+							}, this))
+						}, void 0, false, {
+							fileName: _jsxFileName$5,
+							lineNumber: 99,
+							columnNumber: 176
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$5,
+						lineNumber: 99,
+						columnNumber: 100
+					}, this),
+					/* @__PURE__ */ (void 0)("label", {
+						className: "min-w-44 flex-1 space-y-1 text-xs font-medium",
+						children: ["Telegram group chat ID", /* @__PURE__ */ (void 0)(Input, {
+							value: groupId,
+							onChange: (event) => setGroupId(event.target.value),
+							placeholder: "-1001234567890"
+						}, void 0, false, {
+							fileName: _jsxFileName$5,
+							lineNumber: 99,
+							columnNumber: 504
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$5,
+						lineNumber: 99,
+						columnNumber: 417
+					}, this),
+					/* @__PURE__ */ (void 0)(Button, {
+						onClick: saveGroup,
+						disabled: !settingsProjectId || busy,
+						children: "Save link"
+					}, void 0, false, {
+						fileName: _jsxFileName$5,
+						lineNumber: 99,
+						columnNumber: 619
+					}, this),
+					/* @__PURE__ */ (void 0)("p", {
+						className: "w-full text-xs text-muted-foreground",
+						children: "Use the group ID in the bot’s /start message. Each group links to one project."
+					}, void 0, false, {
+						fileName: _jsxFileName$5,
+						lineNumber: 99,
+						columnNumber: 703
+					}, this)
+				]
+			}, void 0, true, {
+				fileName: _jsxFileName$5,
+				lineNumber: 99,
+				columnNumber: 22
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				className: "grid min-h-[min(70dvh,740px)] grid-cols-[minmax(0,1fr)] overflow-hidden rounded-2xl border bg-card shadow-sm lg:grid-cols-[300px_minmax(0,1fr)]",
+				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("aside", {
+					className: `${mobileThread ? "hidden lg:flex" : "flex"} min-h-0 min-w-0 flex-col border-r`,
+					"aria-label": "Decision conversations",
+					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						className: "space-y-3 border-b p-3",
+						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+							className: "relative block",
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Search, { className: "pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" }, void 0, false, {
+								fileName: _jsxFileName$5,
+								lineNumber: 103,
+								columnNumber: 83
+							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+								value: search,
+								onChange: (event) => setSearch(event.target.value),
+								placeholder: "Search conversations",
+								className: "pl-9",
+								"aria-label": "Search decision conversations"
+							}, void 0, false, {
+								fileName: _jsxFileName$5,
+								lineNumber: 103,
+								columnNumber: 195
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$5,
+							lineNumber: 103,
+							columnNumber: 49
+						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "flex gap-2",
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(NativeSelect, {
+								value: filter,
+								onChange: (event) => setFilter(event.target.value),
+								"aria-label": "Filter by status",
+								className: "w-24",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { children: "Open" }, void 0, false, {
+										fileName: _jsxFileName$5,
+										lineNumber: 103,
+										columnNumber: 530
+									}, this),
+									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { children: "Done" }, void 0, false, {
+										fileName: _jsxFileName$5,
+										lineNumber: 103,
+										columnNumber: 551
+									}, this),
+									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { children: "All" }, void 0, false, {
+										fileName: _jsxFileName$5,
+										lineNumber: 103,
+										columnNumber: 572
+									}, this)
+								]
+							}, void 0, true, {
+								fileName: _jsxFileName$5,
+								lineNumber: 103,
+								columnNumber: 402
+							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(NativeSelect, {
+								value: projectFilter,
+								onChange: (event) => setProjectFilter(event.target.value),
+								"aria-label": "Filter by project",
+								className: "min-w-0 flex-1",
+								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { children: "All projects" }, void 0, false, {
+									fileName: _jsxFileName$5,
+									lineNumber: 103,
+									columnNumber: 760
+								}, this), projects.map((project) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", {
+									value: project.id,
+									children: project.name
+								}, project.id, false, {
+									fileName: _jsxFileName$5,
+									lineNumber: 103,
+									columnNumber: 816
+								}, this))]
+							}, void 0, true, {
+								fileName: _jsxFileName$5,
+								lineNumber: 103,
+								columnNumber: 607
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$5,
+							lineNumber: 103,
+							columnNumber: 374
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$5,
+						lineNumber: 103,
+						columnNumber: 9
+					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						className: "chat-scroll min-h-0 flex-1 overflow-y-auto",
+						children: visible.length ? visible.map((item) => {
+							const project = projects.find((candidate) => candidate.id === item.projectId);
+							return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", {
+								type: "button",
+								onClick: () => {
+									setSelectedId(item.id);
+									setMobileThread(true);
+									setMode("internal");
+								},
+								className: `w-full overflow-hidden border-b px-4 py-3 text-left transition-colors hover:bg-muted/70 ${selected?.id === item.id ? "bg-accent/70" : ""}`,
+								"aria-current": selected?.id === item.id ? "true" : void 0,
+								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+									className: "flex items-start gap-3",
+									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+										className: "grid size-9 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold text-secondary-foreground",
+										children: initials$1(item.originalSenderName)
+									}, void 0, false, {
+										fileName: _jsxFileName$5,
+										lineNumber: 106,
+										columnNumber: 396
+									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+										className: "min-w-0 flex-1",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+												className: "flex min-w-0 items-center gap-2",
+												children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("strong", {
+													className: "min-w-0 flex-1 truncate text-sm",
+													children: item.originalSenderName
+												}, void 0, false, {
+													fileName: _jsxFileName$5,
+													lineNumber: 106,
+													columnNumber: 653
+												}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("time", {
+													className: "shrink-0 text-[10px] text-muted-foreground",
+													children: when(item.createdAt)
+												}, void 0, false, {
+													fileName: _jsxFileName$5,
+													lineNumber: 106,
+													columnNumber: 739
+												}, this)]
+											}, void 0, true, {
+												fileName: _jsxFileName$5,
+												lineNumber: 106,
+												columnNumber: 603
+											}, this),
+											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+												className: "mt-0.5 block truncate text-xs text-muted-foreground",
+												children: [
+													project?.name || "Project",
+													" · ",
+													item.requestType
+												]
+											}, void 0, true, {
+												fileName: _jsxFileName$5,
+												lineNumber: 106,
+												columnNumber: 836
+											}, this),
+											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+												className: "mt-1 block truncate text-xs",
+												children: preview(item)
+											}, void 0, false, {
+												fileName: _jsxFileName$5,
+												lineNumber: 106,
+												columnNumber: 962
+											}, this),
+											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+												className: `mt-1.5 inline-block text-[10px] font-medium ${item.status === "Pending" ? "text-amber-700" : item.status === "Published" ? "text-primary" : "text-emerald-700"}`,
+												children: item.status
+											}, void 0, false, {
+												fileName: _jsxFileName$5,
+												lineNumber: 106,
+												columnNumber: 1030
+											}, this)
+										]
+									}, void 0, true, {
+										fileName: _jsxFileName$5,
+										lineNumber: 106,
+										columnNumber: 570
+									}, this)]
+								}, void 0, true, {
+									fileName: _jsxFileName$5,
+									lineNumber: 106,
+									columnNumber: 355
+								}, this)
+							}, item.id, false, {
+								fileName: _jsxFileName$5,
+								lineNumber: 106,
+								columnNumber: 18
+							}, this);
+						}) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "p-8 text-center text-sm text-muted-foreground",
+							children: "No conversations match this view."
+						}, void 0, false, {
+							fileName: _jsxFileName$5,
+							lineNumber: 107,
+							columnNumber: 14
+						}, this)
+					}, void 0, false, {
+						fileName: _jsxFileName$5,
+						lineNumber: 104,
+						columnNumber: 9
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$5,
+					lineNumber: 102,
+					columnNumber: 7
+				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("section", {
+					className: `${mobileThread ? "flex" : "hidden lg:flex"} min-w-0 flex-col`,
+					"aria-label": "Selected decision conversation",
+					children: selected ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_jsx_dev_runtime.Fragment, { children: [
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "flex items-center gap-3 border-b px-4 py-3",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+									variant: "ghost",
+									size: "icon",
+									className: "lg:hidden",
+									onClick: () => setMobileThread(false),
+									"aria-label": "Back to conversations",
+									children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ArrowLeft, { className: "size-4" }, void 0, false, {
+										fileName: _jsxFileName$5,
+										lineNumber: 112,
+										columnNumber: 203
+									}, this)
+								}, void 0, false, {
+									fileName: _jsxFileName$5,
+									lineNumber: 112,
+									columnNumber: 71
+								}, this),
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+									className: "grid size-10 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold",
+									children: initials$1(selected.originalSenderName)
+								}, void 0, false, {
+									fileName: _jsxFileName$5,
+									lineNumber: 112,
+									columnNumber: 244
+								}, this),
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+									className: "min-w-0 flex-1",
+									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", {
+										className: "truncate text-sm font-semibold",
+										children: selected.originalSenderName
+									}, void 0, false, {
+										fileName: _jsxFileName$5,
+										lineNumber: 112,
+										columnNumber: 429
+									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+										className: "truncate text-xs text-muted-foreground",
+										children: [
+											selectedProject?.name || "Project",
+											" · ",
+											selected.requestType,
+											" · ",
+											selected.status
+										]
+									}, void 0, true, {
+										fileName: _jsxFileName$5,
+										lineNumber: 112,
+										columnNumber: 510
+									}, this)]
+								}, void 0, true, {
+									fileName: _jsxFileName$5,
+									lineNumber: 112,
+									columnNumber: 397
+								}, this),
+								selected.status !== "Done" && /* @__PURE__ */ (void 0)(Button, {
+									variant: "outline",
+									size: "sm",
+									disabled: busy,
+									onClick: markDone,
+									children: [/* @__PURE__ */ (void 0)(Check, {}, void 0, false, {
+										fileName: _jsxFileName$5,
+										lineNumber: 112,
+										columnNumber: 757
+									}, this), "Done"]
+								}, void 0, true, {
+									fileName: _jsxFileName$5,
+									lineNumber: 112,
+									columnNumber: 686
+								}, this)
+							]
+						}, void 0, true, {
+							fileName: _jsxFileName$5,
+							lineNumber: 112,
+							columnNumber: 11
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							ref: scrollRef,
+							className: "chat-scroll min-h-[300px] flex-1 space-y-5 overflow-y-auto bg-muted/30 px-4 py-6 sm:px-6",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+									className: "text-center text-[11px] text-muted-foreground",
+									children: ["Request received ", when(selected.createdAt)]
+								}, void 0, true, {
+									fileName: _jsxFileName$5,
+									lineNumber: 114,
+									columnNumber: 13
+								}, this),
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+									className: "flex items-end gap-2",
+									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+										className: "grid size-7 shrink-0 place-items-center rounded-full bg-secondary text-[10px] font-semibold",
+										children: initials$1(selected.originalSenderName)
+									}, void 0, false, {
+										fileName: _jsxFileName$5,
+										lineNumber: 115,
+										columnNumber: 51
+									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+										className: "max-w-[85%] space-y-1",
+										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+											className: "text-[11px] text-muted-foreground",
+											children: [selected.originalSenderName, " · Telegram"]
+										}, void 0, true, {
+											fileName: _jsxFileName$5,
+											lineNumber: 115,
+											columnNumber: 246
+										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+											className: "rounded-2xl rounded-bl-sm border bg-card px-4 py-3 text-sm shadow-sm",
+											children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+												className: "whitespace-pre-wrap",
+												children: selected.originalMessage || "Shared an attachment"
+											}, void 0, false, {
+												fileName: _jsxFileName$5,
+												lineNumber: 115,
+												columnNumber: 425
+											}, this), selected.attachments?.length > 0 && /* @__PURE__ */ (void 0)("div", {
+												className: "mt-3 flex flex-wrap gap-2",
+												children: selected.attachments.map((attachment, index) => /* @__PURE__ */ (void 0)("a", {
+													className: "inline-flex items-center gap-1 rounded-lg bg-muted px-2.5 py-1.5 text-xs text-primary hover:underline",
+													href: `/api/founder/decision-requests/${encodeURIComponent(selected.id)}/attachments/${index}`,
+													target: "_blank",
+													rel: "noreferrer",
+													children: [attachment.fileName || attachment.type, /* @__PURE__ */ (void 0)(ExternalLink, { className: "size-3" }, void 0, false, {
+														fileName: _jsxFileName$5,
+														lineNumber: 115,
+														columnNumber: 943
+													}, this)]
+												}, index, true, {
+													fileName: _jsxFileName$5,
+													lineNumber: 115,
+													columnNumber: 645
+												}, this))
+											}, void 0, false, {
+												fileName: _jsxFileName$5,
+												lineNumber: 115,
+												columnNumber: 553
+											}, this)]
+										}, void 0, true, {
+											fileName: _jsxFileName$5,
+											lineNumber: 115,
+											columnNumber: 339
+										}, this)]
+									}, void 0, true, {
+										fileName: _jsxFileName$5,
+										lineNumber: 115,
+										columnNumber: 207
+									}, this)]
+								}, void 0, true, {
+									fileName: _jsxFileName$5,
+									lineNumber: 115,
+									columnNumber: 13
+								}, this),
+								selected.context && /* @__PURE__ */ (void 0)("div", {
+									className: "mx-auto max-w-[85%] rounded-xl border border-amber-200 bg-amber-50 px-4 py-2 text-xs text-amber-900",
+									children: [
+										/* @__PURE__ */ (void 0)("strong", { children: [selected.requestedByName, " added:"] }, void 0, true, {
+											fileName: _jsxFileName$5,
+											lineNumber: 116,
+											columnNumber: 151
+										}, this),
+										" ",
+										selected.context
+									]
+								}, void 0, true, {
+									fileName: _jsxFileName$5,
+									lineNumber: 116,
+									columnNumber: 34
+								}, this),
+								followUps.map((event) => event.type === "comment" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+									className: "flex justify-end",
+									children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+										className: "max-w-[85%] space-y-1",
+										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+											className: "text-right text-[11px] text-muted-foreground",
+											children: [
+												event.value.author,
+												" · private · ",
+												when(event.at)
+											]
+										}, void 0, true, {
+											fileName: _jsxFileName$5,
+											lineNumber: 117,
+											columnNumber: 160
+										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+											className: "whitespace-pre-wrap rounded-2xl rounded-br-sm border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950",
+											children: event.value.text
+										}, void 0, false, {
+											fileName: _jsxFileName$5,
+											lineNumber: 117,
+											columnNumber: 273
+										}, this)]
+									}, void 0, true, {
+										fileName: _jsxFileName$5,
+										lineNumber: 117,
+										columnNumber: 121
+									}, this)
+								}, event.value.id, false, {
+									fileName: _jsxFileName$5,
+									lineNumber: 117,
+									columnNumber: 66
+								}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+									className: "flex justify-end",
+									children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+										className: "max-w-[85%] space-y-1",
+										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+											className: "text-right text-[11px] text-muted-foreground",
+											children: ["Published to Telegram · ", when(event.at)]
+										}, void 0, true, {
+											fileName: _jsxFileName$5,
+											lineNumber: 117,
+											columnNumber: 529
+										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+											className: "whitespace-pre-wrap rounded-2xl rounded-br-sm bg-primary px-4 py-3 text-sm text-primary-foreground",
+											children: event.value
+										}, void 0, false, {
+											fileName: _jsxFileName$5,
+											lineNumber: 117,
+											columnNumber: 633
+										}, this)]
+									}, void 0, true, {
+										fileName: _jsxFileName$5,
+										lineNumber: 117,
+										columnNumber: 490
+									}, this)
+								}, "published", false, {
+									fileName: _jsxFileName$5,
+									lineNumber: 117,
+									columnNumber: 440
+								}, this)),
+								selected.status === "Done" && /* @__PURE__ */ (void 0)("p", {
+									className: "text-center text-xs text-emerald-700",
+									children: ["Marked done ", when(selected.resolvedAt)]
+								}, void 0, true, {
+									fileName: _jsxFileName$5,
+									lineNumber: 118,
+									columnNumber: 44
+								}, this)
+							]
+						}, void 0, true, {
+							fileName: _jsxFileName$5,
+							lineNumber: 113,
+							columnNumber: 11
+						}, this),
+						selected.status !== "Done" && /* @__PURE__ */ (void 0)("form", {
+							onSubmit: send,
+							className: "space-y-2 border-t p-3 sm:p-4",
+							children: [/* @__PURE__ */ (void 0)("div", {
+								className: "flex items-center gap-2",
+								children: [
+									/* @__PURE__ */ (void 0)("button", {
+										type: "button",
+										onClick: () => setMode("internal"),
+										className: `rounded-full px-3 py-1.5 text-xs font-medium ${mode === "internal" ? "bg-amber-100 text-amber-900" : "text-muted-foreground hover:bg-muted"}`,
+										children: "Private note"
+									}, void 0, false, {
+										fileName: _jsxFileName$5,
+										lineNumber: 120,
+										columnNumber: 147
+									}, this),
+									selected.status === "Pending" && /* @__PURE__ */ (void 0)("button", {
+										type: "button",
+										onClick: () => setMode("publish"),
+										className: `rounded-full px-3 py-1.5 text-xs font-medium ${mode === "publish" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-muted"}`,
+										children: "Reply to Telegram"
+									}, void 0, false, {
+										fileName: _jsxFileName$5,
+										lineNumber: 120,
+										columnNumber: 415
+									}, this),
+									/* @__PURE__ */ (void 0)("span", {
+										className: "ml-auto text-[11px] text-muted-foreground",
+										children: mode === "internal" ? "Stays in web app" : "The group will see this"
+									}, void 0, false, {
+										fileName: _jsxFileName$5,
+										lineNumber: 120,
+										columnNumber: 652
+									}, this)
+								]
+							}, void 0, true, {
+								fileName: _jsxFileName$5,
+								lineNumber: 120,
+								columnNumber: 106
+							}, this), /* @__PURE__ */ (void 0)("div", {
+								className: "flex items-end gap-2",
+								children: [/* @__PURE__ */ (void 0)(Textarea, {
+									value: text,
+									onChange: (event) => mode === "internal" ? setNotes((current) => ({
+										...current,
+										[selected.id]: event.target.value
+									})) : setDrafts((current) => ({
+										...current,
+										[selected.id]: event.target.value
+									})),
+									rows: 2,
+									maxLength: mode === "internal" ? 2e3 : 3e3,
+									placeholder: mode === "internal" ? "Discuss or record a decision…" : "Write the final answer for the group…",
+									"aria-label": mode === "internal" ? "Private note" : "Telegram reply",
+									className: "max-h-32 flex-1 resize-y"
+								}, void 0, false, {
+									fileName: _jsxFileName$5,
+									lineNumber: 120,
+									columnNumber: 833
+								}, this), /* @__PURE__ */ (void 0)(Button, {
+									type: "submit",
+									disabled: busy || !text.trim(),
+									"aria-label": mode === "internal" ? "Save private note" : "Publish reply to Telegram",
+									children: [/* @__PURE__ */ (void 0)(Send, { className: "size-4" }, void 0, false, {
+										fileName: _jsxFileName$5,
+										lineNumber: 120,
+										columnNumber: 1465
+									}, this), /* @__PURE__ */ (void 0)("span", {
+										className: "hidden sm:inline",
+										children: mode === "internal" ? "Save" : "Publish"
+									}, void 0, false, {
+										fileName: _jsxFileName$5,
+										lineNumber: 120,
+										columnNumber: 1492
+									}, this)]
+								}, void 0, true, {
+									fileName: _jsxFileName$5,
+									lineNumber: 120,
+									columnNumber: 1326
+								}, this)]
+							}, void 0, true, {
+								fileName: _jsxFileName$5,
+								lineNumber: 120,
+								columnNumber: 795
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$5,
+							lineNumber: 120,
+							columnNumber: 42
+						}, this)
+					] }, void 0, true, {
+						fileName: _jsxFileName$5,
+						lineNumber: 111,
+						columnNumber: 21
+					}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						className: "flex flex-1 flex-col items-center justify-center gap-2 p-8 text-center text-muted-foreground",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageSquare, { className: "size-9 opacity-50" }, void 0, false, {
+								fileName: _jsxFileName$5,
+								lineNumber: 121,
+								columnNumber: 125
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								className: "text-sm font-medium",
+								children: "Select a conversation"
+							}, void 0, false, {
+								fileName: _jsxFileName$5,
+								lineNumber: 121,
+								columnNumber: 172
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								className: "text-xs",
+								children: "Telegram requests and founder decisions appear here."
+							}, void 0, false, {
+								fileName: _jsxFileName$5,
+								lineNumber: 121,
+								columnNumber: 232
+							}, this)
+						]
+					}, void 0, true, {
+						fileName: _jsxFileName$5,
+						lineNumber: 121,
+						columnNumber: 15
+					}, this)
+				}, void 0, false, {
+					fileName: _jsxFileName$5,
+					lineNumber: 110,
+					columnNumber: 7
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$5,
+				lineNumber: 101,
+				columnNumber: 5
+			}, this)
+		]
+	}, void 0, true, {
+		fileName: _jsxFileName$5,
+		lineNumber: 95,
+		columnNumber: 10
+	}, this);
+}
+//#endregion
+//#region frontend/src/components/TelegramGroups.jsx
+var _jsxFileName$4 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/TelegramGroups.jsx";
+async function api$2(url, method = "GET", data) {
+	const response = await fetch(url, {
+		method,
+		credentials: "same-origin",
+		headers: { "content-type": "application/json" },
+		...data === void 0 ? {} : { body: JSON.stringify(data) }
+	});
+	const result = await response.json().catch(() => ({}));
+	if (!response.ok) throw new Error(result.error || "Request failed.");
+	return result;
+}
+var suggestedRoles = [
+	"Founder",
+	"Client",
+	"Supervisor",
+	"Designer",
+	"Painter",
+	"Carpenter",
+	"Electrician",
+	"Contractor"
+];
+function TelegramGroups({ projects, onProjectsChanged }) {
+	const [groups, setGroups] = (0, import_react.useState)([]);
+	const [selectedId, setSelectedId] = (0, import_react.useState)("");
+	const [drafts, setDrafts] = (0, import_react.useState)({});
+	const [projectName, setProjectName] = (0, import_react.useState)("");
+	const [startDate, setStartDate] = (0, import_react.useState)(() => (/* @__PURE__ */ new Date()).toLocaleDateString("en-CA"));
+	const [busy, setBusy] = (0, import_react.useState)(false);
+	const [error, setError] = (0, import_react.useState)("");
+	const [notice, setNotice] = (0, import_react.useState)("");
+	const load = async () => {
+		try {
+			const data = await api$2("/api/founder/telegram-groups");
+			setGroups(data.groups || []);
+			setError("");
+		} catch (failure) {
+			setError(failure.message);
+		}
+	};
+	(0, import_react.useEffect)(() => {
+		load();
+		const timer = setInterval(() => {
+			if (document.visibilityState === "visible") load();
+		}, 1e4);
+		return () => clearInterval(timer);
+	}, []);
+	const group = groups.find((item) => item.groupChatId === selectedId) || groups[0];
+	const activeMembers = group?.members.filter((member) => member.membershipStatus === "Active") || [];
+	const pendingCount = activeMembers.filter((member) => !member.assignedRole).length;
+	const linkedProject = projects.find((project) => project.telegramGroupChatId === group?.groupChatId);
+	const needsSetup = !linkedProject || linkedProject.telegramSetupPending;
+	const run = async (work, message) => {
+		setBusy(true);
+		setError("");
+		setNotice("");
+		try {
+			await work();
+			await load();
+			setNotice(message);
+		} catch (failure) {
+			setError(failure.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	const saveMember = (member) => {
+		const draft = drafts[`${group.groupChatId}:${member.telegramUserId}`] || {};
+		return run(() => api$2(`/api/founder/telegram-groups/${group.groupChatId}/members/${member.telegramUserId}`, "POST", {
+			name: (draft.name ?? member.assignedName ?? member.telegramName).trim(),
+			role: (draft.role ?? member.assignedRole ?? "").trim()
+		}), "Role saved and announced in Telegram.");
+	};
+	const createProject = () => run(async () => {
+		await api$2(`/api/founder/telegram-groups/${group.groupChatId}/create-project`, "POST", {
+			projectName: projectName.trim() || group.title,
+			startDate
+		});
+		await onProjectsChanged();
+	}, "Project created and linked to this Telegram group.");
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		className: "space-y-4",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				className: "flex flex-wrap items-start justify-between gap-3",
+				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						className: "text-xs font-semibold uppercase tracking-wider text-primary",
+						children: "Telegram onboarding"
+					}, void 0, false, {
+						fileName: _jsxFileName$4,
+						lineNumber: 54,
+						columnNumber: 76
+					}, this),
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+						className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
+						children: "Group setup"
+					}, void 0, false, {
+						fileName: _jsxFileName$4,
+						lineNumber: 54,
+						columnNumber: 174
+					}, this),
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						className: "mt-1 text-sm text-muted-foreground",
+						children: "Groups appear here after the group bot is added. Assign each person a project name and role."
+					}, void 0, false, {
+						fileName: _jsxFileName$4,
+						lineNumber: 54,
+						columnNumber: 261
+					}, this)
+				] }, void 0, true, {
+					fileName: _jsxFileName$4,
+					lineNumber: 54,
+					columnNumber: 71
+				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+					variant: "outline",
+					size: "sm",
+					onClick: load,
+					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(RefreshCw, {}, void 0, false, {
+						fileName: _jsxFileName$4,
+						lineNumber: 54,
+						columnNumber: 464
+					}, this), "Refresh"]
+				}, void 0, true, {
+					fileName: _jsxFileName$4,
+					lineNumber: 54,
+					columnNumber: 413
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$4,
+				lineNumber: 54,
+				columnNumber: 5
+			}, this),
+			error && /* @__PURE__ */ (void 0)("p", {
+				role: "alert",
+				className: "rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800",
+				children: error
+			}, void 0, false, {
+				fileName: _jsxFileName$4,
+				lineNumber: 55,
+				columnNumber: 15
+			}, this),
+			notice && /* @__PURE__ */ (void 0)("p", {
+				role: "status",
+				className: "rounded-lg border border-green-200 bg-green-50 p-3 text-sm text-green-800",
+				children: notice
+			}, void 0, false, {
+				fileName: _jsxFileName$4,
+				lineNumber: 56,
+				columnNumber: 16
+			}, this),
+			groups.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				className: "grid gap-4 lg:grid-cols-[260px_minmax(0,1fr)]",
+				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("aside", {
+					className: "overflow-hidden rounded-xl border bg-card",
+					"aria-label": "Telegram groups",
+					children: groups.map((item) => {
+						const active = item.members.filter((member) => member.membershipStatus === "Active");
+						return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", {
+							type: "button",
+							onClick: () => {
+								setSelectedId(item.groupChatId);
+								setProjectName(item.title);
+							},
+							className: `w-full border-b px-4 py-3 text-left hover:bg-muted/70 ${group?.groupChatId === item.groupChatId ? "bg-accent/70" : ""}`,
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+								className: "block truncate text-sm font-semibold",
+								children: item.title
+							}, void 0, false, {
+								fileName: _jsxFileName$4,
+								lineNumber: 57,
+								columnNumber: 551
+							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+								className: "mt-1 block text-xs text-muted-foreground",
+								children: [
+									active.length,
+									" people · ",
+									active.filter((member) => !member.assignedRole).length,
+									" roles pending"
+								]
+							}, void 0, true, {
+								fileName: _jsxFileName$4,
+								lineNumber: 57,
+								columnNumber: 625
+							}, this)]
+						}, item.groupChatId, true, {
+							fileName: _jsxFileName$4,
+							lineNumber: 57,
+							columnNumber: 292
+						}, this);
+					})
+				}, void 0, false, {
+					fileName: _jsxFileName$4,
+					lineNumber: 57,
+					columnNumber: 85
+				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("section", {
+					className: "min-w-0 space-y-4 rounded-xl border bg-card p-4 sm:p-5",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "flex flex-wrap items-center justify-between gap-2",
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", {
+								className: "text-lg font-semibold",
+								children: group.title
+							}, void 0, false, {
+								fileName: _jsxFileName$4,
+								lineNumber: 58,
+								columnNumber: 155
+							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								className: "text-xs text-muted-foreground",
+								children: [
+									"Telegram group ID ",
+									group.groupChatId,
+									" · ",
+									activeMembers.length,
+									" people observed"
+								]
+							}, void 0, true, {
+								fileName: _jsxFileName$4,
+								lineNumber: 58,
+								columnNumber: 211
+							}, this)] }, void 0, true, {
+								fileName: _jsxFileName$4,
+								lineNumber: 58,
+								columnNumber: 150
+							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+								className: "rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground",
+								children: needsSetup ? "Project needs setup" : `Linked to ${linkedProject.name}`
+							}, void 0, false, {
+								fileName: _jsxFileName$4,
+								lineNumber: 58,
+								columnNumber: 344
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$4,
+							lineNumber: 58,
+							columnNumber: 83
+						}, this),
+						pendingCount > 0 && /* @__PURE__ */ (void 0)("p", {
+							className: "rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900",
+							children: [
+								pendingCount,
+								" person",
+								pendingCount === 1 ? "" : "s",
+								" need a name or role. Ask each person to send /join in Telegram if someone is missing."
+							]
+						}, void 0, true, {
+							fileName: _jsxFileName$4,
+							lineNumber: 59,
+							columnNumber: 30
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "space-y-3",
+							children: activeMembers.length ? activeMembers.map((member) => {
+								const key = `${group.groupChatId}:${member.telegramUserId}`;
+								const draft = drafts[key] || {};
+								return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+									className: "rounded-xl border p-3",
+									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+										className: "mb-3 flex items-center gap-2",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+												className: "grid size-8 place-items-center rounded-full bg-secondary text-xs font-semibold",
+												children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Users, { className: "size-4" }, void 0, false, {
+													fileName: _jsxFileName$4,
+													lineNumber: 60,
+													columnNumber: 403
+												}, this)
+											}, void 0, false, {
+												fileName: _jsxFileName$4,
+												lineNumber: 60,
+												columnNumber: 306
+											}, this),
+											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+												className: "min-w-0 flex-1",
+												children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+													className: "truncate text-sm font-semibold",
+													children: member.telegramName
+												}, void 0, false, {
+													fileName: _jsxFileName$4,
+													lineNumber: 60,
+													columnNumber: 470
+												}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+													className: "text-xs text-muted-foreground",
+													children: ["Telegram ID ", member.telegramUserId]
+												}, void 0, true, {
+													fileName: _jsxFileName$4,
+													lineNumber: 60,
+													columnNumber: 541
+												}, this)]
+											}, void 0, true, {
+												fileName: _jsxFileName$4,
+												lineNumber: 60,
+												columnNumber: 438
+											}, this),
+											member.assignedRole && /* @__PURE__ */ (void 0)("span", {
+												className: "inline-flex items-center gap-1 text-xs text-emerald-700",
+												children: [/* @__PURE__ */ (void 0)(Check, { className: "size-3" }, void 0, false, {
+													fileName: _jsxFileName$4,
+													lineNumber: 60,
+													columnNumber: 729
+												}, this), member.assignedRole]
+											}, void 0, true, {
+												fileName: _jsxFileName$4,
+												lineNumber: 60,
+												columnNumber: 655
+											}, this)
+										]
+									}, void 0, true, {
+										fileName: _jsxFileName$4,
+										lineNumber: 60,
+										columnNumber: 260
+									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+										className: "grid gap-2 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto]",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+												className: "space-y-1 text-xs font-medium",
+												children: ["Name in project", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+													value: draft.name ?? member.assignedName ?? member.telegramName,
+													onChange: (event) => setDrafts((current) => ({
+														...current,
+														[key]: {
+															...current[key],
+															name: event.target.value
+														}
+													}))
+												}, void 0, false, {
+													fileName: _jsxFileName$4,
+													lineNumber: 60,
+													columnNumber: 932
+												}, this)]
+											}, void 0, true, {
+												fileName: _jsxFileName$4,
+												lineNumber: 60,
+												columnNumber: 868
+											}, this),
+											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+												className: "space-y-1 text-xs font-medium",
+												children: ["Role", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+													list: "project-role-suggestions",
+													value: draft.role ?? member.assignedRole ?? "",
+													onChange: (event) => setDrafts((current) => ({
+														...current,
+														[key]: {
+															...current[key],
+															role: event.target.value
+														}
+													})),
+													placeholder: "Client, designer…"
+												}, void 0, false, {
+													fileName: _jsxFileName$4,
+													lineNumber: 60,
+													columnNumber: 1184
+												}, this)]
+											}, void 0, true, {
+												fileName: _jsxFileName$4,
+												lineNumber: 60,
+												columnNumber: 1131
+											}, this),
+											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+												className: "self-end",
+												size: "sm",
+												onClick: () => saveMember(member),
+												disabled: busy || !(draft.role ?? member.assignedRole),
+												children: "Save role"
+											}, void 0, false, {
+												fileName: _jsxFileName$4,
+												lineNumber: 60,
+												columnNumber: 1430
+											}, this)
+										]
+									}, void 0, true, {
+										fileName: _jsxFileName$4,
+										lineNumber: 60,
+										columnNumber: 792
+									}, this)]
+								}, member.telegramUserId, true, {
+									fileName: _jsxFileName$4,
+									lineNumber: 60,
+									columnNumber: 193
+								}, this);
+							}) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								className: "py-8 text-center text-sm text-muted-foreground",
+								children: "No people observed yet. Add members after the bot, or ask them to send /join."
+							}, void 0, false, {
+								fileName: _jsxFileName$4,
+								lineNumber: 60,
+								columnNumber: 1597
+							}, this)
+						}, void 0, false, {
+							fileName: _jsxFileName$4,
+							lineNumber: 60,
+							columnNumber: 9
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("datalist", {
+							id: "project-role-suggestions",
+							children: suggestedRoles.map((role) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { value: role }, role, false, {
+								fileName: _jsxFileName$4,
+								lineNumber: 61,
+								columnNumber: 79
+							}, this))
+						}, void 0, false, {
+							fileName: _jsxFileName$4,
+							lineNumber: 61,
+							columnNumber: 9
+						}, this),
+						needsSetup && /* @__PURE__ */ (void 0)("div", {
+							className: "space-y-3 border-t pt-4",
+							children: [/* @__PURE__ */ (void 0)("div", { children: [/* @__PURE__ */ (void 0)("h3", {
+								className: "text-sm font-semibold",
+								children: "Finish project setup"
+							}, void 0, false, {
+								fileName: _jsxFileName$4,
+								lineNumber: 62,
+								columnNumber: 70
+							}, this), /* @__PURE__ */ (void 0)("p", {
+								className: "text-xs text-muted-foreground",
+								children: "Assign a Client first, then connect this visible web project to the bot's workflow."
+							}, void 0, false, {
+								fileName: _jsxFileName$4,
+								lineNumber: 62,
+								columnNumber: 133
+							}, this)] }, void 0, true, {
+								fileName: _jsxFileName$4,
+								lineNumber: 62,
+								columnNumber: 65
+							}, this), /* @__PURE__ */ (void 0)("div", {
+								className: "grid gap-2 sm:grid-cols-[minmax(0,1fr)_160px_auto]",
+								children: [
+									/* @__PURE__ */ (void 0)("label", {
+										className: "space-y-1 text-xs font-medium",
+										children: ["Project name", /* @__PURE__ */ (void 0)(Input, {
+											value: projectName || group.title,
+											onChange: (event) => setProjectName(event.target.value)
+										}, void 0, false, {
+											fileName: _jsxFileName$4,
+											lineNumber: 62,
+											columnNumber: 400
+										}, this)]
+									}, void 0, true, {
+										fileName: _jsxFileName$4,
+										lineNumber: 62,
+										columnNumber: 339
+									}, this),
+									/* @__PURE__ */ (void 0)("label", {
+										className: "space-y-1 text-xs font-medium",
+										children: ["Start date", /* @__PURE__ */ (void 0)(Input, {
+											type: "date",
+											value: startDate,
+											onChange: (event) => setStartDate(event.target.value)
+										}, void 0, false, {
+											fileName: _jsxFileName$4,
+											lineNumber: 62,
+											columnNumber: 568
+										}, this)]
+									}, void 0, true, {
+										fileName: _jsxFileName$4,
+										lineNumber: 62,
+										columnNumber: 509
+									}, this),
+									/* @__PURE__ */ (void 0)(Button, {
+										className: "self-end",
+										onClick: createProject,
+										disabled: busy || !activeMembers.some((member) => /\bclient\b/i.test(member.assignedRole)),
+										children: "Finish setup"
+									}, void 0, false, {
+										fileName: _jsxFileName$4,
+										lineNumber: 62,
+										columnNumber: 670
+									}, this)
+								]
+							}, void 0, true, {
+								fileName: _jsxFileName$4,
+								lineNumber: 62,
+								columnNumber: 271
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$4,
+							lineNumber: 62,
+							columnNumber: 24
+						}, this)
+					]
+				}, void 0, true, {
+					fileName: _jsxFileName$4,
+					lineNumber: 58,
+					columnNumber: 7
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$4,
+				lineNumber: 57,
+				columnNumber: 22
+			}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				className: "rounded-xl border bg-card px-6 py-14 text-center",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Users, { className: "mx-auto mb-3 size-9 text-muted-foreground" }, void 0, false, {
+						fileName: _jsxFileName$4,
+						lineNumber: 63,
+						columnNumber: 92
+					}, this),
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", {
+						className: "text-sm font-semibold",
+						children: "No Telegram groups yet"
+					}, void 0, false, {
+						fileName: _jsxFileName$4,
+						lineNumber: 63,
+						columnNumber: 155
+					}, this),
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						className: "mx-auto mt-1 max-w-md text-xs text-muted-foreground",
+						children: "Create a group in Telegram, add the project bot as an admin, then add your team. The group will appear here automatically."
+					}, void 0, false, {
+						fileName: _jsxFileName$4,
+						lineNumber: 63,
+						columnNumber: 220
+					}, this)
+				]
+			}, void 0, true, {
+				fileName: _jsxFileName$4,
+				lineNumber: 63,
+				columnNumber: 26
+			}, this)
+		]
+	}, void 0, true, {
+		fileName: _jsxFileName$4,
+		lineNumber: 53,
+		columnNumber: 10
+	}, this);
+}
 //#endregion
 //#region frontend/src/FounderApp.jsx
+var _jsxFileName$3 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/FounderApp.jsx";
 var api$1 = async (url, options = {}) => {
 	const response = await fetch(url, {
 		credentials: "same-origin",
@@ -15988,55 +27572,298 @@ var patch = (url, data = {}) => api$1(url, {
 	body: JSON.stringify(data)
 });
 var initials = (name = "") => name.trim().split(/\s+/).map((part) => part[0]).slice(0, 2).join("").toUpperCase() || "P";
-function formatTime(isoString) {
-	if (!isoString) return "";
-	const date = new Date(isoString);
-	const diffMins = Math.floor((Date.now() - date) / 6e4);
-	if (diffMins < 1) return "Just now";
-	if (diffMins < 60) return `${diffMins}m ago`;
-	const diffHours = Math.floor(diffMins / 60);
-	if (diffHours < 24) return `${diffHours}h ago`;
-	return date.toLocaleDateString(void 0, {
-		month: "short",
-		day: "numeric"
-	});
+var niceDate = (value) => value ? new Date(value).toLocaleDateString(void 0, {
+	month: "short",
+	day: "numeric",
+	year: "numeric"
+}) : "";
+var niceTime = (value) => value ? new Date(value).toLocaleTimeString([], {
+	hour: "numeric",
+	minute: "2-digit"
+}) : "";
+var phaseOptions = [
+	"Design",
+	"Planning",
+	"Procurement",
+	"Site execution",
+	"Finishing",
+	"Handover"
+];
+var statusOptions = [
+	"Setup",
+	"On track",
+	"At risk",
+	"On hold",
+	"Completed"
+];
+function Brand({ compact = false }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		className: "flex items-center gap-2.5",
+		children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+			className: "grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-lg font-bold text-primary-foreground shadow-sm",
+			children: "i"
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 44,
+			columnNumber: 5
+		}, this), !compact && /* @__PURE__ */ (void 0)("div", {
+			className: "leading-tight",
+			children: [/* @__PURE__ */ (void 0)("strong", {
+				className: "block text-sm tracking-tight",
+				children: "studio iksha"
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 45,
+				columnNumber: 49
+			}, this), /* @__PURE__ */ (void 0)("span", {
+				className: "text-[10px] text-muted-foreground",
+				children: "Project operations"
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 45,
+				columnNumber: 119
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 45,
+			columnNumber: 18
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 43,
+		columnNumber: 10
+	}, this);
+}
+function StatusBadge({ status }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Badge, {
+		variant: "outline",
+		className: status === "At risk" ? "border-amber-200 bg-amber-50 text-amber-800" : status === "On hold" ? "border-slate-200 bg-slate-100 text-slate-700" : "border-emerald-200 bg-emerald-50 text-emerald-800",
+		children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", { className: "size-1.5 rounded-full bg-current" }, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 51,
+			columnNumber: 52
+		}, this), status || "On track"]
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 51,
+		columnNumber: 10
+	}, this);
+}
+function InitialAvatar({ name, className = "" }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Avatar, {
+		className,
+		children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AvatarFallback, {
+			className: "bg-accent font-semibold text-accent-foreground",
+			children: initials(name)
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 55,
+			columnNumber: 40
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 55,
+		columnNumber: 10
+	}, this);
+}
+function ConversationThread({ conversations, project, large = false }) {
+	if (!conversations.length) return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		className: "flex min-h-72 flex-col items-center justify-center px-5 py-12 text-center",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				className: "mb-4 grid size-14 place-items-center rounded-2xl bg-accent text-primary",
+				children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageSquare, { className: "size-6" }, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 60,
+					columnNumber: 94
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 60,
+				columnNumber: 5
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h3", {
+				className: "font-semibold",
+				children: "Your conversation starts here"
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 61,
+				columnNumber: 5
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+				className: "mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground",
+				children: "Share the private client link. Questions and the assistant’s replies will appear here."
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 62,
+				columnNumber: 5
+			}, this)
+		]
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 59,
+		columnNumber: 37
+	}, this);
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		className: `chat-scroll space-y-6 overflow-y-auto p-4 sm:p-6 ${large ? "min-h-0 flex-1" : "max-h-96"}`,
+		"aria-label": "Client conversation",
+		"aria-live": "polite",
+		children: conversations.map((item, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+			className: "space-y-4",
+			children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Message, {
+				align: "end",
+				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(InitialAvatar, { name: project?.clientName || "Client" }, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 67,
+					columnNumber: 24
+				}, this) }, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 67,
+					columnNumber: 9
+				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageContent, {
+					className: "max-w-[88%] sm:max-w-[75%]",
+					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageHeader, {
+						className: "justify-end gap-2",
+						children: [
+							niceTime(item.at),
+							" · ",
+							project?.clientName || "Client"
+						]
+					}, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 69,
+						columnNumber: 11
+					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Bubble, {
+						align: "end",
+						children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(BubbleContent, { children: item.question }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 70,
+							columnNumber: 31
+						}, this)
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 70,
+						columnNumber: 11
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 68,
+					columnNumber: 9
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 66,
+				columnNumber: 7
+			}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Message, {
+				align: "start",
+				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Avatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AvatarFallback, {
+					className: "bg-primary/10 text-primary",
+					children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Sparkles, { className: "size-4" }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 74,
+						columnNumber: 87
+					}, this)
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 74,
+					columnNumber: 32
+				}, this) }, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 74,
+					columnNumber: 24
+				}, this) }, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 74,
+					columnNumber: 9
+				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageContent, {
+					className: "max-w-[88%] sm:max-w-[75%]",
+					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageHeader, { children: "Project Assistant" }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 76,
+						columnNumber: 11
+					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Bubble, {
+						variant: "secondary",
+						children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(BubbleContent, { children: item.answer }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 77,
+							columnNumber: 39
+						}, this)
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 77,
+						columnNumber: 11
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 75,
+					columnNumber: 9
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 73,
+				columnNumber: 7
+			}, this)]
+		}, item.at || index, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 65,
+			columnNumber: 41
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 64,
+		columnNumber: 10
+	}, this);
+}
+function Field({ label, children }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+		className: "grid gap-1.5 text-sm font-medium",
+		children: [label, children]
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 85,
+		columnNumber: 10
+	}, this);
 }
 function FounderApp() {
-	const [isAuthenticated, setIsAuthenticated] = (0, import_react.useState)(false);
+	const [authState, setAuthState] = (0, import_react.useState)("checking");
 	const [password, setPassword] = (0, import_react.useState)("");
 	const [showPassword, setShowPassword] = (0, import_react.useState)(false);
 	const [loginError, setLoginError] = (0, import_react.useState)("");
 	const [isLoggingIn, setIsLoggingIn] = (0, import_react.useState)(false);
-	const [isQuickFilled, setIsQuickFilled] = (0, import_react.useState)(false);
 	const [projects, setProjects] = (0, import_react.useState)([]);
+	const [employees, setEmployees] = (0, import_react.useState)([]);
+	const [trashedProjects, setTrashedProjects] = (0, import_react.useState)([]);
 	const [selectedProjectId, setSelectedProjectId] = (0, import_react.useState)(null);
 	const [activities, setActivities] = (0, import_react.useState)([]);
 	const [conversations, setConversations] = (0, import_react.useState)([]);
 	const [projectHistory, setProjectHistory] = (0, import_react.useState)([]);
-	const [isLoadingHistory, setIsLoadingHistory] = (0, import_react.useState)(false);
 	const [currentTab, setCurrentTab] = (0, import_react.useState)("projects");
 	const [searchQuery, setSearchQuery] = (0, import_react.useState)("");
-	const [isSidebarOpen, setIsSidebarOpen] = (0, import_react.useState)(false);
-	const [isCreateProjectOpen, setIsCreateProjectOpen] = (0, import_react.useState)(false);
-	const [isAddMemberOpen, setIsAddMemberOpen] = (0, import_react.useState)(false);
-	const [isEditFactsOpen, setIsEditFactsOpen] = (0, import_react.useState)(false);
-	const [shareLinkData, setShareLinkData] = (0, import_react.useState)(null);
-	const [toastMessage, setToastMessage] = (0, import_react.useState)(null);
-	const showToast = (msg, type = "info") => {
-		setToastMessage({
-			text: msg,
-			type
+	const [sidebarOpen, setSidebarOpen] = (0, import_react.useState)(false);
+	const [createOpen, setCreateOpen] = (0, import_react.useState)(false);
+	const [memberOpen, setMemberOpen] = (0, import_react.useState)(false);
+	const [factsOpen, setFactsOpen] = (0, import_react.useState)(false);
+	const [trashConfirmOpen, setTrashConfirmOpen] = (0, import_react.useState)(false);
+	const [shareLink, setShareLink] = (0, import_react.useState)(null);
+	const [notice, setNotice] = (0, import_react.useState)(null);
+	const [busy, setBusy] = (0, import_react.useState)(false);
+	const selectedProject = projects.find((p) => p.id === selectedProjectId) || projects[0];
+	const filteredProjects = projects.filter((project) => `${project.name} ${project.clientName} ${project.location || ""}`.toLowerCase().includes(searchQuery.toLowerCase()));
+	const showNotice = (message, error = false) => {
+		setNotice({
+			message,
+			error
 		});
-		setTimeout(() => setToastMessage(null), 3200);
+		setTimeout(() => setNotice(null), 3500);
 	};
 	const loadProjects = async () => {
 		try {
 			const data = await api$1("/api/founder/projects");
 			setProjects(data.projects || []);
-			if (!selectedProjectId && data.projects?.length) setSelectedProjectId(data.projects[0].id);
-			setIsAuthenticated(true);
+			setSelectedProjectId((current) => (data.projects || []).some((p) => p.id === current) ? current : data.projects?.[0]?.id || null);
+			setAuthState("signed-in");
 		} catch {
-			setIsAuthenticated(false);
+			setAuthState("signed-out");
 		}
 	};
 	const loadActivities = async () => {
@@ -16047,1183 +27874,2615 @@ function FounderApp() {
 			setActivities([]);
 		}
 	};
-	const loadConversations = async (projectId) => {
-		if (!projectId) return;
+	const loadEmployees = async () => {
 		try {
-			const data = await api$1(`/api/founder/projects/${projectId}/conversation`);
-			setConversations(data.messages || []);
+			const data = await api$1("/api/founder/employees");
+			setEmployees(data.employees || []);
 		} catch {
-			setConversations([]);
+			setEmployees([]);
 		}
 	};
-	const loadProjectHistory = async (projectId) => {
-		if (!projectId) return;
-		setIsLoadingHistory(true);
+	const loadTrash = async () => {
 		try {
-			const data = await api$1(`/api/founder/projects/${projectId}/history`);
-			setProjectHistory(data.history || []);
+			const data = await api$1("/api/founder/trash");
+			setTrashedProjects(data.projects || []);
 		} catch {
-			setProjectHistory([]);
-		} finally {
-			setIsLoadingHistory(false);
+			setTrashedProjects([]);
 		}
+	};
+	const loadProjectDetails = async (id) => {
+		if (!id) {
+			setConversations([]);
+			setProjectHistory([]);
+			return;
+		}
+		const [conversation, history] = await Promise.allSettled([api$1(`/api/founder/projects/${id}/conversation`), api$1(`/api/founder/projects/${id}/updates`)]);
+		setConversations(conversation.status === "fulfilled" ? conversation.value.messages || [] : []);
+		setProjectHistory(history.status === "fulfilled" ? history.value.updates || [] : []);
 	};
 	(0, import_react.useEffect)(() => {
 		loadProjects();
 	}, []);
 	(0, import_react.useEffect)(() => {
-		if (selectedProjectId) {
-			loadConversations(selectedProjectId);
-			loadProjectHistory(selectedProjectId);
-		}
+		if (authState !== "signed-in") return;
+		const timer = setInterval(async () => {
+			if (document.visibilityState !== "visible") return;
+			try {
+				const data = await api$1("/api/founder/projects");
+				setProjects(data.projects || []);
+				setSelectedProjectId((current) => (data.projects || []).some((project) => project.id === current) ? current : data.projects?.[0]?.id || null);
+			} catch {}
+		}, 1e4);
+		return () => clearInterval(timer);
+	}, [authState]);
+	(0, import_react.useEffect)(() => {
+		loadProjectDetails(selectedProjectId);
 	}, [selectedProjectId]);
-	const handleLogin = async (e) => {
-		e.preventDefault();
+	(0, import_react.useEffect)(() => {
+		const isLogin = authState === "signed-out";
+		document.documentElement.classList.toggle("founder-login", isLogin);
+		const themeColor = document.querySelector("meta[name=\"theme-color\"]");
+		if (themeColor) themeColor.content = isLogin ? "#101010" : "#f6f5f4";
+		return () => document.documentElement.classList.remove("founder-login");
+	}, [authState]);
+	const openTab = (tab) => {
+		setCurrentTab(tab);
+		setSidebarOpen(false);
+		if (tab === "activity") loadActivities();
+		if (tab === "employees") loadEmployees();
+		if (tab === "trash") loadTrash();
+	};
+	const handleLogin = async (event) => {
+		event.preventDefault();
 		setIsLoggingIn(true);
 		setLoginError("");
 		try {
 			await post$1("/api/founder/login", { password });
 			await loadProjects();
-		} catch (err) {
-			setLoginError(err.message);
+		} catch (error) {
+			setLoginError(error.message);
 		} finally {
 			setIsLoggingIn(false);
 		}
 	};
-	const handleQuickFill = () => {
-		setPassword("replace-with-a-long-random-password");
-		setIsQuickFilled(true);
-		showToast("Sample founder password loaded!", "success");
-		setTimeout(() => setIsQuickFilled(false), 2500);
-	};
 	const handleLogout = async () => {
 		await post$1("/api/founder/logout");
-		setIsAuthenticated(false);
+		setAuthState("signed-out");
 		setPassword("");
 	};
-	const selectedProject = projects.find((p) => p.id === selectedProjectId) || projects[0];
-	const filteredProjects = projects.filter((p) => {
-		if (!searchQuery) return true;
-		const q = searchQuery.toLowerCase();
-		return p.name.toLowerCase().includes(q) || p.clientName.toLowerCase().includes(q) || p.location && p.location.toLowerCase().includes(q);
-	});
-	const handleCreateInvite = async () => {
+	const handleInvite = async () => {
 		if (!selectedProject) return;
 		try {
-			const { link } = await post$1(`/api/founder/projects/${selectedProject.id}/invite`);
-			setShareLinkData(link);
-		} catch (err) {
-			showToast(err.message, "error");
+			const data = await post$1(`/api/founder/projects/${selectedProject.id}/invite`);
+			setShareLink(data.link);
+		} catch (error) {
+			showNotice(error.message, true);
 		}
 	};
-	if (!isAuthenticated) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
-		className: "min-h-[100dvh] flex flex-col justify-between bg-[#f6f5f4] text-[#161615] px-6 py-6 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))] relative overflow-x-hidden font-sans",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute -top-24 left-1/2 -translate-x-1/2 w-[340px] h-[340px] bg-gradient-to-b from-[#0075de]/15 via-[#0075de]/5 to-transparent rounded-full blur-3xl pointer-events-none -z-0" }),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex-1 flex flex-col justify-center max-w-sm mx-auto w-full z-10 space-y-6 pt-2",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "w-20 h-20 rounded-[22px] bg-black p-[2px] shadow-xl shadow-black/10 mx-auto grid place-items-center relative",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "w-full h-full rounded-[20px] bg-black flex flex-col items-center justify-center text-white",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "font-extrabold text-2xl tracking-tighter",
-								children: "i"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[8px] font-bold tracking-widest text-[#0075de] uppercase -mt-0.5",
-								children: "STUDIO"
-							})]
-						})
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "text-center space-y-2",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[10px] font-bold tracking-widest text-[#96918c] uppercase",
-								children: "PROJECT OPERATIONS"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-								className: "text-2xl sm:text-3xl font-bold tracking-tight text-[#161615] leading-tight",
+	const completeProject = async () => {
+		if (!selectedProject) return;
+		try {
+			await post$1(`/api/founder/projects/${selectedProject.id}/complete`);
+			await loadProjects();
+			showNotice("Project marked complete.");
+		} catch (error) {
+			showNotice(error.message, true);
+		}
+	};
+	const moveToTrash = async () => {
+		if (!selectedProject) return;
+		try {
+			await post$1(`/api/founder/projects/${selectedProject.id}/trash`);
+			setTrashConfirmOpen(false);
+			await loadProjects();
+			showNotice("Project moved to Trash. You can restore it later.");
+		} catch (error) {
+			showNotice(error.message, true);
+		}
+	};
+	const restoreProject = async (id) => {
+		try {
+			await post$1(`/api/founder/trash/${id}/restore`);
+			await Promise.all([loadProjects(), loadTrash()]);
+			showNotice("Project restored.");
+		} catch (error) {
+			showNotice(error.message, true);
+		}
+	};
+	const saveForm = async (event, url, method, after, success) => {
+		event.preventDefault();
+		setBusy(true);
+		try {
+			const data = await (method === "PATCH" ? patch : post$1)(url, Object.fromEntries(new FormData(event.currentTarget)));
+			await loadProjects();
+			if (data.project?.id) setSelectedProjectId(data.project.id);
+			if (selectedProjectId) await loadProjectDetails(selectedProjectId);
+			after();
+			showNotice(success);
+		} catch (error) {
+			showNotice(error.message, true);
+		} finally {
+			setBusy(false);
+		}
+	};
+	if (authState === "checking") return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("main", {
+		className: "grid min-h-dvh place-items-center p-6",
+		children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+			className: "w-full max-w-sm space-y-5",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Brand, {}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 201,
+					columnNumber: 139
+				}, this),
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Skeleton, { className: "h-24 w-full" }, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 201,
+					columnNumber: 148
+				}, this),
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Skeleton, { className: "h-12 w-full" }, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 201,
+					columnNumber: 184
+				}, this)
+			]
+		}, void 0, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 201,
+			columnNumber: 96
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 201,
+		columnNumber: 40
+	}, this);
+	if (authState === "signed-out") return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("main", {
+		className: "grid min-h-dvh place-items-center bg-black md:p-6",
+		children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("section", {
+			className: "relative isolate flex min-h-dvh w-full flex-col overflow-hidden bg-black text-white md:min-h-[min(855px,calc(100dvh-3rem))] md:max-w-[394px] md:shadow-2xl",
+			"aria-label": "Studio Iksha founder access",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("img", {
+					src: "/assets/studio-iksha-access.png",
+					alt: "",
+					"aria-hidden": "true",
+					className: "pointer-events-none absolute top-[-11%] left-[-33%] h-[111%] w-[160.5%] max-w-none object-cover"
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 205,
+					columnNumber: 9
+				}, this),
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					"aria-hidden": "true",
+					className: "pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_42%,rgba(0,0,0,.16)_58%,rgba(0,0,0,.72)_78%,rgba(0,0,0,.9)_100%)]"
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 211,
+					columnNumber: 9
+				}, this),
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					className: "relative z-10 mt-auto flex flex-col px-6 pb-[max(12px,env(safe-area-inset-bottom))]",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "mb-5 space-y-0.5",
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								className: "text-sm font-medium tracking-tight",
+								children: "Project Operations"
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 215,
+								columnNumber: 13
+							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+								className: "text-[28px] leading-tight font-bold tracking-[-0.5px]",
 								children: "Welcome to Studio Iksha"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-xs sm:text-sm text-[#797570] leading-relaxed font-normal",
-								children: "A unified workspace for interior & architecture project facts, site milestones, and private client portals."
-							})
-						]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-						className: "p-4 rounded-[22px] border-[#eae8e5] bg-white shadow-sm space-y-2.5",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center justify-between",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex items-center gap-2",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "w-2 h-2 rounded-full bg-emerald-500 animate-pulse" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-										className: "text-xs font-semibold text-[#161615]",
-										children: "Kumar Residence"
-									})]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-									variant: "success",
-									className: "text-[10px]",
-									children: "On track"
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "text-xs text-[#797570] flex items-center justify-between pt-1 border-t border-[#f0efed]",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Current Phase" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-									className: "text-[#161615] font-medium",
-									children: "Design & Execution"
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "text-xs text-[#797570] truncate pt-0.5",
-								children: ["Latest: ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "text-[#31302e] font-medium",
-									children: "Framing review & 3D moodboards"
-								})]
-							})
-						]
-					})
-				]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "w-full max-w-sm mx-auto z-10 space-y-3.5 pt-4",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex items-start gap-2.5 px-1",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "w-7 h-7 rounded-full bg-[#edeae5] text-[#0075de] grid place-items-center shrink-0 mt-0.5 text-xs",
-						children: "👥"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-						className: "text-[11px] text-[#797570] leading-normal",
-						children: [
-							"Studio Iksha uses encrypted tokens and single-claim client links for zero-login client privacy.",
-							" ",
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-								type: "button",
-								onClick: handleQuickFill,
-								className: "text-[#0075de] hover:underline font-medium inline",
-								children: "Tap to quick-fill founder demo key."
-							})
-						]
-					})]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-					onSubmit: handleLogin,
-					className: "space-y-3",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "relative flex items-center",
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 216,
+								columnNumber: 13
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 214,
+							columnNumber: 11
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "mb-3 text-[11px] leading-[1.4] text-[#a3a3a3]",
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", { children: "Studio Iksha uses encrypted tokens and single-claim client links for zero-login client privacy." }, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 220,
+								columnNumber: 13
+							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+								className: "font-semibold text-[#157de0]",
+								children: "Read our Terms and Privacy Policy"
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 221,
+								columnNumber: 13
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 219,
+							columnNumber: 11
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("form", {
+							onSubmit: handleLogin,
+							className: "space-y-2.5",
 							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(KeyRound, { className: "absolute left-4 h-4 w-4 text-[#9c9791] pointer-events-none" }),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									type: showPassword ? "text" : "password",
-									placeholder: "Enter founder password",
-									value: password,
-									onChange: (e) => setPassword(e.target.value),
-									required: true,
-									autoFocus: true,
-									className: "h-12 min-h-[48px] rounded-full text-sm pl-11 pr-12 bg-white border-[#dfdcd8] focus:ring-2 focus:ring-[#0075de]/25 focus:border-[#78b6e6]"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-									type: "button",
-									onClick: () => setShowPassword(!showPassword),
-									"aria-label": showPassword ? "Hide password" : "Show password",
-									className: "absolute right-1 top-0 bottom-0 w-12 h-12 flex items-center justify-center text-gray-400 hover:text-gray-600 focus:outline-none transition-colors active:scale-90",
-									children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EyeOff, { className: "h-4 w-4" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eye, { className: "h-4 w-4" })
-								})
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+									className: "sr-only",
+									htmlFor: "founder-key",
+									children: "Founder key"
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 225,
+									columnNumber: 13
+								}, this),
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+									className: "relative",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(KeyRound, {
+											"aria-hidden": "true",
+											className: "pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-[#797979]"
+										}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 227,
+											columnNumber: 15
+										}, this),
+										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+											id: "founder-key",
+											type: showPassword ? "text" : "password",
+											value: password,
+											onChange: (event) => setPassword(event.target.value),
+											placeholder: "Enter founder key",
+											autoComplete: "current-password",
+											required: true,
+											className: "h-[49px] rounded-full border-[#373636] bg-[#1f1f1f] pr-12 pl-[43px] text-base text-white shadow-none placeholder:text-[#797979] focus-visible:border-white/60 focus-visible:ring-white/20"
+										}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 228,
+											columnNumber: 15
+										}, this),
+										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", {
+											type: "button",
+											onClick: () => setShowPassword((visible) => !visible),
+											"aria-label": showPassword ? "Hide founder key" : "Show founder key",
+											className: "absolute top-1/2 right-3 grid size-10 -translate-y-1/2 place-items-center rounded-full text-[#797979] focus-visible:outline-2 focus-visible:outline-white",
+											children: showPassword ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(EyeOff, { className: "size-[15px]" }, void 0, false, {
+												fileName: _jsxFileName$3,
+												lineNumber: 244,
+												columnNumber: 33
+											}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Eye, { className: "size-[15px]" }, void 0, false, {
+												fileName: _jsxFileName$3,
+												lineNumber: 244,
+												columnNumber: 70
+											}, this)
+										}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 238,
+											columnNumber: 15
+										}, this)
+									]
+								}, void 0, true, {
+									fileName: _jsxFileName$3,
+									lineNumber: 226,
+									columnNumber: 13
+								}, this),
+								loginError && /* @__PURE__ */ (void 0)("p", {
+									role: "alert",
+									className: "text-xs text-red-300",
+									children: loginError
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 247,
+									columnNumber: 28
+								}, this),
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+									type: "submit",
+									disabled: isLoggingIn,
+									className: "h-12 w-full rounded-full bg-[#f8f8f8] text-base font-semibold text-black shadow-none hover:bg-white",
+									children: isLoggingIn ? "Opening…" : "Continue"
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 248,
+									columnNumber: 13
+								}, this)
 							]
-						}),
-						loginError && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "p-3 bg-red-50 border border-red-200 rounded-2xl text-xs font-medium text-red-700 text-center animate-in fade-in",
-							children: loginError
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							type: "submit",
-							disabled: isLoggingIn,
-							className: "w-full h-12 min-h-[48px] rounded-full bg-[#0075de] hover:bg-[#005bab] active:bg-[#004e92] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition-all flex items-center justify-center gap-2",
-							children: isLoggingIn ? "Opening Workspace…" : "Continue"
-						})
+						}, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 224,
+							columnNumber: 11
+						}, this)
 					]
-				})]
-			})
-		]
-	});
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "min-h-screen flex bg-[#f6f5f4] pb-[72px] md:pb-0",
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 213,
+					columnNumber: 9
+				}, this)
+			]
+		}, void 0, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 204,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 203,
+		columnNumber: 5
+	}, this);
+	const navigation = /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		className: "flex h-full flex-col gap-5",
 		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("aside", {
-				className: `fixed md:sticky top-0 z-40 h-screen w-[270px] bg-[#f1f0ee] border-r border-[#e8e6e2] p-4 flex flex-col transition-transform duration-200 ${isSidebarOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full md:translate-x-0"}`,
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Brand, {}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 258,
+				columnNumber: 5
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("nav", {
+				className: "grid gap-1",
+				"aria-label": "Workspace",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center justify-between pb-6 px-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center gap-2.5 font-bold text-base",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "grid place-items-center w-8 h-8 rounded-lg bg-black text-white font-bold text-sm",
-								children: "i"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "studio iksha" })]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-							onClick: () => setIsSidebarOpen(false),
-							className: "md:hidden p-1.5 text-gray-500 hover:bg-gray-200 rounded-lg",
-							children: "✕"
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "text-[10px] font-bold tracking-widest text-[#9a9590] px-2 mb-2",
-						children: "WORKSPACE"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
-						className: "space-y-1",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+					[
+						"projects",
+						FolderKanban,
+						"Projects"
+					],
+					[
+						"groups",
+						Users,
+						"Telegram groups"
+					],
+					[
+						"decisions",
+						CircleCheck,
+						"Needs attention"
+					],
+					[
+						"assistant",
+						Sparkles,
+						"Founder assistant"
+					],
+					[
+						"messages",
+						MessageSquare,
+						"Client messages"
+					],
+					[
+						"employees",
+						Users,
+						"Employees"
+					],
+					[
+						"activity",
+						Clock3,
+						"Activity log"
+					],
+					[
+						"trash",
+						Trash,
+						"Trash"
+					]
+				].map(([id, Icon, label]) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+					variant: currentTab === id ? "secondary" : "ghost",
+					className: `h-10 justify-start gap-3 ${currentTab === id ? "text-primary" : "text-muted-foreground"}`,
+					onClick: () => openTab(id),
+					children: [
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Icon, { className: "size-4" }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 260,
+							columnNumber: 557
+						}, this),
+						label,
+						id === "messages" && conversations.length > 0 && /* @__PURE__ */ (void 0)(Badge, {
+							variant: "outline",
+							className: "ml-auto",
+							children: conversations.length
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 260,
+							columnNumber: 641
+						}, this)
+					]
+				}, id, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 260,
+					columnNumber: 357
+				}, this))
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 259,
+				columnNumber: 5
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Separator, {}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 262,
+				columnNumber: 5
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				className: "flex items-center justify-between",
+				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+					className: "text-xs font-semibold uppercase tracking-wider text-muted-foreground",
+					children: "Projects"
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 263,
+					columnNumber: 56
+				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+					size: "icon-sm",
+					variant: "ghost",
+					"aria-label": "Create project",
+					onClick: () => {
+						setCreateOpen(true);
+						setSidebarOpen(false);
+					},
+					children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Plus, {}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 263,
+						columnNumber: 289
+					}, this)
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 263,
+					columnNumber: 158
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 263,
+				columnNumber: 5
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				className: "relative",
+				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Search, { className: "pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" }, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 264,
+					columnNumber: 31
+				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+					value: searchQuery,
+					onChange: (e) => setSearchQuery(e.target.value),
+					placeholder: "Find project",
+					className: "pl-9"
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 264,
+					columnNumber: 143
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 264,
+				columnNumber: 5
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				className: "min-h-0 flex-1 space-y-4 overflow-y-auto",
+				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					className: "space-y-1",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							className: "px-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground",
+							children: "Ongoing"
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 266,
+							columnNumber: 34
+						}, this),
+						filteredProjects.filter((project) => project.status !== "Completed").map((project) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+							variant: project.id === selectedProject?.id && currentTab === "projects" ? "outline" : "ghost",
+							className: "h-auto w-full justify-start px-3 py-2.5 text-left",
 							onClick: () => {
-								setCurrentTab("projects");
-								setIsSidebarOpen(false);
+								setSelectedProjectId(project.id);
+								openTab("projects");
 							},
-							className: `w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${currentTab === "projects" ? "bg-[#e5e3df] text-[#171716] font-semibold" : "text-[#625e59] hover:bg-[#e9e8e5]"}`,
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "h-4 w-4 text-[#77716b]" }),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "flex-1 text-left",
-									children: "Projects"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "text-[11px] font-bold bg-[#e0ded9] px-2 py-0.5 rounded-full",
-									children: projects.length
-								})
-							]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							onClick: () => {
-								setCurrentTab("activity");
-								loadActivities();
-								setIsSidebarOpen(false);
-							},
-							className: `w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${currentTab === "activity" ? "bg-[#e5e3df] text-[#171716] font-semibold" : "text-[#625e59] hover:bg-[#e9e8e5]"}`,
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock, { className: "h-4 w-4 text-[#77716b]" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "flex-1 text-left",
-								children: "Activity Log"
-							})]
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center justify-between px-2 pt-6 pb-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "text-[10px] font-bold tracking-wider text-[#9a9590]",
-							children: "PROJECTS"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-							onClick: () => setIsCreateProjectOpen(true),
-							className: "p-1 text-[#333] hover:bg-[#e0ded9] rounded-md font-bold",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "h-4 w-4" })
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "relative mb-2 px-1",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "absolute left-3.5 top-2.5 h-3.5 w-3.5 text-gray-400 pointer-events-none" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-							type: "text",
-							placeholder: "Search projects…",
-							value: searchQuery,
-							onChange: (e) => setSearchQuery(e.target.value),
-							className: "w-full h-8 pl-8 pr-3 text-xs bg-white border border-[#dedbd6] rounded-md outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]"
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "flex-1 overflow-y-auto space-y-1 px-1",
-						children: filteredProjects.map((p) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							onClick: () => {
-								setSelectedProjectId(p.id);
-								setCurrentTab("projects");
-								setIsSidebarOpen(false);
-							},
-							className: `w-full text-left flex items-center gap-2 px-2.5 py-2 rounded-lg text-xs transition-colors ${p.id === selectedProject?.id && currentTab === "projects" ? "bg-[#e2e0dc] text-black font-semibold" : "text-[#55514d] hover:bg-[#e9e8e5]"}`,
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: `w-2 h-2 rounded-full shrink-0 ${p.status === "At risk" ? "bg-amber-500" : p.status === "On hold" ? "bg-gray-400" : "bg-emerald-500"}` }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex-1 truncate",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "truncate font-medium",
-									children: p.name
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "text-[10px] text-gray-400 truncate",
-									children: p.clientName
-								})]
-							})]
-						}, p.id))
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "pt-4 border-t border-[#e3e1dd] flex items-center gap-2.5 px-1",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, {
-								className: "h-8 w-8",
-								children: "P"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex-1 min-w-0",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "text-xs font-semibold truncate",
-									children: "Project Founder"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "text-[10px] text-gray-500 truncate",
-									children: "Workspace Owner"
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-								onClick: handleLogout,
-								className: "p-1.5 text-gray-500 hover:text-red-600 rounded-lg hover:bg-gray-200",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LogOut, { className: "h-4 w-4" })
-							})
-						]
-					})
-				]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex-1 min-w-0 flex flex-col",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
-					className: "sticky top-0 z-20 h-14 bg-[#f6f5f4]/85 backdrop-blur-md border-b border-[#eae8e5] px-4 sm:px-8 flex items-center justify-between",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center gap-2 text-xs sm:text-sm text-[#8a8580]",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-								onClick: () => setIsSidebarOpen(true),
-								className: "md:hidden p-1.5 -ml-1.5 text-gray-700 hover:bg-gray-200 rounded-lg",
-								children: "☰"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Workspace" }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-gray-300",
-								children: "/"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-								className: "text-[#34322f] truncate max-w-[160px] sm:max-w-xs",
-								children: currentTab === "projects" ? selectedProject ? selectedProject.name : "Projects" : "Activity Log"
-							})
-						]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center gap-3",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-							className: "hidden sm:flex items-center gap-1.5 text-xs text-[#8a8580]",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-emerald-500" }), " Private Session"]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, {
-							className: "h-7 w-7 text-xs",
-							children: "P"
-						})]
-					})]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
-					className: "flex-1 max-w-5xl w-full mx-auto p-4 sm:p-8 space-y-6",
-					children: currentTab === "activity" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "space-y-4",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center justify-between",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase",
-								children: "AUDIT & OPERATIONS"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-								className: "text-2xl font-bold tracking-tight text-[#161615]",
-								children: "Activity Log"
-							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-								variant: "subtle",
-								size: "sm",
-								onClick: loadActivities,
-								className: "gap-1.5",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: "h-3.5 w-3.5" }), " Refresh"]
-							})]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
-							className: "p-4 sm:p-6 divide-y divide-[#f0efed]",
-							children: activities.length ? activities.map((act) => {
-								const proj = projects.find((p) => p.id === act.projectId);
-								return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "py-3.5 flex items-start gap-3.5 first:pt-0 last:pb-0",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "p-2 rounded-lg bg-[#f2f1ef] text-sm shrink-0",
-										children: act.action === "project_created" ? "✦" : act.action === "member_added" ? "👤" : act.action === "client_link_claimed" ? "✓" : "⚡"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex-1 min-w-0",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "flex items-center gap-2 flex-wrap mb-1",
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-													className: "text-xs sm:text-sm font-semibold",
-													children: act.action.replace(/_/g, " ")
-												}),
-												proj && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-													variant: "secondary",
-													className: "text-[10px]",
-													children: proj.name
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-													className: "text-xs text-gray-400 ml-auto",
-													children: formatTime(act.at)
-												})
-											]
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "text-xs text-[#716c66]",
-											children: act.details?.name || act.details?.clientName || proj?.name || "Workspace update"
-										})]
-									})]
-								}, act.id || act.at);
-							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "py-12 text-center text-sm text-gray-400",
-								children: "No activity events recorded yet."
-							})
-						})]
-					}) : selectedProject ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "space-y-6",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex flex-col sm:flex-row sm:items-end justify-between gap-4",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase",
-										children: "PROJECT WORKSPACE"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-										className: "text-2xl sm:text-3xl font-bold tracking-tight text-[#161615] mt-1",
-										children: selectedProject.name
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex items-center gap-2 text-xs sm:text-sm text-[#89847f] mt-1 flex-wrap",
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: ["📍 ", selectedProject.location || "Location not specified"] }),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "·" }),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: ["Client: ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-												className: "text-gray-700",
-												children: selectedProject.clientName
-											})] }),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "·" }),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: ["Created ", new Date(selectedProject.createdAt).toLocaleDateString()] })
-										]
-									})
-								] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "grid grid-cols-2 sm:flex items-center gap-2 w-full sm:w-auto",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-										variant: "subtle",
-										onClick: () => setIsEditFactsOpen(true),
-										className: "gap-1.5",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PenLine, { className: "h-4 w-4" }), " Edit Facts"]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-										onClick: handleCreateInvite,
-										className: "gap-1.5",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Share2, { className: "h-4 w-4" }), " Share Link"]
-									})]
-								})]
-							}),
-							selectedProject.blocker && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center gap-3 p-4 bg-[#fdf3ec] border border-[#f6cfb0] rounded-xl text-amber-900 shadow-sm",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { className: "h-5 w-5 text-[#dd5b00] shrink-0" }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex-1 min-w-0",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-											className: "block text-xs font-bold text-[#8a3600]",
-											children: "Active Blocker (Client Visible)"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "text-xs sm:text-sm text-[#523410] truncate",
-											children: selectedProject.blocker
-										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-										size: "sm",
-										variant: "subtle",
-										onClick: () => setIsEditFactsOpen(true),
-										children: "Update"
-									})
-								]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-								className: "p-4 sm:p-6 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:divide-x divide-[#efeeec]",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "space-y-1",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase",
-											children: "STATUS"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "flex items-center gap-2",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: `w-2 h-2 rounded-full ${selectedProject.status === "At risk" ? "bg-amber-500" : "bg-emerald-500"}` }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-												className: "text-xs sm:text-sm font-semibold",
-												children: selectedProject.status || "On track"
-											})]
-										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "space-y-1 sm:pl-4",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase",
-											children: "CURRENT PHASE"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-											className: "text-xs sm:text-sm font-semibold truncate",
-											children: selectedProject.phase || "Design"
-										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "space-y-1 sm:pl-4",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase",
-											children: "NEXT MILESTONE"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-											className: "text-xs sm:text-sm font-semibold truncate",
-											children: selectedProject.nextMilestone || "Not scheduled"
-										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "space-y-1 sm:pl-4",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase",
-											children: "TEAM"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "text-xs sm:text-sm font-semibold",
-											children: [selectedProject.members?.length || 0, " Members"]
-										})]
-									})
-								]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "grid sm:grid-cols-2 gap-4",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-									className: "p-5 flex flex-col justify-between",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase",
-										children: "RECENT IN PROGRESS"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-										className: "text-sm sm:text-base font-semibold mt-1 mb-3",
-										children: selectedProject.recentTask || "No recent task recorded"
-									})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "pt-4 border-t border-[#efeeec] flex items-center gap-2 text-xs",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "p-1.5 rounded-lg bg-emerald-50 text-emerald-700",
-											children: "◎"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "truncate",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "text-[10px] uppercase text-gray-400 block font-bold",
-												children: "UP NEXT"
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-												className: "truncate font-semibold",
-												children: selectedProject.nextMilestone || "Milestone not recorded"
-											})]
-										})]
-									})]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-									className: "p-5",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex items-center justify-between mb-4",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase",
-											children: "TEAM ROSTER"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", {
-											className: "text-sm sm:text-base font-semibold",
-											children: [
-												"Project Team (",
-												selectedProject.members?.length || 0,
-												")"
-											]
-										})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-											size: "sm",
-											variant: "subtle",
-											onClick: () => setIsAddMemberOpen(true),
-											className: "gap-1",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(UserPlus, { className: "h-3.5 w-3.5" }), " Add"]
-										})]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "space-y-2.5 max-h-48 overflow-y-auto",
-										children: selectedProject.members?.length ? selectedProject.members.map((m, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "flex items-center gap-3 py-1.5 border-b border-[#f0efed] last:border-0",
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, {
-													className: "h-7 w-7 text-xs",
-													children: initials(m.name)
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-													className: "flex-1 truncate",
-													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-														className: "text-xs font-semibold block truncate",
-														children: m.name
-													}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-														className: "text-[10px] text-gray-400 block truncate",
-														children: m.designation
-													})]
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-													variant: m.role.toLowerCase().includes("admin") ? "admin" : m.role.toLowerCase().includes("designer") ? "designer" : "secondary",
-													className: "text-[9px]",
-													children: m.role
-												})
-											]
-										}, m.id || i)) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-											className: "py-4 text-center text-xs text-gray-400",
-											children: "No members assigned yet."
-										})
-									})]
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-								className: "p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex items-center gap-3.5",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "p-2.5 rounded-xl bg-blue-50 text-[#0075de]",
-										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "h-6 w-6" })
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
-										className: "text-sm font-semibold",
-										children: "Single-Claim Client Link"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "text-xs text-gray-500",
-										children: "The first browser to open claims access. No passwords or app installation required."
-									})] })]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-									onClick: handleCreateInvite,
-									variant: "secondary",
-									className: "w-full sm:w-auto shrink-0",
-									children: "Generate Link →"
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-								className: "p-5",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex items-center justify-between mb-4",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase",
-											children: "UPDATE HISTORY"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h4", {
-											className: "text-sm sm:text-base font-semibold flex items-center gap-2 mt-0.5",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RotateCcwClock, { className: "h-4 w-4 text-[#0075de]" }), " Project Update Timeline"]
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "text-xs text-gray-500",
-											children: "Record of field changes, milestones, and phase transitions over time."
-										})
-									] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-										size: "sm",
-										variant: "subtle",
-										onClick: () => loadProjectHistory(selectedProject.id),
-										disabled: isLoadingHistory,
-										className: "gap-1",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: `h-3.5 w-3.5 ${isLoadingHistory ? "animate-spin" : ""}` }), " Refresh"]
-									})]
-								}), projectHistory.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "relative pl-6 space-y-6 before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-[#eae8e5]",
-									children: projectHistory.map((item, idx) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "relative group",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-											className: "absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-white border-2 border-[#0075de] flex items-center justify-center shadow-xs",
-											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-[#0075de]" })
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "bg-gray-50/80 hover:bg-gray-50 border border-gray-200/80 rounded-xl p-3.5 transition-colors space-y-2.5",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "flex items-center justify-between gap-2 flex-wrap text-xs",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-													className: "flex items-center gap-2",
-													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-														className: "font-semibold text-gray-800",
-														children: item.changedFields?.length ? `${item.changedFields.length} field${item.changedFields.length > 1 ? "s" : ""} updated` : "Project update recorded"
-													}), item.status && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-														variant: item.status === "At risk" ? "destructive" : item.status === "On hold" ? "outline" : "success",
-														className: "text-[10px]",
-														children: item.status
-													})]
-												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-													className: "text-[11px] text-gray-400 flex items-center gap-1 font-mono",
-													children: [
-														/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock, { className: "h-3 w-3" }),
-														formatTime(item.timestamp || item.at),
-														" · ",
-														new Date(item.timestamp || item.at || Date.now()).toLocaleTimeString([], {
-															hour: "2-digit",
-															minute: "2-digit"
-														})
-													]
-												})]
-											}), item.changedFields && item.changedFields.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-												className: "space-y-1.5 pt-1",
-												children: item.changedFields.map((change, cIdx) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-													className: "text-xs bg-white rounded-lg p-2 border border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5",
-													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-														className: "font-medium text-gray-500 text-[11px]",
-														children: change.label || change.field
-													}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-														className: "flex items-center gap-2 flex-wrap text-xs",
-														children: [change.oldValue ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-															className: "line-through text-gray-400 truncate max-w-[150px]",
-															children: change.oldValue
-														}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "h-3 w-3 text-gray-400 shrink-0" })] }) : null, /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-															className: "font-medium text-gray-900 bg-emerald-50 text-emerald-800 px-2.5 py-0.5 rounded-full border border-emerald-100",
-															children: change.newValue || change.value || "Cleared"
-														})]
-													})]
-												}, cIdx))
-											})]
-										})]
-									}, item.id || idx))
-								}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "py-8 text-center text-xs text-gray-400 border border-dashed border-gray-200 rounded-xl space-y-1",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RotateCcwClock, { className: "h-6 w-6 text-gray-300 mx-auto mb-1" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "font-medium text-gray-600",
-											children: "No update history recorded yet for this project."
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "text-[11px] text-gray-400",
-											children: "Updates saved in 'Edit Facts' will appear in this timeline."
-										})
-									]
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-								className: "p-5",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "mb-4",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase",
-											children: "CLIENT TRANSCRIPT"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
-											className: "text-sm sm:text-base font-semibold",
-											children: "Shared Conversation History"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "text-xs text-gray-500",
-											children: "Questions and assistant responses asked through the client link."
-										})
-									]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "space-y-3 max-h-64 overflow-y-auto",
-									children: conversations.length ? conversations.map((item, idx) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "p-3.5 bg-gray-50 rounded-xl space-y-2 border border-gray-100",
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "flex items-center justify-between text-[11px] text-gray-400",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-													variant: "outline",
-													className: "text-[9px]",
-													children: "Client Question"
-												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: new Date(item.at).toLocaleTimeString([], {
-													hour: "2-digit",
-													minute: "2-digit"
-												}) })]
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-												className: "text-xs font-semibold text-gray-800",
-												children: item.question
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "p-2.5 bg-white rounded-lg border border-gray-200 text-xs text-gray-600 leading-relaxed",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-													className: "text-[9px] font-bold text-gray-400 block uppercase mb-1",
-													children: "ASSISTANT"
-												}), item.answer]
-											})
-										]
-									}, idx)) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "py-8 text-center text-xs text-gray-400",
-										children: "No client questions recorded yet."
-									})
-								})]
-							})
-						]
-					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "py-16 text-center space-y-4",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-							className: "text-xl font-bold",
-							children: "No Projects Found"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							onClick: () => setIsCreateProjectOpen(true),
-							children: "Create Your First Project"
-						})]
-					})
-				})]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
-				className: "md:hidden fixed bottom-0 left-0 right-0 h-16 bg-white/90 backdrop-blur-lg border-t border-gray-200 flex items-center justify-around z-30 px-2 pb-[env(safe-area-inset-bottom)]",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-						onClick: () => setCurrentTab("projects"),
-						className: `flex flex-col items-center gap-1 text-[10px] font-medium ${currentTab === "projects" ? "text-[#0075de] font-semibold" : "text-gray-500"}`,
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "h-5 w-5" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Projects" })]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-						onClick: () => setIsCreateProjectOpen(true),
-						className: "w-11 h-11 rounded-full bg-[#0075de] text-white grid place-items-center shadow-lg -mt-4 active:scale-95",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "h-6 w-6" })
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", { className: `size-2 shrink-0 rounded-full ${project.status === "At risk" || project.telegramSetupPending ? "bg-amber-500" : "bg-emerald-500"}` }, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 266,
+								columnNumber: 483
+							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+								className: "min-w-0 flex-1",
+								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+									className: "block truncate text-sm font-medium",
+									children: project.name
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 266,
+									columnNumber: 667
+								}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+									className: "block truncate text-xs font-normal text-muted-foreground",
+									children: project.clientName
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 266,
+									columnNumber: 741
+								}, this)]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 266,
+								columnNumber: 634
+							}, this)]
+						}, project.id, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 266,
+							columnNumber: 225
+						}, this)),
+						!filteredProjects.some((project) => project.status !== "Completed") && /* @__PURE__ */ (void 0)("p", {
+							className: "px-2 text-xs text-muted-foreground",
+							children: "No ongoing projects"
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 266,
+							columnNumber: 933
+						}, this)
+					]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 266,
+					columnNumber: 7
+				}, this), filteredProjects.some((project) => project.status === "Completed") && /* @__PURE__ */ (void 0)("div", {
+					className: "space-y-1",
+					children: [/* @__PURE__ */ (void 0)("p", {
+						className: "px-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground",
+						children: "Completed"
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 267,
+						columnNumber: 105
+					}, this), filteredProjects.filter((project) => project.status === "Completed").map((project) => /* @__PURE__ */ (void 0)(Button, {
+						variant: project.id === selectedProject?.id && currentTab === "projects" ? "outline" : "ghost",
+						className: "h-auto w-full justify-start px-3 py-2.5 text-left",
 						onClick: () => {
-							setCurrentTab("activity");
-							loadActivities();
+							setSelectedProjectId(project.id);
+							openTab("projects");
 						},
-						className: `flex flex-col items-center gap-1 text-[10px] font-medium ${currentTab === "activity" ? "text-[#0075de] font-semibold" : "text-gray-500"}`,
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock, { className: "h-5 w-5" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Activity" })]
-					})
+						children: [/* @__PURE__ */ (void 0)(CircleCheck, { className: "size-4 shrink-0 text-emerald-600" }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 267,
+							columnNumber: 556
+						}, this), /* @__PURE__ */ (void 0)("span", {
+							className: "min-w-0 flex-1 truncate text-sm",
+							children: project.name
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 267,
+							columnNumber: 617
+						}, this)]
+					}, project.id, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 267,
+						columnNumber: 298
+					}, this))]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 267,
+					columnNumber: 78
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 265,
+				columnNumber: 5
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Separator, {}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 269,
+				columnNumber: 5
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				className: "flex items-center gap-2",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(InitialAvatar, { name: "Project Founder" }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 269,
+						columnNumber: 59
+					}, this),
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						className: "min-w-0 flex-1",
+						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							className: "truncate text-xs font-semibold",
+							children: "Project Founder"
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 269,
+							columnNumber: 131
+						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							className: "text-xs text-muted-foreground",
+							children: "Workspace owner"
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 269,
+							columnNumber: 196
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 269,
+						columnNumber: 99
+					}, this),
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+						variant: "ghost",
+						size: "icon-sm",
+						"aria-label": "Sign out",
+						onClick: handleLogout,
+						children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(LogOut, {}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 269,
+							columnNumber: 350
+						}, this)
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 269,
+						columnNumber: 266
+					}, this)
 				]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Dialog, {
-				open: isCreateProjectOpen,
-				onOpenChange: setIsCreateProjectOpen,
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "text-[10px] font-bold tracking-widest text-[#96918c] uppercase",
-						children: "NEW WORKSPACE"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Start a Project Space" }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Set up the basics. You can assign the team and share a client link next." })
-				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-					onSubmit: async (e) => {
-						e.preventDefault();
-						const form = new FormData(e.currentTarget);
-						try {
-							const res = await post$1("/api/founder/projects", Object.fromEntries(form));
-							await loadProjects();
-							setSelectedProjectId(res.project.id);
-							setIsCreateProjectOpen(false);
-							showToast("Project created successfully!", "success");
-						} catch (err) {
-							showToast(err.message, "error");
-						}
-					},
-					className: "space-y-4",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "space-y-1",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-								className: "text-xs font-semibold",
-								children: "Project Name"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								name: "name",
-								placeholder: "e.g. Kumar Residence",
-								required: true,
-								autoFocus: true
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "space-y-1",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-								className: "text-xs font-semibold",
-								children: "Client Name"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								name: "clientName",
-								placeholder: "e.g. Asha Kumar",
-								required: true
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "space-y-1",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-								className: "text-xs font-semibold",
-								children: "Location"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								name: "location",
-								placeholder: "e.g. Pune, Maharashtra"
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "grid grid-cols-2 gap-3",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "space-y-1",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-									className: "text-xs font-semibold",
-									children: "Phase"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
-									name: "phase",
-									className: "w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Design" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Planning" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Procurement" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Site execution" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Finishing" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Handover" })
-									]
-								})]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "space-y-1",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-									className: "text-xs font-semibold",
-									children: "Status"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
-									name: "status",
-									className: "w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Setup" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "On track" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "At risk" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "On hold" })
-									]
-								})]
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "space-y-1",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-								className: "text-xs font-semibold",
-								children: "Recent Task"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								name: "recentTask",
-								placeholder: "e.g. 3D Moodboards completed"
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "space-y-1",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-								className: "text-xs font-semibold",
-								children: "Next Milestone"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								name: "nextMilestone",
-								placeholder: "e.g. Material selection review"
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							type: "submit",
-							className: "w-full",
-							children: "Create Project Space"
-						})
-					]
-				})]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Dialog, {
-				open: isAddMemberOpen,
-				onOpenChange: setIsAddMemberOpen,
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "text-[10px] font-bold tracking-widest text-[#96918c] uppercase",
-						children: "PROJECT TEAM"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Add Team Member" }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [
-						"Assign a team member to ",
-						selectedProject?.name,
-						"."
-					] })
-				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-					onSubmit: async (e) => {
-						e.preventDefault();
-						const form = new FormData(e.currentTarget);
-						try {
-							await post$1(`/api/founder/projects/${selectedProject.id}/members`, Object.fromEntries(form));
-							await loadProjects();
-							setIsAddMemberOpen(false);
-							showToast("Member added!", "success");
-						} catch (err) {
-							showToast(err.message, "error");
-						}
-					},
-					className: "space-y-4",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "space-y-1",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-								className: "text-xs font-semibold",
-								children: "Full Name"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								name: "name",
-								placeholder: "e.g. Rohan Mehta",
-								required: true,
-								autoFocus: true
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "space-y-1",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-								className: "text-xs font-semibold",
-								children: "Designation"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								name: "designation",
-								placeholder: "e.g. Lead Interior Designer",
-								required: true
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "space-y-1",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-								className: "text-xs font-semibold",
-								children: "Role"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
-								name: "role",
-								className: "w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Project admin" }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Designer" }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Site supervisor" }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Site team" }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Contractor" }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Trade worker" }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Client" }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Other" })
-								]
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							type: "submit",
-							className: "w-full",
-							children: "Add to Team"
-						})
-					]
-				})]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Dialog, {
-				open: isEditFactsOpen,
-				onOpenChange: setIsEditFactsOpen,
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "text-[10px] font-bold tracking-widest text-[#96918c] uppercase",
-						children: "FACTS UPDATE"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Update Project Facts" }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "The client assistant responds using these exact recorded facts." })
-				] }), selectedProject && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-					onSubmit: async (e) => {
-						e.preventDefault();
-						const form = new FormData(e.currentTarget);
-						try {
-							await patch(`/api/founder/projects/${selectedProject.id}`, Object.fromEntries(form));
-							await loadProjects();
-							await loadProjectHistory(selectedProject.id);
-							setIsEditFactsOpen(false);
-							showToast("Project facts updated.", "success");
-						} catch (err) {
-							showToast(err.message, "error");
-						}
-					},
-					className: "space-y-4",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "grid grid-cols-2 gap-3",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "space-y-1",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-									className: "text-xs font-semibold",
-									children: "Phase"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
-									name: "phase",
-									defaultValue: selectedProject.phase,
-									className: "w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Design" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Planning" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Procurement" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Site execution" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Finishing" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Handover" })
-									]
-								})]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "space-y-1",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-									className: "text-xs font-semibold",
-									children: "Status"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
-									name: "status",
-									defaultValue: selectedProject.status,
-									className: "w-full h-12 px-3.5 border border-[#dfdcd8] rounded-[14px] text-sm bg-white outline-none focus:ring-2 focus:ring-[#0075de]/20 focus:border-[#78b6e6]",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Setup" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "On track" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "At risk" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "On hold" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Completed" })
-									]
-								})]
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "space-y-1",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-								className: "text-xs font-semibold",
-								children: "Recent Task"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								name: "recentTask",
-								defaultValue: selectedProject.recentTask,
-								placeholder: "e.g. Framing completed on 2nd floor"
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "space-y-1",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-								className: "text-xs font-semibold",
-								children: "Next Milestone"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								name: "nextMilestone",
-								defaultValue: selectedProject.nextMilestone,
-								placeholder: "e.g. Tile deliveries"
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "space-y-1",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-								className: "text-xs font-semibold",
-								children: "Blocker (Client Visible)"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								name: "blocker",
-								defaultValue: selectedProject.blocker,
-								placeholder: "e.g. Awaiting client tile selection"
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							type: "submit",
-							className: "w-full",
-							children: "Save Project Facts"
-						})
-					]
-				})]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Dialog, {
-				open: !!shareLinkData,
-				onOpenChange: () => setShareLinkData(null),
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 grid place-items-center mb-2 text-lg",
-						children: "✓"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "text-[10px] font-bold tracking-widest text-[#96918c] uppercase",
-						children: "CLIENT ACCESS"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Private Link Ready" }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [
-						"Send this to ",
-						selectedProject?.clientName,
-						". The first browser to open it claims access."
-					] })
-				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "space-y-4",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex gap-2 p-2 bg-gray-50 border border-gray-200 rounded-xl",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-								readOnly: true,
-								value: shareLinkData || "",
-								className: "flex-1 bg-transparent text-xs sm:text-sm font-mono px-2 outline-none"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-								size: "sm",
-								onClick: () => {
-									navigator.clipboard.writeText(shareLinkData);
-									showToast("Link copied to clipboard!", "success");
-								},
-								className: "gap-1",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Copy, { className: "h-3.5 w-3.5" }), " Copy"]
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "text-xs text-gray-500",
-							children: "🔒 Single-claim bearer link · No password required"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							variant: "secondary",
-							className: "w-full",
-							onClick: () => setShareLinkData(null),
-							children: "Done"
-						})
-					]
-				})]
-			}),
-			toastMessage && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "fixed bottom-20 md:bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 bg-gray-900/95 backdrop-blur text-white text-xs font-medium rounded-full shadow-2xl flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: toastMessage.type === "success" ? "✓" : "ℹ" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: toastMessage.text })]
-			})
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 269,
+				columnNumber: 18
+			}, this)
 		]
-	});
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 257,
+		columnNumber: 22
+	}, this);
+	if (currentTab === "assistant") return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(FounderAssistant, { onBack: () => openTab("projects") }, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 272,
+		columnNumber: 42
+	}, this);
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		className: "app-glow min-h-dvh bg-background pb-20 md:pb-0",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("aside", {
+				className: "fixed inset-y-0 left-0 hidden w-64 border-r bg-card p-5 md:block",
+				children: navigation
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 275,
+				columnNumber: 5
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Sheet, {
+				open: sidebarOpen,
+				onOpenChange: setSidebarOpen,
+				children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(SheetContent, {
+					side: "left",
+					className: "w-[min(88vw,19rem)] gap-0 p-5",
+					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(SheetHeader, {
+						className: "sr-only",
+						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(SheetTitle, { children: "Workspace navigation" }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 276,
+							columnNumber: 162
+						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(SheetDescription, { children: "Choose a project or section" }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 276,
+							columnNumber: 207
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 276,
+						columnNumber: 129
+					}, this), navigation]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 276,
+					columnNumber: 61
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 276,
+				columnNumber: 5
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				className: "md:pl-64",
+				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("header", {
+					className: "sticky top-0 z-20 flex h-16 items-center justify-between border-b bg-card/95 px-4 backdrop-blur sm:px-7",
+					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						className: "flex min-w-0 items-center gap-3",
+						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+							variant: "ghost",
+							size: "icon",
+							className: "md:hidden",
+							"aria-label": "Open navigation",
+							onClick: () => setSidebarOpen(true),
+							children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Menu, {}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 278,
+								columnNumber: 304
+							}, this)
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 278,
+							columnNumber: 180
+						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "min-w-0",
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								className: "text-xs text-muted-foreground",
+								children: ["Workspace / ", {
+									projects: "Projects",
+									groups: "Telegram groups",
+									decisions: "Needs attention",
+									assistant: "Assistant",
+									messages: "Client messages",
+									employees: "Employees",
+									activity: "Activity",
+									trash: "Trash"
+								}[currentTab]]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 278,
+								columnNumber: 346
+							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("strong", {
+								className: "block truncate text-sm",
+								children: selectedProject?.name || "Studio Iksha"
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 278,
+								columnNumber: 617
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 278,
+							columnNumber: 321
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 278,
+						columnNumber: 131
+					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						className: "flex items-center gap-2",
+						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+							variant: "outline",
+							size: "sm",
+							className: "hidden sm:inline-flex",
+							onClick: () => setCreateOpen(true),
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Plus, {}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 278,
+								columnNumber: 869
+							}, this), "New project"]
+						}, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 278,
+							columnNumber: 763
+						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(InitialAvatar, { name: "Project Founder" }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 278,
+							columnNumber: 897
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 278,
+						columnNumber: 722
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 278,
+					columnNumber: 7
+				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("main", {
+					className: "mx-auto w-full max-w-6xl space-y-5 px-4 py-6 sm:px-7 sm:py-8",
+					children: [currentTab === "projects" && projects.some((project) => project.telegramSetupPending) && /* @__PURE__ */ (void 0)(Alert, {
+						className: "border-amber-200 bg-amber-50 text-amber-900",
+						children: [
+							/* @__PURE__ */ (void 0)(Users, {}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 280,
+								columnNumber: 162
+							}, this),
+							/* @__PURE__ */ (void 0)(AlertTitle, { children: "New project from Telegram" }, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 280,
+								columnNumber: 171
+							}, this),
+							/* @__PURE__ */ (void 0)(AlertDescription, {
+								className: "flex flex-wrap items-center justify-between gap-3",
+								children: [/* @__PURE__ */ (void 0)("span", { children: [
+									projects.filter((project) => project.telegramSetupPending).map((project) => project.name).join(", "),
+									" ",
+									projects.filter((project) => project.telegramSetupPending).length === 1 ? "is" : "are",
+									" waiting for names, roles, and a Client."
+								] }, void 0, true, {
+									fileName: _jsxFileName$3,
+									lineNumber: 280,
+									columnNumber: 301
+								}, this), /* @__PURE__ */ (void 0)(Button, {
+									size: "sm",
+									onClick: () => openTab("groups"),
+									children: ["Set up project", /* @__PURE__ */ (void 0)(ArrowRight, {}, void 0, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 280,
+										columnNumber: 611
+									}, this)]
+								}, void 0, true, {
+									fileName: _jsxFileName$3,
+									lineNumber: 280,
+									columnNumber: 545
+								}, this)]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 280,
+								columnNumber: 221
+							}, this)
+						]
+					}, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 280,
+						columnNumber: 99
+					}, this), currentTab === "groups" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TelegramGroups, {
+						projects,
+						onProjectsChanged: loadProjects
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 281,
+						columnNumber: 36
+					}, this) : currentTab === "decisions" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DecisionInbox, {
+						projects,
+						onProjectsChanged: loadProjects
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 281,
+						columnNumber: 139
+					}, this) : currentTab === "employees" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(EmployeeManager, {
+						employees,
+						projects,
+						onAdd: () => setMemberOpen(true)
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 281,
+						columnNumber: 241
+					}, this) : currentTab === "trash" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						className: "space-y-5",
+						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								className: "text-xs font-semibold uppercase tracking-wider text-primary",
+								children: "Recoverable projects"
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 281,
+								columnNumber: 396
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+								className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
+								children: "Trash"
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 281,
+								columnNumber: 495
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								className: "mt-1 text-sm text-muted-foreground",
+								children: "Projects here are hidden from employees and clients. Restore them whenever you need to."
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 281,
+								columnNumber: 576
+							}, this)
+						] }, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 281,
+							columnNumber: 391
+						}, this), trashedProjects.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "grid gap-3 sm:grid-cols-2",
+							children: trashedProjects.map((project) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
+								className: "flex items-center gap-3 p-4",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(FolderKanban, { className: "size-5 shrink-0 text-muted-foreground" }, void 0, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 281,
+										columnNumber: 902
+									}, this),
+									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+										className: "min-w-0 flex-1",
+										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+											className: "truncate text-sm font-semibold",
+											children: project.name
+										}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 281,
+											columnNumber: 1e3
+										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+											className: "truncate text-xs text-muted-foreground",
+											children: project.clientName
+										}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 281,
+											columnNumber: 1064
+										}, this)]
+									}, void 0, true, {
+										fileName: _jsxFileName$3,
+										lineNumber: 281,
+										columnNumber: 968
+									}, this),
+									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+										variant: "outline",
+										size: "sm",
+										onClick: () => restoreProject(project.id),
+										children: "Restore"
+									}, void 0, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 281,
+										columnNumber: 1148
+									}, this)
+								]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 281,
+								columnNumber: 849
+							}, this) }, project.id, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 281,
+								columnNumber: 826
+							}, this))
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 281,
+							columnNumber: 749
+						}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
+							className: "py-10 text-center text-sm text-muted-foreground",
+							children: "Trash is empty."
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 281,
+							columnNumber: 1281
+						}, this) }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 281,
+							columnNumber: 1275
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 281,
+						columnNumber: 364
+					}, this) : currentTab === "messages" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_jsx_dev_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						className: "flex flex-wrap items-start justify-between gap-3",
+						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								className: "text-xs font-semibold uppercase tracking-wider text-primary",
+								children: "Client conversation"
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 282,
+								columnNumber: 82
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+								className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
+								children: "Messages"
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 282,
+								columnNumber: 180
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								className: "mt-1 text-sm text-muted-foreground",
+								children: [selectedProject?.name || "Select a project", " · client questions and project assistant replies"]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 282,
+								columnNumber: 264
+							}, this)
+						] }, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 282,
+							columnNumber: 77
+						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "flex gap-2",
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+								variant: "outline",
+								size: "sm",
+								onClick: () => loadProjectDetails(selectedProject?.id),
+								disabled: !selectedProject,
+								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(RefreshCw, {}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 282,
+									columnNumber: 566
+								}, this), "Refresh"]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 282,
+								columnNumber: 446
+							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+								size: "sm",
+								onClick: handleInvite,
+								disabled: !selectedProject,
+								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Share2, {}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 282,
+									columnNumber: 664
+								}, this), "Share client link"]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 282,
+								columnNumber: 595
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 282,
+							columnNumber: 418
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 282,
+						columnNumber: 11
+					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, {
+						className: "flex min-h-[min(72dvh,720px)] flex-col overflow-hidden",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+								className: "flex items-center gap-3 border-b px-4 py-3 sm:px-6",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Avatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AvatarFallback, {
+										className: "bg-primary/10 text-primary",
+										children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Sparkles, { className: "size-4" }, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 283,
+											columnNumber: 215
+										}, this)
+									}, void 0, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 283,
+										columnNumber: 160
+									}, this) }, void 0, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 283,
+										columnNumber: 152
+									}, this),
+									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+										className: "flex-1",
+										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+											className: "text-sm font-semibold",
+											children: "Project Assistant"
+										}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 283,
+											columnNumber: 296
+										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+											className: "text-xs text-muted-foreground",
+											children: "Private client Q&A"
+										}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 283,
+											columnNumber: 354
+										}, this)]
+									}, void 0, true, {
+										fileName: _jsxFileName$3,
+										lineNumber: 283,
+										columnNumber: 272
+									}, this),
+									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Badge, {
+										variant: "secondary",
+										children: [conversations.length, " exchanges"]
+									}, void 0, true, {
+										fileName: _jsxFileName$3,
+										lineNumber: 283,
+										columnNumber: 431
+									}, this)
+								]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 283,
+								columnNumber: 84
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ConversationThread, {
+								conversations,
+								project: selectedProject,
+								large: true
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 283,
+								columnNumber: 504
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+								className: "flex items-center justify-between gap-3 border-t bg-muted/30 px-4 py-3 text-xs text-muted-foreground sm:px-6",
+								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", { children: "Replies use the facts recorded for this project." }, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 283,
+									columnNumber: 714
+								}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+									variant: "outline",
+									size: "sm",
+									onClick: handleInvite,
+									disabled: !selectedProject,
+									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Share2, {}, void 0, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 283,
+										columnNumber: 862
+									}, this), "Invite"]
+								}, void 0, true, {
+									fileName: _jsxFileName$3,
+									lineNumber: 283,
+									columnNumber: 775
+								}, this)]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 283,
+								columnNumber: 588
+							}, this)
+						]
+					}, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 283,
+						columnNumber: 11
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 281,
+						columnNumber: 1428
+					}, this) : currentTab === "activity" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_jsx_dev_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						className: "flex items-start justify-between gap-3",
+						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								className: "text-xs font-semibold uppercase tracking-wider text-primary",
+								children: "Workspace log"
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 285,
+								columnNumber: 72
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+								className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
+								children: "Activity"
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 285,
+								columnNumber: 164
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								className: "mt-1 text-sm text-muted-foreground",
+								children: "Recent updates across your projects."
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 285,
+								columnNumber: 248
+							}, this)
+						] }, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 285,
+							columnNumber: 67
+						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+							variant: "outline",
+							size: "sm",
+							onClick: loadActivities,
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(RefreshCw, {}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 285,
+								columnNumber: 405
+							}, this), "Refresh"]
+						}, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 285,
+							columnNumber: 344
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 285,
+						columnNumber: 11
+					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
+						className: "divide-y pt-5",
+						children: activities.length ? activities.map((item, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "flex gap-3 py-4 first:pt-0",
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+								className: "grid size-9 shrink-0 place-items-center rounded-lg bg-secondary text-primary",
+								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(RotateCcwClock, { className: "size-4" }, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 286,
+									columnNumber: 271
+								}, this)
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 286,
+								columnNumber: 176
+							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+								className: "min-w-0 flex-1",
+								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+									className: "flex flex-wrap items-center gap-2",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("strong", {
+											className: "text-sm capitalize",
+											children: item.action?.replace(/_/g, " ")
+										}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 286,
+											columnNumber: 391
+										}, this),
+										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Badge, {
+											variant: "secondary",
+											children: projects.find((p) => p.id === item.projectId)?.name || "Workspace"
+										}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 286,
+											columnNumber: 472
+										}, this),
+										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+											className: "ml-auto text-xs text-muted-foreground",
+											children: niceDate(item.at)
+										}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 286,
+											columnNumber: 575
+										}, this)
+									]
+								}, void 0, true, {
+									fileName: _jsxFileName$3,
+									lineNumber: 286,
+									columnNumber: 340
+								}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+									className: "mt-1 text-sm text-muted-foreground",
+									children: item.details?.name || item.details?.clientName || "Project updated"
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 286,
+									columnNumber: 663
+								}, this)]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 286,
+								columnNumber: 308
+							}, this)]
+						}, item.id || index, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 286,
+							columnNumber: 109
+						}, this)) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							className: "py-10 text-center text-sm text-muted-foreground",
+							children: "No activity recorded yet."
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 286,
+							columnNumber: 802
+						}, this)
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 286,
+						columnNumber: 17
+					}, this) }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 286,
+						columnNumber: 11
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 284,
+						columnNumber: 43
+					}, this) : selectedProject ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_jsx_dev_runtime.Fragment, { children: [
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between",
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+									className: "text-xs font-semibold uppercase tracking-wider text-primary",
+									children: "Project workspace"
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 288,
+									columnNumber: 97
+								}, this),
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+									className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
+									children: selectedProject.name
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 288,
+									columnNumber: 193
+								}, this),
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+									className: "mt-1 text-sm text-muted-foreground",
+									children: [
+										selectedProject.location || "Location not set",
+										" · ",
+										selectedProject.clientName,
+										" · Created ",
+										niceDate(selectedProject.createdAt)
+									]
+								}, void 0, true, {
+									fileName: _jsxFileName$3,
+									lineNumber: 288,
+									columnNumber: 291
+								}, this)
+							] }, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 288,
+								columnNumber: 92
+							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+								className: "grid grid-cols-2 gap-2 sm:flex",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+										variant: "outline",
+										onClick: () => openTab("messages"),
+										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageSquare, {}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 288,
+											columnNumber: 588
+										}, this), "Messages"]
+									}, void 0, true, {
+										fileName: _jsxFileName$3,
+										lineNumber: 288,
+										columnNumber: 526
+									}, this),
+									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+										variant: "outline",
+										onClick: () => setFactsOpen(true),
+										children: "Edit facts"
+									}, void 0, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 288,
+										columnNumber: 622
+									}, this),
+									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+										className: "col-span-2",
+										onClick: handleInvite,
+										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Share2, {}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 288,
+											columnNumber: 756
+										}, this), "Share client link"]
+									}, void 0, true, {
+										fileName: _jsxFileName$3,
+										lineNumber: 288,
+										columnNumber: 702
+									}, this)
+								]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 288,
+								columnNumber: 478
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 288,
+							columnNumber: 11
+						}, this),
+						selectedProject.telegramSetupPending && /* @__PURE__ */ (void 0)(Alert, {
+							className: "border-amber-200 bg-amber-50 text-amber-900",
+							children: [
+								/* @__PURE__ */ (void 0)(Users, {}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 289,
+									columnNumber: 115
+								}, this),
+								/* @__PURE__ */ (void 0)(AlertTitle, { children: "New Telegram project needs setup" }, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 289,
+									columnNumber: 124
+								}, this),
+								/* @__PURE__ */ (void 0)(AlertDescription, {
+									className: "flex flex-wrap items-center justify-between gap-3",
+									children: [/* @__PURE__ */ (void 0)("span", { children: "This group has been discovered. Assign the people and a Client role to finish connecting its workflow." }, void 0, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 289,
+										columnNumber: 261
+									}, this), /* @__PURE__ */ (void 0)(Button, {
+										size: "sm",
+										onClick: () => openTab("groups"),
+										children: ["Set up group", /* @__PURE__ */ (void 0)(ArrowRight, {}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 289,
+											columnNumber: 440
+										}, this)]
+									}, void 0, true, {
+										fileName: _jsxFileName$3,
+										lineNumber: 289,
+										columnNumber: 376
+									}, this)]
+								}, void 0, true, {
+									fileName: _jsxFileName$3,
+									lineNumber: 289,
+									columnNumber: 181
+								}, this)
+							]
+						}, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 289,
+							columnNumber: 52
+						}, this),
+						selectedProject.blocker && /* @__PURE__ */ (void 0)(Alert, {
+							className: "border-amber-200 bg-amber-50 text-amber-900",
+							children: [
+								/* @__PURE__ */ (void 0)(TriangleAlert, {}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 290,
+									columnNumber: 102
+								}, this),
+								/* @__PURE__ */ (void 0)(AlertTitle, { children: "Active blocker" }, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 290,
+									columnNumber: 119
+								}, this),
+								/* @__PURE__ */ (void 0)(AlertDescription, { children: selectedProject.blocker }, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 290,
+									columnNumber: 158
+								}, this)
+							]
+						}, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 290,
+							columnNumber: 39
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "grid grid-cols-2 gap-3 lg:grid-cols-4",
+							children: [
+								["Status", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(StatusBadge, { status: selectedProject.status }, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 291,
+									columnNumber: 79
+								}, this)],
+								["Current phase", selectedProject.phase || "Design"],
+								["Next milestone", selectedProject.nextMilestone || "Not scheduled"],
+								["Team", selectedProject.telegramMembers?.length ? `${selectedProject.telegramMembers.length} in Telegram` : `${selectedProject.members?.length || 0} members`]
+							].map(([label, value]) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
+								className: "space-y-3 p-4 sm:p-5",
+								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+									className: "text-xs text-muted-foreground",
+									children: label
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 291,
+									columnNumber: 502
+								}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+									className: "line-clamp-2 text-sm font-semibold sm:text-base",
+									children: value
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 291,
+									columnNumber: 558
+								}, this)]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 291,
+								columnNumber: 456
+							}, this) }, label, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 291,
+								columnNumber: 438
+							}, this))
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 291,
+							columnNumber: 11
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Tabs, {
+							defaultValue: "overview",
+							className: "gap-4",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsList, {
+									className: "w-full sm:w-fit",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsTrigger, {
+											value: "overview",
+											children: "Overview"
+										}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 292,
+											columnNumber: 97
+										}, this),
+										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsTrigger, {
+											value: "team",
+											children: "Team chat"
+										}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 292,
+											columnNumber: 149
+										}, this),
+										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsTrigger, {
+											value: "history",
+											children: "History"
+										}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 292,
+											columnNumber: 198
+										}, this)
+									]
+								}, void 0, true, {
+									fileName: _jsxFileName$3,
+									lineNumber: 292,
+									columnNumber: 59
+								}, this),
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsContent, {
+									value: "overview",
+									className: "space-y-4",
+									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+										className: "grid gap-4 lg:grid-cols-2",
+										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardHeader, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardTitle, {
+											className: "flex items-center gap-2",
+											children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(BuildingComplex, { className: "size-4 text-primary" }, void 0, false, {
+												fileName: _jsxFileName$3,
+												lineNumber: 293,
+												columnNumber: 173
+											}, this), "Current work"]
+										}, void 0, true, {
+											fileName: _jsxFileName$3,
+											lineNumber: 293,
+											columnNumber: 126
+										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardDescription, { children: "Recent progress and what comes next" }, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 293,
+											columnNumber: 242
+										}, this)] }, void 0, true, {
+											fileName: _jsxFileName$3,
+											lineNumber: 293,
+											columnNumber: 114
+										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, { children: [
+											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+												className: "text-sm font-medium",
+												children: selectedProject.recentTask || "No recent task recorded"
+											}, void 0, false, {
+												fileName: _jsxFileName$3,
+												lineNumber: 293,
+												columnNumber: 338
+											}, this),
+											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Separator, { className: "my-4" }, void 0, false, {
+												fileName: _jsxFileName$3,
+												lineNumber: 293,
+												columnNumber: 434
+											}, this),
+											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+												className: "text-xs text-muted-foreground",
+												children: "Next milestone"
+											}, void 0, false, {
+												fileName: _jsxFileName$3,
+												lineNumber: 293,
+												columnNumber: 464
+											}, this),
+											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+												className: "mt-1 text-sm font-medium",
+												children: selectedProject.nextMilestone || "No milestone recorded"
+											}, void 0, false, {
+												fileName: _jsxFileName$3,
+												lineNumber: 293,
+												columnNumber: 527
+											}, this)
+										] }, void 0, true, {
+											fileName: _jsxFileName$3,
+											lineNumber: 293,
+											columnNumber: 325
+										}, this)] }, void 0, true, {
+											fileName: _jsxFileName$3,
+											lineNumber: 293,
+											columnNumber: 108
+										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardHeader, {
+											className: "flex flex-row items-center justify-between",
+											children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardTitle, {
+												className: "flex items-center gap-2",
+												children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Users, { className: "size-4 text-primary" }, void 0, false, {
+													fileName: _jsxFileName$3,
+													lineNumber: 293,
+													columnNumber: 775
+												}, this), "Web app team"]
+											}, void 0, true, {
+												fileName: _jsxFileName$3,
+												lineNumber: 293,
+												columnNumber: 728
+											}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardDescription, { children: [selectedProject.members?.length || 0, " members assigned"] }, void 0, true, {
+												fileName: _jsxFileName$3,
+												lineNumber: 293,
+												columnNumber: 840
+											}, this)] }, void 0, true, {
+												fileName: _jsxFileName$3,
+												lineNumber: 293,
+												columnNumber: 723
+											}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+												variant: "outline",
+												size: "sm",
+												onClick: () => setMemberOpen(true),
+												children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(UserPlus, {}, void 0, false, {
+													fileName: _jsxFileName$3,
+													lineNumber: 293,
+													columnNumber: 1008
+												}, this), "Add"]
+											}, void 0, true, {
+												fileName: _jsxFileName$3,
+												lineNumber: 293,
+												columnNumber: 936
+											}, this)]
+										}, void 0, true, {
+											fileName: _jsxFileName$3,
+											lineNumber: 293,
+											columnNumber: 656
+										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
+											className: "space-y-3",
+											children: selectedProject.members?.length ? selectedProject.members.map((member, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+												className: "flex items-center gap-3",
+												children: [
+													/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(InitialAvatar, { name: member.name }, void 0, false, {
+														fileName: _jsxFileName$3,
+														lineNumber: 293,
+														columnNumber: 1228
+													}, this),
+													/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+														className: "min-w-0 flex-1",
+														children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+															className: "truncate text-sm font-medium",
+															children: member.name
+														}, void 0, false, {
+															fileName: _jsxFileName$3,
+															lineNumber: 293,
+															columnNumber: 1296
+														}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+															className: "truncate text-xs text-muted-foreground",
+															children: member.designation
+														}, void 0, false, {
+															fileName: _jsxFileName$3,
+															lineNumber: 293,
+															columnNumber: 1357
+														}, this)]
+													}, void 0, true, {
+														fileName: _jsxFileName$3,
+														lineNumber: 293,
+														columnNumber: 1264
+													}, this),
+													/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Badge, {
+														variant: "secondary",
+														children: member.role
+													}, void 0, false, {
+														fileName: _jsxFileName$3,
+														lineNumber: 293,
+														columnNumber: 1441
+													}, this)
+												]
+											}, member.id || index, true, {
+												fileName: _jsxFileName$3,
+												lineNumber: 293,
+												columnNumber: 1162
+											}, this)) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+												className: "py-4 text-sm text-muted-foreground",
+												children: "No members assigned yet."
+											}, void 0, false, {
+												fileName: _jsxFileName$3,
+												lineNumber: 293,
+												columnNumber: 1499
+											}, this)
+										}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 293,
+											columnNumber: 1045
+										}, this)] }, void 0, true, {
+											fileName: _jsxFileName$3,
+											lineNumber: 293,
+											columnNumber: 650
+										}, this)]
+									}, void 0, true, {
+										fileName: _jsxFileName$3,
+										lineNumber: 293,
+										columnNumber: 65
+									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, {
+										className: "border-primary/20 bg-accent/30",
+										children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
+											className: "flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between",
+											children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+												className: "flex items-start gap-3",
+												children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+													className: "grid size-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary",
+													children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageSquare, { className: "size-5" }, void 0, false, {
+														fileName: _jsxFileName$3,
+														lineNumber: 293,
+														columnNumber: 1887
+													}, this)
+												}, void 0, false, {
+													fileName: _jsxFileName$3,
+													lineNumber: 293,
+													columnNumber: 1790
+												}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", {
+													className: "font-semibold",
+													children: "Client conversation"
+												}, void 0, false, {
+													fileName: _jsxFileName$3,
+													lineNumber: 293,
+													columnNumber: 1935
+												}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+													className: "mt-1 text-sm text-muted-foreground",
+													children: "Review questions and share a private access link."
+												}, void 0, false, {
+													fileName: _jsxFileName$3,
+													lineNumber: 293,
+													columnNumber: 1989
+												}, this)] }, void 0, true, {
+													fileName: _jsxFileName$3,
+													lineNumber: 293,
+													columnNumber: 1930
+												}, this)]
+											}, void 0, true, {
+												fileName: _jsxFileName$3,
+												lineNumber: 293,
+												columnNumber: 1750
+											}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+												onClick: () => openTab("messages"),
+												children: ["Open messages", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ArrowRight, {}, void 0, false, {
+													fileName: _jsxFileName$3,
+													lineNumber: 293,
+													columnNumber: 2161
+												}, this)]
+											}, void 0, true, {
+												fileName: _jsxFileName$3,
+												lineNumber: 293,
+												columnNumber: 2104
+											}, this)]
+										}, void 0, true, {
+											fileName: _jsxFileName$3,
+											lineNumber: 293,
+											columnNumber: 1654
+										}, this)
+									}, void 0, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 293,
+										columnNumber: 1605
+									}, this)]
+								}, void 0, true, {
+									fileName: _jsxFileName$3,
+									lineNumber: 293,
+									columnNumber: 13
+								}, this),
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsContent, {
+									value: "team",
+									children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TeamChat, {
+										endpoint: `/api/founder/projects/${selectedProject.id}/team-chat`,
+										currentActor: "founder"
+									}, selectedProject.id, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 294,
+										columnNumber: 39
+									}, this)
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 294,
+									columnNumber: 13
+								}, this),
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsContent, {
+									value: "history",
+									children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardHeader, {
+										className: "flex flex-row items-start justify-between",
+										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardTitle, { children: "Project update history" }, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 295,
+											columnNumber: 119
+										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardDescription, { children: "Saved changes to project facts" }, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 295,
+											columnNumber: 164
+										}, this)] }, void 0, true, {
+											fileName: _jsxFileName$3,
+											lineNumber: 295,
+											columnNumber: 114
+										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+											variant: "outline",
+											size: "sm",
+											onClick: () => loadProjectDetails(selectedProject.id),
+											children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(RefreshCw, {}, void 0, false, {
+												fileName: _jsxFileName$3,
+												lineNumber: 295,
+												columnNumber: 326
+											}, this), "Refresh"]
+										}, void 0, true, {
+											fileName: _jsxFileName$3,
+											lineNumber: 295,
+											columnNumber: 235
+										}, this)]
+									}, void 0, true, {
+										fileName: _jsxFileName$3,
+										lineNumber: 295,
+										columnNumber: 48
+									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
+										className: "space-y-3",
+										children: projectHistory.length ? projectHistory.map((item, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+											className: "rounded-lg border bg-muted/30 p-4",
+											children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+												className: "flex flex-wrap items-center justify-between gap-2",
+												children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("strong", {
+													className: "text-sm",
+													children: [Object.keys(item.changes || {}).length, " fields updated"]
+												}, void 0, true, {
+													fileName: _jsxFileName$3,
+													lineNumber: 295,
+													columnNumber: 605
+												}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+													className: "text-xs text-muted-foreground",
+													children: niceDate(item.at)
+												}, void 0, false, {
+													fileName: _jsxFileName$3,
+													lineNumber: 295,
+													columnNumber: 697
+												}, this)]
+											}, void 0, true, {
+												fileName: _jsxFileName$3,
+												lineNumber: 295,
+												columnNumber: 538
+											}, this), Object.entries(item.changes || {}).map(([field, change]) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+												className: "mt-2 flex flex-wrap items-center gap-2 text-xs",
+												children: [
+													/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+														className: "capitalize text-muted-foreground",
+														children: field.replace(/([A-Z])/g, " $1")
+													}, void 0, false, {
+														fileName: _jsxFileName$3,
+														lineNumber: 295,
+														columnNumber: 914
+													}, this),
+													/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ArrowRight, { className: "size-3" }, void 0, false, {
+														fileName: _jsxFileName$3,
+														lineNumber: 295,
+														columnNumber: 1006
+													}, this),
+													/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+														className: "font-medium",
+														children: String(change.new || "Cleared")
+													}, void 0, false, {
+														fileName: _jsxFileName$3,
+														lineNumber: 295,
+														columnNumber: 1039
+													}, this)
+												]
+											}, field, true, {
+												fileName: _jsxFileName$3,
+												lineNumber: 295,
+												columnNumber: 838
+											}, this))]
+										}, item.id || index, true, {
+											fileName: _jsxFileName$3,
+											lineNumber: 295,
+											columnNumber: 464
+										}, this)) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+											className: "py-8 text-center text-sm text-muted-foreground",
+											children: "No updates recorded yet."
+										}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 295,
+											columnNumber: 1127
+										}, this)
+									}, void 0, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 295,
+										columnNumber: 368
+									}, this)] }, void 0, true, {
+										fileName: _jsxFileName$3,
+										lineNumber: 295,
+										columnNumber: 42
+									}, this)
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 295,
+									columnNumber: 13
+								}, this)
+							]
+						}, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 292,
+							columnNumber: 11
+						}, this),
+						selectedProject.telegramGroupChatId && /* @__PURE__ */ (void 0)(Card, { children: [/* @__PURE__ */ (void 0)(CardHeader, { children: [/* @__PURE__ */ (void 0)(CardTitle, {
+							className: "flex items-center gap-2",
+							children: [/* @__PURE__ */ (void 0)(Users, { className: "size-4 text-primary" }, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 297,
+								columnNumber: 116
+							}, this), "Telegram group team"]
+						}, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 297,
+							columnNumber: 69
+						}, this), /* @__PURE__ */ (void 0)(CardDescription, { children: [selectedProject.telegramMembers?.length || 0, " people observed in the linked group"] }, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 297,
+							columnNumber: 188
+						}, this)] }, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 297,
+							columnNumber: 57
+						}, this), /* @__PURE__ */ (void 0)(CardContent, {
+							className: "space-y-3",
+							children: selectedProject.telegramMembers?.length ? selectedProject.telegramMembers.map((member) => /* @__PURE__ */ (void 0)("div", {
+								className: "flex items-center gap-3",
+								children: [
+									/* @__PURE__ */ (void 0)(InitialAvatar, { name: member.assignedName || member.telegramName }, void 0, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 297,
+										columnNumber: 513
+									}, this),
+									/* @__PURE__ */ (void 0)("div", {
+										className: "min-w-0 flex-1",
+										children: [/* @__PURE__ */ (void 0)("p", {
+											className: "truncate text-sm font-medium",
+											children: member.assignedName || member.telegramName
+										}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 297,
+											columnNumber: 612
+										}, this), /* @__PURE__ */ (void 0)("p", {
+											className: "truncate text-xs text-muted-foreground",
+											children: member.telegramName
+										}, void 0, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 297,
+											columnNumber: 704
+										}, this)]
+									}, void 0, true, {
+										fileName: _jsxFileName$3,
+										lineNumber: 297,
+										columnNumber: 580
+									}, this),
+									/* @__PURE__ */ (void 0)(Badge, {
+										variant: "secondary",
+										children: member.assignedRole || "Role pending"
+									}, void 0, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 297,
+										columnNumber: 789
+									}, this)
+								]
+							}, member.telegramUserId, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 297,
+								columnNumber: 444
+							}, this)) : /* @__PURE__ */ (void 0)("p", {
+								className: "text-sm text-muted-foreground",
+								children: "Members will appear when the bot observes them in Telegram."
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 297,
+								columnNumber: 873
+							}, this)
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 297,
+							columnNumber: 318
+						}, this)] }, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 297,
+							columnNumber: 51
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
+							className: "flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between",
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", {
+								className: "text-sm font-semibold",
+								children: "Project controls"
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 298,
+								columnNumber: 118
+							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								className: "mt-1 text-xs text-muted-foreground",
+								children: "Complete finished work or move a project to recoverable Trash."
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 298,
+								columnNumber: 177
+							}, this)] }, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 298,
+								columnNumber: 113
+							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+								className: "flex flex-wrap gap-2",
+								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+									variant: "outline",
+									onClick: completeProject,
+									disabled: selectedProject.status === "Completed",
+									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CircleCheck, {}, void 0, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 298,
+										columnNumber: 439
+									}, this), selectedProject.status === "Completed" ? "Completed" : "Mark complete"]
+								}, void 0, true, {
+									fileName: _jsxFileName$3,
+									lineNumber: 298,
+									columnNumber: 337
+								}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+									variant: "outline",
+									className: "text-destructive hover:text-destructive",
+									onClick: () => setTrashConfirmOpen(true),
+									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Trash, {}, void 0, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 298,
+										columnNumber: 656
+									}, this), "Move to Trash"]
+								}, void 0, true, {
+									fileName: _jsxFileName$3,
+									lineNumber: 298,
+									columnNumber: 536
+								}, this)]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 298,
+								columnNumber: 299
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 298,
+							columnNumber: 17
+						}, this) }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 298,
+							columnNumber: 11
+						}, this)
+					] }, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 287,
+						columnNumber: 33
+					}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
+						className: "flex flex-col items-center gap-4 py-16 text-center",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(FolderKanban, { className: "size-10 text-primary" }, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 299,
+								columnNumber: 97
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+								className: "text-xl font-semibold",
+								children: "Start your first project"
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 299,
+								columnNumber: 146
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								className: "text-sm text-muted-foreground",
+								children: "Create a workspace to manage updates and client questions."
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 299,
+								columnNumber: 213
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+								onClick: () => setCreateOpen(true),
+								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Plus, {}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 299,
+									columnNumber: 364
+								}, this), "Create project"]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 299,
+								columnNumber: 320
+							}, this)
+						]
+					}, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 299,
+						columnNumber: 21
+					}, this) }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 299,
+						columnNumber: 15
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 279,
+					columnNumber: 7
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 277,
+				columnNumber: 5
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("nav", {
+				className: "safe-bottom fixed inset-x-0 bottom-0 z-30 grid grid-cols-4 items-center overflow-visible border-t bg-card/95 px-2 pt-3 backdrop-blur md:hidden",
+				"aria-label": "Mobile navigation",
+				children: [[
+					[
+						"projects",
+						FolderKanban,
+						"Projects"
+					],
+					[
+						"groups",
+						Users,
+						"Groups"
+					],
+					[
+						"decisions",
+						CircleCheck,
+						"Decisions"
+					]
+				].map(([id, Icon, label]) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+					variant: "ghost",
+					className: `h-12 flex-col gap-0.5 text-[10px] ${currentTab === id ? "text-primary" : "text-muted-foreground"}`,
+					onClick: () => openTab(id),
+					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Icon, { className: "size-4" }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 302,
+						columnNumber: 509
+					}, this), label]
+				}, id, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 302,
+					columnNumber: 336
+				}, this)), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(GooeyNewButton, {
+					hasProject: !!selectedProject,
+					onCreateProject: () => setCreateOpen(true),
+					onAddMember: () => setMemberOpen(true),
+					onShareClientLink: handleInvite
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 302,
+					columnNumber: 554
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 302,
+				columnNumber: 5
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Dialog, {
+				open: createOpen,
+				onOpenChange: setCreateOpen,
+				children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogContent, {
+					className: "max-h-[90dvh] overflow-y-auto",
+					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogTitle, { children: "Create project" }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 304,
+						columnNumber: 131
+					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogDescription, { children: "Set up the basics. You can add team members and invite the client next." }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 304,
+						columnNumber: 172
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 304,
+						columnNumber: 117
+					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("form", {
+						onSubmit: (e) => saveForm(e, "/api/founder/projects", "POST", () => setCreateOpen(false), "Project created."),
+						className: "space-y-4",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Field, {
+								label: "Project name",
+								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+									name: "name",
+									placeholder: "Kumar Residence",
+									required: true
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 304,
+									columnNumber: 464
+								}, this)
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 304,
+								columnNumber: 436
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Field, {
+								label: "Client name",
+								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+									name: "clientName",
+									placeholder: "Asha Kumar",
+									required: true
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 304,
+									columnNumber: 559
+								}, this)
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 304,
+								columnNumber: 532
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Field, {
+								label: "Location",
+								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+									name: "location",
+									placeholder: "Pune, Maharashtra"
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 304,
+									columnNumber: 652
+								}, this)
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 304,
+								columnNumber: 628
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+								className: "grid grid-cols-2 gap-3",
+								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Field, {
+									label: "Phase",
+									children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(NativeSelect, {
+										name: "phase",
+										className: "w-full",
+										children: phaseOptions.map((option) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { children: option }, option, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 304,
+											columnNumber: 854
+										}, this))
+									}, void 0, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 304,
+										columnNumber: 778
+									}, this)
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 304,
+									columnNumber: 757
+								}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Field, {
+									label: "Status",
+									children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(NativeSelect, {
+										name: "status",
+										className: "w-full",
+										children: statusOptions.slice(0, 4).map((option) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { children: option }, option, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 304,
+											columnNumber: 1029
+										}, this))
+									}, void 0, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 304,
+										columnNumber: 939
+									}, this)
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 304,
+									columnNumber: 917
+								}, this)]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 304,
+								columnNumber: 717
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Field, {
+								label: "Recent task",
+								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+									name: "recentTask",
+									placeholder: "3D moodboards completed"
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 304,
+									columnNumber: 1125
+								}, this)
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 304,
+								columnNumber: 1098
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Field, {
+								label: "Next milestone",
+								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+									name: "nextMilestone",
+									placeholder: "Material selection review"
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 304,
+									columnNumber: 1228
+								}, this)
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 304,
+								columnNumber: 1198
+							}, this),
+							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+								type: "submit",
+								className: "h-11 w-full",
+								disabled: busy,
+								children: "Create project"
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 304,
+								columnNumber: 1306
+							}, this)
+						]
+					}, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 304,
+						columnNumber: 297
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 304,
+					columnNumber: 60
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 304,
+				columnNumber: 5
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(EmployeeDialog, {
+				open: memberOpen,
+				onOpenChange: setMemberOpen,
+				projects,
+				defaultProjectId: selectedProject?.id,
+				onUpdated: () => Promise.all([loadProjects(), loadEmployees()])
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 305,
+				columnNumber: 5
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Dialog, {
+				open: trashConfirmOpen,
+				onOpenChange: setTrashConfirmOpen,
+				children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogTitle, { children: [
+					"Move ",
+					selectedProject?.name,
+					" to Trash?"
+				] }, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 306,
+					columnNumber: 101
+				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogDescription, { children: "The project will leave active workspaces and team chat. You can restore it from Trash later." }, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 306,
+					columnNumber: 166
+				}, this)] }, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 306,
+					columnNumber: 87
+				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					className: "flex justify-end gap-2",
+					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+						variant: "outline",
+						onClick: () => setTrashConfirmOpen(false),
+						children: "Cancel"
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 306,
+						columnNumber: 352
+					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+						variant: "destructive",
+						onClick: moveToTrash,
+						children: "Move to Trash"
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 306,
+						columnNumber: 436
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 306,
+					columnNumber: 312
+				}, this)] }, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 306,
+					columnNumber: 72
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 306,
+				columnNumber: 5
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Dialog, {
+				open: factsOpen,
+				onOpenChange: setFactsOpen,
+				children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogContent, {
+					className: "max-h-[90dvh] overflow-y-auto",
+					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogTitle, { children: "Update project facts" }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 307,
+						columnNumber: 129
+					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogDescription, { children: "The project assistant uses these facts when answering client questions." }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 307,
+						columnNumber: 176
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 307,
+						columnNumber: 115
+					}, this), selectedProject && /* @__PURE__ */ (void 0)("form", {
+						onSubmit: (e) => saveForm(e, `/api/founder/projects/${selectedProject.id}`, "PATCH", () => setFactsOpen(false), "Project facts updated."),
+						className: "space-y-4",
+						children: [
+							/* @__PURE__ */ (void 0)("div", {
+								className: "grid grid-cols-2 gap-3",
+								children: [/* @__PURE__ */ (void 0)(Field, {
+									label: "Phase",
+									children: /* @__PURE__ */ (void 0)(NativeSelect, {
+										name: "phase",
+										defaultValue: selectedProject.phase,
+										className: "w-full",
+										children: phaseOptions.map((option) => /* @__PURE__ */ (void 0)("option", { children: option }, option, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 307,
+											columnNumber: 687
+										}, this))
+									}, void 0, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 307,
+										columnNumber: 574
+									}, this)
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 307,
+									columnNumber: 553
+								}, this), /* @__PURE__ */ (void 0)(Field, {
+									label: "Status",
+									children: /* @__PURE__ */ (void 0)(NativeSelect, {
+										name: "status",
+										defaultValue: selectedProject.status,
+										className: "w-full",
+										children: statusOptions.map((option) => /* @__PURE__ */ (void 0)("option", { children: option }, option, false, {
+											fileName: _jsxFileName$3,
+											lineNumber: 307,
+											columnNumber: 888
+										}, this))
+									}, void 0, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 307,
+										columnNumber: 772
+									}, this)
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 307,
+									columnNumber: 750
+								}, this)]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 307,
+								columnNumber: 513
+							}, this),
+							/* @__PURE__ */ (void 0)(Field, {
+								label: "Recent task",
+								children: /* @__PURE__ */ (void 0)(Input, {
+									name: "recentTask",
+									defaultValue: selectedProject.recentTask
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 307,
+									columnNumber: 984
+								}, this)
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 307,
+								columnNumber: 957
+							}, this),
+							/* @__PURE__ */ (void 0)(Field, {
+								label: "Next milestone",
+								children: /* @__PURE__ */ (void 0)(Input, {
+									name: "nextMilestone",
+									defaultValue: selectedProject.nextMilestone
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 307,
+									columnNumber: 1091
+								}, this)
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 307,
+								columnNumber: 1061
+							}, this),
+							/* @__PURE__ */ (void 0)(Field, {
+								label: "Blocker visible to client",
+								children: /* @__PURE__ */ (void 0)(Input, {
+									name: "blocker",
+									defaultValue: selectedProject.blocker,
+									placeholder: "None"
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 307,
+									columnNumber: 1215
+								}, this)
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 307,
+								columnNumber: 1174
+							}, this),
+							/* @__PURE__ */ (void 0)(Button, {
+								type: "submit",
+								className: "h-11 w-full",
+								disabled: busy,
+								children: "Save changes"
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 307,
+								columnNumber: 1305
+							}, this)
+						]
+					}, selectedProject.id, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 307,
+						columnNumber: 321
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 307,
+					columnNumber: 58
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 307,
+				columnNumber: 5
+			}, this),
+			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Dialog, {
+				open: !!shareLink,
+				onOpenChange: () => setShareLink(null),
+				children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogTitle, { children: "Client link ready" }, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 308,
+					columnNumber: 101
+				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogDescription, { children: [
+					"Send this link to ",
+					selectedProject?.clientName,
+					". The first browser to open it claims access."
+				] }, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 308,
+					columnNumber: 145
+				}, this)] }, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 308,
+					columnNumber: 87
+				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					className: "space-y-4",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "flex gap-2",
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+								value: shareLink || "",
+								readOnly: true,
+								"aria-label": "Client link",
+								className: "min-w-0 font-mono text-xs"
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 308,
+								columnNumber: 346
+							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+								variant: "outline",
+								onClick: async () => {
+									try {
+										await navigator.clipboard.writeText(shareLink);
+										showNotice("Link copied.");
+									} catch {
+										showNotice("Could not copy link.", true);
+									}
+								},
+								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Copy, {}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 308,
+									columnNumber: 639
+								}, this), "Copy"]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 308,
+								columnNumber: 451
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 308,
+							columnNumber: 318
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							className: "flex items-center gap-2 text-xs text-muted-foreground",
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ShieldCheck, { className: "size-4" }, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 308,
+								columnNumber: 735
+							}, this), "Private single-claim access"]
+						}, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 308,
+							columnNumber: 666
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+							className: "w-full",
+							onClick: () => setShareLink(null),
+							children: "Done"
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 308,
+							columnNumber: 800
+						}, this)
+					]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 308,
+					columnNumber: 291
+				}, this)] }, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 308,
+					columnNumber: 72
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 308,
+				columnNumber: 5
+			}, this),
+			notice && /* @__PURE__ */ (void 0)("div", {
+				role: "status",
+				className: "fixed right-4 bottom-24 z-[60] max-w-sm rounded-lg border bg-card px-4 py-3 text-sm shadow-lg md:bottom-4",
+				children: [notice.error ? /* @__PURE__ */ (void 0)(X, { className: "mr-2 inline size-4 text-destructive" }, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 309,
+					columnNumber: 169
+				}, this) : /* @__PURE__ */ (void 0)(Check, { className: "mr-2 inline size-4 text-emerald-600" }, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 309,
+					columnNumber: 225
+				}, this), notice.message]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 309,
+				columnNumber: 16
+			}, this)
+		]
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 274,
+		columnNumber: 10
+	}, this);
 }
 //#endregion
 //#region frontend/src/ClientApp.jsx
+var _jsxFileName$2 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/ClientApp.jsx";
 var api = async (url, options = {}) => {
 	const response = await fetch(url, {
 		credentials: "same-origin",
@@ -17241,328 +30500,1388 @@ var post = (url, data = {}) => api(url, {
 	method: "POST",
 	body: JSON.stringify(data)
 });
+var time = (value) => value ? new Date(value).toLocaleTimeString([], {
+	hour: "numeric",
+	minute: "2-digit"
+}) : "";
+function AssistantAvatar() {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Avatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AvatarFallback, {
+		className: "bg-primary/10 text-primary",
+		children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Sparkles, { className: "size-4" }, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 24,
+			columnNumber: 73
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 24,
+		columnNumber: 18
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 24,
+		columnNumber: 10
+	}, this);
+}
+function ClientAvatar({ name }) {
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Avatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AvatarFallback, {
+		className: "bg-secondary font-semibold text-secondary-foreground",
+		children: name?.slice(0, 2).toUpperCase() || "CL"
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 27,
+		columnNumber: 18
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 27,
+		columnNumber: 10
+	}, this);
+}
 function ClientApp() {
 	const token = decodeURIComponent(location.pathname.split("/")[2] || "");
 	const [project, setProject] = (0, import_react.useState)(null);
 	const [error, setError] = (0, import_react.useState)(null);
 	const [messages, setMessages] = (0, import_react.useState)([]);
-	const [inputQuestion, setInputQuestion] = (0, import_react.useState)("");
+	const [question, setQuestion] = (0, import_react.useState)("");
 	const [isAsking, setIsAsking] = (0, import_react.useState)(false);
-	const messagesEndRef = (0, import_react.useRef)(null);
-	const scrollToBottom = () => {
-		messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-	};
+	const endRef = (0, import_react.useRef)(null);
 	(0, import_react.useEffect)(() => {
-		scrollToBottom();
-	}, [messages, isAsking]);
-	(0, import_react.useEffect)(() => {
-		const claimLink = async () => {
+		let active = true;
+		(async () => {
 			try {
-				const res = await post("/api/client/claim", { token });
-				setProject(res.project);
-				loadHistory();
-			} catch (err) {
-				setError(err.message);
+				const claim = await post("/api/client/claim", { token });
+				if (!active) return;
+				setProject(claim.project);
+				try {
+					const history = await api("/api/client/conversation");
+					if (active) setMessages(history.messages || []);
+				} catch {}
+			} catch (problem) {
+				if (active) setError(problem.message);
 			}
+		})();
+		return () => {
+			active = false;
 		};
-		claimLink();
 	}, [token]);
-	const loadHistory = async () => {
-		try {
-			const data = await api("/api/client/conversation");
-			if (data.messages) setMessages(data.messages);
-		} catch {}
-	};
-	const handleAsk = async (questionText) => {
-		const q = questionText || inputQuestion;
-		if (!q.trim() || isAsking) return;
-		const newMsg = {
-			question: q,
+	(0, import_react.useEffect)(() => {
+		endRef.current?.scrollIntoView({
+			behavior: "smooth",
+			block: "end"
+		});
+	}, [messages, isAsking]);
+	const ask = async (suggestion) => {
+		const text = (suggestion || question).trim();
+		if (!text || isAsking) return;
+		const pendingId = `${Date.now()}-${Math.random()}`;
+		setMessages((previous) => [...previous, {
+			question: text,
 			answer: null,
-			at: (/* @__PURE__ */ new Date()).toISOString()
-		};
-		setMessages((prev) => [...prev, newMsg]);
-		setInputQuestion("");
+			at: (/* @__PURE__ */ new Date()).toISOString(),
+			pendingId
+		}]);
+		setQuestion("");
 		setIsAsking(true);
 		try {
-			const res = await post("/api/client/chat", { question: q });
-			setMessages((prev) => prev.map((m, idx) => idx === prev.length - 1 ? {
-				...m,
-				answer: res.answer
-			} : m));
-		} catch (err) {
-			setMessages((prev) => prev.map((m, idx) => idx === prev.length - 1 ? {
-				...m,
-				answer: `Error: ${err.message}`
-			} : m));
+			const reply = await post("/api/client/chat", { question: text });
+			setMessages((previous) => previous.map((item) => item.pendingId === pendingId ? {
+				...item,
+				answer: reply.answer
+			} : item));
+		} catch (problem) {
+			setMessages((previous) => previous.map((item) => item.pendingId === pendingId ? {
+				...item,
+				answer: `I couldn’t get an answer just now: ${problem.message}`
+			} : item));
 		} finally {
 			setIsAsking(false);
 		}
 	};
-	if (error) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
-		className: "min-h-screen grid place-items-center bg-[#f6f5f4] p-4",
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-			className: "w-full max-w-md p-6 sm:p-8 rounded-2xl shadow-xl text-center space-y-4",
+	if (error) return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("main", {
+		className: "app-glow grid min-h-dvh place-items-center p-4",
+		children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, {
+			className: "w-full max-w-md p-6 sm:p-8",
 			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					className: "w-12 h-12 rounded-full bg-amber-100 text-amber-600 grid place-items-center mx-auto text-xl font-bold",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "h-6 w-6" })
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-[10px] font-bold tracking-widest text-[#96918c] uppercase",
-					children: "LINK CLAIM NOTICE"
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-					className: "text-xl sm:text-2xl font-bold text-gray-900",
-					children: "Unable to Open Link"
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "text-xs sm:text-sm text-gray-500 leading-relaxed",
-					children: "For privacy, each private client link can be claimed by one browser only. If you opened this link on another device or need a replacement, please contact your project founder."
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					className: "p-3 bg-red-50 text-red-700 rounded-lg text-xs font-medium",
-					children: error
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-					variant: "secondary",
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					className: "mb-5 grid size-12 place-items-center rounded-xl bg-destructive/10 text-destructive",
+					children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CircleAlert, {}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 68,
+						columnNumber: 231
+					}, this)
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 68,
+					columnNumber: 131
+				}, this),
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+					className: "text-xl font-semibold",
+					children: "Unable to open this link"
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 68,
+					columnNumber: 252
+				}, this),
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+					className: "mt-2 text-sm leading-relaxed text-muted-foreground",
+					children: "A private client link can be claimed by one browser. Ask your project founder for a new link if you opened it elsewhere."
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 68,
+					columnNumber: 319
+				}, this),
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Alert, {
+					variant: "destructive",
+					className: "my-5",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CircleAlert, {}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 68,
+							columnNumber: 555
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AlertTitle, { children: "Access notice" }, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 68,
+							columnNumber: 570
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AlertDescription, { children: error }, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 68,
+							columnNumber: 608
+						}, this)
+					]
+				}, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 68,
+					columnNumber: 509
+				}, this),
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+					variant: "outline",
 					className: "w-full",
 					onClick: () => location.reload(),
-					children: "Retry Connection"
-				})
+					children: "Retry connection"
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 68,
+					columnNumber: 660
+				}, this)
 			]
-		})
-	});
-	if (!project) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
-		className: "min-h-screen grid place-items-center bg-[#f6f5f4]",
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "text-center space-y-3",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "w-7 h-7 border-2 border-gray-300 border-t-[#0075de] rounded-full animate-spin mx-auto" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "text-sm font-medium text-gray-500",
-				children: "Opening your private project space…"
-			})]
-		})
-	});
-	const firstName = project.clientName?.trim().split(/\s+/)[0] || "there";
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "min-h-screen flex flex-col bg-[#f6f5f4] max-w-2xl mx-auto px-4 sm:px-6",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
-			className: "h-16 flex items-center justify-between border-b border-[#e8e6e3] shrink-0",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex items-center gap-2.5 font-bold text-base",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "grid place-items-center w-7 h-7 rounded-lg bg-black text-white font-bold text-xs",
-					children: "i"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "studio iksha" })]
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-				className: "text-[10px] font-bold text-gray-500 tracking-wider flex items-center gap-1.5 uppercase",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-emerald-500" }), " Private Portal"]
-			})]
-		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
-			className: "flex-1 py-6 space-y-5",
+		}, void 0, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 68,
+			columnNumber: 86
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 68,
+		columnNumber: 21
+	}, this);
+	if (!project) return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("main", {
+		className: "grid min-h-dvh place-items-center p-6",
+		children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+			className: "w-full max-w-sm space-y-4",
 			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "text-[10px] font-bold tracking-widest text-[#96918c] uppercase",
-						children: "PROJECT SPACE"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h1", {
-						className: "text-2xl sm:text-3xl font-bold tracking-tight text-[#161615] mt-0.5",
-						children: [
-							"Hello, ",
-							firstName,
-							"."
-						]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-						className: "text-xs sm:text-sm text-[#797570]",
-						children: [
-							"Stay up to date with real-time facts for ",
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: project.name }),
-							"."
-						]
-					})
-				] }),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-					className: "p-5 space-y-4",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center justify-between",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase",
-								children: "PROJECT SNAPSHOT"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
-								variant: project.status === "At risk" ? "trade" : "success",
-								className: "gap-1.5",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-current" }), project.status || "On track"]
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "grid grid-cols-2 gap-4 pt-3 border-t border-[#efeeec]",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase block",
-								children: "CURRENT PHASE"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-								className: "text-sm font-semibold block mt-0.5",
-								children: project.phase || "Design"
-							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase block",
-								children: "RECENT TASK"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-								className: "text-sm font-semibold block mt-0.5",
-								children: project.recentTask || "Work in progress"
-							})] })]
-						}),
-						project.nextMilestone && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "pt-3 border-t border-[#efeeec]",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[10px] font-bold tracking-wider text-[#96918c] uppercase block",
-								children: "NEXT MILESTONE"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-								className: "text-sm font-semibold text-gray-800 block mt-0.5",
-								children: project.nextMilestone
-							})]
-						}),
-						project.blocker && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "p-3 bg-[#fdf3ec] border border-[#f6cfb0] rounded-lg",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[10px] font-bold tracking-wider text-[#dd5b00] uppercase block",
-								children: "CURRENT BLOCKER"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-								className: "text-xs font-semibold text-[#8a3600] block mt-0.5",
-								children: project.blocker
-							})]
-						})
-					]
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-					className: "overflow-hidden flex flex-col",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "p-4 border-b border-[#efeeec] flex items-center justify-between",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center gap-3",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "w-8 h-8 rounded-lg bg-blue-50 text-[#0075de] grid place-items-center",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "h-4 w-4" })
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-									className: "text-xs sm:text-sm font-semibold block",
-									children: "Project Assistant"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "text-[10px] text-gray-400",
-									children: "Ask anything about milestones, status, or phase"
-								})] })]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "w-2 h-2 rounded-full bg-emerald-500",
-								title: "Online"
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "p-4 space-y-3.5 h-64 overflow-y-auto",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex items-start gap-2 max-w-[88%]",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "w-6 h-6 rounded-md bg-blue-50 text-[#0075de] grid place-items-center text-xs shrink-0 mt-0.5",
-										children: "✳"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "p-3 bg-[#f2f1ee] rounded-2xl rounded-tl-sm text-xs sm:text-sm leading-relaxed text-gray-800",
-										children: [
-											"Hi ",
-											firstName,
-											"! I can share live project updates for ",
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: project.name }),
-											". What would you like to know today?"
-										]
-									})]
-								}),
-								messages.map((m, idx) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_react.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "flex justify-end",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "p-3 bg-[#0075de] text-white rounded-2xl rounded-tr-sm text-xs sm:text-sm max-w-[88%] leading-relaxed shadow-sm",
-										children: m.question
-									})
-								}), m.answer && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex items-start gap-2 max-w-[88%]",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "w-6 h-6 rounded-md bg-blue-50 text-[#0075de] grid place-items-center text-xs shrink-0 mt-0.5",
-										children: "✳"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "p-3 bg-[#f2f1ee] rounded-2xl rounded-tl-sm text-xs sm:text-sm leading-relaxed text-gray-800",
-										children: m.answer
-									})]
-								})] }, idx)),
-								isAsking && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex items-start gap-2",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "w-6 h-6 rounded-md bg-blue-50 text-[#0075de] grid place-items-center text-xs shrink-0",
-										children: "✳"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "p-3 bg-[#f2f1ee] rounded-2xl text-xs flex gap-1.5 items-center",
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" }),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:0.2s]" }),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:0.4s]" })
-										]
-									})]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { ref: messagesEndRef })
-							]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "px-4 pb-2 flex gap-2 overflow-x-auto no-scrollbar",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-									onClick: () => handleAsk("How is the project going?"),
-									className: "px-3 py-1.5 rounded-full bg-white border border-gray-200 text-xs text-gray-600 whitespace-nowrap hover:border-[#0075de] hover:text-[#0075de] transition-colors",
-									children: "How is the project going?"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-									onClick: () => handleAsk("What phase are we currently in?"),
-									className: "px-3 py-1.5 rounded-full bg-white border border-gray-200 text-xs text-gray-600 whitespace-nowrap hover:border-[#0075de] hover:text-[#0075de] transition-colors",
-									children: "What phase are we in?"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-									onClick: () => handleAsk("What was the recent task?"),
-									className: "px-3 py-1.5 rounded-full bg-white border border-gray-200 text-xs text-gray-600 whitespace-nowrap hover:border-[#0075de] hover:text-[#0075de] transition-colors",
-									children: "Recent task?"
-								})
-							]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-							onSubmit: (e) => {
-								e.preventDefault();
-								handleAsk();
-							},
-							className: "p-3 border-t border-[#efeeec] flex items-center gap-2 bg-white",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								value: inputQuestion,
-								onChange: (e) => setInputQuestion(e.target.value),
-								placeholder: "Ask about progress, status, or milestones…",
-								className: "h-10 text-xs sm:text-sm rounded-full bg-transparent"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								type: "submit",
-								size: "icon",
-								disabled: !inputQuestion.trim() || isAsking,
-								className: "rounded-full shrink-0",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Send, { className: "h-4 w-4" })
-							})]
-						})
-					]
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "text-[10px] text-center text-gray-400",
-					children: "Updates reflect facts recorded by your project team. The founder can review this transcript."
-				})
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Skeleton, { className: "h-10 w-36" }, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 69,
+					columnNumber: 123
+				}, this),
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Skeleton, { className: "h-16 w-full" }, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 69,
+					columnNumber: 157
+				}, this),
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Skeleton, { className: "h-64 w-full" }, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 69,
+					columnNumber: 193
+				}, this),
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+					className: "text-center text-sm text-muted-foreground",
+					children: "Opening your private project space…"
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 69,
+					columnNumber: 229
+				}, this)
 			]
-		})]
+		}, void 0, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 69,
+			columnNumber: 80
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 69,
+		columnNumber: 24
+	}, this);
+	const firstName = project.clientName?.trim().split(/\s+/)[0] || "there";
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		className: "app-glow flex h-dvh min-h-[480px] flex-col bg-background md:px-5 md:py-5",
+		children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+			className: "mx-auto flex min-h-0 w-full max-w-4xl flex-1 flex-col overflow-hidden border-x bg-card md:rounded-2xl md:border md:shadow-xl md:shadow-slate-900/5",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("header", {
+					className: "flex items-center gap-3 border-b px-4 py-3 sm:px-6",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-lg font-bold text-primary-foreground",
+							children: "i"
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 74,
+							columnNumber: 78
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "min-w-0 flex-1",
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("strong", {
+								className: "block truncate text-sm",
+								children: "studio iksha"
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 74,
+								columnNumber: 238
+							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								className: "text-xs text-muted-foreground",
+								children: "Private project space"
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 74,
+								columnNumber: 302
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$2,
+							lineNumber: 74,
+							columnNumber: 206
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Badge, {
+							variant: "outline",
+							className: "gap-1.5 text-muted-foreground",
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(LockKeyhole, { className: "size-3" }, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 74,
+								columnNumber: 445
+							}, this), "Private"]
+						}, void 0, true, {
+							fileName: _jsxFileName$2,
+							lineNumber: 74,
+							columnNumber: 378
+						}, this)
+					]
+				}, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 74,
+					columnNumber: 7
+				}, this),
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					className: "flex items-center justify-between gap-3 border-b bg-muted/30 px-4 py-4 sm:px-6",
+					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						className: "min-w-0",
+						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							className: "text-xs font-semibold uppercase tracking-wider text-primary",
+							children: "Your project"
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 75,
+							columnNumber: 128
+						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+							className: "mt-1 truncate text-xl font-semibold tracking-tight sm:text-2xl",
+							children: project.name
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 75,
+							columnNumber: 219
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 75,
+						columnNumber: 103
+					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Badge, {
+						variant: "secondary",
+						className: "max-w-[40%] truncate",
+						children: project.status || "On track"
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 75,
+						columnNumber: 323
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 75,
+					columnNumber: 7
+				}, this),
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					className: "flex min-h-0 flex-1 flex-col",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "flex items-center gap-3 border-b px-4 py-3 sm:px-6",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AssistantAvatar, {}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 76,
+									columnNumber: 121
+								}, this),
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+									className: "flex-1",
+									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+										className: "text-sm font-semibold",
+										children: "Project Assistant"
+									}, void 0, false, {
+										fileName: _jsxFileName$2,
+										lineNumber: 76,
+										columnNumber: 164
+									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+										className: "text-xs text-muted-foreground",
+										children: "Ask about progress, plans, and milestones"
+									}, void 0, false, {
+										fileName: _jsxFileName$2,
+										lineNumber: 76,
+										columnNumber: 222
+									}, this)]
+								}, void 0, true, {
+									fileName: _jsxFileName$2,
+									lineNumber: 76,
+									columnNumber: 140
+								}, this),
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+									className: "flex items-center gap-1.5 text-xs text-muted-foreground",
+									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", { className: "size-2 rounded-full bg-emerald-500" }, void 0, false, {
+										fileName: _jsxFileName$2,
+										lineNumber: 76,
+										columnNumber: 392
+									}, this), "Online"]
+								}, void 0, true, {
+									fileName: _jsxFileName$2,
+									lineNumber: 76,
+									columnNumber: 318
+								}, this)
+							]
+						}, void 0, true, {
+							fileName: _jsxFileName$2,
+							lineNumber: 76,
+							columnNumber: 53
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "chat-scroll min-h-0 flex-1 space-y-5 overflow-y-auto px-4 py-5 sm:px-6",
+							"aria-label": "Project conversation",
+							"aria-live": "polite",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Message, {
+									align: "start",
+									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AssistantAvatar, {}, void 0, false, {
+										fileName: _jsxFileName$2,
+										lineNumber: 78,
+										columnNumber: 49
+									}, this) }, void 0, false, {
+										fileName: _jsxFileName$2,
+										lineNumber: 78,
+										columnNumber: 34
+									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageContent, {
+										className: "max-w-[88%] sm:max-w-[75%]",
+										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageHeader, { children: "Project Assistant" }, void 0, false, {
+											fileName: _jsxFileName$2,
+											lineNumber: 78,
+											columnNumber: 139
+										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Bubble, {
+											variant: "secondary",
+											children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(BubbleContent, { children: [
+												"Hi ",
+												firstName,
+												"! I can share the latest updates for ",
+												/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("strong", { children: project.name }, void 0, false, {
+													fileName: _jsxFileName$2,
+													lineNumber: 78,
+													columnNumber: 281
+												}, this),
+												". What would you like to know?"
+											] }, void 0, true, {
+												fileName: _jsxFileName$2,
+												lineNumber: 78,
+												columnNumber: 215
+											}, this)
+										}, void 0, false, {
+											fileName: _jsxFileName$2,
+											lineNumber: 78,
+											columnNumber: 187
+										}, this)]
+									}, void 0, true, {
+										fileName: _jsxFileName$2,
+										lineNumber: 78,
+										columnNumber: 84
+									}, this)]
+								}, void 0, true, {
+									fileName: _jsxFileName$2,
+									lineNumber: 78,
+									columnNumber: 11
+								}, this),
+								messages.map((item, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_react.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Message, {
+									align: "end",
+									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ClientAvatar, { name: firstName }, void 0, false, {
+										fileName: _jsxFileName$2,
+										lineNumber: 79,
+										columnNumber: 135
+									}, this) }, void 0, false, {
+										fileName: _jsxFileName$2,
+										lineNumber: 79,
+										columnNumber: 120
+									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageContent, {
+										className: "max-w-[88%] sm:max-w-[75%]",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageHeader, {
+												className: "justify-end",
+												children: [time(item.at), " · You"]
+											}, void 0, true, {
+												fileName: _jsxFileName$2,
+												lineNumber: 79,
+												columnNumber: 239
+											}, this),
+											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Bubble, {
+												align: "end",
+												children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(BubbleContent, { children: item.question }, void 0, false, {
+													fileName: _jsxFileName$2,
+													lineNumber: 79,
+													columnNumber: 335
+												}, this)
+											}, void 0, false, {
+												fileName: _jsxFileName$2,
+												lineNumber: 79,
+												columnNumber: 315
+											}, this),
+											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageFooter, { children: "Sent" }, void 0, false, {
+												fileName: _jsxFileName$2,
+												lineNumber: 79,
+												columnNumber: 390
+											}, this)
+										]
+									}, void 0, true, {
+										fileName: _jsxFileName$2,
+										lineNumber: 79,
+										columnNumber: 184
+									}, this)]
+								}, void 0, true, {
+									fileName: _jsxFileName$2,
+									lineNumber: 79,
+									columnNumber: 99
+								}, this), item.answer && /* @__PURE__ */ (void 0)(Message, {
+									align: "start",
+									children: [/* @__PURE__ */ (void 0)(MessageAvatar, { children: /* @__PURE__ */ (void 0)(AssistantAvatar, {}, void 0, false, {
+										fileName: _jsxFileName$2,
+										lineNumber: 79,
+										columnNumber: 506
+									}, this) }, void 0, false, {
+										fileName: _jsxFileName$2,
+										lineNumber: 79,
+										columnNumber: 491
+									}, this), /* @__PURE__ */ (void 0)(MessageContent, {
+										className: "max-w-[88%] sm:max-w-[75%]",
+										children: [/* @__PURE__ */ (void 0)(MessageHeader, { children: "Project Assistant" }, void 0, false, {
+											fileName: _jsxFileName$2,
+											lineNumber: 79,
+											columnNumber: 596
+										}, this), /* @__PURE__ */ (void 0)(Bubble, {
+											variant: "secondary",
+											children: /* @__PURE__ */ (void 0)(BubbleContent, { children: item.answer }, void 0, false, {
+												fileName: _jsxFileName$2,
+												lineNumber: 79,
+												columnNumber: 672
+											}, this)
+										}, void 0, false, {
+											fileName: _jsxFileName$2,
+											lineNumber: 79,
+											columnNumber: 644
+										}, this)]
+									}, void 0, true, {
+										fileName: _jsxFileName$2,
+										lineNumber: 79,
+										columnNumber: 541
+									}, this)]
+								}, void 0, true, {
+									fileName: _jsxFileName$2,
+									lineNumber: 79,
+									columnNumber: 468
+								}, this)] }, item.pendingId || item.at || index, true, {
+									fileName: _jsxFileName$2,
+									lineNumber: 79,
+									columnNumber: 42
+								}, this)),
+								isAsking && /* @__PURE__ */ (void 0)(Message, {
+									align: "start",
+									role: "status",
+									"aria-label": "Project Assistant is responding",
+									children: [/* @__PURE__ */ (void 0)(MessageAvatar, { children: /* @__PURE__ */ (void 0)(AssistantAvatar, {}, void 0, false, {
+										fileName: _jsxFileName$2,
+										lineNumber: 80,
+										columnNumber: 121
+									}, this) }, void 0, false, {
+										fileName: _jsxFileName$2,
+										lineNumber: 80,
+										columnNumber: 106
+									}, this), /* @__PURE__ */ (void 0)(MessageContent, { children: [/* @__PURE__ */ (void 0)(MessageHeader, { children: "Project Assistant" }, void 0, false, {
+										fileName: _jsxFileName$2,
+										lineNumber: 80,
+										columnNumber: 172
+									}, this), /* @__PURE__ */ (void 0)(Bubble, {
+										variant: "secondary",
+										children: /* @__PURE__ */ (void 0)(BubbleContent, { children: /* @__PURE__ */ (void 0)(ThinkingOrb, {
+											state: "working",
+											size: 20,
+											speed: .6,
+											theme: "light",
+											color: "#2166d1",
+											"aria-hidden": "true"
+										}, void 0, false, {
+											fileName: _jsxFileName$2,
+											lineNumber: 80,
+											columnNumber: 263
+										}, this) }, void 0, false, {
+											fileName: _jsxFileName$2,
+											lineNumber: 80,
+											columnNumber: 248
+										}, this)
+									}, void 0, false, {
+										fileName: _jsxFileName$2,
+										lineNumber: 80,
+										columnNumber: 220
+									}, this)] }, void 0, true, {
+										fileName: _jsxFileName$2,
+										lineNumber: 80,
+										columnNumber: 156
+									}, this)]
+								}, void 0, true, {
+									fileName: _jsxFileName$2,
+									lineNumber: 80,
+									columnNumber: 24
+								}, this),
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { ref: endRef }, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 81,
+									columnNumber: 11
+								}, this)
+							]
+						}, void 0, true, {
+							fileName: _jsxFileName$2,
+							lineNumber: 77,
+							columnNumber: 9
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "no-scrollbar flex gap-2 overflow-x-auto border-t px-4 py-3 sm:px-6",
+							children: [
+								"How is the project going?",
+								"What phase are we in?",
+								"What comes next?"
+							].map((suggestion) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+								variant: "outline",
+								size: "sm",
+								className: "shrink-0 rounded-full",
+								onClick: () => ask(suggestion),
+								disabled: isAsking,
+								children: suggestion
+							}, suggestion, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 83,
+								columnNumber: 189
+							}, this))
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 83,
+							columnNumber: 9
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("form", {
+							onSubmit: (event) => {
+								event.preventDefault();
+								ask();
+							},
+							className: "safe-bottom flex items-end gap-2 border-t bg-card px-3 pt-3 sm:px-6",
+							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Textarea, {
+								value: question,
+								onChange: (event) => setQuestion(event.target.value),
+								onKeyDown: (event) => {
+									if (event.key === "Enter" && !event.shiftKey) {
+										event.preventDefault();
+										ask();
+									}
+								},
+								rows: 1,
+								"aria-label": "Ask a project question",
+								placeholder: "Ask a project question…",
+								className: "max-h-32 min-h-11 flex-1 resize-none"
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 84,
+								columnNumber: 152
+							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+								type: "submit",
+								size: "icon-lg",
+								"aria-label": "Send question",
+								disabled: !question.trim() || isAsking,
+								className: "size-11",
+								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ArrowUp, { className: "size-5" }, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 84,
+									columnNumber: 599
+								}, this)
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 84,
+								columnNumber: 475
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$2,
+							lineNumber: 84,
+							columnNumber: 9
+						}, this)
+					]
+				}, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 76,
+					columnNumber: 7
+				}, this)
+			]
+		}, void 0, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 73,
+			columnNumber: 5
+		}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+			className: "hidden items-center justify-center gap-1.5 pt-3 text-xs text-muted-foreground md:flex",
+			children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CircleCheck, { className: "size-3.5" }, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 87,
+				columnNumber: 106
+			}, this), "Answers reflect facts recorded by your project team."]
+		}, void 0, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 87,
+			columnNumber: 5
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 72,
+		columnNumber: 10
+	}, this);
+}
+//#endregion
+//#region frontend/src/EmployeeApp.jsx
+var _jsxFileName$1 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/EmployeeApp.jsx";
+var request = async (url, options = {}) => {
+	const response = await fetch(url, {
+		credentials: "same-origin",
+		...options,
+		headers: {
+			"content-type": "application/json",
+			...options.headers || {}
+		}
 	});
+	const data = await response.json().catch(() => ({}));
+	if (!response.ok) throw new Error(data.error || "Request failed.");
+	return data;
+};
+function EmployeeApp() {
+	const [auth, setAuth] = (0, import_react.useState)("checking");
+	const [employeeId, setEmployeeId] = (0, import_react.useState)(new URLSearchParams(location.search).get("id") || "");
+	const [password, setPassword] = (0, import_react.useState)("");
+	const [showPassword, setShowPassword] = (0, import_react.useState)(false);
+	const [employee, setEmployee] = (0, import_react.useState)(null);
+	const [projects, setProjects] = (0, import_react.useState)([]);
+	const [selectedId, setSelectedId] = (0, import_react.useState)(null);
+	const [error, setError] = (0, import_react.useState)("");
+	const [busy, setBusy] = (0, import_react.useState)(false);
+	const load = async () => {
+		try {
+			const data = await request("/api/employee/me");
+			setEmployee(data.employee);
+			setProjects(data.projects || []);
+			setSelectedId((current) => (data.projects || []).some((project) => project.id === current) ? current : data.projects?.[0]?.id || null);
+			setAuth("signed-in");
+		} catch {
+			setAuth("signed-out");
+		}
+	};
+	(0, import_react.useEffect)(() => {
+		load();
+	}, []);
+	const selected = projects.find((project) => project.id === selectedId);
+	const login = async (event) => {
+		event.preventDefault();
+		setBusy(true);
+		setError("");
+		try {
+			await request("/api/employee/login", {
+				method: "POST",
+				body: JSON.stringify({
+					employeeId,
+					password
+				})
+			});
+			await load();
+			setPassword("");
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	const logout = async () => {
+		await request("/api/employee/logout", { method: "POST" });
+		setAuth("signed-out");
+		setEmployee(null);
+		setProjects([]);
+	};
+	if (auth === "checking") return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("main", {
+		className: "grid min-h-dvh place-items-center bg-background p-6",
+		children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+			className: "w-full max-w-md space-y-4",
+			children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Skeleton, { className: "h-12 w-48" }, void 0, false, {
+				fileName: _jsxFileName$1,
+				lineNumber: 48,
+				columnNumber: 148
+			}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Skeleton, { className: "h-52 w-full" }, void 0, false, {
+				fileName: _jsxFileName$1,
+				lineNumber: 48,
+				columnNumber: 182
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$1,
+			lineNumber: 48,
+			columnNumber: 105
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 48,
+		columnNumber: 35
+	}, this);
+	if (auth === "signed-out") return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("main", {
+		className: "flex min-h-dvh flex-col bg-[#101419] text-white [color-scheme:dark]",
+		children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+			className: "mx-auto flex w-full max-w-md flex-1 flex-col justify-end px-6 pb-[max(32px,env(safe-area-inset-bottom))] pt-20",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					className: "mb-auto",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "grid size-12 place-items-center rounded-2xl bg-primary text-2xl font-bold",
+							children: "i"
+						}, void 0, false, {
+							fileName: _jsxFileName$1,
+							lineNumber: 51,
+							columnNumber: 32
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							className: "mt-5 text-xs font-semibold uppercase tracking-[.2em] text-blue-300",
+							children: "Studio Iksha · Team access"
+						}, void 0, false, {
+							fileName: _jsxFileName$1,
+							lineNumber: 51,
+							columnNumber: 130
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+							className: "mt-3 text-4xl font-semibold tracking-tight",
+							children: "Welcome to your workspace"
+						}, void 0, false, {
+							fileName: _jsxFileName$1,
+							lineNumber: 51,
+							columnNumber: 242
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							className: "mt-3 text-sm leading-relaxed text-white/60",
+							children: "Sign in to see the projects you work on and talk with your project team."
+						}, void 0, false, {
+							fileName: _jsxFileName$1,
+							lineNumber: 51,
+							columnNumber: 331
+						}, this)
+					]
+				}, void 0, true, {
+					fileName: _jsxFileName$1,
+					lineNumber: 51,
+					columnNumber: 7
+				}, this),
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("form", {
+					onSubmit: login,
+					className: "mt-12 space-y-4 rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+							className: "grid gap-2 text-xs font-medium text-white/70",
+							children: ["Employee ID", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+								value: employeeId,
+								onChange: (event) => setEmployeeId(event.target.value),
+								autoCapitalize: "characters",
+								autoComplete: "username",
+								required: true,
+								placeholder: "EMP-XXXXXXXXXX",
+								className: "h-12 border-white/15 bg-white/10 text-base text-white placeholder:text-white/35"
+							}, void 0, false, {
+								fileName: _jsxFileName$1,
+								lineNumber: 53,
+								columnNumber: 84
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$1,
+							lineNumber: 53,
+							columnNumber: 9
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+							className: "grid gap-2 text-xs font-medium text-white/70",
+							children: ["Password", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+								className: "relative",
+								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+									value: password,
+									onChange: (event) => setPassword(event.target.value),
+									type: showPassword ? "text" : "password",
+									autoComplete: "current-password",
+									required: true,
+									placeholder: "Enter your password",
+									className: "h-12 border-white/15 bg-white/10 pr-12 text-base text-white placeholder:text-white/35"
+								}, void 0, false, {
+									fileName: _jsxFileName$1,
+									lineNumber: 54,
+									columnNumber: 107
+								}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", {
+									type: "button",
+									"aria-label": showPassword ? "Hide password" : "Show password",
+									onClick: () => setShowPassword((value) => !value),
+									className: "absolute inset-y-0 right-0 grid w-12 place-items-center text-white/60",
+									children: showPassword ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(EyeOff, { className: "size-4" }, void 0, false, {
+										fileName: _jsxFileName$1,
+										lineNumber: 54,
+										columnNumber: 635
+									}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Eye, { className: "size-4" }, void 0, false, {
+										fileName: _jsxFileName$1,
+										lineNumber: 54,
+										columnNumber: 667
+									}, this)
+								}, void 0, false, {
+									fileName: _jsxFileName$1,
+									lineNumber: 54,
+									columnNumber: 402
+								}, this)]
+							}, void 0, true, {
+								fileName: _jsxFileName$1,
+								lineNumber: 54,
+								columnNumber: 81
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$1,
+							lineNumber: 54,
+							columnNumber: 9
+						}, this),
+						error && /* @__PURE__ */ (void 0)("p", {
+							role: "alert",
+							className: "text-xs text-red-300",
+							children: error
+						}, void 0, false, {
+							fileName: _jsxFileName$1,
+							lineNumber: 55,
+							columnNumber: 19
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+							type: "submit",
+							disabled: busy,
+							className: "h-12 w-full text-sm font-semibold",
+							children: busy ? "Signing in…" : "Continue"
+						}, void 0, false, {
+							fileName: _jsxFileName$1,
+							lineNumber: 56,
+							columnNumber: 9
+						}, this)
+					]
+				}, void 0, true, {
+					fileName: _jsxFileName$1,
+					lineNumber: 52,
+					columnNumber: 7
+				}, this),
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+					className: "mt-5 text-center text-xs text-white/40",
+					children: "Your founder provides your employee ID and password."
+				}, void 0, false, {
+					fileName: _jsxFileName$1,
+					lineNumber: 57,
+					columnNumber: 14
+				}, this)
+			]
+		}, void 0, true, {
+			fileName: _jsxFileName$1,
+			lineNumber: 50,
+			columnNumber: 5
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 49,
+		columnNumber: 37
+	}, this);
+	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		className: "app-glow min-h-dvh bg-background pb-[max(24px,env(safe-area-inset-bottom))]",
+		children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("header", {
+			className: "sticky top-0 z-20 border-b bg-card/95 px-4 py-4 backdrop-blur",
+			children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				className: "mx-auto flex max-w-5xl items-center gap-3",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						className: "grid size-9 place-items-center rounded-xl bg-primary text-lg font-bold text-primary-foreground",
+						children: "i"
+					}, void 0, false, {
+						fileName: _jsxFileName$1,
+						lineNumber: 62,
+						columnNumber: 146
+					}, this),
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						className: "min-w-0 flex-1",
+						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							className: "truncate text-sm font-semibold",
+							children: "Studio Iksha"
+						}, void 0, false, {
+							fileName: _jsxFileName$1,
+							lineNumber: 62,
+							columnNumber: 297
+						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							className: "truncate text-xs text-muted-foreground",
+							children: [employee?.name, " · Team workspace"]
+						}, void 0, true, {
+							fileName: _jsxFileName$1,
+							lineNumber: 62,
+							columnNumber: 359
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$1,
+						lineNumber: 62,
+						columnNumber: 265
+					}, this),
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+						variant: "ghost",
+						size: "icon",
+						"aria-label": "Sign out",
+						onClick: logout,
+						children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(LogOut, { className: "size-4" }, void 0, false, {
+							fileName: _jsxFileName$1,
+							lineNumber: 62,
+							columnNumber: 531
+						}, this)
+					}, void 0, false, {
+						fileName: _jsxFileName$1,
+						lineNumber: 62,
+						columnNumber: 456
+					}, this)
+				]
+			}, void 0, true, {
+				fileName: _jsxFileName$1,
+				lineNumber: 62,
+				columnNumber: 87
+			}, this)
+		}, void 0, false, {
+			fileName: _jsxFileName$1,
+			lineNumber: 62,
+			columnNumber: 5
+		}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("main", {
+			className: "mx-auto max-w-5xl space-y-6 px-4 py-6 sm:px-6",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						className: "text-xs font-semibold uppercase tracking-wider text-primary",
+						children: "My workspace"
+					}, void 0, false, {
+						fileName: _jsxFileName$1,
+						lineNumber: 64,
+						columnNumber: 12
+					}, this),
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+						className: "mt-1 text-2xl font-semibold tracking-tight",
+						children: "Your projects"
+					}, void 0, false, {
+						fileName: _jsxFileName$1,
+						lineNumber: 64,
+						columnNumber: 103
+					}, this),
+					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						className: "mt-1 text-sm text-muted-foreground",
+						children: [
+							"You are assigned to ",
+							projects.length,
+							" ",
+							projects.length === 1 ? "project" : "projects",
+							"."
+						]
+					}, void 0, true, {
+						fileName: _jsxFileName$1,
+						lineNumber: 64,
+						columnNumber: 180
+					}, this)
+				] }, void 0, true, {
+					fileName: _jsxFileName$1,
+					lineNumber: 64,
+					columnNumber: 7
+				}, this),
+				projects.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					className: "grid gap-3 sm:grid-cols-2",
+					children: projects.map((project) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", {
+						type: "button",
+						onClick: () => setSelectedId(project.id),
+						className: `rounded-2xl border bg-card p-4 text-left shadow-sm transition-colors duration-200 hover:border-primary/40 ${selectedId === project.id ? "border-primary ring-2 ring-primary/10" : ""}`,
+						children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							className: "flex items-start gap-3",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+									className: "grid size-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary",
+									children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(FolderKanban, { className: "size-5" }, void 0, false, {
+										fileName: _jsxFileName$1,
+										lineNumber: 65,
+										columnNumber: 510
+									}, this)
+								}, void 0, false, {
+									fileName: _jsxFileName$1,
+									lineNumber: 65,
+									columnNumber: 413
+								}, this),
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+									className: "min-w-0 flex-1",
+									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("strong", {
+										className: "block truncate text-sm",
+										children: project.name
+									}, void 0, false, {
+										fileName: _jsxFileName$1,
+										lineNumber: 65,
+										columnNumber: 584
+									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+										className: "mt-1 truncate text-xs text-muted-foreground",
+										children: project.location || project.clientName
+									}, void 0, false, {
+										fileName: _jsxFileName$1,
+										lineNumber: 65,
+										columnNumber: 650
+									}, this)]
+								}, void 0, true, {
+									fileName: _jsxFileName$1,
+									lineNumber: 65,
+									columnNumber: 552
+								}, this),
+								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Badge, {
+									variant: "secondary",
+									children: project.status || "Setup"
+								}, void 0, false, {
+									fileName: _jsxFileName$1,
+									lineNumber: 65,
+									columnNumber: 759
+								}, this)
+							]
+						}, void 0, true, {
+							fileName: _jsxFileName$1,
+							lineNumber: 65,
+							columnNumber: 373
+						}, this)
+					}, project.id, false, {
+						fileName: _jsxFileName$1,
+						lineNumber: 65,
+						columnNumber: 96
+					}, this))
+				}, void 0, false, {
+					fileName: _jsxFileName$1,
+					lineNumber: 65,
+					columnNumber: 26
+				}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
+					className: "py-12 text-center",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(FolderKanban, { className: "mx-auto size-9 text-muted-foreground/50" }, void 0, false, {
+							fileName: _jsxFileName$1,
+							lineNumber: 65,
+							columnNumber: 896
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							className: "mt-3 text-sm font-semibold",
+							children: "No projects assigned yet"
+						}, void 0, false, {
+							fileName: _jsxFileName$1,
+							lineNumber: 65,
+							columnNumber: 964
+						}, this),
+						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							className: "mt-1 text-xs text-muted-foreground",
+							children: "Ask your founder to add your employee ID to a project."
+						}, void 0, false, {
+							fileName: _jsxFileName$1,
+							lineNumber: 65,
+							columnNumber: 1034
+						}, this)
+					]
+				}, void 0, true, {
+					fileName: _jsxFileName$1,
+					lineNumber: 65,
+					columnNumber: 853
+				}, this) }, void 0, false, {
+					fileName: _jsxFileName$1,
+					lineNumber: 65,
+					columnNumber: 847
+				}, this),
+				selected && /* @__PURE__ */ (void 0)("section", {
+					className: "space-y-4",
+					children: [/* @__PURE__ */ (void 0)("div", {
+						className: "flex items-center justify-between gap-3",
+						children: [/* @__PURE__ */ (void 0)("div", { children: [/* @__PURE__ */ (void 0)("p", {
+							className: "text-xs font-semibold uppercase tracking-wider text-primary",
+							children: "Selected project"
+						}, void 0, false, {
+							fileName: _jsxFileName$1,
+							lineNumber: 66,
+							columnNumber: 113
+						}, this), /* @__PURE__ */ (void 0)("h2", {
+							className: "mt-1 text-xl font-semibold",
+							children: selected.name
+						}, void 0, false, {
+							fileName: _jsxFileName$1,
+							lineNumber: 66,
+							columnNumber: 208
+						}, this)] }, void 0, true, {
+							fileName: _jsxFileName$1,
+							lineNumber: 66,
+							columnNumber: 108
+						}, this), /* @__PURE__ */ (void 0)(Badge, {
+							variant: "outline",
+							children: selected.status
+						}, void 0, false, {
+							fileName: _jsxFileName$1,
+							lineNumber: 66,
+							columnNumber: 277
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$1,
+						lineNumber: 66,
+						columnNumber: 51
+					}, this), /* @__PURE__ */ (void 0)(Tabs, {
+						defaultValue: "overview",
+						className: "gap-4",
+						children: [
+							/* @__PURE__ */ (void 0)(TabsList, {
+								className: "w-full sm:w-fit",
+								children: [/* @__PURE__ */ (void 0)(TabsTrigger, {
+									value: "overview",
+									children: "Overview"
+								}, void 0, false, {
+									fileName: _jsxFileName$1,
+									lineNumber: 67,
+									columnNumber: 95
+								}, this), /* @__PURE__ */ (void 0)(TabsTrigger, {
+									value: "chat",
+									children: [/* @__PURE__ */ (void 0)(MessageSquare, { className: "size-4" }, void 0, false, {
+										fileName: _jsxFileName$1,
+										lineNumber: 67,
+										columnNumber: 173
+									}, this), "Team chat"]
+								}, void 0, true, {
+									fileName: _jsxFileName$1,
+									lineNumber: 67,
+									columnNumber: 147
+								}, this)]
+							}, void 0, true, {
+								fileName: _jsxFileName$1,
+								lineNumber: 67,
+								columnNumber: 57
+							}, this),
+							/* @__PURE__ */ (void 0)(TabsContent, {
+								value: "overview",
+								className: "space-y-3",
+								children: [
+									/* @__PURE__ */ (void 0)("div", {
+										className: "grid grid-cols-2 gap-3",
+										children: [/* @__PURE__ */ (void 0)(Card, { children: [/* @__PURE__ */ (void 0)(CardHeader, {
+											className: "pb-2",
+											children: /* @__PURE__ */ (void 0)(CardTitle, {
+												className: "text-xs text-muted-foreground",
+												children: "Current phase"
+											}, void 0, false, {
+												fileName: _jsxFileName$1,
+												lineNumber: 68,
+												columnNumber: 138
+											}, this)
+										}, void 0, false, {
+											fileName: _jsxFileName$1,
+											lineNumber: 68,
+											columnNumber: 109
+										}, this), /* @__PURE__ */ (void 0)(CardContent, {
+											className: "text-sm font-semibold",
+											children: selected.phase || "Not set"
+										}, void 0, false, {
+											fileName: _jsxFileName$1,
+											lineNumber: 68,
+											columnNumber: 229
+										}, this)] }, void 0, true, {
+											fileName: _jsxFileName$1,
+											lineNumber: 68,
+											columnNumber: 103
+										}, this), /* @__PURE__ */ (void 0)(Card, { children: [/* @__PURE__ */ (void 0)(CardHeader, {
+											className: "pb-2",
+											children: /* @__PURE__ */ (void 0)(CardTitle, {
+												className: "text-xs text-muted-foreground",
+												children: "Team members"
+											}, void 0, false, {
+												fileName: _jsxFileName$1,
+												lineNumber: 68,
+												columnNumber: 361
+											}, this)
+										}, void 0, false, {
+											fileName: _jsxFileName$1,
+											lineNumber: 68,
+											columnNumber: 332
+										}, this), /* @__PURE__ */ (void 0)(CardContent, {
+											className: "text-sm font-semibold",
+											children: selected.members?.length || 0
+										}, void 0, false, {
+											fileName: _jsxFileName$1,
+											lineNumber: 68,
+											columnNumber: 451
+										}, this)] }, void 0, true, {
+											fileName: _jsxFileName$1,
+											lineNumber: 68,
+											columnNumber: 326
+										}, this)]
+									}, void 0, true, {
+										fileName: _jsxFileName$1,
+										lineNumber: 68,
+										columnNumber: 63
+									}, this),
+									/* @__PURE__ */ (void 0)(Card, { children: /* @__PURE__ */ (void 0)(CardContent, {
+										className: "space-y-4 p-5",
+										children: [
+											/* @__PURE__ */ (void 0)("div", {
+												className: "flex items-center gap-2 text-primary",
+												children: [/* @__PURE__ */ (void 0)(BuildingComplex, { className: "size-4" }, void 0, false, {
+													fileName: _jsxFileName$1,
+													lineNumber: 68,
+													columnNumber: 655
+												}, this), /* @__PURE__ */ (void 0)("h3", {
+													className: "text-sm font-semibold",
+													children: "Current work"
+												}, void 0, false, {
+													fileName: _jsxFileName$1,
+													lineNumber: 68,
+													columnNumber: 687
+												}, this)]
+											}, void 0, true, {
+												fileName: _jsxFileName$1,
+												lineNumber: 68,
+												columnNumber: 601
+											}, this),
+											/* @__PURE__ */ (void 0)("p", {
+												className: "text-sm",
+												children: selected.recentTask || "No recent work recorded yet."
+											}, void 0, false, {
+												fileName: _jsxFileName$1,
+												lineNumber: 68,
+												columnNumber: 748
+											}, this),
+											/* @__PURE__ */ (void 0)("div", {
+												className: "border-t pt-4",
+												children: [/* @__PURE__ */ (void 0)("p", {
+													className: "text-xs text-muted-foreground",
+													children: "Next milestone"
+												}, void 0, false, {
+													fileName: _jsxFileName$1,
+													lineNumber: 68,
+													columnNumber: 861
+												}, this), /* @__PURE__ */ (void 0)("p", {
+													className: "mt-1 text-sm font-medium",
+													children: selected.nextMilestone || "Not scheduled"
+												}, void 0, false, {
+													fileName: _jsxFileName$1,
+													lineNumber: 68,
+													columnNumber: 924
+												}, this)]
+											}, void 0, true, {
+												fileName: _jsxFileName$1,
+												lineNumber: 68,
+												columnNumber: 830
+											}, this),
+											selected.blocker && /* @__PURE__ */ (void 0)("div", {
+												className: "rounded-xl bg-amber-50 p-3 text-sm text-amber-900",
+												children: ["Blocker: ", selected.blocker]
+											}, void 0, true, {
+												fileName: _jsxFileName$1,
+												lineNumber: 68,
+												columnNumber: 1038
+											}, this)
+										]
+									}, void 0, true, {
+										fileName: _jsxFileName$1,
+										lineNumber: 68,
+										columnNumber: 562
+									}, this) }, void 0, false, {
+										fileName: _jsxFileName$1,
+										lineNumber: 68,
+										columnNumber: 556
+									}, this),
+									/* @__PURE__ */ (void 0)("p", {
+										className: "flex items-center gap-2 text-xs text-muted-foreground",
+										children: [/* @__PURE__ */ (void 0)(CircleCheck, { className: "size-4" }, void 0, false, {
+											fileName: _jsxFileName$1,
+											lineNumber: 68,
+											columnNumber: 1229
+										}, this), "Project facts are managed by the founder."]
+									}, void 0, true, {
+										fileName: _jsxFileName$1,
+										lineNumber: 68,
+										columnNumber: 1160
+									}, this)
+								]
+							}, void 0, true, {
+								fileName: _jsxFileName$1,
+								lineNumber: 68,
+								columnNumber: 11
+							}, this),
+							/* @__PURE__ */ (void 0)(TabsContent, {
+								value: "chat",
+								children: /* @__PURE__ */ (void 0)(TeamChat, {
+									endpoint: `/api/employee/projects/${selected.id}/team-chat`,
+									currentActor: employee.id
+								}, selected.id, false, {
+									fileName: _jsxFileName$1,
+									lineNumber: 69,
+									columnNumber: 37
+								}, this)
+							}, void 0, false, {
+								fileName: _jsxFileName$1,
+								lineNumber: 69,
+								columnNumber: 11
+							}, this)
+						]
+					}, void 0, true, {
+						fileName: _jsxFileName$1,
+						lineNumber: 67,
+						columnNumber: 9
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$1,
+					lineNumber: 66,
+					columnNumber: 20
+				}, this)
+			]
+		}, void 0, true, {
+			fileName: _jsxFileName$1,
+			lineNumber: 63,
+			columnNumber: 5
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$1,
+		lineNumber: 61,
+		columnNumber: 10
+	}, this);
 }
 //#endregion
 //#region frontend/src/main.jsx
+var _jsxFileName = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/main.jsx";
 var rootElement = document.getElementById("app");
 if (rootElement) {
 	const isClientView = window.location.pathname.startsWith("/c/");
-	import_client.createRoot(rootElement).render(/* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react.StrictMode, { children: isClientView ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClientApp, {}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderApp, {}) }));
+	import_client.createRoot(rootElement).render(/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_react.StrictMode, { children: isClientView ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ClientApp, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 13,
+		columnNumber: 23
+	}, void 0) : window.location.pathname.startsWith("/employee") ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(EmployeeApp, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 13,
+		columnNumber: 90
+	}, void 0) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(FounderApp, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 13,
+		columnNumber: 108
+	}, void 0) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 12,
+		columnNumber: 5
+	}, void 0));
 }
 //#endregion
