@@ -11675,7 +11675,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$34 = {
+var __iconData$45 = {
 	name: "arrow-left",
 	size: 24,
 	node: [["path", {
@@ -11686,8 +11686,8 @@ var __iconData$34 = {
 		key: "x3x0zl"
 	}]]
 };
-__iconData$34.node;
-var ArrowLeft = createLucideIcon(__iconData$34);
+__iconData$45.node;
+var ArrowLeft = createLucideIcon(__iconData$45);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
@@ -11696,7 +11696,7 @@ var ArrowLeft = createLucideIcon(__iconData$34);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$33 = {
+var __iconData$44 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11707,8 +11707,8 @@ var __iconData$33 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$33.node;
-var ArrowRight = createLucideIcon(__iconData$33);
+__iconData$44.node;
+var ArrowRight = createLucideIcon(__iconData$44);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
@@ -11717,7 +11717,7 @@ var ArrowRight = createLucideIcon(__iconData$33);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$32 = {
+var __iconData$43 = {
 	name: "arrow-up",
 	size: 24,
 	node: [["path", {
@@ -11728,8 +11728,8 @@ var __iconData$32 = {
 		key: "x0mq9r"
 	}]]
 };
-__iconData$32.node;
-var ArrowUp = createLucideIcon(__iconData$32);
+__iconData$43.node;
+var ArrowUp = createLucideIcon(__iconData$43);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
@@ -11738,7 +11738,7 @@ var ArrowUp = createLucideIcon(__iconData$32);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$31 = {
+var __iconData$42 = {
 	name: "building-complex",
 	size: 24,
 	node: [
@@ -11765,8 +11765,44 @@ var __iconData$31 = {
 	],
 	aliases: ["building-2"]
 };
-__iconData$31.node;
-var BuildingComplex = createLucideIcon(__iconData$31);
+__iconData$42.node;
+var BuildingComplex = createLucideIcon(__iconData$42);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/calendar.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$41 = {
+	name: "calendar",
+	size: 24,
+	node: [
+		["path", {
+			d: "M8 2v3",
+			key: "1ioesn"
+		}],
+		["path", {
+			d: "M16 2v3",
+			key: "otl347"
+		}],
+		["rect", {
+			x: "3",
+			y: "3",
+			width: "18",
+			height: "18",
+			rx: "2",
+			key: "h1oib"
+		}],
+		["path", {
+			d: "M3 9h18",
+			key: "1pudct"
+		}]
+	]
+};
+__iconData$41.node;
+var Calendar = createLucideIcon(__iconData$41);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/check.mjs
 /**
@@ -11775,7 +11811,7 @@ var BuildingComplex = createLucideIcon(__iconData$31);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$30 = {
+var __iconData$40 = {
 	name: "check",
 	size: 24,
 	node: [["path", {
@@ -11783,8 +11819,8 @@ var __iconData$30 = {
 		key: "1gmf2c"
 	}]]
 };
-__iconData$30.node;
-var Check = createLucideIcon(__iconData$30);
+__iconData$40.node;
+var Check = createLucideIcon(__iconData$40);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
 /**
@@ -11793,7 +11829,7 @@ var Check = createLucideIcon(__iconData$30);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$29 = {
+var __iconData$39 = {
 	name: "chevron-down",
 	size: 24,
 	node: [["path", {
@@ -11801,8 +11837,26 @@ var __iconData$29 = {
 		key: "qrunsl"
 	}]]
 };
-__iconData$29.node;
-var ChevronDown = createLucideIcon(__iconData$29);
+__iconData$39.node;
+var ChevronDown = createLucideIcon(__iconData$39);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$38 = {
+	name: "chevron-up",
+	size: 24,
+	node: [["path", {
+		d: "m18 15-6-6-6 6",
+		key: "153udz"
+	}]]
+};
+__iconData$38.node;
+var ChevronUp = createLucideIcon(__iconData$38);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
@@ -11811,7 +11865,7 @@ var ChevronDown = createLucideIcon(__iconData$29);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$28 = {
+var __iconData$37 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -11838,8 +11892,8 @@ var __iconData$28 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$28.node;
-var CircleAlert = createLucideIcon(__iconData$28);
+__iconData$37.node;
+var CircleAlert = createLucideIcon(__iconData$37);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
@@ -11848,7 +11902,7 @@ var CircleAlert = createLucideIcon(__iconData$28);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$27 = {
+var __iconData$36 = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -11862,8 +11916,39 @@ var __iconData$27 = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-__iconData$27.node;
-var CircleCheck = createLucideIcon(__iconData$27);
+__iconData$36.node;
+var CircleCheck = createLucideIcon(__iconData$36);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/circle-x.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$35 = {
+	name: "circle-x",
+	size: 24,
+	node: [
+		["circle", {
+			cx: "12",
+			cy: "12",
+			r: "10",
+			key: "1mglay"
+		}],
+		["path", {
+			d: "m15 9-6 6",
+			key: "1uzhvr"
+		}],
+		["path", {
+			d: "m9 9 6 6",
+			key: "z0biqf"
+		}]
+	],
+	aliases: ["x-circle"]
+};
+__iconData$35.node;
+var CircleX = createLucideIcon(__iconData$35);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
@@ -11872,7 +11957,7 @@ var CircleCheck = createLucideIcon(__iconData$27);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$26 = {
+var __iconData$34 = {
 	name: "clock-3",
 	size: 24,
 	node: [["circle", {
@@ -11885,8 +11970,31 @@ var __iconData$26 = {
 		key: "135r8i"
 	}]]
 };
-__iconData$26.node;
-var Clock3 = createLucideIcon(__iconData$26);
+__iconData$34.node;
+var Clock3 = createLucideIcon(__iconData$34);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/clock.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$33 = {
+	name: "clock",
+	size: 24,
+	node: [["circle", {
+		cx: "12",
+		cy: "12",
+		r: "10",
+		key: "1mglay"
+	}], ["path", {
+		d: "M12 6v6l4 2",
+		key: "mmk7yg"
+	}]]
+};
+__iconData$33.node;
+var Clock = createLucideIcon(__iconData$33);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
@@ -11895,7 +12003,7 @@ var Clock3 = createLucideIcon(__iconData$26);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$25 = {
+var __iconData$32 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -11911,8 +12019,8 @@ var __iconData$25 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$25.node;
-var Copy = createLucideIcon(__iconData$25);
+__iconData$32.node;
+var Copy = createLucideIcon(__iconData$32);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/external-link.mjs
 /**
@@ -11921,7 +12029,7 @@ var Copy = createLucideIcon(__iconData$25);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$24 = {
+var __iconData$31 = {
 	name: "external-link",
 	size: 24,
 	node: [
@@ -11939,8 +12047,8 @@ var __iconData$24 = {
 		}]
 	]
 };
-__iconData$24.node;
-var ExternalLink = createLucideIcon(__iconData$24);
+__iconData$31.node;
+var ExternalLink = createLucideIcon(__iconData$31);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye-off.mjs
 /**
@@ -11949,7 +12057,7 @@ var ExternalLink = createLucideIcon(__iconData$24);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$23 = {
+var __iconData$30 = {
 	name: "eye-off",
 	size: 24,
 	node: [
@@ -11971,8 +12079,8 @@ var __iconData$23 = {
 		}]
 	]
 };
-__iconData$23.node;
-var EyeOff = createLucideIcon(__iconData$23);
+__iconData$30.node;
+var EyeOff = createLucideIcon(__iconData$30);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye.mjs
 /**
@@ -11981,7 +12089,7 @@ var EyeOff = createLucideIcon(__iconData$23);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$22 = {
+var __iconData$29 = {
 	name: "eye",
 	size: 24,
 	node: [["path", {
@@ -11994,8 +12102,44 @@ var __iconData$22 = {
 		key: "1v7zrd"
 	}]]
 };
-__iconData$22.node;
-var Eye = createLucideIcon(__iconData$22);
+__iconData$29.node;
+var Eye = createLucideIcon(__iconData$29);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/file-text.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$28 = {
+	name: "file-text",
+	size: 24,
+	node: [
+		["path", {
+			d: "M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z",
+			key: "1oefj6"
+		}],
+		["path", {
+			d: "M14 2v5a1 1 0 0 0 1 1h5",
+			key: "wfsgrz"
+		}],
+		["path", {
+			d: "M10 9H8",
+			key: "b1mrlr"
+		}],
+		["path", {
+			d: "M16 13H8",
+			key: "t4e002"
+		}],
+		["path", {
+			d: "M16 17H8",
+			key: "z1uh3a"
+		}]
+	]
+};
+__iconData$28.node;
+var FileText = createLucideIcon(__iconData$28);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
@@ -12004,7 +12148,7 @@ var Eye = createLucideIcon(__iconData$22);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$21 = {
+var __iconData$27 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -12026,8 +12170,8 @@ var __iconData$21 = {
 		}]
 	]
 };
-__iconData$21.node;
-var FolderKanban = createLucideIcon(__iconData$21);
+__iconData$27.node;
+var FolderKanban = createLucideIcon(__iconData$27);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/folder-plus.mjs
 /**
@@ -12036,7 +12180,7 @@ var FolderKanban = createLucideIcon(__iconData$21);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$20 = {
+var __iconData$26 = {
 	name: "folder-plus",
 	size: 24,
 	node: [
@@ -12054,8 +12198,8 @@ var __iconData$20 = {
 		}]
 	]
 };
-__iconData$20.node;
-var FolderPlus = createLucideIcon(__iconData$20);
+__iconData$26.node;
+var FolderPlus = createLucideIcon(__iconData$26);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/key-round.mjs
 /**
@@ -12064,7 +12208,7 @@ var FolderPlus = createLucideIcon(__iconData$20);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$19 = {
+var __iconData$25 = {
 	name: "key-round",
 	size: 24,
 	node: [["path", {
@@ -12078,8 +12222,37 @@ var __iconData$19 = {
 		key: "w0ekpg"
 	}]]
 };
-__iconData$19.node;
-var KeyRound = createLucideIcon(__iconData$19);
+__iconData$25.node;
+var KeyRound = createLucideIcon(__iconData$25);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/layers.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$24 = {
+	name: "layers",
+	size: 24,
+	node: [
+		["path", {
+			d: "M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z",
+			key: "zw3jo"
+		}],
+		["path", {
+			d: "M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12",
+			key: "1wduqc"
+		}],
+		["path", {
+			d: "M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17",
+			key: "kqbvx6"
+		}]
+	],
+	aliases: ["layers-3"]
+};
+__iconData$24.node;
+var Layers = createLucideIcon(__iconData$24);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/link-2.mjs
 /**
@@ -12088,7 +12261,7 @@ var KeyRound = createLucideIcon(__iconData$19);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$18 = {
+var __iconData$23 = {
 	name: "link-2",
 	size: 24,
 	node: [
@@ -12109,8 +12282,48 @@ var __iconData$18 = {
 		}]
 	]
 };
-__iconData$18.node;
-var Link2 = createLucideIcon(__iconData$18);
+__iconData$23.node;
+var Link2 = createLucideIcon(__iconData$23);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/link.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$22 = {
+	name: "link",
+	size: 24,
+	node: [["path", {
+		d: "M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71",
+		key: "1cjeqo"
+	}], ["path", {
+		d: "M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71",
+		key: "19qd67"
+	}]]
+};
+__iconData$22.node;
+var Link = createLucideIcon(__iconData$22);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/loader-circle.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$21 = {
+	name: "loader-circle",
+	size: 24,
+	node: [["path", {
+		d: "M21 12a9 9 0 1 1-6.219-8.56",
+		key: "13zald"
+	}]],
+	aliases: ["loader-2"]
+};
+__iconData$21.node;
+var LoaderCircle = createLucideIcon(__iconData$21);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/lock-keyhole.mjs
 /**
@@ -12119,7 +12332,7 @@ var Link2 = createLucideIcon(__iconData$18);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$17 = {
+var __iconData$20 = {
 	name: "lock-keyhole",
 	size: 24,
 	node: [
@@ -12143,8 +12356,34 @@ var __iconData$17 = {
 		}]
 	]
 };
-__iconData$17.node;
-var LockKeyhole = createLucideIcon(__iconData$17);
+__iconData$20.node;
+var LockKeyhole = createLucideIcon(__iconData$20);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/lock.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$19 = {
+	name: "lock",
+	size: 24,
+	node: [["rect", {
+		width: "18",
+		height: "11",
+		x: "3",
+		y: "11",
+		rx: "2",
+		ry: "2",
+		key: "1w4ew1"
+	}], ["path", {
+		d: "M7 11V7a5 5 0 0 1 10 0v4",
+		key: "fwvmzm"
+	}]]
+};
+__iconData$19.node;
+var Lock = createLucideIcon(__iconData$19);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/log-out.mjs
 /**
@@ -12153,7 +12392,7 @@ var LockKeyhole = createLucideIcon(__iconData$17);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$16 = {
+var __iconData$18 = {
 	name: "log-out",
 	size: 24,
 	node: [
@@ -12171,8 +12410,8 @@ var __iconData$16 = {
 		}]
 	]
 };
-__iconData$16.node;
-var LogOut = createLucideIcon(__iconData$16);
+__iconData$18.node;
+var LogOut = createLucideIcon(__iconData$18);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/menu.mjs
 /**
@@ -12181,7 +12420,7 @@ var LogOut = createLucideIcon(__iconData$16);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$15 = {
+var __iconData$17 = {
 	name: "menu",
 	size: 24,
 	node: [
@@ -12199,8 +12438,8 @@ var __iconData$15 = {
 		}]
 	]
 };
-__iconData$15.node;
-var Menu = createLucideIcon(__iconData$15);
+__iconData$17.node;
+var Menu = createLucideIcon(__iconData$17);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/message-square.mjs
 /**
@@ -12209,7 +12448,7 @@ var Menu = createLucideIcon(__iconData$15);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$14 = {
+var __iconData$16 = {
 	name: "message-square",
 	size: 24,
 	node: [["path", {
@@ -12217,8 +12456,8 @@ var __iconData$14 = {
 		key: "18887p"
 	}]]
 };
-__iconData$14.node;
-var MessageSquare = createLucideIcon(__iconData$14);
+__iconData$16.node;
+var MessageSquare = createLucideIcon(__iconData$16);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/plus.mjs
 /**
@@ -12227,7 +12466,7 @@ var MessageSquare = createLucideIcon(__iconData$14);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$13 = {
+var __iconData$15 = {
 	name: "plus",
 	size: 24,
 	node: [["path", {
@@ -12238,8 +12477,8 @@ var __iconData$13 = {
 		key: "s699le"
 	}]]
 };
-__iconData$13.node;
-var Plus = createLucideIcon(__iconData$13);
+__iconData$15.node;
+var Plus = createLucideIcon(__iconData$15);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/refresh-cw.mjs
 /**
@@ -12248,7 +12487,7 @@ var Plus = createLucideIcon(__iconData$13);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$12 = {
+var __iconData$14 = {
 	name: "refresh-cw",
 	size: 24,
 	node: [
@@ -12270,8 +12509,8 @@ var __iconData$12 = {
 		}]
 	]
 };
-__iconData$12.node;
-var RefreshCw = createLucideIcon(__iconData$12);
+__iconData$14.node;
+var RefreshCw = createLucideIcon(__iconData$14);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/rotate-ccw-clock.mjs
 /**
@@ -12280,7 +12519,7 @@ var RefreshCw = createLucideIcon(__iconData$12);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$11 = {
+var __iconData$13 = {
 	name: "rotate-ccw-clock",
 	size: 24,
 	node: [
@@ -12299,8 +12538,8 @@ var __iconData$11 = {
 	],
 	aliases: ["history"]
 };
-__iconData$11.node;
-var RotateCcwClock = createLucideIcon(__iconData$11);
+__iconData$13.node;
+var RotateCcwClock = createLucideIcon(__iconData$13);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/search.mjs
 /**
@@ -12309,7 +12548,7 @@ var RotateCcwClock = createLucideIcon(__iconData$11);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$10 = {
+var __iconData$12 = {
 	name: "search",
 	size: 24,
 	node: [["path", {
@@ -12322,8 +12561,8 @@ var __iconData$10 = {
 		key: "4ej97u"
 	}]]
 };
-__iconData$10.node;
-var Search = createLucideIcon(__iconData$10);
+__iconData$12.node;
+var Search = createLucideIcon(__iconData$12);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/send.mjs
 /**
@@ -12332,7 +12571,7 @@ var Search = createLucideIcon(__iconData$10);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$9 = {
+var __iconData$11 = {
 	name: "send",
 	size: 24,
 	node: [["path", {
@@ -12343,8 +12582,8 @@ var __iconData$9 = {
 		key: "12cjpa"
 	}]]
 };
-__iconData$9.node;
-var Send = createLucideIcon(__iconData$9);
+__iconData$11.node;
+var Send = createLucideIcon(__iconData$11);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/settings-2.mjs
 /**
@@ -12353,7 +12592,7 @@ var Send = createLucideIcon(__iconData$9);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$8 = {
+var __iconData$10 = {
 	name: "settings-2",
 	size: 24,
 	node: [
@@ -12379,8 +12618,8 @@ var __iconData$8 = {
 		}]
 	]
 };
-__iconData$8.node;
-var Settings2 = createLucideIcon(__iconData$8);
+__iconData$10.node;
+var Settings2 = createLucideIcon(__iconData$10);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/share-2.mjs
 /**
@@ -12389,7 +12628,7 @@ var Settings2 = createLucideIcon(__iconData$8);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$7 = {
+var __iconData$9 = {
 	name: "share-2",
 	size: 24,
 	node: [
@@ -12427,8 +12666,8 @@ var __iconData$7 = {
 		}]
 	]
 };
-__iconData$7.node;
-var Share2 = createLucideIcon(__iconData$7);
+__iconData$9.node;
+var Share2 = createLucideIcon(__iconData$9);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/shield-check.mjs
 /**
@@ -12437,7 +12676,7 @@ var Share2 = createLucideIcon(__iconData$7);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$6 = {
+var __iconData$8 = {
 	name: "shield-check",
 	size: 24,
 	node: [["path", {
@@ -12448,8 +12687,8 @@ var __iconData$6 = {
 		key: "dzmm74"
 	}]]
 };
-__iconData$6.node;
-var ShieldCheck = createLucideIcon(__iconData$6);
+__iconData$8.node;
+var ShieldCheck = createLucideIcon(__iconData$8);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/sparkles.mjs
 /**
@@ -12458,7 +12697,7 @@ var ShieldCheck = createLucideIcon(__iconData$6);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$5 = {
+var __iconData$7 = {
 	name: "sparkles",
 	size: 24,
 	node: [
@@ -12483,8 +12722,8 @@ var __iconData$5 = {
 	],
 	aliases: ["stars"]
 };
-__iconData$5.node;
-var Sparkles = createLucideIcon(__iconData$5);
+__iconData$7.node;
+var Sparkles = createLucideIcon(__iconData$7);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/trash.mjs
 /**
@@ -12493,7 +12732,7 @@ var Sparkles = createLucideIcon(__iconData$5);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$4 = {
+var __iconData$6 = {
 	name: "trash",
 	size: 24,
 	node: [
@@ -12520,8 +12759,8 @@ var __iconData$4 = {
 	],
 	aliases: ["trash-2"]
 };
-__iconData$4.node;
-var Trash = createLucideIcon(__iconData$4);
+__iconData$6.node;
+var Trash = createLucideIcon(__iconData$6);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/triangle-alert.mjs
 /**
@@ -12530,7 +12769,7 @@ var Trash = createLucideIcon(__iconData$4);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$3 = {
+var __iconData$5 = {
 	name: "triangle-alert",
 	size: 24,
 	node: [
@@ -12549,8 +12788,8 @@ var __iconData$3 = {
 	],
 	aliases: ["alert-triangle"]
 };
-__iconData$3.node;
-var TriangleAlert = createLucideIcon(__iconData$3);
+__iconData$5.node;
+var TriangleAlert = createLucideIcon(__iconData$5);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/user-plus.mjs
 /**
@@ -12559,7 +12798,7 @@ var TriangleAlert = createLucideIcon(__iconData$3);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$2 = {
+var __iconData$4 = {
 	name: "user-plus",
 	size: 24,
 	node: [
@@ -12589,8 +12828,71 @@ var __iconData$2 = {
 		}]
 	]
 };
+__iconData$4.node;
+var UserPlus = createLucideIcon(__iconData$4);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/user-x.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$3 = {
+	name: "user-x",
+	size: 24,
+	node: [
+		["path", {
+			d: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2",
+			key: "1yyitq"
+		}],
+		["circle", {
+			cx: "9",
+			cy: "7",
+			r: "4",
+			key: "nufk8"
+		}],
+		["line", {
+			x1: "17",
+			x2: "22",
+			y1: "8",
+			y2: "13",
+			key: "3nzzx3"
+		}],
+		["line", {
+			x1: "22",
+			x2: "17",
+			y1: "8",
+			y2: "13",
+			key: "1swrse"
+		}]
+	]
+};
+__iconData$3.node;
+var UserX = createLucideIcon(__iconData$3);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/user.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$2 = {
+	name: "user",
+	size: 24,
+	node: [["path", {
+		d: "M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2",
+		key: "975kel"
+	}], ["circle", {
+		cx: "12",
+		cy: "7",
+		r: "4",
+		key: "17ys0d"
+	}]]
+};
 __iconData$2.node;
-var UserPlus = createLucideIcon(__iconData$2);
+var User = createLucideIcon(__iconData$2);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/users.mjs
 /**
@@ -16180,26 +16482,45 @@ function cn(...inputs) {
 	return twMerge(clsx(inputs));
 }
 //#endregion
-//#region node_modules/react/cjs/react-jsx-dev-runtime.production.js
+//#region node_modules/react/cjs/react-jsx-runtime.production.js
 /**
 * @license React
-* react-jsx-dev-runtime.production.js
+* react-jsx-runtime.production.js
 *
 * Copyright (c) Meta Platforms, Inc. and affiliates.
 *
 * This source code is licensed under the MIT license found in the
 * LICENSE file in the root directory of this source tree.
 */
-var require_react_jsx_dev_runtime_production = /* @__PURE__ */ __commonJSMin(((exports) => {
-	exports.Fragment = Symbol.for("react.fragment");
-	exports.jsxDEV = void 0;
+var require_react_jsx_runtime_production = /* @__PURE__ */ __commonJSMin(((exports) => {
+	var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
+	var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
+	function jsxProd(type, config, maybeKey) {
+		var key = null;
+		void 0 !== maybeKey && (key = "" + maybeKey);
+		void 0 !== config.key && (key = "" + config.key);
+		if ("key" in config) {
+			maybeKey = {};
+			for (var propName in config) "key" !== propName && (maybeKey[propName] = config[propName]);
+		} else maybeKey = config;
+		config = maybeKey.ref;
+		return {
+			$$typeof: REACT_ELEMENT_TYPE,
+			type,
+			key,
+			ref: void 0 !== config ? config : null,
+			props: maybeKey
+		};
+	}
+	exports.Fragment = REACT_FRAGMENT_TYPE;
+	exports.jsx = jsxProd;
+	exports.jsxs = jsxProd;
 }));
 //#endregion
 //#region frontend/src/components/ui/alert.jsx
-var import_jsx_dev_runtime = (/* @__PURE__ */ __commonJSMin(((exports, module) => {
-	module.exports = require_react_jsx_dev_runtime_production();
+var import_jsx_runtime = (/* @__PURE__ */ __commonJSMin(((exports, module) => {
+	module.exports = require_react_jsx_runtime_production();
 })))();
-var _jsxFileName$24 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/alert.jsx";
 var alertVariants = cva("relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-lg border px-4 py-3 text-sm has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current", {
 	variants: { variant: {
 		default: "bg-card text-card-foreground",
@@ -16208,38 +16529,26 @@ var alertVariants = cva("relative grid w-full grid-cols-[0_1fr] items-start gap-
 	defaultVariants: { variant: "default" }
 });
 function Alert({ className, variant, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		"data-slot": "alert",
 		role: "alert",
 		className: cn(alertVariants({ variant }), className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$24,
-		lineNumber: 27,
-		columnNumber: 5
-	}, this);
+	});
 }
 function AlertTitle({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		"data-slot": "alert-title",
 		className: cn("col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$24,
-		lineNumber: 40,
-		columnNumber: 5
-	}, this);
+	});
 }
 function AlertDescription({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		"data-slot": "alert-description",
 		className: cn("col-start-2 grid justify-items-start gap-1 text-sm text-muted-foreground [&_p]:leading-relaxed", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$24,
-		lineNumber: 52,
-		columnNumber: 5
-	}, this);
+	});
 }
 //#endregion
 //#region node_modules/@radix-ui/react-compose-refs/dist/index.mjs
@@ -16389,49 +16698,8 @@ var createSlottableError = /* @__PURE__ */ __name$20((ownerName) => {
 }, "createSlottableError");
 var use = import_react[" use ".trim().toString()];
 //#endregion
-//#region node_modules/react/cjs/react-jsx-runtime.production.js
-/**
-* @license React
-* react-jsx-runtime.production.js
-*
-* Copyright (c) Meta Platforms, Inc. and affiliates.
-*
-* This source code is licensed under the MIT license found in the
-* LICENSE file in the root directory of this source tree.
-*/
-var require_react_jsx_runtime_production = /* @__PURE__ */ __commonJSMin(((exports) => {
-	var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
-	var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
-	function jsxProd(type, config, maybeKey) {
-		var key = null;
-		void 0 !== maybeKey && (key = "" + maybeKey);
-		void 0 !== config.key && (key = "" + config.key);
-		if ("key" in config) {
-			maybeKey = {};
-			for (var propName in config) "key" !== propName && (maybeKey[propName] = config[propName]);
-		} else maybeKey = config;
-		config = maybeKey.ref;
-		return {
-			$$typeof: REACT_ELEMENT_TYPE,
-			type,
-			key,
-			ref: void 0 !== config ? config : null,
-			props: maybeKey
-		};
-	}
-	exports.Fragment = REACT_FRAGMENT_TYPE;
-	exports.jsx = jsxProd;
-	exports.jsxs = jsxProd;
-}));
-//#endregion
-//#region node_modules/react/jsx-runtime.js
-var require_jsx_runtime = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	module.exports = require_react_jsx_runtime_production();
-}));
-//#endregion
 //#region node_modules/@radix-ui/react-primitive/dist/index.mjs
 var import_react_dom = /* @__PURE__ */ __toESM(require_react_dom(), 1);
-var import_jsx_runtime = require_jsx_runtime();
 var __defProp$19 = Object.defineProperty;
 var __name$19 = (target, value) => __defProp$19(target, "name", {
 	value,
@@ -19563,33 +19831,23 @@ var Trigger = TabsTrigger$1;
 var Content = TabsContent$1;
 //#endregion
 //#region frontend/src/components/ui/avatar.jsx
-var _jsxFileName$23 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/avatar.jsx";
 function Avatar({ className, size = "default", ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Avatar$1, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$1, {
 		"data-slot": "avatar",
 		"data-size": size,
 		className: cn("group/avatar relative flex size-8 shrink-0 overflow-hidden rounded-full select-none data-[size=lg]:size-10 data-[size=sm]:size-6", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$23,
-		lineNumber: 13,
-		columnNumber: 5
-	}, this);
+	});
 }
 function AvatarFallback({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AvatarFallback$1, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback$1, {
 		"data-slot": "avatar-fallback",
 		className: cn("flex size-full items-center justify-center rounded-full bg-muted text-sm text-muted-foreground group-data-[size=sm]/avatar:text-xs", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$23,
-		lineNumber: 41,
-		columnNumber: 5
-	}, this);
+	});
 }
 //#endregion
 //#region frontend/src/components/ui/badge.jsx
-var _jsxFileName$22 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/badge.jsx";
 var badgeVariants = cva("inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3", {
 	variants: { variant: {
 		default: "bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
@@ -19603,60 +19861,15 @@ var badgeVariants = cva("inline-flex w-fit shrink-0 items-center justify-center 
 });
 function Badge({ className, variant = "default", asChild = false, ...props }) {
 	const Comp = asChild ? Slot$1 : "span";
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Comp, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Comp, {
 		"data-slot": "badge",
 		"data-variant": variant,
 		className: cn(badgeVariants({ variant }), className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$22,
-		lineNumber: 37,
-		columnNumber: 5
-	}, this);
-}
-//#endregion
-//#region frontend/src/components/ui/bubble.jsx
-var _jsxFileName$21 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/bubble.jsx";
-var bubbleVariants = cva("group/bubble relative flex w-fit max-w-[80%] min-w-0 flex-col gap-1 group-data-[align=end]/message:self-end data-[align=end]:self-end data-[variant=ghost]:max-w-full", {
-	variants: { variant: {
-		default: "*:data-[slot=bubble-content]:bg-primary *:data-[slot=bubble-content]:text-primary-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-primary/80",
-		secondary: "*:data-[slot=bubble-content]:bg-secondary *:data-[slot=bubble-content]:text-secondary-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)]",
-		muted: "*:data-[slot=bubble-content]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[color-mix(in_oklch,var(--muted),var(--foreground)_5%)]",
-		tinted: "*:data-[slot=bubble-content]:bg-[oklch(from_var(--primary)_0.93_calc(c*0.4)_h)] *:data-[slot=bubble-content]:text-foreground dark:*:data-[slot=bubble-content]:bg-[oklch(from_var(--primary)_0.3_calc(c*0.4)_h)] [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[oklch(from_var(--primary)_0.88_calc(c*0.5)_h)] dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-[oklch(from_var(--primary)_0.35_calc(c*0.5)_h)]",
-		outline: "*:data-[slot=bubble-content]:border-border *:data-[slot=bubble-content]:bg-background [&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:text-foreground dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-input/30",
-		ghost: "border-none *:data-[slot=bubble-content]:rounded-none *:data-[slot=bubble-content]:bg-transparent *:data-[slot=bubble-content]:p-0 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:text-foreground dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted/50",
-		destructive: "*:data-[slot=bubble-content]:bg-destructive/10 *:data-[slot=bubble-content]:text-destructive dark:*:data-[slot=bubble-content]:bg-destructive/20 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-destructive/20 dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-destructive/30"
-	} },
-	defaultVariants: { variant: "default" }
-});
-function Bubble({ variant = "default", align = "start", className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-		"data-slot": "bubble",
-		"data-variant": variant,
-		"data-align": align,
-		className: cn(bubbleVariants({ variant }), className),
-		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$21,
-		lineNumber: 52,
-		columnNumber: 5
-	}, this);
-}
-function BubbleContent({ asChild = false, className, ...props }) {
-	const Comp = asChild ? Slot$1 : "div";
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Comp, {
-		"data-slot": "bubble-content",
-		className: cn("w-fit max-w-full min-w-0 overflow-hidden rounded-xl border border-transparent px-3 py-2 text-sm leading-relaxed wrap-break-word group-data-[align=end]/bubble:self-end [button]:text-left [button,a]:transition-colors [button,a]:outline-none [button,a]:focus-visible:border-ring [button,a]:focus-visible:ring-3 [button,a]:focus-visible:ring-ring/50", className),
-		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$21,
-		lineNumber: 69,
-		columnNumber: 5
-	}, this);
+	});
 }
 //#endregion
 //#region frontend/src/components/ui/button.jsx
-var _jsxFileName$20 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/button.jsx";
 var buttonVariants = cva("inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4", {
 	variants: {
 		variant: {
@@ -19685,7 +19898,7 @@ var buttonVariants = cva("inline-flex shrink-0 items-center justify-center gap-2
 });
 function Button({ className, variant = "default", size = "default", asChild = false, ...props }) {
 	const Comp = asChild ? Slot$1 : "button";
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Comp, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Comp, {
 		"data-slot": "button",
 		"data-variant": variant,
 		"data-size": size,
@@ -19695,475 +19908,201 @@ function Button({ className, variant = "default", size = "default", asChild = fa
 			className
 		})),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$20,
-		lineNumber: 50,
-		columnNumber: 5
-	}, this);
+	});
 }
 //#endregion
 //#region frontend/src/components/ui/card.jsx
-var _jsxFileName$19 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/card.jsx";
 function Card({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		"data-slot": "card",
 		className: cn("flex flex-col gap-6 rounded-xl border bg-card py-6 text-card-foreground shadow-sm", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$19,
-		lineNumber: 9,
-		columnNumber: 5
-	}, this);
+	});
 }
 function CardHeader({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		"data-slot": "card-header",
 		className: cn("@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$19,
-		lineNumber: 24,
-		columnNumber: 5
-	}, this);
+	});
 }
 function CardTitle({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		"data-slot": "card-title",
 		className: cn("leading-none font-semibold", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$19,
-		lineNumber: 39,
-		columnNumber: 5
-	}, this);
-}
-function CardDescription({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-		"data-slot": "card-description",
-		className: cn("text-sm text-muted-foreground", className),
-		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$19,
-		lineNumber: 51,
-		columnNumber: 5
-	}, this);
+	});
 }
 function CardContent({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		"data-slot": "card-content",
 		className: cn("px-6", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$19,
-		lineNumber: 77,
-		columnNumber: 11
-	}, this);
+	});
 }
 //#endregion
 //#region frontend/src/components/ui/dialog.jsx
-var _jsxFileName$18 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/dialog.jsx";
 function Dialog({ ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Dialog$1, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog$1, {
 		"data-slot": "dialog",
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$18,
-		lineNumber: 11,
-		columnNumber: 10
-	}, this);
+	});
 }
 function DialogPortal({ ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogPortal$1, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogPortal$1, {
 		"data-slot": "dialog-portal",
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$18,
-		lineNumber: 23,
-		columnNumber: 10
-	}, this);
+	});
 }
 function DialogOverlay({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogOverlay$1, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogOverlay$1, {
 		"data-slot": "dialog-overlay",
 		className: cn("fixed inset-0 z-50 bg-black/50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$18,
-		lineNumber: 37,
-		columnNumber: 5
-	}, this);
+	});
 }
 function DialogContent({ className, children, showCloseButton = true, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogPortal, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogPortal, {
 		"data-slot": "dialog-portal",
-		children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogOverlay, {}, void 0, false, {
-			fileName: _jsxFileName$18,
-			lineNumber: 55,
-			columnNumber: 7
-		}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogContent$1, {
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogOverlay, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent$1, {
 			"data-slot": "dialog-content",
 			className: cn("fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-150 outline-none data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0 sm:max-w-lg", className),
 			...props,
-			children: [children, showCloseButton && /* @__PURE__ */ (void 0)(DialogClose, {
+			children: [children, showCloseButton && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogClose, {
 				"data-slot": "dialog-close",
 				className: "absolute top-4 right-4 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-				children: [/* @__PURE__ */ (void 0)(X, {}, void 0, false, {
-					fileName: _jsxFileName$18,
-					lineNumber: 68,
-					columnNumber: 13
-				}, this), /* @__PURE__ */ (void 0)("span", {
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(X, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 					className: "sr-only",
 					children: "Close"
-				}, void 0, false, {
-					fileName: _jsxFileName$18,
-					lineNumber: 69,
-					columnNumber: 13
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$18,
-				lineNumber: 65,
-				columnNumber: 11
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$18,
-			lineNumber: 56,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$18,
-		lineNumber: 54,
-		columnNumber: 5
-	}, this);
+				})]
+			})]
+		})]
+	});
 }
 function DialogHeader({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		"data-slot": "dialog-header",
 		className: cn("flex flex-col gap-2 text-center sm:text-left", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$18,
-		lineNumber: 82,
-		columnNumber: 5
-	}, this);
+	});
 }
 function DialogTitle({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogTitle$1, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle$1, {
 		"data-slot": "dialog-title",
 		className: cn("text-lg leading-none font-semibold", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$18,
-		lineNumber: 115,
-		columnNumber: 5
-	}, this);
+	});
 }
 function DialogDescription({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogDescription$1, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription$1, {
 		"data-slot": "dialog-description",
 		className: cn("text-sm text-muted-foreground", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$18,
-		lineNumber: 127,
-		columnNumber: 5
-	}, this);
+	});
 }
 //#endregion
 //#region frontend/src/components/ui/input.jsx
-var _jsxFileName$17 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/input.jsx";
 function Input({ className, type, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("input", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
 		type,
 		"data-slot": "input",
 		className: cn("h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30", "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50", "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$17,
-		lineNumber: 10,
-		columnNumber: 5
-	}, this);
-}
-//#endregion
-//#region frontend/src/components/ui/message.jsx
-var _jsxFileName$16 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/message.jsx";
-function Message({ className, align = "start", ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-		"data-slot": "message",
-		"data-align": align,
-		className: cn("group/message relative flex w-full min-w-0 gap-2 text-sm data-[align=end]:flex-row-reverse", className),
-		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$16,
-		lineNumber: 22,
-		columnNumber: 5
-	}, this);
-}
-function MessageAvatar({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-		"data-slot": "message-avatar",
-		className: cn("flex w-fit min-w-8 shrink-0 items-center justify-center self-end overflow-hidden rounded-full bg-muted group-has-data-[slot=message-footer]/message:-translate-y-8", className),
-		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$16,
-		lineNumber: 38,
-		columnNumber: 5
-	}, this);
-}
-function MessageContent({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-		"data-slot": "message-content",
-		className: cn("flex w-full min-w-0 flex-col gap-2.5 wrap-break-word group-data-[align=end]/message:*:data-slot:self-end", className),
-		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$16,
-		lineNumber: 53,
-		columnNumber: 5
-	}, this);
-}
-function MessageHeader({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-		"data-slot": "message-header",
-		className: cn("flex max-w-full min-w-0 items-center px-3 text-xs font-medium text-muted-foreground group-has-data-[variant=ghost]/message:px-0", className),
-		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$16,
-		lineNumber: 68,
-		columnNumber: 5
-	}, this);
-}
-function MessageFooter({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-		"data-slot": "message-footer",
-		className: cn("flex max-w-full min-w-0 items-center px-3 text-xs font-medium text-muted-foreground group-has-data-[variant=ghost]/message:px-0 group-data-[align=end]/message:justify-end", className),
-		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$16,
-		lineNumber: 83,
-		columnNumber: 5
-	}, this);
+	});
 }
 //#endregion
 //#region frontend/src/components/ui/native-select.jsx
-var _jsxFileName$15 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/native-select.jsx";
 function NativeSelect({ className, size = "default", ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "group/native-select relative w-fit has-[select:disabled]:opacity-50",
 		"data-slot": "native-select-wrapper",
-		children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("select", {
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
 			"data-slot": "native-select",
 			"data-size": size,
 			className: cn("h-9 w-full min-w-0 appearance-none rounded-md border border-input bg-transparent px-3 py-2 pr-9 text-sm shadow-xs transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed data-[size=sm]:h-8 data-[size=sm]:py-1 dark:bg-input/30 dark:hover:bg-input/50", "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50", "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40", className),
 			...props
-		}, void 0, false, {
-			fileName: _jsxFileName$15,
-			lineNumber: 14,
-			columnNumber: 7
-		}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ChevronDown, {
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, {
 			className: "pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-muted-foreground opacity-50 select-none",
 			"aria-hidden": "true",
 			"data-slot": "native-select-icon"
-		}, void 0, false, {
-			fileName: _jsxFileName$15,
-			lineNumber: 24,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$15,
-		lineNumber: 11,
-		columnNumber: 5
-	}, this);
+		})]
+	});
 }
 //#endregion
 //#region frontend/src/components/ui/separator.jsx
-var _jsxFileName$14 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/separator.jsx";
 function Separator({ className, orientation = "horizontal", decorative = true, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Root, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Root, {
 		"data-slot": "separator",
 		decorative,
 		orientation,
 		className: cn("shrink-0 bg-border data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$14,
-		lineNumber: 12,
-		columnNumber: 5
-	}, this);
+	});
 }
 //#endregion
 //#region frontend/src/components/ui/sheet.jsx
-var _jsxFileName$13 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/sheet.jsx";
 function Sheet({ ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Dialog$1, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog$1, {
 		"data-slot": "sheet",
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$13,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	});
 }
 function SheetPortal({ ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogPortal$1, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogPortal$1, {
 		"data-slot": "sheet-portal",
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$13,
-		lineNumber: 27,
-		columnNumber: 10
-	}, this);
+	});
 }
 function SheetOverlay({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogOverlay$1, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogOverlay$1, {
 		"data-slot": "sheet-overlay",
 		className: cn("fixed inset-0 z-50 bg-black/50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$13,
-		lineNumber: 35,
-		columnNumber: 5
-	}, this);
+	});
 }
 function SheetContent({ className, children, side = "right", showCloseButton = true, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(SheetPortal, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(SheetOverlay, {}, void 0, false, {
-		fileName: _jsxFileName$13,
-		lineNumber: 54,
-		columnNumber: 7
-	}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogContent$1, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SheetPortal, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetOverlay, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent$1, {
 		"data-slot": "sheet-content",
 		className: cn("fixed z-50 flex flex-col gap-4 bg-background shadow-lg transition ease-in-out data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:animate-in data-[state=open]:duration-500", side === "right" && "inset-y-0 right-0 h-full w-3/4 border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm", side === "left" && "inset-y-0 left-0 h-full w-3/4 border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm", side === "top" && "inset-x-0 top-0 h-auto border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top", side === "bottom" && "inset-x-0 bottom-0 h-auto border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom", className),
 		...props,
-		children: [children, showCloseButton && /* @__PURE__ */ (void 0)(DialogClose, {
+		children: [children, showCloseButton && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogClose, {
 			className: "absolute top-4 right-4 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-secondary",
-			children: [/* @__PURE__ */ (void 0)(X, { className: "size-4" }, void 0, false, {
-				fileName: _jsxFileName$13,
-				lineNumber: 74,
-				columnNumber: 13
-			}, this), /* @__PURE__ */ (void 0)("span", {
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(X, { className: "size-4" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 				className: "sr-only",
 				children: "Close"
-			}, void 0, false, {
-				fileName: _jsxFileName$13,
-				lineNumber: 75,
-				columnNumber: 13
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$13,
-			lineNumber: 72,
-			columnNumber: 11
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$13,
-		lineNumber: 55,
-		columnNumber: 7
-	}, this)] }, void 0, true, {
-		fileName: _jsxFileName$13,
-		lineNumber: 53,
-		columnNumber: 5
-	}, this);
+			})]
+		})]
+	})] });
 }
 function SheetHeader({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		"data-slot": "sheet-header",
 		className: cn("flex flex-col gap-1.5 p-4", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$13,
-		lineNumber: 88,
-		columnNumber: 5
-	}, this);
+	});
 }
 function SheetTitle({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogTitle$1, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle$1, {
 		"data-slot": "sheet-title",
 		className: cn("font-semibold text-foreground", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$13,
-		lineNumber: 112,
-		columnNumber: 5
-	}, this);
+	});
 }
 function SheetDescription({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogDescription$1, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription$1, {
 		"data-slot": "sheet-description",
 		className: cn("text-sm text-muted-foreground", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$13,
-		lineNumber: 124,
-		columnNumber: 5
-	}, this);
+	});
 }
 //#endregion
 //#region frontend/src/components/ui/skeleton.jsx
-var _jsxFileName$12 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/skeleton.jsx";
 function Skeleton({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		"data-slot": "skeleton",
 		className: cn("animate-pulse rounded-md bg-accent", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$12,
-		lineNumber: 8,
-		columnNumber: 5
-	}, this);
-}
-//#endregion
-//#region frontend/src/components/ui/tabs.jsx
-var _jsxFileName$11 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/tabs.jsx";
-function Tabs({ className, orientation = "horizontal", ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Root2, {
-		"data-slot": "tabs",
-		"data-orientation": orientation,
-		orientation,
-		className: cn("group/tabs flex gap-2 data-[orientation=horizontal]:flex-col", className),
-		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$11,
-		lineNumber: 14,
-		columnNumber: 5
-	}, this);
-}
-var tabsListVariants = cva("group/tabs-list inline-flex w-fit items-center justify-center rounded-lg p-[3px] text-muted-foreground group-data-[orientation=horizontal]/tabs:h-9 group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col data-[variant=line]:rounded-none", {
-	variants: { variant: {
-		default: "bg-muted",
-		line: "gap-1 bg-transparent"
-	} },
-	defaultVariants: { variant: "default" }
-});
-function TabsList({ className, variant = "default", ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(List, {
-		"data-slot": "tabs-list",
-		"data-variant": variant,
-		className: cn(tabsListVariants({ variant }), className),
-		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$11,
-		lineNumber: 44,
-		columnNumber: 5
-	}, this);
-}
-function TabsTrigger({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Trigger, {
-		"data-slot": "tabs-trigger",
-		className: cn("relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium whitespace-nowrap text-foreground/60 transition-all group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:justify-start hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 group-data-[variant=default]/tabs-list:data-[state=active]:shadow-sm group-data-[variant=line]/tabs-list:data-[state=active]:shadow-none dark:text-muted-foreground dark:hover:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4", "group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:border-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent", "data-[state=active]:bg-background data-[state=active]:text-foreground dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 dark:data-[state=active]:text-foreground", "after:absolute after:bg-foreground after:opacity-0 after:transition-opacity group-data-[orientation=horizontal]/tabs:after:inset-x-0 group-data-[orientation=horizontal]/tabs:after:bottom-[-5px] group-data-[orientation=horizontal]/tabs:after:h-0.5 group-data-[orientation=vertical]/tabs:after:inset-y-0 group-data-[orientation=vertical]/tabs:after:-right-1 group-data-[orientation=vertical]/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-[state=active]:after:opacity-100", className),
-		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$11,
-		lineNumber: 57,
-		columnNumber: 5
-	}, this);
-}
-function TabsContent({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Content, {
-		"data-slot": "tabs-content",
-		className: cn("flex-1 outline-none", className),
-		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$11,
-		lineNumber: 75,
-		columnNumber: 5
-	}, this);
+	});
 }
 //#endregion
 //#region node_modules/liquid-gooey/dist/index.js
@@ -22895,7 +22834,6 @@ function LiquidItem(props) {
 var Liquid = Object.assign(GooeyRoot, { Item: LiquidItem });
 //#endregion
 //#region frontend/src/components/GooeyNewButton.jsx
-var _jsxFileName$10 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/GooeyNewButton.jsx";
 var transition = {
 	duration: 280,
 	ease: "cubic-bezier(0.22, 1, 0.36, 1)"
@@ -22918,10 +22856,10 @@ function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onShareClien
 			document.removeEventListener("keydown", closeOnEscape);
 		};
 	}, [open]);
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		ref: rootRef,
 		className: "relative z-40 flex h-12 items-center justify-center overflow-visible",
-		children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Liquid, {
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Liquid, {
 			fill: "#202020",
 			blur: 5,
 			contrast: 18,
@@ -22952,14 +22890,14 @@ function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onShareClien
 					onClick: onShareClientLink,
 					disabled: !hasProject
 				}
-			].map(({ label, Icon, x, y, onClick, disabled }) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Liquid.Item, {
+			].map(({ label, Icon, x, y, onClick, disabled }) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Liquid.Item, {
 				className: "absolute left-0.5 top-0.5",
 				x: open ? x : 0,
 				y: open ? y : 0,
 				scale: open ? 1 : 0,
 				transition,
 				delay: 0,
-				children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", {
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 					type: "button",
 					"aria-label": label,
 					title: label,
@@ -22971,70 +22909,357 @@ function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onShareClien
 						setOpen(false);
 						onClick();
 					},
-					children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Icon, {
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, {
 						className: "size-5",
 						"aria-hidden": "true"
-					}, void 0, false, {
-						fileName: _jsxFileName$10,
-						lineNumber: 53,
-						columnNumber: 10
-					}, this)
-				}, void 0, false, {
-					fileName: _jsxFileName$10,
-					lineNumber: 44,
-					columnNumber: 9
-				}, this)
-			}, label, false, {
-				fileName: _jsxFileName$10,
-				lineNumber: 35,
-				columnNumber: 66
-			}, this)), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Liquid.Item, {
+					})
+				})
+			}, label)), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Liquid.Item, {
 				className: "absolute inset-0",
-				children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", {
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 					type: "button",
 					"aria-label": open ? "Close new actions" : "Open new actions",
 					"aria-expanded": open,
 					className: "grid size-12 place-items-center rounded-full border-2 border-white text-white outline-2 outline-offset-[-5px] outline-[#202020] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
 					onClick: () => setOpen((value) => !value),
-					children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Plus, {
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {
 						className: `size-5 transition-transform duration-200 ease-out ${open ? "rotate-45" : ""}`,
 						"aria-hidden": "true"
-					}, void 0, false, {
-						fileName: _jsxFileName$10,
-						lineNumber: 62,
-						columnNumber: 10
-					}, this)
-				}, void 0, false, {
-					fileName: _jsxFileName$10,
-					lineNumber: 56,
-					columnNumber: 9
-				}, this)
-			}, void 0, false, {
-				fileName: _jsxFileName$10,
-				lineNumber: 55,
-				columnNumber: 7
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$10,
-			lineNumber: 34,
-			columnNumber: 5
-		}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+					})
+				})
+			})]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 			className: "sr-only",
 			children: "New actions"
-		}, void 0, false, {
-			fileName: _jsxFileName$10,
-			lineNumber: 65,
-			columnNumber: 5
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$10,
-		lineNumber: 33,
-		columnNumber: 10
-	}, this);
+		})]
+	});
+}
+//#endregion
+//#region frontend/src/components/ui/tabs.jsx
+function Tabs({ className, orientation = "horizontal", ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Root2, {
+		"data-slot": "tabs",
+		"data-orientation": orientation,
+		orientation,
+		className: cn("group/tabs flex gap-2 data-[orientation=horizontal]:flex-col", className),
+		...props
+	});
+}
+var tabsListVariants = cva("group/tabs-list inline-flex w-fit items-center justify-center rounded-lg p-[3px] text-muted-foreground group-data-[orientation=horizontal]/tabs:h-9 group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col data-[variant=line]:rounded-none", {
+	variants: { variant: {
+		default: "bg-muted",
+		line: "gap-1 bg-transparent"
+	} },
+	defaultVariants: { variant: "default" }
+});
+function TabsList({ className, variant = "default", ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(List, {
+		"data-slot": "tabs-list",
+		"data-variant": variant,
+		className: cn(tabsListVariants({ variant }), className),
+		...props
+	});
+}
+function TabsTrigger({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trigger, {
+		"data-slot": "tabs-trigger",
+		className: cn("relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium whitespace-nowrap text-foreground/60 transition-all group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:justify-start hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 group-data-[variant=default]/tabs-list:data-[state=active]:shadow-sm group-data-[variant=line]/tabs-list:data-[state=active]:shadow-none dark:text-muted-foreground dark:hover:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4", "group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:border-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent", "data-[state=active]:bg-background data-[state=active]:text-foreground dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 dark:data-[state=active]:text-foreground", "after:absolute after:bg-foreground after:opacity-0 after:transition-opacity group-data-[orientation=horizontal]/tabs:after:inset-x-0 group-data-[orientation=horizontal]/tabs:after:bottom-[-5px] group-data-[orientation=horizontal]/tabs:after:h-0.5 group-data-[orientation=vertical]/tabs:after:inset-y-0 group-data-[orientation=vertical]/tabs:after:-right-1 group-data-[orientation=vertical]/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-[state=active]:after:opacity-100", className),
+		...props
+	});
+}
+function TabsContent({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Content, {
+		"data-slot": "tabs-content",
+		className: cn("flex-1 outline-none", className),
+		...props
+	});
+}
+//#endregion
+//#region frontend/src/lib/api.js
+var ApiError = class extends Error {
+	constructor(message, status = 400, data = {}) {
+		super(message);
+		this.name = "ApiError";
+		this.status = status;
+		this.data = data;
+	}
+};
+/**
+* Core HTTP fetch wrapper with same-origin credentials and JSON payload support
+*/
+async function request(url, options = {}) {
+	const method = options.method || "GET";
+	const headers = {
+		Accept: "application/json",
+		...options.headers || {}
+	};
+	if (options.body && typeof options.body === "object" && !(options.body instanceof FormData)) {
+		headers["content-type"] = "application/json";
+		options.body = JSON.stringify(options.body);
+	}
+	const fetchOptions = {
+		credentials: "same-origin",
+		...options,
+		method,
+		headers
+	};
+	let response;
+	try {
+		response = await fetch(url, fetchOptions);
+	} catch (netErr) {
+		throw new ApiError(netErr.message || "Network connection failure. Please check your connection.", 0);
+	}
+	const data = (response.headers.get("content-type") || "").includes("application/json") ? await response.json().catch(() => ({})) : {};
+	if (!response.ok) {
+		const errorMsg = data.error || data.message || `Request failed with status ${response.status}`;
+		if (response.status === 401) {
+			if (typeof window !== "undefined") window.dispatchEvent(new CustomEvent("studio-iksha:unauthorized", { detail: { url } }));
+			throw new ApiError("Session expired or unauthorized. Please sign in again.", 401, data);
+		}
+		if (response.status === 403) throw new ApiError(errorMsg || "Restricted action: You do not have permission to perform this update.", 403, data);
+		if (response.status === 404) throw new ApiError(errorMsg || "Record or access is no longer available in your workspace.", 404, data);
+		if (response.status === 409) throw new ApiError(errorMsg || "Conflict with current project or task state.", 409, data);
+		if (response.status === 429) throw new ApiError("Too many requests from this address. Please wait a moment before trying again.", 429, data);
+		if (response.status === 502) throw new ApiError(errorMsg || "Upstream delivery error from external service (Telegram/Bot).", 502, data);
+		throw new ApiError(errorMsg, response.status, data);
+	}
+	return data;
+}
+var get = (url, options = {}) => request(url, {
+	method: "GET",
+	...options
+});
+var post$2 = (url, body, options = {}) => request(url, {
+	method: "POST",
+	body,
+	...options
+});
+var patch$1 = (url, body, options = {}) => request(url, {
+	method: "PATCH",
+	body,
+	...options
+});
+var del = (url, options = {}) => request(url, {
+	method: "DELETE",
+	...options
+});
+function generateIdempotencyKey(prefix = "reply") {
+	if (typeof crypto !== "undefined" && crypto.randomUUID) return `${prefix}-${crypto.randomUUID()}`;
+	return `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+}
+var DEFAULT_PILOT_WORKFLOWS = [{
+	id: "PILOT-DESIGN-V1",
+	name: "Design pilot",
+	category: "Design",
+	estimatedDays: 6,
+	stages: [
+		{
+			id: "stage-resources",
+			name: "Resources",
+			durationDays: 1,
+			tasks: ["Collect site plans and client references"]
+		},
+		{
+			id: "stage-design",
+			name: "Design",
+			durationDays: 3,
+			tasks: ["Prepare concept and review with client"]
+		},
+		{
+			id: "stage-delivery",
+			name: "Delivery",
+			durationDays: 2,
+			tasks: ["Deliver approved drawings"]
+		}
+	]
+}, {
+	id: "PILOT-PAINTING-V1",
+	name: "Painting pilot",
+	category: "Finishing",
+	estimatedDays: 6,
+	stages: [
+		{
+			id: "stage-paint-resources",
+			name: "Resources",
+			durationDays: 1,
+			tasks: ["Collect site photos and measurements"]
+		},
+		{
+			id: "stage-prep",
+			name: "Preparation",
+			durationDays: 2,
+			tasks: ["Prepare walls and approve colour sample"]
+		},
+		{
+			id: "stage-paint",
+			name: "Painting",
+			durationDays: 3,
+			tasks: ["Apply coats and inspect finish"]
+		}
+	]
+}];
+/**
+* Fetch available workflow templates (GET /api/{founder|employee}/workflows)
+*/
+async function fetchWorkflows(namespace = "founder") {
+	try {
+		const data = await get(`/api/${namespace}/workflows`);
+		if (data.workflows && data.workflows.length > 0) return data.workflows;
+	} catch (err) {
+		if (err.status === 404) return DEFAULT_PILOT_WORKFLOWS;
+		throw err;
+	}
+	return DEFAULT_PILOT_WORKFLOWS;
+}
+/**
+* Assign client name and Telegram User ID (POST /api/founder/projects/:id/client)
+*/
+async function assignClient(projectId, { clientName, clientTelegramId = "" }) {
+	try {
+		return await post$2(`/api/founder/projects/${projectId}/client`, {
+			clientName: clientName.trim(),
+			clientTelegramId: clientTelegramId.trim()
+		});
+	} catch (err) {
+		if (err.status === 404) {
+			const res = await patch$1(`/api/founder/projects/${projectId}`, { clientName: clientName.trim() });
+			return { project: res.project || res };
+		}
+		throw err;
+	}
+}
+/**
+* Start project workflow pipeline (POST /api/founder/projects/:id/workflow/start)
+*/
+async function startWorkflow(projectId, { workflowId, startDate, assigneeId }) {
+	return await post$2(`/api/founder/projects/${projectId}/workflow/start`, {
+		workflowId,
+		startDate: startDate || void 0,
+		assigneeId: assigneeId || void 0
+	});
+}
+/**
+* Fetch complete project workspace (GET /api/{founder|employee}/projects/:id/workspace)
+*/
+async function fetchProjectWorkspace(projectId, namespace = "founder") {
+	return await get(`/api/${namespace}/projects/${projectId}/workspace`);
+}
+/**
+* List tasks for a project (GET /api/{founder|employee}/projects/:id/tasks)
+*/
+async function fetchTasks(projectId, namespace = "founder") {
+	return await get(`/api/${namespace}/projects/${projectId}/tasks`);
+}
+/**
+* Create task (POST /api/founder/projects/:id/tasks) - Founder only
+*/
+async function createTask(projectId, taskData) {
+	return await post$2(`/api/founder/projects/${projectId}/tasks`, {
+		title: taskData.title.trim(),
+		description: taskData.description ? taskData.description.trim() : "",
+		assigneeId: taskData.assigneeId !== void 0 ? taskData.assigneeId : void 0,
+		deadline: taskData.deadline || void 0,
+		stageId: taskData.stageId || void 0,
+		status: taskData.status || "Open"
+	});
+}
+/**
+* Update task (PATCH /api/{founder|employee}/tasks/:id)
+*/
+async function updateTask(taskId, updates, namespace = "founder") {
+	return await patch$1(`/api/${namespace}/tasks/${taskId}`, updates);
+}
+/**
+* Delete task (DELETE /api/founder/tasks/:id) - Founder only soft delete
+*/
+async function deleteTask(taskId) {
+	return await del(`/api/founder/tasks/${taskId}`);
+}
+/**
+* Fetch task messages (GET /api/{founder|employee}/tasks/:id/messages?after=...&limit=100)
+*/
+async function fetchTaskMessages(taskId, after = "", limit = 100, namespace = "founder") {
+	const query = new URLSearchParams();
+	if (after) query.set("after", after);
+	if (limit) query.set("limit", String(limit));
+	return await get(`/api/${namespace}/tasks/${taskId}/messages${query.toString() ? `?${query.toString()}` : ""}`);
+}
+/**
+* Send message to task thread (POST /api/{founder|employee}/tasks/:id/messages)
+*/
+async function sendTaskMessage(taskId, { text, attachmentUrl = "" }, namespace = "founder") {
+	return await post$2(`/api/${namespace}/tasks/${taskId}/messages`, {
+		text: text.trim(),
+		attachmentUrl: attachmentUrl.trim() || void 0
+	});
+}
+/**
+* Mark read cursor for task (POST /api/{founder|employee}/tasks/:id/read)
+*/
+async function markTaskRead(taskId, lastMessageId, namespace = "founder") {
+	if (!lastMessageId) return { ok: true };
+	return await post$2(`/api/${namespace}/tasks/${taskId}/read`, { lastMessageId });
+}
+/**
+* List client queries (GET /api/{founder|employee}/decision-requests)
+*/
+async function fetchDecisionRequests(namespace = "founder") {
+	return await get(`/api/${namespace}/decision-requests`);
+}
+/**
+* Add private internal comment (POST /api/{founder|employee}/decision-requests/:id/comment)
+*/
+async function addDecisionComment(requestId, text, namespace = "founder") {
+	return await post$2(`/api/${namespace}/decision-requests/${encodeURIComponent(requestId)}/comment`, { text: text.trim() });
+}
+/**
+* Approve query (POST /api/founder/decision-requests/:id/approve) - Founder only
+*/
+async function approveDecisionRequest(requestId) {
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/approve`, {});
+}
+/**
+* Reject query (POST /api/founder/decision-requests/:id/reject) - Founder only
+*/
+async function rejectDecisionRequest(requestId, reason) {
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/reject`, { reason: reason.trim() });
+}
+/**
+* Convert query to task (POST /api/founder/decision-requests/:id/convert) - Founder only
+*/
+async function convertDecisionRequest(requestId, taskFields) {
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/convert`, taskFields);
+}
+/**
+* Publish final reply to Telegram (POST /api/founder/decision-requests/:id/publish) - Founder only
+*/
+async function publishDecisionReply(requestId, { response, idempotencyKey }) {
+	const key = idempotencyKey || generateIdempotencyKey(`reply-${requestId}`);
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/publish`, {
+		response: response.trim(),
+		idempotencyKey: key
+	});
+}
+/**
+* Authenticated media/attachment URL for Telegram photos & documents
+*/
+function getAttachmentUrl(requestId, index = 0, namespace = "founder") {
+	return `/api/${namespace}/decision-requests/${encodeURIComponent(requestId)}/attachments/${index}`;
+}
+/**
+* Remove project member (DELETE /api/founder/projects/:id/members/:memberId)
+*/
+async function removeProjectMember(projectId, memberId) {
+	return await del(`/api/founder/projects/${projectId}/members/${memberId}`);
+}
+/**
+* Disable employee account (POST /api/founder/employees/:employeeId/disable)
+*/
+async function disableEmployee(employeeId) {
+	return await post$2(`/api/founder/employees/${employeeId}/disable`, {});
 }
 //#endregion
 //#region frontend/src/components/EmployeeManager.jsx
-var _jsxFileName$9 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/EmployeeManager.jsx";
 var roles = [
 	"Project admin",
 	"Designer",
@@ -23057,7 +23282,11 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 			setError("");
 			setCopied(false);
 		}
-	}, [open, defaultProjectId]);
+	}, [
+		open,
+		defaultProjectId,
+		projects
+	]);
 	const submit = async (event, existing) => {
 		event.preventDefault();
 		setBusy(true);
@@ -23094,578 +23323,343 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 			setError("Could not copy. Select and copy the details below.");
 		}
 	};
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Dialog, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
 		open,
 		onOpenChange,
-		children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogContent, {
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
 			className: "max-h-[90dvh] overflow-y-auto",
 			children: [
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogTitle, { children: credentials ? "Employee access is ready" : "Add employee" }, void 0, false, {
-					fileName: _jsxFileName$9,
-					lineNumber: 43,
-					columnNumber: 129
-				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogDescription, { children: credentials ? "Copy these details now. The password is shown only once." : "Give an employee access to one project, or assign an existing employee ID to another." }, void 0, false, {
-					fileName: _jsxFileName$9,
-					lineNumber: 43,
-					columnNumber: 215
-				}, this)] }, void 0, true, {
-					fileName: _jsxFileName$9,
-					lineNumber: 43,
-					columnNumber: 115
-				}, this),
-				credentials ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: credentials ? "Employee access is ready" : "Add employee" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: credentials ? "Copy these details now. The password is shown only once." : "Give an employee access to one project, or assign an existing employee ID to another." })] }),
+				credentials ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "space-y-3",
 					children: [
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 							className: "grid gap-1 text-xs font-medium",
-							children: ["Employee login link", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+							children: ["Employee login link", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 								value: credentials.link,
 								readOnly: true,
 								className: "font-mono text-xs"
-							}, void 0, false, {
-								fileName: _jsxFileName$9,
-								lineNumber: 44,
-								columnNumber: 116
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$9,
-							lineNumber: 44,
-							columnNumber: 47
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 							className: "grid gap-1 text-xs font-medium",
-							children: ["Employee ID", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+							children: ["Employee ID", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 								value: credentials.employeeId,
 								readOnly: true,
 								className: "font-mono"
-							}, void 0, false, {
-								fileName: _jsxFileName$9,
-								lineNumber: 44,
-								columnNumber: 258
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$9,
-							lineNumber: 44,
-							columnNumber: 197
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 							className: "grid gap-1 text-xs font-medium",
-							children: ["Password", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+							children: ["Password", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 								value: credentials.password,
 								readOnly: true,
 								className: "font-mono"
-							}, void 0, false, {
-								fileName: _jsxFileName$9,
-								lineNumber: 44,
-								columnNumber: 395
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$9,
-							lineNumber: 44,
-							columnNumber: 337
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "rounded-xl bg-amber-50 p-3 text-xs text-amber-900",
 							children: "Share the password privately with the employee. It cannot be viewed again after closing this window."
-						}, void 0, false, {
-							fileName: _jsxFileName$9,
-							lineNumber: 44,
-							columnNumber: 472
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 							className: "h-11 w-full",
 							onClick: copy,
-							children: [copied ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Check, {}, void 0, false, {
-								fileName: _jsxFileName$9,
-								lineNumber: 44,
-								columnNumber: 698
-							}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Copy, {}, void 0, false, {
-								fileName: _jsxFileName$9,
-								lineNumber: 44,
-								columnNumber: 710
-							}, this), copied ? "Copied" : "Copy link and credentials"]
-						}, void 0, true, {
-							fileName: _jsxFileName$9,
-							lineNumber: 44,
-							columnNumber: 641
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+							children: [copied ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Copy, {}), copied ? "Copied" : "Copy link and credentials"]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 							variant: "outline",
 							className: "w-full",
 							onClick: () => onOpenChange(false),
 							children: "Done"
-						}, void 0, false, {
-							fileName: _jsxFileName$9,
-							lineNumber: 44,
-							columnNumber: 777
-						}, this)
+						})
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$9,
-					lineNumber: 44,
-					columnNumber: 20
-				}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "space-y-4",
-					children: [projects.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+					children: [projects.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 						className: "grid gap-1.5 text-sm font-medium",
-						children: ["Project", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(NativeSelect, {
+						children: ["Project", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
 							value: projectId,
 							onChange: (event) => setProjectId(event.target.value),
 							className: "w-full",
-							children: projects.map((project) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", {
+							children: projects.map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
 								value: project.id,
 								children: project.name
-							}, project.id, false, {
-								fileName: _jsxFileName$9,
-								lineNumber: 45,
-								columnNumber: 218
-							}, this))
-						}, void 0, false, {
-							fileName: _jsxFileName$9,
-							lineNumber: 45,
-							columnNumber: 85
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$9,
-						lineNumber: 45,
-						columnNumber: 26
-					}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							}, project.id))
+						})]
+					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "rounded-xl bg-muted p-3 text-sm text-muted-foreground",
 						children: "Create a project before adding employees."
-					}, void 0, false, {
-						fileName: _jsxFileName$9,
-						lineNumber: 45,
-						columnNumber: 313
-					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Tabs, {
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Tabs, {
 						defaultValue: "new",
 						className: "gap-4",
 						children: [
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsList, {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
 								className: "w-full",
-								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsTrigger, {
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
 									value: "new",
 									children: "New employee"
-								}, void 0, false, {
-									fileName: _jsxFileName$9,
-									lineNumber: 46,
-									columnNumber: 79
-								}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsTrigger, {
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
 									value: "existing",
 									children: "Existing ID"
-								}, void 0, false, {
-									fileName: _jsxFileName$9,
-									lineNumber: 46,
-									columnNumber: 130
-								}, this)]
-							}, void 0, true, {
-								fileName: _jsxFileName$9,
-								lineNumber: 46,
-								columnNumber: 50
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsContent, {
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
 								value: "new",
-								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("form", {
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 									onSubmit: (event) => submit(event, false),
 									className: "space-y-3",
 									children: [
-										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 											className: "grid gap-1 text-xs font-medium",
-											children: ["Full name", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+											children: ["Full name", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 												name: "name",
 												required: true,
 												maxLength: 120,
 												placeholder: "Aarav Sharma"
-											}, void 0, false, {
-												fileName: _jsxFileName$9,
-												lineNumber: 47,
-												columnNumber: 164
-											}, this)]
-										}, void 0, true, {
-											fileName: _jsxFileName$9,
-											lineNumber: 47,
-											columnNumber: 105
-										}, this),
-										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 											className: "grid gap-1 text-xs font-medium",
-											children: ["Designation", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+											children: ["Designation", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 												name: "designation",
 												required: true,
 												maxLength: 120,
 												placeholder: "Interior designer"
-											}, void 0, false, {
-												fileName: _jsxFileName$9,
-												lineNumber: 47,
-												columnNumber: 306
-											}, this)]
-										}, void 0, true, {
-											fileName: _jsxFileName$9,
-											lineNumber: 47,
-											columnNumber: 245
-										}, this),
-										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 											className: "grid grid-cols-2 gap-3",
-											children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 												className: "grid gap-1 text-xs font-medium",
-												children: ["Email (optional)", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+												children: ["Email (optional)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 													name: "email",
 													type: "email",
 													maxLength: 200,
 													placeholder: "name@example.com"
-												}, void 0, false, {
-													fileName: _jsxFileName$9,
-													lineNumber: 47,
-													columnNumber: 505
-												}, this)]
-											}, void 0, true, {
-												fileName: _jsxFileName$9,
-												lineNumber: 47,
-												columnNumber: 439
-											}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+												})]
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 												className: "grid gap-1 text-xs font-medium",
-												children: ["Phone (optional)", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+												children: ["Phone (optional)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 													name: "phone",
 													type: "tel",
 													maxLength: 40,
 													placeholder: "+91…"
-												}, void 0, false, {
-													fileName: _jsxFileName$9,
-													lineNumber: 47,
-													columnNumber: 661
-												}, this)]
-											}, void 0, true, {
-												fileName: _jsxFileName$9,
-												lineNumber: 47,
-												columnNumber: 595
-											}, this)]
-										}, void 0, true, {
-											fileName: _jsxFileName$9,
-											lineNumber: 47,
-											columnNumber: 399
-										}, this),
-										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+												})]
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 											className: "grid gap-1 text-xs font-medium",
-											children: ["Project role", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(NativeSelect, {
+											children: ["Project role", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
 												name: "role",
 												className: "w-full",
-												children: roles.map((role) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { children: role }, role, false, {
-													fileName: _jsxFileName$9,
-													lineNumber: 47,
-													columnNumber: 870
-												}, this))
-											}, void 0, false, {
-												fileName: _jsxFileName$9,
-												lineNumber: 47,
-												columnNumber: 804
-											}, this)]
-										}, void 0, true, {
-											fileName: _jsxFileName$9,
-											lineNumber: 47,
-											columnNumber: 742
-										}, this),
-										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+												children: roles.map((role) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: role }, role))
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 											type: "submit",
 											className: "h-11 w-full",
 											disabled: busy || !projectId,
-											children: "Create employee access"
-										}, void 0, false, {
-											fileName: _jsxFileName$9,
-											lineNumber: 47,
-											columnNumber: 929
-										}, this)
+											children: busy ? "Creating access…" : "Create employee access"
+										})
 									]
-								}, void 0, true, {
-									fileName: _jsxFileName$9,
-									lineNumber: 47,
-									columnNumber: 34
-								}, this)
-							}, void 0, false, {
-								fileName: _jsxFileName$9,
-								lineNumber: 47,
-								columnNumber: 9
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsContent, {
+								})
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
 								value: "existing",
-								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("form", {
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 									onSubmit: (event) => submit(event, true),
 									className: "space-y-3",
 									children: [
-										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 											className: "grid gap-1 text-xs font-medium",
-											children: ["Existing employee ID", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+											children: ["Existing employee ID", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 												name: "employeeId",
 												required: true,
 												placeholder: "EMP-XXXXXXXXXX",
 												autoCapitalize: "characters"
-											}, void 0, false, {
-												fileName: _jsxFileName$9,
-												lineNumber: 48,
-												columnNumber: 179
-											}, this)]
-										}, void 0, true, {
-											fileName: _jsxFileName$9,
-											lineNumber: 48,
-											columnNumber: 109
-										}, this),
-										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 											className: "grid gap-1 text-xs font-medium",
-											children: ["Role on this project", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(NativeSelect, {
+											children: ["Role on this project", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
 												name: "role",
 												className: "w-full",
-												children: roles.map((role) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { children: role }, role, false, {
-													fileName: _jsxFileName$9,
-													lineNumber: 48,
-													columnNumber: 416
-												}, this))
-											}, void 0, false, {
-												fileName: _jsxFileName$9,
-												lineNumber: 48,
-												columnNumber: 350
-											}, this)]
-										}, void 0, true, {
-											fileName: _jsxFileName$9,
-											lineNumber: 48,
-											columnNumber: 280
-										}, this),
-										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+												children: roles.map((role) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: role }, role))
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 											className: "text-xs leading-relaxed text-muted-foreground",
 											children: "The employee keeps the same login ID and password. This project appears in their workspace after assignment."
-										}, void 0, false, {
-											fileName: _jsxFileName$9,
-											lineNumber: 48,
-											columnNumber: 475
-										}, this),
-										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 											type: "submit",
 											className: "h-11 w-full",
 											disabled: busy || !projectId,
-											children: "Assign to project"
-										}, void 0, false, {
-											fileName: _jsxFileName$9,
-											lineNumber: 48,
-											columnNumber: 648
-										}, this)
+											children: busy ? "Assigning…" : "Assign to project"
+										})
 									]
-								}, void 0, true, {
-									fileName: _jsxFileName$9,
-									lineNumber: 48,
-									columnNumber: 39
-								}, this)
-							}, void 0, false, {
-								fileName: _jsxFileName$9,
-								lineNumber: 48,
-								columnNumber: 9
-							}, this)
+								})
+							})
 						]
-					}, void 0, true, {
-						fileName: _jsxFileName$9,
-						lineNumber: 46,
-						columnNumber: 7
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$9,
-					lineNumber: 44,
-					columnNumber: 880
-				}, this),
-				error && /* @__PURE__ */ (void 0)("p", {
+					})]
+				}),
+				error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					role: "alert",
 					className: "text-xs text-destructive",
 					children: error
-				}, void 0, false, {
-					fileName: _jsxFileName$9,
-					lineNumber: 51,
-					columnNumber: 15
-				}, this)
+				})
 			]
-		}, void 0, true, {
-			fileName: _jsxFileName$9,
-			lineNumber: 43,
-			columnNumber: 58
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$9,
-		lineNumber: 43,
-		columnNumber: 10
-	}, this);
+		})
+	});
 }
-function EmployeeManager({ employees, projects, onAdd }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+function EmployeeManager({ employees, projects, onAdd, onUpdated }) {
+	const [disablingId, setDisablingId] = (0, import_react.useState)(null);
+	const [confirmEmployee, setConfirmEmployee] = (0, import_react.useState)(null);
+	const [error, setError] = (0, import_react.useState)("");
+	const handleDisable = async () => {
+		if (!confirmEmployee) return;
+		setDisablingId(confirmEmployee.id);
+		setError("");
+		try {
+			await disableEmployee(confirmEmployee.id);
+			setConfirmEmployee(null);
+			if (onUpdated) await onUpdated();
+		} catch (err) {
+			setError(err.message || "Failed to disable employee.");
+		} finally {
+			setDisablingId(null);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "space-y-5",
-		children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-			className: "flex flex-wrap items-start justify-between gap-3",
-			children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-					className: "text-xs font-semibold uppercase tracking-wider text-primary",
-					children: "Team access"
-				}, void 0, false, {
-					fileName: _jsxFileName$9,
-					lineNumber: 56,
-					columnNumber: 108
-				}, this),
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
-					className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
-					children: "Employees"
-				}, void 0, false, {
-					fileName: _jsxFileName$9,
-					lineNumber: 56,
-					columnNumber: 198
-				}, this),
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-					className: "mt-1 text-sm text-muted-foreground",
-					children: "One employee ID can belong to several projects."
-				}, void 0, false, {
-					fileName: _jsxFileName$9,
-					lineNumber: 56,
-					columnNumber: 283
-				}, this)
-			] }, void 0, true, {
-				fileName: _jsxFileName$9,
-				lineNumber: 56,
-				columnNumber: 103
-			}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
-				onClick: onAdd,
-				disabled: !projects.length,
-				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(UserPlus, {}, void 0, false, {
-					fileName: _jsxFileName$9,
-					lineNumber: 56,
-					columnNumber: 442
-				}, this), "Add employee"]
-			}, void 0, true, {
-				fileName: _jsxFileName$9,
-				lineNumber: 56,
-				columnNumber: 390
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$9,
-			lineNumber: 56,
-			columnNumber: 37
-		}, this), employees.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-			className: "grid gap-3 sm:grid-cols-2",
-			children: employees.map((employee) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
-				className: "space-y-3 p-4",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-wrap items-start justify-between gap-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs font-semibold uppercase tracking-wider text-primary",
+						children: "Team access"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+						className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
+						children: "Employees"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "mt-1 text-sm text-muted-foreground",
+						children: "Manage team accounts, active projects, and revoke access when necessary."
+					})
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+					onClick: onAdd,
+					disabled: !projects.length,
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(UserPlus, { className: "size-4 mr-1.5" }), "Add employee"]
+				})]
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "rounded-xl border border-destructive/30 bg-destructive/10 p-3 text-xs text-destructive",
+				children: error
+			}),
+			employees.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "grid gap-3 sm:grid-cols-2",
+				children: employees.map((employee) => {
+					const isActive = employee.active !== false;
+					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
+						className: !isActive ? "opacity-60 bg-muted/40 border-dashed" : "",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+							className: "space-y-3 p-4",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-start justify-between gap-3",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "flex items-start gap-3 min-w-0",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: `grid size-10 shrink-0 place-items-center rounded-full ${isActive ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"}`,
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { className: "size-5" })
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "min-w-0",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "flex items-center gap-2",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+													className: "truncate text-sm font-semibold",
+													children: employee.name
+												}), !isActive && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+													variant: "outline",
+													className: "border-destructive/40 bg-destructive/10 text-destructive text-[10px]",
+													children: "Revoked"
+												})]
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+												className: "text-xs text-muted-foreground",
+												children: employee.designation
+											})]
+										})]
+									}), isActive && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										variant: "ghost",
+										size: "sm",
+										className: "text-destructive hover:bg-destructive/10 text-xs h-7 px-2",
+										onClick: () => setConfirmEmployee(employee),
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(UserX, { className: "size-3.5 mr-1" }), "Revoke"]
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "font-mono text-xs text-muted-foreground",
+									children: employee.id
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "flex flex-wrap gap-1.5 pt-1",
+									children: employee.projectIds?.length ? employee.projectIds.map((id) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+										variant: "secondary",
+										className: "text-[11px]",
+										children: projects.find((project) => project.id === id)?.name || "Project"
+									}, id)) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "text-xs text-muted-foreground",
+										children: "No active projects"
+									})
+								})
+							]
+						})
+					}, employee.id);
+				})
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+				className: "py-12 text-center",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-						className: "flex items-start gap-3",
-						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
-							className: "grid size-10 shrink-0 place-items-center rounded-full bg-primary/10 text-primary",
-							children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Users, { className: "size-5" }, void 0, false, {
-								fileName: _jsxFileName$9,
-								lineNumber: 57,
-								columnNumber: 299
-							}, this)
-						}, void 0, false, {
-							fileName: _jsxFileName$9,
-							lineNumber: 57,
-							columnNumber: 200
-						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-							className: "min-w-0 flex-1",
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", {
-								className: "truncate text-sm font-semibold",
-								children: employee.name
-							}, void 0, false, {
-								fileName: _jsxFileName$9,
-								lineNumber: 57,
-								columnNumber: 366
-							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-								className: "text-xs text-muted-foreground",
-								children: employee.designation
-							}, void 0, false, {
-								fileName: _jsxFileName$9,
-								lineNumber: 57,
-								columnNumber: 433
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$9,
-							lineNumber: 57,
-							columnNumber: 334
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$9,
-						lineNumber: 57,
-						columnNumber: 160
-					}, this),
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-						className: "font-mono text-xs text-muted-foreground",
-						children: employee.id
-					}, void 0, false, {
-						fileName: _jsxFileName$9,
-						lineNumber: 57,
-						columnNumber: 516
-					}, this),
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-						className: "flex flex-wrap gap-1.5",
-						children: employee.projectIds?.length ? employee.projectIds.map((id) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Badge, {
-							variant: "secondary",
-							children: projects.find((project) => project.id === id)?.name || "Project"
-						}, id, false, {
-							fileName: _jsxFileName$9,
-							lineNumber: 57,
-							columnNumber: 691
-						}, this)) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
-							className: "text-xs text-muted-foreground",
-							children: "No active projects"
-						}, void 0, false, {
-							fileName: _jsxFileName$9,
-							lineNumber: 57,
-							columnNumber: 805
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$9,
-						lineNumber: 57,
-						columnNumber: 588
-					}, this)
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { className: "mx-auto size-9 text-muted-foreground/50" }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+						className: "mt-3 text-sm font-semibold",
+						children: "No employee accounts yet"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "mt-1 text-xs text-muted-foreground",
+						children: "Add a team member to generate their login link and credentials."
+					})
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$9,
-				lineNumber: 57,
-				columnNumber: 121
-			}, this) }, employee.id, false, {
-				fileName: _jsxFileName$9,
-				lineNumber: 57,
-				columnNumber: 97
-			}, this))
-		}, void 0, false, {
-			fileName: _jsxFileName$9,
-			lineNumber: 57,
-			columnNumber: 25
-		}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
-			className: "py-12 text-center",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Users, { className: "mx-auto size-9 text-muted-foreground/50" }, void 0, false, {
-					fileName: _jsxFileName$9,
-					lineNumber: 57,
-					columnNumber: 966
-				}, this),
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", {
-					className: "mt-3 text-sm font-semibold",
-					children: "No employee accounts yet"
-				}, void 0, false, {
-					fileName: _jsxFileName$9,
-					lineNumber: 57,
-					columnNumber: 1027
-				}, this),
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-					className: "mt-1 text-xs text-muted-foreground",
-					children: "Add a team member to generate their login link and credentials."
-				}, void 0, false, {
-					fileName: _jsxFileName$9,
-					lineNumber: 57,
-					columnNumber: 1099
-				}, this)
-			]
-		}, void 0, true, {
-			fileName: _jsxFileName$9,
-			lineNumber: 57,
-			columnNumber: 923
-		}, this) }, void 0, false, {
-			fileName: _jsxFileName$9,
-			lineNumber: 57,
-			columnNumber: 917
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$9,
-		lineNumber: 56,
-		columnNumber: 10
-	}, this);
+			}) }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				open: !!confirmEmployee,
+				onOpenChange: () => setConfirmEmployee(null),
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogTitle, { children: [
+					"Revoke ",
+					confirmEmployee?.name,
+					"'s Access?"
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [
+					"This will immediately terminate all active sessions for ",
+					confirmEmployee?.id,
+					", block future logins, and clear their assigned tasks. This action cannot be undone."
+				] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex justify-end gap-2 pt-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						onClick: () => setConfirmEmployee(null),
+						disabled: Boolean(disablingId),
+						children: "Cancel"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+						variant: "destructive",
+						onClick: handleDisable,
+						disabled: Boolean(disablingId),
+						children: [disablingId ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1.5" }) : null, "Confirm Revocation"]
+					})]
+				})] })
+			})
+		]
+	});
 }
 //#endregion
 //#region node_modules/thinking-orbs/dist/index-B8WsUNf5.js
@@ -25433,22 +25427,85 @@ function ThinkingOrb({ state = "working", size = 64, theme = "auto", speed = 1, 
 	});
 }
 //#endregion
+//#region frontend/src/components/ui/bubble.jsx
+var bubbleVariants = cva("group/bubble relative flex w-fit max-w-[80%] min-w-0 flex-col gap-1 group-data-[align=end]/message:self-end data-[align=end]:self-end data-[variant=ghost]:max-w-full", {
+	variants: { variant: {
+		default: "*:data-[slot=bubble-content]:bg-primary *:data-[slot=bubble-content]:text-primary-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-primary/80",
+		secondary: "*:data-[slot=bubble-content]:bg-secondary *:data-[slot=bubble-content]:text-secondary-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)]",
+		muted: "*:data-[slot=bubble-content]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[color-mix(in_oklch,var(--muted),var(--foreground)_5%)]",
+		tinted: "*:data-[slot=bubble-content]:bg-[oklch(from_var(--primary)_0.93_calc(c*0.4)_h)] *:data-[slot=bubble-content]:text-foreground dark:*:data-[slot=bubble-content]:bg-[oklch(from_var(--primary)_0.3_calc(c*0.4)_h)] [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[oklch(from_var(--primary)_0.88_calc(c*0.5)_h)] dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-[oklch(from_var(--primary)_0.35_calc(c*0.5)_h)]",
+		outline: "*:data-[slot=bubble-content]:border-border *:data-[slot=bubble-content]:bg-background [&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:text-foreground dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-input/30",
+		ghost: "border-none *:data-[slot=bubble-content]:rounded-none *:data-[slot=bubble-content]:bg-transparent *:data-[slot=bubble-content]:p-0 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:text-foreground dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted/50",
+		destructive: "*:data-[slot=bubble-content]:bg-destructive/10 *:data-[slot=bubble-content]:text-destructive dark:*:data-[slot=bubble-content]:bg-destructive/20 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-destructive/20 dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-destructive/30"
+	} },
+	defaultVariants: { variant: "default" }
+});
+function Bubble({ variant = "default", align = "start", className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "bubble",
+		"data-variant": variant,
+		"data-align": align,
+		className: cn(bubbleVariants({ variant }), className),
+		...props
+	});
+}
+function BubbleContent({ asChild = false, className, ...props }) {
+	const Comp = asChild ? Slot$1 : "div";
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Comp, {
+		"data-slot": "bubble-content",
+		className: cn("w-fit max-w-full min-w-0 overflow-hidden rounded-xl border border-transparent px-3 py-2 text-sm leading-relaxed wrap-break-word group-data-[align=end]/bubble:self-end [button]:text-left [button,a]:transition-colors [button,a]:outline-none [button,a]:focus-visible:border-ring [button,a]:focus-visible:ring-3 [button,a]:focus-visible:ring-ring/50", className),
+		...props
+	});
+}
+//#endregion
+//#region frontend/src/components/ui/message.jsx
+function Message({ className, align = "start", ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "message",
+		"data-align": align,
+		className: cn("group/message relative flex w-full min-w-0 gap-2 text-sm data-[align=end]:flex-row-reverse", className),
+		...props
+	});
+}
+function MessageAvatar({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "message-avatar",
+		className: cn("flex w-fit min-w-8 shrink-0 items-center justify-center self-end overflow-hidden rounded-full bg-muted group-has-data-[slot=message-footer]/message:-translate-y-8", className),
+		...props
+	});
+}
+function MessageContent({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "message-content",
+		className: cn("flex w-full min-w-0 flex-col gap-2.5 wrap-break-word group-data-[align=end]/message:*:data-slot:self-end", className),
+		...props
+	});
+}
+function MessageHeader({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "message-header",
+		className: cn("flex max-w-full min-w-0 items-center px-3 text-xs font-medium text-muted-foreground group-has-data-[variant=ghost]/message:px-0", className),
+		...props
+	});
+}
+function MessageFooter({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "message-footer",
+		className: cn("flex max-w-full min-w-0 items-center px-3 text-xs font-medium text-muted-foreground group-has-data-[variant=ghost]/message:px-0 group-data-[align=end]/message:justify-end", className),
+		...props
+	});
+}
+//#endregion
 //#region frontend/src/components/ui/textarea.jsx
-var _jsxFileName$8 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/ui/textarea.jsx";
 function Textarea({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("textarea", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("textarea", {
 		"data-slot": "textarea",
 		className: cn("flex field-sizing-content min-h-16 w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:aria-invalid:ring-destructive/40", className),
 		...props
-	}, void 0, false, {
-		fileName: _jsxFileName$8,
-		lineNumber: 9,
-		columnNumber: 5
-	}, this);
+	});
 }
 //#endregion
 //#region frontend/src/components/FounderAssistant.jsx
-var _jsxFileName$7 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/FounderAssistant.jsx";
 var suggestions = [
 	"Summarize all ongoing projects",
 	"Which projects have blockers?",
@@ -25480,63 +25537,31 @@ function FormattedAnswer({ answer }) {
 			text: line
 		});
 	}
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		className: "space-y-2.5",
-		children: blocks.map((block, index) => block.type === "title" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", {
+		children: blocks.map((block, index) => block.type === "title" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 			className: "text-sm font-semibold text-foreground",
 			children: block.text
-		}, index, false, {
-			fileName: _jsxFileName$7,
-			lineNumber: 30,
-			columnNumber: 60
-		}, this) : block.type === "heading" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h3", {
+		}, index) : block.type === "heading" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 			className: "border-t border-border/70 pt-2.5 text-sm font-semibold text-foreground first:border-0 first:pt-0",
 			children: block.text
-		}, index, false, {
-			fileName: _jsxFileName$7,
-			lineNumber: 30,
-			columnNumber: 173
-		}, this) : block.type === "list" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("ul", {
+		}, index) : block.type === "list" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
 			className: "space-y-1.5 pl-4 text-sm marker:text-primary",
 			children: block.items.map((item, itemIndex) => {
 				const colon = item.indexOf(":");
-				return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("li", {
+				return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
 					className: "list-disc pl-0.5",
-					children: colon > 0 && colon < 24 ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_jsx_dev_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("strong", {
+					children: colon > 0 && colon < 24 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
 						className: "font-semibold",
 						children: item.slice(0, colon + 1)
-					}, void 0, false, {
-						fileName: _jsxFileName$7,
-						lineNumber: 30,
-						columnNumber: 573
-					}, this), item.slice(colon + 1)] }, void 0, true, {
-						fileName: _jsxFileName$7,
-						lineNumber: 30,
-						columnNumber: 571
-					}, this) : item
-				}, itemIndex, false, {
-					fileName: _jsxFileName$7,
-					lineNumber: 30,
-					columnNumber: 495
-				}, this);
+					}), item.slice(colon + 1)] }) : item
+				}, itemIndex);
 			})
-		}, index, false, {
-			fileName: _jsxFileName$7,
-			lineNumber: 30,
-			columnNumber: 342
-		}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+		}, index) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 			className: "text-sm text-muted-foreground",
 			children: block.text
-		}, index, false, {
-			fileName: _jsxFileName$7,
-			lineNumber: 30,
-			columnNumber: 694
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$7,
-		lineNumber: 29,
-		columnNumber: 10
-	}, this);
+		}, index))
+	});
 }
 function FounderAssistant({ onBack }) {
 	const [messages, setMessages] = (0, import_react.useState)([]);
@@ -25582,252 +25607,132 @@ function FounderAssistant({ onBack }) {
 			setBusy(false);
 		}
 	};
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "flex h-dvh min-h-0 flex-col overflow-hidden bg-background",
-		children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("header", {
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
 			className: "shrink-0 border-b bg-card",
-			children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "mx-auto flex h-16 max-w-4xl items-center gap-3 px-3 sm:px-6",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						variant: "ghost",
 						size: "icon",
 						onClick: onBack,
 						"aria-label": "Back to projects",
-						children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ArrowLeft, { className: "size-5" }, void 0, false, {
-							fileName: _jsxFileName$7,
-							lineNumber: 63,
-							columnNumber: 211
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$7,
-						lineNumber: 63,
-						columnNumber: 128
-					}, this),
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ThinkingOrb, {
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { className: "size-5" })
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
 						state: busy ? "working" : "breathing",
 						size: 32,
 						speed: busy ? .6 : .3,
 						theme: "light",
 						color: "#2166d1",
 						"aria-hidden": "true"
-					}, void 0, false, {
-						fileName: _jsxFileName$7,
-						lineNumber: 63,
-						columnNumber: 252
-					}, this),
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "min-w-0 flex-1",
-						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 							className: "truncate text-sm font-semibold",
 							children: "Ask Studio Iksha"
-						}, void 0, false, {
-							fileName: _jsxFileName$7,
-							lineNumber: 63,
-							columnNumber: 422
-						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "text-xs text-muted-foreground",
 							children: "Your project workspace assistant"
-						}, void 0, false, {
-							fileName: _jsxFileName$7,
-							lineNumber: 63,
-							columnNumber: 490
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$7,
-						lineNumber: 63,
-						columnNumber: 390
-					}, this),
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(LockKeyhole, {
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LockKeyhole, {
 						className: "size-4 text-muted-foreground",
 						"aria-label": "Founder only"
-					}, void 0, false, {
-						fileName: _jsxFileName$7,
-						lineNumber: 63,
-						columnNumber: 577
-					}, this)
+					})
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$7,
-				lineNumber: 63,
-				columnNumber: 51
-			}, this)
-		}, void 0, false, {
-			fileName: _jsxFileName$7,
-			lineNumber: 63,
-			columnNumber: 5
-		}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("main", {
+			})
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
 			className: "mx-auto flex min-h-0 w-full max-w-4xl flex-1 flex-col bg-card md:border-x",
-			children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				ref: scrollRef,
 				className: "chat-scroll min-h-0 flex-1 space-y-5 overflow-y-auto px-4 py-5 sm:px-6",
 				"aria-label": "Founder assistant conversation",
 				"aria-live": "polite",
 				children: [
-					!messages.length && /* @__PURE__ */ (void 0)("div", {
+					!messages.length && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "mx-auto flex max-w-sm flex-col items-center py-10 text-center",
 						children: [
-							/* @__PURE__ */ (void 0)(ThinkingOrb, {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
 								state: "breathing",
 								size: 64,
 								speed: .3,
 								theme: "light",
 								color: "#2166d1",
 								"aria-hidden": "true"
-							}, void 0, false, {
-								fileName: _jsxFileName$7,
-								lineNumber: 66,
-								columnNumber: 109
-							}, this),
-							/* @__PURE__ */ (void 0)("h2", {
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 								className: "mt-5 text-sm font-semibold",
 								children: "Your projects, one question away"
-							}, void 0, false, {
-								fileName: _jsxFileName$7,
-								lineNumber: 66,
-								columnNumber: 213
-							}, this),
-							/* @__PURE__ */ (void 0)("p", {
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "mt-2 text-xs leading-relaxed text-muted-foreground",
 								children: "Ask about progress, blockers, milestones, team assignments, or recent client questions. Answers come from saved project facts."
-							}, void 0, false, {
-								fileName: _jsxFileName$7,
-								lineNumber: 66,
-								columnNumber: 293
-							}, this)
+							})
 						]
-					}, void 0, true, {
-						fileName: _jsxFileName$7,
-						lineNumber: 66,
-						columnNumber: 30
-					}, this),
-					messages.map((item) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					}),
+					messages.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "space-y-3",
-						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Message, {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Message, {
 							align: "end",
-							children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageContent, {
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
 								className: "max-w-[88%] sm:max-w-[75%]",
-								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageHeader, {
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageHeader, {
 									className: "justify-end",
 									children: "You"
-								}, void 0, false, {
-									fileName: _jsxFileName$7,
-									lineNumber: 67,
-									columnNumber: 150
-								}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Bubble, {
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
 									align: "end",
-									children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(BubbleContent, { children: item.question }, void 0, false, {
-										fileName: _jsxFileName$7,
-										lineNumber: 67,
-										columnNumber: 228
-									}, this)
-								}, void 0, false, {
-									fileName: _jsxFileName$7,
-									lineNumber: 67,
-									columnNumber: 208
-								}, this)]
-							}, void 0, true, {
-								fileName: _jsxFileName$7,
-								lineNumber: 67,
-								columnNumber: 95
-							}, this)
-						}, void 0, false, {
-							fileName: _jsxFileName$7,
-							lineNumber: 67,
-							columnNumber: 74
-						}, this), item.answer && /* @__PURE__ */ (void 0)(Message, {
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, { children: item.question })
+								})]
+							})
+						}), item.answer && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Message, {
 							align: "start",
-							children: /* @__PURE__ */ (void 0)(MessageContent, {
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
 								className: "max-w-[92%] sm:max-w-[82%]",
-								children: [/* @__PURE__ */ (void 0)(MessageHeader, { children: "Studio Iksha" }, void 0, false, {
-									fileName: _jsxFileName$7,
-									lineNumber: 67,
-									columnNumber: 404
-								}, this), /* @__PURE__ */ (void 0)(Bubble, {
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageHeader, { children: "Studio Iksha" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
 									variant: "secondary",
 									className: "max-w-full",
-									children: /* @__PURE__ */ (void 0)(BubbleContent, {
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, {
 										className: "w-full p-4",
-										children: /* @__PURE__ */ (void 0)(FormattedAnswer, { answer: item.answer }, void 0, false, {
-											fileName: _jsxFileName$7,
-											lineNumber: 67,
-											columnNumber: 536
-										}, this)
-									}, void 0, false, {
-										fileName: _jsxFileName$7,
-										lineNumber: 67,
-										columnNumber: 498
-									}, this)
-								}, void 0, false, {
-									fileName: _jsxFileName$7,
-									lineNumber: 67,
-									columnNumber: 447
-								}, this)]
-							}, void 0, true, {
-								fileName: _jsxFileName$7,
-								lineNumber: 67,
-								columnNumber: 349
-							}, this)
-						}, void 0, false, {
-							fileName: _jsxFileName$7,
-							lineNumber: 67,
-							columnNumber: 326
-						}, this)]
-					}, item.id, true, {
-						fileName: _jsxFileName$7,
-						lineNumber: 67,
-						columnNumber: 33
-					}, this)),
-					busy && /* @__PURE__ */ (void 0)("div", {
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormattedAnswer, { answer: item.answer })
+									})
+								})]
+							})
+						})]
+					}, item.id)),
+					busy && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex items-center gap-2 text-xs text-muted-foreground",
-						children: [/* @__PURE__ */ (void 0)(ThinkingOrb, {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
 							state: "working",
 							size: 20,
 							speed: .65,
 							theme: "light",
 							color: "#2166d1",
 							"aria-hidden": "true"
-						}, void 0, false, {
-							fileName: _jsxFileName$7,
-							lineNumber: 68,
-							columnNumber: 89
-						}, this), "Reading your project records…"]
-					}, void 0, true, {
-						fileName: _jsxFileName$7,
-						lineNumber: 68,
-						columnNumber: 18
-					}, this)
+						}), "Reading your project records…"]
+					})
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$7,
-				lineNumber: 65,
-				columnNumber: 7
-			}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "safe-bottom shrink-0 border-t bg-card",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "no-scrollbar flex gap-2 overflow-x-auto px-4 py-3 sm:px-6",
-						children: suggestions.map((suggestion) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+						children: suggestions.map((suggestion) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 							variant: "outline",
 							size: "sm",
 							className: "shrink-0 rounded-full",
 							disabled: busy,
 							onClick: (event) => ask(event, suggestion),
 							children: suggestion
-						}, suggestion, false, {
-							fileName: _jsxFileName$7,
-							lineNumber: 70,
-							columnNumber: 170
-						}, this))
-					}, void 0, false, {
-						fileName: _jsxFileName$7,
-						lineNumber: 70,
-						columnNumber: 62
-					}, this),
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("form", {
+						}, suggestion))
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 						onSubmit: ask,
 						className: "flex items-end gap-2 border-t px-3 pt-3 sm:px-5",
-						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Textarea, {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
 							value: draft,
 							onChange: (event) => setDraft(event.target.value),
 							rows: 1,
@@ -25835,313 +25740,27 @@ function FounderAssistant({ onBack }) {
 							placeholder: "Ask about your projects…",
 							"aria-label": "Ask the founder assistant",
 							className: "max-h-32 min-h-11 flex-1 resize-none"
-						}, void 0, false, {
-							fileName: _jsxFileName$7,
-							lineNumber: 70,
-							columnNumber: 427
-						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 							type: "submit",
 							size: "icon-lg",
 							className: "size-11",
 							disabled: !draft.trim() || busy,
 							"aria-label": "Send question",
-							children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ArrowUp, { className: "size-5" }, void 0, false, {
-								fileName: _jsxFileName$7,
-								lineNumber: 70,
-								columnNumber: 774
-							}, this)
-						}, void 0, false, {
-							fileName: _jsxFileName$7,
-							lineNumber: 70,
-							columnNumber: 657
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$7,
-						lineNumber: 70,
-						columnNumber: 346
-					}, this),
-					error && /* @__PURE__ */ (void 0)("p", {
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUp, { className: "size-5" })
+						})]
+					}),
+					error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						role: "alert",
 						className: "px-4 pt-2 text-xs text-destructive",
 						children: error
-					}, void 0, false, {
-						fileName: _jsxFileName$7,
-						lineNumber: 70,
-						columnNumber: 830
-					}, this)
+					})
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$7,
-				lineNumber: 70,
-				columnNumber: 7
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$7,
-			lineNumber: 64,
-			columnNumber: 5
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$7,
-		lineNumber: 62,
-		columnNumber: 10
-	}, this);
-}
-//#endregion
-//#region frontend/src/components/TeamChat.jsx
-var _jsxFileName$6 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/TeamChat.jsx";
-function TeamChat({ endpoint, currentActor }) {
-	const [messages, setMessages] = (0, import_react.useState)([]);
-	const [draft, setDraft] = (0, import_react.useState)("");
-	const [sending, setSending] = (0, import_react.useState)(false);
-	const [error, setError] = (0, import_react.useState)("");
-	const scrollRef = (0, import_react.useRef)(null);
-	(0, import_react.useEffect)(() => {
-		let active = true;
-		setMessages([]);
-		const refresh = async () => {
-			if (document.visibilityState === "hidden") return;
-			try {
-				const response = await fetch(endpoint, { credentials: "same-origin" });
-				const data = await response.json();
-				if (!response.ok) throw new Error(data.error || "Could not load team chat.");
-				if (active) {
-					setMessages(data.messages || []);
-					setError("");
-				}
-			} catch (problem) {
-				if (active) setError(problem.message);
-			}
-		};
-		refresh();
-		const timer = setInterval(refresh, 6e3);
-		return () => {
-			active = false;
-			clearInterval(timer);
-		};
-	}, [endpoint]);
-	(0, import_react.useEffect)(() => {
-		const container = scrollRef.current;
-		if (container) container.scrollTop = container.scrollHeight;
-	}, [messages.length]);
-	const send = async (event) => {
-		event.preventDefault();
-		const message = draft.trim();
-		if (!message || sending) return;
-		setSending(true);
-		setError("");
-		try {
-			const response = await fetch(endpoint, {
-				method: "POST",
-				credentials: "same-origin",
-				headers: { "content-type": "application/json" },
-				body: JSON.stringify({ message })
-			});
-			const data = await response.json();
-			if (!response.ok) throw new Error(data.error || "Could not send message.");
-			setMessages((current) => current.some((item) => item.id === data.message.id) ? current : [...current, data.message]);
-			setDraft("");
-		} catch (problem) {
-			setError(problem.message);
-		} finally {
-			setSending(false);
-		}
-	};
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, {
-		className: "flex min-h-[420px] gap-0 overflow-hidden p-0",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-				className: "flex items-center gap-3 border-b px-4 py-3",
-				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
-					className: "grid size-9 place-items-center rounded-xl bg-primary/10 text-primary",
-					children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageSquare, { className: "size-4" }, void 0, false, {
-						fileName: _jsxFileName$6,
-						lineNumber: 55,
-						columnNumber: 152
-					}, this)
-				}, void 0, false, {
-					fileName: _jsxFileName$6,
-					lineNumber: 55,
-					columnNumber: 65
-				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", {
-					className: "text-sm font-semibold",
-					children: "Project team chat"
-				}, void 0, false, {
-					fileName: _jsxFileName$6,
-					lineNumber: 55,
-					columnNumber: 200
-				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-					className: "text-xs text-muted-foreground",
-					children: "Founder and assigned employees"
-				}, void 0, false, {
-					fileName: _jsxFileName$6,
-					lineNumber: 55,
-					columnNumber: 260
-				}, this)] }, void 0, true, {
-					fileName: _jsxFileName$6,
-					lineNumber: 55,
-					columnNumber: 195
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$6,
-				lineNumber: 55,
-				columnNumber: 5
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-				ref: scrollRef,
-				className: "chat-scroll min-h-64 max-h-[50dvh] flex-1 space-y-4 overflow-y-auto px-4 py-5",
-				"aria-label": "Project team messages",
-				"aria-live": "polite",
-				children: messages.length ? messages.map((item) => {
-					const own = item.senderId === currentActor;
-					return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Message, {
-						align: own ? "end" : "start",
-						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Avatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AvatarFallback, {
-							className: "bg-secondary text-xs font-semibold text-secondary-foreground",
-							children: item.senderName?.slice(0, 2).toUpperCase() || "TM"
-						}, void 0, false, {
-							fileName: _jsxFileName$6,
-							lineNumber: 60,
-							columnNumber: 34
-						}, this) }, void 0, false, {
-							fileName: _jsxFileName$6,
-							lineNumber: 60,
-							columnNumber: 26
-						}, this) }, void 0, false, {
-							fileName: _jsxFileName$6,
-							lineNumber: 60,
-							columnNumber: 11
-						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageContent, {
-							className: "max-w-[88%] sm:max-w-[75%]",
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageHeader, {
-								className: own ? "justify-end" : "",
-								children: [
-									own ? "You" : item.senderName,
-									" · ",
-									new Date(item.at).toLocaleTimeString([], {
-										hour: "numeric",
-										minute: "2-digit"
-									})
-								]
-							}, void 0, true, {
-								fileName: _jsxFileName$6,
-								lineNumber: 61,
-								columnNumber: 66
-							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Bubble, {
-								align: own ? "end" : "start",
-								variant: own ? void 0 : "secondary",
-								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(BubbleContent, {
-									className: "whitespace-pre-wrap",
-									children: item.text
-								}, void 0, false, {
-									fileName: _jsxFileName$6,
-									lineNumber: 61,
-									columnNumber: 328
-								}, this)
-							}, void 0, false, {
-								fileName: _jsxFileName$6,
-								lineNumber: 61,
-								columnNumber: 250
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$6,
-							lineNumber: 61,
-							columnNumber: 11
-						}, this)]
-					}, item.id, true, {
-						fileName: _jsxFileName$6,
-						lineNumber: 59,
-						columnNumber: 16
-					}, this);
-				}) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-					className: "flex h-56 flex-col items-center justify-center text-center",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageSquare, { className: "mb-3 size-8 text-muted-foreground/50" }, void 0, false, {
-							fileName: _jsxFileName$6,
-							lineNumber: 63,
-							columnNumber: 88
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-							className: "text-sm font-medium",
-							children: "Start the team conversation"
-						}, void 0, false, {
-							fileName: _jsxFileName$6,
-							lineNumber: 63,
-							columnNumber: 154
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-							className: "mt-1 max-w-xs text-xs text-muted-foreground",
-							children: "Updates and questions shared here stay with this project team."
-						}, void 0, false, {
-							fileName: _jsxFileName$6,
-							lineNumber: 63,
-							columnNumber: 220
-						}, this)
-					]
-				}, void 0, true, {
-					fileName: _jsxFileName$6,
-					lineNumber: 63,
-					columnNumber: 12
-				}, this)
-			}, void 0, false, {
-				fileName: _jsxFileName$6,
-				lineNumber: 56,
-				columnNumber: 5
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("form", {
-				onSubmit: send,
-				className: "flex items-end gap-2 border-t p-3",
-				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Textarea, {
-					value: draft,
-					onChange: (event) => setDraft(event.target.value),
-					rows: 1,
-					maxLength: 2e3,
-					placeholder: "Message your team…",
-					"aria-label": "Message your team",
-					className: "max-h-28 min-h-11 flex-1 resize-none"
-				}, void 0, false, {
-					fileName: _jsxFileName$6,
-					lineNumber: 65,
-					columnNumber: 73
-				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
-					type: "submit",
-					size: "icon-lg",
-					"aria-label": "Send team message",
-					disabled: !draft.trim() || sending,
-					className: "size-11",
-					children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ArrowUp, { className: "size-5" }, void 0, false, {
-						fileName: _jsxFileName$6,
-						lineNumber: 65,
-						columnNumber: 413
-					}, this)
-				}, void 0, false, {
-					fileName: _jsxFileName$6,
-					lineNumber: 65,
-					columnNumber: 289
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$6,
-				lineNumber: 65,
-				columnNumber: 5
-			}, this),
-			error && /* @__PURE__ */ (void 0)("p", {
-				role: "alert",
-				className: "px-4 pb-3 text-xs text-destructive",
-				children: error
-			}, void 0, false, {
-				fileName: _jsxFileName$6,
-				lineNumber: 66,
-				columnNumber: 15
-			}, this)
-		]
-	}, void 0, true, {
-		fileName: _jsxFileName$6,
-		lineNumber: 54,
-		columnNumber: 10
-	}, this);
+			})]
+		})]
+	});
 }
 //#endregion
 //#region frontend/src/components/DecisionInbox.jsx
-var _jsxFileName$5 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/DecisionInbox.jsx";
 async function api$3(url, method = "GET", data) {
 	const response = await fetch(url, {
 		method,
@@ -26177,6 +25796,12 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 	const [error, setError] = (0, import_react.useState)("");
 	const [notice, setNotice] = (0, import_react.useState)("");
 	const [busy, setBusy] = (0, import_react.useState)(false);
+	const [convertModalOpen, setConvertModalOpen] = (0, import_react.useState)(false);
+	const [rejectModalOpen, setRejectModalOpen] = (0, import_react.useState)(false);
+	const [rejectReason, setRejectReason] = (0, import_react.useState)("");
+	const [convertTitle, setConvertTitle] = (0, import_react.useState)("");
+	const [convertDesc, setConvertDesc] = (0, import_react.useState)("");
+	const [convertDeadline, setConvertDeadline] = (0, import_react.useState)("");
 	const scrollRef = (0, import_react.useRef)(null);
 	const load = async () => {
 		try {
@@ -26228,8 +25853,12 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 		selected?.status
 	]);
 	(0, import_react.useEffect)(() => {
-		if (selected?.status !== "Pending") setMode("internal");
-	}, [selected?.id, selected?.status]);
+		if (selected?.status !== "Pending" && selected?.deliveryStatus !== "Failed") setMode("internal");
+	}, [
+		selected?.id,
+		selected?.status,
+		selected?.deliveryStatus
+	]);
 	(0, import_react.useEffect)(() => {
 		if (!visible.length) setMobileThread(false);
 	}, [visible.length]);
@@ -26256,8 +25885,16 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 	const send = async (event) => {
 		event.preventDefault();
 		if (!selected || !text.trim() || busy) return;
+		if (mode === "publish" && selected.deliveryStatus === "Unknown") {
+			setError("Cannot retry automatically while delivery status is Unknown. Check the Telegram group manually.");
+			return;
+		}
 		const kind = mode === "internal" ? "comment" : "publish";
-		if (await run(() => api$3(`/api/founder/decision-requests/${encodeURIComponent(selected.id)}/${kind}`, "POST", kind === "comment" ? { text: text.trim() } : { response: text.trim() }), kind === "comment" ? "Private note saved." : "Reply published to Telegram.")) {
+		const body = kind === "comment" ? { text: text.trim() } : {
+			response: text.trim(),
+			idempotencyKey: generateIdempotencyKey(`pub-${selected.id}`)
+		};
+		if (await run(() => api$3(`/api/founder/decision-requests/${encodeURIComponent(selected.id)}/${kind}`, "POST", body), kind === "comment" ? "Private note saved." : "Reply published to Telegram.")) {
 			if (kind === "comment") setNotes((current) => ({
 				...current,
 				[selected.id]: ""
@@ -26271,30 +25908,44 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 			}
 		}
 	};
+	const handleApprove = () => {
+		if (!selected) return;
+		run(() => approveDecisionRequest(selected.id), "Request approved.");
+	};
+	const handleRejectSubmit = (e) => {
+		e.preventDefault();
+		if (!selected || !rejectReason.trim()) return;
+		run(() => rejectDecisionRequest(selected.id, rejectReason.trim()), "Request rejected.");
+		setRejectModalOpen(false);
+		setRejectReason("");
+	};
+	const handleConvertSubmit = (e) => {
+		e.preventDefault();
+		if (!selected || !convertTitle.trim()) return;
+		run(() => convertDecisionRequest(selected.id, {
+			title: convertTitle.trim(),
+			description: convertDesc.trim(),
+			deadline: convertDeadline || void 0,
+			status: "Open"
+		}), "Task created from client request.");
+		setConvertModalOpen(false);
+	};
 	const markDone = () => selected && run(() => api$3(`/api/founder/decision-requests/${encodeURIComponent(selected.id)}/resolve`, "POST", {}), "Request marked done.");
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "space-y-4",
 		children: [
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex flex-wrap items-start justify-between gap-3",
-				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-xs font-semibold uppercase tracking-wider text-primary",
 						children: "Telegram workspace"
-					}, void 0, false, {
-						fileName: _jsxFileName$5,
-						lineNumber: 96,
-						columnNumber: 76
-					}, this),
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 						className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
 						children: "Decision inbox"
-					}, void 0, false, {
-						fileName: _jsxFileName$5,
-						lineNumber: 96,
-						columnNumber: 173
-					}, this),
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 						className: "mt-1 text-sm text-muted-foreground",
 						children: [
 							openCount,
@@ -26302,231 +25953,111 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 							openCount === 1 ? "" : "s",
 							" need attention."
 						]
-					}, void 0, true, {
-						fileName: _jsxFileName$5,
-						lineNumber: 96,
-						columnNumber: 263
-					}, this)
-				] }, void 0, true, {
-					fileName: _jsxFileName$5,
-					lineNumber: 96,
-					columnNumber: 71
-				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					})
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex gap-2",
-					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 						variant: "outline",
 						size: "sm",
 						onClick: load,
-						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(RefreshCw, {}, void 0, false, {
-							fileName: _jsxFileName$5,
-							lineNumber: 96,
-							columnNumber: 470
-						}, this), "Refresh"]
-					}, void 0, true, {
-						fileName: _jsxFileName$5,
-						lineNumber: 96,
-						columnNumber: 419
-					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, {}), "Refresh"]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 						variant: "outline",
 						size: "sm",
 						onClick: () => setSettingsOpen((current) => !current),
 						"aria-expanded": settingsOpen,
-						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Settings2, {}, void 0, false, {
-							fileName: _jsxFileName$5,
-							lineNumber: 96,
-							columnNumber: 619
-						}, this), "Group links"]
-					}, void 0, true, {
-						fileName: _jsxFileName$5,
-						lineNumber: 96,
-						columnNumber: 499
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$5,
-					lineNumber: 96,
-					columnNumber: 391
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$5,
-				lineNumber: 96,
-				columnNumber: 5
-			}, this),
-			error && /* @__PURE__ */ (void 0)("p", {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Settings2, {}), "Group links"]
+					})]
+				})]
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				role: "alert",
 				className: "rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800",
 				children: error
-			}, void 0, false, {
-				fileName: _jsxFileName$5,
-				lineNumber: 97,
-				columnNumber: 15
-			}, this),
-			notice && /* @__PURE__ */ (void 0)("p", {
+			}),
+			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				role: "status",
 				className: "rounded-lg border border-green-200 bg-green-50 p-3 text-sm text-green-800",
 				children: notice
-			}, void 0, false, {
-				fileName: _jsxFileName$5,
-				lineNumber: 98,
-				columnNumber: 16
-			}, this),
-			settingsOpen && /* @__PURE__ */ (void 0)("div", {
+			}),
+			settingsOpen && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex flex-wrap items-end gap-3 rounded-xl border bg-card p-4",
 				children: [
-					/* @__PURE__ */ (void 0)("label", {
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 						className: "min-w-44 flex-1 space-y-1 text-xs font-medium",
-						children: ["Web project", /* @__PURE__ */ (void 0)(NativeSelect, {
+						children: ["Web project", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
 							value: settingsProjectId,
 							onChange: (event) => setSettingsProjectId(event.target.value),
 							className: "w-full",
-							children: projects.map((project) => /* @__PURE__ */ (void 0)("option", {
+							children: projects.map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
 								value: project.id,
 								children: project.name
-							}, project.id, false, {
-								fileName: _jsxFileName$5,
-								lineNumber: 99,
-								columnNumber: 325
-							}, this))
-						}, void 0, false, {
-							fileName: _jsxFileName$5,
-							lineNumber: 99,
-							columnNumber: 176
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$5,
-						lineNumber: 99,
-						columnNumber: 100
-					}, this),
-					/* @__PURE__ */ (void 0)("label", {
+							}, project.id))
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 						className: "min-w-44 flex-1 space-y-1 text-xs font-medium",
-						children: ["Telegram group chat ID", /* @__PURE__ */ (void 0)(Input, {
+						children: ["Telegram group chat ID", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 							value: groupId,
 							onChange: (event) => setGroupId(event.target.value),
 							placeholder: "-1001234567890"
-						}, void 0, false, {
-							fileName: _jsxFileName$5,
-							lineNumber: 99,
-							columnNumber: 504
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$5,
-						lineNumber: 99,
-						columnNumber: 417
-					}, this),
-					/* @__PURE__ */ (void 0)(Button, {
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						onClick: saveGroup,
 						disabled: !settingsProjectId || busy,
 						children: "Save link"
-					}, void 0, false, {
-						fileName: _jsxFileName$5,
-						lineNumber: 99,
-						columnNumber: 619
-					}, this),
-					/* @__PURE__ */ (void 0)("p", {
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "w-full text-xs text-muted-foreground",
 						children: "Use the group ID in the bot’s /start message. Each group links to one project."
-					}, void 0, false, {
-						fileName: _jsxFileName$5,
-						lineNumber: 99,
-						columnNumber: 703
-					}, this)
+					})
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$5,
-				lineNumber: 99,
-				columnNumber: 22
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "grid min-h-[min(70dvh,740px)] grid-cols-[minmax(0,1fr)] overflow-hidden rounded-2xl border bg-card shadow-sm lg:grid-cols-[300px_minmax(0,1fr)]",
-				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("aside", {
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("aside", {
 					className: `${mobileThread ? "hidden lg:flex" : "flex"} min-h-0 min-w-0 flex-col border-r`,
 					"aria-label": "Decision conversations",
-					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "space-y-3 border-b p-3",
-						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 							className: "relative block",
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Search, { className: "pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" }, void 0, false, {
-								fileName: _jsxFileName$5,
-								lineNumber: 103,
-								columnNumber: 83
-							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 								value: search,
 								onChange: (event) => setSearch(event.target.value),
 								placeholder: "Search conversations",
 								className: "pl-9",
 								"aria-label": "Search decision conversations"
-							}, void 0, false, {
-								fileName: _jsxFileName$5,
-								lineNumber: 103,
-								columnNumber: 195
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$5,
-							lineNumber: 103,
-							columnNumber: 49
-						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "flex gap-2",
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(NativeSelect, {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
 								value: filter,
 								onChange: (event) => setFilter(event.target.value),
 								"aria-label": "Filter by status",
 								className: "w-24",
 								children: [
-									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { children: "Open" }, void 0, false, {
-										fileName: _jsxFileName$5,
-										lineNumber: 103,
-										columnNumber: 530
-									}, this),
-									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { children: "Done" }, void 0, false, {
-										fileName: _jsxFileName$5,
-										lineNumber: 103,
-										columnNumber: 551
-									}, this),
-									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { children: "All" }, void 0, false, {
-										fileName: _jsxFileName$5,
-										lineNumber: 103,
-										columnNumber: 572
-									}, this)
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Open" }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "Done" }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "All" })
 								]
-							}, void 0, true, {
-								fileName: _jsxFileName$5,
-								lineNumber: 103,
-								columnNumber: 402
-							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(NativeSelect, {
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
 								value: projectFilter,
 								onChange: (event) => setProjectFilter(event.target.value),
 								"aria-label": "Filter by project",
 								className: "min-w-0 flex-1",
-								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { children: "All projects" }, void 0, false, {
-									fileName: _jsxFileName$5,
-									lineNumber: 103,
-									columnNumber: 760
-								}, this), projects.map((project) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", {
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "All projects" }), projects.map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
 									value: project.id,
 									children: project.name
-								}, project.id, false, {
-									fileName: _jsxFileName$5,
-									lineNumber: 103,
-									columnNumber: 816
-								}, this))]
-							}, void 0, true, {
-								fileName: _jsxFileName$5,
-								lineNumber: 103,
-								columnNumber: 607
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$5,
-							lineNumber: 103,
-							columnNumber: 374
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$5,
-						lineNumber: 103,
-						columnNumber: 9
-					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+								}, project.id))]
+							})]
+						})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "chat-scroll min-h-0 flex-1 overflow-y-auto",
 						children: visible.length ? visible.map((item) => {
 							const project = projects.find((candidate) => candidate.id === item.projectId);
-							return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", {
+							return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 								type: "button",
 								onClick: () => {
 									setSelectedId(item.id);
@@ -26535,390 +26066,301 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 								},
 								className: `w-full overflow-hidden border-b px-4 py-3 text-left transition-colors hover:bg-muted/70 ${selected?.id === item.id ? "bg-accent/70" : ""}`,
 								"aria-current": selected?.id === item.id ? "true" : void 0,
-								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 									className: "flex items-start gap-3",
-									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 										className: "grid size-9 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold text-secondary-foreground",
 										children: initials$1(item.originalSenderName)
-									}, void 0, false, {
-										fileName: _jsxFileName$5,
-										lineNumber: 106,
-										columnNumber: 396
-									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 										className: "min-w-0 flex-1",
 										children: [
-											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 												className: "flex min-w-0 items-center gap-2",
-												children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("strong", {
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
 													className: "min-w-0 flex-1 truncate text-sm",
 													children: item.originalSenderName
-												}, void 0, false, {
-													fileName: _jsxFileName$5,
-													lineNumber: 106,
-													columnNumber: 653
-												}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("time", {
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("time", {
 													className: "shrink-0 text-[10px] text-muted-foreground",
 													children: when(item.createdAt)
-												}, void 0, false, {
-													fileName: _jsxFileName$5,
-													lineNumber: 106,
-													columnNumber: 739
-												}, this)]
-											}, void 0, true, {
-												fileName: _jsxFileName$5,
-												lineNumber: 106,
-												columnNumber: 603
-											}, this),
-											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+												})]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 												className: "mt-0.5 block truncate text-xs text-muted-foreground",
 												children: [
 													project?.name || "Project",
 													" · ",
 													item.requestType
 												]
-											}, void 0, true, {
-												fileName: _jsxFileName$5,
-												lineNumber: 106,
-												columnNumber: 836
-											}, this),
-											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 												className: "mt-1 block truncate text-xs",
 												children: preview(item)
-											}, void 0, false, {
-												fileName: _jsxFileName$5,
-												lineNumber: 106,
-												columnNumber: 962
-											}, this),
-											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
-												className: `mt-1.5 inline-block text-[10px] font-medium ${item.status === "Pending" ? "text-amber-700" : item.status === "Published" ? "text-primary" : "text-emerald-700"}`,
-												children: item.status
-											}, void 0, false, {
-												fileName: _jsxFileName$5,
-												lineNumber: 106,
-												columnNumber: 1030
-											}, this)
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+												className: "mt-1.5 flex flex-wrap items-center gap-1.5",
+												children: [
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+														className: `text-[10px] font-medium ${item.status === "Pending" ? "text-amber-700" : item.status === "Published" ? "text-primary" : "text-emerald-700"}`,
+														children: item.status
+													}),
+													item.taskId && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+														variant: "outline",
+														className: "text-[9px] px-1 py-0 border-indigo-200 bg-indigo-50 text-indigo-700",
+														children: "Task"
+													}),
+													item.deliveryStatus === "Unknown" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+														variant: "outline",
+														className: "text-[9px] px-1 py-0 border-amber-300 bg-amber-50 text-amber-900",
+														children: "Unknown"
+													})
+												]
+											})
 										]
-									}, void 0, true, {
-										fileName: _jsxFileName$5,
-										lineNumber: 106,
-										columnNumber: 570
-									}, this)]
-								}, void 0, true, {
-									fileName: _jsxFileName$5,
-									lineNumber: 106,
-									columnNumber: 355
-								}, this)
-							}, item.id, false, {
-								fileName: _jsxFileName$5,
-								lineNumber: 106,
-								columnNumber: 18
-							}, this);
-						}) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+									})]
+								})
+							}, item.id);
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "p-8 text-center text-sm text-muted-foreground",
 							children: "No conversations match this view."
-						}, void 0, false, {
-							fileName: _jsxFileName$5,
-							lineNumber: 107,
-							columnNumber: 14
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$5,
-						lineNumber: 104,
-						columnNumber: 9
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$5,
-					lineNumber: 102,
-					columnNumber: 7
-				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("section", {
+						})
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 					className: `${mobileThread ? "flex" : "hidden lg:flex"} min-w-0 flex-col`,
 					"aria-label": "Selected decision conversation",
-					children: selected ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_jsx_dev_runtime.Fragment, { children: [
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-							className: "flex items-center gap-3 border-b px-4 py-3",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
-									variant: "ghost",
-									size: "icon",
-									className: "lg:hidden",
-									onClick: () => setMobileThread(false),
-									"aria-label": "Back to conversations",
-									children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ArrowLeft, { className: "size-4" }, void 0, false, {
-										fileName: _jsxFileName$5,
-										lineNumber: 112,
-										columnNumber: 203
-									}, this)
-								}, void 0, false, {
-									fileName: _jsxFileName$5,
-									lineNumber: 112,
-									columnNumber: 71
-								}, this),
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
-									className: "grid size-10 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold",
-									children: initials$1(selected.originalSenderName)
-								}, void 0, false, {
-									fileName: _jsxFileName$5,
-									lineNumber: 112,
-									columnNumber: 244
-								}, this),
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-									className: "min-w-0 flex-1",
-									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", {
-										className: "truncate text-sm font-semibold",
-										children: selected.originalSenderName
-									}, void 0, false, {
-										fileName: _jsxFileName$5,
-										lineNumber: 112,
-										columnNumber: 429
-									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-										className: "truncate text-xs text-muted-foreground",
-										children: [
-											selectedProject?.name || "Project",
-											" · ",
-											selected.requestType,
-											" · ",
-											selected.status
-										]
-									}, void 0, true, {
-										fileName: _jsxFileName$5,
-										lineNumber: 112,
-										columnNumber: 510
-									}, this)]
-								}, void 0, true, {
-									fileName: _jsxFileName$5,
-									lineNumber: 112,
-									columnNumber: 397
-								}, this),
-								selected.status !== "Done" && /* @__PURE__ */ (void 0)(Button, {
-									variant: "outline",
-									size: "sm",
-									disabled: busy,
-									onClick: markDone,
-									children: [/* @__PURE__ */ (void 0)(Check, {}, void 0, false, {
-										fileName: _jsxFileName$5,
-										lineNumber: 112,
-										columnNumber: 757
-									}, this), "Done"]
-								}, void 0, true, {
-									fileName: _jsxFileName$5,
-									lineNumber: 112,
-									columnNumber: 686
-								}, this)
-							]
-						}, void 0, true, {
-							fileName: _jsxFileName$5,
-							lineNumber: 112,
-							columnNumber: 11
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					children: selected ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center gap-3 min-w-0",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+										variant: "ghost",
+										size: "icon",
+										className: "lg:hidden",
+										onClick: () => setMobileThread(false),
+										"aria-label": "Back to conversations",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { className: "size-4" })
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "grid size-10 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold",
+										children: initials$1(selected.originalSenderName)
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "min-w-0",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+											className: "truncate text-sm font-semibold",
+											children: selected.originalSenderName
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+											className: "truncate text-xs text-muted-foreground",
+											children: [
+												selectedProject?.name || "Project",
+												" · ",
+												selected.requestType,
+												" · ",
+												selected.status,
+												selected.decisionStatus && ` (${selected.decisionStatus})`
+											]
+										})]
+									})
+								]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center gap-1.5",
+								children: [
+									!selected.taskId && selected.status !== "Done" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										variant: "outline",
+										size: "sm",
+										onClick: () => {
+											setConvertTitle(selected.originalMessage || "Client query follow-up");
+											setConvertDesc(`Client message: "${selected.originalMessage || ""}"`);
+											setConvertModalOpen(true);
+										},
+										disabled: busy,
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-3.5 mr-1" }), "Convert to Task"]
+									}),
+									![
+										"Approved",
+										"Rejected",
+										"Done"
+									].includes(selected.status) && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										variant: "outline",
+										size: "sm",
+										onClick: handleApprove,
+										disabled: busy,
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5 mr-1" }), " Approve"]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+										variant: "outline",
+										size: "sm",
+										onClick: () => setRejectModalOpen(true),
+										disabled: busy,
+										className: "text-destructive",
+										children: "Reject"
+									})] }),
+									selected.status !== "Done" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+										variant: "outline",
+										size: "sm",
+										disabled: busy,
+										onClick: markDone,
+										children: "Done"
+									})
+								]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							ref: scrollRef,
 							className: "chat-scroll min-h-[300px] flex-1 space-y-5 overflow-y-auto bg-muted/30 px-4 py-6 sm:px-6",
 							children: [
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 									className: "text-center text-[11px] text-muted-foreground",
 									children: ["Request received ", when(selected.createdAt)]
-								}, void 0, true, {
-									fileName: _jsxFileName$5,
-									lineNumber: 114,
-									columnNumber: 13
-								}, this),
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+								}),
+								selected.deliveryStatus === "Unknown" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "mx-auto max-w-[85%] rounded-xl border border-amber-300 bg-amber-50 p-3 text-xs text-amber-950 flex items-start gap-2",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { className: "size-4 shrink-0 text-amber-700 mt-0.5" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "Delivery Status Unknown:" }), " A previous send attempt timed out or interrupted. Check the Telegram group manually before sending again. Do not retry automatically."] })]
+								}),
+								selected.deliveryStatus === "Failed" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "mx-auto max-w-[85%] rounded-xl border border-destructive/30 bg-destructive/10 p-3 text-xs text-destructive flex items-start gap-2",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleX, { className: "size-4 shrink-0 text-destructive mt-0.5" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "Delivery Failed:" }),
+										" ",
+										selected.deliveryError || "Telegram rejected the message. You may retry publishing."
+									] })]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "flex items-end gap-2",
-									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 										className: "grid size-7 shrink-0 place-items-center rounded-full bg-secondary text-[10px] font-semibold",
 										children: initials$1(selected.originalSenderName)
-									}, void 0, false, {
-										fileName: _jsxFileName$5,
-										lineNumber: 115,
-										columnNumber: 51
-									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "max-w-[85%] space-y-1",
-										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 											className: "text-[11px] text-muted-foreground",
 											children: [selected.originalSenderName, " · Telegram"]
-										}, void 0, true, {
-											fileName: _jsxFileName$5,
-											lineNumber: 115,
-											columnNumber: 246
-										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-											className: "rounded-2xl rounded-bl-sm border bg-card px-4 py-3 text-sm shadow-sm",
-											children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "rounded-2xl rounded-bl-sm border bg-card px-4 py-3 text-sm shadow-sm space-y-2",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 												className: "whitespace-pre-wrap",
 												children: selected.originalMessage || "Shared an attachment"
-											}, void 0, false, {
-												fileName: _jsxFileName$5,
-												lineNumber: 115,
-												columnNumber: 425
-											}, this), selected.attachments?.length > 0 && /* @__PURE__ */ (void 0)("div", {
-												className: "mt-3 flex flex-wrap gap-2",
-												children: selected.attachments.map((attachment, index) => /* @__PURE__ */ (void 0)("a", {
-													className: "inline-flex items-center gap-1 rounded-lg bg-muted px-2.5 py-1.5 text-xs text-primary hover:underline",
-													href: `/api/founder/decision-requests/${encodeURIComponent(selected.id)}/attachments/${index}`,
-													target: "_blank",
-													rel: "noreferrer",
-													children: [attachment.fileName || attachment.type, /* @__PURE__ */ (void 0)(ExternalLink, { className: "size-3" }, void 0, false, {
-														fileName: _jsxFileName$5,
-														lineNumber: 115,
-														columnNumber: 943
-													}, this)]
-												}, index, true, {
-													fileName: _jsxFileName$5,
-													lineNumber: 115,
-													columnNumber: 645
-												}, this))
-											}, void 0, false, {
-												fileName: _jsxFileName$5,
-												lineNumber: 115,
-												columnNumber: 553
-											}, this)]
-										}, void 0, true, {
-											fileName: _jsxFileName$5,
-											lineNumber: 115,
-											columnNumber: 339
-										}, this)]
-									}, void 0, true, {
-										fileName: _jsxFileName$5,
-										lineNumber: 115,
-										columnNumber: 207
-									}, this)]
-								}, void 0, true, {
-									fileName: _jsxFileName$5,
-									lineNumber: 115,
-									columnNumber: 13
-								}, this),
-								selected.context && /* @__PURE__ */ (void 0)("div", {
+											}), selected.attachments?.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+												className: "mt-3 space-y-2",
+												children: selected.attachments.map((attachment, index) => {
+													const isPhoto = attachment.type === "Photo" || /\.(png|jpe?g|webp|gif)$/i.test(attachment.fileName || "");
+													const mediaUrl = getAttachmentUrl(selected.id, index, "founder");
+													return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+														className: "space-y-1",
+														children: isPhoto ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+															className: "overflow-hidden rounded-xl border bg-muted/20",
+															children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+																src: mediaUrl,
+																alt: attachment.fileName || `Photo ${index + 1}`,
+																className: "max-h-56 max-w-full rounded-xl object-contain",
+																onError: (e) => {
+																	e.currentTarget.style.display = "none";
+																}
+															}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+																className: "mt-1 inline-flex items-center gap-1 text-[11px] text-primary hover:underline px-2 py-1",
+																href: mediaUrl,
+																target: "_blank",
+																rel: "noreferrer",
+																children: [
+																	/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { className: "size-3" }),
+																	attachment.fileName || "View full image",
+																	/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-2.5" })
+																]
+															})]
+														}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+															className: "inline-flex items-center gap-1 rounded-lg bg-muted px-2.5 py-1.5 text-xs text-primary hover:underline",
+															href: mediaUrl,
+															target: "_blank",
+															rel: "noreferrer",
+															children: [
+																/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { className: "size-3" }),
+																attachment.fileName || attachment.type || "Document",
+																/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-3" })
+															]
+														}, index)
+													}, index);
+												})
+											})]
+										})]
+									})]
+								}),
+								selected.context && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "mx-auto max-w-[85%] rounded-xl border border-amber-200 bg-amber-50 px-4 py-2 text-xs text-amber-900",
 									children: [
-										/* @__PURE__ */ (void 0)("strong", { children: [selected.requestedByName, " added:"] }, void 0, true, {
-											fileName: _jsxFileName$5,
-											lineNumber: 116,
-											columnNumber: 151
-										}, this),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [selected.requestedByName, " added:"] }),
 										" ",
 										selected.context
 									]
-								}, void 0, true, {
-									fileName: _jsxFileName$5,
-									lineNumber: 116,
-									columnNumber: 34
-								}, this),
-								followUps.map((event) => event.type === "comment" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+								}),
+								selected.reviewNote && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "mx-auto max-w-[85%] rounded-xl border border-destructive/20 bg-destructive/5 px-4 py-2 text-xs text-destructive",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "Rejection reason:" }),
+										" ",
+										selected.reviewNote
+									]
+								}),
+								followUps.map((event, idx) => event.type === "comment" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "flex justify-end",
-									children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "max-w-[85%] space-y-1",
-										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 											className: "text-right text-[11px] text-muted-foreground",
 											children: [
 												event.value.author,
-												" · private · ",
+												" · private note · ",
 												when(event.at)
 											]
-										}, void 0, true, {
-											fileName: _jsxFileName$5,
-											lineNumber: 117,
-											columnNumber: 160
-										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 											className: "whitespace-pre-wrap rounded-2xl rounded-br-sm border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950",
 											children: event.value.text
-										}, void 0, false, {
-											fileName: _jsxFileName$5,
-											lineNumber: 117,
-											columnNumber: 273
-										}, this)]
-									}, void 0, true, {
-										fileName: _jsxFileName$5,
-										lineNumber: 117,
-										columnNumber: 121
-									}, this)
-								}, event.value.id, false, {
-									fileName: _jsxFileName$5,
-									lineNumber: 117,
-									columnNumber: 66
-								}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+										})]
+									})
+								}, event.value.id || idx) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "flex justify-end",
-									children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "max-w-[85%] space-y-1",
-										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 											className: "text-right text-[11px] text-muted-foreground",
 											children: ["Published to Telegram · ", when(event.at)]
-										}, void 0, true, {
-											fileName: _jsxFileName$5,
-											lineNumber: 117,
-											columnNumber: 529
-										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 											className: "whitespace-pre-wrap rounded-2xl rounded-br-sm bg-primary px-4 py-3 text-sm text-primary-foreground",
 											children: event.value
-										}, void 0, false, {
-											fileName: _jsxFileName$5,
-											lineNumber: 117,
-											columnNumber: 633
-										}, this)]
-									}, void 0, true, {
-										fileName: _jsxFileName$5,
-										lineNumber: 117,
-										columnNumber: 490
-									}, this)
-								}, "published", false, {
-									fileName: _jsxFileName$5,
-									lineNumber: 117,
-									columnNumber: 440
-								}, this)),
-								selected.status === "Done" && /* @__PURE__ */ (void 0)("p", {
+										})]
+									})
+								}, "published")),
+								selected.status === "Done" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 									className: "text-center text-xs text-emerald-700",
 									children: ["Marked done ", when(selected.resolvedAt)]
-								}, void 0, true, {
-									fileName: _jsxFileName$5,
-									lineNumber: 118,
-									columnNumber: 44
-								}, this)
+								})
 							]
-						}, void 0, true, {
-							fileName: _jsxFileName$5,
-							lineNumber: 113,
-							columnNumber: 11
-						}, this),
-						selected.status !== "Done" && /* @__PURE__ */ (void 0)("form", {
+						}),
+						selected.status !== "Done" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 							onSubmit: send,
 							className: "space-y-2 border-t p-3 sm:p-4",
-							children: [/* @__PURE__ */ (void 0)("div", {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "flex items-center gap-2",
 								children: [
-									/* @__PURE__ */ (void 0)("button", {
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 										type: "button",
 										onClick: () => setMode("internal"),
 										className: `rounded-full px-3 py-1.5 text-xs font-medium ${mode === "internal" ? "bg-amber-100 text-amber-900" : "text-muted-foreground hover:bg-muted"}`,
 										children: "Private note"
-									}, void 0, false, {
-										fileName: _jsxFileName$5,
-										lineNumber: 120,
-										columnNumber: 147
-									}, this),
-									selected.status === "Pending" && /* @__PURE__ */ (void 0)("button", {
+									}),
+									(selected.status === "Pending" || selected.deliveryStatus === "Failed") && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 										type: "button",
 										onClick: () => setMode("publish"),
 										className: `rounded-full px-3 py-1.5 text-xs font-medium ${mode === "publish" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-muted"}`,
 										children: "Reply to Telegram"
-									}, void 0, false, {
-										fileName: _jsxFileName$5,
-										lineNumber: 120,
-										columnNumber: 415
-									}, this),
-									/* @__PURE__ */ (void 0)("span", {
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 										className: "ml-auto text-[11px] text-muted-foreground",
 										children: mode === "internal" ? "Stays in web app" : "The group will see this"
-									}, void 0, false, {
-										fileName: _jsxFileName$5,
-										lineNumber: 120,
-										columnNumber: 652
-									}, this)
+									})
 								]
-							}, void 0, true, {
-								fileName: _jsxFileName$5,
-								lineNumber: 120,
-								columnNumber: 106
-							}, this), /* @__PURE__ */ (void 0)("div", {
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "flex items-end gap-2",
-								children: [/* @__PURE__ */ (void 0)(Textarea, {
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
 									value: text,
 									onChange: (event) => mode === "internal" ? setNotes((current) => ({
 										...current,
@@ -26929,98 +26371,118 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 									})),
 									rows: 2,
 									maxLength: mode === "internal" ? 2e3 : 3e3,
-									placeholder: mode === "internal" ? "Discuss or record a decision…" : "Write the final answer for the group…",
+									placeholder: mode === "internal" ? "Discuss or record an internal decision…" : "Write the final answer for the Telegram group…",
 									"aria-label": mode === "internal" ? "Private note" : "Telegram reply",
-									className: "max-h-32 flex-1 resize-y"
-								}, void 0, false, {
-									fileName: _jsxFileName$5,
-									lineNumber: 120,
-									columnNumber: 833
-								}, this), /* @__PURE__ */ (void 0)(Button, {
+									className: "max-h-32 flex-1 resize-y text-xs"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 									type: "submit",
-									disabled: busy || !text.trim(),
+									disabled: busy || !text.trim() || mode === "publish" && selected.deliveryStatus === "Unknown",
 									"aria-label": mode === "internal" ? "Save private note" : "Publish reply to Telegram",
-									children: [/* @__PURE__ */ (void 0)(Send, { className: "size-4" }, void 0, false, {
-										fileName: _jsxFileName$5,
-										lineNumber: 120,
-										columnNumber: 1465
-									}, this), /* @__PURE__ */ (void 0)("span", {
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Send, { className: "size-4 mr-1" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 										className: "hidden sm:inline",
 										children: mode === "internal" ? "Save" : "Publish"
-									}, void 0, false, {
-										fileName: _jsxFileName$5,
-										lineNumber: 120,
-										columnNumber: 1492
-									}, this)]
-								}, void 0, true, {
-									fileName: _jsxFileName$5,
-									lineNumber: 120,
-									columnNumber: 1326
-								}, this)]
-							}, void 0, true, {
-								fileName: _jsxFileName$5,
-								lineNumber: 120,
-								columnNumber: 795
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$5,
-							lineNumber: 120,
-							columnNumber: 42
-						}, this)
-					] }, void 0, true, {
-						fileName: _jsxFileName$5,
-						lineNumber: 111,
-						columnNumber: 21
-					}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+									})]
+								})]
+							})]
+						})
+					] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex flex-1 flex-col items-center justify-center gap-2 p-8 text-center text-muted-foreground",
 						children: [
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageSquare, { className: "size-9 opacity-50" }, void 0, false, {
-								fileName: _jsxFileName$5,
-								lineNumber: 121,
-								columnNumber: 125
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-9 opacity-50" }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-sm font-medium",
 								children: "Select a conversation"
-							}, void 0, false, {
-								fileName: _jsxFileName$5,
-								lineNumber: 121,
-								columnNumber: 172
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-xs",
 								children: "Telegram requests and founder decisions appear here."
-							}, void 0, false, {
-								fileName: _jsxFileName$5,
-								lineNumber: 121,
-								columnNumber: 232
-							}, this)
+							})
 						]
-					}, void 0, true, {
-						fileName: _jsxFileName$5,
-						lineNumber: 121,
-						columnNumber: 15
-					}, this)
-				}, void 0, false, {
-					fileName: _jsxFileName$5,
-					lineNumber: 110,
-					columnNumber: 7
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$5,
-				lineNumber: 101,
-				columnNumber: 5
-			}, this)
+					})
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				open: convertModalOpen,
+				onOpenChange: setConvertModalOpen,
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Convert Query to Task" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Create an internal task in this project from the client's inquiry." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+					onSubmit: handleConvertSubmit,
+					className: "space-y-4",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-1.5 text-xs font-semibold",
+							children: ["Task Title", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								value: convertTitle,
+								onChange: (e) => setConvertTitle(e.target.value),
+								required: true
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-1.5 text-xs font-semibold",
+							children: ["Description", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+								value: convertDesc,
+								onChange: (e) => setConvertDesc(e.target.value),
+								rows: 3
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-1.5 text-xs font-semibold",
+							children: ["Deadline", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								type: "date",
+								value: convertDeadline,
+								onChange: (e) => setConvertDeadline(e.target.value)
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex justify-end gap-2 pt-2",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								type: "button",
+								variant: "outline",
+								onClick: () => setConvertModalOpen(false),
+								children: "Cancel"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								type: "submit",
+								disabled: busy,
+								children: "Create Task"
+							})]
+						})
+					]
+				})] })
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				open: rejectModalOpen,
+				onOpenChange: setRejectModalOpen,
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Reject Client Request" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Specify an internal reason for rejecting this request." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+					onSubmit: handleRejectSubmit,
+					className: "space-y-4",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "grid gap-1.5 text-xs font-semibold",
+						children: ["Reason", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+							value: rejectReason,
+							onChange: (e) => setRejectReason(e.target.value),
+							placeholder: "e.g. Scope limitation",
+							required: true
+						})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex justify-end gap-2 pt-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							type: "button",
+							variant: "outline",
+							onClick: () => setRejectModalOpen(false),
+							children: "Cancel"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							type: "submit",
+							variant: "destructive",
+							disabled: busy,
+							children: "Confirm Rejection"
+						})]
+					})]
+				})] })
+			})
 		]
-	}, void 0, true, {
-		fileName: _jsxFileName$5,
-		lineNumber: 95,
-		columnNumber: 10
-	}, this);
+	});
 }
 //#endregion
 //#region frontend/src/components/TelegramGroups.jsx
-var _jsxFileName$4 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/components/TelegramGroups.jsx";
 async function api$2(url, method = "GET", data) {
 	const response = await fetch(url, {
 		method,
@@ -27100,99 +26562,59 @@ function TelegramGroups({ projects, onProjectsChanged }) {
 		});
 		await onProjectsChanged();
 	}, "Project created and linked to this Telegram group.");
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "space-y-4",
 		children: [
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex flex-wrap items-start justify-between gap-3",
-				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-xs font-semibold uppercase tracking-wider text-primary",
 						children: "Telegram onboarding"
-					}, void 0, false, {
-						fileName: _jsxFileName$4,
-						lineNumber: 54,
-						columnNumber: 76
-					}, this),
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 						className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
 						children: "Group setup"
-					}, void 0, false, {
-						fileName: _jsxFileName$4,
-						lineNumber: 54,
-						columnNumber: 174
-					}, this),
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "mt-1 text-sm text-muted-foreground",
 						children: "Groups appear here after the group bot is added. Assign each person a project name and role."
-					}, void 0, false, {
-						fileName: _jsxFileName$4,
-						lineNumber: 54,
-						columnNumber: 261
-					}, this)
-				] }, void 0, true, {
-					fileName: _jsxFileName$4,
-					lineNumber: 54,
-					columnNumber: 71
-				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+					})
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 					variant: "outline",
 					size: "sm",
 					onClick: load,
-					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(RefreshCw, {}, void 0, false, {
-						fileName: _jsxFileName$4,
-						lineNumber: 54,
-						columnNumber: 464
-					}, this), "Refresh"]
-				}, void 0, true, {
-					fileName: _jsxFileName$4,
-					lineNumber: 54,
-					columnNumber: 413
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$4,
-				lineNumber: 54,
-				columnNumber: 5
-			}, this),
-			error && /* @__PURE__ */ (void 0)("p", {
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, {}), "Refresh"]
+				})]
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				role: "alert",
 				className: "rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800",
 				children: error
-			}, void 0, false, {
-				fileName: _jsxFileName$4,
-				lineNumber: 55,
-				columnNumber: 15
-			}, this),
-			notice && /* @__PURE__ */ (void 0)("p", {
+			}),
+			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				role: "status",
 				className: "rounded-lg border border-green-200 bg-green-50 p-3 text-sm text-green-800",
 				children: notice
-			}, void 0, false, {
-				fileName: _jsxFileName$4,
-				lineNumber: 56,
-				columnNumber: 16
-			}, this),
-			groups.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+			}),
+			groups.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "grid gap-4 lg:grid-cols-[260px_minmax(0,1fr)]",
-				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("aside", {
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("aside", {
 					className: "overflow-hidden rounded-xl border bg-card",
 					"aria-label": "Telegram groups",
 					children: groups.map((item) => {
 						const active = item.members.filter((member) => member.membershipStatus === "Active");
-						return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", {
+						return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 							type: "button",
 							onClick: () => {
 								setSelectedId(item.groupChatId);
 								setProjectName(item.title);
 							},
 							className: `w-full border-b px-4 py-3 text-left hover:bg-muted/70 ${group?.groupChatId === item.groupChatId ? "bg-accent/70" : ""}`,
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 								className: "block truncate text-sm font-semibold",
 								children: item.title
-							}, void 0, false, {
-								fileName: _jsxFileName$4,
-								lineNumber: 57,
-								columnNumber: 551
-							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 								className: "mt-1 block text-xs text-muted-foreground",
 								children: [
 									active.length,
@@ -27200,34 +26622,18 @@ function TelegramGroups({ projects, onProjectsChanged }) {
 									active.filter((member) => !member.assignedRole).length,
 									" roles pending"
 								]
-							}, void 0, true, {
-								fileName: _jsxFileName$4,
-								lineNumber: 57,
-								columnNumber: 625
-							}, this)]
-						}, item.groupChatId, true, {
-							fileName: _jsxFileName$4,
-							lineNumber: 57,
-							columnNumber: 292
-						}, this);
+							})]
+						}, item.groupChatId);
 					})
-				}, void 0, false, {
-					fileName: _jsxFileName$4,
-					lineNumber: 57,
-					columnNumber: 85
-				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("section", {
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 					className: "min-w-0 space-y-4 rounded-xl border bg-card p-4 sm:p-5",
 					children: [
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "flex flex-wrap items-center justify-between gap-2",
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 								className: "text-lg font-semibold",
 								children: group.title
-							}, void 0, false, {
-								fileName: _jsxFileName$4,
-								lineNumber: 58,
-								columnNumber: 155
-							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 								className: "text-xs text-muted-foreground",
 								children: [
 									"Telegram group ID ",
@@ -27236,28 +26642,12 @@ function TelegramGroups({ projects, onProjectsChanged }) {
 									activeMembers.length,
 									" people observed"
 								]
-							}, void 0, true, {
-								fileName: _jsxFileName$4,
-								lineNumber: 58,
-								columnNumber: 211
-							}, this)] }, void 0, true, {
-								fileName: _jsxFileName$4,
-								lineNumber: 58,
-								columnNumber: 150
-							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 								className: "rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground",
 								children: needsSetup ? "Project needs setup" : `Linked to ${linkedProject.name}`
-							}, void 0, false, {
-								fileName: _jsxFileName$4,
-								lineNumber: 58,
-								columnNumber: 344
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$4,
-							lineNumber: 58,
-							columnNumber: 83
-						}, this),
-						pendingCount > 0 && /* @__PURE__ */ (void 0)("p", {
+							})]
+						}),
+						pendingCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 							className: "rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900",
 							children: [
 								pendingCount,
@@ -27265,78 +26655,42 @@ function TelegramGroups({ projects, onProjectsChanged }) {
 								pendingCount === 1 ? "" : "s",
 								" need a name or role. Ask each person to send /join in Telegram if someone is missing."
 							]
-						}, void 0, true, {
-							fileName: _jsxFileName$4,
-							lineNumber: 59,
-							columnNumber: 30
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "space-y-3",
 							children: activeMembers.length ? activeMembers.map((member) => {
 								const key = `${group.groupChatId}:${member.telegramUserId}`;
 								const draft = drafts[key] || {};
-								return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+								return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "rounded-xl border p-3",
-									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "mb-3 flex items-center gap-2",
 										children: [
-											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 												className: "grid size-8 place-items-center rounded-full bg-secondary text-xs font-semibold",
-												children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Users, { className: "size-4" }, void 0, false, {
-													fileName: _jsxFileName$4,
-													lineNumber: 60,
-													columnNumber: 403
-												}, this)
-											}, void 0, false, {
-												fileName: _jsxFileName$4,
-												lineNumber: 60,
-												columnNumber: 306
-											}, this),
-											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { className: "size-4" })
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 												className: "min-w-0 flex-1",
-												children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 													className: "truncate text-sm font-semibold",
 													children: member.telegramName
-												}, void 0, false, {
-													fileName: _jsxFileName$4,
-													lineNumber: 60,
-													columnNumber: 470
-												}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 													className: "text-xs text-muted-foreground",
 													children: ["Telegram ID ", member.telegramUserId]
-												}, void 0, true, {
-													fileName: _jsxFileName$4,
-													lineNumber: 60,
-													columnNumber: 541
-												}, this)]
-											}, void 0, true, {
-												fileName: _jsxFileName$4,
-												lineNumber: 60,
-												columnNumber: 438
-											}, this),
-											member.assignedRole && /* @__PURE__ */ (void 0)("span", {
+												})]
+											}),
+											member.assignedRole && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 												className: "inline-flex items-center gap-1 text-xs text-emerald-700",
-												children: [/* @__PURE__ */ (void 0)(Check, { className: "size-3" }, void 0, false, {
-													fileName: _jsxFileName$4,
-													lineNumber: 60,
-													columnNumber: 729
-												}, this), member.assignedRole]
-											}, void 0, true, {
-												fileName: _jsxFileName$4,
-												lineNumber: 60,
-												columnNumber: 655
-											}, this)
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3" }), member.assignedRole]
+											})
 										]
-									}, void 0, true, {
-										fileName: _jsxFileName$4,
-										lineNumber: 60,
-										columnNumber: 260
-									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "grid gap-2 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto]",
 										children: [
-											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 												className: "space-y-1 text-xs font-medium",
-												children: ["Name in project", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+												children: ["Name in project", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 													value: draft.name ?? member.assignedName ?? member.telegramName,
 													onChange: (event) => setDrafts((current) => ({
 														...current,
@@ -27345,19 +26699,11 @@ function TelegramGroups({ projects, onProjectsChanged }) {
 															name: event.target.value
 														}
 													}))
-												}, void 0, false, {
-													fileName: _jsxFileName$4,
-													lineNumber: 60,
-													columnNumber: 932
-												}, this)]
-											}, void 0, true, {
-												fileName: _jsxFileName$4,
-												lineNumber: 60,
-												columnNumber: 868
-											}, this),
-											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+												})]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 												className: "space-y-1 text-xs font-medium",
-												children: ["Role", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+												children: ["Role", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 													list: "project-role-suggestions",
 													value: draft.role ?? member.assignedRole ?? "",
 													onChange: (event) => setDrafts((current) => ({
@@ -27368,188 +26714,3203 @@ function TelegramGroups({ projects, onProjectsChanged }) {
 														}
 													})),
 													placeholder: "Client, designer…"
-												}, void 0, false, {
-													fileName: _jsxFileName$4,
-													lineNumber: 60,
-													columnNumber: 1184
-												}, this)]
-											}, void 0, true, {
-												fileName: _jsxFileName$4,
-												lineNumber: 60,
-												columnNumber: 1131
-											}, this),
-											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+												})]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 												className: "self-end",
 												size: "sm",
 												onClick: () => saveMember(member),
 												disabled: busy || !(draft.role ?? member.assignedRole),
 												children: "Save role"
-											}, void 0, false, {
-												fileName: _jsxFileName$4,
-												lineNumber: 60,
-												columnNumber: 1430
-											}, this)
+											})
 										]
-									}, void 0, true, {
-										fileName: _jsxFileName$4,
-										lineNumber: 60,
-										columnNumber: 792
-									}, this)]
-								}, member.telegramUserId, true, {
-									fileName: _jsxFileName$4,
-									lineNumber: 60,
-									columnNumber: 193
-								}, this);
-							}) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+									})]
+								}, member.telegramUserId);
+							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "py-8 text-center text-sm text-muted-foreground",
 								children: "No people observed yet. Add members after the bot, or ask them to send /join."
-							}, void 0, false, {
-								fileName: _jsxFileName$4,
-								lineNumber: 60,
-								columnNumber: 1597
-							}, this)
-						}, void 0, false, {
-							fileName: _jsxFileName$4,
-							lineNumber: 60,
-							columnNumber: 9
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("datalist", {
+							})
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("datalist", {
 							id: "project-role-suggestions",
-							children: suggestedRoles.map((role) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { value: role }, role, false, {
-								fileName: _jsxFileName$4,
-								lineNumber: 61,
-								columnNumber: 79
-							}, this))
-						}, void 0, false, {
-							fileName: _jsxFileName$4,
-							lineNumber: 61,
-							columnNumber: 9
-						}, this),
-						needsSetup && /* @__PURE__ */ (void 0)("div", {
+							children: suggestedRoles.map((role) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { value: role }, role))
+						}),
+						needsSetup && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "space-y-3 border-t pt-4",
-							children: [/* @__PURE__ */ (void 0)("div", { children: [/* @__PURE__ */ (void 0)("h3", {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 								className: "text-sm font-semibold",
 								children: "Finish project setup"
-							}, void 0, false, {
-								fileName: _jsxFileName$4,
-								lineNumber: 62,
-								columnNumber: 70
-							}, this), /* @__PURE__ */ (void 0)("p", {
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-xs text-muted-foreground",
 								children: "Assign a Client first, then connect this visible web project to the bot's workflow."
-							}, void 0, false, {
-								fileName: _jsxFileName$4,
-								lineNumber: 62,
-								columnNumber: 133
-							}, this)] }, void 0, true, {
-								fileName: _jsxFileName$4,
-								lineNumber: 62,
-								columnNumber: 65
-							}, this), /* @__PURE__ */ (void 0)("div", {
+							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "grid gap-2 sm:grid-cols-[minmax(0,1fr)_160px_auto]",
 								children: [
-									/* @__PURE__ */ (void 0)("label", {
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 										className: "space-y-1 text-xs font-medium",
-										children: ["Project name", /* @__PURE__ */ (void 0)(Input, {
+										children: ["Project name", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 											value: projectName || group.title,
 											onChange: (event) => setProjectName(event.target.value)
-										}, void 0, false, {
-											fileName: _jsxFileName$4,
-											lineNumber: 62,
-											columnNumber: 400
-										}, this)]
-									}, void 0, true, {
-										fileName: _jsxFileName$4,
-										lineNumber: 62,
-										columnNumber: 339
-									}, this),
-									/* @__PURE__ */ (void 0)("label", {
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 										className: "space-y-1 text-xs font-medium",
-										children: ["Start date", /* @__PURE__ */ (void 0)(Input, {
+										children: ["Start date", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 											type: "date",
 											value: startDate,
 											onChange: (event) => setStartDate(event.target.value)
-										}, void 0, false, {
-											fileName: _jsxFileName$4,
-											lineNumber: 62,
-											columnNumber: 568
-										}, this)]
-									}, void 0, true, {
-										fileName: _jsxFileName$4,
-										lineNumber: 62,
-										columnNumber: 509
-									}, this),
-									/* @__PURE__ */ (void 0)(Button, {
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 										className: "self-end",
 										onClick: createProject,
 										disabled: busy || !activeMembers.some((member) => /\bclient\b/i.test(member.assignedRole)),
 										children: "Finish setup"
-									}, void 0, false, {
-										fileName: _jsxFileName$4,
-										lineNumber: 62,
-										columnNumber: 670
-									}, this)
+									})
 								]
-							}, void 0, true, {
-								fileName: _jsxFileName$4,
-								lineNumber: 62,
-								columnNumber: 271
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$4,
-							lineNumber: 62,
-							columnNumber: 24
-						}, this)
+							})]
+						})
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$4,
-					lineNumber: 58,
-					columnNumber: 7
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$4,
-				lineNumber: 57,
-				columnNumber: 22
-			}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				})]
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "rounded-xl border bg-card px-6 py-14 text-center",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Users, { className: "mx-auto mb-3 size-9 text-muted-foreground" }, void 0, false, {
-						fileName: _jsxFileName$4,
-						lineNumber: 63,
-						columnNumber: 92
-					}, this),
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", {
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { className: "mx-auto mb-3 size-9 text-muted-foreground" }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 						className: "text-sm font-semibold",
 						children: "No Telegram groups yet"
-					}, void 0, false, {
-						fileName: _jsxFileName$4,
-						lineNumber: 63,
-						columnNumber: 155
-					}, this),
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "mx-auto mt-1 max-w-md text-xs text-muted-foreground",
 						children: "Create a group in Telegram, add the project bot as an admin, then add your team. The group will appear here automatically."
-					}, void 0, false, {
-						fileName: _jsxFileName$4,
-						lineNumber: 63,
-						columnNumber: 220
-					}, this)
+					})
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$4,
-				lineNumber: 63,
-				columnNumber: 26
-			}, this)
+			})
 		]
-	}, void 0, true, {
-		fileName: _jsxFileName$4,
-		lineNumber: 53,
-		columnNumber: 10
-	}, this);
+	});
+}
+//#endregion
+//#region frontend/src/components/TeamChat.jsx
+function TeamChat({ endpoint, currentActor }) {
+	const [messages, setMessages] = (0, import_react.useState)([]);
+	const [draft, setDraft] = (0, import_react.useState)("");
+	const [sending, setSending] = (0, import_react.useState)(false);
+	const [error, setError] = (0, import_react.useState)("");
+	const scrollRef = (0, import_react.useRef)(null);
+	(0, import_react.useEffect)(() => {
+		let active = true;
+		setMessages([]);
+		const refresh = async () => {
+			if (document.visibilityState === "hidden") return;
+			try {
+				const response = await fetch(endpoint, { credentials: "same-origin" });
+				const data = await response.json();
+				if (!response.ok) throw new Error(data.error || "Could not load team chat.");
+				if (active) {
+					setMessages(data.messages || []);
+					setError("");
+				}
+			} catch (problem) {
+				if (active) setError(problem.message);
+			}
+		};
+		refresh();
+		const timer = setInterval(refresh, 6e3);
+		return () => {
+			active = false;
+			clearInterval(timer);
+		};
+	}, [endpoint]);
+	(0, import_react.useEffect)(() => {
+		const container = scrollRef.current;
+		if (container) container.scrollTop = container.scrollHeight;
+	}, [messages.length]);
+	const send = async (event) => {
+		event.preventDefault();
+		const message = draft.trim();
+		if (!message || sending) return;
+		setSending(true);
+		setError("");
+		try {
+			const response = await fetch(endpoint, {
+				method: "POST",
+				credentials: "same-origin",
+				headers: { "content-type": "application/json" },
+				body: JSON.stringify({ message })
+			});
+			const data = await response.json();
+			if (!response.ok) throw new Error(data.error || "Could not send message.");
+			setMessages((current) => current.some((item) => item.id === data.message.id) ? current : [...current, data.message]);
+			setDraft("");
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setSending(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
+		className: "flex min-h-[420px] gap-0 overflow-hidden p-0",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex items-center gap-3 border-b px-4 py-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "grid size-9 place-items-center rounded-xl bg-primary/10 text-primary",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-4" })
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+					className: "text-sm font-semibold",
+					children: "Project team chat"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "text-xs text-muted-foreground",
+					children: "Founder and assigned employees"
+				})] })]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				ref: scrollRef,
+				className: "chat-scroll min-h-64 max-h-[50dvh] flex-1 space-y-4 overflow-y-auto px-4 py-5",
+				"aria-label": "Project team messages",
+				"aria-live": "polite",
+				children: messages.length ? messages.map((item) => {
+					const own = item.senderId === currentActor;
+					return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Message, {
+						align: own ? "end" : "start",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
+							className: "bg-secondary text-xs font-semibold text-secondary-foreground",
+							children: item.senderName?.slice(0, 2).toUpperCase() || "TM"
+						}) }) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
+							className: "max-w-[88%] sm:max-w-[75%]",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageHeader, {
+								className: own ? "justify-end" : "",
+								children: [
+									own ? "You" : item.senderName,
+									" · ",
+									new Date(item.at).toLocaleTimeString([], {
+										hour: "numeric",
+										minute: "2-digit"
+									})
+								]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
+								align: own ? "end" : "start",
+								variant: own ? void 0 : "secondary",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, {
+									className: "whitespace-pre-wrap",
+									children: item.text
+								})
+							})]
+						})]
+					}, item.id);
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex h-56 flex-col items-center justify-center text-center",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "mb-3 size-8 text-muted-foreground/50" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-sm font-medium",
+							children: "Start the team conversation"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-1 max-w-xs text-xs text-muted-foreground",
+							children: "Updates and questions shared here stay with this project team."
+						})
+					]
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+				onSubmit: send,
+				className: "flex items-end gap-2 border-t p-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+					value: draft,
+					onChange: (event) => setDraft(event.target.value),
+					rows: 1,
+					maxLength: 2e3,
+					placeholder: "Message your team…",
+					"aria-label": "Message your team",
+					className: "max-h-28 min-h-11 flex-1 resize-none"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					type: "submit",
+					size: "icon-lg",
+					"aria-label": "Send team message",
+					disabled: !draft.trim() || sending,
+					className: "size-11",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUp, { className: "size-5" })
+				})]
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "px-4 pb-3 text-xs text-destructive",
+				children: error
+			})
+		]
+	});
+}
+//#endregion
+//#region frontend/src/components/TaskThreadDrawer.jsx
+var statusColors = {
+	"Open": "bg-slate-100 text-slate-800 border-slate-200",
+	"In progress": "bg-blue-50 text-blue-700 border-blue-200",
+	"Blocked": "bg-amber-50 text-amber-800 border-amber-200",
+	"Completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
+	"Cancelled": "bg-red-50 text-red-700 border-red-200",
+	"todo": "bg-slate-100 text-slate-800 border-slate-200",
+	"in_progress": "bg-blue-50 text-blue-700 border-blue-200",
+	"review": "bg-amber-50 text-amber-800 border-amber-200",
+	"completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
+	"cancelled": "bg-red-50 text-red-700 border-red-200"
+};
+function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTaskUpdated, onOpenSourceQuery, currentActor = "Founder", isFounder = true, projectMembers = [] }) {
+	const [task, setTask] = (0, import_react.useState)(initialTask);
+	const [messages, setMessages] = (0, import_react.useState)([]);
+	const [commentText, setCommentText] = (0, import_react.useState)("");
+	const [attachmentUrl, setAttachmentUrl] = (0, import_react.useState)("");
+	const [showAttachmentInput, setShowAttachmentInput] = (0, import_react.useState)(false);
+	const [isEditing, setIsEditing] = (0, import_react.useState)(false);
+	const [loadingMessages, setLoadingMessages] = (0, import_react.useState)(false);
+	const [sendingMessage, setSendingMessage] = (0, import_react.useState)(false);
+	const [savingEdits, setSavingEdits] = (0, import_react.useState)(false);
+	const [error, setError] = (0, import_react.useState)("");
+	const messagesEndRef = (0, import_react.useRef)(null);
+	const [editTitle, setEditTitle] = (0, import_react.useState)("");
+	const [editDesc, setEditDesc] = (0, import_react.useState)("");
+	const [editStatus, setEditStatus] = (0, import_react.useState)("Open");
+	const [editDeadline, setEditDeadline] = (0, import_react.useState)("");
+	const [editAssigneeId, setEditAssigneeId] = (0, import_react.useState)("");
+	const [editStageId, setEditStageId] = (0, import_react.useState)("");
+	const namespace = isFounder ? "founder" : "employee";
+	(0, import_react.useEffect)(() => {
+		if (open && initialTask?.id) {
+			setTask(initialTask);
+			setEditTitle(initialTask.title || "");
+			setEditDesc(initialTask.description || "");
+			setEditStatus(initialTask.status || "Open");
+			setEditDeadline(initialTask.deadline || initialTask.dueDate || "");
+			setEditAssigneeId(initialTask.assigneeId || "");
+			setEditStageId(initialTask.stageId || "");
+			setIsEditing(false);
+			setError("");
+			loadMessages(initialTask.id);
+		}
+	}, [open, initialTask?.id]);
+	const loadMessages = async (taskId) => {
+		setLoadingMessages(true);
+		try {
+			const list = (await fetchTaskMessages(taskId, "", 100, namespace)).messages || [];
+			setMessages(list);
+			if (list.length > 0) markTaskRead(taskId, list[list.length - 1].id, namespace).catch(() => {});
+		} catch {
+			setMessages([]);
+		} finally {
+			setLoadingMessages(false);
+		}
+	};
+	(0, import_react.useEffect)(() => {
+		if (messagesEndRef.current) messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+	}, [messages.length]);
+	if (!task) return null;
+	const isClosed = task.status === "Completed" || task.status === "Cancelled";
+	const handleSendMessage = async (e) => {
+		e.preventDefault();
+		if (!commentText.trim() || sendingMessage || isClosed) return;
+		setSendingMessage(true);
+		setError("");
+		try {
+			const res = await sendTaskMessage(task.id, {
+				text: commentText.trim(),
+				attachmentUrl: attachmentUrl.trim() || void 0
+			}, namespace);
+			setCommentText("");
+			setAttachmentUrl("");
+			setShowAttachmentInput(false);
+			if (res.message) {
+				setMessages((prev) => [...prev, res.message]);
+				markTaskRead(task.id, res.message.id, namespace).catch(() => {});
+			} else await loadMessages(task.id);
+			if (onTaskUpdated) onTaskUpdated();
+		} catch (err) {
+			setError(err.message || "Failed to send message.");
+		} finally {
+			setSendingMessage(false);
+		}
+	};
+	const handleSaveEdits = async () => {
+		setSavingEdits(true);
+		setError("");
+		try {
+			const updates = {
+				title: editTitle.trim(),
+				description: editDesc.trim(),
+				status: editStatus,
+				deadline: editDeadline || void 0,
+				stageId: editStageId || void 0
+			};
+			if (isFounder) updates.assigneeId = editAssigneeId;
+			const updated = (await updateTask(task.id, updates, namespace)).task || {
+				...task,
+				...updates
+			};
+			setTask(updated);
+			setIsEditing(false);
+			if (onTaskUpdated) onTaskUpdated();
+		} catch (err) {
+			setError(err.message || "Failed to save task changes.");
+		} finally {
+			setSavingEdits(false);
+		}
+	};
+	const handleQuickStatus = async (newStatus) => {
+		setError("");
+		try {
+			const updated = (await updateTask(task.id, { status: newStatus }, namespace)).task || {
+				...task,
+				status: newStatus
+			};
+			setTask(updated);
+			setEditStatus(newStatus);
+			if (onTaskUpdated) onTaskUpdated();
+		} catch (err) {
+			setError(err.message || "Failed to update task status.");
+		}
+	};
+	const handleReopenTask = async () => {
+		await handleQuickStatus("Open");
+	};
+	const handleDelete = async () => {
+		if (!isFounder) return;
+		if (confirm("Are you sure you want to delete this task? Soft deletion preserves audit history.")) try {
+			await deleteTask(task.id);
+			onOpenChange(false);
+			if (onTaskUpdated) onTaskUpdated();
+		} catch (err) {
+			setError(err.message || "Failed to delete task.");
+		}
+	};
+	const getAssigneeLabel = (id) => {
+		if (!id) return "Unassigned";
+		if (id === "founder") return "Founder";
+		const found = projectMembers.find((m) => m.employeeId === id || m.id === id);
+		return found ? `${found.name} (${found.role || "Member"})` : id;
+	};
+	const currentStageName = project?.stages?.find((s) => s.id === task.stageId)?.name || task.stageName || "General";
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+		open,
+		onOpenChange,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
+			className: "max-h-[92dvh] w-full max-w-2xl overflow-hidden p-0 sm:rounded-2xl",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "border-b bg-card px-5 py-4",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-start justify-between gap-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "min-w-0 flex-1",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex flex-wrap items-center gap-2",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+										variant: "outline",
+										className: statusColors[task.status] || "bg-muted",
+										children: task.status
+									}),
+									currentStageName && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										className: "text-xs text-muted-foreground",
+										children: ["· ", currentStageName]
+									}),
+									task.sourceQueryId && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+										variant: "outline",
+										className: "border-amber-300 bg-amber-50 text-amber-900 text-[10px]",
+										children: "Telegram Query"
+									})
+								]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, {
+								className: "mt-2 text-lg font-semibold tracking-tight text-foreground",
+								children: task.title
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "flex items-center gap-1.5 shrink-0",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								variant: isEditing ? "secondary" : "outline",
+								size: "sm",
+								onClick: () => {
+									if (isEditing) handleSaveEdits();
+									else setIsEditing(true);
+								},
+								disabled: savingEdits,
+								children: [savingEdits ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1" }) : isEditing ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5 mr-1 text-emerald-600" }) : null, isEditing ? "Save" : "Edit"]
+							})
+						})]
+					})
+				}),
+				error && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mx-5 mt-3 flex items-center gap-2 rounded-xl border border-destructive/30 bg-destructive/10 px-3.5 py-2 text-xs text-destructive",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: error })]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "chat-scroll max-h-[calc(92dvh-200px)] space-y-4 overflow-y-auto p-5",
+					children: [isEditing ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "space-y-3.5 rounded-xl border bg-muted/20 p-4",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "grid gap-1.5 text-xs font-semibold",
+								children: ["Title", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									value: editTitle,
+									onChange: (e) => setEditTitle(e.target.value),
+									required: true
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "grid gap-1.5 text-xs font-semibold",
+								children: ["Description", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+									value: editDesc,
+									onChange: (e) => setEditDesc(e.target.value),
+									rows: 3
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "grid grid-cols-2 gap-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "grid gap-1.5 text-xs font-semibold",
+									children: ["Status", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+										value: editStatus,
+										onChange: (e) => setEditStatus(e.target.value),
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: "Open",
+												children: "Open"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: "In progress",
+												children: "In progress"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: "Blocked",
+												children: "Blocked"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: "Completed",
+												children: "Completed"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: "Cancelled",
+												children: "Cancelled"
+											})
+										]
+									})]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "grid gap-1.5 text-xs font-semibold",
+									children: ["Deadline", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+										type: "date",
+										value: editDeadline,
+										onChange: (e) => setEditDeadline(e.target.value)
+									})]
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "grid grid-cols-2 gap-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "grid gap-1.5 text-xs font-semibold",
+									children: [
+										"Assignee",
+										isFounder ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+											value: editAssigneeId,
+											onChange: (e) => setEditAssigneeId(e.target.value),
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "",
+													children: "Unassigned"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "founder",
+													children: "Founder"
+												}),
+												projectMembers.map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
+													value: m.employeeId || m.id,
+													children: [
+														m.name,
+														" (",
+														m.role || "Member",
+														")"
+													]
+												}, m.id || m.employeeId))
+											]
+										}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+											value: getAssigneeLabel(task.assigneeId),
+											disabled: true,
+											className: "bg-muted text-muted-foreground text-xs",
+											title: "Only the founder may change task assignments."
+										}),
+										!isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "text-[10px] text-muted-foreground",
+											children: "Only founder can change assignee"
+										})
+									]
+								}), project?.stages && project.stages.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "grid gap-1.5 text-xs font-semibold",
+									children: ["Stage", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
+										value: editStageId,
+										onChange: (e) => setEditStageId(e.target.value),
+										children: project.stages.map((st) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+											value: st.id,
+											children: st.name
+										}, st.id))
+									})]
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex justify-between items-center pt-2",
+								children: [isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+									type: "button",
+									variant: "ghost",
+									size: "sm",
+									className: "text-destructive hover:bg-destructive/10 text-xs",
+									onClick: handleDelete,
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trash, { className: "size-3.5 mr-1" }), " Delete Task"]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+									size: "sm",
+									onClick: handleSaveEdits,
+									disabled: savingEdits,
+									className: "ml-auto",
+									children: [savingEdits ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1" }) : null, "Save Changes"]
+								})]
+							})
+						]
+					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "grid grid-cols-2 gap-2 rounded-xl border bg-muted/30 p-3 sm:grid-cols-3",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "space-y-0.5",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "text-[11px] font-medium text-muted-foreground",
+										children: "Assignee"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+										className: "flex items-center gap-1.5 text-xs font-semibold truncate",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, { className: "size-3.5 text-muted-foreground shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "truncate",
+											children: getAssigneeLabel(task.assigneeId) || task.assigneeName || "Unassigned"
+										})]
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "space-y-0.5",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "text-[11px] font-medium text-muted-foreground",
+										children: "Deadline"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+										className: "flex items-center gap-1.5 text-xs font-semibold",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-3.5 text-muted-foreground shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: task.deadline || task.dueDate ? new Date(task.deadline || task.dueDate).toLocaleDateString(void 0, {
+											month: "short",
+											day: "numeric",
+											year: "numeric"
+										}) : "No deadline" })]
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "col-span-2 sm:col-span-1 space-y-0.5",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "text-[11px] font-medium text-muted-foreground",
+										children: "Quick Action"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { children: task.status !== "Completed" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										size: "icon-sm",
+										variant: "outline",
+										className: "h-7 px-2.5 text-xs text-emerald-700 hover:bg-emerald-50 font-semibold",
+										onClick: () => handleQuickStatus("Completed"),
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 mr-1" }), " Mark Done"]
+									}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+										size: "icon-sm",
+										variant: "outline",
+										className: "h-7 px-2.5 text-xs text-muted-foreground font-semibold",
+										onClick: () => handleQuickStatus("Open"),
+										children: "Reopen Task"
+									}) })]
+								})
+							]
+						}),
+						task.description && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed rounded-xl border bg-card p-3",
+							children: task.description
+						}),
+						task.sourceQueryId && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center justify-between rounded-xl border border-amber-200 bg-amber-50/70 p-3 text-xs text-amber-900",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center gap-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0 text-amber-700" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Converted from Telegram client query" })]
+							}), onOpenSourceQuery && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								variant: "outline",
+								size: "sm",
+								className: "h-7 text-xs border-amber-300 bg-white text-amber-900 hover:bg-amber-100/50",
+								onClick: () => onOpenSourceQuery(task.sourceQueryId),
+								children: ["View Query ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-3 ml-1" })]
+							})]
+						})
+					] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "border-t pt-4",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center justify-between pb-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h4", {
+								className: "flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 text-primary" }),
+									"Task Discussion Thread (",
+									messages.length,
+									")"
+								]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "ghost",
+								size: "icon-sm",
+								onClick: () => loadMessages(task.id),
+								disabled: loadingMessages,
+								"aria-label": "Refresh thread",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: `size-3.5 ${loadingMessages ? "animate-spin" : ""}` })
+							})]
+						}), loadingMessages && messages.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center justify-center py-8 text-xs text-muted-foreground gap-2",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-4 animate-spin text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Loading messages…" })]
+						}) : messages.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "space-y-2.5",
+							children: [messages.map((msg) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "rounded-xl border bg-card p-3 shadow-xs space-y-1.5",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "flex items-center justify-between text-xs",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "font-semibold text-primary",
+											children: msg.author || "Team member"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+											className: "text-[10px] text-muted-foreground",
+											children: [
+												new Date(msg.at).toLocaleDateString([], {
+													month: "short",
+													day: "numeric"
+												}),
+												" · ",
+												new Date(msg.at).toLocaleTimeString([], {
+													hour: "numeric",
+													minute: "2-digit"
+												})
+											]
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed",
+										children: msg.text
+									}),
+									msg.attachmentUrl && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+										href: msg.attachmentUrl,
+										target: "_blank",
+										rel: "noreferrer",
+										className: "inline-flex items-center gap-1.5 rounded-lg border bg-muted/40 px-2.5 py-1 text-xs text-primary hover:underline",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, { className: "size-3" }),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "truncate max-w-xs",
+												children: msg.attachmentUrl
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-2.5" })
+										]
+									})
+								]
+							}, msg.id)), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { ref: messagesEndRef })]
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "py-6 text-center text-xs text-muted-foreground",
+							children: "No discussion messages yet in this task thread."
+						})]
+					})]
+				}),
+				isClosed ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-center justify-between gap-3 border-t bg-amber-50/70 p-3 sm:px-5 text-xs text-amber-900",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						className: "flex items-center gap-1.5",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Lock, { className: "size-3.5 text-amber-700 shrink-0" }),
+							"This task is ",
+							task.status.toLowerCase(),
+							". Reopen it to send new messages."
+						]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						size: "sm",
+						variant: "outline",
+						className: "border-amber-300 bg-white",
+						onClick: handleReopenTask,
+						children: "Reopen Task"
+					})]
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+					onSubmit: handleSendMessage,
+					className: "space-y-2 border-t bg-muted/20 p-3 sm:px-5",
+					children: [showAttachmentInput && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center gap-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+							value: attachmentUrl,
+							onChange: (e) => setAttachmentUrl(e.target.value),
+							placeholder: "https://... attachment or document URL (HTTPS)",
+							className: "h-8 text-xs font-mono"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							type: "button",
+							variant: "ghost",
+							size: "sm",
+							className: "h-8 text-xs text-muted-foreground",
+							onClick: () => {
+								setAttachmentUrl("");
+								setShowAttachmentInput(false);
+							},
+							children: "Cancel"
+						})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-end gap-2",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								type: "button",
+								variant: "ghost",
+								size: "icon",
+								className: `size-9 shrink-0 ${showAttachmentInput ? "text-primary" : "text-muted-foreground"}`,
+								onClick: () => setShowAttachmentInput((v) => !v),
+								title: "Add attachment link",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, { className: "size-4" })
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+								value: commentText,
+								onChange: (e) => setCommentText(e.target.value),
+								rows: 1,
+								maxLength: 2e3,
+								placeholder: "Post team update or task comment…",
+								className: "min-h-9 max-h-24 flex-1 resize-none text-xs",
+								disabled: sendingMessage
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								type: "submit",
+								size: "icon",
+								disabled: !commentText.trim() || sendingMessage,
+								className: "size-9 shrink-0",
+								children: sendingMessage ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-4 animate-spin" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Send, { className: "size-4" })
+							})
+						]
+					})]
+				})
+			]
+		})
+	});
+}
+//#endregion
+//#region frontend/src/components/ClientQueryCard.jsx
+function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpenTask, stages = [], projectMembers = [], isFounder = true }) {
+	const [expanded, setExpanded] = (0, import_react.useState)(false);
+	const [internalCommentDraft, setInternalCommentDraft] = (0, import_react.useState)("");
+	const [responseDraft, setResponseDraft] = (0, import_react.useState)(query.response || "");
+	const [mode, setMode] = (0, import_react.useState)("discuss");
+	const [convertModalOpen, setConvertModalOpen] = (0, import_react.useState)(false);
+	const [rejectModalOpen, setRejectModalOpen] = (0, import_react.useState)(false);
+	const [rejectReason, setRejectReason] = (0, import_react.useState)("");
+	const [taskTitle, setTaskTitle] = (0, import_react.useState)(query.originalMessage || query.context || "Client query follow-up");
+	const [taskDesc, setTaskDesc] = (0, import_react.useState)(`Telegram client query from ${query.originalSenderName || "Client"}:\n"${query.originalMessage || ""}"`);
+	const [taskStageId, setTaskStageId] = (0, import_react.useState)(stages[0]?.id || "");
+	const [taskAssigneeId, setTaskAssigneeId] = (0, import_react.useState)("founder");
+	const [taskDeadline, setTaskDeadline] = (0, import_react.useState)("");
+	const [busyAction, setBusyAction] = (0, import_react.useState)("");
+	const [errorMessage, setErrorMessage] = (0, import_react.useState)("");
+	const [successMessage, setSuccessMessage] = (0, import_react.useState)("");
+	const namespace = isFounder ? "founder" : "employee";
+	const isDone = query.status === "Done";
+	const isPublished = query.status === "Published" || query.deliveryStatus === "Sent";
+	const isRejected = query.status === "Rejected" || query.decisionStatus === "Rejected";
+	const isApproved = query.status === "Approved" || query.decisionStatus === "Approved";
+	const hasLinkedTask = Boolean(query.taskId);
+	const deliveryStatus = query.deliveryStatus || (isPublished ? "Sent" : "");
+	const handleAddComment = async (e) => {
+		e.preventDefault();
+		if (!internalCommentDraft.trim() || busyAction) return;
+		setBusyAction("comment");
+		setErrorMessage("");
+		try {
+			await addDecisionComment(query.id, internalCommentDraft.trim(), namespace);
+			setInternalCommentDraft("");
+			if (onQueryChanged) onQueryChanged();
+		} catch (err) {
+			setErrorMessage(err.message || "Failed to post comment.");
+		} finally {
+			setBusyAction("");
+		}
+	};
+	const handleApprove = async () => {
+		if (!isFounder || busyAction) return;
+		setBusyAction("approve");
+		setErrorMessage("");
+		try {
+			await approveDecisionRequest(query.id);
+			setSuccessMessage("Query approved.");
+			setTimeout(() => setSuccessMessage(""), 3e3);
+			if (onQueryChanged) onQueryChanged();
+		} catch (err) {
+			setErrorMessage(err.message || "Failed to approve query.");
+		} finally {
+			setBusyAction("");
+		}
+	};
+	const handleReject = async (e) => {
+		e.preventDefault();
+		if (!isFounder || !rejectReason.trim() || busyAction) return;
+		setBusyAction("reject");
+		setErrorMessage("");
+		try {
+			await rejectDecisionRequest(query.id, rejectReason.trim());
+			setRejectModalOpen(false);
+			setRejectReason("");
+			setSuccessMessage("Query marked as rejected.");
+			setTimeout(() => setSuccessMessage(""), 3e3);
+			if (onQueryChanged) onQueryChanged();
+		} catch (err) {
+			setErrorMessage(err.message || "Failed to reject query.");
+		} finally {
+			setBusyAction("");
+		}
+	};
+	const handlePublish = async (isRetry = false) => {
+		if (!isFounder || busyAction) return;
+		const textToPublish = responseDraft.trim();
+		if (!textToPublish) {
+			setErrorMessage("Please enter the response message to send to Telegram.");
+			return;
+		}
+		setBusyAction("publish");
+		setErrorMessage("");
+		try {
+			const idempotencyKey = generateIdempotencyKey(`pub-${query.id}`);
+			await publishDecisionReply(query.id, {
+				response: textToPublish,
+				idempotencyKey
+			});
+			setSuccessMessage("Reply published to Telegram group successfully!");
+			setTimeout(() => setSuccessMessage(""), 4e3);
+			if (onQueryChanged) onQueryChanged();
+		} catch (err) {
+			setErrorMessage(err.message || "Failed to publish reply to Telegram.");
+		} finally {
+			setBusyAction("");
+		}
+	};
+	const handleConvert = async (e) => {
+		e.preventDefault();
+		if (!isFounder || !taskTitle.trim() || busyAction) return;
+		setBusyAction("convert");
+		setErrorMessage("");
+		try {
+			const res = await convertDecisionRequest(query.id, {
+				title: taskTitle.trim(),
+				description: taskDesc.trim(),
+				stageId: taskStageId || void 0,
+				assigneeId: taskAssigneeId || void 0,
+				deadline: taskDeadline || void 0,
+				status: "Open"
+			});
+			setConvertModalOpen(false);
+			setSuccessMessage("Task created from client query!");
+			setTimeout(() => setSuccessMessage(""), 3e3);
+			if (onTaskCreated && res.task) onTaskCreated(res.task);
+			if (onQueryChanged) onQueryChanged();
+		} catch (err) {
+			setErrorMessage(err.message || "Failed to convert query to task.");
+		} finally {
+			setBusyAction("");
+		}
+	};
+	let attachments = [];
+	try {
+		if (Array.isArray(query.attachments)) attachments = query.attachments;
+		else if (query.AttachmentsJSON) attachments = JSON.parse(query.AttachmentsJSON);
+	} catch {
+		attachments = [];
+	}
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: `overflow-hidden rounded-2xl border bg-card transition-all ${isPublished ? "border-emerald-300/80 shadow-2xs" : isRejected ? "border-destructive/30 bg-card/60" : isDone ? "border-muted" : "border-amber-300/80 shadow-xs"}`,
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-wrap items-center justify-between gap-2 border-b bg-muted/30 px-4 py-2.5 text-xs",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-center gap-2",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "grid size-6 place-items-center rounded-full bg-blue-100 text-blue-800 text-[10px] font-bold",
+							children: "TG"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "font-semibold text-foreground",
+							children: query.originalSenderName || "Client"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "text-muted-foreground",
+							children: "via Telegram"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "text-muted-foreground",
+							children: "·"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "text-muted-foreground",
+							children: [
+								new Date(query.createdAt).toLocaleDateString([], {
+									month: "short",
+									day: "numeric"
+								}),
+								" · ",
+								new Date(query.createdAt).toLocaleTimeString([], {
+									hour: "numeric",
+									minute: "2-digit"
+								})
+							]
+						})
+					]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex flex-wrap items-center gap-1.5",
+					children: [
+						hasLinkedTask && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+							variant: "outline",
+							className: "border-indigo-300 bg-indigo-50 text-indigo-800 text-[10px]",
+							children: "Task Linked"
+						}),
+						deliveryStatus === "Sent" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
+							variant: "outline",
+							className: "border-emerald-300 bg-emerald-50 text-emerald-800 text-[10px]",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3 mr-1" }), " Published to Telegram"]
+						}),
+						deliveryStatus === "Failed" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
+							variant: "outline",
+							className: "border-destructive/40 bg-destructive/10 text-destructive text-[10px]",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleX, { className: "size-3 mr-1" }), " Delivery Failed"]
+						}),
+						deliveryStatus === "Unknown" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
+							variant: "outline",
+							className: "border-amber-400 bg-amber-50 text-amber-900 text-[10px]",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { className: "size-3 mr-1" }), " Delivery Unknown"]
+						}),
+						deliveryStatus === "Sending" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
+							variant: "outline",
+							className: "border-blue-300 bg-blue-50 text-blue-800 text-[10px]",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3 mr-1 animate-spin" }), " Sending…"]
+						}),
+						isRejected && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+							variant: "outline",
+							className: "border-destructive/40 bg-destructive/10 text-destructive text-[10px]",
+							children: "Rejected"
+						}),
+						isApproved && !isPublished && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+							variant: "outline",
+							className: "border-emerald-300 bg-emerald-50 text-emerald-800 text-[10px]",
+							children: "Approved"
+						}),
+						!isPublished && !isRejected && !isApproved && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
+							variant: "outline",
+							className: "border-amber-300 bg-amber-50 text-amber-900 text-[10px]",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock, { className: "size-3 mr-1" }), " Needs Action"]
+						})
+					]
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "p-4 sm:p-5 space-y-3",
+				children: [
+					errorMessage && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center gap-2 rounded-xl border border-destructive/30 bg-destructive/10 p-2.5 text-xs text-destructive",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: errorMessage })]
+					}),
+					successMessage && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center gap-2 rounded-xl border border-emerald-300 bg-emerald-50 p-2.5 text-xs text-emerald-800",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-4 shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: successMessage })]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "space-y-2",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-sm font-medium leading-relaxed text-foreground whitespace-pre-wrap",
+								children: query.originalMessage || "Client sent an attachment or query requiring project team input."
+							}),
+							query.context && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "rounded-xl border border-amber-200/70 bg-amber-50/50 p-2.5 text-xs text-amber-900",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "font-semibold",
+									children: "Context: "
+								}), query.context]
+							}),
+							query.reviewNote && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "rounded-xl border border-destructive/20 bg-destructive/5 p-2.5 text-xs text-destructive",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "font-semibold",
+									children: "Rejection reason: "
+								}), query.reviewNote]
+							}),
+							attachments.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "mt-3 space-y-3",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "flex flex-wrap gap-3",
+									children: attachments.map((att, idx) => {
+										const mediaUrl = getAttachmentUrl(query.id, idx, namespace);
+										const isPhoto = att.type === "Photo" || /\.(png|jpe?g|webp|gif)$/i.test(att.fileName || "");
+										return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "space-y-1.5",
+											children: isPhoto ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "group relative overflow-hidden rounded-xl border bg-muted/20",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+													src: mediaUrl,
+													alt: att.fileName || `Attachment ${idx + 1}`,
+													className: "max-h-56 max-w-sm rounded-xl object-contain transition-transform group-hover:scale-102",
+													onError: (e) => {
+														e.currentTarget.style.display = "none";
+													}
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+													href: mediaUrl,
+													target: "_blank",
+													rel: "noreferrer",
+													className: "mt-1 inline-flex items-center gap-1 text-[11px] text-primary hover:underline px-1",
+													children: [
+														/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { className: "size-3" }),
+														/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: att.fileName || `Photo ${idx + 1}` }),
+														/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-2.5" })
+													]
+												})]
+											}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+												href: mediaUrl,
+												target: "_blank",
+												rel: "noreferrer",
+												className: "inline-flex items-center gap-1.5 rounded-lg border bg-muted/50 px-3 py-1.5 text-xs text-primary transition-colors hover:bg-muted",
+												children: [
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { className: "size-3.5" }),
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+														className: "truncate max-w-[200px]",
+														children: att.fileName || att.type || `Document ${idx + 1}`
+													}),
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-3" })
+												]
+											})
+										}, idx);
+									})
+								})
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-4 flex flex-wrap items-center justify-between gap-2 border-t pt-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex flex-wrap items-center gap-2",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								variant: "outline",
+								size: "sm",
+								className: "text-xs",
+								onClick: () => setExpanded(!expanded),
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 mr-1 text-primary" }),
+									"Discuss in Thread (",
+									query.comments?.length || 0,
+									")",
+									expanded ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronUp, { className: "size-3.5 ml-1" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, { className: "size-3.5 ml-1" })
+								]
+							}), hasLinkedTask && onOpenTask ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								variant: "outline",
+								size: "sm",
+								className: "text-xs text-indigo-700 border-indigo-200 hover:bg-indigo-50",
+								onClick: () => onOpenTask(query.taskId),
+								children: ["View Linked Task ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-3 ml-1" })]
+							}) : isFounder && !isRejected && !isDone && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								variant: "outline",
+								size: "sm",
+								className: "text-xs text-indigo-700 hover:bg-indigo-50",
+								onClick: () => setConvertModalOpen(true),
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-3.5 mr-1" }), " Convert to Task"]
+							})]
+						}), isFounder && !isDone && !isPublished && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex flex-wrap items-center gap-1.5",
+							children: [!isApproved && !isRejected && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								variant: "outline",
+								size: "sm",
+								className: "text-xs text-emerald-700 border-emerald-300 hover:bg-emerald-50",
+								disabled: busyAction === "approve",
+								onClick: handleApprove,
+								children: [busyAction === "approve" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3 animate-spin mr-1" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5 mr-1" }), "Approve"]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "outline",
+								size: "sm",
+								className: "text-xs text-destructive border-destructive/30 hover:bg-destructive/10",
+								onClick: () => setRejectModalOpen(true),
+								children: "Reject…"
+							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								size: "sm",
+								className: "text-xs",
+								onClick: () => {
+									setExpanded(true);
+									setMode("finalize");
+								},
+								children: ["Finalize & Reply ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-3.5 ml-1" })]
+							})]
+						})]
+					}),
+					expanded && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-4 space-y-4 rounded-xl border bg-muted/20 p-4",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center justify-between border-b pb-3 text-xs",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "font-semibold uppercase tracking-wider text-muted-foreground",
+									children: "Workflow: Discuss Internally → Finalize & Send"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex gap-1.5",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+										type: "button",
+										onClick: () => setMode("discuss"),
+										className: `rounded-full px-3 py-1 text-xs font-medium transition-colors ${mode === "discuss" ? "bg-amber-100 text-amber-900 font-semibold" : "text-muted-foreground hover:bg-muted"}`,
+										children: "Internal Discussion"
+									}), isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+										type: "button",
+										onClick: () => setMode("finalize"),
+										className: `rounded-full px-3 py-1 text-xs font-medium transition-colors ${mode === "finalize" ? "bg-primary text-primary-foreground font-semibold" : "text-muted-foreground hover:bg-muted"}`,
+										children: "Final Reply (Telegram)"
+									})]
+								})]
+							}),
+							mode === "discuss" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "space-y-3",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+										className: "text-[11px] text-muted-foreground flex items-center gap-1.5",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, { className: "size-3.5 text-primary shrink-0" }), "Internal discussion is private to your team and is never sent to Telegram."]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										className: "space-y-2",
+										children: query.comments && query.comments.length > 0 ? query.comments.map((c, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "rounded-lg border bg-card p-3 text-xs shadow-xs space-y-1",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "flex items-center justify-between",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "font-semibold text-primary",
+													children: c.author || "Team member"
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+													className: "text-[10px] text-muted-foreground",
+													children: [
+														new Date(c.at).toLocaleDateString([], {
+															month: "short",
+															day: "numeric"
+														}),
+														" · ",
+														new Date(c.at).toLocaleTimeString([], {
+															hour: "numeric",
+															minute: "2-digit"
+														})
+													]
+												})]
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+												className: "text-foreground/90 whitespace-pre-wrap",
+												children: c.text
+											})]
+										}, c.id || i)) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "py-2 text-center text-xs text-muted-foreground",
+											children: "No internal notes recorded yet. Add your thoughts or review before finalizing."
+										})
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+										onSubmit: handleAddComment,
+										className: "flex gap-2 pt-2",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+											value: internalCommentDraft,
+											onChange: (e) => setInternalCommentDraft(e.target.value),
+											placeholder: "Add private team note or internal review…",
+											className: "h-9 text-xs",
+											disabled: busyAction === "comment"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+											type: "submit",
+											size: "sm",
+											disabled: !internalCommentDraft.trim() || busyAction === "comment",
+											children: [busyAction === "comment" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3 animate-spin mr-1" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Send, { className: "size-3.5 mr-1" }), "Note"]
+										})]
+									})
+								]
+							}),
+							mode === "finalize" && isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "space-y-3",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "rounded-lg border border-primary/20 bg-primary/5 p-3 text-xs text-primary-foreground",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "font-semibold text-primary",
+											children: "Public Telegram Reply"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "text-[11px] text-muted-foreground",
+											children: "This message will be sent back directly to the project Telegram group in reply to the client."
+										})]
+									}),
+									deliveryStatus === "Unknown" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "rounded-xl border border-amber-300 bg-amber-50 p-3 text-xs text-amber-900 space-y-1",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+											className: "font-bold flex items-center gap-1.5",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { className: "size-4 text-amber-700" }), "Delivery Status Unknown"]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: ["The previous attempt interrupted or timed out. Telegram delivery is not guaranteed to be idempotent.", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: " Check the Telegram group manually before sending again; do not retry automatically." })] })]
+									}),
+									deliveryStatus === "Failed" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "rounded-xl border border-destructive/30 bg-destructive/10 p-3 text-xs text-destructive space-y-1",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "font-bold",
+											children: "Telegram Send Failed"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: query.deliveryError || "The message was rejected by Telegram. You may retry." })]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+										value: responseDraft,
+										onChange: (e) => setResponseDraft(e.target.value),
+										rows: 3,
+										maxLength: 3e3,
+										placeholder: "Type the official answer / resolution for the client here…",
+										className: "text-xs",
+										disabled: busyAction === "publish" || isPublished
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "flex flex-wrap items-center justify-between gap-2 pt-1",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "text-[11px] text-muted-foreground",
+											children: isPublished ? "Reply has been sent." : "One successful reply per query."
+										}), !isPublished && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+											size: "sm",
+											className: "text-xs bg-primary",
+											disabled: busyAction === "publish" || !responseDraft.trim() || deliveryStatus === "Unknown",
+											onClick: () => handlePublish(deliveryStatus === "Failed"),
+											children: busyAction === "publish" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 mr-1.5 animate-spin" }), "Publishing to Telegram…"] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Send, { className: "size-3.5 mr-1.5" }), deliveryStatus === "Failed" ? "Retry Publish" : "Publish Reply to Telegram"] })
+										})]
+									})
+								]
+							})
+						]
+					})
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				open: convertModalOpen,
+				onOpenChange: setConvertModalOpen,
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Convert Client Query to Task" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Create an actionable internal task in this project linked to this client inquiry." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+					onSubmit: handleConvert,
+					className: "space-y-4",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-1.5 text-xs font-semibold",
+							children: ["Task Title", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								value: taskTitle,
+								onChange: (e) => setTaskTitle(e.target.value),
+								required: true
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-1.5 text-xs font-semibold",
+							children: ["Description", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+								value: taskDesc,
+								onChange: (e) => setTaskDesc(e.target.value),
+								rows: 3
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "grid grid-cols-2 gap-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "grid gap-1.5 text-xs font-semibold",
+								children: ["Project Stage", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+									value: taskStageId,
+									onChange: (e) => setTaskStageId(e.target.value),
+									className: "w-full",
+									children: [stages.map((st) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+										value: st.id,
+										children: st.name
+									}, st.id)), !stages.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+										value: "",
+										children: "General"
+									})]
+								})]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "grid gap-1.5 text-xs font-semibold",
+								children: ["Assignee", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+									value: taskAssigneeId,
+									onChange: (e) => setTaskAssigneeId(e.target.value),
+									className: "w-full",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+										value: "founder",
+										children: "Founder"
+									}), projectMembers.map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
+										value: m.employeeId || m.id,
+										children: [
+											m.name,
+											" (",
+											m.role || "Member",
+											")"
+										]
+									}, m.id || m.employeeId))]
+								})]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-1.5 text-xs font-semibold",
+							children: ["Deadline", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								type: "date",
+								value: taskDeadline,
+								onChange: (e) => setTaskDeadline(e.target.value)
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex justify-end gap-2 pt-2",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								type: "button",
+								variant: "outline",
+								onClick: () => setConvertModalOpen(false),
+								children: "Cancel"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								type: "submit",
+								disabled: busyAction === "convert",
+								children: [busyAction === "convert" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1.5" }) : null, "Create Project Task"]
+							})]
+						})
+					]
+				})] })
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				open: rejectModalOpen,
+				onOpenChange: setRejectModalOpen,
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Reject Client Request" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Provide an internal reason for rejecting this client request (e.g. Out of scope, Duplicate)." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+					onSubmit: handleReject,
+					className: "space-y-4",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "grid gap-1.5 text-xs font-semibold",
+						children: ["Reason", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+							value: rejectReason,
+							onChange: (e) => setRejectReason(e.target.value),
+							placeholder: "e.g. Outside contracted scope",
+							required: true
+						})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex justify-end gap-2 pt-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							type: "button",
+							variant: "outline",
+							onClick: () => setRejectModalOpen(false),
+							children: "Cancel"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+							type: "submit",
+							variant: "destructive",
+							disabled: busyAction === "reject",
+							children: [busyAction === "reject" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1.5" }) : null, "Confirm Rejection"]
+						})]
+					})]
+				})] })
+			})
+		]
+	});
+}
+//#endregion
+//#region frontend/src/components/WorkflowTemplateModal.jsx
+function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate, clientAssigned = true, projectMembers = [], onApplied }) {
+	const [workflows, setWorkflows] = (0, import_react.useState)([]);
+	const [selectedWorkflowId, setSelectedWorkflowId] = (0, import_react.useState)("");
+	const [startDate, setStartDate] = (0, import_react.useState)(projectStartDate || (/* @__PURE__ */ new Date()).toISOString().slice(0, 10));
+	const [assigneeId, setAssigneeId] = (0, import_react.useState)("founder");
+	const [loading, setLoading] = (0, import_react.useState)(false);
+	const [submitting, setSubmitting] = (0, import_react.useState)(false);
+	const [error, setError] = (0, import_react.useState)("");
+	(0, import_react.useEffect)(() => {
+		if (open) {
+			setError("");
+			setLoading(true);
+			fetchWorkflows("founder").then((list) => {
+				setWorkflows(list || []);
+				if (list && list.length > 0 && !selectedWorkflowId) setSelectedWorkflowId(list[0].id);
+			}).catch((err) => {
+				setError(err.message || "Failed to load workflow templates.");
+			}).finally(() => setLoading(false));
+		}
+	}, [open]);
+	(0, import_react.useEffect)(() => {
+		if (projectStartDate) setStartDate(projectStartDate);
+	}, [projectStartDate]);
+	const selectedTemplate = workflows.find((t) => t.id === selectedWorkflowId) || workflows[0] || null;
+	const handleStartWorkflow = async () => {
+		if (!projectId || !selectedTemplate) return;
+		if (!clientAssigned) {
+			setError("You must assign a client to this project before starting a workflow.");
+			return;
+		}
+		setSubmitting(true);
+		setError("");
+		try {
+			const res = await startWorkflow(projectId, {
+				workflowId: selectedTemplate.id,
+				startDate: startDate || void 0,
+				assigneeId: assigneeId || void 0
+			});
+			onOpenChange(false);
+			if (onApplied) onApplied(res.project);
+		} catch (err) {
+			setError(err.message || "Failed to start workflow.");
+		} finally {
+			setSubmitting(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+		open,
+		onOpenChange,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
+			className: "max-h-[92dvh] w-full max-w-3xl overflow-hidden p-0 sm:rounded-2xl",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "border-b bg-card px-6 py-4",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center gap-2.5",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "grid size-9 place-items-center rounded-xl bg-primary/10 text-primary",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { className: "size-5" })
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, {
+							className: "text-lg font-semibold tracking-tight",
+							children: "Select Project Workflow"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, {
+							className: "text-xs",
+							children: "Pick a workflow template to automatically generate pipeline stages, deadlines, and internal checkpoint tasks."
+						})] })]
+					})
+				}),
+				error && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mx-6 mt-3 flex items-center gap-2 rounded-xl border border-destructive/30 bg-destructive/10 px-3.5 py-2.5 text-xs text-destructive",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: error })]
+				}),
+				!clientAssigned && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mx-6 mt-3 flex items-center gap-2 rounded-xl border border-amber-300 bg-amber-50 px-3.5 py-2.5 text-xs text-amber-900",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0 text-amber-700" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Client assignment required: Assign a client to unlock starting this workflow." })]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "grid grid-cols-1 md:grid-cols-[270px_1fr] max-h-[calc(92dvh-170px)] overflow-hidden",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "chat-scroll overflow-y-auto border-r bg-muted/20 p-3 space-y-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "px-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground",
+							children: [
+								"Available Templates (",
+								workflows.length,
+								")"
+							]
+						}), loading ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex flex-col items-center justify-center py-10 gap-2 text-xs text-muted-foreground",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-5 animate-spin text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Loading templates…" })]
+						}) : workflows.map((tmpl) => {
+							const active = tmpl.id === selectedWorkflowId;
+							const totalDays = tmpl.stages?.reduce((acc, s) => acc + (s.durationDays || 0), 0) || tmpl.estimatedDays || 6;
+							return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								type: "button",
+								onClick: () => setSelectedWorkflowId(tmpl.id),
+								className: `w-full rounded-xl p-3 text-left transition-all ${active ? "bg-card border-primary/50 shadow-xs ring-1 ring-primary/20 border" : "hover:bg-card/70 border border-transparent"}`,
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center justify-between gap-1",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "text-xs font-semibold text-foreground truncate",
+										children: tmpl.name
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+										variant: "outline",
+										className: "text-[10px] shrink-0 font-mono",
+										children: tmpl.id
+									})]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "mt-1 flex items-center gap-2 text-[11px] text-muted-foreground",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock, { className: "size-3" }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+											"~",
+											totalDays,
+											" days"
+										] }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "·" }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [tmpl.stages?.length || 0, " stages"] })
+									]
+								})]
+							}, tmpl.id);
+						})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "chat-scroll overflow-y-auto p-5 space-y-5",
+						children: selectedTemplate ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center justify-between gap-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+									className: "text-base font-semibold",
+									children: selectedTemplate.name
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
+									variant: "secondary",
+									className: "text-xs",
+									children: [selectedTemplate.category || "Standard", " Workflow"]
+								})]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-1 text-xs text-muted-foreground leading-relaxed",
+								children: selectedTemplate.description || `Structured pilot workflow pipeline generating sequential project stages and starter tasks.`
+							})] }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "rounded-xl border bg-muted/30 p-3.5 space-y-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "text-[11px] font-semibold uppercase tracking-wider text-muted-foreground",
+									children: "Workflow Configuration"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "grid grid-cols-1 sm:grid-cols-2 gap-3",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+										className: "grid gap-1.5 text-xs font-medium",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+											className: "flex items-center gap-1.5 text-muted-foreground",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-3.5 text-primary" }), " Start Date"]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+											type: "date",
+											value: startDate,
+											onChange: (e) => setStartDate(e.target.value),
+											className: "h-9 text-xs"
+										})]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+										className: "grid gap-1.5 text-xs font-medium",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+											className: "flex items-center gap-1.5 text-muted-foreground",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, { className: "size-3.5 text-primary" }), " Starter Tasks Assignee"]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+											value: assigneeId,
+											onChange: (e) => setAssigneeId(e.target.value),
+											className: "h-9 text-xs",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: "founder",
+												children: "Founder (Default)"
+											}), projectMembers.map((member) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
+												value: member.employeeId || member.id,
+												children: [
+													member.name,
+													" (",
+													member.role || member.designation || "Member",
+													")"
+												]
+											}, member.id || member.employeeId))]
+										})]
+									})]
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h4", {
+								className: "text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2",
+								children: [
+									"Pipeline Stages (",
+									selectedTemplate.stages?.length || 0,
+									")"
+								]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "space-y-2",
+								children: (selectedTemplate.stages || []).map((stage, idx) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "rounded-xl border bg-card p-3 text-xs shadow-2xs space-y-2",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "flex items-center justify-between",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "flex items-center gap-2 font-semibold",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "grid size-5 place-items-center rounded-full bg-primary/10 text-primary text-[10px] font-bold",
+												children: idx + 1
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: stage.name })]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+											className: "text-muted-foreground font-mono",
+											children: [
+												stage.durationDays,
+												" day",
+												stage.durationDays === 1 ? "" : "s"
+											]
+										})]
+									}), stage.tasks && stage.tasks.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										className: "pl-7 space-y-1",
+										children: stage.tasks.map((taskTitle, tIdx) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "flex items-center gap-2 text-muted-foreground text-[11px]",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3 text-emerald-600 shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: taskTitle })]
+										}, tIdx))
+									})]
+								}, stage.id || idx))
+							})] })
+						] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "py-12 text-center text-xs text-muted-foreground",
+							children: "No template selected."
+						})
+					})]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-center justify-between border-t bg-muted/20 px-6 py-3",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs text-muted-foreground",
+						children: "Starting a workflow locks the template and creates active stages and tasks."
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex gap-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							onClick: () => onOpenChange(false),
+							disabled: submitting,
+							children: "Cancel"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							onClick: handleStartWorkflow,
+							disabled: submitting || !clientAssigned || !selectedTemplate,
+							children: submitting ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 mr-1.5 animate-spin" }), "Starting Workflow…"] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3.5 mr-1.5" }),
+								"Start ",
+								selectedTemplate?.name || "Workflow"
+							] })
+						})]
+					})]
+				})
+			]
+		})
+	});
+}
+//#endregion
+//#region frontend/src/lib/projectWorkflowStore.js
+var STORAGE_PREFIX = "studio_iksha_workflow_v1";
+function loadStorage(key, defaultValue) {
+	try {
+		const raw = localStorage.getItem(`${STORAGE_PREFIX}_${key}`);
+		return raw ? JSON.parse(raw) : defaultValue;
+	} catch {
+		return defaultValue;
+	}
+}
+function saveStorage(key, value) {
+	try {
+		localStorage.setItem(`${STORAGE_PREFIX}_${key}`, JSON.stringify(value));
+	} catch (e) {
+		console.error("Storage error:", e);
+	}
+}
+function getProjectWorkflow(projectId, project = null) {
+	if (!projectId) return null;
+	const data = loadStorage(`project_${projectId}`, null);
+	if (data) {
+		if (project?.clientName && project?.clientName !== "Unassigned Client" && !data.clientAssigned) {
+			data.clientAssigned = true;
+			saveStorage(`project_${projectId}`, data);
+		}
+		return data;
+	}
+	const initial = {
+		projectId,
+		templateId: null,
+		templateName: null,
+		clientAssigned: Boolean(project?.clientName && project?.clientName !== "Unassigned Client" && !project?.telegramSetupPending),
+		stages: [],
+		tasks: [],
+		drive: {
+			folderUrl: "",
+			links: [
+				{
+					id: "drive-drawings",
+					name: "📐 Architectural CAD & 2D Drawings",
+					category: "Drawings",
+					url: ""
+				},
+				{
+					id: "drive-3d",
+					name: "🎨 3D Renders & Visual Presentations",
+					category: "Renders",
+					url: ""
+				},
+				{
+					id: "drive-boq",
+					name: "📑 Bill of Quantities & Material BoQ",
+					category: "Documents",
+					url: ""
+				},
+				{
+					id: "drive-site",
+					name: "📸 Site Progress Photos & Inspections",
+					category: "Site Photos",
+					url: ""
+				}
+			]
+		},
+		memberAccess: {},
+		createdAt: (/* @__PURE__ */ new Date()).toISOString()
+	};
+	saveStorage(`project_${projectId}`, initial);
+	return initial;
+}
+function updateProjectWorkflow(projectId, updates) {
+	const current = getProjectWorkflow(projectId);
+	if (!current) return null;
+	const updated = {
+		...current,
+		...updates,
+		updatedAt: (/* @__PURE__ */ new Date()).toISOString()
+	};
+	saveStorage(`project_${projectId}`, updated);
+	return updated;
+}
+function computeStageSchedule(startDateStr, stages = []) {
+	if (!stages || !stages.length) return [];
+	const base = startDateStr ? /* @__PURE__ */ new Date(`${startDateStr}T00:00:00`) : /* @__PURE__ */ new Date();
+	let currentOffsetDays = 0;
+	return stages.map((stage) => {
+		const start = new Date(base.getTime() + currentOffsetDays * 864e5);
+		const end = new Date(start.getTime() + (stage.durationDays || 1) * 864e5);
+		currentOffsetDays += stage.durationDays || 1;
+		return {
+			...stage,
+			startDate: start.toISOString().slice(0, 10),
+			endDate: end.toISOString().slice(0, 10),
+			startLabel: start.toLocaleDateString(void 0, {
+				month: "short",
+				day: "numeric"
+			}),
+			endLabel: end.toLocaleDateString(void 0, {
+				month: "short",
+				day: "numeric"
+			})
+		};
+	});
+}
+function updateDriveSettings(projectId, folderUrl, links = null) {
+	const current = getProjectWorkflow(projectId);
+	if (!current) return null;
+	return updateProjectWorkflow(projectId, { drive: {
+		...current.drive,
+		folderUrl: folderUrl !== void 0 ? folderUrl : current.drive?.folderUrl || "",
+		links: links || current.drive?.links || []
+	} });
+}
+function addDriveLink(projectId, name, category, url) {
+	const current = getProjectWorkflow(projectId);
+	if (!current) return null;
+	const newLink = {
+		id: `drive-${Date.now()}`,
+		name: name.trim(),
+		category: category || "General",
+		url: url.trim(),
+		addedAt: (/* @__PURE__ */ new Date()).toISOString()
+	};
+	const links = [...current.drive?.links || [], newLink];
+	return updateDriveSettings(projectId, current.drive?.folderUrl, links);
+}
+//#endregion
+//#region frontend/src/components/ProjectDetailView.jsx
+var statusBadgeStyles$1 = {
+	"On track": "border-emerald-200 bg-emerald-50 text-emerald-800",
+	"Active": "border-emerald-200 bg-emerald-50 text-emerald-800",
+	"At risk": "border-amber-200 bg-amber-50 text-amber-800",
+	"On hold": "border-slate-200 bg-slate-100 text-slate-700",
+	"Completed": "border-blue-200 bg-blue-50 text-blue-800",
+	"Setup": "border-purple-200 bg-purple-50 text-purple-800"
+};
+var taskStatusColors$1 = {
+	"Open": "bg-slate-100 text-slate-800 border-slate-200",
+	"In progress": "bg-blue-50 text-blue-700 border-blue-200",
+	"Blocked": "bg-amber-50 text-amber-800 border-amber-200",
+	"Completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
+	"Cancelled": "bg-red-50 text-red-700 border-red-200",
+	"todo": "bg-slate-100 text-slate-800 border-slate-200",
+	"in_progress": "bg-blue-50 text-blue-700 border-blue-200",
+	"review": "bg-amber-50 text-amber-800 border-amber-200",
+	"completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
+	"cancelled": "bg-red-50 text-red-700 border-red-200"
+};
+function ProjectDetailView({ project, allProjects = [], employees = [], decisionRequests = [], onBackToDirectory, onProjectUpdated, onOpenInviteModal, onOpenTrashModal, onOpenFactsModal, onOpenMemberModal }) {
+	const [localWorkflow, setLocalWorkflow] = (0, import_react.useState)(() => getProjectWorkflow(project?.id, project));
+	const [tasks, setTasks] = (0, import_react.useState)([]);
+	const [loadingTasks, setLoadingTasks] = (0, import_react.useState)(false);
+	const [activeTab, setActiveTab] = (0, import_react.useState)("tasks");
+	const [templateModalOpen, setTemplateModalOpen] = (0, import_react.useState)(false);
+	const [selectedTask, setSelectedTask] = (0, import_react.useState)(null);
+	const [taskDrawerOpen, setTaskDrawerOpen] = (0, import_react.useState)(false);
+	const [createTaskOpen, setCreateTaskOpen] = (0, import_react.useState)(false);
+	const [addDriveLinkOpen, setAddDriveLinkOpen] = (0, import_react.useState)(false);
+	const [assignClientModalOpen, setAssignClientModalOpen] = (0, import_react.useState)(false);
+	const [assigningClient, setAssigningClient] = (0, import_react.useState)(false);
+	const [creatingTask, setCreatingTask] = (0, import_react.useState)(false);
+	const [clientNameInput, setClientNameInput] = (0, import_react.useState)(project?.clientName || "");
+	const [clientTelegramIdInput, setClientTelegramIdInput] = (0, import_react.useState)(project?.clientTelegramId || "");
+	const [taskStatusFilter, setTaskStatusFilter] = (0, import_react.useState)("all");
+	const [taskStageFilter, setTaskStageFilter] = (0, import_react.useState)("all");
+	const [taskSearch, setTaskSearch] = (0, import_react.useState)("");
+	const [driveFolderInput, setDriveFolderInput] = (0, import_react.useState)(localWorkflow?.drive?.folderUrl || "");
+	const [isEditingDriveFolder, setIsEditingDriveFolder] = (0, import_react.useState)(false);
+	const [newLinkName, setNewLinkName] = (0, import_react.useState)("");
+	const [newLinkCategory, setNewLinkCategory] = (0, import_react.useState)("Drawings");
+	const [newLinkUrl, setNewLinkUrl] = (0, import_react.useState)("");
+	const [newTaskTitle, setNewTaskTitle] = (0, import_react.useState)("");
+	const [newTaskDesc, setNewTaskDesc] = (0, import_react.useState)("");
+	const [newTaskStageId, setNewTaskStageId] = (0, import_react.useState)("");
+	const [newTaskAssigneeId, setNewTaskAssigneeId] = (0, import_react.useState)("founder");
+	const [newTaskDeadline, setNewTaskDeadline] = (0, import_react.useState)("");
+	const [newTaskStatus, setNewTaskStatus] = (0, import_react.useState)("Open");
+	const [notice, setNotice] = (0, import_react.useState)(null);
+	const showNotice = (message, error = false) => {
+		setNotice({
+			message,
+			error
+		});
+		setTimeout(() => setNotice(null), 3500);
+	};
+	const loadProjectTasks = (0, import_react.useCallback)(async () => {
+		if (!project?.id) return;
+		setLoadingTasks(true);
+		try {
+			const wsData = await fetchProjectWorkspace(project.id, "founder").catch(() => null);
+			if (wsData && Array.isArray(wsData.tasks)) {
+				setTasks(wsData.tasks);
+				return;
+			}
+			const tData = await fetchTasks(project.id, "founder").catch(() => null);
+			if (tData && Array.isArray(tData.tasks)) {
+				setTasks(tData.tasks);
+				return;
+			}
+			const localData = getProjectWorkflow(project.id, project);
+			setTasks(localData?.tasks || []);
+		} catch {
+			const localData = getProjectWorkflow(project.id, project);
+			setTasks(localData?.tasks || []);
+		} finally {
+			setLoadingTasks(false);
+		}
+	}, [project?.id, project]);
+	(0, import_react.useEffect)(() => {
+		if (project?.id) {
+			const localData = getProjectWorkflow(project.id, project);
+			setLocalWorkflow(localData);
+			setDriveFolderInput(localData?.drive?.folderUrl || "");
+			setClientNameInput(project.clientName && project.clientName !== "Unassigned Client" ? project.clientName : "");
+			setClientTelegramIdInput(project.clientTelegramId || "");
+			loadProjectTasks();
+		}
+	}, [
+		project?.id,
+		project,
+		loadProjectTasks
+	]);
+	if (!project) return null;
+	const stages = project.stages && project.stages.length > 0 ? project.stages : localWorkflow?.stages || [];
+	computeStageSchedule(project.startDate || project.createdAt, stages);
+	const projectQueries = decisionRequests.filter((req) => req.projectId === project.id);
+	const pendingQueriesCount = projectQueries.filter((q) => !["Done", "Rejected"].includes(q.status)).length;
+	const isClientAssigned = Boolean(project.clientName && project.clientName.trim() !== "" && project.clientName !== "Unassigned Client" && !project.telegramSetupPending);
+	const hasWorkflowStarted = Boolean(project.workflowStartedAt || project.workflowId || stages.length > 0 && project.status !== "Setup");
+	const filteredTasks = tasks.filter((t) => {
+		if (taskStatusFilter === "open" && (t.status === "Completed" || t.status === "completed")) return false;
+		if (taskStatusFilter !== "all" && taskStatusFilter !== "open" && t.status.toLowerCase() !== taskStatusFilter.toLowerCase()) return false;
+		if (taskStageFilter !== "all" && t.stageId !== taskStageFilter) return false;
+		if (taskSearch.trim()) {
+			const query = taskSearch.toLowerCase();
+			return t.title.toLowerCase().includes(query) || (t.description || "").toLowerCase().includes(query);
+		}
+		return true;
+	});
+	const completedTasksCount = tasks.filter((t) => t.status === "Completed" || t.status === "completed").length;
+	const progressPercent = tasks.length ? Math.round(completedTasksCount / tasks.length * 100) : project.progress || 0;
+	const handleAssignClientSubmit = async (e) => {
+		e.preventDefault();
+		if (!clientNameInput.trim() || assigningClient) return;
+		setAssigningClient(true);
+		try {
+			await assignClient(project.id, {
+				clientName: clientNameInput.trim(),
+				clientTelegramId: clientTelegramIdInput.trim()
+			});
+			updateProjectWorkflow(project.id, { clientAssigned: true });
+			setAssignClientModalOpen(false);
+			showNotice("Client assigned successfully.");
+			if (onProjectUpdated) onProjectUpdated();
+		} catch (err) {
+			showNotice(err.message || "Failed to assign client.", true);
+		} finally {
+			setAssigningClient(false);
+		}
+	};
+	const handleCreateTaskSubmit = async (e) => {
+		e.preventDefault();
+		if (!newTaskTitle.trim() || creatingTask) return;
+		setCreatingTask(true);
+		try {
+			await createTask(project.id, {
+				title: newTaskTitle.trim(),
+				description: newTaskDesc.trim(),
+				stageId: newTaskStageId || stages[0]?.id || void 0,
+				assigneeId: newTaskAssigneeId || void 0,
+				deadline: newTaskDeadline || void 0,
+				status: newTaskStatus || "Open"
+			});
+			setNewTaskTitle("");
+			setNewTaskDesc("");
+			setNewTaskDeadline("");
+			setCreateTaskOpen(false);
+			showNotice("Task created.");
+			await loadProjectTasks();
+			if (onProjectUpdated) onProjectUpdated();
+		} catch (err) {
+			showNotice(err.message || "Failed to create task.", true);
+		} finally {
+			setCreatingTask(false);
+		}
+	};
+	const handleToggleTaskStatus = async (taskItem) => {
+		const nextStatus = taskItem.status === "Completed" || taskItem.status === "completed" ? "Open" : "Completed";
+		try {
+			await updateTask(taskItem.id, { status: nextStatus }, "founder");
+			setTasks((prev) => prev.map((t) => t.id === taskItem.id ? {
+				...t,
+				status: nextStatus
+			} : t));
+			if (onProjectUpdated) onProjectUpdated();
+		} catch (err) {
+			showNotice(err.message || "Could not update task.", true);
+		}
+	};
+	const handleRemoveMember = async (member) => {
+		if (!confirm(`Remove ${member.name} from this project? Their task assignments in this project will be cleared.`)) return;
+		try {
+			await removeProjectMember(project.id, member.id || member.employeeId);
+			showNotice(`Removed ${member.name} from project.`);
+			if (onProjectUpdated) onProjectUpdated();
+			await loadProjectTasks();
+		} catch (err) {
+			showNotice(err.message || "Could not remove member.", true);
+		}
+	};
+	const handleSaveDriveFolder = () => {
+		updateDriveSettings(project.id, driveFolderInput.trim());
+		setIsEditingDriveFolder(false);
+		setLocalWorkflow(getProjectWorkflow(project.id, project));
+	};
+	const handleAddDriveLink = (e) => {
+		e.preventDefault();
+		if (!newLinkName.trim() || !newLinkUrl.trim()) return;
+		addDriveLink(project.id, newLinkName, newLinkCategory, newLinkUrl);
+		setNewLinkName("");
+		setNewLinkUrl("");
+		setAddDriveLinkOpen(false);
+		setLocalWorkflow(getProjectWorkflow(project.id, project));
+	};
+	const getAssigneeName = (assigneeId) => {
+		if (!assigneeId) return "Unassigned";
+		if (assigneeId === "founder") return "Founder";
+		const found = (project.members || []).find((m) => m.employeeId === assigneeId || m.id === assigneeId);
+		return found ? found.name : assigneeId;
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "space-y-6",
+		children: [
+			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				role: "status",
+				className: "fixed right-4 bottom-24 z-[60] max-w-sm rounded-lg border bg-card px-4 py-3 text-sm shadow-lg md:bottom-4",
+				children: [notice.error ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "mr-2 inline size-4 text-destructive" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "mr-2 inline size-4 text-emerald-600" }), notice.message]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-col gap-3 rounded-2xl border bg-card p-4 sm:p-5 shadow-xs",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-center justify-between gap-3",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+						variant: "ghost",
+						size: "sm",
+						onClick: onBackToDirectory,
+						className: "group -ml-2 text-xs font-semibold text-muted-foreground hover:text-foreground",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { className: "size-4 mr-1.5 transition-transform group-hover:-translate-x-1" }), "All Projects Directory"]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center gap-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							size: "sm",
+							onClick: onOpenFactsModal,
+							children: "Edit Facts"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+							size: "sm",
+							onClick: onOpenInviteModal,
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Share2, { className: "size-3.5 mr-1" }), " Share Client Link"]
+						})]
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex flex-wrap items-baseline justify-between gap-3 pt-1",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex flex-wrap items-center gap-2.5",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+								className: "text-2xl font-bold tracking-tight sm:text-3xl text-foreground",
+								children: project.name
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
+								variant: "outline",
+								className: statusBadgeStyles$1[project.status] || "border-muted",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 rounded-full bg-current mr-1.5" }), project.status || "Setup"]
+							}),
+							project.phase && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+								variant: "secondary",
+								className: "text-xs",
+								children: project.phase
+							})
+						]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "mt-1 text-xs text-muted-foreground",
+						children: [
+							"Client: ",
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "font-semibold text-foreground",
+								children: project.clientName || "Unassigned"
+							}),
+							project.clientTelegramId && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "font-mono ml-1 text-muted-foreground",
+								children: [
+									"(TG: ",
+									project.clientTelegramId,
+									")"
+								]
+							}),
+							" · ",
+							project.location || "Location not set",
+							" · ",
+							"Started ",
+							project.startDate ? new Date(project.startDate).toLocaleDateString(void 0, {
+								month: "short",
+								day: "numeric",
+								year: "numeric"
+							}) : new Date(project.createdAt).toLocaleDateString(void 0, {
+								month: "short",
+								day: "numeric",
+								year: "numeric"
+							})
+						]
+					})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center gap-3 text-xs",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "rounded-xl border bg-muted/30 px-3 py-1.5 text-center",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-[10px] text-muted-foreground uppercase tracking-wider block",
+								children: "Tasks"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", {
+								className: "text-sm font-semibold",
+								children: [
+									completedTasksCount,
+									"/",
+									tasks.length
+								]
+							})]
+						}), pendingQueriesCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "rounded-xl border border-amber-200 bg-amber-50 px-3 py-1.5 text-center text-amber-900",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-[10px] uppercase tracking-wider block font-medium",
+								children: "Queries"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", {
+								className: "text-sm font-bold",
+								children: [pendingQueriesCount, " Needs action"]
+							})]
+						})]
+					})]
+				})]
+			}),
+			!isClientAssigned && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Alert, {
+				className: "border-amber-300 bg-amber-50 text-amber-950 shadow-xs",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-5 text-amber-600" }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertTitle, {
+						className: "text-sm font-bold text-amber-900",
+						children: "Client Assignment Required Before Workflow Start"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AlertDescription, {
+						className: "mt-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-amber-800",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "This project is in Setup. Assign a client name and optional Telegram user ID to unlock starting the workflow pipeline and receiving client queries." }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+							size: "sm",
+							className: "bg-amber-600 hover:bg-amber-700 text-white shrink-0",
+							onClick: () => {
+								setClientNameInput(project.clientName && project.clientName !== "Unassigned Client" ? project.clientName : "");
+								setClientTelegramIdInput(project.clientTelegramId || "");
+								setAssignClientModalOpen(true);
+							},
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(UserPlus, { className: "size-3.5 mr-1" }), "Assign Client Now"]
+						})]
+					})
+				]
+			}),
+			isClientAssigned && !hasWorkflowStarted && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
+				className: "border-primary/30 bg-primary/5 shadow-xs",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+					className: "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-5",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-start gap-3.5",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "grid size-10 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground shadow-xs",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-5" })
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+							className: "text-sm font-bold text-foreground",
+							children: "Client Assigned! Next Step: Select and Start Workflow Pipeline"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-0.5 text-xs text-muted-foreground leading-relaxed",
+							children: "Choose a battle-tested Studio Iksha pilot template (Design pilot, Painting pilot) to generate sequential stages, deadlines, and starter tasks."
+						})] })]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+						className: "shrink-0",
+						onClick: () => setTemplateModalOpen(true),
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { className: "size-4 mr-1.5" }), "Select & Start Workflow"]
+					})]
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Tabs, {
+				value: activeTab,
+				onValueChange: setActiveTab,
+				className: "space-y-4",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
+						className: "flex flex-wrap w-full justify-start h-auto gap-1 bg-muted/60 p-1 rounded-xl",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+								value: "tasks",
+								className: "font-semibold text-xs px-3.5 py-2",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 mr-1.5 text-primary" }),
+									"Tasks (",
+									tasks.length,
+									")"
+								]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+								value: "chat",
+								className: "font-semibold text-xs px-3.5 py-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 mr-1.5 text-blue-600" }), "Internal Project Chat"]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+								value: "schedule",
+								className: "font-semibold text-xs px-3.5 py-2",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-3.5 mr-1.5 text-amber-600" }),
+									"Schedule & Stages (",
+									stages.length,
+									")"
+								]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+								value: "queries",
+								className: "font-semibold text-xs px-3.5 py-2",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-3.5 mr-1.5 text-red-500" }),
+									"Client Queries (",
+									projectQueries.length,
+									")",
+									pendingQueriesCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+										variant: "secondary",
+										className: "ml-1.5 size-4 p-0 text-[10px] justify-center bg-amber-200 text-amber-900",
+										children: pendingQueriesCount
+									})
+								]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+								value: "files",
+								className: "font-semibold text-xs px-3.5 py-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "size-3.5 mr-1.5 text-emerald-600" }), "Files & Drive"]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+								value: "team",
+								className: "font-semibold text-xs px-3.5 py-2",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { className: "size-3.5 mr-1.5 text-indigo-600" }),
+									"Team & Access (",
+									project.members?.length || 0,
+									")"
+								]
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
+						value: "tasks",
+						className: "space-y-4",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex flex-wrap items-center gap-2 flex-1",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "relative min-w-44 flex-1 max-w-sm",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+												value: taskSearch,
+												onChange: (e) => setTaskSearch(e.target.value),
+												placeholder: "Search tasks, deliverables…",
+												className: "pl-8 text-xs h-9"
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+											value: taskStatusFilter,
+											onChange: (e) => setTaskStatusFilter(e.target.value),
+											className: "text-xs h-9 w-32",
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "all",
+													children: "All States"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "open",
+													children: "All Open"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "Open",
+													children: "Open"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "In progress",
+													children: "In Progress"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "Blocked",
+													children: "Blocked"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "Completed",
+													children: "Completed"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "Cancelled",
+													children: "Cancelled"
+												})
+											]
+										}),
+										stages.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+											value: taskStageFilter,
+											onChange: (e) => setTaskStageFilter(e.target.value),
+											className: "text-xs h-9 w-44",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: "all",
+												children: "All Stages"
+											}), stages.map((st) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: st.id,
+												children: st.name
+											}, st.id))]
+										})
+									]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center gap-2",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										variant: "outline",
+										size: "sm",
+										onClick: loadProjectTasks,
+										disabled: loadingTasks,
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: `size-3.5 mr-1.5 ${loadingTasks ? "animate-spin" : ""}` }), "Refresh"]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										size: "sm",
+										onClick: () => setCreateTaskOpen(true),
+										disabled: !hasWorkflowStarted,
+										title: !hasWorkflowStarted ? "Start a workflow before adding custom tasks." : void 0,
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-3.5 mr-1" }), " Add Task"]
+									})]
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "rounded-xl border bg-card p-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center justify-between text-xs font-semibold mb-1.5",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Task Completion Progress" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+										completedTasksCount,
+										" of ",
+										tasks.length,
+										" completed (",
+										progressPercent,
+										"%)"
+									] })]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "h-2 w-full overflow-hidden rounded-full bg-muted",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										className: "h-full bg-primary transition-all duration-300",
+										style: { width: `${progressPercent}%` }
+									})
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "space-y-2.5",
+								children: filteredTasks.length ? filteredTasks.map((t) => {
+									const isCompleted = t.status === "Completed" || t.status === "completed";
+									const stageName = stages.find((s) => s.id === t.stageId)?.name || t.stageName || "General";
+									return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "group flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-xl border bg-card p-3.5 transition-all hover:border-primary/40 hover:shadow-2xs",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "min-w-0 flex-1 space-y-1",
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+													className: "flex flex-wrap items-center gap-2",
+													children: [
+														/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+															type: "button",
+															onClick: () => handleToggleTaskStatus(t),
+															className: `grid size-5 place-items-center rounded-md border transition-colors ${isCompleted ? "bg-emerald-600 border-emerald-600 text-white" : "border-muted-foreground/30 hover:border-primary"}`,
+															"aria-label": "Toggle task completion",
+															children: isCompleted && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5" })
+														}),
+														/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+															variant: "outline",
+															className: `text-[10px] ${taskStatusColors$1[t.status] || "bg-muted"}`,
+															children: t.status
+														}),
+														t.sourceQueryId && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+															variant: "outline",
+															className: "border-amber-300 bg-amber-50 text-amber-900 text-[10px]",
+															children: "Telegram Query"
+														}),
+														/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+															className: "text-[11px] text-muted-foreground truncate max-w-[200px]",
+															children: ["· ", stageName]
+														})
+													]
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
+													className: `text-sm font-semibold tracking-tight transition-colors cursor-pointer hover:text-primary ${isCompleted ? "line-through text-muted-foreground" : "text-foreground"}`,
+													onClick: () => {
+														setSelectedTask(t);
+														setTaskDrawerOpen(true);
+													},
+													children: t.title
+												}),
+												t.description && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+													className: "text-xs text-muted-foreground line-clamp-1",
+													children: t.description
+												})
+											]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "flex items-center justify-between sm:justify-end gap-3 pt-2 sm:pt-0 border-t sm:border-t-0 text-xs",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "flex items-center gap-2 text-muted-foreground",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+													className: "flex items-center gap-1 font-medium",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, { className: "size-3" }), getAssigneeName(t.assigneeId) || t.assigneeName || "Unassigned"]
+												}), (t.deadline || t.dueDate) && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+													className: "flex items-center gap-1",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-3" }), new Date(t.deadline || t.dueDate).toLocaleDateString(void 0, {
+														month: "short",
+														day: "numeric"
+													})]
+												})]
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+												variant: "outline",
+												size: "sm",
+												className: "h-8 text-xs font-semibold gap-1.5",
+												onClick: () => {
+													setSelectedTask(t);
+													setTaskDrawerOpen(true);
+												},
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Thread" })]
+											})]
+										})]
+									}, t.id);
+								}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+									className: "py-12 text-center text-xs text-muted-foreground",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "mx-auto size-8 text-muted-foreground/40 mb-2" }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "font-semibold text-sm text-foreground",
+											children: "No tasks found"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "mt-1",
+											children: hasWorkflowStarted ? "Add deliverables for this stage or create a new task." : "Start a workflow to automatically generate starter tasks."
+										}),
+										hasWorkflowStarted ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+											size: "sm",
+											className: "mt-4",
+											onClick: () => setCreateTaskOpen(true),
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-3.5 mr-1" }), " Create Task"]
+										}) : isClientAssigned ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+											size: "sm",
+											className: "mt-4",
+											onClick: () => setTemplateModalOpen(true),
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { className: "size-3.5 mr-1" }), " Start Workflow"]
+										}) : null
+									]
+								}) })
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
+						value: "chat",
+						className: "space-y-4",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "rounded-xl border bg-muted/20 p-3.5 text-xs",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "font-semibold text-foreground",
+								children: "Project Internal Discussion Area"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-muted-foreground mt-0.5",
+								children: "Real-time collaboration between the founder and assigned project designers/supervisors. External clients do not see this conversation."
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TeamChat, {
+							endpoint: `/api/founder/projects/${project.id}/team-chat`,
+							currentActor: "founder"
+						}, project.id)]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
+						value: "schedule",
+						className: "space-y-5",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex flex-wrap items-center justify-between gap-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+								className: "text-base font-semibold",
+								children: "Workflow Stages & Deadlines"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs text-muted-foreground",
+								children: "Sequential pipeline stages and calculated deadlines generated by the pilot workflow."
+							})] }), !hasWorkflowStarted && isClientAssigned && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								size: "sm",
+								onClick: () => setTemplateModalOpen(true),
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { className: "size-3.5 mr-1" }), " Choose Workflow"]
+							})]
+						}), stages.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "space-y-3",
+							children: stages.map((st, idx) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "rounded-xl border bg-card p-4 space-y-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center justify-between",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "flex items-center gap-2",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "grid size-6 place-items-center rounded-full bg-primary/10 text-primary text-xs font-bold",
+											children: idx + 1
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
+											className: "font-semibold text-sm",
+											children: st.name
+										})]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "flex items-center gap-3 text-xs text-muted-foreground",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+											"Duration: ",
+											st.durationDays,
+											" day",
+											st.durationDays === 1 ? "" : "s"
+										] }), st.deadline && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+											className: "font-mono bg-muted/50 px-2 py-0.5 rounded",
+											children: ["Due: ", st.deadline]
+										})]
+									})]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "pl-8 space-y-1",
+									children: tasks.filter((t) => t.stageId === st.id).map((t) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "flex items-center justify-between text-xs text-muted-foreground py-1",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: t.status === "Completed" ? "line-through text-muted-foreground" : "text-foreground font-medium",
+											children: t.title
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+											variant: "outline",
+											className: "text-[10px]",
+											children: t.status
+										})]
+									}, t.id))
+								})]
+							}, st.id || idx))
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+							className: "py-12 text-center text-xs text-muted-foreground",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "mx-auto size-8 text-muted-foreground/40 mb-2" }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "font-semibold text-sm text-foreground",
+									children: "No workflow stages generated yet"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "mt-1",
+									children: "Assign a client and start a workflow to generate stages and schedule."
+								})
+							]
+						}) })]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
+						value: "queries",
+						className: "space-y-4",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "flex flex-wrap items-center justify-between gap-3",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+								className: "text-base font-semibold",
+								children: "Telegram Client Queries"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs text-muted-foreground",
+								children: "Real-time questions, approvals, and photos submitted by the client via Telegram."
+							})] })
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "space-y-3",
+							children: projectQueries.length > 0 ? projectQueries.map((query) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClientQueryCard, {
+								query,
+								project,
+								stages,
+								projectMembers: project.members || [],
+								isFounder: true,
+								onQueryChanged: () => {
+									if (onProjectUpdated) onProjectUpdated();
+									loadProjectTasks();
+								},
+								onTaskCreated: (newTask) => {
+									loadProjectTasks();
+									setSelectedTask(newTask);
+									setTaskDrawerOpen(true);
+								},
+								onOpenTask: (taskId) => {
+									const found = tasks.find((t) => t.id === taskId);
+									if (found) {
+										setSelectedTask(found);
+										setTaskDrawerOpen(true);
+									}
+								}
+							}, query.id)) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+								className: "py-12 text-center text-xs text-muted-foreground",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "mx-auto size-8 text-emerald-600 mb-2" }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "font-semibold text-sm text-foreground",
+										children: "No pending client queries"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "mt-1",
+										children: "When clients ask questions in your linked Telegram group, they will appear here as actionable cards."
+									})
+								]
+							}) })
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
+						value: "files",
+						className: "space-y-4",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+									className: "text-base font-semibold",
+									children: "Project Google Drive & Files"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "text-xs text-muted-foreground",
+									children: "Direct integration with project Google Drive folders, architectural CAD drawings, and presentations."
+								})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+									size: "sm",
+									onClick: () => setAddDriveLinkOpen(true),
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-3.5 mr-1" }), " Add Drive File / Link"]
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
+								className: "border-primary/20 bg-primary/5",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
+									className: "p-4 sm:p-5",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "flex items-start gap-3",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "grid size-10 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground",
+												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "size-5" })
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
+													className: "text-sm font-bold text-foreground",
+													children: "Main Project Google Drive Folder"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+													className: "text-xs text-muted-foreground",
+													children: "Shared folder containing design deliverables, vendor quotes, and CAD exports."
+												}),
+												localWorkflow?.drive?.folderUrl ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+													href: localWorkflow.drive.folderUrl,
+													target: "_blank",
+													rel: "noreferrer",
+													className: "mt-1.5 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline",
+													children: ["Open Google Drive Folder ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-3" })]
+												}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+													className: "mt-1 text-xs text-amber-700",
+													children: "No Drive folder URL linked yet."
+												})
+											] })]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "flex items-center gap-2",
+											children: isEditingDriveFolder ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "flex gap-2 w-full sm:w-auto",
+												children: [
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+														value: driveFolderInput,
+														onChange: (e) => setDriveFolderInput(e.target.value),
+														placeholder: "https://drive.google.com/drive/folders/...",
+														className: "h-8 text-xs min-w-64"
+													}),
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+														size: "sm",
+														onClick: handleSaveDriveFolder,
+														children: "Save"
+													}),
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+														size: "sm",
+														variant: "ghost",
+														onClick: () => setIsEditingDriveFolder(false),
+														children: "Cancel"
+													})
+												]
+											}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+												variant: "outline",
+												size: "sm",
+												onClick: () => setIsEditingDriveFolder(true),
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, { className: "size-3.5 mr-1" }), " Edit Folder URL"]
+											})
+										})]
+									})
+								})
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "grid gap-3 sm:grid-cols-2",
+								children: (localWorkflow?.drive?.links || []).map((link) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
+									className: "overflow-hidden",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
+										className: "p-4 flex items-center justify-between gap-3",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "min-w-0 flex-1",
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+													variant: "outline",
+													className: "text-[10px]",
+													children: link.category
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+													className: "mt-1 text-xs font-semibold text-foreground truncate",
+													children: link.name
+												}),
+												link.url ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+													href: link.url,
+													target: "_blank",
+													rel: "noreferrer",
+													className: "mt-1 inline-flex items-center gap-1 text-[11px] text-primary hover:underline truncate max-w-full",
+													children: ["Open in Drive ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-2.5" })]
+												}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "text-[11px] text-muted-foreground",
+													children: "No link configured"
+												})
+											]
+										})
+									})
+								}, link.id))
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
+						value: "team",
+						className: "space-y-4",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex flex-wrap items-center justify-between gap-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+								className: "text-base font-semibold",
+								children: "Project Team Members & Access Controls"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs text-muted-foreground",
+								children: "Assign designers and supervisors. Removing a member revokes project access and clears their assigned tasks."
+							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								size: "sm",
+								onClick: onOpenMemberModal,
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(UserPlus, { className: "size-3.5 mr-1" }), " Add Team Member"]
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "space-y-2.5",
+							children: project.members && project.members.length > 0 ? project.members.map((member, idx) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+								className: "p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center gap-3",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, {
+											className: "size-9",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
+												className: "bg-secondary text-xs font-semibold",
+												children: member.name?.slice(0, 2).toUpperCase() || "TM"
+											})
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "text-xs font-semibold text-foreground",
+											children: member.name
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "text-[11px] text-muted-foreground",
+											children: member.designation || member.role || "Member"
+										})] }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+											variant: "secondary",
+											className: "text-xs ml-2",
+											children: member.role || "Designer"
+										})
+									]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "flex items-center gap-2",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										variant: "ghost",
+										size: "sm",
+										className: "text-destructive hover:bg-destructive/10 text-xs",
+										onClick: () => handleRemoveMember(member),
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trash, { className: "size-3.5 mr-1" }), " Remove from Project"]
+									})
+								})]
+							}) }, member.id || member.employeeId || idx)) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+								className: "py-10 text-center text-xs text-muted-foreground",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { className: "mx-auto size-7 text-muted-foreground/40 mb-2" }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "font-semibold text-foreground",
+										children: "No team members assigned yet"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "mt-1",
+										children: "Add designers, supervisors, or trades to collaborate on tasks and team chat."
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										size: "sm",
+										className: "mt-3",
+										onClick: onOpenMemberModal,
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(UserPlus, { className: "size-3.5 mr-1" }), " Add Member"]
+									})
+								]
+							}) })
+						})]
+					})
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TaskThreadDrawer, {
+				task: selectedTask,
+				project,
+				open: taskDrawerOpen,
+				onOpenChange: setTaskDrawerOpen,
+				onTaskUpdated: loadProjectTasks,
+				onOpenSourceQuery: () => setActiveTab("queries"),
+				currentActor: "founder",
+				isFounder: true,
+				projectMembers: project.members || []
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkflowTemplateModal, {
+				open: templateModalOpen,
+				onOpenChange: setTemplateModalOpen,
+				projectId: project.id,
+				projectStartDate: project.startDate,
+				clientAssigned: isClientAssigned,
+				projectMembers: project.members || [],
+				onApplied: () => {
+					if (onProjectUpdated) onProjectUpdated();
+					loadProjectTasks();
+				}
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				open: createTaskOpen,
+				onOpenChange: setCreateTaskOpen,
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Create Project Task" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Add a deliverable or checklist item for your project team." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+					onSubmit: handleCreateTaskSubmit,
+					className: "space-y-4",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-1.5 text-xs font-semibold",
+							children: ["Task Title", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								value: newTaskTitle,
+								onChange: (e) => setNewTaskTitle(e.target.value),
+								placeholder: "e.g. Prepare structural layout drawings",
+								required: true
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-1.5 text-xs font-semibold",
+							children: ["Description", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+								value: newTaskDesc,
+								onChange: (e) => setNewTaskDesc(e.target.value),
+								placeholder: "Details, deliverable requirements, or instructions…",
+								rows: 3
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "grid grid-cols-2 gap-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "grid gap-1.5 text-xs font-semibold",
+								children: ["Project Stage", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+									value: newTaskStageId,
+									onChange: (e) => setNewTaskStageId(e.target.value),
+									className: "w-full",
+									children: [stages.map((st) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+										value: st.id,
+										children: st.name
+									}, st.id)), !stages.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+										value: "",
+										children: "General"
+									})]
+								})]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "grid gap-1.5 text-xs font-semibold",
+								children: ["Assignee", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+									value: newTaskAssigneeId,
+									onChange: (e) => setNewTaskAssigneeId(e.target.value),
+									className: "w-full",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+										value: "founder",
+										children: "Founder"
+									}), (project.members || []).map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
+										value: m.employeeId || m.id,
+										children: [
+											m.name,
+											" (",
+											m.role || "Member",
+											")"
+										]
+									}, m.id || m.employeeId))]
+								})]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "grid grid-cols-2 gap-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "grid gap-1.5 text-xs font-semibold",
+								children: ["Deadline", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									type: "date",
+									value: newTaskDeadline,
+									onChange: (e) => setNewTaskDeadline(e.target.value)
+								})]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "grid gap-1.5 text-xs font-semibold",
+								children: ["Initial Status", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+									value: newTaskStatus,
+									onChange: (e) => setNewTaskStatus(e.target.value),
+									className: "w-full",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+											value: "Open",
+											children: "Open"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+											value: "In progress",
+											children: "In Progress"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+											value: "Blocked",
+											children: "Blocked"
+										})
+									]
+								})]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex justify-end gap-2 pt-2",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								type: "button",
+								variant: "outline",
+								onClick: () => setCreateTaskOpen(false),
+								children: "Cancel"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								type: "submit",
+								disabled: creatingTask,
+								children: [creatingTask ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 mr-1.5 animate-spin" }) : null, "Create Task"]
+							})]
+						})
+					]
+				})] })
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				open: assignClientModalOpen,
+				onOpenChange: setAssignClientModalOpen,
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Assign Client to Project" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "A client must be assigned before starting the workflow pipeline." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+					onSubmit: handleAssignClientSubmit,
+					className: "space-y-4",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-1.5 text-xs font-semibold",
+							children: ["Client Full Name", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								value: clientNameInput,
+								onChange: (e) => setClientNameInput(e.target.value),
+								placeholder: "e.g. Maya Sharma",
+								required: true,
+								disabled: hasWorkflowStarted
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-1.5 text-xs font-semibold",
+							children: [
+								"Client Telegram User ID (Optional)",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									value: clientTelegramIdInput,
+									onChange: (e) => setClientTelegramIdInput(e.target.value),
+									placeholder: "e.g. 123456789",
+									disabled: hasWorkflowStarted
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "text-[11px] text-muted-foreground leading-relaxed",
+									children: "Required for automatic Telegram intake to link questions sent directly in the group. Identity may also be resolved from the approved Telegram group roster."
+								})
+							]
+						}),
+						hasWorkflowStarted && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-xs text-amber-800 bg-amber-50 p-2.5 rounded-lg border border-amber-200",
+							children: "🔒 Client assignment is locked because the project workflow has already started."
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex justify-end gap-2 pt-2",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								type: "button",
+								variant: "outline",
+								onClick: () => setAssignClientModalOpen(false),
+								children: "Cancel"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								type: "submit",
+								disabled: assigningClient || hasWorkflowStarted,
+								children: [assigningClient ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 mr-1.5 animate-spin" }) : null, "Save Client Assignment"]
+							})]
+						})
+					]
+				})] })
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				open: addDriveLinkOpen,
+				onOpenChange: setAddDriveLinkOpen,
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Add Project Drive Link" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Add a link to a file or folder in Google Drive." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+					onSubmit: handleAddDriveLink,
+					className: "space-y-4",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-1.5 text-xs font-semibold",
+							children: ["Name", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								value: newLinkName,
+								onChange: (e) => setNewLinkName(e.target.value),
+								placeholder: "e.g. Electrical CAD plan freeze",
+								required: true
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-1.5 text-xs font-semibold",
+							children: ["Category", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+								value: newLinkCategory,
+								onChange: (e) => setNewLinkCategory(e.target.value),
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+										value: "Drawings",
+										children: "Drawings"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+										value: "Renders",
+										children: "Renders"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+										value: "Documents",
+										children: "Documents"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+										value: "Site Photos",
+										children: "Site Photos"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+										value: "General",
+										children: "General"
+									})
+								]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-1.5 text-xs font-semibold",
+							children: ["URL", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								type: "url",
+								value: newLinkUrl,
+								onChange: (e) => setNewLinkUrl(e.target.value),
+								placeholder: "https://drive.google.com/...",
+								required: true
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex justify-end gap-2 pt-2",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								type: "button",
+								variant: "outline",
+								onClick: () => setAddDriveLinkOpen(false),
+								children: "Cancel"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								type: "submit",
+								children: "Add Link"
+							})]
+						})
+					]
+				})] })
+			})
+		]
+	});
+}
+//#endregion
+//#region frontend/src/components/ProjectDirectoryView.jsx
+var statusBadgeStyles = {
+	"On track": "border-emerald-200 bg-emerald-50 text-emerald-800",
+	"At risk": "border-amber-200 bg-amber-50 text-amber-800",
+	"On hold": "border-slate-200 bg-slate-100 text-slate-700",
+	"Completed": "border-blue-200 bg-blue-50 text-blue-800",
+	"Setup": "border-purple-200 bg-purple-50 text-purple-800"
+};
+function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectProject, onCreateProject, onOpenGroups }) {
+	const [search, setSearch] = (0, import_react.useState)("");
+	const [filter, setFilter] = (0, import_react.useState)("all");
+	const ongoingCount = projects.filter((p) => p.status !== "Completed").length;
+	const needsSetupCount = projects.filter((p) => p.telegramSetupPending || !p.clientName || p.clientName === "Unassigned Client").length;
+	const atRiskCount = projects.filter((p) => p.status === "At risk").length;
+	const completedCount = projects.filter((p) => p.status === "Completed").length;
+	const filtered = projects.filter((project) => {
+		if (filter === "ongoing" && project.status === "Completed") return false;
+		if (filter === "completed" && project.status !== "Completed") return false;
+		if (filter === "at_risk" && project.status !== "At risk") return false;
+		if (filter === "needs_setup" && !project.telegramSetupPending && project.clientName && project.clientName !== "Unassigned Client") return false;
+		if (search.trim()) {
+			const q = search.toLowerCase();
+			return project.name?.toLowerCase().includes(q) || (project.clientName || "").toLowerCase().includes(q) || (project.location || "").toLowerCase().includes(q) || (project.phase || "").toLowerCase().includes(q);
+		}
+		return true;
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "space-y-6",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs font-semibold uppercase tracking-wider text-primary",
+						children: "Workspace Overview"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+						className: "mt-1 text-2xl font-bold tracking-tight sm:text-3xl text-foreground",
+						children: "All Projects Directory"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "mt-0.5 text-xs text-muted-foreground",
+						children: "Select a project to manage its tasks, internal chat, schedule, and client queries."
+					})
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+					onClick: onCreateProject,
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-4 mr-1.5" }), "Create New Project"]
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex flex-wrap items-center gap-1.5 bg-muted/60 p-1 rounded-xl text-xs",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							type: "button",
+							onClick: () => setFilter("all"),
+							className: `rounded-lg px-3 py-1.5 font-medium transition-all ${filter === "all" ? "bg-card text-foreground shadow-2xs font-semibold" : "text-muted-foreground hover:text-foreground"}`,
+							children: [
+								"All (",
+								projects.length,
+								")"
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							type: "button",
+							onClick: () => setFilter("ongoing"),
+							className: `rounded-lg px-3 py-1.5 font-medium transition-all ${filter === "ongoing" ? "bg-card text-foreground shadow-2xs font-semibold" : "text-muted-foreground hover:text-foreground"}`,
+							children: [
+								"Ongoing (",
+								ongoingCount,
+								")"
+							]
+						}),
+						needsSetupCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							type: "button",
+							onClick: () => setFilter("needs_setup"),
+							className: `rounded-lg px-3 py-1.5 font-medium transition-all flex items-center gap-1 ${filter === "needs_setup" ? "bg-amber-100 text-amber-900 font-semibold" : "text-amber-800 hover:text-amber-900"}`,
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-3" }),
+								"Needs Setup (",
+								needsSetupCount,
+								")"
+							]
+						}),
+						atRiskCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							type: "button",
+							onClick: () => setFilter("at_risk"),
+							className: `rounded-lg px-3 py-1.5 font-medium transition-all ${filter === "at_risk" ? "bg-red-100 text-red-900 font-semibold" : "text-red-700 hover:text-red-900"}`,
+							children: [
+								"At Risk (",
+								atRiskCount,
+								")"
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							type: "button",
+							onClick: () => setFilter("completed"),
+							className: `rounded-lg px-3 py-1.5 font-medium transition-all ${filter === "completed" ? "bg-card text-foreground shadow-2xs font-semibold" : "text-muted-foreground hover:text-foreground"}`,
+							children: [
+								"Completed (",
+								completedCount,
+								")"
+							]
+						})
+					]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "relative min-w-56 max-w-xs",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+						value: search,
+						onChange: (e) => setSearch(e.target.value),
+						placeholder: "Search projects by name, client, location…",
+						className: "pl-8 text-xs h-9"
+					})]
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "grid gap-4 sm:grid-cols-2 lg:grid-cols-3",
+				children: filtered.length ? filtered.map((project) => {
+					const projectTasks = getProjectWorkflow(project.id, project)?.tasks || [];
+					const doneTasks = projectTasks.filter((t) => t.status === "completed").length;
+					const progress = projectTasks.length ? Math.round(doneTasks / projectTasks.length * 100) : 0;
+					const pendingQueries = decisionRequests.filter((q) => q.projectId === project.id && q.status !== "Done").length;
+					const isMissingClient = !project.clientName || project.clientName === "Unassigned Client" || project.telegramSetupPending;
+					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
+						onClick: () => onSelectProject(project.id),
+						className: `group cursor-pointer overflow-hidden transition-all duration-200 hover:border-primary/50 hover:shadow-md ${isMissingClient ? "border-amber-300/80 bg-amber-50/20" : ""}`,
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+							className: "p-5 flex flex-col justify-between h-full space-y-4",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "flex items-center justify-between gap-2 mb-2",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
+											variant: "outline",
+											className: statusBadgeStyles[project.status] || "border-muted",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 rounded-full bg-current mr-1.5" }), project.status || "Setup"]
+										}), pendingQueries > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
+											variant: "outline",
+											className: "border-red-200 bg-red-50 text-red-700 text-[10px]",
+											children: [
+												pendingQueries,
+												" client ",
+												pendingQueries === 1 ? "query" : "queries"
+											]
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+										className: "text-base font-bold text-foreground group-hover:text-primary transition-colors tracking-tight line-clamp-1",
+										children: project.name
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+										className: "text-xs text-muted-foreground mt-0.5 line-clamp-1",
+										children: ["Client: ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "font-semibold text-foreground/90",
+											children: project.clientName || "Unassigned"
+										})]
+									}),
+									project.location && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+										className: "text-[11px] text-muted-foreground mt-0.5",
+										children: ["📍 ", project.location]
+									})
+								] }),
+								isMissingClient && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "rounded-lg bg-amber-100/70 border border-amber-200 p-2 text-[11px] text-amber-900 flex items-center gap-1.5",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-3.5 shrink-0 text-amber-700" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Setup needed: Client role must be assigned to start." })]
+								}),
+								projectTasks.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "space-y-1",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "flex items-center justify-between text-[11px] text-muted-foreground",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+											"Tasks: ",
+											doneTasks,
+											"/",
+											projectTasks.length
+										] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [progress, "%"] })]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										className: "h-1.5 w-full overflow-hidden rounded-full bg-muted",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "h-full bg-primary transition-all",
+											style: { width: `${progress}%` }
+										})
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center justify-between pt-2 border-t text-xs text-muted-foreground",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "truncate max-w-[150px]",
+										children: project.phase || "Phase: Setup"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										className: "font-medium text-primary flex items-center gap-1 group-hover:translate-x-0.5 transition-transform",
+										children: ["Open Project ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-3" })]
+									})]
+								})
+							]
+						})
+					}, project.id);
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "col-span-full py-16 text-center text-muted-foreground",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "mx-auto size-10 text-muted-foreground/40 mb-3" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+							className: "text-base font-semibold text-foreground",
+							children: "No projects match your filter"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-xs mt-1",
+							children: "Try changing the status filter or search query."
+						})
+					]
+				})
+			})
+		]
+	});
 }
 //#endregion
 //#region frontend/src/FounderApp.jsx
-var _jsxFileName$3 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/FounderApp.jsx";
 var api$1 = async (url, options = {}) => {
 	const response = await fetch(url, {
 		credentials: "same-origin",
@@ -27577,10 +29938,6 @@ var niceDate = (value) => value ? new Date(value).toLocaleDateString(void 0, {
 	day: "numeric",
 	year: "numeric"
 }) : "";
-var niceTime = (value) => value ? new Date(value).toLocaleTimeString([], {
-	hour: "numeric",
-	minute: "2-digit"
-}) : "";
 var phaseOptions = [
 	"Design",
 	"Planning",
@@ -27597,232 +29954,37 @@ var statusOptions = [
 	"Completed"
 ];
 function Brand({ compact = false }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "flex items-center gap-2.5",
-		children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-			className: "grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-lg font-bold text-primary-foreground shadow-sm",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-lg font-bold text-primary-foreground shadow-xs",
 			children: "i"
-		}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 44,
-			columnNumber: 5
-		}, this), !compact && /* @__PURE__ */ (void 0)("div", {
+		}), !compact && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "leading-tight",
-			children: [/* @__PURE__ */ (void 0)("strong", {
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
 				className: "block text-sm tracking-tight",
 				children: "studio iksha"
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 45,
-				columnNumber: 49
-			}, this), /* @__PURE__ */ (void 0)("span", {
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 				className: "text-[10px] text-muted-foreground",
 				children: "Project operations"
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 45,
-				columnNumber: 119
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 45,
-			columnNumber: 18
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 43,
-		columnNumber: 10
-	}, this);
-}
-function StatusBadge({ status }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Badge, {
-		variant: "outline",
-		className: status === "At risk" ? "border-amber-200 bg-amber-50 text-amber-800" : status === "On hold" ? "border-slate-200 bg-slate-100 text-slate-700" : "border-emerald-200 bg-emerald-50 text-emerald-800",
-		children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", { className: "size-1.5 rounded-full bg-current" }, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 51,
-			columnNumber: 52
-		}, this), status || "On track"]
-	}, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 51,
-		columnNumber: 10
-	}, this);
+			})]
+		})]
+	});
 }
 function InitialAvatar({ name, className = "" }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Avatar, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, {
 		className,
-		children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AvatarFallback, {
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
 			className: "bg-accent font-semibold text-accent-foreground",
 			children: initials(name)
-		}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 55,
-			columnNumber: 40
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 55,
-		columnNumber: 10
-	}, this);
-}
-function ConversationThread({ conversations, project, large = false }) {
-	if (!conversations.length) return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-		className: "flex min-h-72 flex-col items-center justify-center px-5 py-12 text-center",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-				className: "mb-4 grid size-14 place-items-center rounded-2xl bg-accent text-primary",
-				children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageSquare, { className: "size-6" }, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 60,
-					columnNumber: 94
-				}, this)
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 60,
-				columnNumber: 5
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h3", {
-				className: "font-semibold",
-				children: "Your conversation starts here"
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 61,
-				columnNumber: 5
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-				className: "mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground",
-				children: "Share the private client link. Questions and the assistant’s replies will appear here."
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 62,
-				columnNumber: 5
-			}, this)
-		]
-	}, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 59,
-		columnNumber: 37
-	}, this);
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-		className: `chat-scroll space-y-6 overflow-y-auto p-4 sm:p-6 ${large ? "min-h-0 flex-1" : "max-h-96"}`,
-		"aria-label": "Client conversation",
-		"aria-live": "polite",
-		children: conversations.map((item, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-			className: "space-y-4",
-			children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Message, {
-				align: "end",
-				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(InitialAvatar, { name: project?.clientName || "Client" }, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 67,
-					columnNumber: 24
-				}, this) }, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 67,
-					columnNumber: 9
-				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageContent, {
-					className: "max-w-[88%] sm:max-w-[75%]",
-					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageHeader, {
-						className: "justify-end gap-2",
-						children: [
-							niceTime(item.at),
-							" · ",
-							project?.clientName || "Client"
-						]
-					}, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 69,
-						columnNumber: 11
-					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Bubble, {
-						align: "end",
-						children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(BubbleContent, { children: item.question }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 70,
-							columnNumber: 31
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 70,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 68,
-					columnNumber: 9
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 66,
-				columnNumber: 7
-			}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Message, {
-				align: "start",
-				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Avatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AvatarFallback, {
-					className: "bg-primary/10 text-primary",
-					children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Sparkles, { className: "size-4" }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 74,
-						columnNumber: 87
-					}, this)
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 74,
-					columnNumber: 32
-				}, this) }, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 74,
-					columnNumber: 24
-				}, this) }, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 74,
-					columnNumber: 9
-				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageContent, {
-					className: "max-w-[88%] sm:max-w-[75%]",
-					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageHeader, { children: "Project Assistant" }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 76,
-						columnNumber: 11
-					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Bubble, {
-						variant: "secondary",
-						children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(BubbleContent, { children: item.answer }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 77,
-							columnNumber: 39
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 77,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 75,
-					columnNumber: 9
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 73,
-				columnNumber: 7
-			}, this)]
-		}, item.at || index, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 65,
-			columnNumber: 41
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 64,
-		columnNumber: 10
-	}, this);
+		})
+	});
 }
 function Field({ label, children }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 		className: "grid gap-1.5 text-sm font-medium",
 		children: [label, children]
-	}, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 85,
-		columnNumber: 10
-	}, this);
+	});
 }
 function FounderApp() {
 	const [authState, setAuthState] = (0, import_react.useState)("checking");
@@ -27833,10 +29995,10 @@ function FounderApp() {
 	const [projects, setProjects] = (0, import_react.useState)([]);
 	const [employees, setEmployees] = (0, import_react.useState)([]);
 	const [trashedProjects, setTrashedProjects] = (0, import_react.useState)([]);
+	const [decisionRequests, setDecisionRequests] = (0, import_react.useState)([]);
 	const [selectedProjectId, setSelectedProjectId] = (0, import_react.useState)(null);
+	const [viewMode, setViewMode] = (0, import_react.useState)("directory");
 	const [activities, setActivities] = (0, import_react.useState)([]);
-	const [conversations, setConversations] = (0, import_react.useState)([]);
-	const [projectHistory, setProjectHistory] = (0, import_react.useState)([]);
 	const [currentTab, setCurrentTab] = (0, import_react.useState)("projects");
 	const [searchQuery, setSearchQuery] = (0, import_react.useState)("");
 	const [sidebarOpen, setSidebarOpen] = (0, import_react.useState)(false);
@@ -27847,8 +30009,10 @@ function FounderApp() {
 	const [shareLink, setShareLink] = (0, import_react.useState)(null);
 	const [notice, setNotice] = (0, import_react.useState)(null);
 	const [busy, setBusy] = (0, import_react.useState)(false);
-	const selectedProject = projects.find((p) => p.id === selectedProjectId) || projects[0];
+	const selectedProject = projects.find((p) => p.id === selectedProjectId) || null;
 	const filteredProjects = projects.filter((project) => `${project.name} ${project.clientName} ${project.location || ""}`.toLowerCase().includes(searchQuery.toLowerCase()));
+	const pendingDecisionsCount = decisionRequests.filter((r) => r.status !== "Done").length;
+	const pendingGroupsCount = projects.filter((p) => p.telegramSetupPending).length;
 	const showNotice = (message, error = false) => {
 		setNotice({
 			message,
@@ -27860,10 +30024,17 @@ function FounderApp() {
 		try {
 			const data = await api$1("/api/founder/projects");
 			setProjects(data.projects || []);
-			setSelectedProjectId((current) => (data.projects || []).some((p) => p.id === current) ? current : data.projects?.[0]?.id || null);
 			setAuthState("signed-in");
 		} catch {
 			setAuthState("signed-out");
+		}
+	};
+	const loadDecisionRequests = async () => {
+		try {
+			const data = await api$1("/api/founder/decision-requests");
+			setDecisionRequests(data.requests || []);
+		} catch {
+			setDecisionRequests([]);
 		}
 	};
 	const loadActivities = async () => {
@@ -27890,34 +30061,28 @@ function FounderApp() {
 			setTrashedProjects([]);
 		}
 	};
-	const loadProjectDetails = async (id) => {
-		if (!id) {
-			setConversations([]);
-			setProjectHistory([]);
-			return;
-		}
-		const [conversation, history] = await Promise.allSettled([api$1(`/api/founder/projects/${id}/conversation`), api$1(`/api/founder/projects/${id}/updates`)]);
-		setConversations(conversation.status === "fulfilled" ? conversation.value.messages || [] : []);
-		setProjectHistory(history.status === "fulfilled" ? history.value.updates || [] : []);
-	};
 	(0, import_react.useEffect)(() => {
 		loadProjects();
+		loadDecisionRequests();
+		const handleUnauthorized = () => {
+			setAuthState("signed-out");
+			showNotice("Session expired. Please sign in again.", true);
+		};
+		window.addEventListener("studio-iksha:unauthorized", handleUnauthorized);
+		return () => window.removeEventListener("studio-iksha:unauthorized", handleUnauthorized);
 	}, []);
 	(0, import_react.useEffect)(() => {
 		if (authState !== "signed-in") return;
 		const timer = setInterval(async () => {
 			if (document.visibilityState !== "visible") return;
 			try {
-				const data = await api$1("/api/founder/projects");
-				setProjects(data.projects || []);
-				setSelectedProjectId((current) => (data.projects || []).some((project) => project.id === current) ? current : data.projects?.[0]?.id || null);
+				const [projData, decData] = await Promise.allSettled([api$1("/api/founder/projects"), api$1("/api/founder/decision-requests")]);
+				if (projData.status === "fulfilled") setProjects(projData.value.projects || []);
+				if (decData.status === "fulfilled") setDecisionRequests(decData.value.requests || []);
 			} catch {}
-		}, 1e4);
+		}, 8e3);
 		return () => clearInterval(timer);
 	}, [authState]);
-	(0, import_react.useEffect)(() => {
-		loadProjectDetails(selectedProjectId);
-	}, [selectedProjectId]);
 	(0, import_react.useEffect)(() => {
 		const isLogin = authState === "signed-out";
 		document.documentElement.classList.toggle("founder-login", isLogin);
@@ -27928,9 +30093,16 @@ function FounderApp() {
 	const openTab = (tab) => {
 		setCurrentTab(tab);
 		setSidebarOpen(false);
+		if (tab === "projects") setViewMode("directory");
 		if (tab === "activity") loadActivities();
 		if (tab === "employees") loadEmployees();
 		if (tab === "trash") loadTrash();
+		if (tab === "decisions") loadDecisionRequests();
+	};
+	const handleSelectProjectFromDir = (projectId) => {
+		setSelectedProjectId(projectId);
+		setViewMode("detail");
+		setCurrentTab("projects");
 	};
 	const handleLogin = async (event) => {
 		event.preventDefault();
@@ -27938,7 +30110,7 @@ function FounderApp() {
 		setLoginError("");
 		try {
 			await post$1("/api/founder/login", { password });
-			await loadProjects();
+			await Promise.all([loadProjects(), loadDecisionRequests()]);
 		} catch (error) {
 			setLoginError(error.message);
 		} finally {
@@ -27959,21 +30131,13 @@ function FounderApp() {
 			showNotice(error.message, true);
 		}
 	};
-	const completeProject = async () => {
-		if (!selectedProject) return;
-		try {
-			await post$1(`/api/founder/projects/${selectedProject.id}/complete`);
-			await loadProjects();
-			showNotice("Project marked complete.");
-		} catch (error) {
-			showNotice(error.message, true);
-		}
-	};
 	const moveToTrash = async () => {
 		if (!selectedProject) return;
 		try {
 			await post$1(`/api/founder/projects/${selectedProject.id}/trash`);
 			setTrashConfirmOpen(false);
+			setViewMode("directory");
+			setSelectedProjectId(null);
 			await loadProjects();
 			showNotice("Project moved to Trash. You can restore it later.");
 		} catch (error) {
@@ -27995,8 +30159,10 @@ function FounderApp() {
 		try {
 			const data = await (method === "PATCH" ? patch : post$1)(url, Object.fromEntries(new FormData(event.currentTarget)));
 			await loadProjects();
-			if (data.project?.id) setSelectedProjectId(data.project.id);
-			if (selectedProjectId) await loadProjectDetails(selectedProjectId);
+			if (data.project?.id) {
+				setSelectedProjectId(data.project.id);
+				setViewMode("detail");
+			}
 			after();
 			showNotice(success);
 		} catch (error) {
@@ -28005,130 +30171,70 @@ function FounderApp() {
 			setBusy(false);
 		}
 	};
-	if (authState === "checking") return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("main", {
+	if (authState === "checking") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
 		className: "grid min-h-dvh place-items-center p-6",
-		children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "w-full max-w-sm space-y-5",
 			children: [
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Brand, {}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 201,
-					columnNumber: 139
-				}, this),
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Skeleton, { className: "h-24 w-full" }, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 201,
-					columnNumber: 148
-				}, this),
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Skeleton, { className: "h-12 w-full" }, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 201,
-					columnNumber: 184
-				}, this)
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Brand, {}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-24 w-full" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-12 w-full" })
 			]
-		}, void 0, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 201,
-			columnNumber: 96
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 201,
-		columnNumber: 40
-	}, this);
-	if (authState === "signed-out") return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("main", {
+		})
+	});
+	if (authState === "signed-out") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
 		className: "grid min-h-dvh place-items-center bg-black md:p-6",
-		children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("section", {
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 			className: "relative isolate flex min-h-dvh w-full flex-col overflow-hidden bg-black text-white md:min-h-[min(855px,calc(100dvh-3rem))] md:max-w-[394px] md:shadow-2xl",
 			"aria-label": "Studio Iksha founder access",
 			children: [
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("img", {
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 					src: "/assets/studio-iksha-access.png",
 					alt: "",
 					"aria-hidden": "true",
 					className: "pointer-events-none absolute top-[-11%] left-[-33%] h-[111%] w-[160.5%] max-w-none object-cover"
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 205,
-					columnNumber: 9
-				}, this),
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 					"aria-hidden": "true",
 					className: "pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_42%,rgba(0,0,0,.16)_58%,rgba(0,0,0,.72)_78%,rgba(0,0,0,.9)_100%)]"
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 211,
-					columnNumber: 9
-				}, this),
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "relative z-10 mt-auto flex flex-col px-6 pb-[max(12px,env(safe-area-inset-bottom))]",
 					children: [
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "mb-5 space-y-0.5",
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-sm font-medium tracking-tight",
 								children: "Project Operations"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 215,
-								columnNumber: 13
-							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 								className: "text-[28px] leading-tight font-bold tracking-[-0.5px]",
 								children: "Welcome to Studio Iksha"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 216,
-								columnNumber: 13
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 214,
-							columnNumber: 11
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "mb-3 text-[11px] leading-[1.4] text-[#a3a3a3]",
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", { children: "Studio Iksha uses encrypted tokens and single-claim client links for zero-login client privacy." }, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 220,
-								columnNumber: 13
-							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Studio Iksha uses encrypted tokens and single-claim client links for zero-login client privacy." }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 								className: "font-semibold text-[#157de0]",
 								children: "Read our Terms and Privacy Policy"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 221,
-								columnNumber: 13
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 219,
-							columnNumber: 11
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("form", {
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 							onSubmit: handleLogin,
 							className: "space-y-2.5",
 							children: [
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
 									className: "sr-only",
 									htmlFor: "founder-key",
 									children: "Founder key"
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 225,
-									columnNumber: 13
-								}, this),
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "relative",
 									children: [
-										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(KeyRound, {
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(KeyRound, {
 											"aria-hidden": "true",
 											className: "pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-[#797979]"
-										}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 227,
-											columnNumber: 15
-										}, this),
-										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 											id: "founder-key",
 											type: showPassword ? "text" : "password",
 											value: password,
@@ -28137,176 +30243,110 @@ function FounderApp() {
 											autoComplete: "current-password",
 											required: true,
 											className: "h-[49px] rounded-full border-[#373636] bg-[#1f1f1f] pr-12 pl-[43px] text-base text-white shadow-none placeholder:text-[#797979] focus-visible:border-white/60 focus-visible:ring-white/20"
-										}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 228,
-											columnNumber: 15
-										}, this),
-										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", {
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 											type: "button",
 											onClick: () => setShowPassword((visible) => !visible),
 											"aria-label": showPassword ? "Hide founder key" : "Show founder key",
 											className: "absolute top-1/2 right-3 grid size-10 -translate-y-1/2 place-items-center rounded-full text-[#797979] focus-visible:outline-2 focus-visible:outline-white",
-											children: showPassword ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(EyeOff, { className: "size-[15px]" }, void 0, false, {
-												fileName: _jsxFileName$3,
-												lineNumber: 244,
-												columnNumber: 33
-											}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Eye, { className: "size-[15px]" }, void 0, false, {
-												fileName: _jsxFileName$3,
-												lineNumber: 244,
-												columnNumber: 70
-											}, this)
-										}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 238,
-											columnNumber: 15
-										}, this)
+											children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EyeOff, { className: "size-[15px]" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eye, { className: "size-[15px]" })
+										})
 									]
-								}, void 0, true, {
-									fileName: _jsxFileName$3,
-									lineNumber: 226,
-									columnNumber: 13
-								}, this),
-								loginError && /* @__PURE__ */ (void 0)("p", {
+								}),
+								loginError && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									role: "alert",
 									className: "text-xs text-red-300",
 									children: loginError
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 247,
-									columnNumber: 28
-								}, this),
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 									type: "submit",
 									disabled: isLoggingIn,
 									className: "h-12 w-full rounded-full bg-[#f8f8f8] text-base font-semibold text-black shadow-none hover:bg-white",
 									children: isLoggingIn ? "Opening…" : "Continue"
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 248,
-									columnNumber: 13
-								}, this)
+								})
 							]
-						}, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 224,
-							columnNumber: 11
-						}, this)
+						})
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 213,
-					columnNumber: 9
-				}, this)
+				})
 			]
-		}, void 0, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 204,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 203,
-		columnNumber: 5
-	}, this);
-	const navigation = /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		})
+	});
+	const navItems = [
+		[
+			"projects",
+			FolderKanban,
+			"All Projects",
+			projects.length
+		],
+		[
+			"decisions",
+			CircleCheck,
+			"Needs attention",
+			pendingDecisionsCount
+		],
+		[
+			"groups",
+			Users,
+			"Telegram groups",
+			pendingGroupsCount
+		],
+		[
+			"assistant",
+			Sparkles,
+			"Founder assistant",
+			null
+		],
+		[
+			"employees",
+			Users,
+			"Employees",
+			employees.length
+		],
+		[
+			"activity",
+			Clock3,
+			"Activity log",
+			null
+		],
+		[
+			"trash",
+			Trash,
+			"Trash",
+			trashedProjects.length
+		]
+	];
+	const navigation = /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "flex h-full flex-col gap-5",
 		children: [
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Brand, {}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 258,
-				columnNumber: 5
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("nav", {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Brand, {}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
 				className: "grid gap-1",
 				"aria-label": "Workspace",
-				children: [
-					[
-						"projects",
-						FolderKanban,
-						"Projects"
-					],
-					[
-						"groups",
-						Users,
-						"Telegram groups"
-					],
-					[
-						"decisions",
-						CircleCheck,
-						"Needs attention"
-					],
-					[
-						"assistant",
-						Sparkles,
-						"Founder assistant"
-					],
-					[
-						"messages",
-						MessageSquare,
-						"Client messages"
-					],
-					[
-						"employees",
-						Users,
-						"Employees"
-					],
-					[
-						"activity",
-						Clock3,
-						"Activity log"
-					],
-					[
-						"trash",
-						Trash,
-						"Trash"
-					]
-				].map(([id, Icon, label]) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
-					variant: currentTab === id ? "secondary" : "ghost",
-					className: `h-10 justify-start gap-3 ${currentTab === id ? "text-primary" : "text-muted-foreground"}`,
+				children: navItems.map(([id, Icon, label, badgeCount]) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+					variant: currentTab === id && (id !== "projects" || viewMode === "directory") ? "secondary" : "ghost",
+					className: `h-10 justify-start gap-3 ${currentTab === id ? "text-primary font-semibold" : "text-muted-foreground"}`,
 					onClick: () => openTab(id),
 					children: [
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Icon, { className: "size-4" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 260,
-							columnNumber: 557
-						}, this),
-						label,
-						id === "messages" && conversations.length > 0 && /* @__PURE__ */ (void 0)(Badge, {
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, { className: "size-4" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "flex-1 text-left",
+							children: label
+						}),
+						badgeCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
 							variant: "outline",
-							className: "ml-auto",
-							children: conversations.length
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 260,
-							columnNumber: 641
-						}, this)
+							className: `ml-auto text-[10px] ${id === "decisions" || id === "groups" ? "bg-amber-100 text-amber-900 border-amber-300" : ""}`,
+							children: badgeCount
+						})
 					]
-				}, id, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 260,
-					columnNumber: 357
-				}, this))
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 259,
-				columnNumber: 5
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Separator, {}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 262,
-				columnNumber: 5
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				}, id))
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Separator, {}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex items-center justify-between",
-				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 					className: "text-xs font-semibold uppercase tracking-wider text-muted-foreground",
-					children: "Projects"
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 263,
-					columnNumber: 56
-				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+					children: "Quick Projects"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 					size: "icon-sm",
 					variant: "ghost",
 					"aria-label": "Create project",
@@ -28314,1634 +30354,290 @@ function FounderApp() {
 						setCreateOpen(true);
 						setSidebarOpen(false);
 					},
-					children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Plus, {}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 263,
-						columnNumber: 289
-					}, this)
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 263,
-					columnNumber: 158
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 263,
-				columnNumber: 5
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {})
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "relative",
-				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Search, { className: "pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" }, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 264,
-					columnNumber: 31
-				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 					value: searchQuery,
 					onChange: (e) => setSearchQuery(e.target.value),
-					placeholder: "Find project",
-					className: "pl-9"
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 264,
-					columnNumber: 143
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 264,
-				columnNumber: 5
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					placeholder: "Filter projects…",
+					className: "pl-8 text-xs h-8"
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "min-h-0 flex-1 space-y-4 overflow-y-auto",
-				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "space-y-1",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-							className: "px-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground",
-							children: "Ongoing"
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 266,
-							columnNumber: 34
-						}, this),
-						filteredProjects.filter((project) => project.status !== "Completed").map((project) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
-							variant: project.id === selectedProject?.id && currentTab === "projects" ? "outline" : "ghost",
-							className: "h-auto w-full justify-start px-3 py-2.5 text-left",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "px-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground",
+						children: [
+							"Ongoing Projects (",
+							filteredProjects.filter((p) => p.status !== "Completed").length,
+							")"
+						]
+					}), filteredProjects.filter((p) => p.status !== "Completed").map((project) => {
+						const isSelected = project.id === selectedProjectId && currentTab === "projects" && viewMode === "detail";
+						return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+							variant: isSelected ? "outline" : "ghost",
+							className: `h-auto w-full justify-start px-3 py-2 text-left ${isSelected ? "border-primary/40 bg-accent/60" : ""}`,
 							onClick: () => {
 								setSelectedProjectId(project.id);
-								openTab("projects");
+								setViewMode("detail");
+								setCurrentTab("projects");
+								setSidebarOpen(false);
 							},
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", { className: `size-2 shrink-0 rounded-full ${project.status === "At risk" || project.telegramSetupPending ? "bg-amber-500" : "bg-emerald-500"}` }, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 266,
-								columnNumber: 483
-							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: `size-2 shrink-0 rounded-full mr-2.5 ${project.status === "At risk" || project.telegramSetupPending ? "bg-amber-500" : "bg-emerald-500"}` }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 								className: "min-w-0 flex-1",
-								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
-									className: "block truncate text-sm font-medium",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "block truncate text-xs font-semibold",
 									children: project.name
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 266,
-									columnNumber: 667
-								}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
-									className: "block truncate text-xs font-normal text-muted-foreground",
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "block truncate text-[11px] font-normal text-muted-foreground",
 									children: project.clientName
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 266,
-									columnNumber: 741
-								}, this)]
-							}, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 266,
-								columnNumber: 634
-							}, this)]
-						}, project.id, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 266,
-							columnNumber: 225
-						}, this)),
-						!filteredProjects.some((project) => project.status !== "Completed") && /* @__PURE__ */ (void 0)("p", {
-							className: "px-2 text-xs text-muted-foreground",
-							children: "No ongoing projects"
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 266,
-							columnNumber: 933
-						}, this)
-					]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 266,
-					columnNumber: 7
-				}, this), filteredProjects.some((project) => project.status === "Completed") && /* @__PURE__ */ (void 0)("div", {
-					className: "space-y-1",
-					children: [/* @__PURE__ */ (void 0)("p", {
-						className: "px-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground",
-						children: "Completed"
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 267,
-						columnNumber: 105
-					}, this), filteredProjects.filter((project) => project.status === "Completed").map((project) => /* @__PURE__ */ (void 0)(Button, {
-						variant: project.id === selectedProject?.id && currentTab === "projects" ? "outline" : "ghost",
-						className: "h-auto w-full justify-start px-3 py-2.5 text-left",
-						onClick: () => {
-							setSelectedProjectId(project.id);
-							openTab("projects");
-						},
-						children: [/* @__PURE__ */ (void 0)(CircleCheck, { className: "size-4 shrink-0 text-emerald-600" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 267,
-							columnNumber: 556
-						}, this), /* @__PURE__ */ (void 0)("span", {
-							className: "min-w-0 flex-1 truncate text-sm",
-							children: project.name
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 267,
-							columnNumber: 617
-						}, this)]
-					}, project.id, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 267,
-						columnNumber: 298
-					}, this))]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 267,
-					columnNumber: 78
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 265,
-				columnNumber: 5
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Separator, {}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 269,
-				columnNumber: 5
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+								})]
+							})]
+						}, project.id);
+					})]
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Separator, {}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex items-center gap-2",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(InitialAvatar, { name: "Project Founder" }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 269,
-						columnNumber: 59
-					}, this),
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, { name: "Project Founder" }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "min-w-0 flex-1",
-						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "truncate text-xs font-semibold",
 							children: "Project Founder"
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 269,
-							columnNumber: 131
-						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "text-xs text-muted-foreground",
 							children: "Workspace owner"
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 269,
-							columnNumber: 196
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 269,
-						columnNumber: 99
-					}, this),
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						variant: "ghost",
 						size: "icon-sm",
 						"aria-label": "Sign out",
 						onClick: handleLogout,
-						children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(LogOut, {}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 269,
-							columnNumber: 350
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 269,
-						columnNumber: 266
-					}, this)
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LogOut, {})
+					})
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 269,
-				columnNumber: 18
-			}, this)
+			})
 		]
-	}, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 257,
-		columnNumber: 22
-	}, this);
-	if (currentTab === "assistant") return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(FounderAssistant, { onBack: () => openTab("projects") }, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 272,
-		columnNumber: 42
-	}, this);
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+	});
+	if (currentTab === "assistant") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderAssistant, { onBack: () => openTab("projects") });
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "app-glow min-h-dvh bg-background pb-20 md:pb-0",
 		children: [
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("aside", {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("aside", {
 				className: "fixed inset-y-0 left-0 hidden w-64 border-r bg-card p-5 md:block",
 				children: navigation
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 275,
-				columnNumber: 5
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Sheet, {
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sheet, {
 				open: sidebarOpen,
 				onOpenChange: setSidebarOpen,
-				children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(SheetContent, {
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SheetContent, {
 					side: "left",
 					className: "w-[min(88vw,19rem)] gap-0 p-5",
-					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(SheetHeader, {
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SheetHeader, {
 						className: "sr-only",
-						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(SheetTitle, { children: "Workspace navigation" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 276,
-							columnNumber: 162
-						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(SheetDescription, { children: "Choose a project or section" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 276,
-							columnNumber: 207
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 276,
-						columnNumber: 129
-					}, this), navigation]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 276,
-					columnNumber: 61
-				}, this)
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 276,
-				columnNumber: 5
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetTitle, { children: "Workspace navigation" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetDescription, { children: "Choose a project or section" })]
+					}), navigation]
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "md:pl-64",
-				children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("header", {
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
 					className: "sticky top-0 z-20 flex h-16 items-center justify-between border-b bg-card/95 px-4 backdrop-blur sm:px-7",
-					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex min-w-0 items-center gap-3",
-						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 							variant: "ghost",
 							size: "icon",
 							className: "md:hidden",
 							"aria-label": "Open navigation",
 							onClick: () => setSidebarOpen(true),
-							children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Menu, {}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 278,
-								columnNumber: 304
-							}, this)
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 278,
-							columnNumber: 180
-						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Menu, {})
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "min-w-0",
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 								className: "text-xs text-muted-foreground",
 								children: ["Workspace / ", {
-									projects: "Projects",
+									projects: viewMode === "directory" ? "All Projects" : selectedProject?.name || "Project Detail",
 									groups: "Telegram groups",
 									decisions: "Needs attention",
 									assistant: "Assistant",
-									messages: "Client messages",
 									employees: "Employees",
 									activity: "Activity",
 									trash: "Trash"
 								}[currentTab]]
-							}, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 278,
-								columnNumber: 346
-							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("strong", {
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
 								className: "block truncate text-sm",
-								children: selectedProject?.name || "Studio Iksha"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 278,
-								columnNumber: 617
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 278,
-							columnNumber: 321
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 278,
-						columnNumber: 131
-					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+								children: currentTab === "projects" && viewMode === "detail" ? selectedProject?.name || "Project Workspace" : "Studio Iksha"
+							})]
+						})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex items-center gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 							variant: "outline",
 							size: "sm",
 							className: "hidden sm:inline-flex",
 							onClick: () => setCreateOpen(true),
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Plus, {}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 278,
-								columnNumber: 869
-							}, this), "New project"]
-						}, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 278,
-							columnNumber: 763
-						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(InitialAvatar, { name: "Project Founder" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 278,
-							columnNumber: 897
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 278,
-						columnNumber: 722
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 278,
-					columnNumber: 7
-				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("main", {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {}), " New project"]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, { name: "Project Founder" })]
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
 					className: "mx-auto w-full max-w-6xl space-y-5 px-4 py-6 sm:px-7 sm:py-8",
-					children: [currentTab === "projects" && projects.some((project) => project.telegramSetupPending) && /* @__PURE__ */ (void 0)(Alert, {
-						className: "border-amber-200 bg-amber-50 text-amber-900",
-						children: [
-							/* @__PURE__ */ (void 0)(Users, {}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 280,
-								columnNumber: 162
-							}, this),
-							/* @__PURE__ */ (void 0)(AlertTitle, { children: "New project from Telegram" }, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 280,
-								columnNumber: 171
-							}, this),
-							/* @__PURE__ */ (void 0)(AlertDescription, {
-								className: "flex flex-wrap items-center justify-between gap-3",
-								children: [/* @__PURE__ */ (void 0)("span", { children: [
-									projects.filter((project) => project.telegramSetupPending).map((project) => project.name).join(", "),
-									" ",
-									projects.filter((project) => project.telegramSetupPending).length === 1 ? "is" : "are",
-									" waiting for names, roles, and a Client."
-								] }, void 0, true, {
-									fileName: _jsxFileName$3,
-									lineNumber: 280,
-									columnNumber: 301
-								}, this), /* @__PURE__ */ (void 0)(Button, {
-									size: "sm",
-									onClick: () => openTab("groups"),
-									children: ["Set up project", /* @__PURE__ */ (void 0)(ArrowRight, {}, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 280,
-										columnNumber: 611
-									}, this)]
-								}, void 0, true, {
-									fileName: _jsxFileName$3,
-									lineNumber: 280,
-									columnNumber: 545
-								}, this)]
-							}, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 280,
-								columnNumber: 221
-							}, this)
-						]
-					}, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 280,
-						columnNumber: 99
-					}, this), currentTab === "groups" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TelegramGroups, {
+					children: currentTab === "groups" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TelegramGroups, {
 						projects,
 						onProjectsChanged: loadProjects
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 281,
-						columnNumber: 36
-					}, this) : currentTab === "decisions" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DecisionInbox, {
+					}) : currentTab === "decisions" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DecisionInbox, {
 						projects,
 						onProjectsChanged: loadProjects
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 281,
-						columnNumber: 139
-					}, this) : currentTab === "employees" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(EmployeeManager, {
+					}) : currentTab === "employees" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmployeeManager, {
 						employees,
 						projects,
-						onAdd: () => setMemberOpen(true)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 281,
-						columnNumber: 241
-					}, this) : currentTab === "trash" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						onAdd: () => setMemberOpen(true),
+						onUpdated: loadEmployees
+					}) : currentTab === "trash" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "space-y-5",
-						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-xs font-semibold uppercase tracking-wider text-primary",
 								children: "Recoverable projects"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 281,
-								columnNumber: 396
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 								className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
 								children: "Trash"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 281,
-								columnNumber: 495
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "mt-1 text-sm text-muted-foreground",
-								children: "Projects here are hidden from employees and clients. Restore them whenever you need to."
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 281,
-								columnNumber: 576
-							}, this)
-						] }, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 281,
-							columnNumber: 391
-						}, this), trashedProjects.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+								children: "Projects here are hidden from employees. Restore them whenever you need to."
+							})
+						] }), trashedProjects.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "grid gap-3 sm:grid-cols-2",
-							children: trashedProjects.map((project) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
+							children: trashedProjects.map((proj) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
 								className: "flex items-center gap-3 p-4",
 								children: [
-									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(FolderKanban, { className: "size-5 shrink-0 text-muted-foreground" }, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 281,
-										columnNumber: 902
-									}, this),
-									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "size-5 shrink-0 text-muted-foreground" }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "min-w-0 flex-1",
-										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 											className: "truncate text-sm font-semibold",
-											children: project.name
-										}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 281,
-											columnNumber: 1e3
-										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+											children: proj.name
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 											className: "truncate text-xs text-muted-foreground",
-											children: project.clientName
-										}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 281,
-											columnNumber: 1064
-										}, this)]
-									}, void 0, true, {
-										fileName: _jsxFileName$3,
-										lineNumber: 281,
-										columnNumber: 968
-									}, this),
-									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+											children: proj.clientName
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 										variant: "outline",
 										size: "sm",
-										onClick: () => restoreProject(project.id),
+										onClick: () => restoreProject(proj.id),
 										children: "Restore"
-									}, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 281,
-										columnNumber: 1148
-									}, this)
+									})
 								]
-							}, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 281,
-								columnNumber: 849
-							}, this) }, project.id, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 281,
-								columnNumber: 826
-							}, this))
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 281,
-							columnNumber: 749
-						}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
+							}) }, proj.id))
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
 							className: "py-10 text-center text-sm text-muted-foreground",
 							children: "Trash is empty."
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 281,
-							columnNumber: 1281
-						}, this) }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 281,
-							columnNumber: 1275
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 281,
-						columnNumber: 364
-					}, this) : currentTab === "messages" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_jsx_dev_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-						className: "flex flex-wrap items-start justify-between gap-3",
-						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-								className: "text-xs font-semibold uppercase tracking-wider text-primary",
-								children: "Client conversation"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 282,
-								columnNumber: 82
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
-								className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
-								children: "Messages"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 282,
-								columnNumber: 180
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-								className: "mt-1 text-sm text-muted-foreground",
-								children: [selectedProject?.name || "Select a project", " · client questions and project assistant replies"]
-							}, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 282,
-								columnNumber: 264
-							}, this)
-						] }, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 282,
-							columnNumber: 77
-						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-							className: "flex gap-2",
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
-								variant: "outline",
-								size: "sm",
-								onClick: () => loadProjectDetails(selectedProject?.id),
-								disabled: !selectedProject,
-								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(RefreshCw, {}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 282,
-									columnNumber: 566
-								}, this), "Refresh"]
-							}, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 282,
-								columnNumber: 446
-							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
-								size: "sm",
-								onClick: handleInvite,
-								disabled: !selectedProject,
-								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Share2, {}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 282,
-									columnNumber: 664
-								}, this), "Share client link"]
-							}, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 282,
-								columnNumber: 595
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 282,
-							columnNumber: 418
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 282,
-						columnNumber: 11
-					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, {
-						className: "flex min-h-[min(72dvh,720px)] flex-col overflow-hidden",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-								className: "flex items-center gap-3 border-b px-4 py-3 sm:px-6",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Avatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AvatarFallback, {
-										className: "bg-primary/10 text-primary",
-										children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Sparkles, { className: "size-4" }, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 283,
-											columnNumber: 215
-										}, this)
-									}, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 283,
-										columnNumber: 160
-									}, this) }, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 283,
-										columnNumber: 152
-									}, this),
-									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-										className: "flex-1",
-										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-											className: "text-sm font-semibold",
-											children: "Project Assistant"
-										}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 283,
-											columnNumber: 296
-										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-											className: "text-xs text-muted-foreground",
-											children: "Private client Q&A"
-										}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 283,
-											columnNumber: 354
-										}, this)]
-									}, void 0, true, {
-										fileName: _jsxFileName$3,
-										lineNumber: 283,
-										columnNumber: 272
-									}, this),
-									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Badge, {
-										variant: "secondary",
-										children: [conversations.length, " exchanges"]
-									}, void 0, true, {
-										fileName: _jsxFileName$3,
-										lineNumber: 283,
-										columnNumber: 431
-									}, this)
-								]
-							}, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 283,
-								columnNumber: 84
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ConversationThread, {
-								conversations,
-								project: selectedProject,
-								large: true
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 283,
-								columnNumber: 504
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-								className: "flex items-center justify-between gap-3 border-t bg-muted/30 px-4 py-3 text-xs text-muted-foreground sm:px-6",
-								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", { children: "Replies use the facts recorded for this project." }, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 283,
-									columnNumber: 714
-								}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
-									variant: "outline",
-									size: "sm",
-									onClick: handleInvite,
-									disabled: !selectedProject,
-									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Share2, {}, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 283,
-										columnNumber: 862
-									}, this), "Invite"]
-								}, void 0, true, {
-									fileName: _jsxFileName$3,
-									lineNumber: 283,
-									columnNumber: 775
-								}, this)]
-							}, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 283,
-								columnNumber: 588
-							}, this)
-						]
-					}, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 283,
-						columnNumber: 11
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 281,
-						columnNumber: 1428
-					}, this) : currentTab === "activity" ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_jsx_dev_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						}) })]
+					}) : currentTab === "activity" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex items-start justify-between gap-3",
-						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-xs font-semibold uppercase tracking-wider text-primary",
 								children: "Workspace log"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 285,
-								columnNumber: 72
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 								className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
 								children: "Activity"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 285,
-								columnNumber: 164
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "mt-1 text-sm text-muted-foreground",
 								children: "Recent updates across your projects."
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 285,
-								columnNumber: 248
-							}, this)
-						] }, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 285,
-							columnNumber: 67
-						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+							})
+						] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 							variant: "outline",
 							size: "sm",
 							onClick: loadActivities,
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(RefreshCw, {}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 285,
-								columnNumber: 405
-							}, this), "Refresh"]
-						}, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 285,
-							columnNumber: 344
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 285,
-						columnNumber: 11
-					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, {}), " Refresh"]
+						})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
 						className: "divide-y pt-5",
-						children: activities.length ? activities.map((item, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						children: activities.length ? activities.map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "flex gap-3 py-4 first:pt-0",
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 								className: "grid size-9 shrink-0 place-items-center rounded-lg bg-secondary text-primary",
-								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(RotateCcwClock, { className: "size-4" }, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 286,
-									columnNumber: 271
-								}, this)
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 286,
-								columnNumber: 176
-							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RotateCcwClock, { className: "size-4" })
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "min-w-0 flex-1",
-								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "flex flex-wrap items-center gap-2",
 									children: [
-										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("strong", {
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
 											className: "text-sm capitalize",
 											children: item.action?.replace(/_/g, " ")
-										}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 286,
-											columnNumber: 391
-										}, this),
-										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Badge, {
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
 											variant: "secondary",
 											children: projects.find((p) => p.id === item.projectId)?.name || "Workspace"
-										}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 286,
-											columnNumber: 472
-										}, this),
-										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 											className: "ml-auto text-xs text-muted-foreground",
 											children: niceDate(item.at)
-										}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 286,
-											columnNumber: 575
-										}, this)
+										})
 									]
-								}, void 0, true, {
-									fileName: _jsxFileName$3,
-									lineNumber: 286,
-									columnNumber: 340
-								}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mt-1 text-sm text-muted-foreground",
 									children: item.details?.name || item.details?.clientName || "Project updated"
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 286,
-									columnNumber: 663
-								}, this)]
-							}, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 286,
-								columnNumber: 308
-							}, this)]
-						}, item.id || index, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 286,
-							columnNumber: 109
-						}, this)) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								})]
+							})]
+						}, item.id || index)) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "py-10 text-center text-sm text-muted-foreground",
 							children: "No activity recorded yet."
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 286,
-							columnNumber: 802
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 286,
-						columnNumber: 17
-					}, this) }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 286,
-						columnNumber: 11
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 284,
-						columnNumber: 43
-					}, this) : selectedProject ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_jsx_dev_runtime.Fragment, { children: [
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-							className: "flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between",
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-									className: "text-xs font-semibold uppercase tracking-wider text-primary",
-									children: "Project workspace"
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 288,
-									columnNumber: 97
-								}, this),
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
-									className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
-									children: selectedProject.name
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 288,
-									columnNumber: 193
-								}, this),
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-									className: "mt-1 text-sm text-muted-foreground",
-									children: [
-										selectedProject.location || "Location not set",
-										" · ",
-										selectedProject.clientName,
-										" · Created ",
-										niceDate(selectedProject.createdAt)
-									]
-								}, void 0, true, {
-									fileName: _jsxFileName$3,
-									lineNumber: 288,
-									columnNumber: 291
-								}, this)
-							] }, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 288,
-								columnNumber: 92
-							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-								className: "grid grid-cols-2 gap-2 sm:flex",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
-										variant: "outline",
-										onClick: () => openTab("messages"),
-										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageSquare, {}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 288,
-											columnNumber: 588
-										}, this), "Messages"]
-									}, void 0, true, {
-										fileName: _jsxFileName$3,
-										lineNumber: 288,
-										columnNumber: 526
-									}, this),
-									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
-										variant: "outline",
-										onClick: () => setFactsOpen(true),
-										children: "Edit facts"
-									}, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 288,
-										columnNumber: 622
-									}, this),
-									/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
-										className: "col-span-2",
-										onClick: handleInvite,
-										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Share2, {}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 288,
-											columnNumber: 756
-										}, this), "Share client link"]
-									}, void 0, true, {
-										fileName: _jsxFileName$3,
-										lineNumber: 288,
-										columnNumber: 702
-									}, this)
-								]
-							}, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 288,
-								columnNumber: 478
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 288,
-							columnNumber: 11
-						}, this),
-						selectedProject.telegramSetupPending && /* @__PURE__ */ (void 0)(Alert, {
-							className: "border-amber-200 bg-amber-50 text-amber-900",
-							children: [
-								/* @__PURE__ */ (void 0)(Users, {}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 289,
-									columnNumber: 115
-								}, this),
-								/* @__PURE__ */ (void 0)(AlertTitle, { children: "New Telegram project needs setup" }, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 289,
-									columnNumber: 124
-								}, this),
-								/* @__PURE__ */ (void 0)(AlertDescription, {
-									className: "flex flex-wrap items-center justify-between gap-3",
-									children: [/* @__PURE__ */ (void 0)("span", { children: "This group has been discovered. Assign the people and a Client role to finish connecting its workflow." }, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 289,
-										columnNumber: 261
-									}, this), /* @__PURE__ */ (void 0)(Button, {
-										size: "sm",
-										onClick: () => openTab("groups"),
-										children: ["Set up group", /* @__PURE__ */ (void 0)(ArrowRight, {}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 289,
-											columnNumber: 440
-										}, this)]
-									}, void 0, true, {
-										fileName: _jsxFileName$3,
-										lineNumber: 289,
-										columnNumber: 376
-									}, this)]
-								}, void 0, true, {
-									fileName: _jsxFileName$3,
-									lineNumber: 289,
-									columnNumber: 181
-								}, this)
-							]
-						}, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 289,
-							columnNumber: 52
-						}, this),
-						selectedProject.blocker && /* @__PURE__ */ (void 0)(Alert, {
-							className: "border-amber-200 bg-amber-50 text-amber-900",
-							children: [
-								/* @__PURE__ */ (void 0)(TriangleAlert, {}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 290,
-									columnNumber: 102
-								}, this),
-								/* @__PURE__ */ (void 0)(AlertTitle, { children: "Active blocker" }, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 290,
-									columnNumber: 119
-								}, this),
-								/* @__PURE__ */ (void 0)(AlertDescription, { children: selectedProject.blocker }, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 290,
-									columnNumber: 158
-								}, this)
-							]
-						}, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 290,
-							columnNumber: 39
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-							className: "grid grid-cols-2 gap-3 lg:grid-cols-4",
-							children: [
-								["Status", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(StatusBadge, { status: selectedProject.status }, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 291,
-									columnNumber: 79
-								}, this)],
-								["Current phase", selectedProject.phase || "Design"],
-								["Next milestone", selectedProject.nextMilestone || "Not scheduled"],
-								["Team", selectedProject.telegramMembers?.length ? `${selectedProject.telegramMembers.length} in Telegram` : `${selectedProject.members?.length || 0} members`]
-							].map(([label, value]) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
-								className: "space-y-3 p-4 sm:p-5",
-								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-									className: "text-xs text-muted-foreground",
-									children: label
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 291,
-									columnNumber: 502
-								}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-									className: "line-clamp-2 text-sm font-semibold sm:text-base",
-									children: value
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 291,
-									columnNumber: 558
-								}, this)]
-							}, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 291,
-								columnNumber: 456
-							}, this) }, label, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 291,
-								columnNumber: 438
-							}, this))
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 291,
-							columnNumber: 11
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Tabs, {
-							defaultValue: "overview",
-							className: "gap-4",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsList, {
-									className: "w-full sm:w-fit",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsTrigger, {
-											value: "overview",
-											children: "Overview"
-										}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 292,
-											columnNumber: 97
-										}, this),
-										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsTrigger, {
-											value: "team",
-											children: "Team chat"
-										}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 292,
-											columnNumber: 149
-										}, this),
-										/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsTrigger, {
-											value: "history",
-											children: "History"
-										}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 292,
-											columnNumber: 198
-										}, this)
-									]
-								}, void 0, true, {
-									fileName: _jsxFileName$3,
-									lineNumber: 292,
-									columnNumber: 59
-								}, this),
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsContent, {
-									value: "overview",
-									className: "space-y-4",
-									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-										className: "grid gap-4 lg:grid-cols-2",
-										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardHeader, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardTitle, {
-											className: "flex items-center gap-2",
-											children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(BuildingComplex, { className: "size-4 text-primary" }, void 0, false, {
-												fileName: _jsxFileName$3,
-												lineNumber: 293,
-												columnNumber: 173
-											}, this), "Current work"]
-										}, void 0, true, {
-											fileName: _jsxFileName$3,
-											lineNumber: 293,
-											columnNumber: 126
-										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardDescription, { children: "Recent progress and what comes next" }, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 293,
-											columnNumber: 242
-										}, this)] }, void 0, true, {
-											fileName: _jsxFileName$3,
-											lineNumber: 293,
-											columnNumber: 114
-										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, { children: [
-											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-												className: "text-sm font-medium",
-												children: selectedProject.recentTask || "No recent task recorded"
-											}, void 0, false, {
-												fileName: _jsxFileName$3,
-												lineNumber: 293,
-												columnNumber: 338
-											}, this),
-											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Separator, { className: "my-4" }, void 0, false, {
-												fileName: _jsxFileName$3,
-												lineNumber: 293,
-												columnNumber: 434
-											}, this),
-											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-												className: "text-xs text-muted-foreground",
-												children: "Next milestone"
-											}, void 0, false, {
-												fileName: _jsxFileName$3,
-												lineNumber: 293,
-												columnNumber: 464
-											}, this),
-											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-												className: "mt-1 text-sm font-medium",
-												children: selectedProject.nextMilestone || "No milestone recorded"
-											}, void 0, false, {
-												fileName: _jsxFileName$3,
-												lineNumber: 293,
-												columnNumber: 527
-											}, this)
-										] }, void 0, true, {
-											fileName: _jsxFileName$3,
-											lineNumber: 293,
-											columnNumber: 325
-										}, this)] }, void 0, true, {
-											fileName: _jsxFileName$3,
-											lineNumber: 293,
-											columnNumber: 108
-										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardHeader, {
-											className: "flex flex-row items-center justify-between",
-											children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardTitle, {
-												className: "flex items-center gap-2",
-												children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Users, { className: "size-4 text-primary" }, void 0, false, {
-													fileName: _jsxFileName$3,
-													lineNumber: 293,
-													columnNumber: 775
-												}, this), "Web app team"]
-											}, void 0, true, {
-												fileName: _jsxFileName$3,
-												lineNumber: 293,
-												columnNumber: 728
-											}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardDescription, { children: [selectedProject.members?.length || 0, " members assigned"] }, void 0, true, {
-												fileName: _jsxFileName$3,
-												lineNumber: 293,
-												columnNumber: 840
-											}, this)] }, void 0, true, {
-												fileName: _jsxFileName$3,
-												lineNumber: 293,
-												columnNumber: 723
-											}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
-												variant: "outline",
-												size: "sm",
-												onClick: () => setMemberOpen(true),
-												children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(UserPlus, {}, void 0, false, {
-													fileName: _jsxFileName$3,
-													lineNumber: 293,
-													columnNumber: 1008
-												}, this), "Add"]
-											}, void 0, true, {
-												fileName: _jsxFileName$3,
-												lineNumber: 293,
-												columnNumber: 936
-											}, this)]
-										}, void 0, true, {
-											fileName: _jsxFileName$3,
-											lineNumber: 293,
-											columnNumber: 656
-										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
-											className: "space-y-3",
-											children: selectedProject.members?.length ? selectedProject.members.map((member, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-												className: "flex items-center gap-3",
-												children: [
-													/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(InitialAvatar, { name: member.name }, void 0, false, {
-														fileName: _jsxFileName$3,
-														lineNumber: 293,
-														columnNumber: 1228
-													}, this),
-													/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-														className: "min-w-0 flex-1",
-														children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-															className: "truncate text-sm font-medium",
-															children: member.name
-														}, void 0, false, {
-															fileName: _jsxFileName$3,
-															lineNumber: 293,
-															columnNumber: 1296
-														}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-															className: "truncate text-xs text-muted-foreground",
-															children: member.designation
-														}, void 0, false, {
-															fileName: _jsxFileName$3,
-															lineNumber: 293,
-															columnNumber: 1357
-														}, this)]
-													}, void 0, true, {
-														fileName: _jsxFileName$3,
-														lineNumber: 293,
-														columnNumber: 1264
-													}, this),
-													/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Badge, {
-														variant: "secondary",
-														children: member.role
-													}, void 0, false, {
-														fileName: _jsxFileName$3,
-														lineNumber: 293,
-														columnNumber: 1441
-													}, this)
-												]
-											}, member.id || index, true, {
-												fileName: _jsxFileName$3,
-												lineNumber: 293,
-												columnNumber: 1162
-											}, this)) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-												className: "py-4 text-sm text-muted-foreground",
-												children: "No members assigned yet."
-											}, void 0, false, {
-												fileName: _jsxFileName$3,
-												lineNumber: 293,
-												columnNumber: 1499
-											}, this)
-										}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 293,
-											columnNumber: 1045
-										}, this)] }, void 0, true, {
-											fileName: _jsxFileName$3,
-											lineNumber: 293,
-											columnNumber: 650
-										}, this)]
-									}, void 0, true, {
-										fileName: _jsxFileName$3,
-										lineNumber: 293,
-										columnNumber: 65
-									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, {
-										className: "border-primary/20 bg-accent/30",
-										children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
-											className: "flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between",
-											children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-												className: "flex items-start gap-3",
-												children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
-													className: "grid size-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary",
-													children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageSquare, { className: "size-5" }, void 0, false, {
-														fileName: _jsxFileName$3,
-														lineNumber: 293,
-														columnNumber: 1887
-													}, this)
-												}, void 0, false, {
-													fileName: _jsxFileName$3,
-													lineNumber: 293,
-													columnNumber: 1790
-												}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", {
-													className: "font-semibold",
-													children: "Client conversation"
-												}, void 0, false, {
-													fileName: _jsxFileName$3,
-													lineNumber: 293,
-													columnNumber: 1935
-												}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-													className: "mt-1 text-sm text-muted-foreground",
-													children: "Review questions and share a private access link."
-												}, void 0, false, {
-													fileName: _jsxFileName$3,
-													lineNumber: 293,
-													columnNumber: 1989
-												}, this)] }, void 0, true, {
-													fileName: _jsxFileName$3,
-													lineNumber: 293,
-													columnNumber: 1930
-												}, this)]
-											}, void 0, true, {
-												fileName: _jsxFileName$3,
-												lineNumber: 293,
-												columnNumber: 1750
-											}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
-												onClick: () => openTab("messages"),
-												children: ["Open messages", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ArrowRight, {}, void 0, false, {
-													fileName: _jsxFileName$3,
-													lineNumber: 293,
-													columnNumber: 2161
-												}, this)]
-											}, void 0, true, {
-												fileName: _jsxFileName$3,
-												lineNumber: 293,
-												columnNumber: 2104
-											}, this)]
-										}, void 0, true, {
-											fileName: _jsxFileName$3,
-											lineNumber: 293,
-											columnNumber: 1654
-										}, this)
-									}, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 293,
-										columnNumber: 1605
-									}, this)]
-								}, void 0, true, {
-									fileName: _jsxFileName$3,
-									lineNumber: 293,
-									columnNumber: 13
-								}, this),
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsContent, {
-									value: "team",
-									children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TeamChat, {
-										endpoint: `/api/founder/projects/${selectedProject.id}/team-chat`,
-										currentActor: "founder"
-									}, selectedProject.id, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 294,
-										columnNumber: 39
-									}, this)
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 294,
-									columnNumber: 13
-								}, this),
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TabsContent, {
-									value: "history",
-									children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardHeader, {
-										className: "flex flex-row items-start justify-between",
-										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardTitle, { children: "Project update history" }, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 295,
-											columnNumber: 119
-										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardDescription, { children: "Saved changes to project facts" }, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 295,
-											columnNumber: 164
-										}, this)] }, void 0, true, {
-											fileName: _jsxFileName$3,
-											lineNumber: 295,
-											columnNumber: 114
-										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
-											variant: "outline",
-											size: "sm",
-											onClick: () => loadProjectDetails(selectedProject.id),
-											children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(RefreshCw, {}, void 0, false, {
-												fileName: _jsxFileName$3,
-												lineNumber: 295,
-												columnNumber: 326
-											}, this), "Refresh"]
-										}, void 0, true, {
-											fileName: _jsxFileName$3,
-											lineNumber: 295,
-											columnNumber: 235
-										}, this)]
-									}, void 0, true, {
-										fileName: _jsxFileName$3,
-										lineNumber: 295,
-										columnNumber: 48
-									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
-										className: "space-y-3",
-										children: projectHistory.length ? projectHistory.map((item, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-											className: "rounded-lg border bg-muted/30 p-4",
-											children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-												className: "flex flex-wrap items-center justify-between gap-2",
-												children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("strong", {
-													className: "text-sm",
-													children: [Object.keys(item.changes || {}).length, " fields updated"]
-												}, void 0, true, {
-													fileName: _jsxFileName$3,
-													lineNumber: 295,
-													columnNumber: 605
-												}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
-													className: "text-xs text-muted-foreground",
-													children: niceDate(item.at)
-												}, void 0, false, {
-													fileName: _jsxFileName$3,
-													lineNumber: 295,
-													columnNumber: 697
-												}, this)]
-											}, void 0, true, {
-												fileName: _jsxFileName$3,
-												lineNumber: 295,
-												columnNumber: 538
-											}, this), Object.entries(item.changes || {}).map(([field, change]) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-												className: "mt-2 flex flex-wrap items-center gap-2 text-xs",
-												children: [
-													/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
-														className: "capitalize text-muted-foreground",
-														children: field.replace(/([A-Z])/g, " $1")
-													}, void 0, false, {
-														fileName: _jsxFileName$3,
-														lineNumber: 295,
-														columnNumber: 914
-													}, this),
-													/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ArrowRight, { className: "size-3" }, void 0, false, {
-														fileName: _jsxFileName$3,
-														lineNumber: 295,
-														columnNumber: 1006
-													}, this),
-													/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
-														className: "font-medium",
-														children: String(change.new || "Cleared")
-													}, void 0, false, {
-														fileName: _jsxFileName$3,
-														lineNumber: 295,
-														columnNumber: 1039
-													}, this)
-												]
-											}, field, true, {
-												fileName: _jsxFileName$3,
-												lineNumber: 295,
-												columnNumber: 838
-											}, this))]
-										}, item.id || index, true, {
-											fileName: _jsxFileName$3,
-											lineNumber: 295,
-											columnNumber: 464
-										}, this)) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-											className: "py-8 text-center text-sm text-muted-foreground",
-											children: "No updates recorded yet."
-										}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 295,
-											columnNumber: 1127
-										}, this)
-									}, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 295,
-										columnNumber: 368
-									}, this)] }, void 0, true, {
-										fileName: _jsxFileName$3,
-										lineNumber: 295,
-										columnNumber: 42
-									}, this)
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 295,
-									columnNumber: 13
-								}, this)
-							]
-						}, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 292,
-							columnNumber: 11
-						}, this),
-						selectedProject.telegramGroupChatId && /* @__PURE__ */ (void 0)(Card, { children: [/* @__PURE__ */ (void 0)(CardHeader, { children: [/* @__PURE__ */ (void 0)(CardTitle, {
-							className: "flex items-center gap-2",
-							children: [/* @__PURE__ */ (void 0)(Users, { className: "size-4 text-primary" }, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 297,
-								columnNumber: 116
-							}, this), "Telegram group team"]
-						}, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 297,
-							columnNumber: 69
-						}, this), /* @__PURE__ */ (void 0)(CardDescription, { children: [selectedProject.telegramMembers?.length || 0, " people observed in the linked group"] }, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 297,
-							columnNumber: 188
-						}, this)] }, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 297,
-							columnNumber: 57
-						}, this), /* @__PURE__ */ (void 0)(CardContent, {
-							className: "space-y-3",
-							children: selectedProject.telegramMembers?.length ? selectedProject.telegramMembers.map((member) => /* @__PURE__ */ (void 0)("div", {
-								className: "flex items-center gap-3",
-								children: [
-									/* @__PURE__ */ (void 0)(InitialAvatar, { name: member.assignedName || member.telegramName }, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 297,
-										columnNumber: 513
-									}, this),
-									/* @__PURE__ */ (void 0)("div", {
-										className: "min-w-0 flex-1",
-										children: [/* @__PURE__ */ (void 0)("p", {
-											className: "truncate text-sm font-medium",
-											children: member.assignedName || member.telegramName
-										}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 297,
-											columnNumber: 612
-										}, this), /* @__PURE__ */ (void 0)("p", {
-											className: "truncate text-xs text-muted-foreground",
-											children: member.telegramName
-										}, void 0, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 297,
-											columnNumber: 704
-										}, this)]
-									}, void 0, true, {
-										fileName: _jsxFileName$3,
-										lineNumber: 297,
-										columnNumber: 580
-									}, this),
-									/* @__PURE__ */ (void 0)(Badge, {
-										variant: "secondary",
-										children: member.assignedRole || "Role pending"
-									}, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 297,
-										columnNumber: 789
-									}, this)
-								]
-							}, member.telegramUserId, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 297,
-								columnNumber: 444
-							}, this)) : /* @__PURE__ */ (void 0)("p", {
-								className: "text-sm text-muted-foreground",
-								children: "Members will appear when the bot observes them in Telegram."
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 297,
-								columnNumber: 873
-							}, this)
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 297,
-							columnNumber: 318
-						}, this)] }, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 297,
-							columnNumber: 51
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
-							className: "flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between",
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", {
-								className: "text-sm font-semibold",
-								children: "Project controls"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 298,
-								columnNumber: 118
-							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
-								className: "mt-1 text-xs text-muted-foreground",
-								children: "Complete finished work or move a project to recoverable Trash."
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 298,
-								columnNumber: 177
-							}, this)] }, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 298,
-								columnNumber: 113
-							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-								className: "flex flex-wrap gap-2",
-								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
-									variant: "outline",
-									onClick: completeProject,
-									disabled: selectedProject.status === "Completed",
-									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CircleCheck, {}, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 298,
-										columnNumber: 439
-									}, this), selectedProject.status === "Completed" ? "Completed" : "Mark complete"]
-								}, void 0, true, {
-									fileName: _jsxFileName$3,
-									lineNumber: 298,
-									columnNumber: 337
-								}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
-									variant: "outline",
-									className: "text-destructive hover:text-destructive",
-									onClick: () => setTrashConfirmOpen(true),
-									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Trash, {}, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 298,
-										columnNumber: 656
-									}, this), "Move to Trash"]
-								}, void 0, true, {
-									fileName: _jsxFileName$3,
-									lineNumber: 298,
-									columnNumber: 536
-								}, this)]
-							}, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 298,
-								columnNumber: 299
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 298,
-							columnNumber: 17
-						}, this) }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 298,
-							columnNumber: 11
-						}, this)
-					] }, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 287,
-						columnNumber: 33
-					}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
+						})
+					}) })] }) : currentTab === "projects" && viewMode === "directory" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectDirectoryView, {
+						projects,
+						decisionRequests,
+						onSelectProject: handleSelectProjectFromDir,
+						onCreateProject: () => setCreateOpen(true),
+						onOpenGroups: () => openTab("groups")
+					}) : currentTab === "projects" && viewMode === "detail" && selectedProject ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectDetailView, {
+						project: selectedProject,
+						allProjects: projects,
+						employees,
+						decisionRequests,
+						onBackToDirectory: () => setViewMode("directory"),
+						onProjectUpdated: loadProjects,
+						onOpenInviteModal: handleInvite,
+						onOpenTrashModal: () => setTrashConfirmOpen(true),
+						onOpenFactsModal: () => setFactsOpen(true),
+						onOpenMemberModal: () => setMemberOpen(true)
+					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
 						className: "flex flex-col items-center gap-4 py-16 text-center",
 						children: [
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(FolderKanban, { className: "size-10 text-primary" }, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 299,
-								columnNumber: 97
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "size-10 text-primary" }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 								className: "text-xl font-semibold",
 								children: "Start your first project"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 299,
-								columnNumber: 146
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-sm text-muted-foreground",
-								children: "Create a workspace to manage updates and client questions."
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 299,
-								columnNumber: 213
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+								children: "Create a workspace to manage tasks, team chat, and client inquiries."
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 								onClick: () => setCreateOpen(true),
-								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Plus, {}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 299,
-									columnNumber: 364
-								}, this), "Create project"]
-							}, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 299,
-								columnNumber: 320
-							}, this)
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {}), " Create project"]
+							})
 						]
-					}, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 299,
-						columnNumber: 21
-					}, this) }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 299,
-						columnNumber: 15
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 279,
-					columnNumber: 7
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 277,
-				columnNumber: 5
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("nav", {
+					}) })
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
 				className: "safe-bottom fixed inset-x-0 bottom-0 z-30 grid grid-cols-4 items-center overflow-visible border-t bg-card/95 px-2 pt-3 backdrop-blur md:hidden",
 				"aria-label": "Mobile navigation",
 				children: [[
@@ -29951,451 +30647,212 @@ function FounderApp() {
 						"Projects"
 					],
 					[
-						"groups",
-						Users,
-						"Groups"
-					],
-					[
 						"decisions",
 						CircleCheck,
 						"Decisions"
+					],
+					[
+						"groups",
+						Users,
+						"Groups"
 					]
-				].map(([id, Icon, label]) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+				].map(([id, Icon, label]) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 					variant: "ghost",
-					className: `h-12 flex-col gap-0.5 text-[10px] ${currentTab === id ? "text-primary" : "text-muted-foreground"}`,
+					className: `h-12 flex-col gap-0.5 text-[10px] ${currentTab === id ? "text-primary font-semibold" : "text-muted-foreground"}`,
 					onClick: () => openTab(id),
-					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Icon, { className: "size-4" }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 302,
-						columnNumber: 509
-					}, this), label]
-				}, id, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 302,
-					columnNumber: 336
-				}, this)), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(GooeyNewButton, {
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, { className: "size-4" }),
+						label,
+						id === "decisions" && pendingDecisionsCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 rounded-full bg-amber-500 absolute top-2 right-6" })
+					]
+				}, id)), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GooeyNewButton, {
 					hasProject: !!selectedProject,
 					onCreateProject: () => setCreateOpen(true),
 					onAddMember: () => setMemberOpen(true),
 					onShareClientLink: handleInvite
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 302,
-					columnNumber: 554
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 302,
-				columnNumber: 5
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Dialog, {
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
 				open: createOpen,
 				onOpenChange: setCreateOpen,
-				children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogContent, {
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
 					className: "max-h-[90dvh] overflow-y-auto",
-					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogTitle, { children: "Create project" }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 304,
-						columnNumber: 131
-					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogDescription, { children: "Set up the basics. You can add team members and invite the client next." }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 304,
-						columnNumber: 172
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 304,
-						columnNumber: 117
-					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("form", {
-						onSubmit: (e) => saveForm(e, "/api/founder/projects", "POST", () => setCreateOpen(false), "Project created."),
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Create project" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Set up the basics. New projects start in Setup. You can assign the client and select a workflow next." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+						onSubmit: (e) => saveForm(e, "/api/founder/projects", "POST", () => setCreateOpen(false), "Project created in Setup."),
 						className: "space-y-4",
 						children: [
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Field, {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
 								label: "Project name",
-								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 									name: "name",
 									placeholder: "Kumar Residence",
 									required: true
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 304,
-									columnNumber: 464
-								}, this)
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 304,
-								columnNumber: 436
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Field, {
-								label: "Client name",
-								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+								})
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
+								label: "Client name (optional)",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 									name: "clientName",
-									placeholder: "Asha Kumar",
-									required: true
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 304,
-									columnNumber: 559
-								}, this)
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 304,
-								columnNumber: 532
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Field, {
-								label: "Location",
-								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+									placeholder: "Asha Kumar"
+								})
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
+								label: "Location (optional)",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 									name: "location",
 									placeholder: "Pune, Maharashtra"
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 304,
-									columnNumber: 652
-								}, this)
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 304,
-								columnNumber: 628
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
-								className: "grid grid-cols-2 gap-3",
-								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Field, {
-									label: "Phase",
-									children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(NativeSelect, {
-										name: "phase",
-										className: "w-full",
-										children: phaseOptions.map((option) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { children: option }, option, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 304,
-											columnNumber: 854
-										}, this))
-									}, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 304,
-										columnNumber: 778
-									}, this)
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 304,
-									columnNumber: 757
-								}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Field, {
-									label: "Status",
-									children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(NativeSelect, {
-										name: "status",
-										className: "w-full",
-										children: statusOptions.slice(0, 4).map((option) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { children: option }, option, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 304,
-											columnNumber: 1029
-										}, this))
-									}, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 304,
-										columnNumber: 939
-									}, this)
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 304,
-									columnNumber: 917
-								}, this)]
-							}, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 304,
-								columnNumber: 717
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Field, {
-								label: "Recent task",
-								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
-									name: "recentTask",
-									placeholder: "3D moodboards completed"
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 304,
-									columnNumber: 1125
-								}, this)
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 304,
-								columnNumber: 1098
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Field, {
-								label: "Next milestone",
-								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
-									name: "nextMilestone",
-									placeholder: "Material selection review"
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 304,
-									columnNumber: 1228
-								}, this)
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 304,
-								columnNumber: 1198
-							}, this),
-							/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+								})
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
+								label: "Start date (optional)",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									name: "startDate",
+									type: "date",
+									defaultValue: (/* @__PURE__ */ new Date()).toISOString().slice(0, 10)
+								})
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "rounded-xl border bg-muted/30 p-3 text-xs text-muted-foreground leading-relaxed",
+								children: [
+									"New projects begin in ",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "Setup" }),
+									" status. You can assign an identified client and select a workflow template to generate sequential stages and tasks."
+								]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 								type: "submit",
 								className: "h-11 w-full",
 								disabled: busy,
-								children: "Create project"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 304,
-								columnNumber: 1306
-							}, this)
+								children: busy ? "Creating project…" : "Create project"
+							})
 						]
-					}, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 304,
-						columnNumber: 297
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 304,
-					columnNumber: 60
-				}, this)
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 304,
-				columnNumber: 5
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(EmployeeDialog, {
+					})]
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmployeeDialog, {
 				open: memberOpen,
 				onOpenChange: setMemberOpen,
 				projects,
 				defaultProjectId: selectedProject?.id,
 				onUpdated: () => Promise.all([loadProjects(), loadEmployees()])
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 305,
-				columnNumber: 5
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Dialog, {
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
 				open: trashConfirmOpen,
 				onOpenChange: setTrashConfirmOpen,
-				children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogTitle, { children: [
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogTitle, { children: [
 					"Move ",
 					selectedProject?.name,
 					" to Trash?"
-				] }, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 306,
-					columnNumber: 101
-				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogDescription, { children: "The project will leave active workspaces and team chat. You can restore it from Trash later." }, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 306,
-					columnNumber: 166
-				}, this)] }, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 306,
-					columnNumber: 87
-				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "The project will leave active workspaces and team chat. You can restore it from Trash later." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex justify-end gap-2",
-					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						variant: "outline",
 						onClick: () => setTrashConfirmOpen(false),
 						children: "Cancel"
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 306,
-						columnNumber: 352
-					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						variant: "destructive",
 						onClick: moveToTrash,
 						children: "Move to Trash"
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 306,
-						columnNumber: 436
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 306,
-					columnNumber: 312
-				}, this)] }, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 306,
-					columnNumber: 72
-				}, this)
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 306,
-				columnNumber: 5
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Dialog, {
+					})]
+				})] })
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
 				open: factsOpen,
 				onOpenChange: setFactsOpen,
-				children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogContent, {
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
 					className: "max-h-[90dvh] overflow-y-auto",
-					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogTitle, { children: "Update project facts" }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 307,
-						columnNumber: 129
-					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogDescription, { children: "The project assistant uses these facts when answering client questions." }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 307,
-						columnNumber: 176
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 307,
-						columnNumber: 115
-					}, this), selectedProject && /* @__PURE__ */ (void 0)("form", {
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Update project facts" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Save updates to milestones, blockers, phase, and status." })] }), selectedProject && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 						onSubmit: (e) => saveForm(e, `/api/founder/projects/${selectedProject.id}`, "PATCH", () => setFactsOpen(false), "Project facts updated."),
 						className: "space-y-4",
 						children: [
-							/* @__PURE__ */ (void 0)("div", {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
+								label: "Client Name",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									name: "clientName",
+									defaultValue: selectedProject.clientName
+								})
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "grid grid-cols-2 gap-3",
-								children: [/* @__PURE__ */ (void 0)(Field, {
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
 									label: "Phase",
-									children: /* @__PURE__ */ (void 0)(NativeSelect, {
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
 										name: "phase",
 										defaultValue: selectedProject.phase,
 										className: "w-full",
-										children: phaseOptions.map((option) => /* @__PURE__ */ (void 0)("option", { children: option }, option, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 307,
-											columnNumber: 687
-										}, this))
-									}, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 307,
-										columnNumber: 574
-									}, this)
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 307,
-									columnNumber: 553
-								}, this), /* @__PURE__ */ (void 0)(Field, {
+										children: phaseOptions.map((option) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: option }, option))
+									})
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
 									label: "Status",
-									children: /* @__PURE__ */ (void 0)(NativeSelect, {
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
 										name: "status",
 										defaultValue: selectedProject.status,
 										className: "w-full",
-										children: statusOptions.map((option) => /* @__PURE__ */ (void 0)("option", { children: option }, option, false, {
-											fileName: _jsxFileName$3,
-											lineNumber: 307,
-											columnNumber: 888
-										}, this))
-									}, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 307,
-										columnNumber: 772
-									}, this)
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 307,
-									columnNumber: 750
-								}, this)]
-							}, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 307,
-								columnNumber: 513
-							}, this),
-							/* @__PURE__ */ (void 0)(Field, {
+										children: statusOptions.map((option) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: option }, option))
+									})
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
 								label: "Recent task",
-								children: /* @__PURE__ */ (void 0)(Input, {
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 									name: "recentTask",
 									defaultValue: selectedProject.recentTask
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 307,
-									columnNumber: 984
-								}, this)
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 307,
-								columnNumber: 957
-							}, this),
-							/* @__PURE__ */ (void 0)(Field, {
+								})
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
 								label: "Next milestone",
-								children: /* @__PURE__ */ (void 0)(Input, {
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 									name: "nextMilestone",
 									defaultValue: selectedProject.nextMilestone
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 307,
-									columnNumber: 1091
-								}, this)
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 307,
-								columnNumber: 1061
-							}, this),
-							/* @__PURE__ */ (void 0)(Field, {
-								label: "Blocker visible to client",
-								children: /* @__PURE__ */ (void 0)(Input, {
+								})
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
+								label: "Blocker",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 									name: "blocker",
 									defaultValue: selectedProject.blocker,
 									placeholder: "None"
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 307,
-									columnNumber: 1215
-								}, this)
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 307,
-								columnNumber: 1174
-							}, this),
-							/* @__PURE__ */ (void 0)(Button, {
-								type: "submit",
-								className: "h-11 w-full",
-								disabled: busy,
-								children: "Save changes"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 307,
-								columnNumber: 1305
-							}, this)
+								})
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex justify-between items-center pt-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+									type: "button",
+									variant: "outline",
+									className: "text-destructive hover:bg-destructive/10",
+									onClick: () => {
+										setFactsOpen(false);
+										setTrashConfirmOpen(true);
+									},
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trash, { className: "size-3.5 mr-1" }), " Move to Trash"]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									type: "submit",
+									disabled: busy,
+									children: "Save changes"
+								})]
+							})
 						]
-					}, selectedProject.id, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 307,
-						columnNumber: 321
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 307,
-					columnNumber: 58
-				}, this)
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 307,
-				columnNumber: 5
-			}, this),
-			/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Dialog, {
+					}, selectedProject.id)]
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
 				open: !!shareLink,
 				onOpenChange: () => setShareLink(null),
-				children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogTitle, { children: "Client link ready" }, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 308,
-					columnNumber: 101
-				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(DialogDescription, { children: [
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Client link ready" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [
 					"Send this link to ",
 					selectedProject?.clientName,
 					". The first browser to open it claims access."
-				] }, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 308,
-					columnNumber: 145
-				}, this)] }, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 308,
-					columnNumber: 87
-				}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "space-y-4",
 					children: [
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "flex gap-2",
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 								value: shareLink || "",
 								readOnly: true,
 								"aria-label": "Client link",
 								className: "min-w-0 font-mono text-xs"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 308,
-								columnNumber: 346
-							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 								variant: "outline",
 								onClick: async () => {
 									try {
@@ -30405,84 +30862,31 @@ function FounderApp() {
 										showNotice("Could not copy link.", true);
 									}
 								},
-								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Copy, {}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 308,
-									columnNumber: 639
-								}, this), "Copy"]
-							}, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 308,
-								columnNumber: 451
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 308,
-							columnNumber: 318
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Copy, {}), " Copy"]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 							className: "flex items-center gap-2 text-xs text-muted-foreground",
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ShieldCheck, { className: "size-4" }, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 308,
-								columnNumber: 735
-							}, this), "Private single-claim access"]
-						}, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 308,
-							columnNumber: 666
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, { className: "size-4" }), " Private single-claim access"]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 							className: "w-full",
 							onClick: () => setShareLink(null),
 							children: "Done"
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 308,
-							columnNumber: 800
-						}, this)
+						})
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 308,
-					columnNumber: 291
-				}, this)] }, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 308,
-					columnNumber: 72
-				}, this)
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 308,
-				columnNumber: 5
-			}, this),
-			notice && /* @__PURE__ */ (void 0)("div", {
+				})] })
+			}),
+			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				role: "status",
 				className: "fixed right-4 bottom-24 z-[60] max-w-sm rounded-lg border bg-card px-4 py-3 text-sm shadow-lg md:bottom-4",
-				children: [notice.error ? /* @__PURE__ */ (void 0)(X, { className: "mr-2 inline size-4 text-destructive" }, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 309,
-					columnNumber: 169
-				}, this) : /* @__PURE__ */ (void 0)(Check, { className: "mr-2 inline size-4 text-emerald-600" }, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 309,
-					columnNumber: 225
-				}, this), notice.message]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 309,
-				columnNumber: 16
-			}, this)
+				children: [notice.error ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(X, { className: "mr-2 inline size-4 text-destructive" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "mr-2 inline size-4 text-emerald-600" }), notice.message]
+			})
 		]
-	}, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 274,
-		columnNumber: 10
-	}, this);
+	});
 }
 //#endregion
 //#region frontend/src/ClientApp.jsx
-var _jsxFileName$2 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/ClientApp.jsx";
 var api = async (url, options = {}) => {
 	const response = await fetch(url, {
 		credentials: "same-origin",
@@ -30505,36 +30909,16 @@ var time = (value) => value ? new Date(value).toLocaleTimeString([], {
 	minute: "2-digit"
 }) : "";
 function AssistantAvatar() {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Avatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AvatarFallback, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
 		className: "bg-primary/10 text-primary",
-		children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Sparkles, { className: "size-4" }, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 24,
-			columnNumber: 73
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 24,
-		columnNumber: 18
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 24,
-		columnNumber: 10
-	}, this);
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-4" })
+	}) });
 }
 function ClientAvatar({ name }) {
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Avatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AvatarFallback, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
 		className: "bg-secondary font-semibold text-secondary-foreground",
 		children: name?.slice(0, 2).toUpperCase() || "CL"
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 27,
-		columnNumber: 18
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 27,
-		columnNumber: 10
-	}, this);
+	}) });
 }
 function ClientApp() {
 	const token = decodeURIComponent(location.pathname.split("/")[2] || "");
@@ -30596,502 +30980,214 @@ function ClientApp() {
 			setIsAsking(false);
 		}
 	};
-	if (error) return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("main", {
+	if (error) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
 		className: "app-glow grid min-h-dvh place-items-center p-4",
-		children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, {
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
 			className: "w-full max-w-md p-6 sm:p-8",
 			children: [
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 					className: "mb-5 grid size-12 place-items-center rounded-xl bg-destructive/10 text-destructive",
-					children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CircleAlert, {}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 68,
-						columnNumber: 231
-					}, this)
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 68,
-					columnNumber: 131
-				}, this),
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, {})
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 					className: "text-xl font-semibold",
 					children: "Unable to open this link"
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 68,
-					columnNumber: 252
-				}, this),
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "mt-2 text-sm leading-relaxed text-muted-foreground",
 					children: "A private client link can be claimed by one browser. Ask your project founder for a new link if you opened it elsewhere."
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 68,
-					columnNumber: 319
-				}, this),
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Alert, {
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Alert, {
 					variant: "destructive",
 					className: "my-5",
 					children: [
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CircleAlert, {}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 68,
-							columnNumber: 555
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AlertTitle, { children: "Access notice" }, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 68,
-							columnNumber: 570
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AlertDescription, { children: error }, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 68,
-							columnNumber: 608
-						}, this)
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, {}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertTitle, { children: "Access notice" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertDescription, { children: error })
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 68,
-					columnNumber: 509
-				}, this),
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 					variant: "outline",
 					className: "w-full",
 					onClick: () => location.reload(),
 					children: "Retry connection"
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 68,
-					columnNumber: 660
-				}, this)
+				})
 			]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 68,
-			columnNumber: 86
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 68,
-		columnNumber: 21
-	}, this);
-	if (!project) return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("main", {
+		})
+	});
+	if (!project) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
 		className: "grid min-h-dvh place-items-center p-6",
-		children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "w-full max-w-sm space-y-4",
 			children: [
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Skeleton, { className: "h-10 w-36" }, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 69,
-					columnNumber: 123
-				}, this),
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Skeleton, { className: "h-16 w-full" }, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 69,
-					columnNumber: 157
-				}, this),
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Skeleton, { className: "h-64 w-full" }, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 69,
-					columnNumber: 193
-				}, this),
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-10 w-36" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-16 w-full" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-64 w-full" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "text-center text-sm text-muted-foreground",
 					children: "Opening your private project space…"
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 69,
-					columnNumber: 229
-				}, this)
+				})
 			]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 69,
-			columnNumber: 80
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 69,
-		columnNumber: 24
-	}, this);
+		})
+	});
 	const firstName = project.clientName?.trim().split(/\s+/)[0] || "there";
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "app-glow flex h-dvh min-h-[480px] flex-col bg-background md:px-5 md:py-5",
-		children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "mx-auto flex min-h-0 w-full max-w-4xl flex-1 flex-col overflow-hidden border-x bg-card md:rounded-2xl md:border md:shadow-xl md:shadow-slate-900/5",
 			children: [
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("header", {
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
 					className: "flex items-center gap-3 border-b px-4 py-3 sm:px-6",
 					children: [
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-lg font-bold text-primary-foreground",
 							children: "i"
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 74,
-							columnNumber: 78
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "min-w-0 flex-1",
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("strong", {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
 								className: "block truncate text-sm",
 								children: "studio iksha"
-							}, void 0, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 74,
-								columnNumber: 238
-							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-xs text-muted-foreground",
 								children: "Private project space"
-							}, void 0, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 74,
-								columnNumber: 302
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$2,
-							lineNumber: 74,
-							columnNumber: 206
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Badge, {
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
 							variant: "outline",
 							className: "gap-1.5 text-muted-foreground",
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(LockKeyhole, { className: "size-3" }, void 0, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 74,
-								columnNumber: 445
-							}, this), "Private"]
-						}, void 0, true, {
-							fileName: _jsxFileName$2,
-							lineNumber: 74,
-							columnNumber: 378
-						}, this)
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LockKeyhole, { className: "size-3" }), "Private"]
+						})
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 74,
-					columnNumber: 7
-				}, this),
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex items-center justify-between gap-3 border-b bg-muted/30 px-4 py-4 sm:px-6",
-					children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "min-w-0",
-						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "text-xs font-semibold uppercase tracking-wider text-primary",
 							children: "Your project"
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 75,
-							columnNumber: 128
-						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 							className: "mt-1 truncate text-xl font-semibold tracking-tight sm:text-2xl",
 							children: project.name
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 75,
-							columnNumber: 219
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$2,
-						lineNumber: 75,
-						columnNumber: 103
-					}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Badge, {
+						})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
 						variant: "secondary",
 						className: "max-w-[40%] truncate",
 						children: project.status || "On track"
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 75,
-						columnNumber: 323
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 75,
-					columnNumber: 7
-				}, this),
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					})]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex min-h-0 flex-1 flex-col",
 					children: [
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "flex items-center gap-3 border-b px-4 py-3 sm:px-6",
 							children: [
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AssistantAvatar, {}, void 0, false, {
-									fileName: _jsxFileName$2,
-									lineNumber: 76,
-									columnNumber: 121
-								}, this),
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AssistantAvatar, {}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "flex-1",
-									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 										className: "text-sm font-semibold",
 										children: "Project Assistant"
-									}, void 0, false, {
-										fileName: _jsxFileName$2,
-										lineNumber: 76,
-										columnNumber: 164
-									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 										className: "text-xs text-muted-foreground",
 										children: "Ask about progress, plans, and milestones"
-									}, void 0, false, {
-										fileName: _jsxFileName$2,
-										lineNumber: 76,
-										columnNumber: 222
-									}, this)]
-								}, void 0, true, {
-									fileName: _jsxFileName$2,
-									lineNumber: 76,
-									columnNumber: 140
-								}, this),
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 									className: "flex items-center gap-1.5 text-xs text-muted-foreground",
-									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", { className: "size-2 rounded-full bg-emerald-500" }, void 0, false, {
-										fileName: _jsxFileName$2,
-										lineNumber: 76,
-										columnNumber: 392
-									}, this), "Online"]
-								}, void 0, true, {
-									fileName: _jsxFileName$2,
-									lineNumber: 76,
-									columnNumber: 318
-								}, this)
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2 rounded-full bg-emerald-500" }), "Online"]
+								})
 							]
-						}, void 0, true, {
-							fileName: _jsxFileName$2,
-							lineNumber: 76,
-							columnNumber: 53
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "chat-scroll min-h-0 flex-1 space-y-5 overflow-y-auto px-4 py-5 sm:px-6",
 							"aria-label": "Project conversation",
 							"aria-live": "polite",
 							children: [
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Message, {
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Message, {
 									align: "start",
-									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AssistantAvatar, {}, void 0, false, {
-										fileName: _jsxFileName$2,
-										lineNumber: 78,
-										columnNumber: 49
-									}, this) }, void 0, false, {
-										fileName: _jsxFileName$2,
-										lineNumber: 78,
-										columnNumber: 34
-									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageContent, {
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AssistantAvatar, {}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
 										className: "max-w-[88%] sm:max-w-[75%]",
-										children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageHeader, { children: "Project Assistant" }, void 0, false, {
-											fileName: _jsxFileName$2,
-											lineNumber: 78,
-											columnNumber: 139
-										}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Bubble, {
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageHeader, { children: "Project Assistant" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
 											variant: "secondary",
-											children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(BubbleContent, { children: [
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(BubbleContent, { children: [
 												"Hi ",
 												firstName,
 												"! I can share the latest updates for ",
-												/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("strong", { children: project.name }, void 0, false, {
-													fileName: _jsxFileName$2,
-													lineNumber: 78,
-													columnNumber: 281
-												}, this),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: project.name }),
 												". What would you like to know?"
-											] }, void 0, true, {
-												fileName: _jsxFileName$2,
-												lineNumber: 78,
-												columnNumber: 215
-											}, this)
-										}, void 0, false, {
-											fileName: _jsxFileName$2,
-											lineNumber: 78,
-											columnNumber: 187
-										}, this)]
-									}, void 0, true, {
-										fileName: _jsxFileName$2,
-										lineNumber: 78,
-										columnNumber: 84
-									}, this)]
-								}, void 0, true, {
-									fileName: _jsxFileName$2,
-									lineNumber: 78,
-									columnNumber: 11
-								}, this),
-								messages.map((item, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_react.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Message, {
+											] })
+										})]
+									})]
+								}),
+								messages.map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_react.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Message, {
 									align: "end",
-									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ClientAvatar, { name: firstName }, void 0, false, {
-										fileName: _jsxFileName$2,
-										lineNumber: 79,
-										columnNumber: 135
-									}, this) }, void 0, false, {
-										fileName: _jsxFileName$2,
-										lineNumber: 79,
-										columnNumber: 120
-									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageContent, {
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClientAvatar, { name: firstName }) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
 										className: "max-w-[88%] sm:max-w-[75%]",
 										children: [
-											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageHeader, {
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageHeader, {
 												className: "justify-end",
 												children: [time(item.at), " · You"]
-											}, void 0, true, {
-												fileName: _jsxFileName$2,
-												lineNumber: 79,
-												columnNumber: 239
-											}, this),
-											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Bubble, {
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
 												align: "end",
-												children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(BubbleContent, { children: item.question }, void 0, false, {
-													fileName: _jsxFileName$2,
-													lineNumber: 79,
-													columnNumber: 335
-												}, this)
-											}, void 0, false, {
-												fileName: _jsxFileName$2,
-												lineNumber: 79,
-												columnNumber: 315
-											}, this),
-											/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(MessageFooter, { children: "Sent" }, void 0, false, {
-												fileName: _jsxFileName$2,
-												lineNumber: 79,
-												columnNumber: 390
-											}, this)
+												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, { children: item.question })
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageFooter, { children: "Sent" })
 										]
-									}, void 0, true, {
-										fileName: _jsxFileName$2,
-										lineNumber: 79,
-										columnNumber: 184
-									}, this)]
-								}, void 0, true, {
-									fileName: _jsxFileName$2,
-									lineNumber: 79,
-									columnNumber: 99
-								}, this), item.answer && /* @__PURE__ */ (void 0)(Message, {
+									})]
+								}), item.answer && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Message, {
 									align: "start",
-									children: [/* @__PURE__ */ (void 0)(MessageAvatar, { children: /* @__PURE__ */ (void 0)(AssistantAvatar, {}, void 0, false, {
-										fileName: _jsxFileName$2,
-										lineNumber: 79,
-										columnNumber: 506
-									}, this) }, void 0, false, {
-										fileName: _jsxFileName$2,
-										lineNumber: 79,
-										columnNumber: 491
-									}, this), /* @__PURE__ */ (void 0)(MessageContent, {
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AssistantAvatar, {}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
 										className: "max-w-[88%] sm:max-w-[75%]",
-										children: [/* @__PURE__ */ (void 0)(MessageHeader, { children: "Project Assistant" }, void 0, false, {
-											fileName: _jsxFileName$2,
-											lineNumber: 79,
-											columnNumber: 596
-										}, this), /* @__PURE__ */ (void 0)(Bubble, {
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageHeader, { children: "Project Assistant" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
 											variant: "secondary",
-											children: /* @__PURE__ */ (void 0)(BubbleContent, { children: item.answer }, void 0, false, {
-												fileName: _jsxFileName$2,
-												lineNumber: 79,
-												columnNumber: 672
-											}, this)
-										}, void 0, false, {
-											fileName: _jsxFileName$2,
-											lineNumber: 79,
-											columnNumber: 644
-										}, this)]
-									}, void 0, true, {
-										fileName: _jsxFileName$2,
-										lineNumber: 79,
-										columnNumber: 541
-									}, this)]
-								}, void 0, true, {
-									fileName: _jsxFileName$2,
-									lineNumber: 79,
-									columnNumber: 468
-								}, this)] }, item.pendingId || item.at || index, true, {
-									fileName: _jsxFileName$2,
-									lineNumber: 79,
-									columnNumber: 42
-								}, this)),
-								isAsking && /* @__PURE__ */ (void 0)(Message, {
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, { children: item.answer })
+										})]
+									})]
+								})] }, item.pendingId || item.at || index)),
+								isAsking && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Message, {
 									align: "start",
 									role: "status",
 									"aria-label": "Project Assistant is responding",
-									children: [/* @__PURE__ */ (void 0)(MessageAvatar, { children: /* @__PURE__ */ (void 0)(AssistantAvatar, {}, void 0, false, {
-										fileName: _jsxFileName$2,
-										lineNumber: 80,
-										columnNumber: 121
-									}, this) }, void 0, false, {
-										fileName: _jsxFileName$2,
-										lineNumber: 80,
-										columnNumber: 106
-									}, this), /* @__PURE__ */ (void 0)(MessageContent, { children: [/* @__PURE__ */ (void 0)(MessageHeader, { children: "Project Assistant" }, void 0, false, {
-										fileName: _jsxFileName$2,
-										lineNumber: 80,
-										columnNumber: 172
-									}, this), /* @__PURE__ */ (void 0)(Bubble, {
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AssistantAvatar, {}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageHeader, { children: "Project Assistant" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
 										variant: "secondary",
-										children: /* @__PURE__ */ (void 0)(BubbleContent, { children: /* @__PURE__ */ (void 0)(ThinkingOrb, {
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
 											state: "working",
 											size: 20,
 											speed: .6,
 											theme: "light",
 											color: "#2166d1",
 											"aria-hidden": "true"
-										}, void 0, false, {
-											fileName: _jsxFileName$2,
-											lineNumber: 80,
-											columnNumber: 263
-										}, this) }, void 0, false, {
-											fileName: _jsxFileName$2,
-											lineNumber: 80,
-											columnNumber: 248
-										}, this)
-									}, void 0, false, {
-										fileName: _jsxFileName$2,
-										lineNumber: 80,
-										columnNumber: 220
-									}, this)] }, void 0, true, {
-										fileName: _jsxFileName$2,
-										lineNumber: 80,
-										columnNumber: 156
-									}, this)]
-								}, void 0, true, {
-									fileName: _jsxFileName$2,
-									lineNumber: 80,
-									columnNumber: 24
-								}, this),
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { ref: endRef }, void 0, false, {
-									fileName: _jsxFileName$2,
-									lineNumber: 81,
-									columnNumber: 11
-								}, this)
+										}) })
+									})] })]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { ref: endRef })
 							]
-						}, void 0, true, {
-							fileName: _jsxFileName$2,
-							lineNumber: 77,
-							columnNumber: 9
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "no-scrollbar flex gap-2 overflow-x-auto border-t px-4 py-3 sm:px-6",
 							children: [
 								"How is the project going?",
 								"What phase are we in?",
 								"What comes next?"
-							].map((suggestion) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+							].map((suggestion) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 								variant: "outline",
 								size: "sm",
 								className: "shrink-0 rounded-full",
 								onClick: () => ask(suggestion),
 								disabled: isAsking,
 								children: suggestion
-							}, suggestion, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 83,
-								columnNumber: 189
-							}, this))
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 83,
-							columnNumber: 9
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("form", {
+							}, suggestion))
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 							onSubmit: (event) => {
 								event.preventDefault();
 								ask();
 							},
 							className: "safe-bottom flex items-end gap-2 border-t bg-card px-3 pt-3 sm:px-6",
-							children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Textarea, {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
 								value: question,
 								onChange: (event) => setQuestion(event.target.value),
 								onKeyDown: (event) => {
@@ -31104,75 +31200,37 @@ function ClientApp() {
 								"aria-label": "Ask a project question",
 								placeholder: "Ask a project question…",
 								className: "max-h-32 min-h-11 flex-1 resize-none"
-							}, void 0, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 84,
-								columnNumber: 152
-							}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 								type: "submit",
 								size: "icon-lg",
 								"aria-label": "Send question",
 								disabled: !question.trim() || isAsking,
 								className: "size-11",
-								children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ArrowUp, { className: "size-5" }, void 0, false, {
-									fileName: _jsxFileName$2,
-									lineNumber: 84,
-									columnNumber: 599
-								}, this)
-							}, void 0, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 84,
-								columnNumber: 475
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$2,
-							lineNumber: 84,
-							columnNumber: 9
-						}, this)
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUp, { className: "size-5" })
+							})]
+						})
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 76,
-					columnNumber: 7
-				}, this)
+				})
 			]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 73,
-			columnNumber: 5
-		}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 			className: "hidden items-center justify-center gap-1.5 pt-3 text-xs text-muted-foreground md:flex",
-			children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CircleCheck, { className: "size-3.5" }, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 87,
-				columnNumber: 106
-			}, this), "Answers reflect facts recorded by your project team."]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 87,
-			columnNumber: 5
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 72,
-		columnNumber: 10
-	}, this);
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5" }), "Answers reflect facts recorded by your project team."]
+		})]
+	});
 }
 //#endregion
 //#region frontend/src/EmployeeApp.jsx
-var _jsxFileName$1 = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/EmployeeApp.jsx";
-var request = async (url, options = {}) => {
-	const response = await fetch(url, {
-		credentials: "same-origin",
-		...options,
-		headers: {
-			"content-type": "application/json",
-			...options.headers || {}
-		}
-	});
-	const data = await response.json().catch(() => ({}));
-	if (!response.ok) throw new Error(data.error || "Request failed.");
-	return data;
+var taskStatusColors = {
+	"Open": "bg-slate-100 text-slate-800 border-slate-200",
+	"In progress": "bg-blue-50 text-blue-700 border-blue-200",
+	"Blocked": "bg-amber-50 text-amber-800 border-amber-200",
+	"Completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
+	"Cancelled": "bg-red-50 text-red-700 border-red-200",
+	"todo": "bg-slate-100 text-slate-800 border-slate-200",
+	"in_progress": "bg-blue-50 text-blue-700 border-blue-200",
+	"review": "bg-amber-50 text-amber-800 border-amber-200",
+	"completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
+	"cancelled": "bg-red-50 text-red-700 border-red-200"
 };
 function EmployeeApp() {
 	const [auth, setAuth] = (0, import_react.useState)("checking");
@@ -31182,6 +31240,11 @@ function EmployeeApp() {
 	const [employee, setEmployee] = (0, import_react.useState)(null);
 	const [projects, setProjects] = (0, import_react.useState)([]);
 	const [selectedId, setSelectedId] = (0, import_react.useState)(null);
+	const [tasks, setTasks] = (0, import_react.useState)([]);
+	const [decisionRequests, setDecisionRequests] = (0, import_react.useState)([]);
+	const [selectedTask, setSelectedTask] = (0, import_react.useState)(null);
+	const [taskDrawerOpen, setTaskDrawerOpen] = (0, import_react.useState)(false);
+	const [loadingWorkspace, setLoadingWorkspace] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
 	const [busy, setBusy] = (0, import_react.useState)(false);
 	const load = async () => {
@@ -31199,6 +31262,28 @@ function EmployeeApp() {
 		load();
 	}, []);
 	const selected = projects.find((project) => project.id === selectedId);
+	const loadWorkspaceData = (0, import_react.useCallback)(async () => {
+		if (!selected?.id) return;
+		setLoadingWorkspace(true);
+		try {
+			const wsData = await fetchProjectWorkspace(selected.id, "employee").catch(() => null);
+			if (wsData && Array.isArray(wsData.tasks)) setTasks(wsData.tasks);
+			else {
+				const tData = await fetchTasks(selected.id, "employee").catch(() => ({ tasks: [] }));
+				setTasks(tData.tasks || []);
+			}
+			const decData = await fetchDecisionRequests("employee").catch(() => ({ requests: [] }));
+			setDecisionRequests(decData.requests || []);
+		} catch {
+			setTasks([]);
+			setDecisionRequests([]);
+		} finally {
+			setLoadingWorkspace(false);
+		}
+	}, [selected?.id]);
+	(0, import_react.useEffect)(() => {
+		if (selected?.id) loadWorkspaceData();
+	}, [selected?.id, loadWorkspaceData]);
 	const login = async (event) => {
 		event.preventDefault();
 		setBusy(true);
@@ -31206,10 +31291,10 @@ function EmployeeApp() {
 		try {
 			await request("/api/employee/login", {
 				method: "POST",
-				body: JSON.stringify({
-					employeeId,
+				body: {
+					employeeId: employeeId.trim(),
 					password
-				})
+				}
 			});
 			await load();
 			setPassword("");
@@ -31224,83 +31309,61 @@ function EmployeeApp() {
 		setAuth("signed-out");
 		setEmployee(null);
 		setProjects([]);
+		setTasks([]);
+		setDecisionRequests([]);
 	};
-	if (auth === "checking") return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("main", {
+	const handleToggleTaskStatus = async (taskItem) => {
+		const nextStatus = taskItem.status === "Completed" || taskItem.status === "completed" ? "Open" : "Completed";
+		try {
+			await updateTask(taskItem.id, { status: nextStatus }, "employee");
+			setTasks((prev) => prev.map((t) => t.id === taskItem.id ? {
+				...t,
+				status: nextStatus
+			} : t));
+		} catch (err) {
+			alert(err.message || "Could not update task.");
+		}
+	};
+	if (auth === "checking") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
 		className: "grid min-h-dvh place-items-center bg-background p-6",
-		children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "w-full max-w-md space-y-4",
-			children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Skeleton, { className: "h-12 w-48" }, void 0, false, {
-				fileName: _jsxFileName$1,
-				lineNumber: 48,
-				columnNumber: 148
-			}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Skeleton, { className: "h-52 w-full" }, void 0, false, {
-				fileName: _jsxFileName$1,
-				lineNumber: 48,
-				columnNumber: 182
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$1,
-			lineNumber: 48,
-			columnNumber: 105
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 48,
-		columnNumber: 35
-	}, this);
-	if (auth === "signed-out") return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("main", {
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-12 w-48" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-52 w-full" })]
+		})
+	});
+	if (auth === "signed-out") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
 		className: "flex min-h-dvh flex-col bg-[#101419] text-white [color-scheme:dark]",
-		children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "mx-auto flex w-full max-w-md flex-1 flex-col justify-end px-6 pb-[max(32px,env(safe-area-inset-bottom))] pt-20",
 			children: [
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "mb-auto",
 					children: [
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "grid size-12 place-items-center rounded-2xl bg-primary text-2xl font-bold",
 							children: "i"
-						}, void 0, false, {
-							fileName: _jsxFileName$1,
-							lineNumber: 51,
-							columnNumber: 32
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "mt-5 text-xs font-semibold uppercase tracking-[.2em] text-blue-300",
 							children: "Studio Iksha · Team access"
-						}, void 0, false, {
-							fileName: _jsxFileName$1,
-							lineNumber: 51,
-							columnNumber: 130
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 							className: "mt-3 text-4xl font-semibold tracking-tight",
 							children: "Welcome to your workspace"
-						}, void 0, false, {
-							fileName: _jsxFileName$1,
-							lineNumber: 51,
-							columnNumber: 242
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "mt-3 text-sm leading-relaxed text-white/60",
-							children: "Sign in to see the projects you work on and talk with your project team."
-						}, void 0, false, {
-							fileName: _jsxFileName$1,
-							lineNumber: 51,
-							columnNumber: 331
-						}, this)
+							children: "Sign in to see the projects you work on, collaborate on tasks, and coordinate with the team."
+						})
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$1,
-					lineNumber: 51,
-					columnNumber: 7
-				}, this),
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("form", {
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 					onSubmit: login,
 					className: "mt-12 space-y-4 rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm",
 					children: [
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 							className: "grid gap-2 text-xs font-medium text-white/70",
-							children: ["Employee ID", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+							children: ["Employee ID", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 								value: employeeId,
 								onChange: (event) => setEmployeeId(event.target.value),
 								autoCapitalize: "characters",
@@ -31308,21 +31371,13 @@ function EmployeeApp() {
 								required: true,
 								placeholder: "EMP-XXXXXXXXXX",
 								className: "h-12 border-white/15 bg-white/10 text-base text-white placeholder:text-white/35"
-							}, void 0, false, {
-								fileName: _jsxFileName$1,
-								lineNumber: 53,
-								columnNumber: 84
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$1,
-							lineNumber: 53,
-							columnNumber: 9
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("label", {
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 							className: "grid gap-2 text-xs font-medium text-white/70",
-							children: ["Password", /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+							children: ["Password", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "relative",
-								children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Input, {
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 									value: password,
 									onChange: (event) => setPassword(event.target.value),
 									type: showPassword ? "text" : "password",
@@ -31330,166 +31385,80 @@ function EmployeeApp() {
 									required: true,
 									placeholder: "Enter your password",
 									className: "h-12 border-white/15 bg-white/10 pr-12 text-base text-white placeholder:text-white/35"
-								}, void 0, false, {
-									fileName: _jsxFileName$1,
-									lineNumber: 54,
-									columnNumber: 107
-								}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", {
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 									type: "button",
 									"aria-label": showPassword ? "Hide password" : "Show password",
 									onClick: () => setShowPassword((value) => !value),
 									className: "absolute inset-y-0 right-0 grid w-12 place-items-center text-white/60",
-									children: showPassword ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(EyeOff, { className: "size-4" }, void 0, false, {
-										fileName: _jsxFileName$1,
-										lineNumber: 54,
-										columnNumber: 635
-									}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Eye, { className: "size-4" }, void 0, false, {
-										fileName: _jsxFileName$1,
-										lineNumber: 54,
-										columnNumber: 667
-									}, this)
-								}, void 0, false, {
-									fileName: _jsxFileName$1,
-									lineNumber: 54,
-									columnNumber: 402
-								}, this)]
-							}, void 0, true, {
-								fileName: _jsxFileName$1,
-								lineNumber: 54,
-								columnNumber: 81
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$1,
-							lineNumber: 54,
-							columnNumber: 9
-						}, this),
-						error && /* @__PURE__ */ (void 0)("p", {
+									children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EyeOff, { className: "size-4" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eye, { className: "size-4" })
+								})]
+							})]
+						}),
+						error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							role: "alert",
 							className: "text-xs text-red-300",
 							children: error
-						}, void 0, false, {
-							fileName: _jsxFileName$1,
-							lineNumber: 55,
-							columnNumber: 19
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 							type: "submit",
 							disabled: busy,
 							className: "h-12 w-full text-sm font-semibold",
 							children: busy ? "Signing in…" : "Continue"
-						}, void 0, false, {
-							fileName: _jsxFileName$1,
-							lineNumber: 56,
-							columnNumber: 9
-						}, this)
+						})
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$1,
-					lineNumber: 52,
-					columnNumber: 7
-				}, this),
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "mt-5 text-center text-xs text-white/40",
 					children: "Your founder provides your employee ID and password."
-				}, void 0, false, {
-					fileName: _jsxFileName$1,
-					lineNumber: 57,
-					columnNumber: 14
-				}, this)
+				})
 			]
-		}, void 0, true, {
-			fileName: _jsxFileName$1,
-			lineNumber: 50,
-			columnNumber: 5
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 49,
-		columnNumber: 37
-	}, this);
-	return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+		})
+	});
+	const projectQueries = decisionRequests.filter((r) => r.projectId === selected?.id);
+	const pendingQueriesCount = projectQueries.filter((r) => !["Done", "Rejected"].includes(r.status)).length;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "app-glow min-h-dvh bg-background pb-[max(24px,env(safe-area-inset-bottom))]",
-		children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("header", {
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
 			className: "sticky top-0 z-20 border-b bg-card/95 px-4 py-4 backdrop-blur",
-			children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "mx-auto flex max-w-5xl items-center gap-3",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "grid size-9 place-items-center rounded-xl bg-primary text-lg font-bold text-primary-foreground",
 						children: "i"
-					}, void 0, false, {
-						fileName: _jsxFileName$1,
-						lineNumber: 62,
-						columnNumber: 146
-					}, this),
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "min-w-0 flex-1",
-						children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "truncate text-sm font-semibold",
 							children: "Studio Iksha"
-						}, void 0, false, {
-							fileName: _jsxFileName$1,
-							lineNumber: 62,
-							columnNumber: 297
-						}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 							className: "truncate text-xs text-muted-foreground",
 							children: [employee?.name, " · Team workspace"]
-						}, void 0, true, {
-							fileName: _jsxFileName$1,
-							lineNumber: 62,
-							columnNumber: 359
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$1,
-						lineNumber: 62,
-						columnNumber: 265
-					}, this),
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Button, {
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						variant: "ghost",
 						size: "icon",
 						"aria-label": "Sign out",
 						onClick: logout,
-						children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(LogOut, { className: "size-4" }, void 0, false, {
-							fileName: _jsxFileName$1,
-							lineNumber: 62,
-							columnNumber: 531
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$1,
-						lineNumber: 62,
-						columnNumber: 456
-					}, this)
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LogOut, { className: "size-4" })
+					})
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$1,
-				lineNumber: 62,
-				columnNumber: 87
-			}, this)
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 62,
-			columnNumber: 5
-		}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("main", {
+			})
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
 			className: "mx-auto max-w-5xl space-y-6 px-4 py-6 sm:px-6",
 			children: [
-				/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-xs font-semibold uppercase tracking-wider text-primary",
 						children: "My workspace"
-					}, void 0, false, {
-						fileName: _jsxFileName$1,
-						lineNumber: 64,
-						columnNumber: 12
-					}, this),
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", {
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 						className: "mt-1 text-2xl font-semibold tracking-tight",
 						children: "Your projects"
-					}, void 0, false, {
-						fileName: _jsxFileName$1,
-						lineNumber: 64,
-						columnNumber: 103
-					}, this),
-					/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 						className: "mt-1 text-sm text-muted-foreground",
 						children: [
 							"You are assigned to ",
@@ -31498,390 +31467,298 @@ function EmployeeApp() {
 							projects.length === 1 ? "project" : "projects",
 							"."
 						]
-					}, void 0, true, {
-						fileName: _jsxFileName$1,
-						lineNumber: 64,
-						columnNumber: 180
-					}, this)
-				] }, void 0, true, {
-					fileName: _jsxFileName$1,
-					lineNumber: 64,
-					columnNumber: 7
-				}, this),
-				projects.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+					})
+				] }),
+				projects.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 					className: "grid gap-3 sm:grid-cols-2",
-					children: projects.map((project) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", {
+					children: projects.map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 						type: "button",
 						onClick: () => setSelectedId(project.id),
-						className: `rounded-2xl border bg-card p-4 text-left shadow-sm transition-colors duration-200 hover:border-primary/40 ${selectedId === project.id ? "border-primary ring-2 ring-primary/10" : ""}`,
-						children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+						className: `rounded-2xl border bg-card p-4 text-left shadow-xs transition-colors duration-200 hover:border-primary/40 ${selectedId === project.id ? "border-primary ring-2 ring-primary/10" : ""}`,
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "flex items-start gap-3",
 							children: [
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "grid size-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary",
-									children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(FolderKanban, { className: "size-5" }, void 0, false, {
-										fileName: _jsxFileName$1,
-										lineNumber: 65,
-										columnNumber: 510
-									}, this)
-								}, void 0, false, {
-									fileName: _jsxFileName$1,
-									lineNumber: 65,
-									columnNumber: 413
-								}, this),
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "size-5" })
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "min-w-0 flex-1",
-									children: [/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("strong", {
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
 										className: "block truncate text-sm",
 										children: project.name
-									}, void 0, false, {
-										fileName: _jsxFileName$1,
-										lineNumber: 65,
-										columnNumber: 584
-									}, this), /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 										className: "mt-1 truncate text-xs text-muted-foreground",
 										children: project.location || project.clientName
-									}, void 0, false, {
-										fileName: _jsxFileName$1,
-										lineNumber: 65,
-										columnNumber: 650
-									}, this)]
-								}, void 0, true, {
-									fileName: _jsxFileName$1,
-									lineNumber: 65,
-									columnNumber: 552
-								}, this),
-								/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Badge, {
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
 									variant: "secondary",
 									children: project.status || "Setup"
-								}, void 0, false, {
-									fileName: _jsxFileName$1,
-									lineNumber: 65,
-									columnNumber: 759
-								}, this)
+								})
 							]
-						}, void 0, true, {
-							fileName: _jsxFileName$1,
-							lineNumber: 65,
-							columnNumber: 373
-						}, this)
-					}, project.id, false, {
-						fileName: _jsxFileName$1,
-						lineNumber: 65,
-						columnNumber: 96
-					}, this))
-				}, void 0, false, {
-					fileName: _jsxFileName$1,
-					lineNumber: 65,
-					columnNumber: 26
-				}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Card, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(CardContent, {
+						})
+					}, project.id))
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
 					className: "py-12 text-center",
 					children: [
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(FolderKanban, { className: "mx-auto size-9 text-muted-foreground/50" }, void 0, false, {
-							fileName: _jsxFileName$1,
-							lineNumber: 65,
-							columnNumber: 896
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "mx-auto size-9 text-muted-foreground/50" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "mt-3 text-sm font-semibold",
 							children: "No projects assigned yet"
-						}, void 0, false, {
-							fileName: _jsxFileName$1,
-							lineNumber: 65,
-							columnNumber: 964
-						}, this),
-						/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", {
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "mt-1 text-xs text-muted-foreground",
 							children: "Ask your founder to add your employee ID to a project."
-						}, void 0, false, {
-							fileName: _jsxFileName$1,
-							lineNumber: 65,
-							columnNumber: 1034
-						}, this)
+						})
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$1,
-					lineNumber: 65,
-					columnNumber: 853
-				}, this) }, void 0, false, {
-					fileName: _jsxFileName$1,
-					lineNumber: 65,
-					columnNumber: 847
-				}, this),
-				selected && /* @__PURE__ */ (void 0)("section", {
+				}) }),
+				selected && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 					className: "space-y-4",
-					children: [/* @__PURE__ */ (void 0)("div", {
-						className: "flex items-center justify-between gap-3",
-						children: [/* @__PURE__ */ (void 0)("div", { children: [/* @__PURE__ */ (void 0)("p", {
-							className: "text-xs font-semibold uppercase tracking-wider text-primary",
-							children: "Selected project"
-						}, void 0, false, {
-							fileName: _jsxFileName$1,
-							lineNumber: 66,
-							columnNumber: 113
-						}, this), /* @__PURE__ */ (void 0)("h2", {
-							className: "mt-1 text-xl font-semibold",
-							children: selected.name
-						}, void 0, false, {
-							fileName: _jsxFileName$1,
-							lineNumber: 66,
-							columnNumber: 208
-						}, this)] }, void 0, true, {
-							fileName: _jsxFileName$1,
-							lineNumber: 66,
-							columnNumber: 108
-						}, this), /* @__PURE__ */ (void 0)(Badge, {
-							variant: "outline",
-							children: selected.status
-						}, void 0, false, {
-							fileName: _jsxFileName$1,
-							lineNumber: 66,
-							columnNumber: 277
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$1,
-						lineNumber: 66,
-						columnNumber: 51
-					}, this), /* @__PURE__ */ (void 0)(Tabs, {
-						defaultValue: "overview",
-						className: "gap-4",
-						children: [
-							/* @__PURE__ */ (void 0)(TabsList, {
-								className: "w-full sm:w-fit",
-								children: [/* @__PURE__ */ (void 0)(TabsTrigger, {
-									value: "overview",
-									children: "Overview"
-								}, void 0, false, {
-									fileName: _jsxFileName$1,
-									lineNumber: 67,
-									columnNumber: 95
-								}, this), /* @__PURE__ */ (void 0)(TabsTrigger, {
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center justify-between gap-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs font-semibold uppercase tracking-wider text-primary",
+								children: "Selected project"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+								className: "mt-1 text-xl font-semibold",
+								children: selected.name
+							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center gap-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+									variant: "outline",
+									size: "sm",
+									onClick: loadWorkspaceData,
+									disabled: loadingWorkspace,
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: `size-3.5 mr-1 ${loadingWorkspace ? "animate-spin" : ""}` }), "Refresh"]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+									variant: "outline",
+									children: selected.status
+								})]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Tabs, {
+							defaultValue: "tasks",
+							className: "gap-4",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
+									className: "flex flex-wrap w-full justify-start h-auto gap-1 bg-muted/60 p-1 rounded-xl",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+											value: "tasks",
+											className: "font-semibold text-xs px-3 py-2",
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-4 mr-1.5" }),
+												"Tasks (",
+												tasks.length,
+												")"
+											]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+											value: "queries",
+											className: "font-semibold text-xs px-3 py-2",
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 mr-1.5 text-amber-600" }),
+												"Client Queries (",
+												projectQueries.length,
+												")",
+												pendingQueriesCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+													variant: "secondary",
+													className: "ml-1.5 size-4 p-0 text-[10px] justify-center bg-amber-200 text-amber-900",
+													children: pendingQueriesCount
+												})
+											]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+											value: "chat",
+											className: "font-semibold text-xs px-3 py-2",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-4 mr-1.5 text-blue-600" }), "Team Chat"]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
+											value: "overview",
+											className: "font-semibold text-xs px-3 py-2",
+											children: "Overview"
+										})
+									]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
+									value: "tasks",
+									className: "space-y-3",
+									children: tasks.length ? tasks.map((t) => {
+										const isCompleted = t.status === "Completed" || t.status === "completed";
+										return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "flex items-center justify-between gap-3 rounded-xl border bg-card p-3.5 shadow-2xs hover:border-primary/40 transition-colors",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "flex items-center gap-3 min-w-0 flex-1",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+													type: "button",
+													onClick: () => handleToggleTaskStatus(t),
+													className: `grid size-5 place-items-center rounded-md border transition-colors ${isCompleted ? "bg-emerald-600 border-emerald-600 text-white" : "border-muted-foreground/30 hover:border-primary"}`,
+													children: isCompleted && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5" })
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+													className: "min-w-0 flex-1",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+														className: `text-sm font-semibold cursor-pointer hover:text-primary transition-colors ${isCompleted ? "line-through text-muted-foreground" : "text-foreground"}`,
+														onClick: () => {
+															setSelectedTask(t);
+															setTaskDrawerOpen(true);
+														},
+														children: t.title
+													}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+														className: "text-[11px] text-muted-foreground",
+														children: [t.stageName || "General", t.deadline && ` · Due: ${t.deadline}`]
+													})]
+												})]
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "flex items-center gap-2",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+													variant: "outline",
+													className: `text-[10px] ${taskStatusColors[t.status] || "bg-muted"}`,
+													children: t.status
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+													variant: "outline",
+													size: "sm",
+													className: "h-8 text-xs font-semibold gap-1.5",
+													onClick: () => {
+														setSelectedTask(t);
+														setTaskDrawerOpen(true);
+													},
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Discussion" })]
+												})]
+											})]
+										}, t.id);
+									}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
+										className: "py-10 text-center text-xs text-muted-foreground",
+										children: "No active tasks in this project yet."
+									}) })
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
+									value: "queries",
+									className: "space-y-3",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "rounded-xl border bg-muted/20 p-3 text-xs",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "font-semibold text-foreground",
+											children: "Assigned Project Telegram Queries"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "text-muted-foreground mt-0.5",
+											children: "View questions and photos received from the client. Contribute internal team notes to discuss resolutions."
+										})]
+									}), projectQueries.length ? projectQueries.map((query) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClientQueryCard, {
+										query,
+										project: selected,
+										stages: selected.stages || [],
+										projectMembers: selected.members || [],
+										isFounder: false,
+										onQueryChanged: loadWorkspaceData,
+										onOpenTask: (taskId) => {
+											const found = tasks.find((t) => t.id === taskId);
+											if (found) {
+												setSelectedTask(found);
+												setTaskDrawerOpen(true);
+											}
+										}
+									}, query.id)) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+										className: "py-10 text-center text-xs text-muted-foreground",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "mx-auto size-8 text-emerald-600 mb-2" }),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+												className: "font-semibold text-sm text-foreground",
+												children: "No queries requiring attention"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+												className: "mt-1",
+												children: "When the client sends inquiries in Telegram, they will appear here for team review."
+											})
+										]
+									}) })]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
 									value: "chat",
-									children: [/* @__PURE__ */ (void 0)(MessageSquare, { className: "size-4" }, void 0, false, {
-										fileName: _jsxFileName$1,
-										lineNumber: 67,
-										columnNumber: 173
-									}, this), "Team chat"]
-								}, void 0, true, {
-									fileName: _jsxFileName$1,
-									lineNumber: 67,
-									columnNumber: 147
-								}, this)]
-							}, void 0, true, {
-								fileName: _jsxFileName$1,
-								lineNumber: 67,
-								columnNumber: 57
-							}, this),
-							/* @__PURE__ */ (void 0)(TabsContent, {
-								value: "overview",
-								className: "space-y-3",
-								children: [
-									/* @__PURE__ */ (void 0)("div", {
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TeamChat, {
+										endpoint: `/api/employee/projects/${selected.id}/team-chat`,
+										currentActor: employee.id
+									}, selected.id)
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
+									value: "overview",
+									className: "space-y-3",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "grid grid-cols-2 gap-3",
-										children: [/* @__PURE__ */ (void 0)(Card, { children: [/* @__PURE__ */ (void 0)(CardHeader, {
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
 											className: "pb-2",
-											children: /* @__PURE__ */ (void 0)(CardTitle, {
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
 												className: "text-xs text-muted-foreground",
 												children: "Current phase"
-											}, void 0, false, {
-												fileName: _jsxFileName$1,
-												lineNumber: 68,
-												columnNumber: 138
-											}, this)
-										}, void 0, false, {
-											fileName: _jsxFileName$1,
-											lineNumber: 68,
-											columnNumber: 109
-										}, this), /* @__PURE__ */ (void 0)(CardContent, {
+											})
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
 											className: "text-sm font-semibold",
 											children: selected.phase || "Not set"
-										}, void 0, false, {
-											fileName: _jsxFileName$1,
-											lineNumber: 68,
-											columnNumber: 229
-										}, this)] }, void 0, true, {
-											fileName: _jsxFileName$1,
-											lineNumber: 68,
-											columnNumber: 103
-										}, this), /* @__PURE__ */ (void 0)(Card, { children: [/* @__PURE__ */ (void 0)(CardHeader, {
+										})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
 											className: "pb-2",
-											children: /* @__PURE__ */ (void 0)(CardTitle, {
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
 												className: "text-xs text-muted-foreground",
 												children: "Team members"
-											}, void 0, false, {
-												fileName: _jsxFileName$1,
-												lineNumber: 68,
-												columnNumber: 361
-											}, this)
-										}, void 0, false, {
-											fileName: _jsxFileName$1,
-											lineNumber: 68,
-											columnNumber: 332
-										}, this), /* @__PURE__ */ (void 0)(CardContent, {
+											})
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
 											className: "text-sm font-semibold",
 											children: selected.members?.length || 0
-										}, void 0, false, {
-											fileName: _jsxFileName$1,
-											lineNumber: 68,
-											columnNumber: 451
-										}, this)] }, void 0, true, {
-											fileName: _jsxFileName$1,
-											lineNumber: 68,
-											columnNumber: 326
-										}, this)]
-									}, void 0, true, {
-										fileName: _jsxFileName$1,
-										lineNumber: 68,
-										columnNumber: 63
-									}, this),
-									/* @__PURE__ */ (void 0)(Card, { children: /* @__PURE__ */ (void 0)(CardContent, {
+										})] })]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
 										className: "space-y-4 p-5",
 										children: [
-											/* @__PURE__ */ (void 0)("div", {
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 												className: "flex items-center gap-2 text-primary",
-												children: [/* @__PURE__ */ (void 0)(BuildingComplex, { className: "size-4" }, void 0, false, {
-													fileName: _jsxFileName$1,
-													lineNumber: 68,
-													columnNumber: 655
-												}, this), /* @__PURE__ */ (void 0)("h3", {
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(BuildingComplex, { className: "size-4" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 													className: "text-sm font-semibold",
 													children: "Current work"
-												}, void 0, false, {
-													fileName: _jsxFileName$1,
-													lineNumber: 68,
-													columnNumber: 687
-												}, this)]
-											}, void 0, true, {
-												fileName: _jsxFileName$1,
-												lineNumber: 68,
-												columnNumber: 601
-											}, this),
-											/* @__PURE__ */ (void 0)("p", {
+												})]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 												className: "text-sm",
 												children: selected.recentTask || "No recent work recorded yet."
-											}, void 0, false, {
-												fileName: _jsxFileName$1,
-												lineNumber: 68,
-												columnNumber: 748
-											}, this),
-											/* @__PURE__ */ (void 0)("div", {
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 												className: "border-t pt-4",
-												children: [/* @__PURE__ */ (void 0)("p", {
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 													className: "text-xs text-muted-foreground",
 													children: "Next milestone"
-												}, void 0, false, {
-													fileName: _jsxFileName$1,
-													lineNumber: 68,
-													columnNumber: 861
-												}, this), /* @__PURE__ */ (void 0)("p", {
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 													className: "mt-1 text-sm font-medium",
 													children: selected.nextMilestone || "Not scheduled"
-												}, void 0, false, {
-													fileName: _jsxFileName$1,
-													lineNumber: 68,
-													columnNumber: 924
-												}, this)]
-											}, void 0, true, {
-												fileName: _jsxFileName$1,
-												lineNumber: 68,
-												columnNumber: 830
-											}, this),
-											selected.blocker && /* @__PURE__ */ (void 0)("div", {
+												})]
+											}),
+											selected.blocker && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 												className: "rounded-xl bg-amber-50 p-3 text-sm text-amber-900",
 												children: ["Blocker: ", selected.blocker]
-											}, void 0, true, {
-												fileName: _jsxFileName$1,
-												lineNumber: 68,
-												columnNumber: 1038
-											}, this)
+											})
 										]
-									}, void 0, true, {
-										fileName: _jsxFileName$1,
-										lineNumber: 68,
-										columnNumber: 562
-									}, this) }, void 0, false, {
-										fileName: _jsxFileName$1,
-										lineNumber: 68,
-										columnNumber: 556
-									}, this),
-									/* @__PURE__ */ (void 0)("p", {
-										className: "flex items-center gap-2 text-xs text-muted-foreground",
-										children: [/* @__PURE__ */ (void 0)(CircleCheck, { className: "size-4" }, void 0, false, {
-											fileName: _jsxFileName$1,
-											lineNumber: 68,
-											columnNumber: 1229
-										}, this), "Project facts are managed by the founder."]
-									}, void 0, true, {
-										fileName: _jsxFileName$1,
-										lineNumber: 68,
-										columnNumber: 1160
-									}, this)
-								]
-							}, void 0, true, {
-								fileName: _jsxFileName$1,
-								lineNumber: 68,
-								columnNumber: 11
-							}, this),
-							/* @__PURE__ */ (void 0)(TabsContent, {
-								value: "chat",
-								children: /* @__PURE__ */ (void 0)(TeamChat, {
-									endpoint: `/api/employee/projects/${selected.id}/team-chat`,
-									currentActor: employee.id
-								}, selected.id, false, {
-									fileName: _jsxFileName$1,
-									lineNumber: 69,
-									columnNumber: 37
-								}, this)
-							}, void 0, false, {
-								fileName: _jsxFileName$1,
-								lineNumber: 69,
-								columnNumber: 11
-							}, this)
-						]
-					}, void 0, true, {
-						fileName: _jsxFileName$1,
-						lineNumber: 67,
-						columnNumber: 9
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$1,
-					lineNumber: 66,
-					columnNumber: 20
-				}, this)
+									}) })]
+								})
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TaskThreadDrawer, {
+							task: selectedTask,
+							project: selected,
+							open: taskDrawerOpen,
+							onOpenChange: setTaskDrawerOpen,
+							onTaskUpdated: loadWorkspaceData,
+							currentActor: employee.name || "Team Member",
+							isFounder: false,
+							projectMembers: selected.members || []
+						})
+					]
+				})
 			]
-		}, void 0, true, {
-			fileName: _jsxFileName$1,
-			lineNumber: 63,
-			columnNumber: 5
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$1,
-		lineNumber: 61,
-		columnNumber: 10
-	}, this);
+		})]
+	});
 }
 //#endregion
 //#region frontend/src/main.jsx
-var _jsxFileName = "/Users/office/Desktop/Workflow management tool/workflow-managment-/frontend/src/main.jsx";
 var rootElement = document.getElementById("app");
 if (rootElement) {
 	const isClientView = window.location.pathname.startsWith("/c/");
-	import_client.createRoot(rootElement).render(/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_react.StrictMode, { children: isClientView ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ClientApp, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 13,
-		columnNumber: 23
-	}, void 0) : window.location.pathname.startsWith("/employee") ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(EmployeeApp, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 13,
-		columnNumber: 90
-	}, void 0) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(FounderApp, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 13,
-		columnNumber: 108
-	}, void 0) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 12,
-		columnNumber: 5
-	}, void 0));
+	import_client.createRoot(rootElement).render(/* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react.StrictMode, { children: isClientView ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClientApp, {}) : window.location.pathname.startsWith("/employee") ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmployeeApp, {}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderApp, {}) }));
 }
 //#endregion

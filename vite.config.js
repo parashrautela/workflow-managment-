@@ -13,9 +13,15 @@ export default defineConfig({
   plugins: [
     react({
       jsxRuntime: "automatic",
+      development: false,
     }),
     tailwindcss(),
   ],
+  oxc: {
+    jsx: {
+      development: false,
+    },
+  },
   define: {
     "process.env.NODE_ENV": JSON.stringify("production"),
   },
