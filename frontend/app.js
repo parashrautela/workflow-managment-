@@ -23065,15 +23065,15 @@ var DEFAULT_PILOT_WORKFLOWS = [{
 /**
 * Fetch available workflow templates (GET /api/{founder|employee}/workflows)
 */
-async function fetchWorkflows(namespace = "founder") {
+async function fetchWorkflows(namespace = "founder", projectId = "") {
 	try {
-		const data = await get(`/api/${namespace}/workflows`);
+		const data = await get(projectId ? `/api/${namespace}/projects/${projectId}/workflows` : `/api/${namespace}/workflows`);
 		if (data.workflows && data.workflows.length > 0) return data.workflows;
 	} catch (err) {
-		if (err.status === 404) return DEFAULT_PILOT_WORKFLOWS;
+		if (err.status === 404 && !projectId) return DEFAULT_PILOT_WORKFLOWS;
 		throw err;
 	}
-	return DEFAULT_PILOT_WORKFLOWS;
+	return projectId ? [] : DEFAULT_PILOT_WORKFLOWS;
 }
 /**
 * Assign client name and Telegram User ID (POST /api/founder/projects/:id/client)
@@ -26468,7 +26468,7 @@ var suggestedRoles = [
 	"Electrician",
 	"Contractor"
 ];
-function TelegramGroups({ projects, onProjectsChanged }) {
+function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = false }) {
 	const [groups, setGroups] = (0, import_react.useState)([]);
 	const [selectedId, setSelectedId] = (0, import_react.useState)("");
 	const [drafts, setDrafts] = (0, import_react.useState)({});
@@ -26476,6 +26476,7 @@ function TelegramGroups({ projects, onProjectsChanged }) {
 	const [startDate, setStartDate] = (0, import_react.useState)(() => (/* @__PURE__ */ new Date()).toLocaleDateString("en-CA"));
 	const [busy, setBusy] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
+	const [credentials, setCredentials] = (0, import_react.useState)(null);
 	const [notice, setNotice] = (0, import_react.useState)("");
 	const load = async () => {
 		try {
@@ -26493,18 +26494,20 @@ function TelegramGroups({ projects, onProjectsChanged }) {
 		}, 1e4);
 		return () => clearInterval(timer);
 	}, []);
-	const group = groups.find((item) => item.groupChatId === selectedId) || groups[0];
+	const group = project ? groups.find((item) => item.groupChatId === project.telegramGroupChatId) : groups.find((item) => item.groupChatId === selectedId) || groups[0];
 	const activeMembers = group?.members.filter((member) => member.membershipStatus === "Active") || [];
-	const pendingCount = activeMembers.filter((member) => !member.assignedRole).length;
-	const linkedProject = projects.find((project) => project.telegramGroupChatId === group?.groupChatId);
+	const pendingCount = activeMembers.filter((member) => !member.assignedName || !member.assignedRole).length;
+	const linkedProject = project || projects.find((project) => project.telegramGroupChatId === group?.groupChatId);
 	const needsSetup = !linkedProject || linkedProject.telegramSetupPending;
 	const run = async (work, message) => {
 		setBusy(true);
 		setError("");
 		setNotice("");
 		try {
-			await work();
+			const result = await work();
+			if (result?.credentials) setCredentials(Array.isArray(result.credentials) ? result.credentials : [result.credentials]);
 			await load();
+			if (!result?.credentials && onProjectsChanged) await onProjectsChanged();
 			setNotice(message);
 		} catch (failure) {
 			setError(failure.message);
@@ -26520,12 +26523,11 @@ function TelegramGroups({ projects, onProjectsChanged }) {
 		}), "Role saved and announced in Telegram.");
 	};
 	const createProject = () => run(async () => {
-		await api$2(`/api/founder/telegram-groups/${group.groupChatId}/create-project`, "POST", {
+		return api$2(`/api/founder/telegram-groups/${group.groupChatId}/create-project`, "POST", {
 			projectName: projectName.trim() || group.title,
 			startDate
 		});
-		await onProjectsChanged();
-	}, "Project created and linked to this Telegram group.");
+	}, "Members saved. Choose the project type next.");
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "space-y-4",
 		children: [
@@ -26538,11 +26540,11 @@ function TelegramGroups({ projects, onProjectsChanged }) {
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 						className: "mt-1 text-2xl font-semibold tracking-tight sm:text-3xl",
-						children: "Group setup"
+						children: embedded ? "Add members first" : "Group setup"
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "mt-1 text-sm text-muted-foreground",
-						children: "Groups appear here after the group bot is added. Assign each person a project name and role."
+						children: "Add the client and team members in this project’s Telegram group. They appear here automatically. Set their names and designations below before choosing a project type."
 					})
 				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 					variant: "outline",
@@ -26556,14 +26558,39 @@ function TelegramGroups({ projects, onProjectsChanged }) {
 				className: "rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800",
 				children: error
 			}),
+			credentials && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "rounded-xl border bg-card p-4 text-sm",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "font-semibold",
+						children: "New team login — share privately with this member"
+					}),
+					credentials.map((login) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "my-3",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: login.name }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: ["Employee ID: ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("code", { children: login.employeeId })] }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: ["Temporary password: ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("code", { children: login.password })] })
+						]
+					}, login.employeeId)),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						onClick: async () => {
+							setCredentials(null);
+							if (onProjectsChanged) await onProjectsChanged();
+						},
+						children: "I have saved these details"
+					})
+				]
+			}),
 			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				role: "status",
 				className: "rounded-lg border border-green-200 bg-green-50 p-3 text-sm text-green-800",
 				children: notice
 			}),
-			groups.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "grid gap-4 lg:grid-cols-[260px_minmax(0,1fr)]",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("aside", {
+			group ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: embedded ? "space-y-4" : "grid gap-4 lg:grid-cols-[260px_minmax(0,1fr)]",
+				children: [!embedded && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("aside", {
 					className: "overflow-hidden rounded-xl border bg-card",
 					"aria-label": "Telegram groups",
 					children: groups.map((item) => {
@@ -26706,7 +26733,7 @@ function TelegramGroups({ projects, onProjectsChanged }) {
 								children: "Finish project setup"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-xs text-muted-foreground",
-								children: "Assign a Client first, then connect this visible web project to the bot's workflow."
+								children: "Assign one client and at least one team member. Finish setup here, then choose the project type in this project."
 							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "grid gap-2 sm:grid-cols-[minmax(0,1fr)_160px_auto]",
 								children: [
@@ -26728,7 +26755,7 @@ function TelegramGroups({ projects, onProjectsChanged }) {
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 										className: "self-end",
 										onClick: createProject,
-										disabled: busy || !activeMembers.some((member) => /\bclient\b/i.test(member.assignedRole)),
+										disabled: busy || Boolean(credentials) || pendingCount > 0 || activeMembers.filter((member) => /\bclient\b/i.test(member.assignedRole)).length !== 1 || !activeMembers.some((member) => !/\b(client|founder)\b/i.test(member.assignedRole)),
 										children: "Finish setup"
 									})
 								]
@@ -26749,6 +26776,91 @@ function TelegramGroups({ projects, onProjectsChanged }) {
 						children: "Create a group in Telegram, add the project bot as an admin, then add your team. The group will appear here automatically."
 					})
 				]
+			})
+		]
+	});
+}
+//#endregion
+//#region frontend/src/components/ProjectFiles.jsx
+function ProjectFiles({ projectId, namespace = "founder" }) {
+	const [files, setFiles] = (0, import_react.useState)([]), [error, setError] = (0, import_react.useState)(""), [loading, setLoading] = (0, import_react.useState)(true);
+	const load = async () => {
+		try {
+			const data = await request(`/api/${namespace}/projects/${projectId}/files`);
+			setFiles(data.files || []);
+			setError("");
+		} catch (e) {
+			setError(e.message);
+		} finally {
+			setLoading(false);
+		}
+	};
+	(0, import_react.useEffect)(() => {
+		let active = true;
+		const refresh = () => {
+			if (active && document.visibilityState === "visible") load();
+		};
+		refresh();
+		const timer = setInterval(refresh, 1e4);
+		return () => {
+			active = false;
+			clearInterval(timer);
+		};
+	}, [projectId, namespace]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "space-y-4",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-wrap items-start justify-between gap-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+					className: "font-semibold",
+					children: "Project documents & photos"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "mt-1 text-sm text-muted-foreground",
+					children: "Share files in the Telegram group. They are logged and saved automatically to this project's Google Drive folder. No approval is needed to save them."
+				})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+					variant: "outline",
+					onClick: load,
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: "size-4" }), "Refresh files"]
+				})]
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "text-sm text-destructive",
+				children: error
+			}),
+			loading ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Loading files…" }) : files.length ? files.map((file) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+				className: "flex flex-wrap items-center justify-between gap-3 rounded-xl border bg-card p-4",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "min-w-0 flex-1",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "break-words font-medium",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { className: "mr-2 inline size-4" }), file.name]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "mt-1 text-xs text-muted-foreground",
+							children: [
+								file.submittedBy,
+								" · ",
+								file.status === "Stored" ? "Saved to Google Drive" : "Waiting for Google Drive save"
+							]
+						}),
+						file.error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-1 text-xs text-amber-800",
+							children: file.error
+						})
+					]
+				}), file.status === "Stored" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+					className: "text-sm font-medium text-primary",
+					href: `/api/${namespace}/projects/${projectId}/files/${encodeURIComponent(file.id)}`,
+					target: "_blank",
+					rel: "noreferrer",
+					children: ["Open saved file ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "inline size-3" })]
+				})]
+			}, file.id)) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "rounded-xl border p-6 text-sm text-muted-foreground",
+				children: "No files shared yet. Ask the team or client to send photos and documents in the Telegram group."
 			})
 		]
 	});
@@ -27465,6 +27577,7 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 	const [mode, setMode] = (0, import_react.useState)("discuss");
 	const [convertModalOpen, setConvertModalOpen] = (0, import_react.useState)(false);
 	const [rejectModalOpen, setRejectModalOpen] = (0, import_react.useState)(false);
+	const [publishReview, setPublishReview] = (0, import_react.useState)(null);
 	const [rejectReason, setRejectReason] = (0, import_react.useState)("");
 	const [taskTitle, setTaskTitle] = (0, import_react.useState)(query.originalMessage || query.context || "Client query follow-up");
 	const [taskDesc, setTaskDesc] = (0, import_react.useState)(`Telegram client query from ${query.originalSenderName || "Client"}:\n"${query.originalMessage || ""}"`);
@@ -27529,10 +27642,10 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 			setBusyAction("");
 		}
 	};
-	const handlePublish = async (isRetry = false) => {
+	const handlePublish = async () => {
 		if (!isFounder || busyAction) return;
-		const textToPublish = responseDraft.trim();
-		if (!textToPublish) {
+		const textToPublish = publishReview?.response;
+		if (!textToPublish || isPublished || ["Sending", "Unknown"].includes(deliveryStatus)) {
 			setErrorMessage("Please enter the response message to send to Telegram.");
 			return;
 		}
@@ -27544,6 +27657,7 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 				response: textToPublish,
 				idempotencyKey
 			});
+			setPublishReview(null);
 			setSuccessMessage("Reply published to Telegram group successfully!");
 			setTimeout(() => setSuccessMessage(""), 4e3);
 			if (onQueryChanged) onQueryChanged();
@@ -27810,12 +27924,12 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 						className: "mt-4 space-y-4 rounded-xl border bg-muted/20 p-4",
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center justify-between border-b pb-3 text-xs",
+								className: "flex flex-col gap-3 border-b pb-3 text-xs sm:flex-row sm:items-center sm:justify-between",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "font-semibold uppercase tracking-wider text-muted-foreground",
 									children: "Workflow: Discuss Internally → Finalize & Send"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex gap-1.5",
+									className: "flex flex-wrap gap-1.5",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 										type: "button",
 										onClick: () => setMode("discuss"),
@@ -27930,9 +28044,9 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 										}), !isPublished && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 											size: "sm",
 											className: "text-xs bg-primary",
-											disabled: busyAction === "publish" || !responseDraft.trim() || deliveryStatus === "Unknown",
-											onClick: () => handlePublish(deliveryStatus === "Failed"),
-											children: busyAction === "publish" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 mr-1.5 animate-spin" }), "Publishing to Telegram…"] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Send, { className: "size-3.5 mr-1.5" }), deliveryStatus === "Failed" ? "Retry Publish" : "Publish Reply to Telegram"] })
+											disabled: Boolean(busyAction) || !responseDraft.trim() || ["Sending", "Unknown"].includes(deliveryStatus),
+											onClick: () => setPublishReview({ response: responseDraft.trim() }),
+											children: busyAction === "publish" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 mr-1.5 animate-spin" }), "Publishing to Telegram…"] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Send, { className: "size-3.5 mr-1.5" }), deliveryStatus === "Failed" ? "Review Retry" : "Review Reply to Telegram"] })
 										})]
 									})
 								]
@@ -27940,6 +28054,56 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 						]
 					})
 				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				open: Boolean(publishReview),
+				onOpenChange: (open) => {
+					if (!open && busyAction !== "publish") setPublishReview(null);
+				},
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Confirm Telegram reply" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Review the destination and message before sending this public reply." })] }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "space-y-3 text-sm",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "Project:" }),
+								" ",
+								project?.name || query.projectId
+							] }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "Destination:" }),
+								" Project Telegram group",
+								project?.telegramGroupChatId ? ` (${project.telegramGroupChatId})` : ""
+							] }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "rounded-lg border bg-muted/30 p-3 whitespace-pre-wrap break-words",
+								children: publishReview?.response
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs text-muted-foreground",
+								children: "Internal team notes will not be sent. One successful public reply is allowed per query."
+							}),
+							errorMessage && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								role: "alert",
+								className: "text-xs text-destructive",
+								children: errorMessage
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex flex-wrap justify-end gap-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							disabled: busyAction === "publish",
+							onClick: () => setPublishReview(null),
+							children: "Back to draft"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							disabled: Boolean(busyAction) || isPublished || ["Sending", "Unknown"].includes(deliveryStatus),
+							onClick: handlePublish,
+							children: busyAction === "publish" ? "Sending…" : "Confirm & Send to Telegram"
+						})]
+					})
+				] })
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
 				open: convertModalOpen,
@@ -28060,10 +28224,10 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 }
 //#endregion
 //#region frontend/src/components/WorkflowTemplateModal.jsx
-function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate, clientAssigned = true, projectMembers = [], onApplied }) {
+function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate, telegramLinked = false, clientAssigned = true, projectMembers = [], onApplied }) {
 	const [workflows, setWorkflows] = (0, import_react.useState)([]);
 	const [selectedWorkflowId, setSelectedWorkflowId] = (0, import_react.useState)("");
-	const [startDate, setStartDate] = (0, import_react.useState)(projectStartDate || (/* @__PURE__ */ new Date()).toISOString().slice(0, 10));
+	const [startDate, setStartDate] = (0, import_react.useState)(projectStartDate || (/* @__PURE__ */ new Date()).toLocaleDateString("en-CA"));
 	const [assigneeId, setAssigneeId] = (0, import_react.useState)("founder");
 	const [loading, setLoading] = (0, import_react.useState)(false);
 	const [submitting, setSubmitting] = (0, import_react.useState)(false);
@@ -28072,7 +28236,7 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 		if (open) {
 			setError("");
 			setLoading(true);
-			fetchWorkflows("founder").then((list) => {
+			fetchWorkflows("founder", projectId).then((list) => {
 				setWorkflows(list || []);
 				if (list && list.length > 0 && !selectedWorkflowId) setSelectedWorkflowId(list[0].id);
 			}).catch((err) => {
@@ -28121,10 +28285,10 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { className: "size-5" })
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, {
 							className: "text-lg font-semibold tracking-tight",
-							children: "Select Project Workflow"
+							children: "Choose project type"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, {
 							className: "text-xs",
-							children: "Pick a workflow template to automatically generate pipeline stages, deadlines, and internal checkpoint tasks."
+							children: "Choose the project type to generate stages and tasks. Telegram projects start the same plan in the group."
 						})] })]
 					})
 				}),
@@ -28152,7 +28316,7 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-5 animate-spin text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Loading templates…" })]
 						}) : workflows.map((tmpl) => {
 							const active = tmpl.id === selectedWorkflowId;
-							const totalDays = tmpl.stages?.reduce((acc, s) => acc + (s.durationDays || 0), 0) || tmpl.estimatedDays || 6;
+							const totalDays = tmpl.stages?.reduce((acc, s) => acc + (s.durationDays || 0), 0) || tmpl.estimatedDays || 0;
 							return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 								type: "button",
 								onClick: () => setSelectedWorkflowId(tmpl.id),
@@ -28171,11 +28335,7 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 									className: "mt-1 flex items-center gap-2 text-[11px] text-muted-foreground",
 									children: [
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock, { className: "size-3" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
-											"~",
-											totalDays,
-											" days"
-										] }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: tmpl.parallel || !totalDays ? "Dates need confirmation" : `~${totalDays} days` }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "·" }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [tmpl.stages?.length || 0, " stages"] })
 									]
@@ -28441,17 +28601,6 @@ function addDriveLink(projectId, name, category, url) {
 	const links = [...current.drive?.links || [], newLink];
 	return updateDriveSettings(projectId, current.drive?.folderUrl, links);
 }
-function setMemberDriveAccess(projectId, memberId, level) {
-	const current = getProjectWorkflow(projectId);
-	if (!current) return null;
-	return updateProjectWorkflow$1(projectId, { memberAccess: {
-		...current.memberAccess || {},
-		[memberId]: {
-			driveAccess: level,
-			updatedAt: (/* @__PURE__ */ new Date()).toISOString()
-		}
-	} });
-}
 //#endregion
 //#region frontend/src/components/ProjectDetailView.jsx
 var statusBadgeStyles$1 = {
@@ -28553,7 +28702,11 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	const stages = project.stages || [];
 	const schedule = computeStageSchedule(project.startDate || project.createdAt, stages);
 	const projectQueries = decisionRequests.filter((req) => req.projectId === project.id);
-	const pendingQueriesCount = projectQueries.filter((q) => !["Done", "Rejected"].includes(q.status)).length;
+	const pendingQueriesCount = projectQueries.filter((q) => ![
+		"Done",
+		"Rejected",
+		"Published"
+	].includes(q.status)).length;
 	const blockedTasks = tasks.filter((t) => t.status === "Blocked");
 	const inProgressTasksCount = tasks.filter((t) => t.status === "In progress" || t.status === "in_progress").length;
 	const currentStage = stages.find((stage) => stage.name === project.currentStage) || stages[0];
@@ -28643,11 +28796,6 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 			showNotice(err.message || "Could not remove member.", true);
 		}
 	};
-	const handleSaveDriveFolder = () => {
-		updateDriveSettings(project.id, driveFolderInput.trim());
-		setIsEditingDriveFolder(false);
-		setLocalWorkflow(getProjectWorkflow(project.id, project));
-	};
 	const handleAddDriveLink = (e) => {
 		e.preventDefault();
 		if (!newLinkName.trim() || !newLinkUrl.trim()) return;
@@ -28657,17 +28805,77 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 		setAddDriveLinkOpen(false);
 		setLocalWorkflow(getProjectWorkflow(project.id, project));
 	};
-	const handleDriveAccessChange = (memberId, level) => {
-		setMemberDriveAccess(project.id, memberId, level);
-		setLocalWorkflow(getProjectWorkflow(project.id, project));
-		showNotice(`Updated Drive permission to ${level}.`);
-	};
 	const getAssigneeName = (assigneeId) => {
 		if (!assigneeId) return "Unassigned";
 		if (assigneeId === "founder") return "Founder";
 		const found = (project.members || []).find((m) => m.employeeId === assigneeId || m.id === assigneeId);
 		return found ? found.name : assigneeId;
 	};
+	const roster = project.telegramMembers || [];
+	const profilesReady = roster.length >= 2 && roster.every((member) => member.assignedName && member.assignedRole) && roster.filter((member) => /\bclient\b/i.test(member.assignedRole)).length === 1 && roster.some((member) => !/\b(client|founder)\b/i.test(member.assignedRole));
+	if (project.telegramGroupChatId && (project.telegramSetupPending || !profilesReady)) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "space-y-4",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+				variant: "ghost",
+				onClick: onBackToDirectory,
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { className: "size-4" }), "All projects"]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+				className: "text-xl font-semibold",
+				children: project.name
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TelegramGroups, {
+				project,
+				embedded: true,
+				onProjectsChanged: onProjectUpdated
+			})
+		]
+	});
+	if (project.telegramGroupChatId && !hasWorkflowStarted) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "space-y-4",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+				variant: "ghost",
+				onClick: onBackToDirectory,
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { className: "size-4" }), "All projects"]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "rounded-2xl border bg-card p-6 space-y-3",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs font-medium text-primary",
+						children: "Step 2 · Project type"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+						className: "text-2xl font-semibold",
+						children: project.name
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-sm text-muted-foreground",
+						children: "Members and client are ready. Choose the type of project to generate its tasks and announce the start in the Telegram group."
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						onClick: () => setTemplateModalOpen(true),
+						children: "Choose project type"
+					})
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkflowTemplateModal, {
+				open: templateModalOpen,
+				onOpenChange: setTemplateModalOpen,
+				projectId: project.id,
+				telegramLinked: true,
+				projectStartDate: project.startDate,
+				clientAssigned: true,
+				projectMembers: project.members || [],
+				onApplied: () => {
+					if (onProjectUpdated) onProjectUpdated();
+					loadProjectTasks();
+				}
+			})
+		]
+	});
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "space-y-6",
 		children: [
@@ -28675,6 +28883,11 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 				role: "status",
 				className: "fixed right-4 bottom-24 z-[60] max-w-sm rounded-lg border bg-card px-4 py-3 text-sm shadow-lg md:bottom-4",
 				children: [notice.error ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "mr-2 inline size-4 text-destructive" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "mr-2 inline size-4 text-emerald-600" }), notice.message]
+			}),
+			project.workflowAnnouncementStatus && project.workflowAnnouncementStatus !== "Sent" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm",
+				children: "The project plan is saved, but the Telegram start announcement could not be confirmed. Check the group before sending another announcement."
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex flex-col gap-3 rounded-2xl border bg-card p-4 sm:p-5 shadow-xs",
@@ -29359,122 +29572,9 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							}) })
 						})]
 					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
 						value: "files",
-						className: "space-y-4",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-									className: "text-base font-semibold",
-									children: "Project Google Drive & Files"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "text-xs text-muted-foreground",
-									children: "Direct integration with project Google Drive folders, architectural CAD drawings, and presentations."
-								})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-									size: "sm",
-									onClick: () => setAddDriveLinkOpen(true),
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-3.5 mr-1" }), " Add Drive File / Link"]
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
-								className: "border-primary/20 bg-primary/5",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-									className: "p-4 sm:p-5",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "flex items-start gap-3",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "grid size-10 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground",
-												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "size-5" })
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
-													className: "text-sm font-bold text-foreground",
-													children: "Main Project Google Drive Folder"
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-													className: "text-xs text-muted-foreground",
-													children: "Shared folder containing design deliverables, vendor quotes, and CAD exports."
-												}),
-												localWorkflow?.drive?.folderUrl ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-													href: localWorkflow.drive.folderUrl,
-													target: "_blank",
-													rel: "noreferrer",
-													className: "mt-1.5 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline",
-													children: ["Open Google Drive Folder ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-3" })]
-												}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-													className: "mt-1 text-xs text-amber-700",
-													children: "No Drive folder URL linked yet."
-												})
-											] })]
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-											className: "flex items-center gap-2",
-											children: isEditingDriveFolder ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "flex gap-2 w-full sm:w-auto",
-												children: [
-													/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-														value: driveFolderInput,
-														onChange: (e) => setDriveFolderInput(e.target.value),
-														placeholder: "https://drive.google.com/drive/folders/...",
-														className: "h-8 text-xs min-w-64"
-													}),
-													/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-														size: "sm",
-														onClick: handleSaveDriveFolder,
-														children: "Save"
-													}),
-													/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-														size: "sm",
-														variant: "ghost",
-														onClick: () => setIsEditingDriveFolder(false),
-														children: "Cancel"
-													})
-												]
-											}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-												variant: "outline",
-												size: "sm",
-												onClick: () => setIsEditingDriveFolder(true),
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, { className: "size-3.5 mr-1" }), " Edit Folder URL"]
-											})
-										})]
-									})
-								})
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "grid gap-3 sm:grid-cols-2",
-								children: (localWorkflow?.drive?.links || []).map((link) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
-									className: "overflow-hidden",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-										className: "p-4 flex items-center justify-between gap-3",
-										children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "min-w-0 flex-1",
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-													variant: "outline",
-													className: "text-[10px]",
-													children: link.category
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-													className: "mt-1 text-xs font-semibold text-foreground truncate",
-													children: link.name
-												}),
-												link.url ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-													href: link.url,
-													target: "_blank",
-													rel: "noreferrer",
-													className: "mt-1 inline-flex items-center gap-1 text-[11px] text-primary hover:underline truncate max-w-full",
-													children: ["Open in Drive ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-2.5" })]
-												}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-													className: "text-[11px] text-muted-foreground",
-													children: "No link configured"
-												})
-											]
-										})
-									})
-								}, link.id))
-							})
-						]
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectFiles, { projectId: project.id })
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
 						value: "team",
@@ -29496,7 +29596,6 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							className: "space-y-2.5",
 							children: project.members && project.members.length > 0 ? project.members.map((member, idx) => {
 								const memberId = member.employeeId || member.id;
-								const driveAccess = localWorkflow?.memberAccess?.[memberId]?.driveAccess || "viewer";
 								const memberTasksCount = tasks.filter((t) => t.assigneeId === memberId).length;
 								return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
 									className: "p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3",
@@ -29525,52 +29624,20 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 										]
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "flex flex-wrap items-center gap-3 pt-2 sm:pt-0 border-t sm:border-t-0",
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "flex items-center gap-1.5",
-												children: [
-													/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "size-3.5 text-muted-foreground" }),
-													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-														className: "text-[11px] font-medium text-muted-foreground",
-														children: "Drive:"
-													}),
-													/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
-														value: driveAccess,
-														onChange: (e) => handleDriveAccessChange(memberId, e.target.value),
-														className: "h-7 text-xs w-28",
-														children: [
-															/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-																value: "viewer",
-																children: "Viewer"
-															}),
-															/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-																value: "editor",
-																children: "Editor"
-															}),
-															/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-																value: "none",
-																children: "No Access"
-															})
-														]
-													})
-												]
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-												className: "text-xs text-muted-foreground",
-												children: [
-													memberTasksCount,
-													" task",
-													memberTasksCount === 1 ? "" : "s"
-												]
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-												variant: "ghost",
-												size: "sm",
-												className: "text-destructive hover:bg-destructive/10 text-xs h-7",
-												onClick: () => handleRemoveMember(member),
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trash, { className: "size-3.5 mr-1" }), " Remove"]
-											})
-										]
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+											className: "text-xs text-muted-foreground",
+											children: [
+												memberTasksCount,
+												" task",
+												memberTasksCount === 1 ? "" : "s"
+											]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+											variant: "ghost",
+											size: "sm",
+											className: "text-destructive hover:bg-destructive/10 text-xs h-7",
+											onClick: () => handleRemoveMember(member),
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trash, { className: "size-3.5 mr-1" }), " Remove"]
+										})]
 									})]
 								}) }, memberId || idx);
 							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
@@ -29978,7 +30045,11 @@ function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectPr
 				children: filtered.length ? filtered.map((project) => {
 					const taskCount = project.taskCount || 0;
 					const progress = project.progress || 0;
-					const pendingQueries = decisionRequests.filter((q) => q.projectId === project.id && !["Done", "Rejected"].includes(q.status)).length;
+					const pendingQueries = decisionRequests.filter((q) => q.projectId === project.id && ![
+						"Done",
+						"Rejected",
+						"Published"
+					].includes(q.status)).length;
 					const isMissingClient = !project.clientName || ["Unassigned Client", "Client pending"].includes(project.clientName) || project.telegramSetupPending;
 					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
 						onClick: () => onSelectProject(project.id),
@@ -30174,7 +30245,11 @@ function FounderApp() {
 	const [busy, setBusy] = (0, import_react.useState)(false);
 	const selectedProject = projects.find((p) => p.id === selectedProjectId) || null;
 	const filteredProjects = projects.filter((project) => `${project.name} ${project.clientName} ${project.location || ""}`.toLowerCase().includes(searchQuery.toLowerCase()));
-	const pendingDecisionsCount = decisionRequests.filter((r) => !["Done", "Rejected"].includes(r.status)).length;
+	const pendingDecisionsCount = decisionRequests.filter((r) => ![
+		"Done",
+		"Rejected",
+		"Published"
+	].includes(r.status)).length;
 	const pendingGroupsCount = projects.filter((p) => p.telegramSetupPending).length;
 	const showNotice = (message, error = false) => {
 		setNotice({
@@ -31589,7 +31664,11 @@ function EmployeeApp() {
 		})
 	});
 	const projectQueries = decisionRequests.filter((r) => r.projectId === selected?.id);
-	const pendingQueriesCount = projectQueries.filter((r) => !["Done", "Rejected"].includes(r.status)).length;
+	const pendingQueriesCount = projectQueries.filter((r) => ![
+		"Done",
+		"Rejected",
+		"Published"
+	].includes(r.status)).length;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "app-glow min-h-dvh bg-background pb-[max(24px,env(safe-area-inset-bottom))]",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
@@ -31755,6 +31834,11 @@ function EmployeeApp() {
 											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-4 mr-1.5 text-blue-600" }), "Team Chat"]
 										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
+											value: "files",
+											className: "font-semibold text-xs px-3 py-2",
+											children: "Files"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
 											value: "overview",
 											className: "font-semibold text-xs px-3 py-2",
 											children: "Overview"
@@ -31860,6 +31944,13 @@ function EmployeeApp() {
 										endpoint: `/api/employee/projects/${selected.id}/team-chat`,
 										currentActor: employee.id
 									}, selected.id)
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
+									value: "files",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectFiles, {
+										projectId: selected.id,
+										namespace: "employee"
+									})
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
 									value: "overview",

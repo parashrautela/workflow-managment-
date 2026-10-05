@@ -13,13 +13,14 @@ export function WorkflowTemplateModal({
   onOpenChange,
   projectId,
   projectStartDate,
+  telegramLinked = false,
   clientAssigned = true,
   projectMembers = [],
   onApplied
 }) {
   const [workflows, setWorkflows] = useState([]);
   const [selectedWorkflowId, setSelectedWorkflowId] = useState("");
-  const [startDate, setStartDate] = useState(projectStartDate || new Date().toISOString().slice(0, 10));
+  const [startDate, setStartDate] = useState(projectStartDate || new Date().toLocaleDateString("en-CA"));
   const [assigneeId, setAssigneeId] = useState("founder");
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -29,7 +30,7 @@ export function WorkflowTemplateModal({
     if (open) {
       setError("");
       setLoading(true);
-      fetchWorkflows("founder")
+      fetchWorkflows("founder", projectId)
         .then((list) => {
           setWorkflows(list || []);
           if (list && list.length > 0 && !selectedWorkflowId) {
@@ -84,9 +85,9 @@ export function WorkflowTemplateModal({
               <Layers className="size-5" />
             </span>
             <div>
-              <DialogTitle className="text-lg font-semibold tracking-tight">Select Project Workflow</DialogTitle>
+              <DialogTitle className="text-lg font-semibold tracking-tight">Choose project type</DialogTitle>
               <DialogDescription className="text-xs">
-                Pick a workflow template to automatically generate pipeline stages, deadlines, and internal checkpoint tasks.
+                Choose the project type to generate stages and tasks. Telegram projects start the same plan in the group.
               </DialogDescription>
             </div>
           </div>
@@ -119,7 +120,7 @@ export function WorkflowTemplateModal({
               </div>
             ) : workflows.map((tmpl) => {
               const active = tmpl.id === selectedWorkflowId;
-              const totalDays = tmpl.stages?.reduce((acc, s) => acc + (s.durationDays || 0), 0) || tmpl.estimatedDays || 6;
+              const totalDays = tmpl.stages?.reduce((acc, s) => acc + (s.durationDays || 0), 0) || tmpl.estimatedDays || 0;
               return (
                 <button
                   key={tmpl.id}
@@ -139,7 +140,7 @@ export function WorkflowTemplateModal({
                   </div>
                   <div className="mt-1 flex items-center gap-2 text-[11px] text-muted-foreground">
                     <Clock className="size-3" />
-                    <span>~{totalDays} days</span>
+                    <span>{tmpl.parallel || !totalDays ? "Dates need confirmation" : `~${totalDays} days`}</span>
                     <span>·</span>
                     <span>{tmpl.stages?.length || 0} stages</span>
                   </div>

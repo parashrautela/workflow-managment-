@@ -72,7 +72,7 @@ const json = (res, status, body, headers = {}) => { res.writeHead(status, { 'con
 const shortText = (value, limit) => typeof value === 'string' && value.length <= limit ? value : null;
 async function callBotBridge(route, payload) {
   if (!botBridgeUrl || !integrationSecret) throw new Error('Bot integration is not configured.');
-  const response = await fetch(`${botBridgeUrl}${route}`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${integrationSecret}` }, body: JSON.stringify(payload), signal: AbortSignal.timeout(15_000) });
+  const response = await fetch(`${botBridgeUrl}${route}`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${integrationSecret}` }, body: JSON.stringify(payload), signal: AbortSignal.timeout(route.endsWith('/content') ? 45_000 : 30_000) });
   const data = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(data.error || 'Telegram bot did not accept the update.');
   return data;
@@ -84,7 +84,25 @@ async function body(req) {
 function projectView(project) {
   const owner = (project.members || []).find((member) => member.id === project.internalOwnerMemberId);
   const telegramMembers = state.telegramGroups.find((group) => group.groupChatId === project.telegramGroupChatId)?.members.filter((member) => member.membershipStatus === 'Active') || [];
-  return { ...projectSummary(state, project), clientTelegramId: project.clientTelegramId || '', id: project.id, name: project.name, clientName: project.clientName, location: project.location, startDate: project.startDate || '', telegramGroupChatId: project.telegramGroupChatId || '', telegramProjectId: project.telegramProjectId || '', telegramSetupPending: Boolean(project.telegramSetupPending), telegramMembers, internalOwnerMemberId: project.internalOwnerMemberId || '', internalOwner: owner?.name || '', phase: project.phase, status: project.status, recentTask: project.recentTask, nextMilestone: project.nextMilestone, blocker: project.blocker, members: project.members || [], createdAt: project.createdAt, completedAt: project.completedAt || null };
+  return { ...projectSummary(state, project), workflowName:project.workflowName || '',workflowAnnouncementStatus:project.workflowAnnouncementStatus || '',clientTelegramId: project.clientTelegramId || '', id: project.id, name: project.name, clientName: project.clientName, location: project.location, startDate: project.startDate || '', telegramGroupChatId: project.telegramGroupChatId || '', telegramProjectId: project.telegramProjectId || '', telegramSetupPending: Boolean(project.telegramSetupPending), telegramMembers, internalOwnerMemberId: project.internalOwnerMemberId || '', internalOwner: owner?.name || '', phase: project.phase, status: project.status, recentTask: project.recentTask, nextMilestone: project.nextMilestone, blocker: project.blocker, members: project.members || [], createdAt: project.createdAt, completedAt: project.completedAt || null };
+}
+function bindTelegramStaff(project, member) {
+  if (/\b(client|founder)\b/i.test(member.assignedRole)) {
+    project.members = (project.members || []).filter((item)=>item.telegramUserId!==member.telegramUserId);
+    return null;
+  }
+  let employee=state.employees.find((item)=>item.telegramUserId===member.telegramUserId);
+  let credentials;
+  if (!employee) {
+    const password=employeePassword(),salt=randomBytes(16).toString('hex');
+    employee={id:employeeId(),name:member.assignedName,designation:member.assignedRole,telegramUserId:member.telegramUserId,active:true,passwordSalt:salt,passwordHash:passwordHash(password,salt),createdAt:new Date().toISOString()};
+    state.employees.push(employee);credentials={employeeId:employee.id,password,name:member.assignedName};
+  }
+  const members=project.members ||= [];
+  let profile=members.find((item)=>item.telegramUserId===member.telegramUserId || item.employeeId===employee.id);
+  if(!profile){profile={id:randomBytes(8).toString('hex'),employeeId:employee.id,telegramUserId:member.telegramUserId};members.push(profile);}
+  Object.assign(profile,{name:member.assignedName,role:member.assignedRole,designation:member.assignedRole});
+  return credentials;
 }
 function employeeView(employee) {
   return { active: employee.active !== false, id: employee.id, name: employee.name, designation: employee.designation, email: employee.email || '', phone: employee.phone || '', createdAt: employee.createdAt, projectIds: state.projects.filter((project) => project.members?.some((member) => member.employeeId === employee.id)).map((project) => project.id) };
@@ -180,7 +198,7 @@ function founderAssistantAnswer(question) {
   return lines.join('\n');
 }
 
-const pilotRoutes = createPilotRoutes({ getState: () => state, founder, employeeSession, body, json, save, audit, projectView });
+const pilotRoutes = createPilotRoutes({ getState: () => state, founder, employeeSession, body, json, save, audit, projectView, callBotBridge });
 async function handleRequest(req, res) {
   let before = structuredClone(state);
   try {
@@ -213,6 +231,21 @@ async function handleRequest(req, res) {
         } else if (linkedProject.telegramSetupPending) linkedProject.name = group.title;
       }
       await save(); return json(res, 200, { ok: true });
+    }
+    if(req.method==='POST' && url.pathname==='/api/integrations/telegram/resources') {
+      const supplied=(req.headers.authorization || '').replace(/^Bearer /i,'');
+      if(!integrationSecret || !safeEqual(supplied,integrationSecret))return json(res,401,{error:'Integration authentication required.'});
+      const input=await body(req);const groupId=String(input.GroupChatID || '');
+      const project=state.projects.find((item)=>item.telegramGroupChatId===groupId && item.telegramProjectId===input.ProjectID);
+      if(!project)return json(res,409,{error:'Link this Telegram project first.'});
+      const member=state.telegramGroups.find((group)=>group.groupChatId===groupId)?.members.find((item)=>item.telegramUserId===String(input.TelegramUserID) && item.membershipStatus==='Active' && item.assignedRole);
+      if(!member)return json(res,403,{error:'Resource sender is not an assigned member.'});
+      if(!/^\d+$/.test(String(input.SourceMessageID || '')) || input.SubmissionID!==`RES-${groupId}-${input.SourceMessageID}` || !shortText(input.FileName,200) || !['Photo','Document'].includes(input.ResourceType) || !shortText(input.TelegramFileID,300))return json(res,400,{error:'Invalid project resource.'});
+      let file=state.projectFiles.find((item)=>item.id===input.SubmissionID);
+      if(file && file.projectId!==project.id)return json(res,409,{error:'File identity belongs to another project.'});
+      if(!file){file={id:input.SubmissionID,projectId:project.id};state.projectFiles.push(file);}
+      Object.assign(file,{name:input.FileName,type:input.ResourceType,fileId:input.TelegramFileID,mimeType:shortText(input.MimeType,200) || '',submittedBy:shortText(input.SubmittedByName,160) || 'Team member',submittedAt:shortText(input.SubmittedAt,40) || new Date().toISOString(),status:input.DriveStatus==='Stored'?'Stored':'Pending',error:shortText(input.DriveError,300) || '',driveFileId:shortText(input.DriveFileID,200) || ''});
+      await save();return json(res,200,{ok:true});
     }
     if (req.method === 'POST' && url.pathname === '/api/integrations/telegram/requests') {
       const supplied = (req.headers.authorization || '').replace(/^Bearer /i, '');
@@ -291,6 +324,22 @@ async function handleRequest(req, res) {
       const projects = state.projects.filter((project) => project.members?.some((member) => member.employeeId === employee.id));
       return json(res, 200, { employee: employeeView(employee), projects: projects.map(projectView) });
     }
+    const projectFilesMatch=url.pathname.match(/^\/api\/(founder|employee)\/projects\/([^/]+)\/files(?:\/([^/]+))?$/);
+    if(req.method==='GET' && projectFilesMatch) {
+      const namespace=projectFilesMatch[1], employee=namespace==='employee'?employeeSession(req):null;
+      if(namespace==='founder'?!founder(req):!employee)return json(res,401,{error:'Sign-in required.'});
+      const project=state.projects.find((item)=>item.id===projectFilesMatch[2] && (namespace==='founder' || item.members.some((member)=>member.employeeId===employee.id)));
+      if(!project)return json(res,404,{error:'Project not found in your workspace.'});
+      const files=state.projectFiles.filter((item)=>item.projectId===project.id);
+      if(!projectFilesMatch[3])return json(res,200,{files:files.map(({fileId,driveFileId,...file})=>file)});
+      const file=files.find((item)=>item.id===decodeURIComponent(projectFilesMatch[3]) && item.status==='Stored');
+      if(!file)return json(res,404,{error:'Stored file not found.'});
+      let stored;try{stored=await callBotBridge('/api/integrations/web/resources/content',{groupChatId:project.telegramGroupChatId,submissionId:file.id});}catch(error){return json(res,502,{error:error.message});}
+      if(typeof stored.bytes!=='string' || stored.bytes.length>27000000)return json(res,502,{error:'Stored file exceeds the download limit.'});
+      const bytes=Buffer.from(stored.bytes,'base64');if(bytes.length>20000000)return json(res,413,{error:'Stored file is too large.'});
+      const mime=['image/jpeg','image/png','image/webp','image/gif'].includes(file.mimeType)?file.mimeType:'application/octet-stream';
+      res.writeHead(200,{'content-type':mime,'content-disposition':`attachment; filename*=UTF-8''${encodeURIComponent(file.name)}`,'cache-control':'private, no-store','content-security-policy':"default-src 'none'; sandbox"});return res.end(bytes);
+    }
     if (await pilotRoutes(req, res, url)) return;
     const attachmentMatch = url.pathname.match(/^\/api\/(founder|employee)\/decision-requests\/([^/]+)\/attachments\/(\d+)$/);
     if (req.method === 'GET' && attachmentMatch) {
@@ -323,6 +372,13 @@ async function handleRequest(req, res) {
     }
     if (url.pathname.startsWith('/api/employee/')) return json(res, 404, { error: 'Not found.' });
     if (url.pathname.startsWith('/api/founder/') && !founder(req)) return json(res, 401, { error: 'Founder session required.' });
+    const projectWorkflows=url.pathname.match(/^\/api\/founder\/projects\/([^/]+)\/workflows$/);
+    if(req.method==='GET' && projectWorkflows){
+      const project=state.projects.find((item)=>item.id===projectWorkflows[1]);if(!project)return json(res,404,{error:'Project not found.'});
+      if(!project.telegramGroupChatId)return json(res,200,{workflows:(await import('./pilot.js')).workflows});
+      try{return json(res,200,await callBotBridge('/api/integrations/web/workflows',{groupChatId:project.telegramGroupChatId}));}
+      catch(error){return json(res,502,{error:error.message});}
+    }
     if (req.method === 'GET' && url.pathname === '/api/founder/telegram-groups') {
       return json(res, 200, { groups: state.telegramGroups.map((group) => ({ ...group, projectId: state.projects.find((project) => project.telegramGroupChatId === group.groupChatId)?.id || '' })) });
     }
@@ -333,11 +389,15 @@ async function handleRequest(req, res) {
       if (!member) return json(res, 404, { error: 'Active Telegram member not found.' });
       const input = await body(req); const name = String(input.name || '').trim(); const role = String(input.role || '').trim();
       if (!name || !role || name.length > 100 || role.length > 80) return json(res, 400, { error: 'Enter a name and role.' });
+      if(!/\b(client|founder)\b/i.test(role) && state.employees.some((item)=>item.telegramUserId===member.telegramUserId && item.active===false)) return json(res,409,{error:'This Telegram member has a disabled staff account. Re-enable it before assignment.'});
       try { await callBotBridge('/api/integrations/web/group-members', { groupChatId: group.groupChatId, telegramUserId: member.telegramUserId, name, role }); }
       catch (error) { return json(res, 502, { error: error.message }); }
       member.assignedName = name; member.assignedRole = role;
+      const linked=state.projects.find((project)=>project.telegramGroupChatId===group.groupChatId);
+      const credentials=linked ? bindTelegramStaff(linked,member) : null;
+
       audit('telegram_member_role_assigned', state.projects.find((project) => project.telegramGroupChatId === group.groupChatId)?.id || '', { groupChatId: group.groupChatId, telegramUserId: member.telegramUserId }); await save();
-      return json(res, 200, { member });
+      return json(res, 200, { member, ...(credentials?{credentials}:{}) });
     }
     const telegramProjectMatch = url.pathname.match(/^\/api\/founder\/telegram-groups\/(-?\d+)\/create-project$/);
     if (req.method === 'POST' && telegramProjectMatch) {
@@ -346,18 +406,21 @@ async function handleRequest(req, res) {
       const existingProject = state.projects.find((project) => project.telegramGroupChatId === group.groupChatId);
       if (existingProject && !existingProject.telegramSetupPending) return json(res, 409, { error: 'This group already has a completed project setup.' });
       const client = group.members.find((member) => member.membershipStatus === 'Active' && /\bclient\b/i.test(member.assignedRole));
-      if (!client) return json(res, 400, { error: 'Assign a Client role before creating the project.' });
+      const active=group.members.filter((member)=>member.membershipStatus==='Active');
+      if (!client || active.filter((member)=>/\bclient\b/i.test(member.assignedRole)).length!==1 || active.some((member)=>!member.assignedName || !member.assignedRole) || !active.some((member)=>!/\b(client|founder)\b/i.test(member.assignedRole))) return json(res,409,{error:'Assign exactly one client and at least one team member, and complete every active member profile.'});
       const input = await body(req); const projectName = String(input.projectName || group.title).trim();
       const startDate = String(input.startDate || '').trim();
       if (!projectName || projectName.length > 120 || !validIsoDate(startDate) || !startDate) return json(res, 400, { error: 'Enter a project name and valid start date.' });
+      if(active.some((member)=>!/\b(client|founder)\b/i.test(member.assignedRole) && state.employees.some((item)=>item.telegramUserId===member.telegramUserId && item.active===false))) return json(res,409,{error:'Re-enable disabled team accounts before completing setup.'});
       let botProject;
       try { botProject = await callBotBridge('/api/integrations/web/projects', { groupChatId: group.groupChatId, projectName, clientName: client.assignedName || client.telegramName, startDate }); }
       catch (error) { return json(res, 502, { error: error.message }); }
       const project = existingProject || { id: `p_${randomBytes(8).toString('hex')}`, telegramGroupChatId: group.groupChatId, location: '', internalOwnerMemberId: '', recentTask: '', nextMilestone: '', blocker: '', members: [], createdAt: new Date().toISOString() };
       Object.assign(project, { name: projectName, clientName: client.assignedName || client.telegramName, clientTelegramId: client.telegramUserId, startDate, telegramProjectId: botProject.projectId, telegramSetupPending: false, phase: 'Setup', status: 'Setup' });
+      const credentials=active.map((member)=>bindTelegramStaff(project,member)).filter(Boolean);
       if (!existingProject) state.projects.unshift(project);
       audit('project_created_from_telegram', project.id, { groupChatId: group.groupChatId, botProjectId: botProject.projectId }); await save();
-      return json(res, 201, { project: projectView(project) });
+      return json(res, 201, { project: projectView(project), ...(credentials.length?{credentials}:{}) });
     }
     if (req.method === 'GET' && url.pathname === '/api/founder/decision-requests') {
       return json(res, 200, { requests: state.decisionRequests.filter((item) => state.projects.some((project) => project.id === item.projectId)) });

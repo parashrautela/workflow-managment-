@@ -59,7 +59,6 @@ test('pilot loop: setup, start, client text/photo, two-user discussion, task ass
   const created=await call('/api/founder/projects','POST',{name:'Pilot home'}); assert.equal(created.status,201); const p=created.data.project.id;
   assert.equal((await call(`/api/founder/projects/${p}/workflow/start`,'POST',{workflowId:'PILOT-DESIGN-V1'})).status,409);
   assert.equal((await call(`/api/founder/projects/${p}/client`,'POST',{clientName:'Maya',clientTelegramId:'42'})).status,200);
-  await call(`/api/founder/projects/${p}`,'PATCH',{telegramGroupChatId:'-123'});
   const employee=await call('/api/founder/employees','POST',{name:'Neha',designation:'Designer',projectId:p,role:'Designer'});
   const credentials=employee.data.credentials;
   const signIn=await f.call('/api/employee/login','POST',credentials); const employeeCookie=signIn.cookie; assert.equal(signIn.status,200);
@@ -68,6 +67,7 @@ test('pilot loop: setup, start, client text/photo, two-user discussion, task ass
   const started=await call(`/api/founder/projects/${p}/workflow/start`,'POST',{workflowId:'PILOT-DESIGN-V1',startDate:'2026-10-07',assigneeId:credentials.employeeId}); assert.equal(started.status,200);
   const initial=(await call(`/api/founder/projects/${p}/tasks`)).data.tasks.length;
   await call(`/api/founder/projects/${p}/workflow/start`,'POST',{workflowId:'PILOT-DESIGN-V1'});
+  await call(`/api/founder/projects/${p}`,'PATCH',{telegramGroupChatId:'-123'});
   assert.equal((await call(`/api/founder/projects/${p}/tasks`)).data.tasks.length,initial);
   const query=payload(10,{AutomaticClientQuery:true,AttachmentsJSON:'[{"type":"Photo","fileId":"photo-large"}]'});
   assert.equal((await f.call('/api/integrations/telegram/requests','POST',query,'',true)).status,201);
@@ -120,10 +120,10 @@ test('intake rejects invalid media, incorrect client, bad dates and cross-origin
   const f=await fixture(t); const call=(r,m,i)=>f.call(r,m,i,f.cookie);
   const p=(await call('/api/founder/projects','POST',{name:'Validation'})).data.project.id;
   await call(`/api/founder/projects/${p}/client`,'POST',{clientName:'Maya',clientTelegramId:'42'});
+  assert.equal((await call(`/api/founder/projects/${p}/workflow/start`,'POST',{workflowId:'PILOT-DESIGN-V1',startDate:'2026-02-30'})).status,400);
   await call(`/api/founder/projects/${p}`,'PATCH',{telegramGroupChatId:'-123'});
   assert.equal((await f.call('/api/integrations/telegram/requests','POST',payload(10,{AttachmentsJSON:'[null]'}),'',true)).status,400);
   assert.equal((await f.call('/api/integrations/telegram/requests','POST',payload(10,{AutomaticClientQuery:true,OriginalSenderTelegramID:'43'}),'',true)).status,403);
-  assert.equal((await call(`/api/founder/projects/${p}/workflow/start`,'POST',{workflowId:'PILOT-DESIGN-V1',startDate:'2026-02-30'})).status,400);
   assert.equal((await call(`/api/founder/projects/${p}/tasks`)).data.tasks.length,0);
   const response=await fetch(f.base+'/api/founder/projects',{method:'POST',headers:{cookie:f.cookie,origin:'https://evil.example','content-type':'application/json'},body:JSON.stringify({name:'No'})}); assert.equal(response.status,403);
 });
