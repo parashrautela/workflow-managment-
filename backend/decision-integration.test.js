@@ -32,13 +32,14 @@ globalThis.fetch = async (url, options) => {
   return originalFetch(url, options);
 };`);
   const port = await freePort();
-  let starts=0;
+  let starts=0,refreshSnapshot={groups:[]};
   const bridge = http.createServer(async (req, res) => {
     assert.equal(req.headers.authorization, 'Bearer test-secret');
     let raw = ''; for await (const part of req) raw += part;
     const input = JSON.parse(raw);
     res.setHeader('content-type', 'application/json');
-    if (req.url.endsWith('/group-members')) { assert.equal(input.groupChatId, '-456'); res.end(JSON.stringify({ ok: true, changed: true })); }
+    if(req.url.endsWith('/groups'))res.end(JSON.stringify(refreshSnapshot));
+    else if (req.url.endsWith('/group-members')) { assert.equal(input.groupChatId, '-456'); res.end(JSON.stringify({ ok: true, changed: true })); }
     else if (req.url.endsWith('/projects')) { assert.equal(input.clientName, 'Asha Kumar'); res.end(JSON.stringify({ projectId: 'P999', projectName: input.projectName })); }
     else if(req.url.endsWith('/workflows'))res.end(JSON.stringify({workflows:[{id:'RESTORATION-V1',name:'Restoration',stages:[]}]}));
     else if(req.url.endsWith('/projects/start')){starts++;res.end(JSON.stringify({workflowId:'RESTORATION-V1',workflowName:'Restoration',announcementStatus:'Sent',tasks:[{TaskID:'P999-T001',TaskName:'Collect drawings',Stage:'Resources',Status:'Pending',PlannedStart:'2026-10-07',PlannedEnd:'2026-10-07'}]}));}
@@ -129,7 +130,9 @@ globalThis.fetch = async (url, options) => {
     const upgradedMembers=[{telegramUserId:'123',telegramName:'Asha',membershipStatus:'Active',assignedName:'Asha Kumar',assignedRole:'Client'},{telegramUserId:'124',telegramName:'Painter',membershipStatus:'Active',assignedName:'Painter',assignedRole:'Painter'}];
     await call('/api/integrations/telegram/groups/snapshot','POST',{groups:[{groupChatId:'-100999999',title:'Upgraded Site',status:'Available',members:upgradedMembers}]},bridgeHeaders);
     const migration={groups:[{groupChatId:'-456',title:'Old Site',status:'Migrated',migratedTo:'-100999999',members:[]},{groupChatId:'-100999999',title:'Upgraded Site',status:'Linked',members:upgradedMembers}]};
-    assert.equal((await call('/api/integrations/telegram/groups/snapshot','POST',migration,bridgeHeaders)).status,200);
+    refreshSnapshot=migration;
+    assert.equal((await call('/api/founder/telegram-groups/refresh','POST',{})).status,401);
+    assert.equal((await call('/api/founder/telegram-groups/refresh','POST',{},cookie)).status,200);
     assert.equal((await call('/api/integrations/telegram/groups/snapshot','POST',migration,bridgeHeaders)).status,200);
     const migratedProjects=(await call('/api/founder/projects','GET',undefined,cookie)).data.projects;
     assert.equal(migratedProjects.filter(row=>row.telegramGroupChatId==='-100999999').length,1);

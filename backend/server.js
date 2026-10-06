@@ -199,19 +199,8 @@ function founderAssistantAnswer(question) {
   return lines.join('\n');
 }
 
-const pilotRoutes = createPilotRoutes({ getState: () => state, founder, employeeSession, body, json, save, audit, projectView, callBotBridge });
-async function handleRequest(req, res) {
-  let before = structuredClone(state);
-  try {
-    const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
-    res.setHeader('x-content-type-options', 'nosniff');
-    res.setHeader('referrer-policy', 'no-referrer');
-    if (!['GET','HEAD'].includes(req.method) && url.pathname.startsWith('/api/') && !url.pathname.startsWith('/api/integrations/') && req.headers.origin && req.headers.origin !== (process.env.PUBLIC_URL?.replace(/\/$/, '') || `http://${req.headers.host}`)) return json(res,403,{error:'Origin is not allowed.'});
-    if (req.method === 'POST' && url.pathname === '/api/integrations/telegram/groups/snapshot') {
-      const supplied = (req.headers.authorization || '').replace(/^Bearer /i, '');
-      if (!integrationSecret || !safeEqual(supplied, integrationSecret)) return json(res, 401, { error: 'Integration authentication required.' });
-      const input = await body(req);
-      if (!Array.isArray(input.groups) || input.groups.length > 100) return json(res, 400, { error: 'Invalid group snapshot.' });
+function applyGroupSnapshot(input) {
+      if (!Array.isArray(input.groups) || input.groups.length > 100) throw new ApiError('Invalid group snapshot.',400);
       for (const group of input.groups.filter(group=>group.status==='Migrated')) {
         try { reconcileGroupMigration(state,group.groupChatId,group.migratedTo); }
         catch(error){throw new ApiError(error.message,409);}
@@ -219,11 +208,11 @@ async function handleRequest(req, res) {
       for (const group of input.groups) {
         if(group.status==='Migrated')continue;
         const groupChatId = String(group.groupChatId || '');
-        if (!/^-?\d+$/.test(groupChatId) || !shortText(group.title, 128) || !Array.isArray(group.members) || group.members.length > 1000) return json(res, 400, { error: 'Invalid Telegram group.' });
+        if (!/^-?\d+$/.test(groupChatId) || !shortText(group.title, 128) || !Array.isArray(group.members) || group.members.length > 1000) throw new ApiError('Invalid Telegram group.',400);
         const members = [];
         for (const member of group.members) {
           const telegramUserId = String(member.telegramUserId || '');
-          if (!/^\d+$/.test(telegramUserId) || !shortText(member.telegramName, 160) || !['Active', 'Left'].includes(member.membershipStatus)) return json(res, 400, { error: 'Invalid Telegram member.' });
+          if (!/^\d+$/.test(telegramUserId) || !shortText(member.telegramName, 160) || !['Active', 'Left'].includes(member.membershipStatus)) throw new ApiError('Invalid Telegram member.',400);
           members.push({ telegramUserId, telegramName: member.telegramName, membershipStatus: member.membershipStatus, assignedName: shortText(member.assignedName, 100) || '', assignedRole: shortText(member.assignedRole, 80) || '' });
         }
         const existing = state.telegramGroups.find((item) => item.groupChatId === groupChatId);
@@ -236,6 +225,21 @@ async function handleRequest(req, res) {
           audit('telegram_project_discovered', project.id, { groupChatId });
         } else if (linkedProject.telegramSetupPending) linkedProject.name = group.title;
       }
+}
+
+const pilotRoutes = createPilotRoutes({ getState: () => state, founder, employeeSession, body, json, save, audit, projectView, callBotBridge });
+async function handleRequest(req, res) {
+  let before = structuredClone(state);
+  try {
+    const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+    res.setHeader('x-content-type-options', 'nosniff');
+    res.setHeader('referrer-policy', 'no-referrer');
+    if (!['GET','HEAD'].includes(req.method) && url.pathname.startsWith('/api/') && !url.pathname.startsWith('/api/integrations/') && req.headers.origin && req.headers.origin !== (process.env.PUBLIC_URL?.replace(/\/$/, '') || `http://${req.headers.host}`)) return json(res,403,{error:'Origin is not allowed.'});
+    if (req.method === 'POST' && url.pathname === '/api/integrations/telegram/groups/snapshot') {
+      const supplied = (req.headers.authorization || '').replace(/^Bearer /i, '');
+      if (!integrationSecret || !safeEqual(supplied, integrationSecret)) return json(res, 401, { error: 'Integration authentication required.' });
+      const input = await body(req);
+      applyGroupSnapshot(input);
       await save(); return json(res, 200, { ok: true });
     }
     if(req.method==='POST' && url.pathname==='/api/integrations/telegram/resources') {
@@ -384,6 +388,10 @@ async function handleRequest(req, res) {
       if(!project.telegramGroupChatId)return json(res,200,{workflows:(await import('./pilot.js')).workflows});
       try{return json(res,200,await callBotBridge('/api/integrations/web/workflows',{groupChatId:project.telegramGroupChatId}));}
       catch(error){return json(res,502,{error:error.message});}
+    }
+    if(req.method==='POST' && url.pathname==='/api/founder/telegram-groups/refresh') {
+      let snapshot;try{snapshot=await callBotBridge('/api/integrations/web/groups',{});}catch(error){return json(res,502,{error:error.message});}
+      applyGroupSnapshot(snapshot);await save();return json(res,200,{ok:true});
     }
     if (req.method === 'GET' && url.pathname === '/api/founder/telegram-groups') {
       return json(res, 200, { groups: state.telegramGroups.map((group) => ({ ...group, projectId: state.projects.find((project) => project.telegramGroupChatId === group.groupChatId)?.id || '' })) });
