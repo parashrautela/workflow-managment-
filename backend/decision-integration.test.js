@@ -38,7 +38,9 @@ globalThis.fetch = async (url, options) => {
     let raw = ''; for await (const part of req) raw += part;
     const input = JSON.parse(raw);
     res.setHeader('content-type', 'application/json');
-    if(req.url.endsWith('/groups'))res.end(JSON.stringify(refreshSnapshot));
+    if(req.url.endsWith('/decisions/content')) { assert.equal(input.attachmentIndex,0);res.end(JSON.stringify({bytes:Buffer.from('PHOTO').toString('base64'),mime:'image/jpeg',inline:true})); }
+    else if(req.url.endsWith('/decisions/publish')) { assert.equal(input.response,'Approved');res.end(JSON.stringify({ok:true,result:{message_id:99}})); }
+    else if(req.url.endsWith('/groups'))res.end(JSON.stringify(refreshSnapshot));
     else if (req.url.endsWith('/group-members')) { assert.equal(input.groupChatId, '-456'); res.end(JSON.stringify({ ok: true, changed: true })); }
     else if (req.url.endsWith('/projects')) { assert.equal(input.clientName, 'Asha Kumar'); res.end(JSON.stringify({ projectId: 'P999', projectName: input.projectName })); }
     else if(req.url.endsWith('/workflows'))res.end(JSON.stringify({workflows:[{id:'RESTORATION-V1',name:'Restoration',stages:[]}]}));
@@ -48,7 +50,7 @@ globalThis.fetch = async (url, options) => {
   });
   await new Promise((resolve) => bridge.listen(0, '127.0.0.1', resolve));
   const bridgeUrl = `http://127.0.0.1:${bridge.address().port}`;
-  const child = spawn(process.execPath, ['--import', path.join(root, 'mock-telegram.js'), path.join(root, 'backend/server.js')], { cwd: root, env: { ...process.env, PORT: String(port), FOUNDER_PASSWORD: 'test-password', INTEGRATION_SHARED_SECRET: 'test-secret', GROUP_BOT_TOKEN: 'test-bot-token', BOT_BRIDGE_URL: bridgeUrl, DATABASE_URL: '', NODE_ENV: 'test' }, stdio: 'ignore' });
+  const child = spawn(process.execPath, ['--import', path.join(root, 'mock-telegram.js'), path.join(root, 'backend/server.js')], { cwd: root, env: { ...process.env, PORT: String(port), FOUNDER_PASSWORD: 'test-password', INTEGRATION_SHARED_SECRET: 'test-secret', GROUP_BOT_TOKEN: '', BOT_BRIDGE_URL: bridgeUrl, DATABASE_URL: '', NODE_ENV: 'test' }, stdio: 'ignore' });
   const base = `http://127.0.0.1:${port}`;
   const call = async (route, method = 'GET', value, headers = {}) => {
     const response = await fetch(base + route, { method, headers: { 'content-type': 'application/json', ...headers }, ...(value === undefined ? {} : { body: JSON.stringify(value) }) });
@@ -65,7 +67,7 @@ globalThis.fetch = async (url, options) => {
     const cookie = { cookie: session.cookie.split(';')[0] };
     const project = await call('/api/founder/projects', 'POST', { name: 'Test Home', clientName: 'Client' }, cookie);
     const projectId = project.data.project.id;
-    const payload = { RequestID: 'REQ--123-10-approval', GroupChatID: '-123', SourceMessageID: '10', RequestType: 'Approval', OriginalMessage: 'Approve lights?', RequestContext: '', OriginalSenderName: 'Client', RequestedByName: 'Designer', AttachmentsJSON: '[]' };
+    const payload = { RequestID: 'REQ--123-10-approval', GroupChatID: '-123', SourceMessageID: '10', RequestType: 'Approval', OriginalMessage: 'Approve lights?', RequestContext: '', OriginalSenderName: 'Client', RequestedByName: 'Designer', AttachmentsJSON: JSON.stringify([{type:'Photo',fileId:'photo-id'}]) };
     assert.equal((await call('/api/integrations/telegram/requests', 'POST', payload)).status, 401);
     const bridgeHeaders = { authorization: 'Bearer test-secret' };
     assert.equal((await call('/api/integrations/telegram/requests', 'POST', payload, bridgeHeaders)).status, 409);
@@ -77,6 +79,10 @@ globalThis.fetch = async (url, options) => {
     assert.equal(inbox.data.requests.length, 1);
     assert.equal(inbox.data.requests[0].projectId, projectId);
     const item = encodeURIComponent(payload.RequestID);
+    assert.equal((await fetch(base+`/api/founder/decision-requests/${item}/attachments/0`)).status,401);
+    const image=await fetch(base+`/api/founder/decision-requests/${item}/attachments/0`,{headers:cookie});
+    assert.equal(image.status,200);assert.equal(image.headers.get('content-type'),'image/jpeg');assert.equal(await image.text(),'PHOTO');
+
     assert.equal((await call(`/api/founder/decision-requests/${item}/comment`, 'POST', { text: 'Check dimensions' }, cookie)).status, 200);
     assert.equal((await call(`/api/founder/decision-requests/${item}/publish`, 'POST', { response: 'Approved' }, cookie)).status, 200);
     assert.equal((await call(`/api/founder/decision-requests/${item}/publish`, 'POST', { response: 'Approved' }, cookie)).status, 409);
