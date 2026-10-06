@@ -26549,7 +26549,8 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 					variant: "outline",
 					size: "sm",
-					onClick: load,
+					disabled: busy,
+					onClick: () => run(() => api$2("/api/founder/telegram-groups/refresh", "POST", {}), "Latest Telegram members fetched."),
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, {}), "Refresh"]
 				})]
 			}),
