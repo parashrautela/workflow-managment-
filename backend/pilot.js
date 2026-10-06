@@ -76,12 +76,13 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
     const task = { id: randomUUID(), projectId: project.id, ...fields, sourceQueryId, createdBy: user.id, createdAt: timestamp(), updatedAt: timestamp(), deletedAt: '' };
     state.tasks.push(task); audit('task_created', project.id, { taskId: task.id, sourceQueryId, actorId: user.id }); return task;
   };
-  const syncing=new Set();
+  const syncing=new Set();const lastSync=new Map();
   const synchronize=async(state,project)=>{
     if(!project.telegramGroupChatId || !project.telegramProjectId || !project.workflowStartedAt)return;
+    if(Date.now()-(lastSync.get(project.id)||0)<30000 && !state.tasks.some(task=>task.projectId===project.id && task.telegramSyncStatus!=='Synced'))return;
     if(syncing.has(project.id))fail('Task sync is already in progress. Refresh shortly.',409);
     syncing.add(project.id);
-    try{await syncProjectTasks(state,project,callBotBridge);await save();}
+    try{await syncProjectTasks(state,project,callBotBridge);await save();lastSync.set(project.id,Date.now());}
     catch(error){fail('Telegram task sync failed: '+error.message,502);}
     finally{syncing.delete(project.id);}
   };
@@ -167,7 +168,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
         workflow.stages.forEach((stage,index) => stage.tasks.forEach((title) => makeTask(state,project,user,{title,description:'',status:'Open',assigneeId,stageId:stages[index].id,deadline:stages[index].deadline})));
         audit('workflow_started',project.id,{workflowId:workflow.id}); await save(); json(res,200,{project:projectView(project)}); return true;
       }
-      if (['workspace','tasks'].includes(m[2]) && method==='GET') await synchronize(state,project);
+      if (m[2]==='tasks' && method==='GET') await synchronize(state,project);
       if (m[2] === 'workspace' && method === 'GET') {
         const requests = state.decisionRequests.filter((r) => r.projectId === project.id);
         json(res,200,{project:projectView(project),tasks:state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt),requests}); return true;
