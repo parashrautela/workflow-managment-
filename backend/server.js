@@ -360,7 +360,15 @@ async function handleRequest(req, res) {
       if (!project) return json(res,404,{error:'Request not found in your workspace.'});
       const attachment = request.attachments[Number(attachmentMatch[3])];
       if (!attachment) return json(res,404,{error:'Attachment not found.'});
-      const file = await loadTelegramAttachment(attachment, process.env.GROUP_BOT_TOKEN);
+      let file;
+      if (botBridgeUrl && integrationSecret) {
+        const stored = await callBotBridge('/api/integrations/web/decisions/content',{requestId:request.id,groupChatId:request.groupChatId,attachmentIndex:Number(attachmentMatch[3])});
+        if (typeof stored.bytes !== 'string' || stored.bytes.length > 27000000) throw new ApiError('Attachment exceeds the download limit.',502);
+        const bytes=Buffer.from(stored.bytes,'base64');
+        if(bytes.length>20000000) throw new ApiError('Attachment exceeds the 20 MB pilot limit.',413);
+        const inline=['image/jpeg','image/png','image/gif','image/webp'].includes(stored.mime);
+        file={bytes,mime:inline?stored.mime:'application/octet-stream',inline};
+      } else file = await loadTelegramAttachment(attachment, process.env.GROUP_BOT_TOKEN);
       res.writeHead(200,{'content-type':file.mime,'content-disposition':file.inline ? 'inline' : 'attachment','cache-control':'private, no-store','content-security-policy':"default-src 'none'; sandbox"});
       return res.end(file.bytes);
     }
@@ -466,7 +474,7 @@ async function handleRequest(req, res) {
       if (publishingRequests.has(request.id)) return json(res, 409, { error: 'This response is already being published.' });
       const input = await body(req); const answer = String(input.response || '').trim();
       if (!answer || answer.length > 3000) return json(res, 400, { error: 'Enter a response under 3,000 characters.' });
-      if (!process.env.GROUP_BOT_TOKEN) return json(res, 503, { error: 'Telegram publishing is not configured.' });
+      if (!process.env.GROUP_BOT_TOKEN && !(botBridgeUrl && integrationSecret)) return json(res, 503, { error: 'Telegram publishing is not configured.' });
       const project = state.projects.find((item) => item.id === request.projectId);
       if (project.telegramGroupChatId !== request.groupChatId) return json(res, 409, { error: 'Project group mapping changed. Check the linked group.' });
       if (input.idempotencyKey !== undefined && (typeof input.idempotencyKey !== 'string' || !input.idempotencyKey.trim() || input.idempotencyKey.length > 128)) return json(res,400,{error:'Invalid idempotency key.'});
@@ -478,10 +486,15 @@ async function handleRequest(req, res) {
       try {
         let telegramResult;
         try {
+          if (botBridgeUrl && integrationSecret) {
+            telegramResult = await callBotBridge('/api/integrations/web/decisions/publish',{requestId:request.id,groupChatId:request.groupChatId,response:answer});
+          } else {
           const telegramResponse = await fetch(`https://api.telegram.org/bot${process.env.GROUP_BOT_TOKEN}/sendMessage`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ chat_id: request.groupChatId, text: answer, reply_parameters: { message_id: Number(request.sourceMessageId), allow_sending_without_reply: true } }), signal: AbortSignal.timeout(10_000), redirect: 'error' });
           telegramResult = await telegramResponse.json();
-          if (!telegramResponse.ok || !telegramResult.ok) {
-            request.deliveryStatus = telegramResult.ok === false && telegramResponse.status < 500 ? 'Failed' : 'Unknown';
+          if (!telegramResponse.ok || !telegramResult.ok) telegramResult = {...telegramResult,ok:false,deliveryStatus:telegramResult.ok===false && telegramResponse.status<500?'Failed':'Unknown'};
+          }
+          if (!telegramResult.ok) {
+            request.deliveryStatus = telegramResult.deliveryStatus === 'Failed' ? 'Failed' : 'Unknown';
             request.deliveryError = request.deliveryStatus === 'Failed' ? 'Telegram rejected the response. Check bot access before retrying.' : 'Delivery is uncertain. Check Telegram before sending again.';
             await save(); return json(res,502,{error:request.deliveryError,request});
           }
