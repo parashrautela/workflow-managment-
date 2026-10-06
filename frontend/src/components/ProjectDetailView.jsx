@@ -20,6 +20,8 @@ import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 
+import { TelegramGroups } from "@/components/TelegramGroups";
+import { ProjectFiles } from "@/components/ProjectFiles";
 import { TeamChat } from "@/components/TeamChat";
 import { TaskThreadDrawer } from "@/components/TaskThreadDrawer";
 import { ClientQueryCard } from "@/components/ClientQueryCard";
@@ -167,7 +169,7 @@ export function ProjectDetailView({
 
   // Telegram client queries linked to this project
   const projectQueries = decisionRequests.filter((req) => req.projectId === project.id);
-  const pendingQueriesCount = projectQueries.filter((q) => !["Done", "Rejected"].includes(q.status)).length;
+  const pendingQueriesCount = projectQueries.filter((q) => !["Done", "Rejected", "Published"].includes(q.status)).length;
 
   // TL;DR metrics
   const blockedTasks = tasks.filter((t) => t.status === "Blocked");
@@ -318,6 +320,11 @@ export function ProjectDetailView({
     return found ? found.name : assigneeId;
   };
 
+  const roster=project.telegramMembers || [];
+  const profilesReady=roster.length>=2 && roster.every((member)=>member.assignedName && member.assignedRole) && roster.filter((member)=>/\bclient\b/i.test(member.assignedRole)).length===1 && roster.some((member)=>!/\b(client|founder)\b/i.test(member.assignedRole));
+  if(project.telegramGroupChatId && (project.telegramSetupPending || !profilesReady)) return <div className="space-y-4"><Button variant="ghost" onClick={onBackToDirectory}><ArrowLeft className="size-4"/>All projects</Button><h2 className="text-xl font-semibold">{project.name}</h2><TelegramGroups project={project} embedded onProjectsChanged={onProjectUpdated}/></div>;
+  if(project.telegramGroupChatId && !hasWorkflowStarted) return <section className="space-y-4"><Button variant="ghost" onClick={onBackToDirectory}><ArrowLeft className="size-4"/>All projects</Button><div className="rounded-2xl border bg-card p-6 space-y-3"><p className="text-xs font-medium text-primary">Step 2 · Project type</p><h1 className="text-2xl font-semibold">{project.name}</h1><p className="text-sm text-muted-foreground">Members and client are ready. Choose the type of project to generate its tasks and announce the start in the Telegram group.</p><Button onClick={()=>setTemplateModalOpen(true)}>Choose project type</Button></div><WorkflowTemplateModal open={templateModalOpen} onOpenChange={setTemplateModalOpen} projectId={project.id} telegramLinked projectStartDate={project.startDate} clientAssigned projectMembers={project.members || []} onApplied={()=>{if(onProjectUpdated)onProjectUpdated();loadProjectTasks();}}/></section>;
+
   return (
     <div className="space-y-6">
       {/* Toast Notice */}
@@ -328,6 +335,7 @@ export function ProjectDetailView({
         </div>
       )}
 
+      {project.workflowAnnouncementStatus && project.workflowAnnouncementStatus!=='Sent' && <p role="alert" className="rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm">The project plan is saved, but the Telegram start announcement could not be confirmed. Check the group before sending another announcement.</p>}
       {/* Navigation Header */}
       <div className="flex flex-col gap-3 rounded-2xl border bg-card p-4 sm:p-5 shadow-xs">
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -907,93 +915,7 @@ export function ProjectDetailView({
         </TabsContent>
 
         {/* ----------------- TAB 5: FILES & DRIVE ----------------- */}
-        <TabsContent value="files" className="space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <div>
-              <h3 className="text-base font-semibold">Project Google Drive &amp; Files</h3>
-              <p className="text-xs text-muted-foreground">
-                Direct integration with project Google Drive folders, architectural CAD drawings, and presentations.
-              </p>
-            </div>
-            <Button size="sm" onClick={() => setAddDriveLinkOpen(true)}>
-              <Plus className="size-3.5 mr-1" /> Add Drive File / Link
-            </Button>
-          </div>
-
-          <Card className="border-primary/20 bg-primary/5">
-            <CardContent className="p-4 sm:p-5">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div className="flex items-start gap-3">
-                  <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground">
-                    <FolderKanban className="size-5" />
-                  </span>
-                  <div>
-                    <h4 className="text-sm font-bold text-foreground">Main Project Google Drive Folder</h4>
-                    <p className="text-xs text-muted-foreground">
-                      Shared folder containing design deliverables, vendor quotes, and CAD exports.
-                    </p>
-                    {localWorkflow?.drive?.folderUrl ? (
-                      <a
-                        href={localWorkflow.drive.folderUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="mt-1.5 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
-                      >
-                        Open Google Drive Folder <ExternalLink className="size-3" />
-                      </a>
-                    ) : (
-                      <p className="mt-1 text-xs text-amber-700">No Drive folder URL linked yet.</p>
-                    )}
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  {isEditingDriveFolder ? (
-                    <div className="flex gap-2 w-full sm:w-auto">
-                      <Input
-                        value={driveFolderInput}
-                        onChange={(e) => setDriveFolderInput(e.target.value)}
-                        placeholder="https://drive.google.com/drive/folders/..."
-                        className="h-8 text-xs min-w-64"
-                      />
-                      <Button size="sm" onClick={handleSaveDriveFolder}>Save</Button>
-                      <Button size="sm" variant="ghost" onClick={() => setIsEditingDriveFolder(false)}>Cancel</Button>
-                    </div>
-                  ) : (
-                    <Button variant="outline" size="sm" onClick={() => setIsEditingDriveFolder(true)}>
-                      <LinkIcon className="size-3.5 mr-1" /> Edit Folder URL
-                    </Button>
-                  )}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <div className="grid gap-3 sm:grid-cols-2">
-            {(localWorkflow?.drive?.links || []).map((link) => (
-              <Card key={link.id} className="overflow-hidden">
-                <CardContent className="p-4 flex items-center justify-between gap-3">
-                  <div className="min-w-0 flex-1">
-                    <Badge variant="outline" className="text-[10px]">{link.category}</Badge>
-                    <p className="mt-1 text-xs font-semibold text-foreground truncate">{link.name}</p>
-                    {link.url ? (
-                      <a
-                        href={link.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="mt-1 inline-flex items-center gap-1 text-[11px] text-primary hover:underline truncate max-w-full"
-                      >
-                        Open in Drive <ExternalLink className="size-2.5" />
-                      </a>
-                    ) : (
-                      <span className="text-[11px] text-muted-foreground">No link configured</span>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </TabsContent>
+        <TabsContent value="files"><ProjectFiles projectId={project.id}/></TabsContent>
 
         {/* ----------------- TAB 6: TEAM & ACCESS ----------------- */}
         <TabsContent value="team" className="space-y-4">
@@ -1013,7 +935,6 @@ export function ProjectDetailView({
             {project.members && project.members.length > 0 ? (
               project.members.map((member, idx) => {
                 const memberId = member.employeeId || member.id;
-                const driveAccess = localWorkflow?.memberAccess?.[memberId]?.driveAccess || "viewer";
                 const memberTasksCount = tasks.filter((t) => t.assigneeId === memberId).length;
 
                 return (
@@ -1035,21 +956,6 @@ export function ProjectDetailView({
                     </div>
 
                     <div className="flex flex-wrap items-center gap-3 pt-2 sm:pt-0 border-t sm:border-t-0">
-                      {/* Actionable 20: Display & Toggle Project & Drive Permissions */}
-                      <div className="flex items-center gap-1.5">
-                        <FolderKanban className="size-3.5 text-muted-foreground" />
-                        <span className="text-[11px] font-medium text-muted-foreground">Drive:</span>
-                        <NativeSelect
-                          value={driveAccess}
-                          onChange={(e) => handleDriveAccessChange(memberId, e.target.value)}
-                          className="h-7 text-xs w-28"
-                        >
-                          <option value="viewer">Viewer</option>
-                          <option value="editor">Editor</option>
-                          <option value="none">No Access</option>
-                        </NativeSelect>
-                      </div>
-
                       <span className="text-xs text-muted-foreground">
                         {memberTasksCount} task{memberTasksCount === 1 ? "" : "s"}
                       </span>

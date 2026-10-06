@@ -33,6 +33,7 @@ export function ClientQueryCard({
   const [mode, setMode] = useState("discuss"); // 'discuss' | 'finalize'
   const [convertModalOpen, setConvertModalOpen] = useState(false);
   const [rejectModalOpen, setRejectModalOpen] = useState(false);
+  const [publishReview, setPublishReview] = useState(null);
   const [rejectReason, setRejectReason] = useState("");
 
   // Convert task fields
@@ -111,10 +112,10 @@ export function ClientQueryCard({
     }
   };
 
-  const handlePublish = async (isRetry = false) => {
+  const handlePublish = async () => {
     if (!isFounder || busyAction) return;
-    const textToPublish = responseDraft.trim();
-    if (!textToPublish) {
+    const textToPublish = publishReview?.response;
+    if (!textToPublish || isPublished || ["Sending", "Unknown"].includes(deliveryStatus)) {
       setErrorMessage("Please enter the response message to send to Telegram.");
       return;
     }
@@ -127,6 +128,7 @@ export function ClientQueryCard({
         response: textToPublish,
         idempotencyKey
       });
+      setPublishReview(null);
       setSuccessMessage("Reply published to Telegram group successfully!");
       setTimeout(() => setSuccessMessage(""), 4000);
       if (onQueryChanged) onQueryChanged();
@@ -419,11 +421,11 @@ export function ClientQueryCard({
         {expanded && (
           <div className="mt-4 space-y-4 rounded-xl border bg-muted/20 p-4">
             {/* Step Progression Indicators */}
-            <div className="flex items-center justify-between border-b pb-3 text-xs">
+            <div className="flex flex-col gap-3 border-b pb-3 text-xs sm:flex-row sm:items-center sm:justify-between">
               <span className="font-semibold uppercase tracking-wider text-muted-foreground">
                 Workflow: Discuss Internally → Finalize &amp; Send
               </span>
-              <div className="flex gap-1.5">
+              <div className="flex flex-wrap gap-1.5">
                 <button
                   type="button"
                   onClick={() => setMode("discuss")}
@@ -540,8 +542,8 @@ export function ClientQueryCard({
                     <Button
                       size="sm"
                       className="text-xs bg-primary"
-                      disabled={busyAction === "publish" || !responseDraft.trim() || deliveryStatus === "Unknown"}
-                      onClick={() => handlePublish(deliveryStatus === "Failed")}
+                      disabled={Boolean(busyAction) || !responseDraft.trim() || ["Sending", "Unknown"].includes(deliveryStatus)}
+                      onClick={() => setPublishReview({ response: responseDraft.trim() })}
                     >
                       {busyAction === "publish" ? (
                         <>
@@ -551,7 +553,7 @@ export function ClientQueryCard({
                       ) : (
                         <>
                           <Send className="size-3.5 mr-1.5" />
-                          {deliveryStatus === "Failed" ? "Retry Publish" : "Publish Reply to Telegram"}
+                          {deliveryStatus === "Failed" ? "Review Retry" : "Review Reply to Telegram"}
                         </>
                       )}
                     </Button>
@@ -562,6 +564,28 @@ export function ClientQueryCard({
           </div>
         )}
       </div>
+
+      <Dialog open={Boolean(publishReview)} onOpenChange={(open) => { if (!open && busyAction !== "publish") setPublishReview(null); }}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Confirm Telegram reply</DialogTitle>
+            <DialogDescription>Review the destination and message before sending this public reply.</DialogDescription>
+          </DialogHeader>
+          <div className="space-y-3 text-sm">
+            <p><strong>Project:</strong> {project?.name || query.projectId}</p>
+            <p><strong>Destination:</strong> Project Telegram group{project?.telegramGroupChatId ? ` (${project.telegramGroupChatId})` : ""}</p>
+            <div className="rounded-lg border bg-muted/30 p-3 whitespace-pre-wrap break-words">{publishReview?.response}</div>
+            <p className="text-xs text-muted-foreground">Internal team notes will not be sent. One successful public reply is allowed per query.</p>
+            {errorMessage && <p role="alert" className="text-xs text-destructive">{errorMessage}</p>}
+          </div>
+          <div className="flex flex-wrap justify-end gap-2">
+            <Button variant="outline" disabled={busyAction === "publish"} onClick={() => setPublishReview(null)}>Back to draft</Button>
+            <Button disabled={Boolean(busyAction) || isPublished || ["Sending", "Unknown"].includes(deliveryStatus)} onClick={handlePublish}>
+              {busyAction === "publish" ? "Sending…" : "Confirm & Send to Telegram"}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* Convert Query to Task Modal */}
       <Dialog open={convertModalOpen} onOpenChange={setConvertModalOpen}>

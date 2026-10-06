@@ -135,7 +135,7 @@ export function ProjectDirectoryView({
           filtered.map((project) => {
             const taskCount = project.taskCount || 0;
             const progress = project.progress || 0;
-            const pendingQueries = decisionRequests.filter((q) => q.projectId === project.id && !["Done", "Rejected"].includes(q.status)).length;
+            const pendingQueries = decisionRequests.filter((q) => q.projectId === project.id && !["Done", "Rejected", "Published"].includes(q.status)).length;
             const isMissingClient = !project.clientName || ["Unassigned Client", "Client pending"].includes(project.clientName) || project.telegramSetupPending;
 
             return (

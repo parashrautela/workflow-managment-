@@ -99,7 +99,7 @@ export default function FounderApp() {
   const filteredProjects = projects.filter((project) => `${project.name} ${project.clientName} ${project.location || ""}`.toLowerCase().includes(searchQuery.toLowerCase()));
 
   // Unread badge counts (Actionable 9)
-  const pendingDecisionsCount = decisionRequests.filter((r) => !["Done", "Rejected"].includes(r.status)).length;
+  const pendingDecisionsCount = decisionRequests.filter((r) => !["Done", "Rejected", "Published"].includes(r.status)).length;
   const pendingGroupsCount = projects.filter((p) => p.telegramSetupPending).length;
 
   const showNotice = (message, error = false) => {

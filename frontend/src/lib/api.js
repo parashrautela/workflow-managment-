@@ -132,20 +132,20 @@ export const DEFAULT_PILOT_WORKFLOWS = [
 /**
  * Fetch available workflow templates (GET /api/{founder|employee}/workflows)
  */
-export async function fetchWorkflows(namespace = "founder") {
+export async function fetchWorkflows(namespace = "founder", projectId = "") {
   try {
-    const data = await get(`/api/${namespace}/workflows`);
+    const data = await get(projectId ? `/api/${namespace}/projects/${projectId}/workflows` : `/api/${namespace}/workflows`);
     if (data.workflows && data.workflows.length > 0) {
       return data.workflows;
     }
   } catch (err) {
     // If backend PR #5 not yet merged/deployed locally, use default pilot templates
-    if (err.status === 404) {
+    if (err.status === 404 && !projectId) {
       return DEFAULT_PILOT_WORKFLOWS;
     }
     throw err;
   }
-  return DEFAULT_PILOT_WORKFLOWS;
+  return projectId ? [] : DEFAULT_PILOT_WORKFLOWS;
 }
 
 /**

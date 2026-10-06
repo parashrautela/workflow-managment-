@@ -1,3 +1,4 @@
+import {ProjectFiles} from "@/components/ProjectFiles";
 // frontend/src/EmployeeApp.jsx
 import { useEffect, useState, useCallback } from "react";
 import {
@@ -209,7 +210,7 @@ export default function EmployeeApp() {
 
   // Filter queries for selected project
   const projectQueries = decisionRequests.filter((r) => r.projectId === selected?.id);
-  const pendingQueriesCount = projectQueries.filter((r) => !["Done", "Rejected"].includes(r.status)).length;
+  const pendingQueriesCount = projectQueries.filter((r) => !["Done", "Rejected", "Published"].includes(r.status)).length;
 
   return (
     <div className="app-glow min-h-dvh bg-background pb-[max(24px,env(safe-area-inset-bottom))]">
@@ -306,6 +307,7 @@ export default function EmployeeApp() {
                   <MessageSquare className="size-4 mr-1.5 text-blue-600" />
                   Team Chat
                 </TabsTrigger>
+                <TabsTrigger value="files" className="font-semibold text-xs px-3 py-2">Files</TabsTrigger>
                 <TabsTrigger value="overview" className="font-semibold text-xs px-3 py-2">Overview</TabsTrigger>
               </TabsList>
 
@@ -427,6 +429,7 @@ export default function EmployeeApp() {
               </TabsContent>
 
               {/* Overview Tab */}
+              <TabsContent value="files"><ProjectFiles projectId={selected.id} namespace="employee"/></TabsContent>
               <TabsContent value="overview" className="space-y-3">
                 <div className="grid grid-cols-2 gap-3">
                   <Card>

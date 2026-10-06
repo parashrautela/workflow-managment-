@@ -32,6 +32,7 @@ globalThis.fetch = async (url, options) => {
   return originalFetch(url, options);
 };`);
   const port = await freePort();
+  let starts=0;
   const bridge = http.createServer(async (req, res) => {
     assert.equal(req.headers.authorization, 'Bearer test-secret');
     let raw = ''; for await (const part of req) raw += part;
@@ -39,6 +40,9 @@ globalThis.fetch = async (url, options) => {
     res.setHeader('content-type', 'application/json');
     if (req.url.endsWith('/group-members')) { assert.equal(input.groupChatId, '-456'); res.end(JSON.stringify({ ok: true, changed: true })); }
     else if (req.url.endsWith('/projects')) { assert.equal(input.clientName, 'Asha Kumar'); res.end(JSON.stringify({ projectId: 'P999', projectName: input.projectName })); }
+    else if(req.url.endsWith('/workflows'))res.end(JSON.stringify({workflows:[{id:'RESTORATION-V1',name:'Restoration',stages:[]}]}));
+    else if(req.url.endsWith('/projects/start')){starts++;res.end(JSON.stringify({workflowId:'RESTORATION-V1',workflowName:'Restoration',announcementStatus:'Sent',tasks:[{TaskID:'P999-T001',TaskName:'Collect drawings',Stage:'Resources',Status:'Pending',PlannedStart:'2026-10-07',PlannedEnd:'2026-10-07'}]}));}
+    else if(req.url.endsWith('/resources/content'))res.end(JSON.stringify({bytes:Buffer.from('FILE').toString('base64'),mimeType:'application/pdf'}));
     else { res.statusCode = 404; res.end('{}'); }
   });
   await new Promise((resolve) => bridge.listen(0, '127.0.0.1', resolve));
@@ -94,14 +98,35 @@ globalThis.fetch = async (url, options) => {
     assert.equal((await call('/api/founder/telegram-groups')).status, 401);
     const discovered = await call('/api/founder/telegram-groups', 'GET', undefined, cookie);
     assert.equal(discovered.data.groups[0].members.length, 2);
-    assert.equal((await call('/api/founder/telegram-groups/-456/create-project', 'POST', { projectName: 'New Site Group', startDate: '2026-09-30' }, cookie)).status, 400);
+    assert.equal((await call('/api/founder/telegram-groups/-456/create-project', 'POST', { projectName: 'New Site Group', startDate: '2026-09-30' }, cookie)).status, 409);
     assert.equal((await call('/api/founder/telegram-groups/-456/members/123', 'POST', { name: 'Asha Kumar', role: 'Client' }, cookie)).status, 200);
+    const staff = await call('/api/founder/telegram-groups/-456/members/124','POST',{name:'Painter',role:'Painter'},cookie);
+    assert.ok(staff.data.credentials.employeeId);
     const created = await call('/api/founder/telegram-groups/-456/create-project', 'POST', { projectName: 'New Site Group', startDate: '2026-09-30' }, cookie);
     assert.equal(created.status, 201);
     assert.equal(created.data.project.id, pendingProject.id);
     assert.equal(created.data.project.telegramSetupPending, false);
     assert.equal(created.data.project.telegramGroupChatId, '-456');
     assert.equal((await call('/api/founder/telegram-groups/-456/create-project', 'POST', { projectName: 'New Site Group', startDate: '2026-09-30' }, cookie)).status, 409);
+    const linkedId=created.data.project.id;
+    assert.equal(created.data.project.members[0].employeeId,staff.data.credentials.employeeId);
+    assert.equal((await call(`/api/founder/projects/${linkedId}/workflows`,'GET',undefined,cookie)).data.workflows[0].id,'RESTORATION-V1');
+    assert.equal((await call(`/api/founder/projects/${linkedId}/workflow/start`,'POST',{workflowId:'RESTORATION-V1',startDate:'2026-10-07'},cookie)).status,200);
+    await call(`/api/founder/projects/${linkedId}/workflow/start`,'POST',{workflowId:'RESTORATION-V1'},cookie);
+    assert.equal((await call(`/api/founder/projects/${linkedId}/tasks`,'GET',undefined,cookie)).data.tasks.length,1);assert.equal(starts,2);
+    const resource={SubmissionID:'RES--456-15',SourceMessageID:'15',ProjectID:'P999',GroupChatID:'-456',TelegramUserID:'123',TelegramFileID:'fake-file',FileName:'drawing.pdf',ResourceType:'Document',DriveStatus:'Pending'};
+    assert.equal((await call('/api/integrations/telegram/resources','POST',resource)).status,401);
+    assert.equal((await call('/api/integrations/telegram/resources','POST',{...resource,TelegramUserID:'777'},bridgeHeaders)).status,403);
+    assert.equal((await call('/api/integrations/telegram/resources','POST',resource,bridgeHeaders)).status,200);
+    assert.equal((await call(`/api/founder/projects/${linkedId}/files`)).status,401);
+    assert.equal((await call(`/api/founder/projects/${linkedId}/files`,'GET',undefined,cookie)).data.files[0].status,'Pending');
+    await call('/api/integrations/telegram/resources','POST',{...resource,DriveStatus:'Stored',DriveFileID:'stored-file'},bridgeHeaders);
+    const files=(await call(`/api/founder/projects/${linkedId}/files`,'GET',undefined,cookie)).data.files;assert.equal(files.length,1);assert.equal(files[0].status,'Stored');assert.equal(files[0].driveFileId,undefined);
+    const downloaded=await fetch(base+`/api/founder/projects/${linkedId}/files/RES--456-15`,{headers:cookie});assert.equal(downloaded.status,200);assert.equal(await downloaded.text(),'FILE');
+    const staffSession=await call('/api/employee/login','POST',staff.data.credentials);const staffCookie={cookie:staffSession.cookie.split(';')[0]};
+    assert.equal((await call(`/api/employee/projects/${linkedId}/files`,'GET',undefined,staffCookie)).status,200);
+    assert.equal((await call(`/api/employee/projects/${projectId}/files`,'GET',undefined,staffCookie)).status,404);
+
   } finally {
     child.kill();
     await new Promise((resolve) => bridge.close(resolve));

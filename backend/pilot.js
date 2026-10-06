@@ -39,7 +39,7 @@ export function projectSummary(state, project) {
 }
 
 // Additive routes: founder/employee cookies and the existing {error} contract stay intact.
-export function createPilotRoutes({ getState, founder, employeeSession, body, json, save, audit, projectView }) {
+export function createPilotRoutes({ getState, founder, employeeSession, body, json, save, audit, projectView, callBotBridge }) {
   const actor = (req, namespace) => {
     if (namespace === 'founder') { if (!founder(req)) fail('Founder session required.', 401); return { id: 'founder', name: 'Founder', founder: true }; }
     const employee = employeeSession(req);
@@ -104,7 +104,39 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
         Object.assign(project,{clientName,clientTelegramId}); audit('client_assigned',project.id); await save(); json(res,200,{project:projectView(project)}); return true;
       }
       if (m[2] === 'workflow/start' && method === 'POST') {
-        admin(user); const input = await body(req); const workflow = workflows.find((w) => w.id === input.workflowId);
+        admin(user); const input = await body(req);
+        if (project.telegramGroupChatId) {
+          if (['Completed','Abandoned'].includes(project.status)) fail('This project is closed.',409);
+          if (project.telegramSetupPending) fail('Finish member setup before choosing a project type.',409);
+          const roster = state.telegramGroups.find((group)=>group.groupChatId===project.telegramGroupChatId)?.members.filter((member)=>member.membershipStatus==='Active') || [];
+          if (roster.length<2 || roster.some((member)=>!member.assignedName || !member.assignedRole) || roster.filter((member)=>/\bclient\b/i.test(member.assignedRole)).length!==1 || !roster.some((member)=>!/\b(client|founder)\b/i.test(member.assignedRole))) fail('Finish all member profiles, including one client and at least one team member.',409);
+          if (project.workflowStartedAt && project.workflowId !== input.workflowId) fail('This project already has a workflow.',409);
+          const startDate=input.startDate || project.startDate || timestamp().slice(0,10);
+          if (!validDate(startDate)) fail('Enter a valid start date.');
+          const assigneeId=owner(state,project,input.assigneeId || 'founder');
+          let result;
+          try { result=await callBotBridge('/api/integrations/web/projects/start',{groupChatId:project.telegramGroupChatId,workflowId:input.workflowId,startDate}); }
+          catch(error){fail(error.message,502);}
+          if (!Array.isArray(result.tasks) || !result.tasks.length) fail('The bot did not return its generated tasks.',502);
+          if (!project.workflowStartedAt) {
+            const stages=[];
+            for (const source of result.tasks) {
+              let stage=stages.find((item)=>item.name===source.Stage);
+              if(!stage){stage={id:`tg-stage-${project.id}-${stages.length}`,name:source.Stage,order:stages.length,durationDays:0,startDate:source.CurrentStart || source.PlannedStart || '',deadline:source.CurrentEnd || source.PlannedEnd || '',dependencies:[]};stages.push(stage);}
+              const start=source.CurrentStart || source.PlannedStart || '';const end=source.CurrentEnd || source.PlannedEnd || '';
+              if(start && (!stage.startDate || start<stage.startDate))stage.startDate=start;
+              if(end>stage.deadline)stage.deadline=end;
+              stage.durationDays=stage.startDate && stage.deadline ? Math.round((Date.parse(stage.deadline)-Date.parse(stage.startDate))/86400000)+1 : 0;
+              const id=`tg-task-${project.id}-${source.TaskID}`;
+              if(!state.tasks.some((task)=>task.id===id))state.tasks.push({id,projectId:project.id,title:source.TaskName,description:'',status:source.Status==='Completed'?'Completed':'Open',assigneeId,stageId:stage.id,deadline:end,telegramTaskId:source.TaskID,sourceQueryId:'',createdBy:user.id,createdAt:timestamp(),updatedAt:timestamp(),deletedAt:''});
+            }
+            Object.assign(project,{workflowId:result.workflowId,workflowName:result.workflowName,workflowStartedAt:timestamp(),startDate,status:'Active',phase:stages[0].name,stages});
+            audit('workflow_started',project.id,{workflowId:result.workflowId,source:'Telegram'});
+          }
+          project.workflowAnnouncementStatus=result.announcementStatus;
+          await save();json(res,200,{project:projectView(project)});return true;
+        }
+        const workflow = workflows.find((w) => w.id === input.workflowId);
         if (!workflow) fail('Choose a valid workflow.');
         if (!project.clientName || project.clientName === 'Client pending') fail('Assign a client before starting the workflow.',409);
         if (project.status === 'Completed') fail('Completed projects cannot start a workflow.',409);
