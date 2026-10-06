@@ -43,6 +43,7 @@ globalThis.fetch = async (url, options) => {
     else if(req.url.endsWith('/groups'))res.end(JSON.stringify(refreshSnapshot));
     else if (req.url.endsWith('/group-members')) { assert.equal(input.groupChatId, '-456'); res.end(JSON.stringify({ ok: true, changed: true })); }
     else if (req.url.endsWith('/projects')) { assert.equal(input.clientName, 'Asha Kumar'); res.end(JSON.stringify({ projectId: 'P999', projectName: input.projectName })); }
+    else if(req.url.endsWith('/tasks/sync')) {res.end(JSON.stringify({tasks:input.updates.map(t=>({TaskID:t.taskId,TaskName:t.title,Status:t.status,Stage:t.stage,PlannedEnd:t.deadline}))}));}
     else if(req.url.endsWith('/workflows'))res.end(JSON.stringify({workflows:[{id:'RESTORATION-V1',name:'Restoration',stages:[]}]}));
     else if(req.url.endsWith('/projects/start')){starts++;res.end(JSON.stringify({workflowId:'RESTORATION-V1',workflowName:'Restoration',announcementStatus:'Sent',tasks:[{TaskID:'P999-T001',TaskName:'Collect drawings',Stage:'Resources',Status:'Pending',PlannedStart:'2026-10-07',PlannedEnd:'2026-10-07'}]}));}
     else if(req.url.endsWith('/resources/content'))res.end(JSON.stringify({bytes:Buffer.from('FILE').toString('base64'),mimeType:'application/pdf'}));

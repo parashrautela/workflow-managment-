@@ -1,3 +1,4 @@
+import { syncProjectTasks } from './task-sync.js';
 import { randomUUID } from 'node:crypto';
 
 export class ApiError extends Error {
@@ -75,6 +76,15 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
     const task = { id: randomUUID(), projectId: project.id, ...fields, sourceQueryId, createdBy: user.id, createdAt: timestamp(), updatedAt: timestamp(), deletedAt: '' };
     state.tasks.push(task); audit('task_created', project.id, { taskId: task.id, sourceQueryId, actorId: user.id }); return task;
   };
+  const syncing=new Set();
+  const synchronize=async(state,project)=>{
+    if(!project.telegramGroupChatId || !project.telegramProjectId || !project.workflowStartedAt)return;
+    if(syncing.has(project.id))fail('Task sync is already in progress. Refresh shortly.',409);
+    syncing.add(project.id);
+    try{await syncProjectTasks(state,project,callBotBridge);await save();}
+    catch(error){fail('Telegram task sync failed: '+error.message,502);}
+    finally{syncing.delete(project.id);}
+  };
   return async (req, res, url) => {
     const match = url.pathname.match(/^\/api\/(founder|employee)\/(workflows|projects\/[^/]+\/(?:tasks|workflow\/start|client|workspace)|tasks\/[^/]+(?:\/(?:messages|read))?|decision-requests(?:\/[^/]+(?:\/(?:comment|approve|reject|convert|read))?)?|projects\/[^/]+\/members\/[^/]+|employees\/[^/]+\/disable)$/);
     if (!match) return false;
@@ -128,7 +138,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
               if(end>stage.deadline)stage.deadline=end;
               stage.durationDays=stage.startDate && stage.deadline ? Math.round((Date.parse(stage.deadline)-Date.parse(stage.startDate))/86400000)+1 : 0;
               const id=`tg-task-${project.id}-${source.TaskID}`;
-              if(!state.tasks.some((task)=>task.id===id))state.tasks.push({id,projectId:project.id,title:source.TaskName,description:'',status:source.Status==='Completed'?'Completed':'Open',assigneeId,stageId:stage.id,deadline:end,telegramTaskId:source.TaskID,sourceQueryId:'',createdBy:user.id,createdAt:timestamp(),updatedAt:timestamp(),deletedAt:''});
+              if(!state.tasks.some((task)=>task.id===id))state.tasks.push({id,projectId:project.id,title:source.TaskName,description:'',status:source.Status==='Completed'?'Completed':'Open',assigneeId,stageId:stage.id,deadline:end,telegramTaskId:source.TaskID,telegramSyncStatus:'Synced',sourceQueryId:'',createdBy:user.id,createdAt:timestamp(),updatedAt:timestamp(),deletedAt:''});
             }
             Object.assign(project,{workflowId:result.workflowId,workflowName:result.workflowName,workflowStartedAt:timestamp(),startDate,status:'Active',phase:stages[0].name,stages});
             audit('workflow_started',project.id,{workflowId:result.workflowId,source:'Telegram'});
@@ -157,6 +167,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
         workflow.stages.forEach((stage,index) => stage.tasks.forEach((title) => makeTask(state,project,user,{title,description:'',status:'Open',assigneeId,stageId:stages[index].id,deadline:stages[index].deadline})));
         audit('workflow_started',project.id,{workflowId:workflow.id}); await save(); json(res,200,{project:projectView(project)}); return true;
       }
+      if (['workspace','tasks'].includes(m[2]) && method==='GET') await synchronize(state,project);
       if (m[2] === 'workspace' && method === 'GET') {
         const requests = state.decisionRequests.filter((r) => r.projectId === project.id);
         json(res,200,{project:projectView(project),tasks:state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt),requests}); return true;
@@ -164,7 +175,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
       if (m[2] === 'tasks' && method === 'GET') { json(res,200,{tasks:state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt)}); return true; }
       if (m[2] === 'tasks' && method === 'POST') {
         admin(user); if (!project.workflowStartedAt) fail('Start a workflow before creating tasks.',409);
-        const fields = taskFields(state,project,await body(req)); const task = makeTask(state,project,user,fields); await save(); json(res,201,{task}); return true;
+        const fields = taskFields(state,project,await body(req)); const task = makeTask(state,project,user,fields); await synchronize(state,project); await save(); json(res,201,{task}); return true;
       }
     }
     if ((m = route.match(/^tasks\/([^/]+)(?:\/(messages|read))?$/))) {
@@ -174,10 +185,10 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
       if (!m[2] && method === 'PATCH') {
         if (!user.founder && task.assigneeId !== user.id) fail('Only the assignee or founder can update this task.',403);
         const input = await body(req); if (!user.founder && input.assigneeId !== undefined) admin(user);
-        Object.assign(task,taskFields(state,project,input,task),{updatedAt:timestamp()}); audit('task_updated',project.id,{taskId:task.id,actorId:user.id}); await save(); json(res,200,{task}); return true;
+        Object.assign(task,taskFields(state,project,input,task),{updatedAt:timestamp(),telegramSyncStatus:'Pending'}); await synchronize(state,project); audit('task_updated',project.id,{taskId:task.id,actorId:user.id}); await save(); json(res,200,{task}); return true;
       }
       if (!m[2] && method === 'DELETE') {
-        admin(user); task.deletedAt = timestamp(); audit('task_deleted',project.id,{taskId:task.id}); await save(); json(res,200,{ok:true}); return true;
+        admin(user); task.deletedAt = timestamp(); task.telegramSyncStatus='Pending'; await synchronize(state,project); audit('task_deleted',project.id,{taskId:task.id}); await save(); json(res,200,{ok:true}); return true;
       }
       if (m[2] === 'messages' && method === 'GET') {
         const messages = state.taskMessages.filter((x) => x.taskId === task.id);
@@ -221,7 +232,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
         if (m[2] === 'convert') {
           if (!project.workflowStartedAt) fail('Start a workflow before converting to a task.',409);
           const fields = taskFields(state,project,{...input,title:input.title || request.originalMessage || 'Client query'});
-          const task = makeTask(state,project,user,fields,request.id); request.taskId = task.id;
+          const task = makeTask(state,project,user,fields,request.id); request.taskId = task.id; await synchronize(state,project);
         }
         // Decision and delivery are separate: approving does not publish any message.
         request.decisionStatus = target; if (request.status !== 'Published') request.status = target;
