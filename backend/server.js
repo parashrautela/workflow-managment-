@@ -1,3 +1,4 @@
+import {reconcileGroupMigration} from './group-migration.js';
 import http from 'node:http';
 import { createHash, randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
 import { readFile, mkdir } from 'node:fs/promises';
@@ -211,7 +212,12 @@ async function handleRequest(req, res) {
       if (!integrationSecret || !safeEqual(supplied, integrationSecret)) return json(res, 401, { error: 'Integration authentication required.' });
       const input = await body(req);
       if (!Array.isArray(input.groups) || input.groups.length > 100) return json(res, 400, { error: 'Invalid group snapshot.' });
+      for (const group of input.groups.filter(group=>group.status==='Migrated')) {
+        try { reconcileGroupMigration(state,group.groupChatId,group.migratedTo); }
+        catch(error){throw new ApiError(error.message,409);}
+      }
       for (const group of input.groups) {
+        if(group.status==='Migrated')continue;
         const groupChatId = String(group.groupChatId || '');
         if (!/^-?\d+$/.test(groupChatId) || !shortText(group.title, 128) || !Array.isArray(group.members) || group.members.length > 1000) return json(res, 400, { error: 'Invalid Telegram group.' });
         const members = [];
@@ -240,7 +246,7 @@ async function handleRequest(req, res) {
       if(!project)return json(res,409,{error:'Link this Telegram project first.'});
       const member=state.telegramGroups.find((group)=>group.groupChatId===groupId)?.members.find((item)=>item.telegramUserId===String(input.TelegramUserID) && item.membershipStatus==='Active' && item.assignedRole);
       if(!member)return json(res,403,{error:'Resource sender is not an assigned member.'});
-      if(!/^\d+$/.test(String(input.SourceMessageID || '')) || input.SubmissionID!==`RES-${groupId}-${input.SourceMessageID}` || !shortText(input.FileName,200) || !['Photo','Document'].includes(input.ResourceType) || !shortText(input.TelegramFileID,300))return json(res,400,{error:'Invalid project resource.'});
+      if(!/^\d+$/.test(String(input.SourceMessageID || '')) || ![groupId,...state.telegramMigrations.filter(row=>row.to===groupId).map(row=>row.from)].some(id=>input.SubmissionID===`RES-${id}-${input.SourceMessageID}`) || !shortText(input.FileName,200) || !['Photo','Document'].includes(input.ResourceType) || !shortText(input.TelegramFileID,300))return json(res,400,{error:'Invalid project resource.'});
       let file=state.projectFiles.find((item)=>item.id===input.SubmissionID);
       if(file && file.projectId!==project.id)return json(res,409,{error:'File identity belongs to another project.'});
       if(!file){file={id:input.SubmissionID,projectId:project.id};state.projectFiles.push(file);}
