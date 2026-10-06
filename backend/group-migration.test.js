@@ -1,0 +1,9 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {reconcileGroupMigration} from './group-migration.js';
+function fixture(){return{projects:[{id:'old',telegramGroupChatId:'-123',telegramSetupPending:true,members:[]},{id:'new',telegramGroupChatId:'-100456',telegramSetupPending:true,members:[{id:'m1',employeeId:'E1'}]},{id:'unrelated',telegramGroupChatId:'-999',name:'Same name'}],telegramGroups:[{groupChatId:'-123'},{groupChatId:'-100456'}],telegramMigrations:[],projectFiles:[{id:'F1',projectId:'old'}],tasks:[{id:'T1',projectId:'old'}]};}
+test('migration folds setup shells, preserves history/references, and leaves same-name unrelated groups alone',()=>{
+ const state=fixture();reconcileGroupMigration(state,'-123','-100456');reconcileGroupMigration(state,'-123','-100456');assert.equal(state.projects.length,2);assert.equal(state.projects[0].id,'new');assert.equal(state.telegramGroups.length,1);assert.equal(state.projectFiles[0].projectId,'new');assert.equal(state.tasks[0].projectId,'new');assert.equal(state.telegramMigrations.length,1);assert.equal(state.telegramMigrations[0].previousProject.id,'old');assert.equal(state.projects[1].id,'unrelated');
+});
+test('a configured project keeps its identity, but two configured projects cannot silently merge',()=>{
+ const state=fixture();state.projects[0].telegramSetupPending=false;state.projects[0].telegramProjectId='P1';reconcileGroupMigration(state,'-123','-100456');assert.equal(state.projects[0].id,'old');assert.equal(state.projects[0].telegramGroupChatId,'-100456');assert.equal(state.projects[0].members.length,1);
+ const conflict=fixture();conflict.projects[0].telegramSetupPending=false;conflict.projects[1].workflowStartedAt='now';assert.throws(()=>reconcileGroupMigration(conflict,'-123','-100456'),/Both group IDs/);assert.equal(conflict.projects.length,3);
+});

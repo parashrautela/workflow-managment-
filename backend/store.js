@@ -18,6 +18,7 @@ const emptyState = () => ({
   teamMessages: [],
   decisionRequests: [],
   telegramGroups: [],
+  telegramMigrations: [],
   projectFiles: [],
   trashedProjects: [],
 });

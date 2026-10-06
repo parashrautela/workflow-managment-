@@ -126,6 +126,18 @@ globalThis.fetch = async (url, options) => {
     const staffSession=await call('/api/employee/login','POST',staff.data.credentials);const staffCookie={cookie:staffSession.cookie.split(';')[0]};
     assert.equal((await call(`/api/employee/projects/${linkedId}/files`,'GET',undefined,staffCookie)).status,200);
     assert.equal((await call(`/api/employee/projects/${projectId}/files`,'GET',undefined,staffCookie)).status,404);
+    const upgradedMembers=[{telegramUserId:'123',telegramName:'Asha',membershipStatus:'Active',assignedName:'Asha Kumar',assignedRole:'Client'},{telegramUserId:'124',telegramName:'Painter',membershipStatus:'Active',assignedName:'Painter',assignedRole:'Painter'}];
+    await call('/api/integrations/telegram/groups/snapshot','POST',{groups:[{groupChatId:'-100999999',title:'Upgraded Site',status:'Available',members:upgradedMembers}]},bridgeHeaders);
+    const migration={groups:[{groupChatId:'-456',title:'Old Site',status:'Migrated',migratedTo:'-100999999',members:[]},{groupChatId:'-100999999',title:'Upgraded Site',status:'Linked',members:upgradedMembers}]};
+    assert.equal((await call('/api/integrations/telegram/groups/snapshot','POST',migration,bridgeHeaders)).status,200);
+    assert.equal((await call('/api/integrations/telegram/groups/snapshot','POST',migration,bridgeHeaders)).status,200);
+    const migratedProjects=(await call('/api/founder/projects','GET',undefined,cookie)).data.projects;
+    assert.equal(migratedProjects.filter(row=>row.telegramGroupChatId==='-100999999').length,1);
+    assert.equal(migratedProjects.find(row=>row.telegramGroupChatId==='-100999999').id,linkedId);
+    assert.equal(migratedProjects.some(row=>row.telegramGroupChatId==='-456'),false);
+    assert.equal((await call('/api/integrations/telegram/resources','POST',{...resource,GroupChatID:'-100999999',DriveStatus:'Stored',DriveFileID:'stored-file'},bridgeHeaders)).status,200);
+    assert.equal((await call(`/api/founder/projects/${linkedId}/files`,'GET',undefined,cookie)).data.files.length,1);
+
 
   } finally {
     child.kill();
