@@ -1,0 +1,28 @@
+import React,{useState} from 'react';
+import {post} from '@/lib/api';
+import {Button} from '@/components/ui/button';
+import {Input} from '@/components/ui/input';
+import {NativeSelect} from '@/components/ui/native-select';
+const steps=[['site','Site details / condition check'],['drawing','Drawing preparation'],['internal','Internal approval'],['client','Client approval'],['execution','Site execution'],['final','Final check']];
+const presets=[{id:'civil',name:'Civil Work',days:[2,2,1,1,7,2]},{id:'electrical',name:'Electrical Work 1',days:[1,2,1,1,5,2]},{id:'plumbing',name:'Plumbing Work',days:['',7,2,1,5,2]},{id:'carpentry',name:'Carpentry',days:['',5,2,'','','']}];
+export function StageWorkflowSetup({projectId,startDate,members=[],onApplied}){
+ const [stages,setStages]=useState(presets),[stageName,setStageName]=useState('');
+ const [selected,setSelected]=useState([]),[policy,setPolicy]=useState(''),[weekdays,setWeekdays]=useState([]),[configuration,setConfiguration]=useState({}),[busy,setBusy]=useState(false),[error,setError]=useState('');
+ const update=(id,field,key,value)=>setConfiguration(old=>({...old,[id]:{...old[id],[field]:key?{...old[id]?.[field],[key]:value}:value}}));
+ const start=async()=>{setBusy(true);setError('');try{const config={startDate,dayPolicy:policy,workingWeekdays:weekdays,stages:stages.filter(s=>selected.includes(s.id)).map(s=>({id:s.id,name:s.name,dependsOn:configuration[s.id]?.dependsOn||[],durations:Object.fromEntries(steps.map(([key],i)=>[key,Number(configuration[s.id]?.durations?.[key]??s.days[i])])),assignees:configuration[s.id]?.assignees||{}}))};const result=await post(`/api/founder/projects/${projectId}/stages/start`,{config});onApplied(result.project);}catch(e){setError(e.message);}finally{setBusy(false);}};
+ return <section className="space-y-4">
+  <p className="text-sm">Each selected stage has six steps. Completing a step passes the work to its next assigned person.</p>
+  <p className="text-xs text-muted-foreground">Durations come from your <a className="underline" href="https://docs.google.com/spreadsheets/d/1V47wt8GM90cde8EclExsM_7iA4kwHBBfqITlc858pps/edit?gid=349448813" target="_blank" rel="noreferrer">task sheet</a>. Confirm blank durations. The sheet labels Plumbing execution as Electrician; select the intended contractor below.</p>
+  <label className="grid gap-1 text-sm">Count durations as<NativeSelect value={policy} onChange={e=>setPolicy(e.target.value)}><option value="">Choose day policy</option><option value="calendar">Calendar days</option><option value="working">Working days</option></NativeSelect></label>
+  {policy==='working'&&<fieldset className="flex flex-wrap gap-3"><legend>Working weekdays</legend>{['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map((name,i)=><label key={name}><input type="checkbox" checked={weekdays.includes(i)} onChange={e=>setWeekdays(old=>e.target.checked?[...old,i]:old.filter(d=>d!==i))}/> {name}</label>)}</fieldset>}
+  <fieldset className="flex flex-wrap gap-3"><legend className="font-medium">Stages to include</legend>{stages.map(s=><label key={s.id}><input type="checkbox" checked={selected.includes(s.id)} onChange={e=>setSelected(old=>e.target.checked?[...old,s.id]:old.filter(id=>id!==s.id))}/> {s.name}</label>)}</fieldset>
+  <div className="flex gap-2"><Input aria-label="Additional stage name" placeholder="Add another stage" value={stageName} onChange={e=>setStageName(e.target.value)}/><Button variant="outline" disabled={!stageName.trim()||stages.length>=20} onClick={()=>{const id=`custom-${stages.length+1}`;setStages(old=>[...old,{id,name:stageName.trim(),days:['','','','','','']}]);setSelected(old=>[...old,id]);setStageName('');}}>Add stage</Button></div>
+  {stages.filter(s=>selected.includes(s.id)).map(stage=><fieldset key={stage.id} className="rounded-xl border p-3 space-y-3"><legend className="font-semibold">{stage.name}</legend>
+   <p className="text-xs">Start after these stages finish. Leave all unchecked to run this stage independently.</p>
+   <div className="flex flex-wrap gap-2">{stages.filter(s=>selected.includes(s.id)&&s.id!==stage.id).map(other=><label key={other.id} className="text-xs"><input type="checkbox" checked={(configuration[stage.id]?.dependsOn||[]).includes(other.id)} onChange={e=>update(stage.id,'dependsOn',null,e.target.checked?[...(configuration[stage.id]?.dependsOn||[]),other.id]:(configuration[stage.id]?.dependsOn||[]).filter(id=>id!==other.id))}/> {other.name}</label>)}</div>
+   {steps.map(([key,name],i)=><div key={key} className="grid gap-2 border-t pt-2 sm:grid-cols-[1fr_80px_1fr]"><span className="text-sm">{i+1}. {name}</span><Input type="number" min="1" max="365" aria-label={`${stage.name} ${name} duration`} placeholder="Days" value={configuration[stage.id]?.durations?.[key]??stage.days[i]} onChange={e=>update(stage.id,'durations',key,e.target.value)}/><NativeSelect aria-label={`${stage.name} ${name} assignee`} value={configuration[stage.id]?.assignees?.[key]||''} onChange={e=>update(stage.id,'assignees',key,e.target.value)}><option value="">Choose person</option>{members.filter(m=>m.membershipStatus==='Active'&&m.assignedRole&&(key==='client'?/\bclient\b/i.test(m.assignedRole):key==='site'||!/\bclient\b/i.test(m.assignedRole))).map(m=><option key={m.telegramUserId} value={m.telegramUserId}>{m.assignedName||m.telegramName} — {m.assignedRole}</option>)}</NativeSelect></div>)}
+  </fieldset>)}
+  {error&&<p role="alert" className="text-sm text-destructive">{error}</p>}
+  <Button disabled={busy||!selected.length||!policy||!startDate} onClick={start}>{busy?'Starting…':'Start linked stages'}</Button>
+ </section>;
+}

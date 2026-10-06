@@ -1,3 +1,4 @@
+import {applyStageSnapshot} from './stage-snapshot.js';
 import { syncProjectTasks } from './task-sync.js';
 import { randomUUID } from 'node:crypto';
 
@@ -87,7 +88,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
     finally{syncing.delete(project.id);}
   };
   return async (req, res, url) => {
-    const match = url.pathname.match(/^\/api\/(founder|employee)\/(workflows|projects\/[^/]+\/(?:tasks|workflow\/start|client|workspace)|tasks\/[^/]+(?:\/(?:messages|read))?|decision-requests(?:\/[^/]+(?:\/(?:comment|approve|reject|convert|read))?)?|projects\/[^/]+\/members\/[^/]+|employees\/[^/]+\/disable)$/);
+    const match = url.pathname.match(/^\/api\/(founder|employee)\/(workflows|projects\/[^/]+\/(?:tasks|workflow\/start|client|workspace)|tasks\/[^/]+(?:\/(?:messages|read|stage-action|stage-context))?|decision-requests(?:\/[^/]+(?:\/(?:comment|approve|reject|convert|read))?)?|projects\/[^/]+\/members\/[^/]+|employees\/[^/]+\/disable)$/);
     if (!match) return false;
     const state = getState(); const user = actor(req, match[1]); const route = match[2]; const method = req.method;
     if (route === 'workflows' && method === 'GET') { json(res, 200, { workflows }); return true; }
@@ -179,16 +180,30 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
         const fields = taskFields(state,project,await body(req)); const task = makeTask(state,project,user,fields); await synchronize(state,project); await save(); json(res,201,{task}); return true;
       }
     }
-    if ((m = route.match(/^tasks\/([^/]+)(?:\/(messages|read))?$/))) {
+    if ((m = route.match(/^tasks\/([^/]+)(?:\/(messages|read|stage-action|stage-context))?$/))) {
       const task = state.tasks.find((t) => t.id === m[1] && !t.deletedAt); if (!task) fail('Task not found.',404);
       const project = projectFor(state,user,task.projectId);
+      if(m[2]==='stage-action' && method==='POST'){
+        if(!task.linkedStage)fail('This is not a linked-stage task.',409);
+        const input=await body(req);const actorId=user.founder?project.telegramFounderId:project.members.find(member=>member.employeeId===user.id)?.telegramUserId;
+        if(!actorId)fail('Your Telegram identity is not assigned to this project.',403);
+        let result;try{result=await callBotBridge('/api/integrations/web/stages/action',{groupChatId:project.telegramGroupChatId,taskId:task.telegramTaskId,action:input.action,reason:input.reason,actorId});}catch(error){fail(error.message,409);}
+        applyStageSnapshot(state,project,result.tasks);await save();json(res,200,{task:state.tasks.find(t=>t.id===task.id)});return true;
+      }
+      if(m[2]==='stage-context' && method==='GET'){
+        if(!task.linkedStage)fail('This is not a linked-stage task.',409);
+        let context;try{context=await callBotBridge('/api/integrations/web/stages/context',{groupChatId:project.telegramGroupChatId,taskId:task.telegramTaskId});}catch(error){fail(error.message,502);}
+        json(res,200,context);return true;
+      }
       if (!m[2] && method === 'GET') { json(res,200,{task}); return true; }
       if (!m[2] && method === 'PATCH') {
+        if(task.linkedStage)fail('Use linked task actions to complete, approve, hold or resume.',409);
         if (!user.founder && task.assigneeId !== user.id) fail('Only the assignee or founder can update this task.',403);
         const input = await body(req); if (!user.founder && input.assigneeId !== undefined) admin(user);
         Object.assign(task,taskFields(state,project,input,task),{updatedAt:timestamp(),telegramSyncStatus:'Pending'}); await synchronize(state,project); audit('task_updated',project.id,{taskId:task.id,actorId:user.id}); await save(); json(res,200,{task}); return true;
       }
       if (!m[2] && method === 'DELETE') {
+        if(task.linkedStage)fail('Linked workflow tasks cannot be deleted.',409);
         admin(user); task.deletedAt = timestamp(); task.telegramSyncStatus='Pending'; await synchronize(state,project); audit('task_deleted',project.id,{taskId:task.id}); await save(); json(res,200,{ok:true}); return true;
       }
       if (m[2] === 'messages' && method === 'GET') {

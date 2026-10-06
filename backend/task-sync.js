@@ -1,7 +1,9 @@
+import {applyStageSnapshot} from './stage-snapshot.js';
 const toBot = {Open:'Pending','In progress':'In Progress',Blocked:'Issue Reported',Completed:'Completed',Cancelled:'Archived'};
 const toWeb = status => status==='Completed'?'Completed':status.startsWith('Archived')?'Cancelled':status==='In Progress'?'In progress':status==='Issue Reported' || status.includes('Delay')?'Blocked':'Open';
 export async function syncProjectTasks(state,project,callBotBridge) {
   if(!project.telegramGroupChatId || !project.telegramProjectId || !project.workflowStartedAt)return false;
+  if(project.workflowId==='STAGE-SIX-V1'){const snapshot=await callBotBridge('/api/integrations/web/tasks/sync',{groupChatId:project.telegramGroupChatId,updates:[]});applyStageSnapshot(state,project,snapshot.tasks);return true;}
   const local=state.tasks.filter(task=>task.projectId===project.id);
   const pending=local.filter(task=>task.telegramSyncStatus!=='Synced');
   const updates=pending.map(task=>{

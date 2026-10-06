@@ -4178,6 +4178,10 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
+    .sm\:grid-cols-\[1fr_80px_1fr\] {
+      grid-template-columns: 1fr 80px 1fr;
+    }
+
     .sm\:grid-cols-\[minmax\(0\,1fr\)_160px_auto\] {
       grid-template-columns: minmax(0, 1fr) 160px auto;
     }

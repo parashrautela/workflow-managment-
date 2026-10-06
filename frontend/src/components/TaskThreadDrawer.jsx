@@ -1,4 +1,5 @@
 // frontend/src/components/TaskThreadDrawer.jsx
+import {StageTaskActions} from './StageTaskActions';
 import React, { useEffect, useState, useRef } from "react";
 import {
   Calendar, CheckCircle2, Clock, MessageSquare, Send, Trash2,
@@ -239,7 +240,7 @@ export function TaskThreadDrawer({
                   if (isEditing) handleSaveEdits();
                   else setIsEditing(true);
                 }}
-                disabled={savingEdits}
+                disabled={savingEdits || task.linkedStage}
               >
                 {savingEdits ? (
                   <Loader2 className="size-3.5 animate-spin mr-1" />
@@ -261,6 +262,7 @@ export function TaskThreadDrawer({
 
         {/* Content Body */}
         <div className="chat-scroll min-h-0 flex-1 space-y-4 overflow-y-auto p-5">
+          {task?.linkedStage&&<StageTaskActions task={task} projectId={project.id} namespace={namespace} onUpdated={updated=>{setTask(updated);onTaskUpdated?.();}}/>}
           {/* Editing Mode */}
           {isEditing ? (
             <div className="space-y-3.5 rounded-xl border bg-muted/20 p-4">
@@ -346,7 +348,7 @@ export function TaskThreadDrawer({
                     <Trash2 className="size-3.5 mr-1" /> Delete Task
                   </Button>
                 )}
-                <Button size="sm" onClick={handleSaveEdits} disabled={savingEdits} className="ml-auto">
+                <Button size="sm" onClick={handleSaveEdits} disabled={savingEdits || task.linkedStage} className="ml-auto">
                   {savingEdits ? <Loader2 className="size-3.5 animate-spin mr-1" /> : null}
                   Save Changes
                 </Button>
@@ -360,7 +362,7 @@ export function TaskThreadDrawer({
                   <span className="text-[11px] font-medium text-muted-foreground">Assignee</span>
                   <p className="flex items-center gap-1.5 text-xs font-semibold truncate">
                     <User className="size-3.5 text-muted-foreground shrink-0" />
-                    <span className="truncate">{getAssigneeLabel(task.assigneeId) || task.assigneeName || "Unassigned"}</span>
+                    <span className="truncate">{task.assigneeName || getAssigneeLabel(task.assigneeId) || "Unassigned"}</span>
                   </p>
                 </div>
 
@@ -380,7 +382,7 @@ export function TaskThreadDrawer({
                         size="icon-sm"
                         variant="outline"
                         className="h-7 px-2.5 text-xs text-emerald-700 hover:bg-emerald-50 font-semibold"
-                        onClick={() => handleQuickStatus("Completed")}
+                        disabled={task.linkedStage} onClick={() => handleQuickStatus("Completed")}
                       >
                         <CheckCircle2 className="size-3.5 mr-1" /> Mark Done
                       </Button>
@@ -389,7 +391,7 @@ export function TaskThreadDrawer({
                         size="icon-sm"
                         variant="outline"
                         className="h-7 px-2.5 text-xs text-muted-foreground font-semibold"
-                        onClick={() => handleQuickStatus("Open")}
+                        disabled={task.linkedStage} onClick={() => handleQuickStatus("Open")}
                       >
                         Reopen Task
                       </Button>
@@ -492,9 +494,9 @@ export function TaskThreadDrawer({
           <div className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-t bg-amber-50/70 p-3 sm:px-5 text-xs text-amber-900">
             <span className="flex items-center gap-1.5">
               <Lock className="size-3.5 text-amber-700 shrink-0" />
-              This task is {task.status.toLowerCase()}. Reopen it to send new messages.
+              This task is {task.status.toLowerCase()}. {task.linkedStage?"Revision changes must follow the linked approval flow.":"Reopen it to send new messages."}
             </span>
-            <Button size="sm" variant="outline" className="border-amber-300 bg-white" onClick={handleReopenTask}>
+            <Button size="sm" variant="outline" className="border-amber-300 bg-white" disabled={task.linkedStage} onClick={handleReopenTask}>
               Reopen Task
             </Button>
           </div>

@@ -173,7 +173,7 @@ export function ProjectDetailView({
 
   // TL;DR metrics
   const blockedTasks = tasks.filter((t) => t.status === "Blocked");
-  const inProgressTasksCount = tasks.filter((t) => t.status === "In progress" || t.status === "in_progress").length;
+  const inProgressTasksCount = tasks.filter((t) => t.status === "In progress" || t.status === "in_progress" || (t.linkedStage && t.status === "Open")).length;
   const currentStage = stages.find((stage) => stage.name === project.currentStage) || stages[0];
   const currentStageSchedule = schedule.find((stage) => stage.id === currentStage?.id);
   const latestQuery = projectQueries[0];
@@ -323,7 +323,7 @@ export function ProjectDetailView({
   const roster=project.telegramMembers || [];
   const profilesReady=roster.length>=2 && roster.every((member)=>member.assignedName && member.assignedRole) && roster.filter((member)=>/\bclient\b/i.test(member.assignedRole)).length===1 && roster.some((member)=>!/\b(client|founder)\b/i.test(member.assignedRole));
   if(project.telegramGroupChatId && (project.telegramSetupPending || !profilesReady)) return <div className="space-y-4"><Button variant="ghost" onClick={onBackToDirectory}><ArrowLeft className="size-4"/>All projects</Button><h2 className="text-xl font-semibold">{project.name}</h2><TelegramGroups project={project} embedded onProjectsChanged={onProjectUpdated}/></div>;
-  if(project.telegramGroupChatId && !hasWorkflowStarted) return <section className="space-y-4"><Button variant="ghost" onClick={onBackToDirectory}><ArrowLeft className="size-4"/>All projects</Button><div className="rounded-2xl border bg-card p-6 space-y-3"><p className="text-xs font-medium text-primary">Step 2 · Project type</p><h1 className="text-2xl font-semibold">{project.name}</h1><p className="text-sm text-muted-foreground">Members and client are ready. Choose the type of project to generate its tasks and announce the start in the Telegram group.</p><Button onClick={()=>setTemplateModalOpen(true)}>Choose project type</Button></div><WorkflowTemplateModal open={templateModalOpen} onOpenChange={setTemplateModalOpen} projectId={project.id} telegramLinked projectStartDate={project.startDate} clientAssigned projectMembers={project.members || []} onApplied={()=>{if(onProjectUpdated)onProjectUpdated();loadProjectTasks();}}/></section>;
+  if(project.telegramGroupChatId && !hasWorkflowStarted) return <section className="space-y-4"><Button variant="ghost" onClick={onBackToDirectory}><ArrowLeft className="size-4"/>All projects</Button><div className="rounded-2xl border bg-card p-6 space-y-3"><p className="text-xs font-medium text-primary">Step 2 · Project type</p><h1 className="text-2xl font-semibold">{project.name}</h1><p className="text-sm text-muted-foreground">Members and client are ready. Choose the type of project to generate its tasks and announce the start in the Telegram group.</p><Button onClick={()=>setTemplateModalOpen(true)}>Choose project type</Button></div><WorkflowTemplateModal open={templateModalOpen} onOpenChange={setTemplateModalOpen} projectId={project.id} telegramLinked projectStartDate={project.startDate} clientAssigned projectMembers={project.members || []} telegramMembers={project.telegramMembers || []} onApplied={()=>{if(onProjectUpdated)onProjectUpdated();loadProjectTasks();}}/></section>;
 
   return (
     <div className="space-y-6">
@@ -608,7 +608,7 @@ export function ProjectDetailView({
                 <option value="open">All Open</option>
                 <option value="Open">Open</option>
                 <option value="In progress">In Progress</option>
-                <option value="Blocked">Blocked</option>
+                <option value="Blocked">Blocked</option><option value="Waiting">Waiting</option><option value="On hold">On hold</option><option value="Needs assignment">Needs assignment</option>
                 <option value="Completed">Completed</option>
                 <option value="Cancelled">Cancelled</option>
               </NativeSelect>
@@ -682,7 +682,7 @@ export function ProjectDetailView({
                           className={`grid size-5 place-items-center rounded-md border transition-colors ${
                             isCompleted ? "bg-emerald-600 border-emerald-600 text-white" : "border-muted-foreground/30 hover:border-primary"
                           }`}
-                          aria-label="Toggle task completion"
+                          disabled={t.linkedStage} title={t.linkedStage?"Open the task thread to complete or approve this step":undefined} aria-label="Toggle task completion"
                         >
                           {isCompleted && <Check className="size-3.5" />}
                         </button>
@@ -725,7 +725,7 @@ export function ProjectDetailView({
                       <div className="flex items-center gap-2 text-muted-foreground">
                         <span className="flex items-center gap-1 font-medium">
                           <User className="size-3" />
-                          {getAssigneeName(t.assigneeId) || t.assigneeName || "Unassigned"}
+                          {t.assigneeName || getAssigneeName(t.assigneeId) || "Unassigned"}
                         </span>
                         {(t.deadline || t.dueDate) && (
                           <span className="flex items-center gap-1">
@@ -881,7 +881,7 @@ export function ProjectDetailView({
                   query={query}
                   project={project}
                   stages={stages}
-                  projectMembers={project.members || []}
+                  projectMembers={project.members || []} telegramMembers={project.telegramMembers || []}
                   isFounder={true}
                   onQueryChanged={() => {
                     if (onQueriesUpdated) onQueriesUpdated();
@@ -999,7 +999,7 @@ export function ProjectDetailView({
         onOpenSourceQuery={() => setActiveTab("queries")}
         currentActor="founder"
         isFounder={true}
-        projectMembers={project.members || []}
+        projectMembers={project.members || []} telegramMembers={project.telegramMembers || []}
       />
 
       {/* Workflow Template Selector Modal */}
@@ -1009,7 +1009,7 @@ export function ProjectDetailView({
         projectId={project.id}
         projectStartDate={project.startDate}
         clientAssigned={isClientAssigned}
-        projectMembers={project.members || []}
+        projectMembers={project.members || []} telegramMembers={project.telegramMembers || []}
         onApplied={() => {
           if (onProjectUpdated) onProjectUpdated();
           loadProjectTasks();
@@ -1098,7 +1098,7 @@ export function ProjectDetailView({
                 >
                   <option value="Open">Open</option>
                   <option value="In progress">In Progress</option>
-                  <option value="Blocked">Blocked</option>
+                  <option value="Blocked">Blocked</option><option value="Waiting">Waiting</option><option value="On hold">On hold</option><option value="Needs assignment">Needs assignment</option>
                 </NativeSelect>
               </label>
             </div>

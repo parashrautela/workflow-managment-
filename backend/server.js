@@ -1,3 +1,4 @@
+import {applyStageSnapshot} from './stage-snapshot.js';
 import {reconcileGroupMigration} from './group-migration.js';
 import http from 'node:http';
 import { createHash, randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
@@ -390,11 +391,21 @@ async function handleRequest(req, res) {
     }
     if (url.pathname.startsWith('/api/employee/')) return json(res, 404, { error: 'Not found.' });
     if (url.pathname.startsWith('/api/founder/') && !founder(req)) return json(res, 401, { error: 'Founder session required.' });
+    const linkedStart=url.pathname.match(/^\/api\/founder\/projects\/([^/]+)\/stages\/start$/);
+    if(req.method==='POST' && linkedStart){
+      const project=state.projects.find(p=>p.id===linkedStart[1]);if(!project)return json(res,404,{error:'Project not found.'});
+      if(project.telegramSetupPending || !project.telegramProjectId)return json(res,409,{error:'Finish Telegram member setup first.'});
+      if(project.workflowStartedAt && project.workflowId!=='STAGE-SIX-V1')return json(res,409,{error:'Existing work needs a migration preview. Use a fresh project for this plan.'});
+      const input=await body(req);let result;
+      try{result=await callBotBridge('/api/integrations/web/stages/start',{groupChatId:project.telegramGroupChatId,config:input.config});}catch(error){return json(res,409,{error:error.message});}
+      project.workflowId=result.workflowId;project.workflowName=result.workflowName;project.workflowStartedAt ||= new Date().toISOString();project.status='Active';project.telegramFounderId=result.founderTelegramId;project.stageConfig=result.config;project.startDate=result.config.startDate;project.workflowAnnouncementStatus='';
+      applyStageSnapshot(state,project,result.tasks);await save();return json(res,200,{project:projectView(project)});
+    }
     const projectWorkflows=url.pathname.match(/^\/api\/founder\/projects\/([^/]+)\/workflows$/);
     if(req.method==='GET' && projectWorkflows){
       const project=state.projects.find((item)=>item.id===projectWorkflows[1]);if(!project)return json(res,404,{error:'Project not found.'});
       if(!project.telegramGroupChatId)return json(res,200,{workflows:(await import('./pilot.js')).workflows});
-      try{return json(res,200,await callBotBridge('/api/integrations/web/workflows',{groupChatId:project.telegramGroupChatId}));}
+      try{const data=await callBotBridge('/api/integrations/web/workflows',{groupChatId:project.telegramGroupChatId});data.workflows.push({id:'STAGE-SIX-V1',name:'Linked stages — six steps',description:'Assign each step and choose dependencies before starting automatic handoffs.',stages:[],parallel:true});return json(res,200,data);}
       catch(error){return json(res,502,{error:error.message});}
     }
     if(req.method==='POST' && url.pathname==='/api/founder/telegram-groups/refresh') {
