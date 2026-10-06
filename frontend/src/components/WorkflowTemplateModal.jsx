@@ -1,4 +1,5 @@
 // frontend/src/components/WorkflowTemplateModal.jsx
+import {StageWorkflowSetup} from './StageWorkflowSetup';
 import React, { useEffect, useState } from "react";
 import { AlertCircle, Check, Clock, Layers, Sparkles, User, Calendar, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -16,6 +17,7 @@ export function WorkflowTemplateModal({
   telegramLinked = false,
   clientAssigned = true,
   projectMembers = [],
+  telegramMembers = [],
   onApplied
 }) {
   const [workflows, setWorkflows] = useState([]);
@@ -142,7 +144,7 @@ export function WorkflowTemplateModal({
                     <Clock className="size-3" />
                     <span>{tmpl.parallel || !totalDays ? "Dates need confirmation" : `~${totalDays} days`}</span>
                     <span>·</span>
-                    <span>{tmpl.stages?.length || 0} stages</span>
+                    <span>{tmpl.id==='STAGE-SIX-V1'?'Configure stages':`${tmpl.stages?.length || 0} stages`}</span>
                   </div>
                 </button>
               );
@@ -183,7 +185,7 @@ export function WorkflowTemplateModal({
                       />
                     </label>
 
-                    <label className="grid gap-1.5 text-xs font-medium">
+                    {selectedTemplate.id!=='STAGE-SIX-V1'&&<>                    <label className="grid gap-1.5 text-xs font-medium">
                       <span className="flex items-center gap-1.5 text-muted-foreground">
                         <User className="size-3.5 text-primary" /> Starter Tasks Assignee
                       </span>
@@ -199,11 +201,13 @@ export function WorkflowTemplateModal({
                           </option>
                         ))}
                       </NativeSelect>
-                    </label>
+                    </label></>}
                   </div>
                 </div>
 
+                {selectedTemplate.id==='STAGE-SIX-V1'&&<StageWorkflowSetup projectId={projectId} startDate={startDate} members={telegramMembers} onApplied={project=>{onOpenChange(false);onApplied?.(project);}}/>}
                 {/* Stages Overview */}
+                {selectedTemplate.id!=='STAGE-SIX-V1'&&<>
                 <div>
                   <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
                     Pipeline Stages ({selectedTemplate.stages?.length || 0})
@@ -238,6 +242,7 @@ export function WorkflowTemplateModal({
                     ))}
                   </div>
                 </div>
+                </>}
               </>
             ) : (
               <div className="py-12 text-center text-xs text-muted-foreground">
@@ -256,9 +261,9 @@ export function WorkflowTemplateModal({
             <Button variant="outline" onClick={() => onOpenChange(false)} disabled={submitting}>
               Cancel
             </Button>
-            <Button
+            {selectedTemplate?.id!=='STAGE-SIX-V1'&&<Button
               onClick={handleStartWorkflow}
-              disabled={submitting || !clientAssigned || !selectedTemplate}
+              disabled={submitting || !clientAssigned || !selectedTemplate || selectedTemplate.id==='STAGE-SIX-V1'}
             >
               {submitting ? (
                 <>
@@ -271,7 +276,7 @@ export function WorkflowTemplateModal({
                   Start {selectedTemplate?.name || "Workflow"}
                 </>
               )}
-            </Button>
+            </Button>}
           </div>
         </div>
       </DialogContent>

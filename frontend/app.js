@@ -22293,7 +22293,7 @@ var GooeyRoot = (0, import_react.forwardRef)(function Gooey({ blur = 6, contrast
 		]
 	});
 });
-var presets = {
+var presets$1 = {
 	snappy: {
 		stiffness: 480,
 		damping: 34,
@@ -22399,7 +22399,7 @@ function resolveTransition(t, reducedMotion = false) {
 		duration: cfg.duration,
 		easing: cfg.ease ?? "cubic-bezier(0.22, 1, 0.36, 1)"
 	};
-	const spring = typeof cfg === "string" ? presets[cfg] : {
+	const spring = typeof cfg === "string" ? presets$1[cfg] : {
 		stiffness: 300,
 		damping: 24,
 		mass: 1,
@@ -27019,6 +27019,130 @@ function TeamChat({ endpoint, currentActor }) {
 	});
 }
 //#endregion
+//#region frontend/src/components/StageTaskActions.jsx
+function StageTaskActions({ task, projectId, namespace, onUpdated }) {
+	const [context, setContext] = (0, import_react.useState)(null), [reason, setReason] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)("");
+	(0, import_react.useEffect)(() => {
+		get(`/api/${namespace}/tasks/${task.id}/stage-context`).then(setContext).catch((e) => setError(e.message));
+	}, [task.id, namespace]);
+	const act = async (action) => {
+		setBusy(true);
+		setError("");
+		try {
+			onUpdated((await post$2(`/api/${namespace}/tasks/${task.id}/stage-action`, {
+				action,
+				reason
+			})).task);
+		} catch (e) {
+			setError(e.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	const approval = ["internal", "client"].includes(task.stepKey), active = ["Open", "In progress"].includes(task.status);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "rounded-xl border p-4 space-y-3",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "font-semibold",
+				children: [
+					"Step ",
+					task.stepOrder,
+					"/6 · ",
+					task.assigneeName
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "text-sm",
+				children: [task.status, task.holdReason ? ` — ${task.holdReason}` : ""]
+			}),
+			task.blockedReason && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "text-sm",
+				children: ["Schedule paused: ", task.blockedReason]
+			}),
+			task.status === "Waiting" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-sm text-muted-foreground",
+				children: "Waiting for the previous step to finish."
+			}),
+			task.notificationStatus === "Unknown" || task.notificationStatus === "Sending" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "text-sm",
+				children: "Telegram notification is unconfirmed. Check the group before retrying."
+			}) : null,
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+				"aria-label": "Hold or revision reason",
+				placeholder: "Reason for hold or requested changes",
+				value: reason,
+				onChange: (e) => setReason(e.target.value)
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-wrap gap-2",
+				children: [active && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						disabled: busy,
+						onClick: () => act(approval ? "approve" : "done"),
+						children: approval ? "Approve drawing" : "Complete step"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						disabled: busy || !reason.trim(),
+						onClick: () => act("hold"),
+						children: "Hold"
+					}),
+					approval && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						disabled: busy || !reason.trim(),
+						onClick: () => act("changes"),
+						children: "Request changes"
+					})
+				] }), task.status === "On hold" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					disabled: busy,
+					onClick: () => act("resume"),
+					children: "Resume"
+				})]
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "text-destructive text-sm",
+				children: error
+			}),
+			context && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "space-y-2",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-sm font-medium",
+						children: "Current and previous step’s updates"
+					}),
+					context.updates.map((update) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-sm",
+						children: update.Text || "Attachment submitted"
+					}, update.UpdateID)),
+					context.files.map((file) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "text-sm",
+						children: [
+							file.FileName,
+							" · ",
+							file.DriveStatus || "Pending",
+							" ",
+							file.DriveStatus === "Stored" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+								className: "underline",
+								href: `/api/${namespace}/projects/${projectId}/files/${encodeURIComponent(file.SubmissionID)}`,
+								target: "_blank",
+								rel: "noreferrer",
+								children: "Open file"
+							})
+						]
+					}, file.SubmissionID)),
+					!context.updates.length && !context.files.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs text-muted-foreground",
+						children: "No task-specific documents or updates yet."
+					})
+				]
+			})
+		]
+	});
+}
+//#endregion
 //#region frontend/src/components/TaskThreadDrawer.jsx
 var statusColors = {
 	"Open": "bg-slate-100 text-slate-800 border-slate-200",
@@ -27212,7 +27336,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 									if (isEditing) handleSaveEdits();
 									else setIsEditing(true);
 								},
-								disabled: savingEdits,
+								disabled: savingEdits || task.linkedStage,
 								children: [savingEdits ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1" }) : isEditing ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5 mr-1 text-emerald-600" }) : null, isEditing ? "Save" : "Edit"]
 							})
 						})]
@@ -27224,275 +27348,289 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "chat-scroll min-h-0 flex-1 space-y-4 overflow-y-auto p-5",
-					children: [isEditing ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "space-y-3.5 rounded-xl border bg-muted/20 p-4",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-								className: "grid gap-1.5 text-xs font-semibold",
-								children: ["Title", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									value: editTitle,
-									onChange: (e) => setEditTitle(e.target.value),
-									required: true
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-								className: "grid gap-1.5 text-xs font-semibold",
-								children: ["Description", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
-									value: editDesc,
-									onChange: (e) => setEditDesc(e.target.value),
-									rows: 3
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "grid grid-cols-2 gap-3",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-									className: "grid gap-1.5 text-xs font-semibold",
-									children: ["Status", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
-										value: editStatus,
-										onChange: (e) => setEditStatus(e.target.value),
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: "Open",
-												children: "Open"
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: "In progress",
-												children: "In progress"
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: "Blocked",
-												children: "Blocked"
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: "Completed",
-												children: "Completed"
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: "Cancelled",
-												children: "Cancelled"
-											})
-										]
-									})]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-									className: "grid gap-1.5 text-xs font-semibold",
-									children: ["Deadline", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-										type: "date",
-										value: editDeadline,
-										onChange: (e) => setEditDeadline(e.target.value)
-									})]
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "grid grid-cols-2 gap-3",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-									className: "grid gap-1.5 text-xs font-semibold",
-									children: [
-										"Assignee",
-										isFounder ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
-											value: editAssigneeId,
-											onChange: (e) => setEditAssigneeId(e.target.value),
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: "",
-													children: "Unassigned"
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: "founder",
-													children: "Founder"
-												}),
-												projectMembers.map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
-													value: m.employeeId || m.id,
-													children: [
-														m.name,
-														" (",
-														m.role || "Member",
-														")"
-													]
-												}, m.id || m.employeeId))
-											]
-										}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-											value: getAssigneeLabel(task.assigneeId),
-											disabled: true,
-											className: "bg-muted text-muted-foreground text-xs",
-											title: "Only the founder may change task assignments."
-										}),
-										!isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-[10px] text-muted-foreground",
-											children: "Only founder can change assignee"
-										})
-									]
-								}), project?.stages && project.stages.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-									className: "grid gap-1.5 text-xs font-semibold",
-									children: ["Stage", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
-										value: editStageId,
-										onChange: (e) => setEditStageId(e.target.value),
-										children: project.stages.map((st) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-											value: st.id,
-											children: st.name
-										}, st.id))
-									})]
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex justify-between items-center pt-2",
-								children: [isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-									type: "button",
-									variant: "ghost",
-									size: "sm",
-									className: "text-destructive hover:bg-destructive/10 text-xs",
-									onClick: handleDelete,
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trash, { className: "size-3.5 mr-1" }), " Delete Task"]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-									size: "sm",
-									onClick: handleSaveEdits,
-									disabled: savingEdits,
-									className: "ml-auto",
-									children: [savingEdits ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1" }) : null, "Save Changes"]
-								})]
-							})
-						]
-					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "grid grid-cols-2 gap-2 rounded-xl border bg-muted/30 p-3 sm:grid-cols-3",
+					children: [
+						task?.linkedStage && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StageTaskActions, {
+							task,
+							projectId: project.id,
+							namespace,
+							onUpdated: (updated) => {
+								setTask(updated);
+								onTaskUpdated?.();
+							}
+						}),
+						isEditing ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "space-y-3.5 rounded-xl border bg-muted/20 p-4",
 							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "space-y-0.5",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "text-[11px] font-medium text-muted-foreground",
-										children: "Assignee"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-										className: "flex items-center gap-1.5 text-xs font-semibold truncate",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, { className: "size-3.5 text-muted-foreground shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "truncate",
-											children: getAssigneeLabel(task.assigneeId) || task.assigneeName || "Unassigned"
-										})]
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "grid gap-1.5 text-xs font-semibold",
+									children: ["Title", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+										value: editTitle,
+										onChange: (e) => setEditTitle(e.target.value),
+										required: true
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "grid gap-1.5 text-xs font-semibold",
+									children: ["Description", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+										value: editDesc,
+										onChange: (e) => setEditDesc(e.target.value),
+										rows: 3
 									})]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "space-y-0.5",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "text-[11px] font-medium text-muted-foreground",
-										children: "Deadline"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-										className: "flex items-center gap-1.5 text-xs font-semibold",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-3.5 text-muted-foreground shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: task.deadline || task.dueDate ? new Date(task.deadline || task.dueDate).toLocaleDateString(void 0, {
-											month: "short",
-											day: "numeric",
-											year: "numeric"
-										}) : "No deadline" })]
-									})]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "col-span-2 sm:col-span-1 space-y-0.5",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "text-[11px] font-medium text-muted-foreground",
-										children: "Quick Action"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { children: task.status !== "Completed" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-										size: "icon-sm",
-										variant: "outline",
-										className: "h-7 px-2.5 text-xs text-emerald-700 hover:bg-emerald-50 font-semibold",
-										onClick: () => handleQuickStatus("Completed"),
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 mr-1" }), " Mark Done"]
-									}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-										size: "icon-sm",
-										variant: "outline",
-										className: "h-7 px-2.5 text-xs text-muted-foreground font-semibold",
-										onClick: () => handleQuickStatus("Open"),
-										children: "Reopen Task"
-									}) })]
-								})
-							]
-						}),
-						task.description && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed rounded-xl border bg-card p-3",
-							children: task.description
-						}),
-						task.sourceQueryId && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center justify-between rounded-xl border border-amber-200 bg-amber-50/70 p-3 text-xs text-amber-900",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center gap-2",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0 text-amber-700" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Converted from Telegram client query" })]
-							}), onOpenSourceQuery && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-								variant: "outline",
-								size: "sm",
-								className: "h-7 text-xs border-amber-300 bg-white text-amber-900 hover:bg-amber-100/50",
-								onClick: () => onOpenSourceQuery(task.sourceQueryId),
-								children: ["View Query ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-3 ml-1" })]
-							})]
-						})
-					] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "border-t pt-4",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center justify-between pb-3",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h4", {
-								className: "flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 text-primary" }),
-									"Task Discussion Thread (",
-									messages.length,
-									")"
-								]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								variant: "ghost",
-								size: "icon-sm",
-								onClick: () => loadMessages(task.id),
-								disabled: loadingMessages,
-								"aria-label": "Refresh thread",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: `size-3.5 ${loadingMessages ? "animate-spin" : ""}` })
-							})]
-						}), loadingMessages && messages.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center justify-center py-8 text-xs text-muted-foreground gap-2",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-4 animate-spin text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Loading messages…" })]
-						}) : messages.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "space-y-2.5",
-							children: [messages.map((msg) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "rounded-xl border bg-card p-3 shadow-xs space-y-1.5",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex items-center justify-between text-xs",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "font-semibold text-primary",
-											children: msg.author || "Team member"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "text-[10px] text-muted-foreground",
+									className: "grid grid-cols-2 gap-3",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+										className: "grid gap-1.5 text-xs font-semibold",
+										children: ["Status", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+											value: editStatus,
+											onChange: (e) => setEditStatus(e.target.value),
 											children: [
-												new Date(msg.at).toLocaleDateString([], {
-													month: "short",
-													day: "numeric"
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "Open",
+													children: "Open"
 												}),
-												" · ",
-												new Date(msg.at).toLocaleTimeString([], {
-													hour: "numeric",
-													minute: "2-digit"
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "In progress",
+													children: "In progress"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "Blocked",
+													children: "Blocked"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "Completed",
+													children: "Completed"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "Cancelled",
+													children: "Cancelled"
 												})
 											]
 										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed",
-										children: msg.text
-									}),
-									msg.attachmentUrl && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-										href: msg.attachmentUrl,
-										target: "_blank",
-										rel: "noreferrer",
-										className: "inline-flex items-center gap-1.5 rounded-lg border bg-muted/40 px-2.5 py-1 text-xs text-primary hover:underline",
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+										className: "grid gap-1.5 text-xs font-semibold",
+										children: ["Deadline", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+											type: "date",
+											value: editDeadline,
+											onChange: (e) => setEditDeadline(e.target.value)
+										})]
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "grid grid-cols-2 gap-3",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+										className: "grid gap-1.5 text-xs font-semibold",
 										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, { className: "size-3" }),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "truncate max-w-xs",
-												children: msg.attachmentUrl
+											"Assignee",
+											isFounder ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+												value: editAssigneeId,
+												onChange: (e) => setEditAssigneeId(e.target.value),
+												children: [
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+														value: "",
+														children: "Unassigned"
+													}),
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+														value: "founder",
+														children: "Founder"
+													}),
+													projectMembers.map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
+														value: m.employeeId || m.id,
+														children: [
+															m.name,
+															" (",
+															m.role || "Member",
+															")"
+														]
+													}, m.id || m.employeeId))
+												]
+											}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+												value: getAssigneeLabel(task.assigneeId),
+												disabled: true,
+												className: "bg-muted text-muted-foreground text-xs",
+												title: "Only the founder may change task assignments."
 											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-2.5" })
+											!isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "text-[10px] text-muted-foreground",
+												children: "Only founder can change assignee"
+											})
 										]
+									}), project?.stages && project.stages.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+										className: "grid gap-1.5 text-xs font-semibold",
+										children: ["Stage", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
+											value: editStageId,
+											onChange: (e) => setEditStageId(e.target.value),
+											children: project.stages.map((st) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: st.id,
+												children: st.name
+											}, st.id))
+										})]
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex justify-between items-center pt-2",
+									children: [isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										type: "button",
+										variant: "ghost",
+										size: "sm",
+										className: "text-destructive hover:bg-destructive/10 text-xs",
+										onClick: handleDelete,
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trash, { className: "size-3.5 mr-1" }), " Delete Task"]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										size: "sm",
+										onClick: handleSaveEdits,
+										disabled: savingEdits || task.linkedStage,
+										className: "ml-auto",
+										children: [savingEdits ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1" }) : null, "Save Changes"]
+									})]
+								})
+							]
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "grid grid-cols-2 gap-2 rounded-xl border bg-muted/30 p-3 sm:grid-cols-3",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "space-y-0.5",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "text-[11px] font-medium text-muted-foreground",
+											children: "Assignee"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+											className: "flex items-center gap-1.5 text-xs font-semibold truncate",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, { className: "size-3.5 text-muted-foreground shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "truncate",
+												children: task.assigneeName || getAssigneeLabel(task.assigneeId) || "Unassigned"
+											})]
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "space-y-0.5",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "text-[11px] font-medium text-muted-foreground",
+											children: "Deadline"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+											className: "flex items-center gap-1.5 text-xs font-semibold",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-3.5 text-muted-foreground shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: task.deadline || task.dueDate ? new Date(task.deadline || task.dueDate).toLocaleDateString(void 0, {
+												month: "short",
+												day: "numeric",
+												year: "numeric"
+											}) : "No deadline" })]
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "col-span-2 sm:col-span-1 space-y-0.5",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "text-[11px] font-medium text-muted-foreground",
+											children: "Quick Action"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { children: task.status !== "Completed" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+											size: "icon-sm",
+											variant: "outline",
+											className: "h-7 px-2.5 text-xs text-emerald-700 hover:bg-emerald-50 font-semibold",
+											disabled: task.linkedStage,
+											onClick: () => handleQuickStatus("Completed"),
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 mr-1" }), " Mark Done"]
+										}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+											size: "icon-sm",
+											variant: "outline",
+											className: "h-7 px-2.5 text-xs text-muted-foreground font-semibold",
+											disabled: task.linkedStage,
+											onClick: () => handleQuickStatus("Open"),
+											children: "Reopen Task"
+										}) })]
 									})
 								]
-							}, msg.id)), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { ref: messagesEndRef })]
-						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "py-6 text-center text-xs text-muted-foreground",
-							children: "No discussion messages yet in this task thread."
-						})]
-					})]
+							}),
+							task.description && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed rounded-xl border bg-card p-3",
+								children: task.description
+							}),
+							task.sourceQueryId && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center justify-between rounded-xl border border-amber-200 bg-amber-50/70 p-3 text-xs text-amber-900",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center gap-2",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0 text-amber-700" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Converted from Telegram client query" })]
+								}), onOpenSourceQuery && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+									variant: "outline",
+									size: "sm",
+									className: "h-7 text-xs border-amber-300 bg-white text-amber-900 hover:bg-amber-100/50",
+									onClick: () => onOpenSourceQuery(task.sourceQueryId),
+									children: ["View Query ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-3 ml-1" })]
+								})]
+							})
+						] }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "border-t pt-4",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center justify-between pb-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h4", {
+									className: "flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 text-primary" }),
+										"Task Discussion Thread (",
+										messages.length,
+										")"
+									]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									variant: "ghost",
+									size: "icon-sm",
+									onClick: () => loadMessages(task.id),
+									disabled: loadingMessages,
+									"aria-label": "Refresh thread",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: `size-3.5 ${loadingMessages ? "animate-spin" : ""}` })
+								})]
+							}), loadingMessages && messages.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center justify-center py-8 text-xs text-muted-foreground gap-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-4 animate-spin text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Loading messages…" })]
+							}) : messages.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "space-y-2.5",
+								children: [messages.map((msg) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "rounded-xl border bg-card p-3 shadow-xs space-y-1.5",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "flex items-center justify-between text-xs",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "font-semibold text-primary",
+												children: msg.author || "Team member"
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+												className: "text-[10px] text-muted-foreground",
+												children: [
+													new Date(msg.at).toLocaleDateString([], {
+														month: "short",
+														day: "numeric"
+													}),
+													" · ",
+													new Date(msg.at).toLocaleTimeString([], {
+														hour: "numeric",
+														minute: "2-digit"
+													})
+												]
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed",
+											children: msg.text
+										}),
+										msg.attachmentUrl && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+											href: msg.attachmentUrl,
+											target: "_blank",
+											rel: "noreferrer",
+											className: "inline-flex items-center gap-1.5 rounded-lg border bg-muted/40 px-2.5 py-1 text-xs text-primary hover:underline",
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, { className: "size-3" }),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "truncate max-w-xs",
+													children: msg.attachmentUrl
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-2.5" })
+											]
+										})
+									]
+								}, msg.id)), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { ref: messagesEndRef })]
+							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "py-6 text-center text-xs text-muted-foreground",
+								children: "No discussion messages yet in this task thread."
+							})]
+						})
+					]
 				}),
 				isClosed ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex shrink-0 flex-wrap items-center justify-between gap-3 border-t bg-amber-50/70 p-3 sm:px-5 text-xs text-amber-900",
@@ -27502,12 +27640,14 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Lock, { className: "size-3.5 text-amber-700 shrink-0" }),
 							"This task is ",
 							task.status.toLowerCase(),
-							". Reopen it to send new messages."
+							". ",
+							task.linkedStage ? "Revision changes must follow the linked approval flow." : "Reopen it to send new messages."
 						]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						size: "sm",
 						variant: "outline",
 						className: "border-amber-300 bg-white",
+						disabled: task.linkedStage,
 						onClick: handleReopenTask,
 						children: "Reopen Task"
 					})]
@@ -28224,8 +28364,290 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 	});
 }
 //#endregion
+//#region frontend/src/components/StageWorkflowSetup.jsx
+var steps = [
+	["site", "Site details / condition check"],
+	["drawing", "Drawing preparation"],
+	["internal", "Internal approval"],
+	["client", "Client approval"],
+	["execution", "Site execution"],
+	["final", "Final check"]
+];
+var presets = [
+	{
+		id: "civil",
+		name: "Civil Work",
+		days: [
+			2,
+			2,
+			1,
+			1,
+			7,
+			2
+		]
+	},
+	{
+		id: "electrical",
+		name: "Electrical Work 1",
+		days: [
+			1,
+			2,
+			1,
+			1,
+			5,
+			2
+		]
+	},
+	{
+		id: "plumbing",
+		name: "Plumbing Work",
+		days: [
+			"",
+			7,
+			2,
+			1,
+			5,
+			2
+		]
+	},
+	{
+		id: "carpentry",
+		name: "Carpentry",
+		days: [
+			"",
+			5,
+			2,
+			"",
+			"",
+			""
+		]
+	}
+];
+function StageWorkflowSetup({ projectId, startDate, members = [], onApplied }) {
+	const [stages, setStages] = (0, import_react.useState)(presets), [stageName, setStageName] = (0, import_react.useState)("");
+	const [selected, setSelected] = (0, import_react.useState)([]), [policy, setPolicy] = (0, import_react.useState)(""), [weekdays, setWeekdays] = (0, import_react.useState)([]), [configuration, setConfiguration] = (0, import_react.useState)({}), [busy, setBusy] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)("");
+	const update = (id, field, key, value) => setConfiguration((old) => ({
+		...old,
+		[id]: {
+			...old[id],
+			[field]: key ? {
+				...old[id]?.[field],
+				[key]: value
+			} : value
+		}
+	}));
+	const start = async () => {
+		setBusy(true);
+		setError("");
+		try {
+			const config = {
+				startDate,
+				dayPolicy: policy,
+				workingWeekdays: weekdays,
+				stages: stages.filter((s) => selected.includes(s.id)).map((s) => ({
+					id: s.id,
+					name: s.name,
+					dependsOn: configuration[s.id]?.dependsOn || [],
+					durations: Object.fromEntries(steps.map(([key], i) => [key, Number(configuration[s.id]?.durations?.[key] ?? s.days[i])])),
+					assignees: configuration[s.id]?.assignees || {}
+				}))
+			};
+			onApplied((await post$2(`/api/founder/projects/${projectId}/stages/start`, { config })).project);
+		} catch (e) {
+			setError(e.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "space-y-4",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-sm",
+				children: "Each selected stage has six steps. Completing a step passes the work to its next assigned person."
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "text-xs text-muted-foreground",
+				children: [
+					"Durations come from your ",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+						className: "underline",
+						href: "https://docs.google.com/spreadsheets/d/1V47wt8GM90cde8EclExsM_7iA4kwHBBfqITlc858pps/edit?gid=349448813",
+						target: "_blank",
+						rel: "noreferrer",
+						children: "task sheet"
+					}),
+					". Confirm blank durations. The sheet labels Plumbing execution as Electrician; select the intended contractor below."
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+				className: "grid gap-1 text-sm",
+				children: ["Count durations as", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+					value: policy,
+					onChange: (e) => setPolicy(e.target.value),
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+							value: "",
+							children: "Choose day policy"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+							value: "calendar",
+							children: "Calendar days"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+							value: "working",
+							children: "Working days"
+						})
+					]
+				})]
+			}),
+			policy === "working" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+				className: "flex flex-wrap gap-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", { children: "Working weekdays" }), [
+					"Sun",
+					"Mon",
+					"Tue",
+					"Wed",
+					"Thu",
+					"Fri",
+					"Sat"
+				].map((name, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+						type: "checkbox",
+						checked: weekdays.includes(i),
+						onChange: (e) => setWeekdays((old) => e.target.checked ? [...old, i] : old.filter((d) => d !== i))
+					}),
+					" ",
+					name
+				] }, name))]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+				className: "flex flex-wrap gap-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
+					className: "font-medium",
+					children: "Stages to include"
+				}), stages.map((s) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+						type: "checkbox",
+						checked: selected.includes(s.id),
+						onChange: (e) => setSelected((old) => e.target.checked ? [...old, s.id] : old.filter((id) => id !== s.id))
+					}),
+					" ",
+					s.name
+				] }, s.id))]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex gap-2",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+					"aria-label": "Additional stage name",
+					placeholder: "Add another stage",
+					value: stageName,
+					onChange: (e) => setStageName(e.target.value)
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: "outline",
+					disabled: !stageName.trim() || stages.length >= 20,
+					onClick: () => {
+						const id = `custom-${stages.length + 1}`;
+						setStages((old) => [...old, {
+							id,
+							name: stageName.trim(),
+							days: [
+								"",
+								"",
+								"",
+								"",
+								"",
+								""
+							]
+						}]);
+						setSelected((old) => [...old, id]);
+						setStageName("");
+					},
+					children: "Add stage"
+				})]
+			}),
+			stages.filter((s) => selected.includes(s.id)).map((stage) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+				className: "rounded-xl border p-3 space-y-3",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
+						className: "font-semibold",
+						children: stage.name
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs",
+						children: "Start after these stages finish. Leave all unchecked to run this stage independently."
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "flex flex-wrap gap-2",
+						children: stages.filter((s) => selected.includes(s.id) && s.id !== stage.id).map((other) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "text-xs",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+									type: "checkbox",
+									checked: (configuration[stage.id]?.dependsOn || []).includes(other.id),
+									onChange: (e) => update(stage.id, "dependsOn", null, e.target.checked ? [...configuration[stage.id]?.dependsOn || [], other.id] : (configuration[stage.id]?.dependsOn || []).filter((id) => id !== other.id))
+								}),
+								" ",
+								other.name
+							]
+						}, other.id))
+					}),
+					steps.map(([key, name], i) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "grid gap-2 border-t pt-2 sm:grid-cols-[1fr_80px_1fr]",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "text-sm",
+								children: [
+									i + 1,
+									". ",
+									name
+								]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								type: "number",
+								min: "1",
+								max: "365",
+								"aria-label": `${stage.name} ${name} duration`,
+								placeholder: "Days",
+								value: configuration[stage.id]?.durations?.[key] ?? stage.days[i],
+								onChange: (e) => update(stage.id, "durations", key, e.target.value)
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+								"aria-label": `${stage.name} ${name} assignee`,
+								value: configuration[stage.id]?.assignees?.[key] || "",
+								onChange: (e) => update(stage.id, "assignees", key, e.target.value),
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+									value: "",
+									children: "Choose person"
+								}), members.filter((m) => m.membershipStatus === "Active" && m.assignedRole && (key === "client" ? /\bclient\b/i.test(m.assignedRole) : key === "site" || !/\bclient\b/i.test(m.assignedRole))).map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
+									value: m.telegramUserId,
+									children: [
+										m.assignedName || m.telegramName,
+										" — ",
+										m.assignedRole
+									]
+								}, m.telegramUserId))]
+							})
+						]
+					}, key))
+				]
+			}, stage.id)),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "text-sm text-destructive",
+				children: error
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+				disabled: busy || !selected.length || !policy || !startDate,
+				onClick: start,
+				children: busy ? "Starting…" : "Start linked stages"
+			})
+		]
+	});
+}
+//#endregion
 //#region frontend/src/components/WorkflowTemplateModal.jsx
-function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate, telegramLinked = false, clientAssigned = true, projectMembers = [], onApplied }) {
+function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate, telegramLinked = false, clientAssigned = true, projectMembers = [], telegramMembers = [], onApplied }) {
 	const [workflows, setWorkflows] = (0, import_react.useState)([]);
 	const [selectedWorkflowId, setSelectedWorkflowId] = (0, import_react.useState)("");
 	const [startDate, setStartDate] = (0, import_react.useState)(projectStartDate || (/* @__PURE__ */ new Date()).toLocaleDateString("en-CA"));
@@ -28338,7 +28760,7 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock, { className: "size-3" }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: tmpl.parallel || !totalDays ? "Dates need confirmation" : `~${totalDays} days` }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "·" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [tmpl.stages?.length || 0, " stages"] })
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: tmpl.id === "STAGE-SIX-V1" ? "Configure stages" : `${tmpl.stages?.length || 0} stages` })
 									]
 								})]
 							}, tmpl.id);
@@ -28378,7 +28800,7 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 											onChange: (e) => setStartDate(e.target.value),
 											className: "h-9 text-xs"
 										})]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									}), selectedTemplate.id !== "STAGE-SIX-V1" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: ["                    ", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 										className: "grid gap-1.5 text-xs font-medium",
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 											className: "flex items-center gap-1.5 text-muted-foreground",
@@ -28400,10 +28822,19 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 												]
 											}, member.id || member.employeeId))]
 										})]
-									})]
+									})] })]
 								})]
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h4", {
+							selectedTemplate.id === "STAGE-SIX-V1" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StageWorkflowSetup, {
+								projectId,
+								startDate,
+								members: telegramMembers,
+								onApplied: (project) => {
+									onOpenChange(false);
+									onApplied?.(project);
+								}
+							}),
+							selectedTemplate.id !== "STAGE-SIX-V1" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_jsx_runtime.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h4", {
 								className: "text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2",
 								children: [
 									"Pipeline Stages (",
@@ -28438,7 +28869,7 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 										}, tIdx))
 									})]
 								}, stage.id || idx))
-							})] })
+							})] }) })
 						] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "py-12 text-center text-xs text-muted-foreground",
 							children: "No template selected."
@@ -28457,9 +28888,9 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 							onClick: () => onOpenChange(false),
 							disabled: submitting,
 							children: "Cancel"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						}), selectedTemplate?.id !== "STAGE-SIX-V1" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 							onClick: handleStartWorkflow,
-							disabled: submitting || !clientAssigned || !selectedTemplate,
+							disabled: submitting || !clientAssigned || !selectedTemplate || selectedTemplate.id === "STAGE-SIX-V1",
 							children: submitting ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 mr-1.5 animate-spin" }), "Starting Workflow…"] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3.5 mr-1.5" }),
 								"Start ",
@@ -28709,7 +29140,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 		"Published"
 	].includes(q.status)).length;
 	const blockedTasks = tasks.filter((t) => t.status === "Blocked");
-	const inProgressTasksCount = tasks.filter((t) => t.status === "In progress" || t.status === "in_progress").length;
+	const inProgressTasksCount = tasks.filter((t) => t.status === "In progress" || t.status === "in_progress" || t.linkedStage && t.status === "Open").length;
 	const currentStage = stages.find((stage) => stage.name === project.currentStage) || stages[0];
 	const currentStageSchedule = schedule.find((stage) => stage.id === currentStage?.id);
 	const latestQuery = projectQueries[0];
@@ -28870,6 +29301,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 				projectStartDate: project.startDate,
 				clientAssigned: true,
 				projectMembers: project.members || [],
+				telegramMembers: project.telegramMembers || [],
 				onApplied: () => {
 					if (onProjectUpdated) onProjectUpdated();
 					loadProjectTasks();
@@ -29259,6 +29691,18 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 													children: "Blocked"
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "Waiting",
+													children: "Waiting"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "On hold",
+													children: "On hold"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "Needs assignment",
+													children: "Needs assignment"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
 													value: "Completed",
 													children: "Completed"
 												}),
@@ -29335,6 +29779,8 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 															type: "button",
 															onClick: () => handleToggleTaskStatus(t),
 															className: `grid size-5 place-items-center rounded-md border transition-colors ${isCompleted ? "bg-emerald-600 border-emerald-600 text-white" : "border-muted-foreground/30 hover:border-primary"}`,
+															disabled: t.linkedStage,
+															title: t.linkedStage ? "Open the task thread to complete or approve this step" : void 0,
 															"aria-label": "Toggle task completion",
 															children: isCompleted && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5" })
 														}),
@@ -29373,7 +29819,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 												className: "flex items-center gap-2 text-muted-foreground",
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 													className: "flex items-center gap-1 font-medium",
-													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, { className: "size-3" }), getAssigneeName(t.assigneeId) || t.assigneeName || "Unassigned"]
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, { className: "size-3" }), t.assigneeName || getAssigneeName(t.assigneeId) || "Unassigned"]
 												}), (t.deadline || t.dueDate) && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 													className: "flex items-center gap-1",
 													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-3" }), new Date(t.deadline || t.dueDate).toLocaleDateString(void 0, {
@@ -29539,6 +29985,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 								project,
 								stages,
 								projectMembers: project.members || [],
+								telegramMembers: project.telegramMembers || [],
 								isFounder: true,
 								onQueryChanged: () => {
 									if (onQueriesUpdated) onQueriesUpdated();
@@ -29674,7 +30121,8 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 				onOpenSourceQuery: () => setActiveTab("queries"),
 				currentActor: "founder",
 				isFounder: true,
-				projectMembers: project.members || []
+				projectMembers: project.members || [],
+				telegramMembers: project.telegramMembers || []
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkflowTemplateModal, {
 				open: templateModalOpen,
@@ -29683,6 +30131,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 				projectStartDate: project.startDate,
 				clientAssigned: isClientAssigned,
 				projectMembers: project.members || [],
+				telegramMembers: project.telegramMembers || [],
 				onApplied: () => {
 					if (onProjectUpdated) onProjectUpdated();
 					loadProjectTasks();
@@ -29777,6 +30226,18 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
 											value: "Blocked",
 											children: "Blocked"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+											value: "Waiting",
+											children: "Waiting"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+											value: "On hold",
+											children: "On hold"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+											value: "Needs assignment",
+											children: "Needs assignment"
 										})
 									]
 								})]
