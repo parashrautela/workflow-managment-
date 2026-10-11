@@ -1,6 +1,6 @@
 //#region \0rolldown/runtime.js
 var __create = Object.create;
-var __defProp$22 = Object.defineProperty;
+var __defProp$21 = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
@@ -9,14 +9,14 @@ var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).expor
 var __copyProps = (to, from, except, desc) => {
 	if (from && typeof from === "object" || typeof from === "function") for (var keys = __getOwnPropNames(from), i = 0, n = keys.length, key; i < n; i++) {
 		key = keys[i];
-		if (!__hasOwnProp.call(to, key) && key !== except) __defProp$22(to, key, {
+		if (!__hasOwnProp.call(to, key) && key !== except) __defProp$21(to, key, {
 			get: ((k) => from[k]).bind(null, key),
 			enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
 		});
 	}
 	return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp.call(mod, "default") ? __defProp$22(target, "default", {
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp.call(mod, "default") ? __defProp$21(target, "default", {
 	value: mod,
 	enumerable: true
 }) : target, mod));
@@ -11675,7 +11675,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$45 = {
+var __iconData$44 = {
 	name: "arrow-left",
 	size: 24,
 	node: [["path", {
@@ -11686,8 +11686,8 @@ var __iconData$45 = {
 		key: "x3x0zl"
 	}]]
 };
-__iconData$45.node;
-var ArrowLeft = createLucideIcon(__iconData$45);
+__iconData$44.node;
+var ArrowLeft = createLucideIcon(__iconData$44);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
@@ -11696,7 +11696,7 @@ var ArrowLeft = createLucideIcon(__iconData$45);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$44 = {
+var __iconData$43 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11707,8 +11707,29 @@ var __iconData$44 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$44.node;
-var ArrowRight = createLucideIcon(__iconData$44);
+__iconData$43.node;
+var ArrowRight = createLucideIcon(__iconData$43);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$42 = {
+	name: "arrow-up-right",
+	size: 24,
+	node: [["path", {
+		d: "M7 7h10v10",
+		key: "1tivn9"
+	}], ["path", {
+		d: "M7 17 17 7",
+		key: "1vkiza"
+	}]]
+};
+__iconData$42.node;
+var ArrowUpRight = createLucideIcon(__iconData$42);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
@@ -11717,7 +11738,7 @@ var ArrowRight = createLucideIcon(__iconData$44);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$43 = {
+var __iconData$41 = {
 	name: "arrow-up",
 	size: 24,
 	node: [["path", {
@@ -11728,8 +11749,8 @@ var __iconData$43 = {
 		key: "x0mq9r"
 	}]]
 };
-__iconData$43.node;
-var ArrowUp = createLucideIcon(__iconData$43);
+__iconData$41.node;
+var ArrowUp = createLucideIcon(__iconData$41);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
@@ -11738,7 +11759,7 @@ var ArrowUp = createLucideIcon(__iconData$43);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$42 = {
+var __iconData$40 = {
 	name: "building-complex",
 	size: 24,
 	node: [
@@ -11765,8 +11786,8 @@ var __iconData$42 = {
 	],
 	aliases: ["building-2"]
 };
-__iconData$42.node;
-var BuildingComplex = createLucideIcon(__iconData$42);
+__iconData$40.node;
+var BuildingComplex = createLucideIcon(__iconData$40);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/calendar.mjs
 /**
@@ -11775,7 +11796,7 @@ var BuildingComplex = createLucideIcon(__iconData$42);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$41 = {
+var __iconData$39 = {
 	name: "calendar",
 	size: 24,
 	node: [
@@ -11801,8 +11822,8 @@ var __iconData$41 = {
 		}]
 	]
 };
-__iconData$41.node;
-var Calendar = createLucideIcon(__iconData$41);
+__iconData$39.node;
+var Calendar = createLucideIcon(__iconData$39);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/check.mjs
 /**
@@ -11811,7 +11832,7 @@ var Calendar = createLucideIcon(__iconData$41);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$40 = {
+var __iconData$38 = {
 	name: "check",
 	size: 24,
 	node: [["path", {
@@ -11819,8 +11840,8 @@ var __iconData$40 = {
 		key: "1gmf2c"
 	}]]
 };
-__iconData$40.node;
-var Check = createLucideIcon(__iconData$40);
+__iconData$38.node;
+var Check = createLucideIcon(__iconData$38);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
 /**
@@ -11829,7 +11850,7 @@ var Check = createLucideIcon(__iconData$40);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$39 = {
+var __iconData$37 = {
 	name: "chevron-down",
 	size: 24,
 	node: [["path", {
@@ -11837,8 +11858,8 @@ var __iconData$39 = {
 		key: "qrunsl"
 	}]]
 };
-__iconData$39.node;
-var ChevronDown = createLucideIcon(__iconData$39);
+__iconData$37.node;
+var ChevronDown = createLucideIcon(__iconData$37);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
 /**
@@ -11847,7 +11868,7 @@ var ChevronDown = createLucideIcon(__iconData$39);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$38 = {
+var __iconData$36 = {
 	name: "chevron-up",
 	size: 24,
 	node: [["path", {
@@ -11855,8 +11876,8 @@ var __iconData$38 = {
 		key: "153udz"
 	}]]
 };
-__iconData$38.node;
-var ChevronUp = createLucideIcon(__iconData$38);
+__iconData$36.node;
+var ChevronUp = createLucideIcon(__iconData$36);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
@@ -11865,7 +11886,7 @@ var ChevronUp = createLucideIcon(__iconData$38);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$37 = {
+var __iconData$35 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -11892,8 +11913,8 @@ var __iconData$37 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$37.node;
-var CircleAlert = createLucideIcon(__iconData$37);
+__iconData$35.node;
+var CircleAlert = createLucideIcon(__iconData$35);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
@@ -11902,7 +11923,7 @@ var CircleAlert = createLucideIcon(__iconData$37);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$36 = {
+var __iconData$34 = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -11916,8 +11937,8 @@ var __iconData$36 = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-__iconData$36.node;
-var CircleCheck = createLucideIcon(__iconData$36);
+__iconData$34.node;
+var CircleCheck = createLucideIcon(__iconData$34);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-x.mjs
 /**
@@ -11926,7 +11947,7 @@ var CircleCheck = createLucideIcon(__iconData$36);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$35 = {
+var __iconData$33 = {
 	name: "circle-x",
 	size: 24,
 	node: [
@@ -11947,8 +11968,8 @@ var __iconData$35 = {
 	],
 	aliases: ["x-circle"]
 };
-__iconData$35.node;
-var CircleX = createLucideIcon(__iconData$35);
+__iconData$33.node;
+var CircleX = createLucideIcon(__iconData$33);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
@@ -11957,7 +11978,7 @@ var CircleX = createLucideIcon(__iconData$35);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$34 = {
+var __iconData$32 = {
 	name: "clock-3",
 	size: 24,
 	node: [["circle", {
@@ -11970,8 +11991,8 @@ var __iconData$34 = {
 		key: "135r8i"
 	}]]
 };
-__iconData$34.node;
-var Clock3 = createLucideIcon(__iconData$34);
+__iconData$32.node;
+var Clock3 = createLucideIcon(__iconData$32);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
@@ -11980,7 +12001,7 @@ var Clock3 = createLucideIcon(__iconData$34);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$33 = {
+var __iconData$31 = {
 	name: "clock",
 	size: 24,
 	node: [["circle", {
@@ -11993,8 +12014,8 @@ var __iconData$33 = {
 		key: "mmk7yg"
 	}]]
 };
-__iconData$33.node;
-var Clock = createLucideIcon(__iconData$33);
+__iconData$31.node;
+var Clock = createLucideIcon(__iconData$31);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
@@ -12003,7 +12024,7 @@ var Clock = createLucideIcon(__iconData$33);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$32 = {
+var __iconData$30 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -12019,8 +12040,8 @@ var __iconData$32 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$32.node;
-var Copy = createLucideIcon(__iconData$32);
+__iconData$30.node;
+var Copy = createLucideIcon(__iconData$30);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/external-link.mjs
 /**
@@ -12029,7 +12050,7 @@ var Copy = createLucideIcon(__iconData$32);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$31 = {
+var __iconData$29 = {
 	name: "external-link",
 	size: 24,
 	node: [
@@ -12047,8 +12068,8 @@ var __iconData$31 = {
 		}]
 	]
 };
-__iconData$31.node;
-var ExternalLink = createLucideIcon(__iconData$31);
+__iconData$29.node;
+var ExternalLink = createLucideIcon(__iconData$29);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye-off.mjs
 /**
@@ -12057,7 +12078,7 @@ var ExternalLink = createLucideIcon(__iconData$31);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$30 = {
+var __iconData$28 = {
 	name: "eye-off",
 	size: 24,
 	node: [
@@ -12079,8 +12100,8 @@ var __iconData$30 = {
 		}]
 	]
 };
-__iconData$30.node;
-var EyeOff = createLucideIcon(__iconData$30);
+__iconData$28.node;
+var EyeOff = createLucideIcon(__iconData$28);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye.mjs
 /**
@@ -12089,7 +12110,7 @@ var EyeOff = createLucideIcon(__iconData$30);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$29 = {
+var __iconData$27 = {
 	name: "eye",
 	size: 24,
 	node: [["path", {
@@ -12102,8 +12123,8 @@ var __iconData$29 = {
 		key: "1v7zrd"
 	}]]
 };
-__iconData$29.node;
-var Eye = createLucideIcon(__iconData$29);
+__iconData$27.node;
+var Eye = createLucideIcon(__iconData$27);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/file-text.mjs
 /**
@@ -12112,7 +12133,7 @@ var Eye = createLucideIcon(__iconData$29);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$28 = {
+var __iconData$26 = {
 	name: "file-text",
 	size: 24,
 	node: [
@@ -12138,8 +12159,8 @@ var __iconData$28 = {
 		}]
 	]
 };
-__iconData$28.node;
-var FileText = createLucideIcon(__iconData$28);
+__iconData$26.node;
+var FileText = createLucideIcon(__iconData$26);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
@@ -12148,7 +12169,7 @@ var FileText = createLucideIcon(__iconData$28);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$27 = {
+var __iconData$25 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -12170,36 +12191,8 @@ var __iconData$27 = {
 		}]
 	]
 };
-__iconData$27.node;
-var FolderKanban = createLucideIcon(__iconData$27);
-//#endregion
-//#region node_modules/lucide-react/dist/esm/icons/folder-plus.mjs
-/**
-* @license lucide-react v1.48.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
-var __iconData$26 = {
-	name: "folder-plus",
-	size: 24,
-	node: [
-		["path", {
-			d: "M12 10v6",
-			key: "1bos4e"
-		}],
-		["path", {
-			d: "M9 13h6",
-			key: "1uhe8q"
-		}],
-		["path", {
-			d: "M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z",
-			key: "1kt360"
-		}]
-	]
-};
-__iconData$26.node;
-var FolderPlus = createLucideIcon(__iconData$26);
+__iconData$25.node;
+var FolderKanban = createLucideIcon(__iconData$25);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/key-round.mjs
 /**
@@ -12208,7 +12201,7 @@ var FolderPlus = createLucideIcon(__iconData$26);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$25 = {
+var __iconData$24 = {
 	name: "key-round",
 	size: 24,
 	node: [["path", {
@@ -12222,8 +12215,8 @@ var __iconData$25 = {
 		key: "w0ekpg"
 	}]]
 };
-__iconData$25.node;
-var KeyRound = createLucideIcon(__iconData$25);
+__iconData$24.node;
+var KeyRound = createLucideIcon(__iconData$24);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/layers.mjs
 /**
@@ -12232,7 +12225,7 @@ var KeyRound = createLucideIcon(__iconData$25);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$24 = {
+var __iconData$23 = {
 	name: "layers",
 	size: 24,
 	node: [
@@ -12251,39 +12244,8 @@ var __iconData$24 = {
 	],
 	aliases: ["layers-3"]
 };
-__iconData$24.node;
-var Layers = createLucideIcon(__iconData$24);
-//#endregion
-//#region node_modules/lucide-react/dist/esm/icons/link-2.mjs
-/**
-* @license lucide-react v1.48.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
-var __iconData$23 = {
-	name: "link-2",
-	size: 24,
-	node: [
-		["path", {
-			d: "M9 17H7A5 5 0 0 1 7 7h2",
-			key: "8i5ue5"
-		}],
-		["path", {
-			d: "M15 7h2a5 5 0 1 1 0 10h-2",
-			key: "1b9ql8"
-		}],
-		["line", {
-			x1: "8",
-			x2: "16",
-			y1: "12",
-			y2: "12",
-			key: "1jonct"
-		}]
-	]
-};
 __iconData$23.node;
-var Link2 = createLucideIcon(__iconData$23);
+var Layers = createLucideIcon(__iconData$23);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/link.mjs
 /**
@@ -16552,8 +16514,8 @@ function AlertDescription({ className, ...props }) {
 }
 //#endregion
 //#region node_modules/@radix-ui/react-compose-refs/dist/index.mjs
-var __defProp$21 = Object.defineProperty;
-var __name$21 = (target, value) => __defProp$21(target, "name", {
+var __defProp$20 = Object.defineProperty;
+var __name$20 = (target, value) => __defProp$20(target, "name", {
 	value,
 	configurable: true
 });
@@ -16561,7 +16523,7 @@ function setRef$1(ref, value) {
 	if (typeof ref === "function") return ref(value);
 	else if (ref !== null && ref !== void 0) ref.current = value;
 }
-__name$21(setRef$1, "setRef");
+__name$20(setRef$1, "setRef");
 function composeRefs(...refs) {
 	return (node) => {
 		let hasCleanup = false;
@@ -16579,15 +16541,15 @@ function composeRefs(...refs) {
 		};
 	};
 }
-__name$21(composeRefs, "composeRefs");
+__name$20(composeRefs, "composeRefs");
 function useComposedRefs(...refs) {
 	return import_react.useCallback(composeRefs(...refs), refs);
 }
-__name$21(useComposedRefs, "useComposedRefs");
+__name$20(useComposedRefs, "useComposedRefs");
 //#endregion
 //#region node_modules/@radix-ui/react-slot/dist/index.mjs
-var __defProp$20 = Object.defineProperty;
-var __name$20 = (target, value) => __defProp$20(target, "name", {
+var __defProp$19 = Object.defineProperty;
+var __name$19 = (target, value) => __defProp$19(target, "name", {
 	value,
 	configurable: true
 });
@@ -16624,18 +16586,18 @@ function createSlot(ownerName) {
 	Slot2.displayName = `${ownerName}.Slot`;
 	return Slot2;
 }
-__name$20(createSlot, "createSlot");
+__name$19(createSlot, "createSlot");
 var Slot$1 = /* @__PURE__ */ createSlot("Slot");
 var SLOTTABLE_IDENTIFIER = Symbol.for("radix.slottable");
 // @__NO_SIDE_EFFECTS__
 function createSlottable(ownerName) {
-	const Slottable2 = /* @__PURE__ */ __name$20((props) => "child" in props ? props.children(props.child) : props.children, "Slottable");
+	const Slottable2 = /* @__PURE__ */ __name$19((props) => "child" in props ? props.children(props.child) : props.children, "Slottable");
 	Slottable2.displayName = `${ownerName}.Slottable`;
 	Slottable2.__radixId = SLOTTABLE_IDENTIFIER;
 	return Slottable2;
 }
-__name$20(createSlottable, "createSlottable");
-var getSlottableElementFromSlottable = /* @__PURE__ */ __name$20((slottable, child) => {
+__name$19(createSlottable, "createSlottable");
+var getSlottableElementFromSlottable = /* @__PURE__ */ __name$19((slottable, child) => {
 	if ("child" in slottable.props) {
 		const child2 = slottable.props.child;
 		if (!import_react.isValidElement(child2)) return null;
@@ -16666,7 +16628,7 @@ function mergeProps(slotProps, childProps) {
 		...overrideProps
 	};
 }
-__name$20(mergeProps, "mergeProps");
+__name$19(mergeProps, "mergeProps");
 function getElementRef$1(element) {
 	let getter = Object.getOwnPropertyDescriptor(element.props, "ref")?.get;
 	let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
@@ -16676,32 +16638,32 @@ function getElementRef$1(element) {
 	if (mayWarn) return element.props.ref;
 	return element.props.ref || element.ref;
 }
-__name$20(getElementRef$1, "getElementRef");
+__name$19(getElementRef$1, "getElementRef");
 function isSlottable(child) {
 	return import_react.isValidElement(child) && typeof child.type === "function" && "__radixId" in child.type && child.type.__radixId === SLOTTABLE_IDENTIFIER;
 }
-__name$20(isSlottable, "isSlottable");
+__name$19(isSlottable, "isSlottable");
 var REACT_LAZY_TYPE = Symbol.for("react.lazy");
 function isLazyComponent(element) {
 	return element != null && typeof element === "object" && "$$typeof" in element && element.$$typeof === REACT_LAZY_TYPE && "_payload" in element && isPromiseLike(element._payload);
 }
-__name$20(isLazyComponent, "isLazyComponent");
+__name$19(isLazyComponent, "isLazyComponent");
 function isPromiseLike(value) {
 	return typeof value === "object" && value !== null && "then" in value;
 }
-__name$20(isPromiseLike, "isPromiseLike");
-var createSlotError = /* @__PURE__ */ __name$20((ownerName) => {
+__name$19(isPromiseLike, "isPromiseLike");
+var createSlotError = /* @__PURE__ */ __name$19((ownerName) => {
 	return `${ownerName} failed to slot onto its children. Expected a single React element child or \`Slottable\`.`;
 }, "createSlotError");
-var createSlottableError = /* @__PURE__ */ __name$20((ownerName) => {
+var createSlottableError = /* @__PURE__ */ __name$19((ownerName) => {
 	return `${ownerName} failed to slot onto its \`Slottable\`. Expected \`Slottable\` to receive a single React element child.`;
 }, "createSlottableError");
 var use = import_react[" use ".trim().toString()];
 //#endregion
 //#region node_modules/@radix-ui/react-primitive/dist/index.mjs
 var import_react_dom = /* @__PURE__ */ __toESM(require_react_dom(), 1);
-var __defProp$19 = Object.defineProperty;
-var __name$19 = (target, value) => __defProp$19(target, "name", {
+var __defProp$18 = Object.defineProperty;
+var __name$18 = (target, value) => __defProp$18(target, "name", {
 	value,
 	configurable: true
 });
@@ -16743,11 +16705,11 @@ var Primitive = [
 function dispatchDiscreteCustomEvent(target, event) {
 	if (target) import_react_dom.flushSync(() => target.dispatchEvent(event));
 }
-__name$19(dispatchDiscreteCustomEvent, "dispatchDiscreteCustomEvent");
+__name$18(dispatchDiscreteCustomEvent, "dispatchDiscreteCustomEvent");
 //#endregion
 //#region node_modules/@radix-ui/react-context/dist/index.mjs
-var __defProp$18 = Object.defineProperty;
-var __name$18 = (target, value) => __defProp$18(target, "name", {
+var __defProp$17 = Object.defineProperty;
+var __name$17 = (target, value) => __defProp$17(target, "name", {
 	value,
 	configurable: true
 });
@@ -16755,7 +16717,7 @@ var __name$18 = (target, value) => __defProp$18(target, "name", {
 function createContext2(rootComponentName, defaultContext) {
 	const Context = import_react.createContext(defaultContext);
 	Context.displayName = rootComponentName + "Context";
-	const Provider = /* @__PURE__ */ __name$18((props) => {
+	const Provider = /* @__PURE__ */ __name$17((props) => {
 		const { children, ...context } = props;
 		const value = import_react.useMemo(() => context, Object.values(context));
 		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Context.Provider, {
@@ -16772,10 +16734,10 @@ function createContext2(rootComponentName, defaultContext) {
 		if (optional) return void 0;
 		throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
 	}
-	__name$18(useContext2, "useContext");
+	__name$17(useContext2, "useContext");
 	return [Provider, useContext2];
 }
-__name$18(createContext2, "createContext");
+__name$17(createContext2, "createContext");
 // @__NO_SIDE_EFFECTS__
 function createContextScope(scopeName, createContextScopeDeps = []) {
 	let defaultContexts = [];
@@ -16784,7 +16746,7 @@ function createContextScope(scopeName, createContextScopeDeps = []) {
 		BaseContext.displayName = rootComponentName + "Context";
 		const index = defaultContexts.length;
 		defaultContexts = [...defaultContexts, defaultContext];
-		const Provider = /* @__PURE__ */ __name$18((props) => {
+		const Provider = /* @__PURE__ */ __name$17((props) => {
 			const { scope, children, ...context } = props;
 			const Context = scope?.[scopeName]?.[index] || BaseContext;
 			const value = import_react.useMemo(() => context, Object.values(context));
@@ -16803,15 +16765,15 @@ function createContextScope(scopeName, createContextScopeDeps = []) {
 			if (optional) return void 0;
 			throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
 		}
-		__name$18(useContext2, "useContext");
+		__name$17(useContext2, "useContext");
 		return [Provider, useContext2];
 	}
-	__name$18(createContext3, "createContext");
-	const createScope = /* @__PURE__ */ __name$18(() => {
+	__name$17(createContext3, "createContext");
+	const createScope = /* @__PURE__ */ __name$17(() => {
 		const scopeContexts = defaultContexts.map((defaultContext) => {
 			return import_react.createContext(defaultContext);
 		});
-		return /* @__PURE__ */ __name$18(function useScope(scope) {
+		return /* @__PURE__ */ __name$17(function useScope(scope) {
 			const contexts = scope?.[scopeName] || scopeContexts;
 			return import_react.useMemo(() => ({ [`__scope${scopeName}`]: {
 				...scope,
@@ -16822,16 +16784,16 @@ function createContextScope(scopeName, createContextScopeDeps = []) {
 	createScope.scopeName = scopeName;
 	return [createContext3, composeContextScopes(createScope, ...createContextScopeDeps)];
 }
-__name$18(createContextScope, "createContextScope");
+__name$17(createContextScope, "createContextScope");
 function composeContextScopes(...scopes) {
 	const baseScope = scopes[0];
 	if (scopes.length === 1) return baseScope;
-	const createScope = /* @__PURE__ */ __name$18(() => {
+	const createScope = /* @__PURE__ */ __name$17(() => {
 		const scopeHooks = scopes.map((createScope2) => ({
 			useScope: createScope2(),
 			scopeName: createScope2.scopeName
 		}));
-		return /* @__PURE__ */ __name$18(function useComposedScopes(overrideScopes) {
+		return /* @__PURE__ */ __name$17(function useComposedScopes(overrideScopes) {
 			const nextScopes = scopeHooks.reduce((nextScopes2, { useScope, scopeName }) => {
 				const currentScope = useScope(overrideScopes)[`__scope${scopeName}`];
 				return {
@@ -16845,11 +16807,11 @@ function composeContextScopes(...scopes) {
 	createScope.scopeName = baseScope.scopeName;
 	return createScope;
 }
-__name$18(composeContextScopes, "composeContextScopes");
+__name$17(composeContextScopes, "composeContextScopes");
 //#endregion
 //#region node_modules/@radix-ui/react-collection/dist/index.mjs
-var __defProp$17 = Object.defineProperty;
-var __name$17 = (target, value) => __defProp$17(target, "name", {
+var __defProp$16 = Object.defineProperty;
+var __name$16 = (target, value) => __defProp$16(target, "name", {
 	value,
 	configurable: true
 });
@@ -16861,7 +16823,7 @@ function createCollection(name) {
 		collectionRef: { current: null },
 		itemMap: /* @__PURE__ */ new Map()
 	});
-	const CollectionProvider = /* @__PURE__ */ __name$17((props) => {
+	const CollectionProvider = /* @__PURE__ */ __name$16((props) => {
 		const { scope, children } = props;
 		const ref = import_react.useRef(null);
 		const itemMap = import_react.useRef(/* @__PURE__ */ new Map()).current;
@@ -16915,7 +16877,7 @@ function createCollection(name) {
 			return Array.from(context.itemMap.values()).sort((a, b) => orderedNodes.indexOf(a.ref.current) - orderedNodes.indexOf(b.ref.current));
 		}, [context.collectionRef, context.itemMap]);
 	}
-	__name$17(useCollection, "useCollection");
+	__name$16(useCollection, "useCollection");
 	return [
 		{
 			Provider: CollectionProvider,
@@ -16926,11 +16888,11 @@ function createCollection(name) {
 		createCollectionScope
 	];
 }
-__name$17(createCollection, "createCollection");
+__name$16(createCollection, "createCollection");
 var __instanciated = /* @__PURE__ */ new WeakMap();
 var OrderedDict = class _OrderedDict extends Map {
 	static {
-		__name$17(this, "OrderedDict");
+		__name$16(this, "OrderedDict");
 	}
 	#keys;
 	constructor(entries) {
@@ -17200,18 +17162,18 @@ function at(array, index) {
 	const actualIndex = toSafeIndex(array, index);
 	return actualIndex === -1 ? void 0 : array[actualIndex];
 }
-__name$17(at, "at");
+__name$16(at, "at");
 function toSafeIndex(array, index) {
 	const length = array.length;
 	const relativeIndex = toSafeInteger(index);
 	const actualIndex = relativeIndex >= 0 ? relativeIndex : length + relativeIndex;
 	return actualIndex < 0 || actualIndex >= length ? -1 : actualIndex;
 }
-__name$17(toSafeIndex, "toSafeIndex");
+__name$16(toSafeIndex, "toSafeIndex");
 function toSafeInteger(number) {
 	return number !== number || number === 0 ? 0 : Math.trunc(number);
 }
-__name$17(toSafeInteger, "toSafeInteger");
+__name$16(toSafeInteger, "toSafeInteger");
 // @__NO_SIDE_EFFECTS__
 function createCollection2(name) {
 	const PROVIDER_NAME = name + "CollectionProvider";
@@ -17221,16 +17183,16 @@ function createCollection2(name) {
 		collectionRef: { current: null },
 		collectionRefObject: { current: null },
 		itemMap: new OrderedDict(),
-		setItemMap: /* @__PURE__ */ __name$17(() => void 0, "setItemMap")
+		setItemMap: /* @__PURE__ */ __name$16(() => void 0, "setItemMap")
 	});
-	const CollectionProvider = /* @__PURE__ */ __name$17(({ state, ...props }) => {
+	const CollectionProvider = /* @__PURE__ */ __name$16(({ state, ...props }) => {
 		return state ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CollectionProviderImpl, {
 			...props,
 			state
 		}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CollectionInit, { ...props });
 	}, "CollectionProvider");
 	CollectionProvider.displayName = PROVIDER_NAME;
-	const CollectionInit = /* @__PURE__ */ __name$17((props) => {
+	const CollectionInit = /* @__PURE__ */ __name$16((props) => {
 		const state = useInitCollection();
 		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CollectionProviderImpl, {
 			...props,
@@ -17238,7 +17200,7 @@ function createCollection2(name) {
 		});
 	}, "CollectionInit");
 	CollectionInit.displayName = PROVIDER_NAME + "Init";
-	const CollectionProviderImpl = /* @__PURE__ */ __name$17((props) => {
+	const CollectionProviderImpl = /* @__PURE__ */ __name$16((props) => {
 		const { scope, children, state } = props;
 		const ref = import_react.useRef(null);
 		const [collectionElement, setCollectionElement] = import_react.useState(null);
@@ -17327,12 +17289,12 @@ function createCollection2(name) {
 	function useInitCollection() {
 		return import_react.useState(new OrderedDict());
 	}
-	__name$17(useInitCollection, "useInitCollection");
+	__name$16(useInitCollection, "useInitCollection");
 	function useCollection(scope) {
 		const { itemMap } = useCollectionContext(name + "CollectionConsumer", scope);
 		return itemMap;
 	}
-	__name$17(useCollection, "useCollection");
+	__name$16(useCollection, "useCollection");
 	return [{
 		Provider: CollectionProvider,
 		Slot: CollectionSlot,
@@ -17343,7 +17305,7 @@ function createCollection2(name) {
 		useInitCollection
 	}];
 }
-__name$17(createCollection2, "createCollection");
+__name$16(createCollection2, "createCollection");
 function shallowEqual(a, b) {
 	if (a === b) return true;
 	if (typeof a !== "object" || typeof b !== "object") return false;
@@ -17357,15 +17319,15 @@ function shallowEqual(a, b) {
 	}
 	return true;
 }
-__name$17(shallowEqual, "shallowEqual");
+__name$16(shallowEqual, "shallowEqual");
 function isElementPreceding(a, b) {
 	return !!(b.compareDocumentPosition(a) & Node.DOCUMENT_POSITION_PRECEDING);
 }
-__name$17(isElementPreceding, "isElementPreceding");
+__name$16(isElementPreceding, "isElementPreceding");
 function sortByDocumentPosition(a, b) {
 	return !a[1].element || !b[1].element ? 0 : isElementPreceding(a[1].element, b[1].element) ? -1 : 1;
 }
-__name$17(sortByDocumentPosition, "sortByDocumentPosition");
+__name$16(sortByDocumentPosition, "sortByDocumentPosition");
 function getChildListObserver(callback) {
 	return new MutationObserver((mutationsList) => {
 		for (const mutation of mutationsList) if (mutation.type === "childList") {
@@ -17374,32 +17336,32 @@ function getChildListObserver(callback) {
 		}
 	});
 }
-__name$17(getChildListObserver, "getChildListObserver");
+__name$16(getChildListObserver, "getChildListObserver");
 //#endregion
 //#region node_modules/@radix-ui/primitive/dist/index.mjs
-var __defProp$16 = Object.defineProperty;
-var __name$16 = (target, value) => __defProp$16(target, "name", {
+var __defProp$15 = Object.defineProperty;
+var __name$15 = (target, value) => __defProp$15(target, "name", {
 	value,
 	configurable: true
 });
 var canUseDOM = !!(typeof window !== "undefined" && window.document && window.document.createElement);
 function composeEventHandlers(originalEventHandler, ourEventHandler, { checkForDefaultPrevented = true } = {}) {
-	return /* @__PURE__ */ __name$16(function handleEvent(event) {
+	return /* @__PURE__ */ __name$15(function handleEvent(event) {
 		originalEventHandler?.(event);
 		if (checkForDefaultPrevented === false || !event || !event.defaultPrevented) return ourEventHandler?.(event);
 	}, "handleEvent");
 }
-__name$16(composeEventHandlers, "composeEventHandlers");
+__name$15(composeEventHandlers, "composeEventHandlers");
 function getOwnerWindow(element) {
 	if (!canUseDOM) throw new Error("Cannot access window outside of the DOM");
 	return element?.ownerDocument?.defaultView ?? window;
 }
-__name$16(getOwnerWindow, "getOwnerWindow");
+__name$15(getOwnerWindow, "getOwnerWindow");
 function getOwnerDocument(element) {
 	if (!canUseDOM) throw new Error("Cannot access document outside of the DOM");
 	return element?.ownerDocument ?? document;
 }
-__name$16(getOwnerDocument, "getOwnerDocument");
+__name$15(getOwnerDocument, "getOwnerDocument");
 function getActiveElement(node, activeDescendant = false) {
 	const { activeElement } = getOwnerDocument(node);
 	if (!activeElement?.nodeName) return null;
@@ -17413,18 +17375,18 @@ function getActiveElement(node, activeDescendant = false) {
 	}
 	return activeElement;
 }
-__name$16(getActiveElement, "getActiveElement");
+__name$15(getActiveElement, "getActiveElement");
 function isFrame(element) {
 	return element.tagName === "IFRAME";
 }
-__name$16(isFrame, "isFrame");
+__name$15(isFrame, "isFrame");
 //#endregion
 //#region node_modules/@radix-ui/react-use-layout-effect/dist/index.mjs
 var useLayoutEffect2 = globalThis?.document ? import_react.useLayoutEffect : () => {};
 //#endregion
 //#region node_modules/@radix-ui/react-use-effect-event/dist/index.mjs
-var __defProp$15 = Object.defineProperty;
-var __name$15 = (target, value) => __defProp$15(target, "name", {
+var __defProp$14 = Object.defineProperty;
+var __name$14 = (target, value) => __defProp$14(target, "name", {
 	value,
 	configurable: true
 });
@@ -17443,16 +17405,16 @@ function useEffectEvent(callback) {
 	});
 	return import_react.useMemo(() => ((...args) => ref.current?.(...args)), []);
 }
-__name$15(useEffectEvent, "useEffectEvent");
+__name$14(useEffectEvent, "useEffectEvent");
 //#endregion
 //#region node_modules/@radix-ui/react-use-controllable-state/dist/index.mjs
-var __defProp$14 = Object.defineProperty;
-var __name$14 = (target, value) => __defProp$14(target, "name", {
+var __defProp$13 = Object.defineProperty;
+var __name$13 = (target, value) => __defProp$13(target, "name", {
 	value,
 	configurable: true
 });
 var useInsertionEffect = import_react[" useInsertionEffect ".trim().toString()] || useLayoutEffect2;
-function useControllableState({ prop, defaultProp, onChange = /* @__PURE__ */ __name$14(() => {}, "onChange"), caller }) {
+function useControllableState({ prop, defaultProp, onChange = /* @__PURE__ */ __name$13(() => {}, "onChange"), caller }) {
 	const [uncontrolledProp, setUncontrolledProp, onChangeRef] = useUncontrolledState({
 		defaultProp,
 		onChange
@@ -17470,7 +17432,7 @@ function useControllableState({ prop, defaultProp, onChange = /* @__PURE__ */ __
 		onChangeRef
 	])];
 }
-__name$14(useControllableState, "useControllableState");
+__name$13(useControllableState, "useControllableState");
 function useUncontrolledState({ defaultProp, onChange }) {
 	const [value, setValue] = import_react.useState(defaultProp);
 	const prevValueRef = import_react.useRef(value);
@@ -17490,11 +17452,11 @@ function useUncontrolledState({ defaultProp, onChange }) {
 		onChangeRef
 	];
 }
-__name$14(useUncontrolledState, "useUncontrolledState");
+__name$13(useUncontrolledState, "useUncontrolledState");
 function isFunction(value) {
 	return typeof value === "function";
 }
-__name$14(isFunction, "isFunction");
+__name$13(isFunction, "isFunction");
 var SYNC_STATE = Symbol("RADIX:SYNC_STATE");
 function useControllableStateReducer(reducer, userArgs, initialArg, init) {
 	const { prop: controlledState, defaultProp, onChange: onChangeProp, caller } = userArgs;
@@ -17545,11 +17507,11 @@ function useControllableStateReducer(reducer, userArgs, initialArg, init) {
 	]);
 	return [state, dispatch];
 }
-__name$14(useControllableStateReducer, "useControllableStateReducer");
+__name$13(useControllableStateReducer, "useControllableStateReducer");
 //#endregion
 //#region node_modules/@radix-ui/react-presence/dist/index.mjs
-var __defProp$13 = Object.defineProperty;
-var __name$13 = (target, value) => __defProp$13(target, "name", {
+var __defProp$12 = Object.defineProperty;
+var __name$12 = (target, value) => __defProp$12(target, "name", {
 	value,
 	configurable: true
 });
@@ -17558,8 +17520,8 @@ function useStateMachine(initialState, machine) {
 		return machine[state][event] ?? state;
 	}, initialState);
 }
-__name$13(useStateMachine, "useStateMachine");
-var Presence = /* @__PURE__ */ __name$13((props) => {
+__name$12(useStateMachine, "useStateMachine");
+var Presence = /* @__PURE__ */ __name$12((props) => {
 	const { present, children } = props;
 	const presence = usePresence(present);
 	const child = typeof children === "function" ? children({ present: presence.isPresent }) : import_react.Children.only(children);
@@ -17608,7 +17570,7 @@ function usePresence(present) {
 		if (node) {
 			let timeoutId;
 			const ownerWindow = node.ownerDocument.defaultView ?? window;
-			const handleAnimationEnd = /* @__PURE__ */ __name$13((event) => {
+			const handleAnimationEnd = /* @__PURE__ */ __name$12((event) => {
 				const isCurrentAnimation = getAnimationName(stylesRef.current).includes(CSS.escape(event.animationName));
 				if (event.target === node && isCurrentAnimation) {
 					send("ANIMATION_END");
@@ -17621,7 +17583,7 @@ function usePresence(present) {
 					}
 				}
 			}, "handleAnimationEnd");
-			const handleAnimationStart = /* @__PURE__ */ __name$13((event) => {
+			const handleAnimationStart = /* @__PURE__ */ __name$12((event) => {
 				if (event.target === node) prevAnimationNameRef.current = getAnimationName(stylesRef.current);
 			}, "handleAnimationStart");
 			node.addEventListener("animationstart", handleAnimationStart);
@@ -17647,12 +17609,12 @@ function usePresence(present) {
 		}, [])
 	};
 }
-__name$13(usePresence, "usePresence");
+__name$12(usePresence, "usePresence");
 function setRef(ref, value) {
 	if (typeof ref === "function") return ref(value);
 	else if (ref !== null && ref !== void 0) ref.current = value;
 }
-__name$13(setRef, "setRef");
+__name$12(setRef, "setRef");
 function useStableComposedRefs(...refs) {
 	const refsRef = import_react.useRef(refs);
 	refsRef.current = refs;
@@ -17673,11 +17635,11 @@ function useStableComposedRefs(...refs) {
 		};
 	}, []);
 }
-__name$13(useStableComposedRefs, "useStableComposedRefs");
+__name$12(useStableComposedRefs, "useStableComposedRefs");
 function getAnimationName(styles) {
 	return styles?.animationName || "none";
 }
-__name$13(getAnimationName, "getAnimationName");
+__name$12(getAnimationName, "getAnimationName");
 function getElementRef(element) {
 	let getter = Object.getOwnPropertyDescriptor(element.props, "ref")?.get;
 	let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
@@ -17687,28 +17649,28 @@ function getElementRef(element) {
 	if (mayWarn) return element.props.ref;
 	return element.props.ref || element.ref;
 }
-__name$13(getElementRef, "getElementRef");
+__name$12(getElementRef, "getElementRef");
 //#endregion
 //#region node_modules/@radix-ui/react-id/dist/index.mjs
-var __defProp$12 = Object.defineProperty;
-var __name$12 = (target, value) => __defProp$12(target, "name", {
+var __defProp$11 = Object.defineProperty;
+var __name$11 = (target, value) => __defProp$11(target, "name", {
 	value,
 	configurable: true
 });
 var useReactId = import_react[" useId ".trim().toString()] || (() => void 0);
 var count$1 = 0;
-function useId$1(deterministicId) {
+function useId(deterministicId) {
 	const [id, setId] = import_react.useState(useReactId());
 	useLayoutEffect2(() => {
 		if (!deterministicId) setId((reactId) => reactId ?? String(count$1++));
 	}, [deterministicId]);
 	return deterministicId || (id ? `radix-${id}` : "");
 }
-__name$12(useId$1, "useId");
+__name$11(useId, "useId");
 //#endregion
 //#region node_modules/@radix-ui/react-direction/dist/index.mjs
-var __defProp$11 = Object.defineProperty;
-var __name$11 = (target, value) => __defProp$11(target, "name", {
+var __defProp$10 = Object.defineProperty;
+var __name$10 = (target, value) => __defProp$10(target, "name", {
 	value,
 	configurable: true
 });
@@ -17717,11 +17679,11 @@ function useDirection(localDir) {
 	const globalDir = import_react.useContext(DirectionContext);
 	return localDir || globalDir || "ltr";
 }
-__name$11(useDirection, "useDirection");
+__name$10(useDirection, "useDirection");
 //#endregion
 //#region node_modules/@radix-ui/react-use-callback-ref/dist/index.mjs
-var __defProp$10 = Object.defineProperty;
-var __name$10 = (target, value) => __defProp$10(target, "name", {
+var __defProp$9 = Object.defineProperty;
+var __name$9 = (target, value) => __defProp$9(target, "name", {
 	value,
 	configurable: true
 });
@@ -17732,11 +17694,11 @@ function useCallbackRef$1(callback) {
 	});
 	return import_react.useMemo(() => ((...args) => callbackRef.current?.(...args)), []);
 }
-__name$10(useCallbackRef$1, "useCallbackRef");
+__name$9(useCallbackRef$1, "useCallbackRef");
 //#endregion
 //#region node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs
-var __defProp$9 = Object.defineProperty;
-var __name$9 = (target, value) => __defProp$9(target, "name", {
+var __defProp$8 = Object.defineProperty;
+var __name$8 = (target, value) => __defProp$8(target, "name", {
 	value,
 	configurable: true
 });
@@ -17750,7 +17712,7 @@ var DismissableLayerContext = import_react.createContext({
 	branches: /* @__PURE__ */ new Set(),
 	dismissableSurfaces: /* @__PURE__ */ new Set()
 });
-var DismissableLayer = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$9(function DismissableLayer2(props, forwardedRef) {
+var DismissableLayer = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$8(function DismissableLayer2(props, forwardedRef) {
 	const { disableOutsidePointerEvents = false, deferPointerDownOutside = false, onEscapeKeyDown, onPointerDownOutside, onFocusOutside, onInteractOutside, onDismiss, ...layerProps } = props;
 	const context = import_react.useContext(DismissableLayerContext);
 	const [node, setNode] = import_react.useState(null);
@@ -17837,7 +17799,7 @@ var DismissableLayer = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ _
 		};
 	}, [node, context]);
 	import_react.useEffect(() => {
-		const handleUpdate = /* @__PURE__ */ __name$9(() => force({}), "handleUpdate");
+		const handleUpdate = /* @__PURE__ */ __name$8(() => force({}), "handleUpdate");
 		document.addEventListener(CONTEXT_UPDATE, handleUpdate);
 		return () => document.removeEventListener(CONTEXT_UPDATE, handleUpdate);
 	}, []);
@@ -17865,8 +17827,8 @@ function useDismissableLayerSurface() {
 	}, [node, context.dismissableSurfaces]);
 	return setNode;
 }
-__name$9(useDismissableLayerSurface, "useDismissableLayerSurface");
-var IS_TRUE = /* @__PURE__ */ __name$9(() => true, "IS_TRUE");
+__name$8(useDismissableLayerSurface, "useDismissableLayerSurface");
+var IS_TRUE = /* @__PURE__ */ __name$8(() => true, "IS_TRUE");
 function usePointerDownOutside(onPointerDownOutside, args) {
 	const { ownerDocument = globalThis?.document, deferPointerDownOutside = false, isDeferredPointerDownOutsideRef, dismissableSurfaces, shouldHandlePointerDownOutside = IS_TRUE } = args;
 	const handlePointerDownOutside = useCallbackRef$1(onPointerDownOutside);
@@ -17880,11 +17842,11 @@ function usePointerDownOutside(onPointerDownOutside, args) {
 			isDeferredPointerDownOutsideRef.current = false;
 			interceptedOutsideInteractionEventsRef.current.clear();
 		}
-		__name$9(resetOutsideInteraction, "resetOutsideInteraction");
+		__name$8(resetOutsideInteraction, "resetOutsideInteraction");
 		function isOutsideInteractionIntercepted() {
 			return Array.from(interceptedOutsideInteractionEventsRef.current.values()).some(Boolean);
 		}
-		__name$9(isOutsideInteractionIntercepted, "isOutsideInteractionIntercepted");
+		__name$8(isOutsideInteractionIntercepted, "isOutsideInteractionIntercepted");
 		function handleInteractionCapture(event) {
 			if (!isPointerDownOutsideRef.current) return;
 			const target = event.target;
@@ -17893,12 +17855,12 @@ function usePointerDownOutside(onPointerDownOutside, args) {
 				if (isPointerDownOutsideRef.current) handleClickRef.current();
 			}, 0);
 		}
-		__name$9(handleInteractionCapture, "handleInteractionCapture");
+		__name$8(handleInteractionCapture, "handleInteractionCapture");
 		function handleInteractionBubble(event) {
 			if (isPointerDownOutsideRef.current) interceptedOutsideInteractionEventsRef.current.set(event.type, false);
 		}
-		__name$9(handleInteractionBubble, "handleInteractionBubble");
-		const handlePointerDown = /* @__PURE__ */ __name$9((event) => {
+		__name$8(handleInteractionBubble, "handleInteractionBubble");
+		const handlePointerDown = /* @__PURE__ */ __name$8((event) => {
 			if (event.target && !isPointerInsideReactTreeRef.current) {
 				let handleAndDispatchPointerDownOutsideEvent2 = function() {
 					ownerDocument.removeEventListener("click", handleClickRef.current);
@@ -17906,7 +17868,7 @@ function usePointerDownOutside(onPointerDownOutside, args) {
 					resetOutsideInteraction();
 					if (!wasOutsideInteractionIntercepted) handleAndDispatchCustomEvent(POINTER_DOWN_OUTSIDE, handlePointerDownOutside, eventDetail, { discrete: true });
 				};
-				__name$9(handleAndDispatchPointerDownOutsideEvent2, "handleAndDispatchPointerDownOutsideEvent");
+				__name$8(handleAndDispatchPointerDownOutsideEvent2, "handleAndDispatchPointerDownOutsideEvent");
 				if (!shouldHandlePointerDownOutside(event.target)) {
 					ownerDocument.removeEventListener("click", handleClickRef.current);
 					resetOutsideInteraction();
@@ -17961,30 +17923,30 @@ function usePointerDownOutside(onPointerDownOutside, args) {
 		dismissableSurfaces,
 		shouldHandlePointerDownOutside
 	]);
-	return { onPointerDownCapture: /* @__PURE__ */ __name$9(() => isPointerInsideReactTreeRef.current = true, "onPointerDownCapture") };
+	return { onPointerDownCapture: /* @__PURE__ */ __name$8(() => isPointerInsideReactTreeRef.current = true, "onPointerDownCapture") };
 }
-__name$9(usePointerDownOutside, "usePointerDownOutside");
+__name$8(usePointerDownOutside, "usePointerDownOutside");
 function useFocusOutside(onFocusOutside, ownerDocument = globalThis?.document) {
 	const handleFocusOutside = useCallbackRef$1(onFocusOutside);
 	const isFocusInsideReactTreeRef = import_react.useRef(false);
 	import_react.useEffect(() => {
-		const handleFocus = /* @__PURE__ */ __name$9((event) => {
+		const handleFocus = /* @__PURE__ */ __name$8((event) => {
 			if (event.target && !isFocusInsideReactTreeRef.current) handleAndDispatchCustomEvent(FOCUS_OUTSIDE, handleFocusOutside, { originalEvent: event }, { discrete: false });
 		}, "handleFocus");
 		ownerDocument.addEventListener("focusin", handleFocus);
 		return () => ownerDocument.removeEventListener("focusin", handleFocus);
 	}, [ownerDocument, handleFocusOutside]);
 	return {
-		onFocusCapture: /* @__PURE__ */ __name$9(() => isFocusInsideReactTreeRef.current = true, "onFocusCapture"),
-		onBlurCapture: /* @__PURE__ */ __name$9(() => isFocusInsideReactTreeRef.current = false, "onBlurCapture")
+		onFocusCapture: /* @__PURE__ */ __name$8(() => isFocusInsideReactTreeRef.current = true, "onFocusCapture"),
+		onBlurCapture: /* @__PURE__ */ __name$8(() => isFocusInsideReactTreeRef.current = false, "onBlurCapture")
 	};
 }
-__name$9(useFocusOutside, "useFocusOutside");
+__name$8(useFocusOutside, "useFocusOutside");
 function dispatchUpdate() {
 	const event = new CustomEvent(CONTEXT_UPDATE);
 	document.dispatchEvent(event);
 }
-__name$9(dispatchUpdate, "dispatchUpdate");
+__name$8(dispatchUpdate, "dispatchUpdate");
 function handleAndDispatchCustomEvent(name, handler, detail, { discrete }) {
 	const target = detail.originalEvent.target;
 	const event = new CustomEvent(name, {
@@ -17996,11 +17958,11 @@ function handleAndDispatchCustomEvent(name, handler, detail, { discrete }) {
 	if (discrete) dispatchDiscreteCustomEvent(target, event);
 	else target.dispatchEvent(event);
 }
-__name$9(handleAndDispatchCustomEvent, "handleAndDispatchCustomEvent");
+__name$8(handleAndDispatchCustomEvent, "handleAndDispatchCustomEvent");
 //#endregion
 //#region node_modules/@radix-ui/react-focus-scope/dist/index.mjs
-var __defProp$8 = Object.defineProperty;
-var __name$8 = (target, value) => __defProp$8(target, "name", {
+var __defProp$7 = Object.defineProperty;
+var __name$7 = (target, value) => __defProp$7(target, "name", {
 	value,
 	configurable: true
 });
@@ -18010,7 +17972,7 @@ var EVENT_OPTIONS$1 = {
 	bubbles: false,
 	cancelable: true
 };
-var FocusScope = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$8(function FocusScope2(props, forwardedRef) {
+var FocusScope = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$7(function FocusScope2(props, forwardedRef) {
 	const { loop = false, trapped = false, onMountAutoFocus: onMountAutoFocusProp, onUnmountAutoFocus: onUnmountAutoFocusProp, ...scopeProps } = props;
 	const [container, setContainer] = import_react.useState(null);
 	const onMountAutoFocus = useCallbackRef$1(onMountAutoFocusProp);
@@ -18042,9 +18004,9 @@ var FocusScope = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$
 				if (document.activeElement !== document.body) return;
 				for (const mutation of mutations) if (mutation.removedNodes.length > 0) focus(container);
 			};
-			__name$8(handleFocusIn2, "handleFocusIn");
-			__name$8(handleFocusOut2, "handleFocusOut");
-			__name$8(handleMutations2, "handleMutations");
+			__name$7(handleFocusIn2, "handleFocusIn");
+			__name$7(handleFocusOut2, "handleFocusOut");
+			__name$7(handleMutations2, "handleMutations");
 			document.addEventListener("focusin", handleFocusIn2);
 			document.addEventListener("focusout", handleFocusOut2);
 			const mutationObserver = new MutationObserver(handleMutations2);
@@ -18131,15 +18093,15 @@ function focusFirst$1(candidates, { select = false } = {}) {
 		if (document.activeElement !== previouslyFocusedElement) return;
 	}
 }
-__name$8(focusFirst$1, "focusFirst");
+__name$7(focusFirst$1, "focusFirst");
 function getTabbableEdges(container) {
 	const candidates = getTabbableCandidates(container);
 	return [findVisible(candidates, container), findVisible(candidates.reverse(), container)];
 }
-__name$8(getTabbableEdges, "getTabbableEdges");
+__name$7(getTabbableEdges, "getTabbableEdges");
 function getTabbableCandidates(container) {
 	const nodes = [];
-	const walker = document.createTreeWalker(container, NodeFilter.SHOW_ELEMENT, { acceptNode: /* @__PURE__ */ __name$8((node) => {
+	const walker = document.createTreeWalker(container, NodeFilter.SHOW_ELEMENT, { acceptNode: /* @__PURE__ */ __name$7((node) => {
 		const isHiddenInput = node.tagName === "INPUT" && node.type === "hidden";
 		if (node.disabled || node.hidden || isHiddenInput) return NodeFilter.FILTER_SKIP;
 		return node.tabIndex >= 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
@@ -18147,12 +18109,12 @@ function getTabbableCandidates(container) {
 	while (walker.nextNode()) nodes.push(walker.currentNode);
 	return nodes;
 }
-__name$8(getTabbableCandidates, "getTabbableCandidates");
+__name$7(getTabbableCandidates, "getTabbableCandidates");
 function findVisible(elements, container) {
 	const canUseCheckVisibility = typeof container.checkVisibility === "function" && container.checkVisibility({ checkVisibilityCSS: true });
 	for (const element of elements) if (!(canUseCheckVisibility ? !element.checkVisibility({ checkVisibilityCSS: true }) : isHidden(element, { upTo: container }))) return element;
 }
-__name$8(findVisible, "findVisible");
+__name$7(findVisible, "findVisible");
 function isHidden(node, { upTo }) {
 	if (getComputedStyle(node).visibility === "hidden") return true;
 	while (node) {
@@ -18162,11 +18124,11 @@ function isHidden(node, { upTo }) {
 	}
 	return false;
 }
-__name$8(isHidden, "isHidden");
+__name$7(isHidden, "isHidden");
 function isSelectableInput(element) {
 	return element instanceof HTMLInputElement && "select" in element;
 }
-__name$8(isSelectableInput, "isSelectableInput");
+__name$7(isSelectableInput, "isSelectableInput");
 function focus(element, { select = false } = {}) {
 	if (element && element.focus) {
 		const previouslyFocusedElement = document.activeElement;
@@ -18174,7 +18136,7 @@ function focus(element, { select = false } = {}) {
 		if (element !== previouslyFocusedElement && isSelectableInput(element) && select) element.select();
 	}
 }
-__name$8(focus, "focus");
+__name$7(focus, "focus");
 var focusScopesStack = createFocusScopesStack();
 function createFocusScopesStack() {
 	let stack = [];
@@ -18191,26 +18153,26 @@ function createFocusScopesStack() {
 		}
 	};
 }
-__name$8(createFocusScopesStack, "createFocusScopesStack");
+__name$7(createFocusScopesStack, "createFocusScopesStack");
 function arrayRemove(array, item) {
 	const updatedArray = [...array];
 	const index = updatedArray.indexOf(item);
 	if (index !== -1) updatedArray.splice(index, 1);
 	return updatedArray;
 }
-__name$8(arrayRemove, "arrayRemove");
+__name$7(arrayRemove, "arrayRemove");
 function removeLinks(items) {
 	return items.filter((item) => item.tagName !== "A");
 }
-__name$8(removeLinks, "removeLinks");
+__name$7(removeLinks, "removeLinks");
 //#endregion
 //#region node_modules/@radix-ui/react-portal/dist/index.mjs
-var __defProp$7 = Object.defineProperty;
-var __name$7 = (target, value) => __defProp$7(target, "name", {
+var __defProp$6 = Object.defineProperty;
+var __name$6 = (target, value) => __defProp$6(target, "name", {
 	value,
 	configurable: true
 });
-var Portal = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$7(function Portal2(props, forwardedRef) {
+var Portal = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$6(function Portal2(props, forwardedRef) {
 	const { container: containerProp, ...portalProps } = props;
 	const [mounted, setMounted] = import_react.useState(false);
 	useLayoutEffect2(() => setMounted(true), []);
@@ -18222,8 +18184,8 @@ var Portal = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$7(fu
 }, "Portal"));
 //#endregion
 //#region node_modules/@radix-ui/react-focus-guards/dist/index.mjs
-var __defProp$6 = Object.defineProperty;
-var __name$6 = (target, value) => __defProp$6(target, "name", {
+var __defProp$5 = Object.defineProperty;
+var __name$5 = (target, value) => __defProp$5(target, "name", {
 	value,
 	configurable: true
 });
@@ -18233,7 +18195,7 @@ function FocusGuards(props) {
 	useFocusGuards();
 	return props.children;
 }
-__name$6(FocusGuards, "FocusGuards");
+__name$5(FocusGuards, "FocusGuards");
 function useFocusGuards() {
 	import_react.useEffect(() => {
 		if (!guards) guards = {
@@ -18254,7 +18216,7 @@ function useFocusGuards() {
 		};
 	}, []);
 }
-__name$6(useFocusGuards, "useFocusGuards");
+__name$5(useFocusGuards, "useFocusGuards");
 function createFocusGuard() {
 	const element = document.createElement("span");
 	element.setAttribute("data-radix-focus-guard", "");
@@ -18265,7 +18227,7 @@ function createFocusGuard() {
 	element.style.pointerEvents = "none";
 	return element;
 }
-__name$6(createFocusGuard, "createFocusGuard");
+__name$5(createFocusGuard, "createFocusGuard");
 //#endregion
 //#region node_modules/tslib/tslib.es6.mjs
 var __assign = function() {
@@ -19083,15 +19045,15 @@ var hideOthers = function(originalTarget, parentNode, markerName) {
 };
 //#endregion
 //#region node_modules/@radix-ui/react-dialog/dist/index.mjs
-var __defProp$5 = Object.defineProperty;
-var __name$5 = (target, value) => __defProp$5(target, "name", {
+var __defProp$4 = Object.defineProperty;
+var __name$4 = (target, value) => __defProp$4(target, "name", {
 	value,
 	configurable: true
 });
 var DIALOG_NAME = "Dialog";
 var [createDialogContext, createDialogScope] = /* @__PURE__ */ createContextScope(DIALOG_NAME);
 var [DialogProvider, useDialogContext] = createDialogContext(DIALOG_NAME);
-var Dialog$1 = /* @__PURE__ */ __name$5((props) => {
+var Dialog$1 = /* @__PURE__ */ __name$4((props) => {
 	const { __scopeDialog, children, open: openProp, defaultOpen, onOpenChange, modal = true } = props;
 	const triggerRef = import_react.useRef(null);
 	const contentRef = import_react.useRef(null);
@@ -19107,9 +19069,9 @@ var Dialog$1 = /* @__PURE__ */ __name$5((props) => {
 		scope: __scopeDialog,
 		triggerRef,
 		contentRef,
-		contentId: useId$1(),
-		titleId: useId$1(),
-		descriptionId: useId$1(),
+		contentId: useId(),
+		titleId: useId(),
+		descriptionId: useId(),
 		titlePresent: titleCount > 0,
 		descriptionPresent: descriptionCount > 0,
 		setTitleCount,
@@ -19123,7 +19085,7 @@ var Dialog$1 = /* @__PURE__ */ __name$5((props) => {
 }, "Dialog");
 var PORTAL_NAME = "DialogPortal";
 var [PortalProvider, usePortalContext] = createDialogContext(PORTAL_NAME, { forceMount: void 0 });
-var DialogPortal$1 = /* @__PURE__ */ __name$5((props) => {
+var DialogPortal$1 = /* @__PURE__ */ __name$4((props) => {
 	const { __scopeDialog, forceMount, children, container } = props;
 	const context = useDialogContext(PORTAL_NAME, __scopeDialog);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PortalProvider, {
@@ -19140,7 +19102,7 @@ var DialogPortal$1 = /* @__PURE__ */ __name$5((props) => {
 	});
 }, "DialogPortal");
 var OVERLAY_NAME = "DialogOverlay";
-var DialogOverlay$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$5(function DialogOverlay2(props, forwardedRef) {
+var DialogOverlay$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$4(function DialogOverlay2(props, forwardedRef) {
 	const portalContext = usePortalContext(OVERLAY_NAME, props.__scopeDialog);
 	const { forceMount = portalContext.forceMount, ...overlayProps } = props;
 	const context = useDialogContext(OVERLAY_NAME, props.__scopeDialog);
@@ -19153,7 +19115,7 @@ var DialogOverlay$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __
 	}) : null;
 }, "DialogOverlay"));
 var Slot = /* @__PURE__ */ createSlot("DialogOverlay.RemoveScroll");
-var DialogOverlayImpl = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$5(function DialogOverlayImpl2(props, forwardedRef) {
+var DialogOverlayImpl = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$4(function DialogOverlayImpl2(props, forwardedRef) {
 	const { __scopeDialog, ...overlayProps } = props;
 	const context = useDialogContext(OVERLAY_NAME, __scopeDialog);
 	const composedRefs = useComposedRefs(forwardedRef, useDismissableLayerSurface());
@@ -19173,7 +19135,7 @@ var DialogOverlayImpl = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ 
 	});
 }, "DialogOverlayImpl"));
 var CONTENT_NAME$1 = "DialogContent";
-var DialogContent$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$5(function DialogContent2(props, forwardedRef) {
+var DialogContent$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$4(function DialogContent2(props, forwardedRef) {
 	const portalContext = usePortalContext(CONTENT_NAME$1, props.__scopeDialog);
 	const { forceMount = portalContext.forceMount, ...contentProps } = props;
 	const context = useDialogContext(CONTENT_NAME$1, props.__scopeDialog);
@@ -19188,7 +19150,7 @@ var DialogContent$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __
 		})
 	});
 }, "DialogContent"));
-var DialogContentModal = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$5(function DialogContentModal2(props, forwardedRef) {
+var DialogContentModal = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$4(function DialogContentModal2(props, forwardedRef) {
 	const context = useDialogContext(CONTENT_NAME$1, props.__scopeDialog);
 	const contentRef = import_react.useRef(null);
 	const composedRefs = useComposedRefs(forwardedRef, context.contentRef, contentRef);
@@ -19213,7 +19175,7 @@ var DialogContentModal = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */
 		onFocusOutside: composeEventHandlers(props.onFocusOutside, (event) => event.preventDefault())
 	});
 }, "DialogContentModal"));
-var DialogContentNonModal = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$5(function DialogContentNonModal2(props, forwardedRef) {
+var DialogContentNonModal = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$4(function DialogContentNonModal2(props, forwardedRef) {
 	const context = useDialogContext(CONTENT_NAME$1, props.__scopeDialog);
 	const hasInteractedOutsideRef = import_react.useRef(false);
 	const hasPointerDownOutsideRef = import_react.useRef(false);
@@ -19243,7 +19205,7 @@ var DialogContentNonModal = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__
 		}
 	});
 }, "DialogContentNonModal"));
-var DialogContentImpl = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$5(function DialogContentImpl2(props, forwardedRef) {
+var DialogContentImpl = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$4(function DialogContentImpl2(props, forwardedRef) {
 	const { __scopeDialog, trapFocus, onOpenAutoFocus, onCloseAutoFocus, ...contentProps } = props;
 	const context = useDialogContext(CONTENT_NAME$1, __scopeDialog);
 	useFocusGuards();
@@ -19267,7 +19229,7 @@ var DialogContentImpl = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ 
 	}) });
 }, "DialogContentImpl"));
 var TITLE_NAME = "DialogTitle";
-var DialogTitle$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$5(function DialogTitle2(props, forwardedRef) {
+var DialogTitle$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$4(function DialogTitle2(props, forwardedRef) {
 	const { __scopeDialog, ...titleProps } = props;
 	const context = useDialogContext(TITLE_NAME, __scopeDialog);
 	const { setTitleCount } = context;
@@ -19282,7 +19244,7 @@ var DialogTitle$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __na
 	});
 }, "DialogTitle"));
 var DESCRIPTION_NAME = "DialogDescription";
-var DialogDescription$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$5(function DialogDescription2(props, forwardedRef) {
+var DialogDescription$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$4(function DialogDescription2(props, forwardedRef) {
 	const { __scopeDialog, ...descriptionProps } = props;
 	const context = useDialogContext(DESCRIPTION_NAME, __scopeDialog);
 	const { setDescriptionCount } = context;
@@ -19297,7 +19259,7 @@ var DialogDescription$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ *
 	});
 }, "DialogDescription"));
 var CLOSE_NAME = "DialogClose";
-var DialogClose = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$5(function DialogClose2(props, forwardedRef) {
+var DialogClose = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$4(function DialogClose2(props, forwardedRef) {
 	const { __scopeDialog, ...closeProps } = props;
 	const context = useDialogContext(CLOSE_NAME, __scopeDialog);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.button, {
@@ -19310,11 +19272,11 @@ var DialogClose = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name
 function getState(open) {
 	return open ? "open" : "closed";
 }
-__name$5(getState, "getState");
+__name$4(getState, "getState");
 //#endregion
 //#region node_modules/@radix-ui/react-avatar/dist/index.mjs
-var __defProp$4 = Object.defineProperty;
-var __name$4 = (target, value) => __defProp$4(target, "name", {
+var __defProp$3 = Object.defineProperty;
+var __name$3 = (target, value) => __defProp$3(target, "name", {
 	value,
 	configurable: true
 });
@@ -19322,7 +19284,7 @@ var AVATAR_NAME = "Avatar";
 var [createAvatarContext, createAvatarScope] = /* @__PURE__ */ createContextScope(AVATAR_NAME);
 var STATIC_IMAGE_COUNT_STATE = [0, () => void 0];
 var [AvatarProvider, useAvatarContext] = createAvatarContext(AVATAR_NAME);
-var Avatar$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$4(function Avatar2(props, forwardedRef) {
+var Avatar$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$3(function Avatar2(props, forwardedRef) {
 	const { __scopeAvatar, ...avatarProps } = props;
 	const [imageLoadingStatus, setImageLoadingStatus] = import_react.useState("idle");
 	const [imageCount, setImageCount] = useImageCount();
@@ -19339,7 +19301,7 @@ var Avatar$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$4(
 	});
 }, "Avatar"));
 var FALLBACK_NAME = "AvatarFallback";
-var AvatarFallback$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$4(function AvatarFallback2(props, forwardedRef) {
+var AvatarFallback$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$3(function AvatarFallback2(props, forwardedRef) {
 	const { __scopeAvatar, delayMs, ...fallbackProps } = props;
 	const context = useAvatarContext(FALLBACK_NAME, __scopeAvatar);
 	const [canRender, setCanRender] = import_react.useState(delayMs === void 0);
@@ -19361,11 +19323,11 @@ function useImageLoadingStatus(src, { loadingStatus, setLoadingStatus, referrerP
 			return;
 		}
 		const image = new window.Image();
-		const handleLoad = /* @__PURE__ */ __name$4((event) => {
+		const handleLoad = /* @__PURE__ */ __name$3((event) => {
 			const image2 = event.currentTarget;
 			setLoadingStatus(getImageLoadingStatus(image2));
 		}, "handleLoad");
-		const handleError = /* @__PURE__ */ __name$4(() => setLoadingStatus("error"), "handleError");
+		const handleError = /* @__PURE__ */ __name$3(() => setLoadingStatus("error"), "handleError");
 		image.addEventListener("load", handleLoad);
 		image.addEventListener("error", handleError);
 		if (referrerPolicy) image.referrerPolicy = referrerPolicy;
@@ -19385,21 +19347,21 @@ function useImageLoadingStatus(src, { loadingStatus, setLoadingStatus, referrerP
 	]);
 	return loadingStatus;
 }
-__name$4(useImageLoadingStatus, "useImageLoadingStatus");
+__name$3(useImageLoadingStatus, "useImageLoadingStatus");
 function getImageLoadingStatus(image) {
 	return image.complete ? image.naturalWidth > 0 ? "loaded" : "error" : "loading";
 }
-__name$4(getImageLoadingStatus, "getImageLoadingStatus");
+__name$3(getImageLoadingStatus, "getImageLoadingStatus");
 function useImageCount() {
 	return STATIC_IMAGE_COUNT_STATE;
 }
-__name$4(useImageCount, "useImageCount");
+__name$3(useImageCount, "useImageCount");
 function useUpdateImageCount(setImageCount) {}
-__name$4(useUpdateImageCount, "useUpdateImageCount");
+__name$3(useUpdateImageCount, "useUpdateImageCount");
 //#endregion
 //#region node_modules/@radix-ui/react-use-is-hydrated/dist/index.mjs
-var __defProp$3 = Object.defineProperty;
-var __name$3 = (target, value) => __defProp$3(target, "name", {
+var __defProp$2 = Object.defineProperty;
+var __name$2 = (target, value) => __defProp$2(target, "name", {
 	value,
 	configurable: true
 });
@@ -19414,21 +19376,21 @@ function useIsHydrated() {
 	}, []);
 	return isHydrated;
 }
-__name$3(useIsHydrated, "useIsHydrated");
+__name$2(useIsHydrated, "useIsHydrated");
 var useReactSyncExternalStore = import_react[" useSyncExternalStore ".trim().toString()];
 function subscribe() {
 	return () => {};
 }
-__name$3(subscribe, "subscribe");
+__name$2(subscribe, "subscribe");
 function useIsHydratedModern() {
 	return useReactSyncExternalStore(subscribe, () => true, () => false);
 }
-__name$3(useIsHydratedModern, "useIsHydratedModern");
+__name$2(useIsHydratedModern, "useIsHydratedModern");
 var useIsHydrated2 = typeof useReactSyncExternalStore === "function" ? useIsHydratedModern : useIsHydrated;
 //#endregion
 //#region node_modules/@radix-ui/react-roving-focus/dist/index.mjs
-var __defProp$2 = Object.defineProperty;
-var __name$2 = (target, value) => __defProp$2(target, "name", {
+var __defProp$1 = Object.defineProperty;
+var __name$1 = (target, value) => __defProp$1(target, "name", {
 	value,
 	configurable: true
 });
@@ -19441,7 +19403,7 @@ var GROUP_NAME = "RovingFocusGroup";
 var [Collection, useCollection, createCollectionScope] = /* @__PURE__ */ createCollection(GROUP_NAME);
 var [createRovingFocusGroupContext, createRovingFocusGroupScope] = /* @__PURE__ */ createContextScope(GROUP_NAME, [createCollectionScope]);
 var [RovingFocusProvider, useRovingFocusContext] = createRovingFocusGroupContext(GROUP_NAME);
-var RovingFocusGroup = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$2(function RovingFocusGroup2(props, forwardedRef) {
+var RovingFocusGroup = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$1(function RovingFocusGroup2(props, forwardedRef) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Collection.Provider, {
 		scope: props.__scopeRovingFocusGroup,
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Collection.Slot, {
@@ -19453,7 +19415,7 @@ var RovingFocusGroup = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ _
 		})
 	});
 }, "RovingFocusGroup"));
-var RovingFocusGroupImpl = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$2(function RovingFocusGroupImpl2(props, forwardedRef) {
+var RovingFocusGroupImpl = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$1(function RovingFocusGroupImpl2(props, forwardedRef) {
 	const { __scopeRovingFocusGroup, orientation, loop = false, dir, currentTabStopId: currentTabStopIdProp, defaultCurrentTabStopId, onCurrentTabStopIdChange, onEntryFocus, preventScrollOnEntryFocus = false, ...groupProps } = props;
 	const ref = import_react.useRef(null);
 	const composedRefs = useComposedRefs(forwardedRef, ref);
@@ -19519,9 +19481,9 @@ var RovingFocusGroupImpl = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ 
 	});
 }, "RovingFocusGroupImpl"));
 var ITEM_NAME = "RovingFocusGroupItem";
-var RovingFocusGroupItem = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$2(function RovingFocusGroupItem2(props, forwardedRef) {
+var RovingFocusGroupItem = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$1(function RovingFocusGroupItem2(props, forwardedRef) {
 	const { __scopeRovingFocusGroup, focusable = true, active = false, tabStopId, children, ...itemProps } = props;
-	const autoId = useId$1();
+	const autoId = useId();
 	const id = tabStopId || autoId;
 	const context = useRovingFocusContext(ITEM_NAME, __scopeRovingFocusGroup);
 	const isCurrentTabStop = context.currentTabStopId === id;
@@ -19604,14 +19566,14 @@ function getDirectionAwareKey(key, dir) {
 	if (dir !== "rtl") return key;
 	return key === "ArrowLeft" ? "ArrowRight" : key === "ArrowRight" ? "ArrowLeft" : key;
 }
-__name$2(getDirectionAwareKey, "getDirectionAwareKey");
+__name$1(getDirectionAwareKey, "getDirectionAwareKey");
 function getFocusIntent(event, orientation, dir) {
 	const key = getDirectionAwareKey(event.key, dir);
 	if (orientation === "vertical" && ["ArrowLeft", "ArrowRight"].includes(key)) return void 0;
 	if (orientation === "horizontal" && ["ArrowUp", "ArrowDown"].includes(key)) return void 0;
 	return MAP_KEY_TO_FOCUS_INTENT[key];
 }
-__name$2(getFocusIntent, "getFocusIntent");
+__name$1(getFocusIntent, "getFocusIntent");
 function focusFirst(candidates, preventScroll = false) {
 	const PREVIOUSLY_FOCUSED_ELEMENT = document.activeElement;
 	for (const candidate of candidates) {
@@ -19620,41 +19582,13 @@ function focusFirst(candidates, preventScroll = false) {
 		if (document.activeElement !== PREVIOUSLY_FOCUSED_ELEMENT) return;
 	}
 }
-__name$2(focusFirst, "focusFirst");
+__name$1(focusFirst, "focusFirst");
 function wrapArray(array, startIndex) {
 	return array.map((_, index) => array[(startIndex + index) % array.length]);
 }
-__name$2(wrapArray, "wrapArray");
-var Root$1 = RovingFocusGroup;
+__name$1(wrapArray, "wrapArray");
+var Root = RovingFocusGroup;
 var Item = RovingFocusGroupItem;
-//#endregion
-//#region node_modules/@radix-ui/react-separator/dist/index.mjs
-var __defProp$1 = Object.defineProperty;
-var __name$1 = (target, value) => __defProp$1(target, "name", {
-	value,
-	configurable: true
-});
-var DEFAULT_ORIENTATION = "horizontal";
-var ORIENTATIONS = ["horizontal", "vertical"];
-var Separator$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$1(function Separator2(props, forwardedRef) {
-	const { decorative, orientation: orientationProp = DEFAULT_ORIENTATION, ...domProps } = props;
-	const orientation = isValidOrientation(orientationProp) ? orientationProp : DEFAULT_ORIENTATION;
-	const semanticProps = decorative ? { role: "none" } : {
-		"aria-orientation": orientation === "vertical" ? orientation : void 0,
-		role: "separator"
-	};
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
-		"data-orientation": orientation,
-		...semanticProps,
-		...domProps,
-		ref: forwardedRef
-	});
-}, "Separator"));
-function isValidOrientation(orientation) {
-	return ORIENTATIONS.includes(orientation);
-}
-__name$1(isValidOrientation, "isValidOrientation");
-var Root = Separator$1;
 //#endregion
 //#region node_modules/@radix-ui/react-tabs/dist/index.mjs
 var __defProp = Object.defineProperty;
@@ -19677,7 +19611,7 @@ var Tabs$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name(func
 	});
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsProvider, {
 		scope: __scopeTabs,
-		baseId: useId$1(),
+		baseId: useId(),
 		value,
 		onValueChange: setValue,
 		orientation,
@@ -19696,7 +19630,7 @@ var TabsList$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name(
 	const { __scopeTabs, loop = true, ...listProps } = props;
 	const context = useTabsContext(TAB_LIST_NAME, __scopeTabs);
 	const rovingFocusGroupScope = useRovingFocusGroupScope(__scopeTabs);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Root$1, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Root, {
 		asChild: true,
 		...rovingFocusGroupScope,
 		orientation: context.orientation,
@@ -19993,17 +19927,6 @@ function NativeSelect({ className, size = "default", ...props }) {
 	});
 }
 //#endregion
-//#region frontend/src/components/ui/separator.jsx
-function Separator({ className, orientation = "horizontal", decorative = true, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Root, {
-		"data-slot": "separator",
-		decorative,
-		orientation,
-		className: cn("shrink-0 bg-border data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px", className),
-		...props
-	});
-}
-//#endregion
 //#region frontend/src/components/ui/sheet.jsx
 function Sheet({ ...props }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog$1, {
@@ -20066,2836 +19989,6 @@ function Skeleton({ className, ...props }) {
 		"data-slot": "skeleton",
 		className: cn("animate-pulse rounded-md bg-accent", className),
 		...props
-	});
-}
-//#endregion
-//#region node_modules/liquid-gooey/dist/index.js
-var GooeyContext = (0, import_react.createContext)(null);
-function useGooeyContext() {
-	const ctx = (0, import_react.useContext)(GooeyContext);
-	if (!ctx) throw new Error("<Gooey.Item> must be rendered inside a <Gooey> group.");
-	return ctx;
-}
-var BINARIZE = "1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 60 -29.5";
-function InsetPass({ i, s }) {
-	const parts = [];
-	let src = "bin";
-	if (s.spread !== 0) {
-		parts.push(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feMorphology", {
-			in: src,
-			operator: s.spread > 0 ? "erode" : "dilate",
-			radius: Math.abs(s.spread),
-			result: `s${i}-er`
-		}, "er"));
-		src = `s${i}-er`;
-	}
-	if (s.x !== 0 || s.y !== 0) {
-		parts.push(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feOffset", {
-			in: src,
-			dx: s.x,
-			dy: s.y,
-			result: `s${i}-o`
-		}, "o"));
-		src = `s${i}-o`;
-	}
-	if (s.blur > 0) {
-		parts.push(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", {
-			in: src,
-			stdDeviation: s.blur / 2,
-			result: `s${i}-b`
-		}, "b"));
-		src = `s${i}-b`;
-	}
-	parts.push(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
-		in: "bin",
-		in2: src,
-		operator: "out",
-		result: `s${i}-band`
-	}, "band"), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feFlood", {
-		floodColor: s.color,
-		result: `s${i}-c`
-	}, "c"), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
-		in: `s${i}-c`,
-		in2: `s${i}-band`,
-		operator: "in",
-		result: `s${i}`
-	}, "f"));
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_jsx_runtime.Fragment, { children: parts });
-}
-function ShadowPass({ i, s }) {
-	const parts = [];
-	let src = "shape";
-	if (s.spread !== 0) {
-		parts.push(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feMorphology", {
-			in: "bin",
-			operator: s.spread > 0 ? "dilate" : "erode",
-			radius: Math.abs(s.spread),
-			result: `s${i}-sp`
-		}, "sp"));
-		src = `s${i}-sp`;
-	}
-	if (s.blur > 0) {
-		parts.push(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", {
-			in: src,
-			stdDeviation: s.blur / 2,
-			result: `s${i}-b`
-		}, "b"));
-		src = `s${i}-b`;
-	}
-	if (s.x !== 0 || s.y !== 0) {
-		parts.push(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feOffset", {
-			in: src,
-			dx: s.x,
-			dy: s.y,
-			result: `s${i}-o`
-		}, "o"));
-		src = `s${i}-o`;
-	}
-	parts.push(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feFlood", {
-		floodColor: s.color,
-		result: `s${i}-c`
-	}, "c"), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
-		in: `s${i}-c`,
-		in2: src,
-		operator: "in",
-		result: `s${i}`
-	}, "f"));
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_jsx_runtime.Fragment, { children: parts });
-}
-function GooFilterPrimitives({ blur, contrast, shadows, waviness = 0, wavinessFreq = .018 }) {
-	const wavy = waviness > 0;
-	const intercept = Math.round((.5 - contrast * (5 / 12)) * 100) / 100;
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", {
-			in: "SourceGraphic",
-			stdDeviation: blur,
-			result: "blur"
-		}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feColorMatrix", {
-			in: "blur",
-			type: "matrix",
-			values: `1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 ${contrast} ${intercept}`,
-			result: "goo"
-		}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
-			in: "SourceGraphic",
-			in2: "goo",
-			operator: "atop",
-			result: wavy ? "shape-raw" : "shape"
-		}),
-		wavy && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feTurbulence", {
-			type: "fractalNoise",
-			baseFrequency: wavinessFreq,
-			numOctaves: 2,
-			seed: "7",
-			result: "wave-noise"
-		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feDisplacementMap", {
-			in: "shape-raw",
-			in2: "wave-noise",
-			scale: waviness * 2,
-			xChannelSelector: "R",
-			yChannelSelector: "G",
-			result: "shape"
-		})] }),
-		shadows.some((s) => s.inset || s.spread !== 0) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feColorMatrix", {
-			in: "shape",
-			type: "matrix",
-			values: BINARIZE,
-			result: "bin"
-		}),
-		shadows.map((s, i) => s.inset ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InsetPass, {
-			i,
-			s
-		}, i) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShadowPass, {
-			i,
-			s
-		}, i)),
-		shadows.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("feMerge", { children: [
-			shadows.map((s, i) => !s.inset ? i : -1).filter((i) => i >= 0).reverse().map((i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feMergeNode", { in: `s${i}` }, i)),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feMergeNode", { in: "shape" }),
-			shadows.map((s, i) => s.inset ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feMergeNode", { in: `s${i}` }, i) : null)
-		] })
-	] });
-}
-var IMAGE_MELT_DEFAULTS = {
-	blur: 7,
-	contrast: 40,
-	reach: .8,
-	fade: 17,
-	warp: 0,
-	mix: 1,
-	mixBlur: 8,
-	gravity: 1.9,
-	waviness: 12
-};
-function createImageMeltRegistry() {
-	const set = /* @__PURE__ */ new Set();
-	const subs = /* @__PURE__ */ new Set();
-	const notify = () => subs.forEach((f) => f());
-	return {
-		register(entry) {
-			set.add(entry);
-			notify();
-			return () => {
-				set.delete(entry);
-				notify();
-			};
-		},
-		subscribe(fn) {
-			subs.add(fn);
-			return () => subs.delete(fn);
-		},
-		entries: () => [...set]
-	};
-}
-function readGeom(group, el) {
-	const gr = group.getBoundingClientRect();
-	const r = el.getBoundingClientRect();
-	const cs = getComputedStyle(el);
-	const rad = parseFloat(cs.borderTopLeftRadius) || 0;
-	return {
-		x: r.left - gr.left,
-		y: r.top - gr.top,
-		w: r.width,
-		h: r.height,
-		r: Math.min(rad, r.width / 2, r.height / 2)
-	};
-}
-var geomKey = (g) => `${Math.round(g.x * 2)},${Math.round(g.y * 2)},${Math.round(g.w)},${Math.round(g.h)},${Math.round(g.r)}`;
-function useEasedValue(target, rate = 14) {
-	const [value, setValue] = (0, import_react.useState)(target);
-	const st = (0, import_react.useRef)({
-		value: target,
-		target,
-		raf: 0,
-		last: 0
-	});
-	(0, import_react.useEffect)(() => {
-		const s = st.current;
-		s.target = target;
-		if (s.raf) return;
-		s.last = performance.now();
-		const tick = (now) => {
-			const dt = Math.min(.05, (now - s.last) / 1e3);
-			s.last = now;
-			const k = 1 - Math.exp(-rate * dt);
-			s.value += (s.target - s.value) * k;
-			if (Math.abs(s.value - s.target) < .004) s.value = s.target;
-			setValue(s.value);
-			s.raf = s.value === s.target ? 0 : requestAnimationFrame(tick);
-		};
-		s.raf = requestAnimationFrame(tick);
-		return () => {
-			if (s.raf) cancelAnimationFrame(s.raf);
-			s.raf = 0;
-		};
-	}, [target, rate]);
-	return value;
-}
-function MeltPair({ a, b, srcA, srcB, opts, width, height }) {
-	const uid = `lgm-${(0, import_react.useId)().replace(/[^a-zA-Z0-9_-]/g, "")}`;
-	const { blur: gooBlur, contrast, reach, fade, warp, mix, mixBlur, gravity, waviness } = opts;
-	const ca = {
-		x: a.x + a.w / 2,
-		y: a.y + a.h / 2
-	};
-	const cb = {
-		x: b.x + b.w / 2,
-		y: b.y + b.h / 2
-	};
-	const gap = Math.max(0, Math.hypot(Math.max(Math.abs(ca.x - cb.x) - (a.w + b.w) / 2, 0), Math.max(Math.abs(ca.y - cb.y) - (a.h + b.h) / 2, 0)));
-	const near = Math.max(0, Math.min(1, 1 - gap / Math.max(8, gooBlur * 2.6)));
-	const prox = useEasedValue(near * near * (3 - 2 * near));
-	const intercept = Math.round((.5 - contrast * (5 / 12)) * 100) / 100;
-	const rA = Math.hypot(a.w, a.h) / 2 * reach * prox;
-	const rB = Math.hypot(b.w, b.h) / 2 * reach * prox;
-	const seam = {
-		x: (ca.x + cb.x) / 2,
-		y: (ca.y + cb.y) / 2
-	};
-	const dxc = cb.x - ca.x;
-	const dyc = cb.y - ca.y;
-	const dc = Math.max(.001, Math.hypot(dxc, dyc));
-	const tx = -dyc / dc;
-	const ty = dxc / dc;
-	const ovx = Math.max(0, (a.w + b.w) / 2 - Math.abs(dxc));
-	const ovy = Math.max(0, (a.h + b.h) / 2 - Math.abs(dyc));
-	const tanHalf = .5 * (ovx * Math.abs(tx) + ovy * Math.abs(ty)) * prox;
-	const seamDeg = Math.round(Math.atan2(ty, tx) * 180 / Math.PI);
-	const mixAmt = Math.round(mix * prox * 100) / 100;
-	const blurEff = Math.round((2 + (gooBlur - 2) * prox) * 10) / 10;
-	const warpEff = Math.round(warp * prox * 10) / 10;
-	const colorBlur = Math.round(blurEff * 2.5 * 10) / 10;
-	const edgeSoft = Math.round((.4 + (2 + gooBlur * .8) * prox) * 10) / 10;
-	const gA = `translate(${a.x}, ${a.y})`;
-	const gB = `translate(${b.x}, ${b.y})`;
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
-		"aria-hidden": "true",
-		focusable: "false",
-		"data-gooey-imagemelt": "",
-		width,
-		height,
-		viewBox: `0 0 ${width} ${height}`,
-		style: {
-			position: "absolute",
-			inset: 0,
-			overflow: "visible",
-			pointerEvents: "none"
-		},
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("defs", { children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("pattern", {
-					id: `${uid}-pa`,
-					patternUnits: "userSpaceOnUse",
-					width: a.w,
-					height: a.h,
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("image", {
-						href: srcA,
-						width: a.w,
-						height: a.h,
-						preserveAspectRatio: "xMidYMid slice"
-					})
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("pattern", {
-					id: `${uid}-pb`,
-					patternUnits: "userSpaceOnUse",
-					width: b.w,
-					height: b.h,
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("image", {
-						href: srcB,
-						width: b.w,
-						height: b.h,
-						preserveAspectRatio: "xMidYMid slice"
-					})
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("filter", {
-					id: `${uid}-goo`,
-					x: "-15%",
-					y: "-15%",
-					width: "130%",
-					height: "130%",
-					colorInterpolationFilters: "sRGB",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", {
-							in: "SourceGraphic",
-							stdDeviation: blurEff,
-							result: "b"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feColorMatrix", {
-							in: "b",
-							type: "matrix",
-							values: `1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 ${contrast} ${intercept}`,
-							result: "goo"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", {
-							in: "SourceGraphic",
-							stdDeviation: colorBlur,
-							result: "bc"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
-							in: "bc",
-							in2: "goo",
-							operator: "in",
-							result: "mix"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feTurbulence", {
-							type: "fractalNoise",
-							baseFrequency: (2 + waviness * 1.2) / 1e3,
-							numOctaves: "2",
-							seed: "4",
-							result: "wn"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feDisplacementMap", {
-							in: "mix",
-							in2: "wn",
-							scale: warpEff,
-							xChannelSelector: "R",
-							yChannelSelector: "G",
-							result: "warped"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
-							in: "warped",
-							in2: "warped",
-							operator: "over",
-							result: "s1"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
-							in: "s1",
-							in2: "s1",
-							operator: "over",
-							result: "s2"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
-							in: "s2",
-							in2: "s2",
-							operator: "over",
-							result: "solid"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", {
-							in: "solid",
-							stdDeviation: "0.6"
-						})
-					]
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("filter", {
-					id: `${uid}-soft`,
-					x: "-60%",
-					y: "-60%",
-					width: "220%",
-					height: "220%",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", { stdDeviation: fade })
-				}),
-				mixAmt > .01 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("filter", {
-					id: `${uid}-marble`,
-					x: "-25%",
-					y: "-25%",
-					width: "150%",
-					height: "150%",
-					colorInterpolationFilters: "sRGB",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", {
-							in: "SourceGraphic",
-							stdDeviation: mixBlur,
-							result: "c"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feTurbulence", {
-							type: "fractalNoise",
-							baseFrequency: "0.011",
-							numOctaves: "2",
-							seed: "5",
-							result: "n1"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feDisplacementMap", {
-							in: "c",
-							in2: "n1",
-							scale: mixAmt * 90,
-							xChannelSelector: "R",
-							yChannelSelector: "G",
-							result: "d1"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feTurbulence", {
-							type: "fractalNoise",
-							baseFrequency: "0.019",
-							numOctaves: "2",
-							seed: "11",
-							result: "n2"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feDisplacementMap", {
-							in: "d1",
-							in2: "n2",
-							scale: mixAmt * 50,
-							xChannelSelector: "R",
-							yChannelSelector: "G",
-							result: "d2"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
-							in: "d2",
-							in2: "d2",
-							operator: "over",
-							result: "m1"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
-							in: "m1",
-							in2: "m1",
-							operator: "over",
-							result: "m2"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", {
-							in: "m2",
-							stdDeviation: "0.6",
-							result: "marble"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", {
-							in: "SourceGraphic",
-							stdDeviation: blurEff,
-							result: "mb"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feColorMatrix", {
-							in: "mb",
-							type: "matrix",
-							values: `1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 ${contrast} ${intercept}`,
-							result: "mg"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feTurbulence", {
-							type: "fractalNoise",
-							baseFrequency: (2 + waviness * 1.2) / 1e3,
-							numOctaves: "2",
-							seed: "4",
-							result: "mwn"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feDisplacementMap", {
-							in: "mg",
-							in2: "mwn",
-							scale: warpEff,
-							xChannelSelector: "R",
-							yChannelSelector: "G",
-							result: "mshape"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feComposite", {
-							in: "marble",
-							in2: "mshape",
-							operator: "in"
-						})
-					]
-				}),
-				mixAmt > .01 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("mask", {
-					id: `${uid}-marblemask`,
-					maskUnits: "userSpaceOnUse",
-					x: "0",
-					y: "0",
-					width,
-					height,
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
-						filter: `url(#${uid}-soft)`,
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ellipse", {
-							cx: seam.x,
-							cy: seam.y,
-							rx: (rA + rB) / 2 + tanHalf,
-							ry: (rA + rB) / 2 * gravity,
-							transform: `rotate(${seamDeg}, ${seam.x}, ${seam.y})`,
-							fill: "#fff"
-						})
-					})
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("filter", {
-					id: `${uid}-edge`,
-					x: "-40%",
-					y: "-40%",
-					width: "180%",
-					height: "180%",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", { stdDeviation: edgeSoft })
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("mask", {
-					id: `${uid}-ma`,
-					maskUnits: "userSpaceOnUse",
-					x: "0",
-					y: "0",
-					width,
-					height,
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
-						filter: `url(#${uid}-edge)`,
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
-							transform: gA,
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
-								width: a.w,
-								height: a.h,
-								rx: a.r,
-								fill: "#fff"
-							})
-						})
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
-						filter: `url(#${uid}-soft)`,
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ellipse", {
-							cx: seam.x,
-							cy: seam.y,
-							rx: rB + tanHalf,
-							ry: rB,
-							transform: `rotate(${seamDeg}, ${seam.x}, ${seam.y})`,
-							fill: "#000"
-						})
-					})]
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("mask", {
-					id: `${uid}-mb`,
-					maskUnits: "userSpaceOnUse",
-					x: "0",
-					y: "0",
-					width,
-					height,
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
-						filter: `url(#${uid}-edge)`,
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
-							transform: gB,
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
-								width: b.w,
-								height: b.h,
-								rx: b.r,
-								fill: "#fff"
-							})
-						})
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
-						filter: `url(#${uid}-soft)`,
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ellipse", {
-							cx: seam.x,
-							cy: seam.y,
-							rx: rA + tanHalf,
-							ry: rA,
-							transform: `rotate(${seamDeg}, ${seam.x}, ${seam.y})`,
-							fill: "#000"
-						})
-					})]
-				})
-			] }),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
-				filter: `url(#${uid}-goo)`,
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
-					transform: gA,
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
-						width: a.w,
-						height: a.h,
-						rx: a.r,
-						fill: `url(#${uid}-pa)`
-					})
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
-					transform: gB,
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
-						width: b.w,
-						height: b.h,
-						rx: b.r,
-						fill: `url(#${uid}-pb)`
-					})
-				})]
-			}),
-			mixAmt > .01 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
-				mask: `url(#${uid}-marblemask)`,
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
-					filter: `url(#${uid}-marble)`,
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
-						transform: gA,
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
-							width: a.w,
-							height: a.h,
-							rx: a.r,
-							fill: `url(#${uid}-pa)`
-						})
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
-						transform: gB,
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
-							width: b.w,
-							height: b.h,
-							rx: b.r,
-							fill: `url(#${uid}-pb)`
-						})
-					})]
-				})
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
-				mask: `url(#${uid}-ma)`,
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
-					transform: gA,
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
-						width: a.w,
-						height: a.h,
-						rx: a.r,
-						fill: `url(#${uid}-pa)`
-					})
-				})
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
-				mask: `url(#${uid}-mb)`,
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
-					transform: gB,
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
-						width: b.w,
-						height: b.h,
-						rx: b.r,
-						fill: `url(#${uid}-pb)`
-					})
-				})
-			})
-		]
-	});
-}
-function ImageMeltLayer({ registry }) {
-	const { getGroup } = useGooeyContext();
-	const [, bump] = (0, import_react.useState)(0);
-	const [geoms, setGeoms] = (0, import_react.useState)(null);
-	const keyRef = (0, import_react.useRef)("");
-	(0, import_react.useEffect)(() => registry.subscribe(() => bump((v) => v + 1)), [registry]);
-	const pair = registry.entries().slice(0, 2);
-	const active = pair.length === 2;
-	(0, import_react.useEffect)(() => {
-		if (!active) {
-			setGeoms(null);
-			keyRef.current = "";
-			return;
-		}
-		let raf = 0;
-		const tick = () => {
-			const group2 = getGroup();
-			if (group2) {
-				const a = readGeom(group2, pair[0].el);
-				const b = readGeom(group2, pair[1].el);
-				const key = geomKey(a) + "|" + geomKey(b);
-				if (key !== keyRef.current) {
-					keyRef.current = key;
-					setGeoms({
-						a,
-						b
-					});
-				}
-			}
-			raf = requestAnimationFrame(tick);
-		};
-		raf = requestAnimationFrame(tick);
-		return () => cancelAnimationFrame(raf);
-	}, [
-		active,
-		pair[0]?.el,
-		pair[1]?.el,
-		getGroup
-	]);
-	if (!active || !geoms) return null;
-	const group = getGroup();
-	const w = group?.offsetWidth ?? 0;
-	const h = group?.offsetHeight ?? 0;
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MeltPair, {
-		a: geoms.a,
-		b: geoms.b,
-		srcA: pair[0].src,
-		srcB: pair[1].src,
-		opts: pair[0].opts,
-		width: w,
-		height: h
-	});
-}
-function ImageMeltItem({ src, opts, registry, children }) {
-	const hostRef = (0, import_react.useRef)(null);
-	(0, import_react.useEffect)(() => {
-		const target = hostRef.current?.firstElementChild;
-		if (!target) return;
-		const img = src ?? target.querySelector("img")?.src ?? target.src;
-		if (!img) return;
-		const prevOpacity = target.style.opacity;
-		target.style.opacity = "0";
-		const unregister = registry.register({
-			el: target,
-			src: img,
-			opts
-		});
-		return () => {
-			target.style.opacity = prevOpacity;
-			unregister();
-		};
-	}, [
-		src,
-		opts,
-		registry
-	]);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-		ref: hostRef,
-		style: { display: "contents" },
-		children
-	});
-}
-var useIsoLayoutEffect = typeof window !== "undefined" ? import_react.useLayoutEffect : import_react.useEffect;
-function useReducedMotion$1() {
-	const [reduced, setReduced] = (0, import_react.useState)(false);
-	(0, import_react.useEffect)(() => {
-		const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-		setReduced(mq.matches);
-		const onChange = (e) => setReduced(e.matches);
-		mq.addEventListener("change", onChange);
-		return () => mq.removeEventListener("change", onChange);
-	}, []);
-	return reduced;
-}
-function offsetTo(el, ancestor) {
-	let x = 0;
-	let y = 0;
-	let node = el;
-	while (node && node !== ancestor && ancestor.contains(node)) {
-		x += node.offsetLeft;
-		y += node.offsetTop;
-		node = node.offsetParent;
-	}
-	return {
-		x,
-		y
-	};
-}
-function measureRadius(el, w, h) {
-	const cs = getComputedStyle(el);
-	const parse = (v) => {
-		const first = v.split(" ")[0];
-		if (first.endsWith("%")) return (parseFloat(first) || 0) / 100 * Math.min(w, h);
-		return parseFloat(first) || 0;
-	};
-	return [
-		parse(cs.borderTopLeftRadius),
-		parse(cs.borderTopRightRadius),
-		parse(cs.borderBottomRightRadius),
-		parse(cs.borderBottomLeftRadius)
-	];
-}
-function normalizeRadius(r) {
-	return typeof r === "number" ? [
-		r,
-		r,
-		r,
-		r
-	] : r;
-}
-function roundedRectPath(x, y, w, h, radii) {
-	let [tl, tr, br, bl] = radii.map((v) => Math.max(0, v));
-	const f = Math.min(1, w / Math.max(1e-6, tl + tr), w / Math.max(1e-6, bl + br), h / Math.max(1e-6, tl + bl), h / Math.max(1e-6, tr + br));
-	tl *= f;
-	tr *= f;
-	br *= f;
-	bl *= f;
-	return `M ${x + tl} ${y} H ${x + w - tr} A ${tr} ${tr} 0 0 1 ${x + w} ${y + tr} V ${y + h - br} A ${br} ${br} 0 0 1 ${x + w - br} ${y + h} H ${x + bl} A ${bl} ${bl} 0 0 1 ${x} ${y + h - bl} V ${y + tl} A ${tl} ${tl} 0 0 1 ${x + tl} ${y} Z`;
-}
-var viteHot = void 0;
-if (viteHot) viteHot.accept(() => viteHot.invalidate());
-var EVOLVE_DEFAULTS = {
-	massStiffness: 320,
-	massDamping: 17,
-	sizeStiffness: 170,
-	sizeDamping: 11.5,
-	radiusStiffness: 900,
-	radiusDamping: 60,
-	contentBlur: 7,
-	roundness: 1,
-	cornerDuration: 460,
-	cornerDelay: 0,
-	cornerEase: "cubic-bezier(0.3, 1.05, 0.4, 1)",
-	anticipation: 90,
-	travel: 32
-};
-var easeCache = /* @__PURE__ */ new Map();
-function easingFn(spec) {
-	let fn = easeCache.get(spec);
-	if (fn) return fn;
-	const m = /cubic-bezier\(([^)]+)\)/.exec(spec);
-	if (m) {
-		const [x1, y1, x2, y2] = m[1].split(",").map(Number);
-		fn = (t) => {
-			if (t <= 0) return 0;
-			if (t >= 1) return 1;
-			let lo = 0;
-			let hi = 1;
-			for (let i = 0; i < 24; i++) {
-				const mid = (lo + hi) / 2;
-				if (3 * mid * (1 - mid) * (1 - mid) * x1 + 3 * mid * mid * (1 - mid) * x2 + mid ** 3 < t) lo = mid;
-				else hi = mid;
-			}
-			const u = (lo + hi) / 2;
-			return 3 * u * (1 - u) * (1 - u) * y1 + 3 * u * u * (1 - u) * y2 + u ** 3;
-		};
-	} else if (spec === "ease-in-out") fn = easingFn("cubic-bezier(0.42, 0, 0.58, 1)");
-	else fn = (t) => Math.min(1, Math.max(0, t));
-	easeCache.set(spec, fn);
-	return fn;
-}
-var MOVE_DEFAULTS = {
-	stiffness: 380,
-	damping: 18,
-	stretch: .18,
-	tail: .46,
-	force: .5,
-	bend: 0,
-	bendX: 0
-};
-var MELT_LAYERS = 3;
-function cornerTotalOf(eo) {
-	return Math.max(0, eo.cornerDelay) + Math.max(1, eo.cornerDuration);
-}
-function pillRadius(r, w, h) {
-	return Math.max(0, Math.min(r, Math.min(w, h) / 2));
-}
-function springStep(cur, vel, target, k, c, dt) {
-	const v = vel + (k * (target - cur) - c * vel) * dt;
-	return [cur + v * dt, v];
-}
-function springSteps(cur, vel, target, k, c, dt) {
-	let n = Math.max(1, Math.ceil(dt * 60));
-	const h = dt / n;
-	let p = cur;
-	let v = vel;
-	while (n-- > 0) {
-		const step = springStep(p, v, target, k, c, h);
-		p = step[0];
-		v = step[1];
-	}
-	return [p, v];
-}
-function q(v, step) {
-	return Math.round(v / step) * step;
-}
-var SVG_NS = "http://www.w3.org/2000/svg";
-var meltCounter = 0;
-function smoothstep(t) {
-	const c = Math.min(1, Math.max(0, t));
-	return c * c * (3 - 2 * c);
-}
-function svg(tag, attrs) {
-	const el = document.createElementNS(SVG_NS, tag);
-	for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
-	return el;
-}
-function downscaleHref(el) {
-	try {
-		if (!el.complete || !el.naturalWidth) return null;
-		const dw = Math.max(2, Math.min(el.naturalWidth, Math.round((el.offsetWidth || 40) * 3)));
-		const dh = Math.max(2, Math.min(el.naturalHeight, Math.round((el.offsetHeight || 40) * 3)));
-		if (el.naturalWidth <= dw * 1.5) return null;
-		const cv = document.createElement("canvas");
-		cv.width = dw;
-		cv.height = dh;
-		const c2 = cv.getContext("2d");
-		if (!c2) return null;
-		const scale = Math.max(dw / el.naturalWidth, dh / el.naturalHeight);
-		const sw = dw / scale;
-		const sh = dh / scale;
-		c2.drawImage(el, (el.naturalWidth - sw) / 2, (el.naturalHeight - sh) / 2, sw, sh, 0, 0, dw, dh);
-		return cv.toDataURL();
-	} catch {
-		return null;
-	}
-}
-var ObserveEngine = class {
-	constructor(getGroup) {
-		this.getGroup = getGroup;
-		/** Goo blur of the owning group; used to derive the default blend range. */
-		this.gooBlur = 6;
-		this.items = /* @__PURE__ */ new Set();
-		this.awake = false;
-		this.clean = 0;
-		this.raf = 0;
-		this.sourcesReady = false;
-		this.mo = null;
-		this.interval = null;
-		this.removeListeners = [];
-		this.wake = () => {
-			this.clean = 0;
-			if (this.awake || this.items.size === 0) return;
-			this.awake = true;
-			this.raf = requestAnimationFrame(this.loop);
-		};
-		this.lastNow = 0;
-		/** EMA of the raw frame interval (ms) — the melt write pass consults it to
-		*  pick its cadence: every frame while the clock is healthy, backed off to
-		*  ~28fps when frames are dropping (WebKit under CPU-raster load is exactly
-		*  the case that degrades the clock). Seeded at 60Hz-healthy. */
-		this.frameEma = 17;
-		this.loop = (now) => {
-			if (this.items.size === 0) {
-				this.awake = false;
-				this.lastNow = 0;
-				return;
-			}
-			const dt = this.lastNow ? Math.min(.25, Math.max(1 / 240, (now - this.lastNow) / 1e3)) : 1 / 60;
-			if (this.lastNow) this.frameEma += (Math.min(now - this.lastNow, 80) - this.frameEma) * .12;
-			this.lastNow = now;
-			if (this.measureAll(dt)) this.clean = 0;
-			else this.clean++;
-			if (this.clean > 30) {
-				this.awake = false;
-				this.lastNow = 0;
-				return;
-			}
-			this.raf = requestAnimationFrame(this.loop);
-		};
-	}
-	add(t) {
-		const item = {
-			...t,
-			baseW: t.target.offsetWidth || 1,
-			baseH: t.target.offsetHeight || 1,
-			radiusPx: this.resolveRadius(t),
-			last: null,
-			frame: null,
-			lastBlend: null,
-			melt: null,
-			sim: null,
-			motionEnv: 0,
-			tPrev: null,
-			tvx: 0,
-			tvy: 0,
-			lead01: 0,
-			cornerT0: 0,
-			lastTargetMoveT: 0,
-			lastTargetSize: null,
-			morphActive: false,
-			round01: 0,
-			tailEl: null,
-			tailMidA: null,
-			tailMidB: null,
-			tailPhase: 0,
-			bendCur: 0,
-			bendCurX: 0,
-			bendPathEl: null,
-			lastBendD: null,
-			lastBendVars: null,
-			tailX: 0,
-			tailY: 0,
-			tailVx: 0,
-			tailVy: 0,
-			tailR: 0,
-			contentBlurred: false,
-			lastPaint: null,
-			lastTail: null,
-			lastBi: t.blobInset ?? 0,
-			biSmooth: null,
-			meltFade: 0,
-			meltRel: null,
-			meltOp: 1,
-			meltPhase: 0,
-			meltPrev: null,
-			meltGeom: null,
-			meltWroteAt: 0,
-			meltAxis: null,
-			meltHostLast: null,
-			ro: new ResizeObserver(() => {
-				item.baseW = t.target.offsetWidth || 1;
-				item.baseH = t.target.offsetHeight || 1;
-				item.radiusPx = this.resolveRadius(t);
-				this.syncMelt(item);
-				this.wake();
-			})
-		};
-		item.ro.observe(t.target);
-		this.items.add(item);
-		this.refreshMelt(item);
-		if (t.dynamics?.move) {
-			const tail = svg("circle", {
-				cx: "0",
-				cy: "0",
-				r: "0"
-			});
-			const midA = svg("circle", {
-				cx: "0",
-				cy: "0",
-				r: "0"
-			});
-			const midB = svg("circle", {
-				cx: "0",
-				cy: "0",
-				r: "0"
-			});
-			t.blob.parentNode?.insertBefore(tail, t.blob);
-			t.blob.parentNode?.insertBefore(midA, t.blob);
-			t.blob.parentNode?.insertBefore(midB, t.blob);
-			item.tailEl = tail;
-			item.tailMidA = midA;
-			item.tailMidB = midB;
-			const bendPath = svg("path", { d: "" });
-			t.blob.parentNode?.insertBefore(bendPath, t.blob);
-			item.bendPathEl = bendPath;
-		}
-		this.ensureSources();
-		this.measureAll();
-		this.wake();
-		return () => {
-			item.ro.disconnect();
-			this.items.delete(item);
-			this.clearBlend(item);
-			if (item.contentBlurred) item.target.style.removeProperty("filter");
-			item.tailEl?.remove();
-			item.tailMidA?.remove();
-			item.tailMidB?.remove();
-			item.bendPathEl?.remove();
-		};
-	}
-	dispose() {
-		cancelAnimationFrame(this.raf);
-		this.mo?.disconnect();
-		this.removeListeners.forEach((off) => off());
-		this.removeListeners = [];
-		if (this.interval) clearInterval(this.interval);
-		this.items.forEach((i) => i.ro.disconnect());
-		this.items.clear();
-		this.awake = false;
-		this.sourcesReady = false;
-	}
-	resolveRadius(t) {
-		if (t.radius != null) return t.radius;
-		return measureRadius(t.target, t.target.offsetWidth, t.target.offsetHeight)[0];
-	}
-	/** (Re)build the warped-image SVG structure for a melt item. Two graded
-	*  warp layers share ONE noise field (same frequency + seed): a wide gentle
-	*  ripple and a tight strong core. Same field, different displacement
-	*  scales → the layers align and read as a single liquid getting deeper
-	*  toward the contact. The noise frequency is derived from the melt zone,
-	*  so several ripple wavelengths fit across it — a fixed low frequency
-	*  displaces the whole zone as one chunk, which reads as a shifted ghost
-	*  copy instead of liquid. */
-	/** Resize response. The melt DOM only needs REBUILDING when the set of
-	*  images changes; a resize alone just makes the cached corner radii stale.
-	*
-	*  Rebuilding on every resize tore down and recreated three turbulence
-	*  filters plus a pattern + <image> per photo, and WebKit re-decodes and
-	*  re-rasterises all of it synchronously. The pill resizes the moment the
-	*  hover gap opens — i.e. exactly as the flight begins — so that landed as
-	*  a ~120ms main-thread stall. CSS transitions keep running on the
-	*  compositor through a stall, but the silhouette is written from this
-	*  loop, so the liquid froze while the content sailed on: the timing
-	*  mismatch, and it never showed in Chromium because the rebuild is cheap
-	*  enough there to fit in a frame. */
-	syncMelt(item) {
-		if (!item.blend) return;
-		const melt = item.melt;
-		const t = item.target;
-		const imgs = t instanceof HTMLImageElement ? [t] : Array.from(t.querySelectorAll("img"));
-		if (!(!!melt && melt.entries.length === imgs.length && melt.entries.every((e, i) => e.el === imgs[i]))) {
-			this.refreshMelt(item);
-			return;
-		}
-		for (const entry of melt.entries) {
-			entry.radiusPx = measureRadius(entry.el, entry.el.offsetWidth, entry.el.offsetHeight)[0];
-			entry.lastGeom = null;
-		}
-	}
-	refreshMelt(item) {
-		const blend = item.blend;
-		if (!blend) return;
-		const host = blend.host;
-		while (host.firstChild) host.removeChild(host.firstChild);
-		const t = item.target;
-		const imgs = t instanceof HTMLImageElement ? [t] : Array.from(t.querySelectorAll("img"));
-		const uid = `gooey-melt-${++meltCounter}`;
-		const seed = String(meltCounter * 7 % 100);
-		const zone = blend.zone ?? this.gooBlur * 2.2 + 4;
-		const freqK = Math.max(.2, blend.warpFreq ?? 1);
-		const bf = Math.min(.3, Math.max(.01, freqK / (zone * 1.1))).toFixed(4);
-		const octaves = String(Math.max(1, Math.round(blend.detail ?? 2)));
-		const noiseType = blend.warpStyle ?? "fractalNoise";
-		const defs = svg("defs", {});
-		const gradient = svg("radialGradient", { id: `${uid}-g` });
-		gradient.append(svg("stop", {
-			offset: "0%",
-			"stop-color": "#fff"
-		}), svg("stop", {
-			offset: "55%",
-			"stop-color": "#fff"
-		}), svg("stop", {
-			offset: "78%",
-			"stop-color": "#fff",
-			"stop-opacity": "0.55"
-		}), svg("stop", {
-			offset: "100%",
-			"stop-color": "#fff",
-			"stop-opacity": "0"
-		}));
-		defs.append(gradient);
-		const mkLayer = (suffix) => {
-			const filter = svg("filter", {
-				id: `${uid}-f${suffix}`,
-				filterUnits: "userSpaceOnUse",
-				x: "0",
-				y: "0",
-				width: "0",
-				height: "0",
-				"color-interpolation-filters": "sRGB"
-			});
-			const turb = svg("feTurbulence", {
-				type: noiseType,
-				baseFrequency: bf,
-				numOctaves: octaves,
-				seed,
-				result: "noise0"
-			});
-			filter.append(turb);
-			const noiseOffset = svg("feOffset", {
-				in: "noise0",
-				dx: "0",
-				dy: "0",
-				result: "noise"
-			});
-			const disp = svg("feDisplacementMap", {
-				in: "SourceGraphic",
-				in2: "noise",
-				scale: "0",
-				xChannelSelector: "R",
-				yChannelSelector: "G",
-				result: "disp"
-			});
-			filter.append(noiseOffset);
-			const blurEl = svg("feGaussianBlur", {
-				in: "disp",
-				stdDeviation: "0",
-				result: "soft"
-			});
-			const sat = svg("feColorMatrix", {
-				in: "soft",
-				type: "saturate",
-				values: "1.2",
-				result: "col"
-			});
-			const erode = svg("feColorMatrix", {
-				in: "noise",
-				type: "matrix",
-				values: "0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0 1",
-				result: "erode"
-			});
-			const clip = svg("feComposite", {
-				in: "col",
-				in2: "erode",
-				operator: "in"
-			});
-			filter.append(disp, blurEl, sat, erode, clip);
-			const mask = svg("mask", {
-				id: `${uid}-m${suffix}`,
-				maskUnits: "userSpaceOnUse",
-				x: "-10000",
-				y: "-10000",
-				width: "20000",
-				height: "20000"
-			});
-			const circle = svg("circle", {
-				cx: "0",
-				cy: "0",
-				r: "0",
-				fill: `url(#${uid}-g)`
-			});
-			mask.append(circle);
-			defs.append(filter, mask);
-			const gl = svg("g", {});
-			gl.setAttribute("mask", `url(#${uid}-m${suffix})`);
-			gl.setAttribute("opacity", "0");
-			const filtered = svg("g", {});
-			filtered.setAttribute("filter", `url(#${uid}-f${suffix})`);
-			const shift = svg("g", {});
-			filtered.append(shift);
-			gl.append(filtered);
-			return {
-				filter,
-				disp,
-				blurEl,
-				erode,
-				turb,
-				noiseOffset,
-				circle,
-				gl,
-				shift
-			};
-		};
-		const layers = Array.from({ length: MELT_LAYERS }, (_, i) => mkLayer(`l${i}`));
-		host.append(defs, ...layers.map((l) => l.gl));
-		let seam = null;
-		if ((blend.seamBlur ?? 1) > 0) {
-			const filter = svg("filter", {
-				id: `${uid}-fs`,
-				filterUnits: "userSpaceOnUse",
-				x: "0",
-				y: "0",
-				width: "0",
-				height: "0",
-				"color-interpolation-filters": "sRGB"
-			});
-			const blurEl = svg("feGaussianBlur", {
-				in: "SourceGraphic",
-				stdDeviation: "0"
-			});
-			filter.append(blurEl);
-			const mask = svg("mask", {
-				id: `${uid}-ms`,
-				maskUnits: "userSpaceOnUse",
-				x: "-10000",
-				y: "-10000",
-				width: "20000",
-				height: "20000"
-			});
-			const circle = svg("circle", {
-				cx: "0",
-				cy: "0",
-				r: "0",
-				fill: `url(#${uid}-g)`
-			});
-			mask.append(circle);
-			defs.append(filter, mask);
-			const gl = svg("g", {});
-			gl.setAttribute("mask", `url(#${uid}-ms)`);
-			gl.setAttribute("opacity", "0");
-			const filtered = svg("g", {});
-			filtered.setAttribute("filter", `url(#${uid}-fs)`);
-			gl.append(filtered);
-			host.insertBefore(gl, defs.nextSibling);
-			seam = {
-				gl,
-				filter,
-				blurEl,
-				circle
-			};
-		}
-		const entries = imgs.map((el, i) => {
-			const pattern = svg("pattern", {
-				id: `${uid}-p${i}`,
-				patternUnits: "userSpaceOnUse",
-				x: "0",
-				y: "0",
-				width: "1",
-				height: "1"
-			});
-			const image = svg("image", {
-				width: "1",
-				height: "1",
-				preserveAspectRatio: "xMidYMid slice"
-			});
-			image.setAttribute("href", el.currentSrc || el.src);
-			pattern.append(image);
-			defs.append(pattern);
-			const rects = layers.map((l) => {
-				const rect = svg("rect", {
-					x: "0",
-					y: "0",
-					width: "0",
-					height: "0",
-					fill: `url(#${uid}-p${i})`
-				});
-				l.shift.append(rect);
-				return rect;
-			});
-			if (seam) {
-				const rect = svg("rect", {
-					x: "0",
-					y: "0",
-					width: "0",
-					height: "0",
-					fill: `url(#${uid}-p${i})`
-				});
-				seam.gl.firstElementChild.append(rect);
-				rects.push(rect);
-			}
-			return {
-				el,
-				rects,
-				pattern,
-				image,
-				radiusPx: measureRadius(el, el.offsetWidth, el.offsetHeight)[0],
-				lowRes: false,
-				measured: null,
-				lastGeom: null,
-				lastHole: null
-			};
-		});
-		host.setAttribute("opacity", "0");
-		item.melt = {
-			layers,
-			entries,
-			seam
-		};
-		if (blend.surface === "image" && imgs[0]) {
-			const bp = svg("pattern", {
-				id: `${uid}-bp`,
-				patternUnits: "objectBoundingBox",
-				patternContentUnits: "objectBoundingBox",
-				width: "1",
-				height: "1"
-			});
-			const bpImage = svg("image", {
-				width: "1",
-				height: "1",
-				preserveAspectRatio: "xMidYMid slice"
-			});
-			bpImage.setAttribute("href", imgs[0].currentSrc || imgs[0].src);
-			bp.append(bpImage);
-			defs.append(bp);
-			item.blob.setAttribute("fill", `url(#${uid}-bp)`);
-		} else item.blob.removeAttribute("fill");
-	}
-	/** Remove all melt traces: hide the warped overlay, restore image masks. */
-	clearBlend(item) {
-		item.blend?.host.setAttribute("opacity", "0");
-		item.meltHostLast = null;
-		item.meltWroteAt = 0;
-		item.meltAxis = null;
-		for (const layer of item.melt?.layers ?? []) layer.last = void 0;
-		if (item.melt?.seam) {
-			item.melt.seam.last = void 0;
-			item.melt.seam.gl.setAttribute("opacity", "0");
-		}
-		for (const entry of item.melt?.entries ?? []) {
-			entry.el.style.removeProperty("mask-image");
-			entry.el.style.removeProperty("-webkit-mask-image");
-			entry.el.style.removeProperty("mask-composite");
-			entry.el.style.removeProperty("-webkit-mask-composite");
-			entry.lastHole = null;
-			entry.lastGeom = null;
-		}
-	}
-	measureAll(dt = 1 / 60) {
-		const group = this.getGroup();
-		if (!group || this.items.size === 0) return false;
-		const g = group.getBoundingClientRect();
-		let changed = false;
-		for (const item of this.items) {
-			const r = item.target.getBoundingClientRect();
-			item.frame = {
-				x: r.left - g.left,
-				y: r.top - g.top,
-				w: r.width,
-				h: r.height
-			};
-		}
-		for (const item of this.items) {
-			if (!item.blend || !item.melt) continue;
-			for (const entry of item.melt.entries) {
-				const ir = entry.el.getBoundingClientRect();
-				entry.measured = {
-					x: ir.left - g.left,
-					y: ir.top - g.top,
-					w: ir.width,
-					h: ir.height,
-					ow: entry.el.offsetWidth,
-					oh: entry.el.offsetHeight
-				};
-			}
-		}
-		for (const item of this.items) if (this.writeBlob(item, dt)) changed = true;
-		for (const item of this.items) if (item.blend && this.writeBlend(item, dt)) changed = true;
-		return changed;
-	}
-	/** Effective blob inset: bridgeGrow pulls it toward negative (a visible
-	*  liquid coat) as the nearest neighbour approaches.
-	*
-	*  Smoothed on a time constant rather than tracking proximity instantly.
-	*  The raw value is a function of the dragged neighbour's position, so it
-	*  moves as fast as the pointer does and lands on a different value every
-	*  frame; the blob grows symmetrically from it, so that per-frame step is
-	*  visible on the silhouette's far edge as a size flicker. It stayed small
-	*  enough to read as smooth at 60fps, but a frame-rate drop multiplies the
-	*  per-frame delta — which is why the pill's left edge flashed in Safari
-	*  and not in Chromium. dt-based smoothing makes the growth rate identical
-	*  at any frame rate. */
-	effectiveInset(item, dt) {
-		let bi = item.blobInset ?? 0;
-		const grow = item.bridgeGrow ?? 0;
-		if (grow > 0 && item.frame) {
-			const f = item.frame;
-			const range = Math.max(14, this.gooBlur * 3);
-			let best = Infinity;
-			for (const other of this.items) {
-				if (other === item || !other.frame) continue;
-				const o = other.frame;
-				const dx = Math.max(o.x - (f.x + f.w), f.x - (o.x + o.w), 0);
-				const dy = Math.max(o.y - (f.y + f.h), f.y - (o.y + o.h), 0);
-				const gap = Math.hypot(dx, dy);
-				if (gap < best) best = gap;
-			}
-			if (best < range) bi -= grow * smoothstep(1 - best / range);
-		}
-		if (grow <= 0) {
-			item.biSmooth = bi;
-			return bi;
-		}
-		if (item.biSmooth === null) item.biSmooth = bi;
-		else item.biSmooth += (bi - item.biSmooth) * Math.min(1, dt * 18);
-		return item.biSmooth;
-	}
-	writeBlob(item, dt) {
-		const f = item.frame;
-		const dyn = item.dynamics;
-		if (!dyn || !dyn.evolve && !dyn.move) {
-			const bi2 = this.effectiveInset(item, dt);
-			const last = item.last;
-			const frameChanged = !last || Math.abs(last.x - f.x) >= .05 || Math.abs(last.y - f.y) >= .05 || Math.abs(last.w - f.w) >= .05 || Math.abs(last.h - f.h) >= .05;
-			const biChanged = Math.abs(bi2 - item.lastBi) >= .05;
-			if (!frameChanged && !biChanged) return false;
-			item.blob.style.transform = `translate(${f.x + bi2}px, ${f.y + bi2}px)`;
-			if (frameChanged || biChanged) {
-				const bw2 = Math.max(0, f.w - bi2 * 2);
-				const bh2 = Math.max(0, f.h - bi2 * 2);
-				item.blob.setAttribute("width", String(bw2));
-				item.blob.setAttribute("height", String(bh2));
-				const scale = item.baseW > 0 ? f.w / item.baseW : 1;
-				item.blob.setAttribute("rx", String(pillRadius(item.radiusPx * scale - bi2, bw2, bh2)));
-			}
-			item.lastPaint = null;
-			item.last = f;
-			item.lastBi = bi2;
-			return true;
-		}
-		const tcx = f.x + f.w / 2;
-		const tcy = f.y + f.h / 2;
-		let tr;
-		if (dyn.evolve) {
-			const ow = item.target.offsetWidth;
-			const oh = item.target.offsetHeight;
-			tr = measureRadius(item.target, ow, oh)[0];
-		} else tr = item.radiusPx * (item.baseW > 0 ? f.w / item.baseW : 1);
-		if (!item.sim) item.sim = {
-			cx: tcx,
-			cy: tcy,
-			w: f.w,
-			h: f.h,
-			r: tr,
-			vcx: 0,
-			vcy: 0,
-			vw: 0,
-			vh: 0,
-			vr: 0
-		};
-		const s = item.sim;
-		if (dyn.move) {
-			const mo = dyn.moveOpts ?? MOVE_DEFAULTS;
-			[s.cx, s.vcx] = springSteps(s.cx, s.vcx, tcx, mo.stiffness, mo.damping, dt);
-			[s.cy, s.vcy] = springSteps(s.cy, s.vcy, tcy, mo.stiffness, mo.damping, dt);
-		} else if (dyn.evolve) {
-			const eo = dyn.evolveOpts ?? EVOLVE_DEFAULTS;
-			const rawVx = item.tPrev ? (tcx - item.tPrev.cx) / dt : 0;
-			const rawVy = item.tPrev ? (tcy - item.tPrev.cy) / dt : 0;
-			item.tvx = item.tvx * .7 + rawVx * .3;
-			item.tvy = item.tvy * .7 + rawVy * .3;
-			item.tPrev = {
-				cx: tcx,
-				cy: tcy
-			};
-			const remX = tcx - s.cx;
-			const remY = tcy - s.cy;
-			const rem = Math.hypot(remX, remY);
-			const vMag = Math.hypot(item.tvx, item.tvy);
-			let dx = 0;
-			let dy = 0;
-			if (vMag > .001) {
-				dx = item.tvx / vMag;
-				dy = item.tvy / vMag;
-			} else if (rem > .001) {
-				dx = remX / rem;
-				dy = remY / rem;
-			}
-			const tau = Math.max(0, eo.anticipation) / 1e3;
-			const k = tau > 0 ? 1 - Math.exp(-dt / tau) : 1;
-			item.lead01 += ((rem > .5 ? 1 : 0) - item.lead01) * k;
-			const reach = Math.min(Math.max(0, eo.travel) * item.lead01, rem);
-			const ox = dx * reach;
-			const oy = dy * reach;
-			[s.cx, s.vcx] = springSteps(s.cx, s.vcx, tcx + ox, eo.massStiffness, eo.massDamping, dt);
-			[s.cy, s.vcy] = springSteps(s.cy, s.vcy, tcy + oy, eo.massStiffness, eo.massDamping, dt);
-		} else {
-			s.cx = tcx;
-			s.cy = tcy;
-			s.vcx = 0;
-			s.vcy = 0;
-		}
-		if (dyn.evolve) {
-			const eo = dyn.evolveOpts ?? EVOLVE_DEFAULTS;
-			[s.w, s.vw] = springSteps(s.w, s.vw, f.w, eo.sizeStiffness, eo.sizeDamping, dt);
-			[s.h, s.vh] = springSteps(s.h, s.vh, f.h, eo.sizeStiffness, eo.sizeDamping, dt);
-			[s.r, s.vr] = springSteps(s.r, s.vr, tr, eo.radiusStiffness, eo.radiusDamping, dt);
-		} else {
-			s.w = f.w;
-			s.h = f.h;
-			s.r = tr;
-			s.vw = 0;
-			s.vh = 0;
-			s.vr = 0;
-		}
-		let extra = "";
-		const speed = Math.hypot(s.vcx, s.vcy);
-		if (dyn.move && speed > 2) {
-			const st = Math.min((dyn.moveOpts ?? MOVE_DEFAULTS).stretch, speed * 6e-4);
-			const a = Math.round(Math.atan2(s.vcy, s.vcx) * 100) / 100;
-			extra += ` rotate(${a}rad) scale(${(1 + st).toFixed(3)}, ${(1 / (1 + st * .65)).toFixed(3)}) rotate(${-a}rad)`;
-		}
-		if (dyn.move && item.tailEl) {
-			const round = (v) => Math.round(v * 10) / 10;
-			if (item.tailR === 0 && Math.abs(item.tailX) < .001 && Math.abs(item.tailY) < .001) {
-				item.tailX = s.cx;
-				item.tailY = s.cy;
-			}
-			[item.tailX, item.tailVx] = springSteps(item.tailX, item.tailVx, s.cx, 170, 22, dt);
-			[item.tailY, item.tailVy] = springSteps(item.tailY, item.tailVy, s.cy, 170, 22, dt);
-			const bi2 = item.blobInset ?? 0;
-			const ux = speed > .001 ? s.vcx / speed : 1;
-			const uy = speed > .001 ? s.vcy / speed : 0;
-			const perp = Math.max(4, Math.abs(ux) * s.h + Math.abs(uy) * s.w - bi2 * 2);
-			const halfAlong = (Math.abs(ux) * s.w + Math.abs(uy) * s.h) / 2;
-			const base = perp / 2;
-			const lagX = item.tailX - s.cx;
-			const lagY = item.tailY - s.cy;
-			const lag = Math.hypot(lagX, lagY);
-			const mo = dyn.moveOpts ?? MOVE_DEFAULTS;
-			const maxLag = halfAlong + base * (.2 + mo.force * 1.6);
-			if (lag > maxLag) {
-				item.tailX = s.cx + lagX / lag * maxLag;
-				item.tailY = s.cy + lagY / lag * maxLag;
-			}
-			const tailK = mo.tail;
-			const onset = Math.max(0, Math.min(1, (speed - 20) / 120));
-			const targetR = base * tailK * onset;
-			item.tailR += (targetR - item.tailR) * Math.min(1, dt * 10);
-			if (item.tailR < .3) {
-				if (item.lastTail !== "hidden") {
-					item.tailEl.setAttribute("r", "0");
-					item.tailMidA?.setAttribute("r", "0");
-					item.tailMidB?.setAttribute("r", "0");
-					item.lastTail = "hidden";
-				}
-			} else {
-				item.tailPhase += speed * dt * .045;
-				const wob = item.tailR * .16;
-				const px = -uy;
-				const py = ux;
-				const w1 = Math.sin(item.tailPhase) * wob;
-				const w2 = Math.sin(item.tailPhase + 2.4) * -wob;
-				const aX = s.cx + lagX * .45 + px * w1;
-				const aY = s.cy + lagY * .45 + py * w1;
-				const bX = s.cx + lagX * .75 + px * w2;
-				const bY = s.cy + lagY * .75 + py * w2;
-				const tail = `${round(item.tailX)},${round(item.tailY)},${round(item.tailR)},${round(aX)},${round(aY)},${round(bX)},${round(bY)}`;
-				if (tail !== item.lastTail) {
-					item.tailEl.setAttribute("cx", String(round(item.tailX)));
-					item.tailEl.setAttribute("cy", String(round(item.tailY)));
-					item.tailEl.setAttribute("r", String(round(item.tailR)));
-					if (item.tailMidA) {
-						item.tailMidA.setAttribute("cx", String(round(aX)));
-						item.tailMidA.setAttribute("cy", String(round(aY)));
-						item.tailMidA.setAttribute("r", String(round(item.tailR * .62)));
-					}
-					if (item.tailMidB) {
-						item.tailMidB.setAttribute("cx", String(round(bX)));
-						item.tailMidB.setAttribute("cy", String(round(bY)));
-						item.tailMidB.setAttribute("r", String(round(item.tailR * .4)));
-					}
-					item.lastTail = tail;
-				}
-			}
-		}
-		let renderR = Math.max(0, s.r);
-		let cornerActive = false;
-		if (dyn.evolve) {
-			const eo = dyn.evolveOpts ?? EVOLVE_DEFAULTS;
-			const now = performance.now();
-			const prevSize = item.lastTargetSize;
-			if ((prevSize ? Math.abs(f.w - prevSize.w) + Math.abs(f.h - prevSize.h) : 0) > .5) {
-				if (!item.morphActive) {
-					item.cornerT0 = now;
-					item.morphActive = true;
-				}
-				item.lastTargetMoveT = now;
-			} else if (item.morphActive && now - item.lastTargetMoveT > 150 && now - item.cornerT0 > cornerTotalOf(eo)) item.morphActive = false;
-			item.lastTargetSize = {
-				w: f.w,
-				h: f.h
-			};
-			const cornerTotal = cornerTotalOf(eo);
-			let target01 = 0;
-			if (item.cornerT0 > 0 && eo.roundness > 0 && now - item.cornerT0 < cornerTotal) {
-				const p = Math.min(1, Math.max(0, (now - item.cornerT0 - Math.max(0, eo.cornerDelay)) / Math.max(1, eo.cornerDuration)));
-				const eased = easingFn(eo.cornerEase)(p);
-				target01 = Math.min(1, Math.max(0, (1 - eased) * eo.roundness));
-			}
-			const maxStep = dt * 8;
-			item.round01 += Math.max(-maxStep, Math.min(maxStep, target01 - item.round01));
-			cornerActive = item.cornerT0 > 0 && now - item.cornerT0 < cornerTotal + 80 || Math.abs(target01 - item.round01) > .004 || item.round01 > .004;
-			if (item.round01 > .001) {
-				const roundTarget = Math.max(Math.min(s.w, s.h) / 2, renderR);
-				renderR = renderR + (roundTarget - renderR) * item.round01;
-				renderR = Math.max(renderR, tr);
-			}
-			const motionRaw = Math.min(1, (Math.hypot(s.vcx, s.vcy) + Math.abs(s.vw) + Math.abs(s.vh)) / 420);
-			item.motionEnv = Math.max(motionRaw, item.motionEnv - dt * 1.9);
-			const motion = item.motionEnv;
-			const blurPx = motion * motion * Math.max(0, eo.contentBlur);
-			if (blurPx > .3) {
-				item.target.style.filter = `blur(${blurPx.toFixed(1)}px)`;
-				item.contentBlurred = true;
-			} else if (item.contentBlurred) {
-				item.target.style.removeProperty("filter");
-				item.contentBlurred = false;
-			}
-		}
-		const bi = item.blobInset ?? 0;
-		const bw = Math.max(0, s.w - bi * 2);
-		const bh = Math.max(0, s.h - bi * 2);
-		const paintRx = pillRadius(renderR - bi, bw, bh);
-		let bendD = "";
-		if (dyn.move && item.bendPathEl) {
-			const mo = dyn.moveOpts ?? MOVE_DEFAULTS;
-			const cap = Math.min(bw, bh) * .5;
-			const bTy = Math.max(-cap, Math.min(cap, s.vcy * .05)) * mo.bend;
-			const capX = Math.min(bw, bh) * .9;
-			const bTx = Math.max(-capX, Math.min(capX, s.vcx * .09)) * mo.bendX;
-			item.bendCur += (bTy - item.bendCur) * Math.min(1, dt * 9);
-			item.bendCurX += (bTx - item.bendCurX) * Math.min(1, dt * 9);
-			const bvx = Math.round(item.bendCurX * 10) / 10;
-			const bvy = Math.round(item.bendCur * 10) / 10;
-			const bendVars = `${bvx},${bvy}`;
-			if (bendVars !== item.lastBendVars) {
-				item.target.style.setProperty("--lg-bend-x", `${bvx}px`);
-				item.target.style.setProperty("--lg-bend-y", `${bvy}px`);
-				item.target.style.setProperty("--lg-bend-xn", String(bvx));
-				item.target.style.setProperty("--lg-bend-yn", String(bvy));
-				item.lastBendVars = bendVars;
-			}
-			if ((Math.abs(item.bendCur) > .5 || Math.abs(item.bendCurX) > .5) && bw > 1 && bh > 1) {
-				const r = Math.min(paintRx, bw / 2, bh / 2);
-				const cy = Math.round(item.bendCur * 2 * 10) / 10;
-				const k = item.bendCurX;
-				const rxR = Math.max(r * .2, Math.min(r * 3, k > 0 ? r - .8 * k : r + 1.6 * -k));
-				const rxL = Math.max(r * .2, Math.min(r * 3, k > 0 ? r + 1.6 * k : r - .8 * -k));
-				const K = .5523;
-				const f2 = (v) => Math.round(v * 10) / 10;
-				bendD = `M ${f2(rxL)} 0 Q ${f2(bw / 2)} ${cy} ${f2(bw - rxR)} 0 C ${f2(bw - rxR + K * rxR)} 0 ${f2(bw)} ${f2(r - K * r)} ${f2(bw)} ${f2(r)} L ${f2(bw)} ${f2(bh - r)} C ${f2(bw)} ${f2(bh - r + K * r)} ${f2(bw - rxR + K * rxR)} ${f2(bh)} ${f2(bw - rxR)} ${f2(bh)} Q ${f2(bw / 2)} ${f2(bh + item.bendCur * 2)} ${f2(rxL)} ${f2(bh)} C ${f2(rxL - K * rxL)} ${f2(bh)} 0 ${f2(bh - r + K * r)} 0 ${f2(bh - r)} L 0 ${f2(r)} C 0 ${f2(r - K * r)} ${f2(rxL - K * rxL)} 0 ${f2(rxL)} 0 Z`;
-			}
-		}
-		const bending = bendD !== "";
-		const paint = {
-			t: `translate(${s.cx - s.w / 2 + bi}px, ${s.cy - s.h / 2 + bi}px)` + extra,
-			w: bending ? "0" : String(bw),
-			h: String(bh),
-			rx: String(paintRx)
-		};
-		const lp = item.lastPaint;
-		if (!lp || lp.t !== paint.t) item.blob.style.transform = paint.t;
-		if (!lp || lp.w !== paint.w) item.blob.setAttribute("width", paint.w);
-		if (!lp || lp.h !== paint.h) item.blob.setAttribute("height", paint.h);
-		if (!lp || lp.rx !== paint.rx) item.blob.setAttribute("rx", paint.rx);
-		item.lastPaint = paint;
-		if (item.bendPathEl) {
-			if (bendD !== (item.lastBendD ?? "")) {
-				item.bendPathEl.setAttribute("d", bendD);
-				item.lastBendD = bendD;
-			}
-			if (bending) item.bendPathEl.style.transform = paint.t;
-		}
-		item.last = f;
-		return !(Math.abs(s.cx - tcx) < .05 && Math.abs(s.cy - tcy) < .05 && Math.abs(s.w - f.w) < .05 && Math.abs(s.h - f.h) < .05 && Math.abs(s.r - tr) < .05 && speed < 1 && Math.abs(s.vw) + Math.abs(s.vh) + Math.abs(s.vr) < 1 && item.motionEnv < .01 && item.tailR < .3 && !cornerActive);
-	}
-	/** Nearest-neighbour proximity → a liquid warp-melt at the contact point.
-	*  The strength is ONE smoothed value: fast attack while approaching, and
-	*  a gradual `releaseMs` decay whenever the target drops — whether from a
-	*  drag release (`active: false`), moving out of range, or absorption. No
-	*  path clears instantly. */
-	writeBlend(item, dt) {
-		const f = item.frame;
-		const blend = item.blend;
-		const melt = item.melt;
-		if (!melt) return false;
-		const range = blend.range ?? Math.max(10, this.gooBlur * 2.5);
-		let bestGap = Infinity;
-		let bestOther = null;
-		for (const other of this.items) {
-			if (other === item || !other.frame) continue;
-			const o2 = other.frame;
-			const dx = Math.max(o2.x - (f.x + f.w), f.x - (o2.x + o2.w), 0);
-			const dy = Math.max(o2.y - (f.y + f.h), f.y - (o2.y + o2.h), 0);
-			const gap = Math.hypot(dx, dy);
-			if (gap < bestGap) {
-				bestGap = gap;
-				bestOther = o2;
-			}
-		}
-		let embed = 0;
-		let contactSpan = 0;
-		if (bestOther && bestGap === 0) {
-			const o2 = bestOther;
-			const ox = Math.min(f.x + f.w, o2.x + o2.w) - Math.max(f.x, o2.x);
-			const oy = Math.min(f.y + f.h, o2.y + o2.h) - Math.max(f.y, o2.y);
-			const span = Math.max(1, Math.min(f.w, f.h, o2.w, o2.h));
-			embed = Math.max(0, Math.min(ox, oy)) / span;
-			contactSpan = Math.max(0, Math.max(ox, oy));
-		}
-		let sTarget = 0;
-		if (bestOther && bestGap < range && blend.active !== false) {
-			const sRaw = smoothstep(Math.min(1, (1 - bestGap / range) / .65));
-			const strength = Math.max(0, Math.min(1, blend.strength ?? 1));
-			const sink = Math.max(.01, blend.sink ?? .45);
-			const sunk = smoothstep(Math.max(0, Math.min(1, (embed - sink * .2) / Math.max(.01, sink * .8))));
-			sTarget = Math.pow(sRaw, 1.25) * strength * (1 - sunk);
-		}
-		if (sTarget >= item.meltFade) {
-			item.meltFade += (sTarget - item.meltFade) * Math.min(1, dt * 16);
-			item.meltRel = null;
-		} else if (sTarget > .02) {
-			item.meltFade += (sTarget - item.meltFade) * Math.min(1, dt * 6);
-			item.meltRel = null;
-		} else {
-			const relMs = Math.max(40, Math.max(blend.releaseMs ?? 240, blend.fadeMs ?? blend.releaseMs ?? 240));
-			if (!item.meltRel) item.meltRel = {
-				from: item.meltFade,
-				t: 0
-			};
-			const rel2 = item.meltRel;
-			rel2.t += dt * 1e3;
-			const k = Math.min(1, rel2.t / relMs);
-			item.meltFade = sTarget + (rel2.from - sTarget) * (1 - k) * (1 - k);
-		}
-		if (sTarget === 0 && item.meltFade < .001) item.meltFade = 0;
-		const s = item.meltFade;
-		if (s <= .001) {
-			if (item.lastBlend && item.lastBlend.s !== 0) {
-				this.clearBlend(item);
-				item.lastBlend = {
-					cx: 0,
-					cy: 0,
-					s: 0,
-					d: 0,
-					pk: ""
-				};
-				return true;
-			}
-			return false;
-		}
-		let o = bestOther;
-		if ((!o || bestGap >= range) && item.meltGeom) o = item.meltGeom.o;
-		if (!o) return false;
-		const cx = f.x + f.w < o.x ? (f.x + f.w + o.x) / 2 : o.x + o.w < f.x ? (o.x + o.w + f.x) / 2 : (Math.max(f.x, o.x) + Math.min(f.x + f.w, o.x + o.w)) / 2;
-		const cy = f.y + f.h < o.y ? (f.y + f.h + o.y) / 2 : o.y + o.h < f.y ? (o.y + o.h + f.y) / 2 : (Math.max(f.y, o.y) + Math.min(f.y + f.h, o.y + o.h)) / 2;
-		item.meltGeom = { o: { ...o } };
-		const rel = item.meltRel;
-		const fadeMs = Math.max(40, blend.fadeMs ?? blend.releaseMs ?? 240);
-		const fadeK = rel ? Math.min(1, rel.t / fadeMs) : 0;
-		const relFade = rel ? (1 - fadeK) * (1 - fadeK) : 1;
-		const sStruct = rel ? Math.min(1, rel.from * (.55 + .45 * (1 - fadeK))) : s;
-		const eStruct = sStruct * sStruct * (3 - 2 * sStruct);
-		item.meltOp = relFade < item.meltOp ? relFade : item.meltOp + (relFade - item.meltOp) * Math.min(1, dt * 16);
-		const zone = blend.zone ?? this.gooBlur * 2.2 + 4;
-		const d = Math.min(Math.min(f.w, f.h) * .9, zone * (.7 + .6 * sStruct));
-		const flowSpeed = Math.max(0, blend.flowSpeed ?? 26);
-		const prevPos = item.meltPrev;
-		const moveSpeed = prevPos ? Math.hypot(f.x - prevPos.x, f.y - prevPos.y) / Math.max(.001, dt) : 0;
-		item.meltPrev = {
-			x: f.x,
-			y: f.y
-		};
-		const phaseAdv = Math.min(dt, 1 / 24) * flowSpeed * .12 * Math.min(1, moveSpeed / 40);
-		item.meltPhase += phaseAdv;
-		const lb = item.lastBlend;
-		const paramKey = `${blend.seamBlur ?? ""}/${blend.strength ?? ""}/${blend.warp}/${blend.blur}/${blend.mix ?? ""}/${blend.gravity ?? ""}`;
-		if (phaseAdv < 1e-4 && lb && lb.pk === paramKey && Math.abs(lb.cx - cx) < .05 && Math.abs(lb.cy - cy) < .05 && Math.abs(lb.s - s) < .005 && Math.abs(lb.d - d) < .05) return false;
-		const nowMs = performance.now();
-		if (this.frameEma > 20 && nowMs - item.meltWroteAt < 35) return true;
-		item.meltWroteAt = nowMs;
-		const round = (v) => Math.round(v * 10) / 10;
-		const host = blend.host;
-		const n = melt.layers.length;
-		const ncx = o.x + o.w / 2;
-		const ncy = o.y + o.h / 2;
-		const gdx = ncx - cx;
-		const gdy = ncy - cy;
-		const gdl = Math.hypot(gdx, gdy) || 1;
-		const gux = gdx / gdl;
-		const guy = gdy / gdl;
-		const gAmt = Math.max(0, blend.gravity ?? 25) * eStruct;
-		const gDeg = round(Math.atan2(guy, gux) * 180 / Math.PI);
-		const r3 = (v) => Math.round(v * 1e3) / 1e3;
-		const taper = Math.max(0, Math.min(1, blend.taper ?? .65));
-		const freqK = Math.max(.2, blend.warpFreq ?? 1);
-		const zoneBase = blend.zone ?? this.gooBlur * 2.2 + 4;
-		const bfBase = Math.min(.3, Math.max(.01, freqK / (zoneBase * 1.1)));
-		const alongF = (bfBase * .35).toFixed(4);
-		const acrossF = (bfBase * 1.6).toFixed(4);
-		const ax = Math.abs(gux);
-		const ay = Math.abs(guy);
-		const axis = item.meltAxis === "x" ? ay > ax * 1.25 ? "y" : "x" : item.meltAxis === "y" ? ax > ay * 1.25 ? "x" : "y" : ax >= ay ? "x" : "y";
-		item.meltAxis = axis;
-		const bfStr = axis === "x" ? `${alongF} ${acrossF}` : `${acrossF} ${alongF}`;
-		const bx = cx + gux * d * .05;
-		const by = cy + guy * d * .05;
-		const layerVals = melt.layers.map((_, i) => {
-			const t = n > 1 ? i / (n - 1) : 1;
-			const blurK = .15 + .85 * Math.pow(t, 1.4);
-			const warpK = .45 + .55 * t;
-			const pr = .7 + .45 * t;
-			const oa = 6 * Math.sin(item.meltPhase * pr);
-			const ob = 2 * Math.sin(item.meltPhase * pr * 1.31 + 1.7);
-			return [
-				String(q(blend.warp * warpK * eStruct, .25)),
-				String(q(blend.blur * blurK * eStruct, .25)),
-				String(q(gux * oa - guy * ob, .5)),
-				String(q(guy * oa + gux * ob, .5)),
-				String(q(bx, .5)),
-				String(q(by, .5)),
-				String(q(d * (.95 - .55 * t), .5)),
-				String(q(Math.min(1, eStruct * (.75 + .25 * t)), .02))
-			];
-		});
-		const anchorX = cx - gux * d;
-		const anchorY = cy - guy * d;
-		const settle = 1 - .45 * smoothstep(Math.min(1, embed * 2.2));
-		const kFlow = Math.min(2.2, (gAmt + bestGap) / Math.max(8, 2 * d)) * (.5 + taper) * settle;
-		const flow = (k) => {
-			const sx = r3(1 + kFlow * k);
-			const sy = r3(1 / (1 + kFlow * .35 * k));
-			return `translate(${round(anchorX)}, ${round(anchorY)}) rotate(${gDeg}) scale(${sx}, ${sy}) rotate(${-gDeg}) translate(${round(-anchorX)}, ${round(-anchorY)})`;
-		};
-		const mixAmt = Math.max(0, Math.min(1, blend.mix ?? 0)) * eStruct;
-		const erodeRow = (amt) => {
-			if (amt < .002) return "0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0 1";
-			const k = r3(1 + 4 * amt);
-			return `0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  ${k} 0 0 0 ${r3(1 - k * (.38 + .12 * amt))}`;
-		};
-		const elong = q(1 + Math.min(1.8, bestGap / Math.max(8, 2 * d)), .05);
-		const zoneT = elong > 1.001 ? `translate(${round(bx)}, ${round(by)}) rotate(${gDeg}) scale(${r3(elong)}, 1) rotate(${-gDeg}) translate(${round(-bx)}, ${round(-by)})` : "";
-		const spread = blend.blur * 2.5 + blend.warp + gAmt * .5 + kFlow * d + 8;
-		const rr = q(d * 1.15 * elong + spread, 8);
-		const regionX = String(q(bx - rr, 8));
-		const regionY = String(q(by - rr, 8));
-		const regionW = String(q(rr * 2, 8));
-		melt.layers.forEach((layer, i) => {
-			const t = n > 1 ? i / (n - 1) : 1;
-			const v = layerVals[i];
-			const shiftT = flow(.4 + .6 * t);
-			const erodeV = erodeRow(q(mixAmt * (.15 + .85 * t), .01));
-			const fp = v.join(",") + "|" + bfStr + "|" + shiftT + "|" + erodeV + "|" + zoneT + "|" + regionX + "," + regionY + "," + regionW;
-			if (layer.last === fp) return;
-			layer.last = fp;
-			layer.filter.setAttribute("x", regionX);
-			layer.filter.setAttribute("y", regionY);
-			layer.filter.setAttribute("width", regionW);
-			layer.filter.setAttribute("height", regionW);
-			layer.disp.setAttribute("scale", v[0]);
-			layer.blurEl.setAttribute("stdDeviation", v[1]);
-			if (layer.turb.getAttribute("baseFrequency") !== bfStr) layer.turb.setAttribute("baseFrequency", bfStr);
-			layer.noiseOffset.setAttribute("dx", v[2]);
-			layer.noiseOffset.setAttribute("dy", v[3]);
-			layer.circle.setAttribute("cx", v[4]);
-			layer.circle.setAttribute("cy", v[5]);
-			layer.circle.setAttribute("r", v[6]);
-			if (zoneT) layer.circle.setAttribute("transform", zoneT);
-			else layer.circle.removeAttribute("transform");
-			layer.gl.setAttribute("opacity", v[7]);
-			layer.shift.setAttribute("transform", shiftT);
-			layer.erode.setAttribute("values", erodeV);
-		});
-		if (melt.seam) {
-			const seam = melt.seam;
-			const sBlur = q((blend.seamBlur ?? blend.blur * 1.6) * eStruct, .25);
-			const sOp = q(Math.min(1, eStruct * 1.2) * .55, .02);
-			const sR = q(d * 1.25, .5);
-			const fp = `${sBlur}|${sOp}|${q(bx, .5)},${q(by, .5)},${sR}|${zoneT}|${regionX},${regionY},${regionW}`;
-			if (seam.last !== fp) {
-				seam.last = fp;
-				seam.filter.setAttribute("x", regionX);
-				seam.filter.setAttribute("y", regionY);
-				seam.filter.setAttribute("width", regionW);
-				seam.filter.setAttribute("height", regionW);
-				seam.blurEl.setAttribute("stdDeviation", String(sBlur));
-				seam.circle.setAttribute("cx", String(q(bx, .5)));
-				seam.circle.setAttribute("cy", String(q(by, .5)));
-				seam.circle.setAttribute("r", String(sR));
-				if (zoneT) seam.circle.setAttribute("transform", zoneT);
-				else seam.circle.removeAttribute("transform");
-				seam.gl.setAttribute("opacity", String(sOp));
-			}
-		}
-		const icx = f.x + f.w / 2;
-		const icy = f.y + f.h / 2;
-		const ang = Math.atan2(cy - icy, cx - icx);
-		const pull = blend.pull * sStruct;
-		const hostStr = r3(item.meltOp).toString() + `|translate(${round(Math.cos(ang) * pull)}px, ${round(Math.sin(ang) * pull)}px)`;
-		if (hostStr !== item.meltHostLast) {
-			item.meltHostLast = hostStr;
-			const parts = hostStr.split("|");
-			host.setAttribute("opacity", parts[0]);
-			host.style.transform = parts[1];
-		}
-		const bridgeRange = Math.max(10, this.gooBlur * 2.5);
-		const sBridge = bestOther ? bestGap < bridgeRange ? smoothstep(1 - bestGap / bridgeRange) : 0 : s;
-		const holeAlpha = q(Math.max(0, 1 - Math.min(s, sBridge) * 2.2), .05).toFixed(2);
-		const holeMid = (Math.round((1 + 2 * Number(holeAlpha)) / 3 * 20) / 20).toFixed(2);
-		for (const entry of melt.entries) {
-			if (!entry.lowRes) {
-				const lo = downscaleHref(entry.el);
-				if (lo) {
-					entry.image.setAttribute("href", lo);
-					entry.lowRes = true;
-				} else if (entry.el.complete && entry.el.naturalWidth) entry.lowRes = true;
-			}
-			const ir = entry.measured;
-			if (!ir || ir.w < 1 || ir.h < 1) continue;
-			const ix = ir.x;
-			const iy = ir.y;
-			const kx = (ir.ow || ir.w) / ir.w;
-			const geom = `${round(ix)},${round(iy)},${round(ir.w)},${round(ir.h)},${round(pillRadius(entry.radiusPx / (kx || 1), ir.w, ir.h))}`;
-			if (geom !== entry.lastGeom) {
-				entry.lastGeom = geom;
-				for (const rect of entry.rects) {
-					rect.setAttribute("x", String(round(ix)));
-					rect.setAttribute("y", String(round(iy)));
-					rect.setAttribute("width", String(round(ir.w)));
-					rect.setAttribute("height", String(round(ir.h)));
-					rect.setAttribute("rx", String(round(pillRadius(entry.radiusPx / (kx || 1), ir.w, ir.h))));
-				}
-				entry.pattern.setAttribute("x", String(round(ix)));
-				entry.pattern.setAttribute("y", String(round(iy)));
-				entry.pattern.setAttribute("width", String(round(ir.w)));
-				entry.pattern.setAttribute("height", String(round(ir.h)));
-				entry.image.setAttribute("width", String(round(ir.w)));
-				entry.image.setAttribute("height", String(round(ir.h)));
-			}
-			const ky = (ir.oh || ir.h) / ir.h;
-			if (Math.hypot(Math.max(ix - cx, cx - (ix + ir.w), 0), Math.max(iy - cy, cy - (iy + ir.h), 0)) > d) {
-				if (entry.lastHole !== null) {
-					entry.lastHole = null;
-					entry.el.style.removeProperty("mask-image");
-					entry.el.style.removeProperty("-webkit-mask-image");
-					entry.el.style.removeProperty("mask-composite");
-					entry.el.style.removeProperty("-webkit-mask-composite");
-				}
-				continue;
-			}
-			const ow = ir.ow || ir.w;
-			const oh = ir.oh || ir.h;
-			const rim = Math.min(ow, oh) / 2;
-			let lx = (cx - ix) * kx;
-			let ly = (cy - iy) * ky;
-			let vx = lx - ow / 2;
-			let vy = ly - oh / 2;
-			const vlen = Math.hypot(vx, vy);
-			if (vlen < rim) {
-				if (vlen < .001) {
-					vx = gux;
-					vy = guy;
-				} else {
-					vx /= vlen;
-					vy /= vlen;
-				}
-				lx = ow / 2 + vx * rim;
-				ly = oh / 2 + vy * rim;
-			}
-			const hx = Math.round(lx);
-			const hy = Math.round(ly);
-			const hd = q(Math.min(Math.max(d, contactSpan * .75) * Math.min(kx, ky), rim), 1);
-			const far = round(Math.max(Math.hypot(hx, hy), Math.hypot(hx - ow, hy), Math.hypot(hx, hy - oh), Math.hypot(hx - ow, hy - oh))) + 2;
-			let hole;
-			if (bestGap === 0 && contactSpan > 4 && bestOther) {
-				const o2 = bestOther;
-				const ncx2 = (o2.x + o2.w / 2 - ix) * kx;
-				const ncy2 = (o2.y + o2.h / 2 - iy) * ky;
-				const ovx0 = (Math.max(f.x, o2.x) - ix) * kx;
-				const ovy0 = (Math.max(f.y, o2.y) - iy) * ky;
-				const ovx1 = (Math.min(f.x + f.w, o2.x + o2.w) - ix) * kx;
-				const ovy1 = (Math.min(f.y + f.h, o2.y + o2.h) - iy) * ky;
-				const rEnd = Math.round(Math.max(Math.hypot(ovx0 - ncx2, ovy0 - ncy2), Math.hypot(ovx1 - ncx2, ovy0 - ncy2), Math.hypot(ovx0 - ncx2, ovy1 - ncy2), Math.hypot(ovx1 - ncx2, ovy1 - ncy2)) + 3);
-				const band = Math.round(Math.min(rim * 2.6, Math.max(hd, (blend.seamBlur ?? blend.blur * 1.6) * 3.2)));
-				const rCore = Math.max(0, rEnd - band);
-				const farR = Math.round(Math.max(Math.hypot(ncx2, ncy2), Math.hypot(ncx2 - ow, ncy2), Math.hypot(ncx2, ncy2 - oh), Math.hypot(ncx2 - ow, ncy2 - oh))) + 2;
-				hole = `radial-gradient(circle at ${Math.round(ncx2)}px ${Math.round(ncy2)}px, rgba(255,255,255,${holeAlpha}) ${rCore}px, #fff ${rEnd}px, #fff ${farR}px)`;
-			} else hole = `radial-gradient(circle at ${hx}px ${hy}px, rgba(255,255,255,${holeAlpha}) ${round(hd * .2)}px, rgba(255,255,255,${holeMid}) ${round(hd * .45)}px, #fff ${round(hd * .78)}px, #fff ${far}px)`;
-			if (hole !== entry.lastHole) {
-				entry.lastHole = hole;
-				entry.el.style.setProperty("mask-image", hole);
-				entry.el.style.setProperty("-webkit-mask-image", hole);
-				entry.el.style.removeProperty("mask-composite");
-				entry.el.style.removeProperty("-webkit-mask-composite");
-			}
-		}
-		item.lastBlend = {
-			cx,
-			cy,
-			s,
-			d,
-			pk: paramKey
-		};
-		return true;
-	}
-	ensureSources() {
-		if (this.sourcesReady) return;
-		const group = this.getGroup();
-		if (!group) return;
-		this.sourcesReady = true;
-		this.mo = new MutationObserver((muts) => {
-			for (const m of muts) {
-				const t = m.target;
-				if (!(t instanceof Element) || !t.closest("[data-gooey-svg], [data-gooey-overlay]")) {
-					this.wake();
-					return;
-				}
-			}
-		});
-		this.mo.observe(group, {
-			attributes: true,
-			childList: true,
-			subtree: true,
-			attributeFilter: ["style", "class"]
-		});
-		const wake = () => this.wake();
-		for (const type of [
-			"transitionrun",
-			"animationstart",
-			"pointerdown"
-		]) {
-			group.addEventListener(type, wake, true);
-			this.removeListeners.push(() => group.removeEventListener(type, wake, true));
-		}
-		window.addEventListener("scroll", wake, {
-			capture: true,
-			passive: true
-		});
-		this.removeListeners.push(() => window.removeEventListener("scroll", wake, true));
-		this.interval = setInterval(() => {
-			if (!this.awake && this.measureAll()) this.wake();
-		}, 300);
-	}
-};
-function splitTop(s, sep) {
-	const parts = [];
-	let depth = 0;
-	let cur = "";
-	for (const ch of s) {
-		if (ch === "(") depth++;
-		else if (ch === ")") depth--;
-		if (depth === 0 && (sep === "," ? ch === "," : /\s/.test(ch))) {
-			if (cur.trim()) parts.push(cur.trim());
-			cur = "";
-		} else cur += ch;
-	}
-	if (cur.trim()) parts.push(cur.trim());
-	return parts;
-}
-var LENGTH = /^[+-]?(\d+\.?\d*|\.\d+)(px)?$/;
-function parseShadow(input) {
-	if (!input || input.trim() === "" || input.trim() === "none") return [];
-	const out = [];
-	for (const layer of splitTop(input, ",")) {
-		const tokens = splitTop(layer, " ");
-		if (tokens.length === 0) continue;
-		const inset = tokens.includes("inset");
-		const nums = [];
-		const colorParts = [];
-		for (const tok of tokens) {
-			if (tok === "inset") continue;
-			if (nums.length < 4 && LENGTH.test(tok)) nums.push(parseFloat(tok));
-			else colorParts.push(tok);
-		}
-		const [x = 0, y = 0, blur = 0, spread = 0] = nums;
-		out.push({
-			x,
-			y,
-			blur,
-			spread,
-			color: colorParts.join(" ") || "rgba(0, 0, 0, 0.35)",
-			inset
-		});
-	}
-	return out;
-}
-var GooeyRoot = (0, import_react.forwardRef)(function Gooey({ blur = 6, contrast = 18, fill = "#fff", shadow, filterPadding = 24, waviness = 0, wavinessFreq = .018, filter: customFilter, className, style, children, ...rest }, fwd) {
-	const groupRef = (0, import_react.useRef)(null);
-	const [portal, setPortal] = (0, import_react.useState)(null);
-	const [meltPortal, setMeltPortal] = (0, import_react.useState)(null);
-	const [size, setSize] = (0, import_react.useState)({
-		w: 0,
-		h: 0
-	});
-	const setRefs = (0, import_react.useCallback)((node) => {
-		groupRef.current = node;
-		if (typeof fwd === "function") fwd(node);
-		else if (fwd) fwd.current = node;
-	}, [fwd]);
-	const filterId = `gooey-${(0, import_react.useId)().replace(/[^a-zA-Z0-9_-]/g, "")}`;
-	const shadows = (0, import_react.useMemo)(() => parseShadow(shadow), [shadow]);
-	useIsoLayoutEffect(() => {
-		const el = groupRef.current;
-		if (!el) return;
-		const measure = () => setSize((prev) => prev.w === el.offsetWidth && prev.h === el.offsetHeight ? prev : {
-			w: el.offsetWidth,
-			h: el.offsetHeight
-		});
-		measure();
-		const ro = new ResizeObserver(measure);
-		ro.observe(el);
-		return () => ro.disconnect();
-	}, []);
-	const engine = (0, import_react.useMemo)(() => new ObserveEngine(() => groupRef.current), []);
-	const imageMelt = (0, import_react.useMemo)(() => createImageMeltRegistry(), []);
-	(0, import_react.useEffect)(() => () => engine.dispose(), [engine]);
-	(0, import_react.useEffect)(() => {
-		engine.gooBlur = blur;
-	}, [engine, blur]);
-	const ctx = (0, import_react.useMemo)(() => ({
-		portal,
-		meltPortal,
-		fill,
-		getGroup: () => groupRef.current,
-		engine,
-		imageMelt
-	}), [
-		portal,
-		meltPortal,
-		fill,
-		engine,
-		imageMelt
-	]);
-	const svgShadows = shadows.filter((s) => s.inset || s.spread !== 0);
-	const cssShadowFilter = shadows.filter((s) => !s.inset && s.spread === 0).map((s) => `drop-shadow(${s.x}px ${s.y}px ${s.blur}px ${s.color})`).join(" ");
-	const shadowExtent = svgShadows.reduce((m, s) => Math.max(m, Math.max(Math.abs(s.x), Math.abs(s.y)) + s.blur * 1.5 + Math.max(0, s.spread)), 0);
-	const pad = Math.ceil(blur * 3 + shadowExtent + filterPadding);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		...rest,
-		ref: setRefs,
-		className,
-		style: {
-			position: "relative",
-			isolation: "isolate",
-			...style
-		},
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
-				"aria-hidden": "true",
-				focusable: "false",
-				"data-gooey-svg": "",
-				style: {
-					position: "absolute",
-					inset: 0,
-					width: "100%",
-					height: "100%",
-					overflow: "visible",
-					pointerEvents: "none",
-					zIndex: -1,
-					filter: cssShadowFilter || void 0,
-					willChange: "filter, transform"
-				},
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("defs", { children: customFilter ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("filter", {
-					id: filterId,
-					filterUnits: "userSpaceOnUse",
-					x: -pad,
-					y: -pad,
-					width: size.w + pad * 2,
-					height: size.h + pad * 2,
-					colorInterpolationFilters: "sRGB",
-					dangerouslySetInnerHTML: { __html: customFilter }
-				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("filter", {
-					id: filterId,
-					filterUnits: "userSpaceOnUse",
-					x: -pad,
-					y: -pad,
-					width: size.w + pad * 2,
-					height: size.h + pad * 2,
-					colorInterpolationFilters: "sRGB",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GooFilterPrimitives, {
-						blur,
-						contrast,
-						shadows: svgShadows,
-						waviness,
-						wavinessFreq
-					})
-				}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
-					id: `${filterId}-sil`,
-					ref: setPortal,
-					filter: `url(#${filterId})`,
-					style: { fill }
-				})]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
-				"aria-hidden": "true",
-				focusable: "false",
-				"data-gooey-overlay": "",
-				style: {
-					position: "absolute",
-					inset: 0,
-					width: "100%",
-					height: "100%",
-					overflow: "visible",
-					pointerEvents: "none",
-					zIndex: 9999
-				},
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("defs", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("mask", {
-					id: `${filterId}-meltmask`,
-					maskUnits: "userSpaceOnUse",
-					x: -pad,
-					y: -pad,
-					width: size.w + pad * 2,
-					height: size.h + pad * 2,
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("use", { href: `#${filterId}-sil` })
-				}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
-					mask: `url(#${filterId}-meltmask)`,
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", { ref: setMeltPortal })
-				})]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(GooeyContext.Provider, {
-				value: ctx,
-				children: [children, /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ImageMeltLayer, { registry: imageMelt })]
-			})
-		]
-	});
-});
-var presets = {
-	snappy: {
-		stiffness: 480,
-		damping: 34,
-		mass: 1
-	},
-	smooth: {
-		stiffness: 190,
-		damping: 26,
-		mass: 1
-	},
-	bouncy: {
-		stiffness: 320,
-		damping: 17,
-		mass: 1
-	}
-};
-var DT = 1 / 240;
-function simulate(c) {
-	let x = 0;
-	let v = 0;
-	let t = 0;
-	let settledAt = -1;
-	let max = 0;
-	const xs = [0];
-	while (t < 10) {
-		const a = (-c.stiffness * (x - 1) - c.damping * v) / c.mass;
-		v += a * DT;
-		x += v * DT;
-		t += DT;
-		xs.push(x);
-		if (x > max) max = x;
-		if (Math.abs(x - 1) < .001 && Math.abs(v) < .02) {
-			if (settledAt < 0) settledAt = t;
-			if (t - settledAt >= .064) break;
-		} else settledAt = -1;
-	}
-	const duration = settledAt > 0 ? settledAt : t;
-	const n = Math.round(Math.min(120, Math.max(24, duration * 90)));
-	const lastIdx = Math.min(xs.length - 1, duration / DT);
-	const values = [];
-	for (let i = 0; i <= n; i++) {
-		const idx = Math.min(xs.length - 1, Math.round(i / n * lastIdx));
-		values.push(Math.round(xs[idx] * 1e4) / 1e4);
-	}
-	values[values.length - 1] = 1;
-	return {
-		duration,
-		values,
-		overshoots: max > 1.001
-	};
-}
-var linearOK = null;
-function supportsLinear() {
-	if (linearOK == null) linearOK = typeof CSS !== "undefined" && typeof CSS.supports === "function" && CSS.supports("transition-timing-function", "linear(0, 1)");
-	return linearOK;
-}
-var cache$1 = /* @__PURE__ */ new Map();
-var evalCache = /* @__PURE__ */ new Map();
-function easingFunction(spec) {
-	let fn = evalCache.get(spec);
-	if (fn) return fn;
-	const lin = /^linear\(([^)]+)\)$/.exec(spec.trim());
-	const bez = /^cubic-bezier\(([^)]+)\)$/.exec(spec.trim());
-	if (lin) {
-		const values = lin[1].split(",").map(Number);
-		fn = (t) => {
-			if (t <= 0) return values[0];
-			if (t >= 1) return values[values.length - 1];
-			const f = t * (values.length - 1);
-			const i = Math.floor(f);
-			return values[i] + (values[i + 1] - values[i]) * (f - i);
-		};
-	} else if (bez) {
-		const [x1, y1, x2, y2] = bez[1].split(",").map(Number);
-		fn = (t) => {
-			if (t <= 0) return 0;
-			if (t >= 1) return 1;
-			let lo = 0;
-			let hi = 1;
-			for (let i = 0; i < 24; i++) {
-				const mid = (lo + hi) / 2;
-				if (3 * mid * (1 - mid) * (1 - mid) * x1 + 3 * mid * mid * (1 - mid) * x2 + mid ** 3 < t) lo = mid;
-				else hi = mid;
-			}
-			const u = (lo + hi) / 2;
-			return 3 * u * (1 - u) * (1 - u) * y1 + 3 * u * u * (1 - u) * y2 + u ** 3;
-		};
-	} else if (spec === "ease") fn = easingFunction("cubic-bezier(0.25, 0.1, 0.25, 1)");
-	else if (spec === "ease-in") fn = easingFunction("cubic-bezier(0.42, 0, 1, 1)");
-	else if (spec === "ease-out") fn = easingFunction("cubic-bezier(0, 0, 0.58, 1)");
-	else if (spec === "ease-in-out") fn = easingFunction("cubic-bezier(0.42, 0, 0.58, 1)");
-	else fn = (t) => Math.min(1, Math.max(0, t));
-	evalCache.set(spec, fn);
-	return fn;
-}
-function resolveTransition(t, reducedMotion = false) {
-	if (reducedMotion) return {
-		duration: 0,
-		easing: "linear"
-	};
-	const cfg = t ?? "smooth";
-	if (typeof cfg === "object" && "duration" in cfg) return {
-		duration: cfg.duration,
-		easing: cfg.ease ?? "cubic-bezier(0.22, 1, 0.36, 1)"
-	};
-	const spring = typeof cfg === "string" ? presets[cfg] : {
-		stiffness: 300,
-		damping: 24,
-		mass: 1,
-		...cfg
-	};
-	const key = `${spring.stiffness}/${spring.damping}/${spring.mass}/${supportsLinear()}`;
-	let resolved = cache$1.get(key);
-	if (!resolved) {
-		const sim = simulate(spring);
-		resolved = {
-			duration: Math.round(sim.duration * 1e3),
-			easing: supportsLinear() ? `linear(${sim.values.join(", ")})` : sim.overshoots ? "cubic-bezier(0.34, 1.56, 0.64, 1)" : "cubic-bezier(0.22, 1, 0.36, 1)"
-		};
-		cache$1.set(key, resolved);
-	}
-	return resolved;
-}
-function toEffects(effect) {
-	return Array.isArray(effect) ? effect : effect ? [effect] : [];
-}
-function GooeyItem(props) {
-	const ctx = useGooeyContext();
-	return props.observe || toEffects(props.effect).some((e) => e !== "morph") ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ObservedItem, {
-		...props,
-		ctx
-	}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MirroredItem, {
-		...props,
-		ctx
-	});
-}
-function transitionKey(t) {
-	return typeof t === "string" ? t : JSON.stringify(t ?? null);
-}
-function sameBox(a, b) {
-	return !!a && a.x === b.x && a.y === b.y && a.w === b.w && a.h === b.h && a.r.every((v, i) => v === b.r[i]);
-}
-function MirroredItem({ x = 0, y = 0, scale = 1, transition = "smooth", delay = 0, radius, className, style, children, ctx }) {
-	const wrapRef = (0, import_react.useRef)(null);
-	const blobRef = (0, import_react.useRef)(null);
-	const [box, setBox] = (0, import_react.useState)(null);
-	const reduced = useReducedMotion$1();
-	const tKey = transitionKey(transition);
-	const { duration, easing } = (0, import_react.useMemo)(() => resolveTransition(transition, reduced), [tKey, reduced]);
-	useIsoLayoutEffect(() => {
-		const el = wrapRef.current;
-		const group = ctx.getGroup();
-		if (!el || !group) return;
-		const measure = () => {
-			const base = offsetTo(el, group);
-			const w = el.offsetWidth;
-			const h = el.offsetHeight;
-			const target = el.firstElementChild ?? el;
-			const r = radius != null ? normalizeRadius(radius) : measureRadius(target, w, h);
-			const next = {
-				x: base.x,
-				y: base.y,
-				w,
-				h,
-				r
-			};
-			setBox((prev) => sameBox(prev, next) ? prev : next);
-		};
-		measure();
-		const ro = new ResizeObserver(measure);
-		ro.observe(el);
-		ro.observe(group);
-		return () => ro.disconnect();
-	}, [ctx, radius == null ? "" : JSON.stringify(radius)]);
-	const cur = (0, import_react.useRef)(null);
-	const writeTransform = (px, py, ps) => {
-		const t = `translate(${px}px, ${py}px)` + (ps !== 1 ? ` scale(${ps})` : "");
-		if (wrapRef.current) wrapRef.current.style.transform = t;
-		if (blobRef.current) blobRef.current.style.transform = t;
-	};
-	useIsoLayoutEffect(() => {
-		const from = cur.current;
-		if (!from || duration <= 0 || from.x === x && from.y === y && from.s === scale) {
-			cur.current = {
-				x,
-				y,
-				s: scale
-			};
-			writeTransform(x, y, scale);
-			return;
-		}
-		const f = { ...from };
-		const ease = easingFunction(easing);
-		const start = performance.now() + delay;
-		let raf = 0;
-		const tick = (now) => {
-			const p = Math.min(1, Math.max(0, (now - start) / duration));
-			const e = ease(p);
-			const cx = f.x + (x - f.x) * e;
-			const cy = f.y + (y - f.y) * e;
-			const cs = f.s + (scale - f.s) * e;
-			cur.current = {
-				x: cx,
-				y: cy,
-				s: cs
-			};
-			writeTransform(cx, cy, cs);
-			if (p < 1) raf = requestAnimationFrame(tick);
-		};
-		raf = requestAnimationFrame(tick);
-		return () => cancelAnimationFrame(raf);
-	}, [
-		x,
-		y,
-		scale,
-		duration,
-		easing,
-		delay
-	]);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		ref: wrapRef,
-		className,
-		style: {
-			display: "inline-block",
-			...style,
-			willChange: "transform"
-		},
-		children
-	}), ctx.portal && box && (0, import_react_dom.createPortal)(renderBlob(box, {
-		transformBox: "fill-box",
-		transformOrigin: "center",
-		willChange: "transform"
-	}, (el) => {
-		blobRef.current = el;
-		if (el) {
-			const c = cur.current ?? {
-				x,
-				y,
-				s: scale
-			};
-			el.style.transform = `translate(${c.x}px, ${c.y}px)` + (c.s !== 1 ? ` scale(${c.s})` : "");
-		}
-	}), ctx.portal)] });
-}
-function renderBlob(box, style, setRef) {
-	const [tl, tr, br, bl] = box.r;
-	if (tl === tr && tr === br && br === bl) {
-		const rx = Math.max(0, Math.min(tl, Math.min(box.w, box.h) / 2));
-		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
-			ref: setRef,
-			x: box.x,
-			y: box.y,
-			width: box.w,
-			height: box.h,
-			rx,
-			style
-		});
-	}
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
-		ref: setRef,
-		d: roundedRectPath(box.x, box.y, box.w, box.h, box.r),
-		style
-	});
-}
-function ObservedItem({ radius, blobInset, bridgeGrow, contactBlur, effect, evolve, move, className, style, children, ctx }) {
-	const hostRef = (0, import_react.useRef)(null);
-	const blobRef = (0, import_react.useRef)(null);
-	const meltRef = (0, import_react.useRef)(null);
-	const blendRef = (0, import_react.useRef)(null);
-	const opts = typeof contactBlur === "object" ? contactBlur : {};
-	const blendBlur = opts.blur ?? 8;
-	const blendWarp = opts.warp ?? 26;
-	const blendPull = opts.pull ?? 4;
-	const blendRange = opts.range;
-	const blendZone = opts.zone;
-	const blendMix = opts.mix ?? 0;
-	const blendGravity = opts.gravity ?? 60;
-	const blendTaper = opts.taper ?? 1;
-	const blendWarpFreq = opts.warpFreq ?? 1.7;
-	const blendFlowSpeed = opts.flowSpeed ?? 22;
-	const blendWarpStyle = opts.warpStyle ?? "fractalNoise";
-	const blendDetail = opts.detail ?? 2;
-	const blendActive = opts.active !== false;
-	const blendRelease = opts.releaseMs ?? 240;
-	const blendFade = opts.fadeMs;
-	const blendStrength = opts.strength ?? 1;
-	const blendSink = opts.sink;
-	const blendSurface = opts.surface;
-	const blendSeamBlur = opts.seamBlur;
-	const effects = toEffects(effect);
-	const dynamics = {
-		evolve: effects.includes("evolve"),
-		move: effects.includes("move"),
-		evolveOpts: {
-			...EVOLVE_DEFAULTS,
-			...evolve
-		},
-		moveOpts: {
-			...MOVE_DEFAULTS,
-			...move
-		}
-	};
-	const hasDynamics = dynamics.evolve || dynamics.move;
-	useIsoLayoutEffect(() => {
-		const host = hostRef.current;
-		const blob = blobRef.current;
-		const target = host?.firstElementChild ?? null;
-		if (!target || !blob) return;
-		const blend = contactBlur && meltRef.current ? {
-			host: meltRef.current,
-			blur: blendBlur,
-			warp: blendWarp,
-			pull: blendPull,
-			range: blendRange,
-			zone: blendZone,
-			mix: blendMix,
-			gravity: blendGravity,
-			taper: blendTaper,
-			warpFreq: blendWarpFreq,
-			flowSpeed: blendFlowSpeed,
-			warpStyle: blendWarpStyle,
-			detail: blendDetail,
-			active: blendActive,
-			releaseMs: blendRelease,
-			fadeMs: blendFade,
-			strength: blendStrength,
-			sink: blendSink,
-			surface: blendSurface,
-			seamBlur: blendSeamBlur
-		} : void 0;
-		blendRef.current = blend ?? null;
-		return ctx.engine.add({
-			target,
-			blob,
-			radius: radius == null ? void 0 : normalizeRadius(radius)[0],
-			blobInset,
-			bridgeGrow,
-			blend,
-			dynamics: hasDynamics ? dynamics : void 0
-		});
-	}, [
-		ctx,
-		radius == null ? "" : JSON.stringify(radius),
-		contactBlur ? `${blendBlur}/${blendWarp}/${blendPull}/${blendRange ?? "auto"}/${blendZone ?? "auto"}/${blendMix}/${blendGravity}/${blendTaper}/${blendWarpFreq}/${blendFlowSpeed}/${blendWarpStyle}/${blendDetail}/${blendSurface ?? "liquid"}/${(blendSeamBlur ?? 1) > 0 ? "seam" : "noseam"}` : "",
-		effects.join(",") + (dynamics.evolve ? JSON.stringify(dynamics.evolveOpts) : "") + (dynamics.move ? JSON.stringify(dynamics.moveOpts) : ""),
-		blobInset,
-		bridgeGrow
-	]);
-	(0, import_react.useEffect)(() => {
-		if (!blendRef.current) return;
-		blendRef.current.active = blendActive;
-		blendRef.current.releaseMs = blendRelease;
-		blendRef.current.fadeMs = blendFade;
-		blendRef.current.strength = blendStrength;
-		blendRef.current.sink = blendSink;
-		blendRef.current.seamBlur = blendSeamBlur;
-		ctx.engine.wake();
-	}, [
-		ctx,
-		blendActive,
-		blendRelease,
-		blendFade,
-		blendStrength,
-		blendSink,
-		blendSeamBlur
-	]);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-			ref: hostRef,
-			className,
-			style: {
-				display: "contents",
-				...style
-			},
-			children
-		}),
-		ctx.portal && (0, import_react_dom.createPortal)(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
-			ref: blobRef,
-			x: 0,
-			y: 0,
-			width: 0,
-			height: 0,
-			style: {
-				willChange: "transform",
-				transformBox: "fill-box",
-				transformOrigin: "center"
-			}
-		}), ctx.portal),
-		contactBlur !== void 0 && contactBlur !== false && ctx.meltPortal && (0, import_react_dom.createPortal)(/* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
-			ref: meltRef,
-			opacity: 0
-		}), ctx.meltPortal)
-	] });
-}
-function zeta(bounce) {
-	return Math.max(.12, 1 - 1.1 * Math.min(1, Math.max(0, bounce)));
-}
-function mapMorphSprings(t) {
-	const s = Math.max(.25, t?.speed ?? 1);
-	const k = zeta(t?.bounce ?? .5) / zeta(.5);
-	return {
-		massStiffness: EVOLVE_DEFAULTS.massStiffness * s * s,
-		massDamping: EVOLVE_DEFAULTS.massDamping * s * k,
-		sizeStiffness: EVOLVE_DEFAULTS.sizeStiffness * s * s,
-		sizeDamping: EVOLVE_DEFAULTS.sizeDamping * s * k,
-		radiusStiffness: EVOLVE_DEFAULTS.radiusStiffness * s * s,
-		radiusDamping: EVOLVE_DEFAULTS.radiusDamping * s,
-		cornerDuration: EVOLVE_DEFAULTS.cornerDuration / s,
-		contentBlur: t?.contentBlur ?? EVOLVE_DEFAULTS.contentBlur
-	};
-}
-function mapDissolve(d) {
-	return {
-		warp: 26,
-		blur: 8,
-		mix: .7,
-		gravity: 60,
-		taper: 1,
-		warpFreq: 1.7,
-		flowSpeed: 22,
-		detail: 2,
-		zone: 18,
-		range: 49,
-		releaseMs: 110,
-		strength: typeof d === "number" ? Math.min(1, Math.max(0, d)) : 1
-	};
-}
-function mapMove(t) {
-	const p = Math.min(1, Math.max(0, t?.springiness ?? .5));
-	const stiffness = MOVE_DEFAULTS.stiffness * Math.pow(10, p - .5);
-	return {
-		stiffness,
-		damping: MOVE_DEFAULTS.damping * Math.sqrt(stiffness / MOVE_DEFAULTS.stiffness) * (zeta(t?.wobble ?? .5) / zeta(.5)),
-		stretch: .5 * Math.min(1, Math.max(0, t?.stretch ?? .36)),
-		tail: .8 * Math.min(1, Math.max(0, t?.trail ?? .575)),
-		...t?.advanced
-	};
-}
-function mapBend(t) {
-	return {
-		...mapMove({
-			springiness: 1,
-			stretch: 0,
-			trail: 0
-		}),
-		bend: Math.min(1, Math.max(0, t?.vertical ?? .6)),
-		bendX: Math.min(1, Math.max(0, t?.horizontal ?? .35)),
-		...t?.advanced
-	};
-}
-function MeltItem({ melt, children }) {
-	const { imageMelt } = useGooeyContext();
-	const { src, ...tuning } = melt ?? {};
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ImageMeltItem, {
-		src,
-		opts: {
-			...IMAGE_MELT_DEFAULTS,
-			...tuning
-		},
-		registry: imageMelt,
-		children
-	});
-}
-function LiquidItem(props) {
-	const { effect = "morph", morph, move, bend, melt, dissolve, observe, ...rest } = props;
-	if (effect === "melt") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MeltItem, {
-		melt,
-		children: rest.children
-	});
-	if (effect === "bend") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GooeyItem, {
-		...rest,
-		observe: true,
-		effect: "move",
-		move: mapBend(bend)
-	});
-	if (effect === "move") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GooeyItem, {
-		...rest,
-		observe: true,
-		effect: "move",
-		move: mapMove(move)
-	});
-	const adv = morph?.advanced;
-	const shape = !!morph?.shape;
-	const contactBlur = dissolve !== void 0 && dissolve !== false ? typeof dissolve === "object" ? {
-		...mapDissolve(true),
-		...dissolve
-	} : mapDissolve(dissolve) : void 0;
-	const evolve = shape ? {
-		...mapMorphSprings(morph),
-		...adv?.evolve
-	} : void 0;
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GooeyItem, {
-		...rest,
-		observe: observe || shape || !!contactBlur || void 0,
-		effect: shape ? "evolve" : void 0,
-		evolve,
-		contactBlur,
-		blobInset: adv?.blobInset,
-		bridgeGrow: adv?.bridgeGrow
-	});
-}
-var Liquid = Object.assign(GooeyRoot, { Item: LiquidItem });
-//#endregion
-//#region frontend/src/components/GooeyNewButton.jsx
-var transition = {
-	duration: 280,
-	ease: "cubic-bezier(0.22, 1, 0.36, 1)"
-};
-function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onShareClientLink }) {
-	const [open, setOpen] = (0, import_react.useState)(false);
-	const rootRef = (0, import_react.useRef)(null);
-	(0, import_react.useEffect)(() => {
-		if (!open) return;
-		const closeOnOutsidePress = (event) => {
-			if (!rootRef.current?.contains(event.target)) setOpen(false);
-		};
-		const closeOnEscape = (event) => {
-			if (event.key === "Escape") setOpen(false);
-		};
-		document.addEventListener("pointerdown", closeOnOutsidePress);
-		document.addEventListener("keydown", closeOnEscape);
-		return () => {
-			document.removeEventListener("pointerdown", closeOnOutsidePress);
-			document.removeEventListener("keydown", closeOnEscape);
-		};
-	}, [open]);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		ref: rootRef,
-		className: "relative z-40 flex h-12 items-center justify-center overflow-visible",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Liquid, {
-			fill: "#202020",
-			blur: 5,
-			contrast: 18,
-			filterPadding: 200,
-			shadow: "0 4px 12px rgba(10, 20, 36, .18)",
-			className: "size-12 overflow-visible",
-			children: [[
-				{
-					label: "New project",
-					Icon: FolderPlus,
-					x: -70,
-					y: -62,
-					onClick: onCreateProject
-				},
-				{
-					label: "Add member",
-					Icon: UserPlus,
-					x: -88,
-					y: -116,
-					onClick: onAddMember,
-					disabled: !hasProject
-				},
-				{
-					label: "Client link",
-					Icon: Link2,
-					x: -16,
-					y: -138,
-					onClick: onShareClientLink,
-					disabled: !hasProject
-				}
-			].map(({ label, Icon, x, y, onClick, disabled }) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Liquid.Item, {
-				className: "absolute left-0.5 top-0.5",
-				x: open ? x : 0,
-				y: open ? y : 0,
-				scale: open ? 1 : 0,
-				transition,
-				delay: 0,
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-					type: "button",
-					"aria-label": label,
-					title: label,
-					tabIndex: open && !disabled ? 0 : -1,
-					disabled,
-					className: "grid size-11 place-items-center rounded-full text-white outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-45",
-					style: { pointerEvents: open ? "auto" : "none" },
-					onClick: () => {
-						setOpen(false);
-						onClick();
-					},
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, {
-						className: "size-5",
-						"aria-hidden": "true"
-					})
-				})
-			}, label)), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Liquid.Item, {
-				className: "absolute inset-0",
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-					type: "button",
-					"aria-label": open ? "Close new actions" : "Open new actions",
-					"aria-expanded": open,
-					className: "grid size-12 place-items-center rounded-full border-2 border-white text-white outline-2 outline-offset-[-5px] outline-[#202020] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
-					onClick: () => setOpen((value) => !value),
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {
-						className: `size-5 transition-transform duration-200 ease-out ${open ? "rotate-45" : ""}`,
-						"aria-hidden": "true"
-					})
-				})
-			})]
-		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-			className: "sr-only",
-			children: "New actions"
-		})]
 	});
 }
 //#endregion
@@ -28604,7 +25697,7 @@ function addDriveLink(projectId, name, category, url) {
 }
 //#endregion
 //#region frontend/src/components/ProjectDetailView.jsx
-var statusBadgeStyles$1 = {
+var statusBadgeStyles = {
 	"On track": "border-emerald-200 bg-emerald-50 text-emerald-800",
 	"Active": "border-emerald-200 bg-emerald-50 text-emerald-800",
 	"At risk": "border-amber-200 bg-amber-50 text-amber-800",
@@ -28924,7 +26017,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
 								variant: "outline",
-								className: statusBadgeStyles$1[project.status] || "border-muted",
+								className: statusBadgeStyles[project.status] || "border-muted",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 rounded-full bg-current mr-1.5" }), project.status || "Setup"]
 							}),
 							project.phase && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
@@ -29926,215 +27019,189 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 }
 //#endregion
 //#region frontend/src/components/ProjectDirectoryView.jsx
-var statusBadgeStyles = {
-	"On track": "border-emerald-200 bg-emerald-50 text-emerald-800",
-	"At risk": "border-amber-200 bg-amber-50 text-amber-800",
-	"On hold": "border-slate-200 bg-slate-100 text-slate-700",
-	"Completed": "border-blue-200 bg-blue-50 text-blue-800",
-	"Setup": "border-purple-200 bg-purple-50 text-purple-800"
-};
-function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectProject, onCreateProject, onOpenGroups }) {
+var needsSetup = (project) => project.telegramSetupPending || !project.clientName || ["Unassigned Client", "Client pending"].includes(project.clientName);
+var unresolved = (request) => ![
+	"Done",
+	"Rejected",
+	"Published"
+].includes(request.status);
+function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectProject, onCreateProject, onOpenAttention }) {
 	const [search, setSearch] = (0, import_react.useState)("");
-	const [filter, setFilter] = (0, import_react.useState)("all");
-	const ongoingCount = projects.filter((p) => p.status !== "Completed").length;
-	const needsSetupCount = projects.filter((p) => p.telegramSetupPending || !p.clientName || ["Unassigned Client", "Client pending"].includes(p.clientName)).length;
-	const atRiskCount = projects.filter((p) => p.status === "At risk").length;
-	const completedCount = projects.filter((p) => p.status === "Completed").length;
+	const [filter, setFilter] = (0, import_react.useState)("ongoing");
+	const pending = decisionRequests.filter(unresolved);
+	const counts = {
+		ongoing: projects.filter((p) => p.status !== "Completed").length,
+		needs_setup: projects.filter(needsSetup).length,
+		completed: projects.filter((p) => p.status === "Completed").length,
+		all: projects.length
+	};
 	const filtered = projects.filter((project) => {
 		if (filter === "ongoing" && project.status === "Completed") return false;
 		if (filter === "completed" && project.status !== "Completed") return false;
-		if (filter === "at_risk" && project.status !== "At risk") return false;
-		if (filter === "needs_setup" && !project.telegramSetupPending && project.clientName && !["Unassigned Client", "Client pending"].includes(project.clientName)) return false;
-		if (search.trim()) {
-			const q = search.toLowerCase();
-			return project.name?.toLowerCase().includes(q) || (project.clientName || "").toLowerCase().includes(q) || (project.location || "").toLowerCase().includes(q) || (project.phase || "").toLowerCase().includes(q);
-		}
-		return true;
+		if (filter === "needs_setup" && !needsSetup(project)) return false;
+		return `${project.name || ""} ${project.clientName || ""} ${project.location || ""} ${project.phase || ""}`.toLowerCase().includes(search.trim().toLowerCase());
 	});
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "space-y-6",
+		className: "project-directory",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4",
+				className: "directory-heading",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "text-xs font-semibold uppercase tracking-wider text-primary",
-						children: "Workspace Overview"
+						className: "directory-eyebrow",
+						children: "YOUR WORKSPACE"
 					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-						className: "mt-1 text-2xl font-bold tracking-tight sm:text-3xl text-foreground",
-						children: "All Projects Directory"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "mt-0.5 text-xs text-muted-foreground",
-						children: "Select a project to manage its tasks, internal chat, schedule, and client queries."
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", { children: "Projects, at a glance." }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "directory-description",
+						children: [
+							counts.ongoing,
+							" ongoing ",
+							counts.ongoing === 1 ? "project" : "projects",
+							". One place to pick up where you left off."
+						]
 					})
 				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+					className: "directory-create",
 					onClick: onCreateProject,
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-4 mr-1.5" }), "Create New Project"]
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-4" }), " New project"]
 				})]
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex flex-wrap items-center gap-1.5 bg-muted/60 p-1 rounded-xl text-xs",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							type: "button",
-							onClick: () => setFilter("all"),
-							className: `rounded-lg px-3 py-1.5 font-medium transition-all ${filter === "all" ? "bg-card text-foreground shadow-2xs font-semibold" : "text-muted-foreground hover:text-foreground"}`,
-							children: [
-								"All (",
-								projects.length,
-								")"
-							]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							type: "button",
-							onClick: () => setFilter("ongoing"),
-							className: `rounded-lg px-3 py-1.5 font-medium transition-all ${filter === "ongoing" ? "bg-card text-foreground shadow-2xs font-semibold" : "text-muted-foreground hover:text-foreground"}`,
-							children: [
-								"Ongoing (",
-								ongoingCount,
-								")"
-							]
-						}),
-						needsSetupCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							type: "button",
-							onClick: () => setFilter("needs_setup"),
-							className: `rounded-lg px-3 py-1.5 font-medium transition-all flex items-center gap-1 ${filter === "needs_setup" ? "bg-amber-100 text-amber-900 font-semibold" : "text-amber-800 hover:text-amber-900"}`,
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-3" }),
-								"Needs Setup (",
-								needsSetupCount,
-								")"
-							]
-						}),
-						atRiskCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							type: "button",
-							onClick: () => setFilter("at_risk"),
-							className: `rounded-lg px-3 py-1.5 font-medium transition-all ${filter === "at_risk" ? "bg-red-100 text-red-900 font-semibold" : "text-red-700 hover:text-red-900"}`,
-							children: [
-								"At Risk (",
-								atRiskCount,
-								")"
-							]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							type: "button",
-							onClick: () => setFilter("completed"),
-							className: `rounded-lg px-3 py-1.5 font-medium transition-all ${filter === "completed" ? "bg-card text-foreground shadow-2xs font-semibold" : "text-muted-foreground hover:text-foreground"}`,
-							children: [
-								"Completed (",
-								completedCount,
-								")"
-							]
-						})
-					]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "relative min-w-56 max-w-xs",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-						value: search,
-						onChange: (e) => setSearch(e.target.value),
-						placeholder: "Search projects by name, client, location…",
-						className: "pl-8 text-xs h-9"
-					})]
-				})]
+			pending.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+				type: "button",
+				className: "directory-attention",
+				onClick: onOpenAttention,
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "attention-icon",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { size: 19 })
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						className: "attention-copy",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [
+							pending.length,
+							" ",
+							pending.length === 1 ? "question needs" : "questions need",
+							" your attention"
+						] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Pick up the conversation and keep work moving." })]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						className: "attention-action",
+						children: ["Review ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { size: 16 })]
+					})
+				]
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "grid gap-4 sm:grid-cols-2 lg:grid-cols-3",
-				children: filtered.length ? filtered.map((project) => {
-					const taskCount = project.taskCount || 0;
-					const progress = project.progress || 0;
-					const pendingQueries = decisionRequests.filter((q) => q.projectId === project.id && ![
-						"Done",
-						"Rejected",
-						"Published"
-					].includes(q.status)).length;
-					const isMissingClient = !project.clientName || ["Unassigned Client", "Client pending"].includes(project.clientName) || project.telegramSetupPending;
-					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
-						onClick: () => onSelectProject(project.id),
-						className: `group cursor-pointer overflow-hidden transition-all duration-200 hover:border-primary/50 hover:shadow-md ${isMissingClient ? "border-amber-300/80 bg-amber-50/20" : ""}`,
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
-							className: "p-5 flex flex-col justify-between h-full space-y-4",
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+				className: "directory-projects",
+				"aria-label": "Projects",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "directory-toolbar",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "directory-filters",
+							role: "group",
+							"aria-label": "Filter projects",
 							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex items-center justify-between gap-2 mb-2",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
-											variant: "outline",
-											className: statusBadgeStyles[project.status] || "border-muted",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 rounded-full bg-current mr-1.5" }), project.status || "Setup"]
-										}), pendingQueries > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
-											variant: "outline",
-											className: "border-red-200 bg-red-50 text-red-700 text-[10px]",
-											children: [
-												pendingQueries,
-												" client ",
-												pendingQueries === 1 ? "query" : "queries"
-											]
+								["ongoing", "Ongoing"],
+								["needs_setup", "Needs setup"],
+								["completed", "Completed"],
+								["all", "All"]
+							].map(([id, label]) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								type: "button",
+								"aria-pressed": filter === id,
+								className: filter === id ? "selected" : "",
+								onClick: () => setFilter(id),
+								children: [label, /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: counts[id] })]
+							}, id))
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "directory-search",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { size: 16 }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+								"aria-label": "Search projects",
+								placeholder: "Find a project…",
+								value: search,
+								onChange: (event) => setSearch(event.target.value)
+							})]
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "directory-column-head",
+						"aria-hidden": "true",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "PROJECT" }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "UP NEXT" }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "PROGRESS" }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "directory-list",
+						children: [filtered.map((project) => {
+							const queries = pending.filter((q) => q.projectId === project.id).length;
+							const setup = needsSetup(project);
+							const progress = Math.max(0, Math.min(100, Number(project.progress) || 0));
+							const next = setup ? "Assign a client to get started" : project.blocker || (queries ? `${queries} ${queries === 1 ? "question waiting" : "questions waiting"} for a reply` : project.nextMilestone || project.recentTask || "Open project to plan the next step");
+							return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								type: "button",
+								className: "directory-project-row",
+								onClick: () => onSelectProject(project.id),
+								"aria-label": `Open ${project.name}`,
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										className: "directory-project-identity",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: `project-monogram ${setup ? "is-setup" : ""}`,
+											children: (project.name || "P").trim().slice(0, 1).toUpperCase()
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+											className: "project-name",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: project.name }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [setup ? "Client pending" : project.clientName || "Client unassigned", project.location && ` · ${project.location}`] })]
 										})]
 									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-										className: "text-base font-bold text-foreground group-hover:text-primary transition-colors tracking-tight line-clamp-1",
-										children: project.name
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-										className: "text-xs text-muted-foreground mt-0.5 line-clamp-1",
-										children: ["Client: ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "font-semibold text-foreground/90",
-											children: project.clientName || "Unassigned"
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										className: "project-next",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+											className: `project-phase ${setup ? "is-setup" : ""}`,
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", {}), setup ? "Needs setup" : project.status === "Completed" ? "Completed" : project.phase || project.status || "Planning"]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: project.blocker || queries ? "project-next-action needs-reply" : "project-next-action",
+											children: next
 										})]
 									}),
-									project.location && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-										className: "text-[11px] text-muted-foreground mt-0.5",
-										children: ["📍 ", project.location]
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										className: "project-progress",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: project.taskCount ? `${progress}%` : "Not started" }), !!project.taskCount && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "project-progress-track",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { style: { width: `${progress}%` } })
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, {
+										className: "project-open-icon",
+										size: 18
 									})
-								] }),
-								isMissingClient && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "rounded-lg bg-amber-100/70 border border-amber-200 p-2 text-[11px] text-amber-900 flex items-center gap-1.5",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-3.5 shrink-0 text-amber-700" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Setup needed: Client role must be assigned to start." })]
-								}),
-								taskCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "space-y-1",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex items-center justify-between text-[11px] text-muted-foreground",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: ["Tasks: ", taskCount] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [progress, "%"] })]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "h-1.5 w-full overflow-hidden rounded-full bg-muted",
-										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-											className: "h-full bg-primary transition-all",
-											style: { width: `${progress}%` }
-										})
-									})]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex items-center justify-between pt-2 border-t text-xs text-muted-foreground",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "truncate max-w-[150px]",
-										children: project.phase || "Phase: Setup"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "font-medium text-primary flex items-center gap-1 group-hover:translate-x-0.5 transition-transform",
-										children: ["Open Project ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-3" })]
-									})]
+								]
+							}, project.id);
+						}), !filtered.length && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "directory-empty",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { size: 28 }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: projects.length ? "No matching projects" : "Your first project starts here" }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: projects.length ? "Try another filter or search." : "Create a project to bring its people and work together." }),
+								!projects.length && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+									onClick: onCreateProject,
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { size: 16 }), " New project"]
 								})
 							]
-						})
-					}, project.id);
-				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "col-span-full py-16 text-center text-muted-foreground",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "mx-auto size-10 text-muted-foreground/40 mb-3" }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-							className: "text-base font-semibold text-foreground",
-							children: "No projects match your filter"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "text-xs mt-1",
-							children: "Try changing the status filter or search query."
-						})
-					]
-				})
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "directory-footer",
+						children: [
+							filtered.length,
+							" ",
+							filtered.length === 1 ? "project" : "projects",
+							search.trim() ? " matching your search" : " in this view"
+						]
+					})
+				]
 			})
 		]
 	});
@@ -30235,7 +27302,6 @@ function FounderApp() {
 	const [viewMode, setViewMode] = (0, import_react.useState)("directory");
 	const [activities, setActivities] = (0, import_react.useState)([]);
 	const [currentTab, setCurrentTab] = (0, import_react.useState)("projects");
-	const [searchQuery, setSearchQuery] = (0, import_react.useState)("");
 	const [sidebarOpen, setSidebarOpen] = (0, import_react.useState)(false);
 	const [createOpen, setCreateOpen] = (0, import_react.useState)(false);
 	const [memberOpen, setMemberOpen] = (0, import_react.useState)(false);
@@ -30245,7 +27311,6 @@ function FounderApp() {
 	const [notice, setNotice] = (0, import_react.useState)(null);
 	const [busy, setBusy] = (0, import_react.useState)(false);
 	const selectedProject = projects.find((p) => p.id === selectedProjectId) || null;
-	const filteredProjects = projects.filter((project) => `${project.name} ${project.clientName} ${project.location || ""}`.toLowerCase().includes(searchQuery.toLowerCase()));
 	const pendingDecisionsCount = decisionRequests.filter((r) => ![
 		"Done",
 		"Rejected",
@@ -30328,9 +27393,10 @@ function FounderApp() {
 	(0, import_react.useEffect)(() => {
 		const isLogin = authState === "signed-out";
 		document.documentElement.classList.toggle("founder-login", isLogin);
+		document.documentElement.classList.toggle("founder-workspace", authState === "signed-in");
 		const themeColor = document.querySelector("meta[name=\"theme-color\"]");
 		if (themeColor) themeColor.content = isLogin ? "#101010" : "#f6f5f4";
-		return () => document.documentElement.classList.remove("founder-login");
+		return () => document.documentElement.classList.remove("founder-login", "founder-workspace");
 	}, [authState]);
 	const openTab = (tab) => {
 		setCurrentTab(tab);
@@ -30557,108 +27623,54 @@ function FounderApp() {
 			trashedProjects.length
 		]
 	];
+	const navButton = ([id, Icon, label, badgeCount]) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+		type: "button",
+		className: `founder-nav-item ${currentTab === id ? "is-active" : ""}`,
+		onClick: () => openTab(id),
+		"aria-current": currentTab === id ? "page" : void 0,
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, { size: 18 }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: label }),
+			badgeCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				className: "founder-nav-count",
+				children: badgeCount
+			})
+		]
+	}, id);
 	const navigation = /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "flex h-full flex-col gap-5",
+		className: "founder-navigation",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Brand, {}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
-				className: "grid gap-1",
 				"aria-label": "Workspace",
-				children: navItems.map(([id, Icon, label, badgeCount]) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-					variant: currentTab === id && (id !== "projects" || viewMode === "directory") ? "secondary" : "ghost",
-					className: `h-10 justify-start gap-3 ${currentTab === id ? "text-primary font-semibold" : "text-muted-foreground"}`,
-					onClick: () => openTab(id),
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, { className: "size-4" }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "flex-1 text-left",
-							children: label
-						}),
-						badgeCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-							variant: "outline",
-							className: `ml-auto text-[10px] ${id === "decisions" || id === "groups" ? "bg-amber-100 text-amber-900 border-amber-300" : ""}`,
-							children: badgeCount
-						})
-					]
-				}, id))
+				className: "founder-primary-nav",
+				children: navItems.slice(0, 2).map(navButton)
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Separator, {}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex items-center justify-between",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-xs font-semibold uppercase tracking-wider text-muted-foreground",
-					children: "Quick Projects"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-					size: "icon-sm",
-					variant: "ghost",
-					"aria-label": "Create project",
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
+				className: "founder-tools",
+				open: !["projects", "decisions"].includes(currentTab),
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", { children: "Team & tools" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
+					"aria-label": "Team and tools",
+					children: navItems.slice(2).map(navButton)
+				})]
+			}),
+			viewMode === "detail" && currentTab === "projects" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "founder-shortcuts",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "PROJECTS" }), projects.filter((p) => p.status !== "Completed").slice(0, 5).map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+					type: "button",
+					className: project.id === selectedProjectId ? "is-selected" : "",
 					onClick: () => {
-						setCreateOpen(true);
+						handleSelectProjectFromDir(project.id);
 						setSidebarOpen(false);
 					},
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {})
-				})]
+					children: project.name
+				}, project.id))]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "relative",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-					value: searchQuery,
-					onChange: (e) => setSearchQuery(e.target.value),
-					placeholder: "Filter projects…",
-					className: "pl-8 text-xs h-8"
-				})]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "min-h-0 flex-1 space-y-4 overflow-y-auto",
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "space-y-1",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-						className: "px-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground",
-						children: [
-							"Ongoing Projects (",
-							filteredProjects.filter((p) => p.status !== "Completed").length,
-							")"
-						]
-					}), filteredProjects.filter((p) => p.status !== "Completed").map((project) => {
-						const isSelected = project.id === selectedProjectId && currentTab === "projects" && viewMode === "detail";
-						return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-							variant: isSelected ? "outline" : "ghost",
-							className: `h-auto w-full justify-start px-3 py-2 text-left ${isSelected ? "border-primary/40 bg-accent/60" : ""}`,
-							onClick: () => {
-								setSelectedProjectId(project.id);
-								setViewMode("detail");
-								setCurrentTab("projects");
-								setSidebarOpen(false);
-							},
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: `size-2 shrink-0 rounded-full mr-2.5 ${project.status === "At risk" || project.telegramSetupPending ? "bg-amber-500" : "bg-emerald-500"}` }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-								className: "min-w-0 flex-1",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "block truncate text-xs font-semibold",
-									children: project.name
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "block truncate text-[11px] font-normal text-muted-foreground",
-									children: project.clientName
-								})]
-							})]
-						}, project.id);
-					})]
-				})
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Separator, {}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex items-center gap-2",
+				className: "founder-account",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, { name: "Project Founder" }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "min-w-0 flex-1",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "truncate text-xs font-semibold",
-							children: "Project Founder"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "text-xs text-muted-foreground",
-							children: "Workspace owner"
-						})]
-					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "Founders" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", { children: "Studio Iksha" })] }),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						variant: "ghost",
 						size: "icon-sm",
@@ -30672,10 +27684,10 @@ function FounderApp() {
 	});
 	if (currentTab === "assistant") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderAssistant, { onBack: () => openTab("projects") });
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "app-glow min-h-dvh bg-background pb-20 md:pb-0",
+		className: "founder-shell min-h-dvh bg-background pb-20 md:pb-0",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("aside", {
-				className: "fixed inset-y-0 left-0 hidden w-64 border-r bg-card p-5 md:block",
+				className: "founder-sidebar fixed inset-y-0 left-0 hidden md:block",
 				children: navigation
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sheet, {
@@ -30691,9 +27703,9 @@ function FounderApp() {
 				})
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "md:pl-64",
+				className: "founder-body",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
-					className: "sticky top-0 z-20 flex h-16 items-center justify-between border-b bg-card/95 px-4 backdrop-blur sm:px-7",
+					className: "founder-header sticky top-0 z-20 flex items-center justify-between",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex min-w-0 items-center gap-3",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
@@ -30721,18 +27733,29 @@ function FounderApp() {
 								children: currentTab === "projects" && viewMode === "detail" ? selectedProject?.name || "Project Workspace" : "Studio Iksha"
 							})]
 						})]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-							variant: "outline",
-							size: "sm",
-							className: "hidden sm:inline-flex",
-							onClick: () => setCreateOpen(true),
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {}), " New project"]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, { name: "Project Founder" })]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+						type: "button",
+						className: "founder-intervention",
+						onClick: () => openTab("decisions"),
+						"aria-label": `Instant interference from the founders, ${pendingDecisionsCount} pending`,
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: pendingDecisionsCount ? "intervention-dot has-pending" : "intervention-dot" }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "intervention-label",
+								children: "Instant interference from the founders"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "intervention-mobile-label",
+								children: "Needs attention"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "intervention-count",
+								children: pendingDecisionsCount
+							})
+						]
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
-					className: "mx-auto w-full max-w-6xl space-y-5 px-4 py-6 sm:px-7 sm:py-8",
+					className: "founder-main mx-auto w-full space-y-5",
 					children: currentTab === "groups" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TelegramGroups, {
 						projects,
 						onProjectsChanged: loadProjects
@@ -30847,7 +27870,8 @@ function FounderApp() {
 						decisionRequests,
 						onSelectProject: handleSelectProjectFromDir,
 						onCreateProject: () => setCreateOpen(true),
-						onOpenGroups: () => openTab("groups")
+						onOpenGroups: () => openTab("groups"),
+						onOpenAttention: () => openTab("decisions")
 					}) : currentTab === "projects" && viewMode === "detail" && selectedProject ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectDetailView, {
 						project: selectedProject,
 						allProjects: projects,
@@ -30880,10 +27904,10 @@ function FounderApp() {
 					}) })
 				})]
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
-				className: "safe-bottom fixed inset-x-0 bottom-0 z-30 grid grid-cols-4 items-center overflow-visible border-t bg-card/95 px-2 pt-3 backdrop-blur md:hidden",
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
+				className: "safe-bottom fixed inset-x-0 bottom-0 z-30 grid grid-cols-3 items-center overflow-visible border-t bg-card/95 px-2 pt-3 backdrop-blur md:hidden",
 				"aria-label": "Mobile navigation",
-				children: [[
+				children: [
 					[
 						"projects",
 						FolderKanban,
@@ -30908,12 +27932,7 @@ function FounderApp() {
 						label,
 						id === "decisions" && pendingDecisionsCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 rounded-full bg-amber-500 absolute top-2 right-6" })
 					]
-				}, id)), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GooeyNewButton, {
-					hasProject: !!selectedProject,
-					onCreateProject: () => setCreateOpen(true),
-					onAddMember: () => setMemberOpen(true),
-					onShareClientLink: handleInvite
-				})]
+				}, id))
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
 				open: createOpen,
