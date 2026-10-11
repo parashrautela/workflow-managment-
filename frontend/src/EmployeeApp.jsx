@@ -14,6 +14,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TeamChat } from "@/components/TeamChat";
 import { TaskThreadDrawer } from "@/components/TaskThreadDrawer";
 import { ClientQueryCard } from "@/components/ClientQueryCard";
+import { ProjectDependencyGraph } from "@/components/ProjectDependencyGraph";
 import {
   request, fetchTasks, fetchProjectWorkspace, updateTask,
   fetchDecisionRequests
@@ -45,6 +46,8 @@ export default function EmployeeApp() {
   const [decisionRequests, setDecisionRequests] = useState([]);
   const [selectedTask, setSelectedTask] = useState(null);
   const [taskDrawerOpen, setTaskDrawerOpen] = useState(false);
+  const [taskViewMode, setTaskViewMode] = useState("list");
+  const [staleData, setStaleData] = useState(false);
   const [loadingWorkspace, setLoadingWorkspace] = useState(false);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -84,9 +87,11 @@ export default function EmployeeApp() {
       const wsData = await fetchProjectWorkspace(selected.id, "employee").catch(() => null);
       if (wsData && Array.isArray(wsData.tasks)) {
         setTasks(wsData.tasks);
+        setStaleData(Boolean(wsData.staleData));
       } else {
         const tData = await fetchTasks(selected.id, "employee");
         setTasks(tData.tasks || []);
+        setStaleData(false);
       }
 
       // 2. Load decision requests for assigned projects
@@ -313,7 +318,45 @@ export default function EmployeeApp() {
 
               {/* Tasks Tab */}
               <TabsContent value="tasks" className="space-y-3">
-                {tasks.length ? (
+                <div className="flex items-center justify-between gap-2 pb-1">
+                  <div className="flex items-center rounded-lg border bg-muted/60 p-0.5 shrink-0" role="group" aria-label="Task view mode">
+                    <button
+                      type="button"
+                      onClick={() => setTaskViewMode("list")}
+                      className={`px-3 py-1 text-xs font-semibold rounded-md transition-colors ${
+                        taskViewMode === "list" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                      }`}
+                      aria-pressed={taskViewMode === "list"}
+                    >
+                      List
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setTaskViewMode("graph")}
+                      className={`px-3 py-1 text-xs font-semibold rounded-md transition-colors ${
+                        taskViewMode === "graph" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                      }`}
+                      aria-pressed={taskViewMode === "graph"}
+                    >
+                      Dependency Graph
+                    </button>
+                  </div>
+                </div>
+
+                {taskViewMode === "graph" ? (
+                  <ProjectDependencyGraph
+                    tasks={tasks}
+                    employees={selected?.members ? selected.members.map((m) => ({ id: m.employeeId, name: m.name })) : []}
+                    stages={selected.stages || []}
+                    onOpenTask={(taskItem) => {
+                      setSelectedTask(taskItem);
+                      setTaskDrawerOpen(true);
+                    }}
+                    onSwitchToList={() => setTaskViewMode("list")}
+                    isFounder={false}
+                    staleDataNotice={staleData}
+                  />
+                ) : tasks.length ? (
                   tasks.map((t) => {
                     const isCompleted = t.status === "Completed" || t.status === "completed";
                     return (
