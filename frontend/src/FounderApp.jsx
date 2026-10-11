@@ -15,6 +15,7 @@ import { NativeSelect } from "@/components/ui/native-select";
 import { Separator } from "@/components/ui/separator";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Skeleton } from "@/components/ui/skeleton";
+import { GooeyNewButton } from "@/components/GooeyNewButton";
 import { EmployeeDialog, EmployeeManager } from "@/components/EmployeeManager";
 import { FounderAssistant } from "@/components/FounderAssistant";
 import { DecisionInbox } from "@/components/DecisionInbox";
@@ -84,6 +85,7 @@ export default function FounderApp() {
   const [viewMode, setViewMode] = useState("directory"); // 'directory' | 'detail'
   const [activities, setActivities] = useState([]);
   const [currentTab, setCurrentTab] = useState("projects");
+  const [searchQuery, setSearchQuery] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [createOpen, setCreateOpen] = useState(false);
   const [memberOpen, setMemberOpen] = useState(false);
@@ -94,6 +96,7 @@ export default function FounderApp() {
   const [busy, setBusy] = useState(false);
 
   const selectedProject = projects.find((p) => p.id === selectedProjectId) || null;
+  const filteredProjects = projects.filter((project) => `${project.name} ${project.clientName} ${project.location || ""}`.toLowerCase().includes(searchQuery.toLowerCase()));
 
   // Unread badge counts (Actionable 9)
   const pendingDecisionsCount = decisionRequests.filter((r) => !["Done", "Rejected", "Published"].includes(r.status)).length;
@@ -188,10 +191,9 @@ export default function FounderApp() {
   useEffect(() => {
     const isLogin = authState === "signed-out";
     document.documentElement.classList.toggle("founder-login", isLogin);
-    document.documentElement.classList.toggle("founder-workspace", authState === "signed-in");
     const themeColor = document.querySelector('meta[name="theme-color"]');
     if (themeColor) themeColor.content = isLogin ? "#101010" : "#f6f5f4";
-    return () => document.documentElement.classList.remove("founder-login", "founder-workspace");
+    return () => document.documentElement.classList.remove("founder-login");
   }, [authState]);
 
   const openTab = (tab) => {
@@ -377,30 +379,112 @@ export default function FounderApp() {
     ["trash", Trash2, "Trash", trashedProjects.length]
   ];
 
-  const navButton = ([id, Icon, label, badgeCount]) => (
-    <button key={id} type="button" className={`founder-nav-item ${currentTab === id ? "is-active" : ""}`} onClick={() => openTab(id)} aria-current={currentTab === id ? "page" : undefined}>
-      <Icon size={18} /><span>{label}</span>{badgeCount > 0 && <span className="founder-nav-count">{badgeCount}</span>}
-    </button>
-  );
   const navigation = (
-    <div className="founder-navigation">
+    <div className="flex h-full flex-col gap-5">
       <Brand />
-      <nav aria-label="Workspace" className="founder-primary-nav">{navItems.slice(0, 2).map(navButton)}</nav>
-      <details className="founder-tools" open={!["projects", "decisions"].includes(currentTab)}>
-        <summary>Team & tools</summary>
-        <nav aria-label="Team and tools">{navItems.slice(2).map(navButton)}</nav>
-      </details>
-      {viewMode === "detail" && currentTab === "projects" && <div className="founder-shortcuts"><p>PROJECTS</p>{projects.filter((p) => p.status !== "Completed").slice(0, 5).map((project) => <button key={project.id} type="button" className={project.id === selectedProjectId ? "is-selected" : ""} onClick={() => { handleSelectProjectFromDir(project.id); setSidebarOpen(false); }}>{project.name}</button>)}</div>}
-      <div className="founder-account"><InitialAvatar name="Project Founder" /><span><strong>Founders</strong><small>Studio Iksha</small></span><Button variant="ghost" size="icon-sm" aria-label="Sign out" onClick={handleLogout}><LogOut /></Button></div>
+      <nav className="grid gap-1" aria-label="Workspace">
+        {navItems.map(([id, Icon, label, badgeCount]) => (
+          <Button
+            key={id}
+            variant={currentTab === id && (id !== "projects" || viewMode === "directory") ? "secondary" : "ghost"}
+            className={`h-10 justify-start gap-3 ${currentTab === id ? "text-primary font-semibold" : "text-muted-foreground"}`}
+            onClick={() => openTab(id)}
+          >
+            <Icon className="size-4" />
+            <span className="flex-1 text-left">{label}</span>
+            {badgeCount > 0 && (
+              <Badge
+                variant="outline"
+                className={`ml-auto text-[10px] ${id === "decisions" || id === "groups" ? "bg-amber-100 text-amber-900 border-amber-300" : ""}`}
+              >
+                {badgeCount}
+              </Badge>
+            )}
+          </Button>
+        ))}
+      </nav>
+
+      <Separator />
+
+      {/* Ongoing Projects Sidebar List (Actionable 21) */}
+      <div className="flex items-center justify-between">
+        <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          Quick Projects
+        </span>
+        <Button
+          size="icon-sm"
+          variant="ghost"
+          aria-label="Create project"
+          onClick={() => {
+            setCreateOpen(true);
+            setSidebarOpen(false);
+          }}
+        >
+          <Plus />
+        </Button>
+      </div>
+
+      <div className="relative">
+        <Search className="pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-muted-foreground" />
+        <Input
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Filter projects…"
+          className="pl-8 text-xs h-8"
+        />
+      </div>
+
+      <div className="min-h-0 flex-1 space-y-4 overflow-y-auto">
+        <div className="space-y-1">
+          <p className="px-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+            Ongoing Projects ({filteredProjects.filter((p) => p.status !== "Completed").length})
+          </p>
+          {filteredProjects.filter((p) => p.status !== "Completed").map((project) => {
+            const isSelected = project.id === selectedProjectId && currentTab === "projects" && viewMode === "detail";
+            return (
+              <Button
+                key={project.id}
+                variant={isSelected ? "outline" : "ghost"}
+                className={`h-auto w-full justify-start px-3 py-2 text-left ${isSelected ? "border-primary/40 bg-accent/60" : ""}`}
+                onClick={() => {
+                  setSelectedProjectId(project.id);
+                  setViewMode("detail");
+                  setCurrentTab("projects");
+                  setSidebarOpen(false);
+                }}
+              >
+                <span className={`size-2 shrink-0 rounded-full mr-2.5 ${project.status === "At risk" || project.telegramSetupPending ? "bg-amber-500" : "bg-emerald-500"}`} />
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate text-xs font-semibold">{project.name}</span>
+                  <span className="block truncate text-[11px] font-normal text-muted-foreground">{project.clientName}</span>
+                </span>
+              </Button>
+            );
+          })}
+        </div>
+      </div>
+
+      <Separator />
+
+      <div className="flex items-center gap-2">
+        <InitialAvatar name="Project Founder" />
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-xs font-semibold">Project Founder</p>
+          <p className="text-xs text-muted-foreground">Workspace owner</p>
+        </div>
+        <Button variant="ghost" size="icon-sm" aria-label="Sign out" onClick={handleLogout}>
+          <LogOut />
+        </Button>
+      </div>
     </div>
   );
 
   if (currentTab === "assistant") return <FounderAssistant onBack={() => openTab("projects")} />;
 
   return (
-    <div className="founder-shell min-h-dvh bg-background pb-20 md:pb-0">
+    <div className="app-glow min-h-dvh bg-background pb-20 md:pb-0">
       {/* Desktop Sidebar Navigation */}
-      <aside className="founder-sidebar fixed inset-y-0 left-0 hidden md:block">
+      <aside className="fixed inset-y-0 left-0 hidden w-64 border-r bg-card p-5 md:block">
         {navigation}
       </aside>
 
@@ -415,9 +499,9 @@ export default function FounderApp() {
         </SheetContent>
       </Sheet>
 
-      <div className="founder-body">
+      <div className="md:pl-64">
         {/* Sticky App Header */}
-        <header className="founder-header sticky top-0 z-20 flex items-center justify-between">
+        <header className="sticky top-0 z-20 flex h-16 items-center justify-between border-b bg-card/95 px-4 backdrop-blur sm:px-7">
           <div className="flex min-w-0 items-center gap-3">
             <Button
               variant="ghost"
@@ -448,13 +532,21 @@ export default function FounderApp() {
             </div>
           </div>
 
-          <button type="button" className="founder-intervention" onClick={() => openTab("decisions")} aria-label={`Instant interference from the founders, ${pendingDecisionsCount} pending`}>
-            <span className={pendingDecisionsCount ? "intervention-dot has-pending" : "intervention-dot"} /><span className="intervention-label">Instant interference from the founders</span><span className="intervention-mobile-label">Needs attention</span><span className="intervention-count">{pendingDecisionsCount}</span>
-          </button>
+          <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              className="hidden sm:inline-flex"
+              onClick={() => setCreateOpen(true)}
+            >
+              <Plus /> New project
+            </Button>
+            <InitialAvatar name="Project Founder" />
+          </div>
         </header>
 
         {/* Main Content Area */}
-        <main className="founder-main mx-auto w-full space-y-5">
+        <main className="mx-auto w-full max-w-6xl space-y-5 px-4 py-6 sm:px-7 sm:py-8">
           {currentTab === "groups" ? (
             <TelegramGroups projects={projects} onProjectsChanged={loadProjects} />
           ) : currentTab === "decisions" ? (
@@ -535,7 +627,6 @@ export default function FounderApp() {
               onSelectProject={handleSelectProjectFromDir}
               onCreateProject={() => setCreateOpen(true)}
               onOpenGroups={() => openTab("groups")}
-              onOpenAttention={() => openTab("decisions")}
             />
           ) : currentTab === "projects" && viewMode === "detail" && selectedProject ? (
             /* Actionables 1, 3, 4, 5, 6, 7, 8, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20: Detailed Project Workspace */
@@ -567,7 +658,7 @@ export default function FounderApp() {
       </div>
 
       {/* Mobile Sticky Navigation Footer (Actionable 22: Responsive mobile usability) */}
-      <nav className="safe-bottom fixed inset-x-0 bottom-0 z-30 grid grid-cols-3 items-center overflow-visible border-t bg-card/95 px-2 pt-3 backdrop-blur md:hidden" aria-label="Mobile navigation">
+      <nav className="safe-bottom fixed inset-x-0 bottom-0 z-30 grid grid-cols-4 items-center overflow-visible border-t bg-card/95 px-2 pt-3 backdrop-blur md:hidden" aria-label="Mobile navigation">
         {[
           ["projects", FolderKanban, "Projects"],
           ["decisions", CheckCircle2, "Decisions"],
@@ -586,6 +677,12 @@ export default function FounderApp() {
             )}
           </Button>
         ))}
+        <GooeyNewButton
+          hasProject={!!selectedProject}
+          onCreateProject={() => setCreateOpen(true)}
+          onAddMember={() => setMemberOpen(true)}
+          onShareClientLink={handleInvite}
+        />
       </nav>
 
       {/* Create Project Modal (Phase 2) */}
