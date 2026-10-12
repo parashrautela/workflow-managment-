@@ -1,4 +1,5 @@
 import { syncProjectTasks } from './task-sync.js';
+import { adaptBotTaskToWeb } from './task-adapter.js';
 import { randomUUID } from 'node:crypto';
 
 export class ApiError extends Error {
@@ -86,6 +87,27 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
     catch(error){fail('Telegram task sync failed: '+error.message,502);}
     finally{syncing.delete(project.id);}
   };
+  const activeSnapshotRefreshes=new Map();const lastSnapshotRefresh=new Map();
+  const refreshProjectWorkspaceSnapshot=async(state,project)=>{
+    if(!project.telegramGroupChatId || !project.telegramProjectId || !project.workflowStartedAt)return {ok:true};
+    const now=Date.now();
+    if(now-(lastSnapshotRefresh.get(project.id)||0)<15000)return {ok:true,cached:true};
+    if(activeSnapshotRefreshes.has(project.id))return activeSnapshotRefreshes.get(project.id);
+    const promise=(async()=>{
+      try{
+        await syncProjectTasks(state,project,callBotBridge,{readOnly:true});
+        lastSnapshotRefresh.set(project.id,Date.now());
+        await save();
+        return {ok:true};
+      }catch(err){
+        return {ok:false,staleData:true,warning:'Live Telegram sync unavailable; showing saved workspace data.'};
+      }finally{
+        activeSnapshotRefreshes.delete(project.id);
+      }
+    })();
+    activeSnapshotRefreshes.set(project.id,promise);
+    return promise;
+  };
   return async (req, res, url) => {
     const match = url.pathname.match(/^\/api\/(founder|employee)\/(workflows|projects\/[^/]+\/(?:tasks|workflow\/start|client|workspace)|tasks\/[^/]+(?:\/(?:messages|read))?|decision-requests(?:\/[^/]+(?:\/(?:comment|approve|reject|convert|read))?)?|projects\/[^/]+\/members\/[^/]+|employees\/[^/]+\/disable)$/);
     if (!match) return false;
@@ -139,7 +161,11 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
               if(end>stage.deadline)stage.deadline=end;
               stage.durationDays=stage.startDate && stage.deadline ? Math.round((Date.parse(stage.deadline)-Date.parse(stage.startDate))/86400000)+1 : 0;
               const id=`tg-task-${project.id}-${source.TaskID}`;
-              if(!state.tasks.some((task)=>task.id===id))state.tasks.push({id,projectId:project.id,title:source.TaskName,description:'',status:source.Status==='Completed'?'Completed':'Open',assigneeId,stageId:stage.id,deadline:end,telegramTaskId:source.TaskID,telegramSyncStatus:'Synced',sourceQueryId:'',createdBy:user.id,createdAt:timestamp(),updatedAt:timestamp(),deletedAt:''});
+              if(!state.tasks.some((task)=>task.id===id)){
+                const newTask={id,projectId:project.id,title:source.TaskName,description:'',status:source.Status==='Completed'?'Completed':'Open',assigneeId,stageId:stage.id,deadline:end,telegramTaskId:source.TaskID,telegramSyncStatus:'Synced',sourceQueryId:'',createdBy:user.id,createdAt:timestamp(),updatedAt:timestamp(),deletedAt:''};
+                adaptBotTaskToWeb(newTask,source);
+                state.tasks.push(newTask);
+              }
             }
             Object.assign(project,{workflowId:result.workflowId,workflowName:result.workflowName,workflowStartedAt:timestamp(),startDate,status:'Active',phase:stages[0].name,stages});
             audit('workflow_started',project.id,{workflowId:result.workflowId,source:'Telegram'});
@@ -170,8 +196,10 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
       }
       if (m[2]==='tasks' && method==='GET') await synchronize(state,project);
       if (m[2] === 'workspace' && method === 'GET') {
+        const refreshResult = await refreshProjectWorkspaceSnapshot(state, project);
         const requests = state.decisionRequests.filter((r) => r.projectId === project.id);
-        json(res,200,{project:projectView(project),tasks:state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt),requests}); return true;
+        const projectTasks = state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt);
+        json(res,200,{project:projectView(project),tasks:projectTasks,requests,staleData:Boolean(refreshResult?.staleData),syncWarning:refreshResult?.warning || ''}); return true;
       }
       if (m[2] === 'tasks' && method === 'GET') { json(res,200,{tasks:state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt)}); return true; }
       if (m[2] === 'tasks' && method === 'POST') {

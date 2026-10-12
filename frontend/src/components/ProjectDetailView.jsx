@@ -26,6 +26,7 @@ import { TeamChat } from "@/components/TeamChat";
 import { TaskThreadDrawer } from "@/components/TaskThreadDrawer";
 import { ClientQueryCard } from "@/components/ClientQueryCard";
 import { WorkflowTemplateModal } from "@/components/WorkflowTemplateModal";
+import { ProjectDependencyGraph } from "@/components/ProjectDependencyGraph";
 import {
   fetchProjectWorkspace, fetchTasks, createTask, updateTask,
   assignClient, removeProjectMember
@@ -74,6 +75,8 @@ export function ProjectDetailView({
   const [localWorkflow, setLocalWorkflow] = useState(() => getProjectWorkflow(project?.id, project));
   const [tasks, setTasks] = useState([]);
   const [loadingTasks, setLoadingTasks] = useState(false);
+  const [taskViewMode, setTaskViewMode] = useState("list");
+  const [staleData, setStaleData] = useState(false);
   const [activeTab, setActiveTab] = useState("tasks");
   const [templateModalOpen, setTemplateModalOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
@@ -127,12 +130,15 @@ export function ProjectDetailView({
       const wsData = await fetchProjectWorkspace(project.id, "founder").catch(() => null);
       if (wsData && Array.isArray(wsData.tasks)) {
         setTasks(wsData.tasks);
+        setStaleData(Boolean(wsData.staleData));
+        if (wsData.syncWarning) showNotice(wsData.syncWarning);
         return;
       }
       // Or tasks endpoint
       const tData = await fetchTasks(project.id, "founder").catch(() => null);
       if (tData && Array.isArray(tData.tasks)) {
         setTasks(tData.tasks);
+        setStaleData(false);
         return;
       }
       showNotice("Could not refresh tasks. Please retry; your last loaded tasks are still shown.", true);
@@ -627,7 +633,30 @@ export function ProjectDetailView({
               )}
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="flex items-center rounded-lg border bg-muted/60 p-0.5 shrink-0" role="group" aria-label="Task view mode">
+                <button
+                  type="button"
+                  onClick={() => setTaskViewMode("list")}
+                  className={`px-3 py-1 text-xs font-semibold rounded-md transition-colors ${
+                    taskViewMode === "list" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  aria-pressed={taskViewMode === "list"}
+                >
+                  List
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setTaskViewMode("graph")}
+                  className={`px-3 py-1 text-xs font-semibold rounded-md transition-colors ${
+                    taskViewMode === "graph" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  aria-pressed={taskViewMode === "graph"}
+                >
+                  Dependency Graph
+                </button>
+              </div>
+
               <Button
                 variant="outline"
                 size="sm"
@@ -662,118 +691,133 @@ export function ProjectDetailView({
             </div>
           </div>
 
-          {/* Task List */}
-          <div className="space-y-2.5">
-            {filteredTasks.length ? (
-              filteredTasks.map((t) => {
-                const isCompleted = t.status === "Completed" || t.status === "completed";
-                const stageName = stages.find((s) => s.id === t.stageId)?.name || t.stageName || "General";
+          {/* Task View Mode: Dependency Graph or List */}
+          {taskViewMode === "graph" ? (
+            <ProjectDependencyGraph
+              tasks={filteredTasks}
+              employees={employees}
+              stages={stages}
+              onOpenTask={(taskItem) => {
+                setSelectedTask(taskItem);
+                setTaskDrawerOpen(true);
+              }}
+              onSwitchToList={() => setTaskViewMode("list")}
+              isFounder={true}
+              staleDataNotice={staleData}
+            />
+          ) : (
+            <div className="space-y-2.5">
+              {filteredTasks.length ? (
+                filteredTasks.map((t) => {
+                  const isCompleted = t.status === "Completed" || t.status === "completed";
+                  const stageName = stages.find((s) => s.id === t.stageId)?.name || t.stageName || "General";
 
-                return (
-                  <div
-                    key={t.id}
-                    className="group flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-xl border bg-card p-3.5 transition-all hover:border-primary/40 hover:shadow-2xs"
-                  >
-                    <div className="min-w-0 flex-1 space-y-1">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <button
-                          type="button"
-                          onClick={() => handleToggleTaskStatus(t)}
-                          className={`grid size-5 place-items-center rounded-md border transition-colors ${
-                            isCompleted ? "bg-emerald-600 border-emerald-600 text-white" : "border-muted-foreground/30 hover:border-primary"
-                          }`}
-                          aria-label="Toggle task completion"
-                        >
-                          {isCompleted && <Check className="size-3.5" />}
-                        </button>
+                  return (
+                    <div
+                      key={t.id}
+                      className="group flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-xl border bg-card p-3.5 transition-all hover:border-primary/40 hover:shadow-2xs"
+                    >
+                      <div className="min-w-0 flex-1 space-y-1">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <button
+                            type="button"
+                            onClick={() => handleToggleTaskStatus(t)}
+                            className={`grid size-5 place-items-center rounded-md border transition-colors ${
+                              isCompleted ? "bg-emerald-600 border-emerald-600 text-white" : "border-muted-foreground/30 hover:border-primary"
+                            }`}
+                            aria-label="Toggle task completion"
+                          >
+                            {isCompleted && <Check className="size-3.5" />}
+                          </button>
 
-                        <Badge variant="outline" className={`text-[10px] ${taskStatusColors[t.status] || "bg-muted"}`}>
-                          {t.status}
-                        </Badge>
-
-                        {t.sourceQueryId && (
-                          <Badge variant="outline" className="border-amber-300 bg-amber-50 text-amber-900 text-[10px]">
-                            Telegram Query
+                          <Badge variant="outline" className={`text-[10px] ${taskStatusColors[t.status] || "bg-muted"}`}>
+                            {t.status}
                           </Badge>
-                        )}
 
-                        <span className="text-[11px] text-muted-foreground truncate max-w-[200px]">
-                          · {stageName}
-                        </span>
-                      </div>
+                          {t.sourceQueryId && (
+                            <Badge variant="outline" className="border-amber-300 bg-amber-50 text-amber-900 text-[10px]">
+                              Telegram Query
+                            </Badge>
+                          )}
 
-                      <h4
-                        className={`text-sm font-semibold tracking-tight transition-colors cursor-pointer hover:text-primary ${
-                          isCompleted ? "line-through text-muted-foreground" : "text-foreground"
-                        }`}
-                        onClick={() => {
-                          setSelectedTask(t);
-                          setTaskDrawerOpen(true);
-                        }}
-                      >
-                        {t.title}
-                      </h4>
-
-                      {t.description && (
-                        <p className="text-xs text-muted-foreground line-clamp-1">
-                          {t.description}
-                        </p>
-                      )}
-                    </div>
-
-                    <div className="flex items-center justify-between sm:justify-end gap-3 pt-2 sm:pt-0 border-t sm:border-t-0 text-xs">
-                      <div className="flex items-center gap-2 text-muted-foreground">
-                        <span className="flex items-center gap-1 font-medium">
-                          <User className="size-3" />
-                          {getAssigneeName(t.assigneeId) || t.assigneeName || "Unassigned"}
-                        </span>
-                        {(t.deadline || t.dueDate) && (
-                          <span className="flex items-center gap-1">
-                            <Calendar className="size-3" />
-                            {new Date(t.deadline || t.dueDate).toLocaleDateString(undefined, { month: "short", day: "numeric" })}
+                          <span className="text-[11px] text-muted-foreground truncate max-w-[200px]">
+                            · {stageName}
                           </span>
+                        </div>
+
+                        <h4
+                          className={`text-sm font-semibold tracking-tight transition-colors cursor-pointer hover:text-primary ${
+                            isCompleted ? "line-through text-muted-foreground" : "text-foreground"
+                          }`}
+                          onClick={() => {
+                            setSelectedTask(t);
+                            setTaskDrawerOpen(true);
+                          }}
+                        >
+                          {t.title}
+                        </h4>
+
+                        {t.description && (
+                          <p className="text-xs text-muted-foreground line-clamp-1">
+                            {t.description}
+                          </p>
                         )}
                       </div>
 
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="h-8 text-xs font-semibold gap-1.5"
-                        onClick={() => {
-                          setSelectedTask(t);
-                          setTaskDrawerOpen(true);
-                        }}
-                      >
-                        <MessageSquare className="size-3.5 text-primary" />
-                        <span>Thread</span>
-                      </Button>
+                      <div className="flex items-center justify-between sm:justify-end gap-3 pt-2 sm:pt-0 border-t sm:border-t-0 text-xs">
+                        <div className="flex items-center gap-2 text-muted-foreground">
+                          <span className="flex items-center gap-1 font-medium">
+                            <User className="size-3" />
+                            {getAssigneeName(t.assigneeId) || t.assigneeName || "Unassigned"}
+                          </span>
+                          {(t.deadline || t.dueDate) && (
+                            <span className="flex items-center gap-1">
+                              <Calendar className="size-3" />
+                              {new Date(t.deadline || t.dueDate).toLocaleDateString(undefined, { month: "short", day: "numeric" })}
+                            </span>
+                          )}
+                        </div>
+
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="h-8 text-xs font-semibold gap-1.5"
+                          onClick={() => {
+                            setSelectedTask(t);
+                            setTaskDrawerOpen(true);
+                          }}
+                        >
+                          <MessageSquare className="size-3.5 text-primary" />
+                          <span>Thread</span>
+                        </Button>
+                      </div>
                     </div>
-                  </div>
-                );
-              })
-            ) : (
-              <Card>
-                <CardContent className="py-12 text-center text-xs text-muted-foreground">
-                  <CheckCircle2 className="mx-auto size-8 text-muted-foreground/40 mb-2" />
-                  <p className="font-semibold text-sm text-foreground">No tasks found</p>
-                  <p className="mt-1">
-                    {hasWorkflowStarted
-                      ? "Add deliverables for this stage or create a new task."
-                      : "Start a workflow to automatically generate starter tasks."}
-                  </p>
-                  {hasWorkflowStarted ? (
-                    <Button size="sm" className="mt-4" onClick={() => setCreateTaskOpen(true)}>
-                      <Plus className="size-3.5 mr-1" /> Create Task
-                    </Button>
-                  ) : isClientAssigned ? (
-                    <Button size="sm" className="mt-4" onClick={() => setTemplateModalOpen(true)}>
-                      <Layers className="size-3.5 mr-1" /> Start Workflow
-                    </Button>
-                  ) : null}
-                </CardContent>
-              </Card>
-            )}
-          </div>
+                  );
+                })
+              ) : (
+                <Card>
+                  <CardContent className="py-12 text-center text-xs text-muted-foreground">
+                    <CheckCircle2 className="mx-auto size-8 text-muted-foreground/40 mb-2" />
+                    <p className="font-semibold text-sm text-foreground">No tasks found</p>
+                    <p className="mt-1">
+                      {hasWorkflowStarted
+                        ? "Add deliverables for this stage or create a new task."
+                        : "Start a workflow to automatically generate starter tasks."}
+                    </p>
+                    {hasWorkflowStarted ? (
+                      <Button size="sm" className="mt-4" onClick={() => setCreateTaskOpen(true)}>
+                        <Plus className="size-3.5 mr-1" /> Create Task
+                      </Button>
+                    ) : isClientAssigned ? (
+                      <Button size="sm" className="mt-4" onClick={() => setTemplateModalOpen(true)}>
+                        <Layers className="size-3.5 mr-1" /> Start Workflow
+                      </Button>
+                    ) : null}
+                  </CardContent>
+                </Card>
+              )}
+            </div>
+          )}
         </TabsContent>
 
         {/* ----------------- TAB 2: INTERNAL TEAM CHAT ----------------- */}
