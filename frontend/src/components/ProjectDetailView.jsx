@@ -839,7 +839,7 @@ export function ProjectDetailView({
         </TabsContent>
 
         {/* ----------------- TAB 3: STAGES & SCHEDULE ----------------- */}
-        <TabsContent value="schedule"><ProjectTimeline key={`${project.id}:${stages.map(stage=>stage.id).join(",")}`} tasks={tasks} stages={stages} members={project.members || employees} onOpenTask={task=>{setSelectedTask(task);setTaskDrawerOpen(true);}}/></TabsContent>
+        <TabsContent value="schedule"><ProjectTimeline key={`${project.id}:${stages.map(stage=>stage.id).join(",")}`} projectId={project.id} tasks={tasks} stages={stages} members={project.members || employees} onOpenTask={task=>{setSelectedTask(task);setTaskDrawerOpen(true);}}/></TabsContent>
 
         {/* ----------------- TAB 4: CLIENT QUERIES ----------------- */}
         <TabsContent value="queries" className="space-y-4">

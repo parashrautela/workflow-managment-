@@ -11777,7 +11777,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$51 = {
+var __iconData$52 = {
 	name: "arrow-left",
 	size: 24,
 	node: [["path", {
@@ -11788,8 +11788,8 @@ var __iconData$51 = {
 		key: "x3x0zl"
 	}]]
 };
-__iconData$51.node;
-var ArrowLeft = createLucideIcon(__iconData$51);
+__iconData$52.node;
+var ArrowLeft = createLucideIcon(__iconData$52);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
@@ -11798,7 +11798,7 @@ var ArrowLeft = createLucideIcon(__iconData$51);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$50 = {
+var __iconData$51 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11809,8 +11809,29 @@ var __iconData$50 = {
 		key: "xquz4c"
 	}]]
 };
+__iconData$51.node;
+var ArrowRight = createLucideIcon(__iconData$51);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$50 = {
+	name: "arrow-up-right",
+	size: 24,
+	node: [["path", {
+		d: "M7 7h10v10",
+		key: "1tivn9"
+	}], ["path", {
+		d: "M7 17 17 7",
+		key: "1vkiza"
+	}]]
+};
 __iconData$50.node;
-var ArrowRight = createLucideIcon(__iconData$50);
+var ArrowUpRight = createLucideIcon(__iconData$50);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
@@ -27039,84 +27060,87 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 //#endregion
 //#region frontend/src/components/ProjectFiles.jsx
 function ProjectFiles({ projectId, namespace = "founder" }) {
-	const [files, setFiles] = (0, import_react.useState)([]), [error, setError] = (0, import_react.useState)(""), [loading, setLoading] = (0, import_react.useState)(true);
-	const load = async () => {
+	const [files, setFiles] = (0, import_react.useState)([]);
+	const [error, setError] = (0, import_react.useState)("");
+	const [loading, setLoading] = (0, import_react.useState)(true);
+	const requestId = (0, import_react.useRef)(0);
+	const load = (0, import_react.useCallback)(async (signal, background = false) => {
+		const current = ++requestId.current;
+		if (!background) setLoading(true);
 		try {
-			const data = await request(`/api/${namespace}/projects/${projectId}/files`);
+			const data = await request("/api/" + namespace + "/projects/" + projectId + "/files", { signal });
+			if (current !== requestId.current || signal?.aborted) return;
 			setFiles(data.files || []);
 			setError("");
-		} catch (e) {
-			setError(e.message);
+		} catch (problem) {
+			if (current === requestId.current && !signal?.aborted) setError(problem.message || "Could not load the project files.");
 		} finally {
-			setLoading(false);
+			if (current === requestId.current && !signal?.aborted) setLoading(false);
 		}
-	};
+	}, [projectId, namespace]);
 	(0, import_react.useEffect)(() => {
-		let active = true;
-		const refresh = () => {
-			if (active && document.visibilityState === "visible") load();
-		};
-		refresh();
-		const timer = setInterval(refresh, 1e4);
+		const controller = new AbortController();
+		setFiles([]);
+		setError("");
+		load(controller.signal);
+		const timer = setInterval(() => {
+			if (document.visibilityState === "visible") load(controller.signal, true);
+		}, 1e4);
 		return () => {
-			active = false;
+			controller.abort();
+			requestId.current++;
 			clearInterval(timer);
 		};
-	}, [projectId, namespace]);
+	}, [load]);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-		className: "space-y-4",
+		className: "iksha-project-files",
 		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-wrap items-start justify-between gap-3",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-					className: "font-semibold",
-					children: "Project documents & photos"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "mt-1 text-sm text-muted-foreground",
-					children: "Share files in the Telegram group. They are logged and saved automatically to this project's Google Drive folder. No approval is needed to save them."
-				})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-					variant: "outline",
-					onClick: load,
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: "size-4" }), "Refresh files"]
-				})]
-			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", { children: "Project documents & photos" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Files shared in the Telegram group. Saved files can be opened below." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+				variant: "outline",
+				size: "sm",
+				disabled: loading,
+				onClick: () => void load(),
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: "size-4 " + (loading ? "animate-spin" : "") }), "Refresh files"]
+			})] }),
 			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				role: "alert",
 				className: "text-sm text-destructive",
 				children: error
 			}),
-			loading ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Loading files…" }) : files.length ? files.map((file) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
-				className: "flex flex-wrap items-center justify-between gap-3 rounded-xl border bg-card p-4",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "min-w-0 flex-1",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "break-words font-medium",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { className: "mr-2 inline size-4" }), file.name]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "mt-1 text-xs text-muted-foreground",
-							children: [
-								file.submittedBy,
-								" · ",
-								file.status === "Stored" ? "Saved to Google Drive" : "Waiting for Google Drive save"
-							]
-						}),
+			loading && !files.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "status",
+				children: "Loading files…"
+			}) : files.length ? files.map((file) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+				className: "iksha-file-card",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { size: 19 }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: file.name || "Untitled file" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+							file.submittedBy || "Team member",
+							" · ",
+							file.status === "Stored" ? "Saved to Google Drive" : "Waiting for Google Drive save"
+						] }),
+						file.submittedAt && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("time", { children: new Date(file.submittedAt).toLocaleDateString([], {
+							month: "short",
+							day: "numeric",
+							year: "numeric"
+						}) }),
 						file.error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "mt-1 text-xs text-amber-800",
+							className: "iksha-file-error",
 							children: file.error
 						})
-					]
-				}), file.status === "Stored" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-					className: "text-sm font-medium text-primary",
-					href: `/api/${namespace}/projects/${projectId}/files/${encodeURIComponent(file.id)}`,
-					target: "_blank",
-					rel: "noreferrer",
-					children: ["Open saved file ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "inline size-3" })]
-				})]
-			}, file.id)) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "rounded-xl border p-6 text-sm text-muted-foreground",
-				children: "No files shared yet. Ask the team or client to send photos and documents in the Telegram group."
+					] }),
+					file.status === "Stored" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+						href: "/api/" + namespace + "/projects/" + projectId + "/files/" + encodeURIComponent(file.id),
+						target: "_blank",
+						rel: "noreferrer",
+						children: ["Open file ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { size: 13 })]
+					})
+				]
+			}, file.id)) : !error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "iksha-files-empty",
+				children: "No files have been shared yet. Send photos or documents in the project’s Telegram group to add them here."
 			})
 		]
 	});
@@ -27299,6 +27323,9 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 	const [savingEdits, setSavingEdits] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
 	const messagesEndRef = (0, import_react.useRef)(null);
+	const messageRequest = (0, import_react.useRef)(0);
+	const deadlineInputRef = (0, import_react.useRef)(null);
+	const [showResources, setShowResources] = (0, import_react.useState)(false);
 	const [editTitle, setEditTitle] = (0, import_react.useState)("");
 	const [editDesc, setEditDesc] = (0, import_react.useState)("");
 	const [editStatus, setEditStatus] = (0, import_react.useState)("Open");
@@ -27320,20 +27347,27 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 			setEditAssigneeId(initialTask.assigneeId || "");
 			setEditStageId(initialTask.stageId || "");
 			setIsEditing(false);
+			setShowResources(false);
 			setError("");
 			loadMessages(initialTask.id);
 		}
+		return () => {
+			messageRequest.current++;
+		};
 	}, [open, initialTask?.id]);
 	const loadMessages = async (taskId) => {
+		const requestId = ++messageRequest.current;
 		setLoadingMessages(true);
 		try {
-			const list = (await fetchTaskMessages(taskId, "", 100, namespace)).messages || [];
+			const data = await fetchTaskMessages(taskId, "", 100, namespace);
+			if (requestId !== messageRequest.current) return;
+			const list = data.messages || [];
 			setMessages(list);
 			if (list.length > 0) markTaskRead(taskId, list[list.length - 1].id, namespace).catch(() => {});
 		} catch (problem) {
-			setError(problem.message || "Could not refresh this thread. Please retry.");
+			if (requestId === messageRequest.current) setError(problem.message || "Could not refresh this thread. Please retry.");
 		} finally {
-			setLoadingMessages(false);
+			if (requestId === messageRequest.current) setLoadingMessages(false);
 		}
 	};
 	(0, import_react.useEffect)(() => {
@@ -27373,8 +27407,8 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 				title: editTitle.trim(),
 				description: editDesc.trim(),
 				status: editStatus,
-				deadline: editDeadline || void 0,
-				stageId: editStageId || void 0
+				deadline: deadlineInputRef.current?.value ?? editDeadline,
+				stageId: editStageId
 			};
 			if (isFounder) updates.assigneeId = editAssigneeId;
 			const updated = (await updateTask(task.id, updates, namespace)).task || {
@@ -27479,275 +27513,295 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "chat-scroll min-h-0 flex-1 space-y-4 overflow-y-auto p-5",
-					children: [isEditing ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "space-y-3.5 rounded-xl border bg-muted/20 p-4",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-								className: "grid gap-1.5 text-xs font-semibold",
-								children: ["Title", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									value: editTitle,
-									onChange: (e) => setEditTitle(e.target.value),
-									required: true
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-								className: "grid gap-1.5 text-xs font-semibold",
-								children: ["Description", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
-									value: editDesc,
-									onChange: (e) => setEditDesc(e.target.value),
-									rows: 3
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "grid grid-cols-2 gap-3",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-									className: "grid gap-1.5 text-xs font-semibold",
-									children: ["Status", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
-										value: editStatus,
-										onChange: (e) => setEditStatus(e.target.value),
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: "Open",
-												children: "Open"
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: "In progress",
-												children: "In progress"
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: "Blocked",
-												children: "Blocked"
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: "Completed",
-												children: "Completed"
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: "Cancelled",
-												children: "Cancelled"
-											})
-										]
-									})]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-									className: "grid gap-1.5 text-xs font-semibold",
-									children: ["Deadline", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-										type: "date",
-										value: editDeadline,
-										onChange: (e) => setEditDeadline(e.target.value)
-									})]
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "grid grid-cols-2 gap-3",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-									className: "grid gap-1.5 text-xs font-semibold",
-									children: [
-										"Assignee",
-										isFounder ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
-											value: editAssigneeId,
-											onChange: (e) => setEditAssigneeId(e.target.value),
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: "",
-													children: "Unassigned"
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: "founder",
-													children: "Founder"
-												}),
-												projectMembers.map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
-													value: m.employeeId || m.id,
-													children: [
-														m.name,
-														" (",
-														m.role || "Member",
-														")"
-													]
-												}, m.id || m.employeeId))
-											]
-										}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-											value: getAssigneeLabel(task.assigneeId),
-											disabled: true,
-											className: "bg-muted text-muted-foreground text-xs",
-											title: "Only the founder may change task assignments."
-										}),
-										!isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-[10px] text-muted-foreground",
-											children: "Only founder can change assignee"
-										})
-									]
-								}), project?.stages && project.stages.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-									className: "grid gap-1.5 text-xs font-semibold",
-									children: ["Stage", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
-										value: editStageId,
-										onChange: (e) => setEditStageId(e.target.value),
-										children: project.stages.map((st) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-											value: st.id,
-											children: st.name
-										}, st.id))
-									})]
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex justify-between items-center pt-2",
-								children: [isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-									type: "button",
-									variant: "ghost",
-									size: "sm",
-									className: "text-destructive hover:bg-destructive/10 text-xs",
-									onClick: handleDelete,
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trash, { className: "size-3.5 mr-1" }), " Delete Task"]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-									size: "sm",
-									onClick: handleSaveEdits,
-									disabled: savingEdits,
-									className: "ml-auto",
-									children: [savingEdits ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1" }) : null, "Save Changes"]
-								})]
-							})
-						]
-					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "grid grid-cols-2 gap-2 rounded-xl border bg-muted/30 p-3 sm:grid-cols-3",
+					children: [
+						isEditing ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "space-y-3.5 rounded-xl border bg-muted/20 p-4",
 							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "space-y-0.5",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "text-[11px] font-medium text-muted-foreground",
-										children: "Assignee"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-										className: "flex items-center gap-1.5 text-xs font-semibold truncate",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, { className: "size-3.5 text-muted-foreground shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "truncate",
-											children: getAssigneeLabel(task.assigneeId) || task.assigneeName || "Unassigned"
-										})]
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "grid gap-1.5 text-xs font-semibold",
+									children: ["Title", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+										value: editTitle,
+										onChange: (e) => setEditTitle(e.target.value),
+										required: true
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "grid gap-1.5 text-xs font-semibold",
+									children: ["Description", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+										value: editDesc,
+										onChange: (e) => setEditDesc(e.target.value),
+										rows: 3
 									})]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "space-y-0.5",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "text-[11px] font-medium text-muted-foreground",
-										children: "Deadline"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-										className: "flex items-center gap-1.5 text-xs font-semibold",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-3.5 text-muted-foreground shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: task.deadline || task.dueDate ? new Date(task.deadline || task.dueDate).toLocaleDateString(void 0, {
-											month: "short",
-											day: "numeric",
-											year: "numeric"
-										}) : "No deadline" })]
-									})]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "col-span-2 sm:col-span-1 space-y-0.5",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "text-[11px] font-medium text-muted-foreground",
-										children: "Quick Action"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { children: task.status !== "Completed" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-										size: "icon-sm",
-										variant: "outline",
-										className: "h-7 px-2.5 text-xs text-emerald-700 hover:bg-emerald-50 font-semibold",
-										onClick: () => handleQuickStatus("Completed"),
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 mr-1" }), " Mark Done"]
-									}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-										size: "icon-sm",
-										variant: "outline",
-										className: "h-7 px-2.5 text-xs text-muted-foreground font-semibold",
-										onClick: () => handleQuickStatus("Open"),
-										children: "Reopen Task"
-									}) })]
-								})
-							]
-						}),
-						task.description && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed rounded-xl border bg-card p-3",
-							children: task.description
-						}),
-						task.sourceQueryId && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center justify-between rounded-xl border border-amber-200 bg-amber-50/70 p-3 text-xs text-amber-900",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center gap-2",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0 text-amber-700" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Converted from Telegram client query" })]
-							}), onOpenSourceQuery && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-								variant: "outline",
-								size: "sm",
-								className: "h-7 text-xs border-amber-300 bg-white text-amber-900 hover:bg-amber-100/50",
-								onClick: () => onOpenSourceQuery(task.sourceQueryId),
-								children: ["View Query ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-3 ml-1" })]
-							})]
-						})
-					] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "border-t pt-4",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center justify-between pb-3",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h4", {
-								className: "flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 text-primary" }),
-									"Task Discussion Thread (",
-									messages.length,
-									")"
-								]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								variant: "ghost",
-								size: "icon-sm",
-								onClick: () => loadMessages(task.id),
-								disabled: loadingMessages,
-								"aria-label": "Refresh thread",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: `size-3.5 ${loadingMessages ? "animate-spin" : ""}` })
-							})]
-						}), loadingMessages && messages.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center justify-center py-8 text-xs text-muted-foreground gap-2",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-4 animate-spin text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Loading messages…" })]
-						}) : messages.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "space-y-2.5",
-							children: [messages.map((msg) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "rounded-xl border bg-card p-3 shadow-xs space-y-1.5",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex items-center justify-between text-xs",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "font-semibold text-primary",
-											children: msg.author || "Team member"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "text-[10px] text-muted-foreground",
+									className: "grid grid-cols-2 gap-3",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+										className: "grid gap-1.5 text-xs font-semibold",
+										children: ["Status", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+											value: editStatus,
+											onChange: (e) => setEditStatus(e.target.value),
 											children: [
-												new Date(msg.at).toLocaleDateString([], {
-													month: "short",
-													day: "numeric"
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "Open",
+													children: "Open"
 												}),
-												" · ",
-												new Date(msg.at).toLocaleTimeString([], {
-													hour: "numeric",
-													minute: "2-digit"
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "In progress",
+													children: "In progress"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "Blocked",
+													children: "Blocked"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "Completed",
+													children: "Completed"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "Cancelled",
+													children: "Cancelled"
 												})
 											]
 										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed",
-										children: msg.text
-									}),
-									msg.attachmentUrl && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-										href: msg.attachmentUrl,
-										target: "_blank",
-										rel: "noreferrer",
-										className: "inline-flex items-center gap-1.5 rounded-lg border bg-muted/40 px-2.5 py-1 text-xs text-primary hover:underline",
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+										className: "grid gap-1.5 text-xs font-semibold",
+										children: ["Deadline", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+											type: "date",
+											ref: deadlineInputRef,
+											value: editDeadline,
+											onChange: (e) => setEditDeadline(e.target.value)
+										})]
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "grid grid-cols-2 gap-3",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+										className: "grid gap-1.5 text-xs font-semibold",
 										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, { className: "size-3" }),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "truncate max-w-xs",
-												children: msg.attachmentUrl
+											"Assignee",
+											isFounder ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+												value: editAssigneeId,
+												onChange: (e) => setEditAssigneeId(e.target.value),
+												children: [
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+														value: "",
+														children: "Unassigned"
+													}),
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+														value: "founder",
+														children: "Founder"
+													}),
+													projectMembers.map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
+														value: m.employeeId || m.id,
+														children: [
+															m.name,
+															" (",
+															m.role || "Member",
+															")"
+														]
+													}, m.id || m.employeeId))
+												]
+											}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+												value: getAssigneeLabel(task.assigneeId),
+												disabled: true,
+												className: "bg-muted text-muted-foreground text-xs",
+												title: "Only the founder may change task assignments."
 											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-2.5" })
+											!isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "text-[10px] text-muted-foreground",
+												children: "Only founder can change assignee"
+											})
 										]
+									}), project?.stages && project.stages.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+										className: "grid gap-1.5 text-xs font-semibold",
+										children: ["Stage", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
+											value: editStageId,
+											onChange: (e) => setEditStageId(e.target.value),
+											children: project.stages.map((st) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: st.id,
+												children: st.name
+											}, st.id))
+										})]
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex justify-between items-center pt-2",
+									children: [isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										type: "button",
+										variant: "ghost",
+										size: "sm",
+										className: "text-destructive hover:bg-destructive/10 text-xs",
+										onClick: handleDelete,
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trash, { className: "size-3.5 mr-1" }), " Delete Task"]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										size: "sm",
+										onClick: handleSaveEdits,
+										disabled: savingEdits,
+										className: "ml-auto",
+										children: [savingEdits ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1" }) : null, "Save Changes"]
+									})]
+								})
+							]
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "grid grid-cols-2 gap-2 rounded-xl border bg-muted/30 p-3 sm:grid-cols-3",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "space-y-0.5",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "text-[11px] font-medium text-muted-foreground",
+											children: "Assignee"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+											className: "flex items-center gap-1.5 text-xs font-semibold truncate",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, { className: "size-3.5 text-muted-foreground shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "truncate",
+												children: getAssigneeLabel(task.assigneeId) || task.assigneeName || "Unassigned"
+											})]
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "space-y-0.5",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "text-[11px] font-medium text-muted-foreground",
+											children: "Deadline"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+											className: "flex items-center gap-1.5 text-xs font-semibold",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-3.5 text-muted-foreground shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: task.deadline || task.dueDate ? new Date(task.deadline || task.dueDate).toLocaleDateString(void 0, {
+												month: "short",
+												day: "numeric",
+												year: "numeric"
+											}) : "No deadline" })]
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "col-span-2 sm:col-span-1 space-y-0.5",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "text-[11px] font-medium text-muted-foreground",
+											children: "Quick Action"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { children: !isClosed ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+											size: "sm",
+											variant: "outline",
+											className: "h-7 px-2.5 text-xs text-emerald-700 hover:bg-emerald-50 font-semibold",
+											onClick: () => handleQuickStatus("Completed"),
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 mr-1" }), " Mark Done"]
+										}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+											size: "sm",
+											variant: "outline",
+											className: "h-7 px-2.5 text-xs text-muted-foreground font-semibold",
+											onClick: () => handleQuickStatus("Open"),
+											children: "Reopen Task"
+										}) })]
 									})
 								]
-							}, msg.id)), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { ref: messagesEndRef })]
-						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "py-6 text-center text-xs text-muted-foreground",
-							children: "No discussion messages yet in this task thread."
-						})]
-					})]
+							}),
+							task.description && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed rounded-xl border bg-card p-3",
+								children: task.description
+							}),
+							task.sourceQueryId && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center justify-between rounded-xl border border-amber-200 bg-amber-50/70 p-3 text-xs text-amber-900",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center gap-2",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0 text-amber-700" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Converted from Telegram client query" })]
+								}), onOpenSourceQuery && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+									variant: "outline",
+									size: "sm",
+									className: "h-7 text-xs border-amber-300 bg-white text-amber-900 hover:bg-amber-100/50",
+									onClick: () => onOpenSourceQuery(task.sourceQueryId),
+									children: ["View Query ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-3 ml-1" })]
+								})]
+							})
+						] }),
+						task.sourceBlockedReason && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "iksha-work-blocker",
+							children: ["Blocked: ", task.sourceBlockedReason]
+						}),
+						task.sourceApprovalStatus && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "iksha-work-approval",
+							children: ["Approval: ", task.sourceApprovalStatus]
+						}),
+						project?.id && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
+							className: "iksha-task-resources",
+							onToggle: (event) => setShowResources(event.currentTarget.open),
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", { children: "Shared project resources" }), showResources && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectFiles, {
+								projectId: project.id,
+								namespace
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "border-t pt-4",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center justify-between pb-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h4", {
+									className: "flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 text-primary" }),
+										"Task Discussion Thread (",
+										messages.length,
+										")"
+									]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									variant: "ghost",
+									size: "icon-sm",
+									onClick: () => loadMessages(task.id),
+									disabled: loadingMessages,
+									"aria-label": "Refresh thread",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: `size-3.5 ${loadingMessages ? "animate-spin" : ""}` })
+								})]
+							}), loadingMessages && messages.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center justify-center py-8 text-xs text-muted-foreground gap-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-4 animate-spin text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Loading messages…" })]
+							}) : messages.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "space-y-2.5",
+								children: [messages.map((msg) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "rounded-xl border bg-card p-3 shadow-xs space-y-1.5",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "flex items-center justify-between text-xs",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "font-semibold text-primary",
+												children: msg.author || "Team member"
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+												className: "text-[10px] text-muted-foreground",
+												children: [
+													new Date(msg.at).toLocaleDateString([], {
+														month: "short",
+														day: "numeric"
+													}),
+													" · ",
+													new Date(msg.at).toLocaleTimeString([], {
+														hour: "numeric",
+														minute: "2-digit"
+													})
+												]
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed",
+											children: msg.text
+										}),
+										msg.attachmentUrl && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+											href: msg.attachmentUrl,
+											target: "_blank",
+											rel: "noreferrer",
+											className: "inline-flex items-center gap-1.5 rounded-lg border bg-muted/40 px-2.5 py-1 text-xs text-primary hover:underline",
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, { className: "size-3" }),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "truncate max-w-xs",
+													children: msg.attachmentUrl
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-2.5" })
+											]
+										})
+									]
+								}, msg.id)), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { ref: messagesEndRef })]
+							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "py-6 text-center text-xs text-muted-foreground",
+								children: "No discussion messages yet in this task thread."
+							})]
+						})
+					]
 				}),
 				isClosed ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex shrink-0 flex-wrap items-center justify-between gap-3 border-t bg-amber-50/70 p-3 sm:px-5 text-xs text-amber-900",
@@ -28753,6 +28807,149 @@ function timelineItems(tasks, stages) {
 	});
 }
 var calendarDay = DAY;
+function stageSummary(items, stage) {
+	const group = items.filter((item) => (item.stage?.id || "other") === stage.id);
+	const scheduled = group.filter((item) => item.start !== null && item.end !== null);
+	const complete = group.filter((item) => ["Completed", "completed"].includes(item.task.status)).length;
+	const stageEnd = calendarDate(stage.deadline);
+	return {
+		items: group,
+		start: scheduled.length ? Math.min(...scheduled.map((item) => item.start)) : calendarDate(stage.startDate),
+		end: scheduled.length ? Math.max(...scheduled.map((item) => item.end)) : stageEnd === null ? null : stageEnd + DAY,
+		complete,
+		progress: group.length ? Math.round(complete / group.length * 100) : 0
+	};
+}
+//#endregion
+//#region frontend/src/components/TimelineStageDetails.jsx
+var timelineOwner = (task, members) => members.find((member) => (member.employeeId || member.id) === task.assigneeId)?.name || (task.assigneeId === "founder" ? "Founder" : task.assigneeName || "Unassigned");
+var timelineDate = (value) => value === null ? "Not scheduled" : new Date(value).toLocaleDateString([], {
+	month: "short",
+	day: "numeric",
+	year: "numeric",
+	timeZone: "UTC"
+});
+function TimelineStageDetails({ stage, items, members, projectId, namespace, onClose, onOpenTask }) {
+	const summary = stage ? stageSummary(items, stage) : null;
+	const owners = summary ? [...new Set(summary.items.map((item) => timelineOwner(item.task, members)))] : [];
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sheet, {
+		open: Boolean(stage),
+		onOpenChange: (open) => {
+			if (!open) onClose();
+		},
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetContent, {
+			className: "iksha-stage-details",
+			side: "right",
+			children: stage && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SheetHeader, { children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "iksha-eyebrow",
+					children: "STAGE WORKSPACE"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetTitle, { children: stage.name }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetDescription, { children: "Everything in this stage: work items, ownership, dates, and project references." })
+			] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "iksha-stage-detail-scroll",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "iksha-stage-metrics",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { size: 16 }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [summary.progress, "%"] }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+								summary.complete,
+								" of ",
+								summary.items.length,
+								" complete"
+							] })
+						] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { size: 16 }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: owners.filter((owner) => owner !== "Unassigned").length }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Assigned people" })
+						] })]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "iksha-stage-dates",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, { size: 16 }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Scheduled window" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [
+							timelineDate(summary.start),
+							" → ",
+							timelineDate(summary.end === null ? null : summary.end - 864e5)
+						] })] })]
+					}),
+					stage.description && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "iksha-stage-description",
+						children: stage.description
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Tabs, {
+						defaultValue: "work",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
+								className: "iksha-detail-tabs",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+									value: "work",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { size: 14 }), "Work & discussions"]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+									value: "references",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { size: 14 }), "Resources"]
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
+								value: "work",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "iksha-stage-work-list",
+									children: [summary.items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+										className: "iksha-stage-work-card",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: `iksha-work-status ${["Completed", "completed"].includes(item.task.status) ? "complete" : item.task.status === "Blocked" ? "blocked" : ""}`,
+												children: item.task.status
+											}), item.task.sourceGateType && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "iksha-gate-label",
+												children: item.task.sourceGateType
+											})] }),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", { children: item.task.title }),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: item.task.description || "Open this work item to see its discussion and record the next step." }),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("dl", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Accountable owner" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: timelineOwner(item.task, members) })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Schedule" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: item.start === null || item.end === null ? "No saved dates" : `${timelineDate(item.start)} → ${timelineDate(item.end - 864e5)}` })] })] }),
+											item.task.sourceBlockedReason && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+												className: "iksha-work-blocker",
+												children: ["Blocked: ", item.task.sourceBlockedReason]
+											}),
+											item.task.sourceApprovalStatus && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+												className: "iksha-work-approval",
+												children: ["Approval: ", item.task.sourceApprovalStatus]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+												variant: "outline",
+												onClick: () => onOpenTask(item.task),
+												children: ["Open work item & discussion ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 14 })]
+											})
+										]
+									}, item.task.id)), !summary.items.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "iksha-stage-description",
+										children: "No work items recorded for this stage yet."
+									})]
+								})
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
+								value: "references",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "iksha-stage-reference-note",
+									children: "Shared project documents and photos are shown here. Links specific to a work item are available in its discussion."
+								}), projectId ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectFiles, {
+									projectId,
+									namespace
+								}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "No project references are available." })]
+							})
+						]
+					}, stage.id),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "iksha-stage-footer",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock3, { size: 13 }), "Completion and approval states reflect the saved project records."]
+					})
+				]
+			})] })
+		})
+	});
+}
 //#endregion
 //#region frontend/src/components/ProjectTimeline.jsx
 var today = () => {
@@ -28764,21 +28961,23 @@ var dateLabel = (value) => new Date(value).toLocaleDateString([], {
 	day: "numeric",
 	timeZone: "UTC"
 });
-function ProjectTimeline({ tasks = [], stages = [], members = [], onOpenTask }) {
+function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, namespace = "founder", onOpenTask }) {
 	const items = timelineItems(tasks, stages);
 	const scheduled = items.filter((item) => item.start !== null && item.end !== null);
 	const [origin, setOrigin] = (0, import_react.useState)(() => scheduled.length ? Math.min(...scheduled.map((item) => item.start)) : today());
 	const [days, setDays] = (0, import_react.useState)(14);
 	const [collapsed, setCollapsed] = (0, import_react.useState)(() => new Set(stages.slice(1).map((stage) => stage.id)));
 	const [search, setSearch] = (0, import_react.useState)("");
+	const [selectedStageId, setSelectedStageId] = (0, import_react.useState)(null);
 	const from = origin, to = origin + days * calendarDay;
 	const dayWidth = days === 7 ? 142 : days === 14 ? 82 : 48;
 	const allGroups = [...stages, {
 		id: "other",
 		name: "Additional work"
 	}].filter((stage) => items.some((item) => (item.stage?.id || "other") === stage.id));
-	const visible = items.filter((item) => item.task.title.toLowerCase().includes(search.toLowerCase()));
 	const ownerName = (task) => members.find((member) => (member.employeeId || member.id) === task.assigneeId)?.name || (task.assigneeId === "founder" ? "Founder" : task.assigneeName || "Unassigned");
+	const query = search.trim().toLowerCase();
+	const visible = items.filter((item) => `${item.task.title} ${item.stage?.name || ""} ${ownerName(item.task)}`.toLowerCase().includes(query));
 	const complete = (task) => ["Completed", "completed"].includes(task.status);
 	const toggle = (id) => setCollapsed((current) => {
 		const next = new Set(current);
@@ -28862,8 +29061,8 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], onOpenTask }) 
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						variant: "outline",
 						size: "sm",
-						onClick: () => setCollapsed(collapsed.size ? /* @__PURE__ */ new Set() : new Set(allGroups.map((stage) => stage.id))),
-						children: collapsed.size ? "Expand stages" : "Collapse stages"
+						onClick: () => setCollapsed(allGroups.some((stage) => collapsed.has(stage.id)) ? /* @__PURE__ */ new Set() : new Set(allGroups.map((stage) => stage.id))),
+						children: allGroups.some((stage) => collapsed.has(stage.id)) ? "Expand stages" : "Collapse stages"
 					})
 				]
 			}),
@@ -28926,7 +29125,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], onOpenTask }) 
 							const scheduledGroup = group.filter((item) => item.start !== null && item.end !== null);
 							const groupStart = scheduledGroup.length ? Math.min(...scheduledGroup.map((item) => item.start)) : calendarDate(stage.startDate);
 							const groupEnd = scheduledGroup.length ? Math.max(...scheduledGroup.map((item) => item.end)) : null;
-							const isCollapsed = collapsed.has(stage.id) && !search;
+							const isCollapsed = collapsed.has(stage.id) && !query;
 							return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 								className: `iksha-stage color-${index % 5}`,
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -28950,12 +29149,25 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], onOpenTask }) 
 										]
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 										className: "iksha-schedule-track",
-										children: groupStart !== null && groupEnd !== null && groupEnd > from && groupStart < to && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										children: groupStart !== null && groupEnd !== null && groupEnd > from && groupStart < to ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 											className: "iksha-stage-range",
+											"aria-label": `Open ${stage.name} stage details`,
+											title: `${stage.name} · ${group.length} work items · ${group.filter((item) => complete(item.task)).length} complete`,
+											onClick: () => setSelectedStageId(stage.id),
 											style: {
-												left: (Math.max(groupStart, from) - from) / 864e5 * dayWidth,
-												width: (Math.min(groupEnd, to) - Math.max(groupStart, from)) / 864e5 * dayWidth
-											}
+												left: (Math.max(groupStart, from) - from) / calendarDay * dayWidth,
+												width: Math.max(20, (Math.min(groupEnd, to) - Math.max(groupStart, from)) / calendarDay * dayWidth - 3)
+											},
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: stage.name }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
+												group.length,
+												" work items · ",
+												group.filter((item) => complete(item.task)).length,
+												" complete"
+											] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 14 })]
+										}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+											className: "iksha-unscheduled",
+											onClick: () => setSelectedStageId(stage.id),
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 12 }), "View stage details"]
 										})
 									})]
 								}), !isCollapsed && group.sort((a, b) => (Number(a.task.sourceSequence) || 0) - (Number(b.task.sourceSequence) || 0) || String(a.task.createdAt || "").localeCompare(String(b.task.createdAt || ""))).map((item) => {
@@ -28985,7 +29197,11 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], onOpenTask }) 
 													width: (Math.min(item.end, to) - Math.max(item.start, from)) / 864e5 * dayWidth - 3
 												},
 												onClick: () => onOpenTask(item.task),
-												children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [complete(item.task) ? "✓ " : "", item.task.title] })
+												children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [complete(item.task) ? "✓ " : "", item.task.title] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
+													ownerName(item.task),
+													" · ",
+													item.task.status
+												] })] })
 											}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 												className: "iksha-unscheduled",
 												onClick: () => isScheduled ? setOrigin(item.start) : onOpenTask(item.task),
@@ -29003,9 +29219,18 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], onOpenTask }) 
 					]
 				})
 			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TimelineStageDetails, {
+				stage: allGroups.find((stage) => stage.id === selectedStageId),
+				items,
+				members,
+				projectId,
+				namespace,
+				onClose: () => setSelectedStageId(null),
+				onOpenTask
+			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("footer", {
 				className: "iksha-schedule-caption",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Dates from the saved project plan · Click a task to open its discussion and controls" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Calendar days" })]
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Dates from the saved project plan · Click a stage for its full breakdown · Click a work item for its discussion" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Calendar days" })]
 			})
 		]
 	});
@@ -43826,6 +44051,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
 						value: "schedule",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTimeline, {
+							projectId: project.id,
 							tasks,
 							stages,
 							members: project.members || employees,
@@ -46076,6 +46302,8 @@ function EmployeeApp() {
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
 									value: "timeline",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTimeline, {
+										projectId: selected.id,
+										namespace: "employee",
 										tasks,
 										stages: selected.stages || [],
 										members: selected.members || [],

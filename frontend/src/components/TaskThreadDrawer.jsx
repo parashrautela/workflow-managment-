@@ -1,5 +1,6 @@
 // frontend/src/components/TaskThreadDrawer.jsx
 import React, { useEffect, useState, useRef } from "react";
+import { ProjectFiles } from "@/components/ProjectFiles";
 import {
   Calendar, CheckCircle2, Clock, MessageSquare, Send, Trash2,
   User, AlertCircle, Check, Loader2, Link as LinkIcon, ExternalLink,
@@ -52,6 +53,9 @@ export function TaskThreadDrawer({
   const [savingEdits, setSavingEdits] = useState(false);
   const [error, setError] = useState("");
   const messagesEndRef = useRef(null);
+  const messageRequest = useRef(0);
+  const deadlineInputRef = useRef(null);
+  const [showResources, setShowResources] = useState(false);
 
   // Edit fields
   const [editTitle, setEditTitle] = useState("");
@@ -78,16 +82,20 @@ export function TaskThreadDrawer({
       setEditAssigneeId(initialTask.assigneeId || "");
       setEditStageId(initialTask.stageId || "");
       setIsEditing(false);
+      setShowResources(false);
       setError("");
 
       loadMessages(initialTask.id);
     }
+    return () => { messageRequest.current++; };
   }, [open, initialTask?.id]);
 
   const loadMessages = async (taskId) => {
+    const requestId = ++messageRequest.current;
     setLoadingMessages(true);
     try {
       const data = await fetchTaskMessages(taskId, "", 100, namespace);
+      if (requestId !== messageRequest.current) return;
       const list = data.messages || [];
       setMessages(list);
       // Mark read position if messages exist
@@ -95,9 +103,9 @@ export function TaskThreadDrawer({
         markTaskRead(taskId, list[list.length - 1].id, namespace).catch(() => {});
       }
     } catch (problem) {
-      setError(problem.message || "Could not refresh this thread. Please retry.");
+      if (requestId === messageRequest.current) setError(problem.message || "Could not refresh this thread. Please retry.");
     } finally {
-      setLoadingMessages(false);
+      if (requestId === messageRequest.current) setLoadingMessages(false);
     }
   };
 
@@ -148,8 +156,8 @@ export function TaskThreadDrawer({
         title: editTitle.trim(),
         description: editDesc.trim(),
         status: editStatus,
-        deadline: editDeadline || undefined,
-        stageId: editStageId || undefined
+        deadline: deadlineInputRef.current?.value ?? editDeadline,
+        stageId: editStageId
       };
       if (isFounder) {
         updates.assigneeId = editAssigneeId;
@@ -290,6 +298,7 @@ export function TaskThreadDrawer({
                   Deadline
                   <Input
                     type="date"
+                    ref={deadlineInputRef}
                     value={editDeadline}
                     onChange={(e) => setEditDeadline(e.target.value)}
                   />
@@ -375,9 +384,9 @@ export function TaskThreadDrawer({
                 <div className="col-span-2 sm:col-span-1 space-y-0.5">
                   <span className="text-[11px] font-medium text-muted-foreground">Quick Action</span>
                   <div>
-                    {task.status !== "Completed" ? (
+                    {!isClosed ? (
                       <Button
-                        size="icon-sm"
+                        size="sm"
                         variant="outline"
                         className="h-7 px-2.5 text-xs text-emerald-700 hover:bg-emerald-50 font-semibold"
                         onClick={() => handleQuickStatus("Completed")}
@@ -386,7 +395,7 @@ export function TaskThreadDrawer({
                       </Button>
                     ) : (
                       <Button
-                        size="icon-sm"
+                        size="sm"
                         variant="outline"
                         className="h-7 px-2.5 text-xs text-muted-foreground font-semibold"
                         onClick={() => handleQuickStatus("Open")}
@@ -427,6 +436,9 @@ export function TaskThreadDrawer({
             </>
           )}
 
+          {task.sourceBlockedReason && <p className="iksha-work-blocker">Blocked: {task.sourceBlockedReason}</p>}
+          {task.sourceApprovalStatus && <p className="iksha-work-approval">Approval: {task.sourceApprovalStatus}</p>}
+          {project?.id && <details className="iksha-task-resources" onToggle={event => setShowResources(event.currentTarget.open)}><summary>Shared project resources</summary>{showResources && <ProjectFiles projectId={project.id} namespace={namespace}/>}</details>}
           {/* Discussion Thread Section */}
           <div className="border-t pt-4">
             <div className="flex items-center justify-between pb-3">

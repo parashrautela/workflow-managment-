@@ -17,3 +17,17 @@ export function timelineItems(tasks, stages) {
   });
 }
 export const calendarDay = DAY;
+
+export function stageSummary(items, stage) {
+  const group = items.filter(item => (item.stage?.id || 'other') === stage.id);
+  const scheduled = group.filter(item => item.start !== null && item.end !== null);
+  const complete = group.filter(item => ['Completed', 'completed'].includes(item.task.status)).length;
+  const stageEnd = calendarDate(stage.deadline);
+  return {
+    items: group,
+    start: scheduled.length ? Math.min(...scheduled.map(item => item.start)) : calendarDate(stage.startDate),
+    end: scheduled.length ? Math.max(...scheduled.map(item => item.end)) : stageEnd === null ? null : stageEnd + DAY,
+    complete,
+    progress: group.length ? Math.round(complete / group.length * 100) : 0,
+  };
+}
