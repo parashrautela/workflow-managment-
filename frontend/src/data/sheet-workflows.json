@@ -1,0 +1,1422 @@
+{
+  "sourceUrl": "https://docs.google.com/spreadsheets/d/1V47wt8GM90cde8EclExsM_7iA4kwHBBfqITlc858pps/edit?gid=1535430592",
+  "sourceTab": "WORKFLOWS",
+  "fetchedAt": "2026-10-14T05:17:45.029083+00:00",
+  "durationUnit": "calendar-days",
+  "defaultPlanId": "interior-1",
+  "plans": [
+    {
+      "id": "residential-interior",
+      "name": "Residential Interior",
+      "sheet": "WORKFLOWS",
+      "stages": [
+        {
+          "id": "residential-interior-main-1",
+          "code": "1",
+          "name": "Civil Works",
+          "lane": "main",
+          "sourceRow": 2,
+          "tasks": [
+            {
+              "id": "residential-interior-E2",
+              "title": "Site Condition Check",
+              "order": "1",
+              "durationDays": 3.0,
+              "role": "Site Supervisor",
+              "sourceCell": "E2",
+              "sourceRow": 2
+            },
+            {
+              "id": "residential-interior-E3",
+              "title": "Design / Drawings",
+              "order": "2",
+              "durationDays": 4.0,
+              "role": "Designer",
+              "sourceCell": "E3",
+              "sourceRow": 3
+            },
+            {
+              "id": "residential-interior-E4",
+              "title": "Site Execution",
+              "order": "3",
+              "durationDays": 7.0,
+              "role": "Site Team",
+              "sourceCell": "E4",
+              "sourceRow": 4
+            },
+            {
+              "id": "residential-interior-E5",
+              "title": "Final Checking",
+              "order": "4",
+              "durationDays": 4.0,
+              "role": "Design Head",
+              "sourceCell": "E5",
+              "sourceRow": 5
+            }
+          ]
+        },
+        {
+          "id": "residential-interior-main-2",
+          "code": "2",
+          "name": "Electrical Works",
+          "lane": "main",
+          "sourceRow": 6,
+          "tasks": [
+            {
+              "id": "residential-interior-E6",
+              "title": "Site Condition Check",
+              "order": "1",
+              "durationDays": 3.0,
+              "role": "Site Supervisor",
+              "sourceCell": "E6",
+              "sourceRow": 6
+            },
+            {
+              "id": "residential-interior-E7",
+              "title": "Design / Drawings",
+              "order": "2",
+              "durationDays": 4.0,
+              "role": "Designer",
+              "sourceCell": "E7",
+              "sourceRow": 7
+            },
+            {
+              "id": "residential-interior-E8",
+              "title": "Site Execution",
+              "order": "3",
+              "durationDays": 7.0,
+              "role": "Site Team",
+              "sourceCell": "E8",
+              "sourceRow": 8
+            },
+            {
+              "id": "residential-interior-E9",
+              "title": "Final Checking",
+              "order": "4",
+              "durationDays": 4.0,
+              "role": "Design Head",
+              "sourceCell": "E9",
+              "sourceRow": 9
+            }
+          ]
+        },
+        {
+          "id": "residential-interior-main-3",
+          "code": "3",
+          "name": "Plumbing Works",
+          "lane": "main",
+          "sourceRow": 10,
+          "tasks": [
+            {
+              "id": "residential-interior-E10",
+              "title": "Site Condition Check",
+              "order": "1",
+              "durationDays": 3.0,
+              "role": "Site Supervisor",
+              "sourceCell": "E10",
+              "sourceRow": 10
+            },
+            {
+              "id": "residential-interior-E11",
+              "title": "Design / Drawings",
+              "order": "2",
+              "durationDays": 4.0,
+              "role": "Designer",
+              "sourceCell": "E11",
+              "sourceRow": 11
+            },
+            {
+              "id": "residential-interior-E12",
+              "title": "Site Execution",
+              "order": "3",
+              "durationDays": 7.0,
+              "role": "Site Team",
+              "sourceCell": "E12",
+              "sourceRow": 12
+            },
+            {
+              "id": "residential-interior-E13",
+              "title": "Final Checking",
+              "order": "4",
+              "durationDays": 4.0,
+              "role": "Design Head",
+              "sourceCell": "E13",
+              "sourceRow": 13
+            }
+          ]
+        }
+      ],
+      "taskCount": 12
+    },
+    {
+      "id": "interior-1",
+      "name": "INTERIOR 1",
+      "sheet": "WORKFLOWS",
+      "stages": [
+        {
+          "id": "interior-1-main-1",
+          "code": "1",
+          "name": "Design plan",
+          "lane": "main",
+          "sourceRow": 15,
+          "tasks": [
+            {
+              "id": "interior-1-E15",
+              "title": "Existing resources",
+              "order": "1",
+              "durationDays": 1.0,
+              "role": "Client",
+              "sourceCell": "E15",
+              "sourceRow": 15
+            },
+            {
+              "id": "interior-1-E16",
+              "title": "2D drawing",
+              "order": "2",
+              "durationDays": 3.0,
+              "role": "Designer",
+              "sourceCell": "E16",
+              "sourceRow": 16
+            },
+            {
+              "id": "interior-1-E17",
+              "title": "Design approval",
+              "order": "3",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E17",
+              "sourceRow": 17
+            },
+            {
+              "id": "interior-1-E18",
+              "title": "Client Presentation & approval",
+              "order": "4",
+              "durationDays": 2.0,
+              "role": "Client",
+              "sourceCell": "E18",
+              "sourceRow": 18
+            }
+          ]
+        },
+        {
+          "id": "interior-1-main-2",
+          "code": "2",
+          "name": "Design concept",
+          "lane": "main",
+          "sourceRow": 19,
+          "tasks": [
+            {
+              "id": "interior-1-E19",
+              "title": "3D Design",
+              "order": "1",
+              "durationDays": 7.0,
+              "role": "Designer",
+              "sourceCell": "E19",
+              "sourceRow": 19
+            },
+            {
+              "id": "interior-1-E20",
+              "title": "Design approval",
+              "order": "2",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E20",
+              "sourceRow": 20
+            },
+            {
+              "id": "interior-1-E21",
+              "title": "Client Presentation & approval",
+              "order": "3",
+              "durationDays": 3.0,
+              "role": "Client",
+              "sourceCell": "E21",
+              "sourceRow": 21
+            }
+          ]
+        },
+        {
+          "id": "interior-1-main-3",
+          "code": "3",
+          "name": "3D Design",
+          "lane": "main",
+          "sourceRow": 22,
+          "tasks": [
+            {
+              "id": "interior-1-E22",
+              "title": "Site Condition Check",
+              "order": "1",
+              "durationDays": 1.0,
+              "role": "Site Supervisor",
+              "sourceCell": "E22",
+              "sourceRow": 22
+            },
+            {
+              "id": "interior-1-E23",
+              "title": "3D Design",
+              "order": "2",
+              "durationDays": 7.0,
+              "role": "Designer",
+              "sourceCell": "E23",
+              "sourceRow": 23
+            },
+            {
+              "id": "interior-1-E24",
+              "title": "Design approval",
+              "order": "3",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E24",
+              "sourceRow": 24
+            },
+            {
+              "id": "interior-1-E25",
+              "title": "Client Presentation & approval",
+              "order": "4",
+              "durationDays": 3.0,
+              "role": "Client",
+              "sourceCell": "E25",
+              "sourceRow": 25
+            }
+          ]
+        },
+        {
+          "id": "interior-1-main-4",
+          "code": "4",
+          "name": "Civil Work",
+          "lane": "main",
+          "sourceRow": 26,
+          "tasks": [
+            {
+              "id": "interior-1-E26",
+              "title": "Site Condition Check",
+              "order": "1",
+              "durationDays": 2.0,
+              "role": "Site Supervisor",
+              "sourceCell": "E26",
+              "sourceRow": 26
+            },
+            {
+              "id": "interior-1-E27",
+              "title": "Drawing",
+              "order": "2",
+              "durationDays": 2.0,
+              "role": "Designer",
+              "sourceCell": "E27",
+              "sourceRow": 27
+            },
+            {
+              "id": "interior-1-E28",
+              "title": "Drawing approval",
+              "order": "3",
+              "durationDays": 1.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E28",
+              "sourceRow": 28
+            },
+            {
+              "id": "interior-1-E29",
+              "title": "Client Presentation & approval",
+              "order": "4",
+              "durationDays": 1.0,
+              "role": "Client",
+              "sourceCell": "E29",
+              "sourceRow": 29
+            },
+            {
+              "id": "interior-1-E30",
+              "title": "Site Execution",
+              "order": "5",
+              "durationDays": 7.0,
+              "role": "Tile person",
+              "sourceCell": "E30",
+              "sourceRow": 30
+            },
+            {
+              "id": "interior-1-E31",
+              "title": "Final check",
+              "order": "6",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E31",
+              "sourceRow": 31
+            }
+          ]
+        },
+        {
+          "id": "interior-1-parallel-5a",
+          "code": "5a",
+          "name": "Electrical Work",
+          "lane": "parallel",
+          "sourceRow": 29,
+          "tasks": [
+            {
+              "id": "interior-1-K29",
+              "title": "Drawing",
+              "order": "1",
+              "durationDays": 8.0,
+              "role": "Designer",
+              "sourceCell": "K29",
+              "sourceRow": 29
+            },
+            {
+              "id": "interior-1-K31",
+              "title": "Drawing approval",
+              "order": "2",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "K31",
+              "sourceRow": 31
+            }
+          ],
+          "parallelAnchor": {
+            "stageCode": "4",
+            "row": 29
+          }
+        },
+        {
+          "id": "interior-1-main-5b",
+          "code": "5b",
+          "name": "Electrical Work 1",
+          "lane": "main",
+          "sourceRow": 32,
+          "tasks": [
+            {
+              "id": "interior-1-E32",
+              "title": "Site Condition Check",
+              "order": "1",
+              "durationDays": 1.0,
+              "role": "Site Supervisor",
+              "sourceCell": "E32",
+              "sourceRow": 32
+            },
+            {
+              "id": "interior-1-E33",
+              "title": "Drawing",
+              "order": "2",
+              "durationDays": 2.0,
+              "role": "Designer",
+              "sourceCell": "E33",
+              "sourceRow": 33
+            },
+            {
+              "id": "interior-1-E34",
+              "title": "Drawing approval",
+              "order": "3",
+              "durationDays": 1.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E34",
+              "sourceRow": 34
+            },
+            {
+              "id": "interior-1-E35",
+              "title": "Client Presentation & approval",
+              "order": "4",
+              "durationDays": 1.0,
+              "role": "Client",
+              "sourceCell": "E35",
+              "sourceRow": 35
+            },
+            {
+              "id": "interior-1-E36",
+              "title": "Site Execution",
+              "order": "5",
+              "durationDays": 5.0,
+              "role": "Electrician",
+              "sourceCell": "E36",
+              "sourceRow": 36
+            },
+            {
+              "id": "interior-1-E37",
+              "title": "Final check",
+              "order": "6",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E37",
+              "sourceRow": 37
+            }
+          ]
+        },
+        {
+          "id": "interior-1-parallel-6a",
+          "code": "6a",
+          "name": "Plumbing Work",
+          "lane": "parallel",
+          "sourceRow": 34,
+          "tasks": [
+            {
+              "id": "interior-1-K34",
+              "title": "Drawing",
+              "order": "1",
+              "durationDays": 7.0,
+              "role": "Designer",
+              "sourceCell": "K34",
+              "sourceRow": 34
+            },
+            {
+              "id": "interior-1-K37",
+              "title": "Drawing approval & Electrician Final",
+              "order": "2",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "K37",
+              "sourceRow": 37
+            }
+          ],
+          "parallelAnchor": {
+            "stageCode": "5b",
+            "row": 34
+          }
+        },
+        {
+          "id": "interior-1-main-6b",
+          "code": "6b",
+          "name": "Plumbing Work",
+          "lane": "main",
+          "sourceRow": 38,
+          "tasks": [
+            {
+              "id": "interior-1-E38",
+              "title": "Client Presentation & approval",
+              "order": "1",
+              "durationDays": 1.0,
+              "role": "Client",
+              "sourceCell": "E38",
+              "sourceRow": 38
+            },
+            {
+              "id": "interior-1-E39",
+              "title": "Site Execution",
+              "order": "2",
+              "durationDays": 5.0,
+              "role": "Plumber",
+              "sourceCell": "E39",
+              "sourceRow": 39
+            },
+            {
+              "id": "interior-1-E40",
+              "title": "Final check",
+              "order": "3",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E40",
+              "sourceRow": 40
+            }
+          ]
+        },
+        {
+          "id": "interior-1-parallel-7a",
+          "code": "7a",
+          "name": "Flooring",
+          "lane": "parallel",
+          "sourceRow": 38,
+          "tasks": [
+            {
+              "id": "interior-1-K38",
+              "title": "Presentation",
+              "order": "1",
+              "durationDays": null,
+              "role": null,
+              "sourceCell": "K38",
+              "sourceRow": 38
+            },
+            {
+              "id": "interior-1-K39",
+              "title": "Selection and site delivery",
+              "order": "2",
+              "durationDays": 7.0,
+              "role": "Client & Design Head",
+              "sourceCell": "K39",
+              "sourceRow": 39
+            }
+          ],
+          "parallelAnchor": {
+            "stageCode": "6b",
+            "row": 38
+          }
+        },
+        {
+          "id": "interior-1-main-7b",
+          "code": "7b",
+          "name": "Flooring",
+          "lane": "main",
+          "sourceRow": 41,
+          "tasks": [
+            {
+              "id": "interior-1-E41",
+              "title": "Site Condition Check",
+              "order": "1",
+              "durationDays": 2.0,
+              "role": "Site Supervisor",
+              "sourceCell": "E41",
+              "sourceRow": 41
+            },
+            {
+              "id": "interior-1-E42",
+              "title": "Drawing",
+              "order": "2",
+              "durationDays": 2.0,
+              "role": "Designer",
+              "sourceCell": "E42",
+              "sourceRow": 42
+            },
+            {
+              "id": "interior-1-E43",
+              "title": "Drawing approval",
+              "order": "3",
+              "durationDays": 1.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E43",
+              "sourceRow": 43
+            },
+            {
+              "id": "interior-1-E44",
+              "title": "Client Presentation & approval",
+              "order": "4",
+              "durationDays": 1.0,
+              "role": "Client",
+              "sourceCell": "E44",
+              "sourceRow": 44
+            },
+            {
+              "id": "interior-1-E45",
+              "title": "Site Execution",
+              "order": "5",
+              "durationDays": 5.0,
+              "role": "Tile person",
+              "sourceCell": "E45",
+              "sourceRow": 45
+            },
+            {
+              "id": "interior-1-E46",
+              "title": "Final check",
+              "order": "6",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E46",
+              "sourceRow": 46
+            }
+          ]
+        },
+        {
+          "id": "interior-1-parallel-8",
+          "code": "8",
+          "name": "Ceiling_1",
+          "lane": "parallel",
+          "sourceRow": 41,
+          "tasks": [
+            {
+              "id": "interior-1-K41",
+              "title": "Drawing",
+              "order": "1",
+              "durationDays": 2.0,
+              "role": "Designer",
+              "sourceCell": "K41",
+              "sourceRow": 41
+            },
+            {
+              "id": "interior-1-K42",
+              "title": "Ceiling channelling",
+              "order": "2",
+              "durationDays": 2.0,
+              "role": "POP Person",
+              "sourceCell": "K42",
+              "sourceRow": 42
+            }
+          ],
+          "parallelAnchor": {
+            "stageCode": "7b",
+            "row": 41
+          }
+        },
+        {
+          "id": "interior-1-parallel-9a",
+          "code": "9a",
+          "name": "Carpentering_Wall",
+          "lane": "parallel",
+          "sourceRow": 43,
+          "tasks": [
+            {
+              "id": "interior-1-K43",
+              "title": "Presentation",
+              "order": "1",
+              "durationDays": 2.0,
+              "role": "Designer",
+              "sourceCell": "K43",
+              "sourceRow": 43
+            },
+            {
+              "id": "interior-1-K45",
+              "title": "Selection and site delivery",
+              "order": "2",
+              "durationDays": 7.0,
+              "role": "Client & Design Head",
+              "sourceCell": "K45",
+              "sourceRow": 45
+            }
+          ],
+          "parallelAnchor": {
+            "stageCode": "7b",
+            "row": 43
+          }
+        },
+        {
+          "id": "interior-1-main-9b",
+          "code": "9b",
+          "name": "Carpentering_Wall",
+          "lane": "main",
+          "sourceRow": 47,
+          "tasks": [
+            {
+              "id": "interior-1-E47",
+              "title": "Site Condition Check",
+              "order": "1",
+              "durationDays": 1.0,
+              "role": "Site Supervisor",
+              "sourceCell": "E47",
+              "sourceRow": 47
+            },
+            {
+              "id": "interior-1-E48",
+              "title": "Drawing",
+              "order": "2",
+              "durationDays": 4.0,
+              "role": "Designer",
+              "sourceCell": "E48",
+              "sourceRow": 48
+            },
+            {
+              "id": "interior-1-E49",
+              "title": "Drawing approval",
+              "order": "3",
+              "durationDays": 1.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E49",
+              "sourceRow": 49
+            },
+            {
+              "id": "interior-1-E50",
+              "title": "Client Presentation & approval",
+              "order": "4",
+              "durationDays": 1.0,
+              "role": "Client",
+              "sourceCell": "E50",
+              "sourceRow": 50
+            },
+            {
+              "id": "interior-1-E51",
+              "title": "Site Execution",
+              "order": "5",
+              "durationDays": 20.0,
+              "role": "Carpenter",
+              "sourceCell": "E51",
+              "sourceRow": 51
+            },
+            {
+              "id": "interior-1-E52",
+              "title": "Final check",
+              "order": "6",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E52",
+              "sourceRow": 52
+            }
+          ]
+        },
+        {
+          "id": "interior-1-parallel-10",
+          "code": "10",
+          "name": "Wall POP",
+          "lane": "parallel",
+          "sourceRow": 47,
+          "tasks": [
+            {
+              "id": "interior-1-K47",
+              "title": "Drawing",
+              "order": "1",
+              "durationDays": 1.0,
+              "role": "Designer",
+              "sourceCell": "K47",
+              "sourceRow": 47
+            },
+            {
+              "id": "interior-1-K48",
+              "title": "Wall POP",
+              "order": "2",
+              "durationDays": 4.0,
+              "role": "POP Person",
+              "sourceCell": "K48",
+              "sourceRow": 48
+            }
+          ],
+          "parallelAnchor": {
+            "stageCode": "9b",
+            "row": 47
+          }
+        },
+        {
+          "id": "interior-1-parallel-11a",
+          "code": "11a",
+          "name": "Carpentering_Furniture",
+          "lane": "parallel",
+          "sourceRow": 49,
+          "tasks": [
+            {
+              "id": "interior-1-K49",
+              "title": "Drawings & Presentation",
+              "order": "1",
+              "durationDays": 8.0,
+              "role": "Designer",
+              "sourceCell": "K49",
+              "sourceRow": 49
+            },
+            {
+              "id": "interior-1-K50",
+              "title": "Approval",
+              "order": "2",
+              "durationDays": 6.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "K50",
+              "sourceRow": 50
+            },
+            {
+              "id": "interior-1-K51",
+              "title": "Selection and site delivery",
+              "order": "2",
+              "durationDays": 15.0,
+              "role": "Client & Design Head",
+              "sourceCell": "K51",
+              "sourceRow": 51
+            }
+          ],
+          "parallelAnchor": {
+            "stageCode": "9b",
+            "row": 49
+          }
+        },
+        {
+          "id": "interior-1-main-11b",
+          "code": "11b",
+          "name": "Carpentering_Furniture",
+          "lane": "main",
+          "sourceRow": 53,
+          "tasks": [
+            {
+              "id": "interior-1-E53",
+              "title": "Site Condition Check",
+              "order": "1",
+              "durationDays": 1.0,
+              "role": "Site Supervisor",
+              "sourceCell": "E53",
+              "sourceRow": 53
+            },
+            {
+              "id": "interior-1-E54",
+              "title": "Client Presentation & approval",
+              "order": "2",
+              "durationDays": 1.0,
+              "role": "Client",
+              "sourceCell": "E54",
+              "sourceRow": 54
+            },
+            {
+              "id": "interior-1-E55",
+              "title": "Site Execution",
+              "order": "3",
+              "durationDays": 20.0,
+              "role": "Carpenter",
+              "sourceCell": "E55",
+              "sourceRow": 55
+            },
+            {
+              "id": "interior-1-E56",
+              "title": "Final check",
+              "order": "4",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E56",
+              "sourceRow": 56
+            }
+          ]
+        },
+        {
+          "id": "interior-1-parallel-12a",
+          "code": "12a",
+          "name": "Corian, Profile Works, Fabrics & Misc",
+          "lane": "parallel",
+          "sourceRow": 53,
+          "tasks": [
+            {
+              "id": "interior-1-K53",
+              "title": "Site Check",
+              "order": "1",
+              "durationDays": 2.0,
+              "role": "Site Supervisor",
+              "sourceCell": "K53",
+              "sourceRow": 53
+            },
+            {
+              "id": "interior-1-K54",
+              "title": "Presentation",
+              "order": "2",
+              "durationDays": 8.0,
+              "role": "Designer",
+              "sourceCell": "K54",
+              "sourceRow": 54
+            },
+            {
+              "id": "interior-1-K55",
+              "title": "Approval",
+              "order": "3",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "K55",
+              "sourceRow": 55
+            },
+            {
+              "id": "interior-1-K56",
+              "title": "Purchase / Vendor final",
+              "order": "4",
+              "durationDays": 12.0,
+              "role": "Client",
+              "sourceCell": "K56",
+              "sourceRow": 56
+            }
+          ],
+          "parallelAnchor": {
+            "stageCode": "11b",
+            "row": 53
+          }
+        },
+        {
+          "id": "interior-1-main-12b",
+          "code": "12b",
+          "name": "Corian, Profile Works, Fabrics & Misc",
+          "lane": "main",
+          "sourceRow": 57,
+          "tasks": [
+            {
+              "id": "interior-1-E57",
+              "title": "Site Execution",
+              "order": "1",
+              "durationDays": 5.0,
+              "role": "Tile person",
+              "sourceCell": "E57",
+              "sourceRow": 57
+            },
+            {
+              "id": "interior-1-E58",
+              "title": "Final check",
+              "order": "2",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E58",
+              "sourceRow": 58
+            }
+          ]
+        },
+        {
+          "id": "interior-1-parallel-13a",
+          "code": "13a",
+          "name": "Painting",
+          "lane": "parallel",
+          "sourceRow": 57,
+          "tasks": [
+            {
+              "id": "interior-1-K57",
+              "title": "Presentation",
+              "order": "1",
+              "durationDays": 8.0,
+              "role": "Designer",
+              "sourceCell": "K57",
+              "sourceRow": 57
+            },
+            {
+              "id": "interior-1-K58",
+              "title": "Approval",
+              "order": "2",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "K58",
+              "sourceRow": 58
+            }
+          ],
+          "parallelAnchor": {
+            "stageCode": "12b",
+            "row": 57
+          }
+        },
+        {
+          "id": "interior-1-main-13b",
+          "code": "13b",
+          "name": "Painting",
+          "lane": "main",
+          "sourceRow": 59,
+          "tasks": [
+            {
+              "id": "interior-1-E59",
+              "title": "Site Execution",
+              "order": "1",
+              "durationDays": 5.0,
+              "role": "Tile person",
+              "sourceCell": "E59",
+              "sourceRow": 59
+            },
+            {
+              "id": "interior-1-E60",
+              "title": "Final check",
+              "order": "2",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E60",
+              "sourceRow": 60
+            }
+          ]
+        },
+        {
+          "id": "interior-1-main-14",
+          "code": "14",
+          "name": "Final Check",
+          "lane": "main",
+          "sourceRow": 61,
+          "tasks": [
+            {
+              "id": "interior-1-E61",
+              "title": "Approval",
+              "order": "1",
+              "durationDays": 5.0,
+              "role": "Client & Design Head/ Admin",
+              "sourceCell": "E61",
+              "sourceRow": 61
+            }
+          ]
+        }
+      ],
+      "taskCount": 68
+    },
+    {
+      "id": "copy-copy-of-workflows",
+      "name": "Copy of WORKFLOWS",
+      "sheet": "Copy of WORKFLOWS",
+      "stages": [
+        {
+          "id": "copy-copy-of-workflows-main-1",
+          "code": "1",
+          "name": "Design plan",
+          "lane": "main",
+          "sourceRow": 2,
+          "tasks": [
+            {
+              "id": "copy-copy-of-workflows-E2",
+              "title": "Existing resources",
+              "order": "1",
+              "durationDays": 1.0,
+              "role": "Client",
+              "sourceCell": "E2",
+              "sourceRow": 2
+            },
+            {
+              "id": "copy-copy-of-workflows-E3",
+              "title": "2D drawing",
+              "order": "2",
+              "durationDays": 3.0,
+              "role": "Designer",
+              "sourceCell": "E3",
+              "sourceRow": 3
+            },
+            {
+              "id": "copy-copy-of-workflows-E4",
+              "title": "Design approval",
+              "order": "3",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E4",
+              "sourceRow": 4
+            },
+            {
+              "id": "copy-copy-of-workflows-E5",
+              "title": "Client Presentation & approval",
+              "order": "4",
+              "durationDays": 2.0,
+              "role": "Client",
+              "sourceCell": "E5",
+              "sourceRow": 5
+            }
+          ]
+        },
+        {
+          "id": "copy-copy-of-workflows-main-2",
+          "code": "2",
+          "name": "Design concept",
+          "lane": "main",
+          "sourceRow": 6,
+          "tasks": [
+            {
+              "id": "copy-copy-of-workflows-E6",
+              "title": "3D Design",
+              "order": "1",
+              "durationDays": 7.0,
+              "role": "Designer",
+              "sourceCell": "E6",
+              "sourceRow": 6
+            },
+            {
+              "id": "copy-copy-of-workflows-E7",
+              "title": "Design approval",
+              "order": "2",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E7",
+              "sourceRow": 7
+            },
+            {
+              "id": "copy-copy-of-workflows-E8",
+              "title": "Client Presentation & approval",
+              "order": "3",
+              "durationDays": 3.0,
+              "role": "Client",
+              "sourceCell": "E8",
+              "sourceRow": 8
+            }
+          ]
+        },
+        {
+          "id": "copy-copy-of-workflows-main-3",
+          "code": "3",
+          "name": "3D Design",
+          "lane": "main",
+          "sourceRow": 9,
+          "tasks": [
+            {
+              "id": "copy-copy-of-workflows-E9",
+              "title": "Site Condition Check",
+              "order": "1",
+              "durationDays": 1.0,
+              "role": "Site Supervisor",
+              "sourceCell": "E9",
+              "sourceRow": 9
+            },
+            {
+              "id": "copy-copy-of-workflows-E10",
+              "title": "3D Design",
+              "order": "2",
+              "durationDays": 7.0,
+              "role": "Designer",
+              "sourceCell": "E10",
+              "sourceRow": 10
+            },
+            {
+              "id": "copy-copy-of-workflows-E11",
+              "title": "Design approval",
+              "order": "3",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E11",
+              "sourceRow": 11
+            },
+            {
+              "id": "copy-copy-of-workflows-E12",
+              "title": "Client Presentation & approval",
+              "order": "4",
+              "durationDays": 3.0,
+              "role": "Client",
+              "sourceCell": "E12",
+              "sourceRow": 12
+            }
+          ]
+        },
+        {
+          "id": "copy-copy-of-workflows-main-4",
+          "code": "4",
+          "name": "Civil Work",
+          "lane": "main",
+          "sourceRow": 13,
+          "tasks": [
+            {
+              "id": "copy-copy-of-workflows-E13",
+              "title": "Site Condition Check",
+              "order": "1",
+              "durationDays": 2.0,
+              "role": "Site Supervisor",
+              "sourceCell": "E13",
+              "sourceRow": 13
+            },
+            {
+              "id": "copy-copy-of-workflows-E15",
+              "title": "Drawing",
+              "order": "2",
+              "durationDays": 2.0,
+              "role": "Designer",
+              "sourceCell": "E15",
+              "sourceRow": 15
+            },
+            {
+              "id": "copy-copy-of-workflows-E17",
+              "title": "Drawing approval",
+              "order": "3",
+              "durationDays": 1.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E17",
+              "sourceRow": 17
+            },
+            {
+              "id": "copy-copy-of-workflows-E18",
+              "title": "Client Presentation & approval",
+              "order": "4",
+              "durationDays": 1.0,
+              "role": "Client",
+              "sourceCell": "E18",
+              "sourceRow": 18
+            },
+            {
+              "id": "copy-copy-of-workflows-E19",
+              "title": "Site Execution",
+              "order": "5",
+              "durationDays": 7.0,
+              "role": "Tile person",
+              "sourceCell": "E19",
+              "sourceRow": 19
+            },
+            {
+              "id": "copy-copy-of-workflows-E20",
+              "title": "Final check",
+              "order": "6",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E20",
+              "sourceRow": 20
+            }
+          ]
+        },
+        {
+          "id": "copy-copy-of-workflows-parallel-5",
+          "code": "5",
+          "name": "Carpentering_Marking",
+          "lane": "parallel",
+          "sourceRow": 17,
+          "tasks": [
+            {
+              "id": "copy-copy-of-workflows-K17",
+              "title": "Drawing_Wall elevations",
+              "order": "1",
+              "durationDays": 5.0,
+              "role": "Designer",
+              "sourceCell": "K17",
+              "sourceRow": 17
+            },
+            {
+              "id": "copy-copy-of-workflows-K18",
+              "title": "Approval",
+              "order": "2",
+              "durationDays": 2.0,
+              "role": "Design head/ Admin",
+              "sourceCell": "K18",
+              "sourceRow": 18
+            },
+            {
+              "id": "copy-copy-of-workflows-K19",
+              "title": "Site Marking",
+              "order": "3",
+              "durationDays": 2.0,
+              "role": "Carpenter",
+              "sourceCell": "K19",
+              "sourceRow": 19
+            },
+            {
+              "id": "copy-copy-of-workflows-K20",
+              "title": "Approval",
+              "order": "4",
+              "durationDays": 2.0,
+              "role": "Design head/ Admin",
+              "sourceCell": "K20",
+              "sourceRow": 20
+            }
+          ],
+          "parallelAnchor": {
+            "stageCode": "4",
+            "row": 17
+          }
+        },
+        {
+          "id": "copy-copy-of-workflows-main-6",
+          "code": "6",
+          "name": "Electrical Work 1",
+          "lane": "main",
+          "sourceRow": 21,
+          "tasks": [
+            {
+              "id": "copy-copy-of-workflows-E21",
+              "title": "Site Condition Check",
+              "order": "1",
+              "durationDays": 1.0,
+              "role": "Site Supervisor",
+              "sourceCell": "E21",
+              "sourceRow": 21
+            },
+            {
+              "id": "copy-copy-of-workflows-E22",
+              "title": "Drawing",
+              "order": "2",
+              "durationDays": 2.0,
+              "role": "Designer",
+              "sourceCell": "E22",
+              "sourceRow": 22
+            },
+            {
+              "id": "copy-copy-of-workflows-E23",
+              "title": "Drawing approval",
+              "order": "3",
+              "durationDays": 1.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E23",
+              "sourceRow": 23
+            },
+            {
+              "id": "copy-copy-of-workflows-E24",
+              "title": "Client Presentation & approval",
+              "order": "4",
+              "durationDays": 1.0,
+              "role": "Client",
+              "sourceCell": "E24",
+              "sourceRow": 24
+            },
+            {
+              "id": "copy-copy-of-workflows-E25",
+              "title": "Site Execution",
+              "order": "5",
+              "durationDays": 5.0,
+              "role": "Electrician",
+              "sourceCell": "E25",
+              "sourceRow": 25
+            },
+            {
+              "id": "copy-copy-of-workflows-E26",
+              "title": "Final check",
+              "order": "6",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E26",
+              "sourceRow": 26
+            }
+          ]
+        },
+        {
+          "id": "copy-copy-of-workflows-parallel-7a",
+          "code": "7a",
+          "name": "Plumbing Work",
+          "lane": "parallel",
+          "sourceRow": 23,
+          "tasks": [
+            {
+              "id": "copy-copy-of-workflows-K23",
+              "title": "Drawing",
+              "order": "1",
+              "durationDays": 7.0,
+              "role": "Designer",
+              "sourceCell": "K23",
+              "sourceRow": 23
+            },
+            {
+              "id": "copy-copy-of-workflows-K26",
+              "title": "Drawing approval & Electrician Final",
+              "order": "2",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "K26",
+              "sourceRow": 26
+            }
+          ],
+          "parallelAnchor": {
+            "stageCode": "6",
+            "row": 23
+          }
+        },
+        {
+          "id": "copy-copy-of-workflows-main-7b",
+          "code": "7b",
+          "name": "Plumbing Work",
+          "lane": "main",
+          "sourceRow": 27,
+          "tasks": [
+            {
+              "id": "copy-copy-of-workflows-E27",
+              "title": "Client Presentation & approval",
+              "order": "1",
+              "durationDays": 1.0,
+              "role": "Client",
+              "sourceCell": "E27",
+              "sourceRow": 27
+            },
+            {
+              "id": "copy-copy-of-workflows-E28",
+              "title": "Site Execution",
+              "order": "2",
+              "durationDays": 5.0,
+              "role": "Electrician",
+              "sourceCell": "E28",
+              "sourceRow": 28
+            },
+            {
+              "id": "copy-copy-of-workflows-E29",
+              "title": "Final check",
+              "order": "3",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "E29",
+              "sourceRow": 29
+            }
+          ]
+        },
+        {
+          "id": "copy-copy-of-workflows-parallel-2-8a",
+          "code": "8a",
+          "name": "Flooring",
+          "lane": "parallel-2",
+          "sourceRow": 13,
+          "tasks": [
+            {
+              "id": "copy-copy-of-workflows-Q13",
+              "title": "Drawing",
+              "order": "1",
+              "durationDays": 4.0,
+              "role": "Designer",
+              "sourceCell": "Q13",
+              "sourceRow": 13
+            },
+            {
+              "id": "copy-copy-of-workflows-Q14",
+              "title": "Approval",
+              "order": "2",
+              "durationDays": 2.0,
+              "role": "Design Head/ Admin",
+              "sourceCell": "Q14",
+              "sourceRow": 14
+            },
+            {
+              "id": "copy-copy-of-workflows-Q15",
+              "title": "Selection",
+              "order": "3",
+              "durationDays": 2.0,
+              "role": "Client & Design head",
+              "sourceCell": "Q15",
+              "sourceRow": 15
+            },
+            {
+              "id": "copy-copy-of-workflows-Q16",
+              "title": "Purchase",
+              "order": "4",
+              "durationDays": 10.0,
+              "role": "Client",
+              "sourceCell": "Q16",
+              "sourceRow": 16
+            }
+          ],
+          "parallelAnchor": {
+            "stageCode": "4",
+            "row": 13
+          }
+        }
+      ],
+      "taskCount": 36
+    }
+  ]
+}

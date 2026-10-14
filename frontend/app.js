@@ -28796,7 +28796,7 @@ function timelineItems(tasks, stages) {
 		const directStart = calendarDate(task.sourceCurrentStart) ?? calendarDate(task.sourcePlannedStart);
 		const endDate = calendarDate(task.sourceCurrentEnd) ?? calendarDate(task.deadline) ?? calendarDate(task.sourcePlannedEnd);
 		const stageStart = calendarDate(stage?.startDate);
-		const start = directStart ?? (stageStart !== null && endDate !== null && stageStart <= endDate ? stageStart : endDate);
+		const start = task.sheetPlan ? directStart : directStart ?? (stageStart !== null && endDate !== null && stageStart <= endDate ? stageStart : endDate);
 		return {
 			task,
 			stage,
@@ -28831,7 +28831,7 @@ var timelineDate = (value) => value === null ? "Not scheduled" : new Date(value)
 });
 function TimelineStageDetails({ stage, items, members, projectId, namespace, onClose, onOpenTask }) {
 	const summary = stage ? stageSummary(items, stage) : null;
-	const owners = summary ? [...new Set(summary.items.map((item) => timelineOwner(item.task, members)))] : [];
+	const owners = summary ? [...new Set(summary.items.map((item) => stage?.sheetPlan ? item.task.sheetRole || "Role not specified" : timelineOwner(item.task, members)))] : [];
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sheet, {
 		open: Boolean(stage),
 		onOpenChange: (open) => {
@@ -28864,12 +28864,12 @@ function TimelineStageDetails({ stage, items, members, projectId, namespace, onC
 						] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", { children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { size: 16 }),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: owners.filter((owner) => owner !== "Unassigned").length }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Assigned people" })
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: stage.sheetPlan ? "Responsible roles" : "Assigned people" })
 						] })]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "iksha-stage-dates",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, { size: 16 }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Scheduled window" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, { size: 16 }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: stage.sheetPlan ? "Draft planned window" : "Scheduled window" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [
 							timelineDate(summary.start),
 							" → ",
 							timelineDate(summary.end === null ? null : summary.end - 864e5)
@@ -28908,7 +28908,19 @@ function TimelineStageDetails({ stage, items, members, projectId, namespace, onC
 											})] }),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", { children: item.task.title }),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: item.task.description || "Open this work item to see its discussion and record the next step." }),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("dl", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Accountable owner" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: timelineOwner(item.task, members) })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Schedule" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: item.start === null || item.end === null ? "No saved dates" : `${timelineDate(item.start)} → ${timelineDate(item.end - 864e5)}` })] })] }),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("dl", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: stage.sheetPlan ? "Responsible role" : "Accountable owner" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: stage.sheetPlan ? item.task.sheetRole || "Not specified" : timelineOwner(item.task, members) })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Schedule" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: item.start === null || item.end === null ? stage.sheetPlan ? "Duration needed" : "No saved dates" : `${timelineDate(item.start)} → ${timelineDate(item.end - 864e5)}` })] })] }),
+											stage.sheetPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+												className: "iksha-stage-description",
+												children: [
+													item.task.sheetDurationDays === null ? "Duration missing" : item.task.sheetDurationDays + " calendar days",
+													" · Work ",
+													item.task.sheetTaskOrder,
+													" · ",
+													item.task.sheetSourceTab,
+													" ",
+													item.task.sheetSourceCell
+												]
+											}),
 											item.task.sourceBlockedReason && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 												className: "iksha-work-blocker",
 												children: ["Blocked: ", item.task.sourceBlockedReason]
@@ -28920,7 +28932,11 @@ function TimelineStageDetails({ stage, items, members, projectId, namespace, onC
 											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 												variant: "outline",
 												onClick: () => onOpenTask(item.task),
-												children: ["Open work item & discussion ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 14 })]
+												children: [
+													stage.sheetPlan ? "Open work item details" : "Open work item & discussion",
+													" ",
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 14 })
+												]
 											})
 										]
 									}, item.task.id)), !summary.items.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
@@ -28943,7 +28959,7 @@ function TimelineStageDetails({ stage, items, members, projectId, namespace, onC
 					}, stage.id),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "iksha-stage-footer",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock3, { size: 13 }), "Completion and approval states reflect the saved project records."]
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock3, { size: 13 }), stage.sheetPlan ? "Imported plan; completion requires a linked project task." : "Completion and approval states reflect the saved project records."]
 					})
 				]
 			})] })
@@ -28970,7 +28986,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 	const [search, setSearch] = (0, import_react.useState)("");
 	const [selectedStageId, setSelectedStageId] = (0, import_react.useState)(null);
 	const from = origin, to = origin + days * calendarDay;
-	const dayWidth = days === 7 ? 142 : days === 14 ? 82 : 48;
+	const dayWidth = days === 7 ? 142 : days === 14 ? 82 : days === 28 ? 48 : Math.max(8, 1120 / days);
 	const allGroups = [...stages, {
 		id: "other",
 		name: "Additional work"
@@ -29019,10 +29035,11 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [
 								dateLabel(from),
+								new Date(from).getUTCFullYear() !== (/* @__PURE__ */ new Date(to - 864e5)).getUTCFullYear() ? ", " + new Date(from).getUTCFullYear() : "",
 								" – ",
 								dateLabel(to - calendarDay),
 								", ",
-								new Date(from).getUTCFullYear()
+								new Date(to - calendarDay).getUTCFullYear()
 							] }),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 								variant: "ghost",
@@ -29058,6 +29075,16 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 							children: value === 7 ? "Week" : value === 14 ? "Fortnight" : "Month"
 						}, value))
 					}),
+					scheduled.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						size: "sm",
+						onClick: () => {
+							const first = Math.min(...scheduled.map((item) => item.start));
+							setOrigin(first);
+							setDays(Math.max(28, Math.ceil((Math.max(...scheduled.map((item) => item.end)) - first) / 864e5)));
+						},
+						children: "Entire plan"
+					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						variant: "outline",
 						size: "sm",
@@ -29091,7 +29118,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 						"--timeline-width": `${days * dayWidth}px`,
 						"--timeline-day": `${dayWidth}px`
 					},
-					className: "iksha-schedule-grid",
+					className: `iksha-schedule-grid ${days > 28 ? "iksha-plan-fit" : ""}`,
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "iksha-schedule-row iksha-schedule-head",
@@ -29104,17 +29131,23 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 									const value = from + i * calendarDay;
 									return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: `iksha-schedule-day ${value === today() ? "today" : ""}`,
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
-											new Date(value).toLocaleDateString([], {
-												weekday: "short",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+											style: days > 28 && i % 7 !== 0 ? { visibility: "hidden" } : void 0,
+											children: [
+												new Date(value).toLocaleDateString([], {
+													weekday: "short",
+													timeZone: "UTC"
+												}),
+												" ",
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: new Date(value).getUTCDate() })
+											]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", {
+											style: days > 28 && i % 7 !== 0 ? { visibility: "hidden" } : void 0,
+											children: new Date(value).toLocaleDateString([], {
+												month: "short",
 												timeZone: "UTC"
-											}),
-											" ",
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: new Date(value).getUTCDate() })
-										] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", { children: new Date(value).toLocaleDateString([], {
-											month: "short",
-											timeZone: "UTC"
-										}) })]
+											})
+										})]
 									}, i);
 								})
 							})]
@@ -29205,7 +29238,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 											}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 												className: "iksha-unscheduled",
 												onClick: () => isScheduled ? setOrigin(item.start) : onOpenTask(item.task),
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock3, { size: 12 }), isScheduled ? `${dateLabel(item.start)} · Show` : "No saved dates · Open task"]
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock3, { size: 12 }), isScheduled ? `${dateLabel(item.start)} · Show` : item.task.sheetPlan ? "Duration needed · Open item" : "No saved dates · Open task"]
 											})
 										})]
 									}, item.task.id);
@@ -29230,7 +29263,1660 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("footer", {
 				className: "iksha-schedule-caption",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Dates from the saved project plan · Click a stage for its full breakdown · Click a work item for its discussion" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Calendar days" })]
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: stages.some((stage) => stage.sheetPlan) ? "Draft dates from sheet durations · Click a stage or work item for details" : "Dates from the saved project plan · Click a stage for its full breakdown · Click a work item for its discussion" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Calendar days" })]
+			})
+		]
+	});
+}
+var sheet_workflows_default = {
+	sourceUrl: "https://docs.google.com/spreadsheets/d/1V47wt8GM90cde8EclExsM_7iA4kwHBBfqITlc858pps/edit?gid=1535430592",
+	sourceTab: "WORKFLOWS",
+	fetchedAt: "2026-10-14T05:17:45.029083+00:00",
+	durationUnit: "calendar-days",
+	defaultPlanId: "interior-1",
+	plans: [
+		{
+			"id": "residential-interior",
+			"name": "Residential Interior",
+			"sheet": "WORKFLOWS",
+			"stages": [
+				{
+					"id": "residential-interior-main-1",
+					"code": "1",
+					"name": "Civil Works",
+					"lane": "main",
+					"sourceRow": 2,
+					"tasks": [
+						{
+							"id": "residential-interior-E2",
+							"title": "Site Condition Check",
+							"order": "1",
+							"durationDays": 3,
+							"role": "Site Supervisor",
+							"sourceCell": "E2",
+							"sourceRow": 2
+						},
+						{
+							"id": "residential-interior-E3",
+							"title": "Design / Drawings",
+							"order": "2",
+							"durationDays": 4,
+							"role": "Designer",
+							"sourceCell": "E3",
+							"sourceRow": 3
+						},
+						{
+							"id": "residential-interior-E4",
+							"title": "Site Execution",
+							"order": "3",
+							"durationDays": 7,
+							"role": "Site Team",
+							"sourceCell": "E4",
+							"sourceRow": 4
+						},
+						{
+							"id": "residential-interior-E5",
+							"title": "Final Checking",
+							"order": "4",
+							"durationDays": 4,
+							"role": "Design Head",
+							"sourceCell": "E5",
+							"sourceRow": 5
+						}
+					]
+				},
+				{
+					"id": "residential-interior-main-2",
+					"code": "2",
+					"name": "Electrical Works",
+					"lane": "main",
+					"sourceRow": 6,
+					"tasks": [
+						{
+							"id": "residential-interior-E6",
+							"title": "Site Condition Check",
+							"order": "1",
+							"durationDays": 3,
+							"role": "Site Supervisor",
+							"sourceCell": "E6",
+							"sourceRow": 6
+						},
+						{
+							"id": "residential-interior-E7",
+							"title": "Design / Drawings",
+							"order": "2",
+							"durationDays": 4,
+							"role": "Designer",
+							"sourceCell": "E7",
+							"sourceRow": 7
+						},
+						{
+							"id": "residential-interior-E8",
+							"title": "Site Execution",
+							"order": "3",
+							"durationDays": 7,
+							"role": "Site Team",
+							"sourceCell": "E8",
+							"sourceRow": 8
+						},
+						{
+							"id": "residential-interior-E9",
+							"title": "Final Checking",
+							"order": "4",
+							"durationDays": 4,
+							"role": "Design Head",
+							"sourceCell": "E9",
+							"sourceRow": 9
+						}
+					]
+				},
+				{
+					"id": "residential-interior-main-3",
+					"code": "3",
+					"name": "Plumbing Works",
+					"lane": "main",
+					"sourceRow": 10,
+					"tasks": [
+						{
+							"id": "residential-interior-E10",
+							"title": "Site Condition Check",
+							"order": "1",
+							"durationDays": 3,
+							"role": "Site Supervisor",
+							"sourceCell": "E10",
+							"sourceRow": 10
+						},
+						{
+							"id": "residential-interior-E11",
+							"title": "Design / Drawings",
+							"order": "2",
+							"durationDays": 4,
+							"role": "Designer",
+							"sourceCell": "E11",
+							"sourceRow": 11
+						},
+						{
+							"id": "residential-interior-E12",
+							"title": "Site Execution",
+							"order": "3",
+							"durationDays": 7,
+							"role": "Site Team",
+							"sourceCell": "E12",
+							"sourceRow": 12
+						},
+						{
+							"id": "residential-interior-E13",
+							"title": "Final Checking",
+							"order": "4",
+							"durationDays": 4,
+							"role": "Design Head",
+							"sourceCell": "E13",
+							"sourceRow": 13
+						}
+					]
+				}
+			],
+			"taskCount": 12
+		},
+		{
+			"id": "interior-1",
+			"name": "INTERIOR 1",
+			"sheet": "WORKFLOWS",
+			"stages": [
+				{
+					"id": "interior-1-main-1",
+					"code": "1",
+					"name": "Design plan",
+					"lane": "main",
+					"sourceRow": 15,
+					"tasks": [
+						{
+							"id": "interior-1-E15",
+							"title": "Existing resources",
+							"order": "1",
+							"durationDays": 1,
+							"role": "Client",
+							"sourceCell": "E15",
+							"sourceRow": 15
+						},
+						{
+							"id": "interior-1-E16",
+							"title": "2D drawing",
+							"order": "2",
+							"durationDays": 3,
+							"role": "Designer",
+							"sourceCell": "E16",
+							"sourceRow": 16
+						},
+						{
+							"id": "interior-1-E17",
+							"title": "Design approval",
+							"order": "3",
+							"durationDays": 2,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E17",
+							"sourceRow": 17
+						},
+						{
+							"id": "interior-1-E18",
+							"title": "Client Presentation & approval",
+							"order": "4",
+							"durationDays": 2,
+							"role": "Client",
+							"sourceCell": "E18",
+							"sourceRow": 18
+						}
+					]
+				},
+				{
+					"id": "interior-1-main-2",
+					"code": "2",
+					"name": "Design concept",
+					"lane": "main",
+					"sourceRow": 19,
+					"tasks": [
+						{
+							"id": "interior-1-E19",
+							"title": "3D Design",
+							"order": "1",
+							"durationDays": 7,
+							"role": "Designer",
+							"sourceCell": "E19",
+							"sourceRow": 19
+						},
+						{
+							"id": "interior-1-E20",
+							"title": "Design approval",
+							"order": "2",
+							"durationDays": 2,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E20",
+							"sourceRow": 20
+						},
+						{
+							"id": "interior-1-E21",
+							"title": "Client Presentation & approval",
+							"order": "3",
+							"durationDays": 3,
+							"role": "Client",
+							"sourceCell": "E21",
+							"sourceRow": 21
+						}
+					]
+				},
+				{
+					"id": "interior-1-main-3",
+					"code": "3",
+					"name": "3D Design",
+					"lane": "main",
+					"sourceRow": 22,
+					"tasks": [
+						{
+							"id": "interior-1-E22",
+							"title": "Site Condition Check",
+							"order": "1",
+							"durationDays": 1,
+							"role": "Site Supervisor",
+							"sourceCell": "E22",
+							"sourceRow": 22
+						},
+						{
+							"id": "interior-1-E23",
+							"title": "3D Design",
+							"order": "2",
+							"durationDays": 7,
+							"role": "Designer",
+							"sourceCell": "E23",
+							"sourceRow": 23
+						},
+						{
+							"id": "interior-1-E24",
+							"title": "Design approval",
+							"order": "3",
+							"durationDays": 2,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E24",
+							"sourceRow": 24
+						},
+						{
+							"id": "interior-1-E25",
+							"title": "Client Presentation & approval",
+							"order": "4",
+							"durationDays": 3,
+							"role": "Client",
+							"sourceCell": "E25",
+							"sourceRow": 25
+						}
+					]
+				},
+				{
+					"id": "interior-1-main-4",
+					"code": "4",
+					"name": "Civil Work",
+					"lane": "main",
+					"sourceRow": 26,
+					"tasks": [
+						{
+							"id": "interior-1-E26",
+							"title": "Site Condition Check",
+							"order": "1",
+							"durationDays": 2,
+							"role": "Site Supervisor",
+							"sourceCell": "E26",
+							"sourceRow": 26
+						},
+						{
+							"id": "interior-1-E27",
+							"title": "Drawing",
+							"order": "2",
+							"durationDays": 2,
+							"role": "Designer",
+							"sourceCell": "E27",
+							"sourceRow": 27
+						},
+						{
+							"id": "interior-1-E28",
+							"title": "Drawing approval",
+							"order": "3",
+							"durationDays": 1,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E28",
+							"sourceRow": 28
+						},
+						{
+							"id": "interior-1-E29",
+							"title": "Client Presentation & approval",
+							"order": "4",
+							"durationDays": 1,
+							"role": "Client",
+							"sourceCell": "E29",
+							"sourceRow": 29
+						},
+						{
+							"id": "interior-1-E30",
+							"title": "Site Execution",
+							"order": "5",
+							"durationDays": 7,
+							"role": "Tile person",
+							"sourceCell": "E30",
+							"sourceRow": 30
+						},
+						{
+							"id": "interior-1-E31",
+							"title": "Final check",
+							"order": "6",
+							"durationDays": 2,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E31",
+							"sourceRow": 31
+						}
+					]
+				},
+				{
+					"id": "interior-1-parallel-5a",
+					"code": "5a",
+					"name": "Electrical Work",
+					"lane": "parallel",
+					"sourceRow": 29,
+					"tasks": [{
+						"id": "interior-1-K29",
+						"title": "Drawing",
+						"order": "1",
+						"durationDays": 8,
+						"role": "Designer",
+						"sourceCell": "K29",
+						"sourceRow": 29
+					}, {
+						"id": "interior-1-K31",
+						"title": "Drawing approval",
+						"order": "2",
+						"durationDays": 2,
+						"role": "Design Head/ Admin",
+						"sourceCell": "K31",
+						"sourceRow": 31
+					}],
+					"parallelAnchor": {
+						"stageCode": "4",
+						"row": 29
+					}
+				},
+				{
+					"id": "interior-1-main-5b",
+					"code": "5b",
+					"name": "Electrical Work 1",
+					"lane": "main",
+					"sourceRow": 32,
+					"tasks": [
+						{
+							"id": "interior-1-E32",
+							"title": "Site Condition Check",
+							"order": "1",
+							"durationDays": 1,
+							"role": "Site Supervisor",
+							"sourceCell": "E32",
+							"sourceRow": 32
+						},
+						{
+							"id": "interior-1-E33",
+							"title": "Drawing",
+							"order": "2",
+							"durationDays": 2,
+							"role": "Designer",
+							"sourceCell": "E33",
+							"sourceRow": 33
+						},
+						{
+							"id": "interior-1-E34",
+							"title": "Drawing approval",
+							"order": "3",
+							"durationDays": 1,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E34",
+							"sourceRow": 34
+						},
+						{
+							"id": "interior-1-E35",
+							"title": "Client Presentation & approval",
+							"order": "4",
+							"durationDays": 1,
+							"role": "Client",
+							"sourceCell": "E35",
+							"sourceRow": 35
+						},
+						{
+							"id": "interior-1-E36",
+							"title": "Site Execution",
+							"order": "5",
+							"durationDays": 5,
+							"role": "Electrician",
+							"sourceCell": "E36",
+							"sourceRow": 36
+						},
+						{
+							"id": "interior-1-E37",
+							"title": "Final check",
+							"order": "6",
+							"durationDays": 2,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E37",
+							"sourceRow": 37
+						}
+					]
+				},
+				{
+					"id": "interior-1-parallel-6a",
+					"code": "6a",
+					"name": "Plumbing Work",
+					"lane": "parallel",
+					"sourceRow": 34,
+					"tasks": [{
+						"id": "interior-1-K34",
+						"title": "Drawing",
+						"order": "1",
+						"durationDays": 7,
+						"role": "Designer",
+						"sourceCell": "K34",
+						"sourceRow": 34
+					}, {
+						"id": "interior-1-K37",
+						"title": "Drawing approval & Electrician Final",
+						"order": "2",
+						"durationDays": 2,
+						"role": "Design Head/ Admin",
+						"sourceCell": "K37",
+						"sourceRow": 37
+					}],
+					"parallelAnchor": {
+						"stageCode": "5b",
+						"row": 34
+					}
+				},
+				{
+					"id": "interior-1-main-6b",
+					"code": "6b",
+					"name": "Plumbing Work",
+					"lane": "main",
+					"sourceRow": 38,
+					"tasks": [
+						{
+							"id": "interior-1-E38",
+							"title": "Client Presentation & approval",
+							"order": "1",
+							"durationDays": 1,
+							"role": "Client",
+							"sourceCell": "E38",
+							"sourceRow": 38
+						},
+						{
+							"id": "interior-1-E39",
+							"title": "Site Execution",
+							"order": "2",
+							"durationDays": 5,
+							"role": "Plumber",
+							"sourceCell": "E39",
+							"sourceRow": 39
+						},
+						{
+							"id": "interior-1-E40",
+							"title": "Final check",
+							"order": "3",
+							"durationDays": 2,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E40",
+							"sourceRow": 40
+						}
+					]
+				},
+				{
+					"id": "interior-1-parallel-7a",
+					"code": "7a",
+					"name": "Flooring",
+					"lane": "parallel",
+					"sourceRow": 38,
+					"tasks": [{
+						"id": "interior-1-K38",
+						"title": "Presentation",
+						"order": "1",
+						"durationDays": null,
+						"role": null,
+						"sourceCell": "K38",
+						"sourceRow": 38
+					}, {
+						"id": "interior-1-K39",
+						"title": "Selection and site delivery",
+						"order": "2",
+						"durationDays": 7,
+						"role": "Client & Design Head",
+						"sourceCell": "K39",
+						"sourceRow": 39
+					}],
+					"parallelAnchor": {
+						"stageCode": "6b",
+						"row": 38
+					}
+				},
+				{
+					"id": "interior-1-main-7b",
+					"code": "7b",
+					"name": "Flooring",
+					"lane": "main",
+					"sourceRow": 41,
+					"tasks": [
+						{
+							"id": "interior-1-E41",
+							"title": "Site Condition Check",
+							"order": "1",
+							"durationDays": 2,
+							"role": "Site Supervisor",
+							"sourceCell": "E41",
+							"sourceRow": 41
+						},
+						{
+							"id": "interior-1-E42",
+							"title": "Drawing",
+							"order": "2",
+							"durationDays": 2,
+							"role": "Designer",
+							"sourceCell": "E42",
+							"sourceRow": 42
+						},
+						{
+							"id": "interior-1-E43",
+							"title": "Drawing approval",
+							"order": "3",
+							"durationDays": 1,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E43",
+							"sourceRow": 43
+						},
+						{
+							"id": "interior-1-E44",
+							"title": "Client Presentation & approval",
+							"order": "4",
+							"durationDays": 1,
+							"role": "Client",
+							"sourceCell": "E44",
+							"sourceRow": 44
+						},
+						{
+							"id": "interior-1-E45",
+							"title": "Site Execution",
+							"order": "5",
+							"durationDays": 5,
+							"role": "Tile person",
+							"sourceCell": "E45",
+							"sourceRow": 45
+						},
+						{
+							"id": "interior-1-E46",
+							"title": "Final check",
+							"order": "6",
+							"durationDays": 2,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E46",
+							"sourceRow": 46
+						}
+					]
+				},
+				{
+					"id": "interior-1-parallel-8",
+					"code": "8",
+					"name": "Ceiling_1",
+					"lane": "parallel",
+					"sourceRow": 41,
+					"tasks": [{
+						"id": "interior-1-K41",
+						"title": "Drawing",
+						"order": "1",
+						"durationDays": 2,
+						"role": "Designer",
+						"sourceCell": "K41",
+						"sourceRow": 41
+					}, {
+						"id": "interior-1-K42",
+						"title": "Ceiling channelling",
+						"order": "2",
+						"durationDays": 2,
+						"role": "POP Person",
+						"sourceCell": "K42",
+						"sourceRow": 42
+					}],
+					"parallelAnchor": {
+						"stageCode": "7b",
+						"row": 41
+					}
+				},
+				{
+					"id": "interior-1-parallel-9a",
+					"code": "9a",
+					"name": "Carpentering_Wall",
+					"lane": "parallel",
+					"sourceRow": 43,
+					"tasks": [{
+						"id": "interior-1-K43",
+						"title": "Presentation",
+						"order": "1",
+						"durationDays": 2,
+						"role": "Designer",
+						"sourceCell": "K43",
+						"sourceRow": 43
+					}, {
+						"id": "interior-1-K45",
+						"title": "Selection and site delivery",
+						"order": "2",
+						"durationDays": 7,
+						"role": "Client & Design Head",
+						"sourceCell": "K45",
+						"sourceRow": 45
+					}],
+					"parallelAnchor": {
+						"stageCode": "7b",
+						"row": 43
+					}
+				},
+				{
+					"id": "interior-1-main-9b",
+					"code": "9b",
+					"name": "Carpentering_Wall",
+					"lane": "main",
+					"sourceRow": 47,
+					"tasks": [
+						{
+							"id": "interior-1-E47",
+							"title": "Site Condition Check",
+							"order": "1",
+							"durationDays": 1,
+							"role": "Site Supervisor",
+							"sourceCell": "E47",
+							"sourceRow": 47
+						},
+						{
+							"id": "interior-1-E48",
+							"title": "Drawing",
+							"order": "2",
+							"durationDays": 4,
+							"role": "Designer",
+							"sourceCell": "E48",
+							"sourceRow": 48
+						},
+						{
+							"id": "interior-1-E49",
+							"title": "Drawing approval",
+							"order": "3",
+							"durationDays": 1,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E49",
+							"sourceRow": 49
+						},
+						{
+							"id": "interior-1-E50",
+							"title": "Client Presentation & approval",
+							"order": "4",
+							"durationDays": 1,
+							"role": "Client",
+							"sourceCell": "E50",
+							"sourceRow": 50
+						},
+						{
+							"id": "interior-1-E51",
+							"title": "Site Execution",
+							"order": "5",
+							"durationDays": 20,
+							"role": "Carpenter",
+							"sourceCell": "E51",
+							"sourceRow": 51
+						},
+						{
+							"id": "interior-1-E52",
+							"title": "Final check",
+							"order": "6",
+							"durationDays": 2,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E52",
+							"sourceRow": 52
+						}
+					]
+				},
+				{
+					"id": "interior-1-parallel-10",
+					"code": "10",
+					"name": "Wall POP",
+					"lane": "parallel",
+					"sourceRow": 47,
+					"tasks": [{
+						"id": "interior-1-K47",
+						"title": "Drawing",
+						"order": "1",
+						"durationDays": 1,
+						"role": "Designer",
+						"sourceCell": "K47",
+						"sourceRow": 47
+					}, {
+						"id": "interior-1-K48",
+						"title": "Wall POP",
+						"order": "2",
+						"durationDays": 4,
+						"role": "POP Person",
+						"sourceCell": "K48",
+						"sourceRow": 48
+					}],
+					"parallelAnchor": {
+						"stageCode": "9b",
+						"row": 47
+					}
+				},
+				{
+					"id": "interior-1-parallel-11a",
+					"code": "11a",
+					"name": "Carpentering_Furniture",
+					"lane": "parallel",
+					"sourceRow": 49,
+					"tasks": [
+						{
+							"id": "interior-1-K49",
+							"title": "Drawings & Presentation",
+							"order": "1",
+							"durationDays": 8,
+							"role": "Designer",
+							"sourceCell": "K49",
+							"sourceRow": 49
+						},
+						{
+							"id": "interior-1-K50",
+							"title": "Approval",
+							"order": "2",
+							"durationDays": 6,
+							"role": "Design Head/ Admin",
+							"sourceCell": "K50",
+							"sourceRow": 50
+						},
+						{
+							"id": "interior-1-K51",
+							"title": "Selection and site delivery",
+							"order": "2",
+							"durationDays": 15,
+							"role": "Client & Design Head",
+							"sourceCell": "K51",
+							"sourceRow": 51
+						}
+					],
+					"parallelAnchor": {
+						"stageCode": "9b",
+						"row": 49
+					}
+				},
+				{
+					"id": "interior-1-main-11b",
+					"code": "11b",
+					"name": "Carpentering_Furniture",
+					"lane": "main",
+					"sourceRow": 53,
+					"tasks": [
+						{
+							"id": "interior-1-E53",
+							"title": "Site Condition Check",
+							"order": "1",
+							"durationDays": 1,
+							"role": "Site Supervisor",
+							"sourceCell": "E53",
+							"sourceRow": 53
+						},
+						{
+							"id": "interior-1-E54",
+							"title": "Client Presentation & approval",
+							"order": "2",
+							"durationDays": 1,
+							"role": "Client",
+							"sourceCell": "E54",
+							"sourceRow": 54
+						},
+						{
+							"id": "interior-1-E55",
+							"title": "Site Execution",
+							"order": "3",
+							"durationDays": 20,
+							"role": "Carpenter",
+							"sourceCell": "E55",
+							"sourceRow": 55
+						},
+						{
+							"id": "interior-1-E56",
+							"title": "Final check",
+							"order": "4",
+							"durationDays": 2,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E56",
+							"sourceRow": 56
+						}
+					]
+				},
+				{
+					"id": "interior-1-parallel-12a",
+					"code": "12a",
+					"name": "Corian, Profile Works, Fabrics & Misc",
+					"lane": "parallel",
+					"sourceRow": 53,
+					"tasks": [
+						{
+							"id": "interior-1-K53",
+							"title": "Site Check",
+							"order": "1",
+							"durationDays": 2,
+							"role": "Site Supervisor",
+							"sourceCell": "K53",
+							"sourceRow": 53
+						},
+						{
+							"id": "interior-1-K54",
+							"title": "Presentation",
+							"order": "2",
+							"durationDays": 8,
+							"role": "Designer",
+							"sourceCell": "K54",
+							"sourceRow": 54
+						},
+						{
+							"id": "interior-1-K55",
+							"title": "Approval",
+							"order": "3",
+							"durationDays": 2,
+							"role": "Design Head/ Admin",
+							"sourceCell": "K55",
+							"sourceRow": 55
+						},
+						{
+							"id": "interior-1-K56",
+							"title": "Purchase / Vendor final",
+							"order": "4",
+							"durationDays": 12,
+							"role": "Client",
+							"sourceCell": "K56",
+							"sourceRow": 56
+						}
+					],
+					"parallelAnchor": {
+						"stageCode": "11b",
+						"row": 53
+					}
+				},
+				{
+					"id": "interior-1-main-12b",
+					"code": "12b",
+					"name": "Corian, Profile Works, Fabrics & Misc",
+					"lane": "main",
+					"sourceRow": 57,
+					"tasks": [{
+						"id": "interior-1-E57",
+						"title": "Site Execution",
+						"order": "1",
+						"durationDays": 5,
+						"role": "Tile person",
+						"sourceCell": "E57",
+						"sourceRow": 57
+					}, {
+						"id": "interior-1-E58",
+						"title": "Final check",
+						"order": "2",
+						"durationDays": 2,
+						"role": "Design Head/ Admin",
+						"sourceCell": "E58",
+						"sourceRow": 58
+					}]
+				},
+				{
+					"id": "interior-1-parallel-13a",
+					"code": "13a",
+					"name": "Painting",
+					"lane": "parallel",
+					"sourceRow": 57,
+					"tasks": [{
+						"id": "interior-1-K57",
+						"title": "Presentation",
+						"order": "1",
+						"durationDays": 8,
+						"role": "Designer",
+						"sourceCell": "K57",
+						"sourceRow": 57
+					}, {
+						"id": "interior-1-K58",
+						"title": "Approval",
+						"order": "2",
+						"durationDays": 2,
+						"role": "Design Head/ Admin",
+						"sourceCell": "K58",
+						"sourceRow": 58
+					}],
+					"parallelAnchor": {
+						"stageCode": "12b",
+						"row": 57
+					}
+				},
+				{
+					"id": "interior-1-main-13b",
+					"code": "13b",
+					"name": "Painting",
+					"lane": "main",
+					"sourceRow": 59,
+					"tasks": [{
+						"id": "interior-1-E59",
+						"title": "Site Execution",
+						"order": "1",
+						"durationDays": 5,
+						"role": "Tile person",
+						"sourceCell": "E59",
+						"sourceRow": 59
+					}, {
+						"id": "interior-1-E60",
+						"title": "Final check",
+						"order": "2",
+						"durationDays": 2,
+						"role": "Design Head/ Admin",
+						"sourceCell": "E60",
+						"sourceRow": 60
+					}]
+				},
+				{
+					"id": "interior-1-main-14",
+					"code": "14",
+					"name": "Final Check",
+					"lane": "main",
+					"sourceRow": 61,
+					"tasks": [{
+						"id": "interior-1-E61",
+						"title": "Approval",
+						"order": "1",
+						"durationDays": 5,
+						"role": "Client & Design Head/ Admin",
+						"sourceCell": "E61",
+						"sourceRow": 61
+					}]
+				}
+			],
+			"taskCount": 68
+		},
+		{
+			"id": "copy-copy-of-workflows",
+			"name": "Copy of WORKFLOWS",
+			"sheet": "Copy of WORKFLOWS",
+			"stages": [
+				{
+					"id": "copy-copy-of-workflows-main-1",
+					"code": "1",
+					"name": "Design plan",
+					"lane": "main",
+					"sourceRow": 2,
+					"tasks": [
+						{
+							"id": "copy-copy-of-workflows-E2",
+							"title": "Existing resources",
+							"order": "1",
+							"durationDays": 1,
+							"role": "Client",
+							"sourceCell": "E2",
+							"sourceRow": 2
+						},
+						{
+							"id": "copy-copy-of-workflows-E3",
+							"title": "2D drawing",
+							"order": "2",
+							"durationDays": 3,
+							"role": "Designer",
+							"sourceCell": "E3",
+							"sourceRow": 3
+						},
+						{
+							"id": "copy-copy-of-workflows-E4",
+							"title": "Design approval",
+							"order": "3",
+							"durationDays": 2,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E4",
+							"sourceRow": 4
+						},
+						{
+							"id": "copy-copy-of-workflows-E5",
+							"title": "Client Presentation & approval",
+							"order": "4",
+							"durationDays": 2,
+							"role": "Client",
+							"sourceCell": "E5",
+							"sourceRow": 5
+						}
+					]
+				},
+				{
+					"id": "copy-copy-of-workflows-main-2",
+					"code": "2",
+					"name": "Design concept",
+					"lane": "main",
+					"sourceRow": 6,
+					"tasks": [
+						{
+							"id": "copy-copy-of-workflows-E6",
+							"title": "3D Design",
+							"order": "1",
+							"durationDays": 7,
+							"role": "Designer",
+							"sourceCell": "E6",
+							"sourceRow": 6
+						},
+						{
+							"id": "copy-copy-of-workflows-E7",
+							"title": "Design approval",
+							"order": "2",
+							"durationDays": 2,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E7",
+							"sourceRow": 7
+						},
+						{
+							"id": "copy-copy-of-workflows-E8",
+							"title": "Client Presentation & approval",
+							"order": "3",
+							"durationDays": 3,
+							"role": "Client",
+							"sourceCell": "E8",
+							"sourceRow": 8
+						}
+					]
+				},
+				{
+					"id": "copy-copy-of-workflows-main-3",
+					"code": "3",
+					"name": "3D Design",
+					"lane": "main",
+					"sourceRow": 9,
+					"tasks": [
+						{
+							"id": "copy-copy-of-workflows-E9",
+							"title": "Site Condition Check",
+							"order": "1",
+							"durationDays": 1,
+							"role": "Site Supervisor",
+							"sourceCell": "E9",
+							"sourceRow": 9
+						},
+						{
+							"id": "copy-copy-of-workflows-E10",
+							"title": "3D Design",
+							"order": "2",
+							"durationDays": 7,
+							"role": "Designer",
+							"sourceCell": "E10",
+							"sourceRow": 10
+						},
+						{
+							"id": "copy-copy-of-workflows-E11",
+							"title": "Design approval",
+							"order": "3",
+							"durationDays": 2,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E11",
+							"sourceRow": 11
+						},
+						{
+							"id": "copy-copy-of-workflows-E12",
+							"title": "Client Presentation & approval",
+							"order": "4",
+							"durationDays": 3,
+							"role": "Client",
+							"sourceCell": "E12",
+							"sourceRow": 12
+						}
+					]
+				},
+				{
+					"id": "copy-copy-of-workflows-main-4",
+					"code": "4",
+					"name": "Civil Work",
+					"lane": "main",
+					"sourceRow": 13,
+					"tasks": [
+						{
+							"id": "copy-copy-of-workflows-E13",
+							"title": "Site Condition Check",
+							"order": "1",
+							"durationDays": 2,
+							"role": "Site Supervisor",
+							"sourceCell": "E13",
+							"sourceRow": 13
+						},
+						{
+							"id": "copy-copy-of-workflows-E15",
+							"title": "Drawing",
+							"order": "2",
+							"durationDays": 2,
+							"role": "Designer",
+							"sourceCell": "E15",
+							"sourceRow": 15
+						},
+						{
+							"id": "copy-copy-of-workflows-E17",
+							"title": "Drawing approval",
+							"order": "3",
+							"durationDays": 1,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E17",
+							"sourceRow": 17
+						},
+						{
+							"id": "copy-copy-of-workflows-E18",
+							"title": "Client Presentation & approval",
+							"order": "4",
+							"durationDays": 1,
+							"role": "Client",
+							"sourceCell": "E18",
+							"sourceRow": 18
+						},
+						{
+							"id": "copy-copy-of-workflows-E19",
+							"title": "Site Execution",
+							"order": "5",
+							"durationDays": 7,
+							"role": "Tile person",
+							"sourceCell": "E19",
+							"sourceRow": 19
+						},
+						{
+							"id": "copy-copy-of-workflows-E20",
+							"title": "Final check",
+							"order": "6",
+							"durationDays": 2,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E20",
+							"sourceRow": 20
+						}
+					]
+				},
+				{
+					"id": "copy-copy-of-workflows-parallel-5",
+					"code": "5",
+					"name": "Carpentering_Marking",
+					"lane": "parallel",
+					"sourceRow": 17,
+					"tasks": [
+						{
+							"id": "copy-copy-of-workflows-K17",
+							"title": "Drawing_Wall elevations",
+							"order": "1",
+							"durationDays": 5,
+							"role": "Designer",
+							"sourceCell": "K17",
+							"sourceRow": 17
+						},
+						{
+							"id": "copy-copy-of-workflows-K18",
+							"title": "Approval",
+							"order": "2",
+							"durationDays": 2,
+							"role": "Design head/ Admin",
+							"sourceCell": "K18",
+							"sourceRow": 18
+						},
+						{
+							"id": "copy-copy-of-workflows-K19",
+							"title": "Site Marking",
+							"order": "3",
+							"durationDays": 2,
+							"role": "Carpenter",
+							"sourceCell": "K19",
+							"sourceRow": 19
+						},
+						{
+							"id": "copy-copy-of-workflows-K20",
+							"title": "Approval",
+							"order": "4",
+							"durationDays": 2,
+							"role": "Design head/ Admin",
+							"sourceCell": "K20",
+							"sourceRow": 20
+						}
+					],
+					"parallelAnchor": {
+						"stageCode": "4",
+						"row": 17
+					}
+				},
+				{
+					"id": "copy-copy-of-workflows-main-6",
+					"code": "6",
+					"name": "Electrical Work 1",
+					"lane": "main",
+					"sourceRow": 21,
+					"tasks": [
+						{
+							"id": "copy-copy-of-workflows-E21",
+							"title": "Site Condition Check",
+							"order": "1",
+							"durationDays": 1,
+							"role": "Site Supervisor",
+							"sourceCell": "E21",
+							"sourceRow": 21
+						},
+						{
+							"id": "copy-copy-of-workflows-E22",
+							"title": "Drawing",
+							"order": "2",
+							"durationDays": 2,
+							"role": "Designer",
+							"sourceCell": "E22",
+							"sourceRow": 22
+						},
+						{
+							"id": "copy-copy-of-workflows-E23",
+							"title": "Drawing approval",
+							"order": "3",
+							"durationDays": 1,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E23",
+							"sourceRow": 23
+						},
+						{
+							"id": "copy-copy-of-workflows-E24",
+							"title": "Client Presentation & approval",
+							"order": "4",
+							"durationDays": 1,
+							"role": "Client",
+							"sourceCell": "E24",
+							"sourceRow": 24
+						},
+						{
+							"id": "copy-copy-of-workflows-E25",
+							"title": "Site Execution",
+							"order": "5",
+							"durationDays": 5,
+							"role": "Electrician",
+							"sourceCell": "E25",
+							"sourceRow": 25
+						},
+						{
+							"id": "copy-copy-of-workflows-E26",
+							"title": "Final check",
+							"order": "6",
+							"durationDays": 2,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E26",
+							"sourceRow": 26
+						}
+					]
+				},
+				{
+					"id": "copy-copy-of-workflows-parallel-7a",
+					"code": "7a",
+					"name": "Plumbing Work",
+					"lane": "parallel",
+					"sourceRow": 23,
+					"tasks": [{
+						"id": "copy-copy-of-workflows-K23",
+						"title": "Drawing",
+						"order": "1",
+						"durationDays": 7,
+						"role": "Designer",
+						"sourceCell": "K23",
+						"sourceRow": 23
+					}, {
+						"id": "copy-copy-of-workflows-K26",
+						"title": "Drawing approval & Electrician Final",
+						"order": "2",
+						"durationDays": 2,
+						"role": "Design Head/ Admin",
+						"sourceCell": "K26",
+						"sourceRow": 26
+					}],
+					"parallelAnchor": {
+						"stageCode": "6",
+						"row": 23
+					}
+				},
+				{
+					"id": "copy-copy-of-workflows-main-7b",
+					"code": "7b",
+					"name": "Plumbing Work",
+					"lane": "main",
+					"sourceRow": 27,
+					"tasks": [
+						{
+							"id": "copy-copy-of-workflows-E27",
+							"title": "Client Presentation & approval",
+							"order": "1",
+							"durationDays": 1,
+							"role": "Client",
+							"sourceCell": "E27",
+							"sourceRow": 27
+						},
+						{
+							"id": "copy-copy-of-workflows-E28",
+							"title": "Site Execution",
+							"order": "2",
+							"durationDays": 5,
+							"role": "Electrician",
+							"sourceCell": "E28",
+							"sourceRow": 28
+						},
+						{
+							"id": "copy-copy-of-workflows-E29",
+							"title": "Final check",
+							"order": "3",
+							"durationDays": 2,
+							"role": "Design Head/ Admin",
+							"sourceCell": "E29",
+							"sourceRow": 29
+						}
+					]
+				},
+				{
+					"id": "copy-copy-of-workflows-parallel-2-8a",
+					"code": "8a",
+					"name": "Flooring",
+					"lane": "parallel-2",
+					"sourceRow": 13,
+					"tasks": [
+						{
+							"id": "copy-copy-of-workflows-Q13",
+							"title": "Drawing",
+							"order": "1",
+							"durationDays": 4,
+							"role": "Designer",
+							"sourceCell": "Q13",
+							"sourceRow": 13
+						},
+						{
+							"id": "copy-copy-of-workflows-Q14",
+							"title": "Approval",
+							"order": "2",
+							"durationDays": 2,
+							"role": "Design Head/ Admin",
+							"sourceCell": "Q14",
+							"sourceRow": 14
+						},
+						{
+							"id": "copy-copy-of-workflows-Q15",
+							"title": "Selection",
+							"order": "3",
+							"durationDays": 2,
+							"role": "Client & Design head",
+							"sourceCell": "Q15",
+							"sourceRow": 15
+						},
+						{
+							"id": "copy-copy-of-workflows-Q16",
+							"title": "Purchase",
+							"order": "4",
+							"durationDays": 10,
+							"role": "Client",
+							"sourceCell": "Q16",
+							"sourceRow": 16
+						}
+					],
+					"parallelAnchor": {
+						"stageCode": "4",
+						"row": 13
+					}
+				}
+			],
+			"taskCount": 36
+		}
+	]
+};
+//#endregion
+//#region frontend/src/lib/sheetPlan.js
+var clean = (value) => String(value || "").trim().toLowerCase().replace(/\s+/g, " ");
+var iso = (value) => value === null ? "" : new Date(value).toISOString().slice(0, 10);
+function buildSheetPlan(plan, startDate, liveTasks = [], liveStages = []) {
+	const origin = calendarDate(startDate);
+	if (origin === null) throw new Error("Choose a valid plan start date.");
+	const windows = /* @__PURE__ */ new Map();
+	const rowStarts = /* @__PURE__ */ new Map();
+	let cursor = origin;
+	const mainStages = plan.stages.filter((stage) => stage.lane === "main").sort((a, b) => a.sourceRow - b.sourceRow);
+	const schedule = (stage, start) => {
+		let time = start;
+		const tasks = stage.tasks.map((task) => {
+			const from = time;
+			if (stage.lane === "main") rowStarts.set(task.sourceRow, from);
+			const end = from !== null && task.durationDays !== null ? from + task.durationDays * calendarDay : null;
+			time = end;
+			return {
+				source: task,
+				start: from,
+				end
+			};
+		});
+		const window = {
+			start,
+			end: time,
+			tasks
+		};
+		windows.set(stage.id, window);
+		return time;
+	};
+	for (const stage of mainStages) cursor = schedule(stage, cursor);
+	for (const stage of plan.stages.filter((stage) => stage.lane !== "main")) {
+		const anchor = mainStages.find((item) => item.code === stage.parallelAnchor?.stageCode)?.tasks.filter((task) => task.sourceRow <= stage.parallelAnchor.row).at(-1);
+		schedule(stage, anchor ? rowStarts.get(anchor.sourceRow) ?? null : null);
+	}
+	const tasks = [], stages = [];
+	for (const stage of plan.stages) {
+		const window = windows.get(stage.id);
+		const stageId = "sheet-" + stage.id;
+		stages.push({
+			id: stageId,
+			name: stage.code + " · " + stage.name,
+			startDate: iso(window.start),
+			deadline: window.end === null ? "" : iso(window.end - calendarDay),
+			sheetPlan: true,
+			sheetCode: stage.code,
+			sheetName: stage.name,
+			description: stage.lane === "main" ? "Main sequence from the Google Sheet." : "Parallel work positioned alongside stage " + stage.parallelAnchor.stageCode + " in the Google Sheet."
+		});
+		for (const item of window.tasks) {
+			const source = item.source;
+			const sourceDuplicates = plan.stages.filter((s) => clean(s.name) === clean(stage.name)).flatMap((s) => s.tasks).filter((t) => clean(t.title) === clean(source.title));
+			const matches = liveTasks.filter((task) => !task.deletedAt && clean(task.title) === clean(source.title) && clean(liveStages.find((s) => s.id === task.stageId)?.name) === clean(stage.name));
+			const linked = sourceDuplicates.length === 1 && matches.length === 1 ? matches[0] : null;
+			tasks.push({
+				id: "sheet-" + source.id,
+				title: source.title,
+				stageId,
+				status: linked?.status || "Plan item",
+				assigneeId: linked?.assigneeId || "",
+				assigneeName: linked?.assigneeName || source.role || "Role not specified",
+				description: "Work item from " + plan.sheet + ", stage " + stage.code + " · " + stage.name + ".",
+				sourceCurrentStart: iso(item.start),
+				sourceCurrentEnd: item.end === null ? "" : iso(item.end - calendarDay),
+				sourceSequence: source.sourceRow,
+				sheetPlan: true,
+				sheetRole: source.role,
+				sheetDurationDays: source.durationDays,
+				sheetTaskOrder: source.order,
+				sheetSourceCell: source.sourceCell,
+				sheetSourceTab: plan.sheet,
+				linkedTaskId: linked?.id || null,
+				missingDuration: source.durationDays === null
+			});
+		}
+	}
+	return {
+		tasks,
+		stages
+	};
+}
+//#endregion
+//#region frontend/src/components/ProjectTimelineWorkspace.jsx
+var localToday = () => {
+	const date = /* @__PURE__ */ new Date();
+	return date.getFullYear() + "-" + String(date.getMonth() + 1).padStart(2, "0") + "-" + String(date.getDate()).padStart(2, "0");
+};
+function ProjectTimelineWorkspace({ tasks = [], stages = [], members = [], projectId, projectStartDate, namespace = "founder", onOpenTask }) {
+	const [mode, setMode] = (0, import_react.useState)("sheet");
+	const [planId, setPlanId] = (0, import_react.useState)(sheet_workflows_default.defaultPlanId);
+	const [start, setStart] = (0, import_react.useState)(projectStartDate?.slice(0, 10) || localToday());
+	const [selected, setSelected] = (0, import_react.useState)(null);
+	const plan = sheet_workflows_default.plans.find((item) => item.id === planId) || sheet_workflows_default.plans[0];
+	const projection = (0, import_react.useMemo)(() => buildSheetPlan(plan, start, tasks, stages), [
+		plan,
+		start,
+		tasks,
+		stages
+	]);
+	const sourceLink = (task) => sheet_workflows_default.sourceUrl + (task.sheetSourceTab === "WORKFLOWS" ? "&range=" + task.sheetSourceCell : "");
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "iksha-sheet-workspace",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "iksha-plan-modes",
+				"aria-label": "Timeline source",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+					"aria-pressed": mode === "sheet",
+					className: mode === "sheet" ? "active" : "",
+					onClick: () => setMode("sheet"),
+					children: "Full Google Sheet plan"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+					"aria-pressed": mode === "project",
+					className: mode === "project" ? "active" : "",
+					onClick: () => setMode("project"),
+					children: [
+						"Project tasks (",
+						tasks.length,
+						")"
+					]
+				})]
+			}),
+			mode === "sheet" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "iksha-sheet-source",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "iksha-eyebrow",
+							children: "IMPORTED FROM GOOGLE SHEETS"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [
+							plan.name,
+							" · ",
+							plan.stages.length,
+							" stages · ",
+							plan.taskCount,
+							" work items"
+						] }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Every work item from the main and parallel columns, with the sheet’s original roles and durations." })
+					] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+						href: sheet_workflows_default.sourceUrl,
+						target: "_blank",
+						rel: "noreferrer",
+						children: ["Open source sheet ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { size: 13 })]
+					})]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "iksha-sheet-settings",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", { children: ["Sheet workflow", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
+							value: planId,
+							onChange: (event) => setPlanId(event.target.value),
+							children: sheet_workflows_default.plans.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
+								value: item.id,
+								children: [
+									item.name,
+									" — ",
+									item.taskCount,
+									" work items",
+									item.sheet === "Copy of WORKFLOWS" ? " (copy tab)" : ""
+								]
+							}, item.id))
+						})] }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", { children: ["Plan starts", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+							type: "date",
+							value: start,
+							onChange: (event) => {
+								if (event.target.value) setStart(event.target.value);
+							}
+						})] }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: ["Calendar days · Imported ", new Date(sheet_workflows_default.fetchedAt).toLocaleDateString([], {
+							month: "short",
+							day: "numeric"
+						})] })
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "iksha-sheet-plan-note",
+					children: "This is the full sheet plan. Dates are calculated from its order, durations, and parallel placement. Completion is shown only for uniquely linked project tasks; items without a duration stay unscheduled."
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTimeline, {
+					tasks: projection.tasks,
+					stages: projection.stages,
+					members,
+					projectId,
+					namespace,
+					onOpenTask: setSelected
+				}, planId + start)
+			] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTimeline, {
+				tasks,
+				stages,
+				members,
+				projectId,
+				namespace,
+				onOpenTask
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				open: Boolean(selected),
+				onOpenChange: (open) => {
+					if (!open) setSelected(null);
+				},
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
+					className: "iksha-sheet-item-detail",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "iksha-eyebrow",
+							children: "GOOGLE SHEET WORK ITEM"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: selected?.title }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: projection.stages.find((stage) => stage.id === selected?.stageId)?.name })
+					] }), selected && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("dl", {
+							className: "iksha-sheet-item-facts",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Responsible role" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: selected.sheetRole || "Not specified in the sheet" })] }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Duration" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: selected.sheetDurationDays === null ? "Missing in source sheet" : selected.sheetDurationDays + " calendar days" })] }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Work order" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: selected.sheetTaskOrder })] }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Source" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("dd", { children: [
+									selected.sheetSourceTab,
+									" · ",
+									selected.sheetSourceCell
+								] })] }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Planned start" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: selected.sourceCurrentStart || "Awaiting duration" })] }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Planned finish" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: selected.sourceCurrentEnd || "Awaiting duration" })] })
+							]
+						}),
+						selected.missingDuration && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "iksha-work-blocker",
+							children: "The sheet has no duration for this item. Set its duration in the plan before relying on a finish date."
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+							className: "iksha-sheet-source-link",
+							href: sourceLink(selected),
+							target: "_blank",
+							rel: "noreferrer",
+							children: ["View source work item ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { size: 13 })]
+						}),
+						selected.linkedTaskId ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+							onClick: () => {
+								const task = tasks.find((task) => task.id === selected.linkedTaskId);
+								setSelected(null);
+								if (task) onOpenTask(task);
+							},
+							children: ["Open linked project discussion ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 14 })]
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "iksha-sheet-plan-note",
+							children: "This item is in the sheet plan. No unique project task is linked to it yet."
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
+							className: "iksha-task-resources",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("summary", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { size: 14 }), "Shared project resources"] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectFiles, {
+								projectId,
+								namespace
+							})]
+						})
+					] })]
+				})
 			})
 		]
 	});
@@ -44050,8 +45736,9 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
 						value: "schedule",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTimeline, {
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTimelineWorkspace, {
 							projectId: project.id,
+							projectStartDate: project.startDate,
 							tasks,
 							stages,
 							members: project.members || employees,
@@ -46301,8 +47988,9 @@ function EmployeeApp() {
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
 									value: "timeline",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTimeline, {
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTimelineWorkspace, {
 										projectId: selected.id,
+										projectStartDate: selected.startDate,
 										namespace: "employee",
 										tasks,
 										stages: selected.stages || [],

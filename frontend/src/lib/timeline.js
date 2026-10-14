@@ -11,7 +11,7 @@ export function timelineItems(tasks, stages) {
     const directStart = calendarDate(task.sourceCurrentStart) ?? calendarDate(task.sourcePlannedStart);
     const endDate = calendarDate(task.sourceCurrentEnd) ?? calendarDate(task.deadline) ?? calendarDate(task.sourcePlannedEnd);
     const stageStart = calendarDate(stage?.startDate);
-    const start = directStart ?? (stageStart !== null && endDate !== null && stageStart <= endDate ? stageStart : endDate);
+    const start = task.sheetPlan ? directStart : directStart ?? (stageStart !== null && endDate !== null && stageStart <= endDate ? stageStart : endDate);
     const end = endDate !== null && start !== null && endDate >= start ? endDate + DAY : null;
     return { task, stage, start, end, milestone: directStart === null && stageStart === null && endDate !== null };
   });

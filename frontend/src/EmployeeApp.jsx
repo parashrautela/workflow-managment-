@@ -1,5 +1,5 @@
 import { WorkspaceAccess, IkshaBrand } from "@/components/WorkspaceAccess";
-import { ProjectTimeline } from "@/components/ProjectTimeline";
+import { ProjectTimelineWorkspace as ProjectTimeline } from "@/components/ProjectTimelineWorkspace";
 import {ProjectFiles} from "@/components/ProjectFiles";
 // frontend/src/EmployeeApp.jsx
 import { useEffect, useState, useCallback } from "react";
@@ -267,7 +267,7 @@ export default function EmployeeApp() {
                 <TabsTrigger value="overview" className="font-semibold text-xs px-3 py-2">Overview</TabsTrigger>
               </TabsList>
 
-              <TabsContent value="timeline"><ProjectTimeline projectId={selected.id} namespace="employee" tasks={tasks} stages={selected.stages || []} members={selected.members || []} onOpenTask={task=>{setSelectedTask(task);setTaskDrawerOpen(true);}}/></TabsContent>
+              <TabsContent value="timeline"><ProjectTimeline projectId={selected.id} projectStartDate={selected.startDate} namespace="employee" tasks={tasks} stages={selected.stages || []} members={selected.members || []} onOpenTask={task=>{setSelectedTask(task);setTaskDrawerOpen(true);}}/></TabsContent>
               {/* Tasks Tab */}
               <TabsContent value="tasks" className="space-y-3">
                 <div className="flex items-center justify-between gap-2 pb-1">
