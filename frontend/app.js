@@ -11429,6 +11429,109 @@ var require_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_react_dom_client_production();
 }));
 //#endregion
+//#region node_modules/react/cjs/react-jsx-runtime.production.js
+/**
+* @license React
+* react-jsx-runtime.production.js
+*
+* Copyright (c) Meta Platforms, Inc. and affiliates.
+*
+* This source code is licensed under the MIT license found in the
+* LICENSE file in the root directory of this source tree.
+*/
+var require_react_jsx_runtime_production = /* @__PURE__ */ __commonJSMin(((exports) => {
+	var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
+	var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
+	function jsxProd(type, config, maybeKey) {
+		var key = null;
+		void 0 !== maybeKey && (key = "" + maybeKey);
+		void 0 !== config.key && (key = "" + config.key);
+		if ("key" in config) {
+			maybeKey = {};
+			for (var propName in config) "key" !== propName && (maybeKey[propName] = config[propName]);
+		} else maybeKey = config;
+		config = maybeKey.ref;
+		return {
+			$$typeof: REACT_ELEMENT_TYPE,
+			type,
+			key,
+			ref: void 0 !== config ? config : null,
+			props: maybeKey
+		};
+	}
+	exports.Fragment = REACT_FRAGMENT_TYPE;
+	exports.jsx = jsxProd;
+	exports.jsxs = jsxProd;
+}));
+//#endregion
+//#region node_modules/react/jsx-runtime.js
+var require_jsx_runtime = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+	module.exports = require_react_jsx_runtime_production();
+}));
+//#endregion
+//#region frontend/src/components/WorkspaceAccess.jsx
+var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
+var import_client = /* @__PURE__ */ __toESM(require_client(), 1);
+var import_jsx_runtime = require_jsx_runtime();
+function IkshaBrand({ compact = false }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: `iksha-wordmark ${compact ? "compact" : ""}`,
+		children: [
+			"iksha",
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "." }),
+			!compact && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", { children: "SPACES, THOUGHTFULLY MADE" })
+		]
+	});
+}
+function WorkspaceAccess({ team = false, children }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
+		className: "iksha-access",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+			className: "iksha-access-story",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(IkshaBrand, {}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "iksha-eyebrow",
+						children: "THE STUDIO, IN SYNC"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", { children: [
+						"Thoughtful spaces.",
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
+						"Connected people."
+					] }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+						"From the first client brief to the final detail.",
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
+						"One place for the work that brings it all together."
+					] })
+				] }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", { children: "STUDIO IKSHA / PROJECT WORKSPACE" })
+			]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+			className: "iksha-access-form",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "iksha-eyebrow",
+					children: team ? "TEAM ACCESS" : "FOUNDER ACCESS"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", { children: "Welcome back." }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Sign in to move the work forward." }),
+				children,
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "iksha-access-note",
+					children: "Clients continue to communicate through Telegram."
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+					className: "iksha-access-link",
+					href: team ? "/" : "/employee",
+					children: [team ? "Founder sign-in" : "Team member sign-in", " →"]
+				})
+			]
+		})]
+	});
+}
+//#endregion
 //#region node_modules/lucide-react/dist/esm/shared/src/utils/toKebabCase.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11608,7 +11711,6 @@ var hasA11yProp = (props) => {
 };
 //#endregion
 //#region node_modules/lucide-react/dist/esm/context.mjs
-var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11675,7 +11777,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$50 = {
+var __iconData$51 = {
 	name: "arrow-left",
 	size: 24,
 	node: [["path", {
@@ -11686,8 +11788,8 @@ var __iconData$50 = {
 		key: "x3x0zl"
 	}]]
 };
-__iconData$50.node;
-var ArrowLeft = createLucideIcon(__iconData$50);
+__iconData$51.node;
+var ArrowLeft = createLucideIcon(__iconData$51);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
@@ -11696,7 +11798,7 @@ var ArrowLeft = createLucideIcon(__iconData$50);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$49 = {
+var __iconData$50 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11707,8 +11809,8 @@ var __iconData$49 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$49.node;
-var ArrowRight = createLucideIcon(__iconData$49);
+__iconData$50.node;
+var ArrowRight = createLucideIcon(__iconData$50);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
@@ -11717,7 +11819,7 @@ var ArrowRight = createLucideIcon(__iconData$49);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$48 = {
+var __iconData$49 = {
 	name: "arrow-up",
 	size: 24,
 	node: [["path", {
@@ -11728,8 +11830,8 @@ var __iconData$48 = {
 		key: "x0mq9r"
 	}]]
 };
-__iconData$48.node;
-var ArrowUp = createLucideIcon(__iconData$48);
+__iconData$49.node;
+var ArrowUp = createLucideIcon(__iconData$49);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
@@ -11738,7 +11840,7 @@ var ArrowUp = createLucideIcon(__iconData$48);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$47 = {
+var __iconData$48 = {
 	name: "building-complex",
 	size: 24,
 	node: [
@@ -11765,8 +11867,68 @@ var __iconData$47 = {
 	],
 	aliases: ["building-2"]
 };
+__iconData$48.node;
+var BuildingComplex = createLucideIcon(__iconData$48);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$47 = {
+	name: "calendar-days",
+	size: 24,
+	node: [
+		["path", {
+			d: "M8 2v3",
+			key: "1ioesn"
+		}],
+		["path", {
+			d: "M16 2v3",
+			key: "otl347"
+		}],
+		["rect", {
+			x: "3",
+			y: "3",
+			width: "18",
+			height: "18",
+			rx: "2",
+			key: "h1oib"
+		}],
+		["path", {
+			d: "M3 9h18",
+			key: "1pudct"
+		}],
+		["path", {
+			d: "M8 13h.01",
+			key: "1sbv64"
+		}],
+		["path", {
+			d: "M12 13h.01",
+			key: "y0uutt"
+		}],
+		["path", {
+			d: "M16 13h.01",
+			key: "wip0gl"
+		}],
+		["path", {
+			d: "M8 17h.01",
+			key: "p3bg7i"
+		}],
+		["path", {
+			d: "M12 17h.01",
+			key: "p32p05"
+		}],
+		["path", {
+			d: "M16 17h.01",
+			key: "ql8jdd"
+		}]
+	]
+};
 __iconData$47.node;
-var BuildingComplex = createLucideIcon(__iconData$47);
+var CalendarDays = createLucideIcon(__iconData$47);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/calendar.mjs
 /**
@@ -11840,7 +12002,7 @@ var __iconData$44 = {
 __iconData$44.node;
 var ChevronDown = createLucideIcon(__iconData$44);
 //#endregion
-//#region node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
+//#region node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11848,6 +12010,24 @@ var ChevronDown = createLucideIcon(__iconData$44);
 * See the LICENSE file in the root directory of this source tree.
 */
 var __iconData$43 = {
+	name: "chevron-right",
+	size: 24,
+	node: [["path", {
+		d: "m9 18 6-6-6-6",
+		key: "mthhwq"
+	}]]
+};
+__iconData$43.node;
+var ChevronRight = createLucideIcon(__iconData$43);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$42 = {
 	name: "chevron-up",
 	size: 24,
 	node: [["path", {
@@ -11855,8 +12035,8 @@ var __iconData$43 = {
 		key: "153udz"
 	}]]
 };
-__iconData$43.node;
-var ChevronUp = createLucideIcon(__iconData$43);
+__iconData$42.node;
+var ChevronUp = createLucideIcon(__iconData$42);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
@@ -11865,7 +12045,7 @@ var ChevronUp = createLucideIcon(__iconData$43);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$42 = {
+var __iconData$41 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -11892,8 +12072,8 @@ var __iconData$42 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$42.node;
-var CircleAlert = createLucideIcon(__iconData$42);
+__iconData$41.node;
+var CircleAlert = createLucideIcon(__iconData$41);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
@@ -11902,7 +12082,7 @@ var CircleAlert = createLucideIcon(__iconData$42);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$41 = {
+var __iconData$40 = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -11916,8 +12096,8 @@ var __iconData$41 = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-__iconData$41.node;
-var CircleCheck = createLucideIcon(__iconData$41);
+__iconData$40.node;
+var CircleCheck = createLucideIcon(__iconData$40);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
 /**
@@ -11926,7 +12106,7 @@ var CircleCheck = createLucideIcon(__iconData$41);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$40 = {
+var __iconData$39 = {
 	name: "circle-pause",
 	size: 24,
 	node: [
@@ -11953,8 +12133,8 @@ var __iconData$40 = {
 	],
 	aliases: ["pause-circle"]
 };
-__iconData$40.node;
-var CirclePause = createLucideIcon(__iconData$40);
+__iconData$39.node;
+var CirclePause = createLucideIcon(__iconData$39);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
 /**
@@ -11963,7 +12143,7 @@ var CirclePause = createLucideIcon(__iconData$40);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$39 = {
+var __iconData$38 = {
 	name: "circle-question-mark",
 	size: 24,
 	node: [
@@ -11984,8 +12164,8 @@ var __iconData$39 = {
 	],
 	aliases: ["help-circle", "circle-help"]
 };
-__iconData$39.node;
-var CircleQuestionMark = createLucideIcon(__iconData$39);
+__iconData$38.node;
+var CircleQuestionMark = createLucideIcon(__iconData$38);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-x.mjs
 /**
@@ -11994,7 +12174,7 @@ var CircleQuestionMark = createLucideIcon(__iconData$39);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$38 = {
+var __iconData$37 = {
 	name: "circle-x",
 	size: 24,
 	node: [
@@ -12015,8 +12195,8 @@ var __iconData$38 = {
 	],
 	aliases: ["x-circle"]
 };
-__iconData$38.node;
-var CircleX = createLucideIcon(__iconData$38);
+__iconData$37.node;
+var CircleX = createLucideIcon(__iconData$37);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle.mjs
 /**
@@ -12025,7 +12205,7 @@ var CircleX = createLucideIcon(__iconData$38);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$37 = {
+var __iconData$36 = {
 	name: "circle",
 	size: 24,
 	node: [["circle", {
@@ -12035,8 +12215,8 @@ var __iconData$37 = {
 		key: "1mglay"
 	}]]
 };
-__iconData$37.node;
-var Circle = createLucideIcon(__iconData$37);
+__iconData$36.node;
+var Circle = createLucideIcon(__iconData$36);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
@@ -12045,7 +12225,7 @@ var Circle = createLucideIcon(__iconData$37);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$36 = {
+var __iconData$35 = {
 	name: "clock-3",
 	size: 24,
 	node: [["circle", {
@@ -12058,8 +12238,8 @@ var __iconData$36 = {
 		key: "135r8i"
 	}]]
 };
-__iconData$36.node;
-var Clock3 = createLucideIcon(__iconData$36);
+__iconData$35.node;
+var Clock3 = createLucideIcon(__iconData$35);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
@@ -12068,7 +12248,7 @@ var Clock3 = createLucideIcon(__iconData$36);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$35 = {
+var __iconData$34 = {
 	name: "clock",
 	size: 24,
 	node: [["circle", {
@@ -12081,8 +12261,8 @@ var __iconData$35 = {
 		key: "mmk7yg"
 	}]]
 };
-__iconData$35.node;
-var Clock = createLucideIcon(__iconData$35);
+__iconData$34.node;
+var Clock = createLucideIcon(__iconData$34);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
@@ -12091,7 +12271,7 @@ var Clock = createLucideIcon(__iconData$35);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$34 = {
+var __iconData$33 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -12107,8 +12287,8 @@ var __iconData$34 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$34.node;
-var Copy = createLucideIcon(__iconData$34);
+__iconData$33.node;
+var Copy = createLucideIcon(__iconData$33);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/external-link.mjs
 /**
@@ -12117,7 +12297,7 @@ var Copy = createLucideIcon(__iconData$34);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$33 = {
+var __iconData$32 = {
 	name: "external-link",
 	size: 24,
 	node: [
@@ -12135,8 +12315,8 @@ var __iconData$33 = {
 		}]
 	]
 };
-__iconData$33.node;
-var ExternalLink = createLucideIcon(__iconData$33);
+__iconData$32.node;
+var ExternalLink = createLucideIcon(__iconData$32);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye-off.mjs
 /**
@@ -12145,7 +12325,7 @@ var ExternalLink = createLucideIcon(__iconData$33);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$32 = {
+var __iconData$31 = {
 	name: "eye-off",
 	size: 24,
 	node: [
@@ -12167,8 +12347,8 @@ var __iconData$32 = {
 		}]
 	]
 };
-__iconData$32.node;
-var EyeOff = createLucideIcon(__iconData$32);
+__iconData$31.node;
+var EyeOff = createLucideIcon(__iconData$31);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye.mjs
 /**
@@ -12177,7 +12357,7 @@ var EyeOff = createLucideIcon(__iconData$32);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$31 = {
+var __iconData$30 = {
 	name: "eye",
 	size: 24,
 	node: [["path", {
@@ -12190,8 +12370,8 @@ var __iconData$31 = {
 		key: "1v7zrd"
 	}]]
 };
-__iconData$31.node;
-var Eye = createLucideIcon(__iconData$31);
+__iconData$30.node;
+var Eye = createLucideIcon(__iconData$30);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/file-text.mjs
 /**
@@ -12200,7 +12380,7 @@ var Eye = createLucideIcon(__iconData$31);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$30 = {
+var __iconData$29 = {
 	name: "file-text",
 	size: 24,
 	node: [
@@ -12226,8 +12406,8 @@ var __iconData$30 = {
 		}]
 	]
 };
-__iconData$30.node;
-var FileText = createLucideIcon(__iconData$30);
+__iconData$29.node;
+var FileText = createLucideIcon(__iconData$29);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
@@ -12236,7 +12416,7 @@ var FileText = createLucideIcon(__iconData$30);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$29 = {
+var __iconData$28 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -12258,8 +12438,8 @@ var __iconData$29 = {
 		}]
 	]
 };
-__iconData$29.node;
-var FolderKanban = createLucideIcon(__iconData$29);
+__iconData$28.node;
+var FolderKanban = createLucideIcon(__iconData$28);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/folder-plus.mjs
 /**
@@ -12268,7 +12448,7 @@ var FolderKanban = createLucideIcon(__iconData$29);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$28 = {
+var __iconData$27 = {
 	name: "folder-plus",
 	size: 24,
 	node: [
@@ -12286,32 +12466,8 @@ var __iconData$28 = {
 		}]
 	]
 };
-__iconData$28.node;
-var FolderPlus = createLucideIcon(__iconData$28);
-//#endregion
-//#region node_modules/lucide-react/dist/esm/icons/key-round.mjs
-/**
-* @license lucide-react v1.48.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
-var __iconData$27 = {
-	name: "key-round",
-	size: 24,
-	node: [["path", {
-		d: "M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z",
-		key: "1s6t7t"
-	}], ["circle", {
-		cx: "16.5",
-		cy: "7.5",
-		r: ".5",
-		fill: "currentColor",
-		key: "w0ekpg"
-	}]]
-};
 __iconData$27.node;
-var KeyRound = createLucideIcon(__iconData$27);
+var FolderPlus = createLucideIcon(__iconData$27);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/layers.mjs
 /**
@@ -13088,7 +13244,6 @@ __iconData.node;
 var X$1 = createLucideIcon(__iconData);
 //#endregion
 //#region node_modules/clsx/dist/clsx.mjs
-var import_client = /* @__PURE__ */ __toESM(require_client(), 1);
 function r(e) {
 	var t, f, n = "";
 	if ("string" == typeof e || "number" == typeof e) n += e;
@@ -16620,45 +16775,7 @@ function cn$1(...inputs) {
 	return twMerge(clsx(inputs));
 }
 //#endregion
-//#region node_modules/react/cjs/react-jsx-runtime.production.js
-/**
-* @license React
-* react-jsx-runtime.production.js
-*
-* Copyright (c) Meta Platforms, Inc. and affiliates.
-*
-* This source code is licensed under the MIT license found in the
-* LICENSE file in the root directory of this source tree.
-*/
-var require_react_jsx_runtime_production = /* @__PURE__ */ __commonJSMin(((exports) => {
-	var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
-	var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
-	function jsxProd(type, config, maybeKey) {
-		var key = null;
-		void 0 !== maybeKey && (key = "" + maybeKey);
-		void 0 !== config.key && (key = "" + config.key);
-		if ("key" in config) {
-			maybeKey = {};
-			for (var propName in config) "key" !== propName && (maybeKey[propName] = config[propName]);
-		} else maybeKey = config;
-		config = maybeKey.ref;
-		return {
-			$$typeof: REACT_ELEMENT_TYPE,
-			type,
-			key,
-			ref: void 0 !== config ? config : null,
-			props: maybeKey
-		};
-	}
-	exports.Fragment = REACT_FRAGMENT_TYPE;
-	exports.jsx = jsxProd;
-	exports.jsxs = jsxProd;
-}));
-//#endregion
 //#region frontend/src/components/ui/alert.jsx
-var import_jsx_runtime = (/* @__PURE__ */ __commonJSMin(((exports, module) => {
-	module.exports = require_react_jsx_runtime_production();
-})))();
 var alertVariants = cva("relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-lg border px-4 py-3 text-sm has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current", {
 	variants: { variant: {
 		default: "bg-card text-card-foreground",
@@ -17596,16 +17713,7 @@ function useControllableState({ prop, defaultProp, onChange = /* @__PURE__ */ __
 		onChange
 	});
 	const isControlled = prop !== void 0;
-	const value = isControlled ? prop : uncontrolledProp;
-	{
-		const isControlledRef = import_react.useRef(prop !== void 0);
-		import_react.useEffect(() => {
-			const wasControlled = isControlledRef.current;
-			if (wasControlled !== isControlled) console.warn(`${caller} is changing from ${wasControlled ? "controlled" : "uncontrolled"} to ${isControlled ? "controlled" : "uncontrolled"}. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.`);
-			isControlledRef.current = isControlled;
-		}, [isControlled, caller]);
-	}
-	return [value, import_react.useCallback((nextValue) => {
+	return [isControlled ? prop : uncontrolledProp, import_react.useCallback((nextValue) => {
 		if (isControlled) {
 			const value2 = isFunction(nextValue) ? nextValue(prop) : nextValue;
 			if (value2 !== prop) onChangeRef.current?.(value2);
@@ -17647,14 +17755,6 @@ function useControllableStateReducer(reducer, userArgs, initialArg, init) {
 	const { prop: controlledState, defaultProp, onChange: onChangeProp, caller } = userArgs;
 	const isControlled = controlledState !== void 0;
 	const onChange = useEffectEvent(onChangeProp);
-	{
-		const isControlledRef = import_react.useRef(controlledState !== void 0);
-		import_react.useEffect(() => {
-			const wasControlled = isControlledRef.current;
-			if (wasControlled !== isControlled) console.warn(`${caller} is changing from ${wasControlled ? "controlled" : "uncontrolled"} to ${isControlled ? "controlled" : "uncontrolled"}. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.`);
-			isControlledRef.current = isControlled;
-		}, [isControlled, caller]);
-	}
 	const args = [{
 		...initialArg,
 		state: defaultProp
@@ -19546,29 +19646,10 @@ function getImageLoadingStatus(image) {
 }
 __name$4(getImageLoadingStatus, "getImageLoadingStatus");
 function useImageCount() {
-	let state = STATIC_IMAGE_COUNT_STATE;
-	{
-		state = import_react.useState(0);
-		const [imageCount] = state;
-		const hasWarnedRef = import_react.useRef(false);
-		import_react.useEffect(() => {
-			if (imageCount > 1 && !hasWarnedRef.current) {
-				hasWarnedRef.current = true;
-				console.warn("Avatar: Only one `Avatar.Image` component should be rendered per `Avatar.Root`, but multiple were detected. This will lead to unexpected behavior.");
-			}
-		}, [imageCount]);
-	}
-	return state;
+	return STATIC_IMAGE_COUNT_STATE;
 }
 __name$4(useImageCount, "useImageCount");
-function useUpdateImageCount(setImageCount) {
-	import_react.useEffect(() => {
-		setImageCount((imageCount) => imageCount + 1);
-		return () => {
-			setImageCount((imageCount) => imageCount - 1);
-		};
-	}, [setImageCount]);
-}
+function useUpdateImageCount(setImageCount) {}
 __name$4(useUpdateImageCount, "useUpdateImageCount");
 //#endregion
 //#region node_modules/@radix-ui/react-use-is-hydrated/dist/index.mjs
@@ -28644,6 +28725,289 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 				})
 			]
 		})
+	});
+}
+//#endregion
+//#region frontend/src/lib/timeline.js
+var DAY = 864e5;
+function calendarDate(value) {
+	if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+	const timestamp = Date.parse(value + "T00:00:00Z");
+	return Number.isFinite(timestamp) && new Date(timestamp).toISOString().slice(0, 10) === value ? timestamp : null;
+}
+function timelineItems(tasks, stages) {
+	const stageMap = new Map(stages.map((stage) => [stage.id, stage]));
+	return tasks.filter((task) => !task.deletedAt && task.status !== "Cancelled").map((task) => {
+		const stage = stageMap.get(task.stageId);
+		const directStart = calendarDate(task.sourceCurrentStart) ?? calendarDate(task.sourcePlannedStart);
+		const endDate = calendarDate(task.sourceCurrentEnd) ?? calendarDate(task.deadline) ?? calendarDate(task.sourcePlannedEnd);
+		const stageStart = calendarDate(stage?.startDate);
+		const start = directStart ?? (stageStart !== null && endDate !== null && stageStart <= endDate ? stageStart : endDate);
+		return {
+			task,
+			stage,
+			start,
+			end: endDate !== null && start !== null && endDate >= start ? endDate + DAY : null,
+			milestone: directStart === null && stageStart === null && endDate !== null
+		};
+	});
+}
+var calendarDay = DAY;
+//#endregion
+//#region frontend/src/components/ProjectTimeline.jsx
+var today = () => {
+	const now = /* @__PURE__ */ new Date();
+	return Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+};
+var dateLabel = (value) => new Date(value).toLocaleDateString([], {
+	month: "short",
+	day: "numeric",
+	timeZone: "UTC"
+});
+function ProjectTimeline({ tasks = [], stages = [], members = [], onOpenTask }) {
+	const items = timelineItems(tasks, stages);
+	const scheduled = items.filter((item) => item.start !== null && item.end !== null);
+	const [origin, setOrigin] = (0, import_react.useState)(() => scheduled.length ? Math.min(...scheduled.map((item) => item.start)) : today());
+	const [days, setDays] = (0, import_react.useState)(14);
+	const [collapsed, setCollapsed] = (0, import_react.useState)(() => new Set(stages.slice(1).map((stage) => stage.id)));
+	const [search, setSearch] = (0, import_react.useState)("");
+	const from = origin, to = origin + days * calendarDay;
+	const dayWidth = days === 7 ? 142 : days === 14 ? 82 : 48;
+	const allGroups = [...stages, {
+		id: "other",
+		name: "Additional work"
+	}].filter((stage) => items.some((item) => (item.stage?.id || "other") === stage.id));
+	const visible = items.filter((item) => item.task.title.toLowerCase().includes(search.toLowerCase()));
+	const ownerName = (task) => members.find((member) => (member.employeeId || member.id) === task.assigneeId)?.name || (task.assigneeId === "founder" ? "Founder" : task.assigneeName || "Unassigned");
+	const complete = (task) => ["Completed", "completed"].includes(task.status);
+	const toggle = (id) => setCollapsed((current) => {
+		const next = new Set(current);
+		next.has(id) ? next.delete(id) : next.add(id);
+		return next;
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "iksha-timeline",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "iksha-timeline-heading",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "iksha-eyebrow",
+						children: "EVERY STAGE, CONNECTED"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", { children: "Make room for good work." }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "See the sequence, the overlap, and the people behind each task." })
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, { size: 14 }),
+					scheduled.length,
+					" scheduled · ",
+					items.length - scheduled.length,
+					" without dates"
+				] })]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "iksha-timeline-toolbar",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "iksha-date-nav",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "ghost",
+								size: "icon-sm",
+								"aria-label": "Previous period",
+								onClick: () => setOrigin(from - days * calendarDay),
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, {})
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [
+								dateLabel(from),
+								" – ",
+								dateLabel(to - calendarDay),
+								", ",
+								new Date(from).getUTCFullYear()
+							] }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "ghost",
+								size: "icon-sm",
+								"aria-label": "Next period",
+								onClick: () => setOrigin(from + days * calendarDay),
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {})
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						size: "sm",
+						onClick: () => setOrigin(today()),
+						children: "Today"
+					}),
+					scheduled.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						size: "sm",
+						onClick: () => setOrigin(Math.min(...scheduled.map((item) => item.start))),
+						children: "First scheduled"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "iksha-zoom",
+						children: [
+							7,
+							14,
+							28
+						].map((value) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							"aria-pressed": days === value,
+							className: days === value ? "active" : "",
+							onClick: () => setDays(value),
+							children: value === 7 ? "Week" : value === 14 ? "Fortnight" : "Month"
+						}, value))
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						size: "sm",
+						onClick: () => setCollapsed(collapsed.size ? /* @__PURE__ */ new Set() : new Set(allGroups.map((stage) => stage.id))),
+						children: collapsed.size ? "Expand stages" : "Collapse stages"
+					})
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+				className: "iksha-timeline-search",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "sr-only",
+					children: "Search timeline tasks"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+					placeholder: "Find a work item…",
+					value: search,
+					onChange: (e) => setSearch(e.target.value)
+				})]
+			}),
+			!items.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "iksha-timeline-empty",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, { size: 28 }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", { children: "Your project starts here." }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Choose a project workflow to generate its tasks and schedule." })
+				]
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "iksha-schedule-scroll",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					style: {
+						"--timeline-width": `${days * dayWidth}px`,
+						"--timeline-day": `${dayWidth}px`
+					},
+					className: "iksha-schedule-grid",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "iksha-schedule-row iksha-schedule-head",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "iksha-schedule-label",
+								children: "STAGE / WORK ITEM"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "iksha-schedule-track iksha-schedule-dates",
+								children: Array.from({ length: days }, (_, i) => {
+									const value = from + i * calendarDay;
+									return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: `iksha-schedule-day ${value === today() ? "today" : ""}`,
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+											new Date(value).toLocaleDateString([], {
+												weekday: "short",
+												timeZone: "UTC"
+											}),
+											" ",
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: new Date(value).getUTCDate() })
+										] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", { children: new Date(value).toLocaleDateString([], {
+											month: "short",
+											timeZone: "UTC"
+										}) })]
+									}, i);
+								})
+							})]
+						}),
+						allGroups.map((stage, index) => {
+							const group = visible.filter((item) => (item.stage?.id || "other") === stage.id);
+							if (!group.length) return null;
+							const scheduledGroup = group.filter((item) => item.start !== null && item.end !== null);
+							const groupStart = scheduledGroup.length ? Math.min(...scheduledGroup.map((item) => item.start)) : calendarDate(stage.startDate);
+							const groupEnd = scheduledGroup.length ? Math.max(...scheduledGroup.map((item) => item.end)) : null;
+							const isCollapsed = collapsed.has(stage.id) && !search;
+							return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+								className: `iksha-stage color-${index % 5}`,
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "iksha-schedule-row",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+										className: "iksha-schedule-label iksha-stage-heading",
+										onClick: () => toggle(stage.id),
+										"aria-expanded": !isCollapsed,
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "iksha-stage-number",
+												children: String(index + 1).padStart(2, "0")
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: stage.name }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
+												group.length,
+												" work items · ",
+												group.filter((item) => complete(item.task)).length,
+												" complete"
+											] })] }),
+											isCollapsed ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, { size: 14 }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, { size: 14 })
+										]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										className: "iksha-schedule-track",
+										children: groupStart !== null && groupEnd !== null && groupEnd > from && groupStart < to && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "iksha-stage-range",
+											style: {
+												left: (Math.max(groupStart, from) - from) / 864e5 * dayWidth,
+												width: (Math.min(groupEnd, to) - Math.max(groupStart, from)) / 864e5 * dayWidth
+											}
+										})
+									})]
+								}), !isCollapsed && group.sort((a, b) => (Number(a.task.sourceSequence) || 0) - (Number(b.task.sourceSequence) || 0) || String(a.task.createdAt || "").localeCompare(String(b.task.createdAt || ""))).map((item) => {
+									const isScheduled = item.start !== null && item.end !== null;
+									const inRange = isScheduled && item.end > from && item.start < to;
+									return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "iksha-schedule-row iksha-task-row",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+											className: "iksha-schedule-label",
+											onClick: () => onOpenTask(item.task),
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: `iksha-task-state ${complete(item.task) ? "complete" : ""}`,
+												children: complete(item.task) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { size: 10 })
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.task.title }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
+												ownerName(item.task),
+												" · ",
+												item.task.status
+											] })] })]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "iksha-schedule-track",
+											children: inRange ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+												className: "iksha-task-block",
+												title: `${item.task.title} · ${dateLabel(item.start)} – ${dateLabel(item.end - 864e5)}`,
+												"aria-label": `Open ${item.task.title}`,
+												style: {
+													left: (Math.max(item.start, from) - from) / 864e5 * dayWidth,
+													width: (Math.min(item.end, to) - Math.max(item.start, from)) / 864e5 * dayWidth - 3
+												},
+												onClick: () => onOpenTask(item.task),
+												children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [complete(item.task) ? "✓ " : "", item.task.title] })
+											}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+												className: "iksha-unscheduled",
+												onClick: () => isScheduled ? setOrigin(item.start) : onOpenTask(item.task),
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock3, { size: 12 }), isScheduled ? `${dateLabel(item.start)} · Show` : "No saved dates · Open task"]
+											})
+										})]
+									}, item.task.id);
+								})]
+							}, stage.id);
+						}),
+						!visible.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "iksha-empty-search",
+							children: "No work items match your search."
+						})
+					]
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("footer", {
+				className: "iksha-schedule-caption",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Dates from the saved project plan · Click a task to open its discussion and controls" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Calendar days" })]
+			})
+		]
 	});
 }
 //#endregion
@@ -42589,7 +42953,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	const [loadingTasks, setLoadingTasks] = (0, import_react.useState)(false);
 	const [taskViewMode, setTaskViewMode] = (0, import_react.useState)("list");
 	const [staleData, setStaleData] = (0, import_react.useState)(false);
-	const [activeTab, setActiveTab] = (0, import_react.useState)("tasks");
+	const [activeTab, setActiveTab] = (0, import_react.useState)("schedule");
 	const [templateModalOpen, setTemplateModalOpen] = (0, import_react.useState)(false);
 	const [selectedTask, setSelectedTask] = (0, import_react.useState)(null);
 	const [taskDrawerOpen, setTaskDrawerOpen] = (0, import_react.useState)(false);
@@ -42614,7 +42978,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	const [newTaskAssigneeId, setNewTaskAssigneeId] = (0, import_react.useState)("founder");
 	const [newTaskDeadline, setNewTaskDeadline] = (0, import_react.useState)("");
 	const [newTaskStatus, setNewTaskStatus] = (0, import_react.useState)("Open");
-	const [tldrExpanded, setTldrExpanded] = (0, import_react.useState)(true);
+	const [tldrExpanded, setTldrExpanded] = (0, import_react.useState)(false);
 	const [notice, setNotice] = (0, import_react.useState)(null);
 	const showNotice = (message, error = false) => {
 		setNotice({
@@ -42842,7 +43206,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 		]
 	});
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "space-y-6",
+		className: "iksha-project-detail space-y-6",
 		children: [
 			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				role: "status",
@@ -43001,6 +43365,36 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 					})]
 				})
 			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "iksha-project-pulse",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", { children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Project progress" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [tasks.length ? Math.round(completedTasksCount / tasks.length * 100) : 0, "%"] }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
+							completedTasksCount,
+							" of ",
+							tasks.length,
+							" work items complete"
+						] })
+					] }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", { children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Connected stages" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: String(stages.length).padStart(2, "0") }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", { children: "From first brief to final detail" })
+					] }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", { children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Awaiting review" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: String(pendingQueriesCount).padStart(2, "0") }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", { children: "Client queries to review" })
+					] }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", { children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Project team" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: String((project.members || []).length).padStart(2, "0") }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", { children: "People behind the work" })
+					] })
+				]
+			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
 				className: "border-border/60 bg-card/60 shadow-2xs overflow-hidden",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -43123,6 +43517,11 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 						className: "flex flex-wrap w-full justify-start h-auto gap-1 bg-muted/60 p-1 rounded-xl",
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+								value: "schedule",
+								className: "font-semibold text-xs px-3.5 py-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-3.5 mr-1.5 text-amber-600" }), "Timeline"]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
 								value: "tasks",
 								className: "font-semibold text-xs px-3.5 py-2",
 								children: [
@@ -43136,16 +43535,6 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 								value: "chat",
 								className: "font-semibold text-xs px-3.5 py-2",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 mr-1.5 text-blue-600" }), "Internal Project Chat"]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
-								value: "schedule",
-								className: "font-semibold text-xs px-3.5 py-2",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-3.5 mr-1.5 text-amber-600" }),
-									"Schedule & Stages (",
-									stages.length,
-									")"
-								]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
 								value: "queries",
@@ -43434,87 +43823,17 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							currentActor: "founder"
 						}, project.id)]
 					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
 						value: "schedule",
-						className: "space-y-5",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex flex-wrap items-center justify-between gap-3",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-								className: "text-base font-semibold",
-								children: "Workflow Stages & Deadlines"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-xs text-muted-foreground",
-								children: "Sequential pipeline stages and calculated deadlines generated by the pilot workflow."
-							})] }), !hasWorkflowStarted && isClientAssigned && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-								size: "sm",
-								onClick: () => setTemplateModalOpen(true),
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { className: "size-3.5 mr-1" }), " Choose Workflow"]
-							})]
-						}), stages.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "space-y-3",
-							children: stages.map((st, idx) => {
-								const stSchedule = schedule[idx];
-								return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "rounded-xl border bg-card p-4 space-y-3",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2.5",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "flex items-center gap-2",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "grid size-6 place-items-center rounded-full bg-primary/10 text-primary text-xs font-bold",
-												children: idx + 1
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
-												className: "font-semibold text-sm",
-												children: st.name
-											})]
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "flex flex-wrap items-center gap-2.5",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-												className: "rounded-md border px-2 py-1 text-xs text-muted-foreground",
-												children: [
-													st.durationDays,
-													" day",
-													st.durationDays === 1 ? "" : "s"
-												]
-											}), stSchedule && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-												className: "font-mono text-xs bg-muted/60 px-2 py-1 rounded text-muted-foreground",
-												children: [
-													stSchedule.startLabel,
-													" – ",
-													stSchedule.endLabel
-												]
-											})]
-										})]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "pl-8 space-y-1",
-										children: tasks.filter((t) => t.stageId === st.id).map((t) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "flex items-center justify-between text-xs text-muted-foreground py-1",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: t.status === "Completed" ? "line-through text-muted-foreground" : "text-foreground font-medium",
-												children: t.title
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-												variant: "outline",
-												className: "text-[10px]",
-												children: t.status
-											})]
-										}, t.id))
-									})]
-								}, st.id || idx);
-							})
-						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
-							className: "py-12 text-center text-xs text-muted-foreground",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "mx-auto size-8 text-muted-foreground/40 mb-2" }),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "font-semibold text-sm text-foreground",
-									children: "No workflow stages generated yet"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "mt-1",
-									children: "Assign a client and start a workflow to generate stages and schedule."
-								})
-							]
-						}) })]
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTimeline, {
+							tasks,
+							stages,
+							members: project.members || employees,
+							onOpenTask: (task) => {
+								setSelectedTask(task);
+								setTaskDrawerOpen(true);
+							}
+						}, `${project.id}:${stages.map((stage) => stage.id).join(",")}`)
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
 						value: "queries",
@@ -44185,22 +44504,7 @@ var statusOptions = [
 	"Completed"
 ];
 function Brand({ compact = false }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "flex items-center gap-2.5",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-			className: "grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-lg font-bold text-primary-foreground shadow-xs",
-			children: "i"
-		}), !compact && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "leading-tight",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-				className: "block text-sm tracking-tight",
-				children: "studio iksha"
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-				className: "text-[10px] text-muted-foreground",
-				children: "Project operations"
-			})]
-		})]
-	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(IkshaBrand, { compact });
 }
 function InitialAvatar({ name, className = "" }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, {
@@ -44325,7 +44629,7 @@ function FounderApp() {
 		const isLogin = authState === "signed-out";
 		document.documentElement.classList.toggle("founder-login", isLogin);
 		const themeColor = document.querySelector("meta[name=\"theme-color\"]");
-		if (themeColor) themeColor.content = isLogin ? "#101010" : "#f6f5f4";
+		if (themeColor) themeColor.content = "#fafbf7";
 		return () => document.documentElement.classList.remove("founder-login");
 	}, [authState]);
 	const openTab = (tab) => {
@@ -44420,95 +44724,47 @@ function FounderApp() {
 			]
 		})
 	});
-	if (authState === "signed-out") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
-		className: "grid min-h-dvh place-items-center bg-black md:p-6",
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-			className: "relative isolate flex min-h-dvh w-full flex-col overflow-hidden bg-black text-white md:min-h-[min(855px,calc(100dvh-3rem))] md:max-w-[394px] md:shadow-2xl",
-			"aria-label": "Studio Iksha founder access",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-					src: "/assets/studio-iksha-access.png",
-					alt: "",
-					"aria-hidden": "true",
-					className: "pointer-events-none absolute top-[-11%] left-[-33%] h-[111%] w-[160.5%] max-w-none object-cover"
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					"aria-hidden": "true",
-					className: "pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_42%,rgba(0,0,0,.16)_58%,rgba(0,0,0,.72)_78%,rgba(0,0,0,.9)_100%)]"
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "relative z-10 mt-auto flex flex-col px-6 pb-[max(12px,env(safe-area-inset-bottom))]",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "mb-5 space-y-0.5",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-sm font-medium tracking-tight",
-								children: "Project Operations"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-								className: "text-[28px] leading-tight font-bold tracking-[-0.5px]",
-								children: "Welcome to Studio Iksha"
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "mb-3 text-[11px] leading-[1.4] text-[#a3a3a3]",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Studio Iksha uses encrypted tokens and single-claim client links for zero-login client privacy." }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "font-semibold text-[#157de0]",
-								children: "Read our Terms and Privacy Policy"
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-							onSubmit: handleLogin,
-							className: "space-y-2.5",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-									className: "sr-only",
-									htmlFor: "founder-key",
-									children: "Founder key"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "relative",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(KeyRound, {
-											"aria-hidden": "true",
-											className: "pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-[#797979]"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-											id: "founder-key",
-											type: showPassword ? "text" : "password",
-											value: password,
-											onChange: (event) => setPassword(event.target.value),
-											placeholder: "Enter founder key",
-											autoComplete: "current-password",
-											required: true,
-											className: "h-[49px] rounded-full border-[#373636] bg-[#1f1f1f] pr-12 pl-[43px] text-base text-white shadow-none placeholder:text-[#797979] focus-visible:border-white/60 focus-visible:ring-white/20"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-											type: "button",
-											onClick: () => setShowPassword((visible) => !visible),
-											"aria-label": showPassword ? "Hide founder key" : "Show founder key",
-											className: "absolute top-1/2 right-3 grid size-10 -translate-y-1/2 place-items-center rounded-full text-[#797979] focus-visible:outline-2 focus-visible:outline-white",
-											children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EyeOff, { className: "size-[15px]" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eye, { className: "size-[15px]" })
-										})
-									]
-								}),
-								loginError && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									role: "alert",
-									className: "text-xs text-red-300",
-									children: loginError
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-									type: "submit",
-									disabled: isLoggingIn,
-									className: "h-12 w-full rounded-full bg-[#f8f8f8] text-base font-semibold text-black shadow-none hover:bg-white",
-									children: isLoggingIn ? "Opening…" : "Continue"
-								})
-							]
-						})
-					]
-				})
-			]
-		})
-	});
+	if (authState === "signed-out") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkspaceAccess, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+		onSubmit: handleLogin,
+		className: "space-y-4",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
+				className: "grid gap-2 text-sm",
+				htmlFor: "founder-key",
+				children: "Founder key"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "relative",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+					id: "founder-key",
+					type: showPassword ? "text" : "password",
+					value: password,
+					onChange: (event) => setPassword(event.target.value),
+					placeholder: "Enter founder key",
+					autoComplete: "current-password",
+					required: true,
+					className: "h-12 pr-12"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+					type: "button",
+					onClick: () => setShowPassword((value) => !value),
+					"aria-label": showPassword ? "Hide founder key" : "Show founder key",
+					className: "absolute inset-y-0 right-2 grid w-10 place-items-center text-muted-foreground",
+					children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EyeOff, { size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eye, { size: 16 })
+				})]
+			}),
+			loginError && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "text-sm text-destructive",
+				children: loginError
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+				type: "submit",
+				disabled: isLoggingIn,
+				className: "h-12 w-full",
+				children: [isLoggingIn ? "Opening…" : "Sign in", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { size: 15 })]
+			})
+		]
+	}) });
 	const navItems = [
 		[
 			"projects",
@@ -44668,10 +44924,10 @@ function FounderApp() {
 	});
 	if (currentTab === "assistant") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderAssistant, { onBack: () => openTab("projects") });
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "app-glow min-h-dvh bg-background pb-20 md:pb-0",
+		className: "iksha-workspace app-glow min-h-dvh bg-background pb-20 md:pb-0",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("aside", {
-				className: "fixed inset-y-0 left-0 hidden w-64 border-r bg-card p-5 md:block",
+				className: "iksha-sidebar fixed inset-y-0 left-0 hidden w-64 border-r p-5 md:block",
 				children: navigation
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sheet, {
@@ -45582,85 +45838,53 @@ function EmployeeApp() {
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-12 w-48" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-52 w-full" })]
 		})
 	});
-	if (auth === "signed-out") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
-		className: "flex min-h-dvh flex-col bg-[#101419] text-white [color-scheme:dark]",
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "mx-auto flex w-full max-w-md flex-1 flex-col justify-end px-6 pb-[max(32px,env(safe-area-inset-bottom))] pt-20",
+	if (auth === "signed-out") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkspaceAccess, {
+		team: true,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+			onSubmit: login,
+			className: "space-y-4",
 			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "mb-auto",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "grid size-12 place-items-center rounded-2xl bg-primary text-2xl font-bold",
-							children: "i"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "mt-5 text-xs font-semibold uppercase tracking-[.2em] text-blue-300",
-							children: "Studio Iksha · Team access"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-							className: "mt-3 text-4xl font-semibold tracking-tight",
-							children: "Welcome to your workspace"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "mt-3 text-sm leading-relaxed text-white/60",
-							children: "Sign in to see the projects you work on, collaborate on tasks, and coordinate with the team."
-						})
-					]
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+					className: "grid gap-2 text-sm",
+					children: ["Employee ID", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+						value: employeeId,
+						onChange: (e) => setEmployeeId(e.target.value),
+						autoComplete: "username",
+						required: true,
+						placeholder: "EMP-XXXXXXXXXX",
+						className: "h-12"
+					})]
 				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-					onSubmit: login,
-					className: "mt-12 space-y-4 rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-							className: "grid gap-2 text-xs font-medium text-white/70",
-							children: ["Employee ID", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								value: employeeId,
-								onChange: (event) => setEmployeeId(event.target.value),
-								autoCapitalize: "characters",
-								autoComplete: "username",
-								required: true,
-								placeholder: "EMP-XXXXXXXXXX",
-								className: "h-12 border-white/15 bg-white/10 text-base text-white placeholder:text-white/35"
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-							className: "grid gap-2 text-xs font-medium text-white/70",
-							children: ["Password", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "relative",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									value: password,
-									onChange: (event) => setPassword(event.target.value),
-									type: showPassword ? "text" : "password",
-									autoComplete: "current-password",
-									required: true,
-									placeholder: "Enter your password",
-									className: "h-12 border-white/15 bg-white/10 pr-12 text-base text-white placeholder:text-white/35"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-									type: "button",
-									"aria-label": showPassword ? "Hide password" : "Show password",
-									onClick: () => setShowPassword((value) => !value),
-									className: "absolute inset-y-0 right-0 grid w-12 place-items-center text-white/60",
-									children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EyeOff, { className: "size-4" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eye, { className: "size-4" })
-								})]
-							})]
-						}),
-						error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							role: "alert",
-							className: "text-xs text-red-300",
-							children: error
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							type: "submit",
-							disabled: busy,
-							className: "h-12 w-full text-sm font-semibold",
-							children: busy ? "Signing in…" : "Continue"
-						})
-					]
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+					className: "grid gap-2 text-sm",
+					children: ["Password", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "relative",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+							value: password,
+							onChange: (e) => setPassword(e.target.value),
+							type: showPassword ? "text" : "password",
+							autoComplete: "current-password",
+							required: true,
+							className: "h-12 pr-12"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							type: "button",
+							"aria-label": showPassword ? "Hide password" : "Show password",
+							onClick: () => setShowPassword((value) => !value),
+							className: "absolute inset-y-0 right-2 grid w-10 place-items-center text-muted-foreground",
+							children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EyeOff, { size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eye, { size: 16 })
+						})]
+					})]
 				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "mt-5 text-center text-xs text-white/40",
-					children: "Your founder provides your employee ID and password."
+				error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					role: "alert",
+					className: "text-sm text-destructive",
+					children: error
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					type: "submit",
+					disabled: busy,
+					className: "h-12 w-full",
+					children: busy ? "Signing in…" : "Sign in"
 				})
 			]
 		})
@@ -45672,16 +45896,13 @@ function EmployeeApp() {
 		"Published"
 	].includes(r.status)).length;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "app-glow min-h-dvh bg-background pb-[max(24px,env(safe-area-inset-bottom))]",
+		className: "iksha-workspace app-glow min-h-dvh bg-background pb-[max(24px,env(safe-area-inset-bottom))]",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
 			className: "sticky top-0 z-20 border-b bg-card/95 px-4 py-4 backdrop-blur",
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "mx-auto flex max-w-5xl items-center gap-3",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "grid size-9 place-items-center rounded-xl bg-primary text-lg font-bold text-primary-foreground",
-						children: "i"
-					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(IkshaBrand, { compact: true }),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "min-w-0 flex-1",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
@@ -45799,12 +46020,17 @@ function EmployeeApp() {
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Tabs, {
-							defaultValue: "tasks",
+							defaultValue: "timeline",
 							className: "gap-4",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
 									className: "flex flex-wrap w-full justify-start h-auto gap-1 bg-muted/60 p-1 rounded-xl",
 									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+											value: "timeline",
+											className: "font-semibold text-xs px-3 py-2",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-4 mr-1.5" }), "Timeline"]
+										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
 											value: "tasks",
 											className: "font-semibold text-xs px-3 py-2",
@@ -45846,6 +46072,18 @@ function EmployeeApp() {
 											children: "Overview"
 										})
 									]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
+									value: "timeline",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTimeline, {
+										tasks,
+										stages: selected.stages || [],
+										members: selected.members || [],
+										onOpenTask: (task) => {
+											setSelectedTask(task);
+											setTaskDrawerOpen(true);
+										}
+									})
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
 									value: "tasks",
@@ -46044,7 +46282,7 @@ function EmployeeApp() {
 									}) })]
 								})
 							]
-						}),
+						}, selected.id),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TaskThreadDrawer, {
 							task: selectedTask,
 							project: selected,

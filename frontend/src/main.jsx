@@ -4,6 +4,7 @@ import FounderApp from "./FounderApp";
 import ClientApp from "./ClientApp";
 import EmployeeApp from "./EmployeeApp";
 import "./index.css";
+import "./iksha.css";
 
 const rootElement = document.getElementById("app");
 if (rootElement) {

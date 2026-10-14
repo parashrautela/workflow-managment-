@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { IkshaBrand, WorkspaceAccess } from "@/components/WorkspaceAccess";
 import {
   AlertTriangle, ArrowLeft, ArrowRight, Building2, Check, CheckCircle2, Clock3, Copy, Eye, EyeOff, FolderKanban,
   History, KeyRound, LogOut, Menu, MessageSquare, Plus, RefreshCw,
@@ -43,19 +44,7 @@ const niceDate = (value) => value ? new Date(value).toLocaleDateString(undefined
 const phaseOptions = ["Design", "Planning", "Procurement", "Site execution", "Finishing", "Handover"];
 const statusOptions = ["Setup", "On track", "At risk", "On hold", "Completed"];
 
-function Brand({ compact = false }) {
-  return (
-    <div className="flex items-center gap-2.5">
-      <div className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-lg font-bold text-primary-foreground shadow-xs">i</div>
-      {!compact && (
-        <div className="leading-tight">
-          <strong className="block text-sm tracking-tight">studio iksha</strong>
-          <span className="text-[10px] text-muted-foreground">Project operations</span>
-        </div>
-      )}
-    </div>
-  );
-}
+function Brand({ compact = false }) { return <IkshaBrand compact={compact} />; }
 
 function InitialAvatar({ name, className = "" }) {
   return (
@@ -192,7 +181,7 @@ export default function FounderApp() {
     const isLogin = authState === "signed-out";
     document.documentElement.classList.toggle("founder-login", isLogin);
     const themeColor = document.querySelector('meta[name="theme-color"]');
-    if (themeColor) themeColor.content = isLogin ? "#101010" : "#f6f5f4";
+    if (themeColor) themeColor.content = "#fafbf7";
     return () => document.documentElement.classList.remove("founder-login");
   }, [authState]);
 
@@ -312,60 +301,12 @@ export default function FounderApp() {
   }
 
   if (authState === "signed-out") {
-    return (
-      <main className="grid min-h-dvh place-items-center bg-black md:p-6">
-        <section className="relative isolate flex min-h-dvh w-full flex-col overflow-hidden bg-black text-white md:min-h-[min(855px,calc(100dvh-3rem))] md:max-w-[394px] md:shadow-2xl" aria-label="Studio Iksha founder access">
-          <img
-            src="/assets/studio-iksha-access.png"
-            alt=""
-            aria-hidden="true"
-            className="pointer-events-none absolute top-[-11%] left-[-33%] h-[111%] w-[160.5%] max-w-none object-cover"
-          />
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_42%,rgba(0,0,0,.16)_58%,rgba(0,0,0,.72)_78%,rgba(0,0,0,.9)_100%)]" />
-
-          <div className="relative z-10 mt-auto flex flex-col px-6 pb-[max(12px,env(safe-area-inset-bottom))]">
-            <div className="mb-5 space-y-0.5">
-              <p className="text-sm font-medium tracking-tight">Project Operations</p>
-              <h1 className="text-[28px] leading-tight font-bold tracking-[-0.5px]">Welcome to Studio Iksha</h1>
-            </div>
-
-            <div className="mb-3 text-[11px] leading-[1.4] text-[#a3a3a3]">
-              <p>Studio Iksha uses encrypted tokens and single-claim client links for zero-login client privacy.</p>
-              <span className="font-semibold text-[#157de0]">Read our Terms and Privacy Policy</span>
-            </div>
-
-            <form onSubmit={handleLogin} className="space-y-2.5">
-              <label className="sr-only" htmlFor="founder-key">Founder key</label>
-              <div className="relative">
-                <KeyRound aria-hidden="true" className="pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-[#797979]" />
-                <Input
-                  id="founder-key"
-                  type={showPassword ? "text" : "password"}
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                  placeholder="Enter founder key"
-                  autoComplete="current-password"
-                  required
-                  className="h-[49px] rounded-full border-[#373636] bg-[#1f1f1f] pr-12 pl-[43px] text-base text-white shadow-none placeholder:text-[#797979] focus-visible:border-white/60 focus-visible:ring-white/20"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword((visible) => !visible)}
-                  aria-label={showPassword ? "Hide founder key" : "Show founder key"}
-                  className="absolute top-1/2 right-3 grid size-10 -translate-y-1/2 place-items-center rounded-full text-[#797979] focus-visible:outline-2 focus-visible:outline-white"
-                >
-                  {showPassword ? <EyeOff className="size-[15px]" /> : <Eye className="size-[15px]" />}
-                </button>
-              </div>
-              {loginError && <p role="alert" className="text-xs text-red-300">{loginError}</p>}
-              <Button type="submit" disabled={isLoggingIn} className="h-12 w-full rounded-full bg-[#f8f8f8] text-base font-semibold text-black shadow-none hover:bg-white">
-                {isLoggingIn ? "Opening…" : "Continue"}
-              </Button>
-            </form>
-          </div>
-        </section>
-      </main>
-    );
+    return <WorkspaceAccess><form onSubmit={handleLogin} className="space-y-4">
+      <label className="grid gap-2 text-sm" htmlFor="founder-key">Founder key</label>
+      <div className="relative"><Input id="founder-key" type={showPassword ? "text" : "password"} value={password} onChange={event=>setPassword(event.target.value)} placeholder="Enter founder key" autoComplete="current-password" required className="h-12 pr-12" /><button type="button" onClick={()=>setShowPassword(value=>!value)} aria-label={showPassword?'Hide founder key':'Show founder key'} className="absolute inset-y-0 right-2 grid w-10 place-items-center text-muted-foreground">{showPassword?<EyeOff size={16}/>:<Eye size={16}/>}</button></div>
+      {loginError&&<p role="alert" className="text-sm text-destructive">{loginError}</p>}
+      <Button type="submit" disabled={isLoggingIn} className="h-12 w-full">{isLoggingIn?'Opening…':'Sign in'}<ArrowRight size={15}/></Button>
+    </form></WorkspaceAccess>;
   }
 
   // Actionable 2: "messages" (Client messages) has been REMOVED from navigation!
@@ -482,9 +423,9 @@ export default function FounderApp() {
   if (currentTab === "assistant") return <FounderAssistant onBack={() => openTab("projects")} />;
 
   return (
-    <div className="app-glow min-h-dvh bg-background pb-20 md:pb-0">
+    <div className="iksha-workspace app-glow min-h-dvh bg-background pb-20 md:pb-0">
       {/* Desktop Sidebar Navigation */}
-      <aside className="fixed inset-y-0 left-0 hidden w-64 border-r bg-card p-5 md:block">
+      <aside className="iksha-sidebar fixed inset-y-0 left-0 hidden w-64 border-r p-5 md:block">
         {navigation}
       </aside>
 

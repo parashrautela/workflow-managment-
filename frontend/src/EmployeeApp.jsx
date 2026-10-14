@@ -1,3 +1,5 @@
+import { WorkspaceAccess, IkshaBrand } from "@/components/WorkspaceAccess";
+import { ProjectTimeline } from "@/components/ProjectTimeline";
 import {ProjectFiles} from "@/components/ProjectFiles";
 // frontend/src/EmployeeApp.jsx
 import { useEffect, useState, useCallback } from "react";
@@ -158,59 +160,7 @@ export default function EmployeeApp() {
   }
 
   if (auth === "signed-out") {
-    return (
-      <main className="flex min-h-dvh flex-col bg-[#101419] text-white [color-scheme:dark]">
-        <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-end px-6 pb-[max(32px,env(safe-area-inset-bottom))] pt-20">
-          <div className="mb-auto">
-            <div className="grid size-12 place-items-center rounded-2xl bg-primary text-2xl font-bold">i</div>
-            <p className="mt-5 text-xs font-semibold uppercase tracking-[.2em] text-blue-300">Studio Iksha · Team access</p>
-            <h1 className="mt-3 text-4xl font-semibold tracking-tight">Welcome to your workspace</h1>
-            <p className="mt-3 text-sm leading-relaxed text-white/60">Sign in to see the projects you work on, collaborate on tasks, and coordinate with the team.</p>
-          </div>
-          <form onSubmit={login} className="mt-12 space-y-4 rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm">
-            <label className="grid gap-2 text-xs font-medium text-white/70">
-              Employee ID
-              <Input
-                value={employeeId}
-                onChange={(event) => setEmployeeId(event.target.value)}
-                autoCapitalize="characters"
-                autoComplete="username"
-                required
-                placeholder="EMP-XXXXXXXXXX"
-                className="h-12 border-white/15 bg-white/10 text-base text-white placeholder:text-white/35"
-              />
-            </label>
-            <label className="grid gap-2 text-xs font-medium text-white/70">
-              Password
-              <div className="relative">
-                <Input
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                  type={showPassword ? "text" : "password"}
-                  autoComplete="current-password"
-                  required
-                  placeholder="Enter your password"
-                  className="h-12 border-white/15 bg-white/10 pr-12 text-base text-white placeholder:text-white/35"
-                />
-                <button
-                  type="button"
-                  aria-label={showPassword ? "Hide password" : "Show password"}
-                  onClick={() => setShowPassword((value) => !value)}
-                  className="absolute inset-y-0 right-0 grid w-12 place-items-center text-white/60"
-                >
-                  {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
-                </button>
-              </div>
-            </label>
-            {error && <p role="alert" className="text-xs text-red-300">{error}</p>}
-            <Button type="submit" disabled={busy} className="h-12 w-full text-sm font-semibold">
-              {busy ? "Signing in…" : "Continue"}
-            </Button>
-          </form>
-          <p className="mt-5 text-center text-xs text-white/40">Your founder provides your employee ID and password.</p>
-        </div>
-      </main>
-    );
+    return <WorkspaceAccess team><form onSubmit={login} className="space-y-4"><label className="grid gap-2 text-sm">Employee ID<Input value={employeeId} onChange={e=>setEmployeeId(e.target.value)} autoComplete="username" required placeholder="EMP-XXXXXXXXXX" className="h-12" /></label><label className="grid gap-2 text-sm">Password<div className="relative"><Input value={password} onChange={e=>setPassword(e.target.value)} type={showPassword?'text':'password'} autoComplete="current-password" required className="h-12 pr-12"/><button type="button" aria-label={showPassword?'Hide password':'Show password'} onClick={()=>setShowPassword(value=>!value)} className="absolute inset-y-0 right-2 grid w-10 place-items-center text-muted-foreground">{showPassword?<EyeOff size={16}/>:<Eye size={16}/>}</button></div></label>{error&&<p role="alert" className="text-sm text-destructive">{error}</p>}<Button type="submit" disabled={busy} className="h-12 w-full">{busy?'Signing in…':'Sign in'}</Button></form></WorkspaceAccess>;
   }
 
   // Filter queries for selected project
@@ -218,10 +168,10 @@ export default function EmployeeApp() {
   const pendingQueriesCount = projectQueries.filter((r) => !["Done", "Rejected", "Published"].includes(r.status)).length;
 
   return (
-    <div className="app-glow min-h-dvh bg-background pb-[max(24px,env(safe-area-inset-bottom))]">
+    <div className="iksha-workspace app-glow min-h-dvh bg-background pb-[max(24px,env(safe-area-inset-bottom))]">
       <header className="sticky top-0 z-20 border-b bg-card/95 px-4 py-4 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center gap-3">
-          <div className="grid size-9 place-items-center rounded-xl bg-primary text-lg font-bold text-primary-foreground">i</div>
+          <IkshaBrand compact />
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-semibold">Studio Iksha</p>
             <p className="truncate text-xs text-muted-foreground">{employee?.name} · Team workspace</p>
@@ -293,8 +243,9 @@ export default function EmployeeApp() {
               </div>
             </div>
 
-            <Tabs defaultValue="tasks" className="gap-4">
+            <Tabs key={selected.id} defaultValue="timeline" className="gap-4">
               <TabsList className="flex flex-wrap w-full justify-start h-auto gap-1 bg-muted/60 p-1 rounded-xl">
+                <TabsTrigger value="timeline" className="font-semibold text-xs px-3 py-2"><Calendar className="size-4 mr-1.5"/>Timeline</TabsTrigger>
                 <TabsTrigger value="tasks" className="font-semibold text-xs px-3 py-2">
                   <CheckCircle2 className="size-4 mr-1.5" />
                   Tasks ({tasks.length})
@@ -316,6 +267,7 @@ export default function EmployeeApp() {
                 <TabsTrigger value="overview" className="font-semibold text-xs px-3 py-2">Overview</TabsTrigger>
               </TabsList>
 
+              <TabsContent value="timeline"><ProjectTimeline tasks={tasks} stages={selected.stages || []} members={selected.members || []} onOpenTask={task=>{setSelectedTask(task);setTaskDrawerOpen(true);}}/></TabsContent>
               {/* Tasks Tab */}
               <TabsContent value="tasks" className="space-y-3">
                 <div className="flex items-center justify-between gap-2 pb-1">

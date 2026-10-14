@@ -7,6 +7,10 @@
     {
       "source": "/c/:token",
       "destination": "/client.html"
+    },
+    {
+      "source": "/employee",
+      "destination": "/index.html"
     }
   ]
 }

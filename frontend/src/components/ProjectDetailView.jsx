@@ -26,6 +26,7 @@ import { TeamChat } from "@/components/TeamChat";
 import { TaskThreadDrawer } from "@/components/TaskThreadDrawer";
 import { ClientQueryCard } from "@/components/ClientQueryCard";
 import { WorkflowTemplateModal } from "@/components/WorkflowTemplateModal";
+import { ProjectTimeline } from "@/components/ProjectTimeline";
 import { ProjectDependencyGraph } from "@/components/ProjectDependencyGraph";
 import {
   fetchProjectWorkspace, fetchTasks, createTask, updateTask,
@@ -77,7 +78,7 @@ export function ProjectDetailView({
   const [loadingTasks, setLoadingTasks] = useState(false);
   const [taskViewMode, setTaskViewMode] = useState("list");
   const [staleData, setStaleData] = useState(false);
-  const [activeTab, setActiveTab] = useState("tasks");
+  const [activeTab, setActiveTab] = useState("schedule");
   const [templateModalOpen, setTemplateModalOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
   const [taskDrawerOpen, setTaskDrawerOpen] = useState(false);
@@ -112,7 +113,7 @@ export function ProjectDetailView({
   const [newTaskStatus, setNewTaskStatus] = useState("Open");
 
   // Executive briefing visibility
-  const [tldrExpanded, setTldrExpanded] = useState(true);
+  const [tldrExpanded, setTldrExpanded] = useState(false);
 
   const [notice, setNotice] = useState(null);
 
@@ -332,7 +333,7 @@ export function ProjectDetailView({
   if(project.telegramGroupChatId && !hasWorkflowStarted) return <section className="space-y-4"><Button variant="ghost" onClick={onBackToDirectory}><ArrowLeft className="size-4"/>All projects</Button><div className="rounded-2xl border bg-card p-6 space-y-3"><p className="text-xs font-medium text-primary">Step 2 · Project type</p><h1 className="text-2xl font-semibold">{project.name}</h1><p className="text-sm text-muted-foreground">Members and client are ready. Choose the type of project to generate its tasks and announce the start in the Telegram group.</p><Button onClick={()=>setTemplateModalOpen(true)}>Choose project type</Button></div><WorkflowTemplateModal open={templateModalOpen} onOpenChange={setTemplateModalOpen} projectId={project.id} telegramLinked projectStartDate={project.startDate} clientAssigned projectMembers={project.members || []} onApplied={()=>{if(onProjectUpdated)onProjectUpdated();loadProjectTasks();}}/></section>;
 
   return (
-    <div className="space-y-6">
+    <div className="iksha-project-detail space-y-6">
       {/* Toast Notice */}
       {notice && (
         <div role="status" className="fixed right-4 bottom-24 z-[60] max-w-sm rounded-lg border bg-card px-4 py-3 text-sm shadow-lg md:bottom-4">
@@ -461,6 +462,7 @@ export function ProjectDetailView({
       )}
 
       {/* Actionable 10: Conversation TL;DR & Executive Briefing */}
+      <div className="iksha-project-pulse"><article><span>Project progress</span><strong>{tasks.length?Math.round(completedTasksCount/tasks.length*100):0}%</strong><small>{completedTasksCount} of {tasks.length} work items complete</small></article><article><span>Connected stages</span><strong>{String(stages.length).padStart(2,'0')}</strong><small>From first brief to final detail</small></article><article><span>Awaiting review</span><strong>{String(pendingQueriesCount).padStart(2,'0')}</strong><small>Client queries to review</small></article><article><span>Project team</span><strong>{String((project.members || []).length).padStart(2,'0')}</strong><small>People behind the work</small></article></div>
       <Card className="border-border/60 bg-card/60 shadow-2xs overflow-hidden">
         <div className="flex items-center justify-between border-b px-4 py-2.5 bg-muted/20">
           <div className="flex items-center gap-2">
@@ -560,6 +562,10 @@ export function ProjectDetailView({
       {/* Tabs System */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
         <TabsList className="flex flex-wrap w-full justify-start h-auto gap-1 bg-muted/60 p-1 rounded-xl">
+          <TabsTrigger value="schedule" className="font-semibold text-xs px-3.5 py-2">
+            <Calendar className="size-3.5 mr-1.5 text-amber-600" />
+            Timeline
+          </TabsTrigger>
           <TabsTrigger value="tasks" className="font-semibold text-xs px-3.5 py-2">
             <CheckCircle2 className="size-3.5 mr-1.5 text-primary" />
             Tasks ({tasks.length})
@@ -568,10 +574,7 @@ export function ProjectDetailView({
             <MessageSquare className="size-3.5 mr-1.5 text-blue-600" />
             Internal Project Chat
           </TabsTrigger>
-          <TabsTrigger value="schedule" className="font-semibold text-xs px-3.5 py-2">
-            <Calendar className="size-3.5 mr-1.5 text-amber-600" />
-            Schedule &amp; Stages ({stages.length})
-          </TabsTrigger>
+
           <TabsTrigger value="queries" className="font-semibold text-xs px-3.5 py-2">
             <AlertCircle className="size-3.5 mr-1.5 text-red-500" />
             Client Queries ({projectQueries.length})
@@ -836,75 +839,7 @@ export function ProjectDetailView({
         </TabsContent>
 
         {/* ----------------- TAB 3: STAGES & SCHEDULE ----------------- */}
-        <TabsContent value="schedule" className="space-y-5">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <h3 className="text-base font-semibold">Workflow Stages &amp; Deadlines</h3>
-              <p className="text-xs text-muted-foreground">
-                Sequential pipeline stages and calculated deadlines generated by the pilot workflow.
-              </p>
-            </div>
-            {!hasWorkflowStarted && isClientAssigned && (
-              <Button size="sm" onClick={() => setTemplateModalOpen(true)}>
-                <Layers className="size-3.5 mr-1" /> Choose Workflow
-              </Button>
-            )}
-          </div>
-
-          {stages.length > 0 ? (
-            <div className="space-y-3">
-              {stages.map((st, idx) => {
-                const stSchedule = schedule[idx];
-                return (
-                <div key={st.id || idx} className="rounded-xl border bg-card p-4 space-y-3">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
-                    <div className="flex items-center gap-2">
-                      <span className="grid size-6 place-items-center rounded-full bg-primary/10 text-primary text-xs font-bold">
-                        {idx + 1}
-                      </span>
-                      <h4 className="font-semibold text-sm">{st.name}</h4>
-                    </div>
-
-                    <div className="flex flex-wrap items-center gap-2.5">
-                      <span className="rounded-md border px-2 py-1 text-xs text-muted-foreground">
-                        {st.durationDays} day{st.durationDays === 1 ? "" : "s"}
-                      </span>
-
-                      {/* Actionable 17: Scheduled Timeline */}
-                      {stSchedule && (
-                        <span className="font-mono text-xs bg-muted/60 px-2 py-1 rounded text-muted-foreground">
-                          {stSchedule.startLabel} – {stSchedule.endLabel}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  {/* Tasks in this stage */}
-                  <div className="pl-8 space-y-1">
-                    {tasks.filter((t) => t.stageId === st.id).map((t) => (
-                      <div key={t.id} className="flex items-center justify-between text-xs text-muted-foreground py-1">
-                        <span className={t.status === "Completed" ? "line-through text-muted-foreground" : "text-foreground font-medium"}>
-                          {t.title}
-                        </span>
-                        <Badge variant="outline" className="text-[10px]">
-                          {t.status}
-                        </Badge>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-            </div>
-          ) : (
-            <Card>
-              <CardContent className="py-12 text-center text-xs text-muted-foreground">
-                <Calendar className="mx-auto size-8 text-muted-foreground/40 mb-2" />
-                <p className="font-semibold text-sm text-foreground">No workflow stages generated yet</p>
-                <p className="mt-1">Assign a client and start a workflow to generate stages and schedule.</p>
-              </CardContent>
-            </Card>
-          )}
-        </TabsContent>
+        <TabsContent value="schedule"><ProjectTimeline key={`${project.id}:${stages.map(stage=>stage.id).join(",")}`} tasks={tasks} stages={stages} members={project.members || employees} onOpenTask={task=>{setSelectedTask(task);setTaskDrawerOpen(true);}}/></TabsContent>
 
         {/* ----------------- TAB 4: CLIENT QUERIES ----------------- */}
         <TabsContent value="queries" className="space-y-4">
