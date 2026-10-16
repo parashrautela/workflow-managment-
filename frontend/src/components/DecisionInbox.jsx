@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { NativeSelect } from "@/components/ui/native-select";
 import { Textarea } from "@/components/ui/textarea";
+import { SuggestReply } from "@/components/SuggestReply";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import {
   generateIdempotencyKey, getAttachmentUrl, approveDecisionRequest,
@@ -510,6 +511,8 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
                       {mode === "internal" ? "Stays in web app" : "The group will see this"}
                     </span>
                   </div>
+
+                  {mode === "publish" && <SuggestReply key={selected.id} requestId={selected.id} disabled={busy} onUse={(suggested) => setDrafts((current) => ({ ...current, [selected.id]: suggested }))} />}
 
                   <div className="flex items-end gap-2">
                     <Textarea

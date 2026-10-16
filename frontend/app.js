@@ -23653,6 +23653,10 @@ async function updateEmployee(employeeId, fields) {
 async function setEmployeePassword(employeeId, password) {
 	return await post$2(`/api/founder/employees/${employeeId}/password`, password ? { password } : {});
 }
+/** Ask for an AI-suggested reply to a client query, built from project records (POST /api/founder/decision-requests/:id/suggest-reply). Sends nothing. */
+async function suggestDecisionReply(requestId, instruction = "") {
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/suggest-reply`, instruction ? { instruction } : {});
+}
 async function disableEmployee(employeeId) {
 	return await post$2(`/api/founder/employees/${employeeId}/disable`, {});
 }
@@ -26462,6 +26466,127 @@ function FounderAssistant({ onBack }) {
 	});
 }
 //#endregion
+//#region frontend/src/components/SuggestReply.jsx
+function SuggestReply({ requestId, disabled, onUse }) {
+	const [busy, setBusy] = (0, import_react.useState)(false);
+	const [suggestion, setSuggestion] = (0, import_react.useState)(null);
+	const [instruction, setInstruction] = (0, import_react.useState)("");
+	const [showGuide, setShowGuide] = (0, import_react.useState)(false);
+	const [error, setError] = (0, import_react.useState)("");
+	const run = async () => {
+		setBusy(true);
+		setError("");
+		try {
+			setSuggestion(await suggestDecisionReply(requestId, instruction.trim()));
+		} catch (problem) {
+			setError(problem.message || "Could not suggest a reply. Write it yourself or try again.");
+		} finally {
+			setBusy(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "space-y-2",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-wrap items-center gap-2",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+					type: "button",
+					size: "sm",
+					variant: "outline",
+					className: "text-xs border-primary/30 text-primary",
+					disabled: disabled || busy,
+					onClick: run,
+					children: [busy ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 mr-1.5 animate-spin" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3.5 mr-1.5" }), busy ? "Drafting from project data…" : suggestion ? "Suggest again" : "Suggest reply"]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+					type: "button",
+					className: "text-[11px] text-muted-foreground underline-offset-2 hover:underline",
+					onClick: () => setShowGuide((current) => !current),
+					children: showGuide ? "Hide guidance" : "Tell the AI what to say"
+				})]
+			}),
+			showGuide && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+				value: instruction,
+				onChange: (event) => setInstruction(event.target.value),
+				maxLength: 500,
+				placeholder: "e.g. Say the floor plan is a day late and we'll share it by Friday",
+				className: "text-xs",
+				onKeyDown: (event) => {
+					if (event.key === "Enter") {
+						event.preventDefault();
+						if (!busy && !disabled) run();
+					}
+				}
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "text-[11px] text-destructive",
+				children: error
+			}),
+			suggestion && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "rounded-xl border border-primary/25 bg-primary/5 p-3 space-y-2",
+				"aria-live": "polite",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "flex items-center gap-1.5 text-[11px] font-semibold text-primary",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3.5" }), suggestion.ai ? "Suggested reply · from this project's records" : "Draft from project records (AI not available)"]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "whitespace-pre-wrap break-words text-xs text-foreground",
+						children: suggestion.suggestion
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "text-[10px] text-muted-foreground",
+						children: [
+							"Based on ",
+							suggestion.basedOn.inProgress,
+							" in-progress, ",
+							suggestion.basedOn.late,
+							" late and ",
+							suggestion.basedOn.nextUp,
+							" upcoming work items",
+							suggestion.basedOn.previousReplies ? `, ${suggestion.basedOn.previousReplies} earlier replies` : "",
+							suggestion.basedOn.internalNotes ? ` and your ${suggestion.basedOn.internalNotes} internal note${suggestion.basedOn.internalNotes === 1 ? "" : "s"} (never quoted)` : "",
+							". Check it before sending."
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex flex-wrap gap-2",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								type: "button",
+								size: "sm",
+								className: "text-xs",
+								onClick: () => {
+									onUse(suggestion.suggestion);
+									setSuggestion(null);
+								},
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5 mr-1" }), "Use this reply"]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								type: "button",
+								size: "sm",
+								variant: "outline",
+								className: "text-xs",
+								disabled: busy,
+								onClick: run,
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: "size-3.5 mr-1" }), "Try again"]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								type: "button",
+								size: "sm",
+								variant: "ghost",
+								className: "text-xs",
+								onClick: () => setSuggestion(null),
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(X$1, { className: "size-3.5 mr-1" }), "Discard"]
+							})
+						]
+					})
+				]
+			})
+		]
+	});
+}
+//#endregion
 //#region frontend/src/components/DecisionInbox.jsx
 async function api$3(url, method = "GET", data) {
 	const response = await fetch(url, {
@@ -27057,52 +27182,63 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 						selected.status !== "Done" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 							onSubmit: send,
 							className: "space-y-2 border-t p-3 sm:p-4",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center gap-2",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-										type: "button",
-										onClick: () => setMode("internal"),
-										className: `rounded-full px-3 py-1.5 text-xs font-medium ${mode === "internal" ? "bg-amber-100 text-amber-900" : "text-muted-foreground hover:bg-muted"}`,
-										children: "Private note"
-									}),
-									(selected.status === "Pending" || selected.deliveryStatus === "Failed") && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-										type: "button",
-										onClick: () => setMode("publish"),
-										className: `rounded-full px-3 py-1.5 text-xs font-medium ${mode === "publish" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-muted"}`,
-										children: "Reply to Telegram"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "ml-auto text-[11px] text-muted-foreground",
-										children: mode === "internal" ? "Stays in web app" : "The group will see this"
-									})
-								]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-end gap-2",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
-									value: text,
-									onChange: (event) => mode === "internal" ? setNotes((current) => ({
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center gap-2",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+											type: "button",
+											onClick: () => setMode("internal"),
+											className: `rounded-full px-3 py-1.5 text-xs font-medium ${mode === "internal" ? "bg-amber-100 text-amber-900" : "text-muted-foreground hover:bg-muted"}`,
+											children: "Private note"
+										}),
+										(selected.status === "Pending" || selected.deliveryStatus === "Failed") && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+											type: "button",
+											onClick: () => setMode("publish"),
+											className: `rounded-full px-3 py-1.5 text-xs font-medium ${mode === "publish" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-muted"}`,
+											children: "Reply to Telegram"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "ml-auto text-[11px] text-muted-foreground",
+											children: mode === "internal" ? "Stays in web app" : "The group will see this"
+										})
+									]
+								}),
+								mode === "publish" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SuggestReply, {
+									requestId: selected.id,
+									disabled: busy,
+									onUse: (suggested) => setDrafts((current) => ({
 										...current,
-										[selected.id]: event.target.value
-									})) : setDrafts((current) => ({
-										...current,
-										[selected.id]: event.target.value
-									})),
-									rows: 2,
-									maxLength: mode === "internal" ? 2e3 : 3e3,
-									placeholder: mode === "internal" ? "Discuss or record an internal decision…" : "Write the final answer for the Telegram group…",
-									"aria-label": mode === "internal" ? "Private note" : "Telegram reply",
-									className: "max-h-32 flex-1 resize-y text-xs"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-									type: "submit",
-									disabled: busy || !text.trim() || mode === "publish" && selected.deliveryStatus === "Unknown",
-									"aria-label": mode === "internal" ? "Save private note" : "Publish reply to Telegram",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Send, { className: "size-4 mr-1" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "hidden sm:inline",
-										children: mode === "internal" ? "Save" : "Publish"
+										[selected.id]: suggested
+									}))
+								}, selected.id),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-end gap-2",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+										value: text,
+										onChange: (event) => mode === "internal" ? setNotes((current) => ({
+											...current,
+											[selected.id]: event.target.value
+										})) : setDrafts((current) => ({
+											...current,
+											[selected.id]: event.target.value
+										})),
+										rows: 2,
+										maxLength: mode === "internal" ? 2e3 : 3e3,
+										placeholder: mode === "internal" ? "Discuss or record an internal decision…" : "Write the final answer for the Telegram group…",
+										"aria-label": mode === "internal" ? "Private note" : "Telegram reply",
+										className: "max-h-32 flex-1 resize-y text-xs"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										type: "submit",
+										disabled: busy || !text.trim() || mode === "publish" && selected.deliveryStatus === "Unknown",
+										"aria-label": mode === "internal" ? "Save private note" : "Publish reply to Telegram",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Send, { className: "size-4 mr-1" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "hidden sm:inline",
+											children: mode === "internal" ? "Save" : "Publish"
+										})]
 									})]
-								})]
-							})]
+								})
+							]
 						})
 					] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex flex-1 flex-col items-center justify-center gap-2 p-8 text-center text-muted-foreground",
@@ -28815,6 +28951,11 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 											className: "font-bold",
 											children: "Telegram Send Failed"
 										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: query.deliveryError || "The message was rejected by Telegram. You may retry." })]
+									}),
+									!isPublished && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SuggestReply, {
+										requestId: query.id,
+										disabled: busyAction === "publish",
+										onUse: setResponseDraft
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
 										value: responseDraft,

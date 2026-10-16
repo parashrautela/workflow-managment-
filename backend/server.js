@@ -1,4 +1,5 @@
 import {reconcileGroupMigration} from './group-migration.js';
+import { buildReplyContext, suggestReply } from './reply-suggestions.js';
 import http from 'node:http';
 import { createHash, randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
 import { readFile, mkdir } from 'node:fs/promises';
@@ -67,6 +68,7 @@ const loginAttempts = new Map();
 const chatLimits = new Map();
 const employeeLoginAttempts = new Map();
 const founderChatLimits = new Map();
+const replySuggestionLimits = new Map();
 const teamChatLimits = new Map();
 function canSendTeamMessage(actor, projectId) {
   const key = `${actor}:${projectId}`;
@@ -453,6 +455,24 @@ async function handleRequest(req, res) {
     }
     if (req.method === 'GET' && url.pathname === '/api/founder/decision-requests') {
       return json(res, 200, { requests: state.decisionRequests.filter((item) => state.projects.some((project) => project.id === item.projectId)) });
+    }
+    // AI-suggested reply for a client query. Only drafts text for the founder to edit; publishing stays a separate, confirmed step.
+    const suggestMatch = url.pathname.match(/^\/api\/founder\/decision-requests\/([^/]+)\/suggest-reply$/);
+    if (suggestMatch && req.method === 'POST') {
+      const request = state.decisionRequests.find((item) => item.id === decodeURIComponent(suggestMatch[1]));
+      if (!request) return json(res, 404, { error: 'Request not found.' });
+      const key = hash(cookieValue(req, 'iksha_founder'));
+      const limit = replySuggestionLimits.get(key) || { count: 0, resetAt: Date.now() + 60 * 60 * 1000 };
+      if (limit.resetAt <= Date.now()) { limit.count = 0; limit.resetAt = Date.now() + 60 * 60 * 1000; }
+      if (limit.count >= 40) return json(res, 429, { error: 'Suggestion limit reached for this hour. Write the reply yourself or try again later.' });
+      const input = await body(req);
+      const instruction = typeof input.instruction === 'string' ? input.instruction.trim().slice(0, 500) : '';
+      const context = buildReplyContext(state, request);
+      if (!context) return json(res, 404, { error: 'This request is not linked to a project.' });
+      limit.count += 1; replySuggestionLimits.set(key, limit);
+      const result = await suggestReply(context, { instruction });
+      audit('reply_suggested', request.projectId, { requestId: request.id, ai: result.ai });
+      return json(res, 200, { ...result, basedOn: { projectedFinish: context.project.projected_finish, inProgress: context.schedule.in_progress.length, late: context.schedule.late.length, nextUp: context.schedule.next_up.length, previousReplies: context.previous_replies.length, internalNotes: context.internal_notes.length } });
     }
     const decisionAction = url.pathname.match(/^\/api\/founder\/decision-requests\/([^/]+)\/(comment|publish|resolve)$/);
     if (req.method === 'POST' && decisionAction) {

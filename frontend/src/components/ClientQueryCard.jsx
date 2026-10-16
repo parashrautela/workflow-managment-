@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { NativeSelect } from "@/components/ui/native-select";
+import { SuggestReply } from "@/components/SuggestReply";
 import {
   addDecisionComment, approveDecisionRequest, rejectDecisionRequest,
   convertDecisionRequest, publishDecisionReply, getAttachmentUrl,
@@ -522,6 +523,8 @@ export function ClientQueryCard({
                     <p>{query.deliveryError || "The message was rejected by Telegram. You may retry."}</p>
                   </div>
                 )}
+
+                {!isPublished && <SuggestReply requestId={query.id} disabled={busyAction === "publish"} onUse={setResponseDraft} />}
 
                 <Textarea
                   value={responseDraft}
