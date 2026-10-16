@@ -11777,7 +11777,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$52 = {
+var __iconData$55 = {
 	name: "arrow-left",
 	size: 24,
 	node: [["path", {
@@ -11788,8 +11788,8 @@ var __iconData$52 = {
 		key: "x3x0zl"
 	}]]
 };
-__iconData$52.node;
-var ArrowLeft = createLucideIcon(__iconData$52);
+__iconData$55.node;
+var ArrowLeft = createLucideIcon(__iconData$55);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
@@ -11798,7 +11798,7 @@ var ArrowLeft = createLucideIcon(__iconData$52);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$51 = {
+var __iconData$54 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11809,8 +11809,8 @@ var __iconData$51 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$51.node;
-var ArrowRight = createLucideIcon(__iconData$51);
+__iconData$54.node;
+var ArrowRight = createLucideIcon(__iconData$54);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
 /**
@@ -11819,7 +11819,7 @@ var ArrowRight = createLucideIcon(__iconData$51);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$50 = {
+var __iconData$53 = {
 	name: "arrow-up-right",
 	size: 24,
 	node: [["path", {
@@ -11830,8 +11830,8 @@ var __iconData$50 = {
 		key: "1vkiza"
 	}]]
 };
-__iconData$50.node;
-var ArrowUpRight = createLucideIcon(__iconData$50);
+__iconData$53.node;
+var ArrowUpRight = createLucideIcon(__iconData$53);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
@@ -11840,7 +11840,7 @@ var ArrowUpRight = createLucideIcon(__iconData$50);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$49 = {
+var __iconData$52 = {
 	name: "arrow-up",
 	size: 24,
 	node: [["path", {
@@ -11851,8 +11851,8 @@ var __iconData$49 = {
 		key: "x0mq9r"
 	}]]
 };
-__iconData$49.node;
-var ArrowUp = createLucideIcon(__iconData$49);
+__iconData$52.node;
+var ArrowUp = createLucideIcon(__iconData$52);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
@@ -11861,7 +11861,7 @@ var ArrowUp = createLucideIcon(__iconData$49);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$48 = {
+var __iconData$51 = {
 	name: "building-complex",
 	size: 24,
 	node: [
@@ -11888,8 +11888,8 @@ var __iconData$48 = {
 	],
 	aliases: ["building-2"]
 };
-__iconData$48.node;
-var BuildingComplex = createLucideIcon(__iconData$48);
+__iconData$51.node;
+var BuildingComplex = createLucideIcon(__iconData$51);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
 /**
@@ -11898,7 +11898,7 @@ var BuildingComplex = createLucideIcon(__iconData$48);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$47 = {
+var __iconData$50 = {
 	name: "calendar-days",
 	size: 24,
 	node: [
@@ -11948,8 +11948,8 @@ var __iconData$47 = {
 		}]
 	]
 };
-__iconData$47.node;
-var CalendarDays = createLucideIcon(__iconData$47);
+__iconData$50.node;
+var CalendarDays = createLucideIcon(__iconData$50);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/calendar.mjs
 /**
@@ -11958,7 +11958,7 @@ var CalendarDays = createLucideIcon(__iconData$47);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$46 = {
+var __iconData$49 = {
 	name: "calendar",
 	size: 24,
 	node: [
@@ -11984,8 +11984,8 @@ var __iconData$46 = {
 		}]
 	]
 };
-__iconData$46.node;
-var Calendar = createLucideIcon(__iconData$46);
+__iconData$49.node;
+var Calendar = createLucideIcon(__iconData$49);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/check.mjs
 /**
@@ -11994,7 +11994,7 @@ var Calendar = createLucideIcon(__iconData$46);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$45 = {
+var __iconData$48 = {
 	name: "check",
 	size: 24,
 	node: [["path", {
@@ -12002,8 +12002,8 @@ var __iconData$45 = {
 		key: "1gmf2c"
 	}]]
 };
-__iconData$45.node;
-var Check = createLucideIcon(__iconData$45);
+__iconData$48.node;
+var Check = createLucideIcon(__iconData$48);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
 /**
@@ -12012,7 +12012,7 @@ var Check = createLucideIcon(__iconData$45);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$44 = {
+var __iconData$47 = {
 	name: "chevron-down",
 	size: 24,
 	node: [["path", {
@@ -12020,8 +12020,8 @@ var __iconData$44 = {
 		key: "qrunsl"
 	}]]
 };
-__iconData$44.node;
-var ChevronDown = createLucideIcon(__iconData$44);
+__iconData$47.node;
+var ChevronDown = createLucideIcon(__iconData$47);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
 /**
@@ -12030,7 +12030,7 @@ var ChevronDown = createLucideIcon(__iconData$44);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$43 = {
+var __iconData$46 = {
 	name: "chevron-right",
 	size: 24,
 	node: [["path", {
@@ -12038,8 +12038,8 @@ var __iconData$43 = {
 		key: "mthhwq"
 	}]]
 };
-__iconData$43.node;
-var ChevronRight = createLucideIcon(__iconData$43);
+__iconData$46.node;
+var ChevronRight = createLucideIcon(__iconData$46);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
 /**
@@ -12048,7 +12048,7 @@ var ChevronRight = createLucideIcon(__iconData$43);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$42 = {
+var __iconData$45 = {
 	name: "chevron-up",
 	size: 24,
 	node: [["path", {
@@ -12056,8 +12056,8 @@ var __iconData$42 = {
 		key: "153udz"
 	}]]
 };
-__iconData$42.node;
-var ChevronUp = createLucideIcon(__iconData$42);
+__iconData$45.node;
+var ChevronUp = createLucideIcon(__iconData$45);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
@@ -12066,7 +12066,7 @@ var ChevronUp = createLucideIcon(__iconData$42);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$41 = {
+var __iconData$44 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -12093,8 +12093,8 @@ var __iconData$41 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$41.node;
-var CircleAlert = createLucideIcon(__iconData$41);
+__iconData$44.node;
+var CircleAlert = createLucideIcon(__iconData$44);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
@@ -12103,7 +12103,7 @@ var CircleAlert = createLucideIcon(__iconData$41);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$40 = {
+var __iconData$43 = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -12117,8 +12117,8 @@ var __iconData$40 = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-__iconData$40.node;
-var CircleCheck = createLucideIcon(__iconData$40);
+__iconData$43.node;
+var CircleCheck = createLucideIcon(__iconData$43);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
 /**
@@ -12127,7 +12127,7 @@ var CircleCheck = createLucideIcon(__iconData$40);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$39 = {
+var __iconData$42 = {
 	name: "circle-pause",
 	size: 24,
 	node: [
@@ -12154,8 +12154,8 @@ var __iconData$39 = {
 	],
 	aliases: ["pause-circle"]
 };
-__iconData$39.node;
-var CirclePause = createLucideIcon(__iconData$39);
+__iconData$42.node;
+var CirclePause = createLucideIcon(__iconData$42);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
 /**
@@ -12164,7 +12164,7 @@ var CirclePause = createLucideIcon(__iconData$39);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$38 = {
+var __iconData$41 = {
 	name: "circle-question-mark",
 	size: 24,
 	node: [
@@ -12185,8 +12185,8 @@ var __iconData$38 = {
 	],
 	aliases: ["help-circle", "circle-help"]
 };
-__iconData$38.node;
-var CircleQuestionMark = createLucideIcon(__iconData$38);
+__iconData$41.node;
+var CircleQuestionMark = createLucideIcon(__iconData$41);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-x.mjs
 /**
@@ -12195,7 +12195,7 @@ var CircleQuestionMark = createLucideIcon(__iconData$38);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$37 = {
+var __iconData$40 = {
 	name: "circle-x",
 	size: 24,
 	node: [
@@ -12216,8 +12216,8 @@ var __iconData$37 = {
 	],
 	aliases: ["x-circle"]
 };
-__iconData$37.node;
-var CircleX = createLucideIcon(__iconData$37);
+__iconData$40.node;
+var CircleX = createLucideIcon(__iconData$40);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle.mjs
 /**
@@ -12226,7 +12226,7 @@ var CircleX = createLucideIcon(__iconData$37);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$36 = {
+var __iconData$39 = {
 	name: "circle",
 	size: 24,
 	node: [["circle", {
@@ -12236,8 +12236,8 @@ var __iconData$36 = {
 		key: "1mglay"
 	}]]
 };
-__iconData$36.node;
-var Circle = createLucideIcon(__iconData$36);
+__iconData$39.node;
+var Circle = createLucideIcon(__iconData$39);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
@@ -12246,7 +12246,7 @@ var Circle = createLucideIcon(__iconData$36);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$35 = {
+var __iconData$38 = {
 	name: "clock-3",
 	size: 24,
 	node: [["circle", {
@@ -12259,8 +12259,8 @@ var __iconData$35 = {
 		key: "135r8i"
 	}]]
 };
-__iconData$35.node;
-var Clock3 = createLucideIcon(__iconData$35);
+__iconData$38.node;
+var Clock3 = createLucideIcon(__iconData$38);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
@@ -12269,7 +12269,7 @@ var Clock3 = createLucideIcon(__iconData$35);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$34 = {
+var __iconData$37 = {
 	name: "clock",
 	size: 24,
 	node: [["circle", {
@@ -12282,8 +12282,8 @@ var __iconData$34 = {
 		key: "mmk7yg"
 	}]]
 };
-__iconData$34.node;
-var Clock = createLucideIcon(__iconData$34);
+__iconData$37.node;
+var Clock = createLucideIcon(__iconData$37);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
@@ -12292,7 +12292,7 @@ var Clock = createLucideIcon(__iconData$34);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$33 = {
+var __iconData$36 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -12308,8 +12308,8 @@ var __iconData$33 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$33.node;
-var Copy = createLucideIcon(__iconData$33);
+__iconData$36.node;
+var Copy = createLucideIcon(__iconData$36);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/external-link.mjs
 /**
@@ -12318,7 +12318,7 @@ var Copy = createLucideIcon(__iconData$33);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$32 = {
+var __iconData$35 = {
 	name: "external-link",
 	size: 24,
 	node: [
@@ -12336,8 +12336,8 @@ var __iconData$32 = {
 		}]
 	]
 };
-__iconData$32.node;
-var ExternalLink = createLucideIcon(__iconData$32);
+__iconData$35.node;
+var ExternalLink = createLucideIcon(__iconData$35);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye-off.mjs
 /**
@@ -12346,7 +12346,7 @@ var ExternalLink = createLucideIcon(__iconData$32);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$31 = {
+var __iconData$34 = {
 	name: "eye-off",
 	size: 24,
 	node: [
@@ -12368,8 +12368,8 @@ var __iconData$31 = {
 		}]
 	]
 };
-__iconData$31.node;
-var EyeOff = createLucideIcon(__iconData$31);
+__iconData$34.node;
+var EyeOff = createLucideIcon(__iconData$34);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye.mjs
 /**
@@ -12378,7 +12378,7 @@ var EyeOff = createLucideIcon(__iconData$31);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$30 = {
+var __iconData$33 = {
 	name: "eye",
 	size: 24,
 	node: [["path", {
@@ -12391,8 +12391,8 @@ var __iconData$30 = {
 		key: "1v7zrd"
 	}]]
 };
-__iconData$30.node;
-var Eye = createLucideIcon(__iconData$30);
+__iconData$33.node;
+var Eye = createLucideIcon(__iconData$33);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/file-text.mjs
 /**
@@ -12401,7 +12401,7 @@ var Eye = createLucideIcon(__iconData$30);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$29 = {
+var __iconData$32 = {
 	name: "file-text",
 	size: 24,
 	node: [
@@ -12427,8 +12427,8 @@ var __iconData$29 = {
 		}]
 	]
 };
-__iconData$29.node;
-var FileText = createLucideIcon(__iconData$29);
+__iconData$32.node;
+var FileText = createLucideIcon(__iconData$32);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
@@ -12437,7 +12437,7 @@ var FileText = createLucideIcon(__iconData$29);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$28 = {
+var __iconData$31 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -12459,8 +12459,8 @@ var __iconData$28 = {
 		}]
 	]
 };
-__iconData$28.node;
-var FolderKanban = createLucideIcon(__iconData$28);
+__iconData$31.node;
+var FolderKanban = createLucideIcon(__iconData$31);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/folder-plus.mjs
 /**
@@ -12469,7 +12469,7 @@ var FolderKanban = createLucideIcon(__iconData$28);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$27 = {
+var __iconData$30 = {
 	name: "folder-plus",
 	size: 24,
 	node: [
@@ -12487,8 +12487,40 @@ var __iconData$27 = {
 		}]
 	]
 };
-__iconData$27.node;
-var FolderPlus = createLucideIcon(__iconData$27);
+__iconData$30.node;
+var FolderPlus = createLucideIcon(__iconData$30);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/hourglass.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$29 = {
+	name: "hourglass",
+	size: 24,
+	node: [
+		["path", {
+			d: "M5 22h14",
+			key: "ehvnwv"
+		}],
+		["path", {
+			d: "M5 2h14",
+			key: "pdyrp9"
+		}],
+		["path", {
+			d: "M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22",
+			key: "1d314k"
+		}],
+		["path", {
+			d: "M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2",
+			key: "1vvvr6"
+		}]
+	]
+};
+__iconData$29.node;
+var Hourglass = createLucideIcon(__iconData$29);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/layers.mjs
 /**
@@ -12497,7 +12529,7 @@ var FolderPlus = createLucideIcon(__iconData$27);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$26 = {
+var __iconData$28 = {
 	name: "layers",
 	size: 24,
 	node: [
@@ -12516,8 +12548,8 @@ var __iconData$26 = {
 	],
 	aliases: ["layers-3"]
 };
-__iconData$26.node;
-var Layers = createLucideIcon(__iconData$26);
+__iconData$28.node;
+var Layers = createLucideIcon(__iconData$28);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/link-2.mjs
 /**
@@ -12526,7 +12558,7 @@ var Layers = createLucideIcon(__iconData$26);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$25 = {
+var __iconData$27 = {
 	name: "link-2",
 	size: 24,
 	node: [
@@ -12547,8 +12579,8 @@ var __iconData$25 = {
 		}]
 	]
 };
-__iconData$25.node;
-var Link2 = createLucideIcon(__iconData$25);
+__iconData$27.node;
+var Link2 = createLucideIcon(__iconData$27);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/link.mjs
 /**
@@ -12557,7 +12589,7 @@ var Link2 = createLucideIcon(__iconData$25);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$24 = {
+var __iconData$26 = {
 	name: "link",
 	size: 24,
 	node: [["path", {
@@ -12568,8 +12600,8 @@ var __iconData$24 = {
 		key: "19qd67"
 	}]]
 };
-__iconData$24.node;
-var Link = createLucideIcon(__iconData$24);
+__iconData$26.node;
+var Link = createLucideIcon(__iconData$26);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/loader-circle.mjs
 /**
@@ -12578,7 +12610,7 @@ var Link = createLucideIcon(__iconData$24);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$23 = {
+var __iconData$25 = {
 	name: "loader-circle",
 	size: 24,
 	node: [["path", {
@@ -12587,8 +12619,8 @@ var __iconData$23 = {
 	}]],
 	aliases: ["loader-2"]
 };
-__iconData$23.node;
-var LoaderCircle = createLucideIcon(__iconData$23);
+__iconData$25.node;
+var LoaderCircle = createLucideIcon(__iconData$25);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/lock-keyhole.mjs
 /**
@@ -12597,7 +12629,7 @@ var LoaderCircle = createLucideIcon(__iconData$23);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$22 = {
+var __iconData$24 = {
 	name: "lock-keyhole",
 	size: 24,
 	node: [
@@ -12621,8 +12653,8 @@ var __iconData$22 = {
 		}]
 	]
 };
-__iconData$22.node;
-var LockKeyhole = createLucideIcon(__iconData$22);
+__iconData$24.node;
+var LockKeyhole = createLucideIcon(__iconData$24);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/lock.mjs
 /**
@@ -12631,7 +12663,7 @@ var LockKeyhole = createLucideIcon(__iconData$22);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$21 = {
+var __iconData$23 = {
 	name: "lock",
 	size: 24,
 	node: [["rect", {
@@ -12647,8 +12679,8 @@ var __iconData$21 = {
 		key: "fwvmzm"
 	}]]
 };
-__iconData$21.node;
-var Lock = createLucideIcon(__iconData$21);
+__iconData$23.node;
+var Lock = createLucideIcon(__iconData$23);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/log-out.mjs
 /**
@@ -12657,7 +12689,7 @@ var Lock = createLucideIcon(__iconData$21);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$20 = {
+var __iconData$22 = {
 	name: "log-out",
 	size: 24,
 	node: [
@@ -12675,8 +12707,8 @@ var __iconData$20 = {
 		}]
 	]
 };
-__iconData$20.node;
-var LogOut = createLucideIcon(__iconData$20);
+__iconData$22.node;
+var LogOut = createLucideIcon(__iconData$22);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/maximize-2.mjs
 /**
@@ -12685,7 +12717,7 @@ var LogOut = createLucideIcon(__iconData$20);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$19 = {
+var __iconData$21 = {
 	name: "maximize-2",
 	size: 24,
 	node: [
@@ -12707,8 +12739,8 @@ var __iconData$19 = {
 		}]
 	]
 };
-__iconData$19.node;
-var Maximize2 = createLucideIcon(__iconData$19);
+__iconData$21.node;
+var Maximize2 = createLucideIcon(__iconData$21);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/menu.mjs
 /**
@@ -12717,7 +12749,7 @@ var Maximize2 = createLucideIcon(__iconData$19);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$18 = {
+var __iconData$20 = {
 	name: "menu",
 	size: 24,
 	node: [
@@ -12735,8 +12767,8 @@ var __iconData$18 = {
 		}]
 	]
 };
-__iconData$18.node;
-var Menu = createLucideIcon(__iconData$18);
+__iconData$20.node;
+var Menu = createLucideIcon(__iconData$20);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/message-square.mjs
 /**
@@ -12745,7 +12777,7 @@ var Menu = createLucideIcon(__iconData$18);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$17 = {
+var __iconData$19 = {
 	name: "message-square",
 	size: 24,
 	node: [["path", {
@@ -12753,8 +12785,26 @@ var __iconData$17 = {
 		key: "18887p"
 	}]]
 };
-__iconData$17.node;
-var MessageSquare = createLucideIcon(__iconData$17);
+__iconData$19.node;
+var MessageSquare = createLucideIcon(__iconData$19);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/octagon.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$18 = {
+	name: "octagon",
+	size: 24,
+	node: [["path", {
+		d: "M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z",
+		key: "2d38gg"
+	}]]
+};
+__iconData$18.node;
+var Octagon = createLucideIcon(__iconData$18);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/play.mjs
 /**
@@ -12763,7 +12813,7 @@ var MessageSquare = createLucideIcon(__iconData$17);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$16 = {
+var __iconData$17 = {
 	name: "play",
 	size: 24,
 	node: [["path", {
@@ -12771,8 +12821,8 @@ var __iconData$16 = {
 		key: "10ikf1"
 	}]]
 };
-__iconData$16.node;
-var Play = createLucideIcon(__iconData$16);
+__iconData$17.node;
+var Play = createLucideIcon(__iconData$17);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/plus.mjs
 /**
@@ -12781,7 +12831,7 @@ var Play = createLucideIcon(__iconData$16);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$15 = {
+var __iconData$16 = {
 	name: "plus",
 	size: 24,
 	node: [["path", {
@@ -12792,8 +12842,8 @@ var __iconData$15 = {
 		key: "s699le"
 	}]]
 };
-__iconData$15.node;
-var Plus = createLucideIcon(__iconData$15);
+__iconData$16.node;
+var Plus = createLucideIcon(__iconData$16);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/refresh-cw.mjs
 /**
@@ -12802,7 +12852,7 @@ var Plus = createLucideIcon(__iconData$15);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$14 = {
+var __iconData$15 = {
 	name: "refresh-cw",
 	size: 24,
 	node: [
@@ -12824,8 +12874,8 @@ var __iconData$14 = {
 		}]
 	]
 };
-__iconData$14.node;
-var RefreshCw = createLucideIcon(__iconData$14);
+__iconData$15.node;
+var RefreshCw = createLucideIcon(__iconData$15);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/rotate-ccw-clock.mjs
 /**
@@ -12834,7 +12884,7 @@ var RefreshCw = createLucideIcon(__iconData$14);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$13 = {
+var __iconData$14 = {
 	name: "rotate-ccw-clock",
 	size: 24,
 	node: [
@@ -12853,8 +12903,8 @@ var __iconData$13 = {
 	],
 	aliases: ["history"]
 };
-__iconData$13.node;
-var RotateCcwClock = createLucideIcon(__iconData$13);
+__iconData$14.node;
+var RotateCcwClock = createLucideIcon(__iconData$14);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/search.mjs
 /**
@@ -12863,7 +12913,7 @@ var RotateCcwClock = createLucideIcon(__iconData$13);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$12 = {
+var __iconData$13 = {
 	name: "search",
 	size: 24,
 	node: [["path", {
@@ -12876,8 +12926,8 @@ var __iconData$12 = {
 		key: "4ej97u"
 	}]]
 };
-__iconData$12.node;
-var Search = createLucideIcon(__iconData$12);
+__iconData$13.node;
+var Search = createLucideIcon(__iconData$13);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/send.mjs
 /**
@@ -12886,7 +12936,7 @@ var Search = createLucideIcon(__iconData$12);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$11 = {
+var __iconData$12 = {
 	name: "send",
 	size: 24,
 	node: [["path", {
@@ -12897,8 +12947,8 @@ var __iconData$11 = {
 		key: "12cjpa"
 	}]]
 };
-__iconData$11.node;
-var Send = createLucideIcon(__iconData$11);
+__iconData$12.node;
+var Send = createLucideIcon(__iconData$12);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/settings-2.mjs
 /**
@@ -12907,7 +12957,7 @@ var Send = createLucideIcon(__iconData$11);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$10 = {
+var __iconData$11 = {
 	name: "settings-2",
 	size: 24,
 	node: [
@@ -12933,8 +12983,8 @@ var __iconData$10 = {
 		}]
 	]
 };
-__iconData$10.node;
-var Settings2 = createLucideIcon(__iconData$10);
+__iconData$11.node;
+var Settings2 = createLucideIcon(__iconData$11);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/share-2.mjs
 /**
@@ -12943,7 +12993,7 @@ var Settings2 = createLucideIcon(__iconData$10);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$9 = {
+var __iconData$10 = {
 	name: "share-2",
 	size: 24,
 	node: [
@@ -12981,8 +13031,8 @@ var __iconData$9 = {
 		}]
 	]
 };
-__iconData$9.node;
-var Share2 = createLucideIcon(__iconData$9);
+__iconData$10.node;
+var Share2 = createLucideIcon(__iconData$10);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/shield-check.mjs
 /**
@@ -12991,7 +13041,7 @@ var Share2 = createLucideIcon(__iconData$9);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$8 = {
+var __iconData$9 = {
 	name: "shield-check",
 	size: 24,
 	node: [["path", {
@@ -13002,8 +13052,8 @@ var __iconData$8 = {
 		key: "dzmm74"
 	}]]
 };
-__iconData$8.node;
-var ShieldCheck = createLucideIcon(__iconData$8);
+__iconData$9.node;
+var ShieldCheck = createLucideIcon(__iconData$9);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/sparkles.mjs
 /**
@@ -13012,7 +13062,7 @@ var ShieldCheck = createLucideIcon(__iconData$8);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$7 = {
+var __iconData$8 = {
 	name: "sparkles",
 	size: 24,
 	node: [
@@ -13037,8 +13087,8 @@ var __iconData$7 = {
 	],
 	aliases: ["stars"]
 };
-__iconData$7.node;
-var Sparkles = createLucideIcon(__iconData$7);
+__iconData$8.node;
+var Sparkles = createLucideIcon(__iconData$8);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/trash.mjs
 /**
@@ -13047,7 +13097,7 @@ var Sparkles = createLucideIcon(__iconData$7);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$6 = {
+var __iconData$7 = {
 	name: "trash",
 	size: 24,
 	node: [
@@ -13074,8 +13124,8 @@ var __iconData$6 = {
 	],
 	aliases: ["trash-2"]
 };
-__iconData$6.node;
-var Trash = createLucideIcon(__iconData$6);
+__iconData$7.node;
+var Trash = createLucideIcon(__iconData$7);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/triangle-alert.mjs
 /**
@@ -13084,7 +13134,7 @@ var Trash = createLucideIcon(__iconData$6);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$5 = {
+var __iconData$6 = {
 	name: "triangle-alert",
 	size: 24,
 	node: [
@@ -13103,8 +13153,29 @@ var __iconData$5 = {
 	],
 	aliases: ["alert-triangle"]
 };
+__iconData$6.node;
+var TriangleAlert = createLucideIcon(__iconData$6);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/undo-2.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$5 = {
+	name: "undo-2",
+	size: 24,
+	node: [["path", {
+		d: "M9 14 4 9l5-5",
+		key: "102s5s"
+	}], ["path", {
+		d: "M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11",
+		key: "f3b9sd"
+	}]]
+};
 __iconData$5.node;
-var TriangleAlert = createLucideIcon(__iconData$5);
+var Undo2 = createLucideIcon(__iconData$5);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/user-plus.mjs
 /**
@@ -23406,6 +23477,19 @@ async function createTask(projectId, taskData) {
 /**
 * Update task (PATCH /api/{founder|employee}/tasks/:id)
 */
+/**
+* Preview a founder timeline change (POST /api/founder/projects/:id/schedule/preview).
+* The bot checks dependencies against the Google Sheet and lists every task that would move.
+*/
+async function previewSchedule(projectId, moves) {
+	return await post$2(`/api/founder/projects/${projectId}/schedule/preview`, { moves });
+}
+/**
+* Save a founder timeline change to the Google Sheet (POST /api/founder/projects/:id/schedule/apply).
+*/
+async function applySchedule(projectId, moves) {
+	return await post$2(`/api/founder/projects/${projectId}/schedule/apply`, { moves });
+}
 async function updateTask(taskId, updates, namespace = "founder") {
 	return await patch$1(`/api/${namespace}/tasks/${taskId}`, updates);
 }
@@ -28793,8 +28877,9 @@ function timelineItems(tasks, stages) {
 	const stageMap = new Map(stages.map((stage) => [stage.id, stage]));
 	return tasks.filter((task) => !task.deletedAt && task.status !== "Cancelled").map((task) => {
 		const stage = stageMap.get(task.stageId);
-		const directStart = calendarDate(task.sourceCurrentStart) ?? calendarDate(task.sourcePlannedStart);
-		const endDate = calendarDate(task.sourceCurrentEnd) ?? calendarDate(task.deadline) ?? calendarDate(task.sourcePlannedEnd);
+		const forecastStart = calendarDate(task.sourceForecastStart) ?? calendarDate(task.sourceCurrentStart) ?? calendarDate(task.sourcePlannedStart);
+		const endDate = calendarDate(task.deadline) ?? calendarDate(task.sourceForecastEnd) ?? calendarDate(task.sourceCurrentEnd) ?? calendarDate(task.sourcePlannedEnd);
+		const directStart = forecastStart !== null && endDate !== null && forecastStart > endDate ? endDate : forecastStart;
 		const stageStart = calendarDate(stage?.startDate);
 		const start = task.sheetPlan ? directStart : directStart ?? (stageStart !== null && endDate !== null && stageStart <= endDate ? stageStart : endDate);
 		return {
@@ -28820,6 +28905,115 @@ function stageSummary(items, stage) {
 		progress: group.length ? Math.round(complete / group.length * 100) : 0
 	};
 }
+//#endregion
+//#region frontend/src/lib/timelineStatus.js
+var todayDate = (now = /* @__PURE__ */ new Date()) => Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+var isoDate = (value) => new Date(value).toISOString().slice(0, 10);
+var isComplete = (task) => [
+	"Completed",
+	"completed",
+	"Done"
+].includes(task.status);
+var isClosed = (task) => isComplete(task) || task.status === "Cancelled";
+function itemStatus(item, today = todayDate()) {
+	const { task, start, end } = item;
+	if (isComplete(task)) return {
+		key: "complete",
+		label: "Done",
+		late: false
+	};
+	const scheduled = start !== null && end !== null;
+	const late = scheduled && end <= today;
+	if (task.sourceStatus === "Delay Requested" || task.sourceApprovalStatus === "Pending") return {
+		key: "waiting",
+		label: "Waiting on you",
+		late
+	};
+	if (task.status === "Blocked" || ["Issue Reported", "On hold"].includes(task.sourceStatus)) return {
+		key: "blocked",
+		label: task.sourceStatus === "On hold" ? "On hold" : "Blocked",
+		late
+	};
+	if (!scheduled) return {
+		key: "unscheduled",
+		label: "No dates",
+		late: false
+	};
+	if (late) return {
+		key: "late",
+		label: `Late by ${Math.round((today - end) / calendarDay) + 1}d`,
+		late: true
+	};
+	if (start <= today) return {
+		key: "active",
+		label: "In progress",
+		late: false
+	};
+	return {
+		key: "upcoming",
+		label: "Upcoming",
+		late: false
+	};
+}
+function unscheduledReason(item) {
+	const { task } = item;
+	if (task.sheetPlan) return task.missingDuration ? "Duration missing in the Google Sheet" : "Waits on an earlier step with no duration";
+	if (task.sourceBlockedReason) return task.sourceBlockedReason;
+	return "No dates in the Google Sheet yet";
+}
+function scheduleSummary(items, today = todayDate()) {
+	const open = items.filter((item) => !isClosed(item.task));
+	const statuses = open.map((item) => itemStatus(item, today));
+	const unscheduled = open.filter((item) => item.start === null || item.end === null).length;
+	const ends = open.filter((item) => item.end !== null).map((item) => item.end);
+	return {
+		late: statuses.filter((status) => status.late).length,
+		blocked: statuses.filter((status) => status.key === "blocked").length,
+		waiting: statuses.filter((status) => status.key === "waiting").length,
+		unscheduled,
+		finish: unscheduled || !ends.length ? null : Math.max(...ends) - calendarDay
+	};
+}
+function moveFor(item, startShiftDays, endShiftDays = startShiftDays) {
+	return {
+		taskId: item.task.id,
+		start: isoDate(item.start + startShiftDays * calendarDay),
+		end: isoDate(item.end - calendarDay + endShiftDays * calendarDay),
+		...staleGuard(item.task)
+	};
+}
+function swapMoves(a, b) {
+	const lengthA = a.end - a.start;
+	const lengthB = b.end - b.start;
+	return [{
+		taskId: a.task.id,
+		start: isoDate(b.start),
+		end: isoDate(b.start + lengthA - calendarDay),
+		...staleGuard(a.task)
+	}, {
+		taskId: b.task.id,
+		start: isoDate(a.start),
+		end: isoDate(a.start + lengthB - calendarDay),
+		...staleGuard(b.task)
+	}];
+}
+function staleGuard(task) {
+	return {
+		fromStart: task.sourceForecastStart || task.sourceCurrentStart || task.sourcePlannedStart || "",
+		fromEnd: task.sourceForecastEnd || task.sourceCurrentEnd || task.sourcePlannedEnd || ""
+	};
+}
+function undoMoves(affected = []) {
+	return affected.filter((item) => item.webTaskId && item.previousStart && item.previousEnd).map((item) => ({
+		taskId: item.webTaskId,
+		start: item.previousStart,
+		end: item.previousEnd,
+		fromStart: item.forecastStart,
+		fromEnd: item.forecastEnd,
+		forecastOnly: !item.committed
+	}));
+}
+var canMove = (item) => Boolean(item.task.telegramTaskId) && !item.task.sheetPlan && !isClosed(item.task) && item.start !== null && item.end !== null;
 //#endregion
 //#region frontend/src/components/TimelineStageDetails.jsx
 var timelineOwner = (task, members) => members.find((member) => (member.employeeId || member.id) === task.assigneeId)?.name || (task.assigneeId === "founder" ? "Founder" : task.assigneeName || "Unassigned");
@@ -28968,38 +29162,172 @@ function TimelineStageDetails({ stage, items, members, projectId, namespace, onC
 }
 //#endregion
 //#region frontend/src/components/ProjectTimeline.jsx
-var today = () => {
-	const now = /* @__PURE__ */ new Date();
-	return Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
-};
 var dateLabel = (value) => new Date(value).toLocaleDateString([], {
 	month: "short",
 	day: "numeric",
 	timeZone: "UTC"
 });
-function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, namespace = "founder", onOpenTask }) {
+var isoLabel = (value) => value ? dateLabel(calendarDate(value)) : "no date";
+var ZOOMS = [
+	{
+		days: 14,
+		label: "2 weeks",
+		width: 82
+	},
+	{
+		days: 42,
+		label: "6 weeks",
+		width: 40
+	},
+	{
+		days: 91,
+		label: "3 months",
+		width: 20
+	}
+];
+var STATUS_ICON = {
+	late: TriangleAlert,
+	blocked: Octagon,
+	waiting: Hourglass,
+	complete: Check
+};
+function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, namespace = "founder", onOpenTask, onSchedulePreview, onScheduleApply }) {
+	const today = todayDate();
 	const items = timelineItems(tasks, stages);
 	const scheduled = items.filter((item) => item.start !== null && item.end !== null);
-	const [origin, setOrigin] = (0, import_react.useState)(() => scheduled.length ? Math.min(...scheduled.map((item) => item.start)) : today());
-	const [days, setDays] = (0, import_react.useState)(14);
-	const [collapsed, setCollapsed] = (0, import_react.useState)(() => new Set(stages.slice(1).map((stage) => stage.id)));
+	const summary = scheduleSummary(items, today);
+	const editable = Boolean(onSchedulePreview && onScheduleApply);
+	const [origin, setOrigin] = (0, import_react.useState)(today - 7 * calendarDay);
+	const [days, setDays] = (0, import_react.useState)(42);
+	const [collapsed, setCollapsed] = (0, import_react.useState)(() => /* @__PURE__ */ new Set());
 	const [search, setSearch] = (0, import_react.useState)("");
 	const [selectedStageId, setSelectedStageId] = (0, import_react.useState)(null);
+	const [drag, setDrag] = (0, import_react.useState)(null);
+	const [proposal, setProposal] = (0, import_react.useState)(null);
+	const [notice, setNotice] = (0, import_react.useState)(null);
+	const dragRef = (0, import_react.useRef)(null);
 	const from = origin, to = origin + days * calendarDay;
-	const dayWidth = days === 7 ? 142 : days === 14 ? 82 : days === 28 ? 48 : Math.max(8, 1120 / days);
+	const dayWidth = ZOOMS.find((zoom) => zoom.days === days)?.width ?? Math.max(8, 1120 / days);
+	const compactHeader = dayWidth < 40;
 	const allGroups = [...stages, {
 		id: "other",
 		name: "Additional work"
 	}].filter((stage) => items.some((item) => (item.stage?.id || "other") === stage.id));
 	const ownerName = (task) => members.find((member) => (member.employeeId || member.id) === task.assigneeId)?.name || (task.assigneeId === "founder" ? "Founder" : task.assigneeName || "Unassigned");
 	const query = search.trim().toLowerCase();
-	const visible = items.filter((item) => `${item.task.title} ${item.stage?.name || ""} ${ownerName(item.task)}`.toLowerCase().includes(query));
+	const visible = items.filter((item) => `${item.task.title} ${item.stage?.name || "Additional work"} ${ownerName(item.task)}`.toLowerCase().includes(query));
+	const undated = visible.filter((item) => (item.start === null || item.end === null) && item.task.status !== "Completed");
 	const complete = (task) => ["Completed", "completed"].includes(task.status);
 	const toggle = (id) => setCollapsed((current) => {
 		const next = new Set(current);
 		next.has(id) ? next.delete(id) : next.add(id);
 		return next;
 	});
+	const todayInView = today >= from && today < to;
+	async function propose(moves, description) {
+		setProposal({
+			moves,
+			description,
+			loading: true
+		});
+		try {
+			const preview = await onSchedulePreview(moves);
+			setProposal({
+				moves,
+				description,
+				preview
+			});
+		} catch (error) {
+			setProposal({
+				moves,
+				description,
+				error: error.message || "Could not check this change."
+			});
+		}
+	}
+	async function confirm() {
+		const { moves, description } = proposal;
+		setProposal({
+			...proposal,
+			saving: true
+		});
+		try {
+			const result = await onScheduleApply(moves);
+			setProposal(null);
+			const pushed = result.affected.filter((item) => !item.moved).length;
+			setNotice({
+				text: `${description} saved to the Google Sheet${pushed ? ` · ${pushed} dependent task${pushed === 1 ? "" : "s"} moved` : ""}.`,
+				undo: undoMoves(result.affected)
+			});
+		} catch (error) {
+			setProposal({
+				...proposal,
+				saving: false,
+				error: error.message || "Could not save this change."
+			});
+		}
+	}
+	async function undo() {
+		const moves = notice.undo;
+		setNotice({ text: "Undoing…" });
+		try {
+			await onScheduleApply(moves);
+			setNotice({ text: "Change undone. The Google Sheet is back to the earlier dates." });
+		} catch (error) {
+			setNotice({ text: `Could not undo: ${error.message}` });
+		}
+	}
+	function beginDrag(event, item) {
+		if (!editable || !canMove(item) || event.button !== 0) return;
+		const mode = event.target.closest(".iksha-resize-handle") ? "resize" : "move";
+		dragRef.current = {
+			id: item.task.id,
+			item,
+			mode,
+			x: event.clientX,
+			y: event.clientY,
+			shift: 0,
+			target: null,
+			moved: false
+		};
+		event.currentTarget.setPointerCapture(event.pointerId);
+	}
+	function moveDrag(event) {
+		const current = dragRef.current;
+		if (!current) return;
+		if (!current.moved && Math.abs(event.clientX - current.x) < 5 && Math.abs(event.clientY - current.y) < 8) return;
+		current.moved = true;
+		current.shift = Math.round((event.clientX - current.x) / dayWidth);
+		if (current.mode === "resize") current.shift = Math.max(current.shift, -Math.round((current.item.end - current.item.start) / calendarDay) + 1);
+		const row = document.elementsFromPoint(event.clientX, event.clientY).map((element) => element.closest?.("[data-task-row]")).find(Boolean);
+		const target = row && row.dataset.taskRow !== current.id && current.mode === "move" ? items.find((candidate) => candidate.task.id === row.dataset.taskRow) : null;
+		current.target = target && canMove(target) ? target : null;
+		setDrag({ ...current });
+	}
+	function endDrag(item) {
+		const current = dragRef.current;
+		dragRef.current = null;
+		setDrag(null);
+		if (!current) return;
+		if (!current.moved) {
+			onOpenTask(item.task);
+			return;
+		}
+		if (current.target) return void propose(swapMoves(current.item, current.target), `Swap “${current.item.task.title}” with “${current.target.task.title}”`);
+		if (!current.shift) return;
+		propose([current.mode === "resize" ? moveFor(current.item, 0, current.shift) : moveFor(current.item, current.shift)], current.mode === "resize" ? `Change the length of “${item.task.title}”` : `Move “${item.task.title}”`);
+	}
+	function keyMove(event, item) {
+		if (!editable || !canMove(item) || !event.altKey || !["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+		event.preventDefault();
+		const step = event.key === "ArrowRight" ? 1 : -1;
+		propose([event.shiftKey ? moveFor(item, 0, step) : moveFor(item, step)], event.shiftKey ? `Change the length of “${item.task.title}”` : `Move “${item.task.title}”`);
+	}
+	const headline = [
+		summary.late && `${summary.late} late`,
+		summary.blocked && `${summary.blocked} blocked`,
+		summary.waiting && `${summary.waiting} waiting on you`
+	].filter(Boolean);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "iksha-timeline",
 		children: [
@@ -29008,10 +29336,10 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "iksha-eyebrow",
-						children: "EVERY STAGE, CONNECTED"
+						children: "PROJECT SCHEDULE"
 					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", { children: "Make room for good work." }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "See the sequence, the overlap, and the people behind each task." })
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", { children: headline.length ? headline.join(" · ") : "Nothing late or blocked" }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [summary.finish !== null ? `Projected finish ${dateLabel(summary.finish)}` : "Finish date not confirmed", summary.unscheduled ? ` · ${summary.unscheduled} work item${summary.unscheduled === 1 ? "" : "s"} without dates` : ""] })
 				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, { size: 14 }),
 					scheduled.length,
@@ -29030,7 +29358,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 								variant: "ghost",
 								size: "icon-sm",
 								"aria-label": "Previous period",
-								onClick: () => setOrigin(from - days * calendarDay),
+								onClick: () => setOrigin(from - Math.max(7, Math.round(days / 2)) * calendarDay),
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, {})
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [
@@ -29045,7 +29373,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 								variant: "ghost",
 								size: "icon-sm",
 								"aria-label": "Next period",
-								onClick: () => setOrigin(from + days * calendarDay),
+								onClick: () => setOrigin(from + Math.max(7, Math.round(days / 2)) * calendarDay),
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {})
 							})
 						]
@@ -29053,31 +29381,22 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						variant: "outline",
 						size: "sm",
-						onClick: () => setOrigin(today()),
+						onClick: () => setOrigin(today - 7 * calendarDay),
 						children: "Today"
-					}),
-					scheduled.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						variant: "outline",
-						size: "sm",
-						onClick: () => setOrigin(Math.min(...scheduled.map((item) => item.start))),
-						children: "First scheduled"
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "iksha-zoom",
-						children: [
-							7,
-							14,
-							28
-						].map((value) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-							"aria-pressed": days === value,
-							className: days === value ? "active" : "",
-							onClick: () => setDays(value),
-							children: value === 7 ? "Week" : value === 14 ? "Fortnight" : "Month"
-						}, value))
+						children: ZOOMS.map((zoom) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							"aria-pressed": days === zoom.days,
+							className: days === zoom.days ? "active" : "",
+							onClick: () => setDays(zoom.days),
+							children: zoom.label
+						}, zoom.days))
 					}),
 					scheduled.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						variant: "outline",
 						size: "sm",
+						"aria-pressed": !ZOOMS.some((zoom) => zoom.days === days),
 						onClick: () => {
 							const first = Math.min(...scheduled.map((item) => item.start));
 							setOrigin(first);
@@ -29099,16 +29418,35 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 					className: "sr-only",
 					children: "Search timeline tasks"
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-					placeholder: "Find a work item…",
+					placeholder: "Find a work item or person…",
 					value: search,
-					onChange: (e) => setSearch(e.target.value)
+					onChange: (event) => setSearch(event.target.value)
 				})]
+			}),
+			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "iksha-schedule-notice",
+				role: "status",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: notice.text }),
+					notice.undo?.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+						variant: "outline",
+						size: "sm",
+						onClick: undo,
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Undo2, {}), "Undo"]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						className: "iksha-notice-close",
+						"aria-label": "Dismiss",
+						onClick: () => setNotice(null),
+						children: "×"
+					})
+				]
 			}),
 			!items.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "iksha-timeline-empty",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, { size: 28 }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", { children: "Your project starts here." }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", { children: "No work items yet." }),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Choose a project workflow to generate its tasks and schedule." })
 				]
 			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
@@ -29116,40 +29454,42 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					style: {
 						"--timeline-width": `${days * dayWidth}px`,
-						"--timeline-day": `${dayWidth}px`
+						"--timeline-day": `${dayWidth}px`,
+						"--today-left": `${(today - from) / calendarDay * dayWidth}px`
 					},
-					className: `iksha-schedule-grid ${days > 28 ? "iksha-plan-fit" : ""}`,
+					className: `iksha-schedule-grid ${compactHeader ? "iksha-plan-fit" : ""} ${todayInView ? "has-today" : ""}`,
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "iksha-schedule-row iksha-schedule-head",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 								className: "iksha-schedule-label",
 								children: "STAGE / WORK ITEM"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "iksha-schedule-track iksha-schedule-dates",
-								children: Array.from({ length: days }, (_, i) => {
-									const value = from + i * calendarDay;
+								children: [todayInView && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "iksha-today-flag",
+									"aria-hidden": "true",
+									children: "Today"
+								}), Array.from({ length: days }, (_, index) => {
+									const value = from + index * calendarDay;
+									const hidden = compactHeader && new Date(value).getUTCDay() !== 1 ? { visibility: "hidden" } : void 0;
 									return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: `iksha-schedule-day ${value === today() ? "today" : ""}`,
+										className: `iksha-schedule-day ${value === today ? "today" : ""}`,
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											style: days > 28 && i % 7 !== 0 ? { visibility: "hidden" } : void 0,
-											children: [
-												new Date(value).toLocaleDateString([], {
-													weekday: "short",
-													timeZone: "UTC"
-												}),
-												" ",
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: new Date(value).getUTCDate() })
-											]
+											style: hidden,
+											children: [compactHeader ? "" : new Date(value).toLocaleDateString([], {
+												weekday: "short",
+												timeZone: "UTC"
+											}) + " ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: new Date(value).getUTCDate() })]
 										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", {
-											style: days > 28 && i % 7 !== 0 ? { visibility: "hidden" } : void 0,
+											style: hidden,
 											children: new Date(value).toLocaleDateString([], {
 												month: "short",
 												timeZone: "UTC"
 											})
 										})]
-									}, i);
-								})
+									}, index);
+								})]
 							})]
 						}),
 						allGroups.map((stage, index) => {
@@ -29158,9 +29498,11 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 							const scheduledGroup = group.filter((item) => item.start !== null && item.end !== null);
 							const groupStart = scheduledGroup.length ? Math.min(...scheduledGroup.map((item) => item.start)) : calendarDate(stage.startDate);
 							const groupEnd = scheduledGroup.length ? Math.max(...scheduledGroup.map((item) => item.end)) : null;
+							const lateCount = group.filter((item) => itemStatus(item, today).late).length;
 							const isCollapsed = collapsed.has(stage.id) && !query;
+							const ordered = [...group].sort((a, b) => (Number(a.task.sourceSequence) || 0) - (Number(b.task.sourceSequence) || 0) || String(a.task.createdAt || "").localeCompare(String(b.task.createdAt || "")));
 							return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-								className: `iksha-stage color-${index % 5}`,
+								className: `iksha-stage color-${index % 8}`,
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "iksha-schedule-row",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
@@ -29176,7 +29518,8 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 												group.length,
 												" work items · ",
 												group.filter((item) => complete(item.task)).length,
-												" complete"
+												" complete",
+												lateCount ? ` · ${lateCount} late` : ""
 											] })] }),
 											isCollapsed ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, { size: 14 }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, { size: 14 })
 										]
@@ -29185,61 +29528,95 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 										children: groupStart !== null && groupEnd !== null && groupEnd > from && groupStart < to ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 											className: "iksha-stage-range",
 											"aria-label": `Open ${stage.name} stage details`,
-											title: `${stage.name} · ${group.length} work items · ${group.filter((item) => complete(item.task)).length} complete`,
+											title: `${stage.name} · ${group.length} work items`,
 											onClick: () => setSelectedStageId(stage.id),
 											style: {
 												left: (Math.max(groupStart, from) - from) / calendarDay * dayWidth,
 												width: Math.max(20, (Math.min(groupEnd, to) - Math.max(groupStart, from)) / calendarDay * dayWidth - 3)
 											},
 											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: stage.name }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
-												group.length,
-												" work items · ",
-												group.filter((item) => complete(item.task)).length,
-												" complete"
+												dateLabel(groupStart),
+												" – ",
+												dateLabel(groupEnd - calendarDay)
 											] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 14 })]
 										}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 											className: "iksha-unscheduled",
-											onClick: () => setSelectedStageId(stage.id),
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 12 }), "View stage details"]
+											onClick: () => groupStart !== null ? setOrigin(groupStart) : setSelectedStageId(stage.id),
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 12 }), groupStart !== null ? `${dateLabel(groupStart)} · Show` : "View stage details"]
 										})
 									})]
-								}), !isCollapsed && group.sort((a, b) => (Number(a.task.sourceSequence) || 0) - (Number(b.task.sourceSequence) || 0) || String(a.task.createdAt || "").localeCompare(String(b.task.createdAt || ""))).map((item) => {
+								}), !isCollapsed && ordered.map((item) => {
+									const status = itemStatus(item, today);
 									const isScheduled = item.start !== null && item.end !== null;
-									const inRange = isScheduled && item.end > from && item.start < to;
+									const dragging = drag?.id === item.task.id;
+									const isTarget = drag?.target?.task.id === item.task.id;
+									const shiftStart = dragging && drag.mode === "move" && !drag.target ? drag.shift : 0;
+									const shiftEnd = dragging && !drag.target ? drag.shift : 0;
+									const start = isScheduled ? item.start + shiftStart * 864e5 : null;
+									const end = isScheduled ? item.end + shiftEnd * 864e5 : null;
+									const inRange = isScheduled && (dragging || end > from && start < to);
+									const movable = editable && canMove(item);
+									const Icon = STATUS_ICON[status.key];
+									const flag = status.late && status.key !== "late" ? `${status.label} · late` : status.label;
 									return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "iksha-schedule-row iksha-task-row",
+										className: `iksha-schedule-row iksha-task-row ${isTarget ? "is-swap-target" : ""}`,
+										"data-task-row": item.task.id,
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 											className: "iksha-schedule-label",
 											onClick: () => onOpenTask(item.task),
 											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: `iksha-task-state ${complete(item.task) ? "complete" : ""}`,
+												className: `iksha-task-state state-${status.key}`,
 												children: complete(item.task) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { size: 10 })
 											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.task.title }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
 												ownerName(item.task),
 												" · ",
-												item.task.status
+												flag
 											] })] })]
 										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 											className: "iksha-schedule-track",
-											children: inRange ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-												className: "iksha-task-block",
-												title: `${item.task.title} · ${dateLabel(item.start)} – ${dateLabel(item.end - 864e5)}`,
-												"aria-label": `Open ${item.task.title}`,
+											children: inRange ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+												className: `iksha-task-block status-${status.key} ${status.late ? "is-late" : ""} ${movable ? "is-movable" : ""} ${dragging ? "is-dragging" : ""}`,
+												title: `${item.task.title} · ${dateLabel(start)} – ${dateLabel(end - 864e5)} · ${flag}${movable ? " · Drag to move, pull the edge to resize, drop on another task to swap, or press Alt+Arrow" : ""}`,
+												"aria-label": `${item.task.title}, ${dateLabel(start)} to ${dateLabel(end - 864e5)}, ${flag}, ${ownerName(item.task)}${movable ? ". Alt plus arrow keys move it by a day" : ""}`,
 												style: {
-													left: (Math.max(item.start, from) - from) / 864e5 * dayWidth,
-													width: (Math.min(item.end, to) - Math.max(item.start, from)) / 864e5 * dayWidth - 3
+													left: Math.min(days * dayWidth - 12, Math.max(0, (Math.max(start, from) - from) / 864e5 * dayWidth)),
+													width: Math.max(12, (Math.min(end, to) - Math.max(start, from)) / 864e5 * dayWidth - 3)
 												},
-												onClick: () => onOpenTask(item.task),
-												children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [complete(item.task) ? "✓ " : "", item.task.title] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
-													ownerName(item.task),
-													" · ",
-													item.task.status
-												] })] })
-											}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+												onPointerDown: (event) => beginDrag(event, item),
+												onPointerMove: moveDrag,
+												onPointerUp: () => endDrag(item),
+												onLostPointerCapture: () => {
+													if (dragRef.current) endDrag(item);
+												},
+												onPointerCancel: () => {
+													dragRef.current = null;
+													setDrag(null);
+												},
+												onKeyDown: (event) => keyMove(event, item),
+												onClick: (event) => {
+													if (!movable || event.detail === 0) onOpenTask(item.task);
+												},
+												children: [
+													Icon && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, {
+														size: 12,
+														"aria-hidden": "true",
+														className: "iksha-status-icon"
+													}),
+													/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.task.title }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
+														ownerName(item.task),
+														" · ",
+														flag
+													] })] }),
+													movable && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", {
+														className: "iksha-resize-handle",
+														"aria-hidden": "true"
+													})
+												]
+											}, "bar") : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 												className: "iksha-unscheduled",
-												onClick: () => isScheduled ? setOrigin(item.start) : onOpenTask(item.task),
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock3, { size: 12 }), isScheduled ? `${dateLabel(item.start)} · Show` : item.task.sheetPlan ? "Duration needed · Open item" : "No saved dates · Open task"]
-											})
+												onClick: () => isScheduled ? setOrigin(item.start - 2592e5) : onOpenTask(item.task),
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock3, { size: 12 }), isScheduled ? `${dateLabel(item.start)} · Show` : "No dates · see below"]
+											}, "chip")
 										})]
 									}, item.task.id);
 								})]
@@ -29248,6 +29625,99 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 						!visible.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "iksha-empty-search",
 							children: "No work items match your search."
+						})
+					]
+				})
+			}),
+			undated.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+				className: "iksha-undated",
+				"aria-labelledby": "iksha-undated-title",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", {
+					id: "iksha-undated-title",
+					children: ["Not scheduled yet ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: undated.length })]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: undated.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+					onClick: () => onOpenTask(item.task),
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.task.title }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
+						item.stage?.name || "Additional work",
+						" · ",
+						unscheduledReason(item)
+					] })]
+				}) }, item.task.id)) })]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				open: Boolean(proposal),
+				onOpenChange: (open) => {
+					if (!open && !proposal?.saving) setProposal(null);
+				},
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
+					className: "iksha-schedule-preview",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "iksha-eyebrow",
+								children: "CHECK BEFORE SAVING"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: proposal?.description }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Nothing changes until you confirm. Confirmed changes are written to the Google Sheet, so Telegram and the web app stay in step." })
+						] }),
+						proposal?.loading && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "iksha-preview-note",
+							children: "Checking dependencies…"
+						}),
+						proposal?.error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "iksha-preview-conflict",
+							role: "alert",
+							children: proposal.error
+						}),
+						proposal?.preview && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "iksha-preview-body",
+							children: [proposal.preview.conflicts.map((conflict, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "iksha-preview-conflict",
+								role: "alert",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Octagon, { size: 14 }), conflict.reason]
+							}, index)), proposal.preview.ok && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", { children: "You are moving" }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: proposal.preview.affected.filter((item) => item.moved).map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.taskName }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+									isoLabel(item.previousStart),
+									" – ",
+									isoLabel(item.previousEnd),
+									" → ",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("b", { children: [
+										isoLabel(item.forecastStart),
+										" – ",
+										isoLabel(item.forecastEnd)
+									] })
+								] })] }, item.taskId)) }),
+								proposal.preview.affected.some((item) => !item.moved) ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", { children: "These dependent tasks move later" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: proposal.preview.affected.filter((item) => !item.moved).map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.taskName }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+									isoLabel(item.previousStart),
+									" → ",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: isoLabel(item.forecastStart) })
+								] })] }, item.taskId)) })] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "iksha-preview-note",
+									children: "No other tasks are affected."
+								}),
+								proposal.preview.warnings.map((warning, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+									className: "iksha-preview-warning",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { size: 14 }), warning.reason]
+								}, index)),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "iksha-preview-note",
+									children: proposal.preview.finish ? `Projected finish after this change: ${isoLabel(proposal.preview.finish)}` : "Finish date stays unconfirmed until every task has dates."
+								})
+							] })]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "iksha-preview-actions",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "outline",
+								disabled: proposal?.saving,
+								onClick: () => setProposal(null),
+								children: "Cancel"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								disabled: !proposal?.preview?.ok || proposal?.saving,
+								onClick: confirm,
+								children: proposal?.saving ? "Saving…" : "Confirm and save"
+							})]
 						})
 					]
 				})
@@ -29263,7 +29733,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("footer", {
 				className: "iksha-schedule-caption",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: stages.some((stage) => stage.sheetPlan) ? "Draft dates from sheet durations · Click a stage or work item for details" : "Dates from the saved project plan · Click a stage for its full breakdown · Click a work item for its discussion" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Calendar days" })]
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: stages.some((stage) => stage.sheetPlan) ? "Draft dates from sheet durations · Click a stage or work item for details" : editable ? "Drag a task to move it · Pull its right edge to change its length · Drop it on another task to swap · You confirm every change" : "Dates from the Google Sheet · Click a stage for its breakdown · Click a work item for its discussion" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Calendar days · Today is marked in red" })]
 			})
 		]
 	});
@@ -30747,8 +31217,9 @@ var localToday = () => {
 	const date = /* @__PURE__ */ new Date();
 	return date.getFullYear() + "-" + String(date.getMonth() + 1).padStart(2, "0") + "-" + String(date.getDate()).padStart(2, "0");
 };
-function ProjectTimelineWorkspace({ tasks = [], stages = [], members = [], projectId, projectStartDate, namespace = "founder", onOpenTask }) {
-	const [mode, setMode] = (0, import_react.useState)("sheet");
+function ProjectTimelineWorkspace({ tasks = [], stages = [], members = [], projectId, projectStartDate, namespace = "founder", onOpenTask, onSchedulePreview, onScheduleApply }) {
+	const [chosenMode, setMode] = (0, import_react.useState)(null);
+	const mode = chosenMode ?? (tasks.length ? "project" : "sheet");
 	const [planId, setPlanId] = (0, import_react.useState)(sheet_workflows_default.defaultPlanId);
 	const [start, setStart] = (0, import_react.useState)(projectStartDate?.slice(0, 10) || localToday());
 	const [selected, setSelected] = (0, import_react.useState)(null);
@@ -30854,7 +31325,9 @@ function ProjectTimelineWorkspace({ tasks = [], stages = [], members = [], proje
 				members,
 				projectId,
 				namespace,
-				onOpenTask
+				onOpenTask,
+				onSchedulePreview,
+				onScheduleApply
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
 				open: Boolean(selected),
@@ -44798,8 +45271,8 @@ function computeStageSchedule(startDateStr, stages = []) {
 	return stages.map((stage) => {
 		const start = parseDate(stage.startDate) || cursor;
 		const duration = Number(stage.durationDays);
-		const end = parseDate(stage.deadline || stage.endDate) || new Date(start.getTime() + (Number.isFinite(duration) && duration > 0 ? duration : 1) * 864e5);
-		cursor = end;
+		const end = parseDate(stage.deadline || stage.endDate) || new Date(start.getTime() + ((Number.isFinite(duration) && duration > 0 ? duration : 1) - 1) * 864e5);
+		cursor = new Date(end.getTime() + 864e5);
 		const label = (date) => date.toLocaleDateString(void 0, {
 			month: "short",
 			day: "numeric",
@@ -45745,7 +46218,13 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							onOpenTask: (task) => {
 								setSelectedTask(task);
 								setTaskDrawerOpen(true);
-							}
+							},
+							onSchedulePreview: project.telegramGroupChatId ? (moves) => previewSchedule(project.id, moves) : void 0,
+							onScheduleApply: project.telegramGroupChatId ? async (moves) => {
+								const result = await applySchedule(project.id, moves);
+								setTasks(result.tasks);
+								return result;
+							} : void 0
 						}, `${project.id}:${stages.map((stage) => stage.id).join(",")}`)
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {

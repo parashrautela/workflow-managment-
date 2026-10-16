@@ -41,13 +41,9 @@ export async function syncProjectTasks(state, project, callBotBridge, { readOnly
     throw new Error('Telegram task sync returned no task snapshot.');
   }
 
-  // Acknowledge sent updates only during write sync
-  if (!readOnly) {
-    for (const task of pending) {
-      task.telegramTaskId ||= `WEB-${task.id}`;
-      task.telegramSyncStatus = 'Synced';
-    }
-  }
+  // Give new web tasks their bot ID now so the snapshot below can match them.
+  if (!readOnly) for (const task of pending) task.telegramTaskId ||= `WEB-${task.id}`;
+  const sent = new Set(readOnly ? [] : pending.map((task) => task.id));
 
   // Hydrate local tasks from bot snapshot without destroying pending local edits
   for (const source of snapshot.tasks) {
@@ -87,12 +83,16 @@ export async function syncProjectTasks(state, project, callBotBridge, { readOnly
 
     if (task.deletedAt) continue;
 
+    // Tasks just sent keep their local edits through this hydration; they are acknowledged after it.
     const isPendingSync = task.telegramSyncStatus !== 'Synced';
     adaptBotTaskToWeb(task, source, { isLocalPendingSync: isPendingSync });
 
     const stage = project.stages?.find((item) => item.name === source.Stage);
     if (stage && !isPendingSync) task.stageId = stage.id;
   }
+
+  // Acknowledge only after hydration, so a stale snapshot cannot overwrite the edit that was just sent.
+  for (const task of pending) if (sent.has(task.id)) task.telegramSyncStatus = 'Synced';
 
   return true;
 }

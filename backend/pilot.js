@@ -109,7 +109,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
     return promise;
   };
   return async (req, res, url) => {
-    const match = url.pathname.match(/^\/api\/(founder|employee)\/(workflows|projects\/[^/]+\/(?:tasks|workflow\/start|client|workspace)|tasks\/[^/]+(?:\/(?:messages|read))?|decision-requests(?:\/[^/]+(?:\/(?:comment|approve|reject|convert|read))?)?|projects\/[^/]+\/members\/[^/]+|employees\/[^/]+\/disable)$/);
+    const match = url.pathname.match(/^\/api\/(founder|employee)\/(workflows|projects\/[^/]+\/(?:tasks|workflow\/start|client|workspace|schedule\/(?:preview|apply))|tasks\/[^/]+(?:\/(?:messages|read))?|decision-requests(?:\/[^/]+(?:\/(?:comment|approve|reject|convert|read))?)?|projects\/[^/]+\/members\/[^/]+|employees\/[^/]+\/disable)$/);
     if (!match) return false;
     const state = getState(); const user = actor(req, match[1]); const route = match[2]; const method = req.method;
     if (route === 'workflows' && method === 'GET') { json(res, 200, { workflows }); return true; }
@@ -126,6 +126,34 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
       if (project.internalOwnerMemberId === member.id) project.internalOwnerMemberId = '';
       for (const task of state.tasks) if (task.projectId === project.id && task.assigneeId === member.employeeId) task.assigneeId = '';
       audit('project_member_removed',project.id,{ memberId: member.id }); await save(); json(res,200,{ok:true}); return true;
+    }
+    if ((m = route.match(/^projects\/([^/]+)\/schedule\/(preview|apply)$/)) && method === 'POST') {
+      // Founder timeline moves. The bot's engine checks dependencies and writes the Google Sheet; the web never computes dates itself.
+      admin(user); const project = projectFor(state,user,m[1]);
+      if (!project.telegramGroupChatId || !project.workflowStartedAt) fail('Link this project to its Telegram group and start its plan before changing the schedule.',409);
+      const input = await body(req);
+      if (!Array.isArray(input.moves) || !input.moves.length || input.moves.length > 60) fail('Send between 1 and 60 schedule moves.');
+      const webIds = new Map();
+      const moves = input.moves.map((move) => {
+        const task = state.tasks.find((t) => t.id === move?.taskId && t.projectId === project.id && !t.deletedAt);
+        if (!task) fail('Task not found in this project.',404);
+        if (!task.telegramTaskId || task.telegramSyncStatus !== 'Synced') fail(`"${task.title}" has unsaved changes. Wait for sync, then move it.`,409);
+        if (!validDate(move.start) || !validDate(move.end) || !move.start || !move.end) fail('Moves need real YYYY-MM-DD start and end dates.');
+        webIds.set(task.telegramTaskId, task.id);
+        return { taskId: task.telegramTaskId, start: move.start, end: move.end, fromStart: move.fromStart, fromEnd: move.fromEnd, forecastOnly: move.forecastOnly === true };
+      });
+      let result;
+      try { result = await callBotBridge('/api/integrations/web/schedule/'+m[2], { groupChatId: project.telegramGroupChatId, moves, actorName: user.name || 'Founder' }); }
+      catch (error) { fail(error.message, /changed since|being saved|cannot|waits for/i.test(error.message) ? 409 : 502); }
+      const webId = (botId) => webIds.get(botId) || state.tasks.find((t) => t.projectId === project.id && t.telegramTaskId === botId)?.id || '';
+      const mapItems = (items = []) => items.map((item) => ({ ...item, webTaskId: webId(item.taskId) }));
+      if (m[2] === 'apply') {
+        try { await syncProjectTasks(state,project,callBotBridge,{readOnly:true}); } catch { /* the sheet is updated; the next refresh hydrates */ }
+        audit('schedule_changed',project.id,{actorId:user.id,moved:moves.map((move)=>move.taskId),affected:(result.affected||[]).length});
+        await save();
+      }
+      json(res,200,{ ok: result.ok, conflicts: mapItems(result.conflicts), warnings: mapItems(result.warnings), affected: mapItems(result.affected), finish: result.finish || '', tasks: state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt) });
+      return true;
     }
     if ((m = route.match(/^projects\/([^/]+)\/(tasks|workflow\/start|client|workspace)$/))) {
       const project = projectFor(state,user,m[1]);
@@ -187,8 +215,10 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
         const assigneeId = owner(state,project,input.assigneeId || 'founder');
         // Validate all input before mutating project or generating tasks.
         for (const stage of workflow.stages) {
-          const start = date.toISOString().slice(0,10); date.setUTCDate(date.getUTCDate()+stage.durationDays);
-          stages.push({ id: randomUUID(), name: stage.name, order: stages.length, durationDays: stage.durationDays, startDate:start, deadline:date.toISOString().slice(0,10), dependencies: stages.length ? [stages.at(-1).id] : [] });
+          // Deadlines are inclusive last days, matching the bot and the timeline. The next stage starts the day after.
+          const start = date.toISOString().slice(0,10); date.setUTCDate(date.getUTCDate()+stage.durationDays-1);
+          const deadline = date.toISOString().slice(0,10); date.setUTCDate(date.getUTCDate()+1);
+          stages.push({ id: randomUUID(), name: stage.name, order: stages.length, durationDays: stage.durationDays, startDate:start, deadline, dependencies: stages.length ? [stages.at(-1).id] : [] });
         }
         Object.assign(project,{workflowId:workflow.id,workflowStartedAt:timestamp(),startDate,status:'Active',phase:stages[0].name,stages});
         workflow.stages.forEach((stage,index) => stage.tasks.forEach((title) => makeTask(state,project,user,{title,description:'',status:'Open',assigneeId,stageId:stages[index].id,deadline:stages[index].deadline})));
