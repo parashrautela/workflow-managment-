@@ -1452,6 +1452,10 @@
     grid-template-rows: auto auto;
   }
 
+  .grid-rows-\[minmax\(0\,1fr\)\] {
+    grid-template-rows: minmax(0, 1fr);
+  }
+
   .flex-col {
     flex-direction: column;
   }
@@ -1689,6 +1693,10 @@
 
   .overflow-y-auto {
     overflow-y: auto;
+  }
+
+  .overscroll-contain {
+    overscroll-behavior: contain;
   }
 
   .rounded {

@@ -26145,6 +26145,21 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 	const [convertDesc, setConvertDesc] = (0, import_react.useState)("");
 	const [convertDeadline, setConvertDeadline] = (0, import_react.useState)("");
 	const scrollRef = (0, import_react.useRef)(null);
+	const panelRef = (0, import_react.useRef)(null);
+	const [panelHeight, setPanelHeight] = (0, import_react.useState)(null);
+	(0, import_react.useLayoutEffect)(() => {
+		const fit = () => {
+			const panel = panelRef.current;
+			if (!panel) return;
+			const top = panel.getBoundingClientRect().top + window.scrollY;
+			const bottomGap = window.matchMedia("(min-width: 768px)").matches ? 32 : 104;
+			const next = Math.max(420, Math.floor(window.innerHeight - top - bottomGap));
+			setPanelHeight((current) => current === next ? current : next);
+		};
+		fit();
+		window.addEventListener("resize", fit);
+		return () => window.removeEventListener("resize", fit);
+	});
 	const load = async () => {
 		try {
 			const data = await api$3("/api/founder/decision-requests");
@@ -26357,7 +26372,9 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "grid min-h-[min(70dvh,740px)] grid-cols-[minmax(0,1fr)] overflow-hidden rounded-2xl border bg-card shadow-sm lg:grid-cols-[300px_minmax(0,1fr)]",
+				ref: panelRef,
+				style: panelHeight ? { height: panelHeight } : void 0,
+				className: "grid min-h-[420px] grid-cols-[minmax(0,1fr)] grid-rows-[minmax(0,1fr)] overflow-hidden rounded-2xl border bg-card shadow-sm lg:grid-cols-[300px_minmax(0,1fr)]",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("aside", {
 					className: `${mobileThread ? "hidden lg:flex" : "flex"} min-h-0 min-w-0 flex-col border-r`,
 					"aria-label": "Decision conversations",
@@ -26396,7 +26413,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 							})]
 						})]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "chat-scroll min-h-0 flex-1 overflow-y-auto",
+						className: "chat-scroll min-h-0 flex-1 overflow-y-auto overscroll-contain",
 						children: visible.length ? visible.map((item) => {
 							const project = projects.find((candidate) => candidate.id === item.projectId);
 							return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
@@ -26467,7 +26484,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 						})
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
-					className: `${mobileThread ? "flex" : "hidden lg:flex"} min-w-0 flex-col`,
+					className: `${mobileThread ? "flex" : "hidden lg:flex"} min-h-0 min-w-0 flex-col`,
 					"aria-label": "Selected decision conversation",
 					children: selected ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -26549,7 +26566,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							ref: scrollRef,
-							className: "chat-scroll min-h-[300px] flex-1 space-y-5 overflow-y-auto bg-muted/30 px-4 py-6 sm:px-6",
+							className: "chat-scroll min-h-0 flex-1 space-y-5 overflow-y-auto overscroll-contain bg-muted/30 px-4 py-6 sm:px-6",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 									className: "text-center text-[11px] text-muted-foreground",
