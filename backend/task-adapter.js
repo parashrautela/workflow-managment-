@@ -117,6 +117,9 @@ export function adaptBotTaskToWeb(task, source, { isLocalPendingSync = false } =
   task.sourceActualStart = source.ActualStart || '';
   task.sourceActualEnd = source.ActualEnd || '';
   task.sourceBlockedReason = source.BlockedReason || '';
+  // Who the sheet says does the work: a named person when assigned, otherwise the plan's role (Designer, Client…).
+  task.sourceAssigneeName = source.AssignedName || '';
+  task.sourceRole = source.AssignedRole || '';
   task.sourceSequence = source.Sequence !== undefined ? String(source.Sequence) : '';
 
   // Only update simplified web fields if the task does not have un-synced local edits

@@ -1,5 +1,5 @@
 // frontend/src/components/DecisionInbox.jsx
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   ArrowLeft, Check, ExternalLink, MessageSquare, RefreshCw, Search, Send,
   Settings2, AlertTriangle, AlertCircle, CheckCircle2, Plus, XCircle, FileText
@@ -57,6 +57,23 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
   const [convertDeadline, setConvertDeadline] = useState("");
 
   const scrollRef = useRef(null);
+  // The inbox fills exactly the rest of the screen, so its bottom edge is always visible and only the
+  // conversation list and the thread scroll inside it, like a mail app. Below 420px tall it falls back to page scrolling.
+  const panelRef = useRef(null);
+  const [panelHeight, setPanelHeight] = useState(null);
+  useLayoutEffect(() => {
+    const fit = () => {
+      const panel = panelRef.current;
+      if (!panel) return;
+      const top = panel.getBoundingClientRect().top + window.scrollY;
+      const bottomGap = window.matchMedia("(min-width: 768px)").matches ? 32 : 104; // page padding, plus the phone tab bar
+      const next = Math.max(420, Math.floor(window.innerHeight - top - bottomGap));
+      setPanelHeight((current) => (current === next ? current : next));
+    };
+    fit();
+    window.addEventListener("resize", fit);
+    return () => window.removeEventListener("resize", fit);
+  });
 
   const load = async () => {
     try {
@@ -225,7 +242,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
         </div>
       )}
 
-      <div className="grid min-h-[min(70dvh,740px)] grid-cols-[minmax(0,1fr)] overflow-hidden rounded-2xl border bg-card shadow-sm lg:grid-cols-[300px_minmax(0,1fr)]">
+      <div ref={panelRef} style={panelHeight ? { height: panelHeight } : undefined} className="grid min-h-[420px] grid-cols-[minmax(0,1fr)] grid-rows-[minmax(0,1fr)] overflow-hidden rounded-2xl border bg-card shadow-sm lg:grid-cols-[300px_minmax(0,1fr)]">
         {/* Left conversations list */}
         <aside className={`${mobileThread ? "hidden lg:flex" : "flex"} min-h-0 min-w-0 flex-col border-r`} aria-label="Decision conversations">
           <div className="space-y-3 border-b p-3">
@@ -246,7 +263,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
             </div>
           </div>
 
-          <div className="chat-scroll min-h-0 flex-1 overflow-y-auto">
+          <div className="chat-scroll min-h-0 flex-1 overflow-y-auto overscroll-contain">
             {visible.length ? visible.map((item) => {
               const project = projects.find((candidate) => candidate.id === item.projectId);
               return (
@@ -292,7 +309,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
         </aside>
 
         {/* Right conversation view */}
-        <section className={`${mobileThread ? "flex" : "hidden lg:flex"} min-w-0 flex-col`} aria-label="Selected decision conversation">
+        <section className={`${mobileThread ? "flex" : "hidden lg:flex"} min-h-0 min-w-0 flex-col`} aria-label="Selected decision conversation">
           {selected ? (
             <>
               <div className="flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3">
@@ -348,7 +365,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
                 </div>
               </div>
 
-              <div ref={scrollRef} className="chat-scroll min-h-[300px] flex-1 space-y-5 overflow-y-auto bg-muted/30 px-4 py-6 sm:px-6">
+              <div ref={scrollRef} className="chat-scroll min-h-0 flex-1 space-y-5 overflow-y-auto overscroll-contain bg-muted/30 px-4 py-6 sm:px-6">
                 <p className="text-center text-[11px] text-muted-foreground">Request received {when(selected.createdAt)}</p>
 
                 {/* Delivery Status Warning */}

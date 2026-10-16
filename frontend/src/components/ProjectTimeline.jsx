@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { calendarDate, calendarDay as DAY, timelineItems } from '@/lib/timeline';
 import { canMove, itemStatus, moveFor, scheduleSummary, swapMoves, todayDate, undoMoves, unscheduledReason } from '@/lib/timelineStatus';
 import { TimelineStageDetails } from '@/components/TimelineStageDetails';
+import { avatarHue, buildPeopleIndex } from '@/lib/taskPeople';
 
 const dateLabel = (value) => new Date(value).toLocaleDateString([], { month: 'short', day: 'numeric', timeZone: 'UTC' });
 const isoLabel = (value) => (value ? dateLabel(calendarDate(value)) : 'no date');
@@ -21,6 +22,32 @@ function verticalScroller(element) {
   }
   return document.scrollingElement;
 }
+
+function Avatar({ person }) {
+  return <span className={`iksha-avatar ${person.isRole ? 'is-role' : ''}`} style={{ '--hue': avatarHue(person.name) }}>{person.initials}</span>;
+}
+function AvatarStack({ people, max = 2 }) {
+  return <span className="iksha-avatar-stack">{people.slice(0, max).map((person) => <Avatar key={person.name} person={person} />)}{people.length > max && <span className="iksha-avatar is-more">+{people.length - max}</span>}</span>;
+}
+// On a bar: who they need work from › who does it › who they hand it to. Narrow bars show only the owner.
+function PeopleStrip({ people, compact }) {
+  if (!people.owner && !people.from.length && !people.to.length) return null;
+  return <span className="iksha-people" aria-hidden="true">
+    {!compact && people.from.length > 0 && <><AvatarStack people={people.from} /><i className="iksha-flow">›</i></>}
+    {people.owner && <Avatar person={people.owner} />}
+    {!compact && people.to.length > 0 && <><i className="iksha-flow">›</i><AvatarStack people={people.to} /></>}
+  </span>;
+}
+// Spelled out when a task is picked up: the full chain with names.
+function PeopleFlow({ people }) {
+  const row = (label, list) => list.length > 0 && <div className="iksha-flow-row"><span>{label}</span><span>{list.map((person) => <span key={person.name} className="iksha-flow-person"><Avatar person={person} />{person.name}{person.isRole ? ' (role)' : ''}</span>)}</span></div>;
+  return <div className="iksha-people-flow">{row('Needs work from', people.from)}{row('Done by', people.owner ? [people.owner] : [])}{row('Hands over to', people.to)}</div>;
+}
+const peopleSentence = (people) => [
+  people.from.length ? `needs work from ${people.from.map((person) => person.name).join(', ')}` : '',
+  people.owner ? `done by ${people.owner.name}` : '',
+  people.to.length ? `hands over to ${people.to.map((person) => person.name).join(', ')}` : '',
+].filter(Boolean).join(', ');
 
 // Work outside the visible window: a small arrow pinned to the side it lies on, tap to jump there.
 function OffscreenChip({ value, before, onClick }) {
@@ -52,6 +79,9 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
   const scrollerRef = useRef(null);
   const datesRef = useRef(null);
   const handlers = useRef({});
+  // Date arrows for off-screen work are optional; the choice is remembered on this device.
+  const [showArrows, setShowArrows] = useState(() => { try { return localStorage.getItem('iksha.timeline.arrows') === 'on'; } catch { return false; } });
+  const toggleArrows = () => setShowArrows((current) => { try { localStorage.setItem('iksha.timeline.arrows', current ? 'off' : 'on'); } catch { /* private mode */ } return !current; });
   // Swallow the click that follows a drag, but never a later tap: some browsers skip that click after a touch drag.
   const swallowNextClick = () => { suppressClick.current = true; setTimeout(() => { suppressClick.current = false; }, 450); };
 
@@ -61,6 +91,7 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
   const narrowDays = !compactHeader && dayWidth < 60;
   const allGroups = [...stages, { id: 'other', name: 'Additional work' }].filter((stage) => items.some((item) => (item.stage?.id || 'other') === stage.id));
   const ownerName = (task) => members.find((member) => (member.employeeId || member.id) === task.assigneeId)?.name || (task.assigneeId === 'founder' ? 'Founder' : task.assigneeName || 'Unassigned');
+  const peopleOf = buildPeopleIndex(tasks, ownerName);
   const query = search.trim().toLowerCase();
   const visible = items.filter((item) => `${item.task.title} ${item.stage?.name || 'Additional work'} ${ownerName(item.task)}`.toLowerCase().includes(query));
   const undated = visible.filter((item) => (item.start === null || item.end === null) && item.task.status !== 'Completed');
@@ -282,6 +313,7 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
         <Button variant="outline" size="sm" onClick={goToday}>Today</Button>
         <div className="iksha-zoom">{ZOOMS.map((zoom) => <button key={zoom.days} aria-pressed={days === zoom.days} className={days === zoom.days ? 'active' : ''} onClick={() => setDays(zoom.days)}>{zoom.label}</button>)}</div>
         {scheduled.length > 0 && <Button variant="outline" size="sm" aria-pressed={!ZOOMS.some((zoom) => zoom.days === days)} onClick={() => { const first = Math.min(...scheduled.map((item) => item.start)); setOrigin(first); setDays(Math.max(28, Math.ceil((Math.max(...scheduled.map((item) => item.end)) - first) / DAY))); }}>Entire plan</Button>}
+        <Button variant="outline" size="sm" aria-pressed={showArrows} className={showArrows ? 'iksha-toggle-on' : ''} onClick={toggleArrows}>{showArrows ? 'Hide date arrows' : 'Show date arrows'}</Button>
         <Button variant="outline" size="sm" onClick={() => setCollapsed(allGroups.some((stage) => collapsed.has(stage.id)) ? new Set() : new Set(allGroups.map((stage) => stage.id)))}>{allGroups.some((stage) => collapsed.has(stage.id)) ? 'Expand all' : 'Collapse all'}</Button>
       </div>
     </div>
@@ -329,7 +361,7 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
                   {groupStart !== null && groupEnd !== null && groupEnd > from && groupStart < to
                     ? <button className="iksha-stage-range" aria-label={`Open ${stage.name} stage details`} title={`${stage.name} · ${dateLabel(groupStart)} – ${dateLabel(groupEnd - DAY)}`} onClick={() => setSelectedStageId(stage.id)} style={{ left: (Math.max(groupStart, from) - from) / DAY * dayWidth, width: Math.max(20, (Math.min(groupEnd, to) - Math.max(groupStart, from)) / DAY * dayWidth - 3) }}><span><strong>{stage.name}</strong><small>{dateLabel(groupStart)} – {dateLabel(groupEnd - DAY)}</small></span><ArrowUpRight size={14} /></button>
                     : groupStart === null ? <button className="iksha-unscheduled" onClick={() => setSelectedStageId(stage.id)}><ArrowUpRight size={12} />Stage details</button> : null}
-                  {groupStart !== null && groupEnd !== null && edge(groupStart, groupEnd) && <OffscreenChip value={edge(groupStart, groupEnd) === 'before' ? groupEnd - DAY : groupStart} before={edge(groupStart, groupEnd) === 'before'} onClick={() => reveal(groupStart)} />}
+                  {showArrows && groupStart !== null && groupEnd !== null && edge(groupStart, groupEnd) && <OffscreenChip value={edge(groupStart, groupEnd) === 'before' ? groupEnd - DAY : groupStart} before={edge(groupStart, groupEnd) === 'before'} onClick={() => reveal(groupStart)} />}
                 </div>
               </div>
               {!isCollapsed && ordered.map((item) => {
@@ -347,10 +379,11 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
                 const Icon = STATUS_ICON[status.key];
                 const flag = status.late && status.key !== 'late' ? `${status.label} · late` : status.label;
                 const barWidth = Math.max(12, (Math.min(end ?? 0, to) - Math.max(start ?? 0, from)) / DAY * dayWidth - 3);
+                const people = peopleOf(item.task);
                 return <div className={`iksha-schedule-row iksha-task-row ${isTarget ? 'is-swap-target' : ''} ${picked === item.task.id ? 'is-picked' : ''}`} key={item.task.id} data-task-row={item.task.id}>
                   <button className="iksha-schedule-label" onClick={() => onOpenTask(item.task)}>
                     <span className={`iksha-task-state state-${status.key}`}>{complete(item.task) && <Check size={10} />}</span>
-                    <span><strong>{shortTitle(item.task, item.stage)}</strong><small>{ownerName(item.task)} · {flag}</small></span>
+                    <span><strong>{shortTitle(item.task, item.stage)}</strong><small>{people.owner?.name || 'Unassigned'} · {flag}</small></span>
                   </button>
                   <div className="iksha-schedule-track">
                     {inRange
@@ -358,7 +391,7 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
                         key="bar"
                         className={`iksha-task-block status-${status.key} ${status.late ? 'is-late' : ''} ${barWidth < 64 ? 'is-short' : ''} ${movable ? 'is-movable' : ''} ${dragging ? 'is-dragging' : ''} ${dragging && drag.touch ? 'is-lifted' : ''}`}
                         title={`${item.task.title} · ${dateLabel(start)} – ${dateLabel(end - DAY)} · ${flag}${movable ? ' · Drag to move, pull the edge to resize, drop on another task to swap, or press Alt+Arrow' : ''}`}
-                        aria-label={`${item.task.title}, ${dateLabel(start)} to ${dateLabel(end - DAY)}, ${flag}, ${ownerName(item.task)}${movable ? '. Alt plus arrow keys move it by a day' : ''}`}
+                        aria-label={`${item.task.title}, ${dateLabel(start)} to ${dateLabel(end - DAY)}, ${flag}${peopleSentence(people) ? ', ' + peopleSentence(people) : ''}${movable ? '. Alt plus arrow keys move it by a day' : ''}`}
                         style={{ left: Math.min(days * dayWidth - 12, Math.max(0, (Math.max(start, from) - from) / DAY * dayWidth)), width: barWidth }}
                         onPointerDown={(event) => onBarPointerDown(event, item)}
                         onPointerMove={(event) => { if (dragRef.current && !dragRef.current.touch) updateDrag(event.clientX, event.clientY); }}
@@ -369,11 +402,12 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
                         onClick={() => { if (suppressClick.current) { suppressClick.current = false; return; } onOpenTask(item.task); }}
                       >
                         {Icon && <Icon size={12} aria-hidden="true" className="iksha-status-icon" />}
+                        {barWidth >= 64 && <PeopleStrip people={people} compact={barWidth < 170} />}
                         <span><strong>{shortTitle(item.task, item.stage)}</strong><small>{dateLabel(start)} – {dateLabel(end - DAY)} · {flag}</small></span>
                         {movable && <i className="iksha-resize-handle" aria-hidden="true" />}
                       </button>
                       : !isScheduled ? <button key="chip" className="iksha-unscheduled" onClick={() => onOpenTask(item.task)}><Clock3 size={12} />No dates · see below</button> : null}
-                    {isScheduled && !dragging && edge(item.start, item.end) && <OffscreenChip key="edge" value={edge(item.start, item.end) === 'before' ? item.end - DAY : item.start} before={edge(item.start, item.end) === 'before'} onClick={() => reveal(item.start)} />}
+                    {showArrows && isScheduled && !dragging && edge(item.start, item.end) && <OffscreenChip key="edge" value={edge(item.start, item.end) === 'before' ? item.end - DAY : item.start} before={edge(item.start, item.end) === 'before'} onClick={() => reveal(item.start)} />}
                   </div>
                 </div>;
               })}
@@ -391,6 +425,7 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
 
     {pickedItem && editable && canMove(pickedItem) && !proposal && <div className="iksha-adjust-bar" role="dialog" aria-label={`Adjust ${pickedItem.task.title}`}>
       <div className="iksha-adjust-title"><strong>{pickedItem.task.title}</strong><small>{dateLabel(pickedItem.start)} – {dateLabel(pickedItem.end - DAY)} · {Math.round((pickedItem.end - pickedItem.start) / DAY)} day{pickedItem.end - pickedItem.start === DAY ? '' : 's'}</small></div>
+      <PeopleFlow people={peopleOf(pickedItem.task)} />
       <div className="iksha-adjust-actions">
         <button onClick={() => nudge(pickedItem, -1, -1, `Move “${pickedItem.task.title}” a day earlier`)}><ArrowLeft size={16} />Earlier</button>
         <button onClick={() => nudge(pickedItem, 1, 1, `Move “${pickedItem.task.title}” a day later`)}>Later<ArrowRight size={16} /></button>
