@@ -1138,20 +1138,12 @@
     min-height: calc(var(--spacing) * 64);
   }
 
-  .min-h-\[300px\] {
-    min-height: 300px;
-  }
-
   .min-h-\[420px\] {
     min-height: 420px;
   }
 
   .min-h-\[480px\] {
     min-height: 480px;
-  }
-
-  .min-h-\[min\(70dvh\,740px\)\] {
-    min-height: min(70dvh, 740px);
   }
 
   .min-h-dvh {
@@ -2048,6 +2040,16 @@
   @supports (color: color-mix(in lab, red, red)) {
     .border-primary\/20 {
       border-color: color-mix(in oklab, var(--primary) 20%, transparent);
+    }
+  }
+
+  .border-primary\/25 {
+    border-color: var(--primary);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-primary\/25 {
+      border-color: color-mix(in oklab, var(--primary) 25%, transparent);
     }
   }
 
@@ -3056,6 +3058,10 @@
 
   .underline {
     text-decoration-line: underline;
+  }
+
+  .underline-offset-2 {
+    text-underline-offset: 2px;
   }
 
   .underline-offset-4 {
