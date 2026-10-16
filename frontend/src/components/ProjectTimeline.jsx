@@ -72,6 +72,24 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
 
   // The date header sits outside the horizontal scroller so it can pin under the app bar; it follows the scroller sideways.
   const syncHeader = () => { if (datesRef.current && scrollerRef.current) datesRef.current.style.transform = `translateX(${-scrollerRef.current.scrollLeft}px)`; };
+  // The days actually on screen (a phone shows about five). Work outside them gets an arrow pinned to that edge.
+  const [view, setView] = useState(null);
+  const measureView = () => {
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+    const label = scroller.querySelector('.iksha-schedule-label')?.offsetWidth || 0;
+    const first = Math.floor(scroller.scrollLeft / dayWidth);
+    const last = Math.ceil((scroller.scrollLeft + scroller.clientWidth - label) / dayWidth);
+    setView((current) => (current?.first === first && current?.last === last && current?.origin === from && current?.dayWidth === dayWidth ? current : { first, last, origin: from, dayWidth }));
+  };
+  const onGridScroll = () => { syncHeader(); measureView(); };
+  useEffect(() => { window.addEventListener('resize', measureView); return () => window.removeEventListener('resize', measureView); });
+  // Jump to work outside the view: scroll within the loaded window when possible, otherwise move the window.
+  const reveal = (value) => {
+    const scroller = scrollerRef.current;
+    if (scroller && value >= from && value < to) scroller.scrollTo({ left: Math.max(0, (value - from) / DAY * dayWidth - dayWidth), behavior: 'smooth' });
+    else { scrollTo.current = 'start'; setOrigin(value - DAY); }
+  };
   useLayoutEffect(syncHeader);
   // Phones show only a few days, so land on today rather than the start of the window. Paging resets to the window start.
   const scrollTo = useRef('today');
@@ -83,6 +101,7 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
     if (target === 'today' && todayInView) scroller.scrollLeft = Math.max(0, (today - from) / DAY * dayWidth - dayWidth);
     else if (target === 'start') scroller.scrollLeft = 0;
     syncHeader();
+    measureView();
   }, [origin, days, items.length > 0]);
   const goToday = () => { scrollTo.current = 'today'; setOrigin(today - 7 * DAY); };
   const page = (direction) => { scrollTo.current = 'start'; setOrigin(origin + direction * Math.max(7, Math.round(days / 2)) * DAY); };
@@ -232,6 +251,11 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
     nudge(item, event.shiftKey ? 0 : step, step, event.shiftKey ? `Change the length of “${item.task.title}”` : `Move “${item.task.title}”`);
   }
 
+  // Is a date range left or right of the days on screen? Before the first measurement, the whole window counts as on screen.
+  const viewFrom = view && view.origin === from && view.dayWidth === dayWidth ? from + view.first * DAY : from;
+  const viewTo = view && view.origin === from && view.dayWidth === dayWidth ? from + view.last * DAY : to;
+  const edge = (start, end) => (end <= viewFrom ? 'before' : start >= viewTo ? 'after' : null);
+
   const headline = [
     summary.late && `${summary.late} late`,
     summary.blocked && `${summary.blocked} blocked`,
@@ -283,7 +307,7 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
         </div>
       </div>
 
-      <div className="iksha-schedule-scroll" ref={scrollerRef} onScroll={syncHeader}>
+      <div className="iksha-schedule-scroll" ref={scrollerRef} onScroll={onGridScroll}>
         <div className="iksha-schedule-grid">
           {allGroups.map((stage, index) => {
             const group = visible.filter((item) => (item.stage?.id || 'other') === stage.id);
@@ -304,7 +328,8 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
                 <div className="iksha-schedule-track">
                   {groupStart !== null && groupEnd !== null && groupEnd > from && groupStart < to
                     ? <button className="iksha-stage-range" aria-label={`Open ${stage.name} stage details`} title={`${stage.name} · ${dateLabel(groupStart)} – ${dateLabel(groupEnd - DAY)}`} onClick={() => setSelectedStageId(stage.id)} style={{ left: (Math.max(groupStart, from) - from) / DAY * dayWidth, width: Math.max(20, (Math.min(groupEnd, to) - Math.max(groupStart, from)) / DAY * dayWidth - 3) }}><span><strong>{stage.name}</strong><small>{dateLabel(groupStart)} – {dateLabel(groupEnd - DAY)}</small></span><ArrowUpRight size={14} /></button>
-                    : groupStart !== null ? <OffscreenChip value={groupEnd !== null && groupEnd <= from ? groupEnd - DAY : groupStart} before={groupEnd !== null && groupEnd <= from} onClick={() => setOrigin(groupStart - 3 * DAY)} /> : <button className="iksha-unscheduled" onClick={() => setSelectedStageId(stage.id)}><ArrowUpRight size={12} />Stage details</button>}
+                    : groupStart === null ? <button className="iksha-unscheduled" onClick={() => setSelectedStageId(stage.id)}><ArrowUpRight size={12} />Stage details</button> : null}
+                  {groupStart !== null && groupEnd !== null && edge(groupStart, groupEnd) && <OffscreenChip value={edge(groupStart, groupEnd) === 'before' ? groupEnd - DAY : groupStart} before={edge(groupStart, groupEnd) === 'before'} onClick={() => reveal(groupStart)} />}
                 </div>
               </div>
               {!isCollapsed && ordered.map((item) => {
@@ -347,7 +372,8 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
                         <span><strong>{shortTitle(item.task, item.stage)}</strong><small>{dateLabel(start)} – {dateLabel(end - DAY)} · {flag}</small></span>
                         {movable && <i className="iksha-resize-handle" aria-hidden="true" />}
                       </button>
-                      : isScheduled ? <OffscreenChip key="chip" value={item.end <= from ? item.end - DAY : item.start} before={item.end <= from} onClick={() => setOrigin(item.start - 3 * DAY)} /> : <button key="chip" className="iksha-unscheduled" onClick={() => onOpenTask(item.task)}><Clock3 size={12} />No dates · see below</button>}
+                      : !isScheduled ? <button key="chip" className="iksha-unscheduled" onClick={() => onOpenTask(item.task)}><Clock3 size={12} />No dates · see below</button> : null}
+                    {isScheduled && !dragging && edge(item.start, item.end) && <OffscreenChip key="edge" value={edge(item.start, item.end) === 'before' ? item.end - DAY : item.start} before={edge(item.start, item.end) === 'before'} onClick={() => reveal(item.start)} />}
                   </div>
                 </div>;
               })}

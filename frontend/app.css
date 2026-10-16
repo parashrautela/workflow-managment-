@@ -5903,4 +5903,17 @@ svg.react-flow__connectionline {
 .iksha-sheet-workspace,.iksha-timeline{min-width:0;width:100%;max-width:100%}
 .iksha-timeline{overflow-x:clip}
 .iksha-timeline-toolbar,.iksha-toolbar-chips,.iksha-schedule-frame{min-width:0;max-width:100%}
+
+/* The name column always sits above the grid: bars, the today line and arrows slide underneath it. */
+.iksha-schedule-frame{--label-width:240px}
+.iksha-schedule-frame .iksha-schedule-label{width:var(--label-width);z-index:5}
+.iksha-schedule-frame .iksha-schedule-grid{width:calc(var(--label-width) + var(--timeline-width))}
+.iksha-schedule-frame .iksha-task-block.is-dragging{z-index:7}
+/* Edge arrows and "no dates" chips are pinned to the visible edges of the grid, never hidden under the names. */
+.iksha-schedule-frame .iksha-schedule-track{display:flex;align-items:center}
+.iksha-schedule-frame .iksha-offscreen{position:sticky;top:auto;transform:none;z-index:4;box-shadow:0 1px 3px rgba(40,60,40,.12)}
+.iksha-schedule-frame .iksha-offscreen.is-before{left:calc(var(--label-width) + 6px);margin-right:auto}
+.iksha-schedule-frame .iksha-offscreen.is-after{right:6px;margin-left:auto}
+.iksha-schedule-frame .iksha-unscheduled{position:sticky;left:calc(var(--label-width) + 8px);top:auto;margin-right:auto}
+@media(max-width:640px){.iksha-schedule-frame{--label-width:132px}}
 /*$vite$:1*/

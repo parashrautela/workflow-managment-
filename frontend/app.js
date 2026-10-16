@@ -29287,6 +29287,39 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 	const syncHeader = () => {
 		if (datesRef.current && scrollerRef.current) datesRef.current.style.transform = `translateX(${-scrollerRef.current.scrollLeft}px)`;
 	};
+	const [view, setView] = (0, import_react.useState)(null);
+	const measureView = () => {
+		const scroller = scrollerRef.current;
+		if (!scroller) return;
+		const label = scroller.querySelector(".iksha-schedule-label")?.offsetWidth || 0;
+		const first = Math.floor(scroller.scrollLeft / dayWidth);
+		const last = Math.ceil((scroller.scrollLeft + scroller.clientWidth - label) / dayWidth);
+		setView((current) => current?.first === first && current?.last === last && current?.origin === from && current?.dayWidth === dayWidth ? current : {
+			first,
+			last,
+			origin: from,
+			dayWidth
+		});
+	};
+	const onGridScroll = () => {
+		syncHeader();
+		measureView();
+	};
+	(0, import_react.useEffect)(() => {
+		window.addEventListener("resize", measureView);
+		return () => window.removeEventListener("resize", measureView);
+	});
+	const reveal = (value) => {
+		const scroller = scrollerRef.current;
+		if (scroller && value >= from && value < to) scroller.scrollTo({
+			left: Math.max(0, (value - from) / calendarDay * dayWidth - dayWidth),
+			behavior: "smooth"
+		});
+		else {
+			scrollTo.current = "start";
+			setOrigin(value - calendarDay);
+		}
+	};
 	(0, import_react.useLayoutEffect)(syncHeader);
 	const scrollTo = (0, import_react.useRef)("today");
 	(0, import_react.useLayoutEffect)(() => {
@@ -29297,6 +29330,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 		if (target === "today" && todayInView) scroller.scrollLeft = Math.max(0, (today - from) / calendarDay * dayWidth - dayWidth);
 		else if (target === "start") scroller.scrollLeft = 0;
 		syncHeader();
+		measureView();
 	}, [
 		origin,
 		days,
@@ -29518,6 +29552,9 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 		const step = event.key === "ArrowRight" ? 1 : -1;
 		nudge(item, event.shiftKey ? 0 : step, step, event.shiftKey ? `Change the length of “${item.task.title}”` : `Move “${item.task.title}”`);
 	}
+	const viewFrom = view && view.origin === from && view.dayWidth === dayWidth ? from + view.first * calendarDay : from;
+	const viewTo = view && view.origin === from && view.dayWidth === dayWidth ? from + view.last * calendarDay : to;
+	const edge = (start, end) => end <= viewFrom ? "before" : start >= viewTo ? "after" : null;
 	const headline = [
 		summary.late && `${summary.late} late`,
 		summary.blocked && `${summary.blocked} blocked`,
@@ -29706,7 +29743,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 					className: "iksha-schedule-scroll",
 					ref: scrollerRef,
-					onScroll: syncHeader,
+					onScroll: onGridScroll,
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "iksha-schedule-grid",
 						children: [allGroups.map((stage, index) => {
@@ -29740,9 +29777,9 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 											] })] }),
 											isCollapsed ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, { size: 14 }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, { size: 14 })
 										]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "iksha-schedule-track",
-										children: groupStart !== null && groupEnd !== null && groupEnd > from && groupStart < to ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+										children: [groupStart !== null && groupEnd !== null && groupEnd > from && groupStart < to ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 											className: "iksha-stage-range",
 											"aria-label": `Open ${stage.name} stage details`,
 											title: `${stage.name} · ${dateLabel(groupStart)} – ${dateLabel(groupEnd - calendarDay)}`,
@@ -29756,15 +29793,15 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 												" – ",
 												dateLabel(groupEnd - calendarDay)
 											] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 14 })]
-										}) : groupStart !== null ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(OffscreenChip, {
-											value: groupEnd !== null && groupEnd <= from ? groupEnd - calendarDay : groupStart,
-											before: groupEnd !== null && groupEnd <= from,
-											onClick: () => setOrigin(groupStart - 3 * calendarDay)
-										}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+										}) : groupStart === null ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 											className: "iksha-unscheduled",
 											onClick: () => setSelectedStageId(stage.id),
 											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 12 }), "Stage details"]
-										})
+										}) : null, groupStart !== null && groupEnd !== null && edge(groupStart, groupEnd) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(OffscreenChip, {
+											value: edge(groupStart, groupEnd) === "before" ? groupEnd - 864e5 : groupStart,
+											before: edge(groupStart, groupEnd) === "before",
+											onClick: () => reveal(groupStart)
+										})]
 									})]
 								}), !isCollapsed && ordered.map((item) => {
 									const status = itemStatus(item, today);
@@ -29794,9 +29831,9 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 												" · ",
 												flag
 											] })] })]
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 											className: "iksha-schedule-track",
-											children: inRange ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+											children: [inRange ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 												className: `iksha-task-block status-${status.key} ${status.late ? "is-late" : ""} ${barWidth < 64 ? "is-short" : ""} ${movable ? "is-movable" : ""} ${dragging ? "is-dragging" : ""} ${dragging && drag.touch ? "is-lifted" : ""}`,
 												title: `${item.task.title} · ${dateLabel(start)} – ${dateLabel(end - 864e5)} · ${flag}${movable ? " · Drag to move, pull the edge to resize, drop on another task to swap, or press Alt+Arrow" : ""}`,
 												"aria-label": `${item.task.title}, ${dateLabel(start)} to ${dateLabel(end - 864e5)}, ${flag}, ${ownerName(item.task)}${movable ? ". Alt plus arrow keys move it by a day" : ""}`,
@@ -29843,15 +29880,15 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 														"aria-hidden": "true"
 													})
 												]
-											}, "bar") : isScheduled ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(OffscreenChip, {
-												value: item.end <= from ? item.end - 864e5 : item.start,
-												before: item.end <= from,
-												onClick: () => setOrigin(item.start - 2592e5)
-											}, "chip") : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+											}, "bar") : !isScheduled ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 												className: "iksha-unscheduled",
 												onClick: () => onOpenTask(item.task),
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock3, { size: 12 }), "No dates · see below"]
-											}, "chip")
+											}, "chip") : null, isScheduled && !dragging && edge(item.start, item.end) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(OffscreenChip, {
+												value: edge(item.start, item.end) === "before" ? item.end - 864e5 : item.start,
+												before: edge(item.start, item.end) === "before",
+												onClick: () => reveal(item.start)
+											}, "edge")]
 										})]
 									}, item.task.id);
 								})]
