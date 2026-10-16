@@ -60,3 +60,8 @@ test('without AI, or when it fails, a factual draft is returned instead', async 
   const failing = await suggestReply(context, { apiKey: 'test-key', fetchImpl: async () => new Response('nope', { status: 500 }) });
   assert.equal(failing.ai, false);
 });
+
+test('a decision the founder is confirming leads the draft, with or without AI', async () => {
+  const context = { query: { message: 'More time?' }, project: { projected_finish: '9 Nov' }, schedule: { in_progress: [], next_up: [], late: [], recently_completed: [] }, decision: '"Drawing" needs a little more time and will now be ready by 24 Oct.' };
+  assert.equal(fallbackReply(context), 'Thanks for letting us know. "Drawing" needs a little more time and will now be ready by 24 Oct.');
+});

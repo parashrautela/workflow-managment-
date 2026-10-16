@@ -84,7 +84,7 @@ async function callBotBridge(route, payload) {
   if (!botBridgeUrl || !integrationSecret) throw new Error('Bot integration is not configured.');
   const response = await fetch(`${botBridgeUrl}${route}`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${integrationSecret}` }, body: JSON.stringify(payload), signal: AbortSignal.timeout(route.endsWith('/content') ? 45_000 : 30_000) });
   const data = await response.json().catch(() => ({}));
-  if (!response.ok) throw new Error(data.error || 'Telegram bot did not accept the update.');
+  if (!response.ok) throw Object.assign(new Error(data.error || 'Telegram bot did not accept the update.'), { botStatus: response.status, botBody: data });
   return data;
 }
 async function body(req) {
@@ -283,7 +283,7 @@ async function handleRequest(req, res) {
       const message = shortText(input.OriginalMessage, 4096);
       const context = shortText(input.RequestContext, 2000);
       const sender = shortText(input.OriginalSenderName, 160);
-      if (!id || !/^REQ--?\d+-\d+-(approval|question)$/.test(id) || !['Approval', 'Question'].includes(requestType) || message === null || context === null || !sender || !/^[-]?\d+$/.test(groupId) || !/^\d+$/.test(String(input.SourceMessageID || ''))) return json(res, 400, { error: 'Invalid Telegram request.' });
+      if (!id || !/^REQ--?\d+-\d+-(approval|question|update)$/.test(id) || !['Approval', 'Question', 'Update'].includes(requestType) || message === null || context === null || !sender || !/^[-]?\d+$/.test(groupId) || !/^\d+$/.test(String(input.SourceMessageID || ''))) return json(res, 400, { error: 'Invalid Telegram request.' });
       if (id !== `REQ-${groupId}-${input.SourceMessageID}-${requestType.toLowerCase()}`) return json(res,400,{error:'Request identity does not match its source.'});
       const existing = state.decisionRequests.find((item) => item.id === id);
       if (existing) return existing.projectId === project.id ? json(res, 200, { request: existing, created: false }) : json(res, 409, { error: 'Request ID belongs to another project.' });
@@ -470,6 +470,8 @@ async function handleRequest(req, res) {
       const context = buildReplyContext(state, request);
       if (!context) return json(res, 404, { error: 'This request is not linked to a project.' });
       limit.count += 1; replySuggestionLimits.set(key, limit);
+      // The decision the founder is about to confirm (accepted with a new date, or declined), stated plainly in the draft.
+      if (typeof input.outcome === 'string' && input.outcome.trim()) context.decision = input.outcome.trim().slice(0, 300);
       const result = await suggestReply(context, { instruction });
       audit('reply_suggested', request.projectId, { requestId: request.id, ai: result.ai });
       return json(res, 200, { ...result, basedOn: { projectedFinish: context.project.projected_finish, inProgress: context.schedule.in_progress.length, late: context.schedule.late.length, nextUp: context.schedule.next_up.length, previousReplies: context.previous_replies.length, internalNotes: context.internal_notes.length } });

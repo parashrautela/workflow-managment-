@@ -170,3 +170,9 @@
 .iksha-flow{opacity:.85;font-size:14px;font-weight:700;margin:0 2px}
 /* Vertical wheel/trackpad scrolling over the grid must reach the page. Only sideways scrolling stays inside the grid. */
 .iksha-schedule-frame .iksha-schedule-scroll{overscroll-behavior-y:auto;overscroll-behavior-x:contain}
+/* Founder-built plans: whole-stage drag, add-stage entry points, right-click menu */
+.iksha-stage-range.is-movable{cursor:grab;touch-action:pan-y}.iksha-stage-range.is-dragging{cursor:grabbing;z-index:4;box-shadow:0 6px 18px rgba(49,94,76,.18)}
+.iksha-empty-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:4px}
+.iksha-context-menu{position:fixed;z-index:60;min-width:220px;max-width:240px;padding:5px;border:1px solid #dfe5d6;border-radius:10px;background:white;box-shadow:0 12px 32px rgba(40,60,45,.16)}
+.iksha-context-menu button{display:flex;width:100%;align-items:center;gap:8px;padding:9px 10px;border:0;border-radius:7px;background:none;color:#354d3d;font-size:12px;text-align:left;cursor:pointer}
+.iksha-context-menu button:hover,.iksha-context-menu button:focus-visible{background:#eef3e8;outline:none}

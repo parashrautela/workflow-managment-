@@ -14,7 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import {
   fetchTask, updateTask, deleteTask, fetchTaskMessages,
-  sendTaskMessage, markTaskRead
+  sendTaskMessage, markTaskRead, getAttachmentUrl
 } from "@/lib/api";
 
 const statusColors = {
@@ -465,7 +465,7 @@ export function TaskThreadDrawer({
             ) : messages.length > 0 ? (
               <div className="space-y-2.5">
                 {messages.map((msg) => (
-                  <div key={msg.id} className="rounded-xl border bg-card p-3 shadow-xs space-y-1.5">
+                  <div key={msg.id} className={`rounded-xl border p-3 shadow-xs space-y-1.5 ${msg.queryId ? "border-primary/30 bg-primary/5" : "bg-card"}`}>
                     <div className="flex items-center justify-between text-xs">
                       <span className="font-semibold text-primary">{msg.author || "Team member"}</span>
                       <span className="text-[10px] text-muted-foreground">
@@ -475,6 +475,17 @@ export function TaskThreadDrawer({
                     <p className="text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed">
                       {msg.text}
                     </p>
+                    {/* An accepted Telegram query keeps its photos and files here, served through the request's attachment route. */}
+                    {msg.queryId && msg.attachments?.length > 0 && (
+                      <div className="flex flex-wrap gap-2 pt-1">
+                        {msg.attachments.map((file) => {
+                          const href = getAttachmentUrl(msg.queryId, file.index, isFounder ? "founder" : "employee");
+                          return /photo|image/i.test(file.type)
+                            ? <a key={file.index} href={href} target="_blank" rel="noreferrer"><img src={href} alt="Photo from the query" loading="lazy" className="h-20 w-20 rounded-lg border object-cover" /></a>
+                            : <a key={file.index} href={href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-lg border bg-muted/40 px-2.5 py-1 text-xs text-primary hover:underline"><LinkIcon className="size-3" />{file.fileName || file.type}</a>;
+                        })}
+                      </div>
+                    )}
                     {msg.attachmentUrl && (
                       <a
                         href={msg.attachmentUrl}

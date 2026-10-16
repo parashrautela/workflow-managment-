@@ -6,7 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { NativeSelect } from "@/components/ui/native-select";
-import { fetchWorkflows, startWorkflow } from "@/lib/api";
+import { applyStages, fetchDefaultPlan, fetchWorkflows, startWorkflow } from "@/lib/api";
+import { STAGE_TASKS, DURATION_OPTIONS, durationLabel, defaultPlanSpecs } from "@/lib/stageTemplate";
+
+const BLANK = "BLANK-V1";
+const DEFAULT_PLAN = "DEFAULT-PLAN";
+// "Default plan" is not a bot template: it starts a blank project and then adds the founders' INTERIOR 1 stages,
+// after the founder has unticked or re-timed whatever this project does not need.
+const DEFAULT_PLAN_OPTION = { id: DEFAULT_PLAN, name: "Default plan (review first)", description: "The studio's usual interior plan as stages of six tasks. Untick stages this project does not need and change any days before it is created.", stages: [] };
 
 export function WorkflowTemplateModal({
   open,
@@ -25,6 +32,7 @@ export function WorkflowTemplateModal({
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [planStages, setPlanStages] = useState(null);
 
   useEffect(() => {
     if (open) {
@@ -32,6 +40,8 @@ export function WorkflowTemplateModal({
       setLoading(true);
       fetchWorkflows("founder", projectId)
         .then((list) => {
+          // Linked projects can also start from the default plan, edited first.
+          if (telegramLinked && list?.some((item) => item.id === BLANK)) list = [list[0], DEFAULT_PLAN_OPTION, ...list.slice(1)];
           setWorkflows(list || []);
           if (list && list.length > 0 && !selectedWorkflowId) {
             setSelectedWorkflowId(list[0].id);
@@ -51,6 +61,13 @@ export function WorkflowTemplateModal({
   }, [projectStartDate]);
 
   const selectedTemplate = workflows.find((t) => t.id === selectedWorkflowId) || workflows[0] || null;
+  const isBlank = selectedTemplate?.id === BLANK;
+  const isDefaultPlan = selectedTemplate?.id === DEFAULT_PLAN;
+  useEffect(() => {
+    if (!open || !isDefaultPlan || planStages) return;
+    fetchDefaultPlan(projectId).then((result) => setPlanStages((result.stages || []).map((stage) => ({ ...stage, include: true })))).catch((problem) => setError(problem.message || "Could not load the default plan."));
+  }, [open, isDefaultPlan]);
+  const setPlanStage = (index, changes) => setPlanStages((current) => current.map((stage, position) => (position === index ? { ...stage, ...changes } : stage)));
 
   const handleStartWorkflow = async () => {
     if (!projectId || !selectedTemplate) return;
@@ -63,10 +80,21 @@ export function WorkflowTemplateModal({
     setError("");
     try {
       const res = await startWorkflow(projectId, {
-        workflowId: selectedTemplate.id,
+        workflowId: isDefaultPlan ? BLANK : selectedTemplate.id,
         startDate: startDate || undefined,
         assigneeId: assigneeId || undefined
       });
+      if (isDefaultPlan) {
+        const specs = defaultPlanSpecs(planStages || [], startDate);
+        if (specs.length) {
+          try { await applyStages(projectId, { stages: specs }); }
+          catch (problem) {
+            setError(`The project started, but the default stages were not added: ${problem.message}. Add them from the timeline.`);
+            if (onApplied) onApplied(res.project);
+            return;
+          }
+        }
+      }
       onOpenChange(false);
       if (onApplied) onApplied(res.project);
     } catch (err) {
@@ -203,8 +231,39 @@ export function WorkflowTemplateModal({
                   </div>
                 </div>
 
+                {isBlank && (
+                  <div className="rounded-xl border border-dashed p-4 text-xs text-muted-foreground">No stages yet. You'll add them from the timeline, one stage of six tasks at a time.</div>
+                )}
+                {isDefaultPlan && (
+                  <div className="space-y-2">
+                    <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Stages ({planStages?.filter((stage) => stage.include).length ?? "…"} of {planStages?.length ?? "…"})</h4>
+                    {!planStages && <p className="flex items-center gap-2 text-xs text-muted-foreground"><Loader2 className="size-3.5 animate-spin" />Loading the default plan…</p>}
+                    {planStages?.map((stage, index) => (
+                      <details key={stage.name} className={`rounded-xl border bg-card text-xs ${stage.include ? "" : "opacity-50"}`}>
+                        <summary className="flex cursor-pointer items-center gap-2 p-3">
+                          <input type="checkbox" checked={stage.include} onClick={(event) => event.stopPropagation()} onChange={(event) => setPlanStage(index, { include: event.target.checked })} aria-label={`Include ${stage.name}`} />
+                          <span className="flex-1 font-semibold">{stage.name}</span>
+                          <span className="text-muted-foreground">{stage.placement?.type === "parallel" ? `alongside ${stage.placement.stageName}` : `${stage.tasks.reduce((sum, task) => sum + (Number(task.durationDays) || 0), 0)} days`}</span>
+                        </summary>
+                        <div className="grid gap-1.5 border-t p-3">
+                          {STAGE_TASKS.map((template) => {
+                            const task = stage.tasks.find((item) => item.key === template.key);
+                            return (
+                              <label key={template.key} className="flex items-center justify-between gap-2">
+                                <span className="text-muted-foreground">{template.title}{template.roleEditable && task?.role ? ` · ${task.role}` : ""}</span>
+                                <NativeSelect size="sm" value={String(task?.durationDays || 0)} onChange={(event) => setPlanStage(index, { tasks: stage.tasks.map((item) => (item.key === template.key ? { ...item, durationDays: Number(event.target.value) } : item)) })} className="w-28 text-xs">
+                                  {DURATION_OPTIONS.map((days) => <option key={days} value={String(days)}>{durationLabel(days)}</option>)}
+                                </NativeSelect>
+                              </label>
+                            );
+                          })}
+                        </div>
+                      </details>
+                    ))}
+                  </div>
+                )}
                 {/* Stages Overview */}
-                <div>
+                {!isBlank && !isDefaultPlan && <div>
                   <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
                     Pipeline Stages ({selectedTemplate.stages?.length || 0})
                   </h4>
@@ -237,7 +296,7 @@ export function WorkflowTemplateModal({
                       </div>
                     ))}
                   </div>
-                </div>
+                </div>}
               </>
             ) : (
               <div className="py-12 text-center text-xs text-muted-foreground">
@@ -258,7 +317,7 @@ export function WorkflowTemplateModal({
             </Button>
             <Button
               onClick={handleStartWorkflow}
-              disabled={submitting || !clientAssigned || !selectedTemplate}
+              disabled={submitting || !clientAssigned || !selectedTemplate || (isDefaultPlan && !planStages?.some((stage) => stage.include))}
             >
               {submitting ? (
                 <>

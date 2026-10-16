@@ -51,6 +51,7 @@ Rules:
 - Internal notes show the founder's intent. Use them to decide what to say, but never quote them or reveal internal discussion, staff issues or costs.
 - Keep it short: 1 to 4 sentences, warm and professional, no headings or bullet lists unless listing 2 to 4 dates.
 - Reply in the same language and tone the client used (for example English or Hinglish).
+- If "decision" is present, it is what the studio has just decided about this message. Lead with it, plainly, and do not contradict it with older schedule facts.
 - Do not add a sign-off or the founder's name. Output only the message text.`;
 
 export async function suggestReply(context, { instruction = '', apiKey = process.env.OPENAI_API_KEY, model = process.env.OPENAI_MODEL || 'gpt-5-mini', fetchImpl = fetch } = {}) {
@@ -86,6 +87,8 @@ const spoken = (item) => {
 export function fallbackReply(context) {
   const { project, schedule } = context;
   const parts = [];
+  // A decision the founder is confirming comes first and replaces the general status update.
+  if (context.decision) return `Thanks for letting us know. ${context.decision}`;
   if (schedule.in_progress.length) parts.push(`Right now we're working on ${schedule.in_progress.slice(0, 2).map(spoken).join(' and ')}.`);
   else if (project.phase) parts.push(`The project is currently in the ${project.phase} phase.`);
   if (schedule.next_up.length) parts.push(`Next up is ${spoken(schedule.next_up[0])}, starting ${schedule.next_up[0].start}.`);

@@ -1,9 +1,11 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { AlertTriangle, ArrowLeft, ArrowRight, ArrowUpRight, CalendarDays, Check, ChevronDown, ChevronRight, Clock3, Hourglass, Minus, Octagon, Plus, Undo2, X } from 'lucide-react';
+import { AlertTriangle, ArrowLeft, ArrowRight, ArrowUpRight, CalendarDays, Check, ChevronDown, ChevronRight, Clock3, Hourglass, Layers, ListPlus, Minus, Octagon, Plus, Undo2, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { calendarDate, calendarDay as DAY, timelineItems } from '@/lib/timeline';
-import { canMove, itemStatus, moveFor, scheduleSummary, swapMoves, todayDate, undoMoves, unscheduledReason } from '@/lib/timelineStatus';
+import { canMove, itemStatus, moveFor, scheduleSummary, stageMoves, swapMoves, todayDate, undoMoves, unscheduledReason } from '@/lib/timelineStatus';
+import { AddStageDialog } from '@/components/AddStageDialog';
+import { InsertTaskDialog } from '@/components/InsertTaskDialog';
 import { TimelineStageDetails } from '@/components/TimelineStageDetails';
 import { avatarHue, buildPeopleIndex } from '@/lib/taskPeople';
 
@@ -56,16 +58,22 @@ function OffscreenChip({ value, before, onClick }) {
   </button>;
 }
 
-export function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, namespace = 'founder', onOpenTask, onSchedulePreview, onScheduleApply }) {
+export function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, namespace = 'founder', onOpenTask, onSchedulePreview, onScheduleApply, onPlanChanged }) {
   const today = todayDate();
   const items = timelineItems(tasks, stages);
   const scheduled = items.filter((item) => item.start !== null && item.end !== null);
   const summary = scheduleSummary(items, today);
   const editable = Boolean(onSchedulePreview && onScheduleApply);
+  // Founders build the plan here: add stages, add a task inside a stage. Needs a project linked to its Telegram group.
+  const canPlan = editable && Boolean(onPlanChanged);
   // Open around today: one week of context behind, the coming weeks ahead.
   const [origin, setOrigin] = useState(today - 7 * DAY);
   const [days, setDays] = useState(42);
-  const [collapsed, setCollapsed] = useState(() => new Set());
+  // Stages start collapsed so the plan reads as a list of stages; the timeline remounts when stages change.
+  const [collapsed, setCollapsed] = useState(() => new Set([...stages.map((stage) => stage.id), 'other']));
+  const [addStage, setAddStage] = useState(null);
+  const [insertTask, setInsertTask] = useState(null);
+  const [menu, setMenu] = useState(null);
   const [search, setSearch] = useState('');
   const [selectedStageId, setSelectedStageId] = useState(null);
   const [drag, setDrag] = useState(null);
@@ -176,8 +184,9 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
   const nudge = (item, startDays, endDays, description) => propose([moveFor(item, startDays, endDays)], description);
 
   // ---- Dragging: mouse starts at once; touch needs a long press, so a normal swipe still scrolls. ----
-  function startDrag(item, mode, x, y, touch) {
-    dragRef.current = { id: item.task.id, item, mode, x, y, lastX: x, lastY: y, scrollLeft: scrollerRef.current?.scrollLeft || 0, shift: 0, target: null, moved: false, touch };
+  // A stage drag carries stageId: every task of that stage moves with it, and it never swaps.
+  function startDrag(item, mode, x, y, touch, stageId = null) {
+    dragRef.current = { id: item.task.id, item, mode, x, y, lastX: x, lastY: y, scrollLeft: scrollerRef.current?.scrollLeft || 0, shift: 0, target: null, moved: false, touch, stageId };
     setDrag({ ...dragRef.current });
   }
   function updateDrag(clientX, clientY) {
@@ -190,7 +199,7 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
     current.shift = Math.round((clientX - current.x + scrolled) / dayWidth);
     if (current.mode === 'resize') current.shift = Math.max(current.shift, -Math.round((current.item.end - current.item.start) / DAY) + 1);
     const row = document.elementsFromPoint(clientX, clientY).map((element) => element.closest?.('[data-task-row]')).find(Boolean);
-    const target = row && row.dataset.taskRow !== current.id && current.mode === 'move' ? items.find((candidate) => candidate.task.id === row.dataset.taskRow) : null;
+    const target = row && row.dataset.taskRow !== current.id && current.mode === 'move' && !current.stageId ? items.find((candidate) => candidate.task.id === row.dataset.taskRow) : null;
     current.target = target && canMove(target) ? target : null;
     setDrag({ ...current });
     edgeScroll(clientX, clientY);
@@ -227,11 +236,19 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
     stopDrag();
     if (!current) return;
     if (!current.moved) {
-      // A long press without moving picks the task up and shows the adjust bar.
-      if (current.touch) { swallowNextClick(); setPicked(current.id); }
+      // A long press without moving picks the task up (or opens the stage) and shows what can be adjusted.
+      if (current.touch) { swallowNextClick(); if (current.stageId) setSelectedStageId(current.stageId); else setPicked(current.id); }
       return;
     }
     swallowNextClick();
+    if (current.stageId) {
+      if (!current.shift) return;
+      const stageName = current.item.task.title;
+      const moves = stageMoves(items, current.stageId, current.shift);
+      if (!moves.length) return void setNotice({ text: `Nothing in ${stageName} can move: its tasks are finished or have no dates.` });
+      const days = Math.abs(current.shift);
+      return void propose(moves, `Move stage “${stageName}” ${days} day${days === 1 ? '' : 's'} ${current.shift > 0 ? 'later' : 'earlier'} (${moves.length} task${moves.length === 1 ? '' : 's'} move together)`);
+    }
     if (current.target) return void propose(swapMoves(current.item, current.target), `Swap “${current.item.task.title}” with “${current.target.task.title}”`);
     if (!current.shift) return;
     const title = current.item.task.title;
@@ -255,6 +272,42 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
     }, LONG_PRESS_MS);
     pressRef.current = press;
   }
+
+  function onStagePointerDown(event, stage, start, end) {
+    if (!editable || event.button !== 0) return;
+    if (!stageMoves(items, stage.id, 1).length) return;
+    const item = { task: { id: `stage:${stage.id}`, title: stage.name }, start, end };
+    if (event.pointerType === 'mouse') {
+      event.currentTarget.setPointerCapture(event.pointerId);
+      startDrag(item, 'move', event.clientX, event.clientY, false, stage.id);
+      return;
+    }
+    const press = { x: event.clientX, y: event.clientY };
+    press.timer = setTimeout(() => {
+      pressRef.current = null;
+      navigator.vibrate?.(12);
+      startDrag(item, 'move', press.x, press.y, true, stage.id);
+    }, LONG_PRESS_MS);
+    pressRef.current = press;
+  }
+  const openMenu = (event, entry) => {
+    if (!canPlan || pressRef.current || dragRef.current) return;
+    event.preventDefault();
+    setMenu({ x: Math.min(event.clientX, window.innerWidth - 248), y: Math.min(event.clientY, window.innerHeight - 160), ...entry });
+  };
+  const lastTaskOf = (stageId) => [...items].filter((item) => item.stage?.id === stageId).sort((a, b) => (Number(a.task.sourceSequence) || 0) - (Number(b.task.sourceSequence) || 0)).at(-1)?.task || null;
+  const tailStage = () => {
+    const ended = stages.map((stage) => ({ stage, end: Math.max(-Infinity, ...items.filter((item) => item.stage?.id === stage.id && item.end !== null).map((item) => item.end)) }));
+    return ended.sort((a, b) => b.end - a.end)[0]?.stage || stages.at(-1);
+  };
+  useEffect(() => {
+    if (!menu) return undefined;
+    const close = (event) => { if (event.type === 'keydown' && event.key !== 'Escape') return; setMenu(null); };
+    window.addEventListener('pointerdown', close);
+    window.addEventListener('keydown', close);
+    window.addEventListener('scroll', close, true);
+    return () => { window.removeEventListener('pointerdown', close); window.removeEventListener('keydown', close); window.removeEventListener('scroll', close, true); };
+  }, [menu]);
 
   // Touch moves are handled on the document with a non-passive listener, so an active drag can stop the page from scrolling.
   useEffect(() => {
@@ -314,6 +367,7 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
         <div className="iksha-zoom">{ZOOMS.map((zoom) => <button key={zoom.days} aria-pressed={days === zoom.days} className={days === zoom.days ? 'active' : ''} onClick={() => setDays(zoom.days)}>{zoom.label}</button>)}</div>
         {scheduled.length > 0 && <Button variant="outline" size="sm" aria-pressed={!ZOOMS.some((zoom) => zoom.days === days)} onClick={() => { const first = Math.min(...scheduled.map((item) => item.start)); setOrigin(first); setDays(Math.max(28, Math.ceil((Math.max(...scheduled.map((item) => item.end)) - first) / DAY))); }}>Entire plan</Button>}
         <Button variant="outline" size="sm" aria-pressed={showArrows} className={showArrows ? 'iksha-toggle-on' : ''} onClick={toggleArrows}>{showArrows ? 'Hide date arrows' : 'Show date arrows'}</Button>
+        {canPlan && <Button size="sm" onClick={() => setAddStage({})}><Plus />Add stage</Button>}
         <Button variant="outline" size="sm" onClick={() => setCollapsed(allGroups.some((stage) => collapsed.has(stage.id)) ? new Set() : new Set(allGroups.map((stage) => stage.id)))}>{allGroups.some((stage) => collapsed.has(stage.id)) ? 'Expand all' : 'Collapse all'}</Button>
       </div>
     </div>
@@ -322,7 +376,7 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
 
     {notice && <div className="iksha-schedule-notice" role="status"><span>{notice.text}</span>{notice.undo?.length > 0 && <Button variant="outline" size="sm" onClick={undo}><Undo2 />Undo</Button>}<button className="iksha-notice-close" aria-label="Dismiss" onClick={() => setNotice(null)}><X size={16} /></button></div>}
 
-    {!items.length ? <div className="iksha-timeline-empty"><CalendarDays size={28} /><h3>No work items yet.</h3><p>Choose a project workflow to generate its tasks and schedule.</p></div> : <div className={`iksha-schedule-frame ${compactHeader ? 'iksha-plan-fit' : ''} ${todayInView ? 'has-today' : ''} ${drag ? 'is-dragging-any' : ''}`} style={gridStyle}>
+    {!items.length ? <div className="iksha-timeline-empty"><Layers size={28} />{canPlan ? <><h3>No stages yet</h3><p>Add the first stage to start planning.</p><div className="iksha-empty-actions"><Button onClick={() => setAddStage({})}><Plus />Add first stage</Button><Button variant="outline" onClick={() => setAddStage({ started: true })}>This project is already running: add its current stage</Button></div></> : <><h3>No work items yet.</h3><p>{editable ? 'Link this project to its Telegram group to plan its stages here.' : 'The founder has not planned any stages yet.'}</p></>}</div> : <div className={`iksha-schedule-frame ${compactHeader ? 'iksha-plan-fit' : ''} ${todayInView ? 'has-today' : ''} ${drag ? 'is-dragging-any' : ''}`} style={gridStyle}>
       <div className="iksha-schedule-headbar">
         <div className="iksha-schedule-label">STAGE / WORK ITEM</div>
         <div className="iksha-headbar-viewport">
@@ -349,17 +403,27 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
             const groupEnd = scheduledGroup.length ? Math.max(...scheduledGroup.map((item) => item.end)) : null;
             const lateCount = group.filter((item) => itemStatus(item, today).late).length;
             const isCollapsed = collapsed.has(stage.id) && !query;
+            const stageDragging = Boolean(drag?.stageId) && drag.stageId === stage.id;
+            const stageShift = stageDragging ? drag.shift : 0;
+            const stageMovable = editable && stage.id !== 'other' && group.some((item) => canMove(item));
             const ordered = [...group].sort((a, b) => (Number(a.task.sourceSequence) || 0) - (Number(b.task.sourceSequence) || 0) || String(a.task.createdAt || '').localeCompare(String(b.task.createdAt || '')));
             return <section key={stage.id} className={`iksha-stage color-${index % 8}`}>
               <div className="iksha-schedule-row iksha-stage-row">
-                <button className="iksha-schedule-label iksha-stage-heading" onClick={() => toggle(stage.id)} aria-expanded={!isCollapsed}>
+                <button className="iksha-schedule-label iksha-stage-heading" onClick={() => toggle(stage.id)} onContextMenu={(event) => stage.id !== 'other' && openMenu(event, { stage })} aria-expanded={!isCollapsed}>
                   <span className="iksha-stage-number">{String(index + 1).padStart(2, '0')}</span>
                   <span><strong>{stage.name}</strong><small>{group.filter((item) => complete(item.task)).length}/{group.length} done{lateCount ? ` · ${lateCount} late` : ''}</small></span>
                   {isCollapsed ? <ChevronRight size={14} /> : <ChevronDown size={14} />}
                 </button>
                 <div className="iksha-schedule-track">
-                  {groupStart !== null && groupEnd !== null && groupEnd > from && groupStart < to
-                    ? <button className="iksha-stage-range" aria-label={`Open ${stage.name} stage details`} title={`${stage.name} · ${dateLabel(groupStart)} – ${dateLabel(groupEnd - DAY)}`} onClick={() => setSelectedStageId(stage.id)} style={{ left: (Math.max(groupStart, from) - from) / DAY * dayWidth, width: Math.max(20, (Math.min(groupEnd, to) - Math.max(groupStart, from)) / DAY * dayWidth - 3) }}><span><strong>{stage.name}</strong><small>{dateLabel(groupStart)} – {dateLabel(groupEnd - DAY)}</small></span><ArrowUpRight size={14} /></button>
+                  {groupStart !== null && groupEnd !== null && (stageDragging || (groupEnd > from && groupStart < to))
+                    ? <button className={`iksha-stage-range ${stageMovable ? 'is-movable' : ''} ${stageDragging ? 'is-dragging' : ''}`} aria-label={`Open ${stage.name} stage details${stageMovable ? '. Drag to move the whole stage' : ''}`} title={`${stage.name} · ${dateLabel(groupStart + stageShift * DAY)} – ${dateLabel(groupEnd - DAY + stageShift * DAY)}${stageMovable ? ' · Drag to move the whole stage' : ''}`}
+                      onPointerDown={(event) => onStagePointerDown(event, stage, groupStart, groupEnd)}
+                      onPointerMove={(event) => { if (dragRef.current && !dragRef.current.touch) updateDrag(event.clientX, event.clientY); }}
+                      onPointerUp={() => { if (dragRef.current && !dragRef.current.touch) finishDrag(); }}
+                      onLostPointerCapture={() => { if (dragRef.current && !dragRef.current.touch) finishDrag(); }}
+                      onContextMenu={(event) => { if (stageMovable) event.preventDefault(); }}
+                      onKeyDown={(event) => { if (!stageMovable || !event.altKey || !['ArrowLeft', 'ArrowRight'].includes(event.key)) return; event.preventDefault(); const step = event.key === 'ArrowRight' ? 1 : -1; propose(stageMoves(items, stage.id, step), `Move stage “${stage.name}” a day ${step > 0 ? 'later' : 'earlier'}`); }}
+                      onClick={() => { if (suppressClick.current) { suppressClick.current = false; return; } setSelectedStageId(stage.id); }} style={{ left: (Math.max(groupStart + stageShift * DAY, from) - from) / DAY * dayWidth, width: Math.max(20, (Math.min(groupEnd + stageShift * DAY, to) - Math.max(groupStart + stageShift * DAY, from)) / DAY * dayWidth - 3) }}><span><strong>{stage.name}</strong><small>{dateLabel(groupStart + stageShift * DAY)} – {dateLabel(groupEnd - DAY + stageShift * DAY)}</small></span><ArrowUpRight size={14} /></button>
                     : groupStart === null ? <button className="iksha-unscheduled" onClick={() => setSelectedStageId(stage.id)}><ArrowUpRight size={12} />Stage details</button> : null}
                   {showArrows && groupStart !== null && groupEnd !== null && edge(groupStart, groupEnd) && <OffscreenChip value={edge(groupStart, groupEnd) === 'before' ? groupEnd - DAY : groupStart} before={edge(groupStart, groupEnd) === 'before'} onClick={() => reveal(groupStart)} />}
                 </div>
@@ -367,10 +431,12 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
               {!isCollapsed && ordered.map((item) => {
                 const status = itemStatus(item, today);
                 const isScheduled = item.start !== null && item.end !== null;
-                const dragging = drag?.id === item.task.id;
+                // While a stage is dragged, its open tasks travel with it (finished ones stay where they are).
+                const withStage = stageDragging && canMove(item);
+                const dragging = drag?.id === item.task.id || withStage;
                 const isTarget = drag?.target?.task.id === item.task.id;
-                const shiftStart = dragging && drag.mode === 'move' && !drag.target ? drag.shift : 0;
-                const shiftEnd = dragging && !drag.target ? drag.shift : 0;
+                const shiftStart = withStage ? drag.shift : dragging && drag.mode === 'move' && !drag.target ? drag.shift : 0;
+                const shiftEnd = withStage ? drag.shift : dragging && !drag.target ? drag.shift : 0;
                 const start = isScheduled ? item.start + shiftStart * DAY : null;
                 const end = isScheduled ? item.end + shiftEnd * DAY : null;
                 // A bar being dragged stays mounted past the window edge so it always receives the release.
@@ -397,7 +463,7 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
                         onPointerMove={(event) => { if (dragRef.current && !dragRef.current.touch) updateDrag(event.clientX, event.clientY); }}
                         onPointerUp={() => { if (dragRef.current && !dragRef.current.touch) finishDrag(); }}
                         onLostPointerCapture={() => { if (dragRef.current && !dragRef.current.touch) finishDrag(); }}
-                        onContextMenu={(event) => { if (movable) event.preventDefault(); }}
+                        onContextMenu={(event) => { if (movable) event.preventDefault(); if (item.stage) openMenu(event, { stage: item.stage, task: item.task }); }}
                         onKeyDown={(event) => keyMove(event, item)}
                         onClick={() => { if (suppressClick.current) { suppressClick.current = false; return; } onOpenTask(item.task); }}
                       >
@@ -432,7 +498,7 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
         <button disabled={pickedItem.end - pickedItem.start <= DAY} onClick={() => nudge(pickedItem, 0, -1, `Shorten “${pickedItem.task.title}” by a day`)}><Minus size={16} />Shorter</button>
         <button onClick={() => nudge(pickedItem, 0, 1, `Lengthen “${pickedItem.task.title}” by a day`)}><Plus size={16} />Longer</button>
       </div>
-      <div className="iksha-adjust-footer"><button onClick={() => { setPicked(null); onOpenTask(pickedItem.task); }}>Open task</button><button onClick={() => setPicked(null)}>Done</button></div>
+      <div className="iksha-adjust-footer"><button onClick={() => { setPicked(null); onOpenTask(pickedItem.task); }}>Open task</button>{canPlan && pickedItem.stage && <button onClick={() => { setPicked(null); setInsertTask({ stage: pickedItem.stage, afterTask: pickedItem.task }); }}>Add task after</button>}<button onClick={() => setPicked(null)}>Done</button></div>
     </div>}
 
     <Dialog open={Boolean(proposal)} onOpenChange={(open) => { if (!open && !proposal?.saving) setProposal(null); }}>
@@ -464,9 +530,18 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
       </DialogContent>
     </Dialog>
 
+    {menu && <div className="iksha-context-menu" role="menu" style={{ left: menu.x, top: menu.y }} onPointerDown={(event) => event.stopPropagation()}>
+      {menu.task && <button role="menuitem" onClick={() => { setMenu(null); setInsertTask({ stage: menu.stage, afterTask: menu.task }); }}><ListPlus size={14} />Add a task after this one</button>}
+      {!menu.task && <button role="menuitem" onClick={() => { setMenu(null); setInsertTask({ stage: menu.stage, afterTask: lastTaskOf(menu.stage.id) }); }}><ListPlus size={14} />Add a task to {menu.stage.name}</button>}
+      <button role="menuitem" onClick={() => { setMenu(null); setAddStage({ placement: { type: 'after', stageName: menu.stage.name } }); }}><Plus size={14} />Add a stage after {menu.stage.name}</button>
+      <button role="menuitem" onClick={() => { setMenu(null); setAddStage({ placement: { type: 'parallel', stageName: menu.stage.name } }); }}><Layers size={14} />Add a stage alongside {menu.stage.name}</button>
+    </div>}
+    {canPlan && <AddStageDialog open={Boolean(addStage)} onOpenChange={(open) => { if (!open) setAddStage(null); }} projectId={projectId} stages={stages} members={members} tailStageName={tailStage()?.name} initialPlacement={addStage?.started ? { type: 'date', startDate: new Date().toISOString().slice(0, 10) } : addStage?.placement} startedDefault={Boolean(addStage?.started)} onAdded={(result) => { setNotice({ text: `${result.stages?.map((stage) => stage.name).join(', ') || 'Stage'} added to the Google Sheet.` }); onPlanChanged(result); }} />}
+    {canPlan && <InsertTaskDialog open={Boolean(insertTask)} onOpenChange={(open) => { if (!open) setInsertTask(null); }} projectId={projectId} stage={insertTask?.stage} afterTask={insertTask?.afterTask} members={members} onAdded={(result) => { setNotice({ text: `${result.created?.[0]?.title || 'Task'} added.` }); onPlanChanged(result); }} />}
+
     <TimelineStageDetails stage={allGroups.find((stage) => stage.id === selectedStageId)} items={items} members={members} projectId={projectId} namespace={namespace} onClose={() => setSelectedStageId(null)} onOpenTask={onOpenTask} />
     <footer className="iksha-schedule-caption">
-      <span>{editable ? <><span className="iksha-only-fine">Drag a task to move it · Pull its right edge to change its length · Drop it on another task to swap</span><span className="iksha-only-coarse">Press and hold a task to pick it up, then drag · Hold its right edge to change its length</span> · You confirm every change</> : 'Dates from the Google Sheet · Tap a stage for its breakdown · Tap a work item for its discussion'}</span>
+      <span>{editable ? <><span className="iksha-only-fine">Drag a stage bar to move the whole stage · Drag a task to move it · Pull its right edge to change its length · Right-click to add a stage or task</span><span className="iksha-only-coarse">Press and hold a task to pick it up, then drag · Hold its right edge to change its length</span> · You confirm every change</> : 'Dates from the Google Sheet · Tap a stage for its breakdown · Tap a work item for its discussion'}</span>
       <span>Calendar days · Today is marked in red</span>
     </footer>
   </div>;
