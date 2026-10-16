@@ -220,6 +220,21 @@ export async function fetchTask(taskId, namespace = "founder") {
 /**
  * Update task (PATCH /api/{founder|employee}/tasks/:id)
  */
+/**
+ * Preview a founder timeline change (POST /api/founder/projects/:id/schedule/preview).
+ * The bot checks dependencies against the Google Sheet and lists every task that would move.
+ */
+export async function previewSchedule(projectId, moves) {
+  return await post(`/api/founder/projects/${projectId}/schedule/preview`, { moves });
+}
+
+/**
+ * Save a founder timeline change to the Google Sheet (POST /api/founder/projects/:id/schedule/apply).
+ */
+export async function applySchedule(projectId, moves) {
+  return await post(`/api/founder/projects/${projectId}/schedule/apply`, { moves });
+}
+
 export async function updateTask(taskId, updates, namespace = "founder") {
   return await patch(`/api/${namespace}/tasks/${taskId}`, updates);
 }

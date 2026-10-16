@@ -11777,7 +11777,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$52 = {
+var __iconData$56 = {
 	name: "arrow-left",
 	size: 24,
 	node: [["path", {
@@ -11788,8 +11788,8 @@ var __iconData$52 = {
 		key: "x3x0zl"
 	}]]
 };
-__iconData$52.node;
-var ArrowLeft = createLucideIcon(__iconData$52);
+__iconData$56.node;
+var ArrowLeft = createLucideIcon(__iconData$56);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
@@ -11798,7 +11798,7 @@ var ArrowLeft = createLucideIcon(__iconData$52);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$51 = {
+var __iconData$55 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11809,8 +11809,8 @@ var __iconData$51 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$51.node;
-var ArrowRight = createLucideIcon(__iconData$51);
+__iconData$55.node;
+var ArrowRight = createLucideIcon(__iconData$55);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
 /**
@@ -11819,7 +11819,7 @@ var ArrowRight = createLucideIcon(__iconData$51);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$50 = {
+var __iconData$54 = {
 	name: "arrow-up-right",
 	size: 24,
 	node: [["path", {
@@ -11830,8 +11830,8 @@ var __iconData$50 = {
 		key: "1vkiza"
 	}]]
 };
-__iconData$50.node;
-var ArrowUpRight = createLucideIcon(__iconData$50);
+__iconData$54.node;
+var ArrowUpRight = createLucideIcon(__iconData$54);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
@@ -11840,7 +11840,7 @@ var ArrowUpRight = createLucideIcon(__iconData$50);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$49 = {
+var __iconData$53 = {
 	name: "arrow-up",
 	size: 24,
 	node: [["path", {
@@ -11851,8 +11851,8 @@ var __iconData$49 = {
 		key: "x0mq9r"
 	}]]
 };
-__iconData$49.node;
-var ArrowUp = createLucideIcon(__iconData$49);
+__iconData$53.node;
+var ArrowUp = createLucideIcon(__iconData$53);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
@@ -11861,7 +11861,7 @@ var ArrowUp = createLucideIcon(__iconData$49);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$48 = {
+var __iconData$52 = {
 	name: "building-complex",
 	size: 24,
 	node: [
@@ -11888,8 +11888,8 @@ var __iconData$48 = {
 	],
 	aliases: ["building-2"]
 };
-__iconData$48.node;
-var BuildingComplex = createLucideIcon(__iconData$48);
+__iconData$52.node;
+var BuildingComplex = createLucideIcon(__iconData$52);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
 /**
@@ -11898,7 +11898,7 @@ var BuildingComplex = createLucideIcon(__iconData$48);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$47 = {
+var __iconData$51 = {
 	name: "calendar-days",
 	size: 24,
 	node: [
@@ -11948,8 +11948,8 @@ var __iconData$47 = {
 		}]
 	]
 };
-__iconData$47.node;
-var CalendarDays = createLucideIcon(__iconData$47);
+__iconData$51.node;
+var CalendarDays = createLucideIcon(__iconData$51);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/calendar.mjs
 /**
@@ -11958,7 +11958,7 @@ var CalendarDays = createLucideIcon(__iconData$47);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$46 = {
+var __iconData$50 = {
 	name: "calendar",
 	size: 24,
 	node: [
@@ -11984,8 +11984,8 @@ var __iconData$46 = {
 		}]
 	]
 };
-__iconData$46.node;
-var Calendar = createLucideIcon(__iconData$46);
+__iconData$50.node;
+var Calendar = createLucideIcon(__iconData$50);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/check.mjs
 /**
@@ -11994,7 +11994,7 @@ var Calendar = createLucideIcon(__iconData$46);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$45 = {
+var __iconData$49 = {
 	name: "check",
 	size: 24,
 	node: [["path", {
@@ -12002,8 +12002,8 @@ var __iconData$45 = {
 		key: "1gmf2c"
 	}]]
 };
-__iconData$45.node;
-var Check = createLucideIcon(__iconData$45);
+__iconData$49.node;
+var Check = createLucideIcon(__iconData$49);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
 /**
@@ -12012,7 +12012,7 @@ var Check = createLucideIcon(__iconData$45);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$44 = {
+var __iconData$48 = {
 	name: "chevron-down",
 	size: 24,
 	node: [["path", {
@@ -12020,8 +12020,8 @@ var __iconData$44 = {
 		key: "qrunsl"
 	}]]
 };
-__iconData$44.node;
-var ChevronDown = createLucideIcon(__iconData$44);
+__iconData$48.node;
+var ChevronDown = createLucideIcon(__iconData$48);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
 /**
@@ -12030,7 +12030,7 @@ var ChevronDown = createLucideIcon(__iconData$44);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$43 = {
+var __iconData$47 = {
 	name: "chevron-right",
 	size: 24,
 	node: [["path", {
@@ -12038,8 +12038,8 @@ var __iconData$43 = {
 		key: "mthhwq"
 	}]]
 };
-__iconData$43.node;
-var ChevronRight = createLucideIcon(__iconData$43);
+__iconData$47.node;
+var ChevronRight = createLucideIcon(__iconData$47);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
 /**
@@ -12048,7 +12048,7 @@ var ChevronRight = createLucideIcon(__iconData$43);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$42 = {
+var __iconData$46 = {
 	name: "chevron-up",
 	size: 24,
 	node: [["path", {
@@ -12056,8 +12056,8 @@ var __iconData$42 = {
 		key: "153udz"
 	}]]
 };
-__iconData$42.node;
-var ChevronUp = createLucideIcon(__iconData$42);
+__iconData$46.node;
+var ChevronUp = createLucideIcon(__iconData$46);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
@@ -12066,7 +12066,7 @@ var ChevronUp = createLucideIcon(__iconData$42);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$41 = {
+var __iconData$45 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -12093,8 +12093,8 @@ var __iconData$41 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$41.node;
-var CircleAlert = createLucideIcon(__iconData$41);
+__iconData$45.node;
+var CircleAlert = createLucideIcon(__iconData$45);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
@@ -12103,7 +12103,7 @@ var CircleAlert = createLucideIcon(__iconData$41);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$40 = {
+var __iconData$44 = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -12117,8 +12117,8 @@ var __iconData$40 = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-__iconData$40.node;
-var CircleCheck = createLucideIcon(__iconData$40);
+__iconData$44.node;
+var CircleCheck = createLucideIcon(__iconData$44);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
 /**
@@ -12127,7 +12127,7 @@ var CircleCheck = createLucideIcon(__iconData$40);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$39 = {
+var __iconData$43 = {
 	name: "circle-pause",
 	size: 24,
 	node: [
@@ -12154,8 +12154,8 @@ var __iconData$39 = {
 	],
 	aliases: ["pause-circle"]
 };
-__iconData$39.node;
-var CirclePause = createLucideIcon(__iconData$39);
+__iconData$43.node;
+var CirclePause = createLucideIcon(__iconData$43);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
 /**
@@ -12164,7 +12164,7 @@ var CirclePause = createLucideIcon(__iconData$39);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$38 = {
+var __iconData$42 = {
 	name: "circle-question-mark",
 	size: 24,
 	node: [
@@ -12185,8 +12185,8 @@ var __iconData$38 = {
 	],
 	aliases: ["help-circle", "circle-help"]
 };
-__iconData$38.node;
-var CircleQuestionMark = createLucideIcon(__iconData$38);
+__iconData$42.node;
+var CircleQuestionMark = createLucideIcon(__iconData$42);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-x.mjs
 /**
@@ -12195,7 +12195,7 @@ var CircleQuestionMark = createLucideIcon(__iconData$38);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$37 = {
+var __iconData$41 = {
 	name: "circle-x",
 	size: 24,
 	node: [
@@ -12216,8 +12216,8 @@ var __iconData$37 = {
 	],
 	aliases: ["x-circle"]
 };
-__iconData$37.node;
-var CircleX = createLucideIcon(__iconData$37);
+__iconData$41.node;
+var CircleX = createLucideIcon(__iconData$41);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle.mjs
 /**
@@ -12226,7 +12226,7 @@ var CircleX = createLucideIcon(__iconData$37);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$36 = {
+var __iconData$40 = {
 	name: "circle",
 	size: 24,
 	node: [["circle", {
@@ -12236,8 +12236,8 @@ var __iconData$36 = {
 		key: "1mglay"
 	}]]
 };
-__iconData$36.node;
-var Circle = createLucideIcon(__iconData$36);
+__iconData$40.node;
+var Circle = createLucideIcon(__iconData$40);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
@@ -12246,7 +12246,7 @@ var Circle = createLucideIcon(__iconData$36);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$35 = {
+var __iconData$39 = {
 	name: "clock-3",
 	size: 24,
 	node: [["circle", {
@@ -12259,8 +12259,8 @@ var __iconData$35 = {
 		key: "135r8i"
 	}]]
 };
-__iconData$35.node;
-var Clock3 = createLucideIcon(__iconData$35);
+__iconData$39.node;
+var Clock3 = createLucideIcon(__iconData$39);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
@@ -12269,7 +12269,7 @@ var Clock3 = createLucideIcon(__iconData$35);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$34 = {
+var __iconData$38 = {
 	name: "clock",
 	size: 24,
 	node: [["circle", {
@@ -12282,8 +12282,8 @@ var __iconData$34 = {
 		key: "mmk7yg"
 	}]]
 };
-__iconData$34.node;
-var Clock = createLucideIcon(__iconData$34);
+__iconData$38.node;
+var Clock = createLucideIcon(__iconData$38);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
@@ -12292,7 +12292,7 @@ var Clock = createLucideIcon(__iconData$34);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$33 = {
+var __iconData$37 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -12308,8 +12308,8 @@ var __iconData$33 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$33.node;
-var Copy = createLucideIcon(__iconData$33);
+__iconData$37.node;
+var Copy = createLucideIcon(__iconData$37);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/external-link.mjs
 /**
@@ -12318,7 +12318,7 @@ var Copy = createLucideIcon(__iconData$33);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$32 = {
+var __iconData$36 = {
 	name: "external-link",
 	size: 24,
 	node: [
@@ -12336,8 +12336,8 @@ var __iconData$32 = {
 		}]
 	]
 };
-__iconData$32.node;
-var ExternalLink = createLucideIcon(__iconData$32);
+__iconData$36.node;
+var ExternalLink = createLucideIcon(__iconData$36);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye-off.mjs
 /**
@@ -12346,7 +12346,7 @@ var ExternalLink = createLucideIcon(__iconData$32);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$31 = {
+var __iconData$35 = {
 	name: "eye-off",
 	size: 24,
 	node: [
@@ -12368,8 +12368,8 @@ var __iconData$31 = {
 		}]
 	]
 };
-__iconData$31.node;
-var EyeOff = createLucideIcon(__iconData$31);
+__iconData$35.node;
+var EyeOff = createLucideIcon(__iconData$35);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye.mjs
 /**
@@ -12378,7 +12378,7 @@ var EyeOff = createLucideIcon(__iconData$31);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$30 = {
+var __iconData$34 = {
 	name: "eye",
 	size: 24,
 	node: [["path", {
@@ -12391,8 +12391,8 @@ var __iconData$30 = {
 		key: "1v7zrd"
 	}]]
 };
-__iconData$30.node;
-var Eye = createLucideIcon(__iconData$30);
+__iconData$34.node;
+var Eye = createLucideIcon(__iconData$34);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/file-text.mjs
 /**
@@ -12401,7 +12401,7 @@ var Eye = createLucideIcon(__iconData$30);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$29 = {
+var __iconData$33 = {
 	name: "file-text",
 	size: 24,
 	node: [
@@ -12427,8 +12427,8 @@ var __iconData$29 = {
 		}]
 	]
 };
-__iconData$29.node;
-var FileText = createLucideIcon(__iconData$29);
+__iconData$33.node;
+var FileText = createLucideIcon(__iconData$33);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
@@ -12437,7 +12437,7 @@ var FileText = createLucideIcon(__iconData$29);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$28 = {
+var __iconData$32 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -12459,8 +12459,8 @@ var __iconData$28 = {
 		}]
 	]
 };
-__iconData$28.node;
-var FolderKanban = createLucideIcon(__iconData$28);
+__iconData$32.node;
+var FolderKanban = createLucideIcon(__iconData$32);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/folder-plus.mjs
 /**
@@ -12469,7 +12469,7 @@ var FolderKanban = createLucideIcon(__iconData$28);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$27 = {
+var __iconData$31 = {
 	name: "folder-plus",
 	size: 24,
 	node: [
@@ -12487,8 +12487,40 @@ var __iconData$27 = {
 		}]
 	]
 };
-__iconData$27.node;
-var FolderPlus = createLucideIcon(__iconData$27);
+__iconData$31.node;
+var FolderPlus = createLucideIcon(__iconData$31);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/hourglass.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$30 = {
+	name: "hourglass",
+	size: 24,
+	node: [
+		["path", {
+			d: "M5 22h14",
+			key: "ehvnwv"
+		}],
+		["path", {
+			d: "M5 2h14",
+			key: "pdyrp9"
+		}],
+		["path", {
+			d: "M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22",
+			key: "1d314k"
+		}],
+		["path", {
+			d: "M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2",
+			key: "1vvvr6"
+		}]
+	]
+};
+__iconData$30.node;
+var Hourglass = createLucideIcon(__iconData$30);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/layers.mjs
 /**
@@ -12497,7 +12529,7 @@ var FolderPlus = createLucideIcon(__iconData$27);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$26 = {
+var __iconData$29 = {
 	name: "layers",
 	size: 24,
 	node: [
@@ -12516,8 +12548,8 @@ var __iconData$26 = {
 	],
 	aliases: ["layers-3"]
 };
-__iconData$26.node;
-var Layers = createLucideIcon(__iconData$26);
+__iconData$29.node;
+var Layers = createLucideIcon(__iconData$29);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/link-2.mjs
 /**
@@ -12526,7 +12558,7 @@ var Layers = createLucideIcon(__iconData$26);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$25 = {
+var __iconData$28 = {
 	name: "link-2",
 	size: 24,
 	node: [
@@ -12547,8 +12579,8 @@ var __iconData$25 = {
 		}]
 	]
 };
-__iconData$25.node;
-var Link2 = createLucideIcon(__iconData$25);
+__iconData$28.node;
+var Link2 = createLucideIcon(__iconData$28);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/link.mjs
 /**
@@ -12557,7 +12589,7 @@ var Link2 = createLucideIcon(__iconData$25);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$24 = {
+var __iconData$27 = {
 	name: "link",
 	size: 24,
 	node: [["path", {
@@ -12568,8 +12600,8 @@ var __iconData$24 = {
 		key: "19qd67"
 	}]]
 };
-__iconData$24.node;
-var Link = createLucideIcon(__iconData$24);
+__iconData$27.node;
+var Link = createLucideIcon(__iconData$27);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/loader-circle.mjs
 /**
@@ -12578,7 +12610,7 @@ var Link = createLucideIcon(__iconData$24);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$23 = {
+var __iconData$26 = {
 	name: "loader-circle",
 	size: 24,
 	node: [["path", {
@@ -12587,8 +12619,8 @@ var __iconData$23 = {
 	}]],
 	aliases: ["loader-2"]
 };
-__iconData$23.node;
-var LoaderCircle = createLucideIcon(__iconData$23);
+__iconData$26.node;
+var LoaderCircle = createLucideIcon(__iconData$26);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/lock-keyhole.mjs
 /**
@@ -12597,7 +12629,7 @@ var LoaderCircle = createLucideIcon(__iconData$23);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$22 = {
+var __iconData$25 = {
 	name: "lock-keyhole",
 	size: 24,
 	node: [
@@ -12621,8 +12653,8 @@ var __iconData$22 = {
 		}]
 	]
 };
-__iconData$22.node;
-var LockKeyhole = createLucideIcon(__iconData$22);
+__iconData$25.node;
+var LockKeyhole = createLucideIcon(__iconData$25);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/lock.mjs
 /**
@@ -12631,7 +12663,7 @@ var LockKeyhole = createLucideIcon(__iconData$22);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$21 = {
+var __iconData$24 = {
 	name: "lock",
 	size: 24,
 	node: [["rect", {
@@ -12647,8 +12679,8 @@ var __iconData$21 = {
 		key: "fwvmzm"
 	}]]
 };
-__iconData$21.node;
-var Lock = createLucideIcon(__iconData$21);
+__iconData$24.node;
+var Lock = createLucideIcon(__iconData$24);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/log-out.mjs
 /**
@@ -12657,7 +12689,7 @@ var Lock = createLucideIcon(__iconData$21);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$20 = {
+var __iconData$23 = {
 	name: "log-out",
 	size: 24,
 	node: [
@@ -12675,8 +12707,8 @@ var __iconData$20 = {
 		}]
 	]
 };
-__iconData$20.node;
-var LogOut = createLucideIcon(__iconData$20);
+__iconData$23.node;
+var LogOut = createLucideIcon(__iconData$23);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/maximize-2.mjs
 /**
@@ -12685,7 +12717,7 @@ var LogOut = createLucideIcon(__iconData$20);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$19 = {
+var __iconData$22 = {
 	name: "maximize-2",
 	size: 24,
 	node: [
@@ -12707,8 +12739,8 @@ var __iconData$19 = {
 		}]
 	]
 };
-__iconData$19.node;
-var Maximize2 = createLucideIcon(__iconData$19);
+__iconData$22.node;
+var Maximize2 = createLucideIcon(__iconData$22);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/menu.mjs
 /**
@@ -12717,7 +12749,7 @@ var Maximize2 = createLucideIcon(__iconData$19);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$18 = {
+var __iconData$21 = {
 	name: "menu",
 	size: 24,
 	node: [
@@ -12735,8 +12767,8 @@ var __iconData$18 = {
 		}]
 	]
 };
-__iconData$18.node;
-var Menu = createLucideIcon(__iconData$18);
+__iconData$21.node;
+var Menu = createLucideIcon(__iconData$21);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/message-square.mjs
 /**
@@ -12745,7 +12777,7 @@ var Menu = createLucideIcon(__iconData$18);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$17 = {
+var __iconData$20 = {
 	name: "message-square",
 	size: 24,
 	node: [["path", {
@@ -12753,8 +12785,44 @@ var __iconData$17 = {
 		key: "18887p"
 	}]]
 };
-__iconData$17.node;
-var MessageSquare = createLucideIcon(__iconData$17);
+__iconData$20.node;
+var MessageSquare = createLucideIcon(__iconData$20);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/minus.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$19 = {
+	name: "minus",
+	size: 24,
+	node: [["path", {
+		d: "M5 12h14",
+		key: "1ays0h"
+	}]]
+};
+__iconData$19.node;
+var Minus = createLucideIcon(__iconData$19);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/octagon.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$18 = {
+	name: "octagon",
+	size: 24,
+	node: [["path", {
+		d: "M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z",
+		key: "2d38gg"
+	}]]
+};
+__iconData$18.node;
+var Octagon = createLucideIcon(__iconData$18);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/play.mjs
 /**
@@ -12763,7 +12831,7 @@ var MessageSquare = createLucideIcon(__iconData$17);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$16 = {
+var __iconData$17 = {
 	name: "play",
 	size: 24,
 	node: [["path", {
@@ -12771,8 +12839,8 @@ var __iconData$16 = {
 		key: "10ikf1"
 	}]]
 };
-__iconData$16.node;
-var Play = createLucideIcon(__iconData$16);
+__iconData$17.node;
+var Play = createLucideIcon(__iconData$17);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/plus.mjs
 /**
@@ -12781,7 +12849,7 @@ var Play = createLucideIcon(__iconData$16);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$15 = {
+var __iconData$16 = {
 	name: "plus",
 	size: 24,
 	node: [["path", {
@@ -12792,8 +12860,8 @@ var __iconData$15 = {
 		key: "s699le"
 	}]]
 };
-__iconData$15.node;
-var Plus = createLucideIcon(__iconData$15);
+__iconData$16.node;
+var Plus = createLucideIcon(__iconData$16);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/refresh-cw.mjs
 /**
@@ -12802,7 +12870,7 @@ var Plus = createLucideIcon(__iconData$15);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$14 = {
+var __iconData$15 = {
 	name: "refresh-cw",
 	size: 24,
 	node: [
@@ -12824,8 +12892,8 @@ var __iconData$14 = {
 		}]
 	]
 };
-__iconData$14.node;
-var RefreshCw = createLucideIcon(__iconData$14);
+__iconData$15.node;
+var RefreshCw = createLucideIcon(__iconData$15);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/rotate-ccw-clock.mjs
 /**
@@ -12834,7 +12902,7 @@ var RefreshCw = createLucideIcon(__iconData$14);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$13 = {
+var __iconData$14 = {
 	name: "rotate-ccw-clock",
 	size: 24,
 	node: [
@@ -12853,8 +12921,8 @@ var __iconData$13 = {
 	],
 	aliases: ["history"]
 };
-__iconData$13.node;
-var RotateCcwClock = createLucideIcon(__iconData$13);
+__iconData$14.node;
+var RotateCcwClock = createLucideIcon(__iconData$14);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/search.mjs
 /**
@@ -12863,7 +12931,7 @@ var RotateCcwClock = createLucideIcon(__iconData$13);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$12 = {
+var __iconData$13 = {
 	name: "search",
 	size: 24,
 	node: [["path", {
@@ -12876,8 +12944,8 @@ var __iconData$12 = {
 		key: "4ej97u"
 	}]]
 };
-__iconData$12.node;
-var Search = createLucideIcon(__iconData$12);
+__iconData$13.node;
+var Search = createLucideIcon(__iconData$13);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/send.mjs
 /**
@@ -12886,7 +12954,7 @@ var Search = createLucideIcon(__iconData$12);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$11 = {
+var __iconData$12 = {
 	name: "send",
 	size: 24,
 	node: [["path", {
@@ -12897,8 +12965,8 @@ var __iconData$11 = {
 		key: "12cjpa"
 	}]]
 };
-__iconData$11.node;
-var Send = createLucideIcon(__iconData$11);
+__iconData$12.node;
+var Send = createLucideIcon(__iconData$12);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/settings-2.mjs
 /**
@@ -12907,7 +12975,7 @@ var Send = createLucideIcon(__iconData$11);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$10 = {
+var __iconData$11 = {
 	name: "settings-2",
 	size: 24,
 	node: [
@@ -12933,8 +13001,8 @@ var __iconData$10 = {
 		}]
 	]
 };
-__iconData$10.node;
-var Settings2 = createLucideIcon(__iconData$10);
+__iconData$11.node;
+var Settings2 = createLucideIcon(__iconData$11);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/share-2.mjs
 /**
@@ -12943,7 +13011,7 @@ var Settings2 = createLucideIcon(__iconData$10);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$9 = {
+var __iconData$10 = {
 	name: "share-2",
 	size: 24,
 	node: [
@@ -12981,8 +13049,8 @@ var __iconData$9 = {
 		}]
 	]
 };
-__iconData$9.node;
-var Share2 = createLucideIcon(__iconData$9);
+__iconData$10.node;
+var Share2 = createLucideIcon(__iconData$10);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/shield-check.mjs
 /**
@@ -12991,7 +13059,7 @@ var Share2 = createLucideIcon(__iconData$9);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$8 = {
+var __iconData$9 = {
 	name: "shield-check",
 	size: 24,
 	node: [["path", {
@@ -13002,8 +13070,8 @@ var __iconData$8 = {
 		key: "dzmm74"
 	}]]
 };
-__iconData$8.node;
-var ShieldCheck = createLucideIcon(__iconData$8);
+__iconData$9.node;
+var ShieldCheck = createLucideIcon(__iconData$9);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/sparkles.mjs
 /**
@@ -13012,7 +13080,7 @@ var ShieldCheck = createLucideIcon(__iconData$8);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$7 = {
+var __iconData$8 = {
 	name: "sparkles",
 	size: 24,
 	node: [
@@ -13037,8 +13105,8 @@ var __iconData$7 = {
 	],
 	aliases: ["stars"]
 };
-__iconData$7.node;
-var Sparkles = createLucideIcon(__iconData$7);
+__iconData$8.node;
+var Sparkles = createLucideIcon(__iconData$8);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/trash.mjs
 /**
@@ -13047,7 +13115,7 @@ var Sparkles = createLucideIcon(__iconData$7);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$6 = {
+var __iconData$7 = {
 	name: "trash",
 	size: 24,
 	node: [
@@ -13074,8 +13142,8 @@ var __iconData$6 = {
 	],
 	aliases: ["trash-2"]
 };
-__iconData$6.node;
-var Trash = createLucideIcon(__iconData$6);
+__iconData$7.node;
+var Trash = createLucideIcon(__iconData$7);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/triangle-alert.mjs
 /**
@@ -13084,7 +13152,7 @@ var Trash = createLucideIcon(__iconData$6);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$5 = {
+var __iconData$6 = {
 	name: "triangle-alert",
 	size: 24,
 	node: [
@@ -13103,8 +13171,29 @@ var __iconData$5 = {
 	],
 	aliases: ["alert-triangle"]
 };
+__iconData$6.node;
+var TriangleAlert = createLucideIcon(__iconData$6);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/undo-2.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$5 = {
+	name: "undo-2",
+	size: 24,
+	node: [["path", {
+		d: "M9 14 4 9l5-5",
+		key: "102s5s"
+	}], ["path", {
+		d: "M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11",
+		key: "f3b9sd"
+	}]]
+};
 __iconData$5.node;
-var TriangleAlert = createLucideIcon(__iconData$5);
+var Undo2 = createLucideIcon(__iconData$5);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/user-plus.mjs
 /**
@@ -23406,6 +23495,19 @@ async function createTask(projectId, taskData) {
 /**
 * Update task (PATCH /api/{founder|employee}/tasks/:id)
 */
+/**
+* Preview a founder timeline change (POST /api/founder/projects/:id/schedule/preview).
+* The bot checks dependencies against the Google Sheet and lists every task that would move.
+*/
+async function previewSchedule(projectId, moves) {
+	return await post$2(`/api/founder/projects/${projectId}/schedule/preview`, { moves });
+}
+/**
+* Save a founder timeline change to the Google Sheet (POST /api/founder/projects/:id/schedule/apply).
+*/
+async function applySchedule(projectId, moves) {
+	return await post$2(`/api/founder/projects/${projectId}/schedule/apply`, { moves });
+}
 async function updateTask(taskId, updates, namespace = "founder") {
 	return await patch$1(`/api/${namespace}/tasks/${taskId}`, updates);
 }
@@ -28793,8 +28895,9 @@ function timelineItems(tasks, stages) {
 	const stageMap = new Map(stages.map((stage) => [stage.id, stage]));
 	return tasks.filter((task) => !task.deletedAt && task.status !== "Cancelled").map((task) => {
 		const stage = stageMap.get(task.stageId);
-		const directStart = calendarDate(task.sourceCurrentStart) ?? calendarDate(task.sourcePlannedStart);
-		const endDate = calendarDate(task.sourceCurrentEnd) ?? calendarDate(task.deadline) ?? calendarDate(task.sourcePlannedEnd);
+		const forecastStart = calendarDate(task.sourceForecastStart) ?? calendarDate(task.sourceCurrentStart) ?? calendarDate(task.sourcePlannedStart);
+		const endDate = calendarDate(task.deadline) ?? calendarDate(task.sourceForecastEnd) ?? calendarDate(task.sourceCurrentEnd) ?? calendarDate(task.sourcePlannedEnd);
+		const directStart = forecastStart !== null && endDate !== null && forecastStart > endDate ? endDate : forecastStart;
 		const stageStart = calendarDate(stage?.startDate);
 		const start = task.sheetPlan ? directStart : directStart ?? (stageStart !== null && endDate !== null && stageStart <= endDate ? stageStart : endDate);
 		return {
@@ -28820,6 +28923,115 @@ function stageSummary(items, stage) {
 		progress: group.length ? Math.round(complete / group.length * 100) : 0
 	};
 }
+//#endregion
+//#region frontend/src/lib/timelineStatus.js
+var todayDate = (now = /* @__PURE__ */ new Date()) => Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+var isoDate = (value) => new Date(value).toISOString().slice(0, 10);
+var isComplete = (task) => [
+	"Completed",
+	"completed",
+	"Done"
+].includes(task.status);
+var isClosed = (task) => isComplete(task) || task.status === "Cancelled";
+function itemStatus(item, today = todayDate()) {
+	const { task, start, end } = item;
+	if (isComplete(task)) return {
+		key: "complete",
+		label: "Done",
+		late: false
+	};
+	const scheduled = start !== null && end !== null;
+	const late = scheduled && end <= today;
+	if (task.sourceStatus === "Delay Requested" || task.sourceApprovalStatus === "Pending") return {
+		key: "waiting",
+		label: "Waiting on you",
+		late
+	};
+	if (task.status === "Blocked" || ["Issue Reported", "On hold"].includes(task.sourceStatus)) return {
+		key: "blocked",
+		label: task.sourceStatus === "On hold" ? "On hold" : "Blocked",
+		late
+	};
+	if (!scheduled) return {
+		key: "unscheduled",
+		label: "No dates",
+		late: false
+	};
+	if (late) return {
+		key: "late",
+		label: `Late by ${Math.round((today - end) / calendarDay) + 1}d`,
+		late: true
+	};
+	if (start <= today) return {
+		key: "active",
+		label: "In progress",
+		late: false
+	};
+	return {
+		key: "upcoming",
+		label: "Upcoming",
+		late: false
+	};
+}
+function unscheduledReason(item) {
+	const { task } = item;
+	if (task.sheetPlan) return task.missingDuration ? "Duration missing in the Google Sheet" : "Waits on an earlier step with no duration";
+	if (task.sourceBlockedReason) return task.sourceBlockedReason;
+	return "No dates in the Google Sheet yet";
+}
+function scheduleSummary(items, today = todayDate()) {
+	const open = items.filter((item) => !isClosed(item.task));
+	const statuses = open.map((item) => itemStatus(item, today));
+	const unscheduled = open.filter((item) => item.start === null || item.end === null).length;
+	const ends = open.filter((item) => item.end !== null).map((item) => item.end);
+	return {
+		late: statuses.filter((status) => status.late).length,
+		blocked: statuses.filter((status) => status.key === "blocked").length,
+		waiting: statuses.filter((status) => status.key === "waiting").length,
+		unscheduled,
+		finish: unscheduled || !ends.length ? null : Math.max(...ends) - calendarDay
+	};
+}
+function moveFor(item, startShiftDays, endShiftDays = startShiftDays) {
+	return {
+		taskId: item.task.id,
+		start: isoDate(item.start + startShiftDays * calendarDay),
+		end: isoDate(item.end - calendarDay + endShiftDays * calendarDay),
+		...staleGuard(item.task)
+	};
+}
+function swapMoves(a, b) {
+	const lengthA = a.end - a.start;
+	const lengthB = b.end - b.start;
+	return [{
+		taskId: a.task.id,
+		start: isoDate(b.start),
+		end: isoDate(b.start + lengthA - calendarDay),
+		...staleGuard(a.task)
+	}, {
+		taskId: b.task.id,
+		start: isoDate(a.start),
+		end: isoDate(a.start + lengthB - calendarDay),
+		...staleGuard(b.task)
+	}];
+}
+function staleGuard(task) {
+	return {
+		fromStart: task.sourceForecastStart || task.sourceCurrentStart || task.sourcePlannedStart || "",
+		fromEnd: task.sourceForecastEnd || task.sourceCurrentEnd || task.sourcePlannedEnd || ""
+	};
+}
+function undoMoves(affected = []) {
+	return affected.filter((item) => item.webTaskId && item.previousStart && item.previousEnd).map((item) => ({
+		taskId: item.webTaskId,
+		start: item.previousStart,
+		end: item.previousEnd,
+		fromStart: item.forecastStart,
+		fromEnd: item.forecastEnd,
+		forecastOnly: !item.committed
+	}));
+}
+var canMove = (item) => Boolean(item.task.telegramTaskId) && !item.task.sheetPlan && !isClosed(item.task) && item.start !== null && item.end !== null;
 //#endregion
 //#region frontend/src/components/TimelineStageDetails.jsx
 var timelineOwner = (task, members) => members.find((member) => (member.employeeId || member.id) === task.assigneeId)?.name || (task.assigneeId === "founder" ? "Founder" : task.assigneeName || "Unassigned");
@@ -28968,38 +29180,349 @@ function TimelineStageDetails({ stage, items, members, projectId, namespace, onC
 }
 //#endregion
 //#region frontend/src/components/ProjectTimeline.jsx
-var today = () => {
-	const now = /* @__PURE__ */ new Date();
-	return Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
-};
 var dateLabel = (value) => new Date(value).toLocaleDateString([], {
 	month: "short",
 	day: "numeric",
 	timeZone: "UTC"
 });
-function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, namespace = "founder", onOpenTask }) {
+var isoLabel = (value) => value ? dateLabel(calendarDate(value)) : "no date";
+var isoRange = (start, end) => start && start === end ? isoLabel(start) : `${isoLabel(start)} – ${isoLabel(end)}`;
+var ZOOMS = [
+	{
+		days: 14,
+		label: "2 weeks",
+		width: 82
+	},
+	{
+		days: 42,
+		label: "6 weeks",
+		width: 40
+	},
+	{
+		days: 91,
+		label: "3 months",
+		width: 20
+	}
+];
+var STATUS_ICON = {
+	late: TriangleAlert,
+	blocked: Octagon,
+	waiting: Hourglass,
+	complete: Check
+};
+var LONG_PRESS_MS = 320;
+var EDGE = 44;
+function verticalScroller(element) {
+	for (let node = element?.parentElement; node; node = node.parentElement) {
+		const overflow = getComputedStyle(node).overflowY;
+		if ((overflow === "auto" || overflow === "scroll") && node.scrollHeight > node.clientHeight) return node;
+	}
+	return document.scrollingElement;
+}
+function OffscreenChip({ value, before, onClick }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+		className: `iksha-offscreen ${before ? "is-before" : "is-after"}`,
+		onClick,
+		"aria-label": `${before ? "Ended" : "Starts"} ${dateLabel(value)}. Show`,
+		children: before ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { size: 11 }), dateLabel(value)] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [dateLabel(value), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { size: 11 })] })
+	});
+}
+function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, namespace = "founder", onOpenTask, onSchedulePreview, onScheduleApply }) {
+	const today = todayDate();
 	const items = timelineItems(tasks, stages);
 	const scheduled = items.filter((item) => item.start !== null && item.end !== null);
-	const [origin, setOrigin] = (0, import_react.useState)(() => scheduled.length ? Math.min(...scheduled.map((item) => item.start)) : today());
-	const [days, setDays] = (0, import_react.useState)(14);
-	const [collapsed, setCollapsed] = (0, import_react.useState)(() => new Set(stages.slice(1).map((stage) => stage.id)));
+	const summary = scheduleSummary(items, today);
+	const editable = Boolean(onSchedulePreview && onScheduleApply);
+	const [origin, setOrigin] = (0, import_react.useState)(today - 7 * calendarDay);
+	const [days, setDays] = (0, import_react.useState)(42);
+	const [collapsed, setCollapsed] = (0, import_react.useState)(() => /* @__PURE__ */ new Set());
 	const [search, setSearch] = (0, import_react.useState)("");
 	const [selectedStageId, setSelectedStageId] = (0, import_react.useState)(null);
+	const [drag, setDrag] = (0, import_react.useState)(null);
+	const [picked, setPicked] = (0, import_react.useState)(null);
+	const [proposal, setProposal] = (0, import_react.useState)(null);
+	const [notice, setNotice] = (0, import_react.useState)(null);
+	const dragRef = (0, import_react.useRef)(null);
+	const pressRef = (0, import_react.useRef)(null);
+	const suppressClick = (0, import_react.useRef)(false);
+	const autoScroll = (0, import_react.useRef)({
+		frame: 0,
+		vx: 0,
+		vy: 0
+	});
+	const scrollerRef = (0, import_react.useRef)(null);
+	const datesRef = (0, import_react.useRef)(null);
+	const handlers = (0, import_react.useRef)({});
+	const swallowNextClick = () => {
+		suppressClick.current = true;
+		setTimeout(() => {
+			suppressClick.current = false;
+		}, 450);
+	};
 	const from = origin, to = origin + days * calendarDay;
-	const dayWidth = days === 7 ? 142 : days === 14 ? 82 : days === 28 ? 48 : Math.max(8, 1120 / days);
+	const dayWidth = ZOOMS.find((zoom) => zoom.days === days)?.width ?? Math.max(8, 1120 / days);
+	const compactHeader = dayWidth < 40;
+	const narrowDays = !compactHeader && dayWidth < 60;
 	const allGroups = [...stages, {
 		id: "other",
 		name: "Additional work"
 	}].filter((stage) => items.some((item) => (item.stage?.id || "other") === stage.id));
 	const ownerName = (task) => members.find((member) => (member.employeeId || member.id) === task.assigneeId)?.name || (task.assigneeId === "founder" ? "Founder" : task.assigneeName || "Unassigned");
 	const query = search.trim().toLowerCase();
-	const visible = items.filter((item) => `${item.task.title} ${item.stage?.name || ""} ${ownerName(item.task)}`.toLowerCase().includes(query));
+	const visible = items.filter((item) => `${item.task.title} ${item.stage?.name || "Additional work"} ${ownerName(item.task)}`.toLowerCase().includes(query));
+	const undated = visible.filter((item) => (item.start === null || item.end === null) && item.task.status !== "Completed");
 	const complete = (task) => ["Completed", "completed"].includes(task.status);
 	const toggle = (id) => setCollapsed((current) => {
 		const next = new Set(current);
 		next.has(id) ? next.delete(id) : next.add(id);
 		return next;
 	});
+	const todayInView = today >= from && today < to;
+	const pickedItem = picked ? items.find((item) => item.task.id === picked) : null;
+	const gridStyle = {
+		"--timeline-width": `${days * dayWidth}px`,
+		"--timeline-day": `${dayWidth}px`,
+		"--today-left": `${(today - from) / calendarDay * dayWidth}px`
+	};
+	const syncHeader = () => {
+		if (datesRef.current && scrollerRef.current) datesRef.current.style.transform = `translateX(${-scrollerRef.current.scrollLeft}px)`;
+	};
+	(0, import_react.useLayoutEffect)(syncHeader);
+	const scrollTo = (0, import_react.useRef)("today");
+	(0, import_react.useLayoutEffect)(() => {
+		const scroller = scrollerRef.current;
+		if (!scroller) return;
+		const target = scrollTo.current;
+		scrollTo.current = null;
+		if (target === "today" && todayInView) scroller.scrollLeft = Math.max(0, (today - from) / calendarDay * dayWidth - dayWidth);
+		else if (target === "start") scroller.scrollLeft = 0;
+		syncHeader();
+	}, [
+		origin,
+		days,
+		items.length > 0
+	]);
+	const goToday = () => {
+		scrollTo.current = "today";
+		setOrigin(today - 7 * calendarDay);
+	};
+	const page = (direction) => {
+		scrollTo.current = "start";
+		setOrigin(origin + direction * Math.max(7, Math.round(days / 2)) * calendarDay);
+	};
+	const shortTitle = (task, stage) => {
+		const base = String(stage?.name || "").replace(/ \([0-9a-z]+\)$/i, "");
+		return base && task.title.startsWith(`${base} — `) ? task.title.slice(base.length + 3) : task.title;
+	};
+	async function propose(moves, description) {
+		setProposal({
+			moves,
+			description,
+			loading: true
+		});
+		try {
+			const preview = await onSchedulePreview(moves);
+			setProposal({
+				moves,
+				description,
+				preview
+			});
+		} catch (error) {
+			setProposal({
+				moves,
+				description,
+				error: error.message || "Could not check this change."
+			});
+		}
+	}
+	async function confirm() {
+		const { moves, description } = proposal;
+		setProposal({
+			...proposal,
+			saving: true
+		});
+		try {
+			const result = await onScheduleApply(moves);
+			setProposal(null);
+			const pushed = result.affected.filter((item) => !item.moved).length;
+			setNotice({
+				text: `${description} saved to the Google Sheet${pushed ? ` · ${pushed} dependent task${pushed === 1 ? "" : "s"} moved` : ""}.`,
+				undo: undoMoves(result.affected)
+			});
+		} catch (error) {
+			setProposal({
+				...proposal,
+				saving: false,
+				error: error.message || "Could not save this change."
+			});
+		}
+	}
+	async function undo() {
+		const moves = notice.undo;
+		setNotice({ text: "Undoing…" });
+		try {
+			await onScheduleApply(moves);
+			setNotice({ text: "Change undone. The Google Sheet is back to the earlier dates." });
+		} catch (error) {
+			setNotice({ text: `Could not undo: ${error.message}` });
+		}
+	}
+	const nudge = (item, startDays, endDays, description) => propose([moveFor(item, startDays, endDays)], description);
+	function startDrag(item, mode, x, y, touch) {
+		dragRef.current = {
+			id: item.task.id,
+			item,
+			mode,
+			x,
+			y,
+			lastX: x,
+			lastY: y,
+			scrollLeft: scrollerRef.current?.scrollLeft || 0,
+			shift: 0,
+			target: null,
+			moved: false,
+			touch
+		};
+		setDrag({ ...dragRef.current });
+	}
+	function updateDrag(clientX, clientY) {
+		const current = dragRef.current;
+		if (!current) return;
+		current.lastX = clientX;
+		current.lastY = clientY;
+		if (!current.moved && Math.abs(clientX - current.x) < 5 && Math.abs(clientY - current.y) < 8) return;
+		current.moved = true;
+		const scrolled = (scrollerRef.current?.scrollLeft || 0) - current.scrollLeft;
+		current.shift = Math.round((clientX - current.x + scrolled) / dayWidth);
+		if (current.mode === "resize") current.shift = Math.max(current.shift, -Math.round((current.item.end - current.item.start) / calendarDay) + 1);
+		const row = document.elementsFromPoint(clientX, clientY).map((element) => element.closest?.("[data-task-row]")).find(Boolean);
+		const target = row && row.dataset.taskRow !== current.id && current.mode === "move" ? items.find((candidate) => candidate.task.id === row.dataset.taskRow) : null;
+		current.target = target && canMove(target) ? target : null;
+		setDrag({ ...current });
+		edgeScroll(clientX, clientY);
+	}
+	function edgeScroll(clientX, clientY) {
+		const scroller = scrollerRef.current;
+		if (!scroller) return;
+		const rect = scroller.getBoundingClientRect();
+		const labelWidth = scroller.querySelector(".iksha-schedule-label")?.offsetWidth || 0;
+		const state = autoScroll.current;
+		state.vx = clientX < rect.left + labelWidth + EDGE ? -10 : clientX > rect.right - EDGE ? 10 : 0;
+		state.vy = clientY < 148 ? -10 : clientY > window.innerHeight - EDGE - 70 ? 10 : 0;
+		if ((state.vx || state.vy) && !state.frame) {
+			const step = () => {
+				const current = dragRef.current;
+				if (!current || !state.vx && !state.vy) {
+					state.frame = 0;
+					return;
+				}
+				if (state.vx) scroller.scrollLeft += state.vx;
+				if (state.vy) verticalScroller(scroller).scrollBy(0, state.vy);
+				handlers.current.updateDrag(current.lastX, current.lastY);
+				state.frame = requestAnimationFrame(step);
+			};
+			state.frame = requestAnimationFrame(step);
+		}
+	}
+	function stopDrag() {
+		cancelAnimationFrame(autoScroll.current.frame);
+		autoScroll.current = {
+			frame: 0,
+			vx: 0,
+			vy: 0
+		};
+		dragRef.current = null;
+		setDrag(null);
+	}
+	function finishDrag() {
+		const current = dragRef.current;
+		stopDrag();
+		if (!current) return;
+		if (!current.moved) {
+			if (current.touch) {
+				swallowNextClick();
+				setPicked(current.id);
+			}
+			return;
+		}
+		swallowNextClick();
+		if (current.target) return void propose(swapMoves(current.item, current.target), `Swap “${current.item.task.title}” with “${current.target.task.title}”`);
+		if (!current.shift) return;
+		const title = current.item.task.title;
+		propose([current.mode === "resize" ? moveFor(current.item, 0, current.shift) : moveFor(current.item, current.shift)], current.mode === "resize" ? `Change the length of “${title}”` : `Move “${title}”`);
+	}
+	handlers.current = {
+		updateDrag,
+		finishDrag,
+		stopDrag
+	};
+	function onBarPointerDown(event, item) {
+		if (!editable || !canMove(item) || event.button !== 0) return;
+		const mode = event.target.closest(".iksha-resize-handle") ? "resize" : "move";
+		if (event.pointerType === "mouse") {
+			event.currentTarget.setPointerCapture(event.pointerId);
+			startDrag(item, mode, event.clientX, event.clientY, false);
+			return;
+		}
+		const press = {
+			item,
+			mode,
+			x: event.clientX,
+			y: event.clientY
+		};
+		press.timer = setTimeout(() => {
+			pressRef.current = null;
+			navigator.vibrate?.(12);
+			startDrag(item, mode, press.x, press.y, true);
+		}, LONG_PRESS_MS);
+		pressRef.current = press;
+	}
+	(0, import_react.useEffect)(() => {
+		const cancelPress = () => {
+			if (pressRef.current) {
+				clearTimeout(pressRef.current.timer);
+				pressRef.current = null;
+			}
+		};
+		const onMove = (event) => {
+			const touch = event.touches[0];
+			if (!touch) return;
+			const press = pressRef.current;
+			if (press && Math.hypot(touch.clientX - press.x, touch.clientY - press.y) > 10) cancelPress();
+			if (dragRef.current?.touch) {
+				event.preventDefault();
+				handlers.current.updateDrag(touch.clientX, touch.clientY);
+			}
+		};
+		const onEnd = () => {
+			cancelPress();
+			if (dragRef.current?.touch) handlers.current.finishDrag();
+		};
+		const onCancel = () => {
+			cancelPress();
+			if (dragRef.current?.touch) handlers.current.stopDrag();
+		};
+		document.addEventListener("touchmove", onMove, { passive: false });
+		document.addEventListener("touchend", onEnd);
+		document.addEventListener("touchcancel", onCancel);
+		return () => {
+			document.removeEventListener("touchmove", onMove);
+			document.removeEventListener("touchend", onEnd);
+			document.removeEventListener("touchcancel", onCancel);
+			cancelPress();
+		};
+	}, []);
+	function keyMove(event, item) {
+		if (!editable || !canMove(item) || !event.altKey || !["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+		event.preventDefault();
+		const step = event.key === "ArrowRight" ? 1 : -1;
+		nudge(item, event.shiftKey ? 0 : step, step, event.shiftKey ? `Change the length of “${item.task.title}”` : `Move “${item.task.title}”`);
+	}
+	const headline = [
+		summary.late && `${summary.late} late`,
+		summary.blocked && `${summary.blocked} blocked`,
+		summary.waiting && `${summary.waiting} waiting on you`
+	].filter(Boolean);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "iksha-timeline",
 		children: [
@@ -29008,10 +29531,10 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "iksha-eyebrow",
-						children: "EVERY STAGE, CONNECTED"
+						children: "PROJECT SCHEDULE"
 					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", { children: "Make room for good work." }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "See the sequence, the overlap, and the people behind each task." })
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", { children: headline.length ? headline.join(" · ") : "Nothing late or blocked" }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [summary.finish !== null ? `Projected finish ${dateLabel(summary.finish)}` : "Finish date not confirmed", summary.unscheduled ? ` · ${summary.unscheduled} without dates` : ""] })
 				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, { size: 14 }),
 					scheduled.length,
@@ -29022,76 +29545,72 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "iksha-timeline-toolbar",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "iksha-date-nav",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								variant: "ghost",
-								size: "icon-sm",
-								"aria-label": "Previous period",
-								onClick: () => setOrigin(from - days * calendarDay),
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, {})
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [
-								dateLabel(from),
-								new Date(from).getUTCFullYear() !== (/* @__PURE__ */ new Date(to - 864e5)).getUTCFullYear() ? ", " + new Date(from).getUTCFullYear() : "",
-								" – ",
-								dateLabel(to - calendarDay),
-								", ",
-								new Date(to - calendarDay).getUTCFullYear()
-							] }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								variant: "ghost",
-								size: "icon-sm",
-								"aria-label": "Next period",
-								onClick: () => setOrigin(from + days * calendarDay),
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {})
+				role: "toolbar",
+				"aria-label": "Timeline view",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "iksha-date-nav",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "ghost",
+							size: "icon-sm",
+							"aria-label": "Previous period",
+							onClick: () => page(-1),
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, {})
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [
+							dateLabel(from),
+							" – ",
+							dateLabel(to - calendarDay),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "iksha-year",
+								children: [", ", new Date(to - calendarDay).getUTCFullYear()]
 							})
-						]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						variant: "outline",
-						size: "sm",
-						onClick: () => setOrigin(today()),
-						children: "Today"
-					}),
-					scheduled.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						variant: "outline",
-						size: "sm",
-						onClick: () => setOrigin(Math.min(...scheduled.map((item) => item.start))),
-						children: "First scheduled"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "iksha-zoom",
-						children: [
-							7,
-							14,
-							28
-						].map((value) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-							"aria-pressed": days === value,
-							className: days === value ? "active" : "",
-							onClick: () => setDays(value),
-							children: value === 7 ? "Week" : value === 14 ? "Fortnight" : "Month"
-						}, value))
-					}),
-					scheduled.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						variant: "outline",
-						size: "sm",
-						onClick: () => {
-							const first = Math.min(...scheduled.map((item) => item.start));
-							setOrigin(first);
-							setDays(Math.max(28, Math.ceil((Math.max(...scheduled.map((item) => item.end)) - first) / 864e5)));
-						},
-						children: "Entire plan"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						variant: "outline",
-						size: "sm",
-						onClick: () => setCollapsed(allGroups.some((stage) => collapsed.has(stage.id)) ? /* @__PURE__ */ new Set() : new Set(allGroups.map((stage) => stage.id))),
-						children: allGroups.some((stage) => collapsed.has(stage.id)) ? "Expand stages" : "Collapse stages"
-					})
-				]
+						] }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "ghost",
+							size: "icon-sm",
+							"aria-label": "Next period",
+							onClick: () => page(1),
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {})
+						})
+					]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "iksha-toolbar-chips",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							size: "sm",
+							onClick: goToday,
+							children: "Today"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "iksha-zoom",
+							children: ZOOMS.map((zoom) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+								"aria-pressed": days === zoom.days,
+								className: days === zoom.days ? "active" : "",
+								onClick: () => setDays(zoom.days),
+								children: zoom.label
+							}, zoom.days))
+						}),
+						scheduled.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							size: "sm",
+							"aria-pressed": !ZOOMS.some((zoom) => zoom.days === days),
+							onClick: () => {
+								const first = Math.min(...scheduled.map((item) => item.start));
+								setOrigin(first);
+								setDays(Math.max(28, Math.ceil((Math.max(...scheduled.map((item) => item.end)) - first) / 864e5)));
+							},
+							children: "Entire plan"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							size: "sm",
+							onClick: () => setCollapsed(allGroups.some((stage) => collapsed.has(stage.id)) ? /* @__PURE__ */ new Set() : new Set(allGroups.map((stage) => stage.id))),
+							children: allGroups.some((stage) => collapsed.has(stage.id)) ? "Expand all" : "Collapse all"
+						})
+					]
+				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 				className: "iksha-timeline-search",
@@ -29099,70 +29618,110 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 					className: "sr-only",
 					children: "Search timeline tasks"
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-					placeholder: "Find a work item…",
+					type: "search",
+					placeholder: "Find a work item or person…",
 					value: search,
-					onChange: (e) => setSearch(e.target.value)
+					onChange: (event) => setSearch(event.target.value)
 				})]
+			}),
+			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "iksha-schedule-notice",
+				role: "status",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: notice.text }),
+					notice.undo?.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+						variant: "outline",
+						size: "sm",
+						onClick: undo,
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Undo2, {}), "Undo"]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						className: "iksha-notice-close",
+						"aria-label": "Dismiss",
+						onClick: () => setNotice(null),
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(X$1, { size: 16 })
+					})
+				]
 			}),
 			!items.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "iksha-timeline-empty",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, { size: 28 }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", { children: "Your project starts here." }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", { children: "No work items yet." }),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Choose a project workflow to generate its tasks and schedule." })
 				]
-			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "iksha-schedule-scroll",
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					style: {
-						"--timeline-width": `${days * dayWidth}px`,
-						"--timeline-day": `${dayWidth}px`
-					},
-					className: `iksha-schedule-grid ${days > 28 ? "iksha-plan-fit" : ""}`,
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "iksha-schedule-row iksha-schedule-head",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "iksha-schedule-label",
-								children: "STAGE / WORK ITEM"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "iksha-schedule-track iksha-schedule-dates",
-								children: Array.from({ length: days }, (_, i) => {
-									const value = from + i * calendarDay;
-									return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: `iksha-schedule-day ${value === today() ? "today" : ""}`,
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											style: days > 28 && i % 7 !== 0 ? { visibility: "hidden" } : void 0,
-											children: [
-												new Date(value).toLocaleDateString([], {
-													weekday: "short",
-													timeZone: "UTC"
-												}),
-												" ",
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: new Date(value).getUTCDate() })
-											]
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", {
-											style: days > 28 && i % 7 !== 0 ? { visibility: "hidden" } : void 0,
-											children: new Date(value).toLocaleDateString([], {
-												month: "short",
-												timeZone: "UTC"
-											})
-										})]
-									}, i);
-								})
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: `iksha-schedule-frame ${compactHeader ? "iksha-plan-fit" : ""} ${todayInView ? "has-today" : ""} ${drag ? "is-dragging-any" : ""}`,
+				style: gridStyle,
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "iksha-schedule-headbar",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "iksha-schedule-label",
+						children: "STAGE / WORK ITEM"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "iksha-headbar-viewport",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "iksha-schedule-dates",
+							ref: datesRef,
+							children: [todayInView && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "iksha-today-flag",
+								"aria-hidden": "true",
+								children: "Today"
+							}), Array.from({ length: days }, (_, index) => {
+								const value = from + index * calendarDay;
+								const hidden = compactHeader && new Date(value).getUTCDay() !== 1 ? { visibility: "hidden" } : void 0;
+								const date = new Date(value);
+								if (narrowDays) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: `iksha-schedule-day is-narrow ${value === today ? "today" : ""}`,
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", {
+										className: date.getUTCDate() === 1 || index === 0 ? "iksha-day-month" : "",
+										children: date.getUTCDate() === 1 || index === 0 ? date.toLocaleDateString([], {
+											month: "short",
+											timeZone: "UTC"
+										}) : date.toLocaleDateString([], {
+											weekday: "narrow",
+											timeZone: "UTC"
+										})
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: date.getUTCDate() })]
+								}, index);
+								return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: `iksha-schedule-day ${value === today ? "today" : ""}`,
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										style: hidden,
+										children: [compactHeader ? "" : date.toLocaleDateString([], {
+											weekday: "short",
+											timeZone: "UTC"
+										}) + " ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: date.getUTCDate() })]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", {
+										style: hidden,
+										children: date.toLocaleDateString([], {
+											month: "short",
+											timeZone: "UTC"
+										})
+									})]
+								}, index);
 							})]
-						}),
-						allGroups.map((stage, index) => {
+						})
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "iksha-schedule-scroll",
+					ref: scrollerRef,
+					onScroll: syncHeader,
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "iksha-schedule-grid",
+						children: [allGroups.map((stage, index) => {
 							const group = visible.filter((item) => (item.stage?.id || "other") === stage.id);
 							if (!group.length) return null;
 							const scheduledGroup = group.filter((item) => item.start !== null && item.end !== null);
 							const groupStart = scheduledGroup.length ? Math.min(...scheduledGroup.map((item) => item.start)) : calendarDate(stage.startDate);
 							const groupEnd = scheduledGroup.length ? Math.max(...scheduledGroup.map((item) => item.end)) : null;
+							const lateCount = group.filter((item) => itemStatus(item, today).late).length;
 							const isCollapsed = collapsed.has(stage.id) && !query;
+							const ordered = [...group].sort((a, b) => (Number(a.task.sourceSequence) || 0) - (Number(b.task.sourceSequence) || 0) || String(a.task.createdAt || "").localeCompare(String(b.task.createdAt || "")));
 							return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-								className: `iksha-stage color-${index % 5}`,
+								className: `iksha-stage color-${index % 8}`,
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "iksha-schedule-row",
+									className: "iksha-schedule-row iksha-stage-row",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 										className: "iksha-schedule-label iksha-stage-heading",
 										onClick: () => toggle(stage.id),
@@ -29173,10 +29732,11 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 												children: String(index + 1).padStart(2, "0")
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: stage.name }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
-												group.length,
-												" work items · ",
 												group.filter((item) => complete(item.task)).length,
-												" complete"
+												"/",
+												group.length,
+												" done",
+												lateCount ? ` · ${lateCount} late` : ""
 											] })] }),
 											isCollapsed ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, { size: 14 }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, { size: 14 })
 										]
@@ -29185,69 +29745,261 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 										children: groupStart !== null && groupEnd !== null && groupEnd > from && groupStart < to ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 											className: "iksha-stage-range",
 											"aria-label": `Open ${stage.name} stage details`,
-											title: `${stage.name} · ${group.length} work items · ${group.filter((item) => complete(item.task)).length} complete`,
+											title: `${stage.name} · ${dateLabel(groupStart)} – ${dateLabel(groupEnd - calendarDay)}`,
 											onClick: () => setSelectedStageId(stage.id),
 											style: {
 												left: (Math.max(groupStart, from) - from) / calendarDay * dayWidth,
 												width: Math.max(20, (Math.min(groupEnd, to) - Math.max(groupStart, from)) / calendarDay * dayWidth - 3)
 											},
 											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: stage.name }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
-												group.length,
-												" work items · ",
-												group.filter((item) => complete(item.task)).length,
-												" complete"
+												dateLabel(groupStart),
+												" – ",
+												dateLabel(groupEnd - calendarDay)
 											] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 14 })]
+										}) : groupStart !== null ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(OffscreenChip, {
+											value: groupEnd !== null && groupEnd <= from ? groupEnd - calendarDay : groupStart,
+											before: groupEnd !== null && groupEnd <= from,
+											onClick: () => setOrigin(groupStart - 3 * calendarDay)
 										}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 											className: "iksha-unscheduled",
 											onClick: () => setSelectedStageId(stage.id),
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 12 }), "View stage details"]
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 12 }), "Stage details"]
 										})
 									})]
-								}), !isCollapsed && group.sort((a, b) => (Number(a.task.sourceSequence) || 0) - (Number(b.task.sourceSequence) || 0) || String(a.task.createdAt || "").localeCompare(String(b.task.createdAt || ""))).map((item) => {
+								}), !isCollapsed && ordered.map((item) => {
+									const status = itemStatus(item, today);
 									const isScheduled = item.start !== null && item.end !== null;
-									const inRange = isScheduled && item.end > from && item.start < to;
+									const dragging = drag?.id === item.task.id;
+									const isTarget = drag?.target?.task.id === item.task.id;
+									const shiftStart = dragging && drag.mode === "move" && !drag.target ? drag.shift : 0;
+									const shiftEnd = dragging && !drag.target ? drag.shift : 0;
+									const start = isScheduled ? item.start + shiftStart * 864e5 : null;
+									const end = isScheduled ? item.end + shiftEnd * 864e5 : null;
+									const inRange = isScheduled && (dragging || end > from && start < to);
+									const movable = editable && canMove(item);
+									const Icon = STATUS_ICON[status.key];
+									const flag = status.late && status.key !== "late" ? `${status.label} · late` : status.label;
+									const barWidth = Math.max(12, (Math.min(end ?? 0, to) - Math.max(start ?? 0, from)) / 864e5 * dayWidth - 3);
 									return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "iksha-schedule-row iksha-task-row",
+										className: `iksha-schedule-row iksha-task-row ${isTarget ? "is-swap-target" : ""} ${picked === item.task.id ? "is-picked" : ""}`,
+										"data-task-row": item.task.id,
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 											className: "iksha-schedule-label",
 											onClick: () => onOpenTask(item.task),
 											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: `iksha-task-state ${complete(item.task) ? "complete" : ""}`,
+												className: `iksha-task-state state-${status.key}`,
 												children: complete(item.task) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { size: 10 })
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.task.title }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: shortTitle(item.task, item.stage) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
 												ownerName(item.task),
 												" · ",
-												item.task.status
+												flag
 											] })] })]
 										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 											className: "iksha-schedule-track",
-											children: inRange ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-												className: "iksha-task-block",
-												title: `${item.task.title} · ${dateLabel(item.start)} – ${dateLabel(item.end - 864e5)}`,
-												"aria-label": `Open ${item.task.title}`,
+											children: inRange ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+												className: `iksha-task-block status-${status.key} ${status.late ? "is-late" : ""} ${barWidth < 64 ? "is-short" : ""} ${movable ? "is-movable" : ""} ${dragging ? "is-dragging" : ""} ${dragging && drag.touch ? "is-lifted" : ""}`,
+												title: `${item.task.title} · ${dateLabel(start)} – ${dateLabel(end - 864e5)} · ${flag}${movable ? " · Drag to move, pull the edge to resize, drop on another task to swap, or press Alt+Arrow" : ""}`,
+												"aria-label": `${item.task.title}, ${dateLabel(start)} to ${dateLabel(end - 864e5)}, ${flag}, ${ownerName(item.task)}${movable ? ". Alt plus arrow keys move it by a day" : ""}`,
 												style: {
-													left: (Math.max(item.start, from) - from) / 864e5 * dayWidth,
-													width: (Math.min(item.end, to) - Math.max(item.start, from)) / 864e5 * dayWidth - 3
+													left: Math.min(days * dayWidth - 12, Math.max(0, (Math.max(start, from) - from) / 864e5 * dayWidth)),
+													width: barWidth
 												},
-												onClick: () => onOpenTask(item.task),
-												children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [complete(item.task) ? "✓ " : "", item.task.title] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
-													ownerName(item.task),
-													" · ",
-													item.task.status
-												] })] })
-											}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+												onPointerDown: (event) => onBarPointerDown(event, item),
+												onPointerMove: (event) => {
+													if (dragRef.current && !dragRef.current.touch) updateDrag(event.clientX, event.clientY);
+												},
+												onPointerUp: () => {
+													if (dragRef.current && !dragRef.current.touch) finishDrag();
+												},
+												onLostPointerCapture: () => {
+													if (dragRef.current && !dragRef.current.touch) finishDrag();
+												},
+												onContextMenu: (event) => {
+													if (movable) event.preventDefault();
+												},
+												onKeyDown: (event) => keyMove(event, item),
+												onClick: () => {
+													if (suppressClick.current) {
+														suppressClick.current = false;
+														return;
+													}
+													onOpenTask(item.task);
+												},
+												children: [
+													Icon && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, {
+														size: 12,
+														"aria-hidden": "true",
+														className: "iksha-status-icon"
+													}),
+													/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: shortTitle(item.task, item.stage) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
+														dateLabel(start),
+														" – ",
+														dateLabel(end - 864e5),
+														" · ",
+														flag
+													] })] }),
+													movable && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", {
+														className: "iksha-resize-handle",
+														"aria-hidden": "true"
+													})
+												]
+											}, "bar") : isScheduled ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(OffscreenChip, {
+												value: item.end <= from ? item.end - 864e5 : item.start,
+												before: item.end <= from,
+												onClick: () => setOrigin(item.start - 2592e5)
+											}, "chip") : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 												className: "iksha-unscheduled",
-												onClick: () => isScheduled ? setOrigin(item.start) : onOpenTask(item.task),
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock3, { size: 12 }), isScheduled ? `${dateLabel(item.start)} · Show` : item.task.sheetPlan ? "Duration needed · Open item" : "No saved dates · Open task"]
-											})
+												onClick: () => onOpenTask(item.task),
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock3, { size: 12 }), "No dates · see below"]
+											}, "chip")
 										})]
 									}, item.task.id);
 								})]
 							}, stage.id);
-						}),
-						!visible.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						}), !visible.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "iksha-empty-search",
 							children: "No work items match your search."
+						})]
+					})
+				})]
+			}),
+			undated.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+				className: "iksha-undated",
+				"aria-labelledby": "iksha-undated-title",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", {
+					id: "iksha-undated-title",
+					children: ["Not scheduled yet ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: undated.length })]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: undated.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+					onClick: () => onOpenTask(item.task),
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.task.title }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
+						item.stage?.name || "Additional work",
+						" · ",
+						unscheduledReason(item)
+					] })]
+				}) }, item.task.id)) })]
+			}),
+			pickedItem && editable && canMove(pickedItem) && !proposal && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "iksha-adjust-bar",
+				role: "dialog",
+				"aria-label": `Adjust ${pickedItem.task.title}`,
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "iksha-adjust-title",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: pickedItem.task.title }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
+							dateLabel(pickedItem.start),
+							" – ",
+							dateLabel(pickedItem.end - 864e5),
+							" · ",
+							Math.round((pickedItem.end - pickedItem.start) / 864e5),
+							" day",
+							pickedItem.end - pickedItem.start === 864e5 ? "" : "s"
+						] })]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "iksha-adjust-actions",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								onClick: () => nudge(pickedItem, -1, -1, `Move “${pickedItem.task.title}” a day earlier`),
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { size: 16 }), "Earlier"]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								onClick: () => nudge(pickedItem, 1, 1, `Move “${pickedItem.task.title}” a day later`),
+								children: ["Later", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { size: 16 })]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								disabled: pickedItem.end - pickedItem.start <= 864e5,
+								onClick: () => nudge(pickedItem, 0, -1, `Shorten “${pickedItem.task.title}” by a day`),
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Minus, { size: 16 }), "Shorter"]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								onClick: () => nudge(pickedItem, 0, 1, `Lengthen “${pickedItem.task.title}” by a day`),
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { size: 16 }), "Longer"]
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "iksha-adjust-footer",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							onClick: () => {
+								setPicked(null);
+								onOpenTask(pickedItem.task);
+							},
+							children: "Open task"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							onClick: () => setPicked(null),
+							children: "Done"
+						})]
+					})
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				open: Boolean(proposal),
+				onOpenChange: (open) => {
+					if (!open && !proposal?.saving) setProposal(null);
+				},
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
+					className: "iksha-schedule-preview",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "iksha-eyebrow",
+								children: "CHECK BEFORE SAVING"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: proposal?.description }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Nothing changes until you confirm. Confirmed changes are written to the Google Sheet, so Telegram and the web app stay in step." })
+						] }),
+						proposal?.loading && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "iksha-preview-note",
+							children: "Checking dependencies…"
+						}),
+						proposal?.error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "iksha-preview-conflict",
+							role: "alert",
+							children: proposal.error
+						}),
+						proposal?.preview && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "iksha-preview-body",
+							children: [proposal.preview.conflicts.map((conflict, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "iksha-preview-conflict",
+								role: "alert",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Octagon, { size: 14 }), conflict.reason]
+							}, index)), proposal.preview.ok && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", { children: "You are moving" }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: proposal.preview.affected.filter((item) => item.moved).map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.taskName }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+									isoRange(item.previousStart, item.previousEnd),
+									" → ",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: isoRange(item.forecastStart, item.forecastEnd) })
+								] })] }, item.taskId)) }),
+								proposal.preview.affected.some((item) => !item.moved) ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", { children: "These dependent tasks move later" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: proposal.preview.affected.filter((item) => !item.moved).map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.taskName }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+									isoLabel(item.previousStart),
+									" → ",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: isoLabel(item.forecastStart) })
+								] })] }, item.taskId)) })] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "iksha-preview-note",
+									children: "No other tasks are affected."
+								}),
+								proposal.preview.warnings.map((warning, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+									className: "iksha-preview-warning",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { size: 14 }), warning.reason]
+								}, index)),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "iksha-preview-note",
+									children: proposal.preview.finish ? `Projected finish after this change: ${isoLabel(proposal.preview.finish)}` : "Finish date stays unconfirmed until every task has dates."
+								})
+							] })]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "iksha-preview-actions",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "outline",
+								disabled: proposal?.saving,
+								onClick: () => setProposal(null),
+								children: "Cancel"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								disabled: !proposal?.preview?.ok || proposal?.saving,
+								onClick: confirm,
+								children: proposal?.saving ? "Saving…" : "Confirm and save"
+							})]
 						})
 					]
 				})
@@ -29263,1662 +30015,36 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("footer", {
 				className: "iksha-schedule-caption",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: stages.some((stage) => stage.sheetPlan) ? "Draft dates from sheet durations · Click a stage or work item for details" : "Dates from the saved project plan · Click a stage for its full breakdown · Click a work item for its discussion" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Calendar days" })]
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: editable ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "iksha-only-fine",
+						children: "Drag a task to move it · Pull its right edge to change its length · Drop it on another task to swap"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "iksha-only-coarse",
+						children: "Press and hold a task to pick it up, then drag · Hold its right edge to change its length"
+					}),
+					" · You confirm every change"
+				] }) : "Dates from the Google Sheet · Tap a stage for its breakdown · Tap a work item for its discussion" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Calendar days · Today is marked in red" })]
 			})
 		]
 	});
 }
-var sheet_workflows_default = {
-	sourceUrl: "https://docs.google.com/spreadsheets/d/1V47wt8GM90cde8EclExsM_7iA4kwHBBfqITlc858pps/edit?gid=1535430592",
-	sourceTab: "WORKFLOWS",
-	fetchedAt: "2026-10-14T05:17:45.029083+00:00",
-	durationUnit: "calendar-days",
-	defaultPlanId: "interior-1",
-	plans: [
-		{
-			"id": "residential-interior",
-			"name": "Residential Interior",
-			"sheet": "WORKFLOWS",
-			"stages": [
-				{
-					"id": "residential-interior-main-1",
-					"code": "1",
-					"name": "Civil Works",
-					"lane": "main",
-					"sourceRow": 2,
-					"tasks": [
-						{
-							"id": "residential-interior-E2",
-							"title": "Site Condition Check",
-							"order": "1",
-							"durationDays": 3,
-							"role": "Site Supervisor",
-							"sourceCell": "E2",
-							"sourceRow": 2
-						},
-						{
-							"id": "residential-interior-E3",
-							"title": "Design / Drawings",
-							"order": "2",
-							"durationDays": 4,
-							"role": "Designer",
-							"sourceCell": "E3",
-							"sourceRow": 3
-						},
-						{
-							"id": "residential-interior-E4",
-							"title": "Site Execution",
-							"order": "3",
-							"durationDays": 7,
-							"role": "Site Team",
-							"sourceCell": "E4",
-							"sourceRow": 4
-						},
-						{
-							"id": "residential-interior-E5",
-							"title": "Final Checking",
-							"order": "4",
-							"durationDays": 4,
-							"role": "Design Head",
-							"sourceCell": "E5",
-							"sourceRow": 5
-						}
-					]
-				},
-				{
-					"id": "residential-interior-main-2",
-					"code": "2",
-					"name": "Electrical Works",
-					"lane": "main",
-					"sourceRow": 6,
-					"tasks": [
-						{
-							"id": "residential-interior-E6",
-							"title": "Site Condition Check",
-							"order": "1",
-							"durationDays": 3,
-							"role": "Site Supervisor",
-							"sourceCell": "E6",
-							"sourceRow": 6
-						},
-						{
-							"id": "residential-interior-E7",
-							"title": "Design / Drawings",
-							"order": "2",
-							"durationDays": 4,
-							"role": "Designer",
-							"sourceCell": "E7",
-							"sourceRow": 7
-						},
-						{
-							"id": "residential-interior-E8",
-							"title": "Site Execution",
-							"order": "3",
-							"durationDays": 7,
-							"role": "Site Team",
-							"sourceCell": "E8",
-							"sourceRow": 8
-						},
-						{
-							"id": "residential-interior-E9",
-							"title": "Final Checking",
-							"order": "4",
-							"durationDays": 4,
-							"role": "Design Head",
-							"sourceCell": "E9",
-							"sourceRow": 9
-						}
-					]
-				},
-				{
-					"id": "residential-interior-main-3",
-					"code": "3",
-					"name": "Plumbing Works",
-					"lane": "main",
-					"sourceRow": 10,
-					"tasks": [
-						{
-							"id": "residential-interior-E10",
-							"title": "Site Condition Check",
-							"order": "1",
-							"durationDays": 3,
-							"role": "Site Supervisor",
-							"sourceCell": "E10",
-							"sourceRow": 10
-						},
-						{
-							"id": "residential-interior-E11",
-							"title": "Design / Drawings",
-							"order": "2",
-							"durationDays": 4,
-							"role": "Designer",
-							"sourceCell": "E11",
-							"sourceRow": 11
-						},
-						{
-							"id": "residential-interior-E12",
-							"title": "Site Execution",
-							"order": "3",
-							"durationDays": 7,
-							"role": "Site Team",
-							"sourceCell": "E12",
-							"sourceRow": 12
-						},
-						{
-							"id": "residential-interior-E13",
-							"title": "Final Checking",
-							"order": "4",
-							"durationDays": 4,
-							"role": "Design Head",
-							"sourceCell": "E13",
-							"sourceRow": 13
-						}
-					]
-				}
-			],
-			"taskCount": 12
-		},
-		{
-			"id": "interior-1",
-			"name": "INTERIOR 1",
-			"sheet": "WORKFLOWS",
-			"stages": [
-				{
-					"id": "interior-1-main-1",
-					"code": "1",
-					"name": "Design plan",
-					"lane": "main",
-					"sourceRow": 15,
-					"tasks": [
-						{
-							"id": "interior-1-E15",
-							"title": "Existing resources",
-							"order": "1",
-							"durationDays": 1,
-							"role": "Client",
-							"sourceCell": "E15",
-							"sourceRow": 15
-						},
-						{
-							"id": "interior-1-E16",
-							"title": "2D drawing",
-							"order": "2",
-							"durationDays": 3,
-							"role": "Designer",
-							"sourceCell": "E16",
-							"sourceRow": 16
-						},
-						{
-							"id": "interior-1-E17",
-							"title": "Design approval",
-							"order": "3",
-							"durationDays": 2,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E17",
-							"sourceRow": 17
-						},
-						{
-							"id": "interior-1-E18",
-							"title": "Client Presentation & approval",
-							"order": "4",
-							"durationDays": 2,
-							"role": "Client",
-							"sourceCell": "E18",
-							"sourceRow": 18
-						}
-					]
-				},
-				{
-					"id": "interior-1-main-2",
-					"code": "2",
-					"name": "Design concept",
-					"lane": "main",
-					"sourceRow": 19,
-					"tasks": [
-						{
-							"id": "interior-1-E19",
-							"title": "3D Design",
-							"order": "1",
-							"durationDays": 7,
-							"role": "Designer",
-							"sourceCell": "E19",
-							"sourceRow": 19
-						},
-						{
-							"id": "interior-1-E20",
-							"title": "Design approval",
-							"order": "2",
-							"durationDays": 2,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E20",
-							"sourceRow": 20
-						},
-						{
-							"id": "interior-1-E21",
-							"title": "Client Presentation & approval",
-							"order": "3",
-							"durationDays": 3,
-							"role": "Client",
-							"sourceCell": "E21",
-							"sourceRow": 21
-						}
-					]
-				},
-				{
-					"id": "interior-1-main-3",
-					"code": "3",
-					"name": "3D Design",
-					"lane": "main",
-					"sourceRow": 22,
-					"tasks": [
-						{
-							"id": "interior-1-E22",
-							"title": "Site Condition Check",
-							"order": "1",
-							"durationDays": 1,
-							"role": "Site Supervisor",
-							"sourceCell": "E22",
-							"sourceRow": 22
-						},
-						{
-							"id": "interior-1-E23",
-							"title": "3D Design",
-							"order": "2",
-							"durationDays": 7,
-							"role": "Designer",
-							"sourceCell": "E23",
-							"sourceRow": 23
-						},
-						{
-							"id": "interior-1-E24",
-							"title": "Design approval",
-							"order": "3",
-							"durationDays": 2,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E24",
-							"sourceRow": 24
-						},
-						{
-							"id": "interior-1-E25",
-							"title": "Client Presentation & approval",
-							"order": "4",
-							"durationDays": 3,
-							"role": "Client",
-							"sourceCell": "E25",
-							"sourceRow": 25
-						}
-					]
-				},
-				{
-					"id": "interior-1-main-4",
-					"code": "4",
-					"name": "Civil Work",
-					"lane": "main",
-					"sourceRow": 26,
-					"tasks": [
-						{
-							"id": "interior-1-E26",
-							"title": "Site Condition Check",
-							"order": "1",
-							"durationDays": 2,
-							"role": "Site Supervisor",
-							"sourceCell": "E26",
-							"sourceRow": 26
-						},
-						{
-							"id": "interior-1-E27",
-							"title": "Drawing",
-							"order": "2",
-							"durationDays": 2,
-							"role": "Designer",
-							"sourceCell": "E27",
-							"sourceRow": 27
-						},
-						{
-							"id": "interior-1-E28",
-							"title": "Drawing approval",
-							"order": "3",
-							"durationDays": 1,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E28",
-							"sourceRow": 28
-						},
-						{
-							"id": "interior-1-E29",
-							"title": "Client Presentation & approval",
-							"order": "4",
-							"durationDays": 1,
-							"role": "Client",
-							"sourceCell": "E29",
-							"sourceRow": 29
-						},
-						{
-							"id": "interior-1-E30",
-							"title": "Site Execution",
-							"order": "5",
-							"durationDays": 7,
-							"role": "Tile person",
-							"sourceCell": "E30",
-							"sourceRow": 30
-						},
-						{
-							"id": "interior-1-E31",
-							"title": "Final check",
-							"order": "6",
-							"durationDays": 2,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E31",
-							"sourceRow": 31
-						}
-					]
-				},
-				{
-					"id": "interior-1-parallel-5a",
-					"code": "5a",
-					"name": "Electrical Work",
-					"lane": "parallel",
-					"sourceRow": 29,
-					"tasks": [{
-						"id": "interior-1-K29",
-						"title": "Drawing",
-						"order": "1",
-						"durationDays": 8,
-						"role": "Designer",
-						"sourceCell": "K29",
-						"sourceRow": 29
-					}, {
-						"id": "interior-1-K31",
-						"title": "Drawing approval",
-						"order": "2",
-						"durationDays": 2,
-						"role": "Design Head/ Admin",
-						"sourceCell": "K31",
-						"sourceRow": 31
-					}],
-					"parallelAnchor": {
-						"stageCode": "4",
-						"row": 29
-					}
-				},
-				{
-					"id": "interior-1-main-5b",
-					"code": "5b",
-					"name": "Electrical Work 1",
-					"lane": "main",
-					"sourceRow": 32,
-					"tasks": [
-						{
-							"id": "interior-1-E32",
-							"title": "Site Condition Check",
-							"order": "1",
-							"durationDays": 1,
-							"role": "Site Supervisor",
-							"sourceCell": "E32",
-							"sourceRow": 32
-						},
-						{
-							"id": "interior-1-E33",
-							"title": "Drawing",
-							"order": "2",
-							"durationDays": 2,
-							"role": "Designer",
-							"sourceCell": "E33",
-							"sourceRow": 33
-						},
-						{
-							"id": "interior-1-E34",
-							"title": "Drawing approval",
-							"order": "3",
-							"durationDays": 1,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E34",
-							"sourceRow": 34
-						},
-						{
-							"id": "interior-1-E35",
-							"title": "Client Presentation & approval",
-							"order": "4",
-							"durationDays": 1,
-							"role": "Client",
-							"sourceCell": "E35",
-							"sourceRow": 35
-						},
-						{
-							"id": "interior-1-E36",
-							"title": "Site Execution",
-							"order": "5",
-							"durationDays": 5,
-							"role": "Electrician",
-							"sourceCell": "E36",
-							"sourceRow": 36
-						},
-						{
-							"id": "interior-1-E37",
-							"title": "Final check",
-							"order": "6",
-							"durationDays": 2,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E37",
-							"sourceRow": 37
-						}
-					]
-				},
-				{
-					"id": "interior-1-parallel-6a",
-					"code": "6a",
-					"name": "Plumbing Work",
-					"lane": "parallel",
-					"sourceRow": 34,
-					"tasks": [{
-						"id": "interior-1-K34",
-						"title": "Drawing",
-						"order": "1",
-						"durationDays": 7,
-						"role": "Designer",
-						"sourceCell": "K34",
-						"sourceRow": 34
-					}, {
-						"id": "interior-1-K37",
-						"title": "Drawing approval & Electrician Final",
-						"order": "2",
-						"durationDays": 2,
-						"role": "Design Head/ Admin",
-						"sourceCell": "K37",
-						"sourceRow": 37
-					}],
-					"parallelAnchor": {
-						"stageCode": "5b",
-						"row": 34
-					}
-				},
-				{
-					"id": "interior-1-main-6b",
-					"code": "6b",
-					"name": "Plumbing Work",
-					"lane": "main",
-					"sourceRow": 38,
-					"tasks": [
-						{
-							"id": "interior-1-E38",
-							"title": "Client Presentation & approval",
-							"order": "1",
-							"durationDays": 1,
-							"role": "Client",
-							"sourceCell": "E38",
-							"sourceRow": 38
-						},
-						{
-							"id": "interior-1-E39",
-							"title": "Site Execution",
-							"order": "2",
-							"durationDays": 5,
-							"role": "Plumber",
-							"sourceCell": "E39",
-							"sourceRow": 39
-						},
-						{
-							"id": "interior-1-E40",
-							"title": "Final check",
-							"order": "3",
-							"durationDays": 2,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E40",
-							"sourceRow": 40
-						}
-					]
-				},
-				{
-					"id": "interior-1-parallel-7a",
-					"code": "7a",
-					"name": "Flooring",
-					"lane": "parallel",
-					"sourceRow": 38,
-					"tasks": [{
-						"id": "interior-1-K38",
-						"title": "Presentation",
-						"order": "1",
-						"durationDays": null,
-						"role": null,
-						"sourceCell": "K38",
-						"sourceRow": 38
-					}, {
-						"id": "interior-1-K39",
-						"title": "Selection and site delivery",
-						"order": "2",
-						"durationDays": 7,
-						"role": "Client & Design Head",
-						"sourceCell": "K39",
-						"sourceRow": 39
-					}],
-					"parallelAnchor": {
-						"stageCode": "6b",
-						"row": 38
-					}
-				},
-				{
-					"id": "interior-1-main-7b",
-					"code": "7b",
-					"name": "Flooring",
-					"lane": "main",
-					"sourceRow": 41,
-					"tasks": [
-						{
-							"id": "interior-1-E41",
-							"title": "Site Condition Check",
-							"order": "1",
-							"durationDays": 2,
-							"role": "Site Supervisor",
-							"sourceCell": "E41",
-							"sourceRow": 41
-						},
-						{
-							"id": "interior-1-E42",
-							"title": "Drawing",
-							"order": "2",
-							"durationDays": 2,
-							"role": "Designer",
-							"sourceCell": "E42",
-							"sourceRow": 42
-						},
-						{
-							"id": "interior-1-E43",
-							"title": "Drawing approval",
-							"order": "3",
-							"durationDays": 1,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E43",
-							"sourceRow": 43
-						},
-						{
-							"id": "interior-1-E44",
-							"title": "Client Presentation & approval",
-							"order": "4",
-							"durationDays": 1,
-							"role": "Client",
-							"sourceCell": "E44",
-							"sourceRow": 44
-						},
-						{
-							"id": "interior-1-E45",
-							"title": "Site Execution",
-							"order": "5",
-							"durationDays": 5,
-							"role": "Tile person",
-							"sourceCell": "E45",
-							"sourceRow": 45
-						},
-						{
-							"id": "interior-1-E46",
-							"title": "Final check",
-							"order": "6",
-							"durationDays": 2,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E46",
-							"sourceRow": 46
-						}
-					]
-				},
-				{
-					"id": "interior-1-parallel-8",
-					"code": "8",
-					"name": "Ceiling_1",
-					"lane": "parallel",
-					"sourceRow": 41,
-					"tasks": [{
-						"id": "interior-1-K41",
-						"title": "Drawing",
-						"order": "1",
-						"durationDays": 2,
-						"role": "Designer",
-						"sourceCell": "K41",
-						"sourceRow": 41
-					}, {
-						"id": "interior-1-K42",
-						"title": "Ceiling channelling",
-						"order": "2",
-						"durationDays": 2,
-						"role": "POP Person",
-						"sourceCell": "K42",
-						"sourceRow": 42
-					}],
-					"parallelAnchor": {
-						"stageCode": "7b",
-						"row": 41
-					}
-				},
-				{
-					"id": "interior-1-parallel-9a",
-					"code": "9a",
-					"name": "Carpentering_Wall",
-					"lane": "parallel",
-					"sourceRow": 43,
-					"tasks": [{
-						"id": "interior-1-K43",
-						"title": "Presentation",
-						"order": "1",
-						"durationDays": 2,
-						"role": "Designer",
-						"sourceCell": "K43",
-						"sourceRow": 43
-					}, {
-						"id": "interior-1-K45",
-						"title": "Selection and site delivery",
-						"order": "2",
-						"durationDays": 7,
-						"role": "Client & Design Head",
-						"sourceCell": "K45",
-						"sourceRow": 45
-					}],
-					"parallelAnchor": {
-						"stageCode": "7b",
-						"row": 43
-					}
-				},
-				{
-					"id": "interior-1-main-9b",
-					"code": "9b",
-					"name": "Carpentering_Wall",
-					"lane": "main",
-					"sourceRow": 47,
-					"tasks": [
-						{
-							"id": "interior-1-E47",
-							"title": "Site Condition Check",
-							"order": "1",
-							"durationDays": 1,
-							"role": "Site Supervisor",
-							"sourceCell": "E47",
-							"sourceRow": 47
-						},
-						{
-							"id": "interior-1-E48",
-							"title": "Drawing",
-							"order": "2",
-							"durationDays": 4,
-							"role": "Designer",
-							"sourceCell": "E48",
-							"sourceRow": 48
-						},
-						{
-							"id": "interior-1-E49",
-							"title": "Drawing approval",
-							"order": "3",
-							"durationDays": 1,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E49",
-							"sourceRow": 49
-						},
-						{
-							"id": "interior-1-E50",
-							"title": "Client Presentation & approval",
-							"order": "4",
-							"durationDays": 1,
-							"role": "Client",
-							"sourceCell": "E50",
-							"sourceRow": 50
-						},
-						{
-							"id": "interior-1-E51",
-							"title": "Site Execution",
-							"order": "5",
-							"durationDays": 20,
-							"role": "Carpenter",
-							"sourceCell": "E51",
-							"sourceRow": 51
-						},
-						{
-							"id": "interior-1-E52",
-							"title": "Final check",
-							"order": "6",
-							"durationDays": 2,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E52",
-							"sourceRow": 52
-						}
-					]
-				},
-				{
-					"id": "interior-1-parallel-10",
-					"code": "10",
-					"name": "Wall POP",
-					"lane": "parallel",
-					"sourceRow": 47,
-					"tasks": [{
-						"id": "interior-1-K47",
-						"title": "Drawing",
-						"order": "1",
-						"durationDays": 1,
-						"role": "Designer",
-						"sourceCell": "K47",
-						"sourceRow": 47
-					}, {
-						"id": "interior-1-K48",
-						"title": "Wall POP",
-						"order": "2",
-						"durationDays": 4,
-						"role": "POP Person",
-						"sourceCell": "K48",
-						"sourceRow": 48
-					}],
-					"parallelAnchor": {
-						"stageCode": "9b",
-						"row": 47
-					}
-				},
-				{
-					"id": "interior-1-parallel-11a",
-					"code": "11a",
-					"name": "Carpentering_Furniture",
-					"lane": "parallel",
-					"sourceRow": 49,
-					"tasks": [
-						{
-							"id": "interior-1-K49",
-							"title": "Drawings & Presentation",
-							"order": "1",
-							"durationDays": 8,
-							"role": "Designer",
-							"sourceCell": "K49",
-							"sourceRow": 49
-						},
-						{
-							"id": "interior-1-K50",
-							"title": "Approval",
-							"order": "2",
-							"durationDays": 6,
-							"role": "Design Head/ Admin",
-							"sourceCell": "K50",
-							"sourceRow": 50
-						},
-						{
-							"id": "interior-1-K51",
-							"title": "Selection and site delivery",
-							"order": "2",
-							"durationDays": 15,
-							"role": "Client & Design Head",
-							"sourceCell": "K51",
-							"sourceRow": 51
-						}
-					],
-					"parallelAnchor": {
-						"stageCode": "9b",
-						"row": 49
-					}
-				},
-				{
-					"id": "interior-1-main-11b",
-					"code": "11b",
-					"name": "Carpentering_Furniture",
-					"lane": "main",
-					"sourceRow": 53,
-					"tasks": [
-						{
-							"id": "interior-1-E53",
-							"title": "Site Condition Check",
-							"order": "1",
-							"durationDays": 1,
-							"role": "Site Supervisor",
-							"sourceCell": "E53",
-							"sourceRow": 53
-						},
-						{
-							"id": "interior-1-E54",
-							"title": "Client Presentation & approval",
-							"order": "2",
-							"durationDays": 1,
-							"role": "Client",
-							"sourceCell": "E54",
-							"sourceRow": 54
-						},
-						{
-							"id": "interior-1-E55",
-							"title": "Site Execution",
-							"order": "3",
-							"durationDays": 20,
-							"role": "Carpenter",
-							"sourceCell": "E55",
-							"sourceRow": 55
-						},
-						{
-							"id": "interior-1-E56",
-							"title": "Final check",
-							"order": "4",
-							"durationDays": 2,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E56",
-							"sourceRow": 56
-						}
-					]
-				},
-				{
-					"id": "interior-1-parallel-12a",
-					"code": "12a",
-					"name": "Corian, Profile Works, Fabrics & Misc",
-					"lane": "parallel",
-					"sourceRow": 53,
-					"tasks": [
-						{
-							"id": "interior-1-K53",
-							"title": "Site Check",
-							"order": "1",
-							"durationDays": 2,
-							"role": "Site Supervisor",
-							"sourceCell": "K53",
-							"sourceRow": 53
-						},
-						{
-							"id": "interior-1-K54",
-							"title": "Presentation",
-							"order": "2",
-							"durationDays": 8,
-							"role": "Designer",
-							"sourceCell": "K54",
-							"sourceRow": 54
-						},
-						{
-							"id": "interior-1-K55",
-							"title": "Approval",
-							"order": "3",
-							"durationDays": 2,
-							"role": "Design Head/ Admin",
-							"sourceCell": "K55",
-							"sourceRow": 55
-						},
-						{
-							"id": "interior-1-K56",
-							"title": "Purchase / Vendor final",
-							"order": "4",
-							"durationDays": 12,
-							"role": "Client",
-							"sourceCell": "K56",
-							"sourceRow": 56
-						}
-					],
-					"parallelAnchor": {
-						"stageCode": "11b",
-						"row": 53
-					}
-				},
-				{
-					"id": "interior-1-main-12b",
-					"code": "12b",
-					"name": "Corian, Profile Works, Fabrics & Misc",
-					"lane": "main",
-					"sourceRow": 57,
-					"tasks": [{
-						"id": "interior-1-E57",
-						"title": "Site Execution",
-						"order": "1",
-						"durationDays": 5,
-						"role": "Tile person",
-						"sourceCell": "E57",
-						"sourceRow": 57
-					}, {
-						"id": "interior-1-E58",
-						"title": "Final check",
-						"order": "2",
-						"durationDays": 2,
-						"role": "Design Head/ Admin",
-						"sourceCell": "E58",
-						"sourceRow": 58
-					}]
-				},
-				{
-					"id": "interior-1-parallel-13a",
-					"code": "13a",
-					"name": "Painting",
-					"lane": "parallel",
-					"sourceRow": 57,
-					"tasks": [{
-						"id": "interior-1-K57",
-						"title": "Presentation",
-						"order": "1",
-						"durationDays": 8,
-						"role": "Designer",
-						"sourceCell": "K57",
-						"sourceRow": 57
-					}, {
-						"id": "interior-1-K58",
-						"title": "Approval",
-						"order": "2",
-						"durationDays": 2,
-						"role": "Design Head/ Admin",
-						"sourceCell": "K58",
-						"sourceRow": 58
-					}],
-					"parallelAnchor": {
-						"stageCode": "12b",
-						"row": 57
-					}
-				},
-				{
-					"id": "interior-1-main-13b",
-					"code": "13b",
-					"name": "Painting",
-					"lane": "main",
-					"sourceRow": 59,
-					"tasks": [{
-						"id": "interior-1-E59",
-						"title": "Site Execution",
-						"order": "1",
-						"durationDays": 5,
-						"role": "Tile person",
-						"sourceCell": "E59",
-						"sourceRow": 59
-					}, {
-						"id": "interior-1-E60",
-						"title": "Final check",
-						"order": "2",
-						"durationDays": 2,
-						"role": "Design Head/ Admin",
-						"sourceCell": "E60",
-						"sourceRow": 60
-					}]
-				},
-				{
-					"id": "interior-1-main-14",
-					"code": "14",
-					"name": "Final Check",
-					"lane": "main",
-					"sourceRow": 61,
-					"tasks": [{
-						"id": "interior-1-E61",
-						"title": "Approval",
-						"order": "1",
-						"durationDays": 5,
-						"role": "Client & Design Head/ Admin",
-						"sourceCell": "E61",
-						"sourceRow": 61
-					}]
-				}
-			],
-			"taskCount": 68
-		},
-		{
-			"id": "copy-copy-of-workflows",
-			"name": "Copy of WORKFLOWS",
-			"sheet": "Copy of WORKFLOWS",
-			"stages": [
-				{
-					"id": "copy-copy-of-workflows-main-1",
-					"code": "1",
-					"name": "Design plan",
-					"lane": "main",
-					"sourceRow": 2,
-					"tasks": [
-						{
-							"id": "copy-copy-of-workflows-E2",
-							"title": "Existing resources",
-							"order": "1",
-							"durationDays": 1,
-							"role": "Client",
-							"sourceCell": "E2",
-							"sourceRow": 2
-						},
-						{
-							"id": "copy-copy-of-workflows-E3",
-							"title": "2D drawing",
-							"order": "2",
-							"durationDays": 3,
-							"role": "Designer",
-							"sourceCell": "E3",
-							"sourceRow": 3
-						},
-						{
-							"id": "copy-copy-of-workflows-E4",
-							"title": "Design approval",
-							"order": "3",
-							"durationDays": 2,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E4",
-							"sourceRow": 4
-						},
-						{
-							"id": "copy-copy-of-workflows-E5",
-							"title": "Client Presentation & approval",
-							"order": "4",
-							"durationDays": 2,
-							"role": "Client",
-							"sourceCell": "E5",
-							"sourceRow": 5
-						}
-					]
-				},
-				{
-					"id": "copy-copy-of-workflows-main-2",
-					"code": "2",
-					"name": "Design concept",
-					"lane": "main",
-					"sourceRow": 6,
-					"tasks": [
-						{
-							"id": "copy-copy-of-workflows-E6",
-							"title": "3D Design",
-							"order": "1",
-							"durationDays": 7,
-							"role": "Designer",
-							"sourceCell": "E6",
-							"sourceRow": 6
-						},
-						{
-							"id": "copy-copy-of-workflows-E7",
-							"title": "Design approval",
-							"order": "2",
-							"durationDays": 2,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E7",
-							"sourceRow": 7
-						},
-						{
-							"id": "copy-copy-of-workflows-E8",
-							"title": "Client Presentation & approval",
-							"order": "3",
-							"durationDays": 3,
-							"role": "Client",
-							"sourceCell": "E8",
-							"sourceRow": 8
-						}
-					]
-				},
-				{
-					"id": "copy-copy-of-workflows-main-3",
-					"code": "3",
-					"name": "3D Design",
-					"lane": "main",
-					"sourceRow": 9,
-					"tasks": [
-						{
-							"id": "copy-copy-of-workflows-E9",
-							"title": "Site Condition Check",
-							"order": "1",
-							"durationDays": 1,
-							"role": "Site Supervisor",
-							"sourceCell": "E9",
-							"sourceRow": 9
-						},
-						{
-							"id": "copy-copy-of-workflows-E10",
-							"title": "3D Design",
-							"order": "2",
-							"durationDays": 7,
-							"role": "Designer",
-							"sourceCell": "E10",
-							"sourceRow": 10
-						},
-						{
-							"id": "copy-copy-of-workflows-E11",
-							"title": "Design approval",
-							"order": "3",
-							"durationDays": 2,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E11",
-							"sourceRow": 11
-						},
-						{
-							"id": "copy-copy-of-workflows-E12",
-							"title": "Client Presentation & approval",
-							"order": "4",
-							"durationDays": 3,
-							"role": "Client",
-							"sourceCell": "E12",
-							"sourceRow": 12
-						}
-					]
-				},
-				{
-					"id": "copy-copy-of-workflows-main-4",
-					"code": "4",
-					"name": "Civil Work",
-					"lane": "main",
-					"sourceRow": 13,
-					"tasks": [
-						{
-							"id": "copy-copy-of-workflows-E13",
-							"title": "Site Condition Check",
-							"order": "1",
-							"durationDays": 2,
-							"role": "Site Supervisor",
-							"sourceCell": "E13",
-							"sourceRow": 13
-						},
-						{
-							"id": "copy-copy-of-workflows-E15",
-							"title": "Drawing",
-							"order": "2",
-							"durationDays": 2,
-							"role": "Designer",
-							"sourceCell": "E15",
-							"sourceRow": 15
-						},
-						{
-							"id": "copy-copy-of-workflows-E17",
-							"title": "Drawing approval",
-							"order": "3",
-							"durationDays": 1,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E17",
-							"sourceRow": 17
-						},
-						{
-							"id": "copy-copy-of-workflows-E18",
-							"title": "Client Presentation & approval",
-							"order": "4",
-							"durationDays": 1,
-							"role": "Client",
-							"sourceCell": "E18",
-							"sourceRow": 18
-						},
-						{
-							"id": "copy-copy-of-workflows-E19",
-							"title": "Site Execution",
-							"order": "5",
-							"durationDays": 7,
-							"role": "Tile person",
-							"sourceCell": "E19",
-							"sourceRow": 19
-						},
-						{
-							"id": "copy-copy-of-workflows-E20",
-							"title": "Final check",
-							"order": "6",
-							"durationDays": 2,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E20",
-							"sourceRow": 20
-						}
-					]
-				},
-				{
-					"id": "copy-copy-of-workflows-parallel-5",
-					"code": "5",
-					"name": "Carpentering_Marking",
-					"lane": "parallel",
-					"sourceRow": 17,
-					"tasks": [
-						{
-							"id": "copy-copy-of-workflows-K17",
-							"title": "Drawing_Wall elevations",
-							"order": "1",
-							"durationDays": 5,
-							"role": "Designer",
-							"sourceCell": "K17",
-							"sourceRow": 17
-						},
-						{
-							"id": "copy-copy-of-workflows-K18",
-							"title": "Approval",
-							"order": "2",
-							"durationDays": 2,
-							"role": "Design head/ Admin",
-							"sourceCell": "K18",
-							"sourceRow": 18
-						},
-						{
-							"id": "copy-copy-of-workflows-K19",
-							"title": "Site Marking",
-							"order": "3",
-							"durationDays": 2,
-							"role": "Carpenter",
-							"sourceCell": "K19",
-							"sourceRow": 19
-						},
-						{
-							"id": "copy-copy-of-workflows-K20",
-							"title": "Approval",
-							"order": "4",
-							"durationDays": 2,
-							"role": "Design head/ Admin",
-							"sourceCell": "K20",
-							"sourceRow": 20
-						}
-					],
-					"parallelAnchor": {
-						"stageCode": "4",
-						"row": 17
-					}
-				},
-				{
-					"id": "copy-copy-of-workflows-main-6",
-					"code": "6",
-					"name": "Electrical Work 1",
-					"lane": "main",
-					"sourceRow": 21,
-					"tasks": [
-						{
-							"id": "copy-copy-of-workflows-E21",
-							"title": "Site Condition Check",
-							"order": "1",
-							"durationDays": 1,
-							"role": "Site Supervisor",
-							"sourceCell": "E21",
-							"sourceRow": 21
-						},
-						{
-							"id": "copy-copy-of-workflows-E22",
-							"title": "Drawing",
-							"order": "2",
-							"durationDays": 2,
-							"role": "Designer",
-							"sourceCell": "E22",
-							"sourceRow": 22
-						},
-						{
-							"id": "copy-copy-of-workflows-E23",
-							"title": "Drawing approval",
-							"order": "3",
-							"durationDays": 1,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E23",
-							"sourceRow": 23
-						},
-						{
-							"id": "copy-copy-of-workflows-E24",
-							"title": "Client Presentation & approval",
-							"order": "4",
-							"durationDays": 1,
-							"role": "Client",
-							"sourceCell": "E24",
-							"sourceRow": 24
-						},
-						{
-							"id": "copy-copy-of-workflows-E25",
-							"title": "Site Execution",
-							"order": "5",
-							"durationDays": 5,
-							"role": "Electrician",
-							"sourceCell": "E25",
-							"sourceRow": 25
-						},
-						{
-							"id": "copy-copy-of-workflows-E26",
-							"title": "Final check",
-							"order": "6",
-							"durationDays": 2,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E26",
-							"sourceRow": 26
-						}
-					]
-				},
-				{
-					"id": "copy-copy-of-workflows-parallel-7a",
-					"code": "7a",
-					"name": "Plumbing Work",
-					"lane": "parallel",
-					"sourceRow": 23,
-					"tasks": [{
-						"id": "copy-copy-of-workflows-K23",
-						"title": "Drawing",
-						"order": "1",
-						"durationDays": 7,
-						"role": "Designer",
-						"sourceCell": "K23",
-						"sourceRow": 23
-					}, {
-						"id": "copy-copy-of-workflows-K26",
-						"title": "Drawing approval & Electrician Final",
-						"order": "2",
-						"durationDays": 2,
-						"role": "Design Head/ Admin",
-						"sourceCell": "K26",
-						"sourceRow": 26
-					}],
-					"parallelAnchor": {
-						"stageCode": "6",
-						"row": 23
-					}
-				},
-				{
-					"id": "copy-copy-of-workflows-main-7b",
-					"code": "7b",
-					"name": "Plumbing Work",
-					"lane": "main",
-					"sourceRow": 27,
-					"tasks": [
-						{
-							"id": "copy-copy-of-workflows-E27",
-							"title": "Client Presentation & approval",
-							"order": "1",
-							"durationDays": 1,
-							"role": "Client",
-							"sourceCell": "E27",
-							"sourceRow": 27
-						},
-						{
-							"id": "copy-copy-of-workflows-E28",
-							"title": "Site Execution",
-							"order": "2",
-							"durationDays": 5,
-							"role": "Electrician",
-							"sourceCell": "E28",
-							"sourceRow": 28
-						},
-						{
-							"id": "copy-copy-of-workflows-E29",
-							"title": "Final check",
-							"order": "3",
-							"durationDays": 2,
-							"role": "Design Head/ Admin",
-							"sourceCell": "E29",
-							"sourceRow": 29
-						}
-					]
-				},
-				{
-					"id": "copy-copy-of-workflows-parallel-2-8a",
-					"code": "8a",
-					"name": "Flooring",
-					"lane": "parallel-2",
-					"sourceRow": 13,
-					"tasks": [
-						{
-							"id": "copy-copy-of-workflows-Q13",
-							"title": "Drawing",
-							"order": "1",
-							"durationDays": 4,
-							"role": "Designer",
-							"sourceCell": "Q13",
-							"sourceRow": 13
-						},
-						{
-							"id": "copy-copy-of-workflows-Q14",
-							"title": "Approval",
-							"order": "2",
-							"durationDays": 2,
-							"role": "Design Head/ Admin",
-							"sourceCell": "Q14",
-							"sourceRow": 14
-						},
-						{
-							"id": "copy-copy-of-workflows-Q15",
-							"title": "Selection",
-							"order": "3",
-							"durationDays": 2,
-							"role": "Client & Design head",
-							"sourceCell": "Q15",
-							"sourceRow": 15
-						},
-						{
-							"id": "copy-copy-of-workflows-Q16",
-							"title": "Purchase",
-							"order": "4",
-							"durationDays": 10,
-							"role": "Client",
-							"sourceCell": "Q16",
-							"sourceRow": 16
-						}
-					],
-					"parallelAnchor": {
-						"stageCode": "4",
-						"row": 13
-					}
-				}
-			],
-			"taskCount": 36
-		}
-	]
-};
-//#endregion
-//#region frontend/src/lib/sheetPlan.js
-var clean = (value) => String(value || "").trim().toLowerCase().replace(/\s+/g, " ");
-var iso = (value) => value === null ? "" : new Date(value).toISOString().slice(0, 10);
-function buildSheetPlan(plan, startDate, liveTasks = [], liveStages = []) {
-	const origin = calendarDate(startDate);
-	if (origin === null) throw new Error("Choose a valid plan start date.");
-	const windows = /* @__PURE__ */ new Map();
-	const rowStarts = /* @__PURE__ */ new Map();
-	let cursor = origin;
-	const mainStages = plan.stages.filter((stage) => stage.lane === "main").sort((a, b) => a.sourceRow - b.sourceRow);
-	const schedule = (stage, start) => {
-		let time = start;
-		const tasks = stage.tasks.map((task) => {
-			const from = time;
-			if (stage.lane === "main") rowStarts.set(task.sourceRow, from);
-			const end = from !== null && task.durationDays !== null ? from + task.durationDays * calendarDay : null;
-			time = end;
-			return {
-				source: task,
-				start: from,
-				end
-			};
-		});
-		const window = {
-			start,
-			end: time,
-			tasks
-		};
-		windows.set(stage.id, window);
-		return time;
-	};
-	for (const stage of mainStages) cursor = schedule(stage, cursor);
-	for (const stage of plan.stages.filter((stage) => stage.lane !== "main")) {
-		const anchor = mainStages.find((item) => item.code === stage.parallelAnchor?.stageCode)?.tasks.filter((task) => task.sourceRow <= stage.parallelAnchor.row).at(-1);
-		schedule(stage, anchor ? rowStarts.get(anchor.sourceRow) ?? null : null);
-	}
-	const tasks = [], stages = [];
-	for (const stage of plan.stages) {
-		const window = windows.get(stage.id);
-		const stageId = "sheet-" + stage.id;
-		stages.push({
-			id: stageId,
-			name: stage.code + " · " + stage.name,
-			startDate: iso(window.start),
-			deadline: window.end === null ? "" : iso(window.end - calendarDay),
-			sheetPlan: true,
-			sheetCode: stage.code,
-			sheetName: stage.name,
-			description: stage.lane === "main" ? "Main sequence from the Google Sheet." : "Parallel work positioned alongside stage " + stage.parallelAnchor.stageCode + " in the Google Sheet."
-		});
-		for (const item of window.tasks) {
-			const source = item.source;
-			const sourceDuplicates = plan.stages.filter((s) => clean(s.name) === clean(stage.name)).flatMap((s) => s.tasks).filter((t) => clean(t.title) === clean(source.title));
-			const matches = liveTasks.filter((task) => !task.deletedAt && clean(task.title) === clean(source.title) && clean(liveStages.find((s) => s.id === task.stageId)?.name) === clean(stage.name));
-			const linked = sourceDuplicates.length === 1 && matches.length === 1 ? matches[0] : null;
-			tasks.push({
-				id: "sheet-" + source.id,
-				title: source.title,
-				stageId,
-				status: linked?.status || "Plan item",
-				assigneeId: linked?.assigneeId || "",
-				assigneeName: linked?.assigneeName || source.role || "Role not specified",
-				description: "Work item from " + plan.sheet + ", stage " + stage.code + " · " + stage.name + ".",
-				sourceCurrentStart: iso(item.start),
-				sourceCurrentEnd: item.end === null ? "" : iso(item.end - calendarDay),
-				sourceSequence: source.sourceRow,
-				sheetPlan: true,
-				sheetRole: source.role,
-				sheetDurationDays: source.durationDays,
-				sheetTaskOrder: source.order,
-				sheetSourceCell: source.sourceCell,
-				sheetSourceTab: plan.sheet,
-				linkedTaskId: linked?.id || null,
-				missingDuration: source.durationDays === null
-			});
-		}
-	}
-	return {
-		tasks,
-		stages
-	};
-}
 //#endregion
 //#region frontend/src/components/ProjectTimelineWorkspace.jsx
-var localToday = () => {
-	const date = /* @__PURE__ */ new Date();
-	return date.getFullYear() + "-" + String(date.getMonth() + 1).padStart(2, "0") + "-" + String(date.getDate()).padStart(2, "0");
-};
-function ProjectTimelineWorkspace({ tasks = [], stages = [], members = [], projectId, projectStartDate, namespace = "founder", onOpenTask }) {
-	const [mode, setMode] = (0, import_react.useState)("sheet");
-	const [planId, setPlanId] = (0, import_react.useState)(sheet_workflows_default.defaultPlanId);
-	const [start, setStart] = (0, import_react.useState)(projectStartDate?.slice(0, 10) || localToday());
-	const [selected, setSelected] = (0, import_react.useState)(null);
-	const plan = sheet_workflows_default.plans.find((item) => item.id === planId) || sheet_workflows_default.plans[0];
-	const projection = (0, import_react.useMemo)(() => buildSheetPlan(plan, start, tasks, stages), [
-		plan,
-		start,
-		tasks,
-		stages
-	]);
-	const sourceLink = (task) => sheet_workflows_default.sourceUrl + (task.sheetSourceTab === "WORKFLOWS" ? "&range=" + task.sheetSourceCell : "");
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+function ProjectTimelineWorkspace({ tasks = [], stages = [], members = [], projectId, namespace = "founder", onOpenTask, onSchedulePreview, onScheduleApply }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 		className: "iksha-sheet-workspace",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "iksha-plan-modes",
-				"aria-label": "Timeline source",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-					"aria-pressed": mode === "sheet",
-					className: mode === "sheet" ? "active" : "",
-					onClick: () => setMode("sheet"),
-					children: "Full Google Sheet plan"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-					"aria-pressed": mode === "project",
-					className: mode === "project" ? "active" : "",
-					onClick: () => setMode("project"),
-					children: [
-						"Project tasks (",
-						tasks.length,
-						")"
-					]
-				})]
-			}),
-			mode === "sheet" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "iksha-sheet-source",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "iksha-eyebrow",
-							children: "IMPORTED FROM GOOGLE SHEETS"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [
-							plan.name,
-							" · ",
-							plan.stages.length,
-							" stages · ",
-							plan.taskCount,
-							" work items"
-						] }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Every work item from the main and parallel columns, with the sheet’s original roles and durations." })
-					] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-						href: sheet_workflows_default.sourceUrl,
-						target: "_blank",
-						rel: "noreferrer",
-						children: ["Open source sheet ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { size: 13 })]
-					})]
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "iksha-sheet-settings",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", { children: ["Sheet workflow", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
-							value: planId,
-							onChange: (event) => setPlanId(event.target.value),
-							children: sheet_workflows_default.plans.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
-								value: item.id,
-								children: [
-									item.name,
-									" — ",
-									item.taskCount,
-									" work items",
-									item.sheet === "Copy of WORKFLOWS" ? " (copy tab)" : ""
-								]
-							}, item.id))
-						})] }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", { children: ["Plan starts", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-							type: "date",
-							value: start,
-							onChange: (event) => {
-								if (event.target.value) setStart(event.target.value);
-							}
-						})] }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: ["Calendar days · Imported ", new Date(sheet_workflows_default.fetchedAt).toLocaleDateString([], {
-							month: "short",
-							day: "numeric"
-						})] })
-					]
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "iksha-sheet-plan-note",
-					children: "This is the full sheet plan. Dates are calculated from its order, durations, and parallel placement. Completion is shown only for uniquely linked project tasks; items without a duration stay unscheduled."
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTimeline, {
-					tasks: projection.tasks,
-					stages: projection.stages,
-					members,
-					projectId,
-					namespace,
-					onOpenTask: setSelected
-				}, planId + start)
-			] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTimeline, {
-				tasks,
-				stages,
-				members,
-				projectId,
-				namespace,
-				onOpenTask
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
-				open: Boolean(selected),
-				onOpenChange: (open) => {
-					if (!open) setSelected(null);
-				},
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
-					className: "iksha-sheet-item-detail",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "iksha-eyebrow",
-							children: "GOOGLE SHEET WORK ITEM"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: selected?.title }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: projection.stages.find((stage) => stage.id === selected?.stageId)?.name })
-					] }), selected && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("dl", {
-							className: "iksha-sheet-item-facts",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Responsible role" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: selected.sheetRole || "Not specified in the sheet" })] }),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Duration" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: selected.sheetDurationDays === null ? "Missing in source sheet" : selected.sheetDurationDays + " calendar days" })] }),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Work order" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: selected.sheetTaskOrder })] }),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Source" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("dd", { children: [
-									selected.sheetSourceTab,
-									" · ",
-									selected.sheetSourceCell
-								] })] }),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Planned start" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: selected.sourceCurrentStart || "Awaiting duration" })] }),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Planned finish" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: selected.sourceCurrentEnd || "Awaiting duration" })] })
-							]
-						}),
-						selected.missingDuration && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "iksha-work-blocker",
-							children: "The sheet has no duration for this item. Set its duration in the plan before relying on a finish date."
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-							className: "iksha-sheet-source-link",
-							href: sourceLink(selected),
-							target: "_blank",
-							rel: "noreferrer",
-							children: ["View source work item ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { size: 13 })]
-						}),
-						selected.linkedTaskId ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-							onClick: () => {
-								const task = tasks.find((task) => task.id === selected.linkedTaskId);
-								setSelected(null);
-								if (task) onOpenTask(task);
-							},
-							children: ["Open linked project discussion ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 14 })]
-						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "iksha-sheet-plan-note",
-							children: "This item is in the sheet plan. No unique project task is linked to it yet."
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
-							className: "iksha-task-resources",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("summary", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { size: 14 }), "Shared project resources"] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectFiles, {
-								projectId,
-								namespace
-							})]
-						})
-					] })]
-				})
-			})
-		]
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTimeline, {
+			tasks,
+			stages,
+			members,
+			projectId,
+			namespace,
+			onOpenTask,
+			onSchedulePreview,
+			onScheduleApply
+		})
 	});
 }
 //#endregion
@@ -44798,8 +43924,8 @@ function computeStageSchedule(startDateStr, stages = []) {
 	return stages.map((stage) => {
 		const start = parseDate(stage.startDate) || cursor;
 		const duration = Number(stage.durationDays);
-		const end = parseDate(stage.deadline || stage.endDate) || new Date(start.getTime() + (Number.isFinite(duration) && duration > 0 ? duration : 1) * 864e5);
-		cursor = end;
+		const end = parseDate(stage.deadline || stage.endDate) || new Date(start.getTime() + ((Number.isFinite(duration) && duration > 0 ? duration : 1) - 1) * 864e5);
+		cursor = new Date(end.getTime() + 864e5);
 		const label = (date) => date.toLocaleDateString(void 0, {
 			month: "short",
 			day: "numeric",
@@ -45745,7 +44871,13 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							onOpenTask: (task) => {
 								setSelectedTask(task);
 								setTaskDrawerOpen(true);
-							}
+							},
+							onSchedulePreview: project.telegramGroupChatId ? (moves) => previewSchedule(project.id, moves) : void 0,
+							onScheduleApply: project.telegramGroupChatId ? async (moves) => {
+								const result = await applySchedule(project.id, moves);
+								setTasks(result.tasks);
+								return result;
+							} : void 0
 						}, `${project.id}:${stages.map((stage) => stage.id).join(",")}`)
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {

@@ -123,7 +123,7 @@ export function adaptBotTaskToWeb(task, source, { isLocalPendingSync = false } =
   if (!isLocalPendingSync) {
     task.status = toWebStatus(source.Status || 'Pending');
     task.title = source.TaskName || task.title;
-    task.deadline = source.CurrentEnd || source.PlannedEnd || '';
+    task.deadline = source.ForecastEnd || source.CurrentEnd || source.PlannedEnd || '';
   }
 
   return task;

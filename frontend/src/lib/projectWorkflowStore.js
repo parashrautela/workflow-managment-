@@ -250,9 +250,10 @@ export function computeStageSchedule(startDateStr, stages = []) {
   return stages.map((stage) => {
     const start = parseDate(stage.startDate) || cursor;
     const duration = Number(stage.durationDays);
+    // End dates are inclusive last days; the next stage starts the following day.
     const end = parseDate(stage.deadline || stage.endDate) ||
-      new Date(start.getTime() + (Number.isFinite(duration) && duration > 0 ? duration : 1) * 86400000);
-    cursor = end;
+      new Date(start.getTime() + ((Number.isFinite(duration) && duration > 0 ? duration : 1) - 1) * 86400000);
+    cursor = new Date(end.getTime() + 86400000);
     const label = (date) => date.toLocaleDateString(undefined, { month: "short", day: "numeric", timeZone: "UTC" });
     return {
       ...stage,

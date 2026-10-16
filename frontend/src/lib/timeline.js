@@ -8,8 +8,11 @@ export function timelineItems(tasks, stages) {
   const stageMap = new Map(stages.map(stage => [stage.id, stage]));
   return tasks.filter(task => !task.deletedAt && task.status !== 'Cancelled').map(task => {
     const stage = stageMap.get(task.stageId);
-    const directStart = calendarDate(task.sourceCurrentStart) ?? calendarDate(task.sourcePlannedStart);
-    const endDate = calendarDate(task.sourceCurrentEnd) ?? calendarDate(task.deadline) ?? calendarDate(task.sourcePlannedEnd);
+    // Forecast carries approved Telegram delays. The web deadline mirrors the bot's latest end and holds unsynced local edits.
+    const forecastStart = calendarDate(task.sourceForecastStart) ?? calendarDate(task.sourceCurrentStart) ?? calendarDate(task.sourcePlannedStart);
+    const endDate = calendarDate(task.deadline) ?? calendarDate(task.sourceForecastEnd) ?? calendarDate(task.sourceCurrentEnd) ?? calendarDate(task.sourcePlannedEnd);
+    // A deadline moved before the recorded start ends the work on that day instead of hiding it as unscheduled.
+    const directStart = forecastStart !== null && endDate !== null && forecastStart > endDate ? endDate : forecastStart;
     const stageStart = calendarDate(stage?.startDate);
     const start = task.sheetPlan ? directStart : directStart ?? (stageStart !== null && endDate !== null && stageStart <= endDate ? stageStart : endDate);
     const end = endDate !== null && start !== null && endDate >= start ? endDate + DAY : null;

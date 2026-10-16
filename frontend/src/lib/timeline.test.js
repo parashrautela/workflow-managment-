@@ -32,3 +32,13 @@ test('stage dates are used only for tasks with a known compatible deadline',()=>
   assert.equal(items[1].start,null);
   assert.equal(items[2].start,calendarDate('2026-10-12'));
 });
+test('approved Telegram delays move the bar through forecast dates',()=>{
+  const [item]=timelineItems([{id:'d',stageId:'s',title:'Carpentry',sourcePlannedStart:'2026-10-06',sourcePlannedEnd:'2026-10-08',sourceForecastStart:'2026-10-11',sourceForecastEnd:'2026-10-13'}],[]);
+  assert.equal(item.start,calendarDate('2026-10-11'));
+  assert.equal(item.end,calendarDate('2026-10-14'));
+});
+test('a deadline moved before the recorded start stays visible',()=>{
+  const [item]=timelineItems([{id:'e',stageId:'s',title:'Tiles',sourceCurrentStart:'2026-10-10',sourceCurrentEnd:'2026-10-12',deadline:'2026-10-08'}],[]);
+  assert.equal(item.start,calendarDate('2026-10-08'));
+  assert.equal(item.end,calendarDate('2026-10-09'));
+});
