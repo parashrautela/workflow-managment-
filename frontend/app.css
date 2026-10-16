@@ -5916,4 +5916,20 @@ svg.react-flow__connectionline {
 .iksha-schedule-frame .iksha-offscreen.is-after{right:6px;margin-left:auto}
 .iksha-schedule-frame .iksha-unscheduled{position:sticky;left:calc(var(--label-width) + 8px);top:auto;margin-right:auto}
 @media(max-width:640px){.iksha-schedule-frame{--label-width:132px}}
+
+/* People on bars: needs work from › done by › hands over to. Roles (no named person yet) use a dashed ring. */
+.iksha-people{display:inline-flex;align-items:center;gap:2px;flex-shrink:0}
+.iksha-avatar-stack{display:inline-flex}.iksha-avatar-stack .iksha-avatar+.iksha-avatar{margin-left:-7px}
+.iksha-avatar{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;letter-spacing:.2px;color:hsl(var(--hue,140) 35% 26%);background:hsl(var(--hue,140) 45% 88%);border:1.5px solid #fff;box-shadow:0 0 0 1px hsl(var(--hue,140) 25% 72%);flex-shrink:0}
+.iksha-avatar.is-role{background:#fff;border:1.5px dashed hsl(var(--hue,140) 30% 55%);box-shadow:none}
+.iksha-avatar.is-more{background:#eef1ea;color:#56664f;box-shadow:0 0 0 1px #cfd8c6;font-size:8px}
+.iksha-flow{font-style:normal;font-size:12px;line-height:1;color:currentColor;opacity:.55;margin:0 1px}
+.iksha-task-block{gap:6px}
+.iksha-people-flow{display:grid;gap:6px;margin-top:10px;padding:10px;border-radius:10px;background:#f6f8f1}
+.iksha-flow-row{display:grid;grid-template-columns:104px 1fr;gap:8px;align-items:start;font-size:12px;color:#4f5f49}
+.iksha-flow-row>span:first-child{color:#6d7b66;padding-top:3px}
+.iksha-flow-row>span:last-child{display:flex;flex-wrap:wrap;gap:6px}
+.iksha-flow-person{display:inline-flex;align-items:center;gap:5px;color:#26402f;font-weight:500}
+.iksha-toggle-on{background:#e6eedf;border-color:#b9cbab;color:#2f4b38}
+.iksha-flow{opacity:.85;font-size:14px;font-weight:700;margin:0 2px}
 /*$vite$:1*/

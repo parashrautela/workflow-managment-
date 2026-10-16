@@ -19687,7 +19687,7 @@ var AVATAR_NAME = "Avatar";
 var [createAvatarContext, createAvatarScope] = /* @__PURE__ */ createContextScope(AVATAR_NAME);
 var STATIC_IMAGE_COUNT_STATE = [0, () => void 0];
 var [AvatarProvider, useAvatarContext] = createAvatarContext(AVATAR_NAME);
-var Avatar$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$4(function Avatar2(props, forwardedRef) {
+var Avatar$2 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$4(function Avatar2(props, forwardedRef) {
 	const { __scopeAvatar, ...avatarProps } = props;
 	const [imageLoadingStatus, setImageLoadingStatus] = import_react.useState("idle");
 	const [imageCount, setImageCount] = useImageCount();
@@ -20160,8 +20160,8 @@ var Trigger = TabsTrigger$1;
 var Content = TabsContent$1;
 //#endregion
 //#region frontend/src/components/ui/avatar.jsx
-function Avatar({ className, size = "default", ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$1, {
+function Avatar$1({ className, size = "default", ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$2, {
 		"data-slot": "avatar",
 		"data-size": size,
 		className: cn$1("group/avatar relative flex size-8 shrink-0 overflow-hidden rounded-full select-none data-[size=lg]:size-10 data-[size=sm]:size-6", className),
@@ -27331,7 +27331,7 @@ function TeamChat({ endpoint, currentActor }) {
 					const own = item.senderId === currentActor;
 					return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Message, {
 						align: own ? "end" : "start",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$1, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
 							className: "bg-secondary text-xs font-semibold text-secondary-foreground",
 							children: item.senderName?.slice(0, 2).toUpperCase() || "TM"
 						}) }) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
@@ -29179,6 +29179,57 @@ function TimelineStageDetails({ stage, items, members, projectId, namespace, onC
 	});
 }
 //#endregion
+//#region frontend/src/lib/taskPeople.js
+var initialsOf = (name) => name.split(/[\s/&]+/).filter(Boolean).map((part) => part[0]).slice(0, 2).join("").toUpperCase();
+function personFor(task, ownerName) {
+	const assigned = ownerName(task);
+	if (assigned && assigned !== "Unassigned") return {
+		name: assigned,
+		initials: initialsOf(assigned),
+		isRole: false
+	};
+	if (task.sourceAssigneeName) return {
+		name: task.sourceAssigneeName,
+		initials: initialsOf(task.sourceAssigneeName),
+		isRole: false
+	};
+	if (task.sourceRole) return {
+		name: task.sourceRole,
+		initials: initialsOf(task.sourceRole),
+		isRole: true
+	};
+	return null;
+}
+var open = (task) => !task.deletedAt && task.status !== "Cancelled";
+var unique = (people, owner) => {
+	const seen = new Set(owner ? [owner.name] : []);
+	return people.filter((person) => person && !seen.has(person.name) && seen.add(person.name));
+};
+function buildPeopleIndex(tasks, ownerName) {
+	const byBotId = new Map(tasks.filter((task) => task.telegramTaskId).map((task) => [task.telegramTaskId, task]));
+	const successors = /* @__PURE__ */ new Map();
+	for (const task of tasks.filter(open)) for (const dependency of task.dependencies || []) {
+		const list = successors.get(dependency.predecessorTelegramTaskId) || [];
+		list.push(task);
+		successors.set(dependency.predecessorTelegramTaskId, list);
+	}
+	return (task) => {
+		const owner = personFor(task, ownerName);
+		const from = (task.dependencies || []).map((dependency) => byBotId.get(dependency.predecessorTelegramTaskId)).filter((item) => item && open(item)).map((item) => personFor(item, ownerName));
+		const to = (successors.get(task.telegramTaskId) || []).map((item) => personFor(item, ownerName));
+		return {
+			owner,
+			from: unique(from, owner),
+			to: unique(to, owner)
+		};
+	};
+}
+function avatarHue(name) {
+	let hash = 0;
+	for (const character of name) hash = (hash * 31 + character.charCodeAt(0)) % 360;
+	return hash;
+}
+//#endregion
 //#region frontend/src/components/ProjectTimeline.jsx
 var dateLabel = (value) => new Date(value).toLocaleDateString([], {
 	month: "short",
@@ -29219,6 +29270,66 @@ function verticalScroller(element) {
 	}
 	return document.scrollingElement;
 }
+function Avatar({ person }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+		className: `iksha-avatar ${person.isRole ? "is-role" : ""}`,
+		style: { "--hue": avatarHue(person.name) },
+		children: person.initials
+	});
+}
+function AvatarStack({ people, max = 2 }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+		className: "iksha-avatar-stack",
+		children: [people.slice(0, max).map((person) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, { person }, person.name)), people.length > max && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+			className: "iksha-avatar is-more",
+			children: ["+", people.length - max]
+		})]
+	});
+}
+function PeopleStrip({ people, compact }) {
+	if (!people.owner && !people.from.length && !people.to.length) return null;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+		className: "iksha-people",
+		"aria-hidden": "true",
+		children: [
+			!compact && people.from.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarStack, { people: people.from }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", {
+				className: "iksha-flow",
+				children: "›"
+			})] }),
+			people.owner && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, { person: people.owner }),
+			!compact && people.to.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", {
+				className: "iksha-flow",
+				children: "›"
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarStack, { people: people.to })] })
+		]
+	});
+}
+function PeopleFlow({ people }) {
+	const row = (label, list) => list.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "iksha-flow-row",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: label }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: list.map((person) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+			className: "iksha-flow-person",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, { person }),
+				person.name,
+				person.isRole ? " (role)" : ""
+			]
+		}, person.name)) })]
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "iksha-people-flow",
+		children: [
+			row("Needs work from", people.from),
+			row("Done by", people.owner ? [people.owner] : []),
+			row("Hands over to", people.to)
+		]
+	});
+}
+var peopleSentence = (people) => [
+	people.from.length ? `needs work from ${people.from.map((person) => person.name).join(", ")}` : "",
+	people.owner ? `done by ${people.owner.name}` : "",
+	people.to.length ? `hands over to ${people.to.map((person) => person.name).join(", ")}` : ""
+].filter(Boolean).join(", ");
 function OffscreenChip({ value, before, onClick }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 		className: `iksha-offscreen ${before ? "is-before" : "is-after"}`,
@@ -29253,6 +29364,19 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 	const scrollerRef = (0, import_react.useRef)(null);
 	const datesRef = (0, import_react.useRef)(null);
 	const handlers = (0, import_react.useRef)({});
+	const [showArrows, setShowArrows] = (0, import_react.useState)(() => {
+		try {
+			return localStorage.getItem("iksha.timeline.arrows") === "on";
+		} catch {
+			return false;
+		}
+	});
+	const toggleArrows = () => setShowArrows((current) => {
+		try {
+			localStorage.setItem("iksha.timeline.arrows", current ? "off" : "on");
+		} catch {}
+		return !current;
+	});
 	const swallowNextClick = () => {
 		suppressClick.current = true;
 		setTimeout(() => {
@@ -29268,6 +29392,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 		name: "Additional work"
 	}].filter((stage) => items.some((item) => (item.stage?.id || "other") === stage.id));
 	const ownerName = (task) => members.find((member) => (member.employeeId || member.id) === task.assigneeId)?.name || (task.assigneeId === "founder" ? "Founder" : task.assigneeName || "Unassigned");
+	const peopleOf = buildPeopleIndex(tasks, ownerName);
 	const query = search.trim().toLowerCase();
 	const visible = items.filter((item) => `${item.task.title} ${item.stage?.name || "Additional work"} ${ownerName(item.task)}`.toLowerCase().includes(query));
 	const undated = visible.filter((item) => (item.start === null || item.end === null) && item.task.status !== "Completed");
@@ -29643,6 +29768,14 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 							variant: "outline",
 							size: "sm",
+							"aria-pressed": showArrows,
+							className: showArrows ? "iksha-toggle-on" : "",
+							onClick: toggleArrows,
+							children: showArrows ? "Hide date arrows" : "Show date arrows"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							size: "sm",
 							onClick: () => setCollapsed(allGroups.some((stage) => collapsed.has(stage.id)) ? /* @__PURE__ */ new Set() : new Set(allGroups.map((stage) => stage.id))),
 							children: allGroups.some((stage) => collapsed.has(stage.id)) ? "Expand all" : "Collapse all"
 						})
@@ -29797,7 +29930,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 											className: "iksha-unscheduled",
 											onClick: () => setSelectedStageId(stage.id),
 											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 12 }), "Stage details"]
-										}) : null, groupStart !== null && groupEnd !== null && edge(groupStart, groupEnd) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(OffscreenChip, {
+										}) : null, showArrows && groupStart !== null && groupEnd !== null && edge(groupStart, groupEnd) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(OffscreenChip, {
 											value: edge(groupStart, groupEnd) === "before" ? groupEnd - 864e5 : groupStart,
 											before: edge(groupStart, groupEnd) === "before",
 											onClick: () => reveal(groupStart)
@@ -29817,6 +29950,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 									const Icon = STATUS_ICON[status.key];
 									const flag = status.late && status.key !== "late" ? `${status.label} · late` : status.label;
 									const barWidth = Math.max(12, (Math.min(end ?? 0, to) - Math.max(start ?? 0, from)) / 864e5 * dayWidth - 3);
+									const people = peopleOf(item.task);
 									return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: `iksha-schedule-row iksha-task-row ${isTarget ? "is-swap-target" : ""} ${picked === item.task.id ? "is-picked" : ""}`,
 										"data-task-row": item.task.id,
@@ -29827,7 +29961,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 												className: `iksha-task-state state-${status.key}`,
 												children: complete(item.task) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { size: 10 })
 											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: shortTitle(item.task, item.stage) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
-												ownerName(item.task),
+												people.owner?.name || "Unassigned",
 												" · ",
 												flag
 											] })] })]
@@ -29836,7 +29970,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 											children: [inRange ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 												className: `iksha-task-block status-${status.key} ${status.late ? "is-late" : ""} ${barWidth < 64 ? "is-short" : ""} ${movable ? "is-movable" : ""} ${dragging ? "is-dragging" : ""} ${dragging && drag.touch ? "is-lifted" : ""}`,
 												title: `${item.task.title} · ${dateLabel(start)} – ${dateLabel(end - 864e5)} · ${flag}${movable ? " · Drag to move, pull the edge to resize, drop on another task to swap, or press Alt+Arrow" : ""}`,
-												"aria-label": `${item.task.title}, ${dateLabel(start)} to ${dateLabel(end - 864e5)}, ${flag}, ${ownerName(item.task)}${movable ? ". Alt plus arrow keys move it by a day" : ""}`,
+												"aria-label": `${item.task.title}, ${dateLabel(start)} to ${dateLabel(end - 864e5)}, ${flag}${peopleSentence(people) ? ", " + peopleSentence(people) : ""}${movable ? ". Alt plus arrow keys move it by a day" : ""}`,
 												style: {
 													left: Math.min(days * dayWidth - 12, Math.max(0, (Math.max(start, from) - from) / 864e5 * dayWidth)),
 													width: barWidth
@@ -29868,6 +30002,10 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 														"aria-hidden": "true",
 														className: "iksha-status-icon"
 													}),
+													barWidth >= 64 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PeopleStrip, {
+														people,
+														compact: barWidth < 170
+													}),
 													/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: shortTitle(item.task, item.stage) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
 														dateLabel(start),
 														" – ",
@@ -29884,7 +30022,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 												className: "iksha-unscheduled",
 												onClick: () => onOpenTask(item.task),
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock3, { size: 12 }), "No dates · see below"]
-											}, "chip") : null, isScheduled && !dragging && edge(item.start, item.end) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(OffscreenChip, {
+											}, "chip") : null, showArrows && isScheduled && !dragging && edge(item.start, item.end) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(OffscreenChip, {
 												value: edge(item.start, item.end) === "before" ? item.end - 864e5 : item.start,
 												before: edge(item.start, item.end) === "before",
 												onClick: () => reveal(item.start)
@@ -29932,6 +30070,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 							pickedItem.end - pickedItem.start === 864e5 ? "" : "s"
 						] })]
 					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PeopleFlow, { people: peopleOf(pickedItem.task) }),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "iksha-adjust-actions",
 						children: [
@@ -45000,7 +45139,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "flex items-center gap-3",
 										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, {
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$1, {
 												className: "size-9",
 												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
 													className: "bg-secondary text-xs font-semibold",
@@ -45589,7 +45728,7 @@ function Brand({ compact = false }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(IkshaBrand, { compact });
 }
 function InitialAvatar({ name, className = "" }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$1, {
 		className,
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
 			className: "bg-accent font-semibold text-accent-foreground",
@@ -46486,13 +46625,13 @@ var time = (value) => value ? new Date(value).toLocaleTimeString([], {
 	minute: "2-digit"
 }) : "";
 function AssistantAvatar() {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$1, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
 		className: "bg-primary/10 text-primary",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-4" })
 	}) });
 }
 function ClientAvatar({ name }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$1, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
 		className: "bg-secondary font-semibold text-secondary-foreground",
 		children: name?.slice(0, 2).toUpperCase() || "CL"
 	}) });
