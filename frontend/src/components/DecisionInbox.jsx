@@ -10,10 +10,10 @@ import { Input } from "@/components/ui/input";
 import { NativeSelect } from "@/components/ui/native-select";
 import { Textarea } from "@/components/ui/textarea";
 import { SuggestReply } from "@/components/SuggestReply";
+import { QueryAcceptWizard, QueryDecisionButtons, QueryOutcome, QueryRejectDialog } from "@/components/QueryDecisionDialogs";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import {
-  generateIdempotencyKey, getAttachmentUrl, approveDecisionRequest,
-  rejectDecisionRequest, convertDecisionRequest
+  generateIdempotencyKey, getAttachmentUrl
 } from "@/lib/api";
 
 async function api(url, method = "GET", data) {
@@ -49,13 +49,9 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
   const [notice, setNotice] = useState("");
   const [busy, setBusy] = useState(false);
 
-  // Conversion & rejection modals
-  const [convertModalOpen, setConvertModalOpen] = useState(false);
-  const [rejectModalOpen, setRejectModalOpen] = useState(false);
-  const [rejectReason, setRejectReason] = useState("");
-  const [convertTitle, setConvertTitle] = useState("");
-  const [convertDesc, setConvertDesc] = useState("");
-  const [convertDeadline, setConvertDeadline] = useState("");
+  // Accept / Reject are the only decisions; both dialogs confirm before anything reaches Telegram.
+  const [acceptOpen, setAcceptOpen] = useState(false);
+  const [rejectOpen, setRejectOpen] = useState(false);
 
   const scrollRef = useRef(null);
   // The inbox fills exactly the rest of the screen, so its bottom edge is always visible and only the
@@ -101,8 +97,10 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
   }, [projects, settingsProjectId]);
 
   const visible = requests.filter((item) => {
-    if (filter === "Open" && item.status === "Done") return false;
-    if (filter === "Done" && item.status !== "Done") return false;
+    const decided = Boolean(item.decisionStatus) || item.status === "Done";
+    if (filter === "Open" && decided) return false;
+    if (filter === "Handled" && !decided) return false;
+    if (filter === "Updates" && item.requestType !== "Update") return false;
     if (projectFilter !== "All projects" && item.projectId !== projectFilter) return false;
     const project = projects.find((candidate) => candidate.id === item.projectId);
     return `${project?.name || ""} ${item.originalSenderName} ${item.originalMessage} ${item.context}`.toLowerCase().includes(search.toLowerCase());
@@ -110,7 +108,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
 
   const selected = visible.find((item) => item.id === selectedId) || visible[0];
   const selectedProject = projects.find((item) => item.id === selected?.projectId);
-  const openCount = requests.filter((item) => item.status !== "Done").length;
+  const openCount = requests.filter((item) => !item.decisionStatus && item.status !== "Done").length;
   const text = selected ? (mode === "internal" ? notes[selected.id] || "" : drafts[selected.id] || "") : "";
 
   const followUps = selected ? [
@@ -182,31 +180,6 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
     }
   };
 
-  const handleApprove = () => {
-    if (!selected) return;
-    run(() => approveDecisionRequest(selected.id), "Request approved.");
-  };
-
-  const handleRejectSubmit = (e) => {
-    e.preventDefault();
-    if (!selected || !rejectReason.trim()) return;
-    run(() => rejectDecisionRequest(selected.id, rejectReason.trim()), "Request rejected.");
-    setRejectModalOpen(false);
-    setRejectReason("");
-  };
-
-  const handleConvertSubmit = (e) => {
-    e.preventDefault();
-    if (!selected || !convertTitle.trim()) return;
-    run(() => convertDecisionRequest(selected.id, {
-      title: convertTitle.trim(),
-      description: convertDesc.trim(),
-      deadline: convertDeadline || undefined,
-      status: "Open"
-    }), "Task created from client request.");
-    setConvertModalOpen(false);
-  };
-
   const markDone = () => selected && run(() => api(`/api/founder/decision-requests/${encodeURIComponent(selected.id)}/resolve`, "POST", {}), "Request marked done.");
 
   return (
@@ -252,9 +225,10 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
               <Input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search conversations" className="pl-9" aria-label="Search decision conversations" />
             </label>
             <div className="flex gap-2">
-              <NativeSelect value={filter} onChange={(event) => setFilter(event.target.value)} aria-label="Filter by status" className="w-24">
+              <NativeSelect value={filter} onChange={(event) => setFilter(event.target.value)} aria-label="Filter by status" className="w-28">
                 <option>Open</option>
-                <option>Done</option>
+                <option>Handled</option>
+                <option>Updates</option>
                 <option>All</option>
               </NativeSelect>
               <NativeSelect value={projectFilter} onChange={(event) => setProjectFilter(event.target.value)} aria-label="Filter by project" className="min-w-0 flex-1">
@@ -331,33 +305,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
                 </div>
 
                 <div className="flex items-center gap-1.5">
-                  {!selected.taskId && selected.status !== "Done" && (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => {
-                        setConvertTitle(selected.originalMessage || "Client query follow-up");
-                        setConvertDesc(`Client message: "${selected.originalMessage || ""}"`);
-                        setConvertModalOpen(true);
-                      }}
-                      disabled={busy}
-                    >
-                      <Plus className="size-3.5 mr-1" />
-                      Convert to Task
-                    </Button>
-                  )}
-
-                  {!["Approved", "Rejected", "Done"].includes(selected.status) && (
-                    <>
-                      <Button variant="outline" size="sm" onClick={handleApprove} disabled={busy}>
-                        <Check className="size-3.5 mr-1" /> Approve
-                      </Button>
-                      <Button variant="outline" size="sm" onClick={() => setRejectModalOpen(true)} disabled={busy} className="text-destructive">
-                        Reject
-                      </Button>
-                    </>
-                  )}
-
+                  <QueryDecisionButtons request={selected} disabled={busy} onAccept={() => setAcceptOpen(true)} onReject={() => setRejectOpen(true)} />
                   {selected.status !== "Done" && (
                     <Button variant="outline" size="sm" disabled={busy} onClick={markDone}>
                       Done
@@ -483,6 +431,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
                   )
                 )}
 
+                <div className="flex justify-center"><QueryOutcome request={selected} /></div>
                 {selected.status === "Done" && (
                   <p className="text-center text-xs text-emerald-700">Marked done {when(selected.resolvedAt)}</p>
                 )}
@@ -546,53 +495,8 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
         </section>
       </div>
 
-      {/* Convert to Task Modal */}
-      <Dialog open={convertModalOpen} onOpenChange={setConvertModalOpen}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Convert Query to Task</DialogTitle>
-            <DialogDescription>Create an internal task in this project from the client's inquiry.</DialogDescription>
-          </DialogHeader>
-          <form onSubmit={handleConvertSubmit} className="space-y-4">
-            <label className="grid gap-1.5 text-xs font-semibold">
-              Task Title
-              <Input value={convertTitle} onChange={(e) => setConvertTitle(e.target.value)} required />
-            </label>
-            <label className="grid gap-1.5 text-xs font-semibold">
-              Description
-              <Textarea value={convertDesc} onChange={(e) => setConvertDesc(e.target.value)} rows={3} />
-            </label>
-            <label className="grid gap-1.5 text-xs font-semibold">
-              Deadline
-              <Input type="date" value={convertDeadline} onChange={(e) => setConvertDeadline(e.target.value)} />
-            </label>
-            <div className="flex justify-end gap-2 pt-2">
-              <Button type="button" variant="outline" onClick={() => setConvertModalOpen(false)}>Cancel</Button>
-              <Button type="submit" disabled={busy}>Create Task</Button>
-            </div>
-          </form>
-        </DialogContent>
-      </Dialog>
-
-      {/* Reject Modal */}
-      <Dialog open={rejectModalOpen} onOpenChange={setRejectModalOpen}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Reject Client Request</DialogTitle>
-            <DialogDescription>Specify an internal reason for rejecting this request.</DialogDescription>
-          </DialogHeader>
-          <form onSubmit={handleRejectSubmit} className="space-y-4">
-            <label className="grid gap-1.5 text-xs font-semibold">
-              Reason
-              <Input value={rejectReason} onChange={(e) => setRejectReason(e.target.value)} placeholder="e.g. Scope limitation" required />
-            </label>
-            <div className="flex justify-end gap-2 pt-2">
-              <Button type="button" variant="outline" onClick={() => setRejectModalOpen(false)}>Cancel</Button>
-              <Button type="submit" variant="destructive" disabled={busy}>Confirm Rejection</Button>
-            </div>
-          </form>
-        </DialogContent>
-      </Dialog>
+      {selected && <QueryAcceptWizard open={acceptOpen} onOpenChange={setAcceptOpen} request={selected} onDone={async (result) => { await load(); setNotice(result?.summary ? `Accepted: ${result.summary}` : "Query accepted."); }} />}
+      {selected && <QueryRejectDialog open={rejectOpen} onOpenChange={setRejectOpen} request={selected} onDone={async () => { await load(); setNotice("Query rejected and the reply was sent."); }} />}
     </div>
   );
 }

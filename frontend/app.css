@@ -163,6 +163,7 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --tracking-tight: -.025em;
+    --tracking-wide: .025em;
     --tracking-wider: .05em;
     --leading-snug: 1.375;
     --leading-relaxed: 1.625;
@@ -1046,6 +1047,10 @@
     height: calc(var(--spacing) * 16);
   }
 
+  .h-20 {
+    height: calc(var(--spacing) * 20);
+  }
+
   .h-24 {
     height: calc(var(--spacing) * 24);
   }
@@ -1126,6 +1131,10 @@
     min-height: calc(var(--spacing) * 9);
   }
 
+  .min-h-10 {
+    min-height: calc(var(--spacing) * 10);
+  }
+
   .min-h-11 {
     min-height: calc(var(--spacing) * 11);
   }
@@ -1170,8 +1179,12 @@
     width: calc(var(--spacing) * 10);
   }
 
-  .w-24 {
-    width: calc(var(--spacing) * 24);
+  .w-20 {
+    width: calc(var(--spacing) * 20);
+  }
+
+  .w-28 {
+    width: calc(var(--spacing) * 28);
   }
 
   .w-32 {
@@ -2441,6 +2454,10 @@
     object-fit: contain;
   }
 
+  .object-cover {
+    object-fit: cover;
+  }
+
   .p-0 {
     padding: 0;
   }
@@ -2769,6 +2786,11 @@
   .tracking-tight {
     --tw-tracking: var(--tracking-tight);
     letter-spacing: var(--tracking-tight);
+  }
+
+  .tracking-wide {
+    --tw-tracking: var(--tracking-wide);
+    letter-spacing: var(--tracking-wide);
   }
 
   .tracking-wider {
@@ -3666,13 +3688,33 @@
       background-color: var(--color-indigo-50);
     }
 
-    .hover\:bg-muted:hover, .hover\:bg-muted\/70:hover {
+    .hover\:bg-muted:hover, .hover\:bg-muted\/60:hover {
+      background-color: var(--muted);
+    }
+
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-muted\/60:hover {
+        background-color: color-mix(in oklab, var(--muted) 60%, transparent);
+      }
+    }
+
+    .hover\:bg-muted\/70:hover {
       background-color: var(--muted);
     }
 
     @supports (color: color-mix(in lab, red, red)) {
       .hover\:bg-muted\/70:hover {
         background-color: color-mix(in oklab, var(--muted) 70%, transparent);
+      }
+    }
+
+    .hover\:bg-primary\/5:hover {
+      background-color: var(--primary);
+    }
+
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-primary\/5:hover {
+        background-color: color-mix(in oklab, var(--primary) 5%, transparent);
       }
     }
 
@@ -4080,12 +4122,24 @@
       grid-column: span 1 / span 1;
     }
 
+    .sm\:block {
+      display: block;
+    }
+
     .sm\:inline {
       display: inline;
     }
 
     .sm\:inline-flex {
       display: inline-flex;
+    }
+
+    .sm\:w-52 {
+      width: calc(var(--spacing) * 52);
+    }
+
+    .sm\:w-56 {
+      width: calc(var(--spacing) * 56);
     }
 
     .sm\:max-w-2xl {
@@ -4124,6 +4178,18 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
+    .sm\:grid-cols-\[1\.4fr_1fr_1fr_7\.5rem\] {
+      grid-template-columns: 1.4fr 1fr 1fr 7.5rem;
+    }
+
+    .sm\:grid-cols-\[1fr_auto\] {
+      grid-template-columns: 1fr auto;
+    }
+
+    .sm\:grid-cols-\[auto_1fr\] {
+      grid-template-columns: auto 1fr;
+    }
+
     .sm\:grid-cols-\[minmax\(0\,1fr\)_160px_auto\] {
       grid-template-columns: minmax(0, 1fr) 160px auto;
     }
@@ -4138,6 +4204,10 @@
 
     .sm\:items-center {
       align-items: center;
+    }
+
+    .sm\:items-end {
+      align-items: flex-end;
     }
 
     .sm\:justify-between {
@@ -5952,4 +6022,10 @@ svg.react-flow__connectionline {
 .iksha-flow{opacity:.85;font-size:14px;font-weight:700;margin:0 2px}
 /* Vertical wheel/trackpad scrolling over the grid must reach the page. Only sideways scrolling stays inside the grid. */
 .iksha-schedule-frame .iksha-schedule-scroll{overscroll-behavior-y:auto;overscroll-behavior-x:contain}
+/* Founder-built plans: whole-stage drag, add-stage entry points, right-click menu */
+.iksha-stage-range.is-movable{cursor:grab;touch-action:pan-y}.iksha-stage-range.is-dragging{cursor:grabbing;z-index:4;box-shadow:0 6px 18px rgba(49,94,76,.18)}
+.iksha-empty-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:4px}
+.iksha-context-menu{position:fixed;z-index:60;min-width:220px;max-width:240px;padding:5px;border:1px solid #dfe5d6;border-radius:10px;background:white;box-shadow:0 12px 32px rgba(40,60,45,.16)}
+.iksha-context-menu button{display:flex;width:100%;align-items:center;gap:8px;padding:9px 10px;border:0;border-radius:7px;background:none;color:#354d3d;font-size:12px;text-align:left;cursor:pointer}
+.iksha-context-menu button:hover,.iksha-context-menu button:focus-visible{background:#eef3e8;outline:none}
 /*$vite$:1*/

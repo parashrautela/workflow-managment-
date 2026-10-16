@@ -12,6 +12,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Input } from "@/components/ui/input";
 import { NativeSelect } from "@/components/ui/native-select";
 import { SuggestReply } from "@/components/SuggestReply";
+import { QueryAcceptWizard, QueryDecisionButtons, QueryOutcome, QueryRejectDialog } from "@/components/QueryDecisionDialogs";
 import {
   addDecisionComment, approveDecisionRequest, rejectDecisionRequest,
   convertDecisionRequest, publishDecisionReply, getAttachmentUrl,
@@ -36,6 +37,8 @@ export function ClientQueryCard({
   const [rejectModalOpen, setRejectModalOpen] = useState(false);
   const [publishReview, setPublishReview] = useState(null);
   const [rejectReason, setRejectReason] = useState("");
+  const [acceptOpen, setAcceptOpen] = useState(false);
+  const [rejectOpen, setRejectOpen] = useState(false);
 
   // Convert task fields
   const [taskTitle, setTaskTitle] = useState(query.originalMessage || query.context || "Client query follow-up");
@@ -366,57 +369,17 @@ export function ClientQueryCard({
               >
                 View Linked Task <ArrowRight className="size-3 ml-1" />
               </Button>
-            ) : isFounder && !isRejected && !isDone && (
-              <Button
-                variant="outline"
-                size="sm"
-                className="text-xs text-indigo-700 hover:bg-indigo-50"
-                onClick={() => setConvertModalOpen(true)}
-              >
-                <Plus className="size-3.5 mr-1" /> Convert to Task
-              </Button>
-            )}
+            ) : null}
           </div>
 
-          {/* Founder Decision Controls */}
-          {isFounder && !isDone && !isPublished && (
+          {/* Founder decision: Accept or Reject. Both confirm the reply before anything reaches Telegram. */}
+          {isFounder && (
             <div className="flex flex-wrap items-center gap-1.5">
-              {!isApproved && !isRejected && (
-                <>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="text-xs text-emerald-700 border-emerald-300 hover:bg-emerald-50"
-                    disabled={busyAction === "approve"}
-                    onClick={handleApprove}
-                  >
-                    {busyAction === "approve" ? <Loader2 className="size-3 animate-spin mr-1" /> : <Check className="size-3.5 mr-1" />}
-                    Approve
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="text-xs text-destructive border-destructive/30 hover:bg-destructive/10"
-                    onClick={() => setRejectModalOpen(true)}
-                  >
-                    Reject…
-                  </Button>
-                </>
-              )}
-
-              <Button
-                size="sm"
-                className="text-xs"
-                onClick={() => {
-                  setExpanded(true);
-                  setMode("finalize");
-                }}
-              >
-                Finalize &amp; Reply <ArrowRight className="size-3.5 ml-1" />
-              </Button>
+              <QueryDecisionButtons request={query} onAccept={() => setAcceptOpen(true)} onReject={() => setRejectOpen(true)} />
             </div>
           )}
         </div>
+        <div className="mt-2"><QueryOutcome request={query} /></div>
 
         {/* Expandable Discussion & Finalization Thread */}
         {expanded && (
@@ -589,6 +552,9 @@ export function ClientQueryCard({
           </div>
         </DialogContent>
       </Dialog>
+
+      {isFounder && <QueryAcceptWizard open={acceptOpen} onOpenChange={setAcceptOpen} request={query} onDone={(result) => { setSuccessMessage(result?.summary ? `Accepted: ${result.summary}` : "Query accepted."); if (onQueryChanged) onQueryChanged(); if (onTaskCreated) onTaskCreated(); }} />}
+      {isFounder && <QueryRejectDialog open={rejectOpen} onOpenChange={setRejectOpen} request={query} onDone={() => { setSuccessMessage("Query rejected and the reply was sent."); if (onQueryChanged) onQueryChanged(); }} />}
 
       {/* Convert Query to Task Modal */}
       <Dialog open={convertModalOpen} onOpenChange={setConvertModalOpen}>

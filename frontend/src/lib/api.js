@@ -375,3 +375,39 @@ export async function suggestDecisionReply(requestId, instruction = "") {
 export async function disableEmployee(employeeId) {
   return await post(`/api/founder/employees/${employeeId}/disable`, {});
 }
+
+/**
+ * Founder-built plans: add one or more stages of six tasks (POST /api/founder/projects/:id/stages/preview|apply).
+ * Pass { stage } or { stages: [...] }. The bot works out every date; preview writes nothing.
+ */
+export async function previewStages(projectId, input) {
+  return await post(`/api/founder/projects/${projectId}/stages/preview`, input);
+}
+export async function applyStages(projectId, input) {
+  return await post(`/api/founder/projects/${projectId}/stages/apply`, input);
+}
+
+/** Add one task inside a stage, after another task of it (POST .../stages/insert-task/preview|apply). */
+export async function previewInsertTask(projectId, task) {
+  return await post(`/api/founder/projects/${projectId}/stages/insert-task/preview`, { task });
+}
+export async function applyInsertTask(projectId, task) {
+  return await post(`/api/founder/projects/${projectId}/stages/insert-task/apply`, { task });
+}
+
+/** The founders' default plan (INTERIOR 1) as six-task stages, for review before creating it. */
+export async function fetchDefaultPlan(projectId) {
+  return await get(`/api/founder/projects/${projectId}/default-plan`);
+}
+
+/**
+ * Accept a query: link it to a task and delay/redo/complete it, or add a new stage for it.
+ * target: { kind: 'task', taskId, action: { type, days } } | { kind: 'new-stage', stage, linkTaskKey }
+ * Nothing is sent to Telegram; publish the reply separately after the founder reviews it.
+ */
+export async function previewAcceptDecision(requestId, target) {
+  return await post(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept-preview`, { target });
+}
+export async function acceptDecisionRequest(requestId, target) {
+  return await post(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept`, { target });
+}
