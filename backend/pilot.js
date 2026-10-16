@@ -11,6 +11,7 @@ const text = (value, label, maximum = 2000) => {
   if (typeof value !== 'string' || !value.trim() || value.trim().length > maximum) fail(`Enter ${label} under ${maximum + 1} characters.`);
   return value.trim();
 };
+export const BLANK_WORKFLOW_ID = 'BLANK-V1';
 export const validDate = (value) => typeof value === 'string' && (!value || (/^\d{4}-\d{2}-\d{2}$/.test(value) && Number.isFinite(Date.parse(value)) && new Date(value).toISOString().slice(0,10) === value));
 const safeLink = (value = '') => {
   if (!value) return '';
@@ -21,6 +22,20 @@ export const workflows = [
   { id: 'PILOT-DESIGN-V1', name: 'Design pilot', stages: [{ name: 'Resources', durationDays: 1, tasks: ['Collect site plans and client references'] }, { name: 'Design', durationDays: 3, tasks: ['Prepare concept and review with client'] }, { name: 'Delivery', durationDays: 2, tasks: ['Deliver approved drawings'] }] },
   { id: 'PILOT-PAINTING-V1', name: 'Painting pilot', stages: [{ name: 'Resources', durationDays: 1, tasks: ['Collect site photos and measurements'] }, { name: 'Preparation', durationDays: 2, tasks: ['Prepare walls and approve colour sample'] }, { name: 'Painting', durationDays: 3, tasks: ['Apply coats and inspect finish'] }] },
 ];
+// Same order as the bot's STAGE_TASKS; used to link an accepted query to a task of a stage it just created.
+const STAGE_TASK_KEYS = ['site-check', 'drawing', 'approval', 'client', 'execution', 'final-check'];
+// An accepted query becomes the first message in its task's thread, with its photos and files.
+export function pushQueryMessage(state, task, request) {
+  if (state.taskMessages.some((message) => message.taskId === task.id && message.queryId === request.id)) return;
+  state.taskMessages.push({
+    id: randomUUID(), taskId: task.id, projectId: task.projectId, authorId: 'system',
+    author: `${request.requestType === 'Update' ? 'Update' : 'Query'} from ${request.originalSenderName || 'Telegram'}`,
+    text: [request.originalMessage, request.context].filter(Boolean).join('\n\n') || 'Shared a file.',
+    attachmentUrl: '', queryId: request.id,
+    attachments: (request.attachments || []).map((item, index) => ({ index, type: item.type, fileName: item.fileName || '' })),
+    at: timestamp(),
+  });
+}
 export function initializePilot(state) {
   for (const key of ['tasks','taskMessages','readPositions']) if (!Array.isArray(state[key])) state[key] = [];
   let recovered = false;
@@ -108,8 +123,29 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
     activeSnapshotRefreshes.set(project.id,promise);
     return promise;
   };
+  const botError = (error) => fail(error.message, error.botStatus && error.botStatus < 500 ? error.botStatus : 502);
+  const requireLinked = (project) => { if (!project.telegramGroupChatId || !project.workflowStartedAt) fail('Link this project to its Telegram group and start its plan before changing the schedule.',409); };
+  const requireSynced = (state, project) => {
+    const pending = state.tasks.find((t) => t.projectId === project.id && !t.deletedAt && t.telegramSyncStatus !== 'Synced');
+    if (pending) fail(`"${pending.title}" has unsaved changes. Wait for sync, then try again.`,409);
+  };
+  const refreshFromBot = async (state, project) => { try { await syncProjectTasks(state,project,callBotBridge,{readOnly:true}); } catch { /* the sheet is updated; the next refresh hydrates */ } };
+  const assigneeForBot = (project, assigneeId) => {
+    const member = assigneeId && project.members?.find((item) => item.employeeId === assigneeId);
+    return member?.telegramUserId ? { assigneeTelegramId: String(member.telegramUserId), assigneeName: member.name || '' } : {};
+  };
+  // Only the fields the bot understands; it validates names, durations and placement itself.
+  const stageSpecForBot = (project, spec) => {
+    if (!spec || typeof spec !== 'object' || typeof spec.name !== 'string' || !Array.isArray(spec.tasks)) fail('Send a stage name and its tasks.');
+    const placement = spec.placement && typeof spec.placement === 'object' ? { type: spec.placement.type, stageName: spec.placement.stageName, startDate: spec.placement.startDate } : undefined;
+    return {
+      name: spec.name, placement, doneCount: spec.doneCount,
+      tasks: spec.tasks.slice(0, 6).map((task) => ({ key: task?.key, durationDays: task?.durationDays, role: task?.role, ...assigneeForBot(project, task?.assigneeId) })),
+    };
+  };
+  const botStaleGuard = (task) => ({ fromStart: task.sourceForecastStart || task.sourceCurrentStart || task.sourcePlannedStart || '', fromEnd: task.sourceForecastEnd || task.sourceCurrentEnd || task.sourcePlannedEnd || '' });
   return async (req, res, url) => {
-    const match = url.pathname.match(/^\/api\/(founder|employee)\/(workflows|projects\/[^/]+\/(?:tasks|workflow\/start|client|workspace|schedule\/(?:preview|apply))|tasks\/[^/]+(?:\/(?:messages|read))?|decision-requests(?:\/[^/]+(?:\/(?:comment|approve|reject|convert|read))?)?|projects\/[^/]+\/members\/[^/]+|employees\/[^/]+\/disable)$/);
+    const match = url.pathname.match(/^\/api\/(founder|employee)\/(workflows|projects\/[^/]+\/(?:tasks|workflow\/start|client|workspace|default-plan|schedule\/(?:preview|apply)|stages\/(?:insert-task\/)?(?:preview|apply))|tasks\/[^/]+(?:\/(?:messages|read))?|decision-requests(?:\/[^/]+(?:\/(?:comment|approve|reject|convert|read|accept|accept-preview))?)?|projects\/[^/]+\/members\/[^/]+|employees\/[^/]+\/disable)$/);
     if (!match) return false;
     const state = getState(); const user = actor(req, match[1]); const route = match[2]; const method = req.method;
     if (route === 'workflows' && method === 'GET') { json(res, 200, { workflows }); return true; }
@@ -126,6 +162,44 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
       if (project.internalOwnerMemberId === member.id) project.internalOwnerMemberId = '';
       for (const task of state.tasks) if (task.projectId === project.id && task.assigneeId === member.employeeId) task.assigneeId = '';
       audit('project_member_removed',project.id,{ memberId: member.id }); await save(); json(res,200,{ok:true}); return true;
+    }
+    if ((m = route.match(/^projects\/([^/]+)\/default-plan$/)) && method === 'GET') {
+      // The founders' INTERIOR 1 plan in six-task stages, for "start from the default plan" and the add-stage prefill.
+      admin(user); projectFor(state,user,m[1]);
+      let result; try { result = await callBotBridge('/api/integrations/web/default-plan', {}); } catch (error) { botError(error); }
+      json(res,200,{stages:Array.isArray(result.stages) ? result.stages : []}); return true;
+    }
+    if ((m = route.match(/^projects\/([^/]+)\/stages\/(insert-task\/)?(preview|apply)$/)) && method === 'POST') {
+      // Founder-built plans. The bot builds the task rows and dates; the web only sends what the founder chose.
+      admin(user); const project = projectFor(state,user,m[1]); requireLinked(project); requireSynced(state,project);
+      const input = await body(req); const mode = m[3];
+      let payload;
+      if (m[2]) {
+        const task = input.task || {};
+        const stageName = project.stages?.find((stage) => stage.id === task.stageId)?.name;
+        if (!stageName) fail('Choose a stage in this project.');
+        let afterTaskId = '';
+        if (task.afterTaskId) {
+          const after = state.tasks.find((t) => t.id === task.afterTaskId && t.projectId === project.id && !t.deletedAt);
+          if (!after?.telegramTaskId) fail('Task not found in this project.',404);
+          afterTaskId = after.telegramTaskId;
+        }
+        payload = { task: { stageName, afterTaskId, title: task.title, role: task.role, durationDays: task.durationDays, ...assigneeForBot(project, task.assigneeId) } };
+      } else {
+        const specs = Array.isArray(input.stages) ? input.stages : [input.stage];
+        if (!specs.length || specs.length > 40) fail('Send between 1 and 40 stages.');
+        payload = { stages: specs.map((spec) => stageSpecForBot(project, spec)) };
+      }
+      let result;
+      try { result = await callBotBridge(`/api/integrations/web/stages/${m[2] ? 'insert-task' : 'add'}`, { groupChatId: project.telegramGroupChatId, mode, actorName: user.name || 'Founder', ...payload }); }
+      catch (error) { botError(error); }
+      if (mode === 'apply') {
+        await refreshFromBot(state,project);
+        audit(m[2] ? 'stage_task_added' : 'stage_added',project.id,{actorId:user.id,stages:(result.stages || []).map((stage) => stage.name),created:(result.created || []).length});
+        await save();
+      }
+      json(res,200,{ ...result, tasks: state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt), project: projectView(project) });
+      return true;
     }
     if ((m = route.match(/^projects\/([^/]+)\/schedule\/(preview|apply)$/)) && method === 'POST') {
       // Founder timeline moves. The bot's engine checks dependencies and writes the Google Sheet; the web never computes dates itself.
@@ -178,7 +252,8 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
           let result;
           try { result=await callBotBridge('/api/integrations/web/projects/start',{groupChatId:project.telegramGroupChatId,workflowId:input.workflowId,startDate}); }
           catch(error){fail(error.message,502);}
-          if (!Array.isArray(result.tasks) || !result.tasks.length) fail('The bot did not return its generated tasks.',502);
+          // A blank project has no tasks yet; every template must return its generated tasks.
+          if (!Array.isArray(result.tasks) || (!result.tasks.length && input.workflowId !== BLANK_WORKFLOW_ID)) fail('The bot did not return its generated tasks.',502);
           if (!project.workflowStartedAt) {
             const stages=[];
             for (const source of result.tasks) {
@@ -195,7 +270,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
                 state.tasks.push(newTask);
               }
             }
-            Object.assign(project,{workflowId:result.workflowId,workflowName:result.workflowName,workflowStartedAt:timestamp(),startDate,status:'Active',phase:stages[0].name,stages});
+            Object.assign(project,{workflowId:result.workflowId,workflowName:result.workflowName,workflowStartedAt:timestamp(),startDate,status:'Active',phase:stages[0]?.name || 'Planning',stages});
             audit('workflow_started',project.id,{workflowId:result.workflowId,source:'Telegram'});
           }
           project.workflowAnnouncementStatus=result.announcementStatus;
@@ -220,7 +295,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
           const deadline = date.toISOString().slice(0,10); date.setUTCDate(date.getUTCDate()+1);
           stages.push({ id: randomUUID(), name: stage.name, order: stages.length, durationDays: stage.durationDays, startDate:start, deadline, dependencies: stages.length ? [stages.at(-1).id] : [] });
         }
-        Object.assign(project,{workflowId:workflow.id,workflowStartedAt:timestamp(),startDate,status:'Active',phase:stages[0].name,stages});
+        Object.assign(project,{workflowId:workflow.id,workflowStartedAt:timestamp(),startDate,status:'Active',phase:stages[0]?.name || 'Planning',stages});
         workflow.stages.forEach((stage,index) => stage.tasks.forEach((title) => makeTask(state,project,user,{title,description:'',status:'Open',assigneeId,stageId:stages[index].id,deadline:stages[index].deadline})));
         audit('workflow_started',project.id,{workflowId:workflow.id}); await save(); json(res,200,{project:projectView(project)}); return true;
       }
@@ -274,6 +349,63 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
     if (route === 'decision-requests' && method === 'GET' && !user.founder) {
       json(res,200,{requests:state.decisionRequests.filter((r) => state.projects.some((p) => p.id === r.projectId && p.members?.some((m) => m.employeeId === user.id)))}); return true;
     }
+    if ((m = route.match(/^decision-requests\/([^/]+)\/(accept|accept-preview)$/)) && method === 'POST') {
+      // Accept = link the query to a task (or a new stage) and apply one action. Replies are sent separately, after review.
+      admin(user);
+      const request = state.decisionRequests.find((r) => r.id === decodeURIComponent(m[1])); if (!request) fail('Request not found.',404);
+      const project = projectFor(state,user,request.projectId); requireLinked(project);
+      const input = await body(req); const apply = m[2] === 'accept'; const target = input.target || {};
+      const projectTasks = () => state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt);
+      if (request.acceptedAt) {
+        if (apply && JSON.stringify(request.acceptInput) === JSON.stringify(target)) { json(res,200,{ok:true,request,task:state.tasks.find((t) => t.id === request.taskId) || null,summary:request.acceptSummary,tasks:projectTasks()}); return true; }
+        fail('This query was already accepted.',409);
+      }
+      if (['Rejected','Done'].includes(request.status) || request.decisionStatus === 'Rejected') fail('This query is already closed.',409);
+      requireSynced(state,project);
+      const call = { groupChatId: project.telegramGroupChatId, mode: apply ? 'apply' : 'preview', actorName: user.name || 'Founder' };
+      let result; let linkTask = null;
+      if (target.kind === 'task') {
+        linkTask = state.tasks.find((t) => t.id === target.taskId && t.projectId === project.id && !t.deletedAt);
+        if (!linkTask?.telegramTaskId) fail('Task not found in this project.',404);
+        const type = target.action?.type;
+        if (type === 'attach') {
+          if (request.requestType !== 'Update') fail('Only updates can be attached without a schedule change.');
+          result = { ok: true, conflicts: [], warnings: [], affected: [], finish: '', summary: `Attached to "${linkTask.title}".` };
+        } else {
+          if (!['delay','redo','complete'].includes(type)) fail('Choose delay, redo or mark complete.');
+          try { result = await callBotBridge('/api/integrations/web/tasks/action', { ...call, taskId: linkTask.telegramTaskId, action: type, days: target.action.days, ...botStaleGuard(linkTask), note: `Query ${request.id}` }); }
+          catch (error) { botError(error); }
+        }
+      } else if (target.kind === 'new-stage') {
+        try { result = await callBotBridge('/api/integrations/web/stages/add', { ...call, stages: [stageSpecForBot(project, target.stage)] }); }
+        catch (error) { botError(error); }
+        const stage = result.stages?.[0];
+        result.summary = `Added stage "${stage?.name}"${stage?.startDate ? ` (${stage.startDate} to ${stage.endDate})` : ''}.`;
+      } else fail('Choose a task or add a new stage.');
+      if (!apply) { json(res,200,{ ...result, tasks: undefined }); return true; }
+      if (!result.ok) fail(result.conflicts?.[0]?.reason || 'The schedule change was refused.',409);
+      await refreshFromBot(state,project);
+      try {
+        if (target.kind === 'new-stage') {
+          const slot = Math.max(0, STAGE_TASK_KEYS.indexOf(target.linkTaskKey));
+          const created = result.created || [];
+          const botId = (created.find((item) => new RegExp(`-ST\\d+-${slot + 1}$`).test(item.taskId)) || created[0])?.taskId;
+          linkTask = state.tasks.find((t) => t.projectId === project.id && t.telegramTaskId === botId) || null;
+        }
+        if (!linkTask) throw new Error('linked task missing after sync');
+        Object.assign(request, { taskId: linkTask.id, linkedStageId: linkTask.stageId, acceptedAt: timestamp(), acceptInput: target, acceptSummary: result.summary, decisionStatus: 'Approved', reviewedAt: timestamp(), reviewedBy: user.id });
+        if (request.status !== 'Published') request.status = 'Approved';
+        pushQueryMessage(state,linkTask,request);
+        audit('query_accepted',project.id,{requestId:request.id,taskId:linkTask.id,action:target.kind === 'task' ? target.action.type : 'new-stage'});
+      } catch (error) {
+        console.error('accept_local_failed', request.id, error.message);
+        await save();
+        fail('The schedule was updated but the query could not be linked. Do not repeat the action; open the timeline to confirm.',500);
+      }
+      await save();
+      json(res,200,{ ok: true, request, task: linkTask, summary: result.summary, affected: result.affected || [], warnings: result.warnings || [], finish: result.finish || '', tasks: projectTasks() });
+      return true;
+    }
     if ((m = route.match(/^decision-requests\/([^/]+)(?:\/(comment|approve|reject|convert|read))?$/))) {
       const request = state.decisionRequests.find((r) => r.id === decodeURIComponent(m[1])); if (!request) fail('Request not found.',404);
       const project = projectFor(state,user,request.projectId);
@@ -287,7 +419,8 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
         if (m[2] === 'convert' && request.taskId) { const task = state.tasks.find((t) => t.id === request.taskId); json(res,200,{request,task}); return true; }
         const target = m[2] === 'reject' ? 'Rejected' : 'Approved';
         if (['Rejected','Done'].includes(request.status) && request.status !== target) fail('This query is already closed.',409);
-        if (m[2] === 'reject') request.reviewNote = text(input.reason,'rejection reason');
+        // The reason is also the reply the founder sends to the group (published separately, after review).
+        if (m[2] === 'reject') { request.reviewNote = text(input.reason,'rejection reason',3000); request.rejectionReply = request.reviewNote; request.rejectedAt = timestamp(); }
         if (m[2] === 'convert') {
           if (!project.workflowStartedAt) fail('Start a workflow before converting to a task.',409);
           const fields = taskFields(state,project,{...input,title:input.title || request.originalMessage || 'Client query'});

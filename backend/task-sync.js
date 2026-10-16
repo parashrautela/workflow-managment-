@@ -9,6 +9,38 @@ const toBot = {
   Cancelled: 'Archived',
 };
 
+// Stages live in the sheet only as the Stage label on task rows. A label the web has not seen yet becomes a stage here,
+// so stages added from the web timeline (or typed into the sheet) show up after the next sync.
+function stageFor(project, name) {
+  const label = String(name || '').trim();
+  if (!label) return null;
+  project.stages ||= [];
+  let stage = project.stages.find((item) => item.name === label);
+  if (!stage) {
+    let index = project.stages.length;
+    while (project.stages.some((item) => item.id === `tg-stage-${project.id}-${index}`)) index += 1;
+    stage = { id: `tg-stage-${project.id}-${index}`, name: label, order: project.stages.length, durationDays: 0, startDate: '', deadline: '', dependencies: [] };
+    project.stages.push(stage);
+  }
+  return stage;
+}
+
+const effectiveStart = (task) => task.sourceForecastStart || task.sourceCurrentStart || task.sourcePlannedStart || '';
+const effectiveEnd = (task) => task.sourceForecastEnd || task.sourceCurrentEnd || task.sourcePlannedEnd || task.deadline || '';
+
+// Stage dates follow their tasks, so the project overview and stage details match the timeline after any move.
+export function refreshStageDates(project, tasks) {
+  for (const stage of project.stages || []) {
+    const group = tasks.filter((task) => task.stageId === stage.id && !task.deletedAt && task.status !== 'Cancelled');
+    const starts = group.map(effectiveStart).filter(Boolean).sort();
+    const ends = group.map(effectiveEnd).filter(Boolean).sort();
+    if (!starts.length || !ends.length) continue;
+    stage.startDate = starts[0];
+    stage.deadline = ends.at(-1);
+    stage.durationDays = Math.round((Date.parse(stage.deadline) - Date.parse(stage.startDate)) / 86400000) + 1;
+  }
+}
+
 /**
  * Synchronizes project tasks with the Telegram bot bridge.
  * If options.readOnly is true, sends updates: [] to perform a pure read snapshot.
@@ -59,14 +91,15 @@ export async function syncProjectTasks(state, project, callBotBridge, { readOnly
     if (!task) {
       // New task from bot not yet in web state
       const id = `tg-task-${project.id}-${source.TaskID}`;
-      const stage = project.stages?.find((item) => item.name === source.Stage);
+      const stage = stageFor(project, source.Stage);
       task = {
         id,
         projectId: project.id,
         title: source.TaskName || '',
         description: '',
         status: toWebStatus(source.Status || 'Pending'),
-        assigneeId: '',
+        // Stages added from the web carry a Telegram assignee; map it to that member's web account.
+        assigneeId: project.members?.find((member) => source.AssignedTelegramID && String(member.telegramUserId) === String(source.AssignedTelegramID))?.employeeId || '',
         stageId: stage ? stage.id : (project.stages?.[0]?.id || ''),
         deadline: source.CurrentEnd || source.PlannedEnd || '',
         telegramTaskId: source.TaskID,
@@ -87,9 +120,10 @@ export async function syncProjectTasks(state, project, callBotBridge, { readOnly
     const isPendingSync = task.telegramSyncStatus !== 'Synced';
     adaptBotTaskToWeb(task, source, { isLocalPendingSync: isPendingSync });
 
-    const stage = project.stages?.find((item) => item.name === source.Stage);
+    const stage = stageFor(project, source.Stage);
     if (stage && !isPendingSync) task.stageId = stage.id;
   }
+  refreshStageDates(project, local);
 
   // Acknowledge only after hydration, so a stale snapshot cannot overwrite the edit that was just sent.
   for (const task of pending) if (sent.has(task.id)) task.telegramSyncStatus = 'Synced';
