@@ -11777,7 +11777,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$56 = {
+var __iconData$58 = {
 	name: "arrow-left",
 	size: 24,
 	node: [["path", {
@@ -11788,8 +11788,8 @@ var __iconData$56 = {
 		key: "x3x0zl"
 	}]]
 };
-__iconData$56.node;
-var ArrowLeft = createLucideIcon(__iconData$56);
+__iconData$58.node;
+var ArrowLeft = createLucideIcon(__iconData$58);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
@@ -11798,7 +11798,7 @@ var ArrowLeft = createLucideIcon(__iconData$56);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$55 = {
+var __iconData$57 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11809,8 +11809,8 @@ var __iconData$55 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$55.node;
-var ArrowRight = createLucideIcon(__iconData$55);
+__iconData$57.node;
+var ArrowRight = createLucideIcon(__iconData$57);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
 /**
@@ -11819,7 +11819,7 @@ var ArrowRight = createLucideIcon(__iconData$55);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$54 = {
+var __iconData$56 = {
 	name: "arrow-up-right",
 	size: 24,
 	node: [["path", {
@@ -11830,8 +11830,8 @@ var __iconData$54 = {
 		key: "1vkiza"
 	}]]
 };
-__iconData$54.node;
-var ArrowUpRight = createLucideIcon(__iconData$54);
+__iconData$56.node;
+var ArrowUpRight = createLucideIcon(__iconData$56);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
@@ -11840,7 +11840,7 @@ var ArrowUpRight = createLucideIcon(__iconData$54);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$53 = {
+var __iconData$55 = {
 	name: "arrow-up",
 	size: 24,
 	node: [["path", {
@@ -11851,8 +11851,8 @@ var __iconData$53 = {
 		key: "x0mq9r"
 	}]]
 };
-__iconData$53.node;
-var ArrowUp = createLucideIcon(__iconData$53);
+__iconData$55.node;
+var ArrowUp = createLucideIcon(__iconData$55);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
@@ -11861,7 +11861,7 @@ var ArrowUp = createLucideIcon(__iconData$53);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$52 = {
+var __iconData$54 = {
 	name: "building-complex",
 	size: 24,
 	node: [
@@ -11888,8 +11888,8 @@ var __iconData$52 = {
 	],
 	aliases: ["building-2"]
 };
-__iconData$52.node;
-var BuildingComplex = createLucideIcon(__iconData$52);
+__iconData$54.node;
+var BuildingComplex = createLucideIcon(__iconData$54);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
 /**
@@ -11898,7 +11898,7 @@ var BuildingComplex = createLucideIcon(__iconData$52);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$51 = {
+var __iconData$53 = {
 	name: "calendar-days",
 	size: 24,
 	node: [
@@ -11948,8 +11948,8 @@ var __iconData$51 = {
 		}]
 	]
 };
-__iconData$51.node;
-var CalendarDays = createLucideIcon(__iconData$51);
+__iconData$53.node;
+var CalendarDays = createLucideIcon(__iconData$53);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/calendar.mjs
 /**
@@ -11958,7 +11958,7 @@ var CalendarDays = createLucideIcon(__iconData$51);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$50 = {
+var __iconData$52 = {
 	name: "calendar",
 	size: 24,
 	node: [
@@ -11984,8 +11984,8 @@ var __iconData$50 = {
 		}]
 	]
 };
-__iconData$50.node;
-var Calendar = createLucideIcon(__iconData$50);
+__iconData$52.node;
+var Calendar = createLucideIcon(__iconData$52);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/check.mjs
 /**
@@ -11994,7 +11994,7 @@ var Calendar = createLucideIcon(__iconData$50);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$49 = {
+var __iconData$51 = {
 	name: "check",
 	size: 24,
 	node: [["path", {
@@ -12002,8 +12002,8 @@ var __iconData$49 = {
 		key: "1gmf2c"
 	}]]
 };
-__iconData$49.node;
-var Check = createLucideIcon(__iconData$49);
+__iconData$51.node;
+var Check = createLucideIcon(__iconData$51);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
 /**
@@ -12012,7 +12012,7 @@ var Check = createLucideIcon(__iconData$49);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$48 = {
+var __iconData$50 = {
 	name: "chevron-down",
 	size: 24,
 	node: [["path", {
@@ -12020,8 +12020,8 @@ var __iconData$48 = {
 		key: "qrunsl"
 	}]]
 };
-__iconData$48.node;
-var ChevronDown = createLucideIcon(__iconData$48);
+__iconData$50.node;
+var ChevronDown = createLucideIcon(__iconData$50);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
 /**
@@ -12030,7 +12030,7 @@ var ChevronDown = createLucideIcon(__iconData$48);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$47 = {
+var __iconData$49 = {
 	name: "chevron-right",
 	size: 24,
 	node: [["path", {
@@ -12038,8 +12038,8 @@ var __iconData$47 = {
 		key: "mthhwq"
 	}]]
 };
-__iconData$47.node;
-var ChevronRight = createLucideIcon(__iconData$47);
+__iconData$49.node;
+var ChevronRight = createLucideIcon(__iconData$49);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
 /**
@@ -12048,7 +12048,7 @@ var ChevronRight = createLucideIcon(__iconData$47);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$46 = {
+var __iconData$48 = {
 	name: "chevron-up",
 	size: 24,
 	node: [["path", {
@@ -12056,8 +12056,8 @@ var __iconData$46 = {
 		key: "153udz"
 	}]]
 };
-__iconData$46.node;
-var ChevronUp = createLucideIcon(__iconData$46);
+__iconData$48.node;
+var ChevronUp = createLucideIcon(__iconData$48);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
@@ -12066,7 +12066,7 @@ var ChevronUp = createLucideIcon(__iconData$46);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$45 = {
+var __iconData$47 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -12093,8 +12093,8 @@ var __iconData$45 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$45.node;
-var CircleAlert = createLucideIcon(__iconData$45);
+__iconData$47.node;
+var CircleAlert = createLucideIcon(__iconData$47);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
@@ -12103,7 +12103,7 @@ var CircleAlert = createLucideIcon(__iconData$45);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$44 = {
+var __iconData$46 = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -12117,8 +12117,8 @@ var __iconData$44 = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-__iconData$44.node;
-var CircleCheck = createLucideIcon(__iconData$44);
+__iconData$46.node;
+var CircleCheck = createLucideIcon(__iconData$46);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
 /**
@@ -12127,7 +12127,7 @@ var CircleCheck = createLucideIcon(__iconData$44);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$43 = {
+var __iconData$45 = {
 	name: "circle-pause",
 	size: 24,
 	node: [
@@ -12154,8 +12154,8 @@ var __iconData$43 = {
 	],
 	aliases: ["pause-circle"]
 };
-__iconData$43.node;
-var CirclePause = createLucideIcon(__iconData$43);
+__iconData$45.node;
+var CirclePause = createLucideIcon(__iconData$45);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
 /**
@@ -12164,7 +12164,7 @@ var CirclePause = createLucideIcon(__iconData$43);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$42 = {
+var __iconData$44 = {
 	name: "circle-question-mark",
 	size: 24,
 	node: [
@@ -12185,8 +12185,8 @@ var __iconData$42 = {
 	],
 	aliases: ["help-circle", "circle-help"]
 };
-__iconData$42.node;
-var CircleQuestionMark = createLucideIcon(__iconData$42);
+__iconData$44.node;
+var CircleQuestionMark = createLucideIcon(__iconData$44);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-x.mjs
 /**
@@ -12195,7 +12195,7 @@ var CircleQuestionMark = createLucideIcon(__iconData$42);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$41 = {
+var __iconData$43 = {
 	name: "circle-x",
 	size: 24,
 	node: [
@@ -12216,8 +12216,8 @@ var __iconData$41 = {
 	],
 	aliases: ["x-circle"]
 };
-__iconData$41.node;
-var CircleX = createLucideIcon(__iconData$41);
+__iconData$43.node;
+var CircleX = createLucideIcon(__iconData$43);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle.mjs
 /**
@@ -12226,7 +12226,7 @@ var CircleX = createLucideIcon(__iconData$41);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$40 = {
+var __iconData$42 = {
 	name: "circle",
 	size: 24,
 	node: [["circle", {
@@ -12236,8 +12236,8 @@ var __iconData$40 = {
 		key: "1mglay"
 	}]]
 };
-__iconData$40.node;
-var Circle = createLucideIcon(__iconData$40);
+__iconData$42.node;
+var Circle = createLucideIcon(__iconData$42);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
@@ -12246,7 +12246,7 @@ var Circle = createLucideIcon(__iconData$40);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$39 = {
+var __iconData$41 = {
 	name: "clock-3",
 	size: 24,
 	node: [["circle", {
@@ -12259,8 +12259,8 @@ var __iconData$39 = {
 		key: "135r8i"
 	}]]
 };
-__iconData$39.node;
-var Clock3 = createLucideIcon(__iconData$39);
+__iconData$41.node;
+var Clock3 = createLucideIcon(__iconData$41);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
@@ -12269,7 +12269,7 @@ var Clock3 = createLucideIcon(__iconData$39);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$38 = {
+var __iconData$40 = {
 	name: "clock",
 	size: 24,
 	node: [["circle", {
@@ -12282,8 +12282,8 @@ var __iconData$38 = {
 		key: "mmk7yg"
 	}]]
 };
-__iconData$38.node;
-var Clock = createLucideIcon(__iconData$38);
+__iconData$40.node;
+var Clock = createLucideIcon(__iconData$40);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
@@ -12292,7 +12292,7 @@ var Clock = createLucideIcon(__iconData$38);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$37 = {
+var __iconData$39 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -12308,8 +12308,8 @@ var __iconData$37 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$37.node;
-var Copy = createLucideIcon(__iconData$37);
+__iconData$39.node;
+var Copy = createLucideIcon(__iconData$39);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/external-link.mjs
 /**
@@ -12318,7 +12318,7 @@ var Copy = createLucideIcon(__iconData$37);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$36 = {
+var __iconData$38 = {
 	name: "external-link",
 	size: 24,
 	node: [
@@ -12336,8 +12336,8 @@ var __iconData$36 = {
 		}]
 	]
 };
-__iconData$36.node;
-var ExternalLink = createLucideIcon(__iconData$36);
+__iconData$38.node;
+var ExternalLink = createLucideIcon(__iconData$38);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye-off.mjs
 /**
@@ -12346,7 +12346,7 @@ var ExternalLink = createLucideIcon(__iconData$36);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$35 = {
+var __iconData$37 = {
 	name: "eye-off",
 	size: 24,
 	node: [
@@ -12368,8 +12368,8 @@ var __iconData$35 = {
 		}]
 	]
 };
-__iconData$35.node;
-var EyeOff = createLucideIcon(__iconData$35);
+__iconData$37.node;
+var EyeOff = createLucideIcon(__iconData$37);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye.mjs
 /**
@@ -12378,7 +12378,7 @@ var EyeOff = createLucideIcon(__iconData$35);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$34 = {
+var __iconData$36 = {
 	name: "eye",
 	size: 24,
 	node: [["path", {
@@ -12391,8 +12391,8 @@ var __iconData$34 = {
 		key: "1v7zrd"
 	}]]
 };
-__iconData$34.node;
-var Eye = createLucideIcon(__iconData$34);
+__iconData$36.node;
+var Eye = createLucideIcon(__iconData$36);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/file-text.mjs
 /**
@@ -12401,7 +12401,7 @@ var Eye = createLucideIcon(__iconData$34);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$33 = {
+var __iconData$35 = {
 	name: "file-text",
 	size: 24,
 	node: [
@@ -12427,8 +12427,8 @@ var __iconData$33 = {
 		}]
 	]
 };
-__iconData$33.node;
-var FileText = createLucideIcon(__iconData$33);
+__iconData$35.node;
+var FileText = createLucideIcon(__iconData$35);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
@@ -12437,7 +12437,7 @@ var FileText = createLucideIcon(__iconData$33);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$32 = {
+var __iconData$34 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -12459,8 +12459,8 @@ var __iconData$32 = {
 		}]
 	]
 };
-__iconData$32.node;
-var FolderKanban = createLucideIcon(__iconData$32);
+__iconData$34.node;
+var FolderKanban = createLucideIcon(__iconData$34);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/folder-plus.mjs
 /**
@@ -12469,7 +12469,7 @@ var FolderKanban = createLucideIcon(__iconData$32);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$31 = {
+var __iconData$33 = {
 	name: "folder-plus",
 	size: 24,
 	node: [
@@ -12487,8 +12487,8 @@ var __iconData$31 = {
 		}]
 	]
 };
-__iconData$31.node;
-var FolderPlus = createLucideIcon(__iconData$31);
+__iconData$33.node;
+var FolderPlus = createLucideIcon(__iconData$33);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/hourglass.mjs
 /**
@@ -12497,7 +12497,7 @@ var FolderPlus = createLucideIcon(__iconData$31);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$30 = {
+var __iconData$32 = {
 	name: "hourglass",
 	size: 24,
 	node: [
@@ -12519,8 +12519,32 @@ var __iconData$30 = {
 		}]
 	]
 };
-__iconData$30.node;
-var Hourglass = createLucideIcon(__iconData$30);
+__iconData$32.node;
+var Hourglass = createLucideIcon(__iconData$32);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/key-round.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$31 = {
+	name: "key-round",
+	size: 24,
+	node: [["path", {
+		d: "M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z",
+		key: "1s6t7t"
+	}], ["circle", {
+		cx: "16.5",
+		cy: "7.5",
+		r: ".5",
+		fill: "currentColor",
+		key: "w0ekpg"
+	}]]
+};
+__iconData$31.node;
+var KeyRound = createLucideIcon(__iconData$31);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/layers.mjs
 /**
@@ -12529,7 +12553,7 @@ var Hourglass = createLucideIcon(__iconData$30);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$29 = {
+var __iconData$30 = {
 	name: "layers",
 	size: 24,
 	node: [
@@ -12548,8 +12572,8 @@ var __iconData$29 = {
 	],
 	aliases: ["layers-3"]
 };
-__iconData$29.node;
-var Layers = createLucideIcon(__iconData$29);
+__iconData$30.node;
+var Layers = createLucideIcon(__iconData$30);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/link-2.mjs
 /**
@@ -12558,7 +12582,7 @@ var Layers = createLucideIcon(__iconData$29);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$28 = {
+var __iconData$29 = {
 	name: "link-2",
 	size: 24,
 	node: [
@@ -12579,8 +12603,8 @@ var __iconData$28 = {
 		}]
 	]
 };
-__iconData$28.node;
-var Link2 = createLucideIcon(__iconData$28);
+__iconData$29.node;
+var Link2 = createLucideIcon(__iconData$29);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/link.mjs
 /**
@@ -12589,7 +12613,7 @@ var Link2 = createLucideIcon(__iconData$28);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$27 = {
+var __iconData$28 = {
 	name: "link",
 	size: 24,
 	node: [["path", {
@@ -12600,8 +12624,8 @@ var __iconData$27 = {
 		key: "19qd67"
 	}]]
 };
-__iconData$27.node;
-var Link = createLucideIcon(__iconData$27);
+__iconData$28.node;
+var Link = createLucideIcon(__iconData$28);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/loader-circle.mjs
 /**
@@ -12610,7 +12634,7 @@ var Link = createLucideIcon(__iconData$27);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$26 = {
+var __iconData$27 = {
 	name: "loader-circle",
 	size: 24,
 	node: [["path", {
@@ -12619,8 +12643,8 @@ var __iconData$26 = {
 	}]],
 	aliases: ["loader-2"]
 };
-__iconData$26.node;
-var LoaderCircle = createLucideIcon(__iconData$26);
+__iconData$27.node;
+var LoaderCircle = createLucideIcon(__iconData$27);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/lock-keyhole.mjs
 /**
@@ -12629,7 +12653,7 @@ var LoaderCircle = createLucideIcon(__iconData$26);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$25 = {
+var __iconData$26 = {
 	name: "lock-keyhole",
 	size: 24,
 	node: [
@@ -12653,8 +12677,8 @@ var __iconData$25 = {
 		}]
 	]
 };
-__iconData$25.node;
-var LockKeyhole = createLucideIcon(__iconData$25);
+__iconData$26.node;
+var LockKeyhole = createLucideIcon(__iconData$26);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/lock.mjs
 /**
@@ -12663,7 +12687,7 @@ var LockKeyhole = createLucideIcon(__iconData$25);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$24 = {
+var __iconData$25 = {
 	name: "lock",
 	size: 24,
 	node: [["rect", {
@@ -12679,8 +12703,8 @@ var __iconData$24 = {
 		key: "fwvmzm"
 	}]]
 };
-__iconData$24.node;
-var Lock = createLucideIcon(__iconData$24);
+__iconData$25.node;
+var Lock = createLucideIcon(__iconData$25);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/log-out.mjs
 /**
@@ -12689,7 +12713,7 @@ var Lock = createLucideIcon(__iconData$24);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$23 = {
+var __iconData$24 = {
 	name: "log-out",
 	size: 24,
 	node: [
@@ -12707,8 +12731,8 @@ var __iconData$23 = {
 		}]
 	]
 };
-__iconData$23.node;
-var LogOut = createLucideIcon(__iconData$23);
+__iconData$24.node;
+var LogOut = createLucideIcon(__iconData$24);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/maximize-2.mjs
 /**
@@ -12717,7 +12741,7 @@ var LogOut = createLucideIcon(__iconData$23);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$22 = {
+var __iconData$23 = {
 	name: "maximize-2",
 	size: 24,
 	node: [
@@ -12739,8 +12763,8 @@ var __iconData$22 = {
 		}]
 	]
 };
-__iconData$22.node;
-var Maximize2 = createLucideIcon(__iconData$22);
+__iconData$23.node;
+var Maximize2 = createLucideIcon(__iconData$23);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/menu.mjs
 /**
@@ -12749,7 +12773,7 @@ var Maximize2 = createLucideIcon(__iconData$22);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$21 = {
+var __iconData$22 = {
 	name: "menu",
 	size: 24,
 	node: [
@@ -12767,8 +12791,8 @@ var __iconData$21 = {
 		}]
 	]
 };
-__iconData$21.node;
-var Menu = createLucideIcon(__iconData$21);
+__iconData$22.node;
+var Menu = createLucideIcon(__iconData$22);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/message-square.mjs
 /**
@@ -12777,7 +12801,7 @@ var Menu = createLucideIcon(__iconData$21);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$20 = {
+var __iconData$21 = {
 	name: "message-square",
 	size: 24,
 	node: [["path", {
@@ -12785,8 +12809,8 @@ var __iconData$20 = {
 		key: "18887p"
 	}]]
 };
-__iconData$20.node;
-var MessageSquare = createLucideIcon(__iconData$20);
+__iconData$21.node;
+var MessageSquare = createLucideIcon(__iconData$21);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/minus.mjs
 /**
@@ -12795,7 +12819,7 @@ var MessageSquare = createLucideIcon(__iconData$20);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$19 = {
+var __iconData$20 = {
 	name: "minus",
 	size: 24,
 	node: [["path", {
@@ -12803,8 +12827,8 @@ var __iconData$19 = {
 		key: "1ays0h"
 	}]]
 };
-__iconData$19.node;
-var Minus = createLucideIcon(__iconData$19);
+__iconData$20.node;
+var Minus = createLucideIcon(__iconData$20);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/octagon.mjs
 /**
@@ -12813,7 +12837,7 @@ var Minus = createLucideIcon(__iconData$19);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$18 = {
+var __iconData$19 = {
 	name: "octagon",
 	size: 24,
 	node: [["path", {
@@ -12821,8 +12845,29 @@ var __iconData$18 = {
 		key: "2d38gg"
 	}]]
 };
+__iconData$19.node;
+var Octagon = createLucideIcon(__iconData$19);
+//#endregion
+//#region node_modules/lucide-react/dist/esm/icons/pencil.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$18 = {
+	name: "pencil",
+	size: 24,
+	node: [["path", {
+		d: "M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z",
+		key: "1a8usu"
+	}], ["path", {
+		d: "m15 5 4 4",
+		key: "1mk7zo"
+	}]]
+};
 __iconData$18.node;
-var Octagon = createLucideIcon(__iconData$18);
+var Pencil = createLucideIcon(__iconData$18);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/play.mjs
 /**
@@ -23597,6 +23642,17 @@ async function removeProjectMember(projectId, memberId) {
 /**
 * Disable employee account (POST /api/founder/employees/:employeeId/disable)
 */
+/** Edit an employee's profile (PATCH /api/founder/employees/:id). */
+async function updateEmployee(employeeId, fields) {
+	return await request(`/api/founder/employees/${employeeId}`, {
+		method: "PATCH",
+		body: fields
+	});
+}
+/** Set a chosen password, or generate one when blank (POST /api/founder/employees/:id/password). Signs the employee out everywhere. */
+async function setEmployeePassword(employeeId, password) {
+	return await post$2(`/api/founder/employees/${employeeId}/password`, password ? { password } : {});
+}
 async function disableEmployee(employeeId) {
 	return await post$2(`/api/founder/employees/${employeeId}/disable`, {});
 }
@@ -23611,6 +23667,273 @@ var roles = [
 	"Trade worker",
 	"Other"
 ];
+function PasswordField({ name = "password", value, onChange, placeholder = "Leave blank to generate one", autoComplete = "new-password" }) {
+	const [visible, setVisible] = (0, import_react.useState)(false);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+		className: "relative block",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+			name,
+			type: visible ? "text" : "password",
+			minLength: 8,
+			maxLength: 128,
+			autoComplete,
+			placeholder,
+			value,
+			onChange,
+			className: "pr-10"
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+			type: "button",
+			onClick: () => setVisible((current) => !current),
+			className: "absolute inset-y-0 right-0 grid w-10 place-items-center text-muted-foreground",
+			"aria-label": visible ? "Hide password" : "Show password",
+			children: visible ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EyeOff, { className: "size-4" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eye, { className: "size-4" })
+		})]
+	});
+}
+function CredentialsPanel({ credentials, note }) {
+	const [copied, setCopied] = (0, import_react.useState)(false);
+	const [error, setError] = (0, import_react.useState)("");
+	const copy = async () => {
+		try {
+			await navigator.clipboard.writeText(`Studio Iksha employee access\nLink: ${credentials.link}\nEmployee ID: ${credentials.employeeId}\nPassword: ${credentials.password}`);
+			setCopied(true);
+		} catch {
+			setError("Could not copy. Select and copy the details below.");
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "space-y-3",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+				className: "grid gap-1 text-xs font-medium",
+				children: ["Employee login link", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+					value: credentials.link,
+					readOnly: true,
+					className: "font-mono text-xs"
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+				className: "grid gap-1 text-xs font-medium",
+				children: ["Employee ID", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+					value: credentials.employeeId,
+					readOnly: true,
+					className: "font-mono"
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+				className: "grid gap-1 text-xs font-medium",
+				children: ["Password", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+					value: credentials.password,
+					readOnly: true,
+					className: "font-mono"
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "rounded-xl bg-amber-50 p-3 text-xs text-amber-900",
+				children: note
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+				type: "button",
+				className: "h-11 w-full",
+				onClick: copy,
+				children: [copied ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Copy, {}), copied ? "Copied" : "Copy link and credentials"]
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "text-xs text-destructive",
+				children: error
+			})
+		]
+	});
+}
+function EditEmployeeDialog({ employee, onOpenChange, onUpdated }) {
+	const [form, setForm] = (0, import_react.useState)({
+		name: "",
+		designation: "",
+		email: "",
+		phone: ""
+	});
+	const [password, setPassword] = (0, import_react.useState)("");
+	const [credentials, setCredentials] = (0, import_react.useState)(null);
+	const [busy, setBusy] = (0, import_react.useState)("");
+	const [error, setError] = (0, import_react.useState)("");
+	const [saved, setSaved] = (0, import_react.useState)(false);
+	(0, import_react.useEffect)(() => {
+		if (employee) {
+			setForm({
+				name: employee.name || "",
+				designation: employee.designation || "",
+				email: employee.email || "",
+				phone: employee.phone || ""
+			});
+			setPassword("");
+			setCredentials(null);
+			setError("");
+			setSaved(false);
+			setBusy("");
+		}
+	}, [employee]);
+	const field = (key) => ({
+		value: form[key],
+		onChange: (event) => {
+			setSaved(false);
+			setForm((current) => ({
+				...current,
+				[key]: event.target.value
+			}));
+		}
+	});
+	const saveProfile = async (event) => {
+		event.preventDefault();
+		setBusy("profile");
+		setError("");
+		try {
+			await updateEmployee(employee.id, form);
+			setSaved(true);
+			await onUpdated?.();
+		} catch (problem) {
+			setError(problem.message || "Could not save the profile.");
+		} finally {
+			setBusy("");
+		}
+	};
+	const savePassword = async (generate) => {
+		if (!generate && password.length < 8) {
+			setError("Use at least 8 characters, or choose Generate new.");
+			return;
+		}
+		setBusy(generate ? "generate" : "password");
+		setError("");
+		try {
+			const result = await setEmployeePassword(employee.id, generate ? "" : password);
+			setCredentials(result.credentials);
+			setPassword("");
+		} catch (problem) {
+			setError(problem.message || "Could not set the password.");
+		} finally {
+			setBusy("");
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+		open: Boolean(employee),
+		onOpenChange,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
+			className: "max-h-[90dvh] overflow-y-auto",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: credentials ? "New password is ready" : `Edit ${employee?.name || "employee"}` }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: credentials ? "Share these details privately. The employee has been signed out of every device." : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+				"Employee ID ",
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "font-mono",
+					children: employee?.id
+				}),
+				" stays the same."
+			] }) })] }), credentials ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CredentialsPanel, {
+				credentials,
+				note: "The previous password no longer works. If this one gets lost, set a new one any time from Edit."
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+				variant: "outline",
+				className: "w-full",
+				onClick: () => onOpenChange(false),
+				children: "Done"
+			})] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "space-y-5",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+						onSubmit: saveProfile,
+						className: "space-y-3",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs font-semibold uppercase tracking-wider text-muted-foreground",
+								children: "Profile"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "grid gap-1 text-xs font-medium",
+								children: ["Full name", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									required: true,
+									maxLength: 120,
+									...field("name")
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "grid gap-1 text-xs font-medium",
+								children: ["Designation", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									required: true,
+									maxLength: 120,
+									...field("designation")
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "grid gap-3 sm:grid-cols-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "grid gap-1 text-xs font-medium",
+									children: ["Email (optional)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+										type: "email",
+										maxLength: 200,
+										placeholder: "name@example.com",
+										...field("email")
+									})]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "grid gap-1 text-xs font-medium",
+									children: ["Phone (optional)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+										type: "tel",
+										maxLength: 40,
+										placeholder: "+91…",
+										...field("phone")
+									})]
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								type: "submit",
+								className: "h-11 w-full",
+								disabled: Boolean(busy),
+								children: busy === "profile" ? "Saving…" : saved ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {}), "Saved"] }) : "Save profile"
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "space-y-3 border-t pt-4",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(KeyRound, { className: "size-3.5" }), "Password"]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs text-muted-foreground",
+								children: "Set a password you choose, or generate a strong one. Either way the employee is signed out everywhere and must use the new password."
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PasswordField, {
+								value: password,
+								onChange: (event) => setPassword(event.target.value),
+								placeholder: "New password (8+ characters)"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "grid grid-cols-2 gap-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									type: "button",
+									className: "h-11",
+									disabled: Boolean(busy) || !password,
+									onClick: () => savePassword(false),
+									children: busy === "password" ? "Setting…" : "Set this password"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									type: "button",
+									variant: "outline",
+									className: "h-11",
+									disabled: Boolean(busy),
+									onClick: () => savePassword(true),
+									children: busy === "generate" ? "Generating…" : "Generate new"
+								})]
+							})
+						]
+					}),
+					error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						role: "alert",
+						className: "text-xs text-destructive",
+						children: error
+					})
+				]
+			})]
+		})
+	});
+}
 function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpdated }) {
 	const [projectId, setProjectId] = (0, import_react.useState)(defaultProjectId || "");
 	const [credentials, setCredentials] = (0, import_react.useState)(null);
@@ -23624,10 +23947,14 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 			setError("");
 			setCopied(false);
 		}
+	}, [open]);
+	(0, import_react.useEffect)(() => {
+		if (open && !projects.some((project) => project.id === projectId)) setProjectId(defaultProjectId || projects[0]?.id || "");
 	}, [
 		open,
 		defaultProjectId,
-		projects
+		projects,
+		projectId
 	]);
 	const submit = async (event, existing) => {
 		event.preventDefault();
@@ -23671,7 +23998,7 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
 			className: "max-h-[90dvh] overflow-y-auto",
 			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: credentials ? "Employee access is ready" : "Add employee" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: credentials ? "Copy these details now. The password is shown only once." : "Give an employee access to one project, or assign an existing employee ID to another." })] }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: credentials ? "Employee access is ready" : "Add employee" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: credentials ? "Copy these details now and share them privately." : "Give an employee access to one project, or assign an existing employee ID to another." })] }),
 				credentials ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "space-y-3",
 					children: [
@@ -23701,7 +24028,7 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "rounded-xl bg-amber-50 p-3 text-xs text-amber-900",
-							children: "Share the password privately with the employee. It cannot be viewed again after closing this window."
+							children: "Share the password privately with the employee. If it gets lost, set a new one from Edit on their card."
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 							className: "h-11 w-full",
@@ -23797,6 +24124,17 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 												children: roles.map((role) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: role }, role))
 											})]
 										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+											className: "grid gap-1 text-xs font-medium",
+											children: [
+												"Password (optional)",
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PasswordField, {}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "font-normal text-muted-foreground",
+													children: "Choose one (8+ characters) or leave blank and we'll generate a strong one. You can change it later from Edit."
+												})
+											]
+										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 											type: "submit",
 											className: "h-11 w-full",
@@ -23857,6 +24195,7 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 function EmployeeManager({ employees, projects, onAdd, onUpdated }) {
 	const [disablingId, setDisablingId] = (0, import_react.useState)(null);
 	const [confirmEmployee, setConfirmEmployee] = (0, import_react.useState)(null);
+	const [editEmployee, setEditEmployee] = (0, import_react.useState)(null);
 	const [error, setError] = (0, import_react.useState)("");
 	const handleDisable = async () => {
 		if (!confirmEmployee) return;
@@ -23933,17 +24272,31 @@ function EmployeeManager({ employees, projects, onAdd, onUpdated }) {
 												children: employee.designation
 											})]
 										})]
-									}), isActive && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-										variant: "ghost",
-										size: "sm",
-										className: "text-destructive hover:bg-destructive/10 text-xs h-7 px-2",
-										onClick: () => setConfirmEmployee(employee),
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(UserX, { className: "size-3.5 mr-1" }), "Revoke"]
+									}), isActive && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "flex shrink-0 items-center gap-1",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+											variant: "outline",
+											size: "sm",
+											className: "h-8 px-2.5 text-xs",
+											onClick: () => setEditEmployee(employee),
+											"aria-label": `Edit ${employee.name}`,
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Pencil, { className: "size-3.5 mr-1" }), "Edit"]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+											variant: "ghost",
+											size: "sm",
+											className: "text-destructive hover:bg-destructive/10 text-xs h-8 px-2",
+											onClick: () => setConfirmEmployee(employee),
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(UserX, { className: "size-3.5 mr-1" }), "Revoke"]
+										})]
 									})]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "font-mono text-xs text-muted-foreground",
 									children: employee.id
+								}),
+								(employee.email || employee.phone) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "text-xs text-muted-foreground",
+									children: [employee.email, employee.phone].filter(Boolean).join(" · ")
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "flex flex-wrap gap-1.5 pt-1",
@@ -23974,6 +24327,13 @@ function EmployeeManager({ employees, projects, onAdd, onUpdated }) {
 					})
 				]
 			}) }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(EditEmployeeDialog, {
+				employee: editEmployee,
+				onOpenChange: (open) => {
+					if (!open) setEditEmployee(null);
+				},
+				onUpdated
+			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
 				open: !!confirmEmployee,
 				onOpenChange: () => setConfirmEmployee(null),

@@ -357,6 +357,16 @@ export async function removeProjectMember(projectId, memberId) {
 /**
  * Disable employee account (POST /api/founder/employees/:employeeId/disable)
  */
+/** Edit an employee's profile (PATCH /api/founder/employees/:id). */
+export async function updateEmployee(employeeId, fields) {
+  return await request(`/api/founder/employees/${employeeId}`, { method: "PATCH", body: fields });
+}
+
+/** Set a chosen password, or generate one when blank (POST /api/founder/employees/:id/password). Signs the employee out everywhere. */
+export async function setEmployeePassword(employeeId, password) {
+  return await post(`/api/founder/employees/${employeeId}/password`, password ? { password } : {});
+}
+
 export async function disableEmployee(employeeId) {
   return await post(`/api/founder/employees/${employeeId}/disable`, {});
 }

@@ -127,3 +127,37 @@ test('intake rejects invalid media, incorrect client, bad dates and cross-origin
   assert.equal((await call(`/api/founder/projects/${p}/tasks`)).data.tasks.length,0);
   const response=await fetch(f.base+'/api/founder/projects',{method:'POST',headers:{cookie:f.cookie,origin:'https://evil.example','content-type':'application/json'},body:JSON.stringify({name:'No'})}); assert.equal(response.status,403);
 });
+
+test('founders can set, reset and edit employee access', async (t) => {
+  const f = await fixture(t); const call = (r, m, i) => f.call(r, m, i, f.cookie);
+  const p = (await call('/api/founder/projects', 'POST', { name: 'Access home' })).data.project.id;
+  assert.equal((await call('/api/founder/employees', 'POST', { name: 'Ravi', designation: 'designer', projectId: p, role: 'Designer', password: 'short' })).status, 400, 'too-short chosen password');
+  const created = await call('/api/founder/employees', 'POST', { name: 'Ravi', designation: 'designer', projectId: p, role: 'Designer', password: 'chosen-pass-1' });
+  assert.equal(created.status, 201);
+  const id = created.data.employee.id;
+  assert.equal(created.data.credentials.password, 'chosen-pass-1');
+  const first = await f.call('/api/employee/login', 'POST', { employeeId: id, password: 'chosen-pass-1' });
+  assert.equal(first.status, 200);
+
+  const edited = await call(`/api/founder/employees/${id}`, 'PATCH', { name: 'Ravi Kumar', designation: 'Senior designer', email: 'ravi@example.com', phone: '+91 98765 43210' });
+  assert.equal(edited.status, 200);
+  assert.deepEqual([edited.data.employee.name, edited.data.employee.designation, edited.data.employee.email], ['Ravi Kumar', 'Senior designer', 'ravi@example.com']);
+  const workspace = await call(`/api/founder/projects/${p}/workspace`);
+  assert.equal(workspace.data.project.members.find((member) => member.employeeId === id).name, 'Ravi Kumar', 'project profile follows the edit');
+  assert.equal((await call(`/api/founder/employees/${id}`, 'PATCH', { name: '' })).status, 400);
+  assert.equal((await call(`/api/founder/employees/${id}`, 'PATCH', { email: 'not-an-email' })).status, 400);
+
+  const reset = await call(`/api/founder/employees/${id}/password`, 'POST', { password: 'brand-new-pass' });
+  assert.equal(reset.status, 200);
+  assert.equal((await f.call(`/api/employee/projects/${p}/workspace`, 'GET', undefined, first.cookie)).status, 401, 'old session ends');
+  assert.equal((await f.call('/api/employee/login', 'POST', { employeeId: id, password: 'chosen-pass-1' })).status, 401, 'old password stops working');
+  assert.equal((await f.call('/api/employee/login', 'POST', { employeeId: id, password: 'brand-new-pass' })).status, 200);
+
+  const generated = await call(`/api/founder/employees/${id}/password`, 'POST', {});
+  assert.equal(generated.data.credentials.generated, true);
+  assert.ok(generated.data.credentials.password.length >= 16);
+  assert.equal((await f.call('/api/employee/login', 'POST', { employeeId: id, password: generated.data.credentials.password })).status, 200);
+
+  assert.equal((await f.call(`/api/founder/employees/${id}/password`, 'POST', { password: 'hijack-pass-1' })).status, 401, 'founder session required');
+  assert.equal((await call('/api/founder/employees/EMP-0000000000', 'PATCH', { name: 'X' })).status, 404);
+});

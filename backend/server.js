@@ -29,6 +29,13 @@ const hash = (value) => createHash('sha256').update(value).digest('hex');
 const token = () => randomBytes(32).toString('base64url');
 const employeeId = () => `EMP-${randomBytes(5).toString('hex').toUpperCase()}`;
 const employeePassword = () => randomBytes(15).toString('base64url');
+// A founder-chosen password must be 8–128 characters. Blank means "generate one for me".
+const chosenPassword = (value) => {
+  if (value === undefined || value === null || value === '') return { password: employeePassword(), generated: true };
+  if (typeof value !== 'string' || value.length < 8 || value.length > 128) return { error: 'Use a password of 8 to 128 characters, or leave it blank to generate one.' };
+  return { password: value, generated: false };
+};
+const loginLink = (id) => `${(process.env.PUBLIC_URL || `http://localhost:${port}`).replace(/\/$/, '')}/employee?id=${encodeURIComponent(id)}`;
 const passwordHash = (password, salt) => scryptSync(password, salt, 64).toString('hex');
 const validIsoDate = (value) => !value || (/^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(new Date(`${value}T00:00:00.000Z`).getTime()) && new Date(`${value}T00:00:00.000Z`).toISOString().slice(0, 10) === value);
 const safeEqual = (a, b) => {
@@ -516,13 +523,51 @@ async function handleRequest(req, res) {
       const name = String(input.name || '').trim(); const designation = String(input.designation || '').trim(); const role = String(input.role || 'Team member').trim();
       const email = String(input.email || '').trim(); const phone = String(input.phone || '').trim();
       if (!name || !designation || !role || name.length > 120 || designation.length > 120 || email.length > 200 || phone.length > 40) return json(res, 400, { error: 'Enter a name, designation, and role using the requested lengths.' });
-      const id = employeeId(); const password = employeePassword(); const salt = randomBytes(16).toString('hex');
+      const chosen = chosenPassword(input.password);
+      if (chosen.error) return json(res, 400, { error: chosen.error });
+      const id = employeeId(); const password = chosen.password; const salt = randomBytes(16).toString('hex');
       const employee = { id, name, designation, email, phone, passwordSalt: salt, passwordHash: passwordHash(password, salt), createdAt: new Date().toISOString() };
       state.employees.push(employee);
       (project.members ||= []).push({ id: randomBytes(8).toString('hex'), employeeId: id, name, designation, role });
       audit('employee_created', project.id, { employeeId: id }); await save();
-      const base = process.env.PUBLIC_URL || `http://localhost:${port}`;
-      return json(res, 201, { employee: employeeView(employee), credentials: { employeeId: id, password, link: `${base.replace(/\/$/, '')}/employee?id=${encodeURIComponent(id)}` } });
+      return json(res, 201, { employee: employeeView(employee), credentials: { employeeId: id, password, link: loginLink(id) } });
+    }
+    const employeeEditMatch = url.pathname.match(/^\/api\/founder\/employees\/(EMP-[0-9A-F]+)(\/password)?$/);
+    if (employeeEditMatch) {
+      const employee = state.employees.find((item) => item.id === employeeEditMatch[1]);
+      if (!employee) return json(res, 404, { error: 'Employee not found.' });
+      // Edit profile: the name and designation also update on every project the employee belongs to.
+      if (!employeeEditMatch[2] && req.method === 'PATCH') {
+        const input = await body(req);
+        const next = {};
+        for (const [field, max, required] of [['name', 120, true], ['designation', 120, true], ['email', 200, false], ['phone', 40, false]]) {
+          if (input[field] === undefined) continue;
+          const value = String(input[field]).trim();
+          if ((required && !value) || value.length > max) return json(res, 400, { error: `Enter a valid ${field} (up to ${max} characters).` });
+          if (field === 'email' && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return json(res, 400, { error: 'Enter a valid email address.' });
+          next[field] = value;
+        }
+        if (!Object.keys(next).length) return json(res, 400, { error: 'Nothing to update.' });
+        Object.assign(employee, next, { updatedAt: new Date().toISOString() });
+        for (const project of state.projects) for (const member of project.members || []) {
+          if (member.employeeId !== employee.id) continue;
+          if (next.name) member.name = next.name;
+          if (next.designation) member.designation = next.designation;
+        }
+        audit('employee_updated', '', { employeeId: employee.id, fields: Object.keys(next) }); await save();
+        return json(res, 200, { employee: employeeView(employee) });
+      }
+      // Set or reset the password. Existing sessions end, so the old password stops working everywhere at once.
+      if (employeeEditMatch[2] && req.method === 'POST') {
+        const input = await body(req);
+        const chosen = chosenPassword(input.password);
+        if (chosen.error) return json(res, 400, { error: chosen.error });
+        const salt = randomBytes(16).toString('hex');
+        Object.assign(employee, { passwordSalt: salt, passwordHash: passwordHash(chosen.password, salt), passwordChangedAt: new Date().toISOString() });
+        state.employeeSessions = state.employeeSessions.filter((session) => session.employeeId !== employee.id);
+        audit('employee_password_set', '', { employeeId: employee.id, generated: chosen.generated }); await save();
+        return json(res, 200, { employee: employeeView(employee), credentials: { employeeId: employee.id, password: chosen.password, link: loginLink(employee.id), generated: chosen.generated } });
+      }
     }
     if (req.method === 'GET' && url.pathname === '/api/founder/assistant') return json(res, 200, { messages: state.founderChat.slice(-40) });
     if (req.method === 'POST' && url.pathname === '/api/founder/assistant') {

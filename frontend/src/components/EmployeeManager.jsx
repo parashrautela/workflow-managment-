@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Check, Copy, UserPlus, Users, UserX, AlertTriangle, Loader2 } from "lucide-react";
+import { Check, Copy, Eye, EyeOff, KeyRound, Pencil, UserPlus, Users, UserX, AlertTriangle, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,9 +7,121 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Input } from "@/components/ui/input";
 import { NativeSelect } from "@/components/ui/native-select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { disableEmployee } from "@/lib/api";
+import { disableEmployee, setEmployeePassword, updateEmployee } from "@/lib/api";
 
 const roles = ["Project admin", "Designer", "Site supervisor", "Site team", "Contractor", "Trade worker", "Other"];
+
+// Password input with show/hide. Blank means the system generates a strong password.
+function PasswordField({ name = "password", value, onChange, placeholder = "Leave blank to generate one", autoComplete = "new-password" }) {
+  const [visible, setVisible] = useState(false);
+  return <span className="relative block">
+    <Input name={name} type={visible ? "text" : "password"} minLength={8} maxLength={128} autoComplete={autoComplete} placeholder={placeholder} value={value} onChange={onChange} className="pr-10" />
+    <button type="button" onClick={() => setVisible((current) => !current)} className="absolute inset-y-0 right-0 grid w-10 place-items-center text-muted-foreground" aria-label={visible ? "Hide password" : "Show password"}>
+      {visible ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+    </button>
+  </span>;
+}
+
+// Login details shown after setting a password, with one-tap copy.
+function CredentialsPanel({ credentials, note }) {
+  const [copied, setCopied] = useState(false);
+  const [error, setError] = useState("");
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(`Studio Iksha employee access\nLink: ${credentials.link}\nEmployee ID: ${credentials.employeeId}\nPassword: ${credentials.password}`);
+      setCopied(true);
+    } catch {
+      setError("Could not copy. Select and copy the details below.");
+    }
+  };
+  return <div className="space-y-3">
+    <label className="grid gap-1 text-xs font-medium">Employee login link<Input value={credentials.link} readOnly className="font-mono text-xs" /></label>
+    <label className="grid gap-1 text-xs font-medium">Employee ID<Input value={credentials.employeeId} readOnly className="font-mono" /></label>
+    <label className="grid gap-1 text-xs font-medium">Password<Input value={credentials.password} readOnly className="font-mono" /></label>
+    <p className="rounded-xl bg-amber-50 p-3 text-xs text-amber-900">{note}</p>
+    <Button type="button" className="h-11 w-full" onClick={copy}>{copied ? <Check /> : <Copy />}{copied ? "Copied" : "Copy link and credentials"}</Button>
+    {error && <p role="alert" className="text-xs text-destructive">{error}</p>}
+  </div>;
+}
+
+// Edit an employee: profile details, and set or reset their password at any time.
+export function EditEmployeeDialog({ employee, onOpenChange, onUpdated }) {
+  const [form, setForm] = useState({ name: "", designation: "", email: "", phone: "" });
+  const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState(null);
+  const [busy, setBusy] = useState("");
+  const [error, setError] = useState("");
+  const [saved, setSaved] = useState(false);
+
+  useEffect(() => {
+    if (employee) {
+      setForm({ name: employee.name || "", designation: employee.designation || "", email: employee.email || "", phone: employee.phone || "" });
+      setPassword(""); setCredentials(null); setError(""); setSaved(false); setBusy("");
+    }
+  }, [employee]);
+
+  const field = (key) => ({ value: form[key], onChange: (event) => { setSaved(false); setForm((current) => ({ ...current, [key]: event.target.value })); } });
+  const saveProfile = async (event) => {
+    event.preventDefault();
+    setBusy("profile"); setError("");
+    try {
+      await updateEmployee(employee.id, form);
+      setSaved(true);
+      await onUpdated?.();
+    } catch (problem) {
+      setError(problem.message || "Could not save the profile.");
+    } finally {
+      setBusy("");
+    }
+  };
+  const savePassword = async (generate) => {
+    if (!generate && password.length < 8) { setError("Use at least 8 characters, or choose Generate new."); return; }
+    setBusy(generate ? "generate" : "password"); setError("");
+    try {
+      const result = await setEmployeePassword(employee.id, generate ? "" : password);
+      setCredentials(result.credentials);
+      setPassword("");
+    } catch (problem) {
+      setError(problem.message || "Could not set the password.");
+    } finally {
+      setBusy("");
+    }
+  };
+
+  return <Dialog open={Boolean(employee)} onOpenChange={onOpenChange}>
+    <DialogContent className="max-h-[90dvh] overflow-y-auto">
+      <DialogHeader>
+        <DialogTitle>{credentials ? "New password is ready" : `Edit ${employee?.name || "employee"}`}</DialogTitle>
+        <DialogDescription>{credentials ? "Share these details privately. The employee has been signed out of every device." : <>Employee ID <span className="font-mono">{employee?.id}</span> stays the same.</>}</DialogDescription>
+      </DialogHeader>
+      {credentials ? <>
+        <CredentialsPanel credentials={credentials} note="The previous password no longer works. If this one gets lost, set a new one any time from Edit." />
+        <Button variant="outline" className="w-full" onClick={() => onOpenChange(false)}>Done</Button>
+      </> : <div className="space-y-5">
+        <form onSubmit={saveProfile} className="space-y-3">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Profile</p>
+          <label className="grid gap-1 text-xs font-medium">Full name<Input required maxLength={120} {...field("name")} /></label>
+          <label className="grid gap-1 text-xs font-medium">Designation<Input required maxLength={120} {...field("designation")} /></label>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <label className="grid gap-1 text-xs font-medium">Email (optional)<Input type="email" maxLength={200} placeholder="name@example.com" {...field("email")} /></label>
+            <label className="grid gap-1 text-xs font-medium">Phone (optional)<Input type="tel" maxLength={40} placeholder="+91…" {...field("phone")} /></label>
+          </div>
+          <Button type="submit" className="h-11 w-full" disabled={Boolean(busy)}>{busy === "profile" ? "Saving…" : saved ? <><Check />Saved</> : "Save profile"}</Button>
+        </form>
+        <div className="space-y-3 border-t pt-4">
+          <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground"><KeyRound className="size-3.5" />Password</p>
+          <p className="text-xs text-muted-foreground">Set a password you choose, or generate a strong one. Either way the employee is signed out everywhere and must use the new password.</p>
+          <PasswordField value={password} onChange={(event) => setPassword(event.target.value)} placeholder="New password (8+ characters)" />
+          <div className="grid grid-cols-2 gap-2">
+            <Button type="button" className="h-11" disabled={Boolean(busy) || !password} onClick={() => savePassword(false)}>{busy === "password" ? "Setting…" : "Set this password"}</Button>
+            <Button type="button" variant="outline" className="h-11" disabled={Boolean(busy)} onClick={() => savePassword(true)}>{busy === "generate" ? "Generating…" : "Generate new"}</Button>
+          </div>
+        </div>
+        {error && <p role="alert" className="text-xs text-destructive">{error}</p>}
+      </div>}
+    </DialogContent>
+  </Dialog>;
+}
 
 export function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpdated }) {
   const [projectId, setProjectId] = useState(defaultProjectId || "");
@@ -18,6 +130,8 @@ export function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId,
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
 
+  // Reset only when the dialog opens. Saving reloads the project list, and resetting on that would wipe the
+  // login details screen a moment after it appears.
   useEffect(() => {
     if (open) {
       setProjectId(defaultProjectId || projects[0]?.id || "");
@@ -25,7 +139,11 @@ export function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId,
       setError("");
       setCopied(false);
     }
-  }, [open, defaultProjectId, projects]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
+  useEffect(() => {
+    if (open && !projects.some((project) => project.id === projectId)) setProjectId(defaultProjectId || projects[0]?.id || "");
+  }, [open, defaultProjectId, projects, projectId]);
 
   const submit = async (event, existing) => {
     event.preventDefault();
@@ -69,7 +187,7 @@ export function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId,
           <DialogTitle>{credentials ? "Employee access is ready" : "Add employee"}</DialogTitle>
           <DialogDescription>
             {credentials
-              ? "Copy these details now. The password is shown only once."
+              ? "Copy these details now and share them privately."
               : "Give an employee access to one project, or assign an existing employee ID to another."}
           </DialogDescription>
         </DialogHeader>
@@ -89,7 +207,7 @@ export function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId,
               <Input value={credentials.password} readOnly className="font-mono" />
             </label>
             <p className="rounded-xl bg-amber-50 p-3 text-xs text-amber-900">
-              Share the password privately with the employee. It cannot be viewed again after closing this window.
+              Share the password privately with the employee. If it gets lost, set a new one from Edit on their card.
             </p>
             <Button className="h-11 w-full" onClick={copy}>
               {copied ? <Check /> : <Copy />}
@@ -148,6 +266,11 @@ export function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId,
                       {roles.map((role) => <option key={role}>{role}</option>)}
                     </NativeSelect>
                   </label>
+                  <label className="grid gap-1 text-xs font-medium">
+                    Password (optional)
+                    <PasswordField />
+                    <span className="font-normal text-muted-foreground">Choose one (8+ characters) or leave blank and we'll generate a strong one. You can change it later from Edit.</span>
+                  </label>
                   <Button type="submit" className="h-11 w-full" disabled={busy || !projectId}>
                     {busy ? "Creating access…" : "Create employee access"}
                   </Button>
@@ -187,6 +310,7 @@ export function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId,
 export function EmployeeManager({ employees, projects, onAdd, onUpdated }) {
   const [disablingId, setDisablingId] = useState(null);
   const [confirmEmployee, setConfirmEmployee] = useState(null);
+  const [editEmployee, setEditEmployee] = useState(null);
   const [error, setError] = useState("");
 
   const handleDisable = async () => {
@@ -253,19 +377,26 @@ export function EmployeeManager({ employees, projects, onAdd, onUpdated }) {
                     </div>
 
                     {isActive && (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="text-destructive hover:bg-destructive/10 text-xs h-7 px-2"
-                        onClick={() => setConfirmEmployee(employee)}
-                      >
-                        <UserX className="size-3.5 mr-1" />
-                        Revoke
-                      </Button>
+                      <div className="flex shrink-0 items-center gap-1">
+                        <Button variant="outline" size="sm" className="h-8 px-2.5 text-xs" onClick={() => setEditEmployee(employee)} aria-label={`Edit ${employee.name}`}>
+                          <Pencil className="size-3.5 mr-1" />
+                          Edit
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-destructive hover:bg-destructive/10 text-xs h-8 px-2"
+                          onClick={() => setConfirmEmployee(employee)}
+                        >
+                          <UserX className="size-3.5 mr-1" />
+                          Revoke
+                        </Button>
+                      </div>
                     )}
                   </div>
 
                   <p className="font-mono text-xs text-muted-foreground">{employee.id}</p>
+                  {(employee.email || employee.phone) && <p className="text-xs text-muted-foreground">{[employee.email, employee.phone].filter(Boolean).join(" · ")}</p>}
 
                   <div className="flex flex-wrap gap-1.5 pt-1">
                     {employee.projectIds?.length ? (
@@ -294,6 +425,8 @@ export function EmployeeManager({ employees, projects, onAdd, onUpdated }) {
           </CardContent>
         </Card>
       )}
+
+      <EditEmployeeDialog employee={editEmployee} onOpenChange={(open) => { if (!open) setEditEmployee(null); }} onUpdated={onUpdated} />
 
       {/* Revocation Confirmation Dialog */}
       <Dialog open={!!confirmEmployee} onOpenChange={() => setConfirmEmployee(null)}>
