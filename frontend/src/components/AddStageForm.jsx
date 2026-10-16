@@ -129,14 +129,14 @@ export function AddStageForm({ value, onChange, stages = [], members = [], defau
             const skipped = !Number(task.durationDays);
             const role = task.role || template.role;
             return (
-              <li key={template.key} className={`grid gap-2 p-2.5 sm:grid-cols-[1.4fr_1fr_1fr_7.5rem] sm:items-center ${skipped ? "opacity-60" : ""}`}>
-                <div className="min-w-0">
+              <li key={template.key} className={`grid grid-cols-[1fr_7rem] gap-2 p-2.5 sm:grid-cols-[1.4fr_1fr_1fr_7.5rem] sm:items-center ${skipped ? "opacity-60" : ""}`}>
+                <div className="col-span-2 min-w-0 sm:col-span-1">
                   <p className="truncate text-sm font-medium"><span className="mr-1.5 text-xs text-muted-foreground">{index + 1}</span>{template.title}</p>
                   {!template.roleEditable && <p className="text-[11px] text-muted-foreground">{template.role}</p>}
                 </div>
                 {template.roleEditable ? (
                   <>
-                    <Input list="iksha-execution-roles" aria-label="Who does the site work" value={role} maxLength={80} onChange={(event) => setTask(template.key, { role: event.target.value })} className="h-8 text-xs" />
+                    <Input list="iksha-execution-roles" aria-label="Who does the site work" value={role} maxLength={80} onChange={(event) => setTask(template.key, { role: event.target.value })} className="col-span-2 h-8 text-xs sm:col-span-1" />
                     <datalist id="iksha-execution-roles">{EXECUTION_ROLES.map((item) => <option key={item} value={item} />)}</datalist>
                   </>
                 ) : <span className="hidden sm:block" />}

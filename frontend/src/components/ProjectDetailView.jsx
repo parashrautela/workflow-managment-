@@ -839,7 +839,7 @@ export function ProjectDetailView({
         </TabsContent>
 
         {/* ----------------- TAB 3: STAGES & SCHEDULE ----------------- */}
-        <TabsContent value="schedule"><ProjectTimeline key={`${project.id}:${stages.map(stage=>stage.id).join(",")}`} projectId={project.id} projectStartDate={project.startDate} tasks={tasks} stages={stages} members={project.members || employees} onOpenTask={task=>{setSelectedTask(task);setTaskDrawerOpen(true);}} onSchedulePreview={project.telegramGroupChatId ? moves=>previewSchedule(project.id,moves) : undefined} onScheduleApply={project.telegramGroupChatId ? async moves=>{const result=await applySchedule(project.id,moves);setTasks(result.tasks);return result;} : undefined} onPlanChanged={project.telegramGroupChatId ? result=>{if(Array.isArray(result.tasks))setTasks(result.tasks);if(onProjectUpdated)onProjectUpdated();} : undefined}/></TabsContent>
+        <TabsContent value="schedule"><ProjectTimeline key={project.id} projectId={project.id} projectStartDate={project.startDate} tasks={tasks} stages={stages} members={project.members || employees} onOpenTask={task=>{setSelectedTask(task);setTaskDrawerOpen(true);}} onSchedulePreview={project.telegramGroupChatId ? moves=>previewSchedule(project.id,moves) : undefined} onScheduleApply={project.telegramGroupChatId ? async moves=>{const result=await applySchedule(project.id,moves);setTasks(result.tasks);return result;} : undefined} onPlanChanged={project.telegramGroupChatId ? result=>{if(Array.isArray(result.tasks))setTasks(result.tasks);if(onProjectUpdated)onProjectUpdated();} : undefined}/></TabsContent>
 
         {/* ----------------- TAB 4: CLIENT QUERIES ----------------- */}
         <TabsContent value="queries" className="space-y-4">

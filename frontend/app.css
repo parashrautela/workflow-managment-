@@ -1449,6 +1449,10 @@
     grid-template-columns: 0 1fr;
   }
 
+  .grid-cols-\[1fr_7rem\] {
+    grid-template-columns: 1fr 7rem;
+  }
+
   .grid-cols-\[minmax\(0\,1fr\)\] {
     grid-template-columns: minmax(0, 1fr);
   }

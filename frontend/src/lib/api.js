@@ -368,8 +368,8 @@ export async function setEmployeePassword(employeeId, password) {
 }
 
 /** Ask for an AI-suggested reply to a client query, built from project records (POST /api/founder/decision-requests/:id/suggest-reply). Sends nothing. */
-export async function suggestDecisionReply(requestId, instruction = "") {
-  return await post(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/suggest-reply`, instruction ? { instruction } : {});
+export async function suggestDecisionReply(requestId, instruction = "", outcome = "") {
+  return await post(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/suggest-reply`, { ...(instruction ? { instruction } : {}), ...(outcome ? { outcome } : {}) });
 }
 
 export async function disableEmployee(employeeId) {

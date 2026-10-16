@@ -8,7 +8,8 @@ import { Input } from "@/components/ui/input";
 import { suggestDecisionReply } from "@/lib/api";
 
 // baseInstruction carries what the founder just decided (for example "Delayed Drawing by 3 days"), so the draft states it.
-export function SuggestReply({ requestId, disabled, onUse, baseInstruction = "" }) {
+// outcome is a client-facing sentence of that decision; the draft leads with it, even without AI.
+export function SuggestReply({ requestId, disabled, onUse, baseInstruction = "", outcome = "" }) {
   const [busy, setBusy] = useState(false);
   const [suggestion, setSuggestion] = useState(null);
   const [instruction, setInstruction] = useState("");
@@ -18,7 +19,7 @@ export function SuggestReply({ requestId, disabled, onUse, baseInstruction = "" 
   const run = async () => {
     setBusy(true); setError("");
     try {
-      setSuggestion(await suggestDecisionReply(requestId, [baseInstruction, instruction.trim()].filter(Boolean).join(" ").slice(0, 500)));
+      setSuggestion(await suggestDecisionReply(requestId, [baseInstruction, instruction.trim()].filter(Boolean).join(" ").slice(0, 500), outcome));
     } catch (problem) {
       setError(problem.message || "Could not suggest a reply. Write it yourself or try again.");
     } finally {

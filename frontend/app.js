@@ -23691,8 +23691,11 @@ async function setEmployeePassword(employeeId, password) {
 	return await post$2(`/api/founder/employees/${employeeId}/password`, password ? { password } : {});
 }
 /** Ask for an AI-suggested reply to a client query, built from project records (POST /api/founder/decision-requests/:id/suggest-reply). Sends nothing. */
-async function suggestDecisionReply(requestId, instruction = "") {
-	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/suggest-reply`, instruction ? { instruction } : {});
+async function suggestDecisionReply(requestId, instruction = "", outcome = "") {
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/suggest-reply`, {
+		...instruction ? { instruction } : {},
+		...outcome ? { outcome } : {}
+	});
 }
 async function disableEmployee(employeeId) {
 	return await post$2(`/api/founder/employees/${employeeId}/disable`, {});
@@ -26536,7 +26539,7 @@ function FounderAssistant({ onBack }) {
 }
 //#endregion
 //#region frontend/src/components/SuggestReply.jsx
-function SuggestReply({ requestId, disabled, onUse, baseInstruction = "" }) {
+function SuggestReply({ requestId, disabled, onUse, baseInstruction = "", outcome = "" }) {
 	const [busy, setBusy] = (0, import_react.useState)(false);
 	const [suggestion, setSuggestion] = (0, import_react.useState)(null);
 	const [instruction, setInstruction] = (0, import_react.useState)("");
@@ -26546,7 +26549,7 @@ function SuggestReply({ requestId, disabled, onUse, baseInstruction = "" }) {
 		setBusy(true);
 		setError("");
 		try {
-			setSuggestion(await suggestDecisionReply(requestId, [baseInstruction, instruction.trim()].filter(Boolean).join(" ").slice(0, 500)));
+			setSuggestion(await suggestDecisionReply(requestId, [baseInstruction, instruction.trim()].filter(Boolean).join(" ").slice(0, 500), outcome));
 		} catch (problem) {
 			setError(problem.message || "Could not suggest a reply. Write it yourself or try again.");
 		} finally {
@@ -26988,10 +26991,10 @@ function AddStageForm({ value, onChange, stages = [], members = [], defaultPlan 
 						const skipped = !Number(task.durationDays);
 						const role = task.role || template.role;
 						return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
-							className: `grid gap-2 p-2.5 sm:grid-cols-[1.4fr_1fr_1fr_7.5rem] sm:items-center ${skipped ? "opacity-60" : ""}`,
+							className: `grid grid-cols-[1fr_7rem] gap-2 p-2.5 sm:grid-cols-[1.4fr_1fr_1fr_7.5rem] sm:items-center ${skipped ? "opacity-60" : ""}`,
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "min-w-0",
+									className: "col-span-2 min-w-0 sm:col-span-1",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 										className: "truncate text-sm font-medium",
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
@@ -27009,7 +27012,7 @@ function AddStageForm({ value, onChange, stages = [], members = [], defaultPlan 
 									value: role,
 									maxLength: 80,
 									onChange: (event) => setTask(template.key, { role: event.target.value }),
-									className: "h-8 text-xs"
+									className: "col-span-2 h-8 text-xs sm:col-span-1"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("datalist", {
 									id: "iksha-execution-roles",
 									children: EXECUTION_ROLES.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { value: item }, item))
@@ -27431,6 +27434,25 @@ var isDone = (task) => [
 	"completed",
 	"Done"
 ].includes(task.status);
+var niceDate$1 = (iso) => iso ? (/* @__PURE__ */ new Date(`${iso}T00:00:00Z`)).toLocaleDateString("en-GB", {
+	day: "numeric",
+	month: "short",
+	timeZone: "UTC"
+}) : "";
+function clientOutcome(target, preview, taskTitle) {
+	if (!target || !preview) return "";
+	const finish = preview.finish ? ` We now expect to finish the project around ${niceDate$1(preview.finish)}.` : "";
+	if (target.kind === "new-stage") {
+		const stage = preview.stages?.[0];
+		return `We've added "${stage?.name}" to the plan${stage?.startDate ? `, from ${niceDate$1(stage.startDate)} to ${niceDate$1(stage.endDate)}` : ""}.${finish}`;
+	}
+	const name = shortTitle(taskTitle);
+	const moved = (preview.affected || []).find((item) => item.moved);
+	if (target.action.type === "complete") return `"${name}" is complete.`;
+	if (target.action.type === "attach") return `Thanks, we've noted this against "${name}".`;
+	const end = moved?.forecastEnd ? ` and will now be ready by ${niceDate$1(moved.forecastEnd)}` : "";
+	return target.action.type === "redo" ? `We'll redo "${name}"${end}.${finish}` : `"${name}" needs a little more time${end}.${finish}`;
+}
 var GROUP_LABEL = {
 	ongoing: "In progress today",
 	upcoming: "Coming up",
@@ -27459,7 +27481,7 @@ async function sendReply(requestId, text, key) {
 		idempotencyKey: key
 	});
 }
-function ReplyStep({ request, baseInstruction, value, onChange, noReply, onNoReply }) {
+function ReplyStep({ request, baseInstruction, outcome, value, onChange, noReply, onNoReply }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "space-y-3",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
@@ -27473,6 +27495,7 @@ function ReplyStep({ request, baseInstruction, value, onChange, noReply, onNoRep
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SuggestReply, {
 				requestId: request.id,
 				baseInstruction,
+				outcome,
 				onUse: onChange
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
@@ -27557,6 +27580,10 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 	const { preview, previewing, error: previewError } = useStagePreview(target, open && previewReady, () => previewAcceptDecision(request.id, target));
 	const summary = accepted?.summary || preview?.summary || "";
 	const baseInstruction = summary ? `The founder accepted this. Outcome: ${summary} Tell the sender plainly.` : "";
+	const [outcome, setOutcome] = (0, import_react.useState)("");
+	(0, import_react.useEffect)(() => {
+		if (preview && !accepted) setOutcome(clientOutcome(target, preview, task?.title));
+	}, [preview]);
 	const chooseStage = (row) => {
 		if (!row.selectable && !isUpdate) {
 			setNewStage(emptyStage({
@@ -27889,6 +27916,7 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ReplyStep, {
 								request,
 								baseInstruction,
+								outcome,
 								value: reply,
 								onChange: setReply,
 								noReply,
@@ -28025,6 +28053,7 @@ function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SuggestReply, {
 							requestId: request?.id,
 							baseInstruction: `Politely decline this request.${hint.trim() ? ` Reason from the founder: ${hint.trim()}.` : ""}`,
+							outcome: "We're not able to go ahead with this request right now.",
 							onUse: setText
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
@@ -47377,7 +47406,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 								if (Array.isArray(result.tasks)) setTasks(result.tasks);
 								if (onProjectUpdated) onProjectUpdated();
 							} : void 0
-						}, `${project.id}:${stages.map((stage) => stage.id).join(",")}`)
+						}, project.id)
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
 						value: "queries",

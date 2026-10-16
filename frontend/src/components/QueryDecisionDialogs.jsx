@@ -19,6 +19,22 @@ import { STAGE_TASKS } from "@/lib/stageTemplate";
 const dayLabel = (value) => (value === null || value === undefined ? "no dates" : new Date(value).toLocaleDateString([], { day: "numeric", month: "short", timeZone: "UTC" }));
 const shortTitle = (title = "") => title.split(" — ").at(-1);
 const isDone = (task) => ["Completed", "completed", "Done"].includes(task.status);
+const niceDate = (iso) => (iso ? new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" }) : "");
+// What the client is told, in plain words. The internal summary ("10 later tasks moved") stays in the web app.
+export function clientOutcome(target, preview, taskTitle) {
+  if (!target || !preview) return "";
+  const finish = preview.finish ? ` We now expect to finish the project around ${niceDate(preview.finish)}.` : "";
+  if (target.kind === "new-stage") {
+    const stage = preview.stages?.[0];
+    return `We've added "${stage?.name}" to the plan${stage?.startDate ? `, from ${niceDate(stage.startDate)} to ${niceDate(stage.endDate)}` : ""}.${finish}`;
+  }
+  const name = shortTitle(taskTitle);
+  const moved = (preview.affected || []).find((item) => item.moved);
+  if (target.action.type === "complete") return `"${name}" is complete.`;
+  if (target.action.type === "attach") return `Thanks, we've noted this against "${name}".`;
+  const end = moved?.forecastEnd ? ` and will now be ready by ${niceDate(moved.forecastEnd)}` : "";
+  return target.action.type === "redo" ? `We'll redo "${name}"${end}.${finish}` : `"${name}" needs a little more time${end}.${finish}`;
+}
 const GROUP_LABEL = { ongoing: "In progress today", upcoming: "Coming up", completed: "Completed" };
 const ACTIONS = [
   { type: "delay", title: "Delay", text: "Give it more days. Later tasks move back." },
@@ -31,7 +47,7 @@ async function sendReply(requestId, text, key) {
   return publishDecisionReply(requestId, { response: text, idempotencyKey: key });
 }
 
-function ReplyStep({ request, baseInstruction, value, onChange, noReply, onNoReply }) {
+function ReplyStep({ request, baseInstruction, outcome, value, onChange, noReply, onNoReply }) {
   return (
     <div className="space-y-3">
       <label className="flex items-center gap-2 text-sm">
@@ -40,7 +56,7 @@ function ReplyStep({ request, baseInstruction, value, onChange, noReply, onNoRep
       </label>
       {!noReply && (
         <>
-          <SuggestReply requestId={request.id} baseInstruction={baseInstruction} onUse={onChange} />
+          <SuggestReply requestId={request.id} baseInstruction={baseInstruction} outcome={outcome} onUse={onChange} />
           <Textarea value={value} onChange={(event) => onChange(event.target.value)} rows={4} maxLength={3000} placeholder="Reply sent to the group, under the original message" />
           <p className="text-[11px] text-muted-foreground">Sent as a reply to {request.originalSenderName || "the sender"}'s message after you confirm.</p>
         </>
@@ -91,6 +107,8 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
   const { preview, previewing, error: previewError } = useStagePreview(target, open && previewReady, () => previewAcceptDecision(request.id, target));
   const summary = accepted?.summary || preview?.summary || "";
   const baseInstruction = summary ? `The founder accepted this. Outcome: ${summary} Tell the sender plainly.` : "";
+  const [outcome, setOutcome] = useState("");
+  useEffect(() => { if (preview && !accepted) setOutcome(clientOutcome(target, preview, task?.title)); }, [preview]);
 
   const chooseStage = (row) => {
     if (!row.selectable && !isUpdate) {
@@ -223,7 +241,7 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
           {step === "reply" && (
             <div className="space-y-4">
               <div className="flex items-start gap-2 rounded-xl border bg-muted/40 px-3 py-2.5 text-sm"><Check className="mt-0.5 size-4 shrink-0 text-emerald-700" /><span>{summary || "Ready to accept."}</span></div>
-              <ReplyStep request={request} baseInstruction={baseInstruction} value={reply} onChange={setReply} noReply={noReply} onNoReply={setNoReply} />
+              <ReplyStep request={request} baseInstruction={baseInstruction} outcome={outcome} value={reply} onChange={setReply} noReply={noReply} onNoReply={setNoReply} />
             </div>
           )}
 
@@ -291,7 +309,7 @@ export function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
         </DialogHeader>
         <div className="space-y-3">
           <Input value={hint} maxLength={200} onChange={(event) => setHint(event.target.value)} placeholder="Why? (only used to draft the message, never sent)" />
-          <SuggestReply requestId={request?.id} baseInstruction={`Politely decline this request.${hint.trim() ? ` Reason from the founder: ${hint.trim()}.` : ""}`} onUse={setText} />
+          <SuggestReply requestId={request?.id} baseInstruction={`Politely decline this request.${hint.trim() ? ` Reason from the founder: ${hint.trim()}.` : ""}`} outcome="We're not able to go ahead with this request right now." onUse={setText} />
           <Textarea autoFocus value={text} onChange={(event) => setText(event.target.value)} rows={4} maxLength={3000} placeholder="Message to the group" />
           {error && <p className="text-xs text-destructive" role="alert">{error}</p>}
         </div>
