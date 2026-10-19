@@ -48033,15 +48033,16 @@ var statusBadgeStyles = {
 function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectProject, onCreateProject, onOpenGroups }) {
 	const [search, setSearch] = (0, import_react.useState)("");
 	const [filter, setFilter] = (0, import_react.useState)("all");
-	const ongoingCount = projects.filter((p) => p.status !== "Completed").length;
-	const needsSetupCount = projects.filter((p) => p.telegramSetupPending || !p.clientName || ["Unassigned Client", "Client pending"].includes(p.clientName)).length;
+	const needsSetup = (p) => !["Completed", "Abandoned"].includes(p.status) && !p.workflowStartedAt && (p.telegramSetupPending || !p.clientName || ["Unassigned Client", "Client pending"].includes(p.clientName));
+	const ongoingCount = projects.filter((p) => !["Completed", "Abandoned"].includes(p.status)).length;
+	const needsSetupCount = projects.filter(needsSetup).length;
 	const atRiskCount = projects.filter((p) => p.status === "At risk").length;
 	const completedCount = projects.filter((p) => p.status === "Completed").length;
 	const filtered = projects.filter((project) => {
-		if (filter === "ongoing" && project.status === "Completed") return false;
+		if (filter === "ongoing" && ["Completed", "Abandoned"].includes(project.status)) return false;
 		if (filter === "completed" && project.status !== "Completed") return false;
 		if (filter === "at_risk" && project.status !== "At risk") return false;
-		if (filter === "needs_setup" && !project.telegramSetupPending && project.clientName && !["Unassigned Client", "Client pending"].includes(project.clientName)) return false;
+		if (filter === "needs_setup" && !needsSetup(project)) return false;
 		if (search.trim()) {
 			const q = search.toLowerCase();
 			return project.name?.toLowerCase().includes(q) || (project.clientName || "").toLowerCase().includes(q) || (project.location || "").toLowerCase().includes(q) || (project.phase || "").toLowerCase().includes(q);
@@ -48148,7 +48149,7 @@ function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectPr
 						"Rejected",
 						"Published"
 					].includes(q.status)).length;
-					const isMissingClient = !project.clientName || ["Unassigned Client", "Client pending"].includes(project.clientName) || project.telegramSetupPending;
+					const isMissingClient = needsSetup(project);
 					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
 						onClick: () => onSelectProject(project.id),
 						className: `group cursor-pointer overflow-hidden transition-all duration-200 hover:border-primary/50 hover:shadow-md ${isMissingClient ? "border-amber-300/80 bg-amber-50/20" : ""}`,
