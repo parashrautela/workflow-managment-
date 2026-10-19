@@ -48464,7 +48464,7 @@ function FounderApp() {
 			const result = await post$1(`/api/founder/projects/${selectedProject.id}/complete`);
 			setCompleteConfirmOpen(false);
 			await loadProjects();
-			showNotice(result.announcementStatus === "Unknown" ? "Project completed. Telegram delivery is unconfirmed; check the group." : "Project marked complete.");
+			showNotice(result.announcementStatus === "Failed" ? "Project completed, but its Telegram group could not be found. No group message was sent." : result.announcementStatus === "Unknown" ? "Project completed. Telegram delivery is unconfirmed; check the group." : "Project marked complete.");
 		} catch (error) {
 			showNotice(error.message, true);
 		} finally {
@@ -48480,7 +48480,7 @@ function FounderApp() {
 			setViewMode("directory");
 			setSelectedProjectId(null);
 			await loadProjects();
-			showNotice(result.announcementStatus === "Unknown" ? "Project moved to Trash. Telegram delivery is unconfirmed; check the group." : "Project moved to Trash. You can restore it later.");
+			showNotice(result.announcementStatus === "Failed" ? "Project moved to Trash, but its Telegram group could not be found. No group message was sent." : result.announcementStatus === "Unknown" ? "Project moved to Trash. Telegram delivery is unconfirmed; check the group." : "Project moved to Trash. You can restore it later.");
 		} catch (error) {
 			showNotice(error.message, true);
 		} finally {
