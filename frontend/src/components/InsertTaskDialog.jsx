@@ -11,7 +11,7 @@ import { useStagePreview } from "@/components/AddStageDialog";
 
 const label = (value) => (value ? new Date(`${value}T00:00:00Z`).toLocaleDateString([], { day: "numeric", month: "short", timeZone: "UTC" }) : "no date");
 
-export function InsertTaskDialog({ open, onOpenChange, projectId, stage, afterTask, members = [], onAdded }) {
+export function InsertTaskDialog({ open, onOpenChange, projectId, stage, afterTask, members = [], telegramLinked = true, onAdded }) {
   const [value, setValue] = useState({ title: "", role: "Site Team", durationDays: 1, assigneeId: "" });
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
@@ -50,6 +50,7 @@ export function InsertTaskDialog({ open, onOpenChange, projectId, stage, afterTa
           <label className="block space-y-1.5"><span className="text-xs font-medium">Person</span>
             <NativeSelect value={value.assigneeId} onChange={(event) => setValue({ ...value, assigneeId: event.target.value })} className="w-full">
               <NativeSelectOption value="">By role</NativeSelectOption>
+              {!telegramLinked && <NativeSelectOption value="founder">Founder</NativeSelectOption>}
               {members.filter((member) => member.employeeId).map((member) => <NativeSelectOption key={member.employeeId} value={member.employeeId}>{member.name}{member.role ? ` · ${member.role}` : ""}</NativeSelectOption>)}
             </NativeSelect>
           </label>

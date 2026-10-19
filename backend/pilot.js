@@ -1,6 +1,7 @@
-import { syncProjectTasks } from './task-sync.js';
+import { syncProjectTasks, refreshStageDates } from './task-sync.js';
 import { adaptBotTaskToWeb } from './task-adapter.js';
 import { randomUUID } from 'node:crypto';
+import { buildCustomStage, previewCustomMoves, insertCustomTask } from './custom-plan.js';
 
 export class ApiError extends Error {
   constructor(message, status = 400) { super(message); this.status = status; }
@@ -139,8 +140,8 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
     if (!spec || typeof spec !== 'object' || typeof spec.name !== 'string' || !Array.isArray(spec.tasks)) fail('Send a stage name and its tasks.');
     const placement = spec.placement && typeof spec.placement === 'object' ? { type: spec.placement.type, stageName: spec.placement.stageName, startDate: spec.placement.startDate } : undefined;
     return {
-      name: spec.name, placement, doneCount: spec.doneCount,
-      tasks: spec.tasks.slice(0, 6).map((task) => ({ key: task?.key, durationDays: task?.durationDays, role: task?.role, ...assigneeForBot(project, task?.assigneeId) })),
+      name: spec.name, placement, doneCount: spec.doneCount, ...(spec.custom === true ? { custom: true } : {}),
+      tasks: spec.tasks.map((task) => ({ key: task?.key, durationDays: task?.durationDays, role: task?.role, ...(spec.custom === true ? { title: task?.title } : {}), ...assigneeForBot(project, owner(getState(), project, task?.assigneeId)) })),
     };
   };
   const botStaleGuard = (task) => ({ fromStart: task.sourceForecastStart || task.sourceCurrentStart || task.sourcePlannedStart || '', fromEnd: task.sourceForecastEnd || task.sourceCurrentEnd || task.sourcePlannedEnd || '' });
@@ -171,8 +172,32 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
     }
     if ((m = route.match(/^projects\/([^/]+)\/stages\/(insert-task\/)?(preview|apply)$/)) && method === 'POST') {
       // Founder-built plans. The bot builds the task rows and dates; the web only sends what the founder chose.
-      admin(user); const project = projectFor(state,user,m[1]); requireLinked(project); requireSynced(state,project);
+      admin(user); const project = projectFor(state,user,m[1]);
+      if (['Completed', 'Abandoned'].includes(project.status)) fail('This project is closed.', 409);
       const input = await body(req); const mode = m[3];
+      if (!project.telegramGroupChatId) {
+        const existing = state.tasks.filter((task) => task.projectId === project.id && !task.deletedAt);
+        if (m[2]) {
+          const result = insertCustomTask(project, existing, input.task, (id) => owner(state, project, id));
+          if (mode === 'apply') {
+            for (const task of result.tasks) {
+              const stored = state.tasks.find((item) => item.id === task.id);
+              if (stored) Object.assign(stored, task); else state.tasks.push(task);
+            }
+            refreshStageDates(project, result.tasks); audit('stage_task_added', project.id, { taskId: result.addedId }); await save();
+          }
+          json(res, 200, { ...result, tasks: state.tasks.filter((task) => task.projectId === project.id && !task.deletedAt), project: projectView(project) }); return true;
+        }
+        const built = buildCustomStage(project, existing, input.stage, (id) => owner(state, project, id));
+        const result = { ok: true, conflicts: [], warnings: [], stages: [{ name: built.stage.name, startDate: built.stage.startDate, endDate: built.stage.deadline }], created: built.tasks.map((task) => ({ title: task.title, start: task.sourceForecastStart, end: task.deadline })), finish: [...existing, ...built.tasks].map((task) => task.deadline).filter(Boolean).sort().at(-1) || '' };
+        if (mode === 'apply') {
+          project.stages ||= []; project.stages.push(built.stage); state.tasks.push(...built.tasks);
+          project.workflowId ||= 'CUSTOM-V1'; project.workflowStartedAt ||= timestamp(); project.startDate ||= built.stage.startDate; project.status = 'Active';
+          audit('stage_added', project.id, { actorId: user.id, stage: built.stage.name, created: built.tasks.length }); await save();
+        }
+        json(res, 200, { ...result, tasks: state.tasks.filter((task) => task.projectId === project.id && !task.deletedAt), project: projectView(project) }); return true;
+      }
+      requireLinked(project); requireSynced(state,project);
       let payload;
       if (m[2]) {
         const task = input.task || {};
@@ -204,6 +229,17 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
     if ((m = route.match(/^projects\/([^/]+)\/schedule\/(preview|apply)$/)) && method === 'POST') {
       // Founder timeline moves. The bot's engine checks dependencies and writes the Google Sheet; the web never computes dates itself.
       admin(user); const project = projectFor(state,user,m[1]);
+      if (['Completed', 'Abandoned'].includes(project.status)) fail('This project is closed.', 409);
+      if (!project.telegramGroupChatId) {
+        const input = await body(req);
+        const local = state.tasks.filter((task) => task.projectId === project.id && !task.deletedAt);
+        const result = previewCustomMoves(local, input.moves);
+        if (m[2] === 'apply') {
+          for (const task of result.tasks) Object.assign(state.tasks.find((item) => item.id === task.id), task);
+          refreshStageDates(project, result.tasks); audit('schedule_changed', project.id, { actorId: user.id, affected: result.affected.length }); await save();
+        }
+        json(res, 200, { ...result, tasks: m[2] === 'apply' ? result.tasks : local }); return true;
+      }
       if (!project.telegramGroupChatId || !project.workflowStartedAt) fail('Link this project to its Telegram group and start its plan before changing the schedule.',409);
       const input = await body(req);
       if (!Array.isArray(input.moves) || !input.moves.length || input.moves.length > 60) fail('Send between 1 and 60 schedule moves.');
@@ -232,7 +268,8 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
     if ((m = route.match(/^projects\/([^/]+)\/(tasks|workflow\/start|client|workspace)$/))) {
       const project = projectFor(state,user,m[1]);
       if (m[2] === 'client' && method === 'POST') {
-        admin(user); if (project.workflowStartedAt) fail('Client cannot be replaced after workflow start.',409);
+        if (['Completed', 'Abandoned'].includes(project.status)) fail('This project is closed.',409);
+        admin(user); if (project.workflowStartedAt && project.workflowId !== 'CUSTOM-V1') fail('Client cannot be replaced after workflow start.',409);
         const input = await body(req); const clientName = text(input.clientName,'client name',120);
         const clientTelegramId = input.clientTelegramId === undefined ? project.clientTelegramId || '' : input.clientTelegramId;
         if (typeof clientTelegramId !== 'string' || (clientTelegramId && !/^\d+$/.test(clientTelegramId))) fail('Client Telegram ID must be numeric.');
@@ -308,7 +345,8 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
       }
       if (m[2] === 'tasks' && method === 'GET') { json(res,200,{tasks:state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt)}); return true; }
       if (m[2] === 'tasks' && method === 'POST') {
-        admin(user); if (!project.workflowStartedAt) fail('Start a workflow before creating tasks.',409);
+        admin(user); if (['Completed', 'Abandoned'].includes(project.status)) fail('This project is closed.',409);
+        if (!project.workflowStartedAt) fail('Start a workflow before creating tasks.',409);
         const fields = taskFields(state,project,await body(req)); const task = makeTask(state,project,user,fields); await synchronize(state,project); await save(); json(res,201,{task}); return true;
       }
     }
@@ -317,11 +355,13 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
       const project = projectFor(state,user,task.projectId);
       if (!m[2] && method === 'GET') { json(res,200,{task}); return true; }
       if (!m[2] && method === 'PATCH') {
+        if (['Completed', 'Abandoned'].includes(project.status)) fail('This project is closed.',409);
         if (!user.founder && task.assigneeId !== user.id) fail('Only the assignee or founder can update this task.',403);
         const input = await body(req); if (!user.founder && input.assigneeId !== undefined) admin(user);
         Object.assign(task,taskFields(state,project,input,task),{updatedAt:timestamp(),telegramSyncStatus:'Pending'}); await synchronize(state,project); audit('task_updated',project.id,{taskId:task.id,actorId:user.id}); await save(); json(res,200,{task}); return true;
       }
       if (!m[2] && method === 'DELETE') {
+        if (['Completed', 'Abandoned'].includes(project.status)) fail('This project is closed.',409);
         admin(user); task.deletedAt = timestamp(); task.telegramSyncStatus='Pending'; await synchronize(state,project); audit('task_deleted',project.id,{taskId:task.id}); await save(); json(res,200,{ok:true}); return true;
       }
       if (m[2] === 'messages' && method === 'GET') {

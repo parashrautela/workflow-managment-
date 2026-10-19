@@ -26742,7 +26742,7 @@ var label$1 = (value) => value ? (/* @__PURE__ */ new Date(`${value}T00:00:00Z`)
 	month: "short",
 	timeZone: "UTC"
 }) : "no date";
-function emptyStage({ stages = [], tailStageName = "", placement, started = false } = {}) {
+function emptyStage({ stages = [], tailStageName = "", placement, started = false, custom = false } = {}) {
 	const tail = tailStageName || stages.at(-1)?.name || "";
 	return {
 		name: "",
@@ -26755,7 +26755,14 @@ function emptyStage({ stages = [], tailStageName = "", placement, started = fals
 		}),
 		started,
 		doneCount: 0,
-		tasks: defaultStageTasks()
+		custom,
+		tasks: custom ? [{
+			key: crypto.randomUUID(),
+			title: "",
+			role: "Team",
+			durationDays: 1,
+			assigneeId: ""
+		}] : defaultStageTasks()
 	};
 }
 function stageSpec(value) {
@@ -26771,10 +26778,12 @@ function stageSpec(value) {
 	};
 	return {
 		name: value.name.trim(),
+		...value.custom ? { custom: true } : {},
 		placement,
 		doneCount: value.started ? Number(value.doneCount) || 0 : 0,
 		tasks: value.tasks.map((task) => ({
 			key: task.key,
+			...value.custom ? { title: task.title?.trim() } : {},
 			durationDays: Number(task.durationDays) || 0,
 			...task.role ? { role: task.role } : {},
 			...task.assigneeId ? { assigneeId: task.assigneeId } : {}
@@ -26786,10 +26795,16 @@ function stageNameProblem(value, stages = []) {
 	if (!name) return "Enter a stage name.";
 	if (name.length > 60) return "Keep the stage name under 60 characters.";
 	if (name.includes("—")) return "Stage names cannot contain \"—\".";
+	if (value.custom) {
+		if (!value.tasks.length || value.tasks.length > 60) return "Add between 1 and 60 tasks.";
+		if (value.tasks.some((task) => !task.title?.trim() || task.title.trim().length > 80 || task.title.includes("—"))) return "Give each task a name of up to 80 characters without —.";
+		if (value.tasks.some((task) => !Number.isInteger(Number(task.durationDays)) || Number(task.durationDays) < 1 || Number(task.durationDays) > 365)) return "Give each task a duration from 1 to 365 days.";
+		if (value.tasks.some((task) => !task.role?.trim())) return "Give each task a role.";
+	}
 	const clash = stages.find((stage) => stage.name.trim().toLowerCase() === name.toLowerCase());
 	return clash ? `A stage called "${clash.name}" already exists.` : "";
 }
-function AddStageForm({ value, onChange, stages = [], members = [], defaultPlan = [], preview, previewing, previewError }) {
+function AddStageForm({ value, onChange, stages = [], members = [], defaultPlan = [], telegramLinked = true, preview, previewing, previewError }) {
 	const set = (changes) => onChange({
 		...value,
 		...changes
@@ -26840,7 +26855,7 @@ function AddStageForm({ value, onChange, stages = [], members = [], defaultPlan 
 						"aria-invalid": Boolean(nameProblem),
 						onChange: (event) => set({ name: event.target.value })
 					})]
-				}), defaultPlan.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+				}), !value.custom && defaultPlan.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 					className: "space-y-1.5",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 						className: "text-xs font-medium",
@@ -26984,7 +26999,100 @@ function AddStageForm({ value, onChange, stages = [], members = [], defaultPlan 
 						className: "font-normal text-muted-foreground",
 						children: "· always in this order, one after another"
 					})]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ol", {
+				}), value.custom ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "space-y-3",
+					children: [value.tasks.map((task, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+						className: "space-y-2 rounded-xl border p-3",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("legend", {
+								className: "px-1 text-xs font-medium",
+								children: ["Task ", index + 1]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "block space-y-1",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "text-xs",
+									children: "Task name"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									value: task.title,
+									maxLength: 80,
+									placeholder: "e.g. Obtain building permit",
+									onChange: (event) => setTask(task.key, { title: event.target.value })
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "grid grid-cols-2 gap-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "space-y-1",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "text-xs",
+										children: "Role"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+										value: task.role,
+										maxLength: 80,
+										onChange: (event) => setTask(task.key, { role: event.target.value })
+									})]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "space-y-1",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "text-xs",
+										children: "Days"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+										type: "number",
+										min: 1,
+										max: 365,
+										step: 1,
+										value: task.durationDays,
+										onChange: (event) => setTask(task.key, { durationDays: event.target.value === "" ? "" : Number(event.target.value) })
+									})]
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "block space-y-1",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "text-xs",
+									children: "Owner"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+									className: "w-full",
+									value: task.assigneeId || "",
+									onChange: (event) => setTask(task.key, { assigneeId: event.target.value }),
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+											value: "",
+											children: telegramLinked ? "By role" : "Unassigned"
+										}),
+										!telegramLinked && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+											value: "founder",
+											children: "Founder"
+										}),
+										members.filter((member) => member.employeeId).map((member) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+											value: member.employeeId,
+											children: member.name
+										}, member.employeeId))
+									]
+								})]
+							}),
+							value.tasks.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								type: "button",
+								className: "text-xs text-destructive underline",
+								onClick: () => set({ tasks: value.tasks.filter((item) => item.key !== task.key) }),
+								children: ["Remove task ", index + 1]
+							})
+						]
+					}, task.key)), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						disabled: value.tasks.length >= 60,
+						className: "text-sm font-medium underline disabled:opacity-50",
+						onClick: () => set({ tasks: [...value.tasks, {
+							key: crypto.randomUUID(),
+							title: "",
+							role: "Team",
+							durationDays: 1,
+							assigneeId: ""
+						}] }),
+						children: "+ Add task"
+					})]
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ol", {
 					className: "divide-y rounded-xl border",
 					children: STAGE_TASKS.map((template, index) => {
 						const task = value.tasks.find((item) => item.key === template.key);
@@ -27122,7 +27230,10 @@ function useStagePreview(value, enabled, request) {
 				});
 			}
 		}, 350);
-		return () => clearTimeout(timer);
+		return () => {
+			clearTimeout(timer);
+			latest.current++;
+		};
 	}, [key, enabled]);
 	return state;
 }
@@ -27138,23 +27249,25 @@ function useDefaultPlan(projectId, open) {
 	}, [open, projectId]);
 	return plan;
 }
-function AddStageDialog({ open, onOpenChange, projectId, stages = [], members = [], tailStageName, initialPlacement, startedDefault = false, onAdded }) {
+function AddStageDialog({ open, onOpenChange, projectId, stages = [], members = [], tailStageName, initialPlacement, telegramLinked = true, startedDefault = false, onAdded }) {
 	const [value, setValue] = (0, import_react.useState)(() => emptyStage({
 		stages,
 		tailStageName,
 		placement: initialPlacement,
-		started: startedDefault
+		started: startedDefault,
+		custom: true
 	}));
 	const [saving, setSaving] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
-	const defaultPlan = useDefaultPlan(projectId, open);
+	const defaultPlan = useDefaultPlan(projectId, open && telegramLinked);
 	(0, import_react.useEffect)(() => {
 		if (open) {
 			setValue(emptyStage({
 				stages,
 				tailStageName,
 				placement: initialPlacement,
-				started: startedDefault
+				started: startedDefault,
+				custom: true
 			}));
 			setError("");
 		}
@@ -27191,26 +27304,65 @@ function AddStageDialog({ open, onOpenChange, projectId, stages = [], members = 
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { className: "size-5" })
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Add a stage" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, {
 							className: "text-xs",
-							children: "Six tasks, one after another. Pick the days for each, or Skip the ones this stage does not need."
+							children: "Name your own tasks, choose owners and durations, then check the dates before saving."
 						})] })]
 					})
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "min-h-0 flex-1 overflow-y-auto px-5 py-4",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AddStageForm, {
-						value,
-						onChange: setValue,
-						stages,
-						members,
-						defaultPlan,
-						preview,
-						previewing,
-						previewError
-					}), error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "mt-3 text-xs text-destructive",
-						role: "alert",
-						children: error
-					})]
+					children: [
+						telegramLinked && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+							className: "mb-4 flex gap-4 text-sm",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
+									className: "mb-2 text-xs font-medium",
+									children: "Task structure"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "flex items-center gap-2",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+										type: "radio",
+										name: "stage-structure",
+										checked: Boolean(value.custom),
+										onChange: () => setValue({
+											...value,
+											custom: true,
+											tasks: emptyStage({ custom: true }).tasks
+										})
+									}), "Custom tasks"]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "flex items-center gap-2",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+										type: "radio",
+										name: "stage-structure",
+										checked: !value.custom,
+										onChange: () => setValue({
+											...value,
+											custom: false,
+											tasks: emptyStage().tasks
+										})
+									}), "Studio template"]
+								})
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AddStageForm, {
+							telegramLinked,
+							value,
+							onChange: setValue,
+							stages,
+							members,
+							defaultPlan,
+							preview,
+							previewing,
+							previewError
+						}),
+						error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-3 text-xs text-destructive",
+							role: "alert",
+							children: error
+						})
+					]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex shrink-0 justify-end gap-2 border-t px-5 py-3",
@@ -27377,9 +27529,9 @@ function undoMoves(affected = []) {
 		forecastOnly: !item.committed
 	}));
 }
-var canMove = (item) => Boolean(item.task.telegramTaskId) && !item.task.sheetPlan && !isClosed(item.task) && item.start !== null && item.end !== null;
+var canMove = (item) => (Boolean(item.task.telegramTaskId) || item.task.customPlan === true) && !item.task.sheetPlan && !isClosed(item.task) && item.start !== null && item.end !== null;
 function stageMoves(items, stageId, shiftDays) {
-	return items.filter((item) => (item.stage?.id || "other") === stageId && !isClosed(item.task) && item.start !== null && item.end !== null && item.task.telegramTaskId).map((item) => moveFor(item, shiftDays));
+	return items.filter((item) => (item.stage?.id || "other") === stageId && !isClosed(item.task) && item.start !== null && item.end !== null && (item.task.telegramTaskId || item.task.customPlan)).map((item) => moveFor(item, shiftDays));
 }
 //#endregion
 //#region frontend/src/lib/stagePicker.js
@@ -30959,7 +31111,7 @@ var label = (value) => value ? (/* @__PURE__ */ new Date(`${value}T00:00:00Z`)).
 	month: "short",
 	timeZone: "UTC"
 }) : "no date";
-function InsertTaskDialog({ open, onOpenChange, projectId, stage, afterTask, members = [], onAdded }) {
+function InsertTaskDialog({ open, onOpenChange, projectId, stage, afterTask, members = [], telegramLinked = true, onAdded }) {
 	const [value, setValue] = (0, import_react.useState)({
 		title: "",
 		role: "Site Team",
@@ -31091,13 +31243,20 @@ function InsertTaskDialog({ open, onOpenChange, projectId, stage, afterTask, mem
 									assigneeId: event.target.value
 								}),
 								className: "w-full",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
-									value: "",
-									children: "By role"
-								}), members.filter((member) => member.employeeId).map((member) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelectOption, {
-									value: member.employeeId,
-									children: [member.name, member.role ? ` · ${member.role}` : ""]
-								}, member.employeeId))]
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+										value: "",
+										children: "By role"
+									}),
+									!telegramLinked && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+										value: "founder",
+										children: "Founder"
+									}),
+									members.filter((member) => member.employeeId).map((member) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelectOption, {
+										value: member.employeeId,
+										children: [member.name, member.role ? ` · ${member.role}` : ""]
+									}, member.employeeId))
+								]
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
@@ -31450,7 +31609,7 @@ function OffscreenChip({ value, before, onClick }) {
 		children: before ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { size: 11 }), dateLabel(value)] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [dateLabel(value), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { size: 11 })] })
 	});
 }
-function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, namespace = "founder", onOpenTask, onSchedulePreview, onScheduleApply, onPlanChanged }) {
+function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, namespace = "founder", telegramLinked = false, onOpenTask, onSchedulePreview, onScheduleApply, onPlanChanged }) {
 	const today = todayDate();
 	const items = timelineItems(tasks, stages);
 	const scheduled = items.filter((item) => item.start !== null && item.end !== null);
@@ -32012,7 +32171,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 						className: "iksha-empty-actions",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 							onClick: () => setAddStage({}),
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {}), "Add first stage"]
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {}), "Create timeline"]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 							variant: "outline",
 							onClick: () => setAddStage({ started: true }),
@@ -32502,6 +32661,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 				projectId,
 				stages,
 				members,
+				telegramLinked,
 				tailStageName: tailStage()?.name,
 				initialPlacement: addStage?.started ? {
 					type: "date",
@@ -32509,7 +32669,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 				} : addStage?.placement,
 				startedDefault: Boolean(addStage?.started),
 				onAdded: (result) => {
-					setNotice({ text: `${result.stages?.map((stage) => stage.name).join(", ") || "Stage"} added to the Google Sheet.` });
+					setNotice({ text: `${result.stages?.map((stage) => stage.name).join(", ") || "Stage"} saved to the project.` });
 					onPlanChanged(result);
 				}
 			}),
@@ -32519,6 +32679,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 					if (!open) setInsertTask(null);
 				},
 				projectId,
+				telegramLinked,
 				stage: insertTask?.stage,
 				afterTask: insertTask?.afterTask,
 				members,
@@ -32548,14 +32709,14 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 						children: "Press and hold a task to pick it up, then drag · Hold its right edge to change its length"
 					}),
 					" · You confirm every change"
-				] }) : "Dates from the Google Sheet · Tap a stage for its breakdown · Tap a work item for its discussion" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Calendar days · Today is marked in red" })]
+				] }) : "Tap a stage for its breakdown · Tap a work item for its discussion" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Calendar days · Today is marked in red" })]
 			})
 		]
 	});
 }
 //#endregion
 //#region frontend/src/components/ProjectTimelineWorkspace.jsx
-function ProjectTimelineWorkspace({ tasks = [], stages = [], members = [], projectId, namespace = "founder", onOpenTask, onSchedulePreview, onScheduleApply, onPlanChanged }) {
+function ProjectTimelineWorkspace({ tasks = [], stages = [], members = [], projectId, namespace = "founder", telegramLinked = false, onOpenTask, onSchedulePreview, onScheduleApply, onPlanChanged }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 		className: "iksha-sheet-workspace",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTimeline, {
@@ -32564,6 +32725,7 @@ function ProjectTimelineWorkspace({ tasks = [], stages = [], members = [], proje
 			members,
 			projectId,
 			namespace,
+			telegramLinked,
 			onOpenTask,
 			onSchedulePreview,
 			onScheduleApply,
@@ -46508,7 +46670,7 @@ var taskStatusColors$1 = {
 	"completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
 	"cancelled": "bg-red-50 text-red-700 border-red-200"
 };
-function ProjectDetailView({ project, allProjects = [], employees = [], decisionRequests = [], onBackToDirectory, onProjectUpdated, onQueriesUpdated, onOpenInviteModal, onOpenTrashModal, onOpenFactsModal, onOpenMemberModal }) {
+function ProjectDetailView({ project, allProjects = [], employees = [], decisionRequests = [], onBackToDirectory, onProjectUpdated, onQueriesUpdated, onOpenInviteModal, onOpenTrashModal, onOpenCompleteModal, onOpenFactsModal, onOpenMemberModal }) {
 	const [localWorkflow, setLocalWorkflow] = (0, import_react.useState)(() => getProjectWorkflow(project?.id, project));
 	const [tasks, setTasks] = (0, import_react.useState)([]);
 	const [loadingTasks, setLoadingTasks] = (0, import_react.useState)(false);
@@ -46581,7 +46743,11 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 			setClientTelegramIdInput(project.clientTelegramId || "");
 			loadProjectTasks();
 		}
-	}, [project?.id, loadProjectTasks]);
+	}, [
+		project?.id,
+		project?.status,
+		loadProjectTasks
+	]);
 	(0, import_react.useEffect)(() => {
 		const timer = setInterval(() => {
 			if (document.visibilityState === "visible") loadProjectTasks({ background: true });
@@ -46703,7 +46869,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	};
 	const roster = project.telegramMembers || [];
 	const profilesReady = roster.length >= 2 && roster.every((member) => member.assignedName && member.assignedRole) && roster.filter((member) => /\bclient\b/i.test(member.assignedRole)).length === 1 && roster.some((member) => !/\b(client|founder)\b/i.test(member.assignedRole));
-	if (project.telegramGroupChatId && (project.telegramSetupPending || !profilesReady)) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+	if (!["Completed", "Abandoned"].includes(project.status) && project.telegramGroupChatId && (project.telegramSetupPending || !profilesReady)) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "space-y-4",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
@@ -46715,6 +46881,19 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 				className: "text-xl font-semibold",
 				children: project.name
 			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-wrap gap-2",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: "outline",
+					onClick: onOpenCompleteModal,
+					children: "Complete project"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: "outline",
+					className: "text-destructive",
+					onClick: onOpenTrashModal,
+					children: "Abandon & move to trash"
+				})]
+			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TelegramGroups, {
 				project,
 				embedded: true,
@@ -46722,7 +46901,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 			})
 		]
 	});
-	if (project.telegramGroupChatId && !hasWorkflowStarted) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+	if (!["Completed", "Abandoned"].includes(project.status) && project.telegramGroupChatId && !hasWorkflowStarted) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 		className: "space-y-4",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
@@ -46740,6 +46919,19 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 						className: "text-2xl font-semibold",
 						children: project.name
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex flex-wrap gap-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							onClick: onOpenCompleteModal,
+							children: "Complete project"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							className: "text-destructive",
+							onClick: onOpenTrashModal,
+							children: "Abandon & move to trash"
+						})]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-sm text-muted-foreground",
@@ -46790,17 +46982,33 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 						className: "group -ml-2 text-xs font-semibold text-muted-foreground hover:text-foreground",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { className: "size-4 mr-1.5 transition-transform group-hover:-translate-x-1" }), "All Projects Directory"]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							variant: "outline",
-							size: "sm",
-							onClick: onOpenFactsModal,
-							children: "Edit Facts"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-							size: "sm",
-							onClick: onOpenInviteModal,
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Share2, { className: "size-3.5 mr-1" }), " Share Client Link"]
-						})]
+						className: "flex flex-wrap items-center gap-2",
+						children: [
+							!["Completed", "Abandoned"].includes(project.status) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "outline",
+								size: "sm",
+								onClick: onOpenCompleteModal,
+								children: "Complete project"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								variant: "outline",
+								size: "sm",
+								className: "text-destructive",
+								onClick: onOpenTrashModal,
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trash, { className: "mr-1 size-3.5" }), project.status === "Completed" ? "Move to trash" : "Abandon & move to trash"]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "outline",
+								size: "sm",
+								onClick: onOpenFactsModal,
+								children: "Edit Facts"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								size: "sm",
+								onClick: onOpenInviteModal,
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Share2, { className: "size-3.5 mr-1" }), " Share Client Link"]
+							})
+						]
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex flex-wrap items-baseline justify-between gap-3 pt-1",
@@ -46880,17 +47088,17 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 					})]
 				})]
 			}),
-			!isClientAssigned && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Alert, {
+			!isClientAssigned && !["Completed", "Abandoned"].includes(project.status) && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Alert, {
 				className: "border-amber-300 bg-amber-50 text-amber-950 shadow-xs",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-5 text-amber-600" }),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertTitle, {
 						className: "text-sm font-bold text-amber-900",
-						children: "Client Assignment Required Before Workflow Start"
+						children: "Add client details when ready"
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AlertDescription, {
 						className: "mt-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-amber-800",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "This project is in Setup. Assign a client name and optional Telegram user ID to unlock starting the workflow pipeline and receiving client queries." }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "You can create a custom timeline below. Assign a client to use workflow templates and receive client queries." }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 							size: "sm",
 							className: "bg-amber-600 hover:bg-amber-700 text-white shrink-0",
 							onClick: () => {
@@ -47392,17 +47600,18 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							tasks,
 							stages,
 							members: project.members || employees,
+							telegramLinked: Boolean(project.telegramGroupChatId),
 							onOpenTask: (task) => {
 								setSelectedTask(task);
 								setTaskDrawerOpen(true);
 							},
-							onSchedulePreview: project.telegramGroupChatId ? (moves) => previewSchedule(project.id, moves) : void 0,
-							onScheduleApply: project.telegramGroupChatId ? async (moves) => {
+							onSchedulePreview: !["Completed", "Abandoned"].includes(project.status) ? (moves) => previewSchedule(project.id, moves) : void 0,
+							onScheduleApply: !["Completed", "Abandoned"].includes(project.status) ? async (moves) => {
 								const result = await applySchedule(project.id, moves);
 								setTasks(result.tasks);
 								return result;
 							} : void 0,
-							onPlanChanged: project.telegramGroupChatId ? (result) => {
+							onPlanChanged: !["Completed", "Abandoned"].includes(project.status) ? (result) => {
 								if (Array.isArray(result.tasks)) setTasks(result.tasks);
 								if (onProjectUpdated) onProjectUpdated();
 							} : void 0
@@ -47700,7 +47909,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 								onChange: (e) => setClientNameInput(e.target.value),
 								placeholder: "e.g. Maya Sharma",
 								required: true,
-								disabled: hasWorkflowStarted
+								disabled: hasWorkflowStarted && project.workflowId !== "CUSTOM-V1"
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
@@ -47711,7 +47920,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 									value: clientTelegramIdInput,
 									onChange: (e) => setClientTelegramIdInput(e.target.value),
 									placeholder: "e.g. 123456789",
-									disabled: hasWorkflowStarted
+									disabled: hasWorkflowStarted && project.workflowId !== "CUSTOM-V1"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "text-[11px] text-muted-foreground leading-relaxed",
@@ -47719,7 +47928,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 								})
 							]
 						}),
-						hasWorkflowStarted && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						hasWorkflowStarted && project.workflowId !== "CUSTOM-V1" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "text-xs text-amber-800 bg-amber-50 p-2.5 rounded-lg border border-amber-200",
 							children: "🔒 Client assignment is locked because the project workflow has already started."
 						}),
@@ -47732,7 +47941,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 								children: "Cancel"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 								type: "submit",
-								disabled: assigningClient || hasWorkflowStarted,
+								disabled: assigningClient || hasWorkflowStarted && project.workflowId !== "CUSTOM-V1",
 								children: [assigningClient ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 mr-1.5 animate-spin" }) : null, "Save Client Assignment"]
 							})]
 						})
@@ -48114,6 +48323,7 @@ function FounderApp() {
 	const [memberOpen, setMemberOpen] = (0, import_react.useState)(false);
 	const [factsOpen, setFactsOpen] = (0, import_react.useState)(false);
 	const [trashConfirmOpen, setTrashConfirmOpen] = (0, import_react.useState)(false);
+	const [completeConfirmOpen, setCompleteConfirmOpen] = (0, import_react.useState)(false);
 	const [shareLink, setShareLink] = (0, import_react.useState)(null);
 	const [notice, setNotice] = (0, import_react.useState)(null);
 	const [busy, setBusy] = (0, import_react.useState)(false);
@@ -48246,17 +48456,34 @@ function FounderApp() {
 			showNotice(error.message, true);
 		}
 	};
-	const moveToTrash = async () => {
-		if (!selectedProject) return;
+	const completeProject = async () => {
+		if (!selectedProject || busy) return;
+		setBusy(true);
 		try {
-			await post$1(`/api/founder/projects/${selectedProject.id}/trash`);
+			const result = await post$1(`/api/founder/projects/${selectedProject.id}/complete`);
+			setCompleteConfirmOpen(false);
+			await loadProjects();
+			showNotice(result.announcementStatus === "Unknown" ? "Project completed. Telegram delivery is unconfirmed; check the group." : "Project marked complete.");
+		} catch (error) {
+			showNotice(error.message, true);
+		} finally {
+			setBusy(false);
+		}
+	};
+	const moveToTrash = async () => {
+		if (!selectedProject || busy) return;
+		setBusy(true);
+		try {
+			const result = await post$1(`/api/founder/projects/${selectedProject.id}/trash`);
 			setTrashConfirmOpen(false);
 			setViewMode("directory");
 			setSelectedProjectId(null);
 			await loadProjects();
-			showNotice("Project moved to Trash. You can restore it later.");
+			showNotice(result.announcementStatus === "Unknown" ? "Project moved to Trash. Telegram delivery is unconfirmed; check the group." : "Project moved to Trash. You can restore it later.");
 		} catch (error) {
 			showNotice(error.message, true);
+		} finally {
+			setBusy(false);
 		}
 	};
 	const restoreProject = async (id) => {
@@ -48683,6 +48910,7 @@ function FounderApp() {
 						onQueriesUpdated: loadDecisionRequests,
 						onOpenInviteModal: handleInvite,
 						onOpenTrashModal: () => setTrashConfirmOpen(true),
+						onOpenCompleteModal: () => setCompleteConfirmOpen(true),
 						onOpenFactsModal: () => setFactsOpen(true),
 						onOpenMemberModal: () => setMemberOpen(true)
 					}, selectedProject.id) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
@@ -48805,22 +49033,54 @@ function FounderApp() {
 				onUpdated: () => Promise.all([loadProjects(), loadEmployees()])
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
-				open: trashConfirmOpen,
-				onOpenChange: setTrashConfirmOpen,
+				open: completeConfirmOpen,
+				onOpenChange: (open) => {
+					if (!busy) setCompleteConfirmOpen(open);
+				},
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogTitle, { children: [
-					"Move ",
+					"Complete ",
 					selectedProject?.name,
-					" to Trash?"
-				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "The project will leave active workspaces and team chat. You can restore it from Trash later." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					"?"
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [
+					"The project will be marked completed and unfinished work will be closed. ",
+					selectedProject?.telegramGroupChatId ? "Its Telegram group will receive: This project is now completed." : "No Telegram group is linked.",
+					" History stays available."
+				] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex justify-end gap-2",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						variant: "outline",
+						disabled: busy,
+						onClick: () => setCompleteConfirmOpen(false),
+						children: "Cancel"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						disabled: busy,
+						onClick: completeProject,
+						children: busy ? "Completing…" : "Complete project"
+					})]
+				})] })
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				open: trashConfirmOpen,
+				onOpenChange: (open) => {
+					if (!busy) setTrashConfirmOpen(open);
+				},
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogTitle, { children: [
+					selectedProject?.status === "Completed" ? "Move to trash" : "Abandon project",
+					": ",
+					selectedProject?.name,
+					"?"
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [selectedProject?.status === "Completed" ? "The completed project will move to recoverable trash." : "The project will be marked abandoned, its unfinished work will be closed, and its linked Telegram group will be notified.", " You can restore its history from Trash later."] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex justify-end gap-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						disabled: busy,
 						onClick: () => setTrashConfirmOpen(false),
 						children: "Cancel"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						variant: "destructive",
+						disabled: busy,
 						onClick: moveToTrash,
-						children: "Move to Trash"
+						children: busy ? "Closing…" : selectedProject?.status === "Completed" ? "Move to trash" : "Abandon & move to trash"
 					})]
 				})] })
 			}),
@@ -48856,7 +49116,7 @@ function FounderApp() {
 										name: "status",
 										defaultValue: selectedProject.status,
 										className: "w-full",
-										children: statusOptions.map((option) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: option }, option))
+										children: statusOptions.filter((option) => option !== "Completed" || selectedProject.status === "Completed").map((option) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: option }, option))
 									})
 								})]
 							}),

@@ -54,6 +54,33 @@ globalThis.fetch = async (url,options) => {
 }
 const payload = (messageId=10,changes={}) => ({RequestID:`REQ--123-${messageId}-question`,GroupChatID:'-123',SourceMessageID:String(messageId),RequestType:'Question',OriginalMessage:'Can we move this light?',RequestContext:'',OriginalSenderName:'Client',OriginalSenderTelegramID:'42',RequestedByName:'Client',AttachmentsJSON:'[]',...changes});
 
+test('custom timelines persist across restart, close read-only, and abandonment retains recoverable history', async (t) => {
+  const f = await fixture(t); const call = (route, method, input) => f.call(route, method, input, f.cookie);
+  const p = (await call('/api/founder/projects', 'POST', { name: 'Custom home' })).data.project.id;
+  const stage = { custom: true, name: 'Permits', placement: { type: 'date', startDate: '2026-11-01' }, tasks: [{ key: 'permit', title: 'Apply for permit', role: 'Architect', assigneeId: 'founder', durationDays: 3 }] };
+  const added = await call(`/api/founder/projects/${p}/stages/apply`, 'POST', { stage });
+  assert.equal(added.status, 200);
+  await f.restart();
+  const workspace = await call(`/api/founder/projects/${p}/workspace`);
+  assert.equal(workspace.data.project.stages[0].name, 'Permits');
+  assert.equal(workspace.data.tasks[0].sourceForecastStart, '2026-11-01');
+  assert.equal((await call(`/api/founder/projects/${p}/client`, 'POST', { clientName: 'Maya' })).status, 200, 'client can be assigned after planning');
+  assert.equal((await call(`/api/founder/projects/${p}/complete`, 'POST', {})).status, 200);
+  assert.equal((await call(`/api/founder/projects/${p}/complete`, 'POST', {})).status, 200);
+  assert.equal((await call(`/api/founder/projects/${p}/stages/apply`, 'POST', { stage })).status, 409);
+  assert.equal((await call(`/api/founder/projects/${p}/trash`, 'POST', {})).status, 200);
+  assert.equal((await call(`/api/founder/trash/${p}/restore`, 'POST', {})).status, 200);
+  assert.equal((await call(`/api/founder/projects/${p}/workspace`)).data.project.status, 'Completed');
+  const abandoned = (await call('/api/founder/projects', 'POST', { name: 'Cancelled home' })).data.project.id;
+  await call(`/api/founder/projects/${abandoned}/stages/apply`, 'POST', { stage });
+  assert.equal((await call(`/api/founder/projects/${abandoned}/trash`, 'POST', {})).status, 200);
+  await f.restart();
+  const trash = await call('/api/founder/trash');
+  assert.equal(trash.data.projects.find((project) => project.id === abandoned).status, 'Abandoned');
+  assert.equal((await call(`/api/founder/trash/${abandoned}/restore`, 'POST', {})).status, 200);
+  assert.equal((await call(`/api/founder/projects/${abandoned}/workspace`)).data.tasks[0].title, 'Apply for permit');
+});
+
 test('pilot loop: setup, start, client text/photo, two-user discussion, task assignment and persistent reply',async(t)=>{
   const f=await fixture(t); const call=(r,m,i)=>f.call(r,m,i,f.cookie);
   const created=await call('/api/founder/projects','POST',{name:'Pilot home'}); assert.equal(created.status,201); const p=created.data.project.id;

@@ -70,6 +70,7 @@ export function ProjectDetailView({
   onQueriesUpdated,
   onOpenInviteModal,
   onOpenTrashModal,
+  onOpenCompleteModal,
   onOpenFactsModal,
   onOpenMemberModal
 }) {
@@ -159,7 +160,7 @@ export function ProjectDetailView({
       setClientTelegramIdInput(project.clientTelegramId || "");
       loadProjectTasks();
     }
-  }, [project?.id, loadProjectTasks]);
+  }, [project?.id, project?.status, loadProjectTasks]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -329,8 +330,8 @@ export function ProjectDetailView({
 
   const roster=project.telegramMembers || [];
   const profilesReady=roster.length>=2 && roster.every((member)=>member.assignedName && member.assignedRole) && roster.filter((member)=>/\bclient\b/i.test(member.assignedRole)).length===1 && roster.some((member)=>!/\b(client|founder)\b/i.test(member.assignedRole));
-  if(project.telegramGroupChatId && (project.telegramSetupPending || !profilesReady)) return <div className="space-y-4"><Button variant="ghost" onClick={onBackToDirectory}><ArrowLeft className="size-4"/>All projects</Button><h2 className="text-xl font-semibold">{project.name}</h2><TelegramGroups project={project} embedded onProjectsChanged={onProjectUpdated}/></div>;
-  if(project.telegramGroupChatId && !hasWorkflowStarted) return <section className="space-y-4"><Button variant="ghost" onClick={onBackToDirectory}><ArrowLeft className="size-4"/>All projects</Button><div className="rounded-2xl border bg-card p-6 space-y-3"><p className="text-xs font-medium text-primary">Step 2 · Project type</p><h1 className="text-2xl font-semibold">{project.name}</h1><p className="text-sm text-muted-foreground">Members and client are ready. Choose the type of project to generate its tasks and announce the start in the Telegram group.</p><Button onClick={()=>setTemplateModalOpen(true)}>Choose project type</Button></div><WorkflowTemplateModal open={templateModalOpen} onOpenChange={setTemplateModalOpen} projectId={project.id} telegramLinked projectStartDate={project.startDate} clientAssigned projectMembers={project.members || []} onApplied={()=>{if(onProjectUpdated)onProjectUpdated();loadProjectTasks();}}/></section>;
+  if(!['Completed','Abandoned'].includes(project.status) && project.telegramGroupChatId && (project.telegramSetupPending || !profilesReady)) return <div className="space-y-4"><Button variant="ghost" onClick={onBackToDirectory}><ArrowLeft className="size-4"/>All projects</Button><h2 className="text-xl font-semibold">{project.name}</h2><div className="flex flex-wrap gap-2"><Button variant="outline" onClick={onOpenCompleteModal}>Complete project</Button><Button variant="outline" className="text-destructive" onClick={onOpenTrashModal}>Abandon & move to trash</Button></div><TelegramGroups project={project} embedded onProjectsChanged={onProjectUpdated}/></div>;
+  if(!['Completed','Abandoned'].includes(project.status) && project.telegramGroupChatId && !hasWorkflowStarted) return <section className="space-y-4"><Button variant="ghost" onClick={onBackToDirectory}><ArrowLeft className="size-4"/>All projects</Button><div className="rounded-2xl border bg-card p-6 space-y-3"><p className="text-xs font-medium text-primary">Step 2 · Project type</p><h1 className="text-2xl font-semibold">{project.name}</h1><div className="flex flex-wrap gap-2"><Button variant="outline" onClick={onOpenCompleteModal}>Complete project</Button><Button variant="outline" className="text-destructive" onClick={onOpenTrashModal}>Abandon & move to trash</Button></div><p className="text-sm text-muted-foreground">Members and client are ready. Choose the type of project to generate its tasks and announce the start in the Telegram group.</p><Button onClick={()=>setTemplateModalOpen(true)}>Choose project type</Button></div><WorkflowTemplateModal open={templateModalOpen} onOpenChange={setTemplateModalOpen} projectId={project.id} telegramLinked projectStartDate={project.startDate} clientAssigned projectMembers={project.members || []} onApplied={()=>{if(onProjectUpdated)onProjectUpdated();loadProjectTasks();}}/></section>;
 
   return (
     <div className="iksha-project-detail space-y-6">
@@ -356,7 +357,9 @@ export function ProjectDetailView({
             All Projects Directory
           </Button>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            {!['Completed', 'Abandoned'].includes(project.status) && <Button variant="outline" size="sm" onClick={onOpenCompleteModal}>Complete project</Button>}
+            <Button variant="outline" size="sm" className="text-destructive" onClick={onOpenTrashModal}><Trash2 className="mr-1 size-3.5" />{project.status === 'Completed' ? 'Move to trash' : 'Abandon & move to trash'}</Button>
             <Button variant="outline" size="sm" onClick={onOpenFactsModal}>
               Edit Facts
             </Button>
@@ -407,15 +410,15 @@ export function ProjectDetailView({
       </div>
 
       {/* Client Assignment Gate Banner (shown when no client assigned) */}
-      {!isClientAssigned && (
+      {!isClientAssigned && !['Completed', 'Abandoned'].includes(project.status) && (
         <Alert className="border-amber-300 bg-amber-50 text-amber-950 shadow-xs">
           <AlertCircle className="size-5 text-amber-600" />
           <AlertTitle className="text-sm font-bold text-amber-900">
-            Client Assignment Required Before Workflow Start
+            Add client details when ready
           </AlertTitle>
           <AlertDescription className="mt-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-amber-800">
             <span>
-              This project is in Setup. Assign a client name and optional Telegram user ID to unlock starting the workflow pipeline and receiving client queries.
+              You can create a custom timeline below. Assign a client to use workflow templates and receive client queries.
             </span>
             <Button
               size="sm"
@@ -839,7 +842,7 @@ export function ProjectDetailView({
         </TabsContent>
 
         {/* ----------------- TAB 3: STAGES & SCHEDULE ----------------- */}
-        <TabsContent value="schedule"><ProjectTimeline key={project.id} projectId={project.id} projectStartDate={project.startDate} tasks={tasks} stages={stages} members={project.members || employees} onOpenTask={task=>{setSelectedTask(task);setTaskDrawerOpen(true);}} onSchedulePreview={project.telegramGroupChatId ? moves=>previewSchedule(project.id,moves) : undefined} onScheduleApply={project.telegramGroupChatId ? async moves=>{const result=await applySchedule(project.id,moves);setTasks(result.tasks);return result;} : undefined} onPlanChanged={project.telegramGroupChatId ? result=>{if(Array.isArray(result.tasks))setTasks(result.tasks);if(onProjectUpdated)onProjectUpdated();} : undefined}/></TabsContent>
+        <TabsContent value="schedule"><ProjectTimeline key={project.id} projectId={project.id} projectStartDate={project.startDate} tasks={tasks} stages={stages} members={project.members || employees} telegramLinked={Boolean(project.telegramGroupChatId)} onOpenTask={task=>{setSelectedTask(task);setTaskDrawerOpen(true);}} onSchedulePreview={!['Completed','Abandoned'].includes(project.status) ? moves=>previewSchedule(project.id,moves) : undefined} onScheduleApply={!['Completed','Abandoned'].includes(project.status) ? async moves=>{const result=await applySchedule(project.id,moves);setTasks(result.tasks);return result;} : undefined} onPlanChanged={!['Completed','Abandoned'].includes(project.status) ? result=>{if(Array.isArray(result.tasks))setTasks(result.tasks);if(onProjectUpdated)onProjectUpdated();} : undefined}/></TabsContent>
 
         {/* ----------------- TAB 4: CLIENT QUERIES ----------------- */}
         <TabsContent value="queries" className="space-y-4">
@@ -1113,7 +1116,7 @@ export function ProjectDetailView({
                 onChange={(e) => setClientNameInput(e.target.value)}
                 placeholder="e.g. Maya Sharma"
                 required
-                disabled={hasWorkflowStarted}
+                disabled={hasWorkflowStarted && project.workflowId !== 'CUSTOM-V1'}
               />
             </label>
 
@@ -1123,7 +1126,7 @@ export function ProjectDetailView({
                 value={clientTelegramIdInput}
                 onChange={(e) => setClientTelegramIdInput(e.target.value)}
                 placeholder="e.g. 123456789"
-                disabled={hasWorkflowStarted}
+                disabled={hasWorkflowStarted && project.workflowId !== 'CUSTOM-V1'}
               />
               <span className="text-[11px] text-muted-foreground leading-relaxed">
                 Required for automatic Telegram intake to link questions sent directly in the group.
@@ -1131,7 +1134,7 @@ export function ProjectDetailView({
               </span>
             </label>
 
-            {hasWorkflowStarted && (
+            {hasWorkflowStarted && project.workflowId !== 'CUSTOM-V1' && (
               <p className="text-xs text-amber-800 bg-amber-50 p-2.5 rounded-lg border border-amber-200">
                 🔒 Client assignment is locked because the project workflow has already started.
               </p>
@@ -1141,7 +1144,7 @@ export function ProjectDetailView({
               <Button type="button" variant="outline" onClick={() => setAssignClientModalOpen(false)}>
                 Cancel
               </Button>
-              <Button type="submit" disabled={assigningClient || hasWorkflowStarted}>
+              <Button type="submit" disabled={assigningClient || (hasWorkflowStarted && project.workflowId !== 'CUSTOM-V1')}>
                 {assigningClient ? <Loader2 className="size-3.5 mr-1.5 animate-spin" /> : null}
                 Save Client Assignment
               </Button>

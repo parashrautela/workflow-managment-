@@ -43,6 +43,34 @@ function harness({ botRows = [], onBot } = {}) {
 const botRow = (id, stage, name, start, end, extra = {}) => ({ TaskID: id, ProjectID: 'P009', Stage: stage, TaskName: `${stage} — ${name}`, Status: 'Pending', Sequence: id.split('-').at(-1), PlannedStart: start, PlannedEnd: end, ForecastStart: start, ForecastEnd: end, ...extra });
 const botError = (status, message) => Object.assign(new Error(message), { botStatus: status });
 
+test('a founder creates an unlinked custom timeline, previews without writing, then adds work and reschedules it', async () => {
+  const h = harness(); const project = h.state.projects[0];
+  Object.assign(project, { telegramGroupChatId: '', telegramProjectId: '', workflowStartedAt: '', status: 'Setup' });
+  const stage = { custom: true, name: 'Permits', placement: { type: 'date', startDate: '2026-11-01' }, tasks: [{ key: 'one', title: 'Survey land', role: 'Surveyor', durationDays: 2, assigneeId: 'EMP-1' }] };
+  const route = '/api/founder/projects/p1/stages/';
+  assert.equal((await h.call('POST', route + 'preview', { stage })).status, 200);
+  assert.equal(h.state.tasks.length, 0); assert.equal(h.saves(), 0);
+  assert.equal((await h.call('POST', route + 'apply', { stage }, 'employee')).status, 401);
+  assert.equal((await h.call('POST', route + 'apply', { stage: { ...stage, tasks: [{ ...stage.tasks[0], assigneeId: 'not-member' }] } })).status, 400);
+  const applied = await h.call('POST', route + 'apply', { stage });
+  assert.equal(applied.status, 200); assert.equal(project.status, 'Active');
+  assert.equal(h.calls.length, 0, 'web-only plans do not call Telegram');
+  const task = h.state.tasks[0];
+  assert.equal(task.assigneeId, 'EMP-1');
+  const moved = await h.call('POST', '/api/founder/projects/p1/schedule/apply', { moves: [{ taskId: task.id, start: '2026-11-03', end: '2026-11-04', fromStart: '2026-11-01', fromEnd: '2026-11-02' }] });
+  assert.equal(moved.status, 200); assert.equal(task.deadline, '2026-11-04');
+  const inserted = await h.call('POST', route + 'insert-task/apply', { task: { stageId: project.stages[0].id, afterTaskId: task.id, title: 'File permit', durationDays: 3, role: 'Architect' } });
+  assert.equal(inserted.status, 200); assert.equal(h.state.tasks.length, 2);
+  project.status = 'Completed';
+  assert.equal((await h.call('POST', route + 'apply', { stage })).status, 409);
+});
+
+test('linked custom stages forward titles and more than six tasks to the bot', async () => {
+  const h = harness({ onBot: (route, input) => { assert.equal(input.stages[0].custom, true); assert.equal(input.stages[0].tasks.length, 8); assert.equal(input.stages[0].tasks[7].title, 'Step 8'); return { ok: true }; } });
+  const stage = { custom: true, name: 'Custom', tasks: Array.from({ length: 8 }, (_, i) => ({ key: `step-${i}`, title: `Step ${i + 1}`, durationDays: 1, role: 'Designer' })) };
+  assert.equal((await h.call('POST', '/api/founder/projects/p1/stages/preview', { stage })).status, 200);
+});
+
 test('adding a stage sends only the founder choices, then shows the new stage and tasks', async () => {
   const h = harness({
     onBot: (route, input, rows) => {

@@ -1,4 +1,5 @@
 import {reconcileGroupMigration} from './group-migration.js';
+import { closeProject } from './project-closure.js';
 import { buildReplyContext, suggestReply } from './reply-suggestions.js';
 import http from 'node:http';
 import { createHash, randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
@@ -70,6 +71,7 @@ const employeeLoginAttempts = new Map();
 const founderChatLimits = new Map();
 const replySuggestionLimits = new Map();
 const teamChatLimits = new Map();
+const closingProjects = new Set();
 function canSendTeamMessage(actor, projectId) {
   const key = `${actor}:${projectId}`;
   const entry = teamChatLimits.get(key) || { count: 0, resetAt: Date.now() + 60_000 };
@@ -657,19 +659,26 @@ async function handleRequest(req, res) {
     if (req.method === 'POST' && completeMatch) {
       const project = state.projects.find((item) => item.id === completeMatch[1]);
       if (!project) return json(res, 404, { error: 'Project not found.' });
-      const old = project.status;
-      project.status = 'Completed'; project.completedAt = project.completedAt || new Date().toISOString();
-      if (old !== 'Completed') { recordProjectUpdate(project.id, { status: { old, new: 'Completed' } }); audit('project_completed', project.id, { name: project.name }); }
-      await save(); return json(res, 200, { project: projectView(project) });
+      if (closingProjects.has(project.id)) return json(res, 409, { error: 'This project is being closed. Please wait.' });
+      closingProjects.add(project.id);
+      try {
+        const announcementStatus = await closeProject({ state, project, outcome: 'Completed', callBotBridge, save, audit });
+        return json(res, 200, { project: projectView(project), announcementStatus });
+      } finally { closingProjects.delete(project.id); }
     }
     const trashMatch = url.pathname.match(/^\/api\/founder\/projects\/([^/]+)\/trash$/);
     if (req.method === 'POST' && trashMatch) {
       const project = state.projects.find((item) => item.id === trashMatch[1]);
       if (!project) return json(res, 404, { error: 'Project not found.' });
-      state.projects = state.projects.filter((item) => item.id !== project.id);
-      project.trashedAt = new Date().toISOString(); state.trashedProjects.unshift(project);
-      audit('project_moved_to_trash', project.id, { name: project.name }); await save();
-      return json(res, 200, { ok: true });
+      if (closingProjects.has(project.id)) return json(res, 409, { error: 'This project is being closed. Please wait.' });
+      closingProjects.add(project.id);
+      try {
+        const announcementStatus = await closeProject({ state, project, outcome: project.status === 'Completed' ? 'Completed' : 'Abandoned', callBotBridge, save, audit });
+        state.projects = state.projects.filter((item) => item.id !== project.id);
+        project.trashedAt = new Date().toISOString(); state.trashedProjects.unshift(project);
+        audit('project_moved_to_trash', project.id, { name: project.name }); await save();
+        return json(res, 200, { ok: true, announcementStatus });
+      } finally { closingProjects.delete(project.id); }
     }
     if (req.method === 'PATCH' && projectMatch) {
       const project = state.projects.find((item) => item.id === projectMatch[1]); if (!project) return json(res, 404, { error: 'Project not found.' });
@@ -681,6 +690,8 @@ async function handleRequest(req, res) {
         const groupId = String(input.telegramGroupChatId).trim();
         if (groupId && !/^-?\d{1,25}$/.test(groupId)) return json(res, 400, { error: 'Enter a numeric Telegram group chat ID.' });
         if (groupId && state.projects.some((item) => item.id !== project.id && item.telegramGroupChatId === groupId)) return json(res, 409, { error: 'This Telegram group is linked to another project.' });
+        // shortcut: web-only plans cannot migrate to Sheets yet; add an explicit plan migration before allowing a group change.
+        if (groupId !== (project.telegramGroupChatId || '') && project.workflowId === 'CUSTOM-V1') return json(res, 409, { error: 'This custom plan is saved in the web app. Its Telegram connection cannot be changed after planning starts.' });
         updates.telegramGroupChatId = groupId;
       }
       if (input.internalOwnerMemberId !== undefined) {
@@ -690,6 +701,8 @@ async function handleRequest(req, res) {
         updates.internalOwnerMemberId = ownerId;
       }
       for (const key of allowed) if (typeof input[key] === 'string') updates[key] = input[key].trim();
+      if (['Completed', 'Abandoned'].includes(updates.status) && updates.status !== project.status) return json(res, 409, { error: 'Use Complete project or Abandon & move to trash to notify the group and close the work.' });
+      if (['Completed', 'Abandoned'].includes(project.status) && updates.status && updates.status !== project.status) return json(res, 409, { error: 'Closed projects retain their final status.' });
       if (updates.status && !['Setup','Needs setup','Completed'].includes(updates.status) && !project.workflowStartedAt && ['Setup','Needs setup'].includes(project.status)) return json(res,409,{error:'Assign a client and start a workflow before activating this project.'});
       if (updates.status === 'Completed' && project.status !== 'Completed') updates.completedAt = new Date().toISOString();
       if (updates.status && updates.status !== 'Completed' && project.status === 'Completed') updates.completedAt = null;

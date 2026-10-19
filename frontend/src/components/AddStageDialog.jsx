@@ -22,7 +22,7 @@ export function useStagePreview(value, enabled, request) {
         if (ticket === latest.current) setState({ preview: null, previewing: false, error: error.message || "Could not check this stage." });
       }
     }, 350);
-    return () => clearTimeout(timer);
+    return () => { clearTimeout(timer); latest.current++; };
   }, [key, enabled]);
   return state;
 }
@@ -38,13 +38,13 @@ export function useDefaultPlan(projectId, open) {
   return plan;
 }
 
-export function AddStageDialog({ open, onOpenChange, projectId, stages = [], members = [], tailStageName, initialPlacement, startedDefault = false, onAdded }) {
-  const [value, setValue] = useState(() => emptyStage({ stages, tailStageName, placement: initialPlacement, started: startedDefault }));
+export function AddStageDialog({ open, onOpenChange, projectId, stages = [], members = [], tailStageName, initialPlacement, telegramLinked = true, startedDefault = false, onAdded }) {
+  const [value, setValue] = useState(() => emptyStage({ stages, tailStageName, placement: initialPlacement, started: startedDefault, custom: true }));
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
-  const defaultPlan = useDefaultPlan(projectId, open);
+  const defaultPlan = useDefaultPlan(projectId, open && telegramLinked);
   useEffect(() => {
-    if (open) { setValue(emptyStage({ stages, tailStageName, placement: initialPlacement, started: startedDefault })); setError(""); }
+    if (open) { setValue(emptyStage({ stages, tailStageName, placement: initialPlacement, started: startedDefault, custom: true })); setError(""); }
   }, [open]);
   const problem = stageNameProblem(value, stages);
   const { preview, previewing, error: previewError } = useStagePreview(value, open && !problem, () => previewStages(projectId, { stage: stageSpec(value) }));
@@ -70,12 +70,16 @@ export function AddStageDialog({ open, onOpenChange, projectId, stages = [], mem
             <span className="grid size-9 place-items-center rounded-xl bg-primary/10 text-primary"><Layers className="size-5" /></span>
             <div>
               <DialogTitle>Add a stage</DialogTitle>
-              <DialogDescription className="text-xs">Six tasks, one after another. Pick the days for each, or Skip the ones this stage does not need.</DialogDescription>
+              <DialogDescription className="text-xs">Name your own tasks, choose owners and durations, then check the dates before saving.</DialogDescription>
             </div>
           </div>
         </DialogHeader>
         <div className="min-h-0 flex-1 overflow-y-auto px-5 py-4">
-          <AddStageForm value={value} onChange={setValue} stages={stages} members={members} defaultPlan={defaultPlan} preview={preview} previewing={previewing} previewError={previewError} />
+          {telegramLinked && <fieldset className="mb-4 flex gap-4 text-sm"><legend className="mb-2 text-xs font-medium">Task structure</legend>
+            <label className="flex items-center gap-2"><input type="radio" name="stage-structure" checked={Boolean(value.custom)} onChange={() => setValue({ ...value, custom: true, tasks: emptyStage({ custom: true }).tasks })} />Custom tasks</label>
+            <label className="flex items-center gap-2"><input type="radio" name="stage-structure" checked={!value.custom} onChange={() => setValue({ ...value, custom: false, tasks: emptyStage().tasks })} />Studio template</label>
+          </fieldset>}
+          <AddStageForm telegramLinked={telegramLinked} value={value} onChange={setValue} stages={stages} members={members} defaultPlan={defaultPlan} preview={preview} previewing={previewing} previewError={previewError} />
           {error && <p className="mt-3 text-xs text-destructive" role="alert">{error}</p>}
         </div>
         <div className="flex shrink-0 justify-end gap-2 border-t px-5 py-3">

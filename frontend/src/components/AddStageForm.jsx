@@ -8,14 +8,15 @@ import { STAGE_TASKS, EXECUTION_ROLES, DURATION_OPTIONS, durationLabel, defaultS
 const today = () => new Date().toISOString().slice(0, 10);
 const label = (value) => (value ? new Date(`${value}T00:00:00Z`).toLocaleDateString([], { day: "numeric", month: "short", timeZone: "UTC" }) : "no date");
 
-export function emptyStage({ stages = [], tailStageName = "", placement, started = false } = {}) {
+export function emptyStage({ stages = [], tailStageName = "", placement, started = false, custom = false } = {}) {
   const tail = tailStageName || stages.at(-1)?.name || "";
   return {
     name: "",
     placement: placement || (tail ? { type: "after", stageName: tail } : { type: "date", startDate: today() }),
     started,
     doneCount: 0,
-    tasks: defaultStageTasks(),
+    custom,
+    tasks: custom ? [{ key: crypto.randomUUID(), title: "", role: "Team", durationDays: 1, assigneeId: "" }] : defaultStageTasks(),
   };
 }
 
@@ -26,9 +27,10 @@ export function stageSpec(value) {
     : value.placement.type === "date" ? { type: "date", startDate: value.placement.startDate || today() } : { type: value.placement.type, stageName: value.placement.stageName };
   return {
     name: value.name.trim(),
+    ...(value.custom ? { custom: true } : {}),
     placement,
     doneCount: value.started ? Number(value.doneCount) || 0 : 0,
-    tasks: value.tasks.map((task) => ({ key: task.key, durationDays: Number(task.durationDays) || 0, ...(task.role ? { role: task.role } : {}), ...(task.assigneeId ? { assigneeId: task.assigneeId } : {}) })),
+    tasks: value.tasks.map((task) => ({ key: task.key, ...(value.custom ? { title: task.title?.trim() } : {}), durationDays: Number(task.durationDays) || 0, ...(task.role ? { role: task.role } : {}), ...(task.assigneeId ? { assigneeId: task.assigneeId } : {}) })),
   };
 }
 
@@ -37,11 +39,17 @@ export function stageNameProblem(value, stages = []) {
   if (!name) return "Enter a stage name.";
   if (name.length > 60) return "Keep the stage name under 60 characters.";
   if (name.includes("—")) return "Stage names cannot contain \"—\".";
+  if (value.custom) {
+    if (!value.tasks.length || value.tasks.length > 60) return "Add between 1 and 60 tasks.";
+    if (value.tasks.some((task) => !task.title?.trim() || task.title.trim().length > 80 || task.title.includes("—"))) return "Give each task a name of up to 80 characters without —.";
+    if (value.tasks.some((task) => !Number.isInteger(Number(task.durationDays)) || Number(task.durationDays) < 1 || Number(task.durationDays) > 365)) return "Give each task a duration from 1 to 365 days.";
+    if (value.tasks.some((task) => !task.role?.trim())) return "Give each task a role.";
+  }
   const clash = stages.find((stage) => stage.name.trim().toLowerCase() === name.toLowerCase());
   return clash ? `A stage called "${clash.name}" already exists.` : "";
 }
 
-export function AddStageForm({ value, onChange, stages = [], members = [], defaultPlan = [], preview, previewing, previewError }) {
+export function AddStageForm({ value, onChange, stages = [], members = [], defaultPlan = [], telegramLinked = true, preview, previewing, previewError }) {
   const set = (changes) => onChange({ ...value, ...changes });
   const setTask = (key, changes) => set({ tasks: value.tasks.map((task) => (task.key === key ? { ...task, ...changes } : task)) });
   const nameProblem = value.name ? stageNameProblem(value, stages) : "";
@@ -72,7 +80,7 @@ export function AddStageForm({ value, onChange, stages = [], members = [], defau
           <span className="text-xs font-medium">Stage name</span>
           <Input autoFocus value={value.name} maxLength={60} placeholder="e.g. Flooring" aria-invalid={Boolean(nameProblem)} onChange={(event) => set({ name: event.target.value })} />
         </label>
-        {defaultPlan.length > 0 && (
+        {!value.custom && defaultPlan.length > 0 && (
           <label className="space-y-1.5">
             <span className="text-xs font-medium">Fill from default plan</span>
             <NativeSelect value="" onChange={(event) => fillFromPlan(event.target.value)} className="w-full sm:w-52">
@@ -123,7 +131,23 @@ export function AddStageForm({ value, onChange, stages = [], members = [], defau
 
       <div className="space-y-2">
         <p className="text-xs font-medium">Tasks <span className="font-normal text-muted-foreground">· always in this order, one after another</span></p>
-        <ol className="divide-y rounded-xl border">
+        {value.custom ? <div className="space-y-3">
+          {value.tasks.map((task, index) => <fieldset key={task.key} className="space-y-2 rounded-xl border p-3">
+            <legend className="px-1 text-xs font-medium">Task {index + 1}</legend>
+            <label className="block space-y-1"><span className="text-xs">Task name</span><Input value={task.title} maxLength={80} placeholder="e.g. Obtain building permit" onChange={(event) => setTask(task.key, { title: event.target.value })} /></label>
+            <div className="grid grid-cols-2 gap-2">
+              <label className="space-y-1"><span className="text-xs">Role</span><Input value={task.role} maxLength={80} onChange={(event) => setTask(task.key, { role: event.target.value })} /></label>
+              <label className="space-y-1"><span className="text-xs">Days</span><Input type="number" min={1} max={365} step={1} value={task.durationDays} onChange={(event) => setTask(task.key, { durationDays: event.target.value === "" ? "" : Number(event.target.value) })} /></label>
+            </div>
+            <label className="block space-y-1"><span className="text-xs">Owner</span><NativeSelect className="w-full" value={task.assigneeId || ""} onChange={(event) => setTask(task.key, { assigneeId: event.target.value })}>
+              <NativeSelectOption value="">{telegramLinked ? "By role" : "Unassigned"}</NativeSelectOption>
+              {!telegramLinked && <NativeSelectOption value="founder">Founder</NativeSelectOption>}
+              {members.filter((member) => member.employeeId).map((member) => <NativeSelectOption key={member.employeeId} value={member.employeeId}>{member.name}</NativeSelectOption>)}
+            </NativeSelect></label>
+            {value.tasks.length > 1 && <button type="button" className="text-xs text-destructive underline" onClick={() => set({ tasks: value.tasks.filter((item) => item.key !== task.key) })}>Remove task {index + 1}</button>}
+          </fieldset>)}
+          <button type="button" disabled={value.tasks.length >= 60} className="text-sm font-medium underline disabled:opacity-50" onClick={() => set({ tasks: [...value.tasks, { key: crypto.randomUUID(), title: "", role: "Team", durationDays: 1, assigneeId: "" }] })}>+ Add task</button>
+        </div> : <ol className="divide-y rounded-xl border">
           {STAGE_TASKS.map((template, index) => {
             const task = value.tasks.find((item) => item.key === template.key);
             const skipped = !Number(task.durationDays);
@@ -150,7 +174,7 @@ export function AddStageForm({ value, onChange, stages = [], members = [], defau
               </li>
             );
           })}
-        </ol>
+        </ol>}
       </div>
 
       <div className="min-h-10 rounded-xl bg-muted/50 px-3 py-2 text-xs" aria-live="polite">

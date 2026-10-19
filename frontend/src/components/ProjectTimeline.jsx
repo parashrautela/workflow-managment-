@@ -58,7 +58,7 @@ function OffscreenChip({ value, before, onClick }) {
   </button>;
 }
 
-export function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, namespace = 'founder', onOpenTask, onSchedulePreview, onScheduleApply, onPlanChanged }) {
+export function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, namespace = 'founder', telegramLinked = false, onOpenTask, onSchedulePreview, onScheduleApply, onPlanChanged }) {
   const today = todayDate();
   const items = timelineItems(tasks, stages);
   const scheduled = items.filter((item) => item.start !== null && item.end !== null);
@@ -376,7 +376,7 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
 
     {notice && <div className="iksha-schedule-notice" role="status"><span>{notice.text}</span>{notice.undo?.length > 0 && <Button variant="outline" size="sm" onClick={undo}><Undo2 />Undo</Button>}<button className="iksha-notice-close" aria-label="Dismiss" onClick={() => setNotice(null)}><X size={16} /></button></div>}
 
-    {!items.length ? <div className="iksha-timeline-empty"><Layers size={28} />{canPlan ? <><h3>No stages yet</h3><p>Add the first stage to start planning.</p><div className="iksha-empty-actions"><Button onClick={() => setAddStage({})}><Plus />Add first stage</Button><Button variant="outline" onClick={() => setAddStage({ started: true })}>This project is already running: add its current stage</Button></div></> : <><h3>No work items yet.</h3><p>{editable ? 'Link this project to its Telegram group to plan its stages here.' : 'The founder has not planned any stages yet.'}</p></>}</div> : <div className={`iksha-schedule-frame ${compactHeader ? 'iksha-plan-fit' : ''} ${todayInView ? 'has-today' : ''} ${drag ? 'is-dragging-any' : ''}`} style={gridStyle}>
+    {!items.length ? <div className="iksha-timeline-empty"><Layers size={28} />{canPlan ? <><h3>No stages yet</h3><p>Add the first stage to start planning.</p><div className="iksha-empty-actions"><Button onClick={() => setAddStage({})}><Plus />Create timeline</Button><Button variant="outline" onClick={() => setAddStage({ started: true })}>This project is already running: add its current stage</Button></div></> : <><h3>No work items yet.</h3><p>{editable ? 'Link this project to its Telegram group to plan its stages here.' : 'The founder has not planned any stages yet.'}</p></>}</div> : <div className={`iksha-schedule-frame ${compactHeader ? 'iksha-plan-fit' : ''} ${todayInView ? 'has-today' : ''} ${drag ? 'is-dragging-any' : ''}`} style={gridStyle}>
       <div className="iksha-schedule-headbar">
         <div className="iksha-schedule-label">STAGE / WORK ITEM</div>
         <div className="iksha-headbar-viewport">
@@ -536,12 +536,12 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
       <button role="menuitem" onClick={() => { setMenu(null); setAddStage({ placement: { type: 'after', stageName: menu.stage.name } }); }}><Plus size={14} />Add a stage after {menu.stage.name}</button>
       <button role="menuitem" onClick={() => { setMenu(null); setAddStage({ placement: { type: 'parallel', stageName: menu.stage.name } }); }}><Layers size={14} />Add a stage alongside {menu.stage.name}</button>
     </div>}
-    {canPlan && <AddStageDialog open={Boolean(addStage)} onOpenChange={(open) => { if (!open) setAddStage(null); }} projectId={projectId} stages={stages} members={members} tailStageName={tailStage()?.name} initialPlacement={addStage?.started ? { type: 'date', startDate: new Date().toISOString().slice(0, 10) } : addStage?.placement} startedDefault={Boolean(addStage?.started)} onAdded={(result) => { setNotice({ text: `${result.stages?.map((stage) => stage.name).join(', ') || 'Stage'} added to the Google Sheet.` }); onPlanChanged(result); }} />}
-    {canPlan && <InsertTaskDialog open={Boolean(insertTask)} onOpenChange={(open) => { if (!open) setInsertTask(null); }} projectId={projectId} stage={insertTask?.stage} afterTask={insertTask?.afterTask} members={members} onAdded={(result) => { setNotice({ text: `${result.created?.[0]?.title || 'Task'} added.` }); onPlanChanged(result); }} />}
+    {canPlan && <AddStageDialog open={Boolean(addStage)} onOpenChange={(open) => { if (!open) setAddStage(null); }} projectId={projectId} stages={stages} members={members} telegramLinked={telegramLinked} tailStageName={tailStage()?.name} initialPlacement={addStage?.started ? { type: 'date', startDate: new Date().toISOString().slice(0, 10) } : addStage?.placement} startedDefault={Boolean(addStage?.started)} onAdded={(result) => { setNotice({ text: `${result.stages?.map((stage) => stage.name).join(', ') || 'Stage'} saved to the project.` }); onPlanChanged(result); }} />}
+    {canPlan && <InsertTaskDialog open={Boolean(insertTask)} onOpenChange={(open) => { if (!open) setInsertTask(null); }} projectId={projectId} telegramLinked={telegramLinked} stage={insertTask?.stage} afterTask={insertTask?.afterTask} members={members} onAdded={(result) => { setNotice({ text: `${result.created?.[0]?.title || 'Task'} added.` }); onPlanChanged(result); }} />}
 
     <TimelineStageDetails stage={allGroups.find((stage) => stage.id === selectedStageId)} items={items} members={members} projectId={projectId} namespace={namespace} onClose={() => setSelectedStageId(null)} onOpenTask={onOpenTask} />
     <footer className="iksha-schedule-caption">
-      <span>{editable ? <><span className="iksha-only-fine">Drag a stage bar to move the whole stage · Drag a task to move it · Pull its right edge to change its length · Right-click to add a stage or task</span><span className="iksha-only-coarse">Press and hold a task to pick it up, then drag · Hold its right edge to change its length</span> · You confirm every change</> : 'Dates from the Google Sheet · Tap a stage for its breakdown · Tap a work item for its discussion'}</span>
+      <span>{editable ? <><span className="iksha-only-fine">Drag a stage bar to move the whole stage · Drag a task to move it · Pull its right edge to change its length · Right-click to add a stage or task</span><span className="iksha-only-coarse">Press and hold a task to pick it up, then drag · Hold its right edge to change its length</span> · You confirm every change</> : 'Tap a stage for its breakdown · Tap a work item for its discussion'}</span>
       <span>Calendar days · Today is marked in red</span>
     </footer>
   </div>;
