@@ -23732,6 +23732,9 @@ async function previewAcceptDecision(requestId, target) {
 async function acceptDecisionRequest(requestId, target) {
 	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept`, { target });
 }
+var previewTaskPlan = (taskId, input) => post$2(`/api/founder/tasks/${taskId}/plan/preview`, input);
+var applyTaskPlan = (taskId, input) => post$2(`/api/founder/tasks/${taskId}/plan/apply`, input);
+var renameWorkType = (projectId, stageId, input) => post$2(`/api/founder/projects/${projectId}/stages/${stageId}/rename/apply`, input);
 //#endregion
 //#region frontend/src/components/EmployeeManager.jsx
 var roles = [
@@ -30751,6 +30754,12 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 //#endregion
 //#region frontend/src/components/WorkflowTemplateModal.jsx
 var BLANK = "BLANK-V1";
+var CUSTOM_OPTION = {
+	id: BLANK,
+	name: "Build a custom plan",
+	description: "Start with your own work types and tasks. Choose owners, durations and parallel or sequential work on the timeline.",
+	stages: []
+};
 var DEFAULT_PLAN = "DEFAULT-PLAN";
 var DEFAULT_PLAN_OPTION = {
 	id: DEFAULT_PLAN,
@@ -30772,6 +30781,10 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 			setError("");
 			setLoading(true);
 			fetchWorkflows("founder", projectId).then((list) => {
+				list = list?.some((item) => item.id === BLANK) ? list.map((item) => item.id === BLANK ? {
+					...item,
+					...CUSTOM_OPTION
+				} : item) : [CUSTOM_OPTION, ...list || []];
 				if (telegramLinked && list?.some((item) => item.id === BLANK)) list = [
 					list[0],
 					DEFAULT_PLAN_OPTION,
@@ -30803,7 +30816,7 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 	} : stage));
 	const handleStartWorkflow = async () => {
 		if (!projectId || !selectedTemplate) return;
-		if (!clientAssigned) {
+		if (!clientAssigned && !isBlank) {
 			setError("You must assign a client to this project before starting a workflow.");
 			return;
 		}
@@ -30851,7 +30864,7 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 							children: "Choose project type"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, {
 							className: "text-xs",
-							children: "Choose the project type to generate stages and tasks. Telegram projects start the same plan in the group."
+							children: "Build your own plan or start from a template. You can edit the resulting work and schedule."
 						})] })]
 					})
 				}),
@@ -30859,7 +30872,7 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 					className: "mx-6 mt-3 flex items-center gap-2 rounded-xl border border-destructive/30 bg-destructive/10 px-3.5 py-2.5 text-xs text-destructive",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: error })]
 				}),
-				!clientAssigned && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				!clientAssigned && !isBlank && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "mx-6 mt-3 flex items-center gap-2 rounded-xl border border-amber-300 bg-amber-50 px-3.5 py-2.5 text-xs text-amber-900",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0 text-amber-700" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Client assignment required: Assign a client to unlock starting this workflow." })]
 				}),
@@ -30967,7 +30980,7 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 							}),
 							isBlank && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 								className: "rounded-xl border border-dashed p-4 text-xs text-muted-foreground",
-								children: "No stages yet. You'll add them from the timeline, one stage of six tasks at a time."
+								children: "Start empty. Add your own work types and tasks from the timeline, then choose whether they run in parallel or after other work."
 							}),
 							isDefaultPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "space-y-2",
@@ -31081,7 +31094,7 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 					className: "flex shrink-0 flex-col items-stretch justify-between gap-3 border-t bg-muted/20 px-6 py-3 sm:flex-row sm:items-center",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-xs text-muted-foreground",
-						children: "Starting a workflow locks the template and creates active stages and tasks."
+						children: "The plan stays editable after starting. Timeline edits show their schedule impact before you confirm."
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex flex-wrap gap-2",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
@@ -31091,12 +31104,8 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 							children: "Cancel"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 							onClick: handleStartWorkflow,
-							disabled: submitting || !clientAssigned || !selectedTemplate || isDefaultPlan && !planStages?.some((stage) => stage.include),
-							children: submitting ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 mr-1.5 animate-spin" }), "Starting Workflow…"] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3.5 mr-1.5" }),
-								"Start ",
-								selectedTemplate?.name || "Workflow"
-							] })
+							disabled: submitting || !clientAssigned && !isBlank || !selectedTemplate || isDefaultPlan && !planStages?.some((stage) => stage.include),
+							children: submitting ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 mr-1.5 animate-spin" }), "Starting Workflow…"] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3.5 mr-1.5" }), isBlank ? "Start custom plan" : `Start ${selectedTemplate?.name || "Workflow"}`] })
 						})]
 					})]
 				})
@@ -31105,18 +31114,373 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 	});
 }
 //#endregion
-//#region frontend/src/components/InsertTaskDialog.jsx
+//#region frontend/src/components/TaskPlacement.jsx
+function TaskPlacement({ value, onChange, tasks = [], allowKeep = false, allowFirst = false }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+		className: "space-y-2",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
+				className: "text-xs font-medium",
+				children: "When should this task run?"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+				"aria-label": "Task placement",
+				className: "w-full",
+				value: value.type,
+				onChange: (event) => onChange({
+					type: event.target.value,
+					taskId: value.taskId || tasks[0]?.id || "",
+					startDate: value.startDate || (/* @__PURE__ */ new Date()).toLocaleDateString("en-CA")
+				}),
+				children: [
+					allowKeep && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+						value: "keep",
+						children: "Keep current start and dependencies"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+						value: "after",
+						children: "After another task"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+						value: "parallel",
+						children: "In parallel with another task"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+						value: "date",
+						children: "On a specific date"
+					})
+				]
+			}),
+			["after", "parallel"].includes(value.type) && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+				className: "block space-y-1",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "text-xs",
+					children: "Reference task"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+					"aria-label": "Reference task",
+					className: "w-full",
+					value: value.taskId || "",
+					onChange: (event) => onChange({
+						...value,
+						taskId: event.target.value
+					}),
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+						value: "",
+						children: allowFirst && value.type === "after" ? "First task in this work type" : "Choose a task…"
+					}), tasks.map((task) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+						value: task.id,
+						children: task.title
+					}, task.id))]
+				})]
+			}),
+			value.type === "date" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+				className: "block space-y-1",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "text-xs",
+					children: "Start date"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+					"aria-label": "Task start date",
+					type: "date",
+					value: value.startDate || "",
+					onChange: (event) => onChange({
+						...value,
+						startDate: event.target.value
+					})
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-xs text-muted-foreground",
+				children: value.type === "parallel" ? "Both tasks start together. The existing task keeps its dates." : value.type === "after" ? "This task waits for the reference task. The preview shows any later work that must move." : value.type === "date" ? "This task starts independently on the selected date." : "Existing dependencies are preserved."
+			})
+		]
+	});
+}
+//#endregion
+//#region frontend/src/components/ScheduleImpact.jsx
 var label = (value) => value ? (/* @__PURE__ */ new Date(`${value}T00:00:00Z`)).toLocaleDateString([], {
 	day: "numeric",
 	month: "short",
 	timeZone: "UTC"
-}) : "no date";
-function InsertTaskDialog({ open, onOpenChange, projectId, stage, afterTask, members = [], telegramLinked = true, onAdded }) {
+}) : "unconfirmed";
+function ScheduleImpact({ preview, pending, error }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "space-y-2 rounded-xl border bg-muted/30 p-3 text-xs",
+		"aria-live": "polite",
+		children: pending ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Checking the schedule…" }) : error ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "text-destructive",
+			role: "alert",
+			children: error
+		}) : preview ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "font-medium",
+				children: "Review before confirming"
+			}),
+			(preview.conflicts || []).map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-destructive",
+				children: item.reason
+			}, index)),
+			(preview.created || []).map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.title }),
+				": ",
+				label(item.start),
+				" – ",
+				label(item.end)
+			] }, index)),
+			(preview.affected || []).map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.taskName || item.title }),
+				": ",
+				label(item.previousStart),
+				" – ",
+				label(item.previousEnd),
+				" → ",
+				label(item.forecastStart),
+				" – ",
+				label(item.forecastEnd),
+				!item.moved && !item.committed ? " · dependent work" : ""
+			] }, item.taskId)),
+			!(preview.affected || []).some((item) => !item.moved && !item.committed) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "No other task dates change." }),
+			(preview.warnings || []).map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: item.reason }, index)),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+				"Projected finish: ",
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: label(preview.finish) }),
+				". Nothing changes until you confirm."
+			] })
+		] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Complete the fields to preview the dates and any effect on other work." })
+	});
+}
+//#endregion
+//#region frontend/src/components/EditTimelineTaskDialog.jsx
+function EditTimelineTaskDialog({ item, tasks = [], members = [], telegramLinked, onClose, onSaved }) {
+	const [value, setValue] = (0, import_react.useState)(null), [saving, setSaving] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)("");
+	(0, import_react.useEffect)(() => {
+		if (!item) {
+			setValue(null);
+			return;
+		}
+		const prefix = item.stage?.name + " — ";
+		setValue({
+			fromTitle: item.task.title,
+			fromRole: item.task.sourceRole || "Team",
+			fromAssigneeId: item.task.assigneeId || "",
+			fromStart: item.start === null ? "" : new Date(item.start).toISOString().slice(0, 10),
+			fromEnd: item.end === null ? "" : (/* @__PURE__ */ new Date(item.end - 864e5)).toISOString().slice(0, 10),
+			title: item.task.title.startsWith(prefix) ? item.task.title.slice(prefix.length) : item.task.title,
+			role: item.task.sourceRole || "Team",
+			assigneeId: item.task.assigneeId || "",
+			durationDays: item.start !== null && item.end !== null ? Math.round((item.end - item.start) / 864e5) : 1,
+			placement: item.start === null ? {
+				type: "date",
+				startDate: (/* @__PURE__ */ new Date()).toLocaleDateString("en-CA")
+			} : { type: "keep" }
+		});
+		setError("");
+	}, [item?.task.id]);
+	const input = item && value ? value : null;
+	const valid = input && input.title.trim() && input.role.trim() && Number.isInteger(input.durationDays) && input.durationDays >= 1 && input.durationDays <= 365;
+	const { preview, previewing, error: previewError } = useStagePreview({
+		id: item?.task.id,
+		input
+	}, Boolean(valid), () => previewTaskPlan(item.task.id, input));
+	const set = (changes) => setValue((current) => ({
+		...current,
+		...changes
+	}));
+	const save = async () => {
+		setSaving(true);
+		setError("");
+		try {
+			onSaved(await applyTaskPlan(item.task.id, input));
+			onClose();
+		} catch (problem) {
+			setError(problem.message || "Could not edit this task.");
+		} finally {
+			setSaving(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+		open: Boolean(item),
+		onOpenChange: (open) => {
+			if (!open && !saving) onClose();
+		},
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
+			className: "max-h-[92dvh] max-w-lg overflow-y-auto",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Edit work item" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Edit the name, owner, duration or dependency. Review the schedule impact before saving." })] }),
+				item && value && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "space-y-3",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "block space-y-1",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-xs font-medium",
+								children: "Task name"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								value: value.title,
+								maxLength: 80,
+								onChange: (event) => set({ title: event.target.value })
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "grid grid-cols-2 gap-2",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "space-y-1",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "text-xs",
+									children: "Role"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									maxLength: 80,
+									value: value.role,
+									onChange: (event) => set({ role: event.target.value })
+								})]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "space-y-1",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "text-xs",
+									children: "Duration in days"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									type: "number",
+									min: 1,
+									max: 365,
+									step: 1,
+									value: value.durationDays,
+									onChange: (event) => set({ durationDays: event.target.value === "" ? "" : Number(event.target.value) })
+								})]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "block space-y-1",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-xs",
+								children: "Owner"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+								className: "w-full",
+								value: value.assigneeId,
+								onChange: (event) => set({ assigneeId: event.target.value }),
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+										value: "",
+										children: telegramLinked ? "By role" : "Unassigned"
+									}),
+									!telegramLinked && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+										value: "founder",
+										children: "Founder"
+									}),
+									members.filter((member) => member.employeeId).map((member) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+										value: member.employeeId,
+										children: member.name
+									}, member.employeeId))
+								]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TaskPlacement, {
+							allowKeep: true,
+							value: value.placement,
+							tasks: tasks.filter((task) => task.id !== item.task.id && !task.deletedAt && task.status !== "Cancelled"),
+							onChange: (placement) => set({ placement })
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ScheduleImpact, {
+							preview,
+							pending: previewing,
+							error: previewError
+						}),
+						error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							role: "alert",
+							className: "text-xs text-destructive",
+							children: error
+						})
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex justify-end gap-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						disabled: saving,
+						onClick: onClose,
+						children: "Cancel"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						disabled: !valid || !preview?.ok || previewing || Boolean(previewError) || saving,
+						onClick: save,
+						children: saving ? "Saving…" : "Confirm and save"
+					})]
+				})
+			]
+		})
+	});
+}
+//#endregion
+//#region frontend/src/components/RenameWorkTypeDialog.jsx
+function RenameWorkTypeDialog({ stage, projectId, onClose, onSaved }) {
+	const [name, setName] = (0, import_react.useState)(""), [saving, setSaving] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)("");
+	(0, import_react.useEffect)(() => {
+		setName(stage?.name || "");
+		setError("");
+	}, [stage?.id]);
+	const save = async () => {
+		setSaving(true);
+		setError("");
+		try {
+			onSaved(await renameWorkType(projectId, stage.id, {
+				name,
+				fromName: stage.name
+			}));
+			onClose();
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setSaving(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+		open: Boolean(stage),
+		onOpenChange: (open) => {
+			if (!open && !saving) onClose();
+		},
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Edit work type" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Renaming this stage keeps its tasks, dates and dependencies. No schedule dates change." })] }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+				className: "space-y-1",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "text-xs",
+					children: "Work type name"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+					value: name,
+					maxLength: 60,
+					onChange: (event) => setName(event.target.value)
+				})]
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-xs text-destructive",
+				role: "alert",
+				children: error
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex justify-end gap-2",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: "outline",
+					disabled: saving,
+					onClick: onClose,
+					children: "Cancel"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					disabled: saving || !name.trim() || name.trim() === stage?.name,
+					onClick: save,
+					children: saving ? "Saving…" : "Confirm rename"
+				})]
+			})
+		] })
+	});
+}
+//#endregion
+//#region frontend/src/components/InsertTaskDialog.jsx
+function InsertTaskDialog({ open, onOpenChange, projectId, stage, afterTask, initialPlacement, members = [], tasks = [], telegramLinked = true, onAdded }) {
 	const [value, setValue] = (0, import_react.useState)({
 		title: "",
 		role: "Site Team",
 		durationDays: 1,
-		assigneeId: ""
+		assigneeId: "",
+		placement: {
+			type: "after",
+			taskId: ""
+		}
 	});
 	const [saving, setSaving] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
@@ -31126,19 +31490,24 @@ function InsertTaskDialog({ open, onOpenChange, projectId, stage, afterTask, mem
 				title: "",
 				role: "Site Team",
 				durationDays: 1,
-				assigneeId: ""
+				assigneeId: "",
+				placement: initialPlacement || {
+					type: "after",
+					taskId: afterTask?.id || ""
+				}
 			});
 			setError("");
 		}
 	}, [open]);
 	const task = {
 		stageId: stage?.id,
-		afterTaskId: afterTask?.id || "",
 		...value,
-		title: value.title.trim()
+		title: value.title.trim(),
+		afterTaskId: value.placement.taskId || "",
+		placementType: value.placement.type,
+		startDate: value.placement.startDate
 	};
 	const { preview, previewing, error: previewError } = useStagePreview(task, open && Boolean(task.title && stage), () => previewInsertTask(projectId, task));
-	const pushed = preview?.affected?.filter((item) => !item.moved) || [];
 	const save = async () => {
 		setSaving(true);
 		setError("");
@@ -31158,11 +31527,11 @@ function InsertTaskDialog({ open, onOpenChange, projectId, stage, afterTask, mem
 			if (!saving) onOpenChange(next);
 		},
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
-			className: "max-w-md",
+			className: "max-h-[92dvh] max-w-lg overflow-y-auto",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogTitle, { children: ["Add a task to ", stage?.name] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, {
 					className: "text-xs",
-					children: afterTask ? `It starts after "${afterTask.title.split(" — ").at(-1)}". Later tasks in the stage wait for it.` : "It becomes the first task of this stage."
+					children: "Choose when this work runs, then review any change to the schedule before confirming."
 				})] }),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "space-y-3",
@@ -31217,17 +31586,16 @@ function InsertTaskDialog({ open, onOpenChange, projectId, stage, afterTask, mem
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "text-xs font-medium",
 									children: "Days"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
-									value: String(value.durationDays),
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									type: "number",
+									min: 1,
+									max: 365,
+									step: 1,
+									value: value.durationDays,
 									onChange: (event) => setValue({
 										...value,
-										durationDays: Number(event.target.value)
-									}),
-									className: "w-full",
-									children: DURATION_OPTIONS.filter(Boolean).map((days) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
-										value: String(days),
-										children: durationLabel(days)
-									}, days))
+										durationDays: event.target.value === "" ? "" : Number(event.target.value)
+									})
 								})]
 							})]
 						}),
@@ -31259,25 +31627,19 @@ function InsertTaskDialog({ open, onOpenChange, projectId, stage, afterTask, mem
 								]
 							})]
 						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "min-h-9 rounded-lg bg-muted/50 px-3 py-2 text-xs",
-							"aria-live": "polite",
-							children: previewing ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-								className: "flex items-center gap-1.5 text-muted-foreground",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin" }), "Checking…"]
-							}) : previewError ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-								className: "flex items-start gap-1.5 text-destructive",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Octagon, { className: "mt-0.5 size-3.5 shrink-0" }), previewError]
-							}) : preview ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
-								label(preview.created?.[0]?.start),
-								" – ",
-								label(preview.created?.[0]?.end),
-								pushed.length ? ` · ${pushed.length} later task${pushed.length === 1 ? "" : "s"} move back` : " · nothing else moves",
-								preview.finish ? ` · finish ${label(preview.finish)}` : ""
-							] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-muted-foreground",
-								children: "Name the task to see its dates."
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TaskPlacement, {
+							allowFirst: true,
+							value: value.placement,
+							tasks: tasks.filter((task) => !task.deletedAt && task.status !== "Cancelled"),
+							onChange: (placement) => setValue({
+								...value,
+								placement
 							})
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ScheduleImpact, {
+							preview,
+							pending: previewing,
+							error: previewError
 						}),
 						error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "text-xs text-destructive",
@@ -31296,7 +31658,7 @@ function InsertTaskDialog({ open, onOpenChange, projectId, stage, afterTask, mem
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						disabled: saving || !preview?.ok || previewing || Boolean(previewError),
 						onClick: save,
-						children: saving ? "Adding…" : "Add task"
+						children: saving ? "Adding…" : "Confirm and add task"
 					})]
 				})
 			]
@@ -31622,6 +31984,9 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 	const [addStage, setAddStage] = (0, import_react.useState)(null);
 	const [insertTask, setInsertTask] = (0, import_react.useState)(null);
 	const [menu, setMenu] = (0, import_react.useState)(null);
+	const [editingTaskId, setEditingTaskId] = (0, import_react.useState)(null);
+	const [renamingStageId, setRenamingStageId] = (0, import_react.useState)(null);
+	const menuRef = (0, import_react.useRef)(null);
 	const [search, setSearch] = (0, import_react.useState)("");
 	const [selectedStageId, setSelectedStageId] = (0, import_react.useState)(null);
 	const [drag, setDrag] = (0, import_react.useState)(null);
@@ -31953,8 +32318,8 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 		if (!canPlan || pressRef.current || dragRef.current) return;
 		event.preventDefault();
 		setMenu({
-			x: Math.min(event.clientX, window.innerWidth - 248),
-			y: Math.min(event.clientY, window.innerHeight - 160),
+			x: Math.max(8, Math.min(event.clientX || event.currentTarget.getBoundingClientRect().left, window.innerWidth - 248)),
+			y: Math.max(8, Math.min(event.clientY || event.currentTarget.getBoundingClientRect().bottom, window.innerHeight - 330)),
 			...entry
 		});
 	};
@@ -31967,6 +32332,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 	};
 	(0, import_react.useEffect)(() => {
 		if (!menu) return void 0;
+		menuRef.current?.querySelector("[role=\"menuitem\"]")?.focus();
 		const close = (event) => {
 			if (event.type === "keydown" && event.key !== "Escape") return;
 			setMenu(null);
@@ -32256,9 +32622,10 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 									className: "iksha-schedule-row iksha-stage-row",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 										className: "iksha-schedule-label iksha-stage-heading",
-										onClick: () => toggle(stage.id),
+										onClick: (event) => canPlan ? openMenu(event, { stage }) : toggle(stage.id),
 										onContextMenu: (event) => stage.id !== "other" && openMenu(event, { stage }),
-										"aria-expanded": !isCollapsed,
+										"aria-haspopup": canPlan ? "menu" : void 0,
+										"aria-expanded": canPlan ? menu?.stage?.id === stage.id : !isCollapsed,
 										children: [
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 												className: "iksha-stage-number",
@@ -32275,6 +32642,12 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 										]
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "iksha-schedule-track",
+										onClick: (event) => {
+											if (canPlan && stage.id !== "other" && event.target === event.currentTarget) openMenu(event, {
+												stage,
+												date: new Date(from + Math.floor((event.clientX - event.currentTarget.getBoundingClientRect().left) / dayWidth) * calendarDay).toISOString().slice(0, 10)
+											});
+										},
 										children: [groupStart !== null && groupEnd !== null && (stageDragging || groupEnd > from && groupStart < to) ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 											className: `iksha-stage-range ${stageMovable ? "is-movable" : ""} ${stageDragging ? "is-dragging" : ""}`,
 											"aria-label": `Open ${stage.name} stage details${stageMovable ? ". Drag to move the whole stage" : ""}`,
@@ -32298,12 +32671,13 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 												const step = event.key === "ArrowRight" ? 1 : -1;
 												propose(stageMoves(items, stage.id, step), `Move stage “${stage.name}” a day ${step > 0 ? "later" : "earlier"}`);
 											},
-											onClick: () => {
+											onClick: (event) => {
 												if (suppressClick.current) {
 													suppressClick.current = false;
 													return;
 												}
-												setSelectedStageId(stage.id);
+												if (canPlan) openMenu(event, { stage });
+												else setSelectedStageId(stage.id);
 											},
 											style: {
 												left: (Math.max(groupStart + stageShift * calendarDay, from) - from) / calendarDay * dayWidth,
@@ -32345,7 +32719,10 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 										"data-task-row": item.task.id,
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 											className: "iksha-schedule-label",
-											onClick: () => onOpenTask(item.task),
+											onClick: (event) => canPlan && item.stage ? openMenu(event, {
+												stage: item.stage,
+												task: item.task
+											}) : onOpenTask(item.task),
 											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 												className: `iksha-task-state state-${status.key}`,
 												children: complete(item.task) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { size: 10 })
@@ -32356,6 +32733,12 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 											] })] })]
 										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 											className: "iksha-schedule-track",
+											onClick: (event) => {
+												if (canPlan && stage.id !== "other" && event.target === event.currentTarget) openMenu(event, {
+													stage,
+													date: new Date(from + Math.floor((event.clientX - event.currentTarget.getBoundingClientRect().left) / dayWidth) * 864e5).toISOString().slice(0, 10)
+												});
+											},
 											children: [inRange ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 												className: `iksha-task-block status-${status.key} ${status.late ? "is-late" : ""} ${barWidth < 64 ? "is-short" : ""} ${movable ? "is-movable" : ""} ${dragging ? "is-dragging" : ""} ${dragging && drag.touch ? "is-lifted" : ""}`,
 												title: `${item.task.title} · ${dateLabel(start)} – ${dateLabel(end - 864e5)} · ${flag}${movable ? " · Drag to move, pull the edge to resize, drop on another task to swap, or press Alt+Arrow" : ""}`,
@@ -32382,12 +32765,16 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 													});
 												},
 												onKeyDown: (event) => keyMove(event, item),
-												onClick: () => {
+												onClick: (event) => {
 													if (suppressClick.current) {
 														suppressClick.current = false;
 														return;
 													}
-													onOpenTask(item.task);
+													if (canPlan && item.stage) openMenu(event, {
+														stage: item.stage,
+														task: item.task
+													});
+													else onOpenTask(item.task);
 												},
 												children: [
 													Icon && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, {
@@ -32587,71 +32974,160 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 				})
 			}),
 			menu && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				ref: menuRef,
 				className: "iksha-context-menu",
 				role: "menu",
+				"aria-label": "Timeline actions",
 				style: {
 					left: menu.x,
-					top: menu.y
+					top: menu.y,
+					maxHeight: "calc(100dvh - 16px)",
+					overflowY: "auto"
 				},
 				onPointerDown: (event) => event.stopPropagation(),
 				children: [
-					menu.task && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-						role: "menuitem",
-						onClick: () => {
-							setMenu(null);
-							setInsertTask({
-								stage: menu.stage,
-								afterTask: menu.task
-							});
-						},
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ListPlus, { size: 14 }), "Add a task after this one"]
-					}),
-					!menu.task && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-						role: "menuitem",
-						onClick: () => {
-							setMenu(null);
-							setInsertTask({
-								stage: menu.stage,
-								afterTask: lastTaskOf(menu.stage.id)
-							});
-						},
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ListPlus, { size: 14 }),
-							"Add a task to ",
-							menu.stage.name
-						]
-					}),
+					menu.task && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+						!["Completed", "Cancelled"].includes(menu.task.status) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							role: "menuitem",
+							onClick: () => {
+								setEditingTaskId(menu.task.id);
+								setMenu(null);
+							},
+							children: "Edit work item"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							role: "menuitem",
+							onClick: () => {
+								onOpenTask(menu.task);
+								setMenu(null);
+							},
+							children: "Open discussion"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							role: "menuitem",
+							onClick: () => {
+								setInsertTask({
+									stage: menu.stage,
+									afterTask: menu.task
+								});
+								setMenu(null);
+							},
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ListPlus, { size: 14 }), "Add a task after this one"]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							role: "menuitem",
+							onClick: () => {
+								setInsertTask({
+									stage: menu.stage,
+									afterTask: menu.task,
+									placement: {
+										type: "parallel",
+										taskId: menu.task.id
+									}
+								});
+								setMenu(null);
+							},
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { size: 14 }), "Add a parallel task"]
+						})
+					] }),
+					!menu.task && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+						menu.date && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							role: "menuitem",
+							onClick: () => {
+								setInsertTask({
+									stage: menu.stage,
+									placement: {
+										type: "date",
+										startDate: menu.date
+									}
+								});
+								setMenu(null);
+							},
+							children: ["Add task on ", isoLabel(menu.date)]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							role: "menuitem",
+							onClick: () => {
+								setRenamingStageId(menu.stage.id);
+								setMenu(null);
+							},
+							children: "Edit work type name"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							role: "menuitem",
+							onClick: () => {
+								toggle(menu.stage.id);
+								setMenu(null);
+							},
+							children: "Expand / collapse tasks"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							role: "menuitem",
+							onClick: () => {
+								setSelectedStageId(menu.stage.id);
+								setMenu(null);
+							},
+							children: "View work type details"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							role: "menuitem",
+							onClick: () => {
+								setInsertTask({
+									stage: menu.stage,
+									afterTask: lastTaskOf(menu.stage.id)
+								});
+								setMenu(null);
+							},
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ListPlus, { size: 14 }),
+								"Add a task to ",
+								menu.stage.name
+							]
+						})
+					] }),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 						role: "menuitem",
 						onClick: () => {
-							setMenu(null);
 							setAddStage({ placement: {
 								type: "after",
 								stageName: menu.stage.name
 							} });
+							setMenu(null);
 						},
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { size: 14 }),
-							"Add a stage after ",
-							menu.stage.name
-						]
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { size: 14 }), "Add a work type after this one"]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 						role: "menuitem",
 						onClick: () => {
-							setMenu(null);
 							setAddStage({ placement: {
 								type: "parallel",
 								stageName: menu.stage.name
 							} });
+							setMenu(null);
 						},
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { size: 14 }),
-							"Add a stage alongside ",
-							menu.stage.name
-						]
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { size: 14 }), "Add a parallel work type"]
 					})
 				]
+			}),
+			canPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EditTimelineTaskDialog, {
+				item: items.find((item) => item.task.id === editingTaskId),
+				tasks,
+				members,
+				telegramLinked,
+				onClose: () => setEditingTaskId(null),
+				onSaved: (result) => {
+					onPlanChanged(result);
+					setNotice({ text: "Work item and schedule saved." });
+				}
+			}),
+			canPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RenameWorkTypeDialog, {
+				stage: stages.find((stage) => stage.id === renamingStageId),
+				projectId,
+				onClose: () => setRenamingStageId(null),
+				onSaved: (result) => {
+					onPlanChanged(result);
+					setNotice({ text: "Work type renamed. Schedule dates are unchanged." });
+				}
 			}),
 			canPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AddStageDialog, {
 				open: Boolean(addStage),
@@ -32680,6 +33156,8 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 				},
 				projectId,
 				telegramLinked,
+				tasks,
+				initialPlacement: insertTask?.placement,
 				stage: insertTask?.stage,
 				afterTask: insertTask?.afterTask,
 				members,
@@ -32702,7 +33180,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, nam
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: editable ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 						className: "iksha-only-fine",
-						children: "Drag a stage bar to move the whole stage · Drag a task to move it · Pull its right edge to change its length · Right-click to add a stage or task"
+						children: "Drag a stage bar to move the whole stage · Drag a task to move it · Pull its right edge to change its length · Click a task or work type for edit and add options"
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 						className: "iksha-only-coarse",
@@ -47125,7 +47603,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							children: "Client Assigned! Next Step: Select and Start Workflow Pipeline"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "mt-0.5 text-xs text-muted-foreground leading-relaxed",
-							children: "Choose a battle-tested Studio Iksha pilot template (Design pilot, Painting pilot) to generate sequential stages, deadlines, and starter tasks."
+							children: "Build a custom plan or start from a Design or Painting template. You can edit the tasks, work types, and schedule after starting."
 						})] })]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 						className: "shrink-0",
@@ -48464,7 +48942,7 @@ function FounderApp() {
 			const result = await post$1(`/api/founder/projects/${selectedProject.id}/complete`);
 			setCompleteConfirmOpen(false);
 			await loadProjects();
-			showNotice(result.announcementStatus === "Unknown" ? "Project completed. Telegram delivery is unconfirmed; check the group." : "Project marked complete.");
+			showNotice(result.announcementStatus === "Failed" ? "Project completed, but its Telegram group could not be found. No group message was sent." : result.announcementStatus === "Unknown" ? "Project completed. Telegram delivery is unconfirmed; check the group." : "Project marked complete.");
 		} catch (error) {
 			showNotice(error.message, true);
 		} finally {
@@ -48480,7 +48958,7 @@ function FounderApp() {
 			setViewMode("directory");
 			setSelectedProjectId(null);
 			await loadProjects();
-			showNotice(result.announcementStatus === "Unknown" ? "Project moved to Trash. Telegram delivery is unconfirmed; check the group." : "Project moved to Trash. You can restore it later.");
+			showNotice(result.announcementStatus === "Failed" ? "Project moved to Trash, but its Telegram group could not be found. No group message was sent." : result.announcementStatus === "Unknown" ? "Project moved to Trash. Telegram delivery is unconfirmed; check the group." : "Project moved to Trash. You can restore it later.");
 		} catch (error) {
 			showNotice(error.message, true);
 		} finally {

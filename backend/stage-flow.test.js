@@ -43,6 +43,43 @@ function harness({ botRows = [], onBot } = {}) {
 const botRow = (id, stage, name, start, end, extra = {}) => ({ TaskID: id, ProjectID: 'P009', Stage: stage, TaskName: `${stage} — ${name}`, Status: 'Pending', Sequence: id.split('-').at(-1), PlannedStart: start, PlannedEnd: end, ForecastStart: start, ForecastEnd: end, ...extra });
 const botError = (status, message) => Object.assign(new Error(message), { botStatus: status });
 
+test('the starting chooser offers custom planning and native templates remain editable with impact previews', async () => {
+  const h = harness(), p = h.state.projects[0];
+  Object.assign(p, { telegramGroupChatId: '', telegramProjectId: '', workflowStartedAt: '', clientName: 'Maya', status: 'Setup' });
+  const options = await h.call('GET', '/api/founder/workflows');
+  assert.equal(options.data.workflows[0].id, 'BLANK-V1');
+  const started = await h.call('POST', '/api/founder/projects/p1/workflow/start', { workflowId: 'PILOT-PAINTING-V1', startDate: '2026-11-01' });
+  assert.equal(started.status, 200);
+  const task = h.state.tasks[0], oldTitle = task.title, stage = p.stages[0];
+  const input = { fromTitle: oldTitle, fromRole: 'Team', fromAssigneeId: 'founder', fromStart: '2026-11-01', fromEnd: '2026-11-01', title: 'Collect custom samples', role: 'Designer', assigneeId: 'EMP-1', durationDays: 3, placement: { type: 'keep' } };
+  const route = `/api/founder/tasks/${task.id}/plan/`;
+  const preview = await h.call('POST', route + 'preview', input);
+  assert.equal(preview.status, 200);
+  assert.equal(task.title, oldTitle);
+  assert.ok(preview.data.affected.length > 1, 'later stages are included in the preview');
+  assert.equal(preview.data.finish, '2026-11-08');
+  assert.equal((await h.call('POST', route + 'apply', { ...input, assigneeId: 'not-member' })).status, 400);
+  assert.equal((await h.call('POST', route + 'apply', input, 'employee')).status, 401);
+  const applied = await h.call('POST', route + 'apply', input);
+  assert.equal(applied.status, 200); assert.equal(task.title, 'Collect custom samples'); assert.equal(task.assigneeId, 'EMP-1');
+  assert.equal((await h.call('POST', route + 'apply', input)).status, 409);
+  const rename = `/api/founder/projects/p1/stages/${stage.id}/rename/`;
+  assert.equal((await h.call('POST', rename + 'preview', { name: 'Research', fromName: stage.name })).status, 200);
+  assert.equal(stage.name, 'Resources');
+  assert.equal((await h.call('POST', rename + 'apply', { name: 'Research', fromName: stage.name })).status, 200);
+  assert.equal(stage.name, 'Research'); assert.equal(task.deadline, '2026-11-03');
+});
+
+test('custom planning can start empty without forcing a client or template', async () => {
+  const h = harness(), p = h.state.projects[0];
+  Object.assign(p, { telegramGroupChatId: '', telegramProjectId: '', workflowStartedAt: '', clientName: '', status: 'Setup' });
+  const input = { workflowId: 'BLANK-V1', startDate: '2026-11-01' };
+  assert.equal((await h.call('POST', '/api/founder/projects/p1/workflow/start', input)).status, 200);
+  assert.equal(p.workflowId, 'CUSTOM-V1'); assert.equal(h.state.tasks.length, 0);
+  assert.equal((await h.call('POST', '/api/founder/projects/p1/workflow/start', input)).status, 200);
+  assert.equal((await h.call('POST', '/api/founder/projects/p1/client', { clientName: 'Maya' })).status, 200);
+});
+
 test('a founder creates an unlinked custom timeline, previews without writing, then adds work and reschedules it', async () => {
   const h = harness(); const project = h.state.projects[0];
   Object.assign(project, { telegramGroupChatId: '', telegramProjectId: '', workflowStartedAt: '', status: 'Setup' });

@@ -5,6 +5,8 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { calendarDate, calendarDay as DAY, timelineItems } from '@/lib/timeline';
 import { canMove, itemStatus, moveFor, scheduleSummary, stageMoves, swapMoves, todayDate, undoMoves, unscheduledReason } from '@/lib/timelineStatus';
 import { AddStageDialog } from '@/components/AddStageDialog';
+import { EditTimelineTaskDialog } from '@/components/EditTimelineTaskDialog';
+import { RenameWorkTypeDialog } from '@/components/RenameWorkTypeDialog';
 import { InsertTaskDialog } from '@/components/InsertTaskDialog';
 import { TimelineStageDetails } from '@/components/TimelineStageDetails';
 import { avatarHue, buildPeopleIndex } from '@/lib/taskPeople';
@@ -74,6 +76,9 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
   const [addStage, setAddStage] = useState(null);
   const [insertTask, setInsertTask] = useState(null);
   const [menu, setMenu] = useState(null);
+  const [editingTaskId, setEditingTaskId] = useState(null);
+  const [renamingStageId, setRenamingStageId] = useState(null);
+  const menuRef = useRef(null);
   const [search, setSearch] = useState('');
   const [selectedStageId, setSelectedStageId] = useState(null);
   const [drag, setDrag] = useState(null);
@@ -293,7 +298,7 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
   const openMenu = (event, entry) => {
     if (!canPlan || pressRef.current || dragRef.current) return;
     event.preventDefault();
-    setMenu({ x: Math.min(event.clientX, window.innerWidth - 248), y: Math.min(event.clientY, window.innerHeight - 160), ...entry });
+    setMenu({ x: Math.max(8, Math.min(event.clientX || event.currentTarget.getBoundingClientRect().left, window.innerWidth - 248)), y: Math.max(8, Math.min(event.clientY || event.currentTarget.getBoundingClientRect().bottom, window.innerHeight - 330)), ...entry });
   };
   const lastTaskOf = (stageId) => [...items].filter((item) => item.stage?.id === stageId).sort((a, b) => (Number(a.task.sourceSequence) || 0) - (Number(b.task.sourceSequence) || 0)).at(-1)?.task || null;
   const tailStage = () => {
@@ -302,6 +307,7 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
   };
   useEffect(() => {
     if (!menu) return undefined;
+    menuRef.current?.querySelector('[role="menuitem"]')?.focus();
     const close = (event) => { if (event.type === 'keydown' && event.key !== 'Escape') return; setMenu(null); };
     window.addEventListener('pointerdown', close);
     window.addEventListener('keydown', close);
@@ -409,12 +415,12 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
             const ordered = [...group].sort((a, b) => (Number(a.task.sourceSequence) || 0) - (Number(b.task.sourceSequence) || 0) || String(a.task.createdAt || '').localeCompare(String(b.task.createdAt || '')));
             return <section key={stage.id} className={`iksha-stage color-${index % 8}`}>
               <div className="iksha-schedule-row iksha-stage-row">
-                <button className="iksha-schedule-label iksha-stage-heading" onClick={() => toggle(stage.id)} onContextMenu={(event) => stage.id !== 'other' && openMenu(event, { stage })} aria-expanded={!isCollapsed}>
+                <button className="iksha-schedule-label iksha-stage-heading" onClick={(event) => canPlan ? openMenu(event, { stage }) : toggle(stage.id)} onContextMenu={(event) => stage.id !== 'other' && openMenu(event, { stage })} aria-haspopup={canPlan ? 'menu' : undefined} aria-expanded={canPlan ? menu?.stage?.id === stage.id : !isCollapsed}>
                   <span className="iksha-stage-number">{String(index + 1).padStart(2, '0')}</span>
                   <span><strong>{stage.name}</strong><small>{group.filter((item) => complete(item.task)).length}/{group.length} done{lateCount ? ` · ${lateCount} late` : ''}</small></span>
                   {isCollapsed ? <ChevronRight size={14} /> : <ChevronDown size={14} />}
                 </button>
-                <div className="iksha-schedule-track">
+                <div className="iksha-schedule-track" onClick={(event) => { if (canPlan && stage.id !== 'other' && event.target === event.currentTarget) openMenu(event, { stage, date: new Date(from + Math.floor((event.clientX - event.currentTarget.getBoundingClientRect().left) / dayWidth) * DAY).toISOString().slice(0, 10) }); }}>
                   {groupStart !== null && groupEnd !== null && (stageDragging || (groupEnd > from && groupStart < to))
                     ? <button className={`iksha-stage-range ${stageMovable ? 'is-movable' : ''} ${stageDragging ? 'is-dragging' : ''}`} aria-label={`Open ${stage.name} stage details${stageMovable ? '. Drag to move the whole stage' : ''}`} title={`${stage.name} · ${dateLabel(groupStart + stageShift * DAY)} – ${dateLabel(groupEnd - DAY + stageShift * DAY)}${stageMovable ? ' · Drag to move the whole stage' : ''}`}
                       onPointerDown={(event) => onStagePointerDown(event, stage, groupStart, groupEnd)}
@@ -423,7 +429,7 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
                       onLostPointerCapture={() => { if (dragRef.current && !dragRef.current.touch) finishDrag(); }}
                       onContextMenu={(event) => { if (stageMovable) event.preventDefault(); }}
                       onKeyDown={(event) => { if (!stageMovable || !event.altKey || !['ArrowLeft', 'ArrowRight'].includes(event.key)) return; event.preventDefault(); const step = event.key === 'ArrowRight' ? 1 : -1; propose(stageMoves(items, stage.id, step), `Move stage “${stage.name}” a day ${step > 0 ? 'later' : 'earlier'}`); }}
-                      onClick={() => { if (suppressClick.current) { suppressClick.current = false; return; } setSelectedStageId(stage.id); }} style={{ left: (Math.max(groupStart + stageShift * DAY, from) - from) / DAY * dayWidth, width: Math.max(20, (Math.min(groupEnd + stageShift * DAY, to) - Math.max(groupStart + stageShift * DAY, from)) / DAY * dayWidth - 3) }}><span><strong>{stage.name}</strong><small>{dateLabel(groupStart + stageShift * DAY)} – {dateLabel(groupEnd - DAY + stageShift * DAY)}</small></span><ArrowUpRight size={14} /></button>
+                      onClick={(event) => { if (suppressClick.current) { suppressClick.current = false; return; } if (canPlan) openMenu(event, { stage }); else setSelectedStageId(stage.id); }} style={{ left: (Math.max(groupStart + stageShift * DAY, from) - from) / DAY * dayWidth, width: Math.max(20, (Math.min(groupEnd + stageShift * DAY, to) - Math.max(groupStart + stageShift * DAY, from)) / DAY * dayWidth - 3) }}><span><strong>{stage.name}</strong><small>{dateLabel(groupStart + stageShift * DAY)} – {dateLabel(groupEnd - DAY + stageShift * DAY)}</small></span><ArrowUpRight size={14} /></button>
                     : groupStart === null ? <button className="iksha-unscheduled" onClick={() => setSelectedStageId(stage.id)}><ArrowUpRight size={12} />Stage details</button> : null}
                   {showArrows && groupStart !== null && groupEnd !== null && edge(groupStart, groupEnd) && <OffscreenChip value={edge(groupStart, groupEnd) === 'before' ? groupEnd - DAY : groupStart} before={edge(groupStart, groupEnd) === 'before'} onClick={() => reveal(groupStart)} />}
                 </div>
@@ -447,11 +453,11 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
                 const barWidth = Math.max(12, (Math.min(end ?? 0, to) - Math.max(start ?? 0, from)) / DAY * dayWidth - 3);
                 const people = peopleOf(item.task);
                 return <div className={`iksha-schedule-row iksha-task-row ${isTarget ? 'is-swap-target' : ''} ${picked === item.task.id ? 'is-picked' : ''}`} key={item.task.id} data-task-row={item.task.id}>
-                  <button className="iksha-schedule-label" onClick={() => onOpenTask(item.task)}>
+                  <button className="iksha-schedule-label" onClick={(event) => canPlan && item.stage ? openMenu(event, { stage: item.stage, task: item.task }) : onOpenTask(item.task)}>
                     <span className={`iksha-task-state state-${status.key}`}>{complete(item.task) && <Check size={10} />}</span>
                     <span><strong>{shortTitle(item.task, item.stage)}</strong><small>{people.owner?.name || 'Unassigned'} · {flag}</small></span>
                   </button>
-                  <div className="iksha-schedule-track">
+                  <div className="iksha-schedule-track" onClick={(event) => { if (canPlan && stage.id !== 'other' && event.target === event.currentTarget) openMenu(event, { stage, date: new Date(from + Math.floor((event.clientX - event.currentTarget.getBoundingClientRect().left) / dayWidth) * DAY).toISOString().slice(0, 10) }); }}>
                     {inRange
                       ? <button
                         key="bar"
@@ -465,7 +471,7 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
                         onLostPointerCapture={() => { if (dragRef.current && !dragRef.current.touch) finishDrag(); }}
                         onContextMenu={(event) => { if (movable) event.preventDefault(); if (item.stage) openMenu(event, { stage: item.stage, task: item.task }); }}
                         onKeyDown={(event) => keyMove(event, item)}
-                        onClick={() => { if (suppressClick.current) { suppressClick.current = false; return; } onOpenTask(item.task); }}
+                        onClick={(event) => { if (suppressClick.current) { suppressClick.current = false; return; } if (canPlan && item.stage) openMenu(event, { stage: item.stage, task: item.task }); else onOpenTask(item.task); }}
                       >
                         {Icon && <Icon size={12} aria-hidden="true" className="iksha-status-icon" />}
                         {barWidth >= 64 && <PeopleStrip people={people} compact={barWidth < 170} />}
@@ -530,18 +536,31 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], project
       </DialogContent>
     </Dialog>
 
-    {menu && <div className="iksha-context-menu" role="menu" style={{ left: menu.x, top: menu.y }} onPointerDown={(event) => event.stopPropagation()}>
-      {menu.task && <button role="menuitem" onClick={() => { setMenu(null); setInsertTask({ stage: menu.stage, afterTask: menu.task }); }}><ListPlus size={14} />Add a task after this one</button>}
-      {!menu.task && <button role="menuitem" onClick={() => { setMenu(null); setInsertTask({ stage: menu.stage, afterTask: lastTaskOf(menu.stage.id) }); }}><ListPlus size={14} />Add a task to {menu.stage.name}</button>}
-      <button role="menuitem" onClick={() => { setMenu(null); setAddStage({ placement: { type: 'after', stageName: menu.stage.name } }); }}><Plus size={14} />Add a stage after {menu.stage.name}</button>
-      <button role="menuitem" onClick={() => { setMenu(null); setAddStage({ placement: { type: 'parallel', stageName: menu.stage.name } }); }}><Layers size={14} />Add a stage alongside {menu.stage.name}</button>
+    {menu && <div ref={menuRef} className="iksha-context-menu" role="menu" aria-label="Timeline actions" style={{ left: menu.x, top: menu.y, maxHeight: 'calc(100dvh - 16px)', overflowY: 'auto' }} onPointerDown={(event) => event.stopPropagation()}>
+      {menu.task && <>
+        {!['Completed', 'Cancelled'].includes(menu.task.status) && <button role="menuitem" onClick={() => { setEditingTaskId(menu.task.id); setMenu(null); }}>Edit work item</button>}
+        <button role="menuitem" onClick={() => { onOpenTask(menu.task); setMenu(null); }}>Open discussion</button>
+        <button role="menuitem" onClick={() => { setInsertTask({ stage: menu.stage, afterTask: menu.task }); setMenu(null); }}><ListPlus size={14} />Add a task after this one</button>
+        <button role="menuitem" onClick={() => { setInsertTask({ stage: menu.stage, afterTask: menu.task, placement: { type: 'parallel', taskId: menu.task.id } }); setMenu(null); }}><Layers size={14} />Add a parallel task</button>
+      </>}
+      {!menu.task && <>
+        {menu.date && <button role="menuitem" onClick={() => { setInsertTask({ stage: menu.stage, placement: { type: 'date', startDate: menu.date } }); setMenu(null); }}>Add task on {isoLabel(menu.date)}</button>}
+        <button role="menuitem" onClick={() => { setRenamingStageId(menu.stage.id); setMenu(null); }}>Edit work type name</button>
+        <button role="menuitem" onClick={() => { toggle(menu.stage.id); setMenu(null); }}>Expand / collapse tasks</button>
+        <button role="menuitem" onClick={() => { setSelectedStageId(menu.stage.id); setMenu(null); }}>View work type details</button>
+        <button role="menuitem" onClick={() => { setInsertTask({ stage: menu.stage, afterTask: lastTaskOf(menu.stage.id) }); setMenu(null); }}><ListPlus size={14} />Add a task to {menu.stage.name}</button>
+      </>}
+      <button role="menuitem" onClick={() => { setAddStage({ placement: { type: 'after', stageName: menu.stage.name } }); setMenu(null); }}><Plus size={14} />Add a work type after this one</button>
+      <button role="menuitem" onClick={() => { setAddStage({ placement: { type: 'parallel', stageName: menu.stage.name } }); setMenu(null); }}><Layers size={14} />Add a parallel work type</button>
     </div>}
+    {canPlan && <EditTimelineTaskDialog item={items.find((item) => item.task.id === editingTaskId)} tasks={tasks} members={members} telegramLinked={telegramLinked} onClose={() => setEditingTaskId(null)} onSaved={(result) => { onPlanChanged(result); setNotice({ text: 'Work item and schedule saved.' }); }} />}
+    {canPlan && <RenameWorkTypeDialog stage={stages.find((stage) => stage.id === renamingStageId)} projectId={projectId} onClose={() => setRenamingStageId(null)} onSaved={(result) => { onPlanChanged(result); setNotice({ text: 'Work type renamed. Schedule dates are unchanged.' }); }} />}
     {canPlan && <AddStageDialog open={Boolean(addStage)} onOpenChange={(open) => { if (!open) setAddStage(null); }} projectId={projectId} stages={stages} members={members} telegramLinked={telegramLinked} tailStageName={tailStage()?.name} initialPlacement={addStage?.started ? { type: 'date', startDate: new Date().toISOString().slice(0, 10) } : addStage?.placement} startedDefault={Boolean(addStage?.started)} onAdded={(result) => { setNotice({ text: `${result.stages?.map((stage) => stage.name).join(', ') || 'Stage'} saved to the project.` }); onPlanChanged(result); }} />}
-    {canPlan && <InsertTaskDialog open={Boolean(insertTask)} onOpenChange={(open) => { if (!open) setInsertTask(null); }} projectId={projectId} telegramLinked={telegramLinked} stage={insertTask?.stage} afterTask={insertTask?.afterTask} members={members} onAdded={(result) => { setNotice({ text: `${result.created?.[0]?.title || 'Task'} added.` }); onPlanChanged(result); }} />}
+    {canPlan && <InsertTaskDialog open={Boolean(insertTask)} onOpenChange={(open) => { if (!open) setInsertTask(null); }} projectId={projectId} telegramLinked={telegramLinked} tasks={tasks} initialPlacement={insertTask?.placement} stage={insertTask?.stage} afterTask={insertTask?.afterTask} members={members} onAdded={(result) => { setNotice({ text: `${result.created?.[0]?.title || 'Task'} added.` }); onPlanChanged(result); }} />}
 
     <TimelineStageDetails stage={allGroups.find((stage) => stage.id === selectedStageId)} items={items} members={members} projectId={projectId} namespace={namespace} onClose={() => setSelectedStageId(null)} onOpenTask={onOpenTask} />
     <footer className="iksha-schedule-caption">
-      <span>{editable ? <><span className="iksha-only-fine">Drag a stage bar to move the whole stage · Drag a task to move it · Pull its right edge to change its length · Right-click to add a stage or task</span><span className="iksha-only-coarse">Press and hold a task to pick it up, then drag · Hold its right edge to change its length</span> · You confirm every change</> : 'Tap a stage for its breakdown · Tap a work item for its discussion'}</span>
+      <span>{editable ? <><span className="iksha-only-fine">Drag a stage bar to move the whole stage · Drag a task to move it · Pull its right edge to change its length · Click a task or work type for edit and add options</span><span className="iksha-only-coarse">Press and hold a task to pick it up, then drag · Hold its right edge to change its length</span> · You confirm every change</> : 'Tap a stage for its breakdown · Tap a work item for its discussion'}</span>
       <span>Calendar days · Today is marked in red</span>
     </footer>
   </div>;

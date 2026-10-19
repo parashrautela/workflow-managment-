@@ -10,6 +10,7 @@ import { applyStages, fetchDefaultPlan, fetchWorkflows, startWorkflow } from "@/
 import { STAGE_TASKS, DURATION_OPTIONS, durationLabel, defaultPlanSpecs } from "@/lib/stageTemplate";
 
 const BLANK = "BLANK-V1";
+const CUSTOM_OPTION = { id: BLANK, name: "Build a custom plan", description: "Start with your own work types and tasks. Choose owners, durations and parallel or sequential work on the timeline.", stages: [] };
 const DEFAULT_PLAN = "DEFAULT-PLAN";
 // "Default plan" is not a bot template: it starts a blank project and then adds the founders' INTERIOR 1 stages,
 // after the founder has unticked or re-timed whatever this project does not need.
@@ -40,6 +41,7 @@ export function WorkflowTemplateModal({
       setLoading(true);
       fetchWorkflows("founder", projectId)
         .then((list) => {
+          list = list?.some((item) => item.id === BLANK) ? list.map((item) => item.id === BLANK ? { ...item, ...CUSTOM_OPTION } : item) : [CUSTOM_OPTION, ...(list || [])];
           // Linked projects can also start from the default plan, edited first.
           if (telegramLinked && list?.some((item) => item.id === BLANK)) list = [list[0], DEFAULT_PLAN_OPTION, ...list.slice(1)];
           setWorkflows(list || []);
@@ -71,7 +73,7 @@ export function WorkflowTemplateModal({
 
   const handleStartWorkflow = async () => {
     if (!projectId || !selectedTemplate) return;
-    if (!clientAssigned) {
+    if (!clientAssigned && !isBlank) {
       setError("You must assign a client to this project before starting a workflow.");
       return;
     }
@@ -115,7 +117,7 @@ export function WorkflowTemplateModal({
             <div>
               <DialogTitle className="text-lg font-semibold tracking-tight">Choose project type</DialogTitle>
               <DialogDescription className="text-xs">
-                Choose the project type to generate stages and tasks. Telegram projects start the same plan in the group.
+                Build your own plan or start from a template. You can edit the resulting work and schedule.
               </DialogDescription>
             </div>
           </div>
@@ -128,7 +130,7 @@ export function WorkflowTemplateModal({
           </div>
         )}
 
-        {!clientAssigned && (
+        {!clientAssigned && !isBlank && (
           <div className="mx-6 mt-3 flex items-center gap-2 rounded-xl border border-amber-300 bg-amber-50 px-3.5 py-2.5 text-xs text-amber-900">
             <AlertCircle className="size-4 shrink-0 text-amber-700" />
             <span>Client assignment required: Assign a client to unlock starting this workflow.</span>
@@ -232,7 +234,7 @@ export function WorkflowTemplateModal({
                 </div>
 
                 {isBlank && (
-                  <div className="rounded-xl border border-dashed p-4 text-xs text-muted-foreground">No stages yet. You'll add them from the timeline, one stage of six tasks at a time.</div>
+                  <div className="rounded-xl border border-dashed p-4 text-xs text-muted-foreground">Start empty. Add your own work types and tasks from the timeline, then choose whether they run in parallel or after other work.</div>
                 )}
                 {isDefaultPlan && (
                   <div className="space-y-2">
@@ -309,7 +311,7 @@ export function WorkflowTemplateModal({
         {/* Footer */}
         <div className="flex shrink-0 flex-col items-stretch justify-between gap-3 border-t bg-muted/20 px-6 py-3 sm:flex-row sm:items-center">
           <p className="text-xs text-muted-foreground">
-            Starting a workflow locks the template and creates active stages and tasks.
+            The plan stays editable after starting. Timeline edits show their schedule impact before you confirm.
           </p>
           <div className="flex flex-wrap gap-2">
             <Button variant="outline" onClick={() => onOpenChange(false)} disabled={submitting}>
@@ -317,7 +319,7 @@ export function WorkflowTemplateModal({
             </Button>
             <Button
               onClick={handleStartWorkflow}
-              disabled={submitting || !clientAssigned || !selectedTemplate || (isDefaultPlan && !planStages?.some((stage) => stage.include))}
+              disabled={submitting || (!clientAssigned && !isBlank) || !selectedTemplate || (isDefaultPlan && !planStages?.some((stage) => stage.include))}
             >
               {submitting ? (
                 <>
@@ -327,7 +329,7 @@ export function WorkflowTemplateModal({
               ) : (
                 <>
                   <Sparkles className="size-3.5 mr-1.5" />
-                  Start {selectedTemplate?.name || "Workflow"}
+                  {isBlank ? "Start custom plan" : `Start ${selectedTemplate?.name || "Workflow"}`}
                 </>
               )}
             </Button>

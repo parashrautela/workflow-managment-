@@ -411,3 +411,7 @@ export async function previewAcceptDecision(requestId, target) {
 export async function acceptDecisionRequest(requestId, target) {
   return await post(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept`, { target });
 }
+
+export const previewTaskPlan = (taskId, input) => post(`/api/founder/tasks/${taskId}/plan/preview`, input);
+export const applyTaskPlan = (taskId, input) => post(`/api/founder/tasks/${taskId}/plan/apply`, input);
+export const renameWorkType = (projectId, stageId, input) => post(`/api/founder/projects/${projectId}/stages/${stageId}/rename/apply`, input);
