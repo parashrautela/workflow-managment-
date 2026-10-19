@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildCustomStage, insertCustomTask, previewCustomMoves } from './custom-plan.js';
+import { buildCustomStage, insertCustomTask, previewCustomMoves, editCustomTask } from './custom-plan.js';
 
 const project = { id: 'p', stages: [] };
 const spec = { custom: true, name: 'Permits', placement: { type: 'date', startDate: '2026-11-01' }, tasks: [
@@ -53,4 +53,27 @@ test('inserting a task inside custom work shifts later tasks without altering th
   assert.deepEqual([...result.tasks].sort((a, b) => Number(a.sourceSequence) - Number(b.sourceSequence)).map((task) => task.title), ['Survey the land', 'Extra inspection', 'Submit permit']);
   assert.equal(built.tasks[1].sourceForecastStart, '2026-11-03');
   assert.throws(() => insertCustomTask({ ...project, stages: [built.stage] }, built.tasks, { stageId: built.stage.id, afterTaskId: 'other' }, owner), /Choose a task/);
+});
+
+test('parallel tasks share a start without blocking the existing chain, but following work types wait for both', () => {
+  const built = buildCustomStage(project, [], spec, owner);
+  const following = buildCustomStage({ ...project, stages: [built.stage] }, built.tasks, { ...spec, name: 'Build', placement: { type: 'after', stageName: 'Permits' } }, owner);
+  const all = [...built.tasks, ...following.tasks];
+  const result = insertCustomTask({ ...project, stages: [built.stage, following.stage] }, all, { stageId: built.stage.id, afterTaskId: built.tasks[0].id, placementType: 'parallel', title: 'Parallel research', role: 'Designer', durationDays: 10 }, owner);
+  const added = result.tasks.find((task) => task.id === result.addedId);
+  assert.equal(added.sourceForecastStart, '2026-11-01');
+  assert.equal(result.tasks.find((task) => task.id === built.tasks[1].id).sourceForecastStart, '2026-11-03');
+  assert.equal(result.tasks.find((task) => task.id === following.tasks[0].id).sourceForecastStart, '2026-11-11');
+});
+
+test('task editing preserves the old plan, supports parallel placement, and rejects cyclic dependencies', () => {
+  const built = buildCustomStage(project, [], spec, owner), p = { ...project, stages: [built.stage] }, first = built.tasks[0], second = built.tasks[1];
+  const input = { taskId: second.id, fromTitle: second.title, fromStart: second.sourceForecastStart, fromEnd: second.deadline, title: 'Revised permit', role: 'Architect', durationDays: 4, assigneeId: 'founder', placement: { type: 'parallel', taskId: first.id } };
+  const result = editCustomTask(p, built.tasks, input, owner);
+  assert.equal(result.tasks[1].sourceForecastStart, '2026-11-01');
+  assert.equal(result.tasks[1].title, 'Revised permit');
+  assert.equal(result.tasks[1].assigneeId, 'founder');
+  assert.equal(result.tasks[1].sourcePlannedStart, '2026-11-03');
+  assert.equal(second.title, 'Submit permit');
+  assert.throws(() => editCustomTask(p, built.tasks, { ...input, taskId: first.id, fromTitle: first.title, fromStart: first.sourceForecastStart, fromEnd: first.deadline, placement: { type: 'after', taskId: second.id } }, owner), /cycle/);
 });

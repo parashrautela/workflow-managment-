@@ -73,12 +73,18 @@ export function previewCustomMoves(tasks, moves) {
   const visited = new Set(), visiting = new Set();
   const visit = (task) => {
     if (visited.has(task.id)) return;
+    if (!task.sourceForecastStart || !task.deadline) { visited.add(task.id); return; }
     if (visiting.has(task.id)) fail('The custom plan contains a dependency cycle.', 409);
     visiting.add(task.id);
-    const predecessor = copies.find((item) => item.id === task.planPredecessorId);
-    if (predecessor) {
+    const edges = task.planPredecessors || (task.planPredecessorId ? [{ taskId: task.planPredecessorId, type: task.planDependencyType || 'FS' }] : []);
+    let earliest = -Infinity;
+    for (const edge of edges) {
+      const predecessor = copies.find((item) => item.id === edge.taskId);
+      if (!predecessor) continue;
       visit(predecessor);
-      const earliest = task.planDependencyType === 'SS' ? date(predecessor.sourceForecastStart) : date(predecessor.deadline) + DAY;
+      earliest = Math.max(earliest, edge.type === 'SS' ? date(predecessor.sourceForecastStart) : date(predecessor.deadline) + DAY);
+    }
+    if (Number.isFinite(earliest)) {
       const shift = earliest - date(task.sourceForecastStart);
       if (shift > 0) {
         if (committed.has(task.id) || task.status === 'Completed') fail(`“${task.title}” cannot start before its predecessor finishes.`, 409);
@@ -92,11 +98,12 @@ export function previewCustomMoves(tasks, moves) {
   const affected = copies.flatMap((task) => {
     const before = active.find((item) => item.id === task.id);
     return before.sourceForecastStart === task.sourceForecastStart && before.deadline === task.deadline ? [] : [{
-      taskId: task.id, webTaskId: task.id, title: task.title, previousStart: before.sourceForecastStart, previousEnd: before.deadline,
+      taskId: task.id, webTaskId: task.id, title: task.title, taskName: task.title, previousStart: before.sourceForecastStart, previousEnd: before.deadline,
       forecastStart: task.sourceForecastStart, forecastEnd: task.deadline, committed: committed.has(task.id),
+      moved: committed.has(task.id),
     }];
   });
-  return { ok: true, conflicts: [], warnings: [], affected, finish: copies.map((task) => task.deadline).filter(Boolean).sort().at(-1) || '', tasks: copies };
+  return { ok: true, conflicts: [], warnings: [], affected, finish: copies.some((task) => !task.deadline) ? '' : copies.map((task) => task.deadline).sort().at(-1) || '', tasks: copies };
 }
 
 export function insertCustomTask(project, tasks, input, validateOwner) {
@@ -104,17 +111,60 @@ export function insertCustomTask(project, tasks, input, validateOwner) {
   if (!stage) fail('Choose a stage in this project.', 404);
   const group = tasks.filter((task) => task.stageId === stage.id && !task.deletedAt && task.status !== 'Cancelled');
   if (!group.length || group.some((task) => !task.customPlan)) fail('Choose a custom stage.');
-  const after = input.afterTaskId ? group.find((task) => task.id === input.afterTaskId) : null;
+  const placementType = input.placementType || 'after';
+  if (!['after', 'parallel', 'date'].includes(placementType)) fail('Choose after, parallel or a date.');
+  const after = input.afterTaskId ? tasks.find((task) => task.id === input.afterTaskId && !task.deletedAt && task.status !== 'Cancelled') : null;
   if (input.afterTaskId && !after) fail('Choose a task in this stage.', 404);
   const first = [...group].sort((a, b) => a.sourceForecastStart.localeCompare(b.sourceForecastStart))[0];
+  if (placementType === 'parallel' && !after) fail('Choose the task to run alongside.');
   const built = buildCustomStage({ ...project, stages: [] }, [], {
-    custom: true, name: stage.name, placement: { type: 'date', startDate: after ? iso(date(after.deadline) + DAY) : first.sourceForecastStart }, tasks: [input],
+    custom: true, name: stage.name, placement: { type: 'date', startDate: placementType === 'date' ? input.startDate : after ? (placementType === 'parallel' ? after.sourceForecastStart : iso(date(after.deadline) + DAY)) : first.sourceForecastStart }, tasks: [input],
   }, validateOwner);
-  const added = { ...built.tasks[0], stageId: stage.id, planPredecessorId: after?.id || first.planPredecessorId || '', planDependencyType: after ? 'FS' : first.planDependencyType };
+  const added = { ...built.tasks[0], stageId: stage.id, planPredecessorId: placementType === 'date' ? '' : after?.id || first.planPredecessorId || '', planDependencyType: placementType === 'parallel' ? 'SS' : after ? 'FS' : first.planDependencyType };
   const afterSequence = Number(after?.sourceSequence) || 0;
   const nextSequence = Math.min(...group.map((task) => Number(task.sourceSequence)).filter((value) => value > afterSequence));
   added.sourceSequence = String(after ? (Number.isFinite(nextSequence) ? (afterSequence + nextSequence) / 2 : afterSequence + 10) : (Number(first.sourceSequence) || 10) - 5);
-  const rewired = tasks.map((task) => (!after && task.id === first.id) || (after && task.planPredecessorId === after.id && task.planDependencyType !== 'SS') ? { ...task, planPredecessorId: added.id, planDependencyType: 'FS' } : { ...task });
+  const last = [...group].sort((a, b) => a.deadline.localeCompare(b.deadline)).at(-1);
+  const rewired = tasks.map((task) => {
+    const edges = task.planPredecessors || (task.planPredecessorId ? [{ taskId: task.planPredecessorId, type: task.planDependencyType || 'FS' }] : []);
+    if (placementType === 'after' && !after && task.id === first.id) return { ...task, planPredecessorId: added.id, planDependencyType: 'FS', planPredecessors: [{ taskId: added.id, type: 'FS' }] };
+    const next = edges.map((edge) => placementType === 'after' && after?.stageId === stage.id && edge.taskId === after.id && edge.type === 'FS' && (task.stageId === stage.id || after.id === last.id) ? { taskId: added.id, type: 'FS' } : edge);
+    if (placementType !== 'after' && task.stageId !== stage.id && edges.some((edge) => edge.taskId === last.id && edge.type === 'FS')) next.push({ taskId: added.id, type: 'FS' });
+    return { ...task, planPredecessors: next };
+  });
   const result = previewCustomMoves([...rewired, added], [{ taskId: added.id, start: added.sourceForecastStart, end: added.deadline, fromStart: added.sourceForecastStart, fromEnd: added.deadline }]);
   return { ...result, created: [{ title: added.title, start: added.sourceForecastStart, end: added.deadline }], addedId: added.id };
+}
+
+// Legacy web templates have stage dates rather than per-task starts. Preserve the dates already shown in the timeline.
+export function customTasksFor(project, tasks) {
+  return tasks.map((task) => {
+    if (task.customPlan) return { ...task };
+    const stage = project.stages?.find((item) => item.id === task.stageId);
+    const start = task.sourceForecastStart || task.sourceCurrentStart || task.sourcePlannedStart || stage?.startDate || task.deadline || '';
+    const first = tasks.find((item) => item.stageId === task.stageId && !item.deletedAt && item.status !== 'Cancelled');
+    const previous = tasks.filter((item) => stage?.dependencies?.includes(item.stageId) && !item.deletedAt && item.status !== 'Cancelled').sort((a, b) => String(a.deadline).localeCompare(String(b.deadline))).at(-1);
+    return { ...task, customPlan: true, planPredecessorId: first && first.id !== task.id ? first.id : previous?.id || '', planDependencyType: first && first.id !== task.id ? 'SS' : 'FS', sourcePlannedStart: task.sourcePlannedStart || start, sourcePlannedEnd: task.sourcePlannedEnd || task.deadline || '', sourceForecastStart: start, sourceForecastEnd: task.deadline || '' };
+  });
+}
+
+export function editCustomTask(project, tasks, input, validateOwner) {
+  const copies = customTasksFor(project, tasks), task = copies.find((item) => item.id === input.taskId && !item.deletedAt);
+  if (!task) fail('Task not found.', 404);
+  if (input.fromTitle !== task.title) fail('This task changed since you opened it. Refresh and try again.', 409);
+  const duration = input.durationDays;
+  if (!Number.isInteger(duration) || duration < 1 || duration > 365) fail('Choose a duration from 1 to 365 days.');
+  const placement = input.placement || { type: 'keep' };
+  let start = task.sourceForecastStart;
+  if (placement.type === 'date') { start = placement.startDate; task.planPredecessorId = ''; task.planPredecessors = []; }
+  else if (['after', 'parallel'].includes(placement.type)) {
+    const anchor = copies.find((item) => item.id === placement.taskId && !item.deletedAt && item.status !== 'Cancelled');
+    if (!anchor || anchor.id === task.id) fail('Choose another task in this project.');
+    start = placement.type === 'after' ? iso(date(anchor.deadline) + DAY) : anchor.sourceForecastStart;
+    task.planPredecessorId = anchor.id; task.planDependencyType = placement.type === 'after' ? 'FS' : 'SS';
+    task.planPredecessors = [{ taskId: anchor.id, type: task.planDependencyType }];
+  } else if (placement.type !== 'keep') fail('Choose where the task starts.');
+  const end = iso(date(start) + (duration - 1) * DAY);
+  task.title = title(input.title, 'a task title', 80); task.sourceRole = title(input.role || 'Team', 'a role', 80); task.assigneeId = validateOwner(input.assigneeId || '');
+  return previewCustomMoves(copies, [{ taskId: task.id, start, end, fromStart: input.fromStart, fromEnd: input.fromEnd }]);
 }

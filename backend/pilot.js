@@ -1,7 +1,7 @@
 import { syncProjectTasks, refreshStageDates } from './task-sync.js';
 import { adaptBotTaskToWeb } from './task-adapter.js';
 import { randomUUID } from 'node:crypto';
-import { buildCustomStage, previewCustomMoves, insertCustomTask } from './custom-plan.js';
+import { buildCustomStage, previewCustomMoves, insertCustomTask, editCustomTask, customTasksFor } from './custom-plan.js';
 
 export class ApiError extends Error {
   constructor(message, status = 400) { super(message); this.status = status; }
@@ -20,6 +20,7 @@ const safeLink = (value = '') => {
   fail('Attachment URL must use HTTPS without credentials.');
 };
 export const workflows = [
+  { id: BLANK_WORKFLOW_ID, name: 'Build a custom plan', description: 'Start empty and add your own work types, tasks, owners and timing.', stages: [] },
   { id: 'PILOT-DESIGN-V1', name: 'Design pilot', stages: [{ name: 'Resources', durationDays: 1, tasks: ['Collect site plans and client references'] }, { name: 'Design', durationDays: 3, tasks: ['Prepare concept and review with client'] }, { name: 'Delivery', durationDays: 2, tasks: ['Deliver approved drawings'] }] },
   { id: 'PILOT-PAINTING-V1', name: 'Painting pilot', stages: [{ name: 'Resources', durationDays: 1, tasks: ['Collect site photos and measurements'] }, { name: 'Preparation', durationDays: 2, tasks: ['Prepare walls and approve colour sample'] }, { name: 'Painting', durationDays: 3, tasks: ['Apply coats and inspect finish'] }] },
 ];
@@ -146,11 +147,62 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
   };
   const botStaleGuard = (task) => ({ fromStart: task.sourceForecastStart || task.sourceCurrentStart || task.sourcePlannedStart || '', fromEnd: task.sourceForecastEnd || task.sourceCurrentEnd || task.sourcePlannedEnd || '' });
   return async (req, res, url) => {
-    const match = url.pathname.match(/^\/api\/(founder|employee)\/(workflows|projects\/[^/]+\/(?:tasks|workflow\/start|client|workspace|default-plan|schedule\/(?:preview|apply)|stages\/(?:insert-task\/)?(?:preview|apply))|tasks\/[^/]+(?:\/(?:messages|read))?|decision-requests(?:\/[^/]+(?:\/(?:comment|approve|reject|convert|read|accept|accept-preview))?)?|projects\/[^/]+\/members\/[^/]+|employees\/[^/]+\/disable)$/);
+    const match = url.pathname.match(/^\/api\/(founder|employee)\/(workflows|projects\/[^/]+\/(?:tasks|workflow\/start|client|workspace|default-plan|schedule\/(?:preview|apply)|stages\/(?:insert-task\/)?(?:preview|apply))|tasks\/[^/]+(?:\/(?:messages|read))?|decision-requests(?:\/[^/]+(?:\/(?:comment|approve|reject|convert|read|accept|accept-preview))?)?|projects\/[^/]+\/members\/[^/]+|employees\/[^/]+\/disable)$/) || url.pathname.match(/^\/api\/(founder|employee)\/(tasks\/[^/]+\/plan\/(?:preview|apply)|projects\/[^/]+\/stages\/[^/]+\/rename\/(?:preview|apply))$/);
     if (!match) return false;
     const state = getState(); const user = actor(req, match[1]); const route = match[2]; const method = req.method;
     if (route === 'workflows' && method === 'GET') { json(res, 200, { workflows }); return true; }
     let m;
+    if ((m = route.match(/^tasks\/([^/]+)\/plan\/(preview|apply)$/)) && method === 'POST') {
+      admin(user);
+      const task = state.tasks.find((item) => item.id === m[1] && !item.deletedAt);
+      if (!task) fail('Task not found.', 404);
+      const project = projectFor(state, user, task.projectId);
+      if (['Completed', 'Abandoned'].includes(project.status)) fail('This project is closed.', 409);
+      const input = await body(req); const mode = m[2];
+      owner(state, project, input.assigneeId);
+      if (input.fromTitle !== task.title) fail('This task changed since you opened it. Refresh and try again.', 409);
+      if (input.fromRole !== (task.sourceRole || 'Team') || input.fromAssigneeId !== (task.assigneeId || '')) fail('The owner or role changed since you opened this work. Refresh and try again.', 409);
+      let result;
+      if (project.telegramGroupChatId) {
+        requireLinked(project); requireSynced(state, project);
+        const placement = input.placement || { type: 'keep' };
+        const anchor = placement.taskId ? state.tasks.find((item) => item.id === placement.taskId && item.projectId === project.id && !item.deletedAt) : null;
+        if (placement.taskId && !anchor?.telegramTaskId) fail('Choose an existing task in this project.');
+        try { result = await callBotBridge('/api/integrations/web/tasks/edit', { groupChatId: project.telegramGroupChatId, mode, taskId: task.telegramTaskId, fromTitle: input.fromTitle, fromRole: input.fromRole, fromStart: input.fromStart, fromEnd: input.fromEnd, title: input.title, role: input.role, durationDays: input.durationDays, placement: { type: placement.type, taskId: anchor?.telegramTaskId, startDate: placement.startDate }, ...assigneeForBot(project, input.assigneeId) }); }
+        catch (error) { botError(error); }
+        if (mode === 'apply') { task.assigneeId = input.assigneeId || ''; await refreshFromBot(state, project); }
+      } else {
+        result = editCustomTask(project, state.tasks.filter((item) => item.projectId === project.id && !item.deletedAt), { ...input, taskId: task.id }, (id) => owner(state, project, id));
+        if (mode === 'apply') {
+          for (const updated of result.tasks) Object.assign(state.tasks.find((item) => item.id === updated.id), updated);
+          project.workflowId = 'CUSTOM-V1'; refreshStageDates(project, result.tasks);
+        }
+      }
+      if (mode === 'apply') { audit('task_plan_edited', project.id, { taskId: task.id, actorId: user.id }); await save(); }
+      json(res, 200, { ...result, tasks: state.tasks.filter((item) => item.projectId === project.id && !item.deletedAt), project: projectView(project) }); return true;
+    }
+    if ((m = route.match(/^projects\/([^/]+)\/stages\/([^/]+)\/rename\/(preview|apply)$/)) && method === 'POST') {
+      admin(user); const project = projectFor(state, user, m[1]);
+      if (['Completed', 'Abandoned'].includes(project.status)) fail('This project is closed.', 409);
+      const stage = project.stages?.find((item) => item.id === m[2]);
+      if (!stage) fail('Stage not found.', 404);
+      const input = await body(req), name = text(input.name, 'a work type name', 60);
+      if (name.includes('—')) fail('Work type names cannot contain —.');
+      if (input.fromName !== stage.name) fail('This stage changed. Refresh and try again.', 409);
+      if (project.stages.some((item) => item.id !== stage.id && item.name.toLowerCase() === name.toLowerCase())) fail('A work type with this name already exists.', 409);
+      if (project.telegramGroupChatId) {
+        requireLinked(project); requireSynced(state, project);
+        try { await callBotBridge('/api/integrations/web/stages/rename', { groupChatId: project.telegramGroupChatId, mode: m[3], stageName: stage.name, name }); } catch (error) { botError(error); }
+      }
+      if (m[3] === 'apply') {
+        if (project.phase === stage.name) project.phase = name;
+        const prefix = stage.name + ' — '; stage.name = name;
+        for (const task of state.tasks.filter((item) => item.projectId === project.id && item.stageId === stage.id)) if (task.title.startsWith(prefix)) task.title = name + ' — ' + task.title.slice(prefix.length);
+        if (project.telegramGroupChatId) await refreshFromBot(state, project);
+        audit('stage_renamed', project.id, { stageId: stage.id, name }); await save();
+      }
+      json(res, 200, { ok: true, affected: [], finish: projectSummary(state, project).deadline, tasks: state.tasks.filter((item) => item.projectId === project.id && !item.deletedAt), project: projectView(project) }); return true;
+    }
     if ((m = route.match(/^employees\/([^/]+)\/disable$/)) && method === 'POST') {
       admin(user); const employee = state.employees.find((e) => e.id === m[1]); if (!employee) fail('Employee not found.', 404);
       employee.active = false; state.employeeSessions = state.employeeSessions.filter((s) => s.employeeId !== employee.id);
@@ -176,7 +228,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
       if (['Completed', 'Abandoned'].includes(project.status)) fail('This project is closed.', 409);
       const input = await body(req); const mode = m[3];
       if (!project.telegramGroupChatId) {
-        const existing = state.tasks.filter((task) => task.projectId === project.id && !task.deletedAt);
+        const existing = customTasksFor(project, state.tasks.filter((task) => task.projectId === project.id && !task.deletedAt));
         if (m[2]) {
           const result = insertCustomTask(project, existing, input.task, (id) => owner(state, project, id));
           if (mode === 'apply') {
@@ -184,7 +236,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
               const stored = state.tasks.find((item) => item.id === task.id);
               if (stored) Object.assign(stored, task); else state.tasks.push(task);
             }
-            refreshStageDates(project, result.tasks); audit('stage_task_added', project.id, { taskId: result.addedId }); await save();
+            project.workflowId = 'CUSTOM-V1'; refreshStageDates(project, result.tasks); audit('stage_task_added', project.id, { taskId: result.addedId }); await save();
           }
           json(res, 200, { ...result, tasks: state.tasks.filter((task) => task.projectId === project.id && !task.deletedAt), project: projectView(project) }); return true;
         }
@@ -192,7 +244,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
         const result = { ok: true, conflicts: [], warnings: [], stages: [{ name: built.stage.name, startDate: built.stage.startDate, endDate: built.stage.deadline }], created: built.tasks.map((task) => ({ title: task.title, start: task.sourceForecastStart, end: task.deadline })), finish: [...existing, ...built.tasks].map((task) => task.deadline).filter(Boolean).sort().at(-1) || '' };
         if (mode === 'apply') {
           project.stages ||= []; project.stages.push(built.stage); state.tasks.push(...built.tasks);
-          project.workflowId ||= 'CUSTOM-V1'; project.workflowStartedAt ||= timestamp(); project.startDate ||= built.stage.startDate; project.status = 'Active';
+          project.workflowId = 'CUSTOM-V1'; project.workflowStartedAt ||= timestamp(); project.startDate ||= built.stage.startDate; project.status = 'Active';
           audit('stage_added', project.id, { actorId: user.id, stage: built.stage.name, created: built.tasks.length }); await save();
         }
         json(res, 200, { ...result, tasks: state.tasks.filter((task) => task.projectId === project.id && !task.deletedAt), project: projectView(project) }); return true;
@@ -209,7 +261,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
           if (!after?.telegramTaskId) fail('Task not found in this project.',404);
           afterTaskId = after.telegramTaskId;
         }
-        payload = { task: { stageName, afterTaskId, title: task.title, role: task.role, durationDays: task.durationDays, ...assigneeForBot(project, task.assigneeId) } };
+        payload = { task: { stageName, afterTaskId, placementType: task.placementType, startDate: task.startDate, title: task.title, role: task.role, durationDays: task.durationDays, ...assigneeForBot(project, owner(state, project, task.assigneeId)) } };
       } else {
         const specs = Array.isArray(input.stages) ? input.stages : [input.stage];
         if (!specs.length || specs.length > 40) fail('Send between 1 and 40 stages.');
@@ -315,10 +367,10 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
         }
         const workflow = workflows.find((w) => w.id === input.workflowId);
         if (!workflow) fail('Choose a valid workflow.');
-        if (!project.clientName || project.clientName === 'Client pending') fail('Assign a client before starting the workflow.',409);
+        if (workflow.id !== BLANK_WORKFLOW_ID && (!project.clientName || project.clientName === 'Client pending')) fail('Assign a client before starting the workflow.',409);
         if (project.status === 'Completed') fail('Completed projects cannot start a workflow.',409);
         if (project.workflowStartedAt) {
-          if (project.workflowId !== workflow.id) fail('This project already has a workflow.',409);
+          if (project.workflowId !== workflow.id && !(workflow.id === BLANK_WORKFLOW_ID && project.workflowId === 'CUSTOM-V1')) fail('This project already has a workflow.',409);
           json(res,200,{project:projectView(project)}); return true;
         }
         const startDate = input.startDate || project.startDate || timestamp().slice(0,10);
@@ -332,7 +384,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
           const deadline = date.toISOString().slice(0,10); date.setUTCDate(date.getUTCDate()+1);
           stages.push({ id: randomUUID(), name: stage.name, order: stages.length, durationDays: stage.durationDays, startDate:start, deadline, dependencies: stages.length ? [stages.at(-1).id] : [] });
         }
-        Object.assign(project,{workflowId:workflow.id,workflowStartedAt:timestamp(),startDate,status:'Active',phase:stages[0]?.name || 'Planning',stages});
+        Object.assign(project,{workflowId:workflow.id === BLANK_WORKFLOW_ID ? 'CUSTOM-V1' : workflow.id,workflowStartedAt:timestamp(),startDate,status:'Active',phase:stages[0]?.name || 'Planning',stages});
         workflow.stages.forEach((stage,index) => stage.tasks.forEach((title) => makeTask(state,project,user,{title,description:'',status:'Open',assigneeId,stageId:stages[index].id,deadline:stages[index].deadline})));
         audit('workflow_started',project.id,{workflowId:workflow.id}); await save(); json(res,200,{project:projectView(project)}); return true;
       }

@@ -449,7 +449,7 @@ export function ProjectDetailView({
                   Client Assigned! Next Step: Select and Start Workflow Pipeline
                 </h3>
                 <p className="mt-0.5 text-xs text-muted-foreground leading-relaxed">
-                  Choose a battle-tested Studio Iksha pilot template (Design pilot, Painting pilot) to generate sequential stages, deadlines, and starter tasks.
+                  Build a custom plan or start from a Design or Painting template. You can edit the tasks, work types, and schedule after starting.
                 </p>
               </div>
             </div>
