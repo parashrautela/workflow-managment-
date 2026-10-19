@@ -80,7 +80,7 @@ const toBotStatus = {
 
 export const toWebStatus = (status = '') => {
   if (status === 'Completed') return 'Completed';
-  if (status.startsWith('Archived')) return 'Cancelled';
+  if (/^(Archived|Cancelled|Closed)/.test(status)) return 'Cancelled';
   if (status === 'In Progress') return 'In progress';
   if (status === 'Issue Reported' || status.includes('Delay')) return 'Blocked';
   return 'Open';

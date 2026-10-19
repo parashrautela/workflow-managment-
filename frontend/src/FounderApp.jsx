@@ -80,6 +80,7 @@ export default function FounderApp() {
   const [memberOpen, setMemberOpen] = useState(false);
   const [factsOpen, setFactsOpen] = useState(false);
   const [trashConfirmOpen, setTrashConfirmOpen] = useState(false);
+  const [completeConfirmOpen, setCompleteConfirmOpen] = useState(false);
   const [shareLink, setShareLink] = useState(null);
   const [notice, setNotice] = useState(null);
   const [busy, setBusy] = useState(false);
@@ -235,28 +236,31 @@ export default function FounderApp() {
   };
 
   const completeProject = async () => {
-    if (!selectedProject) return;
+    if (!selectedProject || busy) return;
+    setBusy(true);
     try {
-      await post(`/api/founder/projects/${selectedProject.id}/complete`);
+      const result = await post(`/api/founder/projects/${selectedProject.id}/complete`);
+      setCompleteConfirmOpen(false);
       await loadProjects();
-      showNotice("Project marked complete.");
+      showNotice(result.announcementStatus === "Unknown" ? "Project completed. Telegram delivery is unconfirmed; check the group." : "Project marked complete.");
     } catch (error) {
       showNotice(error.message, true);
-    }
+    } finally { setBusy(false); }
   };
 
   const moveToTrash = async () => {
-    if (!selectedProject) return;
+    if (!selectedProject || busy) return;
+    setBusy(true);
     try {
-      await post(`/api/founder/projects/${selectedProject.id}/trash`);
+      const result = await post(`/api/founder/projects/${selectedProject.id}/trash`);
       setTrashConfirmOpen(false);
       setViewMode("directory");
       setSelectedProjectId(null);
       await loadProjects();
-      showNotice("Project moved to Trash. You can restore it later.");
+      showNotice(result.announcementStatus === "Unknown" ? "Project moved to Trash. Telegram delivery is unconfirmed; check the group." : "Project moved to Trash. You can restore it later.");
     } catch (error) {
       showNotice(error.message, true);
-    }
+    } finally { setBusy(false); }
   };
 
   const restoreProject = async (id) => {
@@ -582,6 +586,7 @@ export default function FounderApp() {
               onQueriesUpdated={loadDecisionRequests}
               onOpenInviteModal={handleInvite}
               onOpenTrashModal={() => setTrashConfirmOpen(true)}
+              onOpenCompleteModal={() => setCompleteConfirmOpen(true)}
               onOpenFactsModal={() => setFactsOpen(true)}
               onOpenMemberModal={() => setMemberOpen(true)}
             />
@@ -665,16 +670,21 @@ export default function FounderApp() {
         onUpdated={() => Promise.all([loadProjects(), loadEmployees()])}
       />
 
+      <Dialog open={completeConfirmOpen} onOpenChange={(open) => { if (!busy) setCompleteConfirmOpen(open); }}>
+        <DialogContent><DialogHeader><DialogTitle>Complete {selectedProject?.name}?</DialogTitle><DialogDescription>The project will be marked completed and unfinished work will be closed. {selectedProject?.telegramGroupChatId ? "Its Telegram group will receive: This project is now completed." : "No Telegram group is linked."} History stays available.</DialogDescription></DialogHeader>
+          <div className="flex justify-end gap-2"><Button variant="outline" disabled={busy} onClick={() => setCompleteConfirmOpen(false)}>Cancel</Button><Button disabled={busy} onClick={completeProject}>{busy ? "Completing…" : "Complete project"}</Button></div>
+        </DialogContent>
+      </Dialog>
       {/* Move to Trash Modal */}
-      <Dialog open={trashConfirmOpen} onOpenChange={setTrashConfirmOpen}>
+      <Dialog open={trashConfirmOpen} onOpenChange={(open) => { if (!busy) setTrashConfirmOpen(open); }}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Move {selectedProject?.name} to Trash?</DialogTitle>
-            <DialogDescription>The project will leave active workspaces and team chat. You can restore it from Trash later.</DialogDescription>
+            <DialogTitle>{selectedProject?.status === "Completed" ? "Move to trash" : "Abandon project"}: {selectedProject?.name}?</DialogTitle>
+            <DialogDescription>{selectedProject?.status === "Completed" ? "The completed project will move to recoverable trash." : "The project will be marked abandoned, its unfinished work will be closed, and its linked Telegram group will be notified."} You can restore its history from Trash later.</DialogDescription>
           </DialogHeader>
           <div className="flex justify-end gap-2">
-            <Button variant="outline" onClick={() => setTrashConfirmOpen(false)}>Cancel</Button>
-            <Button variant="destructive" onClick={moveToTrash}>Move to Trash</Button>
+            <Button variant="outline" disabled={busy} onClick={() => setTrashConfirmOpen(false)}>Cancel</Button>
+            <Button variant="destructive" disabled={busy} onClick={moveToTrash}>{busy ? "Closing…" : selectedProject?.status === "Completed" ? "Move to trash" : "Abandon & move to trash"}</Button>
           </div>
         </DialogContent>
       </Dialog>
@@ -703,7 +713,7 @@ export default function FounderApp() {
                 </Field>
                 <Field label="Status">
                   <NativeSelect name="status" defaultValue={selectedProject.status} className="w-full">
-                    {statusOptions.map((option) => <option key={option}>{option}</option>)}
+                    {statusOptions.filter((option) => option !== "Completed" || selectedProject.status === "Completed").map((option) => <option key={option}>{option}</option>)}
                   </NativeSelect>
                 </Field>
               </div>

@@ -28,16 +28,17 @@ export function ProjectDirectoryView({
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all"); // 'all' | 'ongoing' | 'needs_setup' | 'at_risk' | 'completed'
 
-  const ongoingCount = projects.filter((p) => p.status !== "Completed").length;
-  const needsSetupCount = projects.filter((p) => p.telegramSetupPending || !p.clientName || ["Unassigned Client", "Client pending"].includes(p.clientName)).length;
+  const needsSetup = (p) => !["Completed", "Abandoned"].includes(p.status) && !p.workflowStartedAt && (p.telegramSetupPending || !p.clientName || ["Unassigned Client", "Client pending"].includes(p.clientName));
+  const ongoingCount = projects.filter((p) => !["Completed", "Abandoned"].includes(p.status)).length;
+  const needsSetupCount = projects.filter(needsSetup).length;
   const atRiskCount = projects.filter((p) => p.status === "At risk").length;
   const completedCount = projects.filter((p) => p.status === "Completed").length;
 
   const filtered = projects.filter((project) => {
-    if (filter === "ongoing" && project.status === "Completed") return false;
+    if (filter === "ongoing" && ["Completed", "Abandoned"].includes(project.status)) return false;
     if (filter === "completed" && project.status !== "Completed") return false;
     if (filter === "at_risk" && project.status !== "At risk") return false;
-    if (filter === "needs_setup" && !project.telegramSetupPending && project.clientName && !["Unassigned Client", "Client pending"].includes(project.clientName)) return false;
+    if (filter === "needs_setup" && !needsSetup(project)) return false;
 
     if (search.trim()) {
       const q = search.toLowerCase();
@@ -136,7 +137,7 @@ export function ProjectDirectoryView({
             const taskCount = project.taskCount || 0;
             const progress = project.progress || 0;
             const pendingQueries = decisionRequests.filter((q) => q.projectId === project.id && !["Done", "Rejected", "Published"].includes(q.status)).length;
-            const isMissingClient = !project.clientName || ["Unassigned Client", "Client pending"].includes(project.clientName) || project.telegramSetupPending;
+            const isMissingClient = needsSetup(project);
 
             return (
               <Card

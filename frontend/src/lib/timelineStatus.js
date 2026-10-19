@@ -83,11 +83,11 @@ export function undoMoves(affected = []) {
   }));
 }
 
-export const canMove = (item) => Boolean(item.task.telegramTaskId) && !item.task.sheetPlan && !isClosed(item.task) && item.start !== null && item.end !== null;
+export const canMove = (item) => (Boolean(item.task.telegramTaskId) || item.task.customPlan === true) && !item.task.sheetPlan && !isClosed(item.task) && item.start !== null && item.end !== null;
 
 // A whole stage moves together: every open, dated task in it shifts by the same number of days.
 export function stageMoves(items, stageId, shiftDays) {
   return items
-    .filter((item) => (item.stage?.id || 'other') === stageId && !isClosed(item.task) && item.start !== null && item.end !== null && item.task.telegramTaskId)
+    .filter((item) => (item.stage?.id || 'other') === stageId && !isClosed(item.task) && item.start !== null && item.end !== null && (item.task.telegramTaskId || item.task.customPlan))
     .map((item) => moveFor(item, shiftDays));
 }
