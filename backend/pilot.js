@@ -195,6 +195,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
         try { await callBotBridge('/api/integrations/web/stages/rename', { groupChatId: project.telegramGroupChatId, mode: m[3], stageName: stage.name, name }); } catch (error) { botError(error); }
       }
       if (m[3] === 'apply') {
+        if (project.phase === stage.name) project.phase = name;
         const prefix = stage.name + ' — '; stage.name = name;
         for (const task of state.tasks.filter((item) => item.projectId === project.id && item.stageId === stage.id)) if (task.title.startsWith(prefix)) task.title = name + ' — ' + task.title.slice(prefix.length);
         if (project.telegramGroupChatId) await refreshFromBot(state, project);
