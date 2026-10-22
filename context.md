@@ -24,3 +24,7 @@ The user now explicitly authorized Google sign-in and Google Cloud Console setup
 Google OAuth client Studio Iksha Web is created in telegram-not-shii. Public client ID: `988142753322-bsj6k7hadsnrj6lv559l1g1uv6oj7hmh.apps.googleusercontent.com`. Live origin: https://workflow-managment-ebon.vercel.app; local testing: http://localhost:4173. No client secret or redirect URI is used by the popup integration. User personally accepted the Google API user-data policy and explicitly approved client creation.
 
 92 web tests pass, including real RSA-signed token validation and an HTTP admission/session integration test; the build passes. Added Google sign-in documentation. Bot PR #17 is merged (d3c08db); Railway accepted a build, which must become healthy before web cutover. Web backend GOOGLE_CLIENT_ID is staged in Railway (giving-smile project, workflow-managment- service); apply it with the new web release.
+
+## Release checkpoint
+
+Bot PR #17 is now deployed and healthy (d3c08db, ACTIVE; /health OK). User approved the privacy page at https://workflow-managment-ebon.vercel.app/privacy. Source includes the static page and both hosting routes. Web backend GOOGLE_CLIENT_ID was applied using Railway's staged-change Deploy button. Next: merge/deploy web PR #28, verify both hosting releases, finish Google branding privacy URL/audience, and have the user link their founder Google account from the authenticated Employees page.

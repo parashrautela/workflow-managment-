@@ -18,3 +18,6 @@ Implemented the non-Google-sign-in client-review backlog. See [implementation an
 The user explicitly added Google sign-in/Console setup to scope. Implemented verified Google identity, browser-bound single-use nonces, pending founder approval, explicit existing-profile linking, selected project grants, rejected/disabled denial and authenticated founder Google linking. Existing password login remains. Added Google's official verifier, plus compatible fixes for existing Vite/source-map advisories (npm audit: 0 vulnerabilities). Google Cloud branding was prepared and accepted by the user; the approved Web client is being created. See docs/google-sign-in-setup-2026-10-22.md.
 
 - Google setup verification: 92 web tests pass, production build passes, and a disposable browser request was approved into an existing employee profile without duplication. OAuth client creation succeeded; the public ID is staged on the web backend.
+
+- Bot rollout verified healthy: new PR #17 revision is ACTIVE in Railway and its public /health returns HTTP 200 with {ok:true}.
+- User approved publishing the factual privacy page required for Google branding. Added /privacy for both Railway and Vercel, linked it from sign-in, and prepared the branding URL. Production Google client ID application was triggered.

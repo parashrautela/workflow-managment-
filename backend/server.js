@@ -820,6 +820,7 @@ async function handleRequest(req, res) {
     if (req.method === 'GET' && url.pathname.startsWith('/api/')) return json(res, 404, { error: 'Not found.' });
     if (req.method === 'GET' && url.pathname === '/') return sendFile(res, 'frontend/index.html');
     if (req.method === 'GET' && (url.pathname === '/employee' || url.pathname === '/employee/')) return sendFile(res, 'frontend/index.html');
+    if (req.method === 'GET' && (url.pathname === '/privacy' || url.pathname === '/privacy.html')) return sendFile(res, 'frontend/privacy.html');
     if (req.method === 'GET' && url.pathname === '/app.css') return sendFile(res, 'frontend/app.css');
     if (req.method === 'GET' && url.pathname === '/app.js') return sendFile(res, 'frontend/app.js');
     if (req.method === 'GET' && url.pathname === '/sw.js') return sendFile(res, 'frontend/sw.js');

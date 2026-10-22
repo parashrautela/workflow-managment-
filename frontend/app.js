@@ -21805,6 +21805,11 @@ function WorkspaceAccess({ team = false, children }) {
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Sign in to move the work forward." }),
 				children,
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(GoogleSignIn, {}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+					className: "mt-3 block text-xs underline",
+					href: "/privacy",
+					children: "Privacy"
+				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "iksha-access-note",
 					children: "Clients continue to communicate through Telegram."

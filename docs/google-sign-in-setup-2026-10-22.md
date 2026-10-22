@@ -27,4 +27,4 @@ Tokens are verified for Google's signature/issuer, the exact client ID/audience,
 
 Tests use locally signed RSA tokens with mocked Google public certificates. The HTTP test exercises pending requests, restart/reuse, existing-profile linking, scoped project access, rejection/session revocation, legacy login and explicit founder Google linking. A browser check verified approving a disposable request into an existing employee profile without duplication.
 
-Live Google popup sign-in and production deployment/configuration must be verified after the client and backend environment are ready.
+User approved publishing the privacy page at `/privacy` and using it in Google branding. The client has been created and its public ID staged/applied on the production web backend. Live popup sign-in and audience publishing remain to verify after the web deployment.

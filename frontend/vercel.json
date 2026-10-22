@@ -11,6 +11,10 @@
     {
       "source": "/employee",
       "destination": "/index.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
     }
   ]
 }
