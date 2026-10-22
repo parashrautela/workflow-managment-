@@ -1,3 +1,4 @@
+import { WorkQueue } from '@/components/WorkQueue';
 import React, { useEffect, useState } from "react";
 import { IkshaBrand, WorkspaceAccess } from "@/components/WorkspaceAccess";
 import {
@@ -73,7 +74,8 @@ export default function FounderApp() {
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [viewMode, setViewMode] = useState("directory"); // 'directory' | 'detail'
   const [activities, setActivities] = useState([]);
-  const [currentTab, setCurrentTab] = useState("projects");
+  const [currentTab, setCurrentTab] = useState("actions");
+  const [workPerson,setWorkPerson] = useState("founder");
   const [searchQuery, setSearchQuery] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [createOpen, setCreateOpen] = useState(false);
@@ -316,8 +318,8 @@ export default function FounderApp() {
   // Actionable 2: "messages" (Client messages) has been REMOVED from navigation!
   const navItems = [
     ["projects", FolderKanban, "All Projects", projects.length],
-    ["decisions", CheckCircle2, "Needs attention", pendingDecisionsCount],
-    ["groups", Users, "Telegram groups", pendingGroupsCount],
+    ["actions", CheckCircle2, "Actions needed", null],
+    ["decisions", MessageSquare, "Client queries", pendingDecisionsCount],
     ["assistant", Sparkles, "Founder assistant", null],
     ["employees", Users, "Employees", employees.length],
     ["activity", Clock3, "Activity log", null],
@@ -356,17 +358,7 @@ export default function FounderApp() {
         <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           Quick Projects
         </span>
-        <Button
-          size="icon-sm"
-          variant="ghost"
-          aria-label="Create project"
-          onClick={() => {
-            setCreateOpen(true);
-            setSidebarOpen(false);
-          }}
-        >
-          <Plus />
-        </Button>
+
       </div>
 
       <div className="relative">
@@ -461,8 +453,9 @@ export default function FounderApp() {
               <p className="text-xs text-muted-foreground">
                 Workspace / {{
                   projects: viewMode === "directory" ? "All Projects" : selectedProject?.name || "Project Detail",
-                  groups: "Telegram groups",
-                  decisions: "Needs attention",
+                  actions: "Actions needed",
+                  groups: "Telegram setup",
+                  decisions: "Client queries",
                   assistant: "Assistant",
                   employees: "Employees",
                   activity: "Activity",
@@ -478,26 +471,19 @@ export default function FounderApp() {
           </div>
 
           <div className="flex items-center gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              className="hidden sm:inline-flex"
-              onClick={() => setCreateOpen(true)}
-            >
-              <Plus /> New project
-            </Button>
+
             <InitialAvatar name="Project Founder" />
           </div>
         </header>
 
         {/* Main Content Area */}
         <main className="mx-auto w-full max-w-6xl space-y-5 px-4 py-6 sm:px-7 sm:py-8">
-          {currentTab === "groups" ? (
+          {currentTab === "actions" ? (<WorkQueue projects={projects} initialPersonId={workPerson} onChanged={()=>{loadProjects();loadEmployees();}} />) : currentTab === "groups" ? (
             <TelegramGroups projects={projects} onProjectsChanged={loadProjects} />
           ) : currentTab === "decisions" ? (
             <DecisionInbox projects={projects} onProjectsChanged={loadProjects} />
           ) : currentTab === "employees" ? (
-            <EmployeeManager employees={employees} projects={projects} onAdd={() => setMemberOpen(true)} onUpdated={loadEmployees} />
+            <EmployeeManager onViewWork={employee=>{setWorkPerson(employee.id);openTab("actions");}} employees={employees} projects={projects} onAdd={() => setMemberOpen(true)} onUpdated={loadEmployees} />
           ) : currentTab === "trash" ? (
             <div className="space-y-5">
               <div>
@@ -570,8 +556,7 @@ export default function FounderApp() {
               projects={projects}
               decisionRequests={decisionRequests}
               onSelectProject={handleSelectProjectFromDir}
-              onCreateProject={() => setCreateOpen(true)}
-              onOpenGroups={() => openTab("groups")}
+                  onOpenGroups={() => openTab("groups")}
             />
           ) : currentTab === "projects" && viewMode === "detail" && selectedProject ? (
             /* Actionables 1, 3, 4, 5, 6, 7, 8, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20: Detailed Project Workspace */
@@ -596,7 +581,7 @@ export default function FounderApp() {
                 <FolderKanban className="size-10 text-primary" />
                 <h1 className="text-xl font-semibold">Start your first project</h1>
                 <p className="text-sm text-muted-foreground">Create a workspace to manage tasks, team chat, and client inquiries.</p>
-                <Button onClick={() => setCreateOpen(true)}><Plus /> Create project</Button>
+                <Button onClick={() => openTab("groups")}><Plus /> Create project</Button>
               </CardContent>
             </Card>
           )}
@@ -608,7 +593,7 @@ export default function FounderApp() {
         {[
           ["projects", FolderKanban, "Projects"],
           ["decisions", CheckCircle2, "Decisions"],
-          ["groups", Users, "Groups"]
+          ["actions", CheckCircle2, "My work"]
         ].map(([id, Icon, label]) => (
           <Button
             key={id}
@@ -625,7 +610,6 @@ export default function FounderApp() {
         ))}
         <GooeyNewButton
           hasProject={!!selectedProject}
-          onCreateProject={() => setCreateOpen(true)}
           onAddMember={() => setMemberOpen(true)}
           onShareClientLink={handleInvite}
         />

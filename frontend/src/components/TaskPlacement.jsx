@@ -1,14 +1,14 @@
 import { Input } from '@/components/ui/input';
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 
-export function TaskPlacement({ value, onChange, tasks = [], allowKeep = false, allowFirst = false }) {
+export function TaskPlacement({ value, onChange, tasks = [], allowKeep = false, allowFirst = false, sequential = true }) {
   return <fieldset className="space-y-2">
-    <legend className="text-xs font-medium">When should this task run?</legend>
+    <legend className="text-xs font-medium">After which task?</legend>
     <NativeSelect aria-label="Task placement" className="w-full" value={value.type} onChange={(event) => onChange({ type: event.target.value, taskId: value.taskId || tasks[0]?.id || '', startDate: value.startDate || new Date().toLocaleDateString('en-CA') })}>
       {allowKeep && <NativeSelectOption value="keep">Keep current start and dependencies</NativeSelectOption>}
       <NativeSelectOption value="after">After another task</NativeSelectOption>
-      <NativeSelectOption value="parallel">In parallel with another task</NativeSelectOption>
-      <NativeSelectOption value="date">On a specific date</NativeSelectOption>
+      {!sequential && <NativeSelectOption value="parallel">In parallel with another task</NativeSelectOption>}
+      {!sequential && <NativeSelectOption value="date">On a specific date</NativeSelectOption>}
     </NativeSelect>
     {['after', 'parallel'].includes(value.type) && <label className="block space-y-1"><span className="text-xs">Reference task</span><NativeSelect aria-label="Reference task" className="w-full" value={value.taskId || ''} onChange={(event) => onChange({ ...value, taskId: event.target.value })}>
       <NativeSelectOption value="">{allowFirst && value.type === 'after' ? 'First task in this work type' : 'Choose a task…'}</NativeSelectOption>

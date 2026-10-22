@@ -1,11 +1,12 @@
+import { rolesOf, hasRole, matchesRole, roleText, isStaff } from './roles.js';
+import { canWorkOnTask } from './work-access.js';
 import { syncProjectTasks, refreshStageDates } from './task-sync.js';
 import { adaptBotTaskToWeb } from './task-adapter.js';
 import { randomUUID } from 'node:crypto';
 import { buildCustomStage, previewCustomMoves, insertCustomTask, editCustomTask, customTasksFor } from './custom-plan.js';
 
-export class ApiError extends Error {
-  constructor(message, status = 400) { super(message); this.status = status; }
-}
+import { ApiError } from './api-error.js';
+export { ApiError } from './api-error.js';
 const fail = (message, status) => { throw new ApiError(message, status); };
 const timestamp = () => new Date().toISOString();
 const text = (value, label, maximum = 2000) => {
@@ -41,6 +42,7 @@ export function pushQueryMessage(state, task, request) {
 export function initializePilot(state) {
   for (const key of ['tasks','taskMessages','readPositions']) if (!Array.isArray(state[key])) state[key] = [];
   let recovered = false;
+  for(const delivery of state.digestDeliveries || [])if(delivery.status==='Sending'){delivery.status='Unknown';delivery.error='Service restarted during delivery. Check Telegram before resending.';recovered=true;}
   for (const request of state.decisionRequests) {
     if (request.deliveryStatus === 'Sending') { request.deliveryStatus = 'Unknown'; request.deliveryError = 'Service restarted during send. Check Telegram before sending again.'; recovered = true; }
   }
@@ -66,7 +68,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
     return { id: employee.id, name: employee.name, founder: false };
   };
   const projectFor = (state, user, id) => {
-    const project = state.projects.find((p) => p.id === id && (user.founder || p.members?.some((m) => m.employeeId === user.id)));
+    const project = state.projects.find((p) => p.id === id && (user.founder || p.members?.some((m) => m.employeeId === user.id && m.active!==false)));
     if (!project) fail('Project not found in your workspace.', 404);
     return project;
   };
@@ -74,7 +76,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
   const owner = (state, project, ownerId) => {
     if (!ownerId) return '';
     if (ownerId === 'founder') return ownerId;
-    if (!state.employees.some((e) => e.id === ownerId && e.active !== false) || !project.members?.some((m) => m.employeeId === ownerId)) fail('Assignee must be an active employee in this project.');
+    if (!state.employees.some((e) => e.id === ownerId && e.active !== false) || !project.members?.some((m) => m.employeeId === ownerId && m.active!==false)) fail('Assignee must be an active employee in this project.');
     return ownerId;
   };
   const taskFields = (state, project, input, previous = {}) => {
@@ -133,13 +135,14 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
   };
   const refreshFromBot = async (state, project) => { try { await syncProjectTasks(state,project,callBotBridge,{readOnly:true}); } catch { /* the sheet is updated; the next refresh hydrates */ } };
   const assigneeForBot = (project, assigneeId) => {
+    if(assigneeId==='founder')return {assigneeTelegramId:'founder',assigneeName:'Founder'};
     const member = assigneeId && project.members?.find((item) => item.employeeId === assigneeId);
     return member?.telegramUserId ? { assigneeTelegramId: String(member.telegramUserId), assigneeName: member.name || '' } : {};
   };
   // Only the fields the bot understands; it validates names, durations and placement itself.
   const stageSpecForBot = (project, spec) => {
     if (!spec || typeof spec !== 'object' || typeof spec.name !== 'string' || !Array.isArray(spec.tasks)) fail('Send a stage name and its tasks.');
-    const placement = spec.placement && typeof spec.placement === 'object' ? { type: spec.placement.type, stageName: spec.placement.stageName, startDate: spec.placement.startDate } : undefined;
+    const placement = spec.placement && typeof spec.placement === 'object' ? { type: spec.placement.type, stageName: spec.placement.stageName, startDate: spec.placement.startDate, predecessors:spec.placement.predecessors } : undefined;
     return {
       name: spec.name, placement, doneCount: spec.doneCount, ...(spec.custom === true ? { custom: true } : {}),
       tasks: spec.tasks.map((task) => ({ key: task?.key, durationDays: task?.durationDays, role: task?.role, ...(spec.custom === true ? { title: task?.title } : {}), ...assigneeForBot(project, owner(getState(), project, task?.assigneeId)) })),
@@ -240,12 +243,21 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
           }
           json(res, 200, { ...result, tasks: state.tasks.filter((task) => task.projectId === project.id && !task.deletedAt), project: projectView(project) }); return true;
         }
-        const built = buildCustomStage(project, existing, input.stage, (id) => owner(state, project, id));
-        const result = { ok: true, conflicts: [], warnings: [], stages: [{ name: built.stage.name, startDate: built.stage.startDate, endDate: built.stage.deadline }], created: built.tasks.map((task) => ({ title: task.title, start: task.sourceForecastStart, end: task.deadline })), finish: [...existing, ...built.tasks].map((task) => task.deadline).filter(Boolean).sort().at(-1) || '' };
+        const specs = Array.isArray(input.stages) ? input.stages : [input.stage];
+        if (!specs.length || specs.length > 40) fail('Send between 1 and 40 stages.');
+        const draft = { ...project, stages: [...(project.stages || [])] }, allTasks = [...existing], added = [];
+        // Build the complete batch before saving so a bad later stage cannot leave a partial template.
+        for (const spec of specs) {
+          if (spec?.spaces?.some(name => !project.spaces?.includes(name))) fail('Choose spaces from this project.');
+          const built = buildCustomStage(draft, allTasks, spec, (id) => owner(state, project, id));
+          built.stage.spaces = spec.spaces || [];
+          draft.stages.push(built.stage); allTasks.push(...built.tasks); added.push(built);
+        }
+        const result = { ok: true, conflicts: [], warnings: [], stages: added.map(({ stage }) => ({ name: stage.name, startDate: stage.startDate, endDate: stage.deadline })), created: added.flatMap(({ tasks }) => tasks.map(task => ({ title: task.title, start: task.sourceForecastStart, end: task.deadline }))), finish: allTasks.map(task => task.deadline).filter(Boolean).sort().at(-1) || '' };
         if (mode === 'apply') {
-          project.stages ||= []; project.stages.push(built.stage); state.tasks.push(...built.tasks);
-          project.workflowId = 'CUSTOM-V1'; project.workflowStartedAt ||= timestamp(); project.startDate ||= built.stage.startDate; project.status = 'Active';
-          audit('stage_added', project.id, { actorId: user.id, stage: built.stage.name, created: built.tasks.length }); await save();
+          project.stages = draft.stages; state.tasks.push(...added.flatMap(item => item.tasks));
+          project.workflowId = 'CUSTOM-V1'; project.workflowStartedAt ||= timestamp(); project.startDate ||= added[0].stage.startDate; project.status = 'Active';
+          audit('stage_added', project.id, { actorId: user.id, stages: added.map(item => item.stage.name), created: result.created.length }); await save();
         }
         json(res, 200, { ...result, tasks: state.tasks.filter((task) => task.projectId === project.id && !task.deletedAt), project: projectView(project) }); return true;
       }
@@ -264,6 +276,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
         payload = { task: { stageName, afterTaskId, placementType: task.placementType, startDate: task.startDate, title: task.title, role: task.role, durationDays: task.durationDays, ...assigneeForBot(project, owner(state, project, task.assigneeId)) } };
       } else {
         const specs = Array.isArray(input.stages) ? input.stages : [input.stage];
+        if(specs.some(spec=>spec.spaces?.some(name=>!project.spaces?.includes(name))))fail('Choose spaces from this project.');
         if (!specs.length || specs.length > 40) fail('Send between 1 and 40 stages.');
         payload = { stages: specs.map((spec) => stageSpecForBot(project, spec)) };
       }
@@ -272,6 +285,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
       catch (error) { botError(error); }
       if (mode === 'apply') {
         await refreshFromBot(state,project);
+        if(!m[2]){const specs=Array.isArray(input.stages)?input.stages:[input.stage];for(const spec of specs){if(spec.spaces?.some(name=>!project.spaces?.includes(name)))fail('Choose spaces from this project.');const stage=project.stages?.find(row=>row.name===spec.name);if(stage)stage.spaces=spec.spaces || [];}}
         audit(m[2] ? 'stage_task_added' : 'stage_added',project.id,{actorId:user.id,stages:(result.stages || []).map((stage) => stage.name),created:(result.created || []).length});
         await save();
       }
@@ -333,7 +347,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
           if (['Completed','Abandoned'].includes(project.status)) fail('This project is closed.',409);
           if (project.telegramSetupPending) fail('Finish member setup before choosing a project type.',409);
           const roster = state.telegramGroups.find((group)=>group.groupChatId===project.telegramGroupChatId)?.members.filter((member)=>member.membershipStatus==='Active') || [];
-          if (roster.length<2 || roster.some((member)=>!member.assignedName || !member.assignedRole) || roster.filter((member)=>/\bclient\b/i.test(member.assignedRole)).length!==1 || !roster.some((member)=>!/\b(client|founder)\b/i.test(member.assignedRole))) fail('Finish all member profiles, including one client and at least one team member.',409);
+          if (roster.length<2 || roster.some((member)=>!member.assignedName || !member.assignedRole) || !roster.some(member=>hasRole(member.assignedRole,'Client')) || !roster.some(member=>isStaff(member.assignedRole))) fail('Finish all member profiles, including one client and at least one team member.',409);
           if (project.workflowStartedAt && project.workflowId !== input.workflowId) fail('This project already has a workflow.',409);
           const startDate=input.startDate || project.startDate || timestamp().slice(0,10);
           if (!validDate(startDate)) fail('Enter a valid start date.');
@@ -392,10 +406,10 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
       if (m[2] === 'workspace' && method === 'GET') {
         const refreshResult = await refreshProjectWorkspaceSnapshot(state, project);
         const requests = state.decisionRequests.filter((r) => r.projectId === project.id);
-        const projectTasks = state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt);
+        const projectTasks = state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt && (user.founder || canWorkOnTask(project,t,user)));
         json(res,200,{project:projectView(project),tasks:projectTasks,requests,staleData:Boolean(refreshResult?.staleData),syncWarning:refreshResult?.warning || ''}); return true;
       }
-      if (m[2] === 'tasks' && method === 'GET') { json(res,200,{tasks:state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt)}); return true; }
+      if (m[2] === 'tasks' && method === 'GET') { json(res,200,{tasks:state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt && (user.founder || canWorkOnTask(project,t,user)))}); return true; }
       if (m[2] === 'tasks' && method === 'POST') {
         admin(user); if (['Completed', 'Abandoned'].includes(project.status)) fail('This project is closed.',409);
         if (!project.workflowStartedAt) fail('Start a workflow before creating tasks.',409);
@@ -405,11 +419,13 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
     if ((m = route.match(/^tasks\/([^/]+)(?:\/(messages|read))?$/))) {
       const task = state.tasks.find((t) => t.id === m[1] && !t.deletedAt); if (!task) fail('Task not found.',404);
       const project = projectFor(state,user,task.projectId);
+      if (!user.founder && !canWorkOnTask(project,task,user)) fail('This work is not assigned to you.',403);
       if (!m[2] && method === 'GET') { json(res,200,{task}); return true; }
       if (!m[2] && method === 'PATCH') {
         if (['Completed', 'Abandoned'].includes(project.status)) fail('This project is closed.',409);
-        if (!user.founder && task.assigneeId !== user.id) fail('Only the assignee or founder can update this task.',403);
+        if (!user.founder && !canWorkOnTask(project,task,user)) fail('Only the assignee or founder can update this task.',403);
         const input = await body(req); if (!user.founder && input.assigneeId !== undefined) admin(user);
+        if(input.status==='Completed' && task.status!=='Completed'){const edges=task.planPredecessors || (task.planPredecessorId?[{taskId:task.planPredecessorId,type:task.planDependencyType || 'FS'}]:(task.dependencies || []).map(edge=>({taskId:edge.predecessorTelegramTaskId,type:edge.type})));for(const edge of edges.filter(edge=>edge.type!=='SS')){const predecessor=state.tasks.find(row=>row.projectId===project.id && (row.id===edge.taskId || row.telegramTaskId===edge.taskId));if(!predecessor || predecessor.status!=='Completed')fail('Complete the preceding work before finishing this task.',409);}}
         Object.assign(task,taskFields(state,project,input,task),{updatedAt:timestamp(),telegramSyncStatus:'Pending'}); await synchronize(state,project); audit('task_updated',project.id,{taskId:task.id,actorId:user.id}); await save(); json(res,200,{task}); return true;
       }
       if (!m[2] && method === 'DELETE') {
@@ -439,7 +455,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
       }
     }
     if (route === 'decision-requests' && method === 'GET' && !user.founder) {
-      json(res,200,{requests:state.decisionRequests.filter((r) => state.projects.some((p) => p.id === r.projectId && p.members?.some((m) => m.employeeId === user.id)))}); return true;
+      json(res,200,{requests:state.decisionRequests.filter((r) => state.projects.some((p) => p.id === r.projectId && p.members?.some((m) => m.employeeId === user.id && m.active!==false)))}); return true;
     }
     if ((m = route.match(/^decision-requests\/([^/]+)\/(accept|accept-preview)$/)) && method === 'POST') {
       // Accept = link the query to a task (or a new stage) and apply one action. Replies are sent separately, after review.

@@ -2,6 +2,9 @@ import { readFile, writeFile, rename, unlink } from 'node:fs/promises';
 import { Pool } from 'pg';
 
 const emptyState = () => ({
+  savedTemplates: [],
+  digestSettings: [],
+  digestDeliveries: [],
   projects: [],
   tasks: [],
   taskMessages: [],

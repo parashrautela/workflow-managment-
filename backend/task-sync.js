@@ -120,6 +120,7 @@ export async function syncProjectTasks(state, project, callBotBridge, { readOnly
     const isPendingSync = task.telegramSyncStatus !== 'Synced';
     adaptBotTaskToWeb(task, source, { isLocalPendingSync: isPendingSync });
 
+    if(!isPendingSync && source.AssignedTelegramID!==undefined)task.assigneeId=project.members?.find(member=>String(member.telegramUserId)===String(source.AssignedTelegramID) && source.AssignedTelegramID)?.employeeId || (source.AssignedTelegramID && String(source.AssignedTelegramID)===String(project.leaderTelegramId)?'founder':'');
     const stage = stageFor(project, source.Stage);
     if (stage && !isPendingSync) task.stageId = stage.id;
   }

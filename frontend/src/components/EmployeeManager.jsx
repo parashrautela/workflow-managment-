@@ -1,3 +1,4 @@
+import { matchesRole } from '@/lib/roles';
 import { useEffect, useState } from "react";
 import { Check, Copy, Eye, EyeOff, KeyRound, Pencil, UserPlus, Users, UserX, AlertTriangle, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -307,7 +308,9 @@ export function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId,
   );
 }
 
-export function EmployeeManager({ employees, projects, onAdd, onUpdated }) {
+export function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewWork }) {
+  const [roleFilter,setRoleFilter]=useState("All");
+  const visibleEmployees=employees.filter(employee=>roleFilter==="All" || matchesRole(employee.designation,roleFilter) || projects.some(project=>project.members?.some(member=>member.employeeId===employee.id && matchesRole(member.roles || member.role,roleFilter))));
   const [disablingId, setDisablingId] = useState(null);
   const [confirmEmployee, setConfirmEmployee] = useState(null);
   const [editEmployee, setEditEmployee] = useState(null);
@@ -350,9 +353,10 @@ export function EmployeeManager({ employees, projects, onAdd, onUpdated }) {
         </div>
       )}
 
+      <div className="flex gap-2">{['All','Designer','Site Supervisor'].map(role=><Button key={role} variant={roleFilter===role?'default':'outline'} size="sm" onClick={()=>setRoleFilter(role)}>{role==='All'?'All employees':role==='Designer'?'Designers':'Site supervisors'}</Button>)}</div>
       {employees.length ? (
         <div className="grid gap-3 sm:grid-cols-2">
-          {employees.map((employee) => {
+          {visibleEmployees.map((employee) => {
             const isActive = employee.active !== false;
 
             return (
@@ -395,7 +399,7 @@ export function EmployeeManager({ employees, projects, onAdd, onUpdated }) {
                     )}
                   </div>
 
-                  <p className="font-mono text-xs text-muted-foreground">{employee.id}</p>
+                  <p className="font-mono text-xs text-muted-foreground">{employee.id}</p><p className="text-xs text-muted-foreground">Telegram digest: {employee.telegramConnected?'Connected':'Awaiting Start in bot'}</p><Button variant="outline" size="sm" onClick={()=>onViewWork?.(employee)}>View pending work</Button>
                   {(employee.email || employee.phone) && <p className="text-xs text-muted-foreground">{[employee.email, employee.phone].filter(Boolean).join(" · ")}</p>}
 
                   <div className="flex flex-wrap gap-1.5 pt-1">

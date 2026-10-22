@@ -188,3 +188,50 @@ test('founders can set, reset and edit employee access', async (t) => {
   assert.equal((await f.call(`/api/founder/employees/${id}/password`, 'POST', { password: 'hijack-pass-1' })).status, 401, 'founder session required');
   assert.equal((await call('/api/founder/employees/EMP-0000000000', 'PATCH', { name: 'X' })).status, 404);
 });
+
+test('spaces, reusable templates and branched stage links persist with atomic batch validation', async t => {
+  const f=await fixture(t), call=(route,method,input)=>f.call(route,method,input,f.cookie);
+  const create=async name=>(await call('/api/founder/projects','POST',{name})).data.project.id;
+  const p=await create('Template source');
+  assert.equal((await call(`/api/founder/projects/${p}/spaces`,'POST',{spaces:['Living room','Kitchen']})).status,200);
+  const one=(name,placement)=>({custom:true,name,spaces:['Kitchen'],placement,tasks:[{title:`Work ${name}`,role:'Founder',durationDays:2}]});
+  const stages=[one('A',{type:'date',startDate:'2026-11-01'}),one('B',{type:'parallel',stageName:'A'}),one('C',{type:'after',predecessors:[{stageName:'A',type:'FS'},{stageName:'B',type:'FS'}]})];
+  assert.equal((await call(`/api/founder/projects/${p}/stages/preview`,'POST',{stages})).data.created.length,3);
+  assert.equal((await call(`/api/founder/projects/${p}/workspace`)).data.tasks.length,0,'preview has no writes');
+  const bad=await call(`/api/founder/projects/${p}/stages/apply`,'POST',{stages:[stages[0],{...stages[1],tasks:[]}]});
+  assert.equal(bad.status,400);
+  assert.equal((await call(`/api/founder/projects/${p}/workspace`)).data.tasks.length,0,'a bad later stage does not partially save');
+  const added=await call(`/api/founder/projects/${p}/stages/apply`,'POST',{stages});assert.equal(added.status,200);
+  assert.equal(added.data.tasks.find(task=>task.title==='Work C').sourceForecastStart,'2026-11-03');
+  assert.equal(added.data.tasks.find(task=>task.title==='Work C').planPredecessors.length,2);
+  assert.equal((await call(`/api/founder/projects/${p}/spaces`,'POST',{spaces:['Living room']})).status,400,'used rooms remain protected');
+  const saved=await call('/api/founder/plan-templates','POST',{projectId:p,name:'House plan'});assert.equal(saved.status,201);
+  assert.equal(saved.data.template.stages.find(stage=>stage.name==='C').placement.predecessors.length,2);
+  const target=await create('Template destination');
+  const reusable=saved.data.template.stages.map(stage=>({...stage,custom:true,spaces:[],placement:stage.placement || {type:'date',startDate:'2026-12-01'}}));
+  assert.equal((await call(`/api/founder/projects/${target}/stages/apply`,'POST',{stages:reusable})).status,200);
+  const {connectionTasks,connectionFingerprint,stageLinksFor}=await import('./stage-connections.js');
+  let workspace=(await call(`/api/founder/projects/${p}/workspace`)).data;
+  const normalized=connectionTasks(workspace.tasks),fingerprint=connectionFingerprint(normalized);
+  const ids=Object.fromEntries(workspace.project.stages.map(stage=>[stage.name,stage.id]));
+  const links=[{source:ids.A,target:ids.C,type:'FS'},{source:ids.B,target:ids.C,type:'FS'}];
+  const preview=await call(`/api/founder/projects/${p}/stage-links/preview`,'POST',{links,fingerprint});assert.equal(preview.status,200);
+  assert.equal((await call(`/api/founder/projects/${p}/stage-links/apply`,'POST',{links,fingerprint:'stale'})).status,409);
+  assert.equal((await call(`/api/founder/projects/${p}/stage-links/apply`,'POST',{links,fingerprint})).status,200);
+  await f.restart();workspace=(await call(`/api/founder/projects/${p}/workspace`)).data;
+  assert.equal(stageLinksFor(connectionTasks(workspace.tasks)).length,2);
+  assert.deepEqual(workspace.project.spaces,['Living room','Kitchen']);
+  assert.equal((await call('/api/founder/plan-templates')).data.templates.length,1);
+});
+
+test('active multiple clients are accepted and departures revoke automatic query routing',async t=>{
+ const f=await fixture(t), snapshot=members=>f.call('/api/integrations/telegram/groups/snapshot','POST',{groups:[{groupChatId:'-123',title:'Shared client home',status:'Linked',botUsername:'actual_project_bot',telegramMemberCount:4,members}]},'',true);
+ const person=(id,role,status='Active')=>({telegramUserId:id,telegramName:`Person ${id}`,assignedName:`Person ${id}`,assignedRole:role,membershipStatus:status});
+ const members=[person('41','Client'),person('42','Client'),person('43','Founder, Designer')];
+ assert.equal((await snapshot(members)).status,200);
+ const groups=await f.call('/api/founder/telegram-groups','GET',undefined,f.cookie);assert.equal(groups.data.groups[0].botUsername,'actual_project_bot');
+ const query=(id,sender)=>f.call('/api/integrations/telegram/requests','POST',payload(id,{OriginalSenderTelegramID:sender,AutomaticClientQuery:true}),'',true);
+ assert.equal((await query(201,'41')).status,201);assert.equal((await query(202,'42')).status,201);assert.equal((await query(203,'43')).status,403);
+ await snapshot([person('41','Client','Left'),members[1],members[2]]);
+ assert.equal((await query(204,'41')).status,403);assert.equal((await query(205,'42')).status,201);
+});

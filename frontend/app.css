@@ -544,6 +544,10 @@
     top: calc(var(--spacing) * .5);
   }
 
+  .top-1 {
+    top: var(--spacing);
+  }
+
   .top-1\/2 {
     top: 50%;
   }
@@ -1071,6 +1075,10 @@
     height: calc(var(--spacing) * 64);
   }
 
+  .h-80 {
+    height: calc(var(--spacing) * 80);
+  }
+
   .h-\[620px\] {
     height: 620px;
   }
@@ -1145,6 +1153,10 @@
 
   .min-h-16 {
     min-height: calc(var(--spacing) * 16);
+  }
+
+  .min-h-28 {
+    min-height: calc(var(--spacing) * 28);
   }
 
   .min-h-64 {
@@ -2418,8 +2430,14 @@
     background-color: var(--color-red-100);
   }
 
-  .bg-secondary {
+  .bg-secondary, .bg-secondary\/40 {
     background-color: var(--secondary);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-secondary\/40 {
+      background-color: color-mix(in oklab, var(--secondary) 40%, transparent);
+    }
   }
 
   .bg-slate-100 {
@@ -4138,14 +4156,6 @@
       display: inline;
     }
 
-    .sm\:inline-flex {
-      display: inline-flex;
-    }
-
-    .sm\:w-52 {
-      width: calc(var(--spacing) * 52);
-    }
-
     .sm\:w-56 {
       width: calc(var(--spacing) * 56);
     }
@@ -4184,6 +4194,10 @@
 
     .sm\:grid-cols-3 {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .sm\:grid-cols-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     .sm\:grid-cols-\[1\.4fr_1fr_1fr_7\.5rem\] {

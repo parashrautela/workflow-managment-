@@ -103,6 +103,7 @@ export function adaptBotTaskToWeb(task, source, { isLocalPendingSync = false } =
 
   // Preserve source fields separately from simplified web status
   task.sourceStatus = source.Status || '';
+  task.sourceActualStart = source.ActualStart || '';
   task.sourceApprovalStatus = source.ApprovalStatus || '';
   task.sourceGateType = source.GateType || '';
   task.sourcePhase = source.Phase || '';
@@ -119,6 +120,7 @@ export function adaptBotTaskToWeb(task, source, { isLocalPendingSync = false } =
   task.sourceBlockedReason = source.BlockedReason || '';
   // Who the sheet says does the work: a named person when assigned, otherwise the plan's role (Designer, Client…).
   task.sourceAssigneeName = source.AssignedName || '';
+  task.sourceAssigneeTelegramId = source.AssignedTelegramID || '';
   task.sourceRole = source.AssignedRole || '';
   task.sourceSequence = source.Sequence !== undefined ? String(source.Sequence) : '';
 

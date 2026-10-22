@@ -1,3 +1,4 @@
+import { WorkQueue } from '@/components/WorkQueue';
 import { WorkspaceAccess, IkshaBrand } from "@/components/WorkspaceAccess";
 import { ProjectTimelineWorkspace as ProjectTimeline } from "@/components/ProjectTimelineWorkspace";
 import {ProjectFiles} from "@/components/ProjectFiles";
@@ -183,6 +184,7 @@ export default function EmployeeApp() {
       </header>
 
       <main className="mx-auto max-w-5xl space-y-6 px-4 py-6 sm:px-6">
+        <WorkQueue projects={projects} isFounder={false} initialPersonId={employee?.id || ""} personName={employee?.name || "Me"} onChanged={loadWorkspaceData} />
         {error && <p role="alert" className="rounded-xl border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">{error}</p>}
         <div>
           <p className="text-xs font-semibold uppercase tracking-wider text-primary">My workspace</p>

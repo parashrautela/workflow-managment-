@@ -11429,109 +11429,6 @@ var require_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_react_dom_client_production();
 }));
 //#endregion
-//#region node_modules/react/cjs/react-jsx-runtime.production.js
-/**
-* @license React
-* react-jsx-runtime.production.js
-*
-* Copyright (c) Meta Platforms, Inc. and affiliates.
-*
-* This source code is licensed under the MIT license found in the
-* LICENSE file in the root directory of this source tree.
-*/
-var require_react_jsx_runtime_production = /* @__PURE__ */ __commonJSMin(((exports) => {
-	var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
-	var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
-	function jsxProd(type, config, maybeKey) {
-		var key = null;
-		void 0 !== maybeKey && (key = "" + maybeKey);
-		void 0 !== config.key && (key = "" + config.key);
-		if ("key" in config) {
-			maybeKey = {};
-			for (var propName in config) "key" !== propName && (maybeKey[propName] = config[propName]);
-		} else maybeKey = config;
-		config = maybeKey.ref;
-		return {
-			$$typeof: REACT_ELEMENT_TYPE,
-			type,
-			key,
-			ref: void 0 !== config ? config : null,
-			props: maybeKey
-		};
-	}
-	exports.Fragment = REACT_FRAGMENT_TYPE;
-	exports.jsx = jsxProd;
-	exports.jsxs = jsxProd;
-}));
-//#endregion
-//#region node_modules/react/jsx-runtime.js
-var require_jsx_runtime = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	module.exports = require_react_jsx_runtime_production();
-}));
-//#endregion
-//#region frontend/src/components/WorkspaceAccess.jsx
-var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
-var import_client = /* @__PURE__ */ __toESM(require_client(), 1);
-var import_jsx_runtime = require_jsx_runtime();
-function IkshaBrand({ compact = false }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: `iksha-wordmark ${compact ? "compact" : ""}`,
-		children: [
-			"iksha",
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "." }),
-			!compact && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", { children: "SPACES, THOUGHTFULLY MADE" })
-		]
-	});
-}
-function WorkspaceAccess({ team = false, children }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
-		className: "iksha-access",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-			className: "iksha-access-story",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(IkshaBrand, {}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "iksha-eyebrow",
-						children: "THE STUDIO, IN SYNC"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", { children: [
-						"Thoughtful spaces.",
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
-						"Connected people."
-					] }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
-						"From the first client brief to the final detail.",
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
-						"One place for the work that brings it all together."
-					] })
-				] }),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", { children: "STUDIO IKSHA / PROJECT WORKSPACE" })
-			]
-		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-			className: "iksha-access-form",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "iksha-eyebrow",
-					children: team ? "TEAM ACCESS" : "FOUNDER ACCESS"
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", { children: "Welcome back." }),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Sign in to move the work forward." }),
-				children,
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "iksha-access-note",
-					children: "Clients continue to communicate through Telegram."
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-					className: "iksha-access-link",
-					href: team ? "/" : "/employee",
-					children: [team ? "Founder sign-in" : "Team member sign-in", " →"]
-				})
-			]
-		})]
-	});
-}
-//#endregion
 //#region node_modules/lucide-react/dist/esm/shared/src/utils/toKebabCase.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11711,6 +11608,7 @@ var hasA11yProp = (props) => {
 };
 //#endregion
 //#region node_modules/lucide-react/dist/esm/context.mjs
+var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11777,7 +11675,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$59 = {
+var __iconData$58 = {
 	name: "arrow-left",
 	size: 24,
 	node: [["path", {
@@ -11788,8 +11686,8 @@ var __iconData$59 = {
 		key: "x3x0zl"
 	}]]
 };
-__iconData$59.node;
-var ArrowLeft = createLucideIcon(__iconData$59);
+__iconData$58.node;
+var ArrowLeft = createLucideIcon(__iconData$58);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
@@ -11798,7 +11696,7 @@ var ArrowLeft = createLucideIcon(__iconData$59);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$58 = {
+var __iconData$57 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11809,8 +11707,8 @@ var __iconData$58 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$58.node;
-var ArrowRight = createLucideIcon(__iconData$58);
+__iconData$57.node;
+var ArrowRight = createLucideIcon(__iconData$57);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
 /**
@@ -11819,7 +11717,7 @@ var ArrowRight = createLucideIcon(__iconData$58);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$57 = {
+var __iconData$56 = {
 	name: "arrow-up-right",
 	size: 24,
 	node: [["path", {
@@ -11830,8 +11728,8 @@ var __iconData$57 = {
 		key: "1vkiza"
 	}]]
 };
-__iconData$57.node;
-var ArrowUpRight = createLucideIcon(__iconData$57);
+__iconData$56.node;
+var ArrowUpRight = createLucideIcon(__iconData$56);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
@@ -11840,7 +11738,7 @@ var ArrowUpRight = createLucideIcon(__iconData$57);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$56 = {
+var __iconData$55 = {
 	name: "arrow-up",
 	size: 24,
 	node: [["path", {
@@ -11851,8 +11749,8 @@ var __iconData$56 = {
 		key: "x0mq9r"
 	}]]
 };
-__iconData$56.node;
-var ArrowUp = createLucideIcon(__iconData$56);
+__iconData$55.node;
+var ArrowUp = createLucideIcon(__iconData$55);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
@@ -11861,7 +11759,7 @@ var ArrowUp = createLucideIcon(__iconData$56);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$55 = {
+var __iconData$54 = {
 	name: "building-complex",
 	size: 24,
 	node: [
@@ -11888,8 +11786,8 @@ var __iconData$55 = {
 	],
 	aliases: ["building-2"]
 };
-__iconData$55.node;
-var BuildingComplex = createLucideIcon(__iconData$55);
+__iconData$54.node;
+var BuildingComplex = createLucideIcon(__iconData$54);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
 /**
@@ -11898,7 +11796,7 @@ var BuildingComplex = createLucideIcon(__iconData$55);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$54 = {
+var __iconData$53 = {
 	name: "calendar-days",
 	size: 24,
 	node: [
@@ -11948,8 +11846,8 @@ var __iconData$54 = {
 		}]
 	]
 };
-__iconData$54.node;
-var CalendarDays = createLucideIcon(__iconData$54);
+__iconData$53.node;
+var CalendarDays = createLucideIcon(__iconData$53);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/calendar.mjs
 /**
@@ -11958,7 +11856,7 @@ var CalendarDays = createLucideIcon(__iconData$54);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$53 = {
+var __iconData$52 = {
 	name: "calendar",
 	size: 24,
 	node: [
@@ -11984,8 +11882,8 @@ var __iconData$53 = {
 		}]
 	]
 };
-__iconData$53.node;
-var Calendar = createLucideIcon(__iconData$53);
+__iconData$52.node;
+var Calendar = createLucideIcon(__iconData$52);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/check.mjs
 /**
@@ -11994,7 +11892,7 @@ var Calendar = createLucideIcon(__iconData$53);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$52 = {
+var __iconData$51 = {
 	name: "check",
 	size: 24,
 	node: [["path", {
@@ -12002,8 +11900,8 @@ var __iconData$52 = {
 		key: "1gmf2c"
 	}]]
 };
-__iconData$52.node;
-var Check = createLucideIcon(__iconData$52);
+__iconData$51.node;
+var Check = createLucideIcon(__iconData$51);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
 /**
@@ -12012,7 +11910,7 @@ var Check = createLucideIcon(__iconData$52);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$51 = {
+var __iconData$50 = {
 	name: "chevron-down",
 	size: 24,
 	node: [["path", {
@@ -12020,8 +11918,8 @@ var __iconData$51 = {
 		key: "qrunsl"
 	}]]
 };
-__iconData$51.node;
-var ChevronDown = createLucideIcon(__iconData$51);
+__iconData$50.node;
+var ChevronDown = createLucideIcon(__iconData$50);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
 /**
@@ -12030,7 +11928,7 @@ var ChevronDown = createLucideIcon(__iconData$51);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$50 = {
+var __iconData$49 = {
 	name: "chevron-right",
 	size: 24,
 	node: [["path", {
@@ -12038,8 +11936,8 @@ var __iconData$50 = {
 		key: "mthhwq"
 	}]]
 };
-__iconData$50.node;
-var ChevronRight = createLucideIcon(__iconData$50);
+__iconData$49.node;
+var ChevronRight = createLucideIcon(__iconData$49);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
 /**
@@ -12048,7 +11946,7 @@ var ChevronRight = createLucideIcon(__iconData$50);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$49 = {
+var __iconData$48 = {
 	name: "chevron-up",
 	size: 24,
 	node: [["path", {
@@ -12056,8 +11954,8 @@ var __iconData$49 = {
 		key: "153udz"
 	}]]
 };
-__iconData$49.node;
-var ChevronUp = createLucideIcon(__iconData$49);
+__iconData$48.node;
+var ChevronUp = createLucideIcon(__iconData$48);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
@@ -12066,7 +11964,7 @@ var ChevronUp = createLucideIcon(__iconData$49);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$48 = {
+var __iconData$47 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -12093,8 +11991,8 @@ var __iconData$48 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$48.node;
-var CircleAlert = createLucideIcon(__iconData$48);
+__iconData$47.node;
+var CircleAlert = createLucideIcon(__iconData$47);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
@@ -12103,7 +12001,7 @@ var CircleAlert = createLucideIcon(__iconData$48);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$47 = {
+var __iconData$46 = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -12117,8 +12015,8 @@ var __iconData$47 = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-__iconData$47.node;
-var CircleCheck = createLucideIcon(__iconData$47);
+__iconData$46.node;
+var CircleCheck = createLucideIcon(__iconData$46);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
 /**
@@ -12127,7 +12025,7 @@ var CircleCheck = createLucideIcon(__iconData$47);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$46 = {
+var __iconData$45 = {
 	name: "circle-pause",
 	size: 24,
 	node: [
@@ -12154,8 +12052,8 @@ var __iconData$46 = {
 	],
 	aliases: ["pause-circle"]
 };
-__iconData$46.node;
-var CirclePause = createLucideIcon(__iconData$46);
+__iconData$45.node;
+var CirclePause = createLucideIcon(__iconData$45);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
 /**
@@ -12164,7 +12062,7 @@ var CirclePause = createLucideIcon(__iconData$46);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$45 = {
+var __iconData$44 = {
 	name: "circle-question-mark",
 	size: 24,
 	node: [
@@ -12185,8 +12083,8 @@ var __iconData$45 = {
 	],
 	aliases: ["help-circle", "circle-help"]
 };
-__iconData$45.node;
-var CircleQuestionMark = createLucideIcon(__iconData$45);
+__iconData$44.node;
+var CircleQuestionMark = createLucideIcon(__iconData$44);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle-x.mjs
 /**
@@ -12195,7 +12093,7 @@ var CircleQuestionMark = createLucideIcon(__iconData$45);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$44 = {
+var __iconData$43 = {
 	name: "circle-x",
 	size: 24,
 	node: [
@@ -12216,8 +12114,8 @@ var __iconData$44 = {
 	],
 	aliases: ["x-circle"]
 };
-__iconData$44.node;
-var CircleX = createLucideIcon(__iconData$44);
+__iconData$43.node;
+var CircleX = createLucideIcon(__iconData$43);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/circle.mjs
 /**
@@ -12226,7 +12124,7 @@ var CircleX = createLucideIcon(__iconData$44);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$43 = {
+var __iconData$42 = {
 	name: "circle",
 	size: 24,
 	node: [["circle", {
@@ -12236,8 +12134,8 @@ var __iconData$43 = {
 		key: "1mglay"
 	}]]
 };
-__iconData$43.node;
-var Circle = createLucideIcon(__iconData$43);
+__iconData$42.node;
+var Circle = createLucideIcon(__iconData$42);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
@@ -12246,7 +12144,7 @@ var Circle = createLucideIcon(__iconData$43);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$42 = {
+var __iconData$41 = {
 	name: "clock-3",
 	size: 24,
 	node: [["circle", {
@@ -12259,8 +12157,8 @@ var __iconData$42 = {
 		key: "135r8i"
 	}]]
 };
-__iconData$42.node;
-var Clock3 = createLucideIcon(__iconData$42);
+__iconData$41.node;
+var Clock3 = createLucideIcon(__iconData$41);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
@@ -12269,7 +12167,7 @@ var Clock3 = createLucideIcon(__iconData$42);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$41 = {
+var __iconData$40 = {
 	name: "clock",
 	size: 24,
 	node: [["circle", {
@@ -12282,8 +12180,8 @@ var __iconData$41 = {
 		key: "mmk7yg"
 	}]]
 };
-__iconData$41.node;
-var Clock = createLucideIcon(__iconData$41);
+__iconData$40.node;
+var Clock = createLucideIcon(__iconData$40);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
@@ -12292,7 +12190,7 @@ var Clock = createLucideIcon(__iconData$41);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$40 = {
+var __iconData$39 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -12308,8 +12206,8 @@ var __iconData$40 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$40.node;
-var Copy = createLucideIcon(__iconData$40);
+__iconData$39.node;
+var Copy = createLucideIcon(__iconData$39);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/external-link.mjs
 /**
@@ -12318,7 +12216,7 @@ var Copy = createLucideIcon(__iconData$40);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$39 = {
+var __iconData$38 = {
 	name: "external-link",
 	size: 24,
 	node: [
@@ -12336,8 +12234,8 @@ var __iconData$39 = {
 		}]
 	]
 };
-__iconData$39.node;
-var ExternalLink = createLucideIcon(__iconData$39);
+__iconData$38.node;
+var ExternalLink = createLucideIcon(__iconData$38);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye-off.mjs
 /**
@@ -12346,7 +12244,7 @@ var ExternalLink = createLucideIcon(__iconData$39);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$38 = {
+var __iconData$37 = {
 	name: "eye-off",
 	size: 24,
 	node: [
@@ -12368,8 +12266,8 @@ var __iconData$38 = {
 		}]
 	]
 };
-__iconData$38.node;
-var EyeOff = createLucideIcon(__iconData$38);
+__iconData$37.node;
+var EyeOff = createLucideIcon(__iconData$37);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/eye.mjs
 /**
@@ -12378,7 +12276,7 @@ var EyeOff = createLucideIcon(__iconData$38);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$37 = {
+var __iconData$36 = {
 	name: "eye",
 	size: 24,
 	node: [["path", {
@@ -12391,8 +12289,8 @@ var __iconData$37 = {
 		key: "1v7zrd"
 	}]]
 };
-__iconData$37.node;
-var Eye = createLucideIcon(__iconData$37);
+__iconData$36.node;
+var Eye = createLucideIcon(__iconData$36);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/file-text.mjs
 /**
@@ -12401,7 +12299,7 @@ var Eye = createLucideIcon(__iconData$37);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$36 = {
+var __iconData$35 = {
 	name: "file-text",
 	size: 24,
 	node: [
@@ -12427,8 +12325,8 @@ var __iconData$36 = {
 		}]
 	]
 };
-__iconData$36.node;
-var FileText = createLucideIcon(__iconData$36);
+__iconData$35.node;
+var FileText = createLucideIcon(__iconData$35);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
@@ -12437,7 +12335,7 @@ var FileText = createLucideIcon(__iconData$36);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$35 = {
+var __iconData$34 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -12459,36 +12357,8 @@ var __iconData$35 = {
 		}]
 	]
 };
-__iconData$35.node;
-var FolderKanban = createLucideIcon(__iconData$35);
-//#endregion
-//#region node_modules/lucide-react/dist/esm/icons/folder-plus.mjs
-/**
-* @license lucide-react v1.48.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
-var __iconData$34 = {
-	name: "folder-plus",
-	size: 24,
-	node: [
-		["path", {
-			d: "M12 10v6",
-			key: "1bos4e"
-		}],
-		["path", {
-			d: "M9 13h6",
-			key: "1uhe8q"
-		}],
-		["path", {
-			d: "M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z",
-			key: "1kt360"
-		}]
-	]
-};
 __iconData$34.node;
-var FolderPlus = createLucideIcon(__iconData$34);
+var FolderKanban = createLucideIcon(__iconData$34);
 //#endregion
 //#region node_modules/lucide-react/dist/esm/icons/hourglass.mjs
 /**
@@ -13435,6 +13305,7 @@ __iconData.node;
 var X$1 = createLucideIcon(__iconData);
 //#endregion
 //#region node_modules/clsx/dist/clsx.mjs
+var import_client = /* @__PURE__ */ __toESM(require_client(), 1);
 function r(e) {
 	var t, f, n = "";
 	if ("string" == typeof e || "number" == typeof e) n += e;
@@ -16966,37 +16837,6 @@ function cn$1(...inputs) {
 	return twMerge(clsx(inputs));
 }
 //#endregion
-//#region frontend/src/components/ui/alert.jsx
-var alertVariants = cva("relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-lg border px-4 py-3 text-sm has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current", {
-	variants: { variant: {
-		default: "bg-card text-card-foreground",
-		destructive: "bg-card text-destructive *:data-[slot=alert-description]:text-destructive/90 [&>svg]:text-current"
-	} },
-	defaultVariants: { variant: "default" }
-});
-function Alert({ className, variant, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "alert",
-		role: "alert",
-		className: cn$1(alertVariants({ variant }), className),
-		...props
-	});
-}
-function AlertTitle({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "alert-title",
-		className: cn$1("col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight", className),
-		...props
-	});
-}
-function AlertDescription({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "alert-description",
-		className: cn$1("col-start-2 grid justify-items-start gap-1 text-sm text-muted-foreground [&_p]:leading-relaxed", className),
-		...props
-	});
-}
-//#endregion
 //#region node_modules/@radix-ui/react-compose-refs/dist/index.mjs
 var __defProp$21 = Object.defineProperty;
 var __name$21 = (target, value) => __defProp$21(target, "name", {
@@ -17144,8 +16984,49 @@ var createSlottableError = /* @__PURE__ */ __name$20((ownerName) => {
 }, "createSlottableError");
 var use = import_react[" use ".trim().toString()];
 //#endregion
+//#region node_modules/react/cjs/react-jsx-runtime.production.js
+/**
+* @license React
+* react-jsx-runtime.production.js
+*
+* Copyright (c) Meta Platforms, Inc. and affiliates.
+*
+* This source code is licensed under the MIT license found in the
+* LICENSE file in the root directory of this source tree.
+*/
+var require_react_jsx_runtime_production = /* @__PURE__ */ __commonJSMin(((exports) => {
+	var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
+	var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
+	function jsxProd(type, config, maybeKey) {
+		var key = null;
+		void 0 !== maybeKey && (key = "" + maybeKey);
+		void 0 !== config.key && (key = "" + config.key);
+		if ("key" in config) {
+			maybeKey = {};
+			for (var propName in config) "key" !== propName && (maybeKey[propName] = config[propName]);
+		} else maybeKey = config;
+		config = maybeKey.ref;
+		return {
+			$$typeof: REACT_ELEMENT_TYPE,
+			type,
+			key,
+			ref: void 0 !== config ? config : null,
+			props: maybeKey
+		};
+	}
+	exports.Fragment = REACT_FRAGMENT_TYPE;
+	exports.jsx = jsxProd;
+	exports.jsxs = jsxProd;
+}));
+//#endregion
+//#region node_modules/react/jsx-runtime.js
+var require_jsx_runtime = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+	module.exports = require_react_jsx_runtime_production();
+}));
+//#endregion
 //#region node_modules/@radix-ui/react-primitive/dist/index.mjs
 var import_react_dom = /* @__PURE__ */ __toESM(require_react_dom(), 1);
+var import_jsx_runtime = require_jsx_runtime();
 var __defProp$19 = Object.defineProperty;
 var __name$19 = (target, value) => __defProp$19(target, "name", {
 	value,
@@ -20240,45 +20121,6 @@ var List = TabsList$1;
 var Trigger = TabsTrigger$1;
 var Content = TabsContent$1;
 //#endregion
-//#region frontend/src/components/ui/avatar.jsx
-function Avatar$1({ className, size = "default", ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$2, {
-		"data-slot": "avatar",
-		"data-size": size,
-		className: cn$1("group/avatar relative flex size-8 shrink-0 overflow-hidden rounded-full select-none data-[size=lg]:size-10 data-[size=sm]:size-6", className),
-		...props
-	});
-}
-function AvatarFallback({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback$1, {
-		"data-slot": "avatar-fallback",
-		className: cn$1("flex size-full items-center justify-center rounded-full bg-muted text-sm text-muted-foreground group-data-[size=sm]/avatar:text-xs", className),
-		...props
-	});
-}
-//#endregion
-//#region frontend/src/components/ui/badge.jsx
-var badgeVariants = cva("inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3", {
-	variants: { variant: {
-		default: "bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
-		secondary: "bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
-		destructive: "bg-destructive text-white focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 [a&]:hover:bg-destructive/90",
-		outline: "border-border text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
-		ghost: "[a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
-		link: "text-primary underline-offset-4 [a&]:hover:underline"
-	} },
-	defaultVariants: { variant: "default" }
-});
-function Badge({ className, variant = "default", asChild = false, ...props }) {
-	const Comp = asChild ? Slot$1 : "span";
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Comp, {
-		"data-slot": "badge",
-		"data-variant": variant,
-		className: cn$1(badgeVariants({ variant }), className),
-		...props
-	});
-}
-//#endregion
 //#region frontend/src/components/ui/button.jsx
 var buttonVariants = cva("inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4", {
 	variants: {
@@ -20321,32 +20163,500 @@ function Button({ className, variant = "default", size = "default", asChild = fa
 	});
 }
 //#endregion
-//#region frontend/src/components/ui/card.jsx
-function Card({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "card",
-		className: cn$1("flex flex-col gap-6 rounded-xl border bg-card py-6 text-card-foreground shadow-sm", className),
+//#region frontend/src/components/ui/input.jsx
+function Input({ className, type, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+		type,
+		"data-slot": "input",
+		className: cn$1("h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30", "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50", "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40", className),
 		...props
 	});
 }
-function CardHeader({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "card-header",
-		className: cn$1("@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6", className),
+//#endregion
+//#region frontend/src/lib/api.js
+var ApiError = class extends Error {
+	constructor(message, status = 400, data = {}) {
+		super(message);
+		this.name = "ApiError";
+		this.status = status;
+		this.data = data;
+	}
+};
+/**
+* Core HTTP fetch wrapper with same-origin credentials and JSON payload support
+*/
+async function request(url, options = {}) {
+	const method = options.method || "GET";
+	const headers = {
+		Accept: "application/json",
+		...options.headers || {}
+	};
+	if (options.body && typeof options.body === "object" && !(options.body instanceof FormData)) {
+		headers["content-type"] = "application/json";
+		options.body = JSON.stringify(options.body);
+	}
+	const fetchOptions = {
+		credentials: "same-origin",
+		...options,
+		method,
+		headers
+	};
+	let response;
+	try {
+		response = await fetch(url, fetchOptions);
+	} catch (netErr) {
+		throw new ApiError(netErr.message || "Network connection failure. Please check your connection.", 0);
+	}
+	const data = (response.headers.get("content-type") || "").includes("application/json") ? await response.json().catch(() => ({})) : {};
+	if (!response.ok) {
+		const errorMsg = data.error || data.message || `Request failed with status ${response.status}`;
+		if (response.status === 401) {
+			if (!url.endsWith("/login") && typeof window !== "undefined") window.dispatchEvent(new CustomEvent("studio-iksha:unauthorized", { detail: { url } }));
+			throw new ApiError(errorMsg, 401, data);
+		}
+		if (response.status === 403) throw new ApiError(errorMsg || "Restricted action: You do not have permission to perform this update.", 403, data);
+		if (response.status === 404) throw new ApiError(errorMsg || "Record or access is no longer available in your workspace.", 404, data);
+		if (response.status === 409) throw new ApiError(errorMsg || "Conflict with current project or task state.", 409, data);
+		if (response.status === 429) throw new ApiError("Too many requests from this address. Please wait a moment before trying again.", 429, data);
+		if (response.status === 502) throw new ApiError(errorMsg || "Upstream delivery error from external service (Telegram/Bot).", 502, data);
+		throw new ApiError(errorMsg, response.status, data);
+	}
+	return data;
+}
+var get$2 = (url, options = {}) => request(url, {
+	method: "GET",
+	...options
+});
+var post$2 = (url, body, options = {}) => request(url, {
+	method: "POST",
+	body,
+	...options
+});
+var patch$1 = (url, body, options = {}) => request(url, {
+	method: "PATCH",
+	body,
+	...options
+});
+var del = (url, options = {}) => request(url, {
+	method: "DELETE",
+	...options
+});
+function generateIdempotencyKey(prefix = "reply") {
+	if (typeof crypto !== "undefined" && crypto.randomUUID) return `${prefix}-${crypto.randomUUID()}`;
+	return `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+}
+var DEFAULT_PILOT_WORKFLOWS = [{
+	id: "PILOT-DESIGN-V1",
+	name: "Design pilot",
+	category: "Design",
+	estimatedDays: 6,
+	stages: [
+		{
+			id: "stage-resources",
+			name: "Resources",
+			durationDays: 1,
+			tasks: ["Collect site plans and client references"]
+		},
+		{
+			id: "stage-design",
+			name: "Design",
+			durationDays: 3,
+			tasks: ["Prepare concept and review with client"]
+		},
+		{
+			id: "stage-delivery",
+			name: "Delivery",
+			durationDays: 2,
+			tasks: ["Deliver approved drawings"]
+		}
+	]
+}, {
+	id: "PILOT-PAINTING-V1",
+	name: "Painting pilot",
+	category: "Finishing",
+	estimatedDays: 6,
+	stages: [
+		{
+			id: "stage-paint-resources",
+			name: "Resources",
+			durationDays: 1,
+			tasks: ["Collect site photos and measurements"]
+		},
+		{
+			id: "stage-prep",
+			name: "Preparation",
+			durationDays: 2,
+			tasks: ["Prepare walls and approve colour sample"]
+		},
+		{
+			id: "stage-paint",
+			name: "Painting",
+			durationDays: 3,
+			tasks: ["Apply coats and inspect finish"]
+		}
+	]
+}];
+/**
+* Fetch available workflow templates (GET /api/{founder|employee}/workflows)
+*/
+async function fetchWorkflows(namespace = "founder", projectId = "") {
+	try {
+		const data = await get$2(projectId ? `/api/${namespace}/projects/${projectId}/workflows` : `/api/${namespace}/workflows`);
+		if (data.workflows && data.workflows.length > 0) return data.workflows;
+	} catch (err) {
+		if (err.status === 404 && !projectId) return DEFAULT_PILOT_WORKFLOWS;
+		throw err;
+	}
+	return projectId ? [] : DEFAULT_PILOT_WORKFLOWS;
+}
+/**
+* Assign client name and Telegram User ID (POST /api/founder/projects/:id/client)
+*/
+async function assignClient(projectId, { clientName, clientTelegramId = "" }) {
+	try {
+		return await post$2(`/api/founder/projects/${projectId}/client`, {
+			clientName: clientName.trim(),
+			clientTelegramId: clientTelegramId.trim()
+		});
+	} catch (err) {
+		if (err.status === 404) {
+			const res = await patch$1(`/api/founder/projects/${projectId}`, { clientName: clientName.trim() });
+			return { project: res.project || res };
+		}
+		throw err;
+	}
+}
+/**
+* Start project workflow pipeline (POST /api/founder/projects/:id/workflow/start)
+*/
+async function startWorkflow(projectId, { workflowId, startDate, assigneeId }) {
+	return await post$2(`/api/founder/projects/${projectId}/workflow/start`, {
+		workflowId,
+		startDate: startDate || void 0,
+		assigneeId: assigneeId || void 0
+	});
+}
+/**
+* Fetch complete project workspace (GET /api/{founder|employee}/projects/:id/workspace)
+*/
+async function fetchProjectWorkspace(projectId, namespace = "founder") {
+	return await get$2(`/api/${namespace}/projects/${projectId}/workspace`);
+}
+/**
+* List tasks for a project (GET /api/{founder|employee}/projects/:id/tasks)
+*/
+async function fetchTasks(projectId, namespace = "founder") {
+	return await get$2(`/api/${namespace}/projects/${projectId}/tasks`);
+}
+/**
+* Create task (POST /api/founder/projects/:id/tasks) - Founder only
+*/
+async function createTask(projectId, taskData) {
+	return await post$2(`/api/founder/projects/${projectId}/tasks`, {
+		title: taskData.title.trim(),
+		description: taskData.description ? taskData.description.trim() : "",
+		assigneeId: taskData.assigneeId !== void 0 ? taskData.assigneeId : void 0,
+		deadline: taskData.deadline || void 0,
+		stageId: taskData.stageId || void 0,
+		status: taskData.status || "Open"
+	});
+}
+/**
+* Update task (PATCH /api/{founder|employee}/tasks/:id)
+*/
+/**
+* Preview a founder timeline change (POST /api/founder/projects/:id/schedule/preview).
+* The bot checks dependencies against the Google Sheet and lists every task that would move.
+*/
+async function previewSchedule(projectId, moves) {
+	return await post$2(`/api/founder/projects/${projectId}/schedule/preview`, { moves });
+}
+/**
+* Save a founder timeline change to the Google Sheet (POST /api/founder/projects/:id/schedule/apply).
+*/
+async function applySchedule(projectId, moves) {
+	return await post$2(`/api/founder/projects/${projectId}/schedule/apply`, { moves });
+}
+async function updateTask(taskId, updates, namespace = "founder") {
+	return await patch$1(`/api/${namespace}/tasks/${taskId}`, updates);
+}
+/**
+* Delete task (DELETE /api/founder/tasks/:id) - Founder only soft delete
+*/
+async function deleteTask(taskId) {
+	return await del(`/api/founder/tasks/${taskId}`);
+}
+/**
+* Fetch task messages (GET /api/{founder|employee}/tasks/:id/messages?after=...&limit=100)
+*/
+async function fetchTaskMessages(taskId, after = "", limit = 100, namespace = "founder") {
+	const query = new URLSearchParams();
+	if (after) query.set("after", after);
+	if (limit) query.set("limit", String(limit));
+	return await get$2(`/api/${namespace}/tasks/${taskId}/messages${query.toString() ? `?${query.toString()}` : ""}`);
+}
+/**
+* Send message to task thread (POST /api/{founder|employee}/tasks/:id/messages)
+*/
+async function sendTaskMessage(taskId, { text, attachmentUrl = "" }, namespace = "founder") {
+	return await post$2(`/api/${namespace}/tasks/${taskId}/messages`, {
+		text: text.trim(),
+		attachmentUrl: attachmentUrl.trim() || void 0
+	});
+}
+/**
+* Mark read cursor for task (POST /api/{founder|employee}/tasks/:id/read)
+*/
+async function markTaskRead(taskId, lastMessageId, namespace = "founder") {
+	if (!lastMessageId) return { ok: true };
+	return await post$2(`/api/${namespace}/tasks/${taskId}/read`, { lastMessageId });
+}
+/**
+* List client queries (GET /api/{founder|employee}/decision-requests)
+*/
+async function fetchDecisionRequests(namespace = "founder") {
+	return await get$2(`/api/${namespace}/decision-requests`);
+}
+/**
+* Add private internal comment (POST /api/{founder|employee}/decision-requests/:id/comment)
+*/
+async function addDecisionComment(requestId, text, namespace = "founder") {
+	return await post$2(`/api/${namespace}/decision-requests/${encodeURIComponent(requestId)}/comment`, { text: text.trim() });
+}
+/**
+* Reject query (POST /api/founder/decision-requests/:id/reject) - Founder only
+*/
+async function rejectDecisionRequest(requestId, reason) {
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/reject`, { reason: reason.trim() });
+}
+/**
+* Convert query to task (POST /api/founder/decision-requests/:id/convert) - Founder only
+*/
+async function convertDecisionRequest(requestId, taskFields) {
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/convert`, taskFields);
+}
+/**
+* Publish final reply to Telegram (POST /api/founder/decision-requests/:id/publish) - Founder only
+*/
+async function publishDecisionReply(requestId, { response, idempotencyKey }) {
+	const key = idempotencyKey || generateIdempotencyKey(`reply-${requestId}`);
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/publish`, {
+		response: response.trim(),
+		idempotencyKey: key
+	});
+}
+/**
+* Authenticated media/attachment URL for Telegram photos & documents
+*/
+function getAttachmentUrl(requestId, index = 0, namespace = "founder") {
+	return `/api/${namespace}/decision-requests/${encodeURIComponent(requestId)}/attachments/${index}`;
+}
+/**
+* Remove project member (DELETE /api/founder/projects/:id/members/:memberId)
+*/
+async function removeProjectMember(projectId, memberId) {
+	return await del(`/api/founder/projects/${projectId}/members/${memberId}`);
+}
+/**
+* Disable employee account (POST /api/founder/employees/:employeeId/disable)
+*/
+/** Edit an employee's profile (PATCH /api/founder/employees/:id). */
+async function updateEmployee(employeeId, fields) {
+	return await request(`/api/founder/employees/${employeeId}`, {
+		method: "PATCH",
+		body: fields
+	});
+}
+/** Set a chosen password, or generate one when blank (POST /api/founder/employees/:id/password). Signs the employee out everywhere. */
+async function setEmployeePassword(employeeId, password) {
+	return await post$2(`/api/founder/employees/${employeeId}/password`, password ? { password } : {});
+}
+/** Ask for an AI-suggested reply to a client query, built from project records (POST /api/founder/decision-requests/:id/suggest-reply). Sends nothing. */
+async function suggestDecisionReply(requestId, instruction = "", outcome = "") {
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/suggest-reply`, {
+		...instruction ? { instruction } : {},
+		...outcome ? { outcome } : {}
+	});
+}
+async function disableEmployee(employeeId) {
+	return await post$2(`/api/founder/employees/${employeeId}/disable`, {});
+}
+/**
+* Founder-built plans: add one or more stages of six tasks (POST /api/founder/projects/:id/stages/preview|apply).
+* Pass { stage } or { stages: [...] }. The bot works out every date; preview writes nothing.
+*/
+async function previewStages(projectId, input) {
+	return await post$2(`/api/founder/projects/${projectId}/stages/preview`, input);
+}
+async function applyStages(projectId, input) {
+	return await post$2(`/api/founder/projects/${projectId}/stages/apply`, input);
+}
+/** Add one task inside a stage, after another task of it (POST .../stages/insert-task/preview|apply). */
+async function previewInsertTask(projectId, task) {
+	return await post$2(`/api/founder/projects/${projectId}/stages/insert-task/preview`, { task });
+}
+async function applyInsertTask(projectId, task) {
+	return await post$2(`/api/founder/projects/${projectId}/stages/insert-task/apply`, { task });
+}
+/** The founders' default plan (INTERIOR 1) as six-task stages, for review before creating it. */
+async function fetchDefaultPlan(projectId) {
+	return await get$2(`/api/founder/projects/${projectId}/default-plan`);
+}
+/**
+* Accept a query: link it to a task and delay/redo/complete it, or add a new stage for it.
+* target: { kind: 'task', taskId, action: { type, days } } | { kind: 'new-stage', stage, linkTaskKey }
+* Nothing is sent to Telegram; publish the reply separately after the founder reviews it.
+*/
+async function previewAcceptDecision(requestId, target) {
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept-preview`, { target });
+}
+async function acceptDecisionRequest(requestId, target) {
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept`, { target });
+}
+var previewTaskPlan = (taskId, input) => post$2(`/api/founder/tasks/${taskId}/plan/preview`, input);
+var applyTaskPlan = (taskId, input) => post$2(`/api/founder/tasks/${taskId}/plan/apply`, input);
+var renameWorkType = (projectId, stageId, input) => post$2(`/api/founder/projects/${projectId}/stages/${stageId}/rename/apply`, input);
+//#endregion
+//#region frontend/src/components/ProjectFiles.jsx
+function ProjectFiles({ projectId, namespace = "founder" }) {
+	const [files, setFiles] = (0, import_react.useState)([]);
+	const [error, setError] = (0, import_react.useState)("");
+	const [loading, setLoading] = (0, import_react.useState)(true);
+	const requestId = (0, import_react.useRef)(0);
+	const load = (0, import_react.useCallback)(async (signal, background = false) => {
+		const current = ++requestId.current;
+		if (!background) setLoading(true);
+		try {
+			const data = await request("/api/" + namespace + "/projects/" + projectId + "/files", { signal });
+			if (current !== requestId.current || signal?.aborted) return;
+			setFiles(data.files || []);
+			setError("");
+		} catch (problem) {
+			if (current === requestId.current && !signal?.aborted) setError(problem.message || "Could not load the project files.");
+		} finally {
+			if (current === requestId.current && !signal?.aborted) setLoading(false);
+		}
+	}, [projectId, namespace]);
+	(0, import_react.useEffect)(() => {
+		const controller = new AbortController();
+		setFiles([]);
+		setError("");
+		load(controller.signal);
+		const timer = setInterval(() => {
+			if (document.visibilityState === "visible") load(controller.signal, true);
+		}, 1e4);
+		return () => {
+			controller.abort();
+			requestId.current++;
+			clearInterval(timer);
+		};
+	}, [load]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "iksha-project-files",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", { children: "Project documents & photos" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Files shared in the Telegram group. Saved files can be opened below." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+				variant: "outline",
+				size: "sm",
+				disabled: loading,
+				onClick: () => void load(),
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: "size-4 " + (loading ? "animate-spin" : "") }), "Refresh files"]
+			})] }),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "text-sm text-destructive",
+				children: error
+			}),
+			loading && !files.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "status",
+				children: "Loading files…"
+			}) : files.length ? files.map((file) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+				className: "iksha-file-card",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { size: 19 }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: file.name || "Untitled file" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+							file.submittedBy || "Team member",
+							" · ",
+							file.status === "Stored" ? "Saved to Google Drive" : "Waiting for Google Drive save"
+						] }),
+						file.submittedAt && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("time", { children: new Date(file.submittedAt).toLocaleDateString([], {
+							month: "short",
+							day: "numeric",
+							year: "numeric"
+						}) }),
+						file.error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "iksha-file-error",
+							children: file.error
+						})
+					] }),
+					file.status === "Stored" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+						href: "/api/" + namespace + "/projects/" + projectId + "/files/" + encodeURIComponent(file.id),
+						target: "_blank",
+						rel: "noreferrer",
+						children: ["Open file ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { size: 13 })]
+					})
+				]
+			}, file.id)) : !error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "iksha-files-empty",
+				children: "No files have been shared yet. Send photos or documents in the project’s Telegram group to add them here."
+			})
+		]
+	});
+}
+//#endregion
+//#region frontend/src/components/ui/badge.jsx
+var badgeVariants = cva("inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3", {
+	variants: { variant: {
+		default: "bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
+		secondary: "bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
+		destructive: "bg-destructive text-white focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 [a&]:hover:bg-destructive/90",
+		outline: "border-border text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+		ghost: "[a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+		link: "text-primary underline-offset-4 [a&]:hover:underline"
+	} },
+	defaultVariants: { variant: "default" }
+});
+function Badge({ className, variant = "default", asChild = false, ...props }) {
+	const Comp = asChild ? Slot$1 : "span";
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Comp, {
+		"data-slot": "badge",
+		"data-variant": variant,
+		className: cn$1(badgeVariants({ variant }), className),
 		...props
 	});
 }
-function CardTitle({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "card-title",
-		className: cn$1("leading-none font-semibold", className),
+//#endregion
+//#region frontend/src/components/ui/native-select.jsx
+function NativeSelect({ className, size = "default", ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "group/native-select relative w-fit has-[select:disabled]:opacity-50",
+		"data-slot": "native-select-wrapper",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
+			"data-slot": "native-select",
+			"data-size": size,
+			className: cn$1("h-9 w-full min-w-0 appearance-none rounded-md border border-input bg-transparent px-3 py-2 pr-9 text-sm shadow-xs transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed data-[size=sm]:h-8 data-[size=sm]:py-1 dark:bg-input/30 dark:hover:bg-input/50", "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50", "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40", className),
+			...props
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, {
+			className: "pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-muted-foreground opacity-50 select-none",
+			"aria-hidden": "true",
+			"data-slot": "native-select-icon"
+		})]
+	});
+}
+function NativeSelectOption({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+		"data-slot": "native-select-option",
+		className: cn$1("bg-[Canvas] text-[CanvasText]", className),
 		...props
 	});
 }
-function CardContent({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "card-content",
-		className: cn$1("px-6", className),
+//#endregion
+//#region frontend/src/components/ui/textarea.jsx
+function Textarea({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("textarea", {
+		"data-slot": "textarea",
+		className: cn$1("flex field-sizing-content min-h-16 w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:aria-invalid:ring-destructive/40", className),
 		...props
 	});
 }
@@ -20411,37 +20721,1197 @@ function DialogDescription({ className, ...props }) {
 	});
 }
 //#endregion
-//#region frontend/src/components/ui/input.jsx
-function Input({ className, type, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-		type,
-		"data-slot": "input",
-		className: cn$1("h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30", "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50", "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40", className),
+//#region frontend/src/components/TaskThreadDrawer.jsx
+var statusColors = {
+	"Open": "bg-slate-100 text-slate-800 border-slate-200",
+	"In progress": "bg-blue-50 text-blue-700 border-blue-200",
+	"Blocked": "bg-amber-50 text-amber-800 border-amber-200",
+	"Completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
+	"Cancelled": "bg-red-50 text-red-700 border-red-200",
+	"todo": "bg-slate-100 text-slate-800 border-slate-200",
+	"in_progress": "bg-blue-50 text-blue-700 border-blue-200",
+	"review": "bg-amber-50 text-amber-800 border-amber-200",
+	"completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
+	"cancelled": "bg-red-50 text-red-700 border-red-200"
+};
+function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTaskUpdated, onOpenSourceQuery, currentActor = "Founder", isFounder = true, projectMembers = [] }) {
+	const [task, setTask] = (0, import_react.useState)(initialTask);
+	const [messages, setMessages] = (0, import_react.useState)([]);
+	const [commentText, setCommentText] = (0, import_react.useState)("");
+	const [attachmentUrl, setAttachmentUrl] = (0, import_react.useState)("");
+	const [showAttachmentInput, setShowAttachmentInput] = (0, import_react.useState)(false);
+	const [isEditing, setIsEditing] = (0, import_react.useState)(false);
+	const [loadingMessages, setLoadingMessages] = (0, import_react.useState)(false);
+	const [sendingMessage, setSendingMessage] = (0, import_react.useState)(false);
+	const [savingEdits, setSavingEdits] = (0, import_react.useState)(false);
+	const [error, setError] = (0, import_react.useState)("");
+	const messagesEndRef = (0, import_react.useRef)(null);
+	const messageRequest = (0, import_react.useRef)(0);
+	const deadlineInputRef = (0, import_react.useRef)(null);
+	const [showResources, setShowResources] = (0, import_react.useState)(false);
+	const [editTitle, setEditTitle] = (0, import_react.useState)("");
+	const [editDesc, setEditDesc] = (0, import_react.useState)("");
+	const [editStatus, setEditStatus] = (0, import_react.useState)("Open");
+	const [editDeadline, setEditDeadline] = (0, import_react.useState)("");
+	const [editAssigneeId, setEditAssigneeId] = (0, import_react.useState)("");
+	const [editStageId, setEditStageId] = (0, import_react.useState)("");
+	const namespace = isFounder ? "founder" : "employee";
+	(0, import_react.useEffect)(() => {
+		if (open && initialTask?.id) {
+			setTask(initialTask);
+			setMessages([]);
+			setCommentText("");
+			setAttachmentUrl("");
+			setShowAttachmentInput(false);
+			setEditTitle(initialTask.title || "");
+			setEditDesc(initialTask.description || "");
+			setEditStatus(initialTask.status || "Open");
+			setEditDeadline(initialTask.deadline || initialTask.dueDate || "");
+			setEditAssigneeId(initialTask.assigneeId || "");
+			setEditStageId(initialTask.stageId || "");
+			setIsEditing(false);
+			setShowResources(false);
+			setError("");
+			loadMessages(initialTask.id);
+		}
+		return () => {
+			messageRequest.current++;
+		};
+	}, [open, initialTask?.id]);
+	const loadMessages = async (taskId) => {
+		const requestId = ++messageRequest.current;
+		setLoadingMessages(true);
+		try {
+			const data = await fetchTaskMessages(taskId, "", 100, namespace);
+			if (requestId !== messageRequest.current) return;
+			const list = data.messages || [];
+			setMessages(list);
+			if (list.length > 0) markTaskRead(taskId, list[list.length - 1].id, namespace).catch(() => {});
+		} catch (problem) {
+			if (requestId === messageRequest.current) setError(problem.message || "Could not refresh this thread. Please retry.");
+		} finally {
+			if (requestId === messageRequest.current) setLoadingMessages(false);
+		}
+	};
+	(0, import_react.useEffect)(() => {
+		if (messagesEndRef.current) messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+	}, [messages.length]);
+	if (!task) return null;
+	const isClosed = task.status === "Completed" || task.status === "Cancelled";
+	const handleSendMessage = async (e) => {
+		e.preventDefault();
+		if (!commentText.trim() || sendingMessage || isClosed) return;
+		setSendingMessage(true);
+		setError("");
+		try {
+			const res = await sendTaskMessage(task.id, {
+				text: commentText.trim(),
+				attachmentUrl: attachmentUrl.trim() || void 0
+			}, namespace);
+			setCommentText("");
+			setAttachmentUrl("");
+			setShowAttachmentInput(false);
+			if (res.message) {
+				setMessages((prev) => [...prev, res.message]);
+				markTaskRead(task.id, res.message.id, namespace).catch(() => {});
+			} else await loadMessages(task.id);
+			if (onTaskUpdated) onTaskUpdated();
+		} catch (err) {
+			setError(err.message || "Failed to send message.");
+		} finally {
+			setSendingMessage(false);
+		}
+	};
+	const handleSaveEdits = async () => {
+		setSavingEdits(true);
+		setError("");
+		try {
+			const updates = {
+				title: editTitle.trim(),
+				description: editDesc.trim(),
+				status: editStatus,
+				deadline: deadlineInputRef.current?.value ?? editDeadline,
+				stageId: editStageId
+			};
+			if (isFounder) updates.assigneeId = editAssigneeId;
+			const updated = (await updateTask(task.id, updates, namespace)).task || {
+				...task,
+				...updates
+			};
+			setTask(updated);
+			setIsEditing(false);
+			if (onTaskUpdated) onTaskUpdated();
+		} catch (err) {
+			setError(err.message || "Failed to save task changes.");
+		} finally {
+			setSavingEdits(false);
+		}
+	};
+	const handleQuickStatus = async (newStatus) => {
+		setError("");
+		try {
+			const updated = (await updateTask(task.id, { status: newStatus }, namespace)).task || {
+				...task,
+				status: newStatus
+			};
+			setTask(updated);
+			setEditStatus(newStatus);
+			if (onTaskUpdated) onTaskUpdated();
+		} catch (err) {
+			setError(err.message || "Failed to update task status.");
+		}
+	};
+	const handleReopenTask = async () => {
+		await handleQuickStatus("Open");
+	};
+	const handleDelete = async () => {
+		if (!isFounder) return;
+		if (confirm("Are you sure you want to delete this task? Soft deletion preserves audit history.")) try {
+			await deleteTask(task.id);
+			onOpenChange(false);
+			if (onTaskUpdated) onTaskUpdated();
+		} catch (err) {
+			setError(err.message || "Failed to delete task.");
+		}
+	};
+	const getAssigneeLabel = (id) => {
+		if (!id) return "Unassigned";
+		if (id === "founder") return "Founder";
+		const found = projectMembers.find((m) => m.employeeId === id || m.id === id);
+		return found ? `${found.name} (${found.role || "Member"})` : id;
+	};
+	const currentStageName = project?.stages?.find((s) => s.id === task.stageId)?.name || task.stageName || "General";
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+		open,
+		onOpenChange,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
+			className: "flex max-h-[92dvh] max-w-2xl flex-col gap-0 overflow-hidden p-0 sm:max-w-2xl sm:rounded-2xl",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "shrink-0 border-b bg-card px-5 py-4 pr-12",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-start justify-between gap-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "min-w-0 flex-1",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex flex-wrap items-center gap-2",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+										variant: "outline",
+										className: statusColors[task.status] || "bg-muted",
+										children: task.status
+									}),
+									currentStageName && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										className: "text-xs text-muted-foreground",
+										children: ["· ", currentStageName]
+									}),
+									task.sourceQueryId && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+										variant: "outline",
+										className: "border-amber-300 bg-amber-50 text-amber-900 text-[10px]",
+										children: "Telegram Query"
+									})
+								]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, {
+								className: "mt-2 break-words text-lg font-semibold tracking-tight text-foreground [overflow-wrap:anywhere]",
+								children: task.title
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "flex items-center gap-1.5 shrink-0",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								variant: isEditing ? "secondary" : "outline",
+								size: "sm",
+								onClick: () => {
+									if (isEditing) handleSaveEdits();
+									else setIsEditing(true);
+								},
+								disabled: savingEdits,
+								children: [savingEdits ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1" }) : isEditing ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5 mr-1 text-emerald-600" }) : null, isEditing ? "Save" : "Edit"]
+							})
+						})]
+					})
+				}),
+				error && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mx-5 mt-3 flex items-center gap-2 rounded-xl border border-destructive/30 bg-destructive/10 px-3.5 py-2 text-xs text-destructive",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: error })]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "chat-scroll min-h-0 flex-1 space-y-4 overflow-y-auto p-5",
+					children: [
+						isEditing ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "space-y-3.5 rounded-xl border bg-muted/20 p-4",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "grid gap-1.5 text-xs font-semibold",
+									children: ["Title", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+										value: editTitle,
+										onChange: (e) => setEditTitle(e.target.value),
+										required: true
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "grid gap-1.5 text-xs font-semibold",
+									children: ["Description", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+										value: editDesc,
+										onChange: (e) => setEditDesc(e.target.value),
+										rows: 3
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "grid grid-cols-2 gap-3",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+										className: "grid gap-1.5 text-xs font-semibold",
+										children: ["Status", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+											value: editStatus,
+											onChange: (e) => setEditStatus(e.target.value),
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "Open",
+													children: "Open"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "In progress",
+													children: "In progress"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "Blocked",
+													children: "Blocked"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "Completed",
+													children: "Completed"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "Cancelled",
+													children: "Cancelled"
+												})
+											]
+										})]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+										className: "grid gap-1.5 text-xs font-semibold",
+										children: ["Deadline", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+											type: "date",
+											ref: deadlineInputRef,
+											value: editDeadline,
+											onChange: (e) => setEditDeadline(e.target.value)
+										})]
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "grid grid-cols-2 gap-3",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+										className: "grid gap-1.5 text-xs font-semibold",
+										children: [
+											"Assignee",
+											isFounder ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+												value: editAssigneeId,
+												onChange: (e) => setEditAssigneeId(e.target.value),
+												children: [
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+														value: "",
+														children: "Unassigned"
+													}),
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+														value: "founder",
+														children: "Founder"
+													}),
+													projectMembers.map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
+														value: m.employeeId || m.id,
+														children: [
+															m.name,
+															" (",
+															m.role || "Member",
+															")"
+														]
+													}, m.id || m.employeeId))
+												]
+											}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+												value: getAssigneeLabel(task.assigneeId),
+												disabled: true,
+												className: "bg-muted text-muted-foreground text-xs",
+												title: "Only the founder may change task assignments."
+											}),
+											!isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "text-[10px] text-muted-foreground",
+												children: "Only founder can change assignee"
+											})
+										]
+									}), project?.stages && project.stages.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+										className: "grid gap-1.5 text-xs font-semibold",
+										children: ["Stage", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
+											value: editStageId,
+											onChange: (e) => setEditStageId(e.target.value),
+											children: project.stages.map((st) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: st.id,
+												children: st.name
+											}, st.id))
+										})]
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex justify-between items-center pt-2",
+									children: [isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										type: "button",
+										variant: "ghost",
+										size: "sm",
+										className: "text-destructive hover:bg-destructive/10 text-xs",
+										onClick: handleDelete,
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trash, { className: "size-3.5 mr-1" }), " Delete Task"]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										size: "sm",
+										onClick: handleSaveEdits,
+										disabled: savingEdits,
+										className: "ml-auto",
+										children: [savingEdits ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1" }) : null, "Save Changes"]
+									})]
+								})
+							]
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "grid grid-cols-2 gap-2 rounded-xl border bg-muted/30 p-3 sm:grid-cols-3",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "space-y-0.5",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "text-[11px] font-medium text-muted-foreground",
+											children: "Assignee"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+											className: "flex items-center gap-1.5 text-xs font-semibold truncate",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, { className: "size-3.5 text-muted-foreground shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "truncate",
+												children: getAssigneeLabel(task.assigneeId) || task.assigneeName || "Unassigned"
+											})]
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "space-y-0.5",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "text-[11px] font-medium text-muted-foreground",
+											children: "Deadline"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+											className: "flex items-center gap-1.5 text-xs font-semibold",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-3.5 text-muted-foreground shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: task.deadline || task.dueDate ? new Date(task.deadline || task.dueDate).toLocaleDateString(void 0, {
+												month: "short",
+												day: "numeric",
+												year: "numeric"
+											}) : "No deadline" })]
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "col-span-2 sm:col-span-1 space-y-0.5",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "text-[11px] font-medium text-muted-foreground",
+											children: "Quick Action"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { children: !isClosed ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+											size: "sm",
+											variant: "outline",
+											className: "h-7 px-2.5 text-xs text-emerald-700 hover:bg-emerald-50 font-semibold",
+											onClick: () => handleQuickStatus("Completed"),
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 mr-1" }), " Mark Done"]
+										}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+											size: "sm",
+											variant: "outline",
+											className: "h-7 px-2.5 text-xs text-muted-foreground font-semibold",
+											onClick: () => handleQuickStatus("Open"),
+											children: "Reopen Task"
+										}) })]
+									})
+								]
+							}),
+							task.description && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed rounded-xl border bg-card p-3",
+								children: task.description
+							}),
+							task.sourceQueryId && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center justify-between rounded-xl border border-amber-200 bg-amber-50/70 p-3 text-xs text-amber-900",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center gap-2",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0 text-amber-700" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Converted from Telegram client query" })]
+								}), onOpenSourceQuery && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+									variant: "outline",
+									size: "sm",
+									className: "h-7 text-xs border-amber-300 bg-white text-amber-900 hover:bg-amber-100/50",
+									onClick: () => onOpenSourceQuery(task.sourceQueryId),
+									children: ["View Query ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-3 ml-1" })]
+								})]
+							})
+						] }),
+						task.sourceBlockedReason && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "iksha-work-blocker",
+							children: ["Blocked: ", task.sourceBlockedReason]
+						}),
+						task.sourceApprovalStatus && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "iksha-work-approval",
+							children: ["Approval: ", task.sourceApprovalStatus]
+						}),
+						project?.id && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
+							className: "iksha-task-resources",
+							onToggle: (event) => setShowResources(event.currentTarget.open),
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", { children: "Shared project resources" }), showResources && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectFiles, {
+								projectId: project.id,
+								namespace
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "border-t pt-4",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center justify-between pb-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h4", {
+									className: "flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 text-primary" }),
+										"Task Discussion Thread (",
+										messages.length,
+										")"
+									]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									variant: "ghost",
+									size: "icon-sm",
+									onClick: () => loadMessages(task.id),
+									disabled: loadingMessages,
+									"aria-label": "Refresh thread",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: `size-3.5 ${loadingMessages ? "animate-spin" : ""}` })
+								})]
+							}), loadingMessages && messages.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center justify-center py-8 text-xs text-muted-foreground gap-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-4 animate-spin text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Loading messages…" })]
+							}) : messages.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "space-y-2.5",
+								children: [messages.map((msg) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: `rounded-xl border p-3 shadow-xs space-y-1.5 ${msg.queryId ? "border-primary/30 bg-primary/5" : "bg-card"}`,
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "flex items-center justify-between text-xs",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "font-semibold text-primary",
+												children: msg.author || "Team member"
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+												className: "text-[10px] text-muted-foreground",
+												children: [
+													new Date(msg.at).toLocaleDateString([], {
+														month: "short",
+														day: "numeric"
+													}),
+													" · ",
+													new Date(msg.at).toLocaleTimeString([], {
+														hour: "numeric",
+														minute: "2-digit"
+													})
+												]
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed",
+											children: msg.text
+										}),
+										msg.queryId && msg.attachments?.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "flex flex-wrap gap-2 pt-1",
+											children: msg.attachments.map((file) => {
+												const href = getAttachmentUrl(msg.queryId, file.index, isFounder ? "founder" : "employee");
+												return /photo|image/i.test(file.type) ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+													href,
+													target: "_blank",
+													rel: "noreferrer",
+													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+														src: href,
+														alt: "Photo from the query",
+														loading: "lazy",
+														className: "h-20 w-20 rounded-lg border object-cover"
+													})
+												}, file.index) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+													href,
+													target: "_blank",
+													rel: "noreferrer",
+													className: "inline-flex items-center gap-1.5 rounded-lg border bg-muted/40 px-2.5 py-1 text-xs text-primary hover:underline",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, { className: "size-3" }), file.fileName || file.type]
+												}, file.index);
+											})
+										}),
+										msg.attachmentUrl && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+											href: msg.attachmentUrl,
+											target: "_blank",
+											rel: "noreferrer",
+											className: "inline-flex items-center gap-1.5 rounded-lg border bg-muted/40 px-2.5 py-1 text-xs text-primary hover:underline",
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, { className: "size-3" }),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "truncate max-w-xs",
+													children: msg.attachmentUrl
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-2.5" })
+											]
+										})
+									]
+								}, msg.id)), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { ref: messagesEndRef })]
+							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "py-6 text-center text-xs text-muted-foreground",
+								children: "No discussion messages yet in this task thread."
+							})]
+						})
+					]
+				}),
+				isClosed ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex shrink-0 flex-wrap items-center justify-between gap-3 border-t bg-amber-50/70 p-3 sm:px-5 text-xs text-amber-900",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						className: "flex items-center gap-1.5",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Lock, { className: "size-3.5 text-amber-700 shrink-0" }),
+							"This task is ",
+							task.status.toLowerCase(),
+							". Reopen it to send new messages."
+						]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						size: "sm",
+						variant: "outline",
+						className: "border-amber-300 bg-white",
+						onClick: handleReopenTask,
+						children: "Reopen Task"
+					})]
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+					onSubmit: handleSendMessage,
+					className: "shrink-0 space-y-2 border-t bg-muted/20 p-3 sm:px-5",
+					children: [showAttachmentInput && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center gap-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+							value: attachmentUrl,
+							onChange: (e) => setAttachmentUrl(e.target.value),
+							placeholder: "https://... attachment or document URL (HTTPS)",
+							className: "h-8 text-xs font-mono"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							type: "button",
+							variant: "ghost",
+							size: "sm",
+							className: "h-8 text-xs text-muted-foreground",
+							onClick: () => {
+								setAttachmentUrl("");
+								setShowAttachmentInput(false);
+							},
+							children: "Cancel"
+						})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-end gap-2",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								type: "button",
+								variant: "ghost",
+								size: "icon",
+								className: `size-9 shrink-0 ${showAttachmentInput ? "text-primary" : "text-muted-foreground"}`,
+								onClick: () => setShowAttachmentInput((v) => !v),
+								title: "Add attachment link",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, { className: "size-4" })
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+								value: commentText,
+								onChange: (e) => setCommentText(e.target.value),
+								rows: 1,
+								maxLength: 2e3,
+								"aria-label": "Task comment",
+								placeholder: "Post team update or task comment…",
+								className: "min-h-9 max-h-24 flex-1 resize-none text-xs",
+								disabled: sendingMessage
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								type: "submit",
+								size: "icon",
+								"aria-label": "Send task comment",
+								disabled: !commentText.trim() || sendingMessage,
+								className: "size-9 shrink-0",
+								children: sendingMessage ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-4 animate-spin" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Send, { className: "size-4" })
+							})
+						]
+					})]
+				})
+			]
+		})
+	});
+}
+//#endregion
+//#region frontend/src/components/WorkQueue.jsx
+function WorkQueue({ projects = [], isFounder = true, initialPersonId = "founder", personName = "Me", onChanged }) {
+	const [person, setPerson] = (0, import_react.useState)(initialPersonId), [projectId, setProjectId] = (0, import_react.useState)(""), [status, setStatus] = (0, import_react.useState)("pending");
+	const [tasks, setTasks] = (0, import_react.useState)([]), [employees, setEmployees] = (0, import_react.useState)([]), [selected, setSelected] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [link, setLink] = (0, import_react.useState)(""), [syncWarning, setSyncWarning] = (0, import_react.useState)(""), [connected, setConnected] = (0, import_react.useState)(false);
+	const namespace = isFounder ? "founder" : "employee";
+	const load = async () => {
+		try {
+			const data = await request(`/api/${namespace}/work-queue?personId=${encodeURIComponent(person)}&projectId=${encodeURIComponent(projectId)}&status=${status}`);
+			setTasks(data.tasks);
+			setConnected(Boolean(data.telegramConnected));
+			setSyncWarning(data.syncWarning || "");
+			setEmployees(data.employees || []);
+			setError("");
+		} catch (problem) {
+			setError(problem.message);
+		}
+	};
+	(0, import_react.useEffect)(() => {
+		setPerson(initialPersonId);
+	}, [initialPersonId]);
+	(0, import_react.useEffect)(() => {
+		load();
+		const timer = setInterval(() => {
+			if (document.visibilityState === "visible") load();
+		}, 15e3);
+		return () => clearInterval(timer);
+	}, [
+		person,
+		projectId,
+		status,
+		namespace
+	]);
+	const connect = async () => {
+		try {
+			const data = await request(`/api/${namespace}/personal-connection`);
+			setLink(data.link);
+		} catch (problem) {
+			setError(problem.message);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "space-y-4",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-wrap items-center justify-between gap-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "text-xs font-semibold uppercase tracking-wider text-primary",
+					children: "Daily work"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+					className: "text-2xl font-semibold",
+					children: "Actions needed"
+				})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex gap-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						size: "sm",
+						onClick: connect,
+						children: connected ? "Telegram connected" : "Connect Telegram digests"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+						variant: "outline",
+						size: "sm",
+						onClick: load,
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: "size-4" }), "Refresh"]
+					})]
+				})]
+			}),
+			link && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "rounded-xl border p-3 text-sm",
+				children: [
+					"Open ",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+						className: "underline",
+						href: link,
+						target: "_blank",
+						rel: "noreferrer",
+						children: "the project bot"
+					}),
+					" and press Start once. Each employee connects from their own Telegram account."
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "grid gap-3 sm:grid-cols-3",
+				children: [
+					isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "grid gap-1 text-xs font-medium",
+						children: ["Person", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+							className: "h-10 rounded-md border bg-background px-3",
+							value: person,
+							onChange: (event) => setPerson(event.target.value),
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+									value: "founder",
+									children: "My work (Founder)"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+									value: "all",
+									children: "Everyone"
+								}),
+								employees.map((employee) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+									value: employee.id,
+									children: employee.name
+								}, employee.id))
+							]
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "grid gap-1 text-xs font-medium",
+						children: ["Project", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+							className: "h-10 rounded-md border bg-background px-3",
+							value: projectId,
+							onChange: (event) => setProjectId(event.target.value),
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: "",
+								children: "All projects"
+							}), projects.map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: project.id,
+								children: project.name
+							}, project.id))]
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "grid gap-1 text-xs font-medium",
+						children: ["Status", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+							className: "h-10 rounded-md border bg-background px-3",
+							value: status,
+							onChange: (event) => setStatus(event.target.value),
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+									value: "pending",
+									children: "All pending work"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+									value: "approvals",
+									children: "Pending approvals"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+									value: "overdue",
+									children: "Overdue"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+									value: "blocked",
+									children: "Blocked"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+									value: "in-progress",
+									children: "In progress"
+								})
+							]
+						})]
+					})
+				]
+			}),
+			syncWarning && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "status",
+				className: "text-sm text-amber-800",
+				children: syncWarning
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "text-sm text-destructive",
+				children: error
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "space-y-2",
+				children: [tasks.map((task) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+					className: "flex w-full items-center justify-between gap-3 rounded-xl border bg-card p-4 text-left hover:bg-muted",
+					onClick: () => setSelected(task),
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "text-sm font-medium",
+						children: [
+							task.projectName,
+							" — ",
+							task.stageName,
+							" — ",
+							task.title
+						]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: `mt-1 text-xs ${task.overdue ? "text-destructive" : "text-muted-foreground"}`,
+						children: [
+							task.approval ? "Approval pending" : task.status,
+							task.overdue ? " · Overdue" : "",
+							task.deadline ? ` · ${task.deadline}` : "",
+							task.spaces?.length ? ` · ${task.spaces.join(", ")}` : ""
+						]
+					})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { className: "size-4 shrink-0" })]
+				}, task.id)), !tasks.length && !error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "rounded-xl border p-6 text-center text-sm text-muted-foreground",
+					children: "No pending work matches these filters."
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TaskThreadDrawer, {
+				open: Boolean(selected),
+				onOpenChange: (open) => {
+					if (!open) setSelected(null);
+				},
+				task: selected,
+				project: selected?.project,
+				projectMembers: selected?.project.members || [],
+				isFounder,
+				currentActor: personName,
+				onTaskUpdated: () => {
+					load();
+					onChanged?.();
+				}
+			}),
+			isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SupervisorTools, {
+				employees,
+				projects,
+				onChanged: () => {
+					load();
+					onChanged?.();
+				}
+			})
+		]
+	});
+}
+function SupervisorTools({ employees, projects, onChanged }) {
+	const [form, setForm] = (0, import_react.useState)({
+		fromId: "",
+		toId: "",
+		projectIds: []
+	}), [preview, setPreview] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [notice, setNotice] = (0, import_react.useState)(""), [settings, setSettings] = (0, import_react.useState)(null), [deliveries, setDeliveries] = (0, import_react.useState)([]);
+	const change = (next) => {
+		setForm(next);
+		setPreview(null);
+		setNotice("");
+	};
+	const run = async (apply) => {
+		setBusy(true);
+		setError("");
+		try {
+			const result = await request(`/api/founder/supervisor-replacement/${apply ? "apply" : "preview"}`, {
+				method: "POST",
+				body: {
+					...form,
+					...apply ? { fingerprint: preview.fingerprint } : {}
+				}
+			});
+			if (apply) {
+				setPreview(null);
+				setNotice("Supervisor responsibilities transferred. Completed work was preserved.");
+				onChanged();
+			} else setPreview(result);
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	const loadSettings = async () => {
+		try {
+			const data = await request("/api/founder/operations-settings");
+			setSettings(data.digest);
+			setDeliveries(data.deliveries || []);
+		} catch (problem) {
+			setError(problem.message);
+		}
+	};
+	const saveSettings = async () => {
+		setBusy(true);
+		try {
+			await request("/api/founder/operations-settings", {
+				method: "POST",
+				body: settings
+			});
+			setNotice("Morning digest schedule saved.");
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "space-y-3 border-t pt-4",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
+				className: "rounded-xl border p-4",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", {
+					className: "cursor-pointer text-sm font-semibold",
+					children: "Replace a site supervisor"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mt-3 space-y-3",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "grid gap-3 sm:grid-cols-2",
+							children: [["fromId", "Departing supervisor"], ["toId", "Replacement"]].map(([key, label]) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "grid gap-1 text-xs",
+								children: [label, /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+									className: "h-10 rounded-md border bg-background px-3",
+									value: form[key],
+									onChange: (event) => change({
+										...form,
+										[key]: event.target.value
+									}),
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+										value: "",
+										children: "Choose employee…"
+									}), employees.map((employee) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+										value: employee.id,
+										children: employee.name
+									}, employee.id))]
+								})]
+							}, key))
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+							className: "space-y-2",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
+								className: "text-xs font-medium",
+								children: "Projects to transfer"
+							}), projects.filter((project) => !["Completed", "Abandoned"].includes(project.status)).map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "flex items-center gap-2 text-sm",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+										type: "checkbox",
+										checked: form.projectIds.includes(project.id),
+										onChange: (event) => change({
+											...form,
+											projectIds: event.target.checked ? [...form.projectIds, project.id] : form.projectIds.filter((id) => id !== project.id)
+										})
+									}),
+									project.name,
+									project.location ? ` · ${project.location}` : ""
+								]
+							}, project.id))]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							disabled: busy || !form.fromId || !form.toId || !form.projectIds.length,
+							variant: "outline",
+							onClick: () => run(false),
+							children: "Preview transfer"
+						}),
+						preview && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "space-y-2 rounded-lg bg-muted p-3 text-sm",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+									preview.tasks.length,
+									" pending tasks across ",
+									preview.projects.length,
+									" projects will transfer from ",
+									preview.from.name,
+									" to ",
+									preview.to.name,
+									"."
+								] }),
+								preview.tasks.map((task) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "text-xs",
+									children: task.title
+								}, task.id)),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "text-xs",
+									children: "Add the replacement to each selected Telegram group first. Their personal digest requires pressing Start in the bot."
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									disabled: busy,
+									onClick: () => run(true),
+									children: "Confirm replacement"
+								})
+							]
+						})
+					]
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
+				className: "rounded-xl border p-4",
+				onToggle: (event) => {
+					if (event.currentTarget.open && !settings) loadSettings();
+				},
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", {
+					className: "cursor-pointer text-sm font-semibold",
+					children: "Morning digest settings"
+				}), settings && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mt-3 space-y-3",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "flex items-center gap-2 text-sm",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+								type: "checkbox",
+								checked: settings.enabled,
+								onChange: (event) => setSettings({
+									...settings,
+									enabled: event.target.checked
+								})
+							}), "Send personal morning digests"]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-1 text-xs",
+							children: ["Time", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								type: "time",
+								value: settings.time,
+								onChange: (event) => setSettings({
+									...settings,
+									time: event.target.value
+								})
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "grid gap-1 text-xs",
+							children: ["Timezone", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								value: settings.timeZone,
+								onChange: (event) => setSettings({
+									...settings,
+									timeZone: event.target.value
+								})
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "flex items-center gap-2 text-sm",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+								type: "checkbox",
+								checked: settings.weekends,
+								onChange: (event) => setSettings({
+									...settings,
+									weekends: event.target.checked
+								})
+							}), "Include weekends"]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-xs text-muted-foreground",
+							children: "Empty digests are skipped. Only active employees who connected the bot receive their work."
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							disabled: busy,
+							onClick: saveSettings,
+							children: "Save schedule"
+						}),
+						deliveries.slice(-10).reverse().map((delivery) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "text-xs",
+							children: [
+								employees.find((row) => row.id === delivery.employeeId)?.name || delivery.employeeId,
+								" · ",
+								delivery.date,
+								" · ",
+								delivery.status,
+								delivery.error ? ` · ${delivery.error}` : ""
+							]
+						}, delivery.id))
+					]
+				})]
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "text-sm text-destructive",
+				children: error
+			}),
+			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "status",
+				className: "text-sm text-emerald-800",
+				children: notice
+			})
+		]
+	});
+}
+//#endregion
+//#region frontend/src/components/WorkspaceAccess.jsx
+function IkshaBrand({ compact = false }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: `iksha-wordmark ${compact ? "compact" : ""}`,
+		children: [
+			"iksha",
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "." }),
+			!compact && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", { children: "SPACES, THOUGHTFULLY MADE" })
+		]
+	});
+}
+function WorkspaceAccess({ team = false, children }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
+		className: "iksha-access",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+			className: "iksha-access-story",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(IkshaBrand, {}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "iksha-eyebrow",
+						children: "THE STUDIO, IN SYNC"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", { children: [
+						"Thoughtful spaces.",
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
+						"Connected people."
+					] }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+						"From the first client brief to the final detail.",
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
+						"One place for the work that brings it all together."
+					] })
+				] }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", { children: "STUDIO IKSHA / PROJECT WORKSPACE" })
+			]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+			className: "iksha-access-form",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "iksha-eyebrow",
+					children: team ? "TEAM ACCESS" : "FOUNDER ACCESS"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", { children: "Welcome back." }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Sign in to move the work forward." }),
+				children,
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "iksha-access-note",
+					children: "Clients continue to communicate through Telegram."
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+					className: "iksha-access-link",
+					href: team ? "/" : "/employee",
+					children: [team ? "Founder sign-in" : "Team member sign-in", " →"]
+				})
+			]
+		})]
+	});
+}
+//#endregion
+//#region frontend/src/components/ui/alert.jsx
+var alertVariants = cva("relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-lg border px-4 py-3 text-sm has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current", {
+	variants: { variant: {
+		default: "bg-card text-card-foreground",
+		destructive: "bg-card text-destructive *:data-[slot=alert-description]:text-destructive/90 [&>svg]:text-current"
+	} },
+	defaultVariants: { variant: "default" }
+});
+function Alert({ className, variant, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "alert",
+		role: "alert",
+		className: cn$1(alertVariants({ variant }), className),
+		...props
+	});
+}
+function AlertTitle({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "alert-title",
+		className: cn$1("col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight", className),
+		...props
+	});
+}
+function AlertDescription({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "alert-description",
+		className: cn$1("col-start-2 grid justify-items-start gap-1 text-sm text-muted-foreground [&_p]:leading-relaxed", className),
 		...props
 	});
 }
 //#endregion
-//#region frontend/src/components/ui/native-select.jsx
-function NativeSelect({ className, size = "default", ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "group/native-select relative w-fit has-[select:disabled]:opacity-50",
-		"data-slot": "native-select-wrapper",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
-			"data-slot": "native-select",
-			"data-size": size,
-			className: cn$1("h-9 w-full min-w-0 appearance-none rounded-md border border-input bg-transparent px-3 py-2 pr-9 text-sm shadow-xs transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed data-[size=sm]:h-8 data-[size=sm]:py-1 dark:bg-input/30 dark:hover:bg-input/50", "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50", "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40", className),
-			...props
-		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, {
-			className: "pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-muted-foreground opacity-50 select-none",
-			"aria-hidden": "true",
-			"data-slot": "native-select-icon"
-		})]
+//#region frontend/src/components/ui/avatar.jsx
+function Avatar$1({ className, size = "default", ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$2, {
+		"data-slot": "avatar",
+		"data-size": size,
+		className: cn$1("group/avatar relative flex size-8 shrink-0 overflow-hidden rounded-full select-none data-[size=lg]:size-10 data-[size=sm]:size-6", className),
+		...props
 	});
 }
-function NativeSelectOption({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-		"data-slot": "native-select-option",
-		className: cn$1("bg-[Canvas] text-[CanvasText]", className),
+function AvatarFallback({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback$1, {
+		"data-slot": "avatar-fallback",
+		className: cn$1("flex size-full items-center justify-center rounded-full bg-muted text-sm text-muted-foreground group-data-[size=sm]/avatar:text-xs", className),
+		...props
+	});
+}
+//#endregion
+//#region frontend/src/components/ui/card.jsx
+function Card({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "card",
+		className: cn$1("flex flex-col gap-6 rounded-xl border bg-card py-6 text-card-foreground shadow-sm", className),
+		...props
+	});
+}
+function CardHeader({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "card-header",
+		className: cn$1("@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6", className),
+		...props
+	});
+}
+function CardTitle({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "card-title",
+		className: cn$1("leading-none font-semibold", className),
+		...props
+	});
+}
+function CardContent({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "card-content",
+		className: cn$1("px-6", className),
 		...props
 	});
 }
@@ -23255,7 +24725,7 @@ var transition$1 = {
 	duration: 280,
 	ease: "cubic-bezier(0.22, 1, 0.36, 1)"
 };
-function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onShareClientLink }) {
+function GooeyNewButton({ hasProject, onAddMember, onShareClientLink }) {
 	const [open, setOpen] = (0, import_react.useState)(false);
 	const rootRef = (0, import_react.useRef)(null);
 	(0, import_react.useEffect)(() => {
@@ -23283,31 +24753,21 @@ function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onShareClien
 			filterPadding: 200,
 			shadow: "0 4px 12px rgba(10, 20, 36, .18)",
 			className: "size-12 overflow-visible",
-			children: [[
-				{
-					label: "New project",
-					Icon: FolderPlus,
-					x: -70,
-					y: -62,
-					onClick: onCreateProject
-				},
-				{
-					label: "Add member",
-					Icon: UserPlus,
-					x: -88,
-					y: -116,
-					onClick: onAddMember,
-					disabled: !hasProject
-				},
-				{
-					label: "Client link",
-					Icon: Link2,
-					x: -16,
-					y: -138,
-					onClick: onShareClientLink,
-					disabled: !hasProject
-				}
-			].map(({ label, Icon, x, y, onClick, disabled }) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Liquid.Item, {
+			children: [[{
+				label: "Add member",
+				Icon: UserPlus,
+				x: -88,
+				y: -116,
+				onClick: onAddMember,
+				disabled: !hasProject
+			}, {
+				label: "Client link",
+				Icon: Link2,
+				x: -16,
+				y: -138,
+				onClick: onShareClientLink,
+				disabled: !hasProject
+			}].map(({ label, Icon, x, y, onClick, disabled }) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Liquid.Item, {
 				className: "absolute left-0.5 top-0.5",
 				x: open ? x : 0,
 				y: open ? y : 0,
@@ -23352,6 +24812,16 @@ function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onShareClien
 	});
 }
 //#endregion
+//#region backend/roles.js
+var rolesOf = (value) => [...new Set((Array.isArray(value) ? value : String(value || "").split(/[,;|]/)).map((role) => String(role).trim()).filter(Boolean))];
+var key = (role) => {
+	const value = String(role).toLowerCase().replace(/[^a-z0-9]/g, "");
+	return value === "supervisor" ? "sitesupervisor" : value;
+};
+var hasRole = (value, role) => rolesOf(value).some((item) => key(item) === key(role));
+var matchesRole = (value, role) => hasRole(value, role) || key(role) === "designheadadmin" && (hasRole(value, "Founder") || hasRole(value, "Design Head") || hasRole(value, "Admin"));
+var isStaff = (value) => rolesOf(value).some((role) => !hasRole(role, "Client"));
+//#endregion
 //#region frontend/src/components/ui/tabs.jsx
 function Tabs({ className, orientation = "horizontal", ...props }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Root2, {
@@ -23391,350 +24861,6 @@ function TabsContent({ className, ...props }) {
 		...props
 	});
 }
-//#endregion
-//#region frontend/src/lib/api.js
-var ApiError = class extends Error {
-	constructor(message, status = 400, data = {}) {
-		super(message);
-		this.name = "ApiError";
-		this.status = status;
-		this.data = data;
-	}
-};
-/**
-* Core HTTP fetch wrapper with same-origin credentials and JSON payload support
-*/
-async function request(url, options = {}) {
-	const method = options.method || "GET";
-	const headers = {
-		Accept: "application/json",
-		...options.headers || {}
-	};
-	if (options.body && typeof options.body === "object" && !(options.body instanceof FormData)) {
-		headers["content-type"] = "application/json";
-		options.body = JSON.stringify(options.body);
-	}
-	const fetchOptions = {
-		credentials: "same-origin",
-		...options,
-		method,
-		headers
-	};
-	let response;
-	try {
-		response = await fetch(url, fetchOptions);
-	} catch (netErr) {
-		throw new ApiError(netErr.message || "Network connection failure. Please check your connection.", 0);
-	}
-	const data = (response.headers.get("content-type") || "").includes("application/json") ? await response.json().catch(() => ({})) : {};
-	if (!response.ok) {
-		const errorMsg = data.error || data.message || `Request failed with status ${response.status}`;
-		if (response.status === 401) {
-			if (!url.endsWith("/login") && typeof window !== "undefined") window.dispatchEvent(new CustomEvent("studio-iksha:unauthorized", { detail: { url } }));
-			throw new ApiError(errorMsg, 401, data);
-		}
-		if (response.status === 403) throw new ApiError(errorMsg || "Restricted action: You do not have permission to perform this update.", 403, data);
-		if (response.status === 404) throw new ApiError(errorMsg || "Record or access is no longer available in your workspace.", 404, data);
-		if (response.status === 409) throw new ApiError(errorMsg || "Conflict with current project or task state.", 409, data);
-		if (response.status === 429) throw new ApiError("Too many requests from this address. Please wait a moment before trying again.", 429, data);
-		if (response.status === 502) throw new ApiError(errorMsg || "Upstream delivery error from external service (Telegram/Bot).", 502, data);
-		throw new ApiError(errorMsg, response.status, data);
-	}
-	return data;
-}
-var get$2 = (url, options = {}) => request(url, {
-	method: "GET",
-	...options
-});
-var post$2 = (url, body, options = {}) => request(url, {
-	method: "POST",
-	body,
-	...options
-});
-var patch$1 = (url, body, options = {}) => request(url, {
-	method: "PATCH",
-	body,
-	...options
-});
-var del = (url, options = {}) => request(url, {
-	method: "DELETE",
-	...options
-});
-function generateIdempotencyKey(prefix = "reply") {
-	if (typeof crypto !== "undefined" && crypto.randomUUID) return `${prefix}-${crypto.randomUUID()}`;
-	return `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
-}
-var DEFAULT_PILOT_WORKFLOWS = [{
-	id: "PILOT-DESIGN-V1",
-	name: "Design pilot",
-	category: "Design",
-	estimatedDays: 6,
-	stages: [
-		{
-			id: "stage-resources",
-			name: "Resources",
-			durationDays: 1,
-			tasks: ["Collect site plans and client references"]
-		},
-		{
-			id: "stage-design",
-			name: "Design",
-			durationDays: 3,
-			tasks: ["Prepare concept and review with client"]
-		},
-		{
-			id: "stage-delivery",
-			name: "Delivery",
-			durationDays: 2,
-			tasks: ["Deliver approved drawings"]
-		}
-	]
-}, {
-	id: "PILOT-PAINTING-V1",
-	name: "Painting pilot",
-	category: "Finishing",
-	estimatedDays: 6,
-	stages: [
-		{
-			id: "stage-paint-resources",
-			name: "Resources",
-			durationDays: 1,
-			tasks: ["Collect site photos and measurements"]
-		},
-		{
-			id: "stage-prep",
-			name: "Preparation",
-			durationDays: 2,
-			tasks: ["Prepare walls and approve colour sample"]
-		},
-		{
-			id: "stage-paint",
-			name: "Painting",
-			durationDays: 3,
-			tasks: ["Apply coats and inspect finish"]
-		}
-	]
-}];
-/**
-* Fetch available workflow templates (GET /api/{founder|employee}/workflows)
-*/
-async function fetchWorkflows(namespace = "founder", projectId = "") {
-	try {
-		const data = await get$2(projectId ? `/api/${namespace}/projects/${projectId}/workflows` : `/api/${namespace}/workflows`);
-		if (data.workflows && data.workflows.length > 0) return data.workflows;
-	} catch (err) {
-		if (err.status === 404 && !projectId) return DEFAULT_PILOT_WORKFLOWS;
-		throw err;
-	}
-	return projectId ? [] : DEFAULT_PILOT_WORKFLOWS;
-}
-/**
-* Assign client name and Telegram User ID (POST /api/founder/projects/:id/client)
-*/
-async function assignClient(projectId, { clientName, clientTelegramId = "" }) {
-	try {
-		return await post$2(`/api/founder/projects/${projectId}/client`, {
-			clientName: clientName.trim(),
-			clientTelegramId: clientTelegramId.trim()
-		});
-	} catch (err) {
-		if (err.status === 404) {
-			const res = await patch$1(`/api/founder/projects/${projectId}`, { clientName: clientName.trim() });
-			return { project: res.project || res };
-		}
-		throw err;
-	}
-}
-/**
-* Start project workflow pipeline (POST /api/founder/projects/:id/workflow/start)
-*/
-async function startWorkflow(projectId, { workflowId, startDate, assigneeId }) {
-	return await post$2(`/api/founder/projects/${projectId}/workflow/start`, {
-		workflowId,
-		startDate: startDate || void 0,
-		assigneeId: assigneeId || void 0
-	});
-}
-/**
-* Fetch complete project workspace (GET /api/{founder|employee}/projects/:id/workspace)
-*/
-async function fetchProjectWorkspace(projectId, namespace = "founder") {
-	return await get$2(`/api/${namespace}/projects/${projectId}/workspace`);
-}
-/**
-* List tasks for a project (GET /api/{founder|employee}/projects/:id/tasks)
-*/
-async function fetchTasks(projectId, namespace = "founder") {
-	return await get$2(`/api/${namespace}/projects/${projectId}/tasks`);
-}
-/**
-* Create task (POST /api/founder/projects/:id/tasks) - Founder only
-*/
-async function createTask(projectId, taskData) {
-	return await post$2(`/api/founder/projects/${projectId}/tasks`, {
-		title: taskData.title.trim(),
-		description: taskData.description ? taskData.description.trim() : "",
-		assigneeId: taskData.assigneeId !== void 0 ? taskData.assigneeId : void 0,
-		deadline: taskData.deadline || void 0,
-		stageId: taskData.stageId || void 0,
-		status: taskData.status || "Open"
-	});
-}
-/**
-* Update task (PATCH /api/{founder|employee}/tasks/:id)
-*/
-/**
-* Preview a founder timeline change (POST /api/founder/projects/:id/schedule/preview).
-* The bot checks dependencies against the Google Sheet and lists every task that would move.
-*/
-async function previewSchedule(projectId, moves) {
-	return await post$2(`/api/founder/projects/${projectId}/schedule/preview`, { moves });
-}
-/**
-* Save a founder timeline change to the Google Sheet (POST /api/founder/projects/:id/schedule/apply).
-*/
-async function applySchedule(projectId, moves) {
-	return await post$2(`/api/founder/projects/${projectId}/schedule/apply`, { moves });
-}
-async function updateTask(taskId, updates, namespace = "founder") {
-	return await patch$1(`/api/${namespace}/tasks/${taskId}`, updates);
-}
-/**
-* Delete task (DELETE /api/founder/tasks/:id) - Founder only soft delete
-*/
-async function deleteTask(taskId) {
-	return await del(`/api/founder/tasks/${taskId}`);
-}
-/**
-* Fetch task messages (GET /api/{founder|employee}/tasks/:id/messages?after=...&limit=100)
-*/
-async function fetchTaskMessages(taskId, after = "", limit = 100, namespace = "founder") {
-	const query = new URLSearchParams();
-	if (after) query.set("after", after);
-	if (limit) query.set("limit", String(limit));
-	return await get$2(`/api/${namespace}/tasks/${taskId}/messages${query.toString() ? `?${query.toString()}` : ""}`);
-}
-/**
-* Send message to task thread (POST /api/{founder|employee}/tasks/:id/messages)
-*/
-async function sendTaskMessage(taskId, { text, attachmentUrl = "" }, namespace = "founder") {
-	return await post$2(`/api/${namespace}/tasks/${taskId}/messages`, {
-		text: text.trim(),
-		attachmentUrl: attachmentUrl.trim() || void 0
-	});
-}
-/**
-* Mark read cursor for task (POST /api/{founder|employee}/tasks/:id/read)
-*/
-async function markTaskRead(taskId, lastMessageId, namespace = "founder") {
-	if (!lastMessageId) return { ok: true };
-	return await post$2(`/api/${namespace}/tasks/${taskId}/read`, { lastMessageId });
-}
-/**
-* List client queries (GET /api/{founder|employee}/decision-requests)
-*/
-async function fetchDecisionRequests(namespace = "founder") {
-	return await get$2(`/api/${namespace}/decision-requests`);
-}
-/**
-* Add private internal comment (POST /api/{founder|employee}/decision-requests/:id/comment)
-*/
-async function addDecisionComment(requestId, text, namespace = "founder") {
-	return await post$2(`/api/${namespace}/decision-requests/${encodeURIComponent(requestId)}/comment`, { text: text.trim() });
-}
-/**
-* Reject query (POST /api/founder/decision-requests/:id/reject) - Founder only
-*/
-async function rejectDecisionRequest(requestId, reason) {
-	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/reject`, { reason: reason.trim() });
-}
-/**
-* Convert query to task (POST /api/founder/decision-requests/:id/convert) - Founder only
-*/
-async function convertDecisionRequest(requestId, taskFields) {
-	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/convert`, taskFields);
-}
-/**
-* Publish final reply to Telegram (POST /api/founder/decision-requests/:id/publish) - Founder only
-*/
-async function publishDecisionReply(requestId, { response, idempotencyKey }) {
-	const key = idempotencyKey || generateIdempotencyKey(`reply-${requestId}`);
-	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/publish`, {
-		response: response.trim(),
-		idempotencyKey: key
-	});
-}
-/**
-* Authenticated media/attachment URL for Telegram photos & documents
-*/
-function getAttachmentUrl(requestId, index = 0, namespace = "founder") {
-	return `/api/${namespace}/decision-requests/${encodeURIComponent(requestId)}/attachments/${index}`;
-}
-/**
-* Remove project member (DELETE /api/founder/projects/:id/members/:memberId)
-*/
-async function removeProjectMember(projectId, memberId) {
-	return await del(`/api/founder/projects/${projectId}/members/${memberId}`);
-}
-/**
-* Disable employee account (POST /api/founder/employees/:employeeId/disable)
-*/
-/** Edit an employee's profile (PATCH /api/founder/employees/:id). */
-async function updateEmployee(employeeId, fields) {
-	return await request(`/api/founder/employees/${employeeId}`, {
-		method: "PATCH",
-		body: fields
-	});
-}
-/** Set a chosen password, or generate one when blank (POST /api/founder/employees/:id/password). Signs the employee out everywhere. */
-async function setEmployeePassword(employeeId, password) {
-	return await post$2(`/api/founder/employees/${employeeId}/password`, password ? { password } : {});
-}
-/** Ask for an AI-suggested reply to a client query, built from project records (POST /api/founder/decision-requests/:id/suggest-reply). Sends nothing. */
-async function suggestDecisionReply(requestId, instruction = "", outcome = "") {
-	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/suggest-reply`, {
-		...instruction ? { instruction } : {},
-		...outcome ? { outcome } : {}
-	});
-}
-async function disableEmployee(employeeId) {
-	return await post$2(`/api/founder/employees/${employeeId}/disable`, {});
-}
-/**
-* Founder-built plans: add one or more stages of six tasks (POST /api/founder/projects/:id/stages/preview|apply).
-* Pass { stage } or { stages: [...] }. The bot works out every date; preview writes nothing.
-*/
-async function previewStages(projectId, input) {
-	return await post$2(`/api/founder/projects/${projectId}/stages/preview`, input);
-}
-async function applyStages(projectId, input) {
-	return await post$2(`/api/founder/projects/${projectId}/stages/apply`, input);
-}
-/** Add one task inside a stage, after another task of it (POST .../stages/insert-task/preview|apply). */
-async function previewInsertTask(projectId, task) {
-	return await post$2(`/api/founder/projects/${projectId}/stages/insert-task/preview`, { task });
-}
-async function applyInsertTask(projectId, task) {
-	return await post$2(`/api/founder/projects/${projectId}/stages/insert-task/apply`, { task });
-}
-/** The founders' default plan (INTERIOR 1) as six-task stages, for review before creating it. */
-async function fetchDefaultPlan(projectId) {
-	return await get$2(`/api/founder/projects/${projectId}/default-plan`);
-}
-/**
-* Accept a query: link it to a task and delay/redo/complete it, or add a new stage for it.
-* target: { kind: 'task', taskId, action: { type, days } } | { kind: 'new-stage', stage, linkTaskKey }
-* Nothing is sent to Telegram; publish the reply separately after the founder reviews it.
-*/
-async function previewAcceptDecision(requestId, target) {
-	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept-preview`, { target });
-}
-async function acceptDecisionRequest(requestId, target) {
-	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept`, { target });
-}
-var previewTaskPlan = (taskId, input) => post$2(`/api/founder/tasks/${taskId}/plan/preview`, input);
-var applyTaskPlan = (taskId, input) => post$2(`/api/founder/tasks/${taskId}/plan/apply`, input);
-var renameWorkType = (projectId, stageId, input) => post$2(`/api/founder/projects/${projectId}/stages/${stageId}/rename/apply`, input);
 //#endregion
 //#region frontend/src/components/EmployeeManager.jsx
 var roles = [
@@ -24271,7 +25397,9 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 		})
 	});
 }
-function EmployeeManager({ employees, projects, onAdd, onUpdated }) {
+function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewWork }) {
+	const [roleFilter, setRoleFilter] = (0, import_react.useState)("All");
+	const visibleEmployees = employees.filter((employee) => roleFilter === "All" || matchesRole(employee.designation, roleFilter) || projects.some((project) => project.members?.some((member) => member.employeeId === employee.id && matchesRole(member.roles || member.role, roleFilter))));
 	const [disablingId, setDisablingId] = (0, import_react.useState)(null);
 	const [confirmEmployee, setConfirmEmployee] = (0, import_react.useState)(null);
 	const [editEmployee, setEditEmployee] = (0, import_react.useState)(null);
@@ -24318,9 +25446,22 @@ function EmployeeManager({ employees, projects, onAdd, onUpdated }) {
 				className: "rounded-xl border border-destructive/30 bg-destructive/10 p-3 text-xs text-destructive",
 				children: error
 			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "flex gap-2",
+				children: [
+					"All",
+					"Designer",
+					"Site Supervisor"
+				].map((role) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: roleFilter === role ? "default" : "outline",
+					size: "sm",
+					onClick: () => setRoleFilter(role),
+					children: role === "All" ? "All employees" : role === "Designer" ? "Designers" : "Site supervisors"
+				}, role))
+			}),
 			employees.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "grid gap-3 sm:grid-cols-2",
-				children: employees.map((employee) => {
+				children: visibleEmployees.map((employee) => {
 					const isActive = employee.active !== false;
 					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
 						className: !isActive ? "opacity-60 bg-muted/40 border-dashed" : "",
@@ -24372,6 +25513,16 @@ function EmployeeManager({ employees, projects, onAdd, onUpdated }) {
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "font-mono text-xs text-muted-foreground",
 									children: employee.id
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+									className: "text-xs text-muted-foreground",
+									children: ["Telegram digest: ", employee.telegramConnected ? "Connected" : "Awaiting Start in bot"]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									variant: "outline",
+									size: "sm",
+									onClick: () => onViewWork?.(employee),
+									children: "View pending work"
 								}),
 								(employee.email || employee.phone) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "text-xs text-muted-foreground",
@@ -26277,15 +27428,6 @@ function MessageFooter({ className, ...props }) {
 	});
 }
 //#endregion
-//#region frontend/src/components/ui/textarea.jsx
-function Textarea({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("textarea", {
-		"data-slot": "textarea",
-		className: cn$1("flex field-sizing-content min-h-16 w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:aria-invalid:ring-destructive/40", className),
-		...props
-	});
-}
-//#endregion
 //#region frontend/src/components/FounderAssistant.jsx
 var suggestions = [
 	"Summarize all ongoing projects",
@@ -26745,7 +27887,7 @@ var label$1 = (value) => value ? (/* @__PURE__ */ new Date(`${value}T00:00:00Z`)
 	month: "short",
 	timeZone: "UTC"
 }) : "no date";
-function emptyStage({ stages = [], tailStageName = "", placement, started = false, custom = false } = {}) {
+function emptyStage({ stages = [], tailStageName = "", placement, started = false, custom = true } = {}) {
 	const tail = tailStageName || stages.at(-1)?.name || "";
 	return {
 		name: "",
@@ -26759,13 +27901,13 @@ function emptyStage({ stages = [], tailStageName = "", placement, started = fals
 		started,
 		doneCount: 0,
 		custom,
-		tasks: custom ? [{
-			key: crypto.randomUUID(),
-			title: "",
-			role: "Team",
-			durationDays: 1,
-			assigneeId: ""
-		}] : defaultStageTasks()
+		spaces: [],
+		structure: "studio",
+		tasks: custom ? defaultStageTasks().map((task, index) => ({
+			...task,
+			title: STAGE_TASKS[index].title,
+			role: task.role || STAGE_TASKS[index].role
+		})) : defaultStageTasks()
 	};
 }
 function stageSpec(value) {
@@ -26780,11 +27922,12 @@ function stageSpec(value) {
 		stageName: value.placement.stageName
 	};
 	return {
-		name: value.name.trim(),
+		name: value.spaces?.length ? `${value.name.trim()} · ${value.spaces.join(" + ")}` : value.name.trim(),
+		spaces: value.spaces || [],
 		...value.custom ? { custom: true } : {},
 		placement,
 		doneCount: value.started ? Number(value.doneCount) || 0 : 0,
-		tasks: value.tasks.map((task) => ({
+		tasks: value.tasks.filter((task) => !value.custom || Number(task.durationDays) > 0).map((task) => ({
 			key: task.key,
 			...value.custom ? { title: task.title?.trim() } : {},
 			durationDays: Number(task.durationDays) || 0,
@@ -26800,19 +27943,22 @@ function stageNameProblem(value, stages = []) {
 	if (name.includes("—")) return "Stage names cannot contain \"—\".";
 	if (value.custom) {
 		if (!value.tasks.length || value.tasks.length > 60) return "Add between 1 and 60 tasks.";
-		if (value.tasks.some((task) => !task.title?.trim() || task.title.trim().length > 80 || task.title.includes("—"))) return "Give each task a name of up to 80 characters without —.";
-		if (value.tasks.some((task) => !Number.isInteger(Number(task.durationDays)) || Number(task.durationDays) < 1 || Number(task.durationDays) > 365)) return "Give each task a duration from 1 to 365 days.";
-		if (value.tasks.some((task) => !task.role?.trim())) return "Give each task a role.";
+		if (value.tasks.filter((task) => Number(task.durationDays) > 0).some((task) => !task.title?.trim() || task.title.trim().length > 80 || task.title.includes("—"))) return "Give each task a name of up to 80 characters without —.";
+		if (value.tasks.some((task) => !Number.isInteger(Number(task.durationDays)) || Number(task.durationDays) < 0 || Number(task.durationDays) > 365)) return "Give each task a duration from 0 (skip) to 365 days.";
+		if (!value.tasks.some((task) => Number(task.durationDays) > 0)) return "Keep at least one task with a duration.";
+		if (value.tasks.filter((task) => Number(task.durationDays) > 0).some((task) => !task.role?.trim())) return "Give each task a role.";
 	}
-	const clash = stages.find((stage) => stage.name.trim().toLowerCase() === name.toLowerCase());
+	const fullName = value.spaces?.length ? `${name} · ${value.spaces.join(" + ")}` : name;
+	if (fullName.length > 60) return "Keep the combined stage and space names under 61 characters.";
+	const clash = stages.find((stage) => stage.name.trim().toLowerCase() === fullName.toLowerCase());
 	return clash ? `A stage called "${clash.name}" already exists.` : "";
 }
-function AddStageForm({ value, onChange, stages = [], members = [], defaultPlan = [], telegramLinked = true, preview, previewing, previewError }) {
+function AddStageForm({ value, onChange, stages = [], members = [], spaces = [], defaultPlan = [], telegramLinked = true, preview, previewing, previewError }) {
 	const set = (changes) => onChange({
 		...value,
 		...changes
 	});
-	const setTask = (key, changes) => set({ tasks: value.tasks.map((task) => task.key === key ? {
+	const setTask = (key, changes) => set({ tasks: value.tasks.filter((task) => !value.custom || Number(task.durationDays) > 0).map((task) => task.key === key ? {
 		...task,
 		...changes
 	} : task) });
@@ -26824,28 +27970,13 @@ function AddStageForm({ value, onChange, stages = [], members = [], defaultPlan 
 		const others = members.filter((member) => member.employeeId && !matching.includes(member));
 		return [...matching, ...others];
 	};
-	const fillFromPlan = (name) => {
-		const source = defaultPlan.find((stage) => stage.name === name);
-		if (!source) return;
-		set({
-			name: value.name || source.name,
-			tasks: value.tasks.map((task) => {
-				const from = source.tasks.find((item) => item.key === task.key);
-				return {
-					...task,
-					durationDays: from?.durationDays ?? task.durationDays,
-					...from?.role ? { role: from.role } : {}
-				};
-			})
-		});
-	};
 	const stage = preview?.stages?.[0];
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "space-y-4",
 		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "grid gap-3 sm:grid-cols-[1fr_auto] sm:items-end",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 					className: "space-y-1.5",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 						className: "text-xs font-medium",
@@ -26855,27 +27986,10 @@ function AddStageForm({ value, onChange, stages = [], members = [], defaultPlan 
 						value: value.name,
 						maxLength: 60,
 						placeholder: "e.g. Flooring",
-						"aria-invalid": Boolean(nameProblem),
+						"aria-invalid": Boolean(nameProblem && (nameProblem.startsWith("Enter a stage name") || nameProblem.startsWith("Keep the stage") || nameProblem.startsWith("A stage called") || nameProblem.startsWith("Stage names"))),
 						onChange: (event) => set({ name: event.target.value })
 					})]
-				}), !value.custom && defaultPlan.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-					className: "space-y-1.5",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "text-xs font-medium",
-						children: "Fill from default plan"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
-						value: "",
-						onChange: (event) => fillFromPlan(event.target.value),
-						className: "w-full sm:w-52",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
-							value: "",
-							children: "Choose a stage…"
-						}), defaultPlan.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
-							value: item.name,
-							children: item.name
-						}, item.name))]
-					})]
-				})]
+				})
 			}),
 			nameProblem && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 				className: "text-xs text-destructive",
@@ -26894,6 +28008,23 @@ function AddStageForm({ value, onChange, stages = [], members = [], defaultPlan 
 						]
 					})
 				]
+			}),
+			spaces.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+				className: "space-y-2",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
+					className: "text-xs font-medium",
+					children: "Spaces (optional; none means whole project)"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "flex flex-wrap gap-3",
+					children: spaces.map((space) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "flex items-center gap-1 text-xs",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+							type: "checkbox",
+							checked: value.spaces?.includes(space) || false,
+							onChange: (event) => set({ spaces: event.target.checked ? [...value.spaces || [], space] : (value.spaces || []).filter((name) => name !== space) })
+						}), space]
+					}, space))
+				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
 				className: "space-y-2",
@@ -26994,6 +28125,10 @@ function AddStageForm({ value, onChange, stages = [], members = [], defaultPlan 
 					})
 				]
 			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("datalist", {
+				id: "project-task-roles",
+				children: [...new Set(members.flatMap((member) => rolesOf(member.roles || member.role || member.designation)))].map((role) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { value: role }, role))
+			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "space-y-2",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
@@ -27031,6 +28166,7 @@ function AddStageForm({ value, onChange, stages = [], members = [], defaultPlan 
 										className: "text-xs",
 										children: "Role"
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+										list: "project-task-roles",
 										value: task.role,
 										maxLength: 80,
 										onChange: (event) => setTask(task.key, { role: event.target.value })
@@ -27039,10 +28175,10 @@ function AddStageForm({ value, onChange, stages = [], members = [], defaultPlan 
 									className: "space-y-1",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 										className: "text-xs",
-										children: "Days"
+										children: "Days (0 = skip)"
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 										type: "number",
-										min: 1,
+										min: 0,
 										max: 365,
 										step: 1,
 										value: task.durationDays,
@@ -27054,7 +28190,7 @@ function AddStageForm({ value, onChange, stages = [], members = [], defaultPlan 
 								className: "block space-y-1",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "text-xs",
-									children: "Owner"
+									children: "Assignee"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
 									className: "w-full",
 									value: task.assigneeId || "",
@@ -27064,7 +28200,7 @@ function AddStageForm({ value, onChange, stages = [], members = [], defaultPlan 
 											value: "",
 											children: telegramLinked ? "By role" : "Unassigned"
 										}),
-										!telegramLinked && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
 											value: "founder",
 											children: "Founder"
 										}),
@@ -27252,7 +28388,7 @@ function useDefaultPlan(projectId, open) {
 	}, [open, projectId]);
 	return plan;
 }
-function AddStageDialog({ open, onOpenChange, projectId, stages = [], members = [], tailStageName, initialPlacement, telegramLinked = true, startedDefault = false, onAdded }) {
+function AddStageDialog({ open, onOpenChange, projectId, stages = [], members = [], spaces = [], tailStageName, initialPlacement, telegramLinked = true, startedDefault = false, onAdded }) {
 	const [value, setValue] = (0, import_react.useState)(() => emptyStage({
 		stages,
 		tailStageName,
@@ -27262,7 +28398,6 @@ function AddStageDialog({ open, onOpenChange, projectId, stages = [], members = 
 	}));
 	const [saving, setSaving] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
-	const defaultPlan = useDefaultPlan(projectId, open && telegramLinked);
 	(0, import_react.useEffect)(() => {
 		if (open) {
 			setValue(emptyStage({
@@ -27307,55 +28442,64 @@ function AddStageDialog({ open, onOpenChange, projectId, stages = [], members = 
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { className: "size-5" })
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Add a stage" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, {
 							className: "text-xs",
-							children: "Name your own tasks, choose owners and durations, then check the dates before saving."
+							children: "Edit the standard tasks, choose assignees and durations, then check the dates before saving."
 						})] })]
 					})
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "min-h-0 flex-1 overflow-y-auto px-5 py-4",
 					children: [
-						telegramLinked && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
 							className: "mb-4 flex gap-4 text-sm",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
 									className: "mb-2 text-xs font-medium",
-									children: "Task structure"
+									children: "Start from"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 									className: "flex items-center gap-2",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
 										type: "radio",
 										name: "stage-structure",
-										checked: Boolean(value.custom),
+										checked: value.structure !== "blank",
+										onChange: () => setValue({
+											...value,
+											...emptyStage({ custom: true }),
+											name: value.name,
+											placement: value.placement,
+											spaces: value.spaces
+										})
+									}), "Editable Studio template"]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "flex items-center gap-2",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+										type: "radio",
+										name: "stage-structure",
+										checked: value.structure === "blank",
 										onChange: () => setValue({
 											...value,
 											custom: true,
-											tasks: emptyStage({ custom: true }).tasks
+											structure: "blank",
+											tasks: [{
+												key: crypto.randomUUID(),
+												title: "",
+												role: "Team",
+												durationDays: 1,
+												assigneeId: ""
+											}]
 										})
-									}), "Custom tasks"]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-									className: "flex items-center gap-2",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-										type: "radio",
-										name: "stage-structure",
-										checked: !value.custom,
-										onChange: () => setValue({
-											...value,
-											custom: false,
-											tasks: emptyStage().tasks
-										})
-									}), "Studio template"]
+									}), "Blank task list"]
 								})
 							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AddStageForm, {
+							spaces,
 							telegramLinked,
 							value,
 							onChange: setValue,
 							stages,
 							members,
-							defaultPlan,
 							preview,
 							previewing,
 							previewError
@@ -28957,6 +30101,7 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 	const [busy, setBusy] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
 	const [credentials, setCredentials] = (0, import_react.useState)(null);
+	const [memberId, setMemberId] = (0, import_react.useState)("");
 	const [notice, setNotice] = (0, import_react.useState)("");
 	const load = async () => {
 		try {
@@ -29024,13 +30169,13 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "mt-1 text-sm text-muted-foreground",
-						children: "Add the client and team members in this project’s Telegram group. They appear here automatically. Set their names and designations below before choosing a project type."
+						children: "Set the names and roles of the client and team members discovered in this project’s Telegram group before choosing a project type."
 					})
 				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 					variant: "outline",
 					size: "sm",
 					disabled: busy,
-					onClick: () => run(() => api$2("/api/founder/telegram-groups/refresh", "POST", {}), "Latest Telegram members fetched."),
+					onClick: () => run(() => api$2("/api/founder/telegram-groups/refresh", "POST", { groupChatId: group?.groupChatId }), "Recorded Telegram members refreshed. If someone is missing, ask them to send /join in the group."),
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, {}), "Refresh"]
 				})]
 			}),
@@ -29112,11 +30257,52 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 									group.groupChatId,
 									" · ",
 									activeMembers.length,
-									" people observed"
+									" people recorded",
+									group.telegramMemberCount ? ` · ${group.telegramMemberCount} Telegram accounts including bots` : ""
 								]
 							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 								className: "rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground",
 								children: needsSetup ? "Project needs setup" : `Linked to ${linkedProject.name}`
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "rounded-lg border bg-secondary/40 p-3 text-sm text-muted-foreground",
+							children: [
+								"Missing someone? Telegram does not let bots fetch the full existing member list. Ask each missing person to send ",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("code", { children: ["/join", group.botUsername ? `@${group.botUsername}` : ""] }),
+								" in this Telegram group, then refresh. If there are multiple bots, use ",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("code", { children: "/join@YourBotUsername" }),
+								" with this project bot’s username. Make the bot a group admin to receive future membership updates."
+							]
+						}),
+						group.discoveryWarning && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							role: "status",
+							className: "text-sm text-amber-800",
+							children: group.discoveryWarning
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+							className: "flex flex-wrap items-end gap-2",
+							onSubmit: (event) => {
+								event.preventDefault();
+								run(() => api$2("/api/founder/telegram-groups/refresh", "POST", {
+									groupChatId: group.groupChatId,
+									telegramUserId: memberId
+								}), "Member verified in Telegram and added to the roster.").then(() => setMemberId(""));
+							},
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "space-y-1 text-xs font-medium",
+								children: ["Recover a missing member by Telegram ID", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									value: memberId,
+									onChange: (event) => setMemberId(event.target.value),
+									inputMode: "numeric",
+									pattern: "[0-9]+",
+									required: true,
+									placeholder: "Telegram user ID"
+								})]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "outline",
+								disabled: busy || !/^\d+$/.test(memberId),
+								children: "Verify and add"
 							})]
 						}),
 						pendingCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
@@ -29175,7 +30361,7 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 												className: "space-y-1 text-xs font-medium",
-												children: ["Role", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+												children: ["Roles (choose one or more)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 													list: "project-role-suggestions",
 													value: draft.role ?? member.assignedRole ?? "",
 													onChange: (event) => setDrafts((current) => ({
@@ -29185,8 +30371,28 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 															role: event.target.value
 														}
 													})),
-													placeholder: "Client, designer…"
+													placeholder: "Founder, Designer"
 												})]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+												className: "col-span-full flex flex-wrap gap-3",
+												children: suggestedRoles.map((role) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+													className: "flex items-center gap-1 text-xs",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+														type: "checkbox",
+														checked: hasRole(draft.role ?? member.assignedRole, role),
+														onChange: (event) => {
+															const current = rolesOf(draft.role ?? member.assignedRole);
+															setDrafts((values) => ({
+																...values,
+																[key]: {
+																	...values[key],
+																	role: (event.target.checked ? [...current, role] : current.filter((item) => item !== role)).join(", ")
+																}
+															}));
+														}
+													}), role]
+												}, role))
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 												className: "self-end",
@@ -29214,7 +30420,7 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 								children: "Finish project setup"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-xs text-muted-foreground",
-								children: "Assign one client and at least one team member. Finish setup here, then choose the project type in this project."
+								children: "Assign at least one client and one team member. Finish setup here, then choose the project type in this project."
 							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "grid gap-2 sm:grid-cols-[minmax(0,1fr)_160px_auto]",
 								children: [
@@ -29236,7 +30442,7 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 										className: "self-end",
 										onClick: createProject,
-										disabled: busy || Boolean(credentials) || pendingCount > 0 || activeMembers.filter((member) => /\bclient\b/i.test(member.assignedRole)).length !== 1 || !activeMembers.some((member) => !/\b(client|founder)\b/i.test(member.assignedRole)),
+										disabled: busy || Boolean(credentials) || pendingCount > 0 || !activeMembers.some((member) => hasRole(member.assignedRole, "Client")) || !activeMembers.some((member) => isStaff(member.assignedRole)),
 										children: "Finish setup"
 									})
 								]
@@ -29262,91 +30468,66 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 	});
 }
 //#endregion
-//#region frontend/src/components/ProjectFiles.jsx
-function ProjectFiles({ projectId, namespace = "founder" }) {
-	const [files, setFiles] = (0, import_react.useState)([]);
-	const [error, setError] = (0, import_react.useState)("");
-	const [loading, setLoading] = (0, import_react.useState)(true);
-	const requestId = (0, import_react.useRef)(0);
-	const load = (0, import_react.useCallback)(async (signal, background = false) => {
-		const current = ++requestId.current;
-		if (!background) setLoading(true);
-		try {
-			const data = await request("/api/" + namespace + "/projects/" + projectId + "/files", { signal });
-			if (current !== requestId.current || signal?.aborted) return;
-			setFiles(data.files || []);
-			setError("");
-		} catch (problem) {
-			if (current === requestId.current && !signal?.aborted) setError(problem.message || "Could not load the project files.");
-		} finally {
-			if (current === requestId.current && !signal?.aborted) setLoading(false);
-		}
-	}, [projectId, namespace]);
+//#region frontend/src/components/ProjectSpaces.jsx
+function ProjectSpaces({ project, onUpdated }) {
+	const [names, setNames] = (0, import_react.useState)((project.spaces || []).join("\n")), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [notice, setNotice] = (0, import_react.useState)("");
 	(0, import_react.useEffect)(() => {
-		const controller = new AbortController();
-		setFiles([]);
+		setNames((project.spaces || []).join("\n"));
+	}, [project.id, JSON.stringify(project.spaces)]);
+	const save = async () => {
+		setBusy(true);
 		setError("");
-		load(controller.signal);
-		const timer = setInterval(() => {
-			if (document.visibilityState === "visible") load(controller.signal, true);
-		}, 1e4);
-		return () => {
-			controller.abort();
-			requestId.current++;
-			clearInterval(timer);
-		};
-	}, [load]);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-		className: "iksha-project-files",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", { children: "Project documents & photos" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Files shared in the Telegram group. Saved files can be opened below." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-				variant: "outline",
-				size: "sm",
-				disabled: loading,
-				onClick: () => void load(),
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: "size-4 " + (loading ? "animate-spin" : "") }), "Refresh files"]
-			})] }),
-			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				role: "alert",
-				className: "text-sm text-destructive",
-				children: error
-			}),
-			loading && !files.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				role: "status",
-				children: "Loading files…"
-			}) : files.length ? files.map((file) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
-				className: "iksha-file-card",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { size: 19 }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: file.name || "Untitled file" }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
-							file.submittedBy || "Team member",
-							" · ",
-							file.status === "Stored" ? "Saved to Google Drive" : "Waiting for Google Drive save"
-						] }),
-						file.submittedAt && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("time", { children: new Date(file.submittedAt).toLocaleDateString([], {
-							month: "short",
-							day: "numeric",
-							year: "numeric"
-						}) }),
-						file.error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "iksha-file-error",
-							children: file.error
-						})
-					] }),
-					file.status === "Stored" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-						href: "/api/" + namespace + "/projects/" + projectId + "/files/" + encodeURIComponent(file.id),
-						target: "_blank",
-						rel: "noreferrer",
-						children: ["Open file ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { size: 13 })]
-					})
-				]
-			}, file.id)) : !error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "iksha-files-empty",
-				children: "No files have been shared yet. Send photos or documents in the project’s Telegram group to add them here."
-			})
-		]
+		try {
+			await request(`/api/founder/projects/${project.id}/spaces`, {
+				method: "POST",
+				body: { spaces: names.split("\n").map((name) => name.trim()).filter(Boolean) }
+			});
+			setNotice("Spaces saved. Select them when adding a stage.");
+			onUpdated?.();
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
+		className: "rounded-xl border bg-card p-4",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("summary", {
+			className: "cursor-pointer text-sm font-semibold",
+			children: ["Project spaces · ", project.spaces?.length || 0]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-3 space-y-3",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+					className: "grid gap-1 text-xs",
+					children: ["One space per line", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("textarea", {
+						className: "min-h-28 rounded-md border bg-background p-3 text-sm",
+						value: names,
+						onChange: (event) => setNames(event.target.value),
+						placeholder: "Living room\nKitchen\nBedroom 1"
+					})]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "text-xs text-muted-foreground",
+					children: "Stage space selection is optional. No selection means the whole project. Spaces in use must be removed from their stages before deletion."
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					disabled: busy || ["Completed", "Abandoned"].includes(project.status),
+					onClick: save,
+					children: "Save spaces"
+				}),
+				error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					role: "alert",
+					className: "text-sm text-destructive",
+					children: error
+				}),
+				notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					role: "status",
+					className: "text-sm text-emerald-800",
+					children: notice
+				})
+			]
+		})]
 	});
 }
 //#endregion
@@ -29499,610 +30680,6 @@ function TeamChat({ endpoint, currentActor }) {
 				children: error
 			})
 		]
-	});
-}
-//#endregion
-//#region frontend/src/components/TaskThreadDrawer.jsx
-var statusColors = {
-	"Open": "bg-slate-100 text-slate-800 border-slate-200",
-	"In progress": "bg-blue-50 text-blue-700 border-blue-200",
-	"Blocked": "bg-amber-50 text-amber-800 border-amber-200",
-	"Completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
-	"Cancelled": "bg-red-50 text-red-700 border-red-200",
-	"todo": "bg-slate-100 text-slate-800 border-slate-200",
-	"in_progress": "bg-blue-50 text-blue-700 border-blue-200",
-	"review": "bg-amber-50 text-amber-800 border-amber-200",
-	"completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
-	"cancelled": "bg-red-50 text-red-700 border-red-200"
-};
-function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTaskUpdated, onOpenSourceQuery, currentActor = "Founder", isFounder = true, projectMembers = [] }) {
-	const [task, setTask] = (0, import_react.useState)(initialTask);
-	const [messages, setMessages] = (0, import_react.useState)([]);
-	const [commentText, setCommentText] = (0, import_react.useState)("");
-	const [attachmentUrl, setAttachmentUrl] = (0, import_react.useState)("");
-	const [showAttachmentInput, setShowAttachmentInput] = (0, import_react.useState)(false);
-	const [isEditing, setIsEditing] = (0, import_react.useState)(false);
-	const [loadingMessages, setLoadingMessages] = (0, import_react.useState)(false);
-	const [sendingMessage, setSendingMessage] = (0, import_react.useState)(false);
-	const [savingEdits, setSavingEdits] = (0, import_react.useState)(false);
-	const [error, setError] = (0, import_react.useState)("");
-	const messagesEndRef = (0, import_react.useRef)(null);
-	const messageRequest = (0, import_react.useRef)(0);
-	const deadlineInputRef = (0, import_react.useRef)(null);
-	const [showResources, setShowResources] = (0, import_react.useState)(false);
-	const [editTitle, setEditTitle] = (0, import_react.useState)("");
-	const [editDesc, setEditDesc] = (0, import_react.useState)("");
-	const [editStatus, setEditStatus] = (0, import_react.useState)("Open");
-	const [editDeadline, setEditDeadline] = (0, import_react.useState)("");
-	const [editAssigneeId, setEditAssigneeId] = (0, import_react.useState)("");
-	const [editStageId, setEditStageId] = (0, import_react.useState)("");
-	const namespace = isFounder ? "founder" : "employee";
-	(0, import_react.useEffect)(() => {
-		if (open && initialTask?.id) {
-			setTask(initialTask);
-			setMessages([]);
-			setCommentText("");
-			setAttachmentUrl("");
-			setShowAttachmentInput(false);
-			setEditTitle(initialTask.title || "");
-			setEditDesc(initialTask.description || "");
-			setEditStatus(initialTask.status || "Open");
-			setEditDeadline(initialTask.deadline || initialTask.dueDate || "");
-			setEditAssigneeId(initialTask.assigneeId || "");
-			setEditStageId(initialTask.stageId || "");
-			setIsEditing(false);
-			setShowResources(false);
-			setError("");
-			loadMessages(initialTask.id);
-		}
-		return () => {
-			messageRequest.current++;
-		};
-	}, [open, initialTask?.id]);
-	const loadMessages = async (taskId) => {
-		const requestId = ++messageRequest.current;
-		setLoadingMessages(true);
-		try {
-			const data = await fetchTaskMessages(taskId, "", 100, namespace);
-			if (requestId !== messageRequest.current) return;
-			const list = data.messages || [];
-			setMessages(list);
-			if (list.length > 0) markTaskRead(taskId, list[list.length - 1].id, namespace).catch(() => {});
-		} catch (problem) {
-			if (requestId === messageRequest.current) setError(problem.message || "Could not refresh this thread. Please retry.");
-		} finally {
-			if (requestId === messageRequest.current) setLoadingMessages(false);
-		}
-	};
-	(0, import_react.useEffect)(() => {
-		if (messagesEndRef.current) messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-	}, [messages.length]);
-	if (!task) return null;
-	const isClosed = task.status === "Completed" || task.status === "Cancelled";
-	const handleSendMessage = async (e) => {
-		e.preventDefault();
-		if (!commentText.trim() || sendingMessage || isClosed) return;
-		setSendingMessage(true);
-		setError("");
-		try {
-			const res = await sendTaskMessage(task.id, {
-				text: commentText.trim(),
-				attachmentUrl: attachmentUrl.trim() || void 0
-			}, namespace);
-			setCommentText("");
-			setAttachmentUrl("");
-			setShowAttachmentInput(false);
-			if (res.message) {
-				setMessages((prev) => [...prev, res.message]);
-				markTaskRead(task.id, res.message.id, namespace).catch(() => {});
-			} else await loadMessages(task.id);
-			if (onTaskUpdated) onTaskUpdated();
-		} catch (err) {
-			setError(err.message || "Failed to send message.");
-		} finally {
-			setSendingMessage(false);
-		}
-	};
-	const handleSaveEdits = async () => {
-		setSavingEdits(true);
-		setError("");
-		try {
-			const updates = {
-				title: editTitle.trim(),
-				description: editDesc.trim(),
-				status: editStatus,
-				deadline: deadlineInputRef.current?.value ?? editDeadline,
-				stageId: editStageId
-			};
-			if (isFounder) updates.assigneeId = editAssigneeId;
-			const updated = (await updateTask(task.id, updates, namespace)).task || {
-				...task,
-				...updates
-			};
-			setTask(updated);
-			setIsEditing(false);
-			if (onTaskUpdated) onTaskUpdated();
-		} catch (err) {
-			setError(err.message || "Failed to save task changes.");
-		} finally {
-			setSavingEdits(false);
-		}
-	};
-	const handleQuickStatus = async (newStatus) => {
-		setError("");
-		try {
-			const updated = (await updateTask(task.id, { status: newStatus }, namespace)).task || {
-				...task,
-				status: newStatus
-			};
-			setTask(updated);
-			setEditStatus(newStatus);
-			if (onTaskUpdated) onTaskUpdated();
-		} catch (err) {
-			setError(err.message || "Failed to update task status.");
-		}
-	};
-	const handleReopenTask = async () => {
-		await handleQuickStatus("Open");
-	};
-	const handleDelete = async () => {
-		if (!isFounder) return;
-		if (confirm("Are you sure you want to delete this task? Soft deletion preserves audit history.")) try {
-			await deleteTask(task.id);
-			onOpenChange(false);
-			if (onTaskUpdated) onTaskUpdated();
-		} catch (err) {
-			setError(err.message || "Failed to delete task.");
-		}
-	};
-	const getAssigneeLabel = (id) => {
-		if (!id) return "Unassigned";
-		if (id === "founder") return "Founder";
-		const found = projectMembers.find((m) => m.employeeId === id || m.id === id);
-		return found ? `${found.name} (${found.role || "Member"})` : id;
-	};
-	const currentStageName = project?.stages?.find((s) => s.id === task.stageId)?.name || task.stageName || "General";
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
-		open,
-		onOpenChange,
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
-			className: "flex max-h-[92dvh] max-w-2xl flex-col gap-0 overflow-hidden p-0 sm:max-w-2xl sm:rounded-2xl",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					className: "shrink-0 border-b bg-card px-5 py-4 pr-12",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-start justify-between gap-3",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "min-w-0 flex-1",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex flex-wrap items-center gap-2",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-										variant: "outline",
-										className: statusColors[task.status] || "bg-muted",
-										children: task.status
-									}),
-									currentStageName && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "text-xs text-muted-foreground",
-										children: ["· ", currentStageName]
-									}),
-									task.sourceQueryId && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-										variant: "outline",
-										className: "border-amber-300 bg-amber-50 text-amber-900 text-[10px]",
-										children: "Telegram Query"
-									})
-								]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, {
-								className: "mt-2 break-words text-lg font-semibold tracking-tight text-foreground [overflow-wrap:anywhere]",
-								children: task.title
-							})]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "flex items-center gap-1.5 shrink-0",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-								variant: isEditing ? "secondary" : "outline",
-								size: "sm",
-								onClick: () => {
-									if (isEditing) handleSaveEdits();
-									else setIsEditing(true);
-								},
-								disabled: savingEdits,
-								children: [savingEdits ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1" }) : isEditing ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5 mr-1 text-emerald-600" }) : null, isEditing ? "Save" : "Edit"]
-							})
-						})]
-					})
-				}),
-				error && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "mx-5 mt-3 flex items-center gap-2 rounded-xl border border-destructive/30 bg-destructive/10 px-3.5 py-2 text-xs text-destructive",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: error })]
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "chat-scroll min-h-0 flex-1 space-y-4 overflow-y-auto p-5",
-					children: [
-						isEditing ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "space-y-3.5 rounded-xl border bg-muted/20 p-4",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-									className: "grid gap-1.5 text-xs font-semibold",
-									children: ["Title", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-										value: editTitle,
-										onChange: (e) => setEditTitle(e.target.value),
-										required: true
-									})]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-									className: "grid gap-1.5 text-xs font-semibold",
-									children: ["Description", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
-										value: editDesc,
-										onChange: (e) => setEditDesc(e.target.value),
-										rows: 3
-									})]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "grid grid-cols-2 gap-3",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-										className: "grid gap-1.5 text-xs font-semibold",
-										children: ["Status", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
-											value: editStatus,
-											onChange: (e) => setEditStatus(e.target.value),
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: "Open",
-													children: "Open"
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: "In progress",
-													children: "In progress"
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: "Blocked",
-													children: "Blocked"
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: "Completed",
-													children: "Completed"
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: "Cancelled",
-													children: "Cancelled"
-												})
-											]
-										})]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-										className: "grid gap-1.5 text-xs font-semibold",
-										children: ["Deadline", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-											type: "date",
-											ref: deadlineInputRef,
-											value: editDeadline,
-											onChange: (e) => setEditDeadline(e.target.value)
-										})]
-									})]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "grid grid-cols-2 gap-3",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-										className: "grid gap-1.5 text-xs font-semibold",
-										children: [
-											"Assignee",
-											isFounder ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
-												value: editAssigneeId,
-												onChange: (e) => setEditAssigneeId(e.target.value),
-												children: [
-													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-														value: "",
-														children: "Unassigned"
-													}),
-													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-														value: "founder",
-														children: "Founder"
-													}),
-													projectMembers.map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
-														value: m.employeeId || m.id,
-														children: [
-															m.name,
-															" (",
-															m.role || "Member",
-															")"
-														]
-													}, m.id || m.employeeId))
-												]
-											}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-												value: getAssigneeLabel(task.assigneeId),
-												disabled: true,
-												className: "bg-muted text-muted-foreground text-xs",
-												title: "Only the founder may change task assignments."
-											}),
-											!isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "text-[10px] text-muted-foreground",
-												children: "Only founder can change assignee"
-											})
-										]
-									}), project?.stages && project.stages.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-										className: "grid gap-1.5 text-xs font-semibold",
-										children: ["Stage", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
-											value: editStageId,
-											onChange: (e) => setEditStageId(e.target.value),
-											children: project.stages.map((st) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: st.id,
-												children: st.name
-											}, st.id))
-										})]
-									})]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex justify-between items-center pt-2",
-									children: [isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-										type: "button",
-										variant: "ghost",
-										size: "sm",
-										className: "text-destructive hover:bg-destructive/10 text-xs",
-										onClick: handleDelete,
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trash, { className: "size-3.5 mr-1" }), " Delete Task"]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-										size: "sm",
-										onClick: handleSaveEdits,
-										disabled: savingEdits,
-										className: "ml-auto",
-										children: [savingEdits ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1" }) : null, "Save Changes"]
-									})]
-								})
-							]
-						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "grid grid-cols-2 gap-2 rounded-xl border bg-muted/30 p-3 sm:grid-cols-3",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "space-y-0.5",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-[11px] font-medium text-muted-foreground",
-											children: "Assignee"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-											className: "flex items-center gap-1.5 text-xs font-semibold truncate",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, { className: "size-3.5 text-muted-foreground shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "truncate",
-												children: getAssigneeLabel(task.assigneeId) || task.assigneeName || "Unassigned"
-											})]
-										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "space-y-0.5",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-[11px] font-medium text-muted-foreground",
-											children: "Deadline"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-											className: "flex items-center gap-1.5 text-xs font-semibold",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-3.5 text-muted-foreground shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: task.deadline || task.dueDate ? new Date(task.deadline || task.dueDate).toLocaleDateString(void 0, {
-												month: "short",
-												day: "numeric",
-												year: "numeric"
-											}) : "No deadline" })]
-										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "col-span-2 sm:col-span-1 space-y-0.5",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-[11px] font-medium text-muted-foreground",
-											children: "Quick Action"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { children: !isClosed ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-											size: "sm",
-											variant: "outline",
-											className: "h-7 px-2.5 text-xs text-emerald-700 hover:bg-emerald-50 font-semibold",
-											onClick: () => handleQuickStatus("Completed"),
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 mr-1" }), " Mark Done"]
-										}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-											size: "sm",
-											variant: "outline",
-											className: "h-7 px-2.5 text-xs text-muted-foreground font-semibold",
-											onClick: () => handleQuickStatus("Open"),
-											children: "Reopen Task"
-										}) })]
-									})
-								]
-							}),
-							task.description && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed rounded-xl border bg-card p-3",
-								children: task.description
-							}),
-							task.sourceQueryId && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center justify-between rounded-xl border border-amber-200 bg-amber-50/70 p-3 text-xs text-amber-900",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex items-center gap-2",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0 text-amber-700" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Converted from Telegram client query" })]
-								}), onOpenSourceQuery && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-									variant: "outline",
-									size: "sm",
-									className: "h-7 text-xs border-amber-300 bg-white text-amber-900 hover:bg-amber-100/50",
-									onClick: () => onOpenSourceQuery(task.sourceQueryId),
-									children: ["View Query ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-3 ml-1" })]
-								})]
-							})
-						] }),
-						task.sourceBlockedReason && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "iksha-work-blocker",
-							children: ["Blocked: ", task.sourceBlockedReason]
-						}),
-						task.sourceApprovalStatus && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "iksha-work-approval",
-							children: ["Approval: ", task.sourceApprovalStatus]
-						}),
-						project?.id && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
-							className: "iksha-task-resources",
-							onToggle: (event) => setShowResources(event.currentTarget.open),
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", { children: "Shared project resources" }), showResources && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectFiles, {
-								projectId: project.id,
-								namespace
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "border-t pt-4",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center justify-between pb-3",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h4", {
-									className: "flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 text-primary" }),
-										"Task Discussion Thread (",
-										messages.length,
-										")"
-									]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-									variant: "ghost",
-									size: "icon-sm",
-									onClick: () => loadMessages(task.id),
-									disabled: loadingMessages,
-									"aria-label": "Refresh thread",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: `size-3.5 ${loadingMessages ? "animate-spin" : ""}` })
-								})]
-							}), loadingMessages && messages.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center justify-center py-8 text-xs text-muted-foreground gap-2",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-4 animate-spin text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Loading messages…" })]
-							}) : messages.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "space-y-2.5",
-								children: [messages.map((msg) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: `rounded-xl border p-3 shadow-xs space-y-1.5 ${msg.queryId ? "border-primary/30 bg-primary/5" : "bg-card"}`,
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "flex items-center justify-between text-xs",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "font-semibold text-primary",
-												children: msg.author || "Team member"
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-												className: "text-[10px] text-muted-foreground",
-												children: [
-													new Date(msg.at).toLocaleDateString([], {
-														month: "short",
-														day: "numeric"
-													}),
-													" · ",
-													new Date(msg.at).toLocaleTimeString([], {
-														hour: "numeric",
-														minute: "2-digit"
-													})
-												]
-											})]
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed",
-											children: msg.text
-										}),
-										msg.queryId && msg.attachments?.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-											className: "flex flex-wrap gap-2 pt-1",
-											children: msg.attachments.map((file) => {
-												const href = getAttachmentUrl(msg.queryId, file.index, isFounder ? "founder" : "employee");
-												return /photo|image/i.test(file.type) ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
-													href,
-													target: "_blank",
-													rel: "noreferrer",
-													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-														src: href,
-														alt: "Photo from the query",
-														loading: "lazy",
-														className: "h-20 w-20 rounded-lg border object-cover"
-													})
-												}, file.index) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-													href,
-													target: "_blank",
-													rel: "noreferrer",
-													className: "inline-flex items-center gap-1.5 rounded-lg border bg-muted/40 px-2.5 py-1 text-xs text-primary hover:underline",
-													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, { className: "size-3" }), file.fileName || file.type]
-												}, file.index);
-											})
-										}),
-										msg.attachmentUrl && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-											href: msg.attachmentUrl,
-											target: "_blank",
-											rel: "noreferrer",
-											className: "inline-flex items-center gap-1.5 rounded-lg border bg-muted/40 px-2.5 py-1 text-xs text-primary hover:underline",
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, { className: "size-3" }),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-													className: "truncate max-w-xs",
-													children: msg.attachmentUrl
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-2.5" })
-											]
-										})
-									]
-								}, msg.id)), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { ref: messagesEndRef })]
-							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "py-6 text-center text-xs text-muted-foreground",
-								children: "No discussion messages yet in this task thread."
-							})]
-						})
-					]
-				}),
-				isClosed ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex shrink-0 flex-wrap items-center justify-between gap-3 border-t bg-amber-50/70 p-3 sm:px-5 text-xs text-amber-900",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-						className: "flex items-center gap-1.5",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Lock, { className: "size-3.5 text-amber-700 shrink-0" }),
-							"This task is ",
-							task.status.toLowerCase(),
-							". Reopen it to send new messages."
-						]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						size: "sm",
-						variant: "outline",
-						className: "border-amber-300 bg-white",
-						onClick: handleReopenTask,
-						children: "Reopen Task"
-					})]
-				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-					onSubmit: handleSendMessage,
-					className: "shrink-0 space-y-2 border-t bg-muted/20 p-3 sm:px-5",
-					children: [showAttachmentInput && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-							value: attachmentUrl,
-							onChange: (e) => setAttachmentUrl(e.target.value),
-							placeholder: "https://... attachment or document URL (HTTPS)",
-							className: "h-8 text-xs font-mono"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							type: "button",
-							variant: "ghost",
-							size: "sm",
-							className: "h-8 text-xs text-muted-foreground",
-							onClick: () => {
-								setAttachmentUrl("");
-								setShowAttachmentInput(false);
-							},
-							children: "Cancel"
-						})]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-end gap-2",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								type: "button",
-								variant: "ghost",
-								size: "icon",
-								className: `size-9 shrink-0 ${showAttachmentInput ? "text-primary" : "text-muted-foreground"}`,
-								onClick: () => setShowAttachmentInput((v) => !v),
-								title: "Add attachment link",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, { className: "size-4" })
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
-								value: commentText,
-								onChange: (e) => setCommentText(e.target.value),
-								rows: 1,
-								maxLength: 2e3,
-								"aria-label": "Task comment",
-								placeholder: "Post team update or task comment…",
-								className: "min-h-9 max-h-24 flex-1 resize-none text-xs",
-								disabled: sendingMessage
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								type: "submit",
-								size: "icon",
-								"aria-label": "Send task comment",
-								disabled: !commentText.trim() || sendingMessage,
-								className: "size-9 shrink-0",
-								children: sendingMessage ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-4 animate-spin" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Send, { className: "size-4" })
-							})
-						]
-					})]
-				})
-			]
-		})
 	});
 }
 //#endregion
@@ -31110,2104 +31687,6 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 					})]
 				})
 			]
-		})
-	});
-}
-//#endregion
-//#region frontend/src/components/TaskPlacement.jsx
-function TaskPlacement({ value, onChange, tasks = [], allowKeep = false, allowFirst = false }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
-		className: "space-y-2",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
-				className: "text-xs font-medium",
-				children: "When should this task run?"
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
-				"aria-label": "Task placement",
-				className: "w-full",
-				value: value.type,
-				onChange: (event) => onChange({
-					type: event.target.value,
-					taskId: value.taskId || tasks[0]?.id || "",
-					startDate: value.startDate || (/* @__PURE__ */ new Date()).toLocaleDateString("en-CA")
-				}),
-				children: [
-					allowKeep && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
-						value: "keep",
-						children: "Keep current start and dependencies"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
-						value: "after",
-						children: "After another task"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
-						value: "parallel",
-						children: "In parallel with another task"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
-						value: "date",
-						children: "On a specific date"
-					})
-				]
-			}),
-			["after", "parallel"].includes(value.type) && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-				className: "block space-y-1",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-xs",
-					children: "Reference task"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
-					"aria-label": "Reference task",
-					className: "w-full",
-					value: value.taskId || "",
-					onChange: (event) => onChange({
-						...value,
-						taskId: event.target.value
-					}),
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
-						value: "",
-						children: allowFirst && value.type === "after" ? "First task in this work type" : "Choose a task…"
-					}), tasks.map((task) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
-						value: task.id,
-						children: task.title
-					}, task.id))]
-				})]
-			}),
-			value.type === "date" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-				className: "block space-y-1",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-xs",
-					children: "Start date"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-					"aria-label": "Task start date",
-					type: "date",
-					value: value.startDate || "",
-					onChange: (event) => onChange({
-						...value,
-						startDate: event.target.value
-					})
-				})]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "text-xs text-muted-foreground",
-				children: value.type === "parallel" ? "Both tasks start together. The existing task keeps its dates." : value.type === "after" ? "This task waits for the reference task. The preview shows any later work that must move." : value.type === "date" ? "This task starts independently on the selected date." : "Existing dependencies are preserved."
-			})
-		]
-	});
-}
-//#endregion
-//#region frontend/src/components/ScheduleImpact.jsx
-var label = (value) => value ? (/* @__PURE__ */ new Date(`${value}T00:00:00Z`)).toLocaleDateString([], {
-	day: "numeric",
-	month: "short",
-	timeZone: "UTC"
-}) : "unconfirmed";
-function ScheduleImpact({ preview, pending, error }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		className: "space-y-2 rounded-xl border bg-muted/30 p-3 text-xs",
-		"aria-live": "polite",
-		children: pending ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Checking the schedule…" }) : error ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-			className: "text-destructive",
-			role: "alert",
-			children: error
-		}) : preview ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "font-medium",
-				children: "Review before confirming"
-			}),
-			(preview.conflicts || []).map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "text-destructive",
-				children: item.reason
-			}, index)),
-			(preview.created || []).map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.title }),
-				": ",
-				label(item.start),
-				" – ",
-				label(item.end)
-			] }, index)),
-			(preview.affected || []).map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.taskName || item.title }),
-				": ",
-				label(item.previousStart),
-				" – ",
-				label(item.previousEnd),
-				" → ",
-				label(item.forecastStart),
-				" – ",
-				label(item.forecastEnd),
-				!item.moved && !item.committed ? " · dependent work" : ""
-			] }, item.taskId)),
-			!(preview.affected || []).some((item) => !item.moved && !item.committed) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "No other task dates change." }),
-			(preview.warnings || []).map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: item.reason }, index)),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
-				"Projected finish: ",
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: label(preview.finish) }),
-				". Nothing changes until you confirm."
-			] })
-		] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Complete the fields to preview the dates and any effect on other work." })
-	});
-}
-//#endregion
-//#region frontend/src/components/EditTimelineTaskDialog.jsx
-function EditTimelineTaskDialog({ item, tasks = [], members = [], telegramLinked, onClose, onSaved }) {
-	const [value, setValue] = (0, import_react.useState)(null), [saving, setSaving] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)("");
-	(0, import_react.useEffect)(() => {
-		if (!item) {
-			setValue(null);
-			return;
-		}
-		const prefix = item.stage?.name + " — ";
-		setValue({
-			fromTitle: item.task.title,
-			fromRole: item.task.sourceRole || "Team",
-			fromAssigneeId: item.task.assigneeId || "",
-			fromStart: item.start === null ? "" : new Date(item.start).toISOString().slice(0, 10),
-			fromEnd: item.end === null ? "" : (/* @__PURE__ */ new Date(item.end - 864e5)).toISOString().slice(0, 10),
-			title: item.task.title.startsWith(prefix) ? item.task.title.slice(prefix.length) : item.task.title,
-			role: item.task.sourceRole || "Team",
-			assigneeId: item.task.assigneeId || "",
-			durationDays: item.start !== null && item.end !== null ? Math.round((item.end - item.start) / 864e5) : 1,
-			placement: item.start === null ? {
-				type: "date",
-				startDate: (/* @__PURE__ */ new Date()).toLocaleDateString("en-CA")
-			} : { type: "keep" }
-		});
-		setError("");
-	}, [item?.task.id]);
-	const input = item && value ? value : null;
-	const valid = input && input.title.trim() && input.role.trim() && Number.isInteger(input.durationDays) && input.durationDays >= 1 && input.durationDays <= 365;
-	const { preview, previewing, error: previewError } = useStagePreview({
-		id: item?.task.id,
-		input
-	}, Boolean(valid), () => previewTaskPlan(item.task.id, input));
-	const set = (changes) => setValue((current) => ({
-		...current,
-		...changes
-	}));
-	const save = async () => {
-		setSaving(true);
-		setError("");
-		try {
-			onSaved(await applyTaskPlan(item.task.id, input));
-			onClose();
-		} catch (problem) {
-			setError(problem.message || "Could not edit this task.");
-		} finally {
-			setSaving(false);
-		}
-	};
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
-		open: Boolean(item),
-		onOpenChange: (open) => {
-			if (!open && !saving) onClose();
-		},
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
-			className: "max-h-[92dvh] max-w-lg overflow-y-auto",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Edit work item" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Edit the name, owner, duration or dependency. Review the schedule impact before saving." })] }),
-				item && value && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "space-y-3",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-							className: "block space-y-1",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-xs font-medium",
-								children: "Task name"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								value: value.title,
-								maxLength: 80,
-								onChange: (event) => set({ title: event.target.value })
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "grid grid-cols-2 gap-2",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-								className: "space-y-1",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "text-xs",
-									children: "Role"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									maxLength: 80,
-									value: value.role,
-									onChange: (event) => set({ role: event.target.value })
-								})]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-								className: "space-y-1",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "text-xs",
-									children: "Duration in days"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									type: "number",
-									min: 1,
-									max: 365,
-									step: 1,
-									value: value.durationDays,
-									onChange: (event) => set({ durationDays: event.target.value === "" ? "" : Number(event.target.value) })
-								})]
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-							className: "block space-y-1",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-xs",
-								children: "Owner"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
-								className: "w-full",
-								value: value.assigneeId,
-								onChange: (event) => set({ assigneeId: event.target.value }),
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
-										value: "",
-										children: telegramLinked ? "By role" : "Unassigned"
-									}),
-									!telegramLinked && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
-										value: "founder",
-										children: "Founder"
-									}),
-									members.filter((member) => member.employeeId).map((member) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
-										value: member.employeeId,
-										children: member.name
-									}, member.employeeId))
-								]
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TaskPlacement, {
-							allowKeep: true,
-							value: value.placement,
-							tasks: tasks.filter((task) => task.id !== item.task.id && !task.deletedAt && task.status !== "Cancelled"),
-							onChange: (placement) => set({ placement })
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ScheduleImpact, {
-							preview,
-							pending: previewing,
-							error: previewError
-						}),
-						error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							role: "alert",
-							className: "text-xs text-destructive",
-							children: error
-						})
-					]
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex justify-end gap-2",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						variant: "outline",
-						disabled: saving,
-						onClick: onClose,
-						children: "Cancel"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						disabled: !valid || !preview?.ok || previewing || Boolean(previewError) || saving,
-						onClick: save,
-						children: saving ? "Saving…" : "Confirm and save"
-					})]
-				})
-			]
-		})
-	});
-}
-//#endregion
-//#region frontend/src/components/RenameWorkTypeDialog.jsx
-function RenameWorkTypeDialog({ stage, projectId, onClose, onSaved }) {
-	const [name, setName] = (0, import_react.useState)(""), [saving, setSaving] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)("");
-	(0, import_react.useEffect)(() => {
-		setName(stage?.name || "");
-		setError("");
-	}, [stage?.id]);
-	const save = async () => {
-		setSaving(true);
-		setError("");
-		try {
-			onSaved(await renameWorkType(projectId, stage.id, {
-				name,
-				fromName: stage.name
-			}));
-			onClose();
-		} catch (problem) {
-			setError(problem.message);
-		} finally {
-			setSaving(false);
-		}
-	};
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
-		open: Boolean(stage),
-		onOpenChange: (open) => {
-			if (!open && !saving) onClose();
-		},
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Edit work type" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Renaming this stage keeps its tasks, dates and dependencies. No schedule dates change." })] }),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-				className: "space-y-1",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-xs",
-					children: "Work type name"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-					value: name,
-					maxLength: 60,
-					onChange: (event) => setName(event.target.value)
-				})]
-			}),
-			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "text-xs text-destructive",
-				role: "alert",
-				children: error
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex justify-end gap-2",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-					variant: "outline",
-					disabled: saving,
-					onClick: onClose,
-					children: "Cancel"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-					disabled: saving || !name.trim() || name.trim() === stage?.name,
-					onClick: save,
-					children: saving ? "Saving…" : "Confirm rename"
-				})]
-			})
-		] })
-	});
-}
-//#endregion
-//#region frontend/src/components/InsertTaskDialog.jsx
-function InsertTaskDialog({ open, onOpenChange, projectId, stage, afterTask, initialPlacement, members = [], tasks = [], telegramLinked = true, onAdded }) {
-	const [value, setValue] = (0, import_react.useState)({
-		title: "",
-		role: "Site Team",
-		durationDays: 1,
-		assigneeId: "",
-		placement: {
-			type: "after",
-			taskId: ""
-		}
-	});
-	const [saving, setSaving] = (0, import_react.useState)(false);
-	const [error, setError] = (0, import_react.useState)("");
-	(0, import_react.useEffect)(() => {
-		if (open) {
-			setValue({
-				title: "",
-				role: "Site Team",
-				durationDays: 1,
-				assigneeId: "",
-				placement: initialPlacement || {
-					type: "after",
-					taskId: afterTask?.id || ""
-				}
-			});
-			setError("");
-		}
-	}, [open]);
-	const task = {
-		stageId: stage?.id,
-		...value,
-		title: value.title.trim(),
-		afterTaskId: value.placement.taskId || "",
-		placementType: value.placement.type,
-		startDate: value.placement.startDate
-	};
-	const { preview, previewing, error: previewError } = useStagePreview(task, open && Boolean(task.title && stage), () => previewInsertTask(projectId, task));
-	const save = async () => {
-		setSaving(true);
-		setError("");
-		try {
-			const result = await applyInsertTask(projectId, task);
-			onOpenChange(false);
-			onAdded?.(result);
-		} catch (problem) {
-			setError(problem.message || "Could not add this task.");
-		} finally {
-			setSaving(false);
-		}
-	};
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
-		open,
-		onOpenChange: (next) => {
-			if (!saving) onOpenChange(next);
-		},
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
-			className: "max-h-[92dvh] max-w-lg overflow-y-auto",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogTitle, { children: ["Add a task to ", stage?.name] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, {
-					className: "text-xs",
-					children: "Choose when this work runs, then review any change to the schedule before confirming."
-				})] }),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "space-y-3",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-							className: "block space-y-1.5",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-xs font-medium",
-								children: "Task"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								autoFocus: true,
-								maxLength: 80,
-								value: value.title,
-								placeholder: "e.g. Soil test",
-								onChange: (event) => setValue({
-									...value,
-									title: event.target.value
-								})
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "grid grid-cols-2 gap-2",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-								className: "space-y-1.5",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "text-xs font-medium",
-										children: "Who does it"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-										list: "iksha-insert-roles",
-										value: value.role,
-										maxLength: 80,
-										onChange: (event) => setValue({
-											...value,
-											role: event.target.value
-										})
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("datalist", {
-										id: "iksha-insert-roles",
-										children: [
-											"Site Supervisor",
-											"Designer",
-											"Design Head/ Admin",
-											"Client",
-											...EXECUTION_ROLES
-										].map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { value: item }, item))
-									})
-								]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-								className: "space-y-1.5",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "text-xs font-medium",
-									children: "Days"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									type: "number",
-									min: 1,
-									max: 365,
-									step: 1,
-									value: value.durationDays,
-									onChange: (event) => setValue({
-										...value,
-										durationDays: event.target.value === "" ? "" : Number(event.target.value)
-									})
-								})]
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-							className: "block space-y-1.5",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-xs font-medium",
-								children: "Person"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
-								value: value.assigneeId,
-								onChange: (event) => setValue({
-									...value,
-									assigneeId: event.target.value
-								}),
-								className: "w-full",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
-										value: "",
-										children: "By role"
-									}),
-									!telegramLinked && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
-										value: "founder",
-										children: "Founder"
-									}),
-									members.filter((member) => member.employeeId).map((member) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelectOption, {
-										value: member.employeeId,
-										children: [member.name, member.role ? ` · ${member.role}` : ""]
-									}, member.employeeId))
-								]
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TaskPlacement, {
-							allowFirst: true,
-							value: value.placement,
-							tasks: tasks.filter((task) => !task.deletedAt && task.status !== "Cancelled"),
-							onChange: (placement) => setValue({
-								...value,
-								placement
-							})
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ScheduleImpact, {
-							preview,
-							pending: previewing,
-							error: previewError
-						}),
-						error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "text-xs text-destructive",
-							role: "alert",
-							children: error
-						})
-					]
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex justify-end gap-2",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						variant: "outline",
-						disabled: saving,
-						onClick: () => onOpenChange(false),
-						children: "Cancel"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						disabled: saving || !preview?.ok || previewing || Boolean(previewError),
-						onClick: save,
-						children: saving ? "Adding…" : "Confirm and add task"
-					})]
-				})
-			]
-		})
-	});
-}
-//#endregion
-//#region frontend/src/components/TimelineStageDetails.jsx
-var timelineOwner = (task, members) => members.find((member) => (member.employeeId || member.id) === task.assigneeId)?.name || (task.assigneeId === "founder" ? "Founder" : task.assigneeName || "Unassigned");
-var timelineDate = (value) => value === null ? "Not scheduled" : new Date(value).toLocaleDateString([], {
-	month: "short",
-	day: "numeric",
-	year: "numeric",
-	timeZone: "UTC"
-});
-function TimelineStageDetails({ stage, items, members, projectId, namespace, onClose, onOpenTask }) {
-	const summary = stage ? stageSummary(items, stage) : null;
-	const owners = summary ? [...new Set(summary.items.map((item) => stage?.sheetPlan ? item.task.sheetRole || "Role not specified" : timelineOwner(item.task, members)))] : [];
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sheet, {
-		open: Boolean(stage),
-		onOpenChange: (open) => {
-			if (!open) onClose();
-		},
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetContent, {
-			className: "iksha-stage-details",
-			side: "right",
-			children: stage && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SheetHeader, { children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "iksha-eyebrow",
-					children: "STAGE WORKSPACE"
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetTitle, { children: stage.name }),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetDescription, { children: "Everything in this stage: work items, ownership, dates, and project references." })
-			] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "iksha-stage-detail-scroll",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "iksha-stage-metrics",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", { children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { size: 16 }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [summary.progress, "%"] }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
-								summary.complete,
-								" of ",
-								summary.items.length,
-								" complete"
-							] })
-						] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", { children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { size: 16 }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: owners.filter((owner) => owner !== "Unassigned").length }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: stage.sheetPlan ? "Responsible roles" : "Assigned people" })
-						] })]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "iksha-stage-dates",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, { size: 16 }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: stage.sheetPlan ? "Draft planned window" : "Scheduled window" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [
-							timelineDate(summary.start),
-							" → ",
-							timelineDate(summary.end === null ? null : summary.end - 864e5)
-						] })] })]
-					}),
-					stage.description && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "iksha-stage-description",
-						children: stage.description
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Tabs, {
-						defaultValue: "work",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
-								className: "iksha-detail-tabs",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
-									value: "work",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { size: 14 }), "Work & discussions"]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
-									value: "references",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { size: 14 }), "Resources"]
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
-								value: "work",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "iksha-stage-work-list",
-									children: [summary.items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
-										className: "iksha-stage-work-card",
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: `iksha-work-status ${["Completed", "completed"].includes(item.task.status) ? "complete" : item.task.status === "Blocked" ? "blocked" : ""}`,
-												children: item.task.status
-											}), item.task.sourceGateType && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "iksha-gate-label",
-												children: item.task.sourceGateType
-											})] }),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", { children: item.task.title }),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: item.task.description || "Open this work item to see its discussion and record the next step." }),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("dl", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: stage.sheetPlan ? "Responsible role" : "Accountable owner" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: stage.sheetPlan ? item.task.sheetRole || "Not specified" : timelineOwner(item.task, members) })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Schedule" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: item.start === null || item.end === null ? stage.sheetPlan ? "Duration needed" : "No saved dates" : `${timelineDate(item.start)} → ${timelineDate(item.end - 864e5)}` })] })] }),
-											stage.sheetPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-												className: "iksha-stage-description",
-												children: [
-													item.task.sheetDurationDays === null ? "Duration missing" : item.task.sheetDurationDays + " calendar days",
-													" · Work ",
-													item.task.sheetTaskOrder,
-													" · ",
-													item.task.sheetSourceTab,
-													" ",
-													item.task.sheetSourceCell
-												]
-											}),
-											item.task.sourceBlockedReason && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-												className: "iksha-work-blocker",
-												children: ["Blocked: ", item.task.sourceBlockedReason]
-											}),
-											item.task.sourceApprovalStatus && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-												className: "iksha-work-approval",
-												children: ["Approval: ", item.task.sourceApprovalStatus]
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-												variant: "outline",
-												onClick: () => onOpenTask(item.task),
-												children: [
-													stage.sheetPlan ? "Open work item details" : "Open work item & discussion",
-													" ",
-													/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 14 })
-												]
-											})
-										]
-									}, item.task.id)), !summary.items.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "iksha-stage-description",
-										children: "No work items recorded for this stage yet."
-									})]
-								})
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
-								value: "references",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "iksha-stage-reference-note",
-									children: "Shared project documents and photos are shown here. Links specific to a work item are available in its discussion."
-								}), projectId ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectFiles, {
-									projectId,
-									namespace
-								}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "No project references are available." })]
-							})
-						]
-					}, stage.id),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "iksha-stage-footer",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock3, { size: 13 }), stage.sheetPlan ? "Imported plan; completion requires a linked project task." : "Completion and approval states reflect the saved project records."]
-					})
-				]
-			})] })
-		})
-	});
-}
-//#endregion
-//#region frontend/src/lib/taskPeople.js
-var initialsOf = (name) => name.split(/[\s/&]+/).filter(Boolean).map((part) => part[0]).slice(0, 2).join("").toUpperCase();
-function personFor(task, ownerName) {
-	const assigned = ownerName(task);
-	if (assigned && assigned !== "Unassigned") return {
-		name: assigned,
-		initials: initialsOf(assigned),
-		isRole: false
-	};
-	if (task.sourceAssigneeName) return {
-		name: task.sourceAssigneeName,
-		initials: initialsOf(task.sourceAssigneeName),
-		isRole: false
-	};
-	if (task.sourceRole) return {
-		name: task.sourceRole,
-		initials: initialsOf(task.sourceRole),
-		isRole: true
-	};
-	return null;
-}
-var open = (task) => !task.deletedAt && task.status !== "Cancelled";
-var unique = (people, owner) => {
-	const seen = new Set(owner ? [owner.name] : []);
-	return people.filter((person) => person && !seen.has(person.name) && seen.add(person.name));
-};
-function buildPeopleIndex(tasks, ownerName) {
-	const byBotId = new Map(tasks.filter((task) => task.telegramTaskId).map((task) => [task.telegramTaskId, task]));
-	const successors = /* @__PURE__ */ new Map();
-	for (const task of tasks.filter(open)) for (const dependency of task.dependencies || []) {
-		const list = successors.get(dependency.predecessorTelegramTaskId) || [];
-		list.push(task);
-		successors.set(dependency.predecessorTelegramTaskId, list);
-	}
-	return (task) => {
-		const owner = personFor(task, ownerName);
-		const from = (task.dependencies || []).map((dependency) => byBotId.get(dependency.predecessorTelegramTaskId)).filter((item) => item && open(item)).map((item) => personFor(item, ownerName));
-		const to = (successors.get(task.telegramTaskId) || []).map((item) => personFor(item, ownerName));
-		return {
-			owner,
-			from: unique(from, owner),
-			to: unique(to, owner)
-		};
-	};
-}
-function avatarHue(name) {
-	let hash = 0;
-	for (const character of name) hash = (hash * 31 + character.charCodeAt(0)) % 360;
-	return hash;
-}
-//#endregion
-//#region frontend/src/components/ProjectTimeline.jsx
-var dateLabel = (value) => new Date(value).toLocaleDateString([], {
-	month: "short",
-	day: "numeric",
-	timeZone: "UTC"
-});
-var isoLabel = (value) => value ? dateLabel(calendarDate(value)) : "no date";
-var isoRange = (start, end) => start && start === end ? isoLabel(start) : `${isoLabel(start)} – ${isoLabel(end)}`;
-var ZOOMS = [
-	{
-		days: 14,
-		label: "2 weeks",
-		width: 82
-	},
-	{
-		days: 42,
-		label: "6 weeks",
-		width: 40
-	},
-	{
-		days: 91,
-		label: "3 months",
-		width: 20
-	}
-];
-var STATUS_ICON = {
-	late: TriangleAlert,
-	blocked: Octagon,
-	waiting: Hourglass,
-	complete: Check
-};
-var LONG_PRESS_MS = 320;
-var EDGE = 44;
-function verticalScroller(element) {
-	for (let node = element?.parentElement; node; node = node.parentElement) {
-		const overflow = getComputedStyle(node).overflowY;
-		if ((overflow === "auto" || overflow === "scroll") && node.scrollHeight > node.clientHeight) return node;
-	}
-	return document.scrollingElement;
-}
-function Avatar({ person }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-		className: `iksha-avatar ${person.isRole ? "is-role" : ""}`,
-		style: { "--hue": avatarHue(person.name) },
-		children: person.initials
-	});
-}
-function AvatarStack({ people, max = 2 }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-		className: "iksha-avatar-stack",
-		children: [people.slice(0, max).map((person) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, { person }, person.name)), people.length > max && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-			className: "iksha-avatar is-more",
-			children: ["+", people.length - max]
-		})]
-	});
-}
-function PeopleStrip({ people, compact }) {
-	if (!people.owner && !people.from.length && !people.to.length) return null;
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-		className: "iksha-people",
-		"aria-hidden": "true",
-		children: [
-			!compact && people.from.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarStack, { people: people.from }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", {
-				className: "iksha-flow",
-				children: "›"
-			})] }),
-			people.owner && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, { person: people.owner }),
-			!compact && people.to.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", {
-				className: "iksha-flow",
-				children: "›"
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarStack, { people: people.to })] })
-		]
-	});
-}
-function PeopleFlow({ people }) {
-	const row = (label, list) => list.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "iksha-flow-row",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: label }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: list.map((person) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-			className: "iksha-flow-person",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, { person }),
-				person.name,
-				person.isRole ? " (role)" : ""
-			]
-		}, person.name)) })]
-	});
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "iksha-people-flow",
-		children: [
-			row("Needs work from", people.from),
-			row("Done by", people.owner ? [people.owner] : []),
-			row("Hands over to", people.to)
-		]
-	});
-}
-var peopleSentence = (people) => [
-	people.from.length ? `needs work from ${people.from.map((person) => person.name).join(", ")}` : "",
-	people.owner ? `done by ${people.owner.name}` : "",
-	people.to.length ? `hands over to ${people.to.map((person) => person.name).join(", ")}` : ""
-].filter(Boolean).join(", ");
-function OffscreenChip({ value, before, onClick }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-		className: `iksha-offscreen ${before ? "is-before" : "is-after"}`,
-		onClick,
-		"aria-label": `${before ? "Ended" : "Starts"} ${dateLabel(value)}. Show`,
-		children: before ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { size: 11 }), dateLabel(value)] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [dateLabel(value), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { size: 11 })] })
-	});
-}
-function ProjectTimeline({ tasks = [], stages = [], members = [], projectId, namespace = "founder", telegramLinked = false, onOpenTask, onSchedulePreview, onScheduleApply, onPlanChanged }) {
-	const today = todayDate();
-	const items = timelineItems(tasks, stages);
-	const scheduled = items.filter((item) => item.start !== null && item.end !== null);
-	const summary = scheduleSummary(items, today);
-	const editable = Boolean(onSchedulePreview && onScheduleApply);
-	const canPlan = editable && Boolean(onPlanChanged);
-	const [origin, setOrigin] = (0, import_react.useState)(today - 7 * calendarDay);
-	const [days, setDays] = (0, import_react.useState)(42);
-	const [collapsed, setCollapsed] = (0, import_react.useState)(() => /* @__PURE__ */ new Set([...stages.map((stage) => stage.id), "other"]));
-	const [addStage, setAddStage] = (0, import_react.useState)(null);
-	const [insertTask, setInsertTask] = (0, import_react.useState)(null);
-	const [menu, setMenu] = (0, import_react.useState)(null);
-	const [editingTaskId, setEditingTaskId] = (0, import_react.useState)(null);
-	const [renamingStageId, setRenamingStageId] = (0, import_react.useState)(null);
-	const menuRef = (0, import_react.useRef)(null);
-	const [search, setSearch] = (0, import_react.useState)("");
-	const [selectedStageId, setSelectedStageId] = (0, import_react.useState)(null);
-	const [drag, setDrag] = (0, import_react.useState)(null);
-	const [picked, setPicked] = (0, import_react.useState)(null);
-	const [proposal, setProposal] = (0, import_react.useState)(null);
-	const [notice, setNotice] = (0, import_react.useState)(null);
-	const dragRef = (0, import_react.useRef)(null);
-	const pressRef = (0, import_react.useRef)(null);
-	const suppressClick = (0, import_react.useRef)(false);
-	const autoScroll = (0, import_react.useRef)({
-		frame: 0,
-		vx: 0,
-		vy: 0
-	});
-	const scrollerRef = (0, import_react.useRef)(null);
-	const datesRef = (0, import_react.useRef)(null);
-	const handlers = (0, import_react.useRef)({});
-	const [showArrows, setShowArrows] = (0, import_react.useState)(() => {
-		try {
-			return localStorage.getItem("iksha.timeline.arrows") === "on";
-		} catch {
-			return false;
-		}
-	});
-	const toggleArrows = () => setShowArrows((current) => {
-		try {
-			localStorage.setItem("iksha.timeline.arrows", current ? "off" : "on");
-		} catch {}
-		return !current;
-	});
-	const swallowNextClick = () => {
-		suppressClick.current = true;
-		setTimeout(() => {
-			suppressClick.current = false;
-		}, 450);
-	};
-	const from = origin, to = origin + days * calendarDay;
-	const dayWidth = ZOOMS.find((zoom) => zoom.days === days)?.width ?? Math.max(8, 1120 / days);
-	const compactHeader = dayWidth < 40;
-	const narrowDays = !compactHeader && dayWidth < 60;
-	const allGroups = [...stages, {
-		id: "other",
-		name: "Additional work"
-	}].filter((stage) => items.some((item) => (item.stage?.id || "other") === stage.id));
-	const ownerName = (task) => members.find((member) => (member.employeeId || member.id) === task.assigneeId)?.name || (task.assigneeId === "founder" ? "Founder" : task.assigneeName || "Unassigned");
-	const peopleOf = buildPeopleIndex(tasks, ownerName);
-	const query = search.trim().toLowerCase();
-	const visible = items.filter((item) => `${item.task.title} ${item.stage?.name || "Additional work"} ${ownerName(item.task)}`.toLowerCase().includes(query));
-	const undated = visible.filter((item) => (item.start === null || item.end === null) && item.task.status !== "Completed");
-	const complete = (task) => ["Completed", "completed"].includes(task.status);
-	const toggle = (id) => setCollapsed((current) => {
-		const next = new Set(current);
-		next.has(id) ? next.delete(id) : next.add(id);
-		return next;
-	});
-	const todayInView = today >= from && today < to;
-	const pickedItem = picked ? items.find((item) => item.task.id === picked) : null;
-	const gridStyle = {
-		"--timeline-width": `${days * dayWidth}px`,
-		"--timeline-day": `${dayWidth}px`,
-		"--today-left": `${(today - from) / calendarDay * dayWidth}px`
-	};
-	const syncHeader = () => {
-		if (datesRef.current && scrollerRef.current) datesRef.current.style.transform = `translateX(${-scrollerRef.current.scrollLeft}px)`;
-	};
-	const [view, setView] = (0, import_react.useState)(null);
-	const measureView = () => {
-		const scroller = scrollerRef.current;
-		if (!scroller) return;
-		const label = scroller.querySelector(".iksha-schedule-label")?.offsetWidth || 0;
-		const first = Math.floor(scroller.scrollLeft / dayWidth);
-		const last = Math.ceil((scroller.scrollLeft + scroller.clientWidth - label) / dayWidth);
-		setView((current) => current?.first === first && current?.last === last && current?.origin === from && current?.dayWidth === dayWidth ? current : {
-			first,
-			last,
-			origin: from,
-			dayWidth
-		});
-	};
-	const onGridScroll = () => {
-		syncHeader();
-		measureView();
-	};
-	(0, import_react.useEffect)(() => {
-		window.addEventListener("resize", measureView);
-		return () => window.removeEventListener("resize", measureView);
-	});
-	const reveal = (value) => {
-		const scroller = scrollerRef.current;
-		if (scroller && value >= from && value < to) scroller.scrollTo({
-			left: Math.max(0, (value - from) / calendarDay * dayWidth - dayWidth),
-			behavior: "smooth"
-		});
-		else {
-			scrollTo.current = "start";
-			setOrigin(value - calendarDay);
-		}
-	};
-	(0, import_react.useLayoutEffect)(syncHeader);
-	const scrollTo = (0, import_react.useRef)("today");
-	(0, import_react.useLayoutEffect)(() => {
-		const scroller = scrollerRef.current;
-		if (!scroller) return;
-		const target = scrollTo.current;
-		scrollTo.current = null;
-		if (target === "today" && todayInView) scroller.scrollLeft = Math.max(0, (today - from) / calendarDay * dayWidth - dayWidth);
-		else if (target === "start") scroller.scrollLeft = 0;
-		syncHeader();
-		measureView();
-	}, [
-		origin,
-		days,
-		items.length > 0
-	]);
-	const goToday = () => {
-		scrollTo.current = "today";
-		setOrigin(today - 7 * calendarDay);
-	};
-	const page = (direction) => {
-		scrollTo.current = "start";
-		setOrigin(origin + direction * Math.max(7, Math.round(days / 2)) * calendarDay);
-	};
-	const shortTitle = (task, stage) => {
-		const base = String(stage?.name || "").replace(/ \([0-9a-z]+\)$/i, "");
-		return base && task.title.startsWith(`${base} — `) ? task.title.slice(base.length + 3) : task.title;
-	};
-	async function propose(moves, description) {
-		setProposal({
-			moves,
-			description,
-			loading: true
-		});
-		try {
-			const preview = await onSchedulePreview(moves);
-			setProposal({
-				moves,
-				description,
-				preview
-			});
-		} catch (error) {
-			setProposal({
-				moves,
-				description,
-				error: error.message || "Could not check this change."
-			});
-		}
-	}
-	async function confirm() {
-		const { moves, description } = proposal;
-		setProposal({
-			...proposal,
-			saving: true
-		});
-		try {
-			const result = await onScheduleApply(moves);
-			setProposal(null);
-			const pushed = result.affected.filter((item) => !item.moved).length;
-			setNotice({
-				text: `${description} saved to the Google Sheet${pushed ? ` · ${pushed} dependent task${pushed === 1 ? "" : "s"} moved` : ""}.`,
-				undo: undoMoves(result.affected)
-			});
-		} catch (error) {
-			setProposal({
-				...proposal,
-				saving: false,
-				error: error.message || "Could not save this change."
-			});
-		}
-	}
-	async function undo() {
-		const moves = notice.undo;
-		setNotice({ text: "Undoing…" });
-		try {
-			await onScheduleApply(moves);
-			setNotice({ text: "Change undone. The Google Sheet is back to the earlier dates." });
-		} catch (error) {
-			setNotice({ text: `Could not undo: ${error.message}` });
-		}
-	}
-	const nudge = (item, startDays, endDays, description) => propose([moveFor(item, startDays, endDays)], description);
-	function startDrag(item, mode, x, y, touch, stageId = null) {
-		dragRef.current = {
-			id: item.task.id,
-			item,
-			mode,
-			x,
-			y,
-			lastX: x,
-			lastY: y,
-			scrollLeft: scrollerRef.current?.scrollLeft || 0,
-			shift: 0,
-			target: null,
-			moved: false,
-			touch,
-			stageId
-		};
-		setDrag({ ...dragRef.current });
-	}
-	function updateDrag(clientX, clientY) {
-		const current = dragRef.current;
-		if (!current) return;
-		current.lastX = clientX;
-		current.lastY = clientY;
-		if (!current.moved && Math.abs(clientX - current.x) < 5 && Math.abs(clientY - current.y) < 8) return;
-		current.moved = true;
-		const scrolled = (scrollerRef.current?.scrollLeft || 0) - current.scrollLeft;
-		current.shift = Math.round((clientX - current.x + scrolled) / dayWidth);
-		if (current.mode === "resize") current.shift = Math.max(current.shift, -Math.round((current.item.end - current.item.start) / calendarDay) + 1);
-		const row = document.elementsFromPoint(clientX, clientY).map((element) => element.closest?.("[data-task-row]")).find(Boolean);
-		const target = row && row.dataset.taskRow !== current.id && current.mode === "move" && !current.stageId ? items.find((candidate) => candidate.task.id === row.dataset.taskRow) : null;
-		current.target = target && canMove(target) ? target : null;
-		setDrag({ ...current });
-		edgeScroll(clientX, clientY);
-	}
-	function edgeScroll(clientX, clientY) {
-		const scroller = scrollerRef.current;
-		if (!scroller) return;
-		const rect = scroller.getBoundingClientRect();
-		const labelWidth = scroller.querySelector(".iksha-schedule-label")?.offsetWidth || 0;
-		const state = autoScroll.current;
-		state.vx = clientX < rect.left + labelWidth + EDGE ? -10 : clientX > rect.right - EDGE ? 10 : 0;
-		state.vy = clientY < 148 ? -10 : clientY > window.innerHeight - EDGE - 70 ? 10 : 0;
-		if ((state.vx || state.vy) && !state.frame) {
-			const step = () => {
-				const current = dragRef.current;
-				if (!current || !state.vx && !state.vy) {
-					state.frame = 0;
-					return;
-				}
-				if (state.vx) scroller.scrollLeft += state.vx;
-				if (state.vy) verticalScroller(scroller).scrollBy(0, state.vy);
-				handlers.current.updateDrag(current.lastX, current.lastY);
-				state.frame = requestAnimationFrame(step);
-			};
-			state.frame = requestAnimationFrame(step);
-		}
-	}
-	function stopDrag() {
-		cancelAnimationFrame(autoScroll.current.frame);
-		autoScroll.current = {
-			frame: 0,
-			vx: 0,
-			vy: 0
-		};
-		dragRef.current = null;
-		setDrag(null);
-	}
-	function finishDrag() {
-		const current = dragRef.current;
-		stopDrag();
-		if (!current) return;
-		if (!current.moved) {
-			if (current.touch) {
-				swallowNextClick();
-				if (current.stageId) setSelectedStageId(current.stageId);
-				else setPicked(current.id);
-			}
-			return;
-		}
-		swallowNextClick();
-		if (current.stageId) {
-			if (!current.shift) return;
-			const stageName = current.item.task.title;
-			const moves = stageMoves(items, current.stageId, current.shift);
-			if (!moves.length) return void setNotice({ text: `Nothing in ${stageName} can move: its tasks are finished or have no dates.` });
-			const days = Math.abs(current.shift);
-			propose(moves, `Move stage “${stageName}” ${days} day${days === 1 ? "" : "s"} ${current.shift > 0 ? "later" : "earlier"} (${moves.length} task${moves.length === 1 ? "" : "s"} move together)`);
-			return;
-		}
-		if (current.target) return void propose(swapMoves(current.item, current.target), `Swap “${current.item.task.title}” with “${current.target.task.title}”`);
-		if (!current.shift) return;
-		const title = current.item.task.title;
-		propose([current.mode === "resize" ? moveFor(current.item, 0, current.shift) : moveFor(current.item, current.shift)], current.mode === "resize" ? `Change the length of “${title}”` : `Move “${title}”`);
-	}
-	handlers.current = {
-		updateDrag,
-		finishDrag,
-		stopDrag
-	};
-	function onBarPointerDown(event, item) {
-		if (!editable || !canMove(item) || event.button !== 0) return;
-		const mode = event.target.closest(".iksha-resize-handle") ? "resize" : "move";
-		if (event.pointerType === "mouse") {
-			event.currentTarget.setPointerCapture(event.pointerId);
-			startDrag(item, mode, event.clientX, event.clientY, false);
-			return;
-		}
-		const press = {
-			item,
-			mode,
-			x: event.clientX,
-			y: event.clientY
-		};
-		press.timer = setTimeout(() => {
-			pressRef.current = null;
-			navigator.vibrate?.(12);
-			startDrag(item, mode, press.x, press.y, true);
-		}, LONG_PRESS_MS);
-		pressRef.current = press;
-	}
-	function onStagePointerDown(event, stage, start, end) {
-		if (!editable || event.button !== 0) return;
-		if (!stageMoves(items, stage.id, 1).length) return;
-		const item = {
-			task: {
-				id: `stage:${stage.id}`,
-				title: stage.name
-			},
-			start,
-			end
-		};
-		if (event.pointerType === "mouse") {
-			event.currentTarget.setPointerCapture(event.pointerId);
-			startDrag(item, "move", event.clientX, event.clientY, false, stage.id);
-			return;
-		}
-		const press = {
-			x: event.clientX,
-			y: event.clientY
-		};
-		press.timer = setTimeout(() => {
-			pressRef.current = null;
-			navigator.vibrate?.(12);
-			startDrag(item, "move", press.x, press.y, true, stage.id);
-		}, LONG_PRESS_MS);
-		pressRef.current = press;
-	}
-	const openMenu = (event, entry) => {
-		if (!canPlan || pressRef.current || dragRef.current) return;
-		event.preventDefault();
-		setMenu({
-			x: Math.max(8, Math.min(event.clientX || event.currentTarget.getBoundingClientRect().left, window.innerWidth - 248)),
-			y: Math.max(8, Math.min(event.clientY || event.currentTarget.getBoundingClientRect().bottom, window.innerHeight - 330)),
-			...entry
-		});
-	};
-	const lastTaskOf = (stageId) => [...items].filter((item) => item.stage?.id === stageId).sort((a, b) => (Number(a.task.sourceSequence) || 0) - (Number(b.task.sourceSequence) || 0)).at(-1)?.task || null;
-	const tailStage = () => {
-		return stages.map((stage) => ({
-			stage,
-			end: Math.max(-Infinity, ...items.filter((item) => item.stage?.id === stage.id && item.end !== null).map((item) => item.end))
-		})).sort((a, b) => b.end - a.end)[0]?.stage || stages.at(-1);
-	};
-	(0, import_react.useEffect)(() => {
-		if (!menu) return void 0;
-		menuRef.current?.querySelector("[role=\"menuitem\"]")?.focus();
-		const close = (event) => {
-			if (event.type === "keydown" && event.key !== "Escape") return;
-			setMenu(null);
-		};
-		window.addEventListener("pointerdown", close);
-		window.addEventListener("keydown", close);
-		window.addEventListener("scroll", close, true);
-		return () => {
-			window.removeEventListener("pointerdown", close);
-			window.removeEventListener("keydown", close);
-			window.removeEventListener("scroll", close, true);
-		};
-	}, [menu]);
-	(0, import_react.useEffect)(() => {
-		const cancelPress = () => {
-			if (pressRef.current) {
-				clearTimeout(pressRef.current.timer);
-				pressRef.current = null;
-			}
-		};
-		const onMove = (event) => {
-			const touch = event.touches[0];
-			if (!touch) return;
-			const press = pressRef.current;
-			if (press && Math.hypot(touch.clientX - press.x, touch.clientY - press.y) > 10) cancelPress();
-			if (dragRef.current?.touch) {
-				event.preventDefault();
-				handlers.current.updateDrag(touch.clientX, touch.clientY);
-			}
-		};
-		const onEnd = () => {
-			cancelPress();
-			if (dragRef.current?.touch) handlers.current.finishDrag();
-		};
-		const onCancel = () => {
-			cancelPress();
-			if (dragRef.current?.touch) handlers.current.stopDrag();
-		};
-		document.addEventListener("touchmove", onMove, { passive: false });
-		document.addEventListener("touchend", onEnd);
-		document.addEventListener("touchcancel", onCancel);
-		return () => {
-			document.removeEventListener("touchmove", onMove);
-			document.removeEventListener("touchend", onEnd);
-			document.removeEventListener("touchcancel", onCancel);
-			cancelPress();
-		};
-	}, []);
-	function keyMove(event, item) {
-		if (!editable || !canMove(item) || !event.altKey || !["ArrowLeft", "ArrowRight"].includes(event.key)) return;
-		event.preventDefault();
-		const step = event.key === "ArrowRight" ? 1 : -1;
-		nudge(item, event.shiftKey ? 0 : step, step, event.shiftKey ? `Change the length of “${item.task.title}”` : `Move “${item.task.title}”`);
-	}
-	const viewFrom = view && view.origin === from && view.dayWidth === dayWidth ? from + view.first * calendarDay : from;
-	const viewTo = view && view.origin === from && view.dayWidth === dayWidth ? from + view.last * calendarDay : to;
-	const edge = (start, end) => end <= viewFrom ? "before" : start >= viewTo ? "after" : null;
-	const headline = [
-		summary.late && `${summary.late} late`,
-		summary.blocked && `${summary.blocked} blocked`,
-		summary.waiting && `${summary.waiting} waiting on you`
-	].filter(Boolean);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "iksha-timeline",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "iksha-timeline-heading",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "iksha-eyebrow",
-						children: "PROJECT SCHEDULE"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", { children: headline.length ? headline.join(" · ") : "Nothing late or blocked" }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [summary.finish !== null ? `Projected finish ${dateLabel(summary.finish)}` : "Finish date not confirmed", summary.unscheduled ? ` · ${summary.unscheduled} without dates` : ""] })
-				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, { size: 14 }),
-					scheduled.length,
-					" scheduled · ",
-					items.length - scheduled.length,
-					" without dates"
-				] })]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "iksha-timeline-toolbar",
-				role: "toolbar",
-				"aria-label": "Timeline view",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "iksha-date-nav",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							variant: "ghost",
-							size: "icon-sm",
-							"aria-label": "Previous period",
-							onClick: () => page(-1),
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, {})
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [
-							dateLabel(from),
-							" – ",
-							dateLabel(to - calendarDay),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-								className: "iksha-year",
-								children: [", ", new Date(to - calendarDay).getUTCFullYear()]
-							})
-						] }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							variant: "ghost",
-							size: "icon-sm",
-							"aria-label": "Next period",
-							onClick: () => page(1),
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {})
-						})
-					]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "iksha-toolbar-chips",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							variant: "outline",
-							size: "sm",
-							onClick: goToday,
-							children: "Today"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "iksha-zoom",
-							children: ZOOMS.map((zoom) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-								"aria-pressed": days === zoom.days,
-								className: days === zoom.days ? "active" : "",
-								onClick: () => setDays(zoom.days),
-								children: zoom.label
-							}, zoom.days))
-						}),
-						scheduled.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							variant: "outline",
-							size: "sm",
-							"aria-pressed": !ZOOMS.some((zoom) => zoom.days === days),
-							onClick: () => {
-								const first = Math.min(...scheduled.map((item) => item.start));
-								setOrigin(first);
-								setDays(Math.max(28, Math.ceil((Math.max(...scheduled.map((item) => item.end)) - first) / 864e5)));
-							},
-							children: "Entire plan"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							variant: "outline",
-							size: "sm",
-							"aria-pressed": showArrows,
-							className: showArrows ? "iksha-toggle-on" : "",
-							onClick: toggleArrows,
-							children: showArrows ? "Hide date arrows" : "Show date arrows"
-						}),
-						canPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-							size: "sm",
-							onClick: () => setAddStage({}),
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {}), "Add stage"]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							variant: "outline",
-							size: "sm",
-							onClick: () => setCollapsed(allGroups.some((stage) => collapsed.has(stage.id)) ? /* @__PURE__ */ new Set() : new Set(allGroups.map((stage) => stage.id))),
-							children: allGroups.some((stage) => collapsed.has(stage.id)) ? "Expand all" : "Collapse all"
-						})
-					]
-				})]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-				className: "iksha-timeline-search",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "sr-only",
-					children: "Search timeline tasks"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-					type: "search",
-					placeholder: "Find a work item or person…",
-					value: search,
-					onChange: (event) => setSearch(event.target.value)
-				})]
-			}),
-			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "iksha-schedule-notice",
-				role: "status",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: notice.text }),
-					notice.undo?.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						variant: "outline",
-						size: "sm",
-						onClick: undo,
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Undo2, {}), "Undo"]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-						className: "iksha-notice-close",
-						"aria-label": "Dismiss",
-						onClick: () => setNotice(null),
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(X$1, { size: 16 })
-					})
-				]
-			}),
-			!items.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "iksha-timeline-empty",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { size: 28 }), canPlan ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", { children: "No stages yet" }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Add the first stage to start planning." }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "iksha-empty-actions",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-							onClick: () => setAddStage({}),
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {}), "Create timeline"]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							variant: "outline",
-							onClick: () => setAddStage({ started: true }),
-							children: "This project is already running: add its current stage"
-						})]
-					})
-				] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", { children: "No work items yet." }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: editable ? "Link this project to its Telegram group to plan its stages here." : "The founder has not planned any stages yet." })] })]
-			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: `iksha-schedule-frame ${compactHeader ? "iksha-plan-fit" : ""} ${todayInView ? "has-today" : ""} ${drag ? "is-dragging-any" : ""}`,
-				style: gridStyle,
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "iksha-schedule-headbar",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "iksha-schedule-label",
-						children: "STAGE / WORK ITEM"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "iksha-headbar-viewport",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "iksha-schedule-dates",
-							ref: datesRef,
-							children: [todayInView && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "iksha-today-flag",
-								"aria-hidden": "true",
-								children: "Today"
-							}), Array.from({ length: days }, (_, index) => {
-								const value = from + index * calendarDay;
-								const hidden = compactHeader && new Date(value).getUTCDay() !== 1 ? { visibility: "hidden" } : void 0;
-								const date = new Date(value);
-								if (narrowDays) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: `iksha-schedule-day is-narrow ${value === today ? "today" : ""}`,
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", {
-										className: date.getUTCDate() === 1 || index === 0 ? "iksha-day-month" : "",
-										children: date.getUTCDate() === 1 || index === 0 ? date.toLocaleDateString([], {
-											month: "short",
-											timeZone: "UTC"
-										}) : date.toLocaleDateString([], {
-											weekday: "narrow",
-											timeZone: "UTC"
-										})
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: date.getUTCDate() })]
-								}, index);
-								return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: `iksha-schedule-day ${value === today ? "today" : ""}`,
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										style: hidden,
-										children: [compactHeader ? "" : date.toLocaleDateString([], {
-											weekday: "short",
-											timeZone: "UTC"
-										}) + " ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: date.getUTCDate() })]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", {
-										style: hidden,
-										children: date.toLocaleDateString([], {
-											month: "short",
-											timeZone: "UTC"
-										})
-									})]
-								}, index);
-							})]
-						})
-					})]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					className: "iksha-schedule-scroll",
-					ref: scrollerRef,
-					onScroll: onGridScroll,
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "iksha-schedule-grid",
-						children: [allGroups.map((stage, index) => {
-							const group = visible.filter((item) => (item.stage?.id || "other") === stage.id);
-							if (!group.length) return null;
-							const scheduledGroup = group.filter((item) => item.start !== null && item.end !== null);
-							const groupStart = scheduledGroup.length ? Math.min(...scheduledGroup.map((item) => item.start)) : calendarDate(stage.startDate);
-							const groupEnd = scheduledGroup.length ? Math.max(...scheduledGroup.map((item) => item.end)) : null;
-							const lateCount = group.filter((item) => itemStatus(item, today).late).length;
-							const isCollapsed = collapsed.has(stage.id) && !query;
-							const stageDragging = Boolean(drag?.stageId) && drag.stageId === stage.id;
-							const stageShift = stageDragging ? drag.shift : 0;
-							const stageMovable = editable && stage.id !== "other" && group.some((item) => canMove(item));
-							const ordered = [...group].sort((a, b) => (Number(a.task.sourceSequence) || 0) - (Number(b.task.sourceSequence) || 0) || String(a.task.createdAt || "").localeCompare(String(b.task.createdAt || "")));
-							return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-								className: `iksha-stage color-${index % 8}`,
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "iksha-schedule-row iksha-stage-row",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-										className: "iksha-schedule-label iksha-stage-heading",
-										onClick: (event) => canPlan ? openMenu(event, { stage }) : toggle(stage.id),
-										onContextMenu: (event) => stage.id !== "other" && openMenu(event, { stage }),
-										"aria-haspopup": canPlan ? "menu" : void 0,
-										"aria-expanded": canPlan ? menu?.stage?.id === stage.id : !isCollapsed,
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "iksha-stage-number",
-												children: String(index + 1).padStart(2, "0")
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: stage.name }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
-												group.filter((item) => complete(item.task)).length,
-												"/",
-												group.length,
-												" done",
-												lateCount ? ` · ${lateCount} late` : ""
-											] })] }),
-											isCollapsed ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, { size: 14 }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, { size: 14 })
-										]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "iksha-schedule-track",
-										onClick: (event) => {
-											if (canPlan && stage.id !== "other" && event.target === event.currentTarget) openMenu(event, {
-												stage,
-												date: new Date(from + Math.floor((event.clientX - event.currentTarget.getBoundingClientRect().left) / dayWidth) * calendarDay).toISOString().slice(0, 10)
-											});
-										},
-										children: [groupStart !== null && groupEnd !== null && (stageDragging || groupEnd > from && groupStart < to) ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-											className: `iksha-stage-range ${stageMovable ? "is-movable" : ""} ${stageDragging ? "is-dragging" : ""}`,
-											"aria-label": `Open ${stage.name} stage details${stageMovable ? ". Drag to move the whole stage" : ""}`,
-											title: `${stage.name} · ${dateLabel(groupStart + stageShift * calendarDay)} – ${dateLabel(groupEnd - calendarDay + stageShift * calendarDay)}${stageMovable ? " · Drag to move the whole stage" : ""}`,
-											onPointerDown: (event) => onStagePointerDown(event, stage, groupStart, groupEnd),
-											onPointerMove: (event) => {
-												if (dragRef.current && !dragRef.current.touch) updateDrag(event.clientX, event.clientY);
-											},
-											onPointerUp: () => {
-												if (dragRef.current && !dragRef.current.touch) finishDrag();
-											},
-											onLostPointerCapture: () => {
-												if (dragRef.current && !dragRef.current.touch) finishDrag();
-											},
-											onContextMenu: (event) => {
-												if (stageMovable) event.preventDefault();
-											},
-											onKeyDown: (event) => {
-												if (!stageMovable || !event.altKey || !["ArrowLeft", "ArrowRight"].includes(event.key)) return;
-												event.preventDefault();
-												const step = event.key === "ArrowRight" ? 1 : -1;
-												propose(stageMoves(items, stage.id, step), `Move stage “${stage.name}” a day ${step > 0 ? "later" : "earlier"}`);
-											},
-											onClick: (event) => {
-												if (suppressClick.current) {
-													suppressClick.current = false;
-													return;
-												}
-												if (canPlan) openMenu(event, { stage });
-												else setSelectedStageId(stage.id);
-											},
-											style: {
-												left: (Math.max(groupStart + stageShift * calendarDay, from) - from) / calendarDay * dayWidth,
-												width: Math.max(20, (Math.min(groupEnd + stageShift * calendarDay, to) - Math.max(groupStart + stageShift * calendarDay, from)) / calendarDay * dayWidth - 3)
-											},
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: stage.name }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
-												dateLabel(groupStart + stageShift * calendarDay),
-												" – ",
-												dateLabel(groupEnd - calendarDay + stageShift * calendarDay)
-											] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 14 })]
-										}) : groupStart === null ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-											className: "iksha-unscheduled",
-											onClick: () => setSelectedStageId(stage.id),
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 12 }), "Stage details"]
-										}) : null, showArrows && groupStart !== null && groupEnd !== null && edge(groupStart, groupEnd) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(OffscreenChip, {
-											value: edge(groupStart, groupEnd) === "before" ? groupEnd - 864e5 : groupStart,
-											before: edge(groupStart, groupEnd) === "before",
-											onClick: () => reveal(groupStart)
-										})]
-									})]
-								}), !isCollapsed && ordered.map((item) => {
-									const status = itemStatus(item, today);
-									const isScheduled = item.start !== null && item.end !== null;
-									const withStage = stageDragging && canMove(item);
-									const dragging = drag?.id === item.task.id || withStage;
-									const isTarget = drag?.target?.task.id === item.task.id;
-									const shiftStart = withStage ? drag.shift : dragging && drag.mode === "move" && !drag.target ? drag.shift : 0;
-									const shiftEnd = withStage ? drag.shift : dragging && !drag.target ? drag.shift : 0;
-									const start = isScheduled ? item.start + shiftStart * 864e5 : null;
-									const end = isScheduled ? item.end + shiftEnd * 864e5 : null;
-									const inRange = isScheduled && (dragging || end > from && start < to);
-									const movable = editable && canMove(item);
-									const Icon = STATUS_ICON[status.key];
-									const flag = status.late && status.key !== "late" ? `${status.label} · late` : status.label;
-									const barWidth = Math.max(12, (Math.min(end ?? 0, to) - Math.max(start ?? 0, from)) / 864e5 * dayWidth - 3);
-									const people = peopleOf(item.task);
-									return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: `iksha-schedule-row iksha-task-row ${isTarget ? "is-swap-target" : ""} ${picked === item.task.id ? "is-picked" : ""}`,
-										"data-task-row": item.task.id,
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-											className: "iksha-schedule-label",
-											onClick: (event) => canPlan && item.stage ? openMenu(event, {
-												stage: item.stage,
-												task: item.task
-											}) : onOpenTask(item.task),
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: `iksha-task-state state-${status.key}`,
-												children: complete(item.task) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { size: 10 })
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: shortTitle(item.task, item.stage) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
-												people.owner?.name || "Unassigned",
-												" · ",
-												flag
-											] })] })]
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "iksha-schedule-track",
-											onClick: (event) => {
-												if (canPlan && stage.id !== "other" && event.target === event.currentTarget) openMenu(event, {
-													stage,
-													date: new Date(from + Math.floor((event.clientX - event.currentTarget.getBoundingClientRect().left) / dayWidth) * 864e5).toISOString().slice(0, 10)
-												});
-											},
-											children: [inRange ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-												className: `iksha-task-block status-${status.key} ${status.late ? "is-late" : ""} ${barWidth < 64 ? "is-short" : ""} ${movable ? "is-movable" : ""} ${dragging ? "is-dragging" : ""} ${dragging && drag.touch ? "is-lifted" : ""}`,
-												title: `${item.task.title} · ${dateLabel(start)} – ${dateLabel(end - 864e5)} · ${flag}${movable ? " · Drag to move, pull the edge to resize, drop on another task to swap, or press Alt+Arrow" : ""}`,
-												"aria-label": `${item.task.title}, ${dateLabel(start)} to ${dateLabel(end - 864e5)}, ${flag}${peopleSentence(people) ? ", " + peopleSentence(people) : ""}${movable ? ". Alt plus arrow keys move it by a day" : ""}`,
-												style: {
-													left: Math.min(days * dayWidth - 12, Math.max(0, (Math.max(start, from) - from) / 864e5 * dayWidth)),
-													width: barWidth
-												},
-												onPointerDown: (event) => onBarPointerDown(event, item),
-												onPointerMove: (event) => {
-													if (dragRef.current && !dragRef.current.touch) updateDrag(event.clientX, event.clientY);
-												},
-												onPointerUp: () => {
-													if (dragRef.current && !dragRef.current.touch) finishDrag();
-												},
-												onLostPointerCapture: () => {
-													if (dragRef.current && !dragRef.current.touch) finishDrag();
-												},
-												onContextMenu: (event) => {
-													if (movable) event.preventDefault();
-													if (item.stage) openMenu(event, {
-														stage: item.stage,
-														task: item.task
-													});
-												},
-												onKeyDown: (event) => keyMove(event, item),
-												onClick: (event) => {
-													if (suppressClick.current) {
-														suppressClick.current = false;
-														return;
-													}
-													if (canPlan && item.stage) openMenu(event, {
-														stage: item.stage,
-														task: item.task
-													});
-													else onOpenTask(item.task);
-												},
-												children: [
-													Icon && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, {
-														size: 12,
-														"aria-hidden": "true",
-														className: "iksha-status-icon"
-													}),
-													barWidth >= 64 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PeopleStrip, {
-														people,
-														compact: barWidth < 170
-													}),
-													/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: shortTitle(item.task, item.stage) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
-														dateLabel(start),
-														" – ",
-														dateLabel(end - 864e5),
-														" · ",
-														flag
-													] })] }),
-													movable && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", {
-														className: "iksha-resize-handle",
-														"aria-hidden": "true"
-													})
-												]
-											}, "bar") : !isScheduled ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-												className: "iksha-unscheduled",
-												onClick: () => onOpenTask(item.task),
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock3, { size: 12 }), "No dates · see below"]
-											}, "chip") : null, showArrows && isScheduled && !dragging && edge(item.start, item.end) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(OffscreenChip, {
-												value: edge(item.start, item.end) === "before" ? item.end - 864e5 : item.start,
-												before: edge(item.start, item.end) === "before",
-												onClick: () => reveal(item.start)
-											}, "edge")]
-										})]
-									}, item.task.id);
-								})]
-							}, stage.id);
-						}), !visible.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "iksha-empty-search",
-							children: "No work items match your search."
-						})]
-					})
-				})]
-			}),
-			undated.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-				className: "iksha-undated",
-				"aria-labelledby": "iksha-undated-title",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", {
-					id: "iksha-undated-title",
-					children: ["Not scheduled yet ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: undated.length })]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: undated.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-					onClick: () => onOpenTask(item.task),
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.task.title }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
-						item.stage?.name || "Additional work",
-						" · ",
-						unscheduledReason(item)
-					] })]
-				}) }, item.task.id)) })]
-			}),
-			pickedItem && editable && canMove(pickedItem) && !proposal && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "iksha-adjust-bar",
-				role: "dialog",
-				"aria-label": `Adjust ${pickedItem.task.title}`,
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "iksha-adjust-title",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: pickedItem.task.title }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
-							dateLabel(pickedItem.start),
-							" – ",
-							dateLabel(pickedItem.end - 864e5),
-							" · ",
-							Math.round((pickedItem.end - pickedItem.start) / 864e5),
-							" day",
-							pickedItem.end - pickedItem.start === 864e5 ? "" : "s"
-						] })]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PeopleFlow, { people: peopleOf(pickedItem.task) }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "iksha-adjust-actions",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-								onClick: () => nudge(pickedItem, -1, -1, `Move “${pickedItem.task.title}” a day earlier`),
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { size: 16 }), "Earlier"]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-								onClick: () => nudge(pickedItem, 1, 1, `Move “${pickedItem.task.title}” a day later`),
-								children: ["Later", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { size: 16 })]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-								disabled: pickedItem.end - pickedItem.start <= 864e5,
-								onClick: () => nudge(pickedItem, 0, -1, `Shorten “${pickedItem.task.title}” by a day`),
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Minus, { size: 16 }), "Shorter"]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-								onClick: () => nudge(pickedItem, 0, 1, `Lengthen “${pickedItem.task.title}” by a day`),
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { size: 16 }), "Longer"]
-							})
-						]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "iksha-adjust-footer",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-								onClick: () => {
-									setPicked(null);
-									onOpenTask(pickedItem.task);
-								},
-								children: "Open task"
-							}),
-							canPlan && pickedItem.stage && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-								onClick: () => {
-									setPicked(null);
-									setInsertTask({
-										stage: pickedItem.stage,
-										afterTask: pickedItem.task
-									});
-								},
-								children: "Add task after"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-								onClick: () => setPicked(null),
-								children: "Done"
-							})
-						]
-					})
-				]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
-				open: Boolean(proposal),
-				onOpenChange: (open) => {
-					if (!open && !proposal?.saving) setProposal(null);
-				},
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
-					className: "iksha-schedule-preview",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "iksha-eyebrow",
-								children: "CHECK BEFORE SAVING"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: proposal?.description }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Nothing changes until you confirm. Confirmed changes are written to the Google Sheet, so Telegram and the web app stay in step." })
-						] }),
-						proposal?.loading && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "iksha-preview-note",
-							children: "Checking dependencies…"
-						}),
-						proposal?.error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "iksha-preview-conflict",
-							role: "alert",
-							children: proposal.error
-						}),
-						proposal?.preview && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "iksha-preview-body",
-							children: [proposal.preview.conflicts.map((conflict, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-								className: "iksha-preview-conflict",
-								role: "alert",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Octagon, { size: 14 }), conflict.reason]
-							}, index)), proposal.preview.ok && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", { children: "You are moving" }),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: proposal.preview.affected.filter((item) => item.moved).map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.taskName }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
-									isoRange(item.previousStart, item.previousEnd),
-									" → ",
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: isoRange(item.forecastStart, item.forecastEnd) })
-								] })] }, item.taskId)) }),
-								proposal.preview.affected.some((item) => !item.moved) ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", { children: "These dependent tasks move later" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: proposal.preview.affected.filter((item) => !item.moved).map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.taskName }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
-									isoLabel(item.previousStart),
-									" → ",
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: isoLabel(item.forecastStart) })
-								] })] }, item.taskId)) })] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "iksha-preview-note",
-									children: "No other tasks are affected."
-								}),
-								proposal.preview.warnings.map((warning, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									className: "iksha-preview-warning",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { size: 14 }), warning.reason]
-								}, index)),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "iksha-preview-note",
-									children: proposal.preview.finish ? `Projected finish after this change: ${isoLabel(proposal.preview.finish)}` : "Finish date stays unconfirmed until every task has dates."
-								})
-							] })]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "iksha-preview-actions",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								variant: "outline",
-								disabled: proposal?.saving,
-								onClick: () => setProposal(null),
-								children: "Cancel"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								disabled: !proposal?.preview?.ok || proposal?.saving,
-								onClick: confirm,
-								children: proposal?.saving ? "Saving…" : "Confirm and save"
-							})]
-						})
-					]
-				})
-			}),
-			menu && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				ref: menuRef,
-				className: "iksha-context-menu",
-				role: "menu",
-				"aria-label": "Timeline actions",
-				style: {
-					left: menu.x,
-					top: menu.y,
-					maxHeight: "calc(100dvh - 16px)",
-					overflowY: "auto"
-				},
-				onPointerDown: (event) => event.stopPropagation(),
-				children: [
-					menu.task && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-						!["Completed", "Cancelled"].includes(menu.task.status) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-							role: "menuitem",
-							onClick: () => {
-								setEditingTaskId(menu.task.id);
-								setMenu(null);
-							},
-							children: "Edit work item"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-							role: "menuitem",
-							onClick: () => {
-								onOpenTask(menu.task);
-								setMenu(null);
-							},
-							children: "Open discussion"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							role: "menuitem",
-							onClick: () => {
-								setInsertTask({
-									stage: menu.stage,
-									afterTask: menu.task
-								});
-								setMenu(null);
-							},
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ListPlus, { size: 14 }), "Add a task after this one"]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							role: "menuitem",
-							onClick: () => {
-								setInsertTask({
-									stage: menu.stage,
-									afterTask: menu.task,
-									placement: {
-										type: "parallel",
-										taskId: menu.task.id
-									}
-								});
-								setMenu(null);
-							},
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { size: 14 }), "Add a parallel task"]
-						})
-					] }),
-					!menu.task && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-						menu.date && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							role: "menuitem",
-							onClick: () => {
-								setInsertTask({
-									stage: menu.stage,
-									placement: {
-										type: "date",
-										startDate: menu.date
-									}
-								});
-								setMenu(null);
-							},
-							children: ["Add task on ", isoLabel(menu.date)]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-							role: "menuitem",
-							onClick: () => {
-								setRenamingStageId(menu.stage.id);
-								setMenu(null);
-							},
-							children: "Edit work type name"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-							role: "menuitem",
-							onClick: () => {
-								toggle(menu.stage.id);
-								setMenu(null);
-							},
-							children: "Expand / collapse tasks"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-							role: "menuitem",
-							onClick: () => {
-								setSelectedStageId(menu.stage.id);
-								setMenu(null);
-							},
-							children: "View work type details"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							role: "menuitem",
-							onClick: () => {
-								setInsertTask({
-									stage: menu.stage,
-									afterTask: lastTaskOf(menu.stage.id)
-								});
-								setMenu(null);
-							},
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ListPlus, { size: 14 }),
-								"Add a task to ",
-								menu.stage.name
-							]
-						})
-					] }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-						role: "menuitem",
-						onClick: () => {
-							setAddStage({ placement: {
-								type: "after",
-								stageName: menu.stage.name
-							} });
-							setMenu(null);
-						},
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { size: 14 }), "Add a work type after this one"]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-						role: "menuitem",
-						onClick: () => {
-							setAddStage({ placement: {
-								type: "parallel",
-								stageName: menu.stage.name
-							} });
-							setMenu(null);
-						},
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { size: 14 }), "Add a parallel work type"]
-					})
-				]
-			}),
-			canPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EditTimelineTaskDialog, {
-				item: items.find((item) => item.task.id === editingTaskId),
-				tasks,
-				members,
-				telegramLinked,
-				onClose: () => setEditingTaskId(null),
-				onSaved: (result) => {
-					onPlanChanged(result);
-					setNotice({ text: "Work item and schedule saved." });
-				}
-			}),
-			canPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RenameWorkTypeDialog, {
-				stage: stages.find((stage) => stage.id === renamingStageId),
-				projectId,
-				onClose: () => setRenamingStageId(null),
-				onSaved: (result) => {
-					onPlanChanged(result);
-					setNotice({ text: "Work type renamed. Schedule dates are unchanged." });
-				}
-			}),
-			canPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AddStageDialog, {
-				open: Boolean(addStage),
-				onOpenChange: (open) => {
-					if (!open) setAddStage(null);
-				},
-				projectId,
-				stages,
-				members,
-				telegramLinked,
-				tailStageName: tailStage()?.name,
-				initialPlacement: addStage?.started ? {
-					type: "date",
-					startDate: (/* @__PURE__ */ new Date()).toISOString().slice(0, 10)
-				} : addStage?.placement,
-				startedDefault: Boolean(addStage?.started),
-				onAdded: (result) => {
-					setNotice({ text: `${result.stages?.map((stage) => stage.name).join(", ") || "Stage"} saved to the project.` });
-					onPlanChanged(result);
-				}
-			}),
-			canPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InsertTaskDialog, {
-				open: Boolean(insertTask),
-				onOpenChange: (open) => {
-					if (!open) setInsertTask(null);
-				},
-				projectId,
-				telegramLinked,
-				tasks,
-				initialPlacement: insertTask?.placement,
-				stage: insertTask?.stage,
-				afterTask: insertTask?.afterTask,
-				members,
-				onAdded: (result) => {
-					setNotice({ text: `${result.created?.[0]?.title || "Task"} added.` });
-					onPlanChanged(result);
-				}
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TimelineStageDetails, {
-				stage: allGroups.find((stage) => stage.id === selectedStageId),
-				items,
-				members,
-				projectId,
-				namespace,
-				onClose: () => setSelectedStageId(null),
-				onOpenTask
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("footer", {
-				className: "iksha-schedule-caption",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: editable ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "iksha-only-fine",
-						children: "Drag a stage bar to move the whole stage · Drag a task to move it · Pull its right edge to change its length · Click a task or work type for edit and add options"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "iksha-only-coarse",
-						children: "Press and hold a task to pick it up, then drag · Hold its right edge to change its length"
-					}),
-					" · You confirm every change"
-				] }) : "Tap a stage for its breakdown · Tap a work item for its discussion" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Calendar days · Today is marked in red" })]
-			})
-		]
-	});
-}
-//#endregion
-//#region frontend/src/components/ProjectTimelineWorkspace.jsx
-function ProjectTimelineWorkspace({ tasks = [], stages = [], members = [], projectId, namespace = "founder", telegramLinked = false, onOpenTask, onSchedulePreview, onScheduleApply, onPlanChanged }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
-		className: "iksha-sheet-workspace",
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTimeline, {
-			tasks,
-			stages,
-			members,
-			projectId,
-			namespace,
-			telegramLinked,
-			onOpenTask,
-			onSchedulePreview,
-			onScheduleApply,
-			onPlanChanged
 		})
 	});
 }
@@ -44023,6 +42502,2544 @@ function ResizeControl({ nodeId, position, variant = ResizeControlVariant.Handle
 }
 (0, import_react.memo)(ResizeControl);
 //#endregion
+//#region backend/stage-connections.js
+function stageLinksFor(tasks) {
+	const byId = new Map(tasks.map((task) => [task.id, task])), links = /* @__PURE__ */ new Map();
+	for (const task of tasks) for (const edge of task.dependencies || []) {
+		const from = byId.get(edge.id);
+		if (from && from.stageId !== task.stageId) {
+			const link = {
+				source: from.stageId,
+				target: task.stageId,
+				type: edge.type || "FS"
+			};
+			links.set(`${link.source}:${link.target}:${link.type}`, link);
+		}
+	}
+	return [...links.values()].sort((a, b) => `${a.source}:${a.target}:${a.type}`.localeCompare(`${b.source}:${b.target}:${b.type}`));
+}
+var connectionFingerprint = (tasks) => JSON.stringify(tasks.map((task) => ({
+	id: task.id,
+	stageId: task.stageId,
+	start: task.start,
+	end: task.end,
+	status: task.status,
+	dependencies: task.dependencies || []
+})).sort((a, b) => a.id.localeCompare(b.id)));
+function connectionTasks(tasks) {
+	return tasks.filter((task) => !task.deletedAt && task.status !== "Cancelled").map((task) => ({
+		id: task.telegramTaskId || task.id,
+		stageId: task.stageId,
+		title: task.title,
+		sequence: task.sourceSequence,
+		start: task.sourceForecastStart || task.sourceCurrentStart || task.sourcePlannedStart || "",
+		end: task.deadline || "",
+		status: task.status,
+		actualStart: task.sourceActualStart,
+		dependencies: task.planPredecessors?.map((edge) => ({
+			id: edge.taskId,
+			type: edge.type
+		})) || (task.planPredecessorId ? [{
+			id: task.planPredecessorId,
+			type: task.planDependencyType || "FS"
+		}] : (task.dependencies || []).map((edge) => ({
+			id: edge.predecessorTelegramTaskId,
+			type: edge.type
+		})))
+	}));
+}
+//#endregion
+//#region frontend/src/components/StageConnections.jsx
+function StageNode({ data }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "min-w-44 rounded-lg border bg-card p-3 text-xs shadow-sm",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Handle, {
+				type: "target",
+				position: Position.Left
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: data.label }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "mt-1 text-muted-foreground",
+				children: [data.count, " tasks"]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Handle, {
+				type: "source",
+				position: Position.Right
+			})
+		]
+	});
+}
+var nodeTypes$1 = { stage: StageNode };
+function StageConnections({ projectId, stages = [], tasks = [], onChanged }) {
+	const normalized = connectionTasks(tasks), fingerprint = connectionFingerprint(normalized), saved = stageLinksFor(normalized);
+	const [expanded, setExpanded] = (0, import_react.useState)(false);
+	const [links, setLinks] = (0, import_react.useState)(saved), [type, setType] = (0, import_react.useState)("FS"), [source, setSource] = (0, import_react.useState)(""), [target, setTarget] = (0, import_react.useState)(""), [preview, setPreview] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [notice, setNotice] = (0, import_react.useState)("");
+	(0, import_react.useEffect)(() => {
+		setLinks(saved);
+		setPreview(null);
+	}, [fingerprint]);
+	const change = (next) => {
+		setLinks(next);
+		setPreview(null);
+		setNotice("");
+	};
+	const connect = (connection) => {
+		if (!connection.source || !connection.target || connection.source === connection.target) return;
+		const link = {
+			source: connection.source,
+			target: connection.target,
+			type
+		};
+		if (!links.some((edge) => edge.source === link.source && edge.target === link.target && edge.type === link.type)) change([...links, link]);
+	};
+	const nodes = (0, import_react.useMemo)(() => stages.filter((stage) => normalized.some((task) => task.stageId === stage.id)).map((stage, index) => ({
+		id: stage.id,
+		type: "stage",
+		initialWidth: 224,
+		initialHeight: 90,
+		style: { width: 224 },
+		position: {
+			x: index % 3 * 320,
+			y: Math.floor(index / 3) * 150
+		},
+		data: {
+			label: stage.name,
+			count: normalized.filter((task) => task.stageId === stage.id).length
+		}
+	})), [JSON.stringify(stages), fingerprint]);
+	const edges = links.map((link, index) => ({
+		id: String(index),
+		source: link.source,
+		target: link.target,
+		label: link.type === "SS" ? "Start together" : "After finish",
+		type: "smoothstep",
+		style: { strokeWidth: 2 }
+	}));
+	const run = async (apply) => {
+		setBusy(true);
+		setError("");
+		try {
+			const result = await request(`/api/founder/projects/${projectId}/stage-links/${apply ? "apply" : "preview"}`, {
+				method: "POST",
+				body: {
+					links,
+					fingerprint,
+					...apply ? { botFingerprint: preview.botFingerprint } : {}
+				}
+			});
+			if (apply) {
+				setNotice("Stage connections and schedule saved.");
+				setPreview(null);
+				onChanged?.(result);
+			} else setPreview(result);
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	const dirty = JSON.stringify([...links].sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)))) !== JSON.stringify([...saved].sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b))));
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
+		className: "my-3 rounded-xl border bg-card p-3",
+		onToggle: (event) => setExpanded(event.currentTarget.open),
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("summary", {
+				className: "cursor-pointer text-sm font-semibold",
+				children: [
+					"Stage connections · ",
+					saved.length,
+					" links"
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "my-3 text-xs text-muted-foreground",
+				children: "Connect stage handles here, or use the selectors below. A stage with two incoming “After finish” wires waits for both. Click a wire to remove it, then preview and confirm."
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "h-80 rounded-lg border",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_jsx_runtime.Fragment, { children: expanded && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(index, {
+					nodes,
+					edges,
+					nodeTypes: nodeTypes$1,
+					nodesDraggable: false,
+					onInit: (instance) => requestAnimationFrame(() => instance.fitView({ padding: .15 })),
+					onConnect: connect,
+					onEdgeClick: (event, edge) => change(links.filter((link, index) => String(index) !== edge.id)),
+					fitView: true,
+					minZoom: .2,
+					maxZoom: 1.5,
+					attributionPosition: "bottom-left",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Background, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Controls, {})]
+				}) })
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "my-3 grid gap-2 sm:grid-cols-4",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "grid gap-1 text-xs",
+						children: ["Predecessor", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+							className: "rounded border bg-background p-2",
+							value: source,
+							onChange: (event) => setSource(event.target.value),
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: "",
+								children: "From stage…"
+							}), nodes.map((node) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: node.id,
+								children: node.data.label
+							}, node.id))]
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "grid gap-1 text-xs",
+						children: ["Relationship", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+							className: "rounded border bg-background p-2",
+							value: type,
+							onChange: (event) => setType(event.target.value),
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: "FS",
+								children: "After finish"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: "SS",
+								children: "Start together"
+							})]
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "grid gap-1 text-xs",
+						children: ["Successor", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+							className: "rounded border bg-background p-2",
+							value: target,
+							onChange: (event) => setTarget(event.target.value),
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: "",
+								children: "To stage…"
+							}), nodes.map((node) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: node.id,
+								children: node.data.label
+							}, node.id))]
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						className: "self-end",
+						variant: "outline",
+						disabled: !source || !target || source === target || busy,
+						onClick: () => connect({
+							source,
+							target
+						}),
+						children: "Add connection"
+					})
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "space-y-1",
+				children: links.map((link, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-center justify-between gap-2 text-xs",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+						stages.find((stage) => stage.id === link.source)?.name,
+						" → ",
+						stages.find((stage) => stage.id === link.target)?.name,
+						" · ",
+						link.type === "SS" ? "Start together" : "After finish"
+					] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						className: "underline",
+						onClick: () => change(links.filter((item, i) => i !== index)),
+						children: "Remove"
+					})]
+				}, `${link.source}:${link.target}:${link.type}`))
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+				className: "mt-3",
+				variant: "outline",
+				disabled: !dirty || busy,
+				onClick: () => run(false),
+				children: "Preview connection changes"
+			}),
+			preview && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-3 space-y-2 rounded-lg bg-muted p-3 text-xs",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [preview.affected?.length || 0, " tasks change dates. Work already started cannot be moved."] }),
+					preview.affected?.map((task) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+						task.taskName,
+						" · ",
+						task.previousStart,
+						" → ",
+						task.forecastStart
+					] }, task.taskId)),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						disabled: busy,
+						onClick: () => run(true),
+						children: "Confirm connections and schedule"
+					})
+				]
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "mt-2 text-sm text-destructive",
+				children: error
+			}),
+			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "status",
+				className: "mt-2 text-sm text-emerald-800",
+				children: notice
+			})
+		]
+	});
+}
+//#endregion
+//#region frontend/src/components/PlanTemplates.jsx
+function PlanTemplates({ projectId, spaces = [], onChanged }) {
+	const [templates, setTemplates] = (0, import_react.useState)([]), [name, setName] = (0, import_react.useState)(""), [selected, setSelected] = (0, import_react.useState)(""), [preview, setPreview] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [notice, setNotice] = (0, import_react.useState)("");
+	const load = async () => {
+		try {
+			setTemplates((await request("/api/founder/plan-templates")).templates);
+		} catch (problem) {
+			setError(problem.message);
+		}
+	};
+	const specs = () => {
+		return templates.find((row) => row.id === selected)?.stages.map((stage, index) => ({
+			name: stage.name,
+			custom: true,
+			spaces: (stage.spaces || []).filter((space) => spaces.includes(space)),
+			placement: stage.placement || {
+				type: "date",
+				startDate: (/* @__PURE__ */ new Date()).toLocaleDateString("en-CA")
+			},
+			tasks: stage.tasks.map((task) => ({
+				...task,
+				key: crypto.randomUUID()
+			}))
+		})) || [];
+	};
+	const save = async () => {
+		setBusy(true);
+		setError("");
+		try {
+			await request("/api/founder/plan-templates", {
+				method: "POST",
+				body: {
+					projectId,
+					name
+				}
+			});
+			setName("");
+			await load();
+			setNotice("Reusable template saved for the workspace.");
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	const useTemplate = async (apply) => {
+		setBusy(true);
+		setError("");
+		try {
+			const stages = preview?.stagesInput || specs();
+			const result = await (apply ? applyStages : previewStages)(projectId, { stages });
+			if (apply) {
+				setPreview(null);
+				setNotice("Template stages added to this project.");
+				onChanged?.(result);
+			} else setPreview({
+				...result,
+				stagesInput: stages
+			});
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
+		className: "my-3 rounded-xl border bg-card p-3",
+		onToggle: (event) => {
+			if (event.currentTarget.open) load();
+		},
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", {
+				className: "cursor-pointer text-sm font-semibold",
+				children: "Reusable plan templates"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-3 grid gap-3 sm:grid-cols-2",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "space-y-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "grid gap-1 text-xs",
+						children: ["Save this project's current plan", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+							value: name,
+							maxLength: 80,
+							placeholder: "Template name",
+							onChange: (event) => setName(event.target.value)
+						})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						disabled: busy || !name.trim(),
+						variant: "outline",
+						onClick: save,
+						children: "Save as template"
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "space-y-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "grid gap-1 text-xs",
+						children: ["Add a saved plan", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+							value: selected,
+							className: "h-10 rounded border bg-background px-3",
+							onChange: (event) => {
+								setSelected(event.target.value);
+								setPreview(null);
+							},
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: "",
+								children: "Choose a template…"
+							}), templates.map((template) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: template.id,
+								children: template.name
+							}, template.id))]
+						})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						disabled: busy || !selected,
+						variant: "outline",
+						onClick: () => useTemplate(false),
+						children: "Preview template"
+					})]
+				})]
+			}),
+			preview && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-3 space-y-2 rounded bg-muted p-3 text-xs",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+					preview.created?.length || 0,
+					" tasks across ",
+					preview.stages?.length || 0,
+					" stages will be added. Existing stages remain."
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					disabled: busy,
+					onClick: () => useTemplate(true),
+					children: "Confirm and add template"
+				})]
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "mt-2 text-sm text-destructive",
+				children: error
+			}),
+			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "status",
+				className: "mt-2 text-sm text-emerald-800",
+				children: notice
+			})
+		]
+	});
+}
+//#endregion
+//#region frontend/src/components/TaskPlacement.jsx
+function TaskPlacement({ value, onChange, tasks = [], allowKeep = false, allowFirst = false, sequential = true }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+		className: "space-y-2",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
+				className: "text-xs font-medium",
+				children: "After which task?"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+				"aria-label": "Task placement",
+				className: "w-full",
+				value: value.type,
+				onChange: (event) => onChange({
+					type: event.target.value,
+					taskId: value.taskId || tasks[0]?.id || "",
+					startDate: value.startDate || (/* @__PURE__ */ new Date()).toLocaleDateString("en-CA")
+				}),
+				children: [
+					allowKeep && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+						value: "keep",
+						children: "Keep current start and dependencies"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+						value: "after",
+						children: "After another task"
+					}),
+					!sequential && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+						value: "parallel",
+						children: "In parallel with another task"
+					}),
+					!sequential && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+						value: "date",
+						children: "On a specific date"
+					})
+				]
+			}),
+			["after", "parallel"].includes(value.type) && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+				className: "block space-y-1",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "text-xs",
+					children: "Reference task"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+					"aria-label": "Reference task",
+					className: "w-full",
+					value: value.taskId || "",
+					onChange: (event) => onChange({
+						...value,
+						taskId: event.target.value
+					}),
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+						value: "",
+						children: allowFirst && value.type === "after" ? "First task in this work type" : "Choose a task…"
+					}), tasks.map((task) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+						value: task.id,
+						children: task.title
+					}, task.id))]
+				})]
+			}),
+			value.type === "date" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+				className: "block space-y-1",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "text-xs",
+					children: "Start date"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+					"aria-label": "Task start date",
+					type: "date",
+					value: value.startDate || "",
+					onChange: (event) => onChange({
+						...value,
+						startDate: event.target.value
+					})
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-xs text-muted-foreground",
+				children: value.type === "parallel" ? "Both tasks start together. The existing task keeps its dates." : value.type === "after" ? "This task waits for the reference task. The preview shows any later work that must move." : value.type === "date" ? "This task starts independently on the selected date." : "Existing dependencies are preserved."
+			})
+		]
+	});
+}
+//#endregion
+//#region frontend/src/components/ScheduleImpact.jsx
+var label = (value) => value ? (/* @__PURE__ */ new Date(`${value}T00:00:00Z`)).toLocaleDateString([], {
+	day: "numeric",
+	month: "short",
+	timeZone: "UTC"
+}) : "unconfirmed";
+function ScheduleImpact({ preview, pending, error }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "space-y-2 rounded-xl border bg-muted/30 p-3 text-xs",
+		"aria-live": "polite",
+		children: pending ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Checking the schedule…" }) : error ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "text-destructive",
+			role: "alert",
+			children: error
+		}) : preview ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "font-medium",
+				children: "Review before confirming"
+			}),
+			(preview.conflicts || []).map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-destructive",
+				children: item.reason
+			}, index)),
+			(preview.created || []).map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.title }),
+				": ",
+				label(item.start),
+				" – ",
+				label(item.end)
+			] }, index)),
+			(preview.affected || []).map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.taskName || item.title }),
+				": ",
+				label(item.previousStart),
+				" – ",
+				label(item.previousEnd),
+				" → ",
+				label(item.forecastStart),
+				" – ",
+				label(item.forecastEnd),
+				!item.moved && !item.committed ? " · dependent work" : ""
+			] }, item.taskId)),
+			!(preview.affected || []).some((item) => !item.moved && !item.committed) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "No other task dates change." }),
+			(preview.warnings || []).map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: item.reason }, index)),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+				"Projected finish: ",
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: label(preview.finish) }),
+				". Nothing changes until you confirm."
+			] })
+		] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Complete the fields to preview the dates and any effect on other work." })
+	});
+}
+//#endregion
+//#region frontend/src/components/EditTimelineTaskDialog.jsx
+function EditTimelineTaskDialog({ item, tasks = [], members = [], telegramLinked, onClose, onSaved }) {
+	const [value, setValue] = (0, import_react.useState)(null), [saving, setSaving] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)("");
+	(0, import_react.useEffect)(() => {
+		if (!item) {
+			setValue(null);
+			return;
+		}
+		const prefix = item.stage?.name + " — ";
+		setValue({
+			fromTitle: item.task.title,
+			fromRole: item.task.sourceRole || "Team",
+			fromAssigneeId: item.task.assigneeId || "",
+			fromStart: item.start === null ? "" : new Date(item.start).toISOString().slice(0, 10),
+			fromEnd: item.end === null ? "" : (/* @__PURE__ */ new Date(item.end - 864e5)).toISOString().slice(0, 10),
+			title: item.task.title.startsWith(prefix) ? item.task.title.slice(prefix.length) : item.task.title,
+			role: item.task.sourceRole || "Team",
+			assigneeId: item.task.assigneeId || "",
+			durationDays: item.start !== null && item.end !== null ? Math.round((item.end - item.start) / 864e5) : 1,
+			placement: item.start === null ? {
+				type: "date",
+				startDate: (/* @__PURE__ */ new Date()).toLocaleDateString("en-CA")
+			} : { type: "keep" }
+		});
+		setError("");
+	}, [item?.task.id]);
+	const input = item && value ? value : null;
+	const valid = input && input.title.trim() && input.role.trim() && Number.isInteger(input.durationDays) && input.durationDays >= 1 && input.durationDays <= 365;
+	const { preview, previewing, error: previewError } = useStagePreview({
+		id: item?.task.id,
+		input
+	}, Boolean(valid), () => previewTaskPlan(item.task.id, input));
+	const set = (changes) => setValue((current) => ({
+		...current,
+		...changes
+	}));
+	const save = async () => {
+		setSaving(true);
+		setError("");
+		try {
+			onSaved(await applyTaskPlan(item.task.id, input));
+			onClose();
+		} catch (problem) {
+			setError(problem.message || "Could not edit this task.");
+		} finally {
+			setSaving(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+		open: Boolean(item),
+		onOpenChange: (open) => {
+			if (!open && !saving) onClose();
+		},
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
+			className: "max-h-[92dvh] max-w-lg overflow-y-auto",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Edit work item" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Edit the name, owner, duration or dependency. Review the schedule impact before saving." })] }),
+				item && value && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "space-y-3",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "block space-y-1",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-xs font-medium",
+								children: "Task name"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								value: value.title,
+								maxLength: 80,
+								onChange: (event) => set({ title: event.target.value })
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "grid grid-cols-2 gap-2",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "space-y-1",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "text-xs",
+									children: "Role"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									maxLength: 80,
+									value: value.role,
+									onChange: (event) => set({ role: event.target.value })
+								})]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "space-y-1",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "text-xs",
+									children: "Duration in days"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									type: "number",
+									min: 1,
+									max: 365,
+									step: 1,
+									value: value.durationDays,
+									onChange: (event) => set({ durationDays: event.target.value === "" ? "" : Number(event.target.value) })
+								})]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "block space-y-1",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-xs",
+								children: "Owner"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+								className: "w-full",
+								value: value.assigneeId,
+								onChange: (event) => set({ assigneeId: event.target.value }),
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+										value: "",
+										children: telegramLinked ? "By role" : "Unassigned"
+									}),
+									!telegramLinked && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+										value: "founder",
+										children: "Founder"
+									}),
+									members.filter((member) => member.employeeId).map((member) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+										value: member.employeeId,
+										children: member.name
+									}, member.employeeId))
+								]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TaskPlacement, {
+							allowKeep: true,
+							value: value.placement,
+							tasks: tasks.filter((task) => task.stageId === item.task.stageId && task.id !== item.task.id && !task.deletedAt && task.status !== "Cancelled"),
+							onChange: (placement) => set({ placement })
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ScheduleImpact, {
+							preview,
+							pending: previewing,
+							error: previewError
+						}),
+						error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							role: "alert",
+							className: "text-xs text-destructive",
+							children: error
+						})
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex justify-end gap-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						disabled: saving,
+						onClick: onClose,
+						children: "Cancel"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						disabled: !valid || !preview?.ok || previewing || Boolean(previewError) || saving,
+						onClick: save,
+						children: saving ? "Saving…" : "Confirm and save"
+					})]
+				})
+			]
+		})
+	});
+}
+//#endregion
+//#region frontend/src/components/RenameWorkTypeDialog.jsx
+function RenameWorkTypeDialog({ stage, projectId, onClose, onSaved }) {
+	const [name, setName] = (0, import_react.useState)(""), [saving, setSaving] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)("");
+	(0, import_react.useEffect)(() => {
+		setName(stage?.name || "");
+		setError("");
+	}, [stage?.id]);
+	const save = async () => {
+		setSaving(true);
+		setError("");
+		try {
+			onSaved(await renameWorkType(projectId, stage.id, {
+				name,
+				fromName: stage.name
+			}));
+			onClose();
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setSaving(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+		open: Boolean(stage),
+		onOpenChange: (open) => {
+			if (!open && !saving) onClose();
+		},
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Edit work type" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Renaming this stage keeps its tasks, dates and dependencies. No schedule dates change." })] }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+				className: "space-y-1",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "text-xs",
+					children: "Work type name"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+					value: name,
+					maxLength: 60,
+					onChange: (event) => setName(event.target.value)
+				})]
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-xs text-destructive",
+				role: "alert",
+				children: error
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex justify-end gap-2",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: "outline",
+					disabled: saving,
+					onClick: onClose,
+					children: "Cancel"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					disabled: saving || !name.trim() || name.trim() === stage?.name,
+					onClick: save,
+					children: saving ? "Saving…" : "Confirm rename"
+				})]
+			})
+		] })
+	});
+}
+//#endregion
+//#region frontend/src/components/InsertTaskDialog.jsx
+function InsertTaskDialog({ open, onOpenChange, projectId, stage, afterTask, initialPlacement, members = [], tasks = [], telegramLinked = true, onAdded }) {
+	const [value, setValue] = (0, import_react.useState)({
+		title: "",
+		role: "Site Team",
+		durationDays: 1,
+		assigneeId: "",
+		placement: {
+			type: "after",
+			taskId: ""
+		}
+	});
+	const [saving, setSaving] = (0, import_react.useState)(false);
+	const [error, setError] = (0, import_react.useState)("");
+	(0, import_react.useEffect)(() => {
+		if (open) {
+			setValue({
+				title: "",
+				role: "Site Team",
+				durationDays: 1,
+				assigneeId: "",
+				placement: initialPlacement || {
+					type: "after",
+					taskId: afterTask?.id || ""
+				}
+			});
+			setError("");
+		}
+	}, [open]);
+	const task = {
+		stageId: stage?.id,
+		...value,
+		title: value.title.trim(),
+		afterTaskId: value.placement.taskId || "",
+		placementType: value.placement.type,
+		startDate: value.placement.startDate
+	};
+	const { preview, previewing, error: previewError } = useStagePreview(task, open && Boolean(task.title && stage), () => previewInsertTask(projectId, task));
+	const save = async () => {
+		setSaving(true);
+		setError("");
+		try {
+			const result = await applyInsertTask(projectId, task);
+			onOpenChange(false);
+			onAdded?.(result);
+		} catch (problem) {
+			setError(problem.message || "Could not add this task.");
+		} finally {
+			setSaving(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+		open,
+		onOpenChange: (next) => {
+			if (!saving) onOpenChange(next);
+		},
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
+			className: "max-h-[92dvh] max-w-lg overflow-y-auto",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogTitle, { children: ["Add a task to ", stage?.name] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, {
+					className: "text-xs",
+					children: "Choose when this work runs, then review any change to the schedule before confirming."
+				})] }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "space-y-3",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "block space-y-1.5",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-xs font-medium",
+								children: "Task"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								autoFocus: true,
+								maxLength: 80,
+								value: value.title,
+								placeholder: "e.g. Soil test",
+								onChange: (event) => setValue({
+									...value,
+									title: event.target.value
+								})
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "grid grid-cols-2 gap-2",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "space-y-1.5",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "text-xs font-medium",
+										children: "Who does it"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+										list: "iksha-insert-roles",
+										value: value.role,
+										maxLength: 80,
+										onChange: (event) => setValue({
+											...value,
+											role: event.target.value
+										})
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("datalist", {
+										id: "iksha-insert-roles",
+										children: [
+											"Site Supervisor",
+											"Designer",
+											"Design Head/ Admin",
+											"Client",
+											...EXECUTION_ROLES
+										].map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { value: item }, item))
+									})
+								]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "space-y-1.5",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "text-xs font-medium",
+									children: "Days"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									type: "number",
+									min: 1,
+									max: 365,
+									step: 1,
+									value: value.durationDays,
+									onChange: (event) => setValue({
+										...value,
+										durationDays: event.target.value === "" ? "" : Number(event.target.value)
+									})
+								})]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "block space-y-1.5",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-xs font-medium",
+								children: "Person"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+								value: value.assigneeId,
+								onChange: (event) => setValue({
+									...value,
+									assigneeId: event.target.value
+								}),
+								className: "w-full",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+										value: "",
+										children: "By role"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelectOption, {
+										value: "founder",
+										children: "Founder"
+									}),
+									members.filter((member) => member.employeeId).map((member) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelectOption, {
+										value: member.employeeId,
+										children: [member.name, member.role ? ` · ${member.role}` : ""]
+									}, member.employeeId))
+								]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TaskPlacement, {
+							allowFirst: true,
+							value: value.placement,
+							tasks: tasks.filter((task) => task.stageId === stage?.id && !task.deletedAt && task.status !== "Cancelled"),
+							onChange: (placement) => setValue({
+								...value,
+								placement
+							})
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ScheduleImpact, {
+							preview,
+							pending: previewing,
+							error: previewError
+						}),
+						error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-xs text-destructive",
+							role: "alert",
+							children: error
+						})
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex justify-end gap-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						disabled: saving,
+						onClick: () => onOpenChange(false),
+						children: "Cancel"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						disabled: saving || !preview?.ok || previewing || Boolean(previewError),
+						onClick: save,
+						children: saving ? "Adding…" : "Confirm and add task"
+					})]
+				})
+			]
+		})
+	});
+}
+//#endregion
+//#region frontend/src/components/TimelineStageDetails.jsx
+var timelineOwner = (task, members) => members.find((member) => (member.employeeId || member.id) === task.assigneeId)?.name || (task.assigneeId === "founder" ? "Founder" : task.assigneeName || "Unassigned");
+var timelineDate = (value) => value === null ? "Not scheduled" : new Date(value).toLocaleDateString([], {
+	month: "short",
+	day: "numeric",
+	year: "numeric",
+	timeZone: "UTC"
+});
+function TimelineStageDetails({ stage, items, members, projectId, namespace, onClose, onOpenTask }) {
+	const summary = stage ? stageSummary(items, stage) : null;
+	const owners = summary ? [...new Set(summary.items.map((item) => stage?.sheetPlan ? item.task.sheetRole || "Role not specified" : timelineOwner(item.task, members)))] : [];
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sheet, {
+		open: Boolean(stage),
+		onOpenChange: (open) => {
+			if (!open) onClose();
+		},
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetContent, {
+			className: "iksha-stage-details",
+			side: "right",
+			children: stage && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SheetHeader, { children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "iksha-eyebrow",
+					children: "STAGE WORKSPACE"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetTitle, { children: stage.name }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetDescription, { children: "Everything in this stage: work items, ownership, dates, and project references." })
+			] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "iksha-stage-detail-scroll",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "iksha-stage-metrics",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { size: 16 }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [summary.progress, "%"] }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+								summary.complete,
+								" of ",
+								summary.items.length,
+								" complete"
+							] })
+						] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { size: 16 }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: owners.filter((owner) => owner !== "Unassigned").length }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: stage.sheetPlan ? "Responsible roles" : "Assigned people" })
+						] })]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "iksha-stage-dates",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, { size: 16 }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: stage.sheetPlan ? "Draft planned window" : "Scheduled window" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [
+							timelineDate(summary.start),
+							" → ",
+							timelineDate(summary.end === null ? null : summary.end - 864e5)
+						] })] })]
+					}),
+					stage.description && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "iksha-stage-description",
+						children: stage.description
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Tabs, {
+						defaultValue: "work",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
+								className: "iksha-detail-tabs",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+									value: "work",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { size: 14 }), "Work & discussions"]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+									value: "references",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { size: 14 }), "Resources"]
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
+								value: "work",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "iksha-stage-work-list",
+									children: [summary.items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+										className: "iksha-stage-work-card",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: `iksha-work-status ${["Completed", "completed"].includes(item.task.status) ? "complete" : item.task.status === "Blocked" ? "blocked" : ""}`,
+												children: item.task.status
+											}), item.task.sourceGateType && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "iksha-gate-label",
+												children: item.task.sourceGateType
+											})] }),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", { children: item.task.title }),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: item.task.description || "Open this work item to see its discussion and record the next step." }),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("dl", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: stage.sheetPlan ? "Responsible role" : "Accountable owner" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: stage.sheetPlan ? item.task.sheetRole || "Not specified" : timelineOwner(item.task, members) })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Schedule" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: item.start === null || item.end === null ? stage.sheetPlan ? "Duration needed" : "No saved dates" : `${timelineDate(item.start)} → ${timelineDate(item.end - 864e5)}` })] })] }),
+											stage.sheetPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+												className: "iksha-stage-description",
+												children: [
+													item.task.sheetDurationDays === null ? "Duration missing" : item.task.sheetDurationDays + " calendar days",
+													" · Work ",
+													item.task.sheetTaskOrder,
+													" · ",
+													item.task.sheetSourceTab,
+													" ",
+													item.task.sheetSourceCell
+												]
+											}),
+											item.task.sourceBlockedReason && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+												className: "iksha-work-blocker",
+												children: ["Blocked: ", item.task.sourceBlockedReason]
+											}),
+											item.task.sourceApprovalStatus && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+												className: "iksha-work-approval",
+												children: ["Approval: ", item.task.sourceApprovalStatus]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+												variant: "outline",
+												onClick: () => onOpenTask(item.task),
+												children: [
+													stage.sheetPlan ? "Open work item details" : "Open work item & discussion",
+													" ",
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 14 })
+												]
+											})
+										]
+									}, item.task.id)), !summary.items.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "iksha-stage-description",
+										children: "No work items recorded for this stage yet."
+									})]
+								})
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
+								value: "references",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "iksha-stage-reference-note",
+									children: "Shared project documents and photos are shown here. Links specific to a work item are available in its discussion."
+								}), projectId ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectFiles, {
+									projectId,
+									namespace
+								}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "No project references are available." })]
+							})
+						]
+					}, stage.id),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "iksha-stage-footer",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock3, { size: 13 }), stage.sheetPlan ? "Imported plan; completion requires a linked project task." : "Completion and approval states reflect the saved project records."]
+					})
+				]
+			})] })
+		})
+	});
+}
+//#endregion
+//#region frontend/src/lib/taskPeople.js
+var initialsOf = (name) => name.split(/[\s/&]+/).filter(Boolean).map((part) => part[0]).slice(0, 2).join("").toUpperCase();
+function personFor(task, ownerName) {
+	const assigned = ownerName(task);
+	if (assigned && assigned !== "Unassigned") return {
+		name: assigned,
+		initials: initialsOf(assigned),
+		isRole: false
+	};
+	if (task.sourceAssigneeName) return {
+		name: task.sourceAssigneeName,
+		initials: initialsOf(task.sourceAssigneeName),
+		isRole: false
+	};
+	if (task.sourceRole) return {
+		name: task.sourceRole,
+		initials: initialsOf(task.sourceRole),
+		isRole: true
+	};
+	return null;
+}
+var open = (task) => !task.deletedAt && task.status !== "Cancelled";
+var unique = (people, owner) => {
+	const seen = new Set(owner ? [owner.name] : []);
+	return people.filter((person) => person && !seen.has(person.name) && seen.add(person.name));
+};
+function buildPeopleIndex(tasks, ownerName) {
+	const byBotId = new Map(tasks.filter((task) => task.telegramTaskId).map((task) => [task.telegramTaskId, task]));
+	const successors = /* @__PURE__ */ new Map();
+	for (const task of tasks.filter(open)) for (const dependency of task.dependencies || []) {
+		const list = successors.get(dependency.predecessorTelegramTaskId) || [];
+		list.push(task);
+		successors.set(dependency.predecessorTelegramTaskId, list);
+	}
+	return (task) => {
+		const owner = personFor(task, ownerName);
+		const from = (task.dependencies || []).map((dependency) => byBotId.get(dependency.predecessorTelegramTaskId)).filter((item) => item && open(item)).map((item) => personFor(item, ownerName));
+		const to = (successors.get(task.telegramTaskId) || []).map((item) => personFor(item, ownerName));
+		return {
+			owner,
+			from: unique(from, owner),
+			to: unique(to, owner)
+		};
+	};
+}
+function avatarHue(name) {
+	let hash = 0;
+	for (const character of name) hash = (hash * 31 + character.charCodeAt(0)) % 360;
+	return hash;
+}
+//#endregion
+//#region frontend/src/components/ProjectTimeline.jsx
+var dateLabel = (value) => new Date(value).toLocaleDateString([], {
+	month: "short",
+	day: "numeric",
+	timeZone: "UTC"
+});
+var isoLabel = (value) => value ? dateLabel(calendarDate(value)) : "no date";
+var isoRange = (start, end) => start && start === end ? isoLabel(start) : `${isoLabel(start)} – ${isoLabel(end)}`;
+var ZOOMS = [
+	{
+		days: 14,
+		label: "2 weeks",
+		width: 82
+	},
+	{
+		days: 42,
+		label: "6 weeks",
+		width: 40
+	},
+	{
+		days: 91,
+		label: "3 months",
+		width: 20
+	}
+];
+var STATUS_ICON = {
+	late: TriangleAlert,
+	blocked: Octagon,
+	waiting: Hourglass,
+	complete: Check
+};
+var LONG_PRESS_MS = 320;
+var EDGE = 44;
+function verticalScroller(element) {
+	for (let node = element?.parentElement; node; node = node.parentElement) {
+		const overflow = getComputedStyle(node).overflowY;
+		if ((overflow === "auto" || overflow === "scroll") && node.scrollHeight > node.clientHeight) return node;
+	}
+	return document.scrollingElement;
+}
+function Avatar({ person }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+		className: `iksha-avatar ${person.isRole ? "is-role" : ""}`,
+		style: { "--hue": avatarHue(person.name) },
+		children: person.initials
+	});
+}
+function AvatarStack({ people, max = 2 }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+		className: "iksha-avatar-stack",
+		children: [people.slice(0, max).map((person) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, { person }, person.name)), people.length > max && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+			className: "iksha-avatar is-more",
+			children: ["+", people.length - max]
+		})]
+	});
+}
+function PeopleStrip({ people, compact }) {
+	if (!people.owner && !people.from.length && !people.to.length) return null;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+		className: "iksha-people",
+		"aria-hidden": "true",
+		children: [
+			!compact && people.from.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarStack, { people: people.from }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", {
+				className: "iksha-flow",
+				children: "›"
+			})] }),
+			people.owner && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, { person: people.owner }),
+			!compact && people.to.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", {
+				className: "iksha-flow",
+				children: "›"
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarStack, { people: people.to })] })
+		]
+	});
+}
+function PeopleFlow({ people }) {
+	const row = (label, list) => list.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "iksha-flow-row",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: label }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: list.map((person) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+			className: "iksha-flow-person",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar, { person }),
+				person.name,
+				person.isRole ? " (role)" : ""
+			]
+		}, person.name)) })]
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "iksha-people-flow",
+		children: [
+			row("Needs work from", people.from),
+			row("Done by", people.owner ? [people.owner] : []),
+			row("Hands over to", people.to)
+		]
+	});
+}
+var peopleSentence = (people) => [
+	people.from.length ? `needs work from ${people.from.map((person) => person.name).join(", ")}` : "",
+	people.owner ? `done by ${people.owner.name}` : "",
+	people.to.length ? `hands over to ${people.to.map((person) => person.name).join(", ")}` : ""
+].filter(Boolean).join(", ");
+function OffscreenChip({ value, before, onClick }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+		className: `iksha-offscreen ${before ? "is-before" : "is-after"}`,
+		onClick,
+		"aria-label": `${before ? "Ended" : "Starts"} ${dateLabel(value)}. Show`,
+		children: before ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { size: 11 }), dateLabel(value)] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [dateLabel(value), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { size: 11 })] })
+	});
+}
+function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], projectId, namespace = "founder", telegramLinked = false, onOpenTask, onSchedulePreview, onScheduleApply, onPlanChanged }) {
+	const today = todayDate();
+	const items = timelineItems(tasks, stages);
+	const scheduled = items.filter((item) => item.start !== null && item.end !== null);
+	const summary = scheduleSummary(items, today);
+	const editable = Boolean(onSchedulePreview && onScheduleApply);
+	const canPlan = editable && Boolean(onPlanChanged);
+	const [origin, setOrigin] = (0, import_react.useState)(today - 7 * calendarDay);
+	const [days, setDays] = (0, import_react.useState)(42);
+	const [collapsed, setCollapsed] = (0, import_react.useState)(() => /* @__PURE__ */ new Set([...stages.map((stage) => stage.id), "other"]));
+	const [addStage, setAddStage] = (0, import_react.useState)(null);
+	const [insertTask, setInsertTask] = (0, import_react.useState)(null);
+	const [menu, setMenu] = (0, import_react.useState)(null);
+	const [editingTaskId, setEditingTaskId] = (0, import_react.useState)(null);
+	const [renamingStageId, setRenamingStageId] = (0, import_react.useState)(null);
+	const menuRef = (0, import_react.useRef)(null);
+	const [search, setSearch] = (0, import_react.useState)("");
+	const [selectedStageId, setSelectedStageId] = (0, import_react.useState)(null);
+	const [drag, setDrag] = (0, import_react.useState)(null);
+	const [picked, setPicked] = (0, import_react.useState)(null);
+	const [proposal, setProposal] = (0, import_react.useState)(null);
+	const [notice, setNotice] = (0, import_react.useState)(null);
+	const dragRef = (0, import_react.useRef)(null);
+	const pressRef = (0, import_react.useRef)(null);
+	const suppressClick = (0, import_react.useRef)(false);
+	const autoScroll = (0, import_react.useRef)({
+		frame: 0,
+		vx: 0,
+		vy: 0
+	});
+	const scrollerRef = (0, import_react.useRef)(null);
+	const datesRef = (0, import_react.useRef)(null);
+	const handlers = (0, import_react.useRef)({});
+	const [showArrows, setShowArrows] = (0, import_react.useState)(() => {
+		try {
+			return localStorage.getItem("iksha.timeline.arrows") === "on";
+		} catch {
+			return false;
+		}
+	});
+	const toggleArrows = () => setShowArrows((current) => {
+		try {
+			localStorage.setItem("iksha.timeline.arrows", current ? "off" : "on");
+		} catch {}
+		return !current;
+	});
+	const swallowNextClick = () => {
+		suppressClick.current = true;
+		setTimeout(() => {
+			suppressClick.current = false;
+		}, 450);
+	};
+	const from = origin, to = origin + days * calendarDay;
+	const dayWidth = ZOOMS.find((zoom) => zoom.days === days)?.width ?? Math.max(8, 1120 / days);
+	const compactHeader = dayWidth < 40;
+	const narrowDays = !compactHeader && dayWidth < 60;
+	const allGroups = [...stages, {
+		id: "other",
+		name: "Additional work"
+	}].filter((stage) => items.some((item) => (item.stage?.id || "other") === stage.id));
+	const ownerName = (task) => members.find((member) => (member.employeeId || member.id) === task.assigneeId)?.name || (task.assigneeId === "founder" ? "Founder" : task.assigneeName || "Unassigned");
+	const peopleOf = buildPeopleIndex(tasks, ownerName);
+	const query = search.trim().toLowerCase();
+	const visible = items.filter((item) => `${item.task.title} ${item.stage?.name || "Additional work"} ${ownerName(item.task)}`.toLowerCase().includes(query));
+	const undated = visible.filter((item) => (item.start === null || item.end === null) && item.task.status !== "Completed");
+	const complete = (task) => ["Completed", "completed"].includes(task.status);
+	const toggle = (id) => setCollapsed((current) => {
+		const next = new Set(current);
+		next.has(id) ? next.delete(id) : next.add(id);
+		return next;
+	});
+	const todayInView = today >= from && today < to;
+	const pickedItem = picked ? items.find((item) => item.task.id === picked) : null;
+	const gridStyle = {
+		"--timeline-width": `${days * dayWidth}px`,
+		"--timeline-day": `${dayWidth}px`,
+		"--today-left": `${(today - from) / calendarDay * dayWidth}px`
+	};
+	const syncHeader = () => {
+		if (datesRef.current && scrollerRef.current) datesRef.current.style.transform = `translateX(${-scrollerRef.current.scrollLeft}px)`;
+	};
+	const [view, setView] = (0, import_react.useState)(null);
+	const measureView = () => {
+		const scroller = scrollerRef.current;
+		if (!scroller) return;
+		const label = scroller.querySelector(".iksha-schedule-label")?.offsetWidth || 0;
+		const first = Math.floor(scroller.scrollLeft / dayWidth);
+		const last = Math.ceil((scroller.scrollLeft + scroller.clientWidth - label) / dayWidth);
+		setView((current) => current?.first === first && current?.last === last && current?.origin === from && current?.dayWidth === dayWidth ? current : {
+			first,
+			last,
+			origin: from,
+			dayWidth
+		});
+	};
+	const onGridScroll = () => {
+		syncHeader();
+		measureView();
+	};
+	(0, import_react.useEffect)(() => {
+		window.addEventListener("resize", measureView);
+		return () => window.removeEventListener("resize", measureView);
+	});
+	const reveal = (value) => {
+		const scroller = scrollerRef.current;
+		if (scroller && value >= from && value < to) scroller.scrollTo({
+			left: Math.max(0, (value - from) / calendarDay * dayWidth - dayWidth),
+			behavior: "smooth"
+		});
+		else {
+			scrollTo.current = "start";
+			setOrigin(value - calendarDay);
+		}
+	};
+	(0, import_react.useLayoutEffect)(syncHeader);
+	const scrollTo = (0, import_react.useRef)("today");
+	(0, import_react.useLayoutEffect)(() => {
+		const scroller = scrollerRef.current;
+		if (!scroller) return;
+		const target = scrollTo.current;
+		scrollTo.current = null;
+		if (target === "today" && todayInView) scroller.scrollLeft = Math.max(0, (today - from) / calendarDay * dayWidth - dayWidth);
+		else if (target === "start") scroller.scrollLeft = 0;
+		syncHeader();
+		measureView();
+	}, [
+		origin,
+		days,
+		items.length > 0
+	]);
+	const goToday = () => {
+		scrollTo.current = "today";
+		setOrigin(today - 7 * calendarDay);
+	};
+	const page = (direction) => {
+		scrollTo.current = "start";
+		setOrigin(origin + direction * Math.max(7, Math.round(days / 2)) * calendarDay);
+	};
+	const shortTitle = (task, stage) => {
+		const base = String(stage?.name || "").replace(/ \([0-9a-z]+\)$/i, "");
+		return base && task.title.startsWith(`${base} — `) ? task.title.slice(base.length + 3) : task.title;
+	};
+	async function propose(moves, description) {
+		setProposal({
+			moves,
+			description,
+			loading: true
+		});
+		try {
+			const preview = await onSchedulePreview(moves);
+			setProposal({
+				moves,
+				description,
+				preview
+			});
+		} catch (error) {
+			setProposal({
+				moves,
+				description,
+				error: error.message || "Could not check this change."
+			});
+		}
+	}
+	async function confirm() {
+		const { moves, description } = proposal;
+		setProposal({
+			...proposal,
+			saving: true
+		});
+		try {
+			const result = await onScheduleApply(moves);
+			setProposal(null);
+			const pushed = result.affected.filter((item) => !item.moved).length;
+			setNotice({
+				text: `${description} saved to the Google Sheet${pushed ? ` · ${pushed} dependent task${pushed === 1 ? "" : "s"} moved` : ""}.`,
+				undo: undoMoves(result.affected)
+			});
+		} catch (error) {
+			setProposal({
+				...proposal,
+				saving: false,
+				error: error.message || "Could not save this change."
+			});
+		}
+	}
+	async function undo() {
+		const moves = notice.undo;
+		setNotice({ text: "Undoing…" });
+		try {
+			await onScheduleApply(moves);
+			setNotice({ text: "Change undone. The Google Sheet is back to the earlier dates." });
+		} catch (error) {
+			setNotice({ text: `Could not undo: ${error.message}` });
+		}
+	}
+	const nudge = (item, startDays, endDays, description) => propose([moveFor(item, startDays, endDays)], description);
+	function startDrag(item, mode, x, y, touch, stageId = null) {
+		dragRef.current = {
+			id: item.task.id,
+			item,
+			mode,
+			x,
+			y,
+			lastX: x,
+			lastY: y,
+			scrollLeft: scrollerRef.current?.scrollLeft || 0,
+			shift: 0,
+			target: null,
+			moved: false,
+			touch,
+			stageId
+		};
+		setDrag({ ...dragRef.current });
+	}
+	function updateDrag(clientX, clientY) {
+		const current = dragRef.current;
+		if (!current) return;
+		current.lastX = clientX;
+		current.lastY = clientY;
+		if (!current.moved && Math.abs(clientX - current.x) < 5 && Math.abs(clientY - current.y) < 8) return;
+		current.moved = true;
+		const scrolled = (scrollerRef.current?.scrollLeft || 0) - current.scrollLeft;
+		current.shift = Math.round((clientX - current.x + scrolled) / dayWidth);
+		if (current.mode === "resize") current.shift = Math.max(current.shift, -Math.round((current.item.end - current.item.start) / calendarDay) + 1);
+		const row = document.elementsFromPoint(clientX, clientY).map((element) => element.closest?.("[data-task-row]")).find(Boolean);
+		const target = row && row.dataset.taskRow !== current.id && current.mode === "move" && !current.stageId ? items.find((candidate) => candidate.task.id === row.dataset.taskRow) : null;
+		current.target = target && canMove(target) ? target : null;
+		setDrag({ ...current });
+		edgeScroll(clientX, clientY);
+	}
+	function edgeScroll(clientX, clientY) {
+		const scroller = scrollerRef.current;
+		if (!scroller) return;
+		const rect = scroller.getBoundingClientRect();
+		const labelWidth = scroller.querySelector(".iksha-schedule-label")?.offsetWidth || 0;
+		const state = autoScroll.current;
+		state.vx = clientX < rect.left + labelWidth + EDGE ? -10 : clientX > rect.right - EDGE ? 10 : 0;
+		state.vy = clientY < 148 ? -10 : clientY > window.innerHeight - EDGE - 70 ? 10 : 0;
+		if ((state.vx || state.vy) && !state.frame) {
+			const step = () => {
+				const current = dragRef.current;
+				if (!current || !state.vx && !state.vy) {
+					state.frame = 0;
+					return;
+				}
+				if (state.vx) scroller.scrollLeft += state.vx;
+				if (state.vy) verticalScroller(scroller).scrollBy(0, state.vy);
+				handlers.current.updateDrag(current.lastX, current.lastY);
+				state.frame = requestAnimationFrame(step);
+			};
+			state.frame = requestAnimationFrame(step);
+		}
+	}
+	function stopDrag() {
+		cancelAnimationFrame(autoScroll.current.frame);
+		autoScroll.current = {
+			frame: 0,
+			vx: 0,
+			vy: 0
+		};
+		dragRef.current = null;
+		setDrag(null);
+	}
+	function finishDrag() {
+		const current = dragRef.current;
+		stopDrag();
+		if (!current) return;
+		if (!current.moved) {
+			if (current.touch) {
+				swallowNextClick();
+				if (current.stageId) setSelectedStageId(current.stageId);
+				else setPicked(current.id);
+			}
+			return;
+		}
+		swallowNextClick();
+		if (current.stageId) {
+			if (!current.shift) return;
+			const stageName = current.item.task.title;
+			const moves = stageMoves(items, current.stageId, current.shift);
+			if (!moves.length) return void setNotice({ text: `Nothing in ${stageName} can move: its tasks are finished or have no dates.` });
+			const days = Math.abs(current.shift);
+			propose(moves, `Move stage “${stageName}” ${days} day${days === 1 ? "" : "s"} ${current.shift > 0 ? "later" : "earlier"} (${moves.length} task${moves.length === 1 ? "" : "s"} move together)`);
+			return;
+		}
+		if (current.target) return void propose(swapMoves(current.item, current.target), `Swap “${current.item.task.title}” with “${current.target.task.title}”`);
+		if (!current.shift) return;
+		const title = current.item.task.title;
+		propose([current.mode === "resize" ? moveFor(current.item, 0, current.shift) : moveFor(current.item, current.shift)], current.mode === "resize" ? `Change the length of “${title}”` : `Move “${title}”`);
+	}
+	handlers.current = {
+		updateDrag,
+		finishDrag,
+		stopDrag
+	};
+	function onBarPointerDown(event, item) {
+		if (!editable || !canMove(item) || event.button !== 0) return;
+		const mode = event.target.closest(".iksha-resize-handle") ? "resize" : "move";
+		if (event.pointerType === "mouse") {
+			event.currentTarget.setPointerCapture(event.pointerId);
+			startDrag(item, mode, event.clientX, event.clientY, false);
+			return;
+		}
+		const press = {
+			item,
+			mode,
+			x: event.clientX,
+			y: event.clientY
+		};
+		press.timer = setTimeout(() => {
+			pressRef.current = null;
+			navigator.vibrate?.(12);
+			startDrag(item, mode, press.x, press.y, true);
+		}, LONG_PRESS_MS);
+		pressRef.current = press;
+	}
+	function onStagePointerDown(event, stage, start, end) {
+		if (!editable || event.button !== 0) return;
+		if (!stageMoves(items, stage.id, 1).length) return;
+		const item = {
+			task: {
+				id: `stage:${stage.id}`,
+				title: stage.name
+			},
+			start,
+			end
+		};
+		if (event.pointerType === "mouse") {
+			event.currentTarget.setPointerCapture(event.pointerId);
+			startDrag(item, "move", event.clientX, event.clientY, false, stage.id);
+			return;
+		}
+		const press = {
+			x: event.clientX,
+			y: event.clientY
+		};
+		press.timer = setTimeout(() => {
+			pressRef.current = null;
+			navigator.vibrate?.(12);
+			startDrag(item, "move", press.x, press.y, true, stage.id);
+		}, LONG_PRESS_MS);
+		pressRef.current = press;
+	}
+	const openMenu = (event, entry) => {
+		if (!canPlan || pressRef.current || dragRef.current) return;
+		event.preventDefault();
+		setMenu({
+			x: Math.max(8, Math.min(event.clientX || event.currentTarget.getBoundingClientRect().left, window.innerWidth - 248)),
+			y: Math.max(8, Math.min(event.clientY || event.currentTarget.getBoundingClientRect().bottom, window.innerHeight - 330)),
+			...entry
+		});
+	};
+	const lastTaskOf = (stageId) => [...items].filter((item) => item.stage?.id === stageId).sort((a, b) => (Number(a.task.sourceSequence) || 0) - (Number(b.task.sourceSequence) || 0)).at(-1)?.task || null;
+	const tailStage = () => {
+		return stages.map((stage) => ({
+			stage,
+			end: Math.max(-Infinity, ...items.filter((item) => item.stage?.id === stage.id && item.end !== null).map((item) => item.end))
+		})).sort((a, b) => b.end - a.end)[0]?.stage || stages.at(-1);
+	};
+	(0, import_react.useEffect)(() => {
+		if (!menu) return void 0;
+		menuRef.current?.querySelector("[role=\"menuitem\"]")?.focus();
+		const close = (event) => {
+			if (event.type === "keydown" && event.key !== "Escape") return;
+			setMenu(null);
+		};
+		window.addEventListener("pointerdown", close);
+		window.addEventListener("keydown", close);
+		window.addEventListener("scroll", close, true);
+		return () => {
+			window.removeEventListener("pointerdown", close);
+			window.removeEventListener("keydown", close);
+			window.removeEventListener("scroll", close, true);
+		};
+	}, [menu]);
+	(0, import_react.useEffect)(() => {
+		const cancelPress = () => {
+			if (pressRef.current) {
+				clearTimeout(pressRef.current.timer);
+				pressRef.current = null;
+			}
+		};
+		const onMove = (event) => {
+			const touch = event.touches[0];
+			if (!touch) return;
+			const press = pressRef.current;
+			if (press && Math.hypot(touch.clientX - press.x, touch.clientY - press.y) > 10) cancelPress();
+			if (dragRef.current?.touch) {
+				event.preventDefault();
+				handlers.current.updateDrag(touch.clientX, touch.clientY);
+			}
+		};
+		const onEnd = () => {
+			cancelPress();
+			if (dragRef.current?.touch) handlers.current.finishDrag();
+		};
+		const onCancel = () => {
+			cancelPress();
+			if (dragRef.current?.touch) handlers.current.stopDrag();
+		};
+		document.addEventListener("touchmove", onMove, { passive: false });
+		document.addEventListener("touchend", onEnd);
+		document.addEventListener("touchcancel", onCancel);
+		return () => {
+			document.removeEventListener("touchmove", onMove);
+			document.removeEventListener("touchend", onEnd);
+			document.removeEventListener("touchcancel", onCancel);
+			cancelPress();
+		};
+	}, []);
+	function keyMove(event, item) {
+		if (!editable || !canMove(item) || !event.altKey || !["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+		event.preventDefault();
+		const step = event.key === "ArrowRight" ? 1 : -1;
+		nudge(item, event.shiftKey ? 0 : step, step, event.shiftKey ? `Change the length of “${item.task.title}”` : `Move “${item.task.title}”`);
+	}
+	const viewFrom = view && view.origin === from && view.dayWidth === dayWidth ? from + view.first * calendarDay : from;
+	const viewTo = view && view.origin === from && view.dayWidth === dayWidth ? from + view.last * calendarDay : to;
+	const edge = (start, end) => end <= viewFrom ? "before" : start >= viewTo ? "after" : null;
+	const headline = [
+		summary.late && `${summary.late} late`,
+		summary.blocked && `${summary.blocked} blocked`,
+		summary.waiting && `${summary.waiting} waiting on you`
+	].filter(Boolean);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "iksha-timeline",
+		children: [
+			canPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StageConnections, {
+				projectId,
+				tasks,
+				stages,
+				onChanged: onPlanChanged
+			}),
+			canPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PlanTemplates, {
+				spaces,
+				projectId,
+				onChanged: onPlanChanged
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "iksha-timeline-heading",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "iksha-eyebrow",
+						children: "PROJECT SCHEDULE"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", { children: headline.length ? headline.join(" · ") : "Nothing late or blocked" }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [summary.finish !== null ? `Projected finish ${dateLabel(summary.finish)}` : "Finish date not confirmed", summary.unscheduled ? ` · ${summary.unscheduled} without dates` : ""] })
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, { size: 14 }),
+					scheduled.length,
+					" scheduled · ",
+					items.length - scheduled.length,
+					" without dates"
+				] })]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "iksha-timeline-toolbar",
+				role: "toolbar",
+				"aria-label": "Timeline view",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "iksha-date-nav",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "ghost",
+							size: "icon-sm",
+							"aria-label": "Previous period",
+							onClick: () => page(-1),
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, {})
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [
+							dateLabel(from),
+							" – ",
+							dateLabel(to - calendarDay),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "iksha-year",
+								children: [", ", new Date(to - calendarDay).getUTCFullYear()]
+							})
+						] }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "ghost",
+							size: "icon-sm",
+							"aria-label": "Next period",
+							onClick: () => page(1),
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {})
+						})
+					]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "iksha-toolbar-chips",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							size: "sm",
+							onClick: goToday,
+							children: "Today"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "iksha-zoom",
+							children: ZOOMS.map((zoom) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+								"aria-pressed": days === zoom.days,
+								className: days === zoom.days ? "active" : "",
+								onClick: () => setDays(zoom.days),
+								children: zoom.label
+							}, zoom.days))
+						}),
+						scheduled.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							size: "sm",
+							"aria-pressed": !ZOOMS.some((zoom) => zoom.days === days),
+							onClick: () => {
+								const first = Math.min(...scheduled.map((item) => item.start));
+								setOrigin(first);
+								setDays(Math.max(28, Math.ceil((Math.max(...scheduled.map((item) => item.end)) - first) / 864e5)));
+							},
+							children: "Entire plan"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							size: "sm",
+							"aria-pressed": showArrows,
+							className: showArrows ? "iksha-toggle-on" : "",
+							onClick: toggleArrows,
+							children: showArrows ? "Hide date arrows" : "Show date arrows"
+						}),
+						canPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+							size: "sm",
+							onClick: () => setAddStage({}),
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {}), "Add stage"]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							size: "sm",
+							onClick: () => setCollapsed(allGroups.some((stage) => collapsed.has(stage.id)) ? /* @__PURE__ */ new Set() : new Set(allGroups.map((stage) => stage.id))),
+							children: allGroups.some((stage) => collapsed.has(stage.id)) ? "Expand all" : "Collapse all"
+						})
+					]
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+				className: "iksha-timeline-search",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "sr-only",
+					children: "Search timeline tasks"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+					type: "search",
+					placeholder: "Find a work item or person…",
+					value: search,
+					onChange: (event) => setSearch(event.target.value)
+				})]
+			}),
+			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "iksha-schedule-notice",
+				role: "status",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: notice.text }),
+					notice.undo?.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+						variant: "outline",
+						size: "sm",
+						onClick: undo,
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Undo2, {}), "Undo"]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						className: "iksha-notice-close",
+						"aria-label": "Dismiss",
+						onClick: () => setNotice(null),
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(X$1, { size: 16 })
+					})
+				]
+			}),
+			!items.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "iksha-timeline-empty",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { size: 28 }), canPlan ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", { children: "No stages yet" }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Add the first stage to start planning." }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "iksha-empty-actions",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+							onClick: () => setAddStage({}),
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {}), "Create timeline"]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							onClick: () => setAddStage({ started: true }),
+							children: "This project is already running: add its current stage"
+						})]
+					})
+				] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", { children: "No work items yet." }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: editable ? "Link this project to its Telegram group to plan its stages here." : "The founder has not planned any stages yet." })] })]
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: `iksha-schedule-frame ${compactHeader ? "iksha-plan-fit" : ""} ${todayInView ? "has-today" : ""} ${drag ? "is-dragging-any" : ""}`,
+				style: gridStyle,
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "iksha-schedule-headbar",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "iksha-schedule-label",
+						children: "STAGE / WORK ITEM"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "iksha-headbar-viewport",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "iksha-schedule-dates",
+							ref: datesRef,
+							children: [todayInView && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "iksha-today-flag",
+								"aria-hidden": "true",
+								children: "Today"
+							}), Array.from({ length: days }, (_, index) => {
+								const value = from + index * calendarDay;
+								const hidden = compactHeader && new Date(value).getUTCDay() !== 1 ? { visibility: "hidden" } : void 0;
+								const date = new Date(value);
+								if (narrowDays) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: `iksha-schedule-day is-narrow ${value === today ? "today" : ""}`,
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", {
+										className: date.getUTCDate() === 1 || index === 0 ? "iksha-day-month" : "",
+										children: date.getUTCDate() === 1 || index === 0 ? date.toLocaleDateString([], {
+											month: "short",
+											timeZone: "UTC"
+										}) : date.toLocaleDateString([], {
+											weekday: "narrow",
+											timeZone: "UTC"
+										})
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: date.getUTCDate() })]
+								}, index);
+								return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: `iksha-schedule-day ${value === today ? "today" : ""}`,
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										style: hidden,
+										children: [compactHeader ? "" : date.toLocaleDateString([], {
+											weekday: "short",
+											timeZone: "UTC"
+										}) + " ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: date.getUTCDate() })]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", {
+										style: hidden,
+										children: date.toLocaleDateString([], {
+											month: "short",
+											timeZone: "UTC"
+										})
+									})]
+								}, index);
+							})]
+						})
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "iksha-schedule-scroll",
+					ref: scrollerRef,
+					onScroll: onGridScroll,
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "iksha-schedule-grid",
+						children: [allGroups.map((stage, index) => {
+							const group = visible.filter((item) => (item.stage?.id || "other") === stage.id);
+							if (!group.length) return null;
+							const scheduledGroup = group.filter((item) => item.start !== null && item.end !== null);
+							const groupStart = scheduledGroup.length ? Math.min(...scheduledGroup.map((item) => item.start)) : calendarDate(stage.startDate);
+							const groupEnd = scheduledGroup.length ? Math.max(...scheduledGroup.map((item) => item.end)) : null;
+							const lateCount = group.filter((item) => itemStatus(item, today).late).length;
+							const isCollapsed = collapsed.has(stage.id) && !query;
+							const stageDragging = Boolean(drag?.stageId) && drag.stageId === stage.id;
+							const stageShift = stageDragging ? drag.shift : 0;
+							const stageMovable = editable && stage.id !== "other" && group.some((item) => canMove(item));
+							const ordered = [...group].sort((a, b) => (Number(a.task.sourceSequence) || 0) - (Number(b.task.sourceSequence) || 0) || String(a.task.createdAt || "").localeCompare(String(b.task.createdAt || "")));
+							return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+								className: `iksha-stage color-${index % 8}`,
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "iksha-schedule-row iksha-stage-row",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+										className: "iksha-schedule-label iksha-stage-heading",
+										onClick: () => toggle(stage.id),
+										onContextMenu: (event) => stage.id !== "other" && openMenu(event, { stage }),
+										"aria-expanded": !isCollapsed,
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "iksha-stage-number",
+												children: String(index + 1).padStart(2, "0")
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: stage.name }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
+												group.filter((item) => complete(item.task)).length,
+												"/",
+												group.length,
+												" done",
+												lateCount ? ` · ${lateCount} late` : ""
+											] })] }),
+											isCollapsed ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, { size: 14 }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, { size: 14 })
+										]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "iksha-schedule-track",
+										onClick: (event) => {
+											if (canPlan && stage.id !== "other" && event.target === event.currentTarget) openMenu(event, {
+												stage,
+												date: new Date(from + Math.floor((event.clientX - event.currentTarget.getBoundingClientRect().left) / dayWidth) * calendarDay).toISOString().slice(0, 10)
+											});
+										},
+										children: [
+											groupStart !== null && groupEnd !== null && (stageDragging || groupEnd > from && groupStart < to) ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+												className: `iksha-stage-range ${stageMovable ? "is-movable" : ""} ${stageDragging ? "is-dragging" : ""}`,
+												"aria-label": `Open ${stage.name} stage details${stageMovable ? ". Drag to move the whole stage" : ""}`,
+												title: `${stage.name} · ${dateLabel(groupStart + stageShift * calendarDay)} – ${dateLabel(groupEnd - calendarDay + stageShift * calendarDay)}${stageMovable ? " · Drag to move the whole stage" : ""}`,
+												onPointerDown: (event) => onStagePointerDown(event, stage, groupStart, groupEnd),
+												onPointerMove: (event) => {
+													if (dragRef.current && !dragRef.current.touch) updateDrag(event.clientX, event.clientY);
+												},
+												onPointerUp: () => {
+													if (dragRef.current && !dragRef.current.touch) finishDrag();
+												},
+												onLostPointerCapture: () => {
+													if (dragRef.current && !dragRef.current.touch) finishDrag();
+												},
+												onContextMenu: (event) => {
+													if (stageMovable) event.preventDefault();
+												},
+												onKeyDown: (event) => {
+													if (!stageMovable || !event.altKey || !["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+													event.preventDefault();
+													const step = event.key === "ArrowRight" ? 1 : -1;
+													propose(stageMoves(items, stage.id, step), `Move stage “${stage.name}” a day ${step > 0 ? "later" : "earlier"}`);
+												},
+												onClick: (event) => {
+													if (suppressClick.current) {
+														suppressClick.current = false;
+														return;
+													}
+													if (canPlan) openMenu(event, { stage });
+													else setSelectedStageId(stage.id);
+												},
+												style: {
+													left: (Math.max(groupStart + stageShift * calendarDay, from) - from) / calendarDay * dayWidth,
+													width: Math.max(20, (Math.min(groupEnd + stageShift * calendarDay, to) - Math.max(groupStart + stageShift * calendarDay, from)) / calendarDay * dayWidth - 3)
+												},
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: stage.name }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
+													dateLabel(groupStart + stageShift * calendarDay),
+													" – ",
+													dateLabel(groupEnd - calendarDay + stageShift * calendarDay)
+												] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 14 })]
+											}) : groupStart === null ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+												className: "iksha-unscheduled",
+												onClick: () => setSelectedStageId(stage.id),
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 12 }), "Stage details"]
+											}) : null,
+											canPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+												className: "absolute right-2 top-1 rounded border bg-card px-2 py-1 text-xs",
+												"aria-label": `Edit ${stage.name}`,
+												onClick: (event) => openMenu(event, { stage }),
+												children: "Edit stage"
+											}),
+											showArrows && groupStart !== null && groupEnd !== null && edge(groupStart, groupEnd) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(OffscreenChip, {
+												value: edge(groupStart, groupEnd) === "before" ? groupEnd - 864e5 : groupStart,
+												before: edge(groupStart, groupEnd) === "before",
+												onClick: () => reveal(groupStart)
+											})
+										]
+									})]
+								}), !isCollapsed && ordered.map((item) => {
+									const status = itemStatus(item, today);
+									const isScheduled = item.start !== null && item.end !== null;
+									const withStage = stageDragging && canMove(item);
+									const dragging = drag?.id === item.task.id || withStage;
+									const isTarget = drag?.target?.task.id === item.task.id;
+									const shiftStart = withStage ? drag.shift : dragging && drag.mode === "move" && !drag.target ? drag.shift : 0;
+									const shiftEnd = withStage ? drag.shift : dragging && !drag.target ? drag.shift : 0;
+									const start = isScheduled ? item.start + shiftStart * 864e5 : null;
+									const end = isScheduled ? item.end + shiftEnd * 864e5 : null;
+									const inRange = isScheduled && (dragging || end > from && start < to);
+									const movable = editable && canMove(item);
+									const Icon = STATUS_ICON[status.key];
+									const flag = status.late && status.key !== "late" ? `${status.label} · late` : status.label;
+									const barWidth = Math.max(12, (Math.min(end ?? 0, to) - Math.max(start ?? 0, from)) / 864e5 * dayWidth - 3);
+									const people = peopleOf(item.task);
+									return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: `iksha-schedule-row iksha-task-row ${isTarget ? "is-swap-target" : ""} ${picked === item.task.id ? "is-picked" : ""}`,
+										"data-task-row": item.task.id,
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+											className: "iksha-schedule-label",
+											onClick: (event) => canPlan && item.stage ? openMenu(event, {
+												stage: item.stage,
+												task: item.task
+											}) : onOpenTask(item.task),
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: `iksha-task-state state-${status.key}`,
+												children: complete(item.task) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { size: 10 })
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: shortTitle(item.task, item.stage) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
+												people.owner?.name || "Unassigned",
+												" · ",
+												flag
+											] })] })]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "iksha-schedule-track",
+											onClick: (event) => {
+												if (canPlan && stage.id !== "other" && event.target === event.currentTarget) openMenu(event, {
+													stage,
+													date: new Date(from + Math.floor((event.clientX - event.currentTarget.getBoundingClientRect().left) / dayWidth) * 864e5).toISOString().slice(0, 10)
+												});
+											},
+											children: [inRange ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+												className: `iksha-task-block status-${status.key} ${status.late ? "is-late" : ""} ${barWidth < 64 ? "is-short" : ""} ${movable ? "is-movable" : ""} ${dragging ? "is-dragging" : ""} ${dragging && drag.touch ? "is-lifted" : ""}`,
+												title: `${item.task.title} · ${dateLabel(start)} – ${dateLabel(end - 864e5)} · ${flag}${movable ? " · Drag to move, pull the edge to resize, drop on another task to swap, or press Alt+Arrow" : ""}`,
+												"aria-label": `${item.task.title}, ${dateLabel(start)} to ${dateLabel(end - 864e5)}, ${flag}${peopleSentence(people) ? ", " + peopleSentence(people) : ""}${movable ? ". Alt plus arrow keys move it by a day" : ""}`,
+												style: {
+													left: Math.min(days * dayWidth - 12, Math.max(0, (Math.max(start, from) - from) / 864e5 * dayWidth)),
+													width: barWidth
+												},
+												onPointerDown: (event) => onBarPointerDown(event, item),
+												onPointerMove: (event) => {
+													if (dragRef.current && !dragRef.current.touch) updateDrag(event.clientX, event.clientY);
+												},
+												onPointerUp: () => {
+													if (dragRef.current && !dragRef.current.touch) finishDrag();
+												},
+												onLostPointerCapture: () => {
+													if (dragRef.current && !dragRef.current.touch) finishDrag();
+												},
+												onContextMenu: (event) => {
+													if (movable) event.preventDefault();
+													if (item.stage) openMenu(event, {
+														stage: item.stage,
+														task: item.task
+													});
+												},
+												onKeyDown: (event) => keyMove(event, item),
+												onClick: (event) => {
+													if (suppressClick.current) {
+														suppressClick.current = false;
+														return;
+													}
+													if (canPlan && item.stage) openMenu(event, {
+														stage: item.stage,
+														task: item.task
+													});
+													else onOpenTask(item.task);
+												},
+												children: [
+													Icon && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, {
+														size: 12,
+														"aria-hidden": "true",
+														className: "iksha-status-icon"
+													}),
+													barWidth >= 64 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PeopleStrip, {
+														people,
+														compact: barWidth < 170
+													}),
+													/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: shortTitle(item.task, item.stage) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
+														dateLabel(start),
+														" – ",
+														dateLabel(end - 864e5),
+														" · ",
+														flag
+													] })] }),
+													movable && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", {
+														className: "iksha-resize-handle",
+														"aria-hidden": "true"
+													})
+												]
+											}, "bar") : !isScheduled ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+												className: "iksha-unscheduled",
+												onClick: () => onOpenTask(item.task),
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock3, { size: 12 }), "No dates · see below"]
+											}, "chip") : null, showArrows && isScheduled && !dragging && edge(item.start, item.end) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(OffscreenChip, {
+												value: edge(item.start, item.end) === "before" ? item.end - 864e5 : item.start,
+												before: edge(item.start, item.end) === "before",
+												onClick: () => reveal(item.start)
+											}, "edge")]
+										})]
+									}, item.task.id);
+								})]
+							}, stage.id);
+						}), !visible.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "iksha-empty-search",
+							children: "No work items match your search."
+						})]
+					})
+				})]
+			}),
+			undated.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+				className: "iksha-undated",
+				"aria-labelledby": "iksha-undated-title",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", {
+					id: "iksha-undated-title",
+					children: ["Not scheduled yet ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: undated.length })]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: undated.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+					onClick: () => onOpenTask(item.task),
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.task.title }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
+						item.stage?.name || "Additional work",
+						" · ",
+						unscheduledReason(item)
+					] })]
+				}) }, item.task.id)) })]
+			}),
+			pickedItem && editable && canMove(pickedItem) && !proposal && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "iksha-adjust-bar",
+				role: "dialog",
+				"aria-label": `Adjust ${pickedItem.task.title}`,
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "iksha-adjust-title",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: pickedItem.task.title }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
+							dateLabel(pickedItem.start),
+							" – ",
+							dateLabel(pickedItem.end - 864e5),
+							" · ",
+							Math.round((pickedItem.end - pickedItem.start) / 864e5),
+							" day",
+							pickedItem.end - pickedItem.start === 864e5 ? "" : "s"
+						] })]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PeopleFlow, { people: peopleOf(pickedItem.task) }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "iksha-adjust-actions",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								onClick: () => nudge(pickedItem, -1, -1, `Move “${pickedItem.task.title}” a day earlier`),
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { size: 16 }), "Earlier"]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								onClick: () => nudge(pickedItem, 1, 1, `Move “${pickedItem.task.title}” a day later`),
+								children: ["Later", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { size: 16 })]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								disabled: pickedItem.end - pickedItem.start <= 864e5,
+								onClick: () => nudge(pickedItem, 0, -1, `Shorten “${pickedItem.task.title}” by a day`),
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Minus, { size: 16 }), "Shorter"]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								onClick: () => nudge(pickedItem, 0, 1, `Lengthen “${pickedItem.task.title}” by a day`),
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { size: 16 }), "Longer"]
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "iksha-adjust-footer",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+								onClick: () => {
+									setPicked(null);
+									onOpenTask(pickedItem.task);
+								},
+								children: "Open task"
+							}),
+							canPlan && pickedItem.stage && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+								onClick: () => {
+									setPicked(null);
+									setInsertTask({
+										stage: pickedItem.stage,
+										afterTask: pickedItem.task
+									});
+								},
+								children: "Add task after"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+								onClick: () => setPicked(null),
+								children: "Done"
+							})
+						]
+					})
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				open: Boolean(proposal),
+				onOpenChange: (open) => {
+					if (!open && !proposal?.saving) setProposal(null);
+				},
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
+					className: "iksha-schedule-preview",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "iksha-eyebrow",
+								children: "CHECK BEFORE SAVING"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: proposal?.description }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Nothing changes until you confirm. Confirmed changes are written to the Google Sheet, so Telegram and the web app stay in step." })
+						] }),
+						proposal?.loading && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "iksha-preview-note",
+							children: "Checking dependencies…"
+						}),
+						proposal?.error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "iksha-preview-conflict",
+							role: "alert",
+							children: proposal.error
+						}),
+						proposal?.preview && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "iksha-preview-body",
+							children: [proposal.preview.conflicts.map((conflict, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "iksha-preview-conflict",
+								role: "alert",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Octagon, { size: 14 }), conflict.reason]
+							}, index)), proposal.preview.ok && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", { children: "You are moving" }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: proposal.preview.affected.filter((item) => item.moved).map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.taskName }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+									isoRange(item.previousStart, item.previousEnd),
+									" → ",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: isoRange(item.forecastStart, item.forecastEnd) })
+								] })] }, item.taskId)) }),
+								proposal.preview.affected.some((item) => !item.moved) ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", { children: "These dependent tasks move later" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: proposal.preview.affected.filter((item) => !item.moved).map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.taskName }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+									isoLabel(item.previousStart),
+									" → ",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: isoLabel(item.forecastStart) })
+								] })] }, item.taskId)) })] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "iksha-preview-note",
+									children: "No other tasks are affected."
+								}),
+								proposal.preview.warnings.map((warning, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+									className: "iksha-preview-warning",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { size: 14 }), warning.reason]
+								}, index)),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "iksha-preview-note",
+									children: proposal.preview.finish ? `Projected finish after this change: ${isoLabel(proposal.preview.finish)}` : "Finish date stays unconfirmed until every task has dates."
+								})
+							] })]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "iksha-preview-actions",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "outline",
+								disabled: proposal?.saving,
+								onClick: () => setProposal(null),
+								children: "Cancel"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								disabled: !proposal?.preview?.ok || proposal?.saving,
+								onClick: confirm,
+								children: proposal?.saving ? "Saving…" : "Confirm and save"
+							})]
+						})
+					]
+				})
+			}),
+			menu && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				ref: menuRef,
+				className: "iksha-context-menu",
+				role: "menu",
+				"aria-label": "Timeline actions",
+				style: {
+					left: menu.x,
+					top: menu.y,
+					maxHeight: "calc(100dvh - 16px)",
+					overflowY: "auto"
+				},
+				onPointerDown: (event) => event.stopPropagation(),
+				children: [
+					menu.task && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+						!["Completed", "Cancelled"].includes(menu.task.status) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							role: "menuitem",
+							onClick: () => {
+								setEditingTaskId(menu.task.id);
+								setMenu(null);
+							},
+							children: "Edit work item"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							role: "menuitem",
+							onClick: () => {
+								onOpenTask(menu.task);
+								setMenu(null);
+							},
+							children: "Open discussion"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							role: "menuitem",
+							onClick: () => {
+								setInsertTask({
+									stage: menu.stage,
+									afterTask: menu.task
+								});
+								setMenu(null);
+							},
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ListPlus, { size: 14 }), "Add a task after this one"]
+						})
+					] }),
+					!menu.task && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+						menu.date && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							role: "menuitem",
+							onClick: () => {
+								setInsertTask({
+									stage: menu.stage,
+									placement: {
+										type: "date",
+										startDate: menu.date
+									}
+								});
+								setMenu(null);
+							},
+							children: ["Add task on ", isoLabel(menu.date)]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							role: "menuitem",
+							onClick: () => {
+								setRenamingStageId(menu.stage.id);
+								setMenu(null);
+							},
+							children: "Edit work type name"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							role: "menuitem",
+							onClick: () => {
+								toggle(menu.stage.id);
+								setMenu(null);
+							},
+							children: "Expand / collapse tasks"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							role: "menuitem",
+							onClick: () => {
+								setSelectedStageId(menu.stage.id);
+								setMenu(null);
+							},
+							children: "View work type details"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							role: "menuitem",
+							onClick: () => {
+								setInsertTask({
+									stage: menu.stage,
+									afterTask: lastTaskOf(menu.stage.id)
+								});
+								setMenu(null);
+							},
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ListPlus, { size: 14 }),
+								"Add a task to ",
+								menu.stage.name
+							]
+						})
+					] }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+						role: "menuitem",
+						onClick: () => {
+							setAddStage({ placement: {
+								type: "after",
+								stageName: menu.stage.name
+							} });
+							setMenu(null);
+						},
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { size: 14 }), "Add a work type after this one"]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+						role: "menuitem",
+						onClick: () => {
+							setAddStage({ placement: {
+								type: "parallel",
+								stageName: menu.stage.name
+							} });
+							setMenu(null);
+						},
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { size: 14 }), "Add a parallel work type"]
+					})
+				]
+			}),
+			canPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EditTimelineTaskDialog, {
+				item: items.find((item) => item.task.id === editingTaskId),
+				tasks,
+				members,
+				telegramLinked,
+				onClose: () => setEditingTaskId(null),
+				onSaved: (result) => {
+					onPlanChanged(result);
+					setNotice({ text: "Work item and schedule saved." });
+				}
+			}),
+			canPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RenameWorkTypeDialog, {
+				stage: stages.find((stage) => stage.id === renamingStageId),
+				projectId,
+				onClose: () => setRenamingStageId(null),
+				onSaved: (result) => {
+					onPlanChanged(result);
+					setNotice({ text: "Work type renamed. Schedule dates are unchanged." });
+				}
+			}),
+			canPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AddStageDialog, {
+				spaces,
+				open: Boolean(addStage),
+				onOpenChange: (open) => {
+					if (!open) setAddStage(null);
+				},
+				projectId,
+				stages,
+				members,
+				telegramLinked,
+				tailStageName: tailStage()?.name,
+				initialPlacement: addStage?.started ? {
+					type: "date",
+					startDate: (/* @__PURE__ */ new Date()).toISOString().slice(0, 10)
+				} : addStage?.placement,
+				startedDefault: Boolean(addStage?.started),
+				onAdded: (result) => {
+					setNotice({ text: `${result.stages?.map((stage) => stage.name).join(", ") || "Stage"} saved to the project.` });
+					onPlanChanged(result);
+				}
+			}),
+			canPlan && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InsertTaskDialog, {
+				open: Boolean(insertTask),
+				onOpenChange: (open) => {
+					if (!open) setInsertTask(null);
+				},
+				projectId,
+				telegramLinked,
+				tasks,
+				initialPlacement: insertTask?.placement,
+				stage: insertTask?.stage,
+				afterTask: insertTask?.afterTask,
+				members,
+				onAdded: (result) => {
+					setNotice({ text: `${result.created?.[0]?.title || "Task"} added.` });
+					onPlanChanged(result);
+				}
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TimelineStageDetails, {
+				stage: allGroups.find((stage) => stage.id === selectedStageId),
+				items,
+				members,
+				projectId,
+				namespace,
+				onClose: () => setSelectedStageId(null),
+				onOpenTask
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("footer", {
+				className: "iksha-schedule-caption",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: editable ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "iksha-only-fine",
+						children: "Drag a stage bar to move the whole stage · Drag a task to move it · Pull its right edge to change its length · Click a task or work type for edit and add options"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "iksha-only-coarse",
+						children: "Press and hold a task to pick it up, then drag · Hold its right edge to change its length"
+					}),
+					" · You confirm every change"
+				] }) : "Tap a stage for its breakdown · Tap a work item for its discussion" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Calendar days · Today is marked in red" })]
+			})
+		]
+	});
+}
+//#endregion
+//#region frontend/src/components/ProjectTimelineWorkspace.jsx
+function ProjectTimelineWorkspace({ tasks = [], stages = [], members = [], spaces = [], projectId, namespace = "founder", telegramLinked = false, onOpenTask, onSchedulePreview, onScheduleApply, onPlanChanged }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
+		className: "iksha-sheet-workspace",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTimeline, {
+			tasks,
+			stages,
+			members,
+			spaces,
+			projectId,
+			namespace,
+			telegramLinked,
+			onOpenTask,
+			onSchedulePreview,
+			onScheduleApply,
+			onPlanChanged
+		})
+	});
+}
+//#endregion
 //#region node_modules/@dagrejs/dagre/dist/dagre.esm.js
 var Te = Object.defineProperty;
 var In = (e, n, t) => n in e ? Te(e, n, {
@@ -47439,6 +48456,10 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "iksha-project-detail space-y-6",
 		children: [
+			!project.telegramSetupPending && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectSpaces, {
+				project,
+				onUpdated: onProjectUpdated
+			}),
 			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				role: "status",
 				className: "fixed right-4 bottom-24 z-[60] max-w-sm rounded-lg border bg-card px-4 py-3 text-sm shadow-lg md:bottom-4",
@@ -48073,6 +49094,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
 						value: "schedule",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTimelineWorkspace, {
+							spaces: project.spaces || [],
 							projectId: project.id,
 							projectStartDate: project.startDate,
 							tasks,
@@ -48795,7 +49817,8 @@ function FounderApp() {
 	const [selectedProjectId, setSelectedProjectId] = (0, import_react.useState)(null);
 	const [viewMode, setViewMode] = (0, import_react.useState)("directory");
 	const [activities, setActivities] = (0, import_react.useState)([]);
-	const [currentTab, setCurrentTab] = (0, import_react.useState)("projects");
+	const [currentTab, setCurrentTab] = (0, import_react.useState)("actions");
+	const [workPerson, setWorkPerson] = (0, import_react.useState)("founder");
 	const [searchQuery, setSearchQuery] = (0, import_react.useState)("");
 	const [sidebarOpen, setSidebarOpen] = (0, import_react.useState)(false);
 	const [createOpen, setCreateOpen] = (0, import_react.useState)(false);
@@ -48813,7 +49836,7 @@ function FounderApp() {
 		"Rejected",
 		"Published"
 	].includes(r.status)).length;
-	const pendingGroupsCount = projects.filter((p) => p.telegramSetupPending).length;
+	projects.filter((p) => p.telegramSetupPending).length;
 	const showNotice = (message, error = false) => {
 		setNotice({
 			message,
@@ -49052,16 +50075,16 @@ function FounderApp() {
 			projects.length
 		],
 		[
-			"decisions",
+			"actions",
 			CircleCheck,
-			"Needs attention",
-			pendingDecisionsCount
+			"Actions needed",
+			null
 		],
 		[
-			"groups",
-			Users,
-			"Telegram groups",
-			pendingGroupsCount
+			"decisions",
+			MessageSquare,
+			"Client queries",
+			pendingDecisionsCount
 		],
 		[
 			"assistant",
@@ -49114,21 +50137,12 @@ function FounderApp() {
 				}, id))
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Separator, {}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "flex items-center justify-between",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 					className: "text-xs font-semibold uppercase tracking-wider text-muted-foreground",
 					children: "Quick Projects"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-					size: "icon-sm",
-					variant: "ghost",
-					"aria-label": "Create project",
-					onClick: () => {
-						setCreateOpen(true);
-						setSidebarOpen(false);
-					},
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {})
-				})]
+				})
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "relative",
@@ -49240,8 +50254,9 @@ function FounderApp() {
 								className: "text-xs text-muted-foreground",
 								children: ["Workspace / ", {
 									projects: viewMode === "directory" ? "All Projects" : selectedProject?.name || "Project Detail",
-									groups: "Telegram groups",
-									decisions: "Needs attention",
+									actions: "Actions needed",
+									groups: "Telegram setup",
+									decisions: "Client queries",
 									assistant: "Assistant",
 									employees: "Employees",
 									activity: "Activity",
@@ -49252,25 +50267,30 @@ function FounderApp() {
 								children: currentTab === "projects" && viewMode === "detail" ? selectedProject?.name || "Project Workspace" : "Studio Iksha"
 							})]
 						})]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "flex items-center gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-							variant: "outline",
-							size: "sm",
-							className: "hidden sm:inline-flex",
-							onClick: () => setCreateOpen(true),
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {}), " New project"]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, { name: "Project Founder" })]
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, { name: "Project Founder" })
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
 					className: "mx-auto w-full max-w-6xl space-y-5 px-4 py-6 sm:px-7 sm:py-8",
-					children: currentTab === "groups" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TelegramGroups, {
+					children: currentTab === "actions" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkQueue, {
+						projects,
+						initialPersonId: workPerson,
+						onChanged: () => {
+							loadProjects();
+							loadEmployees();
+						}
+					}) : currentTab === "groups" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TelegramGroups, {
 						projects,
 						onProjectsChanged: loadProjects
 					}) : currentTab === "decisions" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DecisionInbox, {
 						projects,
 						onProjectsChanged: loadProjects
 					}) : currentTab === "employees" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmployeeManager, {
+						onViewWork: (employee) => {
+							setWorkPerson(employee.id);
+							openTab("actions");
+						},
 						employees,
 						projects,
 						onAdd: () => setMemberOpen(true),
@@ -49377,7 +50397,6 @@ function FounderApp() {
 						projects,
 						decisionRequests,
 						onSelectProject: handleSelectProjectFromDir,
-						onCreateProject: () => setCreateOpen(true),
 						onOpenGroups: () => openTab("groups")
 					}) : currentTab === "projects" && viewMode === "detail" && selectedProject ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectDetailView, {
 						project: selectedProject,
@@ -49405,7 +50424,7 @@ function FounderApp() {
 								children: "Create a workspace to manage tasks, team chat, and client inquiries."
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-								onClick: () => setCreateOpen(true),
+								onClick: () => openTab("groups"),
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {}), " Create project"]
 							})
 						]
@@ -49427,9 +50446,9 @@ function FounderApp() {
 						"Decisions"
 					],
 					[
-						"groups",
-						Users,
-						"Groups"
+						"actions",
+						CircleCheck,
+						"My work"
 					]
 				].map(([id, Icon, label]) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 					variant: "ghost",
@@ -49442,7 +50461,6 @@ function FounderApp() {
 					]
 				}, id)), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GooeyNewButton, {
 					hasProject: !!selectedProject,
-					onCreateProject: () => setCreateOpen(true),
 					onAddMember: () => setMemberOpen(true),
 					onShareClientLink: handleInvite
 				})]
@@ -50237,6 +51255,13 @@ function EmployeeApp() {
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
 			className: "mx-auto max-w-5xl space-y-6 px-4 py-6 sm:px-6",
 			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkQueue, {
+					projects,
+					isFounder: false,
+					initialPersonId: employee?.id || "",
+					personName: employee?.name || "Me",
+					onChanged: loadWorkspaceData
+				}),
 				error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					role: "alert",
 					className: "rounded-xl border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive",
