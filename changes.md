@@ -10,3 +10,5 @@ Implemented the non-Google-sign-in client-review backlog. See [implementation an
 - Navigation, validation and concise message/summary cleanup.
 - Validation: 84 web tests, 75 bot tests, production web build and bot syntax checks pass.
 - Release pending: Railway has paused deploys during an upstream outage. No new production release.
+
+- Final UI follow-up: verified automatic graph fitting and visible nodes after saving a branching connection; retained the library’s native sizing instead of timing workarounds.

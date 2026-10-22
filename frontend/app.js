@@ -42596,8 +42596,6 @@ function StageConnections({ projectId, stages = [], tasks = [], onChanged }) {
 	const nodes = (0, import_react.useMemo)(() => stages.filter((stage) => normalized.some((task) => task.stageId === stage.id)).map((stage, index) => ({
 		id: stage.id,
 		type: "stage",
-		initialWidth: 224,
-		initialHeight: 90,
 		style: { width: 224 },
 		position: {
 			x: index % 3 * 320,
@@ -42663,7 +42661,6 @@ function StageConnections({ projectId, stages = [], tasks = [], onChanged }) {
 					edges,
 					nodeTypes: nodeTypes$1,
 					nodesDraggable: false,
-					onInit: (instance) => requestAnimationFrame(() => instance.fitView({ padding: .15 })),
 					onConnect: connect,
 					onEdgeClick: (event, edge) => change(links.filter((link, index) => String(index) !== edge.id)),
 					fitView: true,
