@@ -47,11 +47,11 @@ export function InsertTaskDialog({ open, onOpenChange, projectId, stage, afterTa
           <label className="block space-y-1.5"><span className="text-xs font-medium">Person</span>
             <NativeSelect value={value.assigneeId} onChange={(event) => setValue({ ...value, assigneeId: event.target.value })} className="w-full">
               <NativeSelectOption value="">By role</NativeSelectOption>
-              {!telegramLinked && <NativeSelectOption value="founder">Founder</NativeSelectOption>}
+              <NativeSelectOption value="founder">Founder</NativeSelectOption>
               {members.filter((member) => member.employeeId).map((member) => <NativeSelectOption key={member.employeeId} value={member.employeeId}>{member.name}{member.role ? ` · ${member.role}` : ""}</NativeSelectOption>)}
             </NativeSelect>
           </label>
-          <TaskPlacement allowFirst value={value.placement} tasks={tasks.filter((task) => !task.deletedAt && task.status !== "Cancelled")} onChange={(placement) => setValue({ ...value, placement })} />
+          <TaskPlacement allowFirst value={value.placement} tasks={tasks.filter((task) => task.stageId===stage?.id && !task.deletedAt && task.status !== "Cancelled")} onChange={(placement) => setValue({ ...value, placement })} />
           <ScheduleImpact preview={preview} pending={previewing} error={previewError} />
           {error && <p className="text-xs text-destructive" role="alert">{error}</p>}
         </div>

@@ -38,11 +38,10 @@ export function useDefaultPlan(projectId, open) {
   return plan;
 }
 
-export function AddStageDialog({ open, onOpenChange, projectId, stages = [], members = [], tailStageName, initialPlacement, telegramLinked = true, startedDefault = false, onAdded }) {
+export function AddStageDialog({ open, onOpenChange, projectId, stages = [], members = [], spaces = [], tailStageName, initialPlacement, telegramLinked = true, startedDefault = false, onAdded }) {
   const [value, setValue] = useState(() => emptyStage({ stages, tailStageName, placement: initialPlacement, started: startedDefault, custom: true }));
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
-  const defaultPlan = useDefaultPlan(projectId, open && telegramLinked);
   useEffect(() => {
     if (open) { setValue(emptyStage({ stages, tailStageName, placement: initialPlacement, started: startedDefault, custom: true })); setError(""); }
   }, [open]);
@@ -70,16 +69,16 @@ export function AddStageDialog({ open, onOpenChange, projectId, stages = [], mem
             <span className="grid size-9 place-items-center rounded-xl bg-primary/10 text-primary"><Layers className="size-5" /></span>
             <div>
               <DialogTitle>Add a stage</DialogTitle>
-              <DialogDescription className="text-xs">Name your own tasks, choose owners and durations, then check the dates before saving.</DialogDescription>
+              <DialogDescription className="text-xs">Edit the standard tasks, choose assignees and durations, then check the dates before saving.</DialogDescription>
             </div>
           </div>
         </DialogHeader>
         <div className="min-h-0 flex-1 overflow-y-auto px-5 py-4">
-          {telegramLinked && <fieldset className="mb-4 flex gap-4 text-sm"><legend className="mb-2 text-xs font-medium">Task structure</legend>
-            <label className="flex items-center gap-2"><input type="radio" name="stage-structure" checked={Boolean(value.custom)} onChange={() => setValue({ ...value, custom: true, tasks: emptyStage({ custom: true }).tasks })} />Custom tasks</label>
-            <label className="flex items-center gap-2"><input type="radio" name="stage-structure" checked={!value.custom} onChange={() => setValue({ ...value, custom: false, tasks: emptyStage().tasks })} />Studio template</label>
-          </fieldset>}
-          <AddStageForm telegramLinked={telegramLinked} value={value} onChange={setValue} stages={stages} members={members} defaultPlan={defaultPlan} preview={preview} previewing={previewing} previewError={previewError} />
+          <fieldset className="mb-4 flex gap-4 text-sm"><legend className="mb-2 text-xs font-medium">Start from</legend>
+            <label className="flex items-center gap-2"><input type="radio" name="stage-structure" checked={value.structure!=="blank"} onChange={()=>setValue({...value,...emptyStage({custom:true}),name:value.name,placement:value.placement,spaces:value.spaces})}/>Editable Studio template</label>
+            <label className="flex items-center gap-2"><input type="radio" name="stage-structure" checked={value.structure==="blank"} onChange={()=>setValue({...value,custom:true,structure:"blank",tasks:[{key:crypto.randomUUID(),title:"",role:"Team",durationDays:1,assigneeId:""}]})}/>Blank task list</label>
+          </fieldset>
+          <AddStageForm spaces={spaces} telegramLinked={telegramLinked} value={value} onChange={setValue} stages={stages} members={members} preview={preview} previewing={previewing} previewError={previewError} />
           {error && <p className="mt-3 text-xs text-destructive" role="alert">{error}</p>}
         </div>
         <div className="flex shrink-0 justify-end gap-2 border-t px-5 py-3">

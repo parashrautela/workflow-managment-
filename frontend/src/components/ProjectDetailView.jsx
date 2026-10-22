@@ -1,3 +1,4 @@
+import { ProjectSpaces } from '@/components/ProjectSpaces';
 // frontend/src/components/ProjectDetailView.jsx
 import React, { useEffect, useState, useCallback } from "react";
 import {
@@ -335,6 +336,7 @@ export function ProjectDetailView({
 
   return (
     <div className="iksha-project-detail space-y-6">
+      {!project.telegramSetupPending && <ProjectSpaces project={project} onUpdated={onProjectUpdated}/> }
       {/* Toast Notice */}
       {notice && (
         <div role="status" className="fixed right-4 bottom-24 z-[60] max-w-sm rounded-lg border bg-card px-4 py-3 text-sm shadow-lg md:bottom-4">
@@ -842,7 +844,7 @@ export function ProjectDetailView({
         </TabsContent>
 
         {/* ----------------- TAB 3: STAGES & SCHEDULE ----------------- */}
-        <TabsContent value="schedule"><ProjectTimeline key={project.id} projectId={project.id} projectStartDate={project.startDate} tasks={tasks} stages={stages} members={project.members || employees} telegramLinked={Boolean(project.telegramGroupChatId)} onOpenTask={task=>{setSelectedTask(task);setTaskDrawerOpen(true);}} onSchedulePreview={!['Completed','Abandoned'].includes(project.status) ? moves=>previewSchedule(project.id,moves) : undefined} onScheduleApply={!['Completed','Abandoned'].includes(project.status) ? async moves=>{const result=await applySchedule(project.id,moves);setTasks(result.tasks);return result;} : undefined} onPlanChanged={!['Completed','Abandoned'].includes(project.status) ? result=>{if(Array.isArray(result.tasks))setTasks(result.tasks);if(onProjectUpdated)onProjectUpdated();} : undefined}/></TabsContent>
+        <TabsContent value="schedule"><ProjectTimeline spaces={project.spaces || []} key={project.id} projectId={project.id} projectStartDate={project.startDate} tasks={tasks} stages={stages} members={project.members || employees} telegramLinked={Boolean(project.telegramGroupChatId)} onOpenTask={task=>{setSelectedTask(task);setTaskDrawerOpen(true);}} onSchedulePreview={!['Completed','Abandoned'].includes(project.status) ? moves=>previewSchedule(project.id,moves) : undefined} onScheduleApply={!['Completed','Abandoned'].includes(project.status) ? async moves=>{const result=await applySchedule(project.id,moves);setTasks(result.tasks);return result;} : undefined} onPlanChanged={!['Completed','Abandoned'].includes(project.status) ? result=>{if(Array.isArray(result.tasks))setTasks(result.tasks);if(onProjectUpdated)onProjectUpdated();} : undefined}/></TabsContent>
 
         {/* ----------------- TAB 4: CLIENT QUERIES ----------------- */}
         <TabsContent value="queries" className="space-y-4">

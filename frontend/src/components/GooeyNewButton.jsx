@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Liquid } from "liquid-gooey";
-import { FolderPlus, Link2, Plus, UserPlus } from "lucide-react";
+import { Link2, Plus, UserPlus } from "lucide-react";
 
 const transition = { duration: 280, ease: "cubic-bezier(0.22, 1, 0.36, 1)" };
 
-export function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onShareClientLink }) {
+export function GooeyNewButton({ hasProject, onAddMember, onShareClientLink }) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef(null);
 
@@ -25,7 +25,6 @@ export function GooeyNewButton({ hasProject, onCreateProject, onAddMember, onSha
   }, [open]);
 
   const actions = [
-    { label: "New project", Icon: FolderPlus, x: -70, y: -62, onClick: onCreateProject },
     { label: "Add member", Icon: UserPlus, x: -88, y: -116, onClick: onAddMember, disabled: !hasProject },
     { label: "Client link", Icon: Link2, x: -16, y: -138, onClick: onShareClientLink, disabled: !hasProject },
   ];

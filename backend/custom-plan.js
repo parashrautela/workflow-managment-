@@ -1,7 +1,8 @@
+import { ApiError } from './api-error.js';
 import { randomUUID } from 'node:crypto';
 
 const DAY = 86400000;
-const fail = (message, status = 400) => { throw Object.assign(new Error(message), { status }); };
+const fail = (message, status = 400) => { throw new ApiError(message,status); };
 const date = (value) => {
   if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value) || !Number.isFinite(Date.parse(value)) || new Date(value).toISOString().slice(0, 10) !== value) fail('Choose a real YYYY-MM-DD date.');
   return Date.parse(value);
@@ -25,16 +26,16 @@ export function buildCustomStage(project, tasks, spec, validateOwner) {
   const placement = spec.placement || {};
   if (placement.type === 'date') start = date(placement.startDate);
   else if (['after', 'parallel'].includes(placement.type)) {
-    const anchor = project.stages?.find((item) => item.name === placement.stageName);
-    if (!anchor) fail('Choose an existing stage.');
-    const group = tasks.filter((task) => task.stageId === anchor.id && !task.deletedAt && task.status !== 'Cancelled');
-    if (!group.length) fail('The selected stage has no tasks.');
-    const first = [...group].sort((a, b) => a.sourceForecastStart.localeCompare(b.sourceForecastStart))[0];
-    const last = [...group].sort((a, b) => a.deadline.localeCompare(b.deadline)).at(-1);
-    dependencyType = placement.type === 'parallel' ? 'SS' : 'FS';
-    predecessor = placement.type === 'parallel' ? first.id : last.id;
-    start = placement.type === 'parallel' ? date(first.sourceForecastStart) : date(last.deadline) + DAY;
-    stage.dependencies = [anchor.id];
+    const references=placement.predecessors || [{stageName:placement.stageName,type:placement.type==='parallel'?'SS':'FS'}];
+    if(!Array.isArray(references) || !references.length || references.length>100)fail('Choose predecessor stages.');
+    const anchors=references.map(reference=>{
+      if(!['FS','SS'].includes(reference.type))fail('Choose a supported stage connection.');
+      const anchor=project.stages?.find(item=>item.name===reference.stageName);if(!anchor)fail('Choose an existing stage.');
+      const group=tasks.filter(task=>task.stageId===anchor.id && !task.deletedAt && task.status!=='Cancelled');if(!group.length)fail('The selected stage has no tasks.');
+      const first=[...group].sort((a,b)=>a.sourceForecastStart.localeCompare(b.sourceForecastStart))[0],last=[...group].sort((a,b)=>a.deadline.localeCompare(b.deadline)).at(-1);
+      return {taskId:reference.type==='SS'?first.id:last.id,type:reference.type,date:reference.type==='SS'?date(first.sourceForecastStart):date(last.deadline)+DAY,stageId:anchor.id};
+    });
+    predecessor=anchors[0].taskId;dependencyType=anchors[0].type;start=Math.max(...anchors.map(anchor=>anchor.date));stage.dependencies=anchors.map(anchor=>anchor.stageId);stage.initialPredecessors=anchors.map(({taskId,type})=>({taskId,type}));
   } else fail('Choose where the stage starts.');
   const created = spec.tasks.map((input, index) => {
     const duration = input?.durationDays;
@@ -43,12 +44,14 @@ export function buildCustomStage(project, tasks, spec, validateOwner) {
     const task = { id, projectId: project.id, title: title(input.title, 'a task title', 80), description: '', status: index < doneCount ? 'Completed' : 'Open',
       stageId: stage.id, assigneeId: validateOwner(input.assigneeId || ''), sourceRole: title(input.role || 'Team', 'a role', 80),
       sourcePlannedStart: iso(start), sourcePlannedEnd: iso(end), sourceForecastStart: iso(start), sourceForecastEnd: iso(end), deadline: iso(end),
+      ...(index===0 && stage.initialPredecessors?{planPredecessors:stage.initialPredecessors}:{}),
       planPredecessorId: predecessor, planDependencyType: index === 0 ? dependencyType : 'FS', customPlan: true,
       sourceSequence: String(Math.max(0, ...tasks.map((task) => Number(task.sourceSequence) || 0)) + (index + 1) * 10),
       createdBy: 'founder', createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), deletedAt: '' };
     predecessor = id; start = end + DAY;
     return task;
   });
+  delete stage.initialPredecessors;
   stage.startDate = created[0].sourceForecastStart; stage.deadline = created.at(-1).deadline;
   stage.durationDays = (date(stage.deadline) - date(stage.startDate)) / DAY + 1;
   return { stage, tasks: created };

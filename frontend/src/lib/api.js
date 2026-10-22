@@ -47,7 +47,7 @@ export async function request(url, options = {}) {
     
     // 401 Session expired or missing
     if (response.status === 401) {
-      if (!url.endsWith("/login") && typeof window !== "undefined") {
+      if (!url.endsWith("/login") && !url.startsWith("/api/auth/") && typeof window !== "undefined") {
         window.dispatchEvent(new CustomEvent("studio-iksha:unauthorized", { detail: { url } }));
       }
       throw new ApiError(errorMsg, 401, data);
