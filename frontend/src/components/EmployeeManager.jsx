@@ -1,3 +1,4 @@
+import {GoogleAccessRequests} from './GoogleAccessRequests';
 import { matchesRole } from '@/lib/roles';
 import { useEffect, useState } from "react";
 import { Check, Copy, Eye, EyeOff, KeyRound, Pencil, UserPlus, Users, UserX, AlertTriangle, Loader2 } from "lucide-react";
@@ -353,6 +354,7 @@ export function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewW
         </div>
       )}
 
+      <GoogleAccessRequests employees={employees} projects={projects} onChanged={onUpdated}/>
       <div className="flex gap-2">{['All','Designer','Site Supervisor'].map(role=><Button key={role} variant={roleFilter===role?'default':'outline'} size="sm" onClick={()=>setRoleFilter(role)}>{role==='All'?'All employees':role==='Designer'?'Designers':'Site supervisors'}</Button>)}</div>
       {employees.length ? (
         <div className="grid gap-3 sm:grid-cols-2">

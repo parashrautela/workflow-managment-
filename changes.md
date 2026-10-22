@@ -12,3 +12,9 @@ Implemented the non-Google-sign-in client-review backlog. See [implementation an
 - Release pending: Railway has paused deploys during an upstream outage. No new production release.
 
 - Final UI follow-up: verified automatic graph fitting and visible nodes after saving a branching connection; retained the library’s native sizing instead of timing workarounds.
+
+## Google sign-in — 22 October 2026
+
+The user explicitly added Google sign-in/Console setup to scope. Implemented verified Google identity, browser-bound single-use nonces, pending founder approval, explicit existing-profile linking, selected project grants, rejected/disabled denial and authenticated founder Google linking. Existing password login remains. Added Google's official verifier, plus compatible fixes for existing Vite/source-map advisories (npm audit: 0 vulnerabilities). Google Cloud branding was prepared and accepted by the user; the approved Web client is being created. See docs/google-sign-in-setup-2026-10-22.md.
+
+- Google setup verification: 92 web tests pass, production build passes, and a disposable browser request was approved into an existing employee profile without duplication. OAuth client creation succeeded; the public ID is staged on the web backend.

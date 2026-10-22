@@ -2,6 +2,8 @@ import { readFile, writeFile, rename, unlink } from 'node:fs/promises';
 import { Pool } from 'pg';
 
 const emptyState = () => ({
+  googleAccounts: [],
+  googleChallenges: [],
   savedTemplates: [],
   digestSettings: [],
   digestDeliveries: [],

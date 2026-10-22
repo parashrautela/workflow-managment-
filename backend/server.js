@@ -1,3 +1,4 @@
+import { createGoogleAuthRoutes } from './google-auth.js';
 import {createStageLinksRoutes} from './stage-links-routes.js';
 import { createOperationsRoutes, workQueue } from './operations.js';
 import { rolesOf, hasRole, matchesRole, roleText, isStaff } from './roles.js';
@@ -120,7 +121,7 @@ function bindTelegramStaff(project, member) {
   return credentials;
 }
 function employeeView(employee) {
-  return { telegramConnected:Boolean(employee.telegramConnectedAt), active: employee.active !== false, id: employee.id, name: employee.name, designation: employee.designation, email: employee.email || '', phone: employee.phone || '', createdAt: employee.createdAt, projectIds: state.projects.filter((project) => project.members?.some((member) => member.employeeId === employee.id && member.active!==false)).map((project) => project.id) };
+  return { telegramConnected:Boolean(employee.telegramConnectedAt), active: employee.active !== false, id: employee.id, name: employee.name, designation: employee.designation, email: employee.email || '', phone: employee.phone || '', googleLinked:state.googleAccounts.some(account=>account.kind==='employee' && account.employeeId===employee.id && account.status==='Approved'), createdAt: employee.createdAt, projectIds: state.projects.filter((project) => project.members?.some((member) => member.employeeId === employee.id && member.active!==false)).map((project) => project.id) };
 }
 function employeeSession(req) {
   const sid = cookieValue(req, 'iksha_employee');
@@ -259,6 +260,7 @@ function applyGroupSnapshot(input) {
 const pilotRoutes = createPilotRoutes({ getState: () => state, founder, employeeSession, body, json, save, audit, projectView, callBotBridge });
 const stageLinksRoutes=createStageLinksRoutes({getState:()=>state,founder,body,json,save,audit,callBotBridge});
 const operationsRoutes = createOperationsRoutes({getState:()=>state,founder,employeeSession,body,json,save,audit,callBotBridge,integrationSecret});
+const googleAuthRoutes = createGoogleAuthRoutes({getState:()=>state,founder,body,json,save,audit,cookie,production});
 async function handleRequest(req, res) {
   let before = structuredClone(state);
   try {
@@ -266,6 +268,7 @@ async function handleRequest(req, res) {
     res.setHeader('x-content-type-options', 'nosniff');
     res.setHeader('referrer-policy', 'no-referrer');
     if (!['GET','HEAD'].includes(req.method) && url.pathname.startsWith('/api/') && !url.pathname.startsWith('/api/integrations/') && req.headers.origin && req.headers.origin !== (process.env.PUBLIC_URL?.replace(/\/$/, '') || `http://${req.headers.host}`)) return json(res,403,{error:'Origin is not allowed.'});
+    if (await googleAuthRoutes(req,res,url)) return;
     if (req.method === 'POST' && url.pathname === '/api/integrations/telegram/connect') {
       const supplied=(req.headers.authorization || '').replace(/^Bearer /i,'');
       if(!integrationSecret || !safeEqual(supplied,integrationSecret))return json(res,401,{error:'Integration authentication required.'});
@@ -346,7 +349,7 @@ async function handleRequest(req, res) {
       const attemptKey = `${req.socket.remoteAddress || 'unknown'}:${id}`;
       const attempts = employeeLoginAttempts.get(attemptKey) || { count: 0, lockedUntil: 0 };
       if (attempts.lockedUntil > Date.now()) return json(res, 429, { error: 'Too many attempts. Try again in a few minutes.' });
-      if (!employee || employee.active === false || !safeEqual(employee.passwordHash, passwordHash(String(input.password || ''), employee.passwordSalt))) {
+      if (!employee || employee.active === false || !employee.passwordHash || !employee.passwordSalt || !safeEqual(employee.passwordHash, passwordHash(String(input.password || ''), employee.passwordSalt))) {
         attempts.count += 1;
         if (attempts.count >= 8) { attempts.count = 0; attempts.lockedUntil = Date.now() + 10 * 60 * 1000; }
         employeeLoginAttempts.set(attemptKey, attempts);
