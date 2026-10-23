@@ -2,8 +2,8 @@ import { WorkQueue } from '@/components/WorkQueue';
 import React, { useEffect, useState } from "react";
 import { IkshaBrand, WorkspaceAccess } from "@/components/WorkspaceAccess";
 import {
-  AlertTriangle, ArrowLeft, ArrowRight, Building2, Check, CheckCircle2, Clock3, Copy, Eye, EyeOff, FolderKanban,
-  History, KeyRound, LogOut, Menu, MessageSquare, Plus, RefreshCw,
+  AlertTriangle, ArrowLeft, ArrowRight, Building2, Check, CheckCircle2, Clock3, Copy, FolderKanban,
+  History, LogOut, Menu, MessageSquare, Plus, RefreshCw,
   Search, Send, Share2, ShieldCheck, Sparkles, Trash2, Users, UserPlus, X,
 } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -63,10 +63,6 @@ function Field({ label, children }) {
 
 export default function FounderApp() {
   const [authState, setAuthState] = useState("checking");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [loginError, setLoginError] = useState("");
-  const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [projects, setProjects] = useState([]);
   const [employees, setEmployees] = useState([]);
   const [trashedProjects, setTrashedProjects] = useState([]);
@@ -207,24 +203,9 @@ export default function FounderApp() {
     setCurrentTab("projects");
   };
 
-  const handleLogin = async (event) => {
-    event.preventDefault();
-    setIsLoggingIn(true);
-    setLoginError("");
-    try {
-      await post("/api/founder/login", { password });
-      await Promise.all([loadProjects(), loadDecisionRequests()]);
-    } catch (error) {
-      setLoginError(error.message);
-    } finally {
-      setIsLoggingIn(false);
-    }
-  };
-
   const handleLogout = async () => {
     await post("/api/founder/logout");
     setAuthState("signed-out");
-    setPassword("");
   };
 
   const handleInvite = async () => {
@@ -307,12 +288,7 @@ export default function FounderApp() {
   }
 
   if (authState === "signed-out") {
-    return <WorkspaceAccess><form onSubmit={handleLogin} className="space-y-4">
-      <label className="grid gap-2 text-sm" htmlFor="founder-key">Founder key</label>
-      <div className="relative"><Input id="founder-key" type={showPassword ? "text" : "password"} value={password} onChange={event=>setPassword(event.target.value)} placeholder="Enter founder key" autoComplete="current-password" required className="h-12 pr-12" /><button type="button" onClick={()=>setShowPassword(value=>!value)} aria-label={showPassword?'Hide founder key':'Show founder key'} className="absolute inset-y-0 right-2 grid w-10 place-items-center text-muted-foreground">{showPassword?<EyeOff size={16}/>:<Eye size={16}/>}</button></div>
-      {loginError&&<p role="alert" className="text-sm text-destructive">{loginError}</p>}
-      <Button type="submit" disabled={isLoggingIn} className="h-12 w-full">{isLoggingIn?'Opening…':'Sign in'}<ArrowRight size={15}/></Button>
-    </form></WorkspaceAccess>;
+    return <WorkspaceAccess />;
   }
 
   // Actionable 2: "messages" (Client messages) has been REMOVED from navigation!
@@ -407,7 +383,7 @@ export default function FounderApp() {
         <InitialAvatar name="Project Founder" />
         <div className="min-w-0 flex-1">
           <p className="truncate text-xs font-semibold">Project Founder</p>
-          <p className="text-xs text-muted-foreground">Workspace owner</p>
+          <p className="text-xs text-muted-foreground">Workspace founder</p>
         </div>
         <Button variant="ghost" size="icon-sm" aria-label="Sign out" onClick={handleLogout}>
           <LogOut />

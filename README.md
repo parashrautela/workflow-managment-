@@ -41,7 +41,7 @@ The **Workflow Management Tool** provides teams with a clean, distraction-free e
    ```bash
    cp .env.example .env
    ```
-   Open `.env` and set `FOUNDER_PASSWORD` to a private password. Add `OPENAI_API_KEY` optionally for AI-powered Q&A responses. Add `DATABASE_URL` to use PostgreSQL; when running locally without it, the app stores data in `backend/data.json`. For Telegram group setup, set `BOT_BRIDGE_URL` to the Telegram bot service's HTTPS origin and use the same `INTEGRATION_SHARED_SECRET` in both services. The bot needs `WEB_APP_URL` pointed at this app.
+   Open `.env` and set `GOOGLE_CLIENT_ID` to your Google Web OAuth client ID. On a fresh installation only, set `INITIAL_FOUNDER_EMAIL` to the first founder’s Gmail or Google Workspace email; it is ignored after an approved founder exists. Login is Google-only; passwords and founder keys are not accepted. Register your local origin (for example `http://localhost:3000`) in that OAuth client. Add `OPENAI_API_KEY` optionally for AI-powered Q&A responses. Add `DATABASE_URL` to use PostgreSQL; when running locally without it, the app stores data in `backend/data.json`. For Telegram group setup, set `BOT_BRIDGE_URL` to the Telegram bot service's HTTPS origin and use the same `INTEGRATION_SHARED_SECRET` in both services. The bot needs `WEB_APP_URL` pointed at this app.
 
 3. **Start the development server:**
    ```bash

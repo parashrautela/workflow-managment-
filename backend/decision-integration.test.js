@@ -1,3 +1,4 @@
+import { googleTestIdentity } from './test-helpers/google-identity.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtemp, cp, rm, symlink, writeFile } from 'node:fs/promises';
@@ -31,6 +32,8 @@ globalThis.fetch = async (url, options) => {
   }
   return originalFetch(url, options);
 };`);
+  const google=await googleTestIdentity(root);
+  await google.seed(path.join(root,'backend/data.json'));
   const port = await freePort();
   let starts=0,refreshSnapshot={groups:[]};
   const bridge = http.createServer(async (req, res) => {
@@ -51,7 +54,7 @@ globalThis.fetch = async (url, options) => {
   });
   await new Promise((resolve) => bridge.listen(0, '127.0.0.1', resolve));
   const bridgeUrl = `http://127.0.0.1:${bridge.address().port}`;
-  const child = spawn(process.execPath, ['--import', path.join(root, 'mock-telegram.js'), path.join(root, 'backend/server.js')], { cwd: root, env: { ...process.env, PORT: String(port), FOUNDER_PASSWORD: 'test-password', INTEGRATION_SHARED_SECRET: 'test-secret', GROUP_BOT_TOKEN: '', BOT_BRIDGE_URL: bridgeUrl, DATABASE_URL: '', NODE_ENV: 'test' }, stdio: 'ignore' });
+  const child = spawn(process.execPath, ['--import', path.join(root, 'mock-telegram.js'), '--import', google.mock, path.join(root, 'backend/server.js')], { cwd: root, env: { ...process.env, PORT: String(port), GOOGLE_CLIENT_ID:google.clientId,INITIAL_FOUNDER_EMAIL:'', INTEGRATION_SHARED_SECRET: 'test-secret', GROUP_BOT_TOKEN: '', BOT_BRIDGE_URL: bridgeUrl, DATABASE_URL: '', NODE_ENV: 'test' }, stdio: 'ignore' });
   const base = `http://127.0.0.1:${port}`;
   const call = async (route, method = 'GET', value, headers = {}) => {
     const response = await fetch(base + route, { method, headers: { 'content-type': 'application/json', ...headers }, ...(value === undefined ? {} : { body: JSON.stringify(value) }) });
@@ -64,9 +67,11 @@ globalThis.fetch = async (url, options) => {
       catch { await new Promise((resolve) => setTimeout(resolve, 100)); }
     }
     assert.ok(ready, 'server started');
-    const session = await call('/api/founder/login', 'POST', { password: 'test-password' });
+    const session = await google.signIn(base);
+    assert.equal(session.status,200);assert.ok(session.cookie);
     const cookie = { cookie: session.cookie.split(';')[0] };
     const project = await call('/api/founder/projects', 'POST', { name: 'Test Home', clientName: 'Client' }, cookie);
+    assert.equal(project.status,201);
     const projectId = project.data.project.id;
     const payload = { RequestID: 'REQ--123-10-approval', GroupChatID: '-123', SourceMessageID: '10', RequestType: 'Approval', OriginalMessage: 'Approve lights?', RequestContext: '', OriginalSenderName: 'Client', RequestedByName: 'Designer', AttachmentsJSON: JSON.stringify([{type:'Photo',fileId:'photo-id'}]) };
     assert.equal((await call('/api/integrations/telegram/requests', 'POST', payload)).status, 401);
@@ -109,7 +114,7 @@ globalThis.fetch = async (url, options) => {
     assert.equal((await call('/api/founder/telegram-groups/-456/create-project', 'POST', { projectName: 'New Site Group', startDate: '2026-09-30' }, cookie)).status, 409);
     assert.equal((await call('/api/founder/telegram-groups/-456/members/123', 'POST', { name: 'Asha Kumar', role: 'Client' }, cookie)).status, 200);
     const staff = await call('/api/founder/telegram-groups/-456/members/124','POST',{name:'Painter',role:'Painter'},cookie);
-    assert.ok(staff.data.credentials.employeeId);
+    assert.ok(!staff.data.credentials);
     const created = await call('/api/founder/telegram-groups/-456/create-project', 'POST', { projectName: 'New Site Group', startDate: '2026-09-30' }, cookie);
     assert.equal(created.status, 201);
     assert.equal(created.data.project.id, pendingProject.id);
@@ -117,7 +122,8 @@ globalThis.fetch = async (url, options) => {
     assert.equal(created.data.project.telegramGroupChatId, '-456');
     assert.equal((await call('/api/founder/telegram-groups/-456/create-project', 'POST', { projectName: 'New Site Group', startDate: '2026-09-30' }, cookie)).status, 409);
     const linkedId=created.data.project.id;
-    assert.equal(created.data.project.members[0].employeeId,staff.data.credentials.employeeId);
+    const painter=(await call('/api/founder/employees','GET',undefined,cookie)).data.employees.find(employee=>employee.name==='Painter');
+    assert.equal(created.data.project.members[0].employeeId,painter.id);
     assert.equal((await call(`/api/founder/projects/${linkedId}/workflows`,'GET',undefined,cookie)).data.workflows[0].id,'RESTORATION-V1');
     assert.equal((await call(`/api/founder/projects/${linkedId}/workflow/start`,'POST',{workflowId:'RESTORATION-V1',startDate:'2026-10-07'},cookie)).status,200);
     await call(`/api/founder/projects/${linkedId}/workflow/start`,'POST',{workflowId:'RESTORATION-V1'},cookie);
@@ -131,7 +137,8 @@ globalThis.fetch = async (url, options) => {
     await call('/api/integrations/telegram/resources','POST',{...resource,DriveStatus:'Stored',DriveFileID:'stored-file'},bridgeHeaders);
     const files=(await call(`/api/founder/projects/${linkedId}/files`,'GET',undefined,cookie)).data.files;assert.equal(files.length,1);assert.equal(files[0].status,'Stored');assert.equal(files[0].driveFileId,undefined);
     const downloaded=await fetch(base+`/api/founder/projects/${linkedId}/files/RES--456-15`,{headers:cookie});assert.equal(downloaded.status,200);assert.equal(await downloaded.text(),'FILE');
-    const staffSession=await call('/api/employee/login','POST',staff.data.credentials);const staffCookie={cookie:staffSession.cookie.split(';')[0]};
+    await call(`/api/founder/employees/${created.data.project.members[0].employeeId}`,'PATCH',{email:'painter@gmail.com'},cookie);
+    const staffSession=await google.signIn(base,{sub:'painter-google',email:'painter@gmail.com',name:'Painter'});const staffCookie={cookie:staffSession.cookie.split(';')[0]};
     assert.equal((await call(`/api/employee/projects/${linkedId}/files`,'GET',undefined,staffCookie)).status,200);
     assert.equal((await call(`/api/employee/projects/${projectId}/files`,'GET',undefined,staffCookie)).status,404);
     const upgradedMembers=[{telegramUserId:'123',telegramName:'Asha',membershipStatus:'Active',assignedName:'Asha Kumar',assignedRole:'Client'},{telegramUserId:'124',telegramName:'Painter',membershipStatus:'Active',assignedName:'Painter',assignedRole:'Painter'}];

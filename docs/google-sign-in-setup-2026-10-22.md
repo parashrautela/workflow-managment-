@@ -11,23 +11,28 @@ Web OAuth client: **Studio Iksha Web**. Authorized JavaScript origins:
 
 The implementation uses Google Identity Services popup sign-in with server verification through Google's official `google-auth-library`. No redirect URI, Google client secret, offline token or Drive/Sheets scope is needed for sign-in. Set the public web client ID as `GOOGLE_CLIENT_ID` on the web backend service; config is supplied to the frontend by `/api/auth/google/config`.
 
-## Access flow
+## Current access flow — 23 October 2026
 
-1. Team members choose Continue with Google on either sign-in page.
-2. A first sign-in creates one Pending request and no workspace session/project access.
-3. Founder opens Employees → Google sign-in & access requests, links an existing staff profile or creates one, chooses projects/role, then approves or rejects.
-4. Approved staff sign in again and see their granted projects. Disabled accounts are denied. Rejecting a Google identity revokes its Google sessions.
-5. To enable founder Google login, first sign in with the existing founder key, open Employees → Link my founder Google account, and choose the founder's own Google account. Linking requires the same authenticated founder session. Later sign-ins with that identity enter the founder workspace. Support email alone grants no founder privileges.
+Login is Google-only for founders and employees. Password login/reset and the old self-link founder flow return HTTP 410. Startup removes password hashes and legacy sessions; existing approved Google identities and their sessions, projects and work history are retained.
 
-Existing password login remains available. Google-only staff can receive a password through the existing founder reset flow if needed.
+1. Existing approved founders enter the founder workspace. All founders have equal control; there is no separate Owner role.
+2. Employees → Google sign-in & team access → Founders lets any founder pre-approve another founder by exact name/email, promote a connected employee or reviewed request, remove a founder role, or transfer their own role to another person who has already signed in.
+3. At least one approved founder with a claimed Google identity must remain. An unclaimed invitation cannot be the only successor. Role removal ends sessions immediately and retains assigned-project employee access; transfer does the same to the previous founder. Founder actions are audited.
+4. Add employee requires the exact Google sign-in email and first project. A Gmail or Google Workspace identity can claim this reservation once, with no approval wait; later logins use the stable Google subject. Email comparison is trimmed/lowercased; Gmail dots/plus aliases are not expanded. No invitation email is sent automatically.
+5. Unknown identities get a Pending request, no session and no project access. Founders assign an existing/new employee profile, designation and projects, or explicitly grant founder access/reject. The visible panel refreshes every 30 seconds and has a manual refresh button.
+6. Existing Telegram-created profiles without a Google login email remain intact. Edit that existing employee to add their email instead of creating a duplicate. Changing a staff login email revokes the old identity and sessions. Existing linked founder accounts remain founders; founders' login emails cannot be changed through employee editing.
+
+For a fresh installation only, INITIAL_FOUNDER_EMAIL can pre-approve the first founder’s Gmail/Google Workspace account. It is ignored once an approved founder exists. Production requires GOOGLE_CLIENT_ID. The support address itself grants no access, and the implementation does not hardcode an administrator email.
 
 ## Security and validation
 
-Tokens are verified for Google's signature/issuer, the exact client ID/audience, expiry, verified email, and a browser-bound nonce. Nonces expire after ten minutes, are single-use, and are bound to an HttpOnly SameSite cookie. Google subject IDs identify accounts; email alone never silently merges identities or grants founder access.
+Google’s official library verifies signature, issuer, exact audience, expiry, verified email and browser-bound nonce. Only one callback can consume a challenge. Google subject is the identity after first claim. Email reservations auto-claim only when Google is authoritative: Gmail, or verified email with a hosted-domain claim. A third-party email on a Google account goes to explicit identity review instead. Reference: https://developers.google.com/identity/gsi/web/guides/verify-google-id-token
 
-Tests use locally signed RSA tokens with mocked Google public certificates. The HTTP test exercises pending requests, restart/reuse, existing-profile linking, scoped project access, rejection/session revocation, legacy login and explicit founder Google linking. A browser check verified approving a disposable request into an existing employee profile without duplication.
+A Google login clears the browser’s previous founder/employee sessions, including when the new account is Pending/Rejected. Each authenticated request checks the account’s current approved role and active employee profile. Duplicate emails cannot silently move access to another profile. Tests use local RSA signatures and mock Google public certificates; no Google account or live project is modified by automated tests.
 
-User approved publishing the privacy page at `/privacy` and using it in Google branding. The client has been created and its public ID staged/applied on the production web backend. Live popup sign-in and audience publishing remain to verify after the web deployment.
+## Historical rollout record
+
+The checkpoints below describe the earlier password-compatible rollout and are superseded by the current access flow above.
 
 ## Production release verified — Google setup
 

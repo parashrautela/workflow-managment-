@@ -576,10 +576,6 @@
     right: calc(var(--spacing) * 3);
   }
 
-  .right-3\.5 {
-    right: calc(var(--spacing) * 3.5);
-  }
-
   .right-4 {
     right: calc(var(--spacing) * 4);
   }
@@ -1189,10 +1185,6 @@
 
   .w-6 {
     width: calc(var(--spacing) * 6);
-  }
-
-  .w-10 {
-    width: calc(var(--spacing) * 10);
   }
 
   .w-20 {
@@ -2668,10 +2660,6 @@
     padding-right: calc(var(--spacing) * 9);
   }
 
-  .pr-10 {
-    padding-right: calc(var(--spacing) * 10);
-  }
-
   .pr-12 {
     padding-right: calc(var(--spacing) * 12);
   }
@@ -3907,10 +3895,6 @@
 
   .has-\[button\]\:p-0:has(:is(button)) {
     padding: 0;
-  }
-
-  .has-\[select\:disabled\]\:opacity-50:has(:is(select:disabled)) {
-    opacity: .5;
   }
 
   .has-\[\>svg\]\:grid-cols-\[calc\(var\(--spacing\)\*4\)_1fr\]:has( > svg) {

@@ -11654,7 +11654,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$58 = {
+var __iconData$55 = {
 	name: "arrow-left",
 	size: 24,
 	node: [["path", {
@@ -11665,8 +11665,8 @@ var __iconData$58 = {
 		key: "x3x0zl"
 	}]]
 };
-__iconData$58.node;
-var ArrowLeft = createLucideIcon(__iconData$58);
+__iconData$55.node;
+var ArrowLeft = createLucideIcon(__iconData$55);
 // node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11674,7 +11674,7 @@ var ArrowLeft = createLucideIcon(__iconData$58);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$57 = {
+var __iconData$54 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11685,8 +11685,8 @@ var __iconData$57 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$57.node;
-var ArrowRight = createLucideIcon(__iconData$57);
+__iconData$54.node;
+var ArrowRight = createLucideIcon(__iconData$54);
 // node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11694,7 +11694,7 @@ var ArrowRight = createLucideIcon(__iconData$57);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$56 = {
+var __iconData$53 = {
 	name: "arrow-up-right",
 	size: 24,
 	node: [["path", {
@@ -11705,8 +11705,8 @@ var __iconData$56 = {
 		key: "1vkiza"
 	}]]
 };
-__iconData$56.node;
-var ArrowUpRight = createLucideIcon(__iconData$56);
+__iconData$53.node;
+var ArrowUpRight = createLucideIcon(__iconData$53);
 // node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11714,7 +11714,7 @@ var ArrowUpRight = createLucideIcon(__iconData$56);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$55 = {
+var __iconData$52 = {
 	name: "arrow-up",
 	size: 24,
 	node: [["path", {
@@ -11725,8 +11725,8 @@ var __iconData$55 = {
 		key: "x0mq9r"
 	}]]
 };
-__iconData$55.node;
-var ArrowUp = createLucideIcon(__iconData$55);
+__iconData$52.node;
+var ArrowUp = createLucideIcon(__iconData$52);
 // node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11734,7 +11734,7 @@ var ArrowUp = createLucideIcon(__iconData$55);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$54 = {
+var __iconData$51 = {
 	name: "building-complex",
 	size: 24,
 	node: [
@@ -11761,8 +11761,8 @@ var __iconData$54 = {
 	],
 	aliases: ["building-2"]
 };
-__iconData$54.node;
-var BuildingComplex = createLucideIcon(__iconData$54);
+__iconData$51.node;
+var BuildingComplex = createLucideIcon(__iconData$51);
 // node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11770,7 +11770,7 @@ var BuildingComplex = createLucideIcon(__iconData$54);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$53 = {
+var __iconData$50 = {
 	name: "calendar-days",
 	size: 24,
 	node: [
@@ -11820,8 +11820,8 @@ var __iconData$53 = {
 		}]
 	]
 };
-__iconData$53.node;
-var CalendarDays = createLucideIcon(__iconData$53);
+__iconData$50.node;
+var CalendarDays = createLucideIcon(__iconData$50);
 // node_modules/lucide-react/dist/esm/icons/calendar.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11829,7 +11829,7 @@ var CalendarDays = createLucideIcon(__iconData$53);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$52 = {
+var __iconData$49 = {
 	name: "calendar",
 	size: 24,
 	node: [
@@ -11855,8 +11855,8 @@ var __iconData$52 = {
 		}]
 	]
 };
-__iconData$52.node;
-var Calendar = createLucideIcon(__iconData$52);
+__iconData$49.node;
+var Calendar = createLucideIcon(__iconData$49);
 // node_modules/lucide-react/dist/esm/icons/check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11864,7 +11864,7 @@ var Calendar = createLucideIcon(__iconData$52);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$51 = {
+var __iconData$48 = {
 	name: "check",
 	size: 24,
 	node: [["path", {
@@ -11872,8 +11872,8 @@ var __iconData$51 = {
 		key: "1gmf2c"
 	}]]
 };
-__iconData$51.node;
-var Check = createLucideIcon(__iconData$51);
+__iconData$48.node;
+var Check = createLucideIcon(__iconData$48);
 // node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11881,7 +11881,7 @@ var Check = createLucideIcon(__iconData$51);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$50 = {
+var __iconData$47 = {
 	name: "chevron-down",
 	size: 24,
 	node: [["path", {
@@ -11889,8 +11889,8 @@ var __iconData$50 = {
 		key: "qrunsl"
 	}]]
 };
-__iconData$50.node;
-var ChevronDown = createLucideIcon(__iconData$50);
+__iconData$47.node;
+var ChevronDown = createLucideIcon(__iconData$47);
 // node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11898,7 +11898,7 @@ var ChevronDown = createLucideIcon(__iconData$50);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$49 = {
+var __iconData$46 = {
 	name: "chevron-right",
 	size: 24,
 	node: [["path", {
@@ -11906,8 +11906,8 @@ var __iconData$49 = {
 		key: "mthhwq"
 	}]]
 };
-__iconData$49.node;
-var ChevronRight = createLucideIcon(__iconData$49);
+__iconData$46.node;
+var ChevronRight = createLucideIcon(__iconData$46);
 // node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11915,7 +11915,7 @@ var ChevronRight = createLucideIcon(__iconData$49);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$48 = {
+var __iconData$45 = {
 	name: "chevron-up",
 	size: 24,
 	node: [["path", {
@@ -11923,8 +11923,8 @@ var __iconData$48 = {
 		key: "153udz"
 	}]]
 };
-__iconData$48.node;
-var ChevronUp = createLucideIcon(__iconData$48);
+__iconData$45.node;
+var ChevronUp = createLucideIcon(__iconData$45);
 // node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11932,7 +11932,7 @@ var ChevronUp = createLucideIcon(__iconData$48);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$47 = {
+var __iconData$44 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -11959,8 +11959,8 @@ var __iconData$47 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$47.node;
-var CircleAlert = createLucideIcon(__iconData$47);
+__iconData$44.node;
+var CircleAlert = createLucideIcon(__iconData$44);
 // node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11968,7 +11968,7 @@ var CircleAlert = createLucideIcon(__iconData$47);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$46 = {
+var __iconData$43 = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -11982,8 +11982,8 @@ var __iconData$46 = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-__iconData$46.node;
-var CircleCheck = createLucideIcon(__iconData$46);
+__iconData$43.node;
+var CircleCheck = createLucideIcon(__iconData$43);
 // node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11991,7 +11991,7 @@ var CircleCheck = createLucideIcon(__iconData$46);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$45 = {
+var __iconData$42 = {
 	name: "circle-pause",
 	size: 24,
 	node: [
@@ -12018,8 +12018,8 @@ var __iconData$45 = {
 	],
 	aliases: ["pause-circle"]
 };
-__iconData$45.node;
-var CirclePause = createLucideIcon(__iconData$45);
+__iconData$42.node;
+var CirclePause = createLucideIcon(__iconData$42);
 // node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12027,7 +12027,7 @@ var CirclePause = createLucideIcon(__iconData$45);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$44 = {
+var __iconData$41 = {
 	name: "circle-question-mark",
 	size: 24,
 	node: [
@@ -12048,8 +12048,8 @@ var __iconData$44 = {
 	],
 	aliases: ["help-circle", "circle-help"]
 };
-__iconData$44.node;
-var CircleQuestionMark = createLucideIcon(__iconData$44);
+__iconData$41.node;
+var CircleQuestionMark = createLucideIcon(__iconData$41);
 // node_modules/lucide-react/dist/esm/icons/circle-x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12057,7 +12057,7 @@ var CircleQuestionMark = createLucideIcon(__iconData$44);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$43 = {
+var __iconData$40 = {
 	name: "circle-x",
 	size: 24,
 	node: [
@@ -12078,8 +12078,8 @@ var __iconData$43 = {
 	],
 	aliases: ["x-circle"]
 };
-__iconData$43.node;
-var CircleX = createLucideIcon(__iconData$43);
+__iconData$40.node;
+var CircleX = createLucideIcon(__iconData$40);
 // node_modules/lucide-react/dist/esm/icons/circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12087,7 +12087,7 @@ var CircleX = createLucideIcon(__iconData$43);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$42 = {
+var __iconData$39 = {
 	name: "circle",
 	size: 24,
 	node: [["circle", {
@@ -12097,8 +12097,8 @@ var __iconData$42 = {
 		key: "1mglay"
 	}]]
 };
-__iconData$42.node;
-var Circle = createLucideIcon(__iconData$42);
+__iconData$39.node;
+var Circle = createLucideIcon(__iconData$39);
 // node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12106,7 +12106,7 @@ var Circle = createLucideIcon(__iconData$42);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$41 = {
+var __iconData$38 = {
 	name: "clock-3",
 	size: 24,
 	node: [["circle", {
@@ -12119,8 +12119,8 @@ var __iconData$41 = {
 		key: "135r8i"
 	}]]
 };
-__iconData$41.node;
-var Clock3 = createLucideIcon(__iconData$41);
+__iconData$38.node;
+var Clock3 = createLucideIcon(__iconData$38);
 // node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12128,7 +12128,7 @@ var Clock3 = createLucideIcon(__iconData$41);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$40 = {
+var __iconData$37 = {
 	name: "clock",
 	size: 24,
 	node: [["circle", {
@@ -12141,8 +12141,8 @@ var __iconData$40 = {
 		key: "mmk7yg"
 	}]]
 };
-__iconData$40.node;
-var Clock = createLucideIcon(__iconData$40);
+__iconData$37.node;
+var Clock = createLucideIcon(__iconData$37);
 // node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12150,7 +12150,7 @@ var Clock = createLucideIcon(__iconData$40);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$39 = {
+var __iconData$36 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -12166,8 +12166,8 @@ var __iconData$39 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$39.node;
-var Copy = createLucideIcon(__iconData$39);
+__iconData$36.node;
+var Copy = createLucideIcon(__iconData$36);
 // node_modules/lucide-react/dist/esm/icons/external-link.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12175,7 +12175,7 @@ var Copy = createLucideIcon(__iconData$39);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$38 = {
+var __iconData$35 = {
 	name: "external-link",
 	size: 24,
 	node: [
@@ -12193,61 +12193,8 @@ var __iconData$38 = {
 		}]
 	]
 };
-__iconData$38.node;
-var ExternalLink = createLucideIcon(__iconData$38);
-// node_modules/lucide-react/dist/esm/icons/eye-off.mjs
-/**
-* @license lucide-react v1.48.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
-var __iconData$37 = {
-	name: "eye-off",
-	size: 24,
-	node: [
-		["path", {
-			d: "M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49",
-			key: "ct8e1f"
-		}],
-		["path", {
-			d: "M14.084 14.158a3 3 0 0 1-4.242-4.242",
-			key: "151rxh"
-		}],
-		["path", {
-			d: "M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143",
-			key: "13bj9a"
-		}],
-		["path", {
-			d: "m2 2 20 20",
-			key: "1ooewy"
-		}]
-	]
-};
-__iconData$37.node;
-var EyeOff = createLucideIcon(__iconData$37);
-// node_modules/lucide-react/dist/esm/icons/eye.mjs
-/**
-* @license lucide-react v1.48.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
-var __iconData$36 = {
-	name: "eye",
-	size: 24,
-	node: [["path", {
-		d: "M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0",
-		key: "1nclc0"
-	}], ["circle", {
-		cx: "12",
-		cy: "12",
-		r: "3",
-		key: "1v7zrd"
-	}]]
-};
-__iconData$36.node;
-var Eye = createLucideIcon(__iconData$36);
+__iconData$35.node;
+var ExternalLink = createLucideIcon(__iconData$35);
 // node_modules/lucide-react/dist/esm/icons/file-text.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12255,7 +12202,7 @@ var Eye = createLucideIcon(__iconData$36);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$35 = {
+var __iconData$34 = {
 	name: "file-text",
 	size: 24,
 	node: [
@@ -12281,8 +12228,8 @@ var __iconData$35 = {
 		}]
 	]
 };
-__iconData$35.node;
-var FileText = createLucideIcon(__iconData$35);
+__iconData$34.node;
+var FileText = createLucideIcon(__iconData$34);
 // node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12290,7 +12237,7 @@ var FileText = createLucideIcon(__iconData$35);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$34 = {
+var __iconData$33 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -12312,8 +12259,8 @@ var __iconData$34 = {
 		}]
 	]
 };
-__iconData$34.node;
-var FolderKanban = createLucideIcon(__iconData$34);
+__iconData$33.node;
+var FolderKanban = createLucideIcon(__iconData$33);
 // node_modules/lucide-react/dist/esm/icons/hourglass.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12321,7 +12268,7 @@ var FolderKanban = createLucideIcon(__iconData$34);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$33 = {
+var __iconData$32 = {
 	name: "hourglass",
 	size: 24,
 	node: [
@@ -12343,31 +12290,8 @@ var __iconData$33 = {
 		}]
 	]
 };
-__iconData$33.node;
-var Hourglass = createLucideIcon(__iconData$33);
-// node_modules/lucide-react/dist/esm/icons/key-round.mjs
-/**
-* @license lucide-react v1.48.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
-var __iconData$32 = {
-	name: "key-round",
-	size: 24,
-	node: [["path", {
-		d: "M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z",
-		key: "1s6t7t"
-	}], ["circle", {
-		cx: "16.5",
-		cy: "7.5",
-		r: ".5",
-		fill: "currentColor",
-		key: "w0ekpg"
-	}]]
-};
 __iconData$32.node;
-var KeyRound = createLucideIcon(__iconData$32);
+var Hourglass = createLucideIcon(__iconData$32);
 // node_modules/lucide-react/dist/esm/icons/layers.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -20336,10 +20260,6 @@ async function updateEmployee(employeeId, fields) {
 		body: fields
 	});
 }
-/** Set a chosen password, or generate one when blank (POST /api/founder/employees/:id/password). Signs the employee out everywhere. */
-async function setEmployeePassword(employeeId, password) {
-	return await post$2(`/api/founder/employees/${employeeId}/password`, password ? { password } : {});
-}
 /** Ask for an AI-suggested reply to a client query, built from project records (POST /api/founder/decision-requests/:id/suggest-reply). Sends nothing. */
 async function suggestDecisionReply(requestId, instruction = "", outcome = "") {
 	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/suggest-reply`, {
@@ -21656,7 +21576,11 @@ function GoogleSignIn({ mode = "login", onComplete }) {
 		let cancelled = false;
 		(async () => {
 			const config = await request("/api/auth/google/config");
-			if (cancelled || !config.enabled) return;
+			if (cancelled) return;
+			if (!config.enabled) {
+				setError("Google sign-in is not configured. Contact a founder.");
+				return;
+			}
 			setEnabled(true);
 			const [google, challenge] = await Promise.all([loadGoogle(), request("/api/auth/google/challenge", {
 				method: "POST",
@@ -21745,7 +21669,7 @@ function GoogleSignIn({ mode = "login", onComplete }) {
 			}),
 			mode === "login" && enabled && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				className: "text-xs text-muted-foreground",
-				children: "New team members need founder approval before seeing project work."
+				children: "Already added by a founder? Use that exact Google email for immediate access. New accounts need founder approval."
 			})
 		]
 	});
@@ -21791,10 +21715,10 @@ function WorkspaceAccess({ team = false, children }) {
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "iksha-eyebrow",
-					children: team ? "TEAM ACCESS" : "FOUNDER ACCESS"
+					children: "STUDIO ACCESS"
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", { children: "Welcome back." }),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Sign in to move the work forward." }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Use your Google account to enter your workspace." }),
 				children,
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(GoogleSignIn, {}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
@@ -21805,11 +21729,6 @@ function WorkspaceAccess({ team = false, children }) {
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "iksha-access-note",
 					children: "Clients continue to communicate through Telegram."
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-					className: "iksha-access-link",
-					href: team ? "/" : "/employee",
-					children: [team ? "Founder sign-in" : "Team member sign-in", " →"]
 				})
 			]
 		})]
@@ -24782,35 +24701,71 @@ function GooeyNewButton({ hasProject, onAddMember, onShareClientLink }) {
 	});
 }
 // frontend/src/components/GoogleAccessRequests.jsx
-function GoogleAccessRequests({ employees = [], projects = [], onChanged }) {
-	const [accounts, setAccounts] = (0, import_react.useState)([]), [enabled, setEnabled] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)(""), [linking, setLinking] = (0, import_react.useState)(false);
+function GoogleAccessRequests({ employees, projects, onChanged }) {
+	const [accounts, setAccounts] = (0, import_react.useState)([]), [currentId, setCurrentId] = (0, import_react.useState)(""), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [confirm, setConfirm] = (0, import_react.useState)(null);
 	const load = async () => {
 		try {
 			const data = await request("/api/founder/google/accounts");
 			setAccounts(data.accounts);
-			setEnabled(data.enabled);
+			setCurrentId(data.currentAccountId);
+			setError("");
 		} catch (problem) {
 			setError(problem.message);
 		}
 	};
 	(0, import_react.useEffect)(() => {
 		load();
+		const timer = setInterval(load, 3e4);
+		return () => clearInterval(timer);
 	}, []);
 	const changed = async () => {
 		await load();
 		await onChanged?.();
 	};
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+	const invite = async (event) => {
+		event.preventDefault();
+		const form = event.currentTarget, data = Object.fromEntries(new FormData(form));
+		setConfirm({
+			action: "invite",
+			name: data.name,
+			email: data.email,
+			form
+		});
+	};
+	const run = async () => {
+		setBusy(true);
+		setError("");
+		try {
+			const result = await request(confirm.action === "invite" ? "/api/founder/google/founders" : `/api/founder/google/accounts/${confirm.account.id}/founder`, {
+				method: "POST",
+				body: confirm.action === "invite" ? {
+					name: confirm.name,
+					email: confirm.email
+				} : { action: confirm.action }
+			});
+			confirm.form?.reset();
+			setConfirm(null);
+			if (result.signedOut) {
+				location.assign("/");
+				return;
+			}
+			await changed();
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	const founders = accounts.filter((account) => account.kind === "founder" && account.status === "Approved");
+	const requests = accounts.filter((account) => account.kind === "employee" && account.status !== "Approved");
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 		className: "space-y-4 rounded-xl border bg-card p-4",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex flex-wrap items-center justify-between gap-2",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-					className: "font-semibold",
-					children: "Google sign-in & access requests"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", { children: "Google sign-in & team access" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "text-xs text-muted-foreground",
-					children: "Approve a person, link their existing employee profile if applicable, and choose their project access."
+					children: "Founders have equal control. Employees see only their assigned projects."
 				})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 					variant: "outline",
 					size: "sm",
@@ -24818,51 +24773,193 @@ function GoogleAccessRequests({ employees = [], projects = [], onChanged }) {
 					children: "Refresh requests"
 				})]
 			}),
-			!enabled && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "text-sm text-muted-foreground",
-				children: "Google sign-in is not configured yet."
-			}),
-			enabled && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
-				onToggle: (event) => setLinking(event.currentTarget.open),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("summary", { children: ["Founders · ", founders.length] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-3 space-y-3",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", {
-						className: "cursor-pointer text-sm font-medium",
-						children: "Link my founder Google account"
-					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "mt-2 text-xs text-muted-foreground",
-						children: "Choose your own Google account. It will gain founder access to this workspace. Your current founder key continues to work."
+						className: "text-xs text-muted-foreground",
+						children: "Every founder can manage people, appoint founders and change founder roles. At least one founder who has signed in must remain."
 					}),
-					linking && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GoogleSignIn, {
-						mode: "link-founder",
-						onComplete: changed
+					founders.map((account) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex flex-wrap items-center justify-between gap-2 rounded-lg border p-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "text-sm font-medium",
+							children: [account.name, account.id === currentId ? " · You" : ""]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "text-xs text-muted-foreground",
+							children: [
+								account.email,
+								" · ",
+								account.claimed ? "Connected" : "Pre-approved; awaiting first sign-in"
+							]
+						})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							size: "sm",
+							variant: "outline",
+							disabled: account.claimed && founders.filter((row) => row.claimed).length === 1,
+							title: account.claimed && founders.filter((row) => row.claimed).length === 1 ? "Add another founder who has signed in first" : void 0,
+							onClick: () => setConfirm({
+								account,
+								action: "revoke"
+							}),
+							children: account.claimed ? "Remove founder role" : "Cancel founder invitation"
+						})]
+					}, account.id)),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+						onSubmit: invite,
+						className: "space-y-3 border-t pt-3",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-sm font-medium",
+								children: "Add another founder"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "grid gap-3 sm:grid-cols-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "grid gap-1 text-xs",
+									children: ["Full name", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+										name: "name",
+										required: true,
+										maxLength: 120
+									})]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "grid gap-1 text-xs",
+									children: ["Google sign-in email", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+										name: "email",
+										type: "email",
+										required: true,
+										maxLength: 200,
+										placeholder: "name@gmail.com"
+									})]
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								type: "submit",
+								variant: "outline",
+								children: "Pre-approve founder"
+							})
+						]
+					}),
+					accounts.some((account) => account.claimed && account.id !== currentId && account.status === "Approved") && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "space-y-2 border-t pt-3",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-sm font-medium",
+								children: "Transfer my founder role"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs text-muted-foreground",
+								children: "Choose someone who has already signed in. They become a founder; you become an employee and are signed out."
+							}),
+							accounts.filter((account) => account.claimed && account.id !== currentId && account.status === "Approved").map((account) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								className: "mr-2",
+								size: "sm",
+								variant: "outline",
+								onClick: () => setConfirm({
+									account,
+									action: "transfer"
+								}),
+								children: ["Transfer to ", account.name]
+							}, account.id))
+						]
+					})
+				]
+			})] }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "space-y-3",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", {
+						className: "text-sm font-semibold",
+						children: [
+							"Access requests · ",
+							requests.filter((account) => account.status === "Pending").length,
+							" pending"
+						]
+					}),
+					requests.map((account) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AccessRequest, {
+						account,
+						employees,
+						projects,
+						onChanged: changed,
+						onFounder: () => setConfirm({
+							account,
+							action: "grant"
+						})
+					}, account.id)),
+					!requests.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-sm text-muted-foreground",
+						children: "No pending Google access requests."
 					})
 				]
 			}),
-			accounts.filter((account) => account.kind === "founder").map((account) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-				className: "text-xs text-muted-foreground",
-				children: ["Founder Google sign-in linked: ", account.email]
-			}, account.id)),
-			accounts.filter((account) => account.kind === "employee" && account.status !== "Approved").map((account) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AccessRequest, {
-				account,
-				employees,
-				projects,
-				onChanged: changed
-			}, account.id)),
-			!accounts.some((account) => account.kind === "employee" && account.status === "Pending") && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "text-sm text-muted-foreground",
-				children: "No pending Google access requests."
-			}),
+			accounts.some((account) => account.kind === "employee" && account.status === "Approved" && account.claimed) && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", { children: "Manage connected employee roles" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "mt-3 space-y-2",
+				children: accounts.filter((account) => account.kind === "employee" && account.status === "Approved" && account.claimed).map((account) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex flex-wrap items-center justify-between gap-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "text-sm",
+						children: [
+							account.name,
+							" · ",
+							account.email
+						]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						size: "sm",
+						variant: "outline",
+						onClick: () => setConfirm({
+							account,
+							action: "grant"
+						}),
+						children: "Make founder"
+					})]
+				}, account.id))
+			})] }),
 			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				role: "alert",
 				className: "text-sm text-destructive",
 				children: error
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				open: Boolean(confirm),
+				onOpenChange: (open) => {
+					if (!busy && !open) {
+						setConfirm(null);
+						setError("");
+					}
+				},
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: confirm?.action === "invite" || confirm?.action === "grant" ? "Grant full founder access?" : confirm?.action === "transfer" ? "Transfer your founder role?" : "Remove founder access?" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [
+						confirm?.email || confirm?.account?.email,
+						" — ",
+						confirm?.action === "invite" || confirm?.action === "grant" ? "This person will have full workspace access, including managing founders and employees." : confirm?.action === "transfer" ? "They will have full founder control. You will become an employee with your existing project assignments and be signed out." : "Founder sessions will end immediately. A connected person keeps employee access to their assigned projects only."
+					] })] }),
+					error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						role: "alert",
+						className: "text-sm text-destructive",
+						children: error
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex justify-end gap-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							disabled: busy,
+							onClick: () => {
+								setConfirm(null);
+								setError("");
+							},
+							children: "Cancel"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							disabled: busy,
+							onClick: run,
+							children: busy ? "Saving…" : "Confirm role change"
+						})]
+					})
+				] })
 			})
 		]
 	});
 }
-function AccessRequest({ account, employees, projects, onChanged }) {
-	const [employeeId, setEmployeeId] = (0, import_react.useState)(""), [projectIds, setProjectIds] = (0, import_react.useState)([]), [role, setRole] = (0, import_react.useState)("Team member"), [busy, setBusy] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)("");
+function AccessRequest({ account, employees, projects, onChanged, onFounder }) {
+	const [employeeId, setEmployeeId] = (0, import_react.useState)(employees.find((employee) => employee.email?.toLowerCase() === account.email && employee.active !== false)?.id || ""), [projectIds, setProjectIds] = (0, import_react.useState)([]), [role, setRole] = (0, import_react.useState)("Designer"), [busy, setBusy] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)("");
 	const decide = async (status) => {
 		setBusy(true);
 		setError("");
@@ -24902,7 +24999,6 @@ function AccessRequest({ account, employees, projects, onChanged }) {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 				className: "grid gap-1 text-xs",
 				children: ["Employee profile", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
-					className: "h-10 rounded border bg-background px-3",
 					value: employeeId,
 					onChange: (event) => setEmployeeId(event.target.value),
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
@@ -24913,15 +25009,14 @@ function AccessRequest({ account, employees, projects, onChanged }) {
 						children: [
 							employee.name,
 							" · ",
-							employee.id,
-							employee.email === account.email ? " · matching email" : ""
+							employee.id
 						]
 					}, employee.id))]
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 				className: "grid gap-1 text-xs",
-				children: ["Project role / designation", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+				children: ["Role / designation", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 					value: role,
 					maxLength: 120,
 					onChange: (event) => setRole(event.target.value)
@@ -24931,7 +25026,7 @@ function AccessRequest({ account, employees, projects, onChanged }) {
 				className: "space-y-1",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
 					className: "text-xs font-medium",
-					children: "Grant project access (optional)"
+					children: "Assigned projects"
 				}), projects.filter((project) => !["Completed", "Abandoned"].includes(project.status)).map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 					className: "flex items-center gap-2 text-sm",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
@@ -24942,17 +25037,26 @@ function AccessRequest({ account, employees, projects, onChanged }) {
 				}, project.id))]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex gap-2",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-					disabled: busy || !role.trim(),
-					onClick: () => decide("Approved"),
-					children: "Approve access"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-					disabled: busy || account.status === "Rejected",
-					variant: "outline",
-					onClick: () => decide("Rejected"),
-					children: "Reject"
-				})]
+				className: "flex flex-wrap gap-2",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						disabled: busy || !role.trim(),
+						onClick: () => decide("Approved"),
+						children: "Approve employee"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						disabled: busy,
+						variant: "outline",
+						onClick: onFounder,
+						children: "Assign founder role"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						disabled: busy || account.status === "Rejected",
+						variant: "outline",
+						onClick: () => decide("Rejected"),
+						children: "Reject"
+					})
+				]
 			}),
 			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				role: "alert",
@@ -25012,324 +25116,142 @@ function TabsContent({ className, ...props }) {
 }
 // frontend/src/components/EmployeeManager.jsx
 var roles = [
-	"Project admin",
 	"Designer",
 	"Site supervisor",
+	"Project admin",
 	"Site team",
 	"Contractor",
 	"Trade worker",
 	"Other"
 ];
-function PasswordField({ name = "password", value, onChange, placeholder = "Leave blank to generate one", autoComplete = "new-password" }) {
-	const [visible, setVisible] = (0, import_react.useState)(false);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-		className: "relative block",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-			name,
-			type: visible ? "text" : "password",
-			minLength: 8,
-			maxLength: 128,
-			autoComplete,
-			placeholder,
-			value,
-			onChange,
-			className: "pr-10"
-		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-			type: "button",
-			onClick: () => setVisible((current) => !current),
-			className: "absolute inset-y-0 right-0 grid w-10 place-items-center text-muted-foreground",
-			"aria-label": visible ? "Hide password" : "Show password",
-			children: visible ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EyeOff, { className: "size-4" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eye, { className: "size-4" })
-		})]
-	});
-}
-function CredentialsPanel({ credentials, note }) {
-	const [copied, setCopied] = (0, import_react.useState)(false);
-	const [error, setError] = (0, import_react.useState)("");
-	const copy = async () => {
-		try {
-			await navigator.clipboard.writeText(`Studio Iksha employee access\nLink: ${credentials.link}\nEmployee ID: ${credentials.employeeId}\nPassword: ${credentials.password}`);
-			setCopied(true);
-		} catch {
-			setError("Could not copy. Select and copy the details below.");
-		}
-	};
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "space-y-3",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-				className: "grid gap-1 text-xs font-medium",
-				children: ["Employee login link", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-					value: credentials.link,
-					readOnly: true,
-					className: "font-mono text-xs"
-				})]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-				className: "grid gap-1 text-xs font-medium",
-				children: ["Employee ID", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-					value: credentials.employeeId,
-					readOnly: true,
-					className: "font-mono"
-				})]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-				className: "grid gap-1 text-xs font-medium",
-				children: ["Password", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-					value: credentials.password,
-					readOnly: true,
-					className: "font-mono"
-				})]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "rounded-xl bg-amber-50 p-3 text-xs text-amber-900",
-				children: note
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-				type: "button",
-				className: "h-11 w-full",
-				onClick: copy,
-				children: [copied ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Copy, {}), copied ? "Copied" : "Copy link and credentials"]
-			}),
-			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				role: "alert",
-				className: "text-xs text-destructive",
-				children: error
-			})
-		]
-	});
-}
 function EditEmployeeDialog({ employee, onOpenChange, onUpdated }) {
 	const [form, setForm] = (0, import_react.useState)({
 		name: "",
 		designation: "",
 		email: "",
 		phone: ""
-	});
-	const [password, setPassword] = (0, import_react.useState)("");
-	const [credentials, setCredentials] = (0, import_react.useState)(null);
-	const [busy, setBusy] = (0, import_react.useState)("");
-	const [error, setError] = (0, import_react.useState)("");
-	const [saved, setSaved] = (0, import_react.useState)(false);
+	}), [busy, setBusy] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)("");
 	(0, import_react.useEffect)(() => {
 		if (employee) {
 			setForm({
-				name: employee.name || "",
-				designation: employee.designation || "",
+				name: employee.name,
+				designation: employee.designation,
 				email: employee.email || "",
 				phone: employee.phone || ""
 			});
-			setPassword("");
-			setCredentials(null);
 			setError("");
-			setSaved(false);
-			setBusy("");
 		}
 	}, [employee]);
 	const field = (key) => ({
 		value: form[key],
-		onChange: (event) => {
-			setSaved(false);
-			setForm((current) => ({
-				...current,
-				[key]: event.target.value
-			}));
-		}
+		onChange: (event) => setForm({
+			...form,
+			[key]: event.target.value
+		})
 	});
-	const saveProfile = async (event) => {
+	const save = async (event) => {
 		event.preventDefault();
-		setBusy("profile");
+		setBusy(true);
 		setError("");
 		try {
 			await updateEmployee(employee.id, form);
-			setSaved(true);
 			await onUpdated?.();
+			onOpenChange(false);
 		} catch (problem) {
-			setError(problem.message || "Could not save the profile.");
+			setError(problem.message);
 		} finally {
-			setBusy("");
-		}
-	};
-	const savePassword = async (generate) => {
-		if (!generate && password.length < 8) {
-			setError("Use at least 8 characters, or choose Generate new.");
-			return;
-		}
-		setBusy(generate ? "generate" : "password");
-		setError("");
-		try {
-			const result = await setEmployeePassword(employee.id, generate ? "" : password);
-			setCredentials(result.credentials);
-			setPassword("");
-		} catch (problem) {
-			setError(problem.message || "Could not set the password.");
-		} finally {
-			setBusy("");
+			setBusy(false);
 		}
 	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
 		open: Boolean(employee),
 		onOpenChange,
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
-			className: "max-h-[90dvh] overflow-y-auto",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: credentials ? "New password is ready" : `Edit ${employee?.name || "employee"}` }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: credentials ? "Share these details privately. The employee has been signed out of every device." : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-				"Employee ID ",
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "font-mono",
-					children: employee?.id
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogTitle, { children: ["Edit ", employee?.name] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Keep their existing projects and history. Changing the Google email revokes the old account’s access." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+			onSubmit: save,
+			className: "space-y-3",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+					className: "grid gap-1 text-xs",
+					children: ["Full name", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+						required: true,
+						maxLength: 120,
+						...field("name")
+					})]
 				}),
-				" stays the same."
-			] }) })] }), credentials ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CredentialsPanel, {
-				credentials,
-				note: "The previous password no longer works. If this one gets lost, set a new one any time from Edit."
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-				variant: "outline",
-				className: "w-full",
-				onClick: () => onOpenChange(false),
-				children: "Done"
-			})] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "space-y-5",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-						onSubmit: saveProfile,
-						className: "space-y-3",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-xs font-semibold uppercase tracking-wider text-muted-foreground",
-								children: "Profile"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-								className: "grid gap-1 text-xs font-medium",
-								children: ["Full name", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									required: true,
-									maxLength: 120,
-									...field("name")
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-								className: "grid gap-1 text-xs font-medium",
-								children: ["Designation", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									required: true,
-									maxLength: 120,
-									...field("designation")
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "grid gap-3 sm:grid-cols-2",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-									className: "grid gap-1 text-xs font-medium",
-									children: ["Email (optional)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-										type: "email",
-										maxLength: 200,
-										placeholder: "name@example.com",
-										...field("email")
-									})]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-									className: "grid gap-1 text-xs font-medium",
-									children: ["Phone (optional)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-										type: "tel",
-										maxLength: 40,
-										placeholder: "+91…",
-										...field("phone")
-									})]
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								type: "submit",
-								className: "h-11 w-full",
-								disabled: Boolean(busy),
-								children: busy === "profile" ? "Saving…" : saved ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {}), "Saved"] }) : "Save profile"
-							})
-						]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "space-y-3 border-t pt-4",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-								className: "flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(KeyRound, { className: "size-3.5" }), "Password"]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-xs text-muted-foreground",
-								children: "Set a password you choose, or generate a strong one. Either way the employee is signed out everywhere and must use the new password."
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PasswordField, {
-								value: password,
-								onChange: (event) => setPassword(event.target.value),
-								placeholder: "New password (8+ characters)"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "grid grid-cols-2 gap-2",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-									type: "button",
-									className: "h-11",
-									disabled: Boolean(busy) || !password,
-									onClick: () => savePassword(false),
-									children: busy === "password" ? "Setting…" : "Set this password"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-									type: "button",
-									variant: "outline",
-									className: "h-11",
-									disabled: Boolean(busy),
-									onClick: () => savePassword(true),
-									children: busy === "generate" ? "Generating…" : "Generate new"
-								})]
-							})
-						]
-					}),
-					error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						role: "alert",
-						className: "text-xs text-destructive",
-						children: error
-					})
-				]
-			})]
-		})
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+					className: "grid gap-1 text-xs",
+					children: ["Designation", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+						required: true,
+						maxLength: 120,
+						...field("designation")
+					})]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+					className: "grid gap-1 text-xs",
+					children: [
+						"Google sign-in email",
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+							type: "email",
+							required: true,
+							readOnly: employee?.workspaceRole === "Founder",
+							maxLength: 200,
+							...field("email")
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "text-muted-foreground",
+							children: "Use the exact Gmail or Google Workspace email they will sign in with. Saving pre-approves their access."
+						})
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+					className: "grid gap-1 text-xs",
+					children: ["Phone (optional)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+						type: "tel",
+						maxLength: 40,
+						...field("phone")
+					})]
+				}),
+				error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					role: "alert",
+					className: "text-sm text-destructive",
+					children: error
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					disabled: busy,
+					type: "submit",
+					className: "w-full",
+					children: busy ? "Saving…" : "Save profile and access"
+				})
+			]
+		})] })
 	});
 }
 function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpdated }) {
-	const [projectId, setProjectId] = (0, import_react.useState)(defaultProjectId || "");
-	const [credentials, setCredentials] = (0, import_react.useState)(null);
-	const [busy, setBusy] = (0, import_react.useState)(false);
-	const [error, setError] = (0, import_react.useState)("");
-	const [copied, setCopied] = (0, import_react.useState)(false);
+	const [projectId, setProjectId] = (0, import_react.useState)(""), [access, setAccess] = (0, import_react.useState)(null), [busy, setBusy] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)(""), [copied, setCopied] = (0, import_react.useState)(false);
 	(0, import_react.useEffect)(() => {
 		if (open) {
 			setProjectId(defaultProjectId || projects[0]?.id || "");
-			setCredentials(null);
+			setAccess(null);
 			setError("");
 			setCopied(false);
 		}
-	}, [open]);
-	(0, import_react.useEffect)(() => {
-		if (open && !projects.some((project) => project.id === projectId)) setProjectId(defaultProjectId || projects[0]?.id || "");
-	}, [
-		open,
-		defaultProjectId,
-		projects,
-		projectId
-	]);
+	}, [open, defaultProjectId]);
 	const submit = async (event, existing) => {
 		event.preventDefault();
 		setBusy(true);
 		setError("");
 		const data = Object.fromEntries(new FormData(event.currentTarget));
-		const url = existing ? `/api/founder/projects/${projectId}/employees` : "/api/founder/employees";
 		try {
-			const response = await fetch(url, {
+			const result = await request(existing ? `/api/founder/projects/${projectId}/employees` : "/api/founder/employees", {
 				method: "POST",
-				credentials: "same-origin",
-				headers: { "content-type": "application/json" },
-				body: JSON.stringify(existing ? data : {
+				body: existing ? data : {
 					...data,
 					projectId
-				})
+				}
 			});
-			const result = await response.json();
-			if (!response.ok) throw new Error(result.error || "Could not save employee.");
-			await onUpdated();
+			await onUpdated?.();
 			if (existing) onOpenChange(false);
-			else setCredentials(result.credentials);
+			else setAccess(result.access);
 		} catch (problem) {
 			setError(problem.message);
 		} finally {
@@ -25337,12 +25259,11 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 		}
 	};
 	const copy = async () => {
-		if (!credentials) return;
 		try {
-			await navigator.clipboard.writeText(`Studio Iksha employee access\nLink: ${credentials.link}\nEmployee ID: ${credentials.employeeId}\nPassword: ${credentials.password}`);
+			await navigator.clipboard.writeText(`Studio Iksha access\n${location.origin}/employee\nSign in with Google: ${access.email}`);
 			setCopied(true);
 		} catch {
-			setError("Could not copy. Select and copy the details below.");
+			setError("Could not copy. Copy the email and link shown here.");
 		}
 	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
@@ -25351,42 +25272,27 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
 			className: "max-h-[90dvh] overflow-y-auto",
 			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: credentials ? "Employee access is ready" : "Add employee" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: credentials ? "Copy these details now and share them privately." : "Give an employee access to one project, or assign an existing employee ID to another." })] }),
-				credentials ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: access ? "Employee access is ready" : "Add employee" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: access ? "They can sign in immediately with this Google account." : "Pre-approve their Google email and choose their first project." })] }),
+				access ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "space-y-3",
 					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-							className: "grid gap-1 text-xs font-medium",
-							children: ["Employee login link", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								value: credentials.link,
-								readOnly: true,
-								className: "font-mono text-xs"
-							})]
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-sm font-medium",
+							children: access.email
 						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-							className: "grid gap-1 text-xs font-medium",
-							children: ["Employee ID", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								value: credentials.employeeId,
-								readOnly: true,
-								className: "font-mono"
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-							className: "grid gap-1 text-xs font-medium",
-							children: ["Password", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								value: credentials.password,
-								readOnly: true,
-								className: "font-mono"
-							})]
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+							readOnly: true,
+							"aria-label": "Employee sign-in link",
+							value: `${location.origin}/employee`
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "rounded-xl bg-amber-50 p-3 text-xs text-amber-900",
-							children: "Share the password privately with the employee. If it gets lost, set a new one from Edit on their card."
+							className: "text-xs text-muted-foreground",
+							children: "Use Continue with Google. Only assigned projects are visible; there is no approval wait or password."
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-							className: "h-11 w-full",
+							className: "w-full",
 							onClick: copy,
-							children: [copied ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Copy, {}), copied ? "Copied" : "Copy link and credentials"]
+							children: [copied ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Copy, {}), copied ? "Copied" : "Copy sign-in details"]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 							variant: "outline",
@@ -25397,23 +25303,21 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 					]
 				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "space-y-4",
-					children: [projects.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-						className: "grid gap-1.5 text-sm font-medium",
-						children: ["Project", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "grid gap-1 text-xs",
+						children: ["Project", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
 							value: projectId,
 							onChange: (event) => setProjectId(event.target.value),
-							className: "w-full",
-							children: projects.map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: "",
+								children: "Choose a project…"
+							}), projects.map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
 								value: project.id,
 								children: project.name
-							}, project.id))
+							}, project.id))]
 						})]
-					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "rounded-xl bg-muted p-3 text-sm text-muted-foreground",
-						children: "Create a project before adding employees."
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Tabs, {
 						defaultValue: "new",
-						className: "gap-4",
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
 								className: "w-full",
@@ -25422,7 +25326,7 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 									children: "New employee"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
 									value: "existing",
-									children: "Existing ID"
+									children: "Existing employee"
 								})]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
@@ -25432,16 +25336,15 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 									className: "space-y-3",
 									children: [
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-											className: "grid gap-1 text-xs font-medium",
+											className: "grid gap-1 text-xs",
 											children: ["Full name", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 												name: "name",
 												required: true,
-												maxLength: 120,
-												placeholder: "Aarav Sharma"
+												maxLength: 120
 											})]
 										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-											className: "grid gap-1 text-xs font-medium",
+											className: "grid gap-1 text-xs",
 											children: ["Designation", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 												name: "designation",
 												required: true,
@@ -25449,50 +25352,43 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 												placeholder: "Interior designer"
 											})]
 										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "grid grid-cols-2 gap-3",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-												className: "grid gap-1 text-xs font-medium",
-												children: ["Email (optional)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+											className: "grid gap-1 text-xs",
+											children: [
+												"Google sign-in email",
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 													name: "email",
 													type: "email",
+													required: true,
 													maxLength: 200,
-													placeholder: "name@example.com"
-												})]
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-												className: "grid gap-1 text-xs font-medium",
-												children: ["Phone (optional)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-													name: "phone",
-													type: "tel",
-													maxLength: 40,
-													placeholder: "+91…"
-												})]
-											})]
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-											className: "grid gap-1 text-xs font-medium",
-											children: ["Project role", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
-												name: "role",
-												className: "w-full",
-												children: roles.map((role) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: role }, role))
-											})]
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-											className: "grid gap-1 text-xs font-medium",
-											children: [
-												"Password (optional)",
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PasswordField, {}),
+													placeholder: "name@gmail.com"
+												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-													className: "font-normal text-muted-foreground",
-													children: "Choose one (8+ characters) or leave blank and we'll generate a strong one. You can change it later from Edit."
+													className: "text-muted-foreground",
+													children: "The exact Gmail or Google Workspace account they will use."
 												})
 											]
 										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+											className: "grid gap-1 text-xs",
+											children: ["Phone (optional)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+												name: "phone",
+												type: "tel",
+												maxLength: 40
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+											className: "grid gap-1 text-xs",
+											children: ["Project role", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
+												name: "role",
+												children: roles.map((role) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: role }, role))
+											})]
+										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 											type: "submit",
-											className: "h-11 w-full",
 											disabled: busy || !projectId,
-											children: busy ? "Creating access…" : "Create employee access"
+											className: "w-full",
+											children: busy ? "Saving…" : "Add employee and approve access"
 										})
 									]
 								})
@@ -25504,31 +25400,29 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 									className: "space-y-3",
 									children: [
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-											className: "grid gap-1 text-xs font-medium",
-											children: ["Existing employee ID", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+											className: "grid gap-1 text-xs",
+											children: ["Employee ID", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 												name: "employeeId",
 												required: true,
-												placeholder: "EMP-XXXXXXXXXX",
-												autoCapitalize: "characters"
+												placeholder: "EMP-XXXXXXXXXX"
 											})]
 										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-											className: "grid gap-1 text-xs font-medium",
-											children: ["Role on this project", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
+											className: "grid gap-1 text-xs",
+											children: ["Project role", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
 												name: "role",
-												className: "w-full",
 												children: roles.map((role) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: role }, role))
 											})]
 										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "text-xs leading-relaxed text-muted-foreground",
-											children: "The employee keeps the same login ID and password. This project appears in their workspace after assignment."
+											className: "text-xs text-muted-foreground",
+											children: "Their Google login stays the same. This adds the selected project to their access."
 										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-											type: "submit",
-											className: "h-11 w-full",
 											disabled: busy || !projectId,
-											children: busy ? "Assigning…" : "Assign to project"
+											type: "submit",
+											className: "w-full",
+											children: "Assign to project"
 										})
 									]
 								})
@@ -25538,7 +25432,7 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 				}),
 				error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					role: "alert",
-					className: "text-xs text-destructive",
+					className: "text-sm text-destructive",
 					children: error
 				})
 			]
@@ -25645,7 +25539,7 @@ function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewWork }) 
 												children: employee.designation
 											})]
 										})]
-									}), isActive && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									}), isActive && employee.workspaceRole !== "Founder" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "flex shrink-0 items-center gap-1",
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 											variant: "outline",
@@ -25666,6 +25560,10 @@ function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewWork }) 
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "font-mono text-xs text-muted-foreground",
 									children: employee.id
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+									className: "text-xs text-muted-foreground",
+									children: ["Google access: ", employee.workspaceRole === "Founder" ? "Founder · manage role above" : employee.googleLinked ? "Connected" : employee.googleInvited ? "Pre-approved" : "Add their Google email"]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 									className: "text-xs text-muted-foreground",
@@ -25706,7 +25604,7 @@ function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewWork }) 
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "mt-1 text-xs text-muted-foreground",
-						children: "Add a team member to generate their login link and credentials."
+						children: "Add a team member’s Google email to pre-approve their access."
 					})
 				]
 			}) }),
@@ -30238,7 +30136,6 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 	const [startDate, setStartDate] = (0, import_react.useState)(() => (/* @__PURE__ */ new Date()).toLocaleDateString("en-CA"));
 	const [busy, setBusy] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
-	const [credentials, setCredentials] = (0, import_react.useState)(null);
 	const [memberId, setMemberId] = (0, import_react.useState)("");
 	const [notice, setNotice] = (0, import_react.useState)("");
 	const load = async () => {
@@ -30267,10 +30164,9 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 		setError("");
 		setNotice("");
 		try {
-			const result = await work();
-			if (result?.credentials) setCredentials(Array.isArray(result.credentials) ? result.credentials : [result.credentials]);
+			await work();
 			await load();
-			if (!result?.credentials && onProjectsChanged) await onProjectsChanged();
+			if (onProjectsChanged) await onProjectsChanged();
 			setNotice(message);
 		} catch (failure) {
 			setError(failure.message);
@@ -30283,7 +30179,7 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 		return run(() => api$2(`/api/founder/telegram-groups/${group.groupChatId}/members/${member.telegramUserId}`, "POST", {
 			name: (draft.name ?? member.assignedName ?? member.telegramName).trim(),
 			role: (draft.role ?? member.assignedRole ?? "").trim()
-		}), "Role saved and announced in Telegram.");
+		}), "Role saved and announced in Telegram. Team members need their Google email added in Employees for web access.");
 	};
 	const createProject = () => run(async () => {
 		return api$2(`/api/founder/telegram-groups/${group.groupChatId}/create-project`, "POST", {
@@ -30321,31 +30217,6 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 				role: "alert",
 				className: "rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800",
 				children: error
-			}),
-			credentials && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "rounded-xl border bg-card p-4 text-sm",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "font-semibold",
-						children: "New team login — share privately with this member"
-					}),
-					credentials.map((login) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "my-3",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: login.name }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: ["Employee ID: ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("code", { children: login.employeeId })] }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: ["Temporary password: ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("code", { children: login.password })] })
-						]
-					}, login.employeeId)),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						variant: "outline",
-						onClick: async () => {
-							setCredentials(null);
-							if (onProjectsChanged) await onProjectsChanged();
-						},
-						children: "I have saved these details"
-					})
-				]
 			}),
 			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				role: "status",
@@ -30580,7 +30451,7 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 										className: "self-end",
 										onClick: createProject,
-										disabled: busy || Boolean(credentials) || pendingCount > 0 || !activeMembers.some((member) => hasRole(member.assignedRole, "Client")) || !activeMembers.some((member) => isStaff(member.assignedRole)),
+										disabled: busy || pendingCount > 0 || !activeMembers.some((member) => hasRole(member.assignedRole, "Client")) || !activeMembers.some((member) => isStaff(member.assignedRole)),
 										children: "Finish setup"
 									})
 								]
@@ -49806,10 +49677,6 @@ function Field({ label, children }) {
 }
 function FounderApp() {
 	const [authState, setAuthState] = (0, import_react.useState)("checking");
-	const [password, setPassword] = (0, import_react.useState)("");
-	const [showPassword, setShowPassword] = (0, import_react.useState)(false);
-	const [loginError, setLoginError] = (0, import_react.useState)("");
-	const [isLoggingIn, setIsLoggingIn] = (0, import_react.useState)(false);
 	const [projects, setProjects] = (0, import_react.useState)([]);
 	const [employees, setEmployees] = (0, import_react.useState)([]);
 	const [trashedProjects, setTrashedProjects] = (0, import_react.useState)([]);
@@ -49931,23 +49798,9 @@ function FounderApp() {
 		setViewMode("detail");
 		setCurrentTab("projects");
 	};
-	const handleLogin = async (event) => {
-		event.preventDefault();
-		setIsLoggingIn(true);
-		setLoginError("");
-		try {
-			await post$1("/api/founder/login", { password });
-			await Promise.all([loadProjects(), loadDecisionRequests()]);
-		} catch (error) {
-			setLoginError(error.message);
-		} finally {
-			setIsLoggingIn(false);
-		}
-	};
 	const handleLogout = async () => {
 		await post$1("/api/founder/logout");
 		setAuthState("signed-out");
-		setPassword("");
 	};
 	const handleInvite = async () => {
 		if (!selectedProject) return;
@@ -50026,47 +49879,7 @@ function FounderApp() {
 			]
 		})
 	});
-	if (authState === "signed-out") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkspaceAccess, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-		onSubmit: handleLogin,
-		className: "space-y-4",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-				className: "grid gap-2 text-sm",
-				htmlFor: "founder-key",
-				children: "Founder key"
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "relative",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-					id: "founder-key",
-					type: showPassword ? "text" : "password",
-					value: password,
-					onChange: (event) => setPassword(event.target.value),
-					placeholder: "Enter founder key",
-					autoComplete: "current-password",
-					required: true,
-					className: "h-12 pr-12"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-					type: "button",
-					onClick: () => setShowPassword((value) => !value),
-					"aria-label": showPassword ? "Hide founder key" : "Show founder key",
-					className: "absolute inset-y-0 right-2 grid w-10 place-items-center text-muted-foreground",
-					children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EyeOff, { size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eye, { size: 16 })
-				})]
-			}),
-			loginError && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				role: "alert",
-				className: "text-sm text-destructive",
-				children: loginError
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-				type: "submit",
-				disabled: isLoggingIn,
-				className: "h-12 w-full",
-				children: [isLoggingIn ? "Opening…" : "Sign in", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { size: 15 })]
-			})
-		]
-	}) });
+	if (authState === "signed-out") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkspaceAccess, {});
 	const navItems = [
 		[
 			"projects",
@@ -50201,7 +50014,7 @@ function FounderApp() {
 							children: "Project Founder"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "text-xs text-muted-foreground",
-							children: "Workspace owner"
+							children: "Workspace founder"
 						})]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
@@ -51057,9 +50870,6 @@ var taskStatusColors = {
 };
 function EmployeeApp() {
 	const [auth, setAuth] = (0, import_react.useState)("checking");
-	const [employeeId, setEmployeeId] = (0, import_react.useState)(new URLSearchParams(location.search).get("id") || "");
-	const [password, setPassword] = (0, import_react.useState)("");
-	const [showPassword, setShowPassword] = (0, import_react.useState)(false);
 	const [employee, setEmployee] = (0, import_react.useState)(null);
 	const [projects, setProjects] = (0, import_react.useState)([]);
 	const [selectedId, setSelectedId] = (0, import_react.useState)(null);
@@ -51071,7 +50881,6 @@ function EmployeeApp() {
 	const [staleData, setStaleData] = (0, import_react.useState)(false);
 	const [loadingWorkspace, setLoadingWorkspace] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
-	const [busy, setBusy] = (0, import_react.useState)(false);
 	const load = async () => {
 		try {
 			const data = await request("/api/employee/me");
@@ -51119,26 +50928,6 @@ function EmployeeApp() {
 	(0, import_react.useEffect)(() => {
 		if (selected?.id) loadWorkspaceData();
 	}, [selected?.id, loadWorkspaceData]);
-	const login = async (event) => {
-		event.preventDefault();
-		setBusy(true);
-		setError("");
-		try {
-			await request("/api/employee/login", {
-				method: "POST",
-				body: {
-					employeeId: employeeId.trim(),
-					password
-				}
-			});
-			await load();
-			setPassword("");
-		} catch (problem) {
-			setError(problem.message);
-		} finally {
-			setBusy(false);
-		}
-	};
 	const logout = async () => {
 		await request("/api/employee/logout", { method: "POST" });
 		setAuth("signed-out");
@@ -51166,57 +50955,7 @@ function EmployeeApp() {
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-12 w-48" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-52 w-full" })]
 		})
 	});
-	if (auth === "signed-out") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkspaceAccess, {
-		team: true,
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-			onSubmit: login,
-			className: "space-y-4",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-					className: "grid gap-2 text-sm",
-					children: ["Employee ID", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-						value: employeeId,
-						onChange: (e) => setEmployeeId(e.target.value),
-						autoComplete: "username",
-						required: true,
-						placeholder: "EMP-XXXXXXXXXX",
-						className: "h-12"
-					})]
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-					className: "grid gap-2 text-sm",
-					children: ["Password", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "relative",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-							value: password,
-							onChange: (e) => setPassword(e.target.value),
-							type: showPassword ? "text" : "password",
-							autoComplete: "current-password",
-							required: true,
-							className: "h-12 pr-12"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-							type: "button",
-							"aria-label": showPassword ? "Hide password" : "Show password",
-							onClick: () => setShowPassword((value) => !value),
-							className: "absolute inset-y-0 right-2 grid w-10 place-items-center text-muted-foreground",
-							children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EyeOff, { size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eye, { size: 16 })
-						})]
-					})]
-				}),
-				error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					role: "alert",
-					className: "text-sm text-destructive",
-					children: error
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-					type: "submit",
-					disabled: busy,
-					className: "h-12 w-full",
-					children: busy ? "Signing in…" : "Sign in"
-				})
-			]
-		})
-	});
+	if (auth === "signed-out") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkspaceAccess, { team: true });
 	const projectQueries = decisionRequests.filter((r) => r.projectId === selected?.id);
 	const pendingQueriesCount = projectQueries.filter((r) => ![
 		"Done",
