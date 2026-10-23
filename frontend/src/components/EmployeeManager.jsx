@@ -1,312 +1,66 @@
 import {GoogleAccessRequests} from './GoogleAccessRequests';
 import { matchesRole } from '@/lib/roles';
-import { useEffect, useState } from "react";
-import { Check, Copy, Eye, EyeOff, KeyRound, Pencil, UserPlus, Users, UserX, AlertTriangle, Loader2 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { NativeSelect } from "@/components/ui/native-select";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { disableEmployee, setEmployeePassword, updateEmployee } from "@/lib/api";
+import { useEffect, useState } from 'react';
+import { Check, Copy, Pencil, UserPlus, Users, UserX, Loader2 } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { NativeSelect } from '@/components/ui/native-select';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { disableEmployee, updateEmployee, request } from '@/lib/api';
+const roles = ['Designer', 'Site supervisor', 'Project admin', 'Site team', 'Contractor', 'Trade worker', 'Other'];
 
-const roles = ["Project admin", "Designer", "Site supervisor", "Site team", "Contractor", "Trade worker", "Other"];
-
-// Password input with show/hide. Blank means the system generates a strong password.
-function PasswordField({ name = "password", value, onChange, placeholder = "Leave blank to generate one", autoComplete = "new-password" }) {
-  const [visible, setVisible] = useState(false);
-  return <span className="relative block">
-    <Input name={name} type={visible ? "text" : "password"} minLength={8} maxLength={128} autoComplete={autoComplete} placeholder={placeholder} value={value} onChange={onChange} className="pr-10" />
-    <button type="button" onClick={() => setVisible((current) => !current)} className="absolute inset-y-0 right-0 grid w-10 place-items-center text-muted-foreground" aria-label={visible ? "Hide password" : "Show password"}>
-      {visible ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
-    </button>
-  </span>;
+export function EditEmployeeDialog({employee,onOpenChange,onUpdated}) {
+  const [form,setForm]=useState({name:'',designation:'',email:'',phone:''}),[busy,setBusy]=useState(false),[error,setError]=useState('');
+  useEffect(()=>{if(employee){setForm({name:employee.name,designation:employee.designation,email:employee.email || '',phone:employee.phone || ''});setError('');}},[employee]);
+  const field=key=>({value:form[key],onChange:event=>setForm({...form,[key]:event.target.value})});
+  const save=async event=>{
+    event.preventDefault();setBusy(true);setError('');
+    try{await updateEmployee(employee.id,form);await onUpdated?.();onOpenChange(false);}catch(problem){setError(problem.message);}finally{setBusy(false);}
+  };
+  return <Dialog open={Boolean(employee)} onOpenChange={onOpenChange}><DialogContent><DialogHeader><DialogTitle>Edit {employee?.name}</DialogTitle><DialogDescription>Keep their existing projects and history. Changing the Google email revokes the old account’s access.</DialogDescription></DialogHeader><form onSubmit={save} className="space-y-3">
+    <label className="grid gap-1 text-xs">Full name<Input required maxLength={120} {...field('name')}/></label>
+    <label className="grid gap-1 text-xs">Designation<Input required maxLength={120} {...field('designation')}/></label>
+    <label className="grid gap-1 text-xs">Google sign-in email<Input type="email" required readOnly={employee?.workspaceRole==='Founder'} maxLength={200} {...field('email')}/><span className="text-muted-foreground">Use the exact Gmail or Google Workspace email they will sign in with. Saving pre-approves their access.</span></label>
+    <label className="grid gap-1 text-xs">Phone (optional)<Input type="tel" maxLength={40} {...field('phone')}/></label>
+    {error && <p role="alert" className="text-sm text-destructive">{error}</p>}<Button disabled={busy} type="submit" className="w-full">{busy?'Saving…':'Save profile and access'}</Button>
+  </form></DialogContent></Dialog>;
 }
 
-// Login details shown after setting a password, with one-tap copy.
-function CredentialsPanel({ credentials, note }) {
-  const [copied, setCopied] = useState(false);
-  const [error, setError] = useState("");
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(`Studio Iksha employee access\nLink: ${credentials.link}\nEmployee ID: ${credentials.employeeId}\nPassword: ${credentials.password}`);
-      setCopied(true);
-    } catch {
-      setError("Could not copy. Select and copy the details below.");
-    }
+export function EmployeeDialog({open,onOpenChange,projects,defaultProjectId,onUpdated}) {
+  const [projectId,setProjectId]=useState(''),[access,setAccess]=useState(null),[busy,setBusy]=useState(false),[error,setError]=useState(''),[copied,setCopied]=useState(false);
+  useEffect(()=>{if(open){setProjectId(defaultProjectId || projects[0]?.id || '');setAccess(null);setError('');setCopied(false);}},[open,defaultProjectId]);
+  const submit=async(event,existing)=>{
+    event.preventDefault();setBusy(true);setError('');
+    const data=Object.fromEntries(new FormData(event.currentTarget));
+    try{
+      const result=await request(existing?`/api/founder/projects/${projectId}/employees`:'/api/founder/employees',{method:'POST',body:existing?data:{...data,projectId}});
+      await onUpdated?.();if(existing)onOpenChange(false);else setAccess(result.access);
+    }catch(problem){setError(problem.message);}finally{setBusy(false);}
   };
-  return <div className="space-y-3">
-    <label className="grid gap-1 text-xs font-medium">Employee login link<Input value={credentials.link} readOnly className="font-mono text-xs" /></label>
-    <label className="grid gap-1 text-xs font-medium">Employee ID<Input value={credentials.employeeId} readOnly className="font-mono" /></label>
-    <label className="grid gap-1 text-xs font-medium">Password<Input value={credentials.password} readOnly className="font-mono" /></label>
-    <p className="rounded-xl bg-amber-50 p-3 text-xs text-amber-900">{note}</p>
-    <Button type="button" className="h-11 w-full" onClick={copy}>{copied ? <Check /> : <Copy />}{copied ? "Copied" : "Copy link and credentials"}</Button>
-    {error && <p role="alert" className="text-xs text-destructive">{error}</p>}
-  </div>;
-}
-
-// Edit an employee: profile details, and set or reset their password at any time.
-export function EditEmployeeDialog({ employee, onOpenChange, onUpdated }) {
-  const [form, setForm] = useState({ name: "", designation: "", email: "", phone: "" });
-  const [password, setPassword] = useState("");
-  const [credentials, setCredentials] = useState(null);
-  const [busy, setBusy] = useState("");
-  const [error, setError] = useState("");
-  const [saved, setSaved] = useState(false);
-
-  useEffect(() => {
-    if (employee) {
-      setForm({ name: employee.name || "", designation: employee.designation || "", email: employee.email || "", phone: employee.phone || "" });
-      setPassword(""); setCredentials(null); setError(""); setSaved(false); setBusy("");
-    }
-  }, [employee]);
-
-  const field = (key) => ({ value: form[key], onChange: (event) => { setSaved(false); setForm((current) => ({ ...current, [key]: event.target.value })); } });
-  const saveProfile = async (event) => {
-    event.preventDefault();
-    setBusy("profile"); setError("");
-    try {
-      await updateEmployee(employee.id, form);
-      setSaved(true);
-      await onUpdated?.();
-    } catch (problem) {
-      setError(problem.message || "Could not save the profile.");
-    } finally {
-      setBusy("");
-    }
-  };
-  const savePassword = async (generate) => {
-    if (!generate && password.length < 8) { setError("Use at least 8 characters, or choose Generate new."); return; }
-    setBusy(generate ? "generate" : "password"); setError("");
-    try {
-      const result = await setEmployeePassword(employee.id, generate ? "" : password);
-      setCredentials(result.credentials);
-      setPassword("");
-    } catch (problem) {
-      setError(problem.message || "Could not set the password.");
-    } finally {
-      setBusy("");
-    }
-  };
-
-  return <Dialog open={Boolean(employee)} onOpenChange={onOpenChange}>
-    <DialogContent className="max-h-[90dvh] overflow-y-auto">
-      <DialogHeader>
-        <DialogTitle>{credentials ? "New password is ready" : `Edit ${employee?.name || "employee"}`}</DialogTitle>
-        <DialogDescription>{credentials ? "Share these details privately. The employee has been signed out of every device." : <>Employee ID <span className="font-mono">{employee?.id}</span> stays the same.</>}</DialogDescription>
-      </DialogHeader>
-      {credentials ? <>
-        <CredentialsPanel credentials={credentials} note="The previous password no longer works. If this one gets lost, set a new one any time from Edit." />
-        <Button variant="outline" className="w-full" onClick={() => onOpenChange(false)}>Done</Button>
-      </> : <div className="space-y-5">
-        <form onSubmit={saveProfile} className="space-y-3">
-          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Profile</p>
-          <label className="grid gap-1 text-xs font-medium">Full name<Input required maxLength={120} {...field("name")} /></label>
-          <label className="grid gap-1 text-xs font-medium">Designation<Input required maxLength={120} {...field("designation")} /></label>
-          <div className="grid gap-3 sm:grid-cols-2">
-            <label className="grid gap-1 text-xs font-medium">Email (optional)<Input type="email" maxLength={200} placeholder="name@example.com" {...field("email")} /></label>
-            <label className="grid gap-1 text-xs font-medium">Phone (optional)<Input type="tel" maxLength={40} placeholder="+91…" {...field("phone")} /></label>
-          </div>
-          <Button type="submit" className="h-11 w-full" disabled={Boolean(busy)}>{busy === "profile" ? "Saving…" : saved ? <><Check />Saved</> : "Save profile"}</Button>
-        </form>
-        <div className="space-y-3 border-t pt-4">
-          <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground"><KeyRound className="size-3.5" />Password</p>
-          <p className="text-xs text-muted-foreground">Set a password you choose, or generate a strong one. Either way the employee is signed out everywhere and must use the new password.</p>
-          <PasswordField value={password} onChange={(event) => setPassword(event.target.value)} placeholder="New password (8+ characters)" />
-          <div className="grid grid-cols-2 gap-2">
-            <Button type="button" className="h-11" disabled={Boolean(busy) || !password} onClick={() => savePassword(false)}>{busy === "password" ? "Setting…" : "Set this password"}</Button>
-            <Button type="button" variant="outline" className="h-11" disabled={Boolean(busy)} onClick={() => savePassword(true)}>{busy === "generate" ? "Generating…" : "Generate new"}</Button>
-          </div>
-        </div>
-        {error && <p role="alert" className="text-xs text-destructive">{error}</p>}
-      </div>}
-    </DialogContent>
-  </Dialog>;
-}
-
-export function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpdated }) {
-  const [projectId, setProjectId] = useState(defaultProjectId || "");
-  const [credentials, setCredentials] = useState(null);
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState("");
-  const [copied, setCopied] = useState(false);
-
-  // Reset only when the dialog opens. Saving reloads the project list, and resetting on that would wipe the
-  // login details screen a moment after it appears.
-  useEffect(() => {
-    if (open) {
-      setProjectId(defaultProjectId || projects[0]?.id || "");
-      setCredentials(null);
-      setError("");
-      setCopied(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open]);
-  useEffect(() => {
-    if (open && !projects.some((project) => project.id === projectId)) setProjectId(defaultProjectId || projects[0]?.id || "");
-  }, [open, defaultProjectId, projects, projectId]);
-
-  const submit = async (event, existing) => {
-    event.preventDefault();
-    setBusy(true);
-    setError("");
-    const data = Object.fromEntries(new FormData(event.currentTarget));
-    const url = existing ? `/api/founder/projects/${projectId}/employees` : "/api/founder/employees";
-    try {
-      const response = await fetch(url, {
-        method: "POST",
-        credentials: "same-origin",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(existing ? data : { ...data, projectId })
-      });
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error || "Could not save employee.");
-      await onUpdated();
-      if (existing) onOpenChange(false);
-      else setCredentials(result.credentials);
-    } catch (problem) {
-      setError(problem.message);
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  const copy = async () => {
-    if (!credentials) return;
-    try {
-      await navigator.clipboard.writeText(`Studio Iksha employee access\nLink: ${credentials.link}\nEmployee ID: ${credentials.employeeId}\nPassword: ${credentials.password}`);
-      setCopied(true);
-    } catch {
-      setError("Could not copy. Select and copy the details below.");
-    }
-  };
-
-  return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[90dvh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle>{credentials ? "Employee access is ready" : "Add employee"}</DialogTitle>
-          <DialogDescription>
-            {credentials
-              ? "Copy these details now and share them privately."
-              : "Give an employee access to one project, or assign an existing employee ID to another."}
-          </DialogDescription>
-        </DialogHeader>
-
-        {credentials ? (
-          <div className="space-y-3">
-            <label className="grid gap-1 text-xs font-medium">
-              Employee login link
-              <Input value={credentials.link} readOnly className="font-mono text-xs" />
-            </label>
-            <label className="grid gap-1 text-xs font-medium">
-              Employee ID
-              <Input value={credentials.employeeId} readOnly className="font-mono" />
-            </label>
-            <label className="grid gap-1 text-xs font-medium">
-              Password
-              <Input value={credentials.password} readOnly className="font-mono" />
-            </label>
-            <p className="rounded-xl bg-amber-50 p-3 text-xs text-amber-900">
-              Share the password privately with the employee. If it gets lost, set a new one from Edit on their card.
-            </p>
-            <Button className="h-11 w-full" onClick={copy}>
-              {copied ? <Check /> : <Copy />}
-              {copied ? "Copied" : "Copy link and credentials"}
-            </Button>
-            <Button variant="outline" className="w-full" onClick={() => onOpenChange(false)}>
-              Done
-            </Button>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {projects.length ? (
-              <label className="grid gap-1.5 text-sm font-medium">
-                Project
-                <NativeSelect value={projectId} onChange={(event) => setProjectId(event.target.value)} className="w-full">
-                  {projects.map((project) => (
-                    <option key={project.id} value={project.id}>{project.name}</option>
-                  ))}
-                </NativeSelect>
-              </label>
-            ) : (
-              <p className="rounded-xl bg-muted p-3 text-sm text-muted-foreground">
-                Create a project before adding employees.
-              </p>
-            )}
-
-            <Tabs defaultValue="new" className="gap-4">
-              <TabsList className="w-full">
-                <TabsTrigger value="new">New employee</TabsTrigger>
-                <TabsTrigger value="existing">Existing ID</TabsTrigger>
-              </TabsList>
-
-              <TabsContent value="new">
-                <form onSubmit={(event) => submit(event, false)} className="space-y-3">
-                  <label className="grid gap-1 text-xs font-medium">
-                    Full name
-                    <Input name="name" required maxLength={120} placeholder="Aarav Sharma" />
-                  </label>
-                  <label className="grid gap-1 text-xs font-medium">
-                    Designation
-                    <Input name="designation" required maxLength={120} placeholder="Interior designer" />
-                  </label>
-                  <div className="grid grid-cols-2 gap-3">
-                    <label className="grid gap-1 text-xs font-medium">
-                      Email (optional)
-                      <Input name="email" type="email" maxLength={200} placeholder="name@example.com" />
-                    </label>
-                    <label className="grid gap-1 text-xs font-medium">
-                      Phone (optional)
-                      <Input name="phone" type="tel" maxLength={40} placeholder="+91…" />
-                    </label>
-                  </div>
-                  <label className="grid gap-1 text-xs font-medium">
-                    Project role
-                    <NativeSelect name="role" className="w-full">
-                      {roles.map((role) => <option key={role}>{role}</option>)}
-                    </NativeSelect>
-                  </label>
-                  <label className="grid gap-1 text-xs font-medium">
-                    Password (optional)
-                    <PasswordField />
-                    <span className="font-normal text-muted-foreground">Choose one (8+ characters) or leave blank and we'll generate a strong one. You can change it later from Edit.</span>
-                  </label>
-                  <Button type="submit" className="h-11 w-full" disabled={busy || !projectId}>
-                    {busy ? "Creating access…" : "Create employee access"}
-                  </Button>
-                </form>
-              </TabsContent>
-
-              <TabsContent value="existing">
-                <form onSubmit={(event) => submit(event, true)} className="space-y-3">
-                  <label className="grid gap-1 text-xs font-medium">
-                    Existing employee ID
-                    <Input name="employeeId" required placeholder="EMP-XXXXXXXXXX" autoCapitalize="characters" />
-                  </label>
-                  <label className="grid gap-1 text-xs font-medium">
-                    Role on this project
-                    <NativeSelect name="role" className="w-full">
-                      {roles.map((role) => <option key={role}>{role}</option>)}
-                    </NativeSelect>
-                  </label>
-                  <p className="text-xs leading-relaxed text-muted-foreground">
-                    The employee keeps the same login ID and password. This project appears in their workspace after assignment.
-                  </p>
-                  <Button type="submit" className="h-11 w-full" disabled={busy || !projectId}>
-                    {busy ? "Assigning…" : "Assign to project"}
-                  </Button>
-                </form>
-              </TabsContent>
-            </Tabs>
-          </div>
-        )}
-
-        {error && <p role="alert" className="text-xs text-destructive">{error}</p>}
-      </DialogContent>
-    </Dialog>
-  );
+  const copy=async()=>{try{await navigator.clipboard.writeText(`Studio Iksha access\n${location.origin}/employee\nSign in with Google: ${access.email}`);setCopied(true);}catch{setError('Could not copy. Copy the email and link shown here.');}};
+  return <Dialog open={open} onOpenChange={onOpenChange}><DialogContent className="max-h-[90dvh] overflow-y-auto"><DialogHeader><DialogTitle>{access?'Employee access is ready':'Add employee'}</DialogTitle><DialogDescription>{access?'They can sign in immediately with this Google account.':'Pre-approve their Google email and choose their first project.'}</DialogDescription></DialogHeader>
+    {access?<div className="space-y-3"><p className="text-sm font-medium">{access.email}</p><Input readOnly aria-label="Employee sign-in link" value={`${location.origin}/employee`}/><p className="text-xs text-muted-foreground">Use Continue with Google. Only assigned projects are visible; there is no approval wait or password.</p><Button className="w-full" onClick={copy}>{copied?<Check/>:<Copy/>}{copied?'Copied':'Copy sign-in details'}</Button><Button variant="outline" className="w-full" onClick={()=>onOpenChange(false)}>Done</Button></div>:<div className="space-y-4">
+      <label className="grid gap-1 text-xs">Project<NativeSelect value={projectId} onChange={event=>setProjectId(event.target.value)}><option value="">Choose a project…</option>{projects.map(project=><option key={project.id} value={project.id}>{project.name}</option>)}</NativeSelect></label>
+      <Tabs defaultValue="new"><TabsList className="w-full"><TabsTrigger value="new">New employee</TabsTrigger><TabsTrigger value="existing">Existing employee</TabsTrigger></TabsList>
+        <TabsContent value="new"><form onSubmit={event=>submit(event,false)} className="space-y-3">
+          <label className="grid gap-1 text-xs">Full name<Input name="name" required maxLength={120}/></label>
+          <label className="grid gap-1 text-xs">Designation<Input name="designation" required maxLength={120} placeholder="Interior designer"/></label>
+          <label className="grid gap-1 text-xs">Google sign-in email<Input name="email" type="email" required maxLength={200} placeholder="name@gmail.com"/><span className="text-muted-foreground">The exact Gmail or Google Workspace account they will use.</span></label>
+          <label className="grid gap-1 text-xs">Phone (optional)<Input name="phone" type="tel" maxLength={40}/></label>
+          <label className="grid gap-1 text-xs">Project role<NativeSelect name="role">{roles.map(role=><option key={role}>{role}</option>)}</NativeSelect></label>
+          <Button type="submit" disabled={busy || !projectId} className="w-full">{busy?'Saving…':'Add employee and approve access'}</Button>
+        </form></TabsContent>
+        <TabsContent value="existing"><form onSubmit={event=>submit(event,true)} className="space-y-3">
+          <label className="grid gap-1 text-xs">Employee ID<Input name="employeeId" required placeholder="EMP-XXXXXXXXXX"/></label>
+          <label className="grid gap-1 text-xs">Project role<NativeSelect name="role">{roles.map(role=><option key={role}>{role}</option>)}</NativeSelect></label>
+          <p className="text-xs text-muted-foreground">Their Google login stays the same. This adds the selected project to their access.</p><Button disabled={busy || !projectId} type="submit" className="w-full">Assign to project</Button>
+        </form></TabsContent>
+      </Tabs>
+    </div>}{error && <p role="alert" className="text-sm text-destructive">{error}</p>}
+  </DialogContent></Dialog>;
 }
 
 export function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewWork }) {
@@ -382,7 +136,7 @@ export function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewW
                       </div>
                     </div>
 
-                    {isActive && (
+                    {isActive && employee.workspaceRole!=='Founder' && (
                       <div className="flex shrink-0 items-center gap-1">
                         <Button variant="outline" size="sm" className="h-8 px-2.5 text-xs" onClick={() => setEditEmployee(employee)} aria-label={`Edit ${employee.name}`}>
                           <Pencil className="size-3.5 mr-1" />
@@ -401,7 +155,7 @@ export function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewW
                     )}
                   </div>
 
-                  <p className="font-mono text-xs text-muted-foreground">{employee.id}</p><p className="text-xs text-muted-foreground">Telegram digest: {employee.telegramConnected?'Connected':'Awaiting Start in bot'}</p><Button variant="outline" size="sm" onClick={()=>onViewWork?.(employee)}>View pending work</Button>
+                  <p className="font-mono text-xs text-muted-foreground">{employee.id}</p><p className="text-xs text-muted-foreground">Google access: {employee.workspaceRole==='Founder'?'Founder · manage role above':employee.googleLinked?'Connected':employee.googleInvited?'Pre-approved':'Add their Google email'}</p><p className="text-xs text-muted-foreground">Telegram digest: {employee.telegramConnected?'Connected':'Awaiting Start in bot'}</p><Button variant="outline" size="sm" onClick={()=>onViewWork?.(employee)}>View pending work</Button>
                   {(employee.email || employee.phone) && <p className="text-xs text-muted-foreground">{[employee.email, employee.phone].filter(Boolean).join(" · ")}</p>}
 
                   <div className="flex flex-wrap gap-1.5 pt-1">
@@ -426,7 +180,7 @@ export function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewW
             <Users className="mx-auto size-9 text-muted-foreground/50" />
             <h2 className="mt-3 text-sm font-semibold">No employee accounts yet</h2>
             <p className="mt-1 text-xs text-muted-foreground">
-              Add a team member to generate their login link and credentials.
+              Add a team member’s Google email to pre-approve their access.
             </p>
           </CardContent>
         </Card>

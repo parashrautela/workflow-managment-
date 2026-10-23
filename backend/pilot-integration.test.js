@@ -1,3 +1,4 @@
+import { googleTestIdentity } from './test-helpers/google-identity.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtemp, cp, symlink, writeFile, readFile, rm } from 'node:fs/promises';
@@ -30,6 +31,8 @@ globalThis.fetch = async (url,options) => {
   }
   return original(url,options);
 };`);
+  const google = await googleTestIdentity(directory);
+  await google.seed(path.join(directory, 'backend/data.json'));
   const reserve = net.createServer();
   await new Promise((resolve,reject)=>{reserve.once('error',reject);reserve.listen(0,'127.0.0.1',resolve);});
   const port = reserve.address().port; await new Promise((resolve)=>reserve.close(resolve));
@@ -40,7 +43,7 @@ globalThis.fetch = async (url,options) => {
     return {status:response.status,data:await response.json(),cookie:response.headers.get('set-cookie')?.split(';')[0]};
   };
   const start = async () => {
-    child = spawn(process.execPath,['--import',mock,path.join(directory,'backend/server.js')],{cwd:directory,env:{...process.env,PORT:String(port),FOUNDER_PASSWORD:'test-password',INTEGRATION_SHARED_SECRET:'test-secret',GROUP_BOT_TOKEN:'test-token',DATABASE_URL:'',NODE_ENV:'test',APP_DATA_FILE:''},stdio:'ignore'});
+    child = spawn(process.execPath,['--import',mock,'--import',google.mock,path.join(directory,'backend/server.js')],{cwd:directory,env:{...process.env,PORT:String(port),GOOGLE_CLIENT_ID:google.clientId,INITIAL_FOUNDER_EMAIL:'',INTEGRATION_SHARED_SECRET:'test-secret',GROUP_BOT_TOKEN:'test-token',DATABASE_URL:'',NODE_ENV:'test',APP_DATA_FILE:''},stdio:'ignore'});
     for (let i=0;i<50;i++) {
       try { await call('/api/founder/projects'); return; } catch { await new Promise((resolve)=>setTimeout(resolve,50)); }
     }
@@ -49,8 +52,8 @@ globalThis.fetch = async (url,options) => {
   const stop = async () => { if (child.exitCode === null) { const exited = new Promise((resolve)=>child.once('exit',resolve)); child.kill(); await exited; } };
   t.after(async()=>{await stop();await rm(directory,{recursive:true,force:true});});
   await start();
-  const login = await call('/api/founder/login','POST',{password:'test-password'});
-  return {call,cookie:login.cookie,directory,base,restart:async()=>{await stop();await start();}};
+  const login = await google.signIn(base);
+  return {call,signIn:identity=>google.signIn(base,identity),cookie:login.cookie,directory,base,restart:async()=>{await stop();await start();}};
 }
 const payload = (messageId=10,changes={}) => ({RequestID:`REQ--123-${messageId}-question`,GroupChatID:'-123',SourceMessageID:String(messageId),RequestType:'Question',OriginalMessage:'Can we move this light?',RequestContext:'',OriginalSenderName:'Client',OriginalSenderTelegramID:'42',RequestedByName:'Client',AttachmentsJSON:'[]',...changes});
 
@@ -86,9 +89,9 @@ test('pilot loop: setup, start, client text/photo, two-user discussion, task ass
   const created=await call('/api/founder/projects','POST',{name:'Pilot home'}); assert.equal(created.status,201); const p=created.data.project.id;
   assert.equal((await call(`/api/founder/projects/${p}/workflow/start`,'POST',{workflowId:'PILOT-DESIGN-V1'})).status,409);
   assert.equal((await call(`/api/founder/projects/${p}/client`,'POST',{clientName:'Maya',clientTelegramId:'42'})).status,200);
-  const employee=await call('/api/founder/employees','POST',{name:'Neha',designation:'Designer',projectId:p,role:'Designer'});
-  const credentials=employee.data.credentials;
-  const signIn=await f.call('/api/employee/login','POST',credentials); const employeeCookie=signIn.cookie; assert.equal(signIn.status,200);
+  const employee=await call('/api/founder/employees','POST',{name:'Neha',designation:'Designer',projectId:p,role:'Designer',email:'neha@gmail.com'});
+  const credentials={employeeId:employee.data.employee.id};
+  const signIn=await f.signIn({sub:'neha-google',email:'neha@gmail.com',name:'Neha'}); const employeeCookie=signIn.cookie; assert.equal(signIn.status,200);
   const other=await call('/api/founder/projects','POST',{name:'Private project'});
   assert.equal((await f.call(`/api/employee/projects/${other.data.project.id}/workspace`,'GET',undefined,employeeCookie)).status,404);
   const started=await call(`/api/founder/projects/${p}/workflow/start`,'POST',{workflowId:'PILOT-DESIGN-V1',startDate:'2026-10-07',assigneeId:credentials.employeeId}); assert.equal(started.status,200);
@@ -124,7 +127,7 @@ test('pilot loop: setup, start, client text/photo, two-user discussion, task ass
   assert.equal((await call(`/api/founder/tasks/${task.id}`)).data.task.assigneeId,'');
   await call(`/api/founder/employees/${credentials.employeeId}/disable`,'POST',{});
   assert.equal((await f.call('/api/employee/me','GET',undefined,employeeCookie)).status,401);
-  assert.equal((await f.call('/api/employee/login','POST',credentials)).status,401);
+  assert.equal((await f.signIn({sub:'neha-google',email:'neha@gmail.com',name:'Neha'})).status,403);
 });
 
 test('uncertain publishing survives restart and cannot resend; definitive rejection can retry',async(t)=>{
@@ -155,38 +158,26 @@ test('intake rejects invalid media, incorrect client, bad dates and cross-origin
   const response=await fetch(f.base+'/api/founder/projects',{method:'POST',headers:{cookie:f.cookie,origin:'https://evil.example','content-type':'application/json'},body:JSON.stringify({name:'No'})}); assert.equal(response.status,403);
 });
 
-test('founders can set, reset and edit employee access', async (t) => {
-  const f = await fixture(t); const call = (r, m, i) => f.call(r, m, i, f.cookie);
-  const p = (await call('/api/founder/projects', 'POST', { name: 'Access home' })).data.project.id;
-  assert.equal((await call('/api/founder/employees', 'POST', { name: 'Ravi', designation: 'designer', projectId: p, role: 'Designer', password: 'short' })).status, 400, 'too-short chosen password');
-  const created = await call('/api/founder/employees', 'POST', { name: 'Ravi', designation: 'designer', projectId: p, role: 'Designer', password: 'chosen-pass-1' });
-  assert.equal(created.status, 201);
-  const id = created.data.employee.id;
-  assert.equal(created.data.credentials.password, 'chosen-pass-1');
-  const first = await f.call('/api/employee/login', 'POST', { employeeId: id, password: 'chosen-pass-1' });
-  assert.equal(first.status, 200);
-
-  const edited = await call(`/api/founder/employees/${id}`, 'PATCH', { name: 'Ravi Kumar', designation: 'Senior designer', email: 'ravi@example.com', phone: '+91 98765 43210' });
-  assert.equal(edited.status, 200);
-  assert.deepEqual([edited.data.employee.name, edited.data.employee.designation, edited.data.employee.email], ['Ravi Kumar', 'Senior designer', 'ravi@example.com']);
-  const workspace = await call(`/api/founder/projects/${p}/workspace`);
-  assert.equal(workspace.data.project.members.find((member) => member.employeeId === id).name, 'Ravi Kumar', 'project profile follows the edit');
-  assert.equal((await call(`/api/founder/employees/${id}`, 'PATCH', { name: '' })).status, 400);
-  assert.equal((await call(`/api/founder/employees/${id}`, 'PATCH', { email: 'not-an-email' })).status, 400);
-
-  const reset = await call(`/api/founder/employees/${id}/password`, 'POST', { password: 'brand-new-pass' });
-  assert.equal(reset.status, 200);
-  assert.equal((await f.call(`/api/employee/projects/${p}/workspace`, 'GET', undefined, first.cookie)).status, 401, 'old session ends');
-  assert.equal((await f.call('/api/employee/login', 'POST', { employeeId: id, password: 'chosen-pass-1' })).status, 401, 'old password stops working');
-  assert.equal((await f.call('/api/employee/login', 'POST', { employeeId: id, password: 'brand-new-pass' })).status, 200);
-
-  const generated = await call(`/api/founder/employees/${id}/password`, 'POST', {});
-  assert.equal(generated.data.credentials.generated, true);
-  assert.ok(generated.data.credentials.password.length >= 16);
-  assert.equal((await f.call('/api/employee/login', 'POST', { employeeId: id, password: generated.data.credentials.password })).status, 200);
-
-  assert.equal((await f.call(`/api/founder/employees/${id}/password`, 'POST', { password: 'hijack-pass-1' })).status, 401, 'founder session required');
-  assert.equal((await call('/api/founder/employees/EMP-0000000000', 'PATCH', { name: 'X' })).status, 404);
+test('founders pre-approve Google email, preserve profile history and revoke the old identity on email change', async t => {
+  const f = await fixture(t), call = (r,m,i) => f.call(r,m,i,f.cookie);
+  const p = (await call('/api/founder/projects','POST',{name:'Access home'})).data.project.id;
+  assert.equal((await call('/api/founder/employees','POST',{name:'Ravi',designation:'Designer',projectId:p})).status,400);
+  const created = await call('/api/founder/employees','POST',{name:'Ravi',designation:'Designer',projectId:p,email:' RAVI@gmail.com '});
+  assert.equal(created.status,201); assert.ok(!created.data.credentials); const id=created.data.employee.id;
+  assert.equal((await call('/api/founder/employees','POST',{name:'Duplicate',designation:'Designer',projectId:p,email:'ravi@gmail.com'})).status,409);
+  const signed=await f.signIn({sub:'ravi-google',email:'ravi@gmail.com',name:'Ravi'}); assert.equal(signed.data.redirect,'/employee');
+  assert.equal((await f.call('/api/employee/me','GET',undefined,signed.cookie)).data.employee.id,id);
+  const edited=await call(`/api/founder/employees/${id}`,'PATCH',{name:'Ravi Kumar',designation:'Senior designer',email:'new-ravi@gmail.com'});
+  assert.equal(edited.status,200);
+  assert.equal((await f.call('/api/employee/me','GET',undefined,signed.cookie)).status,401);
+  assert.equal((await f.signIn({sub:'ravi-google',email:'ravi@gmail.com',name:'Ravi'})).data.status,'Rejected');
+  const replacement=await f.signIn({sub:'ravi-new-google',email:'new-ravi@gmail.com',name:'Ravi'});
+  assert.equal((await f.call('/api/employee/me','GET',undefined,replacement.cookie)).data.employee.id,id);
+  const workspace=(await call(`/api/founder/projects/${p}/workspace`)).data;
+  assert.equal(workspace.project.members.find(member=>member.employeeId===id).name,'Ravi Kumar');
+  assert.equal((await call(`/api/founder/employees/${id}`,'PATCH',{email:'not-email'})).status,400);
+  assert.equal((await call(`/api/founder/employees/${id}/password`,'POST',{password:'any-password'})).status,410);
+  assert.equal((await f.call('/api/employee/login','POST',{employeeId:id,password:'any-password'})).status,410);
 });
 
 test('spaces, reusable templates and branched stage links persist with atomic batch validation', async t => {

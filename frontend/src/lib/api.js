@@ -362,11 +362,6 @@ export async function updateEmployee(employeeId, fields) {
   return await request(`/api/founder/employees/${employeeId}`, { method: "PATCH", body: fields });
 }
 
-/** Set a chosen password, or generate one when blank (POST /api/founder/employees/:id/password). Signs the employee out everywhere. */
-export async function setEmployeePassword(employeeId, password) {
-  return await post(`/api/founder/employees/${employeeId}/password`, password ? { password } : {});
-}
-
 /** Ask for an AI-suggested reply to a client query, built from project records (POST /api/founder/decision-requests/:id/suggest-reply). Sends nothing. */
 export async function suggestDecisionReply(requestId, instruction = "", outcome = "") {
   return await post(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/suggest-reply`, { ...(instruction ? { instruction } : {}), ...(outcome ? { outcome } : {}) });

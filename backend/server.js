@@ -1,3 +1,4 @@
+import { loginEmail, reserveGoogleAccess, migrateGoogleOnlyAccess } from './google-access.js';
 import { createGoogleAuthRoutes } from './google-auth.js';
 import {createStageLinksRoutes} from './stage-links-routes.js';
 import { createOperationsRoutes, workQueue } from './operations.js';
@@ -6,7 +7,7 @@ import {reconcileGroupMigration} from './group-migration.js';
 import { closeProject } from './project-closure.js';
 import { buildReplyContext, suggestReply } from './reply-suggestions.js';
 import http from 'node:http';
-import { createHash, randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
+import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
 import { readFile, mkdir } from 'node:fs/promises';
 import { createStateStore } from './store.js';
 import { loadTelegramAttachment } from './telegram-media.js';
@@ -19,12 +20,10 @@ const dataDir = path.join(root, 'backend');
 const dataFile = process.env.APP_DATA_FILE || path.join(dataDir, 'data.json');
 const port = Number(process.env.PORT || 3000);
 const production = process.env.NODE_ENV === 'production';
-const founderPassword = process.env.FOUNDER_PASSWORD;
 const integrationSecret = process.env.INTEGRATION_SHARED_SECRET || '';
 const botBridgeUrl = process.env.BOT_BRIDGE_URL?.replace(/\/$/, '') || '';
-if (!founderPassword) {
-  console.error('Set FOUNDER_PASSWORD before starting.');
-  process.exit(1);
+if (production && !/^\d+-[a-zA-Z0-9_-]+\.apps\.googleusercontent\.com$/.test(process.env.GOOGLE_CLIENT_ID || '')) {
+  console.error('Set GOOGLE_CLIENT_ID before production startup.'); process.exit(1);
 }
 if (production && !/^https:\/\//i.test(process.env.PUBLIC_URL || '')) {
   console.error('Set PUBLIC_URL to the app HTTPS origin before production startup.');
@@ -34,15 +33,6 @@ if (production && !/^https:\/\//i.test(process.env.PUBLIC_URL || '')) {
 const hash = (value) => createHash('sha256').update(value).digest('hex');
 const token = () => randomBytes(32).toString('base64url');
 const employeeId = () => `EMP-${randomBytes(5).toString('hex').toUpperCase()}`;
-const employeePassword = () => randomBytes(15).toString('base64url');
-// A founder-chosen password must be 8–128 characters. Blank means "generate one for me".
-const chosenPassword = (value) => {
-  if (value === undefined || value === null || value === '') return { password: employeePassword(), generated: true };
-  if (typeof value !== 'string' || value.length < 8 || value.length > 128) return { error: 'Use a password of 8 to 128 characters, or leave it blank to generate one.' };
-  return { password: value, generated: false };
-};
-const loginLink = (id) => `${(process.env.PUBLIC_URL || `http://localhost:${port}`).replace(/\/$/, '')}/employee?id=${encodeURIComponent(id)}`;
-const passwordHash = (password, salt) => scryptSync(password, salt, 64).toString('hex');
 const validIsoDate = (value) => !value || (/^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(new Date(`${value}T00:00:00.000Z`).getTime()) && new Date(`${value}T00:00:00.000Z`).toISOString().slice(0, 10) === value);
 const safeEqual = (a, b) => {
   const aa = Buffer.from(String(a)); const bb = Buffer.from(String(b));
@@ -55,6 +45,7 @@ await mkdir(dataDir, { recursive: true });
 const stateStore = await createStateStore({ dataFile, production });
 let state = stateStore.state;
 if (initializePilot(state)) await stateStore.save(state);
+if (migrateGoogleOnlyAccess(state, process.env.INITIAL_FOUNDER_EMAIL || '')) await stateStore.save(state);
 console.log(`Project data store connected: ${stateStore.kind}.`);
 let saveQueue = Promise.resolve();
 const publishingRequests = new Set();
@@ -69,9 +60,7 @@ function recordProjectUpdate(projectId, changes) {
   state.projectUpdates.unshift(update);
   return update;
 }
-const loginAttempts = new Map();
 const chatLimits = new Map();
-const employeeLoginAttempts = new Map();
 const founderChatLimits = new Map();
 const replySuggestionLimits = new Map();
 const teamChatLimits = new Map();
@@ -108,32 +97,30 @@ function bindTelegramStaff(project, member) {
     return null;
   }
   let employee=state.employees.find((item)=>item.telegramUserId===member.telegramUserId);
-  let credentials;
   if (!employee) {
-    const password=employeePassword(),salt=randomBytes(16).toString('hex');
-    employee={id:employeeId(),name:member.assignedName,designation:member.assignedRole,telegramUserId:member.telegramUserId,active:true,passwordSalt:salt,passwordHash:passwordHash(password,salt),createdAt:new Date().toISOString()};
-    state.employees.push(employee);credentials={employeeId:employee.id,password,name:member.assignedName};
+    employee={id:employeeId(),name:member.assignedName,designation:member.assignedRole,telegramUserId:member.telegramUserId,active:true,createdAt:new Date().toISOString()};
+    state.employees.push(employee);
   }
   const members=project.members ||= [];
   let profile=members.find((item)=>item.telegramUserId===member.telegramUserId || item.employeeId===employee.id);
   if(!profile){profile={id:randomBytes(8).toString('hex'),employeeId:employee.id,telegramUserId:member.telegramUserId};members.push(profile);}
   Object.assign(profile,{active:true,name:member.assignedName,role:member.assignedRole,roles:rolesOf(member.assignedRole),designation:member.assignedRole});
-  return credentials;
+  return null;
 }
 function employeeView(employee) {
-  return { telegramConnected:Boolean(employee.telegramConnectedAt), active: employee.active !== false, id: employee.id, name: employee.name, designation: employee.designation, email: employee.email || '', phone: employee.phone || '', googleLinked:state.googleAccounts.some(account=>account.kind==='employee' && account.employeeId===employee.id && account.status==='Approved'), createdAt: employee.createdAt, projectIds: state.projects.filter((project) => project.members?.some((member) => member.employeeId === employee.id && member.active!==false)).map((project) => project.id) };
+  return { workspaceRole:state.googleAccounts.some(account=>account.kind==='founder' && account.employeeId===employee.id && account.status==='Approved')?'Founder':'Employee', telegramConnected:Boolean(employee.telegramConnectedAt), active: employee.active !== false, id: employee.id, name: employee.name, designation: employee.designation, email: employee.email || '', phone: employee.phone || '', googleLinked:state.googleAccounts.some(account=>account.employeeId===employee.id && account.status==='Approved' && account.subject), googleInvited:state.googleAccounts.some(account=>account.kind==='employee' && account.employeeId===employee.id && account.status==='Approved' && !account.subject), createdAt: employee.createdAt, projectIds: state.projects.filter((project) => project.members?.some((member) => member.employeeId === employee.id && member.active!==false)).map((project) => project.id) };
 }
 function employeeSession(req) {
   const sid = cookieValue(req, 'iksha_employee');
   const session = state.employeeSessions.find((item) => safeEqual(item.idHash, hash(sid)) && item.expiresAt > Date.now());
-  return session ? state.employees.find((item) => item.id === session.employeeId && item.active !== false) : null;
+  return session && state.googleAccounts.some(account => account.id === session.googleAccountId && account.kind === 'employee' && account.status === 'Approved' && account.employeeId === session.employeeId) ? state.employees.find((item) => item.id === session.employeeId && item.active !== false) : null;
 }
 function clientProjectView(project) {
   return { name: project.name, clientName: project.clientName, phase: project.phase, status: project.status, recentTask: project.recentTask, nextMilestone: project.nextMilestone, blocker: project.blocker };
 }
 function founder(req) {
   const sid = cookieValue(req, 'iksha_founder');
-  return state.founderSessions.find((item) => safeEqual(item.idHash, hash(sid)) && item.expiresAt > Date.now());
+  return state.founderSessions.find((item) => safeEqual(item.idHash, hash(sid)) && item.expiresAt > Date.now() && state.googleAccounts.some(account => account.id === item.googleAccountId && account.subject && account.kind === 'founder' && account.status === 'Approved'));
 }
 function clientSession(req) {
   const sid = cookieValue(req, 'iksha_client');
@@ -325,42 +312,10 @@ async function handleRequest(req, res) {
       state.decisionRequests.unshift(request); audit('decision_request_received', project.id, { requestId: id }); await save();
       return json(res, 201, { request, created: true });
     }
-    if (req.method === 'POST' && url.pathname === '/api/founder/login') {
-      const ip = req.socket.remoteAddress || 'unknown'; const attempts = loginAttempts.get(ip) || { count: 0, lockedUntil: 0 };
-      if (attempts.lockedUntil > Date.now()) return json(res, 429, { error: 'Too many attempts. Try again in a few minutes.' });
-      const input = await body(req);
-      if (!safeEqual(input.password || '', founderPassword)) {
-        attempts.count += 1; if (attempts.count >= 8) { attempts.count = 0; attempts.lockedUntil = Date.now() + 10 * 60 * 1000; }
-        loginAttempts.set(ip, attempts); return json(res, 401, { error: 'That password is not correct.' });
-      }
-      loginAttempts.delete(ip);
-      const id = token(); state.founderSessions = state.founderSessions.filter((session) => session.expiresAt > Date.now());
-      state.founderSessions.push({ idHash: hash(id), expiresAt: Date.now() + 8 * 60 * 60 * 1000 }); await save();
-      return json(res, 200, { ok: true }, { 'set-cookie': cookie('iksha_founder', id, 28800) });
-    }
+    if (req.method === 'POST' && ['/api/founder/login', '/api/employee/login'].includes(url.pathname)) return json(res, 410, { error: 'Password login has been removed. Continue with Google.' });
     if (req.method === 'POST' && url.pathname === '/api/founder/logout') {
       const sid = cookieValue(req, 'iksha_founder'); state.founderSessions = state.founderSessions.filter((session) => !safeEqual(session.idHash, hash(sid))); await save();
       return json(res, 200, { ok: true }, { 'set-cookie': clearCookie('iksha_founder') });
-    }
-    if (req.method === 'POST' && url.pathname === '/api/employee/login') {
-      const input = await body(req);
-      const id = String(input.employeeId || '').trim().toUpperCase();
-      const employee = state.employees.find((item) => item.id === id);
-      const attemptKey = `${req.socket.remoteAddress || 'unknown'}:${id}`;
-      const attempts = employeeLoginAttempts.get(attemptKey) || { count: 0, lockedUntil: 0 };
-      if (attempts.lockedUntil > Date.now()) return json(res, 429, { error: 'Too many attempts. Try again in a few minutes.' });
-      if (!employee || employee.active === false || !employee.passwordHash || !employee.passwordSalt || !safeEqual(employee.passwordHash, passwordHash(String(input.password || ''), employee.passwordSalt))) {
-        attempts.count += 1;
-        if (attempts.count >= 8) { attempts.count = 0; attempts.lockedUntil = Date.now() + 10 * 60 * 1000; }
-        employeeLoginAttempts.set(attemptKey, attempts);
-        return json(res, 401, { error: 'Employee ID or password is incorrect.' });
-      }
-      employeeLoginAttempts.delete(attemptKey);
-      const sessionId = token();
-      state.employeeSessions = state.employeeSessions.filter((session) => session.expiresAt > Date.now());
-      state.employeeSessions.push({ idHash: hash(sessionId), employeeId: employee.id, expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000 });
-      await save();
-      return json(res, 200, { employee: employeeView(employee) }, { 'set-cookie': cookie('iksha_employee', sessionId, 604800) });
     }
     if (req.method === 'POST' && url.pathname === '/api/employee/logout') {
       const sid = cookieValue(req, 'iksha_employee');
@@ -462,10 +417,10 @@ async function handleRequest(req, res) {
       const projectClients=group.members.filter(item=>item.membershipStatus==='Active' && hasRole(item.assignedRole,'Client'));
       const linked=state.projects.find((project)=>project.telegramGroupChatId===group.groupChatId);
       if(linked){linked.clientTelegramIds=projectClients.map(item=>item.telegramUserId);linked.clientTelegramId=linked.clientTelegramIds[0] || '';}
-      const credentials=linked ? bindTelegramStaff(linked,member) : null;
+      if (linked) bindTelegramStaff(linked,member);
 
       audit('telegram_member_role_assigned', state.projects.find((project) => project.telegramGroupChatId === group.groupChatId)?.id || '', { groupChatId: group.groupChatId, telegramUserId: member.telegramUserId }); await save();
-      return json(res, 200, { member, ...(credentials?{credentials}:{}) });
+      return json(res, 200, { member });
     }
     const telegramProjectMatch = url.pathname.match(/^\/api\/founder\/telegram-groups\/(-?\d+)\/create-project$/);
     if (req.method === 'POST' && telegramProjectMatch) {
@@ -485,10 +440,10 @@ async function handleRequest(req, res) {
       catch (error) { return json(res, 502, { error: error.message }); }
       const project = existingProject || { id: `p_${randomBytes(8).toString('hex')}`, telegramGroupChatId: group.groupChatId, location: '', internalOwnerMemberId: '', recentTask: '', nextMilestone: '', blocker: '', members: [], createdAt: new Date().toISOString() };
       Object.assign(project, { name: projectName, clientName: client.assignedName || client.telegramName, clientTelegramId: client.telegramUserId, clientTelegramIds:active.filter(member=>hasRole(member.assignedRole,'Client')).map(member=>member.telegramUserId), startDate, telegramProjectId: botProject.projectId, telegramSetupPending: false, phase: 'Setup', status: 'Setup' });
-      const credentials=active.map((member)=>bindTelegramStaff(project,member)).filter(Boolean);
+      active.forEach(member=>bindTelegramStaff(project,member));
       if (!existingProject) state.projects.unshift(project);
       audit('project_created_from_telegram', project.id, { groupChatId: group.groupChatId, botProjectId: botProject.projectId }); await save();
-      return json(res, 201, { project: projectView(project), ...(credentials.length?{credentials}:{}) });
+      return json(res, 201, { project: projectView(project) });
     }
     if (req.method === 'GET' && url.pathname === '/api/founder/decision-requests') {
       return json(res, 200, { requests: state.decisionRequests.filter((item) => state.projects.some((project) => project.id === item.projectId)) });
@@ -580,16 +535,15 @@ async function handleRequest(req, res) {
       const project = state.projects.find((item) => item.id === input.projectId);
       if (!project) return json(res, 404, { error: 'Select a project for this employee.' });
       const name = String(input.name || '').trim(); const designation = String(input.designation || '').trim(); const role = String(input.role || 'Team member').trim();
-      const email = String(input.email || '').trim(); const phone = String(input.phone || '').trim();
+      const email = loginEmail(input.email); const phone = String(input.phone || '').trim();
       if (!name || !designation || !role || name.length > 120 || designation.length > 120 || email.length > 200 || phone.length > 40) return json(res, 400, { error: 'Enter a name, designation, and role using the requested lengths.' });
-      const chosen = chosenPassword(input.password);
-      if (chosen.error) return json(res, 400, { error: chosen.error });
-      const id = employeeId(); const password = chosen.password; const salt = randomBytes(16).toString('hex');
-      const employee = { id, name, designation, email, phone, passwordSalt: salt, passwordHash: passwordHash(password, salt), createdAt: new Date().toISOString() };
+      const id = employeeId();
+      const employee = { id, name, designation, email, phone, active: true, createdAt: new Date().toISOString() };
+      reserveGoogleAccess(state, { email, name, employeeId: id });
       state.employees.push(employee);
       (project.members ||= []).push({ id: randomBytes(8).toString('hex'), employeeId: id, name, designation, role });
       audit('employee_created', project.id, { employeeId: id }); await save();
-      return json(res, 201, { employee: employeeView(employee), credentials: { employeeId: id, password, link: loginLink(id) } });
+      return json(res, 201, { employee: employeeView(employee), access: { email, link: '/employee' } });
     }
     const employeeEditMatch = url.pathname.match(/^\/api\/founder\/employees\/(EMP-[0-9A-F]+)(\/password)?$/);
     if (employeeEditMatch) {
@@ -607,6 +561,12 @@ async function handleRequest(req, res) {
           next[field] = value;
         }
         if (!Object.keys(next).length) return json(res, 400, { error: 'Nothing to update.' });
+        if (next.email !== undefined) {
+          next.email = loginEmail(next.email);
+          const isFounder = state.googleAccounts.some(account => account.employeeId === employee.id && account.kind === 'founder' && account.status === 'Approved');
+          if (isFounder && next.email !== employee.email) throw new ApiError('Manage this founder’s login from founder access instead.', 409);
+          if (!isFounder) reserveGoogleAccess(state, { email: next.email, name: next.name || employee.name, employeeId: employee.id });
+        }
         Object.assign(employee, next, { updatedAt: new Date().toISOString() });
         for (const project of state.projects) for (const member of project.members || []) {
           if (member.employeeId !== employee.id) continue;
@@ -617,16 +577,7 @@ async function handleRequest(req, res) {
         return json(res, 200, { employee: employeeView(employee) });
       }
       // Set or reset the password. Existing sessions end, so the old password stops working everywhere at once.
-      if (employeeEditMatch[2] && req.method === 'POST') {
-        const input = await body(req);
-        const chosen = chosenPassword(input.password);
-        if (chosen.error) return json(res, 400, { error: chosen.error });
-        const salt = randomBytes(16).toString('hex');
-        Object.assign(employee, { passwordSalt: salt, passwordHash: passwordHash(chosen.password, salt), passwordChangedAt: new Date().toISOString() });
-        state.employeeSessions = state.employeeSessions.filter((session) => session.employeeId !== employee.id);
-        audit('employee_password_set', '', { employeeId: employee.id, generated: chosen.generated }); await save();
-        return json(res, 200, { employee: employeeView(employee), credentials: { employeeId: employee.id, password: chosen.password, link: loginLink(employee.id), generated: chosen.generated } });
-      }
+      if (employeeEditMatch[2] && req.method === 'POST') return json(res, 410, { error: 'Passwords have been removed. Edit the Google sign-in email instead.' });
     }
     if (req.method === 'GET' && url.pathname === '/api/founder/assistant') return json(res, 200, { messages: state.founderChat.slice(-40) });
     if (req.method === 'POST' && url.pathname === '/api/founder/assistant') {

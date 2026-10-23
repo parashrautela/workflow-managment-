@@ -5,7 +5,7 @@ import {ProjectFiles} from "@/components/ProjectFiles";
 // frontend/src/EmployeeApp.jsx
 import { useEffect, useState, useCallback } from "react";
 import {
-  Building2, CheckCircle2, Eye, EyeOff, FolderKanban, LogOut, MessageSquare,
+  Building2, CheckCircle2, FolderKanban, LogOut, MessageSquare,
   Check, Calendar, User, AlertCircle, RefreshCw, Loader2
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -39,9 +39,6 @@ const taskStatusColors = {
 
 export default function EmployeeApp() {
   const [auth, setAuth] = useState("checking");
-  const [employeeId, setEmployeeId] = useState(new URLSearchParams(location.search).get("id") || "");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
   const [employee, setEmployee] = useState(null);
   const [projects, setProjects] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
@@ -53,7 +50,6 @@ export default function EmployeeApp() {
   const [staleData, setStaleData] = useState(false);
   const [loadingWorkspace, setLoadingWorkspace] = useState(false);
   const [error, setError] = useState("");
-  const [busy, setBusy] = useState(false);
 
   const load = async () => {
     try {
@@ -113,21 +109,6 @@ export default function EmployeeApp() {
     }
   }, [selected?.id, loadWorkspaceData]);
 
-  const login = async (event) => {
-    event.preventDefault();
-    setBusy(true);
-    setError("");
-    try {
-      await request("/api/employee/login", { method: "POST", body: { employeeId: employeeId.trim(), password } });
-      await load();
-      setPassword("");
-    } catch (problem) {
-      setError(problem.message);
-    } finally {
-      setBusy(false);
-    }
-  };
-
   const logout = async () => {
     await request("/api/employee/logout", { method: "POST" });
     setAuth("signed-out");
@@ -161,7 +142,7 @@ export default function EmployeeApp() {
   }
 
   if (auth === "signed-out") {
-    return <WorkspaceAccess team><form onSubmit={login} className="space-y-4"><label className="grid gap-2 text-sm">Employee ID<Input value={employeeId} onChange={e=>setEmployeeId(e.target.value)} autoComplete="username" required placeholder="EMP-XXXXXXXXXX" className="h-12" /></label><label className="grid gap-2 text-sm">Password<div className="relative"><Input value={password} onChange={e=>setPassword(e.target.value)} type={showPassword?'text':'password'} autoComplete="current-password" required className="h-12 pr-12"/><button type="button" aria-label={showPassword?'Hide password':'Show password'} onClick={()=>setShowPassword(value=>!value)} className="absolute inset-y-0 right-2 grid w-10 place-items-center text-muted-foreground">{showPassword?<EyeOff size={16}/>:<Eye size={16}/>}</button></div></label>{error&&<p role="alert" className="text-sm text-destructive">{error}</p>}<Button type="submit" disabled={busy} className="h-12 w-full">{busy?'Signing in…':'Sign in'}</Button></form></WorkspaceAccess>;
+    return <WorkspaceAccess team />;
   }
 
   // Filter queries for selected project

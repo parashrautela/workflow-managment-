@@ -15,7 +15,7 @@ export function GoogleSignIn({mode='login',onComplete}) {
  useEffect(()=>{
   let cancelled=false;
   (async()=>{
-   const config=await request('/api/auth/google/config');if(cancelled || !config.enabled)return;
+   const config=await request('/api/auth/google/config');if(cancelled)return;if(!config.enabled){setError('Google sign-in is not configured. Contact a founder.');return;}
    setEnabled(true);
    const [google,challenge]=await Promise.all([loadGoogle(),request('/api/auth/google/challenge',{method:'POST',body:{mode}})]);
    if(cancelled || !host.current)return;
@@ -32,5 +32,5 @@ export function GoogleSignIn({mode='login',onComplete}) {
   return()=>{cancelled=true;};
  },[mode,attempt]);
  if(!enabled && !error)return null;
- return <div className="mt-5 space-y-3"><div className={busy?'pointer-events-none opacity-60':''} ref={host}/>{busy && <p className="text-sm text-muted-foreground">Checking your Google account…</p>}{message && <p role="status" className="rounded-lg border bg-secondary p-3 text-sm">{message}</p>}{error && <p role="alert" className="text-sm text-destructive">{error} <button className="underline" onClick={()=>{setError('');setAttempt(value=>value+1);}}>Try again</button></p>}{mode==='login' && enabled && <p className="text-xs text-muted-foreground">New team members need founder approval before seeing project work.</p>}</div>;
+ return <div className="mt-5 space-y-3"><div className={busy?'pointer-events-none opacity-60':''} ref={host}/>{busy && <p className="text-sm text-muted-foreground">Checking your Google account…</p>}{message && <p role="status" className="rounded-lg border bg-secondary p-3 text-sm">{message}</p>}{error && <p role="alert" className="text-sm text-destructive">{error} <button className="underline" onClick={()=>{setError('');setAttempt(value=>value+1);}}>Try again</button></p>}{mode==='login' && enabled && <p className="text-xs text-muted-foreground">Already added by a founder? Use that exact Google email for immediate access. New accounts need founder approval.</p>}</div>;
 }
