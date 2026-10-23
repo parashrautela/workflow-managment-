@@ -52,3 +52,9 @@ The checkpoints below describe the earlier password-compatible rollout and are s
 - An initial browser challenge had expired while multiple app tabs were open; Try again issued a fresh challenge and sign-in succeeded. No change to production code was needed.
 - Saved verification screenshot: /private/tmp/iksha-google-founder-verified.png. Google Cloud is In production, privacy page is live, both backend releases are ACTIVE.
 - This supersedes the pending founder-link checkpoint above. Remaining live acceptance checks concern personal Telegram digests and native Telegram command interactions, not Google setup.
+
+### Google-only release verified live
+
+PR https://github.com/parashrautela/workflow-managment-/pull/30 merged as d0007331ce14a6a001a1b42f57280fa7a611dfbe. Vercel serves the new UI and the production API returns HTTP 410 for the former founder password login. Existing Google founder session survived the migration. A fresh real Google sign-out/sign-in as parashrautela70@gmail.com opened the founder workspace successfully. Live Employees → Founders shows Parash as connected, the last-founder removal button disabled, and the add-founder form ready. Existing counts remain 15 projects / 3 employee profiles. No real employee or second founder was created during verification.
+
+Existing staff such as Ravi/Nishank need their exact Google sign-in email saved using Edit on their existing profile; this pre-approves the same employee ID and avoids duplicates. The second founder can be added later by name/email. Founder role transfer/removal and new-staff access were verified with isolated signed-token tests and disposable UI data; the second founder's real account and physical mobile remain untested. All 96 web tests and production build passed. Screenshots: /private/tmp/iksha-google-only-login-live.png and /private/tmp/iksha-google-only-founders-live.png.
