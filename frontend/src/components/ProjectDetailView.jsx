@@ -1,4 +1,5 @@
-import { ProjectSpaces } from '@/components/ProjectSpaces';
+import {MeetingsView} from '@/components/Meetings';
+import {needsQueryAttention} from '@/lib/queryStatus';
 // frontend/src/components/ProjectDetailView.jsx
 import React, { useEffect, useState, useCallback } from "react";
 import {
@@ -98,6 +99,7 @@ export function ProjectDetailView({
   const [taskStatusFilter, setTaskStatusFilter] = useState("all");
   const [taskStageFilter, setTaskStageFilter] = useState("all");
   const [taskSearch, setTaskSearch] = useState("");
+  const [personFilter,setPersonFilter]=useState('all'),[spaceFilter,setSpaceFilter]=useState('all');
 
   // Drive edit state
   const [driveFolderInput, setDriveFolderInput] = useState(localWorkflow?.drive?.folderUrl || "");
@@ -178,7 +180,7 @@ export function ProjectDetailView({
 
   // Telegram client queries linked to this project
   const projectQueries = decisionRequests.filter((req) => req.projectId === project.id);
-  const pendingQueriesCount = projectQueries.filter((q) => !["Done", "Rejected", "Published"].includes(q.status)).length;
+  const pendingQueriesCount = projectQueries.filter(needsQueryAttention).length;
 
   // TL;DR metrics
   const blockedTasks = tasks.filter((t) => t.status === "Blocked");
@@ -200,6 +202,8 @@ export function ProjectDetailView({
 
   // Filtered tasks
   const filteredTasks = tasks.filter((t) => {
+    if(personFilter!=='all' && (t.assigneeId || 'unassigned')!==personFilter)return false;
+    if(spaceFilter!=='all' && !(stages.find(stage=>stage.id===t.stageId)?.spaces || []).includes(spaceFilter))return false;
     if (taskStatusFilter === "open" && (t.status === "Completed" || t.status === "completed")) return false;
     if (taskStatusFilter !== "all" && taskStatusFilter !== "open" && t.status.toLowerCase() !== taskStatusFilter.toLowerCase()) return false;
     if (taskStageFilter !== "all" && t.stageId !== taskStageFilter) return false;
@@ -330,13 +334,13 @@ export function ProjectDetailView({
   };
 
   const roster=project.telegramMembers || [];
-  const profilesReady=roster.length>=2 && roster.every((member)=>member.assignedName && member.assignedRole) && roster.filter((member)=>/\bclient\b/i.test(member.assignedRole)).length===1 && roster.some((member)=>!/\b(client|founder)\b/i.test(member.assignedRole));
+  const profilesReady=roster.length>=2 && roster.every((member)=>member.assignedName && member.assignedRole) && roster.filter((member)=>/\bclient\b/i.test(member.assignedRole)).length>=1 && roster.some((member)=>!/\b(client|founder)\b/i.test(member.assignedRole));
   if(!['Completed','Abandoned'].includes(project.status) && project.telegramGroupChatId && (project.telegramSetupPending || !profilesReady)) return <div className="space-y-4"><Button variant="ghost" onClick={onBackToDirectory}><ArrowLeft className="size-4"/>All projects</Button><h2 className="text-xl font-semibold">{project.name}</h2><div className="flex flex-wrap gap-2"><Button variant="outline" onClick={onOpenCompleteModal}>Complete project</Button><Button variant="outline" className="text-destructive" onClick={onOpenTrashModal}>Abandon & move to trash</Button></div><TelegramGroups project={project} embedded onProjectsChanged={onProjectUpdated}/></div>;
   if(!['Completed','Abandoned'].includes(project.status) && project.telegramGroupChatId && !hasWorkflowStarted) return <section className="space-y-4"><Button variant="ghost" onClick={onBackToDirectory}><ArrowLeft className="size-4"/>All projects</Button><div className="rounded-2xl border bg-card p-6 space-y-3"><p className="text-xs font-medium text-primary">Step 2 · Project type</p><h1 className="text-2xl font-semibold">{project.name}</h1><div className="flex flex-wrap gap-2"><Button variant="outline" onClick={onOpenCompleteModal}>Complete project</Button><Button variant="outline" className="text-destructive" onClick={onOpenTrashModal}>Abandon & move to trash</Button></div><p className="text-sm text-muted-foreground">Members and client are ready. Choose the type of project to generate its tasks and announce the start in the Telegram group.</p><Button onClick={()=>setTemplateModalOpen(true)}>Choose project type</Button></div><WorkflowTemplateModal open={templateModalOpen} onOpenChange={setTemplateModalOpen} projectId={project.id} telegramLinked projectStartDate={project.startDate} clientAssigned projectMembers={project.members || []} onApplied={()=>{if(onProjectUpdated)onProjectUpdated();loadProjectTasks();}}/></section>;
 
   return (
     <div className="iksha-project-detail space-y-6">
-      {!project.telegramSetupPending && <ProjectSpaces project={project} onUpdated={onProjectUpdated}/> }
+
       {/* Toast Notice */}
       {notice && (
         <div role="status" className="fixed right-4 bottom-24 z-[60] max-w-sm rounded-lg border bg-card px-4 py-3 text-sm shadow-lg md:bottom-4">
@@ -363,7 +367,7 @@ export function ProjectDetailView({
             {!['Completed', 'Abandoned'].includes(project.status) && <Button variant="outline" size="sm" onClick={onOpenCompleteModal}>Complete project</Button>}
             <Button variant="outline" size="sm" className="text-destructive" onClick={onOpenTrashModal}><Trash2 className="mr-1 size-3.5" />{project.status === 'Completed' ? 'Move to trash' : 'Abandon & move to trash'}</Button>
             <Button variant="outline" size="sm" onClick={onOpenFactsModal}>
-              Edit Facts
+              Project details
             </Button>
             <Button size="sm" onClick={onOpenInviteModal}>
               <Share2 className="size-3.5 mr-1" /> Share Client Link
@@ -575,6 +579,7 @@ export function ProjectDetailView({
             <CheckCircle2 className="size-3.5 mr-1.5 text-primary" />
             Tasks ({tasks.length})
           </TabsTrigger>
+          <TabsTrigger value="meetings" className="text-xs">Meetings</TabsTrigger>
           <TabsTrigger value="chat" className="font-semibold text-xs px-3.5 py-2">
             <MessageSquare className="size-3.5 mr-1.5 text-blue-600" />
             Internal Project Chat
@@ -582,7 +587,7 @@ export function ProjectDetailView({
 
           <TabsTrigger value="queries" className="font-semibold text-xs px-3.5 py-2">
             <AlertCircle className="size-3.5 mr-1.5 text-red-500" />
-            Client Queries ({projectQueries.length})
+            Client queries
             {pendingQueriesCount > 0 && (
               <Badge variant="secondary" className="ml-1.5 size-4 p-0 text-[10px] justify-center bg-amber-200 text-amber-900">
                 {pendingQueriesCount}
@@ -601,6 +606,7 @@ export function ProjectDetailView({
 
         {/* ----------------- TAB 1: TASKS ----------------- */}
         <TabsContent value="tasks" className="space-y-4">
+          <div className="flex flex-wrap gap-2"><label className="grid gap-1 text-xs">Person<select value={personFilter} onChange={e=>setPersonFilter(e.target.value)}><option value="all">All people</option><option value="founder">Founder</option><option value="unassigned">Role-based / unassigned</option>{(project.members || []).map(member=><option key={member.employeeId || member.id} value={member.employeeId || member.id}>{member.name}</option>)}</select></label><label className="grid gap-1 text-xs">Space<select value={spaceFilter} onChange={e=>setSpaceFilter(e.target.value)}><option value="all">All spaces</option>{(project.spaces || []).map(space=><option key={space}>{space}</option>)}</select></label></div>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div className="flex flex-wrap items-center gap-2 flex-1">
               <div className="relative min-w-44 flex-1 max-w-sm">
@@ -844,6 +850,7 @@ export function ProjectDetailView({
         </TabsContent>
 
         {/* ----------------- TAB 3: STAGES & SCHEDULE ----------------- */}
+        <TabsContent value="meetings"><MeetingsView projectId={project.id}/></TabsContent>
         <TabsContent value="schedule"><ProjectTimeline spaces={project.spaces || []} key={project.id} projectId={project.id} projectStartDate={project.startDate} tasks={tasks} stages={stages} members={project.members || employees} telegramLinked={Boolean(project.telegramGroupChatId)} onOpenTask={task=>{setSelectedTask(task);setTaskDrawerOpen(true);}} onSchedulePreview={!['Completed','Abandoned'].includes(project.status) ? moves=>previewSchedule(project.id,moves) : undefined} onScheduleApply={!['Completed','Abandoned'].includes(project.status) ? async moves=>{const result=await applySchedule(project.id,moves);setTasks(result.tasks);return result;} : undefined} onPlanChanged={!['Completed','Abandoned'].includes(project.status) ? result=>{if(Array.isArray(result.tasks))setTasks(result.tasks);if(onProjectUpdated)onProjectUpdated();} : undefined}/></TabsContent>
 
         {/* ----------------- TAB 4: CLIENT QUERIES ----------------- */}

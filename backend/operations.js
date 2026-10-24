@@ -5,6 +5,8 @@ import { randomUUID } from 'node:crypto';
 import { hasRole, matchesRole, rolesOf, roleText } from './roles.js';
 import { canWorkOnTask } from './work-access.js';
 
+export const purchaseTemplate={id:'builtin-purchase-v1',name:'Purchase — selection to order',builtin:true,stages:[{name:'Purchase',spaces:[],tasks:[{title:'Select items and specifications',role:'Founder',durationDays:1},{title:'Prepare and send purchase proposal',role:'Designer',durationDays:1},{title:'Client confirms payment and order',role:'Client',durationDays:1}]}]};
+
 const closed = project => ['Completed','Abandoned'].includes(project.status);
 const open = task => !task.deletedAt && !['Completed','Cancelled'].includes(task.status);
 const fail = (message,status=400) => { throw new ApiError(message,status); };
@@ -27,7 +29,7 @@ export function workQueue(state,{personId='founder',projectId='',status='pending
     const overdue=Boolean(task.deadline && task.deadline<today);
     if(status==='approvals' && !approval || status==='overdue' && !overdue || status==='blocked' && task.status!=='Blocked' || status==='in-progress' && task.status!=='In progress')return [];
     const stage=project.stages?.find(row=>row.id===task.stageId);
-    return [{...task,projectName:project.name,stageName:stage?.name || '',spaces:stage?.spaces || [],approval,overdue,project:{id:project.id,name:project.name,stages:project.stages || [],members:project.members || []}}];
+    return [{...task,projectName:project.name,stageName:stage?.name || '',spaces:stage?.spaces || [],approval,overdue,project:{id:project.id,name:project.name,status:project.status,telegramGroupChatId:project.telegramGroupChatId || '',stages:project.stages || [],members:project.members || []}}];
   }).sort((a,b)=>Number(b.overdue)-Number(a.overdue) || (a.deadline || '9999').localeCompare(b.deadline || '9999') || a.projectName.localeCompare(b.projectName));
 }
 export function replacementPreview(state,input) {
@@ -149,7 +151,7 @@ export function createOperationsRoutes({getState,founder,employeeSession,body,js
     }
     if(path.startsWith('plan-templates')) {
       state.savedTemplates ||= [];
-      if(req.method==='GET'){json(res,200,{templates:state.savedTemplates});return true;}
+      if(req.method==='GET'){json(res,200,{templates:[purchaseTemplate,...state.savedTemplates]});return true;}
       if(req.method==='POST') {
         const input=await body(req),project=state.projects.find(row=>row.id===input.projectId);
         if(!project || typeof input.name!=='string' || !input.name.trim() || input.name.length>80)fail('Choose a project and enter a template name.');
@@ -170,6 +172,13 @@ export function createOperationsRoutes({getState,founder,employeeSession,body,js
     return false;
   };
   route.tick=tick;
-  route.connect=async id=>{const state=getState(),employees=state.employees.filter(row=>row.telegramUserId===String(id) && row.active!==false);if(!employees.length)fail('Ask the founder to assign your Telegram profile first.',404);for(const employee of employees)employee.telegramConnectedAt=new Date().toISOString();await save();return {ok:true};};
+  route.connect=async id=>{
+    const state=getState(),telegramUserId=String(id),employees=state.employees.filter(row=>row.telegramUserId===telegramUserId && row.active!==false);
+    const known=employees.length || state.telegramGroups.some(group=>group.members?.some(member=>String(member.telegramUserId)===telegramUserId && member.membershipStatus==='Active'));
+    if(!known)fail('Ask the founder to assign your Telegram profile first.',404);
+    state.telegramConnections ||= [];
+    if(!state.telegramConnections.some(row=>row.telegramUserId===telegramUserId))state.telegramConnections.push({telegramUserId,connectedAt:new Date().toISOString()});
+    for(const employee of employees)employee.telegramConnectedAt=new Date().toISOString();await save();return {ok:true};
+  };
   return route;
 }

@@ -59,3 +59,13 @@ The frontend uses shadcn/ui components in `frontend/src/components/ui` with the 
 ## 📄 License
 
 This project is licensed under the MIT License.
+
+### Project communication and meetings
+
+Founders manage work; staff can view every task in their assigned projects and contribute messages, images and PDFs. Use a task's **Post internally** button for team discussion, or review a selected message before sending it to the project Telegram group. Mark measurements or briefs as resources to make them available to dependent tasks.
+
+Use **Hold** on an incoming query to save it on a task while waiting for more information. Held and handled queries remain in history. Open a task to schedule a meeting; the **Meetings** page manages attendees, reminder times, edits and cancellations. **Project chats** lists all accessible internal project conversations.
+
+The Purchase template is under Timeline → Reusable plan templates. Preview and edit its selection, proposal and client order-confirmation steps before adding it. Project details now groups client name, city and spaces in one place.
+
+Deployment order: release the companion bot's task-notice endpoint first, then this web app. The web startup creates the attachment table in the existing PostgreSQL database; preserve that table with normal database backups. No extra dependency, OAuth scope or environment variable is required. Real Telegram delivery and physical mobile acceptance remain deployment checks.

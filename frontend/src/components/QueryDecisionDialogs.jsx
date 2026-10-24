@@ -1,3 +1,5 @@
+import {QueryHoldDialog} from '@/components/QueryHoldDialog';
+import {request as sendRequest} from '@/lib/api';
 // Accept or Reject: the only two decisions on a Telegram query.
 // Accept links the query to a task and applies one action (delay, redo, complete), or adds a new stage for it.
 // Reject sends the founder's message to the group. Nothing reaches Telegram until the founder confirms the reply.
@@ -324,17 +326,24 @@ export function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
 
 // One line on a handled query: what was decided.
 export function QueryOutcome({ request }) {
+  if(request.status==='On hold')return <p className="text-xs text-amber-800">Acknowledged · waiting for more information. Saved in its task thread.</p>;
   if (request.acceptSummary) return <p className="flex items-start gap-1.5 text-xs text-emerald-800"><Layers className="mt-0.5 size-3.5 shrink-0" />Accepted · {request.acceptSummary}</p>;
   if (request.rejectionReply) return <p className="text-xs text-destructive">Rejected · "{request.rejectionReply}"</p>;
   return null;
 }
 
 // Accept / Reject buttons, shown until the query has a decision.
-export function QueryDecisionButtons({ request, disabled, onAccept, onReject, size = "sm" }) {
-  const decided = Boolean(request.decisionStatus) || ["Rejected", "Done"].includes(request.status);
+export function QueryDecisionButtons({ request, disabled, onAccept, onReject, onChanged, size = "sm" }) {
+  const [holdOpen,setHoldOpen]=useState(false),[error,setError]=useState(''),[busy,setBusy]=useState(false);
+  const resume=async()=>{setBusy(true);try{await sendRequest(`/api/founder/decision-requests/${encodeURIComponent(request.id)}/resume`,{method:'POST',body:{}});onChanged?.();}catch(problem){setError(problem.message);}finally{setBusy(false);}};
+  if(request.status==='On hold')return <><Button variant="outline" size={size} disabled={busy||disabled} onClick={resume}>Return to review</Button>{error&&<p role="alert" className="text-xs text-destructive">{error}</p>}</>;
+
+  const decided = Boolean(request.decisionStatus) || ["Rejected", "Done", "Published", "Approved"].includes(request.status);
   if (decided) return null;
   return (
     <>
+      <Button variant="outline" size={size} disabled={disabled} onClick={()=>setHoldOpen(true)}>Hold</Button>
+      <QueryHoldDialog open={holdOpen} onOpenChange={setHoldOpen} query={request} onChanged={onChanged}/>
       <Button size={size} onClick={onAccept} disabled={disabled}><Check className="size-3.5 mr-1" />Accept</Button>
       <Button size={size} variant="outline" className="text-destructive" onClick={onReject} disabled={disabled}>Reject</Button>
     </>

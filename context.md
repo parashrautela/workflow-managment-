@@ -75,3 +75,22 @@ Frontend browser verified equal-founder panel and successful employee pre-approv
 PR https://github.com/parashrautela/workflow-managment-/pull/30 merged as d0007331ce14a6a001a1b42f57280fa7a611dfbe. Vercel serves the new UI and the production API returns HTTP 410 for the former founder password login. Existing Google founder session survived the migration. A fresh real Google sign-out/sign-in as parashrautela70@gmail.com opened the founder workspace successfully. Live Employees → Founders shows Parash as connected, the last-founder removal button disabled, and the add-founder form ready. Existing counts remain 15 projects / 3 employee profiles. No real employee or second founder was created during verification.
 
 Existing staff such as Ravi/Nishank need their exact Google sign-in email saved using Edit on their existing profile; this pre-approves the same employee ID and avoids duplicates. The second founder can be added later by name/email. Founder role transfer/removal and new-staff access were verified with isolated signed-token tests and disposable UI data; the second founder's real account and physical mobile remain untested. All 96 web tests and production build passed. Screenshots: /private/tmp/iksha-google-only-login-live.png and /private/tmp/iksha-google-only-founders-live.png.
+
+
+## 2026-10-23 — project communication and meetings
+
+User authorized the complete new transcript plan. Implementation underway; scope and acceptance are in work/production-web/docs/project-communication-plan-2026-10-23.md. Preserve existing profiles and project history. No real notification sends during development.
+
+
+## 2026-10-24 — communication and meetings implementation complete
+
+Implemented the six-part transcript plan: founder-only task mutations with project-wide staff reading/discussion; separate durable image/PDF attachments and reviewed Telegram sharing with selected tags; predecessor resource handoff; hold/resume queries and compact history with consistent unattended counts; task-linked meetings, IST reminders, attendee selection, edit/cancel and delivery history; internal project chat directory, city-grouped supervisor project selection, simplified client/location/spaces details, scalable task filters and an editable built-in Purchase template. Existing identities and history are retained. Removed the superseded standalone ProjectSpaces editor.
+
+Verification: 107 web tests and 77 bot tests pass (184 total); web production build, bot syntax and whitespace checks pass. Browser demo used 120 tasks in a fake project, verified internal posting, reviewed sharing through a local mock bridge, hold removing the unattended query, meeting creation/delivery status, purchase preview/apply, details fields and city grouping. File signature, binary persistence and access revocation are covered by HTTP tests. The browser file-picker check outlasted its disposable session and is not counted as passed. No real notifications, staff changes or production records were used.
+
+Publication pending. Ship the bot before the web app. New attachment bytes use an additive PostgreSQL table, separate from the workspace snapshot; local development uses the data file's adjacent .files directory. Real PostgreSQL deployment, native mobile and Telegram delivery acceptance remain. Bot calls/missed calls remain outside this release as agreed in the plan.
+
+
+## 2026-10-24 — review branches published
+
+Web implementation: 54eda04 on codex/project-communication-meetings, draft PR https://github.com/parashrautela/workflow-managment-/pull/31. Companion bot: 3f8c226 on codex/task-sharing-bridge, draft PR https://github.com/parashrautela/telegrambot/pull/18. Both are pushed and attached to this chat. Main/production remain unchanged. Deployment order is bot #18, then web #31. Final verification is 107 web tests + 77 bot tests (184 total), frontend build, bot syntax and whitespace checks. The final added safeguard excludes disabled/departed attendees even during grouped fallback. Real Telegram delivery, deployed PostgreSQL and physical mobile acceptance remain pending.

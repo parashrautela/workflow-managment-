@@ -1,3 +1,6 @@
+import {MeetingsView} from '@/components/Meetings';
+import {ProjectConversations} from '@/components/ProjectConversations';
+import {needsQueryAttention} from '@/lib/queryStatus';
 import { WorkQueue } from '@/components/WorkQueue';
 import { WorkspaceAccess, IkshaBrand } from "@/components/WorkspaceAccess";
 import { ProjectTimelineWorkspace as ProjectTimeline } from "@/components/ProjectTimelineWorkspace";
@@ -19,7 +22,7 @@ import { TaskThreadDrawer } from "@/components/TaskThreadDrawer";
 import { ClientQueryCard } from "@/components/ClientQueryCard";
 import { ProjectDependencyGraph } from "@/components/ProjectDependencyGraph";
 import {
-  request, fetchTasks, fetchProjectWorkspace, updateTask,
+  request, fetchTasks, fetchProjectWorkspace,
   fetchDecisionRequests
 } from "@/lib/api";
 
@@ -47,6 +50,7 @@ export default function EmployeeApp() {
   const [selectedTask, setSelectedTask] = useState(null);
   const [taskDrawerOpen, setTaskDrawerOpen] = useState(false);
   const [taskViewMode, setTaskViewMode] = useState("list");
+  const [taskSearch,setTaskSearch]=useState(''),[taskStatus,setTaskStatus]=useState('all');
   const [staleData, setStaleData] = useState(false);
   const [loadingWorkspace, setLoadingWorkspace] = useState(false);
   const [error, setError] = useState("");
@@ -118,18 +122,6 @@ export default function EmployeeApp() {
     setDecisionRequests([]);
   };
 
-  // Toggle quick status
-  const handleToggleTaskStatus = async (taskItem) => {
-    const isDone = taskItem.status === "Completed" || taskItem.status === "completed";
-    const nextStatus = isDone ? "Open" : "Completed";
-    try {
-      await updateTask(taskItem.id, { status: nextStatus }, "employee");
-      setTasks((prev) => prev.map((t) => t.id === taskItem.id ? { ...t, status: nextStatus } : t));
-    } catch (err) {
-      alert(err.message || "Could not update task.");
-    }
-  };
-
   if (auth === "checking") {
     return (
       <main className="grid min-h-dvh place-items-center bg-background p-6">
@@ -147,7 +139,7 @@ export default function EmployeeApp() {
 
   // Filter queries for selected project
   const projectQueries = decisionRequests.filter((r) => r.projectId === selected?.id);
-  const pendingQueriesCount = projectQueries.filter((r) => !["Done", "Rejected", "Published"].includes(r.status)).length;
+  const pendingQueriesCount = projectQueries.filter(needsQueryAttention).length;
 
   return (
     <div className="iksha-workspace app-glow min-h-dvh bg-background pb-[max(24px,env(safe-area-inset-bottom))]">
@@ -166,6 +158,8 @@ export default function EmployeeApp() {
 
       <main className="mx-auto max-w-5xl space-y-6 px-4 py-6 sm:px-6">
         <WorkQueue projects={projects} isFounder={false} initialPersonId={employee?.id || ""} personName={employee?.name || "Me"} onChanged={loadWorkspaceData} />
+        <details className="rounded-xl border bg-card p-4"><summary className="text-sm font-semibold">Project conversations</summary><div className="pt-4"><ProjectConversations projects={projects} namespace="employee" actor={employee.id}/></div></details>
+        <details className="rounded-xl border bg-card p-4"><summary className="text-sm font-semibold">Scheduled meetings</summary><div className="pt-4"><MeetingsView namespace="employee"/></div></details>
         {error && <p role="alert" className="rounded-xl border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">{error}</p>}
         <div>
           <p className="text-xs font-semibold uppercase tracking-wider text-primary">My workspace</p>
@@ -235,7 +229,7 @@ export default function EmployeeApp() {
                 </TabsTrigger>
                 <TabsTrigger value="queries" className="font-semibold text-xs px-3 py-2">
                   <AlertCircle className="size-4 mr-1.5 text-amber-600" />
-                  Client Queries ({projectQueries.length})
+                  Client queries
                   {pendingQueriesCount > 0 && (
                     <Badge variant="secondary" className="ml-1.5 size-4 p-0 text-[10px] justify-center bg-amber-200 text-amber-900">
                       {pendingQueriesCount}
@@ -278,6 +272,7 @@ export default function EmployeeApp() {
                   </div>
                 </div>
 
+                <div className="grid gap-2 sm:grid-cols-2"><Input aria-label="Find project tasks" value={taskSearch} onChange={e=>setTaskSearch(e.target.value)} placeholder="Find task, stage or role…"/><label className="grid gap-1 text-xs">Task status<select value={taskStatus} onChange={e=>setTaskStatus(e.target.value)}><option value="all">All statuses</option>{[...new Set(tasks.map(task=>task.status))].map(status=><option key={status}>{status}</option>)}</select></label></div>
                 {taskViewMode === "graph" ? (
                   <ProjectDependencyGraph
                     tasks={tasks}
@@ -292,7 +287,7 @@ export default function EmployeeApp() {
                     staleDataNotice={staleData}
                   />
                 ) : tasks.length ? (
-                  tasks.map((t) => {
+                  tasks.filter(t=>(taskStatus==='all'||t.status===taskStatus)&&`${t.title} ${t.sourceRole || ''} ${selected.stages?.find(stage=>stage.id===t.stageId)?.name || ''}`.toLowerCase().includes(taskSearch.toLowerCase())).map((t) => {
                     const isCompleted = t.status === "Completed" || t.status === "completed";
                     return (
                       <div
@@ -300,16 +295,7 @@ export default function EmployeeApp() {
                         className="flex flex-col items-stretch justify-between gap-3 rounded-xl border bg-card p-3.5 sm:flex-row sm:items-center shadow-2xs hover:border-primary/40 transition-colors"
                       >
                         <div className="flex items-center gap-3 min-w-0 flex-1">
-                          <button
-                            type="button"
-                            aria-label={`Toggle completion for ${t.title}`}
-                            onClick={() => handleToggleTaskStatus(t)}
-                            className={`grid size-5 shrink-0 place-items-center rounded-md border transition-colors ${
-                              isCompleted ? "bg-emerald-600 border-emerald-600 text-white" : "border-muted-foreground/30 hover:border-primary"
-                            }`}
-                          >
-                            {isCompleted && <Check className="size-3.5" />}
-                          </button>
+                          <span aria-label={isCompleted?'Completed':'Pending'} className="grid size-5 shrink-0 place-items-center rounded-md border">{isCompleted&&<Check className="size-3.5"/>}</span>
                           <div className="min-w-0 flex-1">
                             <p
                               className={`break-words text-sm font-semibold cursor-pointer hover:text-primary transition-colors ${

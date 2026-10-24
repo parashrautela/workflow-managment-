@@ -312,3 +312,22 @@ credentials. It creates a sample project/client and two employees; available
 workflow templates are served by the API. Complete a live two-service Telegram
 text/photo/reply check after deployment: offline tests do not prove live bot
 permissions, environment variables, PostgreSQL connectivity, or UI integration.
+
+## Project communication and meetings (October 2026)
+
+Staff with an active project membership may read every task and discussion in that project and post messages/files. Task creation, changes, deletion, approvals, meeting scheduling and Telegram publication require founder authentication. Membership/account revocation also removes file and meeting access.
+
+- `POST /api/{founder|employee}/tasks/:id/files`: JSON `{name,type,data}` with canonical base64; JPEG/PNG/WebP/PDF only, checked file signature, at most 5 MB per file and 100 MB per task. Returns `{file}`. Content is stored separately from the workspace state (PostgreSQL `studio_iksha_task_files`, or a local `.files` directory).
+- `GET /api/{founder|employee}/files/:id/content`: authenticated, no-cache binary response; documents download as attachments.
+- `POST /api/{founder|employee}/tasks/:id/messages`: `{text,attachmentUrl?,fileIds?,isResource?,clientKey?}`. One uploaded file per message, uploaded by this actor for this task. A stable `clientKey` makes retries idempotent. Legacy plain text posts still work.
+- `GET /api/{founder|employee}/tasks/:id/resources`: file/link/resource messages from recorded same-project predecessors. Ordinary conversation stays in its own thread.
+- `GET /api/{founder|employee}/tasks/:id/participants`: active project people and their personal Telegram connection status.
+- `POST /api/founder/tasks/:taskId/messages/:messageId/publish`: `{confirm:true,recipientIds:[telegramUserId]}`. Publishes only the selected message and its own attachment. Persist Sending before the external call; Sent/Unknown/Sending are never resent automatically. A definitive preflight failure is Failed and can be reviewed and retried explicitly.
+- `POST /api/founder/decision-requests/:id/hold`: `{taskId}` acknowledges a query and copies its evidence into the task discussion without changing the work. `POST .../resume` returns it to unattended review. Handled requests stay in history and no longer count as unattended.
+- `GET /api/{founder|employee}/meetings?projectId=...`: meetings in visible active projects. Founder responses include notification delivery history.
+- `POST /api/founder/tasks/:id/meeting`: `{title,location,startsAt,attendeeIds,reminderMinutes,previousEvening,groupFallback}`. `startsAt` includes an explicit UTC offset; UI uses IST. Attendee IDs come from participants. `reminderMinutes` is up to five unique values, 1–10080. `previousEvening` means 6 PM IST the prior day. Past reminder times are skipped.
+- `PATCH /api/founder/meetings/:id`: full edited meeting plus `revision`, or `{revision,status:"Cancelled"|"Completed"}`. A stale revision returns 409. Changes notify attendees; cancellation stops reminders. Meeting completion does not complete the task.
+
+Notifications are checked once per minute in the existing serialized server queue. Personal notifications require each attendee to press Start in the project bot. An explicitly selected group fallback can expose the meeting details to everyone in the project group; multiple unavailable attendees share one group notice per event. No connection and no fallback is Unavailable. Unconfirmed delivery is Unknown, retained across restart and never automatically retried. The companion bot's authenticated `/api/integrations/web/task-notice` verifies current group membership and supports one uploaded document.
+
+`GET /api/founder/plan-templates` includes a built-in Purchase template alongside saved plans. Template name, task text, roles and durations can be edited before using existing preview/apply routes.

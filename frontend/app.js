@@ -11654,7 +11654,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$55 = {
+var __iconData$53 = {
 	name: "arrow-left",
 	size: 24,
 	node: [["path", {
@@ -11665,8 +11665,8 @@ var __iconData$55 = {
 		key: "x3x0zl"
 	}]]
 };
-__iconData$55.node;
-var ArrowLeft = createLucideIcon(__iconData$55);
+__iconData$53.node;
+var ArrowLeft = createLucideIcon(__iconData$53);
 // node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11674,7 +11674,7 @@ var ArrowLeft = createLucideIcon(__iconData$55);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$54 = {
+var __iconData$52 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11685,8 +11685,8 @@ var __iconData$54 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$54.node;
-var ArrowRight = createLucideIcon(__iconData$54);
+__iconData$52.node;
+var ArrowRight = createLucideIcon(__iconData$52);
 // node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11694,7 +11694,7 @@ var ArrowRight = createLucideIcon(__iconData$54);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$53 = {
+var __iconData$51 = {
 	name: "arrow-up-right",
 	size: 24,
 	node: [["path", {
@@ -11705,8 +11705,8 @@ var __iconData$53 = {
 		key: "1vkiza"
 	}]]
 };
-__iconData$53.node;
-var ArrowUpRight = createLucideIcon(__iconData$53);
+__iconData$51.node;
+var ArrowUpRight = createLucideIcon(__iconData$51);
 // node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11714,7 +11714,7 @@ var ArrowUpRight = createLucideIcon(__iconData$53);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$52 = {
+var __iconData$50 = {
 	name: "arrow-up",
 	size: 24,
 	node: [["path", {
@@ -11725,8 +11725,8 @@ var __iconData$52 = {
 		key: "x0mq9r"
 	}]]
 };
-__iconData$52.node;
-var ArrowUp = createLucideIcon(__iconData$52);
+__iconData$50.node;
+var ArrowUp = createLucideIcon(__iconData$50);
 // node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11734,7 +11734,7 @@ var ArrowUp = createLucideIcon(__iconData$52);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$51 = {
+var __iconData$49 = {
 	name: "building-complex",
 	size: 24,
 	node: [
@@ -11761,8 +11761,8 @@ var __iconData$51 = {
 	],
 	aliases: ["building-2"]
 };
-__iconData$51.node;
-var BuildingComplex = createLucideIcon(__iconData$51);
+__iconData$49.node;
+var BuildingComplex = createLucideIcon(__iconData$49);
 // node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11770,7 +11770,7 @@ var BuildingComplex = createLucideIcon(__iconData$51);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$50 = {
+var __iconData$48 = {
 	name: "calendar-days",
 	size: 24,
 	node: [
@@ -11820,8 +11820,8 @@ var __iconData$50 = {
 		}]
 	]
 };
-__iconData$50.node;
-var CalendarDays = createLucideIcon(__iconData$50);
+__iconData$48.node;
+var CalendarDays = createLucideIcon(__iconData$48);
 // node_modules/lucide-react/dist/esm/icons/calendar.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11829,7 +11829,7 @@ var CalendarDays = createLucideIcon(__iconData$50);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$49 = {
+var __iconData$47 = {
 	name: "calendar",
 	size: 24,
 	node: [
@@ -11855,8 +11855,8 @@ var __iconData$49 = {
 		}]
 	]
 };
-__iconData$49.node;
-var Calendar = createLucideIcon(__iconData$49);
+__iconData$47.node;
+var Calendar = createLucideIcon(__iconData$47);
 // node_modules/lucide-react/dist/esm/icons/check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11864,7 +11864,7 @@ var Calendar = createLucideIcon(__iconData$49);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$48 = {
+var __iconData$46 = {
 	name: "check",
 	size: 24,
 	node: [["path", {
@@ -11872,8 +11872,8 @@ var __iconData$48 = {
 		key: "1gmf2c"
 	}]]
 };
-__iconData$48.node;
-var Check = createLucideIcon(__iconData$48);
+__iconData$46.node;
+var Check = createLucideIcon(__iconData$46);
 // node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11881,7 +11881,7 @@ var Check = createLucideIcon(__iconData$48);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$47 = {
+var __iconData$45 = {
 	name: "chevron-down",
 	size: 24,
 	node: [["path", {
@@ -11889,8 +11889,8 @@ var __iconData$47 = {
 		key: "qrunsl"
 	}]]
 };
-__iconData$47.node;
-var ChevronDown = createLucideIcon(__iconData$47);
+__iconData$45.node;
+var ChevronDown = createLucideIcon(__iconData$45);
 // node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11898,7 +11898,7 @@ var ChevronDown = createLucideIcon(__iconData$47);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$46 = {
+var __iconData$44 = {
 	name: "chevron-right",
 	size: 24,
 	node: [["path", {
@@ -11906,8 +11906,8 @@ var __iconData$46 = {
 		key: "mthhwq"
 	}]]
 };
-__iconData$46.node;
-var ChevronRight = createLucideIcon(__iconData$46);
+__iconData$44.node;
+var ChevronRight = createLucideIcon(__iconData$44);
 // node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11915,7 +11915,7 @@ var ChevronRight = createLucideIcon(__iconData$46);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$45 = {
+var __iconData$43 = {
 	name: "chevron-up",
 	size: 24,
 	node: [["path", {
@@ -11923,8 +11923,8 @@ var __iconData$45 = {
 		key: "153udz"
 	}]]
 };
-__iconData$45.node;
-var ChevronUp = createLucideIcon(__iconData$45);
+__iconData$43.node;
+var ChevronUp = createLucideIcon(__iconData$43);
 // node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11932,7 +11932,7 @@ var ChevronUp = createLucideIcon(__iconData$45);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$44 = {
+var __iconData$42 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -11959,8 +11959,8 @@ var __iconData$44 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$44.node;
-var CircleAlert = createLucideIcon(__iconData$44);
+__iconData$42.node;
+var CircleAlert = createLucideIcon(__iconData$42);
 // node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11968,7 +11968,7 @@ var CircleAlert = createLucideIcon(__iconData$44);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$43 = {
+var __iconData$41 = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -11982,8 +11982,8 @@ var __iconData$43 = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-__iconData$43.node;
-var CircleCheck = createLucideIcon(__iconData$43);
+__iconData$41.node;
+var CircleCheck = createLucideIcon(__iconData$41);
 // node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11991,7 +11991,7 @@ var CircleCheck = createLucideIcon(__iconData$43);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$42 = {
+var __iconData$40 = {
 	name: "circle-pause",
 	size: 24,
 	node: [
@@ -12018,8 +12018,8 @@ var __iconData$42 = {
 	],
 	aliases: ["pause-circle"]
 };
-__iconData$42.node;
-var CirclePause = createLucideIcon(__iconData$42);
+__iconData$40.node;
+var CirclePause = createLucideIcon(__iconData$40);
 // node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12027,7 +12027,7 @@ var CirclePause = createLucideIcon(__iconData$42);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$41 = {
+var __iconData$39 = {
 	name: "circle-question-mark",
 	size: 24,
 	node: [
@@ -12048,8 +12048,8 @@ var __iconData$41 = {
 	],
 	aliases: ["help-circle", "circle-help"]
 };
-__iconData$41.node;
-var CircleQuestionMark = createLucideIcon(__iconData$41);
+__iconData$39.node;
+var CircleQuestionMark = createLucideIcon(__iconData$39);
 // node_modules/lucide-react/dist/esm/icons/circle-x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12057,7 +12057,7 @@ var CircleQuestionMark = createLucideIcon(__iconData$41);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$40 = {
+var __iconData$38 = {
 	name: "circle-x",
 	size: 24,
 	node: [
@@ -12078,8 +12078,8 @@ var __iconData$40 = {
 	],
 	aliases: ["x-circle"]
 };
-__iconData$40.node;
-var CircleX = createLucideIcon(__iconData$40);
+__iconData$38.node;
+var CircleX = createLucideIcon(__iconData$38);
 // node_modules/lucide-react/dist/esm/icons/circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12087,7 +12087,7 @@ var CircleX = createLucideIcon(__iconData$40);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$39 = {
+var __iconData$37 = {
 	name: "circle",
 	size: 24,
 	node: [["circle", {
@@ -12097,8 +12097,8 @@ var __iconData$39 = {
 		key: "1mglay"
 	}]]
 };
-__iconData$39.node;
-var Circle = createLucideIcon(__iconData$39);
+__iconData$37.node;
+var Circle = createLucideIcon(__iconData$37);
 // node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12106,7 +12106,7 @@ var Circle = createLucideIcon(__iconData$39);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$38 = {
+var __iconData$36 = {
 	name: "clock-3",
 	size: 24,
 	node: [["circle", {
@@ -12119,8 +12119,8 @@ var __iconData$38 = {
 		key: "135r8i"
 	}]]
 };
-__iconData$38.node;
-var Clock3 = createLucideIcon(__iconData$38);
+__iconData$36.node;
+var Clock3 = createLucideIcon(__iconData$36);
 // node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12128,7 +12128,7 @@ var Clock3 = createLucideIcon(__iconData$38);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$37 = {
+var __iconData$35 = {
 	name: "clock",
 	size: 24,
 	node: [["circle", {
@@ -12141,8 +12141,8 @@ var __iconData$37 = {
 		key: "mmk7yg"
 	}]]
 };
-__iconData$37.node;
-var Clock = createLucideIcon(__iconData$37);
+__iconData$35.node;
+var Clock = createLucideIcon(__iconData$35);
 // node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12150,7 +12150,7 @@ var Clock = createLucideIcon(__iconData$37);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$36 = {
+var __iconData$34 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -12166,8 +12166,8 @@ var __iconData$36 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$36.node;
-var Copy = createLucideIcon(__iconData$36);
+__iconData$34.node;
+var Copy = createLucideIcon(__iconData$34);
 // node_modules/lucide-react/dist/esm/icons/external-link.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12175,7 +12175,7 @@ var Copy = createLucideIcon(__iconData$36);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$35 = {
+var __iconData$33 = {
 	name: "external-link",
 	size: 24,
 	node: [
@@ -12193,8 +12193,8 @@ var __iconData$35 = {
 		}]
 	]
 };
-__iconData$35.node;
-var ExternalLink = createLucideIcon(__iconData$35);
+__iconData$33.node;
+var ExternalLink = createLucideIcon(__iconData$33);
 // node_modules/lucide-react/dist/esm/icons/file-text.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12202,7 +12202,7 @@ var ExternalLink = createLucideIcon(__iconData$35);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$34 = {
+var __iconData$32 = {
 	name: "file-text",
 	size: 24,
 	node: [
@@ -12228,8 +12228,8 @@ var __iconData$34 = {
 		}]
 	]
 };
-__iconData$34.node;
-var FileText = createLucideIcon(__iconData$34);
+__iconData$32.node;
+var FileText = createLucideIcon(__iconData$32);
 // node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12237,7 +12237,7 @@ var FileText = createLucideIcon(__iconData$34);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$33 = {
+var __iconData$31 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -12259,8 +12259,8 @@ var __iconData$33 = {
 		}]
 	]
 };
-__iconData$33.node;
-var FolderKanban = createLucideIcon(__iconData$33);
+__iconData$31.node;
+var FolderKanban = createLucideIcon(__iconData$31);
 // node_modules/lucide-react/dist/esm/icons/hourglass.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12268,7 +12268,7 @@ var FolderKanban = createLucideIcon(__iconData$33);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$32 = {
+var __iconData$30 = {
 	name: "hourglass",
 	size: 24,
 	node: [
@@ -12290,8 +12290,8 @@ var __iconData$32 = {
 		}]
 	]
 };
-__iconData$32.node;
-var Hourglass = createLucideIcon(__iconData$32);
+__iconData$30.node;
+var Hourglass = createLucideIcon(__iconData$30);
 // node_modules/lucide-react/dist/esm/icons/layers.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12299,7 +12299,7 @@ var Hourglass = createLucideIcon(__iconData$32);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$31 = {
+var __iconData$29 = {
 	name: "layers",
 	size: 24,
 	node: [
@@ -12318,8 +12318,8 @@ var __iconData$31 = {
 	],
 	aliases: ["layers-3"]
 };
-__iconData$31.node;
-var Layers = createLucideIcon(__iconData$31);
+__iconData$29.node;
+var Layers = createLucideIcon(__iconData$29);
 // node_modules/lucide-react/dist/esm/icons/link-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12327,7 +12327,7 @@ var Layers = createLucideIcon(__iconData$31);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$30 = {
+var __iconData$28 = {
 	name: "link-2",
 	size: 24,
 	node: [
@@ -12348,28 +12348,8 @@ var __iconData$30 = {
 		}]
 	]
 };
-__iconData$30.node;
-var Link2 = createLucideIcon(__iconData$30);
-// node_modules/lucide-react/dist/esm/icons/link.mjs
-/**
-* @license lucide-react v1.48.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
-var __iconData$29 = {
-	name: "link",
-	size: 24,
-	node: [["path", {
-		d: "M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71",
-		key: "1cjeqo"
-	}], ["path", {
-		d: "M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71",
-		key: "19qd67"
-	}]]
-};
-__iconData$29.node;
-var Link = createLucideIcon(__iconData$29);
+__iconData$28.node;
+var Link2 = createLucideIcon(__iconData$28);
 // node_modules/lucide-react/dist/esm/icons/list-plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12377,7 +12357,7 @@ var Link = createLucideIcon(__iconData$29);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$28 = {
+var __iconData$27 = {
 	name: "list-plus",
 	size: 24,
 	node: [
@@ -12403,8 +12383,8 @@ var __iconData$28 = {
 		}]
 	]
 };
-__iconData$28.node;
-var ListPlus = createLucideIcon(__iconData$28);
+__iconData$27.node;
+var ListPlus = createLucideIcon(__iconData$27);
 // node_modules/lucide-react/dist/esm/icons/loader-circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12412,7 +12392,7 @@ var ListPlus = createLucideIcon(__iconData$28);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$27 = {
+var __iconData$26 = {
 	name: "loader-circle",
 	size: 24,
 	node: [["path", {
@@ -12421,8 +12401,8 @@ var __iconData$27 = {
 	}]],
 	aliases: ["loader-2"]
 };
-__iconData$27.node;
-var LoaderCircle = createLucideIcon(__iconData$27);
+__iconData$26.node;
+var LoaderCircle = createLucideIcon(__iconData$26);
 // node_modules/lucide-react/dist/esm/icons/lock-keyhole.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12430,7 +12410,7 @@ var LoaderCircle = createLucideIcon(__iconData$27);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$26 = {
+var __iconData$25 = {
 	name: "lock-keyhole",
 	size: 24,
 	node: [
@@ -12454,33 +12434,8 @@ var __iconData$26 = {
 		}]
 	]
 };
-__iconData$26.node;
-var LockKeyhole = createLucideIcon(__iconData$26);
-// node_modules/lucide-react/dist/esm/icons/lock.mjs
-/**
-* @license lucide-react v1.48.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
-var __iconData$25 = {
-	name: "lock",
-	size: 24,
-	node: [["rect", {
-		width: "18",
-		height: "11",
-		x: "3",
-		y: "11",
-		rx: "2",
-		ry: "2",
-		key: "1w4ew1"
-	}], ["path", {
-		d: "M7 11V7a5 5 0 0 1 10 0v4",
-		key: "fwvmzm"
-	}]]
-};
 __iconData$25.node;
-var Lock = createLucideIcon(__iconData$25);
+var LockKeyhole = createLucideIcon(__iconData$25);
 // node_modules/lucide-react/dist/esm/icons/log-out.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -19957,12 +19912,62 @@ function Button({ className, variant = "default", size = "default", asChild = fa
 		...props
 	});
 }
-// frontend/src/components/ui/input.jsx
-function Input({ className, type, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-		type,
-		"data-slot": "input",
-		className: cn$1("h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30", "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50", "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40", className),
+// frontend/src/components/ui/dialog.jsx
+function Dialog({ ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog$1, {
+		"data-slot": "dialog",
+		...props
+	});
+}
+function DialogPortal({ ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogPortal$1, {
+		"data-slot": "dialog-portal",
+		...props
+	});
+}
+function DialogOverlay({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogOverlay$1, {
+		"data-slot": "dialog-overlay",
+		className: cn$1("fixed inset-0 z-50 bg-black/50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0", className),
+		...props
+	});
+}
+function DialogContent({ className, children, showCloseButton = true, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogPortal, {
+		"data-slot": "dialog-portal",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogOverlay, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent$1, {
+			"data-slot": "dialog-content",
+			className: cn$1("fixed top-[50%] left-[50%] z-50 grid w-[calc(100%-2rem)] max-w-lg max-h-[calc(100dvh-2rem)] overflow-y-auto translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-150 outline-none data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0 sm:max-w-lg", className),
+			...props,
+			children: [children, showCloseButton && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogClose, {
+				"data-slot": "dialog-close",
+				className: "absolute top-4 right-4 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(X$1, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "sr-only",
+					children: "Close"
+				})]
+			})]
+		})]
+	});
+}
+function DialogHeader({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "dialog-header",
+		className: cn$1("flex min-w-0 flex-col gap-2 pr-6 text-left", className),
+		...props
+	});
+}
+function DialogTitle({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle$1, {
+		"data-slot": "dialog-title",
+		className: cn$1("text-lg leading-none font-semibold", className),
+		...props
+	});
+}
+function DialogDescription({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription$1, {
+		"data-slot": "dialog-description",
+		className: cn$1("text-sm text-muted-foreground", className),
 		...props
 	});
 }
@@ -20189,15 +20194,6 @@ async function fetchTaskMessages(taskId, after = "", limit = 100, namespace = "f
 	return await get$2(`/api/${namespace}/tasks/${taskId}/messages${query.toString() ? `?${query.toString()}` : ""}`);
 }
 /**
-* Send message to task thread (POST /api/{founder|employee}/tasks/:id/messages)
-*/
-async function sendTaskMessage(taskId, { text, attachmentUrl = "" }, namespace = "founder") {
-	return await post$2(`/api/${namespace}/tasks/${taskId}/messages`, {
-		text: text.trim(),
-		attachmentUrl: attachmentUrl.trim() || void 0
-	});
-}
-/**
 * Mark read cursor for task (POST /api/{founder|employee}/tasks/:id/read)
 */
 async function markTaskRead(taskId, lastMessageId, namespace = "founder") {
@@ -20305,6 +20301,232 @@ async function acceptDecisionRequest(requestId, target) {
 var previewTaskPlan = (taskId, input) => post$2(`/api/founder/tasks/${taskId}/plan/preview`, input);
 var applyTaskPlan = (taskId, input) => post$2(`/api/founder/tasks/${taskId}/plan/apply`, input);
 var renameWorkType = (projectId, stageId, input) => post$2(`/api/founder/projects/${projectId}/stages/${stageId}/rename/apply`, input);
+// frontend/src/components/ui/input.jsx
+function Input({ className, type, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+		type,
+		"data-slot": "input",
+		className: cn$1("h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30", "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50", "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40", className),
+		...props
+	});
+}
+// frontend/src/components/MeetingEditor.jsx
+var localTime = (value) => new Date(Date.parse(value) + 198e5).toISOString().slice(0, 16);
+function MeetingEditor({ open, onOpenChange, task, meeting, onSaved }) {
+	const [people, setPeople] = (0, import_react.useState)([]), [form, setForm] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [custom, setCustom] = (0, import_react.useState)("");
+	(0, import_react.useEffect)(() => {
+		if (!open || !task) return;
+		let active = true;
+		setPeople([]);
+		setError("");
+		setCustom("");
+		setForm({
+			title: meeting?.title || task.title,
+			location: meeting?.location || "",
+			startsAt: localTime(meeting?.startsAt || new Date(Date.now() + 864e5).toISOString()),
+			attendeeIds: meeting?.attendeeIds || [],
+			reminderMinutes: meeting?.reminderMinutes || [2880, 60],
+			previousEvening: meeting?.previousEvening ?? true,
+			groupFallback: meeting?.groupFallback ?? false
+		});
+		request(`/api/founder/tasks/${task.id}/participants`).then((data) => {
+			if (active) setPeople(data.people);
+		}).catch((problem) => {
+			if (active) setError(problem.message);
+		});
+		return () => {
+			active = false;
+		};
+	}, [
+		open,
+		task?.id,
+		meeting?.id
+	]);
+	const set = (key, value) => setForm((current) => ({
+		...current,
+		[key]: value
+	}));
+	const save = async (event) => {
+		event.preventDefault();
+		setBusy(true);
+		setError("");
+		try {
+			await request(meeting ? `/api/founder/meetings/${meeting.id}` : `/api/founder/tasks/${task.id}/meeting`, {
+				method: meeting ? "PATCH" : "POST",
+				body: {
+					...form,
+					startsAt: (/* @__PURE__ */ new Date(form.startsAt + ":00+05:30")).toISOString(),
+					...meeting ? { revision: meeting.revision } : {}
+				}
+			});
+			onOpenChange(false);
+			onSaved?.();
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+		open,
+		onOpenChange: (value) => {
+			if (!busy) onOpenChange(value);
+		},
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
+			className: "max-h-[90dvh] overflow-y-auto",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: meeting ? "Edit meeting" : "Schedule a task meeting" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Choose who needs to attend. Scheduling queues their notifications; the task stays open." })] }), form && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+				onSubmit: save,
+				className: "space-y-4",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "grid gap-1 text-xs",
+						children: ["Meeting title", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+							required: true,
+							maxLength: 180,
+							value: form.title,
+							onChange: (e) => set("title", e.target.value)
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "grid gap-1 text-xs",
+						children: ["Date and time · India (IST)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+							required: true,
+							type: "datetime-local",
+							value: form.startsAt,
+							onChange: (e) => set("startsAt", e.target.value)
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "grid gap-1 text-xs",
+						children: ["On-site location or meeting link", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+							maxLength: 300,
+							value: form.location,
+							onChange: (e) => set("location", e.target.value),
+							placeholder: "Project site, address or meeting link"
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+						className: "space-y-2 rounded-lg border p-3",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
+								className: "text-xs font-medium",
+								children: "Attendees"
+							}),
+							people.map((person) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "flex items-start gap-2 text-sm",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+									className: "mt-1",
+									type: "checkbox",
+									checked: form.attendeeIds.includes(person.id),
+									onChange: (e) => set("attendeeIds", e.target.checked ? [...form.attendeeIds, person.id] : form.attendeeIds.filter((id) => id !== person.id))
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+									person.name,
+									" · ",
+									person.role,
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", {
+										className: "block text-muted-foreground",
+										children: person.connected ? "Personal Telegram connected" : "Needs Telegram connection; ask them to press Start"
+									})
+								] })]
+							}, person.id)),
+							!people.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs text-muted-foreground",
+								children: "No project people available. Add project members first."
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+						className: "space-y-2",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
+								className: "text-xs font-medium",
+								children: "Reminders"
+							}),
+							[.../* @__PURE__ */ new Set([
+								2880,
+								60,
+								...form.reminderMinutes
+							])].sort((a, b) => b - a).map((minutes) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "flex items-center gap-2 text-sm",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+									type: "checkbox",
+									checked: form.reminderMinutes.includes(minutes),
+									onChange: (e) => set("reminderMinutes", e.target.checked ? [...form.reminderMinutes, minutes] : form.reminderMinutes.filter((value) => value !== minutes))
+								}), minutes === 2880 ? "Two days before" : minutes === 60 ? "One hour before" : `${minutes} minutes before`]
+							}, minutes)),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "flex items-center gap-2 text-sm",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+									type: "checkbox",
+									checked: form.previousEvening,
+									onChange: (e) => set("previousEvening", e.target.checked)
+								}), "Previous evening at 6 PM IST"]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex gap-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									"aria-label": "Custom reminder minutes before",
+									type: "number",
+									min: 1,
+									max: 10080,
+									value: custom,
+									placeholder: "Minutes before",
+									onChange: (e) => setCustom(e.target.value)
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									type: "button",
+									variant: "outline",
+									disabled: !custom || form.reminderMinutes.length >= 5,
+									onClick: () => {
+										const value = Number(custom);
+										if (Number.isInteger(value) && value >= 1 && value <= 10080) {
+											set("reminderMinutes", [.../* @__PURE__ */ new Set([...form.reminderMinutes, value])]);
+											setCustom("");
+										}
+									},
+									children: "Add"
+								})]
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "flex items-start gap-2 text-sm",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+							className: "mt-1",
+							type: "checkbox",
+							checked: form.groupFallback,
+							onChange: (e) => set("groupFallback", e.target.checked)
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: ["Notify the project Telegram group if an attendee has no personal connection.", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", {
+							className: "block text-muted-foreground",
+							children: "The client and everyone else in that group can see these meeting details."
+						})] })]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs text-muted-foreground",
+						children: "Past reminder times are skipped. Delivery status appears in Meetings."
+					}),
+					error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						role: "alert",
+						className: "text-sm text-destructive",
+						children: error
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						disabled: busy || !form.attendeeIds.length,
+						type: "submit",
+						children: busy ? "Saving…" : meeting ? "Save changes & notify attendees" : "Schedule & notify attendees"
+					})
+				]
+			})]
+		})
+	});
+}
+// frontend/src/components/ui/textarea.jsx
+function Textarea({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("textarea", {
+		"data-slot": "textarea",
+		className: cn$1("flex field-sizing-content min-h-16 w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:aria-invalid:ring-destructive/40", className),
+		...props
+	});
+}
 // frontend/src/components/ProjectFiles.jsx
 function ProjectFiles({ projectId, namespace = "founder" }) {
 	const [files, setFiles] = (0, import_react.useState)([]);
@@ -20392,710 +20614,1325 @@ function ProjectFiles({ projectId, namespace = "founder" }) {
 		]
 	});
 }
-// frontend/src/components/ui/badge.jsx
-var badgeVariants = cva("inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3", {
+// frontend/src/components/TaskThreadDrawer.jsx
+function TaskMessage({ message, namespace = "founder" }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+		className: "space-y-2 rounded-xl border bg-card p-3 text-sm",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex justify-between gap-2 text-xs",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: message.author }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("time", { children: new Date(message.at).toLocaleString() })]
+			}),
+			message.text && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "whitespace-pre-wrap break-words",
+				children: message.text
+			}),
+			message.isResource && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-xs text-primary",
+				children: "Marked as a resource for dependent work"
+			}),
+			message.attachmentUrl && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+				className: "block break-all text-xs underline",
+				href: message.attachmentUrl,
+				target: "_blank",
+				rel: "noreferrer",
+				children: message.attachmentUrl
+			}),
+			(message.files || []).map((file) => {
+				const href = `/api/${namespace}/files/${file.id}/content`;
+				return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+					className: "block text-xs underline",
+					href,
+					target: "_blank",
+					rel: "noreferrer",
+					children: [file.type.startsWith("image/") && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+						className: "mb-1 max-h-60 max-w-full rounded-lg object-contain",
+						src: href,
+						alt: file.name,
+						loading: "lazy"
+					}), file.name]
+				}, file.id);
+			}),
+			message.queryId && (message.attachments || []).map((file) => {
+				const href = getAttachmentUrl(message.queryId, file.index, namespace);
+				return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+					className: "block text-xs underline",
+					href,
+					target: "_blank",
+					rel: "noreferrer",
+					children: [/photo|image/i.test(file.type) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+						src: href,
+						className: "mb-1 max-h-52 rounded-lg",
+						alt: file.fileName || "Query photo",
+						loading: "lazy"
+					}), file.fileName || file.type]
+				}, file.index);
+			}),
+			message.telegram && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "text-xs text-muted-foreground",
+				children: [
+					"Telegram group · ",
+					message.telegram.status,
+					message.telegram.error ? " — " + message.telegram.error : ""
+				]
+			})
+		]
+	});
+}
+function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTaskUpdated, onOpenSourceQuery, isFounder = true, projectMembers = [] }) {
+	const namespace = isFounder ? "founder" : "employee";
+	const [task, setTask] = (0, import_react.useState)(initialTask), [messages, setMessages] = (0, import_react.useState)([]), [resources, setResources] = (0, import_react.useState)([]), [people, setPeople] = (0, import_react.useState)([]), [draft, setDraft] = (0, import_react.useState)(""), [link, setLink] = (0, import_react.useState)(""), [file, setFile] = (0, import_react.useState)(null), [isResource, setResource] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [loading, setLoading] = (0, import_react.useState)(false), [cursor, setCursor] = (0, import_react.useState)(null), [editing, setEditing] = (0, import_react.useState)(false), [fields, setFields] = (0, import_react.useState)({}), [review, setReview] = (0, import_react.useState)(false), [shareMessage, setShareMessage] = (0, import_react.useState)(null), [recipients, setRecipients] = (0, import_react.useState)([]), [meetingOpen, setMeetingOpen] = (0, import_react.useState)(false), [taskMeeting, setTaskMeeting] = (0, import_react.useState)(null), [remove, setRemove] = (0, import_react.useState)(false);
+	const key = (0, import_react.useRef)(crypto.randomUUID()), fileInput = (0, import_react.useRef)(null), version = (0, import_react.useRef)(0);
+	(0, import_react.useEffect)(() => {
+		key.current = crypto.randomUUID();
+	}, [
+		draft,
+		link,
+		file,
+		isResource
+	]);
+	const load = async (taskId = task?.id, append = false) => {
+		const current = version.current;
+		setLoading(true);
+		try {
+			const data = await fetchTaskMessages(taskId, append ? cursor : "", 100, namespace);
+			if (current !== version.current) return;
+			setMessages((previous) => append ? [...previous, ...data.messages] : data.messages);
+			setCursor(data.pagination?.nextCursor || null);
+			if (data.messages.length) await markTaskRead(taskId, data.messages.at(-1).id, namespace);
+			const reference = await request(`/api/${namespace}/tasks/${taskId}/resources`);
+			if (current === version.current) setResources(reference.resources);
+		} catch (problem) {
+			if (current === version.current) setError(problem.message);
+		} finally {
+			if (current === version.current) setLoading(false);
+		}
+	};
+	(0, import_react.useEffect)(() => {
+		if (!open || !initialTask) return;
+		version.current++;
+		setTask(initialTask);
+		setMessages([]);
+		setResources([]);
+		setPeople([]);
+		setDraft("");
+		setLink("");
+		setFile(null);
+		setResource(false);
+		setEditing(false);
+		setReview(false);
+		setShareMessage(null);
+		setRecipients([]);
+		setMeetingOpen(false);
+		setTaskMeeting(null);
+		request(`/api/${namespace}/meetings?projectId=${encodeURIComponent(initialTask.projectId)}`).then((data) => {
+			if (current === version.current) setTaskMeeting(data.meetings.find((row) => row.taskId === initialTask.id && row.status === "Scheduled") || null);
+		}).catch(() => {});
+		setRemove(false);
+		setError("");
+		setCursor(null);
+		key.current = crypto.randomUUID();
+		load(initialTask.id);
+		const current = version.current;
+		request(`/api/${namespace}/tasks/${initialTask.id}/participants`).then((data) => {
+			if (current === version.current) setPeople(data.people);
+		}).catch((problem) => {
+			if (current === version.current) setError(problem.message);
+		});
+		return () => {
+			version.current++;
+		};
+	}, [
+		open,
+		initialTask?.id,
+		namespace
+	]);
+	if (!task) return null;
+	const closed = ["Completed", "Cancelled"].includes(task.status), projectClosed = ["Completed", "Abandoned"].includes(project?.status);
+	const upload = async (event) => {
+		const selected = event.target.files?.[0];
+		if (!selected) return;
+		setBusy(true);
+		setError("");
+		try {
+			if (selected.size > 5242880) throw Error("Choose a file up to 5 MB.");
+			const data = await new Promise((resolve, reject) => {
+				const reader = new FileReader();
+				reader.onload = () => resolve(String(reader.result).split(",")[1]);
+				reader.onerror = reject;
+				reader.readAsDataURL(selected);
+			});
+			const result = await request(`/api/${namespace}/tasks/${task.id}/files`, {
+				method: "POST",
+				body: {
+					name: selected.name,
+					type: selected.type,
+					data
+				}
+			});
+			setFile(result.file);
+		} catch (problem) {
+			setError(problem.message || "Could not upload this file.");
+		} finally {
+			setBusy(false);
+			event.target.value = "";
+		}
+	};
+	const send = async (publish) => {
+		setBusy(true);
+		setError("");
+		let posted = false;
+		try {
+			let message = shareMessage;
+			if (!message) {
+				message = (await request(`/api/${namespace}/tasks/${task.id}/messages`, {
+					method: "POST",
+					body: {
+						text: draft,
+						attachmentUrl: link,
+						fileIds: file ? [file.id] : [],
+						isResource,
+						clientKey: key.current
+					}
+				})).message;
+				posted = true;
+				setMessages((previous) => [...previous.filter((row) => row.id !== message.id), message]);
+			}
+			if (publish) message = (await request(`/api/founder/tasks/${task.id}/messages/${message.id}/publish`, {
+				method: "POST",
+				body: {
+					confirm: true,
+					recipientIds: recipients
+				}
+			})).message;
+			setMessages((previous) => [...previous.filter((row) => row.id !== message.id), message]);
+			if (!shareMessage) {
+				setDraft("");
+				setLink("");
+				setFile(null);
+				setResource(false);
+				key.current = crypto.randomUUID();
+			}
+			setReview(false);
+			setShareMessage(null);
+			onTaskUpdated?.();
+		} catch (problem) {
+			setError((posted ? "Saved internally. Telegram was not sent: " : "") + problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	const changeTask = async (updates) => {
+		setBusy(true);
+		setError("");
+		try {
+			const result = await updateTask(task.id, updates, "founder");
+			setTask(result.task);
+			setEditing(false);
+			onTaskUpdated?.();
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	const ready = Boolean(draft.trim() || link.trim() || file) && !busy && !closed && !projectClosed;
+	const startEdit = () => {
+		setFields({
+			title: task.title,
+			description: task.description || "",
+			status: task.status,
+			deadline: task.deadline || "",
+			assigneeId: task.assigneeId || "",
+			stageId: task.stageId || ""
+		});
+		setEditing(true);
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+			open,
+			onOpenChange: (value) => {
+				if (!busy) onOpenChange(value);
+			},
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
+				className: "flex max-h-[92dvh] flex-col overflow-hidden sm:max-w-2xl",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: task.title }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [
+						project?.stages?.find((row) => row.id === task.stageId)?.name || "Task workspace",
+						" ",
+						"· ",
+						task.status,
+						" · Due ",
+						task.deadline || "not set"
+					] })] }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "min-h-0 flex-1 space-y-4 overflow-y-auto pr-1",
+						children: [
+							error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-sm text-destructive",
+								role: "alert",
+								children: error
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex flex-wrap gap-2",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+										variant: "outline",
+										size: "sm",
+										disabled: loading,
+										onClick: () => load(),
+										children: "Refresh discussion"
+									}),
+									isFounder && !projectClosed && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+											variant: "outline",
+											size: "sm",
+											onClick: startEdit,
+											children: "Edit task"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+											variant: "outline",
+											size: "sm",
+											disabled: busy,
+											onClick: () => changeTask({ status: closed ? "Open" : "Completed" }),
+											children: closed ? "Reopen task" : "Mark task complete"
+										}),
+										!closed && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+											variant: "outline",
+											size: "sm",
+											onClick: () => setMeetingOpen(true),
+											children: taskMeeting ? "Edit meeting" : "Schedule meeting"
+										})
+									] }),
+									task.sourceQueryId && onOpenSourceQuery && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+										variant: "outline",
+										size: "sm",
+										onClick: () => onOpenSourceQuery(task.sourceQueryId),
+										children: "View source query"
+									})
+								]
+							}),
+							!isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs text-muted-foreground",
+								children: "View the whole project and contribute to discussions. Founders manage task details and approvals."
+							}),
+							editing && isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+								className: "space-y-3 rounded-xl border p-3",
+								onSubmit: (e) => {
+									e.preventDefault();
+									changeTask(fields);
+								},
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+										className: "grid gap-1 text-xs",
+										children: ["Task title", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+											required: true,
+											maxLength: 200,
+											value: fields.title,
+											onChange: (e) => setFields({
+												...fields,
+												title: e.target.value
+											})
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+										className: "grid gap-1 text-xs",
+										children: ["Description", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+											maxLength: 1e4,
+											value: fields.description,
+											onChange: (e) => setFields({
+												...fields,
+												description: e.target.value
+											})
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "grid grid-cols-2 gap-2",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+												className: "grid gap-1 text-xs",
+												children: ["Status", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
+													value: fields.status,
+													onChange: (e) => setFields({
+														...fields,
+														status: e.target.value
+													}),
+													children: [
+														"Open",
+														"In progress",
+														"Blocked",
+														"Completed",
+														"Cancelled"
+													].map((value) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: value }, value))
+												})]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+												className: "grid gap-1 text-xs",
+												children: ["Deadline", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+													type: "date",
+													value: fields.deadline,
+													onChange: (e) => setFields({
+														...fields,
+														deadline: e.target.value
+													})
+												})]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+												className: "grid gap-1 text-xs",
+												children: ["Assignee", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+													value: fields.assigneeId,
+													onChange: (e) => setFields({
+														...fields,
+														assigneeId: e.target.value
+													}),
+													children: [
+														/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+															value: "",
+															children: "Unassigned"
+														}),
+														/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+															value: "founder",
+															children: "Founder"
+														}),
+														projectMembers.map((member) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+															value: member.employeeId || member.id,
+															children: member.name
+														}, member.employeeId || member.id))
+													]
+												})]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+												className: "grid gap-1 text-xs",
+												children: ["Stage", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+													value: fields.stageId,
+													onChange: (e) => setFields({
+														...fields,
+														stageId: e.target.value
+													}),
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+														value: "",
+														children: "General"
+													}), project?.stages?.map((stage) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+														value: stage.id,
+														children: stage.name
+													}, stage.id))]
+												})]
+											})
+										]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "flex flex-wrap gap-2",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+												disabled: busy,
+												children: "Save task"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+												type: "button",
+												variant: "outline",
+												onClick: () => setEditing(false),
+												children: "Cancel"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+												type: "button",
+												variant: "outline",
+												onClick: () => setRemove(true),
+												children: "Delete task"
+											})
+										]
+									})
+								]
+							}),
+							task.description && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "whitespace-pre-wrap rounded-lg bg-muted/30 p-3 text-sm",
+								children: task.description
+							}),
+							task.sourceBlockedReason && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "text-xs text-amber-800",
+								children: ["Blocked: ", task.sourceBlockedReason]
+							}),
+							task.sourceApprovalStatus && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "text-xs",
+								children: ["Approval: ", task.sourceApprovalStatus]
+							}),
+							resources.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
+								className: "rounded-xl border p-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("summary", {
+									className: "text-sm font-medium",
+									children: ["Resources from preceding work · ", resources.length]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "space-y-3 pt-3",
+									children: resources.map((row) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+										className: "space-y-2",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h4", {
+											className: "text-sm font-semibold",
+											children: [
+												row.task.title,
+												" · ",
+												row.task.status
+											]
+										}), row.messages.map((message) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TaskMessage, {
+											message,
+											namespace
+										}, message.id))]
+									}, row.task.id))
+								})]
+							}),
+							project?.id && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
+								className: "rounded-xl border p-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", {
+									className: "text-sm",
+									children: "Shared project resources"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectFiles, {
+									projectId: project.id,
+									namespace
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+								className: "space-y-3",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", {
+										className: "text-sm font-semibold",
+										children: [
+											"Task discussion · ",
+											messages.length,
+											cursor ? "+" : ""
+										]
+									}),
+									messages.map((message) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "space-y-1",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TaskMessage, {
+											message,
+											namespace
+										}), isFounder && !projectClosed && project?.telegramGroupChatId && !message.queryId && (!message.telegram || message.telegram.status === "Failed") && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+											size: "sm",
+											variant: "outline",
+											onClick: () => {
+												setShareMessage(message);
+												setRecipients([]);
+												setReview(true);
+											},
+											children: "Review & send this message to Telegram"
+										})]
+									}, message.id)),
+									cursor && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+										variant: "outline",
+										size: "sm",
+										disabled: loading,
+										onClick: () => load(task.id, true),
+										children: "Load more messages"
+									}),
+									!messages.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "text-sm text-muted-foreground",
+										children: loading ? "Loading discussion…" : "No messages yet."
+									})
+								]
+							})
+						]
+					}),
+					closed || projectClosed ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "border-t pt-3 text-xs text-muted-foreground",
+						children: "This task is closed. A founder can reopen it to continue the discussion."
+					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+						className: "shrink-0 space-y-2 border-t pt-3",
+						onSubmit: (event) => {
+							event.preventDefault();
+							send(false);
+						},
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+								"aria-label": "Task comment",
+								value: draft,
+								maxLength: 2e3,
+								onChange: (e) => setDraft(e.target.value),
+								placeholder: "Write an internal message or describe the attached file…",
+								rows: 2
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								"aria-label": "Attachment link",
+								value: link,
+								maxLength: 2048,
+								onChange: (e) => setLink(e.target.value),
+								placeholder: "Optional HTTPS reference link"
+							}),
+							file && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "text-xs",
+								children: [
+									"Attached: ",
+									file.name,
+									" ",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+										type: "button",
+										className: "underline",
+										disabled: busy,
+										onClick: () => setFile(null),
+										children: "Remove"
+									})
+								]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+								ref: fileInput,
+								className: "hidden",
+								type: "file",
+								accept: "image/jpeg,image/png,image/webp,application/pdf",
+								onChange: upload
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "flex gap-2 text-xs",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+									type: "checkbox",
+									checked: isResource,
+									onChange: (e) => setResource(e.target.checked)
+								}), "Keep this message as a resource for dependent work"]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex flex-wrap gap-2",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+										type: "button",
+										size: "sm",
+										variant: "outline",
+										disabled: busy,
+										onClick: () => fileInput.current?.click(),
+										children: "Attach image or PDF"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+										type: "submit",
+										size: "sm",
+										disabled: !ready,
+										children: busy ? "Saving…" : "Post internally"
+									}),
+									isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+										type: "button",
+										size: "sm",
+										variant: "outline",
+										disabled: !ready || !project?.telegramGroupChatId,
+										onClick: () => {
+											setShareMessage(null);
+											setRecipients([]);
+											setReview(true);
+										},
+										children: "Review & send to Telegram"
+									})
+								]
+							})
+						]
+					})
+				]
+			})
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+			open: review,
+			onOpenChange: (value) => {
+				if (!busy) setReview(value);
+			},
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
+				className: "max-h-[90dvh] overflow-y-auto",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Send this message to Telegram?" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [
+						"Project: ",
+						project?.name,
+						". Everyone in its Telegram group can see this message and attachment."
+					] })] }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "whitespace-pre-wrap break-words rounded-lg border p-3 text-sm",
+						children: shareMessage ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TaskMessage, {
+							message: shareMessage,
+							namespace
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+							draft,
+							link && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: link }),
+							file && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: ["File: ", file.name] })
+						] })
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+						className: "space-y-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
+							className: "text-xs font-medium",
+							children: "Tag people (optional)"
+						}), people.filter((person) => /^\d+$/.test(person.id)).map((person) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "flex gap-2 text-sm",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+									type: "checkbox",
+									checked: recipients.includes(person.id),
+									onChange: (e) => setRecipients(e.target.checked ? [...recipients, person.id] : recipients.filter((id) => id !== person.id))
+								}),
+								person.name,
+								" · ",
+								person.role
+							]
+						}, person.id))]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs text-muted-foreground",
+						children: "This message also stays in the task thread. Earlier private messages are not sent."
+					}),
+					error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						role: "alert",
+						className: "text-sm text-destructive",
+						children: error
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						disabled: busy,
+						onClick: () => send(true),
+						children: busy ? "Sending…" : "Confirm & send to Telegram"
+					})
+				]
+			})
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MeetingEditor, {
+			open: meetingOpen,
+			onOpenChange: setMeetingOpen,
+			task,
+			meeting: taskMeeting,
+			onSaved: () => {
+				request(`/api/${namespace}/meetings?projectId=${encodeURIComponent(task.projectId)}`).then((data) => setTaskMeeting(data.meetings.find((row) => row.taskId === task.id && row.status === "Scheduled") || null)).catch(() => {});
+				onTaskUpdated?.();
+			}
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+			open: remove,
+			onOpenChange: setRemove,
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Delete this task?" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "The task will be removed from the active project plan." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+				disabled: busy,
+				variant: "destructive",
+				onClick: async () => {
+					setBusy(true);
+					try {
+						await deleteTask(task.id);
+						setRemove(false);
+						onOpenChange(false);
+						onTaskUpdated?.();
+					} catch (problem) {
+						setError(problem.message);
+						setRemove(false);
+					} finally {
+						setBusy(false);
+					}
+				},
+				children: "Delete task"
+			})] })
+		})
+	] });
+}
+// frontend/src/components/Meetings.jsx
+var when$1 = (value) => new Date(value).toLocaleString("en-IN", {
+	timeZone: "Asia/Kolkata",
+	dateStyle: "medium",
+	timeStyle: "short"
+}) + " IST";
+function MeetingsView({ namespace = "founder", projectId = "", onOpenTask }) {
+	const [meetings, setMeetings] = (0, import_react.useState)([]), [error, setError] = (0, import_react.useState)(""), [edit, setEdit] = (0, import_react.useState)(null), [action, setAction] = (0, import_react.useState)(null), [history, setHistory] = (0, import_react.useState)(false), [busy, setBusy] = (0, import_react.useState)(false), [selectedTask, setSelectedTask] = (0, import_react.useState)(null);
+	const load = async () => {
+		try {
+			const data = await request(`/api/${namespace}/meetings${projectId ? "?projectId=" + encodeURIComponent(projectId) : ""}`);
+			setMeetings(data.meetings);
+			setError("");
+		} catch (problem) {
+			setError(problem.message);
+		}
+	};
+	(0, import_react.useEffect)(() => {
+		let active = true;
+		const refresh = () => {
+			if (active && document.visibilityState === "visible") load();
+		};
+		load();
+		const timer = setInterval(refresh, 3e4);
+		return () => {
+			active = false;
+			clearInterval(timer);
+		};
+	}, [namespace, projectId]);
+	const update = async () => {
+		setBusy(true);
+		try {
+			await request(`/api/founder/meetings/${action.meeting.id}`, {
+				method: "PATCH",
+				body: {
+					revision: action.meeting.revision,
+					status: action.status
+				}
+			});
+			setAction(null);
+			await load();
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	const openTask = async (meeting) => {
+		if (onOpenTask) {
+			onOpenTask(meeting);
+			return;
+		}
+		try {
+			const workspace = await request(`/api/${namespace}/projects/${meeting.projectId}/workspace`);
+			const task = workspace.tasks.find((row) => row.id === meeting.taskId);
+			if (!task) throw Error("Task is no longer available.");
+			setSelectedTask({
+				task,
+				project: workspace.project
+			});
+		} catch (problem) {
+			setError(problem.message);
+		}
+	};
+	const visible = meetings.filter((meeting) => history || meeting.status === "Scheduled");
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "space-y-4",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-wrap items-center justify-between gap-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "iksha-eyebrow",
+						children: "Site visits & reviews"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+						className: "text-2xl font-semibold",
+						children: "Meetings"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs text-muted-foreground",
+						children: "Open a task and choose Schedule meeting to arrange a visit or review."
+					})
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: "outline",
+					size: "sm",
+					onClick: load,
+					children: "Refresh"
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+				className: "flex gap-2 text-sm",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+					type: "checkbox",
+					checked: history,
+					onChange: (e) => setHistory(e.target.checked)
+				}), "Include completed and cancelled meetings"]
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "text-sm text-destructive",
+				children: error
+			}),
+			visible.map((meeting) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+				className: "space-y-3 rounded-xl border bg-card p-4",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex flex-wrap justify-between gap-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "text-xs text-primary",
+								children: [
+									meeting.projectName,
+									" · ",
+									meeting.status
+								]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+								className: "font-semibold",
+								children: meeting.title
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-sm",
+								children: when$1(meeting.startsAt)
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs text-muted-foreground",
+								children: meeting.location || "Location to be confirmed"
+							})
+						] }), Date.parse(meeting.startsAt) < Date.now() && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Past" })]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "text-xs",
+						children: ["Attendees: ", meeting.attendees.map((row) => row.name).join(", ")]
+					}),
+					meeting.attendees.some((row) => !row.connected) && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "text-xs text-amber-800",
+						children: [
+							meeting.attendees.filter((row) => !row.connected).map((row) => row.name).join(", "),
+							": personal Telegram unavailable",
+							meeting.groupFallback ? "; group fallback enabled" : "; group fallback off",
+							"."
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex flex-wrap gap-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							size: "sm",
+							onClick: () => openTask(meeting),
+							children: "Open task"
+						}), namespace === "founder" && meeting.status === "Scheduled" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "outline",
+								size: "sm",
+								onClick: () => setEdit(meeting),
+								children: "Edit"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "outline",
+								size: "sm",
+								onClick: () => setAction({
+									meeting,
+									status: "Completed"
+								}),
+								children: "Mark meeting complete"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "outline",
+								size: "sm",
+								onClick: () => setAction({
+									meeting,
+									status: "Cancelled"
+								}),
+								children: "Cancel meeting"
+							})
+						] })]
+					}),
+					namespace === "founder" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
+						className: "rounded-lg border p-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("summary", {
+							className: "text-xs",
+							children: ["Notification history · ", meeting.deliveries.length]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "max-h-52 overflow-y-auto space-y-1 pt-2",
+							children: meeting.deliveries.slice().reverse().map((row) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "text-xs",
+								children: [
+									meeting.attendees.find((person) => person.id === row.attendeeId)?.name || row.attendeeId,
+									" ",
+									"· ",
+									row.kind,
+									" · ",
+									row.channel || "Personal",
+									" · ",
+									row.status,
+									row.error ? " — " + row.error : ""
+								]
+							}, row.id))
+						})]
+					})
+				]
+			}, meeting.id)),
+			!visible.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "rounded-xl border p-6 text-sm text-muted-foreground",
+				children: "No scheduled meetings yet."
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TaskThreadDrawer, {
+				task: selectedTask?.task,
+				project: selectedTask?.project,
+				projectMembers: selectedTask?.project.members || [],
+				isFounder: namespace === "founder",
+				open: Boolean(selectedTask),
+				onOpenChange: (value) => {
+					if (!value) setSelectedTask(null);
+				},
+				onTaskUpdated: load
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MeetingEditor, {
+				open: Boolean(edit),
+				onOpenChange: (value) => {
+					if (!value) setEdit(null);
+				},
+				task: edit ? {
+					id: edit.taskId,
+					title: edit.title
+				} : null,
+				meeting: edit,
+				onSaved: load
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				open: Boolean(action),
+				onOpenChange: (value) => {
+					if (!value && !busy) setAction(null);
+				},
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: action?.status === "Cancelled" ? "Cancel meeting?" : "Complete meeting?" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: action?.status === "Cancelled" ? "Attendees will be notified and future reminders stopped." : "Future meeting reminders will stop. The linked task stays unchanged." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					disabled: busy,
+					onClick: update,
+					children: busy ? "Saving…" : "Confirm"
+				})] })
+			})
+		]
+	});
+}
+// frontend/src/components/ui/avatar.jsx
+function Avatar$1({ className, size = "default", ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$2, {
+		"data-slot": "avatar",
+		"data-size": size,
+		className: cn$1("group/avatar relative flex size-8 shrink-0 overflow-hidden rounded-full select-none data-[size=lg]:size-10 data-[size=sm]:size-6", className),
+		...props
+	});
+}
+function AvatarFallback({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback$1, {
+		"data-slot": "avatar-fallback",
+		className: cn$1("flex size-full items-center justify-center rounded-full bg-muted text-sm text-muted-foreground group-data-[size=sm]/avatar:text-xs", className),
+		...props
+	});
+}
+// frontend/src/components/ui/bubble.jsx
+var bubbleVariants = cva("group/bubble relative flex w-fit max-w-[80%] min-w-0 flex-col gap-1 group-data-[align=end]/message:self-end data-[align=end]:self-end data-[variant=ghost]:max-w-full", {
 	variants: { variant: {
-		default: "bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
-		secondary: "bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
-		destructive: "bg-destructive text-white focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 [a&]:hover:bg-destructive/90",
-		outline: "border-border text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
-		ghost: "[a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
-		link: "text-primary underline-offset-4 [a&]:hover:underline"
+		default: "*:data-[slot=bubble-content]:bg-primary *:data-[slot=bubble-content]:text-primary-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-primary/80",
+		secondary: "*:data-[slot=bubble-content]:bg-secondary *:data-[slot=bubble-content]:text-secondary-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)]",
+		muted: "*:data-[slot=bubble-content]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[color-mix(in_oklch,var(--muted),var(--foreground)_5%)]",
+		tinted: "*:data-[slot=bubble-content]:bg-[oklch(from_var(--primary)_0.93_calc(c*0.4)_h)] *:data-[slot=bubble-content]:text-foreground dark:*:data-[slot=bubble-content]:bg-[oklch(from_var(--primary)_0.3_calc(c*0.4)_h)] [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[oklch(from_var(--primary)_0.88_calc(c*0.5)_h)] dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-[oklch(from_var(--primary)_0.35_calc(c*0.5)_h)]",
+		outline: "*:data-[slot=bubble-content]:border-border *:data-[slot=bubble-content]:bg-background [&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:text-foreground dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-input/30",
+		ghost: "border-none *:data-[slot=bubble-content]:rounded-none *:data-[slot=bubble-content]:bg-transparent *:data-[slot=bubble-content]:p-0 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:text-foreground dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted/50",
+		destructive: "*:data-[slot=bubble-content]:bg-destructive/10 *:data-[slot=bubble-content]:text-destructive dark:*:data-[slot=bubble-content]:bg-destructive/20 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-destructive/20 dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-destructive/30"
 	} },
 	defaultVariants: { variant: "default" }
 });
-function Badge({ className, variant = "default", asChild = false, ...props }) {
-	const Comp = asChild ? Slot$1 : "span";
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Comp, {
-		"data-slot": "badge",
+function Bubble({ variant = "default", align = "start", className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "bubble",
 		"data-variant": variant,
-		className: cn$1(badgeVariants({ variant }), className),
+		"data-align": align,
+		className: cn$1(bubbleVariants({ variant }), className),
 		...props
 	});
 }
-// frontend/src/components/ui/native-select.jsx
-function NativeSelect({ className, size = "default", ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
-		"data-slot": "native-select",
-		"data-size": size,
-		className: cn$1("h-9 w-full min-w-0 appearance-none rounded-md border border-input bg-transparent px-3 py-2 pr-9 text-sm shadow-xs transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed data-[size=sm]:h-8 data-[size=sm]:py-1 dark:bg-input/30 dark:hover:bg-input/50", "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50", "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40", className),
+function BubbleContent({ asChild = false, className, ...props }) {
+	const Comp = asChild ? Slot$1 : "div";
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Comp, {
+		"data-slot": "bubble-content",
+		className: cn$1("w-fit max-w-full min-w-0 overflow-hidden rounded-xl border border-transparent px-3 py-2 text-sm leading-relaxed wrap-break-word group-data-[align=end]/bubble:self-end [button]:text-left [button,a]:transition-colors [button,a]:outline-none [button,a]:focus-visible:border-ring [button,a]:focus-visible:ring-3 [button,a]:focus-visible:ring-ring/50", className),
 		...props
 	});
 }
-function NativeSelectOption({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-		"data-slot": "native-select-option",
-		className: cn$1("bg-[Canvas] text-[CanvasText]", className),
+// frontend/src/components/ui/card.jsx
+function Card({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "card",
+		className: cn$1("flex flex-col gap-6 rounded-xl border bg-card py-6 text-card-foreground shadow-sm", className),
 		...props
 	});
 }
-// frontend/src/components/ui/textarea.jsx
-function Textarea({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("textarea", {
-		"data-slot": "textarea",
-		className: cn$1("flex field-sizing-content min-h-16 w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:aria-invalid:ring-destructive/40", className),
+function CardHeader({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "card-header",
+		className: cn$1("@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6", className),
 		...props
 	});
 }
-// frontend/src/components/ui/dialog.jsx
-function Dialog({ ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog$1, {
-		"data-slot": "dialog",
+function CardTitle({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "card-title",
+		className: cn$1("leading-none font-semibold", className),
 		...props
 	});
 }
-function DialogPortal({ ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogPortal$1, {
-		"data-slot": "dialog-portal",
+function CardContent({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "card-content",
+		className: cn$1("px-6", className),
 		...props
 	});
 }
-function DialogOverlay({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogOverlay$1, {
-		"data-slot": "dialog-overlay",
-		className: cn$1("fixed inset-0 z-50 bg-black/50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0", className),
+// frontend/src/components/ui/message.jsx
+function Message({ className, align = "start", ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "message",
+		"data-align": align,
+		className: cn$1("group/message relative flex w-full min-w-0 gap-2 text-sm data-[align=end]:flex-row-reverse", className),
 		...props
 	});
 }
-function DialogContent({ className, children, showCloseButton = true, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogPortal, {
-		"data-slot": "dialog-portal",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogOverlay, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent$1, {
-			"data-slot": "dialog-content",
-			className: cn$1("fixed top-[50%] left-[50%] z-50 grid w-[calc(100%-2rem)] max-w-lg max-h-[calc(100dvh-2rem)] overflow-y-auto translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-150 outline-none data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0 sm:max-w-lg", className),
-			...props,
-			children: [children, showCloseButton && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogClose, {
-				"data-slot": "dialog-close",
-				className: "absolute top-4 right-4 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(X$1, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "sr-only",
-					children: "Close"
+function MessageAvatar({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "message-avatar",
+		className: cn$1("flex w-fit min-w-8 shrink-0 items-center justify-center self-end overflow-hidden rounded-full bg-muted group-has-data-[slot=message-footer]/message:-translate-y-8", className),
+		...props
+	});
+}
+function MessageContent({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "message-content",
+		className: cn$1("flex w-full min-w-0 flex-col gap-2.5 wrap-break-word group-data-[align=end]/message:*:data-slot:self-end", className),
+		...props
+	});
+}
+function MessageHeader({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "message-header",
+		className: cn$1("flex max-w-full min-w-0 items-center px-3 text-xs font-medium text-muted-foreground group-has-data-[variant=ghost]/message:px-0", className),
+		...props
+	});
+}
+function MessageFooter({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "message-footer",
+		className: cn$1("flex max-w-full min-w-0 items-center px-3 text-xs font-medium text-muted-foreground group-has-data-[variant=ghost]/message:px-0 group-data-[align=end]/message:justify-end", className),
+		...props
+	});
+}
+// frontend/src/components/TeamChat.jsx
+function TeamChat({ endpoint, currentActor }) {
+	const [messages, setMessages] = (0, import_react.useState)([]);
+	const [draft, setDraft] = (0, import_react.useState)("");
+	const [sending, setSending] = (0, import_react.useState)(false);
+	const [error, setError] = (0, import_react.useState)("");
+	const scrollRef = (0, import_react.useRef)(null);
+	(0, import_react.useEffect)(() => {
+		let active = true;
+		setMessages([]);
+		const refresh = async () => {
+			if (document.visibilityState === "hidden") return;
+			try {
+				const response = await fetch(endpoint, { credentials: "same-origin" });
+				const data = await response.json();
+				if (!response.ok) throw new Error(data.error || "Could not load team chat.");
+				if (active) {
+					setMessages(data.messages || []);
+					setError("");
+				}
+			} catch (problem) {
+				if (active) setError(problem.message);
+			}
+		};
+		refresh();
+		const timer = setInterval(refresh, 6e3);
+		return () => {
+			active = false;
+			clearInterval(timer);
+		};
+	}, [endpoint]);
+	(0, import_react.useEffect)(() => {
+		const container = scrollRef.current;
+		if (container) container.scrollTop = container.scrollHeight;
+	}, [messages.length]);
+	const send = async (event) => {
+		event.preventDefault();
+		const message = draft.trim();
+		if (!message || sending) return;
+		setSending(true);
+		setError("");
+		try {
+			const response = await fetch(endpoint, {
+				method: "POST",
+				credentials: "same-origin",
+				headers: { "content-type": "application/json" },
+				body: JSON.stringify({ message })
+			});
+			const data = await response.json();
+			if (!response.ok) throw new Error(data.error || "Could not send message.");
+			setMessages((current) => current.some((item) => item.id === data.message.id) ? current : [...current, data.message]);
+			setDraft("");
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setSending(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
+		className: "flex min-h-[420px] gap-0 overflow-hidden p-0",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex items-center gap-3 border-b px-4 py-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "grid size-9 place-items-center rounded-xl bg-primary/10 text-primary",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-4" })
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+					className: "text-sm font-semibold",
+					children: "Project team chat"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "text-xs text-muted-foreground",
+					children: "Founder and assigned employees"
+				})] })]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				ref: scrollRef,
+				className: "chat-scroll min-h-64 max-h-[50dvh] flex-1 space-y-4 overflow-y-auto px-4 py-5",
+				"aria-label": "Project team messages",
+				"aria-live": "polite",
+				children: messages.length ? messages.map((item) => {
+					const own = item.senderId === currentActor;
+					return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Message, {
+						align: own ? "end" : "start",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$1, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
+							className: "bg-secondary text-xs font-semibold text-secondary-foreground",
+							children: item.senderName?.slice(0, 2).toUpperCase() || "TM"
+						}) }) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
+							className: "max-w-[88%] sm:max-w-[75%]",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageHeader, {
+								className: own ? "justify-end" : "",
+								children: [
+									own ? "You" : item.senderName,
+									" · ",
+									new Date(item.at).toLocaleTimeString([], {
+										hour: "numeric",
+										minute: "2-digit"
+									})
+								]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
+								align: own ? "end" : "start",
+								variant: own ? void 0 : "secondary",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, {
+									className: "whitespace-pre-wrap",
+									children: item.text
+								})
+							})]
+						})]
+					}, item.id);
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex h-56 flex-col items-center justify-center text-center",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "mb-3 size-8 text-muted-foreground/50" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-sm font-medium",
+							children: "Start the team conversation"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-1 max-w-xs text-xs text-muted-foreground",
+							children: "Updates and questions shared here stay with this project team."
+						})
+					]
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+				onSubmit: send,
+				className: "flex items-end gap-2 border-t p-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+					value: draft,
+					onChange: (event) => setDraft(event.target.value),
+					rows: 1,
+					maxLength: 2e3,
+					placeholder: "Message your team…",
+					"aria-label": "Message your team",
+					className: "max-h-28 min-h-11 flex-1 resize-none"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					type: "submit",
+					size: "icon-lg",
+					"aria-label": "Send team message",
+					disabled: !draft.trim() || sending,
+					className: "size-11",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUp, { className: "size-5" })
 				})]
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "px-4 pb-3 text-xs text-destructive",
+				children: error
+			})
+		]
+	});
+}
+// frontend/src/components/ProjectConversations.jsx
+function ProjectConversations({ projects = [], namespace = "founder", actor = "founder" }) {
+	const [selected, setSelected] = (0, import_react.useState)(""), [search, setSearch] = (0, import_react.useState)("");
+	const visible = projects.filter((project) => `${project.name} ${project.location || ""}`.toLowerCase().includes(search.toLowerCase()));
+	const project = projects.find((row) => row.id === selected) || visible[0];
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "space-y-4",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "iksha-eyebrow",
+				children: "Studio conversations"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+				className: "text-2xl font-semibold",
+				children: "Project chats"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-xs text-muted-foreground",
+				children: "Internal conversations with the founders and project team. Task-specific references stay in their task threads."
+			})
+		] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "grid gap-4 lg:grid-cols-[250px_minmax(0,1fr)]",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("aside", {
+				className: "space-y-2",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+					"aria-label": "Search project conversations",
+					value: search,
+					onChange: (e) => setSearch(e.target.value),
+					placeholder: "Find a project or city…"
+				}), visible.map((row) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+					onClick: () => setSelected(row.id),
+					className: `w-full rounded-xl border p-3 text-left text-sm ${row.id === project?.id ? "border-primary bg-primary/5" : ""}`,
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+						className: "block",
+						children: row.name
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", { children: row.location || "Location not set" })]
+				}, row.id))]
+			}), project ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "min-w-0",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+					className: "mb-2 font-semibold",
+					children: project.name
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TeamChat, {
+					endpoint: `/api/${namespace}/projects/${project.id}/team-chat`,
+					currentActor: actor
+				}, project.id)]
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-sm text-muted-foreground",
+				children: "No matching project conversations."
 			})]
 		})]
 	});
 }
-function DialogHeader({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "dialog-header",
-		className: cn$1("flex min-w-0 flex-col gap-2 pr-6 text-left", className),
-		...props
-	});
-}
-function DialogTitle({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle$1, {
-		"data-slot": "dialog-title",
-		className: cn$1("text-lg leading-none font-semibold", className),
-		...props
-	});
-}
-function DialogDescription({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription$1, {
-		"data-slot": "dialog-description",
-		className: cn$1("text-sm text-muted-foreground", className),
-		...props
-	});
-}
-// frontend/src/components/TaskThreadDrawer.jsx
-var statusColors = {
-	"Open": "bg-slate-100 text-slate-800 border-slate-200",
-	"In progress": "bg-blue-50 text-blue-700 border-blue-200",
-	"Blocked": "bg-amber-50 text-amber-800 border-amber-200",
-	"Completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
-	"Cancelled": "bg-red-50 text-red-700 border-red-200",
-	"todo": "bg-slate-100 text-slate-800 border-slate-200",
-	"in_progress": "bg-blue-50 text-blue-700 border-blue-200",
-	"review": "bg-amber-50 text-amber-800 border-amber-200",
-	"completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
-	"cancelled": "bg-red-50 text-red-700 border-red-200"
+// frontend/src/lib/queryStatus.js
+var needsQueryAttention = (request) => !request.decisionStatus && ![
+	"On hold",
+	"Done",
+	"Rejected",
+	"Published",
+	"Approved"
+].includes(request.status);
+// backend/roles.js
+var rolesOf = (value) => [...new Set((Array.isArray(value) ? value : String(value || "").split(/[,;|]/)).map((role) => String(role).trim()).filter(Boolean))];
+var key = (role) => {
+	const value = String(role).toLowerCase().replace(/[^a-z0-9]/g, "");
+	return value === "supervisor" ? "sitesupervisor" : value;
 };
-function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTaskUpdated, onOpenSourceQuery, currentActor = "Founder", isFounder = true, projectMembers = [] }) {
-	const [task, setTask] = (0, import_react.useState)(initialTask);
-	const [messages, setMessages] = (0, import_react.useState)([]);
-	const [commentText, setCommentText] = (0, import_react.useState)("");
-	const [attachmentUrl, setAttachmentUrl] = (0, import_react.useState)("");
-	const [showAttachmentInput, setShowAttachmentInput] = (0, import_react.useState)(false);
-	const [isEditing, setIsEditing] = (0, import_react.useState)(false);
-	const [loadingMessages, setLoadingMessages] = (0, import_react.useState)(false);
-	const [sendingMessage, setSendingMessage] = (0, import_react.useState)(false);
-	const [savingEdits, setSavingEdits] = (0, import_react.useState)(false);
-	const [error, setError] = (0, import_react.useState)("");
-	const messagesEndRef = (0, import_react.useRef)(null);
-	const messageRequest = (0, import_react.useRef)(0);
-	const deadlineInputRef = (0, import_react.useRef)(null);
-	const [showResources, setShowResources] = (0, import_react.useState)(false);
-	const [editTitle, setEditTitle] = (0, import_react.useState)("");
-	const [editDesc, setEditDesc] = (0, import_react.useState)("");
-	const [editStatus, setEditStatus] = (0, import_react.useState)("Open");
-	const [editDeadline, setEditDeadline] = (0, import_react.useState)("");
-	const [editAssigneeId, setEditAssigneeId] = (0, import_react.useState)("");
-	const [editStageId, setEditStageId] = (0, import_react.useState)("");
-	const namespace = isFounder ? "founder" : "employee";
-	(0, import_react.useEffect)(() => {
-		if (open && initialTask?.id) {
-			setTask(initialTask);
-			setMessages([]);
-			setCommentText("");
-			setAttachmentUrl("");
-			setShowAttachmentInput(false);
-			setEditTitle(initialTask.title || "");
-			setEditDesc(initialTask.description || "");
-			setEditStatus(initialTask.status || "Open");
-			setEditDeadline(initialTask.deadline || initialTask.dueDate || "");
-			setEditAssigneeId(initialTask.assigneeId || "");
-			setEditStageId(initialTask.stageId || "");
-			setIsEditing(false);
-			setShowResources(false);
-			setError("");
-			loadMessages(initialTask.id);
-		}
-		return () => {
-			messageRequest.current++;
-		};
-	}, [open, initialTask?.id]);
-	const loadMessages = async (taskId) => {
-		const requestId = ++messageRequest.current;
-		setLoadingMessages(true);
-		try {
-			const data = await fetchTaskMessages(taskId, "", 100, namespace);
-			if (requestId !== messageRequest.current) return;
-			const list = data.messages || [];
-			setMessages(list);
-			if (list.length > 0) markTaskRead(taskId, list[list.length - 1].id, namespace).catch(() => {});
-		} catch (problem) {
-			if (requestId === messageRequest.current) setError(problem.message || "Could not refresh this thread. Please retry.");
-		} finally {
-			if (requestId === messageRequest.current) setLoadingMessages(false);
-		}
-	};
-	(0, import_react.useEffect)(() => {
-		if (messagesEndRef.current) messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-	}, [messages.length]);
-	if (!task) return null;
-	const isClosed = task.status === "Completed" || task.status === "Cancelled";
-	const handleSendMessage = async (e) => {
-		e.preventDefault();
-		if (!commentText.trim() || sendingMessage || isClosed) return;
-		setSendingMessage(true);
-		setError("");
-		try {
-			const res = await sendTaskMessage(task.id, {
-				text: commentText.trim(),
-				attachmentUrl: attachmentUrl.trim() || void 0
-			}, namespace);
-			setCommentText("");
-			setAttachmentUrl("");
-			setShowAttachmentInput(false);
-			if (res.message) {
-				setMessages((prev) => [...prev, res.message]);
-				markTaskRead(task.id, res.message.id, namespace).catch(() => {});
-			} else await loadMessages(task.id);
-			if (onTaskUpdated) onTaskUpdated();
-		} catch (err) {
-			setError(err.message || "Failed to send message.");
-		} finally {
-			setSendingMessage(false);
-		}
-	};
-	const handleSaveEdits = async () => {
-		setSavingEdits(true);
-		setError("");
-		try {
-			const updates = {
-				title: editTitle.trim(),
-				description: editDesc.trim(),
-				status: editStatus,
-				deadline: deadlineInputRef.current?.value ?? editDeadline,
-				stageId: editStageId
-			};
-			if (isFounder) updates.assigneeId = editAssigneeId;
-			const updated = (await updateTask(task.id, updates, namespace)).task || {
-				...task,
-				...updates
-			};
-			setTask(updated);
-			setIsEditing(false);
-			if (onTaskUpdated) onTaskUpdated();
-		} catch (err) {
-			setError(err.message || "Failed to save task changes.");
-		} finally {
-			setSavingEdits(false);
-		}
-	};
-	const handleQuickStatus = async (newStatus) => {
-		setError("");
-		try {
-			const updated = (await updateTask(task.id, { status: newStatus }, namespace)).task || {
-				...task,
-				status: newStatus
-			};
-			setTask(updated);
-			setEditStatus(newStatus);
-			if (onTaskUpdated) onTaskUpdated();
-		} catch (err) {
-			setError(err.message || "Failed to update task status.");
-		}
-	};
-	const handleReopenTask = async () => {
-		await handleQuickStatus("Open");
-	};
-	const handleDelete = async () => {
-		if (!isFounder) return;
-		if (confirm("Are you sure you want to delete this task? Soft deletion preserves audit history.")) try {
-			await deleteTask(task.id);
-			onOpenChange(false);
-			if (onTaskUpdated) onTaskUpdated();
-		} catch (err) {
-			setError(err.message || "Failed to delete task.");
-		}
-	};
-	const getAssigneeLabel = (id) => {
-		if (!id) return "Unassigned";
-		if (id === "founder") return "Founder";
-		const found = projectMembers.find((m) => m.employeeId === id || m.id === id);
-		return found ? `${found.name} (${found.role || "Member"})` : id;
-	};
-	const currentStageName = project?.stages?.find((s) => s.id === task.stageId)?.name || task.stageName || "General";
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
-		open,
-		onOpenChange,
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
-			className: "flex max-h-[92dvh] max-w-2xl flex-col gap-0 overflow-hidden p-0 sm:max-w-2xl sm:rounded-2xl",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					className: "shrink-0 border-b bg-card px-5 py-4 pr-12",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-start justify-between gap-3",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "min-w-0 flex-1",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex flex-wrap items-center gap-2",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-										variant: "outline",
-										className: statusColors[task.status] || "bg-muted",
-										children: task.status
-									}),
-									currentStageName && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "text-xs text-muted-foreground",
-										children: ["· ", currentStageName]
-									}),
-									task.sourceQueryId && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-										variant: "outline",
-										className: "border-amber-300 bg-amber-50 text-amber-900 text-[10px]",
-										children: "Telegram Query"
-									})
-								]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, {
-								className: "mt-2 break-words text-lg font-semibold tracking-tight text-foreground [overflow-wrap:anywhere]",
-								children: task.title
-							})]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "flex items-center gap-1.5 shrink-0",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-								variant: isEditing ? "secondary" : "outline",
-								size: "sm",
-								onClick: () => {
-									if (isEditing) handleSaveEdits();
-									else setIsEditing(true);
-								},
-								disabled: savingEdits,
-								children: [savingEdits ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1" }) : isEditing ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5 mr-1 text-emerald-600" }) : null, isEditing ? "Save" : "Edit"]
-							})
-						})]
-					})
-				}),
-				error && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "mx-5 mt-3 flex items-center gap-2 rounded-xl border border-destructive/30 bg-destructive/10 px-3.5 py-2 text-xs text-destructive",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: error })]
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "chat-scroll min-h-0 flex-1 space-y-4 overflow-y-auto p-5",
-					children: [
-						isEditing ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "space-y-3.5 rounded-xl border bg-muted/20 p-4",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-									className: "grid gap-1.5 text-xs font-semibold",
-									children: ["Title", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-										value: editTitle,
-										onChange: (e) => setEditTitle(e.target.value),
-										required: true
-									})]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-									className: "grid gap-1.5 text-xs font-semibold",
-									children: ["Description", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
-										value: editDesc,
-										onChange: (e) => setEditDesc(e.target.value),
-										rows: 3
-									})]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "grid grid-cols-2 gap-3",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-										className: "grid gap-1.5 text-xs font-semibold",
-										children: ["Status", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
-											value: editStatus,
-											onChange: (e) => setEditStatus(e.target.value),
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: "Open",
-													children: "Open"
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: "In progress",
-													children: "In progress"
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: "Blocked",
-													children: "Blocked"
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: "Completed",
-													children: "Completed"
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: "Cancelled",
-													children: "Cancelled"
-												})
-											]
-										})]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-										className: "grid gap-1.5 text-xs font-semibold",
-										children: ["Deadline", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-											type: "date",
-											ref: deadlineInputRef,
-											value: editDeadline,
-											onChange: (e) => setEditDeadline(e.target.value)
-										})]
-									})]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "grid grid-cols-2 gap-3",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-										className: "grid gap-1.5 text-xs font-semibold",
-										children: [
-											"Assignee",
-											isFounder ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
-												value: editAssigneeId,
-												onChange: (e) => setEditAssigneeId(e.target.value),
-												children: [
-													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-														value: "",
-														children: "Unassigned"
-													}),
-													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-														value: "founder",
-														children: "Founder"
-													}),
-													projectMembers.map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
-														value: m.employeeId || m.id,
-														children: [
-															m.name,
-															" (",
-															m.role || "Member",
-															")"
-														]
-													}, m.id || m.employeeId))
-												]
-											}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-												value: getAssigneeLabel(task.assigneeId),
-												disabled: true,
-												className: "bg-muted text-muted-foreground text-xs",
-												title: "Only the founder may change task assignments."
-											}),
-											!isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "text-[10px] text-muted-foreground",
-												children: "Only founder can change assignee"
-											})
-										]
-									}), project?.stages && project.stages.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-										className: "grid gap-1.5 text-xs font-semibold",
-										children: ["Stage", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
-											value: editStageId,
-											onChange: (e) => setEditStageId(e.target.value),
-											children: project.stages.map((st) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: st.id,
-												children: st.name
-											}, st.id))
-										})]
-									})]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex justify-between items-center pt-2",
-									children: [isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-										type: "button",
-										variant: "ghost",
-										size: "sm",
-										className: "text-destructive hover:bg-destructive/10 text-xs",
-										onClick: handleDelete,
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trash, { className: "size-3.5 mr-1" }), " Delete Task"]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-										size: "sm",
-										onClick: handleSaveEdits,
-										disabled: savingEdits,
-										className: "ml-auto",
-										children: [savingEdits ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1" }) : null, "Save Changes"]
-									})]
-								})
-							]
-						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "grid grid-cols-2 gap-2 rounded-xl border bg-muted/30 p-3 sm:grid-cols-3",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "space-y-0.5",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-[11px] font-medium text-muted-foreground",
-											children: "Assignee"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-											className: "flex items-center gap-1.5 text-xs font-semibold truncate",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, { className: "size-3.5 text-muted-foreground shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "truncate",
-												children: getAssigneeLabel(task.assigneeId) || task.assigneeName || "Unassigned"
-											})]
-										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "space-y-0.5",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-[11px] font-medium text-muted-foreground",
-											children: "Deadline"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-											className: "flex items-center gap-1.5 text-xs font-semibold",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-3.5 text-muted-foreground shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: task.deadline || task.dueDate ? new Date(task.deadline || task.dueDate).toLocaleDateString(void 0, {
-												month: "short",
-												day: "numeric",
-												year: "numeric"
-											}) : "No deadline" })]
-										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "col-span-2 sm:col-span-1 space-y-0.5",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-[11px] font-medium text-muted-foreground",
-											children: "Quick Action"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { children: !isClosed ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-											size: "sm",
-											variant: "outline",
-											className: "h-7 px-2.5 text-xs text-emerald-700 hover:bg-emerald-50 font-semibold",
-											onClick: () => handleQuickStatus("Completed"),
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 mr-1" }), " Mark Done"]
-										}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-											size: "sm",
-											variant: "outline",
-											className: "h-7 px-2.5 text-xs text-muted-foreground font-semibold",
-											onClick: () => handleQuickStatus("Open"),
-											children: "Reopen Task"
-										}) })]
-									})
-								]
-							}),
-							task.description && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed rounded-xl border bg-card p-3",
-								children: task.description
-							}),
-							task.sourceQueryId && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center justify-between rounded-xl border border-amber-200 bg-amber-50/70 p-3 text-xs text-amber-900",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex items-center gap-2",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0 text-amber-700" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Converted from Telegram client query" })]
-								}), onOpenSourceQuery && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-									variant: "outline",
-									size: "sm",
-									className: "h-7 text-xs border-amber-300 bg-white text-amber-900 hover:bg-amber-100/50",
-									onClick: () => onOpenSourceQuery(task.sourceQueryId),
-									children: ["View Query ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-3 ml-1" })]
-								})]
-							})
-						] }),
-						task.sourceBlockedReason && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "iksha-work-blocker",
-							children: ["Blocked: ", task.sourceBlockedReason]
-						}),
-						task.sourceApprovalStatus && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "iksha-work-approval",
-							children: ["Approval: ", task.sourceApprovalStatus]
-						}),
-						project?.id && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
-							className: "iksha-task-resources",
-							onToggle: (event) => setShowResources(event.currentTarget.open),
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", { children: "Shared project resources" }), showResources && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectFiles, {
-								projectId: project.id,
-								namespace
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "border-t pt-4",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center justify-between pb-3",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h4", {
-									className: "flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 text-primary" }),
-										"Task Discussion Thread (",
-										messages.length,
-										")"
-									]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-									variant: "ghost",
-									size: "icon-sm",
-									onClick: () => loadMessages(task.id),
-									disabled: loadingMessages,
-									"aria-label": "Refresh thread",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: `size-3.5 ${loadingMessages ? "animate-spin" : ""}` })
-								})]
-							}), loadingMessages && messages.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center justify-center py-8 text-xs text-muted-foreground gap-2",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-4 animate-spin text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Loading messages…" })]
-							}) : messages.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "space-y-2.5",
-								children: [messages.map((msg) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: `rounded-xl border p-3 shadow-xs space-y-1.5 ${msg.queryId ? "border-primary/30 bg-primary/5" : "bg-card"}`,
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "flex items-center justify-between text-xs",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "font-semibold text-primary",
-												children: msg.author || "Team member"
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-												className: "text-[10px] text-muted-foreground",
-												children: [
-													new Date(msg.at).toLocaleDateString([], {
-														month: "short",
-														day: "numeric"
-													}),
-													" · ",
-													new Date(msg.at).toLocaleTimeString([], {
-														hour: "numeric",
-														minute: "2-digit"
-													})
-												]
-											})]
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed",
-											children: msg.text
-										}),
-										msg.queryId && msg.attachments?.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-											className: "flex flex-wrap gap-2 pt-1",
-											children: msg.attachments.map((file) => {
-												const href = getAttachmentUrl(msg.queryId, file.index, isFounder ? "founder" : "employee");
-												return /photo|image/i.test(file.type) ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
-													href,
-													target: "_blank",
-													rel: "noreferrer",
-													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-														src: href,
-														alt: "Photo from the query",
-														loading: "lazy",
-														className: "h-20 w-20 rounded-lg border object-cover"
-													})
-												}, file.index) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-													href,
-													target: "_blank",
-													rel: "noreferrer",
-													className: "inline-flex items-center gap-1.5 rounded-lg border bg-muted/40 px-2.5 py-1 text-xs text-primary hover:underline",
-													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, { className: "size-3" }), file.fileName || file.type]
-												}, file.index);
-											})
-										}),
-										msg.attachmentUrl && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-											href: msg.attachmentUrl,
-											target: "_blank",
-											rel: "noreferrer",
-											className: "inline-flex items-center gap-1.5 rounded-lg border bg-muted/40 px-2.5 py-1 text-xs text-primary hover:underline",
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, { className: "size-3" }),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-													className: "truncate max-w-xs",
-													children: msg.attachmentUrl
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-2.5" })
-											]
-										})
-									]
-								}, msg.id)), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { ref: messagesEndRef })]
-							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "py-6 text-center text-xs text-muted-foreground",
-								children: "No discussion messages yet in this task thread."
-							})]
-						})
-					]
-				}),
-				isClosed ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex shrink-0 flex-wrap items-center justify-between gap-3 border-t bg-amber-50/70 p-3 sm:px-5 text-xs text-amber-900",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-						className: "flex items-center gap-1.5",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Lock, { className: "size-3.5 text-amber-700 shrink-0" }),
-							"This task is ",
-							task.status.toLowerCase(),
-							". Reopen it to send new messages."
-						]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						size: "sm",
-						variant: "outline",
-						className: "border-amber-300 bg-white",
-						onClick: handleReopenTask,
-						children: "Reopen Task"
-					})]
-				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-					onSubmit: handleSendMessage,
-					className: "shrink-0 space-y-2 border-t bg-muted/20 p-3 sm:px-5",
-					children: [showAttachmentInput && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-							value: attachmentUrl,
-							onChange: (e) => setAttachmentUrl(e.target.value),
-							placeholder: "https://... attachment or document URL (HTTPS)",
-							className: "h-8 text-xs font-mono"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							type: "button",
-							variant: "ghost",
-							size: "sm",
-							className: "h-8 text-xs text-muted-foreground",
-							onClick: () => {
-								setAttachmentUrl("");
-								setShowAttachmentInput(false);
-							},
-							children: "Cancel"
-						})]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-end gap-2",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								type: "button",
-								variant: "ghost",
-								size: "icon",
-								className: `size-9 shrink-0 ${showAttachmentInput ? "text-primary" : "text-muted-foreground"}`,
-								onClick: () => setShowAttachmentInput((v) => !v),
-								title: "Add attachment link",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, { className: "size-4" })
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
-								value: commentText,
-								onChange: (e) => setCommentText(e.target.value),
-								rows: 1,
-								maxLength: 2e3,
-								"aria-label": "Task comment",
-								placeholder: "Post team update or task comment…",
-								className: "min-h-9 max-h-24 flex-1 resize-none text-xs",
-								disabled: sendingMessage
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								type: "submit",
-								size: "icon",
-								"aria-label": "Send task comment",
-								disabled: !commentText.trim() || sendingMessage,
-								className: "size-9 shrink-0",
-								children: sendingMessage ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-4 animate-spin" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Send, { className: "size-4" })
-							})
-						]
-					})]
-				})
-			]
+var hasRole = (value, role) => rolesOf(value).some((item) => key(item) === key(role));
+var matchesRole = (value, role) => hasRole(value, role) || key(role) === "designheadadmin" && (hasRole(value, "Founder") || hasRole(value, "Design Head") || hasRole(value, "Admin"));
+var isStaff = (value) => rolesOf(value).some((role) => !hasRole(role, "Client"));
+// frontend/src/components/LocationProjectPicker.jsx
+function LocationProjectPicker({ projects, selected, onChange }) {
+	const groups = /* @__PURE__ */ new Map();
+	for (const project of projects) {
+		const label = project.location?.trim() || "Location not set", key = label.toLowerCase();
+		if (!groups.has(key)) groups.set(key, {
+			label,
+			projects: []
+		});
+		groups.get(key).projects.push(project);
+	}
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "grid gap-3 sm:grid-cols-2 lg:grid-cols-3",
+		children: [...groups.values()].sort((a, b) => a.label.localeCompare(b.label)).map((group) => {
+			const all = group.projects.every((project) => selected.includes(project.id));
+			return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+				className: "space-y-2 rounded-lg border p-3",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
+						className: "text-sm font-semibold",
+						children: group.label
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "flex gap-2 text-xs font-medium",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+							type: "checkbox",
+							checked: all,
+							onChange: (e) => onChange(e.target.checked ? [.../* @__PURE__ */ new Set([...selected, ...group.projects.map((row) => row.id)])] : selected.filter((id) => !group.projects.some((row) => row.id === id)))
+						}), "Select this city"]
+					}),
+					group.projects.map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "flex gap-2 text-sm",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+							type: "checkbox",
+							checked: selected.includes(project.id),
+							onChange: (e) => onChange(e.target.checked ? [...selected, project.id] : selected.filter((id) => id !== project.id))
+						}), project.name]
+					}, project.id))
+				]
+			}, group.label);
 		})
 	});
 }
@@ -21405,24 +22242,24 @@ function SupervisorTools({ employees, projects, onChanged }) {
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
 							className: "space-y-2",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
-								className: "text-xs font-medium",
-								children: "Projects to transfer"
-							}), projects.filter((project) => !["Completed", "Abandoned"].includes(project.status)).map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-								className: "flex items-center gap-2 text-sm",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-										type: "checkbox",
-										checked: form.projectIds.includes(project.id),
-										onChange: (event) => change({
-											...form,
-											projectIds: event.target.checked ? [...form.projectIds, project.id] : form.projectIds.filter((id) => id !== project.id)
-										})
-									}),
-									project.name,
-									project.location ? ` · ${project.location}` : ""
-								]
-							}, project.id))]
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
+									className: "text-xs font-medium",
+									children: "Projects to transfer"
+								}),
+								!form.fromId && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "text-xs text-muted-foreground",
+									children: "Choose the departing supervisor to see their projects by city."
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LocationProjectPicker, {
+									projects: projects.filter((project) => !["Completed", "Abandoned"].includes(project.status) && project.members?.some((member) => member.employeeId === form.fromId && member.active !== false && matchesRole(member.roles || member.role, "Site Supervisor"))),
+									selected: form.projectIds,
+									onChange: (projectIds) => change({
+										...form,
+										projectIds
+									})
+								})
+							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 							disabled: busy || !form.fromId || !form.toId || !form.projectIds.length,
@@ -21764,48 +22601,40 @@ function AlertDescription({ className, ...props }) {
 		...props
 	});
 }
-// frontend/src/components/ui/avatar.jsx
-function Avatar$1({ className, size = "default", ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$2, {
-		"data-slot": "avatar",
+// frontend/src/components/ui/badge.jsx
+var badgeVariants = cva("inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3", {
+	variants: { variant: {
+		default: "bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
+		secondary: "bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
+		destructive: "bg-destructive text-white focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 [a&]:hover:bg-destructive/90",
+		outline: "border-border text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+		ghost: "[a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+		link: "text-primary underline-offset-4 [a&]:hover:underline"
+	} },
+	defaultVariants: { variant: "default" }
+});
+function Badge({ className, variant = "default", asChild = false, ...props }) {
+	const Comp = asChild ? Slot$1 : "span";
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Comp, {
+		"data-slot": "badge",
+		"data-variant": variant,
+		className: cn$1(badgeVariants({ variant }), className),
+		...props
+	});
+}
+// frontend/src/components/ui/native-select.jsx
+function NativeSelect({ className, size = "default", ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
+		"data-slot": "native-select",
 		"data-size": size,
-		className: cn$1("group/avatar relative flex size-8 shrink-0 overflow-hidden rounded-full select-none data-[size=lg]:size-10 data-[size=sm]:size-6", className),
+		className: cn$1("h-9 w-full min-w-0 appearance-none rounded-md border border-input bg-transparent px-3 py-2 pr-9 text-sm shadow-xs transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed data-[size=sm]:h-8 data-[size=sm]:py-1 dark:bg-input/30 dark:hover:bg-input/50", "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50", "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40", className),
 		...props
 	});
 }
-function AvatarFallback({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback$1, {
-		"data-slot": "avatar-fallback",
-		className: cn$1("flex size-full items-center justify-center rounded-full bg-muted text-sm text-muted-foreground group-data-[size=sm]/avatar:text-xs", className),
-		...props
-	});
-}
-// frontend/src/components/ui/card.jsx
-function Card({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "card",
-		className: cn$1("flex flex-col gap-6 rounded-xl border bg-card py-6 text-card-foreground shadow-sm", className),
-		...props
-	});
-}
-function CardHeader({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "card-header",
-		className: cn$1("@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6", className),
-		...props
-	});
-}
-function CardTitle({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "card-title",
-		className: cn$1("leading-none font-semibold", className),
-		...props
-	});
-}
-function CardContent({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "card-content",
-		className: cn$1("px-6", className),
+function NativeSelectOption({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+		"data-slot": "native-select-option",
+		className: cn$1("bg-[Canvas] text-[CanvasText]", className),
 		...props
 	});
 }
@@ -25066,15 +25895,6 @@ function AccessRequest({ account, employees, projects, onChanged, onFounder }) {
 		]
 	});
 }
-// backend/roles.js
-var rolesOf = (value) => [...new Set((Array.isArray(value) ? value : String(value || "").split(/[,;|]/)).map((role) => String(role).trim()).filter(Boolean))];
-var key = (role) => {
-	const value = String(role).toLowerCase().replace(/[^a-z0-9]/g, "");
-	return value === "supervisor" ? "sitesupervisor" : value;
-};
-var hasRole = (value, role) => rolesOf(value).some((item) => key(item) === key(role));
-var matchesRole = (value, role) => hasRole(value, role) || key(role) === "designheadadmin" && (hasRole(value, "Founder") || hasRole(value, "Design Head") || hasRole(value, "Admin"));
-var isStaff = (value) => rolesOf(value).some((role) => !hasRole(role, "Client"));
 // frontend/src/components/ui/tabs.jsx
 function Tabs({ className, orientation = "horizontal", ...props }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Root2, {
@@ -27407,73 +28227,6 @@ function ThinkingOrb({ state = "working", size = 64, theme = "auto", speed = 1, 
 		...rest
 	});
 }
-// frontend/src/components/ui/bubble.jsx
-var bubbleVariants = cva("group/bubble relative flex w-fit max-w-[80%] min-w-0 flex-col gap-1 group-data-[align=end]/message:self-end data-[align=end]:self-end data-[variant=ghost]:max-w-full", {
-	variants: { variant: {
-		default: "*:data-[slot=bubble-content]:bg-primary *:data-[slot=bubble-content]:text-primary-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-primary/80",
-		secondary: "*:data-[slot=bubble-content]:bg-secondary *:data-[slot=bubble-content]:text-secondary-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)]",
-		muted: "*:data-[slot=bubble-content]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[color-mix(in_oklch,var(--muted),var(--foreground)_5%)]",
-		tinted: "*:data-[slot=bubble-content]:bg-[oklch(from_var(--primary)_0.93_calc(c*0.4)_h)] *:data-[slot=bubble-content]:text-foreground dark:*:data-[slot=bubble-content]:bg-[oklch(from_var(--primary)_0.3_calc(c*0.4)_h)] [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[oklch(from_var(--primary)_0.88_calc(c*0.5)_h)] dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-[oklch(from_var(--primary)_0.35_calc(c*0.5)_h)]",
-		outline: "*:data-[slot=bubble-content]:border-border *:data-[slot=bubble-content]:bg-background [&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:text-foreground dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-input/30",
-		ghost: "border-none *:data-[slot=bubble-content]:rounded-none *:data-[slot=bubble-content]:bg-transparent *:data-[slot=bubble-content]:p-0 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:text-foreground dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted/50",
-		destructive: "*:data-[slot=bubble-content]:bg-destructive/10 *:data-[slot=bubble-content]:text-destructive dark:*:data-[slot=bubble-content]:bg-destructive/20 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-destructive/20 dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-destructive/30"
-	} },
-	defaultVariants: { variant: "default" }
-});
-function Bubble({ variant = "default", align = "start", className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "bubble",
-		"data-variant": variant,
-		"data-align": align,
-		className: cn$1(bubbleVariants({ variant }), className),
-		...props
-	});
-}
-function BubbleContent({ asChild = false, className, ...props }) {
-	const Comp = asChild ? Slot$1 : "div";
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Comp, {
-		"data-slot": "bubble-content",
-		className: cn$1("w-fit max-w-full min-w-0 overflow-hidden rounded-xl border border-transparent px-3 py-2 text-sm leading-relaxed wrap-break-word group-data-[align=end]/bubble:self-end [button]:text-left [button,a]:transition-colors [button,a]:outline-none [button,a]:focus-visible:border-ring [button,a]:focus-visible:ring-3 [button,a]:focus-visible:ring-ring/50", className),
-		...props
-	});
-}
-// frontend/src/components/ui/message.jsx
-function Message({ className, align = "start", ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "message",
-		"data-align": align,
-		className: cn$1("group/message relative flex w-full min-w-0 gap-2 text-sm data-[align=end]:flex-row-reverse", className),
-		...props
-	});
-}
-function MessageAvatar({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "message-avatar",
-		className: cn$1("flex w-fit min-w-8 shrink-0 items-center justify-center self-end overflow-hidden rounded-full bg-muted group-has-data-[slot=message-footer]/message:-translate-y-8", className),
-		...props
-	});
-}
-function MessageContent({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "message-content",
-		className: cn$1("flex w-full min-w-0 flex-col gap-2.5 wrap-break-word group-data-[align=end]/message:*:data-slot:self-end", className),
-		...props
-	});
-}
-function MessageHeader({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "message-header",
-		className: cn$1("flex max-w-full min-w-0 items-center px-3 text-xs font-medium text-muted-foreground group-has-data-[variant=ghost]/message:px-0", className),
-		...props
-	});
-}
-function MessageFooter({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "message-footer",
-		className: cn$1("flex max-w-full min-w-0 items-center px-3 text-xs font-medium text-muted-foreground group-has-data-[variant=ghost]/message:px-0 group-data-[align=end]/message:justify-end", className),
-		...props
-	});
-}
 // frontend/src/components/FounderAssistant.jsx
 var suggestions = [
 	"Summarize all ongoing projects",
@@ -27846,6 +28599,86 @@ function SuggestReply({ requestId, disabled, onUse, baseInstruction = "", outcom
 				]
 			})
 		]
+	});
+}
+// frontend/src/components/QueryHoldDialog.jsx
+function QueryHoldDialog({ open, onOpenChange, query, onChanged }) {
+	const [workspace, setWorkspace] = (0, import_react.useState)(null), [taskId, setTaskId] = (0, import_react.useState)(""), [search, setSearch] = (0, import_react.useState)(""), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false);
+	(0, import_react.useEffect)(() => {
+		if (!open || !query) return;
+		let active = true;
+		setWorkspace(null);
+		setTaskId(query.taskId || "");
+		setSearch("");
+		setError("");
+		fetchProjectWorkspace(query.projectId).then((data) => {
+			if (active) setWorkspace(data);
+		}).catch((problem) => {
+			if (active) setError(problem.message);
+		});
+		return () => {
+			active = false;
+		};
+	}, [open, query?.id]);
+	const save = async () => {
+		setBusy(true);
+		try {
+			await request(`/api/founder/decision-requests/${encodeURIComponent(query.id)}/hold`, {
+				method: "POST",
+				body: { taskId }
+			});
+			onOpenChange(false);
+			onChanged?.();
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+		open,
+		onOpenChange: (value) => {
+			if (!busy) onOpenChange(value);
+		},
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Acknowledge & hold" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Keep this message and its files in a task discussion while you wait for more information. The task's dates and status stay unchanged." })] }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+				"aria-label": "Find a task for this query",
+				value: search,
+				onChange: (e) => setSearch(e.target.value),
+				placeholder: "Find a task…"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "max-h-72 space-y-2 overflow-y-auto",
+				children: [workspace?.tasks.filter((task) => task.status !== "Cancelled" && `${task.title} ${workspace.project.stages?.find((row) => row.id === task.stageId)?.name || ""}`.toLowerCase().includes(search.toLowerCase())).map((task) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+					className: "flex items-center gap-2 rounded-lg border p-3 text-sm",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+							type: "radio",
+							name: "hold-task",
+							checked: taskId === task.id,
+							onChange: () => setTaskId(task.id)
+						}),
+						task.title,
+						" · ",
+						task.status
+					]
+				}, task.id)), workspace && !workspace.tasks.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "text-sm",
+					children: "Add a task to this project first."
+				})]
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "text-sm text-destructive",
+				children: error
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+				disabled: busy || !taskId,
+				onClick: save,
+				children: busy ? "Saving…" : "Hold on this task"
+			})
+		] })
 	});
 }
 // frontend/src/lib/stageTemplate.js
@@ -29427,6 +30260,10 @@ function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
 	});
 }
 function QueryOutcome({ request }) {
+	if (request.status === "On hold") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+		className: "text-xs text-amber-800",
+		children: "Acknowledged · waiting for more information. Saved in its task thread."
+	});
 	if (request.acceptSummary) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 		className: "flex items-start gap-1.5 text-xs text-emerald-800",
 		children: [
@@ -29445,21 +30282,68 @@ function QueryOutcome({ request }) {
 	});
 	return null;
 }
-function QueryDecisionButtons({ request, disabled, onAccept, onReject, size = "sm" }) {
-	if (Boolean(request.decisionStatus) || ["Rejected", "Done"].includes(request.status)) return null;
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-		size,
-		onClick: onAccept,
-		disabled,
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5 mr-1" }), "Accept"]
-	}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-		size,
+function QueryDecisionButtons({ request: request$1, disabled, onAccept, onReject, onChanged, size = "sm" }) {
+	const [holdOpen, setHoldOpen] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false);
+	const resume = async () => {
+		setBusy(true);
+		try {
+			await request(`/api/founder/decision-requests/${encodeURIComponent(request$1.id)}/resume`, {
+				method: "POST",
+				body: {}
+			});
+			onChanged?.();
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	if (request$1.status === "On hold") return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 		variant: "outline",
-		className: "text-destructive",
-		onClick: onReject,
-		disabled,
-		children: "Reject"
+		size,
+		disabled: busy || disabled,
+		onClick: resume,
+		children: "Return to review"
+	}), error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+		role: "alert",
+		className: "text-xs text-destructive",
+		children: error
 	})] });
+	if (Boolean(request$1.decisionStatus) || [
+		"Rejected",
+		"Done",
+		"Published",
+		"Approved"
+	].includes(request$1.status)) return null;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+			variant: "outline",
+			size,
+			disabled,
+			onClick: () => setHoldOpen(true),
+			children: "Hold"
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryHoldDialog, {
+			open: holdOpen,
+			onOpenChange: setHoldOpen,
+			query: request$1,
+			onChanged
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+			size,
+			onClick: onAccept,
+			disabled,
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5 mr-1" }), "Accept"]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+			size,
+			variant: "outline",
+			className: "text-destructive",
+			onClick: onReject,
+			disabled,
+			children: "Reject"
+		})
+	] });
 }
 // frontend/src/components/DecisionInbox.jsx
 async function api$3(url, method = "GET", data) {
@@ -29539,7 +30423,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 		}
 	}, [projects, settingsProjectId]);
 	const visible = requests.filter((item) => {
-		const decided = Boolean(item.decisionStatus) || item.status === "Done";
+		const decided = !needsQueryAttention(item);
 		if (filter === "Open" && decided) return false;
 		if (filter === "Handled" && !decided) return false;
 		if (filter === "Updates" && item.requestType !== "Update") return false;
@@ -29548,7 +30432,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 	});
 	const selected = visible.find((item) => item.id === selectedId) || visible[0];
 	const selectedProject = projects.find((item) => item.id === selected?.projectId);
-	const openCount = requests.filter((item) => !item.decisionStatus && item.status !== "Done").length;
+	const openCount = requests.filter((item) => needsQueryAttention(item)).length;
 	const text = selected ? mode === "internal" ? notes[selected.id] || "" : drafts[selected.id] || "" : "";
 	const followUps = selected ? [...(selected.comments || []).map((comment) => ({
 		type: "comment",
@@ -29861,6 +30745,10 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "flex items-center gap-1.5",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryDecisionButtons, {
+									onChanged: () => {
+										load();
+										onProjectsChanged?.();
+									},
 									request: selected,
 									disabled: busy,
 									onAccept: () => setAcceptOpen(true),
@@ -30476,222 +31364,10 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 		]
 	});
 }
-// frontend/src/components/ProjectSpaces.jsx
-function ProjectSpaces({ project, onUpdated }) {
-	const [names, setNames] = (0, import_react.useState)((project.spaces || []).join("\n")), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [notice, setNotice] = (0, import_react.useState)("");
-	(0, import_react.useEffect)(() => {
-		setNames((project.spaces || []).join("\n"));
-	}, [project.id, JSON.stringify(project.spaces)]);
-	const save = async () => {
-		setBusy(true);
-		setError("");
-		try {
-			await request(`/api/founder/projects/${project.id}/spaces`, {
-				method: "POST",
-				body: { spaces: names.split("\n").map((name) => name.trim()).filter(Boolean) }
-			});
-			setNotice("Spaces saved. Select them when adding a stage.");
-			onUpdated?.();
-		} catch (problem) {
-			setError(problem.message);
-		} finally {
-			setBusy(false);
-		}
-	};
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
-		className: "rounded-xl border bg-card p-4",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("summary", {
-			className: "cursor-pointer text-sm font-semibold",
-			children: ["Project spaces · ", project.spaces?.length || 0]
-		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "mt-3 space-y-3",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-					className: "grid gap-1 text-xs",
-					children: ["One space per line", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("textarea", {
-						className: "min-h-28 rounded-md border bg-background p-3 text-sm",
-						value: names,
-						onChange: (event) => setNames(event.target.value),
-						placeholder: "Living room\nKitchen\nBedroom 1"
-					})]
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "text-xs text-muted-foreground",
-					children: "Stage space selection is optional. No selection means the whole project. Spaces in use must be removed from their stages before deletion."
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-					disabled: busy || ["Completed", "Abandoned"].includes(project.status),
-					onClick: save,
-					children: "Save spaces"
-				}),
-				error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					role: "alert",
-					className: "text-sm text-destructive",
-					children: error
-				}),
-				notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					role: "status",
-					className: "text-sm text-emerald-800",
-					children: notice
-				})
-			]
-		})]
-	});
-}
-// frontend/src/components/TeamChat.jsx
-function TeamChat({ endpoint, currentActor }) {
-	const [messages, setMessages] = (0, import_react.useState)([]);
-	const [draft, setDraft] = (0, import_react.useState)("");
-	const [sending, setSending] = (0, import_react.useState)(false);
-	const [error, setError] = (0, import_react.useState)("");
-	const scrollRef = (0, import_react.useRef)(null);
-	(0, import_react.useEffect)(() => {
-		let active = true;
-		setMessages([]);
-		const refresh = async () => {
-			if (document.visibilityState === "hidden") return;
-			try {
-				const response = await fetch(endpoint, { credentials: "same-origin" });
-				const data = await response.json();
-				if (!response.ok) throw new Error(data.error || "Could not load team chat.");
-				if (active) {
-					setMessages(data.messages || []);
-					setError("");
-				}
-			} catch (problem) {
-				if (active) setError(problem.message);
-			}
-		};
-		refresh();
-		const timer = setInterval(refresh, 6e3);
-		return () => {
-			active = false;
-			clearInterval(timer);
-		};
-	}, [endpoint]);
-	(0, import_react.useEffect)(() => {
-		const container = scrollRef.current;
-		if (container) container.scrollTop = container.scrollHeight;
-	}, [messages.length]);
-	const send = async (event) => {
-		event.preventDefault();
-		const message = draft.trim();
-		if (!message || sending) return;
-		setSending(true);
-		setError("");
-		try {
-			const response = await fetch(endpoint, {
-				method: "POST",
-				credentials: "same-origin",
-				headers: { "content-type": "application/json" },
-				body: JSON.stringify({ message })
-			});
-			const data = await response.json();
-			if (!response.ok) throw new Error(data.error || "Could not send message.");
-			setMessages((current) => current.some((item) => item.id === data.message.id) ? current : [...current, data.message]);
-			setDraft("");
-		} catch (problem) {
-			setError(problem.message);
-		} finally {
-			setSending(false);
-		}
-	};
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-		className: "flex min-h-[420px] gap-0 overflow-hidden p-0",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex items-center gap-3 border-b px-4 py-3",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "grid size-9 place-items-center rounded-xl bg-primary/10 text-primary",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-4" })
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-					className: "text-sm font-semibold",
-					children: "Project team chat"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "text-xs text-muted-foreground",
-					children: "Founder and assigned employees"
-				})] })]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				ref: scrollRef,
-				className: "chat-scroll min-h-64 max-h-[50dvh] flex-1 space-y-4 overflow-y-auto px-4 py-5",
-				"aria-label": "Project team messages",
-				"aria-live": "polite",
-				children: messages.length ? messages.map((item) => {
-					const own = item.senderId === currentActor;
-					return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Message, {
-						align: own ? "end" : "start",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$1, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
-							className: "bg-secondary text-xs font-semibold text-secondary-foreground",
-							children: item.senderName?.slice(0, 2).toUpperCase() || "TM"
-						}) }) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
-							className: "max-w-[88%] sm:max-w-[75%]",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageHeader, {
-								className: own ? "justify-end" : "",
-								children: [
-									own ? "You" : item.senderName,
-									" · ",
-									new Date(item.at).toLocaleTimeString([], {
-										hour: "numeric",
-										minute: "2-digit"
-									})
-								]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
-								align: own ? "end" : "start",
-								variant: own ? void 0 : "secondary",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, {
-									className: "whitespace-pre-wrap",
-									children: item.text
-								})
-							})]
-						})]
-					}, item.id);
-				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex h-56 flex-col items-center justify-center text-center",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "mb-3 size-8 text-muted-foreground/50" }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "text-sm font-medium",
-							children: "Start the team conversation"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "mt-1 max-w-xs text-xs text-muted-foreground",
-							children: "Updates and questions shared here stay with this project team."
-						})
-					]
-				})
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-				onSubmit: send,
-				className: "flex items-end gap-2 border-t p-3",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
-					value: draft,
-					onChange: (event) => setDraft(event.target.value),
-					rows: 1,
-					maxLength: 2e3,
-					placeholder: "Message your team…",
-					"aria-label": "Message your team",
-					className: "max-h-28 min-h-11 flex-1 resize-none"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-					type: "submit",
-					size: "icon-lg",
-					"aria-label": "Send team message",
-					disabled: !draft.trim() || sending,
-					className: "size-11",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUp, { className: "size-5" })
-				})]
-			}),
-			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				role: "alert",
-				className: "px-4 pb-3 text-xs text-destructive",
-				children: error
-			})
-		]
-	});
-}
 // frontend/src/components/ClientQueryCard.jsx
 function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpenTask, stages = [], projectMembers = [], isFounder = true }) {
 	const [expanded, setExpanded] = (0, import_react.useState)(false);
+	const [showHandled, setShowHandled] = (0, import_react.useState)(false);
 	const [internalCommentDraft, setInternalCommentDraft] = (0, import_react.useState)("");
 	const [responseDraft, setResponseDraft] = (0, import_react.useState)(query.response || "");
 	const [mode, setMode] = (0, import_react.useState)("discuss");
@@ -30806,6 +31482,32 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 	} catch {
 		attachments = [];
 	}
+	if (!needsQueryAttention(query) && !showHandled) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+		className: "flex items-center justify-between gap-3 rounded-xl border bg-card p-3",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "min-w-0",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+					className: "text-xs text-muted-foreground",
+					children: [
+						query.originalSenderName,
+						" · ",
+						query.status
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "truncate text-sm",
+					children: query.originalMessage || "Shared a file"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryOutcome, { request: query })
+			]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+			variant: "outline",
+			size: "sm",
+			onClick: () => setShowHandled(true),
+			children: "View history"
+		})]
+	});
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: `overflow-hidden rounded-2xl border bg-card transition-all ${isPublished ? "border-emerald-300/80 shadow-2xs" : isRejected ? "border-destructive/30 bg-card/60" : isDone ? "border-muted" : "border-amber-300/80 shadow-xs"}`,
 		children: [
@@ -30883,7 +31585,11 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 							className: "border-emerald-300 bg-emerald-50 text-emerald-800 text-[10px]",
 							children: "Approved"
 						}),
-						!isPublished && !isRejected && !isApproved && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
+						query.status === "On hold" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+							variant: "outline",
+							children: "On hold"
+						}),
+						!isPublished && !isRejected && !isApproved && query.status !== "On hold" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
 							variant: "outline",
 							className: "border-amber-300 bg-amber-50 text-amber-900 text-[10px]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock, { className: "size-3 mr-1" }), " Needs Action"]
@@ -30998,6 +31704,7 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 						}), isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "flex flex-wrap items-center gap-1.5",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryDecisionButtons, {
+								onChanged: onQueryChanged,
 								request: query,
 								onAccept: () => setAcceptOpen(true),
 								onReject: () => setRejectOpen(true)
@@ -31216,6 +31923,12 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 					setSuccessMessage("Query rejected and the reply was sent.");
 					if (onQueryChanged) onQueryChanged();
 				}
+			}),
+			!needsQueryAttention(query) && showHandled && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+				variant: "outline",
+				size: "sm",
+				onClick: () => setShowHandled(false),
+				children: "Collapse history"
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
 				open: convertModalOpen,
@@ -42677,7 +43390,7 @@ function StageConnections({ projectId, stages = [], tasks = [], onChanged }) {
 }
 // frontend/src/components/PlanTemplates.jsx
 function PlanTemplates({ projectId, spaces = [], onChanged }) {
-	const [templates, setTemplates] = (0, import_react.useState)([]), [name, setName] = (0, import_react.useState)(""), [selected, setSelected] = (0, import_react.useState)(""), [preview, setPreview] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [notice, setNotice] = (0, import_react.useState)("");
+	const [templates, setTemplates] = (0, import_react.useState)([]), [name, setName] = (0, import_react.useState)(""), [selected, setSelected] = (0, import_react.useState)(""), [draft, setDraft] = (0, import_react.useState)([]), [start, setStart] = (0, import_react.useState)((/* @__PURE__ */ new Date()).toLocaleDateString("en-CA")), [preview, setPreview] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [notice, setNotice] = (0, import_react.useState)("");
 	const load = async () => {
 		try {
 			setTemplates((await request("/api/founder/plan-templates")).templates);
@@ -42685,21 +43398,54 @@ function PlanTemplates({ projectId, spaces = [], onChanged }) {
 			setError(problem.message);
 		}
 	};
-	const specs = () => {
-		return templates.find((row) => row.id === selected)?.stages.map((stage, index) => ({
-			name: stage.name,
-			custom: true,
-			spaces: (stage.spaces || []).filter((space) => spaces.includes(space)),
-			placement: stage.placement || {
-				type: "date",
-				startDate: (/* @__PURE__ */ new Date()).toLocaleDateString("en-CA")
-			},
-			tasks: stage.tasks.map((task) => ({
-				...task,
-				key: crypto.randomUUID()
-			}))
-		})) || [];
+	const choose = (id) => {
+		setSelected(id);
+		setDraft(structuredClone(templates.find((row) => row.id === id)?.stages || []));
+		setPreview(null);
 	};
+	const change = (stageIndex, taskIndex, key, value) => {
+		setDraft((current) => current.map((stage, index) => {
+			let next = index !== stageIndex ? stage : taskIndex === null ? {
+				...stage,
+				[key]: value
+			} : {
+				...stage,
+				tasks: stage.tasks.map((task, index) => index === taskIndex ? {
+					...task,
+					[key]: value
+				} : task)
+			};
+			if (taskIndex === null && key === "name" && next.placement) {
+				const old = current[stageIndex].name;
+				next = {
+					...next,
+					placement: {
+						...next.placement,
+						...next.placement.stageName === old ? { stageName: value } : {},
+						...next.placement.predecessors ? { predecessors: next.placement.predecessors.map((edge) => edge.stageName === old ? {
+							...edge,
+							stageName: value
+						} : edge) } : {}
+					}
+				};
+			}
+			return next;
+		}));
+		setPreview(null);
+	};
+	const specs = () => draft.map((stage) => ({
+		...stage,
+		custom: true,
+		spaces: (stage.spaces || []).filter((space) => spaces.includes(space)),
+		placement: stage.placement || {
+			type: "date",
+			startDate: start
+		},
+		tasks: stage.tasks.map((task) => ({
+			...task,
+			key: crypto.randomUUID()
+		}))
+	}));
 	const save = async () => {
 		setBusy(true);
 		setError("");
@@ -42748,7 +43494,7 @@ function PlanTemplates({ projectId, spaces = [], onChanged }) {
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", {
 				className: "cursor-pointer text-sm font-semibold",
-				children: "Reusable plan templates"
+				children: "Reusable plan templates · includes Purchase"
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "mt-3 grid gap-3 sm:grid-cols-2",
@@ -42772,13 +43518,9 @@ function PlanTemplates({ projectId, spaces = [], onChanged }) {
 					className: "space-y-2",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 						className: "grid gap-1 text-xs",
-						children: ["Add a saved plan", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+						children: ["Add a plan", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
 							value: selected,
-							className: "h-10 rounded border bg-background px-3",
-							onChange: (event) => {
-								setSelected(event.target.value);
-								setPreview(null);
-							},
+							onChange: (event) => choose(event.target.value),
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
 								value: "",
 								children: "Choose a template…"
@@ -42787,19 +43529,80 @@ function PlanTemplates({ projectId, spaces = [], onChanged }) {
 								children: template.name
 							}, template.id))]
 						})]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						disabled: busy || !selected,
-						variant: "outline",
-						onClick: () => useTemplate(false),
-						children: "Preview template"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "grid gap-1 text-xs",
+						children: ["Start date for stages without predecessors", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+							type: "date",
+							value: start,
+							onChange: (event) => {
+								setStart(event.target.value);
+								setPreview(null);
+							}
+						})]
 					})]
 				})]
+			}),
+			draft.map((stage, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+				className: "mt-3 space-y-2 rounded-lg border p-3",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("legend", {
+						className: "text-xs font-semibold",
+						children: ["Stage ", index + 1]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "grid gap-1 text-xs",
+						children: ["Stage name", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+							value: stage.name,
+							maxLength: 80,
+							onChange: (e) => change(index, null, "name", e.target.value)
+						})]
+					}),
+					stage.tasks.map((task, taskIndex) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "grid gap-2 sm:grid-cols-[2fr_1fr_80px]",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "grid gap-1 text-xs",
+								children: ["Task", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									maxLength: 80,
+									value: task.title,
+									onChange: (e) => change(index, taskIndex, "title", e.target.value)
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "grid gap-1 text-xs",
+								children: ["Role", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									maxLength: 80,
+									value: task.role,
+									onChange: (e) => change(index, taskIndex, "role", e.target.value)
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "grid gap-1 text-xs",
+								children: ["Days", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									type: "number",
+									min: 1,
+									max: 365,
+									value: task.durationDays,
+									onChange: (e) => change(index, taskIndex, "durationDays", Number(e.target.value))
+								})]
+							})
+						]
+					}, taskIndex))
+				]
+			}, index)),
+			selected && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+				className: "mt-3",
+				disabled: busy,
+				variant: "outline",
+				onClick: () => useTemplate(false),
+				children: "Preview edited template"
 			}),
 			preview && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "mt-3 space-y-2 rounded bg-muted p-3 text-xs",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
-					preview.created?.length || 0,
-					" tasks across ",
+					preview.created?.length || preview.tasks?.length || 0,
+					" tasks across",
+					" ",
 					preview.stages?.length || 0,
 					" stages will be added. Existing stages remain."
 				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
@@ -48058,6 +48861,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	const [taskStatusFilter, setTaskStatusFilter] = (0, import_react.useState)("all");
 	const [taskStageFilter, setTaskStageFilter] = (0, import_react.useState)("all");
 	const [taskSearch, setTaskSearch] = (0, import_react.useState)("");
+	const [personFilter, setPersonFilter] = (0, import_react.useState)("all"), [spaceFilter, setSpaceFilter] = (0, import_react.useState)("all");
 	const [driveFolderInput, setDriveFolderInput] = (0, import_react.useState)(localWorkflow?.drive?.folderUrl || "");
 	const [isEditingDriveFolder, setIsEditingDriveFolder] = (0, import_react.useState)(false);
 	const [newLinkName, setNewLinkName] = (0, import_react.useState)("");
@@ -48126,11 +48930,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	const stages = project.stages || [];
 	const schedule = computeStageSchedule(project.startDate || project.createdAt, stages);
 	const projectQueries = decisionRequests.filter((req) => req.projectId === project.id);
-	const pendingQueriesCount = projectQueries.filter((q) => ![
-		"Done",
-		"Rejected",
-		"Published"
-	].includes(q.status)).length;
+	const pendingQueriesCount = projectQueries.filter(needsQueryAttention).length;
 	const blockedTasks = tasks.filter((t) => t.status === "Blocked");
 	const inProgressTasksCount = tasks.filter((t) => t.status === "In progress" || t.status === "in_progress").length;
 	const currentStage = stages.find((stage) => stage.name === project.currentStage) || stages[0];
@@ -48139,6 +48939,8 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	const isClientAssigned = Boolean(project.clientName && project.clientName.trim() !== "" && !["Unassigned Client", "Client pending"].includes(project.clientName) && !project.telegramSetupPending);
 	const hasWorkflowStarted = Boolean(project.workflowStartedAt || project.workflowId || stages.length > 0 && project.status !== "Setup");
 	const filteredTasks = tasks.filter((t) => {
+		if (personFilter !== "all" && (t.assigneeId || "unassigned") !== personFilter) return false;
+		if (spaceFilter !== "all" && !(stages.find((stage) => stage.id === t.stageId)?.spaces || []).includes(spaceFilter)) return false;
 		if (taskStatusFilter === "open" && (t.status === "Completed" || t.status === "completed")) return false;
 		if (taskStatusFilter !== "all" && taskStatusFilter !== "open" && t.status.toLowerCase() !== taskStatusFilter.toLowerCase()) return false;
 		if (taskStageFilter !== "all" && t.stageId !== taskStageFilter) return false;
@@ -48236,7 +49038,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 		return found ? found.name : assigneeId;
 	};
 	const roster = project.telegramMembers || [];
-	const profilesReady = roster.length >= 2 && roster.every((member) => member.assignedName && member.assignedRole) && roster.filter((member) => /\bclient\b/i.test(member.assignedRole)).length === 1 && roster.some((member) => !/\b(client|founder)\b/i.test(member.assignedRole));
+	const profilesReady = roster.length >= 2 && roster.every((member) => member.assignedName && member.assignedRole) && roster.filter((member) => /\bclient\b/i.test(member.assignedRole)).length >= 1 && roster.some((member) => !/\b(client|founder)\b/i.test(member.assignedRole));
 	if (!["Completed", "Abandoned"].includes(project.status) && project.telegramGroupChatId && (project.telegramSetupPending || !profilesReady)) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "space-y-4",
 		children: [
@@ -48329,10 +49131,6 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "iksha-project-detail space-y-6",
 		children: [
-			!project.telegramSetupPending && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectSpaces, {
-				project,
-				onUpdated: onProjectUpdated
-			}),
 			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				role: "status",
 				className: "fixed right-4 bottom-24 z-[60] max-w-sm rounded-lg border bg-card px-4 py-3 text-sm shadow-lg md:bottom-4",
@@ -48373,7 +49171,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 								variant: "outline",
 								size: "sm",
 								onClick: onOpenFactsModal,
-								children: "Edit Facts"
+								children: "Project details"
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 								size: "sm",
@@ -48672,6 +49470,11 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 									")"
 								]
 							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
+								value: "meetings",
+								className: "text-xs",
+								children: "Meetings"
+							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
 								value: "chat",
 								className: "font-semibold text-xs px-3.5 py-2",
@@ -48682,9 +49485,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 								className: "font-semibold text-xs px-3.5 py-2",
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-3.5 mr-1.5 text-red-500" }),
-									"Client Queries (",
-									projectQueries.length,
-									")",
+									"Client queries",
 									pendingQueriesCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
 										variant: "secondary",
 										className: "ml-1.5 size-4 p-0 text-[10px] justify-center bg-amber-200 text-amber-900",
@@ -48713,6 +49514,44 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 						value: "tasks",
 						className: "space-y-4",
 						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex flex-wrap gap-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "grid gap-1 text-xs",
+									children: ["Person", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+										value: personFilter,
+										onChange: (e) => setPersonFilter(e.target.value),
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: "all",
+												children: "All people"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: "founder",
+												children: "Founder"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: "unassigned",
+												children: "Role-based / unassigned"
+											}),
+											(project.members || []).map((member) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: member.employeeId || member.id,
+												children: member.name
+											}, member.employeeId || member.id))
+										]
+									})]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+									className: "grid gap-1 text-xs",
+									children: ["Space", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+										value: spaceFilter,
+										onChange: (e) => setSpaceFilter(e.target.value),
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+											value: "all",
+											children: "All spaces"
+										}), (project.spaces || []).map((space) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: space }, space))]
+									})]
+								})]
+							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -48963,6 +49802,10 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							endpoint: `/api/founder/projects/${project.id}/team-chat`,
 							currentActor: "founder"
 						}, project.id)]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
+						value: "meetings",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MeetingsView, { projectId: project.id })
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
 						value: "schedule",
@@ -49642,21 +50485,6 @@ var niceDate = (value) => value ? new Date(value).toLocaleDateString(void 0, {
 	day: "numeric",
 	year: "numeric"
 }) : "";
-var phaseOptions = [
-	"Design",
-	"Planning",
-	"Procurement",
-	"Site execution",
-	"Finishing",
-	"Handover"
-];
-var statusOptions = [
-	"Setup",
-	"On track",
-	"At risk",
-	"On hold",
-	"Completed"
-];
 function Brand({ compact = false }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(IkshaBrand, { compact });
 }
@@ -49698,11 +50526,7 @@ function FounderApp() {
 	const [busy, setBusy] = (0, import_react.useState)(false);
 	const selectedProject = projects.find((p) => p.id === selectedProjectId) || null;
 	const filteredProjects = projects.filter((project) => `${project.name} ${project.clientName} ${project.location || ""}`.toLowerCase().includes(searchQuery.toLowerCase()));
-	const pendingDecisionsCount = decisionRequests.filter((r) => ![
-		"Done",
-		"Rejected",
-		"Published"
-	].includes(r.status)).length;
+	const pendingDecisionsCount = decisionRequests.filter(needsQueryAttention).length;
 	projects.filter((p) => p.telegramSetupPending).length;
 	const showNotice = (message, error = false) => {
 		setNotice({
@@ -49900,6 +50724,18 @@ function FounderApp() {
 			pendingDecisionsCount
 		],
 		[
+			"meetings",
+			CalendarDays,
+			"Meetings",
+			null
+		],
+		[
+			"chats",
+			MessageSquare,
+			"Project chats",
+			null
+		],
+		[
 			"assistant",
 			Sparkles,
 			"Founder assistant",
@@ -50070,6 +50906,8 @@ function FounderApp() {
 									actions: "Actions needed",
 									groups: "Telegram setup",
 									decisions: "Client queries",
+									meetings: "Meetings",
+									chats: "Project chats",
 									assistant: "Assistant",
 									employees: "Employees",
 									activity: "Activity",
@@ -50086,7 +50924,7 @@ function FounderApp() {
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
 					className: "mx-auto w-full max-w-6xl space-y-5 px-4 py-6 sm:px-7 sm:py-8",
-					children: currentTab === "actions" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkQueue, {
+					children: currentTab === "meetings" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MeetingsView, {}) : currentTab === "chats" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectConversations, { projects }) : currentTab === "actions" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkQueue, {
 						projects,
 						initialPersonId: workPerson,
 						onChanged: () => {
@@ -50098,7 +50936,10 @@ function FounderApp() {
 						onProjectsChanged: loadProjects
 					}) : currentTab === "decisions" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DecisionInbox, {
 						projects,
-						onProjectsChanged: loadProjects
+						onProjectsChanged: () => {
+							loadProjects();
+							loadDecisionRequests();
+						}
 					}) : currentTab === "employees" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmployeeManager, {
 						onViewWork: (employee) => {
 							setWorkPerson(employee.id);
@@ -50399,8 +51240,8 @@ function FounderApp() {
 				onOpenChange: setFactsOpen,
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
 					className: "max-h-[90dvh] overflow-y-auto",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Update project facts" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Save updates to milestones, blockers, phase, and status." })] }), selectedProject && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-						onSubmit: (e) => saveForm(e, `/api/founder/projects/${selectedProject.id}`, "PATCH", () => setFactsOpen(false), "Project facts updated."),
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Project details" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Set the client, location and spaces for this project." })] }), selectedProject && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+						onSubmit: (e) => saveForm(e, `/api/founder/projects/${selectedProject.id}`, "PATCH", () => setFactsOpen(false), "Project details updated."),
 						className: "space-y-4",
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
@@ -50410,46 +51251,32 @@ function FounderApp() {
 									defaultValue: selectedProject.clientName
 								})
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "grid grid-cols-2 gap-3",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-									label: "Phase",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
-										name: "phase",
-										defaultValue: selectedProject.phase,
-										className: "w-full",
-										children: phaseOptions.map((option) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: option }, option))
-									})
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-									label: "Status",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
-										name: "status",
-										defaultValue: selectedProject.status,
-										className: "w-full",
-										children: statusOptions.filter((option) => option !== "Completed" || selectedProject.status === "Completed").map((option) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: option }, option))
-									})
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Field, {
+								label: "Location / city",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("datalist", {
+									id: "iksha-cities",
+									children: [.../* @__PURE__ */ new Set([
+										"Bangalore",
+										"Nellore",
+										"Coimbatore",
+										...projects.map((project) => project.location).filter(Boolean)
+									])].map((city) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { value: city }, city))
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									list: "iksha-cities",
+									name: "location",
+									maxLength: 200,
+									defaultValue: selectedProject.location,
+									placeholder: "Bangalore, Nellore, Coimbatore…"
 								})]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-								label: "Recent task",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									name: "recentTask",
-									defaultValue: selectedProject.recentTask
-								})
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-								label: "Next milestone",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									name: "nextMilestone",
-									defaultValue: selectedProject.nextMilestone
-								})
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-								label: "Blocker",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									name: "blocker",
-									defaultValue: selectedProject.blocker,
-									placeholder: "None"
+								label: "Spaces — one per line",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("textarea", {
+									name: "spacesText",
+									maxLength: 6100,
+									defaultValue: (selectedProject.spaces || []).join("\n"),
+									className: "min-h-28 w-full rounded-md border bg-background p-3 text-sm",
+									placeholder: "Living room\nKitchen\nBedroom 1"
 								})
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -50878,6 +51705,7 @@ function EmployeeApp() {
 	const [selectedTask, setSelectedTask] = (0, import_react.useState)(null);
 	const [taskDrawerOpen, setTaskDrawerOpen] = (0, import_react.useState)(false);
 	const [taskViewMode, setTaskViewMode] = (0, import_react.useState)("list");
+	const [taskSearch, setTaskSearch] = (0, import_react.useState)(""), [taskStatus, setTaskStatus] = (0, import_react.useState)("all");
 	const [staleData, setStaleData] = (0, import_react.useState)(false);
 	const [loadingWorkspace, setLoadingWorkspace] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
@@ -50936,18 +51764,6 @@ function EmployeeApp() {
 		setTasks([]);
 		setDecisionRequests([]);
 	};
-	const handleToggleTaskStatus = async (taskItem) => {
-		const nextStatus = taskItem.status === "Completed" || taskItem.status === "completed" ? "Open" : "Completed";
-		try {
-			await updateTask(taskItem.id, { status: nextStatus }, "employee");
-			setTasks((prev) => prev.map((t) => t.id === taskItem.id ? {
-				...t,
-				status: nextStatus
-			} : t));
-		} catch (err) {
-			alert(err.message || "Could not update task.");
-		}
-	};
 	if (auth === "checking") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
 		className: "grid min-h-dvh place-items-center bg-background p-6",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -50957,11 +51773,7 @@ function EmployeeApp() {
 	});
 	if (auth === "signed-out") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkspaceAccess, { team: true });
 	const projectQueries = decisionRequests.filter((r) => r.projectId === selected?.id);
-	const pendingQueriesCount = projectQueries.filter((r) => ![
-		"Done",
-		"Rejected",
-		"Published"
-	].includes(r.status)).length;
+	const pendingQueriesCount = projectQueries.filter(needsQueryAttention).length;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "iksha-workspace app-glow min-h-dvh bg-background pb-[max(24px,env(safe-area-inset-bottom))]",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
@@ -50998,6 +51810,30 @@ function EmployeeApp() {
 					initialPersonId: employee?.id || "",
 					personName: employee?.name || "Me",
 					onChanged: loadWorkspaceData
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
+					className: "rounded-xl border bg-card p-4",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", {
+						className: "text-sm font-semibold",
+						children: "Project conversations"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "pt-4",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectConversations, {
+							projects,
+							namespace: "employee",
+							actor: employee.id
+						})
+					})]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
+					className: "rounded-xl border bg-card p-4",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", {
+						className: "text-sm font-semibold",
+						children: "Scheduled meetings"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "pt-4",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MeetingsView, { namespace: "employee" })
+					})]
 				}),
 				error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					role: "alert",
@@ -51120,9 +51956,7 @@ function EmployeeApp() {
 											className: "font-semibold text-xs px-3 py-2",
 											children: [
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 mr-1.5 text-amber-600" }),
-												"Client Queries (",
-												projectQueries.length,
-												")",
+												"Client queries",
 												pendingQueriesCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
 													variant: "secondary",
 													className: "ml-1.5 size-4 p-0 text-[10px] justify-center bg-amber-200 text-amber-900",
@@ -51165,88 +51999,108 @@ function EmployeeApp() {
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
 									value: "tasks",
 									className: "space-y-3",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "flex items-center justify-between gap-2 pb-1",
-										children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "flex items-center rounded-lg border bg-muted/60 p-0.5 shrink-0",
-											role: "group",
-											"aria-label": "Task view mode",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-												type: "button",
-												onClick: () => setTaskViewMode("list"),
-												className: `px-3 py-1 text-xs font-semibold rounded-md transition-colors ${taskViewMode === "list" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"}`,
-												"aria-pressed": taskViewMode === "list",
-												children: "List"
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-												type: "button",
-												onClick: () => setTaskViewMode("graph"),
-												className: `px-3 py-1 text-xs font-semibold rounded-md transition-colors ${taskViewMode === "graph" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"}`,
-												"aria-pressed": taskViewMode === "graph",
-												children: "Dependency Graph"
-											})]
-										})
-									}), taskViewMode === "graph" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectDependencyGraph, {
-										tasks,
-										employees: selected?.members ? selected.members.map((m) => ({
-											id: m.employeeId,
-											name: m.name
-										})) : [],
-										stages: selected.stages || [],
-										onOpenTask: (taskItem) => {
-											setSelectedTask(taskItem);
-											setTaskDrawerOpen(true);
-										},
-										onSwitchToList: () => setTaskViewMode("list"),
-										isFounder: false,
-										staleDataNotice: staleData
-									}) : tasks.length ? tasks.map((t) => {
-										const isCompleted = t.status === "Completed" || t.status === "completed";
-										return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "flex flex-col items-stretch justify-between gap-3 rounded-xl border bg-card p-3.5 sm:flex-row sm:items-center shadow-2xs hover:border-primary/40 transition-colors",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "flex items-center gap-3 min-w-0 flex-1",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "flex items-center justify-between gap-2 pb-1",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "flex items-center rounded-lg border bg-muted/60 p-0.5 shrink-0",
+												role: "group",
+												"aria-label": "Task view mode",
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 													type: "button",
-													"aria-label": `Toggle completion for ${t.title}`,
-													onClick: () => handleToggleTaskStatus(t),
-													className: `grid size-5 shrink-0 place-items-center rounded-md border transition-colors ${isCompleted ? "bg-emerald-600 border-emerald-600 text-white" : "border-muted-foreground/30 hover:border-primary"}`,
-													children: isCompleted && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5" })
+													onClick: () => setTaskViewMode("list"),
+													className: `px-3 py-1 text-xs font-semibold rounded-md transition-colors ${taskViewMode === "list" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"}`,
+													"aria-pressed": taskViewMode === "list",
+													children: "List"
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+													type: "button",
+													onClick: () => setTaskViewMode("graph"),
+													className: `px-3 py-1 text-xs font-semibold rounded-md transition-colors ${taskViewMode === "graph" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"}`,
+													"aria-pressed": taskViewMode === "graph",
+													children: "Dependency Graph"
+												})]
+											})
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "grid gap-2 sm:grid-cols-2",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+												"aria-label": "Find project tasks",
+												value: taskSearch,
+												onChange: (e) => setTaskSearch(e.target.value),
+												placeholder: "Find task, stage or role…"
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+												className: "grid gap-1 text-xs",
+												children: ["Task status", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+													value: taskStatus,
+													onChange: (e) => setTaskStatus(e.target.value),
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+														value: "all",
+														children: "All statuses"
+													}), [...new Set(tasks.map((task) => task.status))].map((status) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: status }, status))]
+												})]
+											})]
+										}),
+										taskViewMode === "graph" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectDependencyGraph, {
+											tasks,
+											employees: selected?.members ? selected.members.map((m) => ({
+												id: m.employeeId,
+												name: m.name
+											})) : [],
+											stages: selected.stages || [],
+											onOpenTask: (taskItem) => {
+												setSelectedTask(taskItem);
+												setTaskDrawerOpen(true);
+											},
+											onSwitchToList: () => setTaskViewMode("list"),
+											isFounder: false,
+											staleDataNotice: staleData
+										}) : tasks.length ? tasks.filter((t) => (taskStatus === "all" || t.status === taskStatus) && `${t.title} ${t.sourceRole || ""} ${selected.stages?.find((stage) => stage.id === t.stageId)?.name || ""}`.toLowerCase().includes(taskSearch.toLowerCase())).map((t) => {
+											const isCompleted = t.status === "Completed" || t.status === "completed";
+											return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "flex flex-col items-stretch justify-between gap-3 rounded-xl border bg-card p-3.5 sm:flex-row sm:items-center shadow-2xs hover:border-primary/40 transition-colors",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+													className: "flex items-center gap-3 min-w-0 flex-1",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+														"aria-label": isCompleted ? "Completed" : "Pending",
+														className: "grid size-5 shrink-0 place-items-center rounded-md border",
+														children: isCompleted && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5" })
+													}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+														className: "min-w-0 flex-1",
+														children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+															className: `break-words text-sm font-semibold cursor-pointer hover:text-primary transition-colors ${isCompleted ? "line-through text-muted-foreground" : "text-foreground"}`,
+															onClick: () => {
+																setSelectedTask(t);
+																setTaskDrawerOpen(true);
+															},
+															children: t.title
+														}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+															className: "text-[11px] text-muted-foreground",
+															children: [selected.stages?.find((stage) => stage.id === t.stageId)?.name || t.stageName || "General", t.deadline && ` · Due: ${t.deadline}`]
+														})]
+													})]
 												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-													className: "min-w-0 flex-1",
-													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-														className: `break-words text-sm font-semibold cursor-pointer hover:text-primary transition-colors ${isCompleted ? "line-through text-muted-foreground" : "text-foreground"}`,
+													className: "flex items-center gap-2",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+														variant: "outline",
+														className: `text-[10px] ${taskStatusColors[t.status] || "bg-muted"}`,
+														children: t.status
+													}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+														variant: "outline",
+														size: "sm",
+														className: "h-8 text-xs font-semibold gap-1.5",
 														onClick: () => {
 															setSelectedTask(t);
 															setTaskDrawerOpen(true);
 														},
-														children: t.title
-													}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-														className: "text-[11px] text-muted-foreground",
-														children: [selected.stages?.find((stage) => stage.id === t.stageId)?.name || t.stageName || "General", t.deadline && ` · Due: ${t.deadline}`]
+														children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Discussion" })]
 													})]
 												})]
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "flex items-center gap-2",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-													variant: "outline",
-													className: `text-[10px] ${taskStatusColors[t.status] || "bg-muted"}`,
-													children: t.status
-												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-													variant: "outline",
-													size: "sm",
-													className: "h-8 text-xs font-semibold gap-1.5",
-													onClick: () => {
-														setSelectedTask(t);
-														setTaskDrawerOpen(true);
-													},
-													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Discussion" })]
-												})]
-											})]
-										}, t.id);
-									}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-										className: "py-10 text-center text-xs text-muted-foreground",
-										children: "No active tasks in this project yet."
-									}) })]
+											}, t.id);
+										}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
+											className: "py-10 text-center text-xs text-muted-foreground",
+											children: "No active tasks in this project yet."
+										}) })
+									]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
 									value: "queries",

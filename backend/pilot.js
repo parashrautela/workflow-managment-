@@ -56,7 +56,7 @@ export function projectSummary(state, project) {
     currentStage: project.stages?.find((s) => tasks.some((t) => t.stageId === s.id && t.status !== 'Completed'))?.name || project.phase,
     deadline: project.stages?.at(-1)?.deadline || '',
     upcomingDeadlines: tasks.filter((t) => t.deadline && t.status !== 'Completed').sort((a,b) => a.deadline.localeCompare(b.deadline)).slice(0,5).map((t) => ({ id: t.id, title: t.title, deadline: t.deadline })),
-    openQueryCount: state.decisionRequests.filter((r) => r.projectId === project.id && !['Done','Rejected'].includes(r.status)).length };
+    openQueryCount: state.decisionRequests.filter((r) => r.projectId === project.id && !r.decisionStatus && !['Done','Rejected','Published','On hold','Approved'].includes(r.status)).length };
 }
 
 // Additive routes: founder/employee cookies and the existing {error} contract stay intact.
@@ -406,10 +406,10 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
       if (m[2] === 'workspace' && method === 'GET') {
         const refreshResult = await refreshProjectWorkspaceSnapshot(state, project);
         const requests = state.decisionRequests.filter((r) => r.projectId === project.id);
-        const projectTasks = state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt && (user.founder || canWorkOnTask(project,t,user)));
+        const projectTasks = state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt);
         json(res,200,{project:projectView(project),tasks:projectTasks,requests,staleData:Boolean(refreshResult?.staleData),syncWarning:refreshResult?.warning || ''}); return true;
       }
-      if (m[2] === 'tasks' && method === 'GET') { json(res,200,{tasks:state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt && (user.founder || canWorkOnTask(project,t,user)))}); return true; }
+      if (m[2] === 'tasks' && method === 'GET') { json(res,200,{tasks:state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt)}); return true; }
       if (m[2] === 'tasks' && method === 'POST') {
         admin(user); if (['Completed', 'Abandoned'].includes(project.status)) fail('This project is closed.',409);
         if (!project.workflowStartedAt) fail('Start a workflow before creating tasks.',409);
@@ -419,11 +419,10 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
     if ((m = route.match(/^tasks\/([^/]+)(?:\/(messages|read))?$/))) {
       const task = state.tasks.find((t) => t.id === m[1] && !t.deletedAt); if (!task) fail('Task not found.',404);
       const project = projectFor(state,user,task.projectId);
-      if (!user.founder && !canWorkOnTask(project,task,user)) fail('This work is not assigned to you.',403);
       if (!m[2] && method === 'GET') { json(res,200,{task}); return true; }
       if (!m[2] && method === 'PATCH') {
         if (['Completed', 'Abandoned'].includes(project.status)) fail('This project is closed.',409);
-        if (!user.founder && !canWorkOnTask(project,task,user)) fail('Only the assignee or founder can update this task.',403);
+        admin(user);
         const input = await body(req); if (!user.founder && input.assigneeId !== undefined) admin(user);
         if(input.status==='Completed' && task.status!=='Completed'){const edges=task.planPredecessors || (task.planPredecessorId?[{taskId:task.planPredecessorId,type:task.planDependencyType || 'FS'}]:(task.dependencies || []).map(edge=>({taskId:edge.predecessorTelegramTaskId,type:edge.type})));for(const edge of edges.filter(edge=>edge.type!=='SS')){const predecessor=state.tasks.find(row=>row.projectId===project.id && (row.id===edge.taskId || row.telegramTaskId===edge.taskId));if(!predecessor || predecessor.status!=='Completed')fail('Complete the preceding work before finishing this task.',409);}}
         Object.assign(task,taskFields(state,project,input,task),{updatedAt:timestamp(),telegramSyncStatus:'Pending'}); await synchronize(state,project); audit('task_updated',project.id,{taskId:task.id,actorId:user.id}); await save(); json(res,200,{task}); return true;

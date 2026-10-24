@@ -109,7 +109,7 @@ test('pilot loop: setup, start, client text/photo, two-user discussion, task ass
   const task=converted.data.task; assert.equal(task.sourceQueryId,id);
   assert.equal((await call(`/api/founder/decision-requests/${id}/convert`,'POST',{})).data.task.id,task.id);
   assert.equal((await f.call(`/api/employee/tasks/${task.id}/messages`,'POST',{text:'Site check booked'},employeeCookie)).status,201);
-  assert.equal((await f.call(`/api/employee/tasks/${task.id}`,'PATCH',{status:'In progress'},employeeCookie)).status,200);
+  assert.equal((await f.call(`/api/employee/tasks/${task.id}`,'PATCH',{status:'In progress'},employeeCookie)).status,403);
   assert.equal((await f.call(`/api/employee/tasks/${task.id}`,'PATCH',{assigneeId:'founder'},employeeCookie)).status,403);
   const media=await fetch(`${f.base}/api/founder/decision-requests/${id}/attachments/0`,{headers:{cookie:f.cookie}}); assert.equal(media.status,200); assert.equal((await media.arrayBuffer()).byteLength,3);
   const employeeMedia=await fetch(`${f.base}/api/employee/decision-requests/${id}/attachments/0`,{headers:{cookie:employeeCookie}}); assert.equal(employeeMedia.status,200);
@@ -117,7 +117,7 @@ test('pilot loop: setup, start, client text/photo, two-user discussion, task ass
   assert.equal((await call(`/api/founder/decision-requests/${id}/publish`,'POST',{response:'Approved',idempotencyKey:'reply-1'})).status,200);
   assert.equal((await readFile(path.join(f.directory,'sends.jsonl'),'utf8')).trim().split('\n').length,1);
   await f.restart();
-  assert.equal((await call(`/api/founder/tasks/${task.id}`)).data.task.status,'In progress');
+  assert.equal((await call(`/api/founder/tasks/${task.id}`)).data.task.status,'Open');
   assert.equal((await call(`/api/founder/tasks/${task.id}/messages`)).data.messages[0].text,'Site check booked');
   const restored=await call(`/api/founder/decision-requests/${id}`); assert.equal(restored.data.request.comments.length,2); assert.equal(restored.data.request.publishedMessageId,'99');
   const members=(await call(`/api/founder/projects/${p}/workspace`)).data.project.members;
@@ -212,7 +212,7 @@ test('spaces, reusable templates and branched stage links persist with atomic ba
   await f.restart();workspace=(await call(`/api/founder/projects/${p}/workspace`)).data;
   assert.equal(stageLinksFor(connectionTasks(workspace.tasks)).length,2);
   assert.deepEqual(workspace.project.spaces,['Living room','Kitchen']);
-  assert.equal((await call('/api/founder/plan-templates')).data.templates.length,1);
+  assert.equal((await call('/api/founder/plan-templates')).data.templates.filter(row=>!row.builtin).length,1);
 });
 
 test('active multiple clients are accepted and departures revoke automatic query routing',async t=>{
@@ -225,4 +225,40 @@ test('active multiple clients are accepted and departures revoke automatic query
  assert.equal((await query(201,'41')).status,201);assert.equal((await query(202,'42')).status,201);assert.equal((await query(203,'43')).status,403);
  await snapshot([person('41','Client','Left'),members[1],members[2]]);
  assert.equal((await query(204,'41')).status,403);assert.equal((await query(205,'42')).status,201);
+});
+
+test('project-wide staff discussion uploads survive restart and revocation; staff cannot change task fields',async t=>{
+ const f=await fixture(t),call=(r,m,i)=>f.call(r,m,i,f.cookie);
+ const p=(await call('/api/founder/projects','POST',{name:'Reference house'})).data.project.id;
+ await call(`/api/founder/projects/${p}/client`,'POST',{clientName:'Client'});
+ const staff=await call('/api/founder/employees','POST',{name:'Reader',designation:'Designer',projectId:p,role:'Designer',email:'reader@gmail.com'});assert.equal(staff.status,201);
+ const employeeCookie=(await f.signIn({sub:'reader',email:'reader@gmail.com',name:'Reader'})).cookie;
+ await call(`/api/founder/projects/${p}/workflow/start`,'POST',{workflowId:'PILOT-DESIGN-V1',startDate:'2026-11-01',assigneeId:'founder'});
+ const tasks=(await f.call(`/api/employee/projects/${p}/workspace`,'GET',undefined,employeeCookie)).data.tasks;assert.equal(tasks.length,3);
+ const task=tasks[0],data=Buffer.from('%PDF-1.7\nDrawing').toString('base64');
+ const upload=await f.call(`/api/employee/tasks/${task.id}/files`,'POST',{name:'wall.pdf',type:'application/pdf',data},employeeCookie);assert.equal(upload.status,201);
+ const fields={text:'Wall measurements',fileIds:[upload.data.file.id],clientKey:'reader-message-1',isResource:true};
+ const message=await f.call(`/api/employee/tasks/${task.id}/messages`,'POST',fields,employeeCookie);assert.equal(message.status,201);
+ assert.equal((await f.call(`/api/employee/tasks/${task.id}/messages`,'POST',fields,employeeCookie)).data.message.id,message.data.message.id);
+ assert.equal((await f.call(`/api/employee/tasks/${task.id}`,'PATCH',{deadline:'2026-12-01'},employeeCookie)).status,403);
+ assert.equal((await f.call(`/api/employee/tasks/${task.id}/messages/${message.data.message.id}/publish`,'POST',{confirm:true,recipientIds:[]},employeeCookie)).status,403);
+ assert.equal((await f.call(`/api/employee/tasks/${task.id}/files`,'POST',{name:'bad.png',type:'image/png',data},employeeCookie)).status,400);
+ await f.restart();
+ const url=f.base+`/api/employee/files/${upload.data.file.id}/content`;
+ assert.equal((await fetch(url)).status,401);const stored=await fetch(url,{headers:{cookie:employeeCookie}});assert.equal(stored.status,200);assert.equal(stored.headers.get('content-type'),'application/pdf');assert.match(stored.headers.get('content-disposition'),/attachment/);assert.equal(await stored.text(),'%PDF-1.7\nDrawing');
+ const members=(await call(`/api/founder/projects/${p}/workspace`)).data.project.members;await call(`/api/founder/projects/${p}/members/${members[0].id}`,'DELETE');assert.equal((await fetch(url,{headers:{cookie:employeeCookie}})).status,404);
+});
+
+test('holding a query stores its evidence without changing work and only unattended queries count',async t=>{
+ const f=await fixture(t),call=(r,m,i)=>f.call(r,m,i,f.cookie);
+ const p=(await call('/api/founder/projects','POST',{name:'Hold house'})).data.project.id;
+ await call(`/api/founder/projects/${p}/client`,'POST',{clientName:'Maya',clientTelegramId:'42'});
+ await call(`/api/founder/projects/${p}/workflow/start`,'POST',{workflowId:'PILOT-DESIGN-V1',startDate:'2026-11-01'});await call(`/api/founder/projects/${p}`,'PATCH',{telegramGroupChatId:'-123'});
+ await f.call('/api/integrations/telegram/requests','POST',payload(900),'',true);
+ const task=(await call(`/api/founder/projects/${p}/tasks`)).data.tasks[0];const original=structuredClone(task);
+ const path='/api/founder/decision-requests/'+payload(900).RequestID;
+ assert.equal((await call(path+'/hold','POST',{taskId:task.id})).status,200);assert.equal((await call(path+'/hold','POST',{taskId:task.id})).status,409);
+ const ws=(await call(`/api/founder/projects/${p}/workspace`)).data;assert.equal(ws.project.openQueryCount,0);assert.deepEqual(ws.tasks.find(row=>row.id===task.id),original);assert.equal((await call(`/api/founder/tasks/${task.id}/messages`)).data.messages.length,1);
+ await f.restart();assert.equal((await call(path)).data.request.status,'On hold');
+ assert.equal((await call(path+'/resume','POST',{})).status,200);assert.equal((await call(`/api/founder/projects/${p}/workspace`)).data.project.openQueryCount,1);
 });
