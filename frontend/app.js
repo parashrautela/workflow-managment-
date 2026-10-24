@@ -50942,25 +50942,24 @@ function FounderApp() {
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Brand, {}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
-				className: "grid gap-1",
 				"aria-label": "Workspace",
-				children: navItems.map(([id, Icon, label, badgeCount]) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-					variant: currentTab === id && (id !== "projects" || viewMode === "directory") ? "secondary" : "ghost",
-					className: `h-10 justify-start gap-3 ${currentTab === id ? "text-primary font-semibold" : "text-muted-foreground"}`,
-					onClick: () => openTab(id),
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, { className: "size-4" }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "flex-1 text-left",
-							children: label
-						}),
-						badgeCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-							variant: "outline",
-							className: `ml-auto text-[10px] ${id === "decisions" || id === "groups" ? "bg-amber-100 text-amber-900 border-amber-300" : ""}`,
-							children: badgeCount
-						})
-					]
-				}, id))
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+					className: "grid gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground",
+					children: ["Workspace", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+						"aria-label": "Workspace section",
+						value: currentTab === "projects" && viewMode === "detail" ? "project-detail" : currentTab,
+						onChange: (event) => openTab(event.target.value),
+						className: "h-11 font-medium normal-case tracking-normal text-foreground",
+						children: [currentTab === "projects" && viewMode === "detail" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+							value: "project-detail",
+							disabled: true,
+							children: selectedProject?.name || "Project details"
+						}), navItems.map(([id, , label, badgeCount]) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
+							value: id,
+							children: [label, badgeCount > 0 ? ` (${badgeCount})` : ""]
+						}, id))]
+					})]
+				})
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Separator, {}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {

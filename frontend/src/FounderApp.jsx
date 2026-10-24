@@ -311,26 +311,21 @@ export default function FounderApp() {
   const navigation = (
     <div className="flex h-full flex-col gap-5">
       <Brand />
-      <nav className="grid gap-1" aria-label="Workspace">
-        {navItems.map(([id, Icon, label, badgeCount]) => (
-          <Button
-            key={id}
-            variant={currentTab === id && (id !== "projects" || viewMode === "directory") ? "secondary" : "ghost"}
-            className={`h-10 justify-start gap-3 ${currentTab === id ? "text-primary font-semibold" : "text-muted-foreground"}`}
-            onClick={() => openTab(id)}
+      <nav aria-label="Workspace">
+        <label className="grid gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          Workspace
+          <NativeSelect
+            aria-label="Workspace section"
+            value={currentTab === "projects" && viewMode === "detail" ? "project-detail" : currentTab}
+            onChange={(event) => openTab(event.target.value)}
+            className="h-11 font-medium normal-case tracking-normal text-foreground"
           >
-            <Icon className="size-4" />
-            <span className="flex-1 text-left">{label}</span>
-            {badgeCount > 0 && (
-              <Badge
-                variant="outline"
-                className={`ml-auto text-[10px] ${id === "decisions" || id === "groups" ? "bg-amber-100 text-amber-900 border-amber-300" : ""}`}
-              >
-                {badgeCount}
-              </Badge>
-            )}
-          </Button>
-        ))}
+            {currentTab === "projects" && viewMode === "detail" && <option value="project-detail" disabled>{selectedProject?.name || "Project details"}</option>}
+            {navItems.map(([id, , label, badgeCount]) => (
+              <option key={id} value={id}>{label}{badgeCount > 0 ? ` (${badgeCount})` : ''}</option>
+            ))}
+          </NativeSelect>
+        </label>
       </nav>
 
       <Separator />
