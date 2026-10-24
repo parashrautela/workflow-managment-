@@ -105,3 +105,42 @@ test('persistence failure after sending preserves a durable Sending checkpoint a
  state=checkpointState;
  await route.tick(new Date('2026-10-22T05:00:00Z'));assert.equal(sends,1);
 });
+
+test('manual reminder sends and records the exact edited text to the selected person only',async()=>{
+ const state=fixture();state.employees[0].telegramUserId='77';state.employees[0].telegramConnectedAt='yes';
+ const sent=[];let result;
+ const route=createOperationsRoutes({getState:()=>state,founder:()=>true,body:async req=>req.input,json:(res,status,data)=>{result=data;},save:async()=>{},callBotBridge:async(path,input)=>{sent.push(input);return {messageId:sent.length};}});
+ const post=text=>route({method:'POST',input:{employeeId:'old',text}},{},new URL('http://test/api/founder/personal-reminder'));
+ const text='Parash, please check the bathroom waterproofing today.\nSend two photos. <Keep this note>';
+ await post(text);
+ assert.deepEqual(sent,[{telegramUserId:'77',text}]);assert.equal(result.delivery.text,text);
+ await route({method:'GET'},{},new URL('http://test/api/founder/personal-reminder?employeeId=old'));
+ assert.equal(result.text,text);assert.equal(result.delivery.status,'Sent');
+ await post(text);assert.equal(sent.length,1);
+ await assert.rejects(post('Changed after sending'),/already attempted/);assert.equal(sent.length,1);
+ const nextDay=new Date(state.digestDeliveries[0].date+'T04:00:00Z');nextDay.setUTCDate(nextDay.getUTCDate()+1);
+ await route.tick(nextDay);
+ assert.equal(sent.length,2);assert.match(sent[1].text,/Site check/);assert.doesNotMatch(sent[1].text,/Send two photos/);
+});
+
+test('edited reminder rejects invalid drafts and can send a manual note without actionable tasks',async()=>{
+ const state=fixture();state.employees[0].telegramUserId='77';state.employees[0].telegramConnectedAt='yes';state.tasks=[];
+ const sent=[];let result;
+ const route=createOperationsRoutes({getState:()=>state,founder:()=>true,body:async req=>req.input,json:(res,status,data)=>{result=data;},save:async()=>{},callBotBridge:async(path,input)=>{sent.push(input);return {messageId:1};}});
+ const post=text=>route({method:'POST',input:{employeeId:'old',text}},{},new URL('http://test/api/founder/personal-reminder'));
+ for(const text of ['', '   \n',null,42,{},'a'.repeat(12001)])await assert.rejects(post(text),/Enter a reminder/);
+ assert.equal(sent.length,0);assert.equal(state.digestDeliveries?.length || 0,0);
+ await post('Personal reminder connection test.');
+ assert.equal(sent.length,1);assert.equal(result.delivery.taskCount,0);assert.equal(sent[0].text,'Personal reminder connection test.');
+});
+
+test('long edited reminder is chunked without losing text or splitting Unicode characters',async()=>{
+ const state=fixture();state.employees[0].telegramUserId='77';state.employees[0].telegramConnectedAt='yes';
+ const sent=[];
+ const route=createOperationsRoutes({getState:()=>state,founder:()=>true,body:async req=>req.input,json:()=>{},save:async()=>{},callBotBridge:async(path,input)=>{sent.push(input);return {messageId:sent.length};}});
+ const text='A'.repeat(3499)+'🙂'+'\n'+'B'.repeat(4000);
+ await route({method:'POST',input:{employeeId:'old',text}},{},new URL('http://test/api/founder/personal-reminder'));
+ assert.equal(sent.map(row=>row.text).join(''),text);assert.equal(sent.length,3);
+ assert.ok(sent.every(row=>row.text.length<=3500 && !/[\uD800-\uDBFF]$/.test(row.text)));
+ assert.equal(state.digestDeliveries[0].text,text);assert.equal(state.digestDeliveries[0].status,'Sent');
+});

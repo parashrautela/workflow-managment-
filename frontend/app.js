@@ -21917,10 +21917,13 @@ function PersonalReminders({ connections, onChanged }) {
 	const send = () => run(async () => {
 		const data = await request("/api/founder/personal-reminder", {
 			method: "POST",
-			body: { employeeId: preview.employeeId }
+			body: {
+				employeeId: preview.employeeId,
+				text: preview.text
+			}
 		});
 		setPreview(null);
-		setNotice(data.empty ? "No actionable work today; no message sent." : data.delivery.status === "Sent" ? "Today’s task list was sent. The scheduled run will not send it again today." : "Delivery is uncertain. Check the employee’s Telegram chat before taking any further action.");
+		setNotice(data.empty ? "No actionable work today; no message sent." : data.delivery.status === "Sent" ? "Today’s reminder was sent. The scheduled run will not send it again today." : "Delivery is uncertain. Check the employee’s Telegram chat before taking any further action.");
 		await onChanged();
 	});
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -22010,12 +22013,37 @@ function PersonalReminders({ connections, onChanged }) {
 							preview.taskCount === 1 ? "task" : "tasks"
 						]
 					}),
-					preview.text ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("pre", {
-						className: "whitespace-pre-wrap break-words font-sans text-sm",
-						children: preview.text
-					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "text-sm",
-						children: "No actionable work today; no message will be sent."
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "grid gap-2 text-sm font-medium",
+						children: [
+							"Message to ",
+							preview.name,
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+								value: preview.text,
+								onChange: (event) => setPreview({
+									...preview,
+									text: event.target.value
+								}),
+								disabled: busy || Boolean(preview.delivery),
+								maxLength: 12e3,
+								rows: 7,
+								className: "min-h-40",
+								placeholder: "Write a personal reminder…"
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs text-muted-foreground",
+						children: preview.delivery ? "This is the message recorded for today’s delivery." : "Edit this message before sending. Your edits apply to this send only."
+					}),
+					!preview.taskCount && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs text-muted-foreground",
+						children: "No actionable work today. You can write a reminder here to send manually."
+					}),
+					preview.text.length > 12e3 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						role: "alert",
+						className: "text-sm text-destructive",
+						children: "Shorten the message to 12,000 characters before sending."
 					}),
 					!preview.connected && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-xs text-muted-foreground",
@@ -22031,9 +22059,9 @@ function PersonalReminders({ connections, onChanged }) {
 						]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						disabled: busy || !preview.connected || !preview.taskCount || Boolean(preview.delivery),
+						disabled: busy || !preview.connected || !preview.text.trim() || preview.text.length > 12e3 || Boolean(preview.delivery),
 						onClick: send,
-						children: ["Send today’s task list to ", preview.name]
+						children: ["Send reminder to ", preview.name]
 					})
 				]
 			}),
