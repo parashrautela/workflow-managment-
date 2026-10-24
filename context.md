@@ -94,3 +94,19 @@ Publication pending. Ship the bot before the web app. New attachment bytes use a
 ## 2026-10-24 — review branches published
 
 Web implementation: 54eda04 on codex/project-communication-meetings, draft PR https://github.com/parashrautela/workflow-managment-/pull/31. Companion bot: 3f8c226 on codex/task-sharing-bridge, draft PR https://github.com/parashrautela/telegrambot/pull/18. Both are pushed and attached to this chat. Main/production remain unchanged. Deployment order is bot #18, then web #31. Final verification is 107 web tests + 77 bot tests (184 total), frontend build, bot syntax and whitespace checks. The final added safeguard excludes disabled/departed attendees even during grouped fallback. Real Telegram delivery, deployed PostgreSQL and physical mobile acceptance remain pending.
+
+
+## 2026-10-24 — site admin personal reminders
+
+Focused reminder fix; calling remains excluded. Fixed the daily sender overlooking a saved Telegram Start connection when the employee profile is created afterwards. Employee status, settings and delivery now recognize both saved connection records and legacy employee connection timestamps. Future work checks forecast, current and planned dates.
+
+Added Actions needed → Morning digest settings controls to get/copy the bot link, show active staff connection status, preview one person's current task list and explicitly send today's real list before the scheduled time. Manual and automatic sends share the same daily delivery record; duplicate and uncertain sends are blocked. Send checkpoints preserve the attempt if persistence fails after Telegram delivery. No web login is required for the recipient.
+
+Verification: 112 backend/frontend tests pass, production build, syntax and whitespace checks pass. Disposable browser demo verified copying the link, connected/waiting states, personal preview, mocked delivery history and disabled repeat send. No real staff received messages. Live acceptance requires choosing a site admin, their pressing Start, deployment and one confirmed delivery. These changes currently build on pending web PR #31; existing bot Start and personal-send endpoints are reused.
+
+
+## 2026-10-25 — restore revoked employee access
+
+User requested a way to reactivate an existing revoked employee so the same Telegram account can be assigned Site Supervisor/Site Admin in the new test project. Added a founder-only Restore access button on revoked employee cards with an explicit confirmation dialog. POST /api/founder/employees/:id/enable reactivates the same employee; approved Google access and retained project memberships become available again. It preserves Telegram identity/Start connection and profile history, leaves Google approval status unchanged, does not resurrect revoked sessions or cleared task assignments, and records employee_enabled. Repeated restore requests are idempotent. Onboarding errors now direct founders to Employees for recovery.
+
+Verification: 113 backend/frontend tests pass; production build, syntax and whitespace checks pass. New HTTP test reproduces the disabled Telegram assignment error, restores the account, confirms role assignment succeeds, checks the same employee ID/count and Telegram connection, fresh Google sign-in, old-session denial, non-founder denial, cleared assignments, restart persistence and audit entry. Disposable browser check confirmed the revoked card button, confirmation, refreshed active card and connected Telegram indicator. Screenshots: /private/tmp/iksha-restore-access-dialog.png and /private/tmp/iksha-restored-employee-demo.png. No real employee was reactivated and no real reminder was sent. Publication/deployment status must be checked separately.
