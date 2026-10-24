@@ -367,6 +367,10 @@ export async function suggestDecisionReply(requestId, instruction = "", outcome 
   return await post(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/suggest-reply`, { ...(instruction ? { instruction } : {}), ...(outcome ? { outcome } : {}) });
 }
 
+export async function enableEmployee(employeeId) {
+  return await post(`/api/founder/employees/${encodeURIComponent(employeeId)}/enable`, {});
+}
+
 export async function disableEmployee(employeeId) {
   return await post(`/api/founder/employees/${employeeId}/disable`, {});
 }
