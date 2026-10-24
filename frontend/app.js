@@ -21884,6 +21884,169 @@ var needsQueryAttention = (request) => !request.decisionStatus && ![
 	"Published",
 	"Approved"
 ].includes(request.status);
+// frontend/src/components/PersonalReminders.jsx
+function PersonalReminders({ connections, onChanged }) {
+	const [link, setLink] = (0, import_react.useState)("");
+	const [preview, setPreview] = (0, import_react.useState)(null);
+	const [busy, setBusy] = (0, import_react.useState)(false);
+	const [error, setError] = (0, import_react.useState)("");
+	const [notice, setNotice] = (0, import_react.useState)("");
+	const run = async (action) => {
+		setBusy(true);
+		setError("");
+		setNotice("");
+		try {
+			await action();
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	const showLink = () => run(async () => {
+		const data = await request("/api/founder/personal-connection");
+		setLink(data.link);
+	});
+	const showPreview = (employeeId) => run(async () => {
+		setPreview(null);
+		setPreview(await request(`/api/founder/personal-reminder?employeeId=${encodeURIComponent(employeeId)}`));
+	});
+	const send = () => run(async () => {
+		const data = await request("/api/founder/personal-reminder", {
+			method: "POST",
+			body: { employeeId: preview.employeeId }
+		});
+		setPreview(null);
+		setNotice(data.empty ? "No actionable work today; no message sent." : data.delivery.status === "Sent" ? "Today’s task list was sent. The scheduled run will not send it again today." : "Delivery is uncertain. Check the employee’s Telegram chat before taking any further action.");
+		await onChanged();
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "space-y-3 border-t pt-3",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-sm font-medium",
+				children: "Connect site admins and test their reminders"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-xs text-muted-foreground",
+				children: "Share this bot link in the project Telegram group or directly with the site admin. They open it and press Start from their own account. They do not need to sign in to the web app. Assign their Telegram profile to the project first."
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-wrap gap-2",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: "outline",
+					disabled: busy,
+					onClick: showLink,
+					children: "Get bot link to share"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: "outline",
+					disabled: busy,
+					onClick: () => run(onChanged),
+					children: "Refresh connections"
+				})]
+			}),
+			link && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "space-y-2 rounded-lg border p-3",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "break-all text-sm",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+							className: "underline",
+							href: link,
+							target: "_blank",
+							rel: "noreferrer",
+							children: link
+						})
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						size: "sm",
+						disabled: busy,
+						onClick: () => run(async () => {
+							await navigator.clipboard.writeText(link);
+							setNotice("Bot link copied. Share it with the site admin.");
+						}),
+						children: "Copy bot link"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs text-muted-foreground",
+						children: "If copying is unavailable, select and copy the link above."
+					})
+				]
+			}),
+			connections.map((person) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-wrap items-center justify-between gap-2 rounded-lg border p-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "text-sm font-medium",
+					children: person.name
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "text-xs text-muted-foreground",
+					children: person.connected ? "Telegram connected" : person.hasTelegramProfile ? "Waiting for Start in bot" : "Assign their Telegram profile in the project team first"
+				})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: "outline",
+					size: "sm",
+					disabled: busy || !person.hasTelegramProfile,
+					onClick: () => showPreview(person.employeeId),
+					children: "Preview today’s reminder"
+				})]
+			}, person.employeeId)),
+			!connections.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-xs text-muted-foreground",
+				children: "No active employees yet. Assign the site admin’s role in the project team."
+			}),
+			preview && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "space-y-3 rounded-lg border p-3",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "text-sm font-medium",
+						children: [
+							preview.name,
+							" · ",
+							preview.taskCount,
+							" actionable ",
+							preview.taskCount === 1 ? "task" : "tasks"
+						]
+					}),
+					preview.text ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("pre", {
+						className: "whitespace-pre-wrap break-words font-sans text-sm",
+						children: preview.text
+					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-sm",
+						children: "No actionable work today; no message will be sent."
+					}),
+					!preview.connected && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs text-muted-foreground",
+						children: "Ask this person to press Start in the bot, then refresh their preview."
+					}),
+					preview.delivery && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "text-xs",
+						children: [
+							"Today’s delivery: ",
+							preview.delivery.status,
+							". ",
+							preview.delivery.error || "A daily reminder has already been attempted; another will not be sent."
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+						disabled: busy || !preview.connected || !preview.taskCount || Boolean(preview.delivery),
+						onClick: send,
+						children: ["Send today’s task list to ", preview.name]
+					})
+				]
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "text-sm text-destructive",
+				children: error
+			}),
+			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "status",
+				className: "text-sm",
+				children: notice
+			})
+		]
+	});
+}
 // backend/roles.js
 var rolesOf = (value) => [...new Set((Array.isArray(value) ? value : String(value || "").split(/[,;|]/)).map((role) => String(role).trim()).filter(Boolean))];
 var key = (role) => {
@@ -22157,7 +22320,7 @@ function SupervisorTools({ employees, projects, onChanged }) {
 		fromId: "",
 		toId: "",
 		projectIds: []
-	}), [preview, setPreview] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [notice, setNotice] = (0, import_react.useState)(""), [settings, setSettings] = (0, import_react.useState)(null), [deliveries, setDeliveries] = (0, import_react.useState)([]);
+	}), [preview, setPreview] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [notice, setNotice] = (0, import_react.useState)(""), [settings, setSettings] = (0, import_react.useState)(null), [deliveries, setDeliveries] = (0, import_react.useState)([]), [connections, setConnections] = (0, import_react.useState)([]);
 	const change = (next) => {
 		setForm(next);
 		setPreview(null);
@@ -22190,6 +22353,7 @@ function SupervisorTools({ employees, projects, onChanged }) {
 			const data = await request("/api/founder/operations-settings");
 			setSettings(data.digest);
 			setDeliveries(data.deliveries || []);
+			setConnections(data.connections || []);
 		} catch (problem) {
 			setError(problem.message);
 		}
@@ -22360,6 +22524,10 @@ function SupervisorTools({ employees, projects, onChanged }) {
 							disabled: busy,
 							onClick: saveSettings,
 							children: "Save schedule"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PersonalReminders, {
+							connections,
+							onChanged: loadSettings
 						}),
 						deliveries.slice(-10).reverse().map((delivery) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 							className: "text-xs",

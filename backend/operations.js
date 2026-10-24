@@ -46,10 +46,12 @@ export function replacementPreview(state,input) {
   const fingerprint=JSON.stringify({from:from.id,to:to.id,projects:projects.map(project=>({id:project.id,members:project.members})),tasks:affected.map(task=>({id:task.id,assigneeId:task.assigneeId,updatedAt:task.updatedAt}))});
   return {from,to,projects,affected,fingerprint};
 }
+export const telegramConnected = (state, employee) => Boolean(employee?.active !== false && employee?.telegramUserId && (employee.telegramConnectedAt || state.telegramConnections?.some(row => String(row.telegramUserId) === String(employee.telegramUserId))));
+
 export function digestText(employee,items,date) {
   return `${employee.name} — pending work · ${date}\n`+items.map(task=>`${task.projectName} — ${task.stageName} — ${task.title}\n${task.approval?'Approval pending':task.status}${task.overdue?' · Overdue':''}`).join('\n\n');
 }
-export function createOperationsRoutes({getState,founder,employeeSession,body,json,save,audit,callBotBridge,integrationSecret}) {
+export function createOperationsRoutes({getState,founder,employeeSession,body,json,save,audit,callBotBridge,integrationSecret,checkpoint=()=>{}}) {
   let ticking=false,lastSnapshotAt=0;
   const refreshWork=async()=>{
     const state=getState(),projects=state.projects.filter(project=>!closed(project) && project.telegramGroupChatId && project.workflowStartedAt);
@@ -60,6 +62,42 @@ export function createOperationsRoutes({getState,founder,employeeSession,body,js
     lastSnapshotAt=Date.now();await save();
   };
   const settings=state=>state.digestSettings?.[0] || {enabled:true,time:'09:00',timeZone:'Asia/Kolkata',weekends:true};
+  const reminderItems=(state,employee,now)=>{
+    const date=dayAt(now,settings(state).timeZone);
+    return workQueue(state,{personId:employee.id,now}).filter(task=>{
+      const start=task.sourceForecastStart || task.sourceCurrentStart || task.sourcePlannedStart;
+      return !start || start<=date;
+    });
+  };
+  const sendDigest=async(employee,now)=>{
+    const state=getState(),date=dayAt(now,settings(state).timeZone);
+    if(!telegramConnected(state,employee))fail('Ask this employee to open the bot link and press Start first.',409);
+    state.digestDeliveries ||= [];
+    const previous=state.digestDeliveries.find(row=>row.employeeId===employee.id && row.date===date);
+    if(previous)return previous;
+    const items=reminderItems(state,employee,now);
+    if(!items.length)return null;
+    const delivery={id:randomUUID(),employeeId:employee.id,date,status:'Sending',taskCount:items.length,createdAt:now.toISOString()};
+    state.digestDeliveries.push(delivery);await save();checkpoint();
+    try {
+      const chunks=[];let text='';
+      for(const line of digestText(employee,items,date).split('\n')){
+        if(text.length+line.length+1>3500){chunks.push(text);text='';}
+        text+=(text?'\n':'')+line;
+      }
+      if(text)chunks.push(text);
+      delivery.messageIds=[];
+      for(const text of chunks){
+        const result=await callBotBridge('/api/integrations/web/personal/send',{telegramUserId:String(employee.telegramUserId),text});
+        if(!Number.isInteger(result.messageId))throw Error('Missing Telegram delivery confirmation.');
+        delivery.messageIds.push(result.messageId);await save();checkpoint();
+      }
+      delivery.status='Sent';
+    }catch{
+      delivery.status='Unknown';delivery.error='Delivery was not confirmed. Check Telegram before resending.';
+    }
+    await save();checkpoint();return delivery;
+  };
   const tick=async(now=new Date())=>{
     if(ticking)return; ticking=true;
     try {
@@ -68,21 +106,11 @@ export function createOperationsRoutes({getState,founder,employeeSession,body,js
       const part=type=>local.find(item=>item.type===type)?.value;
       if(`${part('hour')}:${part('minute')}`<config.time || (!config.weekends && ['Sat','Sun'].includes(part('weekday'))))return;
       await refreshWork();
-      const date=dayAt(now,config.timeZone);state.digestDeliveries ||= [];
-      for(const employee of state.employees.filter(row=>row.active!==false && row.telegramConnectedAt && row.telegramUserId)) {
-        if(state.digestDeliveries.some(row=>row.employeeId===employee.id && row.date===date))continue;
-        const items=workQueue(state,{personId:employee.id,now}).filter(task=>!task.sourceForecastStart || task.sourceForecastStart<=date);
-        if(!items.length)continue;
-        const delivery={id:randomUUID(),employeeId:employee.id,date,status:'Sending',createdAt:now.toISOString()};
-        state.digestDeliveries.push(delivery);await save();
-        try {const chunks=[];let text='';for(const line of digestText(employee,items,date).split('\n')){if(text.length+line.length+1>3500){chunks.push(text);text='';}text+=(text?'\n':'')+line;}if(text)chunks.push(text);delivery.messageIds=[];for(const text of chunks){const result=await callBotBridge('/api/integrations/web/personal/send',{telegramUserId:employee.telegramUserId,text});delivery.messageIds.push(result.messageId);await save();}delivery.status='Sent';}
-        catch(error){delivery.status='Unknown';delivery.error='Delivery was not confirmed. Check Telegram before resending.';}
-        await save();
-      }
+      for(const employee of state.employees.filter(row=>telegramConnected(state,row)))await sendDigest(employee,now);
     } finally {ticking=false;}
   };
   const route=async(req,res,url)=>{
-    const match=url.pathname.match(/^\/api\/(founder|employee)\/(work-queue|operations-settings|supervisor-replacement\/(preview|apply)|projects\/([^/]+)\/(spaces|stage-spaces)|plan-templates(?:\/([^/]+))?|personal-connection)$/);
+    const match=url.pathname.match(/^\/api\/(founder|employee)\/(work-queue|operations-settings|supervisor-replacement\/(preview|apply)|projects\/([^/]+)\/(spaces|stage-spaces)|plan-templates(?:\/([^/]+))?|personal-connection|personal-reminder)$/);
     if(!match)return false;
     const state=getState(),user=match[1]==='founder'?(founder(req)?{id:'founder',founder:true}:null):employeeSession(req);
     if(!user)fail('Sign-in required.',401);
@@ -91,15 +119,27 @@ export function createOperationsRoutes({getState,founder,employeeSession,body,js
       let syncWarning='';try{await refreshWork();}catch{syncWarning='Live Telegram sync unavailable; showing saved work.';}
       const personId=user.founder?(url.searchParams.get('personId') || 'founder'):user.id;
       const tasks=workQueue(state,{personId,projectId:url.searchParams.get('projectId') || '',status:url.searchParams.get('status') || 'pending',user});
-      json(res,200,{tasks,syncWarning,telegramConnected:Boolean(user.telegramConnectedAt),employees:user.founder?state.employees.filter(row=>row.active!==false).map(({id,name,designation})=>({id,name,designation})):[],updatedAt:new Date().toISOString()});return true;
+      json(res,200,{tasks,syncWarning,telegramConnected:telegramConnected(state,user),employees:user.founder?state.employees.filter(row=>row.active!==false).map(({id,name,designation})=>({id,name,designation})):[],updatedAt:new Date().toISOString()});return true;
     }
     if(path==='personal-connection' && req.method==='GET') {
       const profile=await callBotBridge('/api/integrations/web/personal/profile',{});
-      json(res,200,{username:profile.username,link:`https://t.me/${profile.username}?start=work`,connected:Boolean(user.telegramConnectedAt)});return true;
+      json(res,200,{username:profile.username,link:`https://t.me/${profile.username}?start=work`,connected:telegramConnected(state,user)});return true;
     }
     if(!user.founder)fail('Founder permission required.',403);
+    if(path==='personal-reminder' && ['GET','POST'].includes(req.method)) {
+      const input=req.method==='POST'?await body(req):{};
+      const employee=state.employees.find(row=>row.id===(input.employeeId || url.searchParams.get('employeeId')) && row.active!==false);
+      if(!employee)fail('Choose an active employee.',404);
+      await refreshWork();
+      const now=new Date(),date=dayAt(now,settings(state).timeZone),items=reminderItems(state,employee,now);
+      if(req.method==='GET'){
+        json(res,200,{employeeId:employee.id,name:employee.name,connected:telegramConnected(state,employee),date,taskCount:items.length,text:items.length?digestText(employee,items,date):'',delivery:state.digestDeliveries?.find(row=>row.employeeId===employee.id && row.date===date) || null});return true;
+      }
+      const delivery=await sendDigest(employee,now);
+      json(res,200,{delivery,empty:!delivery});return true;
+    }
     if(path==='operations-settings') {
-      if(req.method==='GET'){json(res,200,{digest:settings(state),deliveries:(state.digestDeliveries || []).slice(-50),connections:state.employees.map(row=>({employeeId:row.id,connected:Boolean(row.telegramConnectedAt)}))});return true;}
+      if(req.method==='GET'){json(res,200,{digest:settings(state),deliveries:(state.digestDeliveries || []).slice(-50),connections:state.employees.filter(row=>row.active!==false).map(row=>({employeeId:row.id,name:row.name,hasTelegramProfile:Boolean(row.telegramUserId),connected:telegramConnected(state,row)}))});return true;}
       if(req.method==='POST') {
         const input=await body(req);
         if(typeof input.timeZone!=='string' || !input.timeZone || typeof input.enabled!=='boolean' || !/^([01]\d|2[0-3]):[0-5]\d$/.test(input.time) || typeof input.weekends!=='boolean')fail('Choose a valid digest schedule.');
@@ -174,7 +214,7 @@ export function createOperationsRoutes({getState,founder,employeeSession,body,js
   route.tick=tick;
   route.connect=async id=>{
     const state=getState(),telegramUserId=String(id),employees=state.employees.filter(row=>row.telegramUserId===telegramUserId && row.active!==false);
-    const known=employees.length || state.telegramGroups.some(group=>group.members?.some(member=>String(member.telegramUserId)===telegramUserId && member.membershipStatus==='Active'));
+    const known=employees.length || (state.telegramGroups || []).some(group=>group.members?.some(member=>String(member.telegramUserId)===telegramUserId && member.membershipStatus==='Active'));
     if(!known)fail('Ask the founder to assign your Telegram profile first.',404);
     state.telegramConnections ||= [];
     if(!state.telegramConnections.some(row=>row.telegramUserId===telegramUserId))state.telegramConnections.push({telegramUserId,connectedAt:new Date().toISOString()});
