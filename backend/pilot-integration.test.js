@@ -5,10 +5,11 @@ import { mkdtemp, cp, symlink, writeFile, readFile, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import net from 'node:net';
+import http from 'node:http';
 import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
-async function fixture(t) {
+async function fixture(t, {botBridgeUrl=''}={}) {
   const directory = await mkdtemp(path.join(tmpdir(),'iksha-pilot-'));
   const source = path.dirname(fileURLToPath(import.meta.url));
   await cp(source,path.join(directory,'backend'),{recursive:true,filter:(p)=>!p.endsWith('.test.js') && !p.endsWith('data.json')});
@@ -43,7 +44,7 @@ globalThis.fetch = async (url,options) => {
     return {status:response.status,data:await response.json(),cookie:response.headers.get('set-cookie')?.split(';')[0]};
   };
   const start = async () => {
-    child = spawn(process.execPath,['--import',mock,'--import',google.mock,path.join(directory,'backend/server.js')],{cwd:directory,env:{...process.env,PORT:String(port),GOOGLE_CLIENT_ID:google.clientId,INITIAL_FOUNDER_EMAIL:'',INTEGRATION_SHARED_SECRET:'test-secret',GROUP_BOT_TOKEN:'test-token',DATABASE_URL:'',NODE_ENV:'test',APP_DATA_FILE:''},stdio:'ignore'});
+    child = spawn(process.execPath,['--import',mock,'--import',google.mock,path.join(directory,'backend/server.js')],{cwd:directory,env:{...process.env,PORT:String(port),GOOGLE_CLIENT_ID:google.clientId,INITIAL_FOUNDER_EMAIL:'',INTEGRATION_SHARED_SECRET:'test-secret',GROUP_BOT_TOKEN:'test-token',BOT_BRIDGE_URL:botBridgeUrl,DATABASE_URL:'',NODE_ENV:'test',APP_DATA_FILE:''},stdio:'ignore'});
     for (let i=0;i<50;i++) {
       try { await call('/api/founder/projects'); return; } catch { await new Promise((resolve)=>setTimeout(resolve,50)); }
     }
@@ -56,6 +57,56 @@ globalThis.fetch = async (url,options) => {
   return {call,signIn:identity=>google.signIn(base,identity),cookie:login.cookie,directory,base,restart:async()=>{await stop();await start();}};
 }
 const payload = (messageId=10,changes={}) => ({RequestID:`REQ--123-${messageId}-question`,GroupChatID:'-123',SourceMessageID:String(messageId),RequestType:'Question',OriginalMessage:'Can we move this light?',RequestContext:'',OriginalSenderName:'Client',OriginalSenderTelegramID:'42',RequestedByName:'Client',AttachmentsJSON:'[]',...changes});
+
+test('founder restores a revoked employee in place and can assign their Telegram role again',async t=>{
+  let assignments=0;
+  const bridge=http.createServer(async(req,res)=>{
+    assert.equal(req.url,'/api/integrations/web/group-members');
+    assert.equal(req.headers.authorization,'Bearer test-secret');
+    let raw='';for await(const chunk of req)raw+=chunk;
+    assert.equal(JSON.parse(raw).telegramUserId,'88');assignments++;
+    res.writeHead(200,{'content-type':'application/json'});res.end('{"ok":true}');
+  });
+  await new Promise(resolve=>bridge.listen(0,'127.0.0.1',resolve));
+  t.after(()=>new Promise(resolve=>bridge.close(resolve)));
+  const f=await fixture(t,{botBridgeUrl:`http://127.0.0.1:${bridge.address().port}`});
+  const call=(route,method,input)=>f.call(route,method,input,f.cookie);
+  const project=(await call('/api/founder/projects','POST',{name:'Existing site'})).data.project.id;
+  const employee=(await call('/api/founder/employees','POST',{name:'Test supervisor',designation:'Site Supervisor',role:'Site Supervisor',projectId:project,email:'supervisor@gmail.com'})).data.employee;
+  const identity={sub:'test-supervisor',email:'supervisor@gmail.com',name:'Test supervisor'};
+  const login=await f.signIn(identity);assert.equal(login.status,200);
+  const file=path.join(f.directory,'backend/data.json');
+  const saved=JSON.parse(await readFile(file,'utf8'));
+  saved.employees.find(row=>row.id===employee.id).telegramUserId='88';
+  saved.tasks.push({id:'restore-task',projectId:project,title:'Old assignment',assigneeId:employee.id,status:'Open'});
+  await writeFile(file,JSON.stringify(saved));await f.restart();
+  const snapshot={groups:[{groupChatId:'-7654',title:'New reminder test',status:'Available',members:[{telegramUserId:'88',telegramName:'Test supervisor',membershipStatus:'Active',assignedName:'',assignedRole:''}]}]};
+  assert.equal((await f.call('/api/integrations/telegram/groups/snapshot','POST',snapshot,'',true)).status,200);
+  assert.equal((await f.call('/api/integrations/telegram/connect','POST',{telegramUserId:'88'},'',true)).status,200);
+  assert.equal((await call(`/api/founder/employees/${employee.id}/disable`,'POST',{})).status,200);
+  const assignment='/api/founder/telegram-groups/-7654/members/88';
+  const role={name:'Test supervisor',role:'Site Supervisor'};
+  assert.equal((await call(assignment,'POST',role)).status,409);assert.equal(assignments,0);
+  assert.equal((await f.signIn(identity)).status,403);
+  const enable=`/api/founder/employees/${employee.id}/enable`;
+  assert.equal((await f.call(enable,'POST',{})).status,401);
+  assert.equal((await call('/api/founder/employees/missing/enable','POST',{})).status,404);
+  assert.equal((await call(enable,'POST',{})).status,200);
+  assert.equal((await f.call('/api/employee/me','GET',undefined,login.cookie)).status,401,'revoked session stays invalid');
+  const fresh=await f.signIn(identity);assert.equal(fresh.status,200);
+  assert.equal((await f.call('/api/employee/me','GET',undefined,fresh.cookie)).data.employee.id,employee.id);
+  assert.equal((await call(enable,'POST',{})).status,200);
+  assert.equal((await f.call('/api/employee/me','GET',undefined,fresh.cookie)).status,200,'repeated restore is harmless');
+  assert.equal((await f.call(enable.replace('/founder/','/employee/'),'POST',{},fresh.cookie)).status,403,'staff cannot restore accounts');
+  assert.equal((await call(assignment,'POST',role)).status,200);assert.equal(assignments,1);
+  const employees=(await call('/api/founder/employees')).data.employees;
+  assert.equal(employees.length,1);assert.equal(employees[0].id,employee.id);assert.equal(employees[0].active,true);assert.equal(employees[0].telegramConnected,true);
+  assert.equal((await call(`/api/founder/projects/${project}/tasks`)).data.tasks.find(row=>row.id==='restore-task').assigneeId,'');
+  await f.restart();
+  assert.equal((await call('/api/founder/employees')).data.employees[0].active,true);
+  const restored=JSON.parse(await readFile(file,'utf8'));
+  assert.ok(restored.activity.some(row=>row.action==='employee_enabled' && row.details.employeeId===employee.id));
+});
 
 test('custom timelines persist across restart, close read-only, and abandonment retains recoverable history', async (t) => {
   const f = await fixture(t); const call = (route, method, input) => f.call(route, method, input, f.cookie);
