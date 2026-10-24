@@ -1156,6 +1156,10 @@
     min-height: calc(var(--spacing) * 28);
   }
 
+  .min-h-40 {
+    min-height: calc(var(--spacing) * 40);
+  }
+
   .min-h-64 {
     min-height: calc(var(--spacing) * 64);
   }
@@ -2703,10 +2707,6 @@
 
   .font-mono {
     font-family: var(--font-mono);
-  }
-
-  .font-sans {
-    font-family: var(--font-sans);
   }
 
   .text-2xl {

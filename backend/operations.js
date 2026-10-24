@@ -69,21 +69,25 @@ export function createOperationsRoutes({getState,founder,employeeSession,body,js
       return !start || start<=date;
     });
   };
-  const sendDigest=async(employee,now)=>{
+  const sendDigest=async(employee,now,editedText)=>{
     const state=getState(),date=dayAt(now,settings(state).timeZone);
     if(!telegramConnected(state,employee))fail('Ask this employee to open the bot link and press Start first.',409);
     state.digestDeliveries ||= [];
     const previous=state.digestDeliveries.find(row=>row.employeeId===employee.id && row.date===date);
-    if(previous)return previous;
+    if(previous){
+      if(editedText!==undefined && previous.text!==editedText)fail('Today’s reminder was already attempted. Refresh the preview and check Telegram before sending again.',409);
+      return previous;
+    }
     const items=reminderItems(state,employee,now);
-    if(!items.length)return null;
-    const delivery={id:randomUUID(),employeeId:employee.id,date,status:'Sending',taskCount:items.length,createdAt:now.toISOString()};
+    if(!items.length && editedText===undefined)return null;
+    const message=editedText ?? digestText(employee,items,date);
+    const delivery={id:randomUUID(),employeeId:employee.id,date,status:'Sending',taskCount:items.length,text:message,createdAt:now.toISOString()};
     state.digestDeliveries.push(delivery);await save();checkpoint();
     try {
       const chunks=[];let text='';
-      for(const line of digestText(employee,items,date).split('\n')){
-        if(text.length+line.length+1>3500){chunks.push(text);text='';}
-        text+=(text?'\n':'')+line;
+      for(const character of message){
+        if(text.length+character.length>3500){chunks.push(text);text='';}
+        text+=character;
       }
       if(text)chunks.push(text);
       delivery.messageIds=[];
@@ -128,14 +132,16 @@ export function createOperationsRoutes({getState,founder,employeeSession,body,js
     if(!user.founder)fail('Founder permission required.',403);
     if(path==='personal-reminder' && ['GET','POST'].includes(req.method)) {
       const input=req.method==='POST'?await body(req):{};
+      if(input.text!==undefined && (typeof input.text!=='string' || !input.text.trim() || input.text.length>12000))fail('Enter a reminder between 1 and 12,000 characters.');
       const employee=state.employees.find(row=>row.id===(input.employeeId || url.searchParams.get('employeeId')) && row.active!==false);
       if(!employee)fail('Choose an active employee.',404);
       await refreshWork();
       const now=new Date(),date=dayAt(now,settings(state).timeZone),items=reminderItems(state,employee,now);
       if(req.method==='GET'){
-        json(res,200,{employeeId:employee.id,name:employee.name,connected:telegramConnected(state,employee),date,taskCount:items.length,text:items.length?digestText(employee,items,date):'',delivery:state.digestDeliveries?.find(row=>row.employeeId===employee.id && row.date===date) || null});return true;
+        const delivery=state.digestDeliveries?.find(row=>row.employeeId===employee.id && row.date===date) || null;
+        json(res,200,{employeeId:employee.id,name:employee.name,connected:telegramConnected(state,employee),date,taskCount:items.length,text:delivery?.text ?? (items.length?digestText(employee,items,date):''),delivery});return true;
       }
-      const delivery=await sendDigest(employee,now);
+      const delivery=await sendDigest(employee,now,input.text);
       json(res,200,{delivery,empty:!delivery});return true;
     }
     if(path==='operations-settings') {
