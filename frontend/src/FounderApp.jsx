@@ -316,10 +316,11 @@ export default function FounderApp() {
           Workspace
           <NativeSelect
             aria-label="Workspace section"
-            value={currentTab}
+            value={currentTab === "projects" && viewMode === "detail" ? "project-detail" : currentTab}
             onChange={(event) => openTab(event.target.value)}
             className="h-11 font-medium normal-case tracking-normal text-foreground"
           >
+            {currentTab === "projects" && viewMode === "detail" && <option value="project-detail" disabled>{selectedProject?.name || "Project details"}</option>}
             {navItems.map(([id, , label, badgeCount]) => (
               <option key={id} value={id}>{label}{badgeCount > 0 ? ` (${badgeCount})` : ''}</option>
             ))}

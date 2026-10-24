@@ -50945,15 +50945,19 @@ function FounderApp() {
 				"aria-label": "Workspace",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 					className: "grid gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground",
-					children: ["Workspace", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NativeSelect, {
+					children: ["Workspace", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
 						"aria-label": "Workspace section",
-						value: currentTab,
+						value: currentTab === "projects" && viewMode === "detail" ? "project-detail" : currentTab,
 						onChange: (event) => openTab(event.target.value),
 						className: "h-11 font-medium normal-case tracking-normal text-foreground",
-						children: navItems.map(([id, , label, badgeCount]) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
+						children: [currentTab === "projects" && viewMode === "detail" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+							value: "project-detail",
+							disabled: true,
+							children: selectedProject?.name || "Project details"
+						}), navItems.map(([id, , label, badgeCount]) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
 							value: id,
 							children: [label, badgeCount > 0 ? ` (${badgeCount})` : ""]
-						}, id))
+						}, id))]
 					})]
 				})
 			}),
