@@ -331,3 +331,13 @@ Staff with an active project membership may read every task and discussion in th
 Notifications are checked once per minute in the existing serialized server queue. Personal notifications require each attendee to press Start in the project bot. An explicitly selected group fallback can expose the meeting details to everyone in the project group; multiple unavailable attendees share one group notice per event. No connection and no fallback is Unavailable. Unconfirmed delivery is Unknown, retained across restart and never automatically retried. The companion bot's authenticated `/api/integrations/web/task-notice` verifies current group membership and supports one uploaded document.
 
 `GET /api/founder/plan-templates` includes a built-in Purchase template alongside saved plans. Template name, task text, roles and durations can be edited before using existing preview/apply routes.
+
+
+### Personal daily reminders
+
+- `GET /api/founder/personal-connection`: bot link to copy into the project Telegram group or share directly. The recipient presses Start from their own account; no web login is needed. Their Telegram profile must be assigned to the correct employee.
+- `GET /api/founder/operations-settings`: existing schedule and deliveries, plus active employee connections (`employeeId`, `name`, `hasTelegramProfile`, `connected`). Connections recorded before employee creation remain valid.
+- `GET /api/founder/personal-reminder?employeeId=...`: preview that employee's current actionable task list, connection state, task count and today's prior delivery if present. Founder only.
+- `POST /api/founder/personal-reminder`: `{employeeId}` explicitly sends today's list without waiting for the schedule. Requires an active connected employee. Returns `{delivery, empty}`; empty work sends nothing. Repeated calls return the existing daily delivery and never resend it, including uncertain attempts. This counts as today's scheduled digest. Telegram sends use the bot bridge; uncertain outcomes require checking Telegram.
+
+- `POST /api/founder/employees/:id/enable`: founder-only explicit restoration of a revoked employee. Preserves the employee ID, Telegram identity/connection and existing project memberships. Does not approve a rejected Google account, resurrect old sessions or restore cleared task assignments. Repeating restoration of an active account is a no-op. Records `employee_enabled` when reactivated. UI: Employees → revoked employee card → Restore access → confirm.

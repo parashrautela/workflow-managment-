@@ -20263,6 +20263,9 @@ async function suggestDecisionReply(requestId, instruction = "", outcome = "") {
 		...outcome ? { outcome } : {}
 	});
 }
+async function enableEmployee(employeeId) {
+	return await post$2(`/api/founder/employees/${encodeURIComponent(employeeId)}/enable`, {});
+}
 async function disableEmployee(employeeId) {
 	return await post$2(`/api/founder/employees/${employeeId}/disable`, {});
 }
@@ -21884,6 +21887,169 @@ var needsQueryAttention = (request) => !request.decisionStatus && ![
 	"Published",
 	"Approved"
 ].includes(request.status);
+// frontend/src/components/PersonalReminders.jsx
+function PersonalReminders({ connections, onChanged }) {
+	const [link, setLink] = (0, import_react.useState)("");
+	const [preview, setPreview] = (0, import_react.useState)(null);
+	const [busy, setBusy] = (0, import_react.useState)(false);
+	const [error, setError] = (0, import_react.useState)("");
+	const [notice, setNotice] = (0, import_react.useState)("");
+	const run = async (action) => {
+		setBusy(true);
+		setError("");
+		setNotice("");
+		try {
+			await action();
+		} catch (problem) {
+			setError(problem.message);
+		} finally {
+			setBusy(false);
+		}
+	};
+	const showLink = () => run(async () => {
+		const data = await request("/api/founder/personal-connection");
+		setLink(data.link);
+	});
+	const showPreview = (employeeId) => run(async () => {
+		setPreview(null);
+		setPreview(await request(`/api/founder/personal-reminder?employeeId=${encodeURIComponent(employeeId)}`));
+	});
+	const send = () => run(async () => {
+		const data = await request("/api/founder/personal-reminder", {
+			method: "POST",
+			body: { employeeId: preview.employeeId }
+		});
+		setPreview(null);
+		setNotice(data.empty ? "No actionable work today; no message sent." : data.delivery.status === "Sent" ? "Today’s task list was sent. The scheduled run will not send it again today." : "Delivery is uncertain. Check the employee’s Telegram chat before taking any further action.");
+		await onChanged();
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "space-y-3 border-t pt-3",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-sm font-medium",
+				children: "Connect site admins and test their reminders"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-xs text-muted-foreground",
+				children: "Share this bot link in the project Telegram group or directly with the site admin. They open it and press Start from their own account. They do not need to sign in to the web app. Assign their Telegram profile to the project first."
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-wrap gap-2",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: "outline",
+					disabled: busy,
+					onClick: showLink,
+					children: "Get bot link to share"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: "outline",
+					disabled: busy,
+					onClick: () => run(onChanged),
+					children: "Refresh connections"
+				})]
+			}),
+			link && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "space-y-2 rounded-lg border p-3",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "break-all text-sm",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+							className: "underline",
+							href: link,
+							target: "_blank",
+							rel: "noreferrer",
+							children: link
+						})
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						size: "sm",
+						disabled: busy,
+						onClick: () => run(async () => {
+							await navigator.clipboard.writeText(link);
+							setNotice("Bot link copied. Share it with the site admin.");
+						}),
+						children: "Copy bot link"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs text-muted-foreground",
+						children: "If copying is unavailable, select and copy the link above."
+					})
+				]
+			}),
+			connections.map((person) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-wrap items-center justify-between gap-2 rounded-lg border p-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "text-sm font-medium",
+					children: person.name
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "text-xs text-muted-foreground",
+					children: person.connected ? "Telegram connected" : person.hasTelegramProfile ? "Waiting for Start in bot" : "Assign their Telegram profile in the project team first"
+				})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: "outline",
+					size: "sm",
+					disabled: busy || !person.hasTelegramProfile,
+					onClick: () => showPreview(person.employeeId),
+					children: "Preview today’s reminder"
+				})]
+			}, person.employeeId)),
+			!connections.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-xs text-muted-foreground",
+				children: "No active employees yet. Assign the site admin’s role in the project team."
+			}),
+			preview && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "space-y-3 rounded-lg border p-3",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "text-sm font-medium",
+						children: [
+							preview.name,
+							" · ",
+							preview.taskCount,
+							" actionable ",
+							preview.taskCount === 1 ? "task" : "tasks"
+						]
+					}),
+					preview.text ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("pre", {
+						className: "whitespace-pre-wrap break-words font-sans text-sm",
+						children: preview.text
+					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-sm",
+						children: "No actionable work today; no message will be sent."
+					}),
+					!preview.connected && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs text-muted-foreground",
+						children: "Ask this person to press Start in the bot, then refresh their preview."
+					}),
+					preview.delivery && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "text-xs",
+						children: [
+							"Today’s delivery: ",
+							preview.delivery.status,
+							". ",
+							preview.delivery.error || "A daily reminder has already been attempted; another will not be sent."
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+						disabled: busy || !preview.connected || !preview.taskCount || Boolean(preview.delivery),
+						onClick: send,
+						children: ["Send today’s task list to ", preview.name]
+					})
+				]
+			}),
+			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "text-sm text-destructive",
+				children: error
+			}),
+			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "status",
+				className: "text-sm",
+				children: notice
+			})
+		]
+	});
+}
 // backend/roles.js
 var rolesOf = (value) => [...new Set((Array.isArray(value) ? value : String(value || "").split(/[,;|]/)).map((role) => String(role).trim()).filter(Boolean))];
 var key = (role) => {
@@ -22157,7 +22323,7 @@ function SupervisorTools({ employees, projects, onChanged }) {
 		fromId: "",
 		toId: "",
 		projectIds: []
-	}), [preview, setPreview] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [notice, setNotice] = (0, import_react.useState)(""), [settings, setSettings] = (0, import_react.useState)(null), [deliveries, setDeliveries] = (0, import_react.useState)([]);
+	}), [preview, setPreview] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [notice, setNotice] = (0, import_react.useState)(""), [settings, setSettings] = (0, import_react.useState)(null), [deliveries, setDeliveries] = (0, import_react.useState)([]), [connections, setConnections] = (0, import_react.useState)([]);
 	const change = (next) => {
 		setForm(next);
 		setPreview(null);
@@ -22190,6 +22356,7 @@ function SupervisorTools({ employees, projects, onChanged }) {
 			const data = await request("/api/founder/operations-settings");
 			setSettings(data.digest);
 			setDeliveries(data.deliveries || []);
+			setConnections(data.connections || []);
 		} catch (problem) {
 			setError(problem.message);
 		}
@@ -22360,6 +22527,10 @@ function SupervisorTools({ employees, projects, onChanged }) {
 							disabled: busy,
 							onClick: saveSettings,
 							children: "Save schedule"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PersonalReminders, {
+							connections,
+							onChanged: loadSettings
 						}),
 						deliveries.slice(-10).reverse().map((delivery) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 							className: "text-xs",
@@ -26262,22 +26433,22 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewWork }) {
 	const [roleFilter, setRoleFilter] = (0, import_react.useState)("All");
 	const visibleEmployees = employees.filter((employee) => roleFilter === "All" || matchesRole(employee.designation, roleFilter) || projects.some((project) => project.members?.some((member) => member.employeeId === employee.id && matchesRole(member.roles || member.role, roleFilter))));
-	const [disablingId, setDisablingId] = (0, import_react.useState)(null);
+	const [updatingId, setUpdatingId] = (0, import_react.useState)(null);
 	const [confirmEmployee, setConfirmEmployee] = (0, import_react.useState)(null);
 	const [editEmployee, setEditEmployee] = (0, import_react.useState)(null);
 	const [error, setError] = (0, import_react.useState)("");
-	const handleDisable = async () => {
+	const handleAccessChange = async () => {
 		if (!confirmEmployee) return;
-		setDisablingId(confirmEmployee.id);
+		setUpdatingId(confirmEmployee.id);
 		setError("");
 		try {
-			await disableEmployee(confirmEmployee.id);
+			await (confirmEmployee.active === false ? enableEmployee : disableEmployee)(confirmEmployee.id);
 			setConfirmEmployee(null);
 			if (onUpdated) await onUpdated();
 		} catch (err) {
-			setError(err.message || "Failed to disable employee.");
+			setError(err.message || "Failed to update employee access.");
 		} finally {
-			setDisablingId(null);
+			setUpdatingId(null);
 		}
 	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -26337,45 +26508,54 @@ function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewWork }) 
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "flex items-start justify-between gap-3",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex items-start gap-3 min-w-0",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: `grid size-10 shrink-0 place-items-center rounded-full ${isActive ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"}`,
-											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { className: "size-5" })
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "min-w-0",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "flex items-center gap-2",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-													className: "truncate text-sm font-semibold",
-													children: employee.name
-												}), !isActive && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-													variant: "outline",
-													className: "border-destructive/40 bg-destructive/10 text-destructive text-[10px]",
-													children: "Revoked"
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "flex items-start gap-3 min-w-0",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: `grid size-10 shrink-0 place-items-center rounded-full ${isActive ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"}`,
+												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { className: "size-5" })
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "min-w-0",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+													className: "flex items-center gap-2",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+														className: "truncate text-sm font-semibold",
+														children: employee.name
+													}), !isActive && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+														variant: "outline",
+														className: "border-destructive/40 bg-destructive/10 text-destructive text-[10px]",
+														children: "Revoked"
+													})]
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+													className: "text-xs text-muted-foreground",
+													children: employee.designation
 												})]
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-												className: "text-xs text-muted-foreground",
-												children: employee.designation
 											})]
-										})]
-									}), isActive && employee.workspaceRole !== "Founder" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex shrink-0 items-center gap-1",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										}),
+										!isActive && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 											variant: "outline",
 											size: "sm",
-											className: "h-8 px-2.5 text-xs",
-											onClick: () => setEditEmployee(employee),
-											"aria-label": `Edit ${employee.name}`,
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Pencil, { className: "size-3.5 mr-1" }), "Edit"]
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-											variant: "ghost",
-											size: "sm",
-											className: "text-destructive hover:bg-destructive/10 text-xs h-8 px-2",
 											onClick: () => setConfirmEmployee(employee),
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(UserX, { className: "size-3.5 mr-1" }), "Revoke"]
-										})]
-									})]
+											children: "Restore access"
+										}),
+										isActive && employee.workspaceRole !== "Founder" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "flex shrink-0 items-center gap-1",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+												variant: "outline",
+												size: "sm",
+												className: "h-8 px-2.5 text-xs",
+												onClick: () => setEditEmployee(employee),
+												"aria-label": `Edit ${employee.name}`,
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Pencil, { className: "size-3.5 mr-1" }), "Edit"]
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+												variant: "ghost",
+												size: "sm",
+												className: "text-destructive hover:bg-destructive/10 text-xs h-8 px-2",
+												onClick: () => setConfirmEmployee(employee),
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(UserX, { className: "size-3.5 mr-1" }), "Revoke"]
+											})]
+										})
+									]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "font-mono text-xs text-muted-foreground",
@@ -26439,25 +26619,22 @@ function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewWork }) 
 				open: !!confirmEmployee,
 				onOpenChange: () => setConfirmEmployee(null),
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogTitle, { children: [
-					"Revoke ",
+					confirmEmployee?.active === false ? "Restore" : "Revoke",
+					" ",
 					confirmEmployee?.name,
-					"'s Access?"
-				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [
-					"This will immediately terminate all active sessions for ",
-					confirmEmployee?.id,
-					", block future logins, and clear their assigned tasks. This action cannot be undone."
-				] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					"'s access?"
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: confirmEmployee?.active === false ? "Reactivate this existing employee profile so it can be assigned a Telegram project role again. Previously approved Google login and existing project memberships become available again. Cleared task assignments and old sessions are not restored." : "This will immediately end their staff sessions, block future staff logins, and clear their task assignments. You can restore access later; cleared task assignments will need to be assigned again." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex justify-end gap-2 pt-2",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						variant: "outline",
 						onClick: () => setConfirmEmployee(null),
-						disabled: Boolean(disablingId),
+						disabled: Boolean(updatingId),
 						children: "Cancel"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						variant: "destructive",
-						onClick: handleDisable,
-						disabled: Boolean(disablingId),
-						children: [disablingId ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1.5" }) : null, "Confirm Revocation"]
+						variant: confirmEmployee?.active === false ? "default" : "destructive",
+						onClick: handleAccessChange,
+						disabled: Boolean(updatingId),
+						children: [updatingId ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1.5" }) : null, confirmEmployee?.active === false ? "Restore access" : "Confirm revocation"]
 					})]
 				})] })
 			})

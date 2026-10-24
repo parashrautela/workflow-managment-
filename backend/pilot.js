@@ -150,7 +150,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
   };
   const botStaleGuard = (task) => ({ fromStart: task.sourceForecastStart || task.sourceCurrentStart || task.sourcePlannedStart || '', fromEnd: task.sourceForecastEnd || task.sourceCurrentEnd || task.sourcePlannedEnd || '' });
   return async (req, res, url) => {
-    const match = url.pathname.match(/^\/api\/(founder|employee)\/(workflows|projects\/[^/]+\/(?:tasks|workflow\/start|client|workspace|default-plan|schedule\/(?:preview|apply)|stages\/(?:insert-task\/)?(?:preview|apply))|tasks\/[^/]+(?:\/(?:messages|read))?|decision-requests(?:\/[^/]+(?:\/(?:comment|approve|reject|convert|read|accept|accept-preview))?)?|projects\/[^/]+\/members\/[^/]+|employees\/[^/]+\/disable)$/) || url.pathname.match(/^\/api\/(founder|employee)\/(tasks\/[^/]+\/plan\/(?:preview|apply)|projects\/[^/]+\/stages\/[^/]+\/rename\/(?:preview|apply))$/);
+    const match = url.pathname.match(/^\/api\/(founder|employee)\/(workflows|projects\/[^/]+\/(?:tasks|workflow\/start|client|workspace|default-plan|schedule\/(?:preview|apply)|stages\/(?:insert-task\/)?(?:preview|apply))|tasks\/[^/]+(?:\/(?:messages|read))?|decision-requests(?:\/[^/]+(?:\/(?:comment|approve|reject|convert|read|accept|accept-preview))?)?|projects\/[^/]+\/members\/[^/]+|employees\/[^/]+\/(?:disable|enable))$/) || url.pathname.match(/^\/api\/(founder|employee)\/(tasks\/[^/]+\/plan\/(?:preview|apply)|projects\/[^/]+\/stages\/[^/]+\/rename\/(?:preview|apply))$/);
     if (!match) return false;
     const state = getState(); const user = actor(req, match[1]); const route = match[2]; const method = req.method;
     if (route === 'workflows' && method === 'GET') { json(res, 200, { workflows }); return true; }
@@ -206,11 +206,12 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
       }
       json(res, 200, { ok: true, affected: [], finish: projectSummary(state, project).deadline, tasks: state.tasks.filter((item) => item.projectId === project.id && !item.deletedAt), project: projectView(project) }); return true;
     }
-    if ((m = route.match(/^employees\/([^/]+)\/disable$/)) && method === 'POST') {
+    if ((m = route.match(/^employees\/([^/]+)\/(disable|enable)$/)) && method === 'POST') {
       admin(user); const employee = state.employees.find((e) => e.id === m[1]); if (!employee) fail('Employee not found.', 404);
-      employee.active = false; state.employeeSessions = state.employeeSessions.filter((s) => s.employeeId !== employee.id);
-      for (const task of state.tasks) if (task.assigneeId === employee.id) task.assigneeId = '';
-      audit('employee_disabled', '', { employeeId: employee.id }); await save(); json(res, 200, { ok: true }); return true;
+      if (m[2] === 'enable' && employee.active !== false) { json(res,200,{ok:true}); return true; }
+      employee.active = m[2] === 'enable'; state.employeeSessions = state.employeeSessions.filter((s) => s.employeeId !== employee.id);
+      if (!employee.active) for (const task of state.tasks) if (task.assigneeId === employee.id) task.assigneeId = '';
+      audit(employee.active ? 'employee_enabled' : 'employee_disabled', '', { employeeId: employee.id }); await save(); json(res, 200, { ok: true }); return true;
     }
     if ((m = route.match(/^projects\/([^/]+)\/members\/([^/]+)$/)) && method === 'DELETE') {
       admin(user); const project = projectFor(state,user,m[1]); const member = project.members?.find((p) => p.id === m[2]); if (!member) fail('Member not found.',404);

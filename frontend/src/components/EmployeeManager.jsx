@@ -9,7 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Input } from '@/components/ui/input';
 import { NativeSelect } from '@/components/ui/native-select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { disableEmployee, updateEmployee, request } from '@/lib/api';
+import { disableEmployee, enableEmployee, updateEmployee, request } from '@/lib/api';
 const roles = ['Designer', 'Site supervisor', 'Project admin', 'Site team', 'Contractor', 'Trade worker', 'Other'];
 
 export function EditEmployeeDialog({employee,onOpenChange,onUpdated}) {
@@ -66,23 +66,23 @@ export function EmployeeDialog({open,onOpenChange,projects,defaultProjectId,onUp
 export function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewWork }) {
   const [roleFilter,setRoleFilter]=useState("All");
   const visibleEmployees=employees.filter(employee=>roleFilter==="All" || matchesRole(employee.designation,roleFilter) || projects.some(project=>project.members?.some(member=>member.employeeId===employee.id && matchesRole(member.roles || member.role,roleFilter))));
-  const [disablingId, setDisablingId] = useState(null);
+  const [updatingId, setUpdatingId] = useState(null);
   const [confirmEmployee, setConfirmEmployee] = useState(null);
   const [editEmployee, setEditEmployee] = useState(null);
   const [error, setError] = useState("");
 
-  const handleDisable = async () => {
+  const handleAccessChange = async () => {
     if (!confirmEmployee) return;
-    setDisablingId(confirmEmployee.id);
+    setUpdatingId(confirmEmployee.id);
     setError("");
     try {
-      await disableEmployee(confirmEmployee.id);
+      await (confirmEmployee.active === false ? enableEmployee : disableEmployee)(confirmEmployee.id);
       setConfirmEmployee(null);
       if (onUpdated) await onUpdated();
     } catch (err) {
-      setError(err.message || "Failed to disable employee.");
+      setError(err.message || "Failed to update employee access.");
     } finally {
-      setDisablingId(null);
+      setUpdatingId(null);
     }
   };
 
@@ -135,6 +135,8 @@ export function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewW
                         <p className="text-xs text-muted-foreground">{employee.designation}</p>
                       </div>
                     </div>
+
+                    {!isActive && <Button variant="outline" size="sm" onClick={() => setConfirmEmployee(employee)}>Restore access</Button>}
 
                     {isActive && employee.workspaceRole!=='Founder' && (
                       <div className="flex shrink-0 items-center gap-1">
@@ -192,18 +194,18 @@ export function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewW
       <Dialog open={!!confirmEmployee} onOpenChange={() => setConfirmEmployee(null)}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Revoke {confirmEmployee?.name}'s Access?</DialogTitle>
+            <DialogTitle>{confirmEmployee?.active === false ? 'Restore' : 'Revoke'} {confirmEmployee?.name}'s access?</DialogTitle>
             <DialogDescription>
-              This will immediately terminate all active sessions for {confirmEmployee?.id}, block future logins, and clear their assigned tasks. This action cannot be undone.
+              {confirmEmployee?.active === false ? 'Reactivate this existing employee profile so it can be assigned a Telegram project role again. Previously approved Google login and existing project memberships become available again. Cleared task assignments and old sessions are not restored.' : 'This will immediately end their staff sessions, block future staff logins, and clear their task assignments. You can restore access later; cleared task assignments will need to be assigned again.'}
             </DialogDescription>
           </DialogHeader>
           <div className="flex justify-end gap-2 pt-2">
-            <Button variant="outline" onClick={() => setConfirmEmployee(null)} disabled={Boolean(disablingId)}>
+            <Button variant="outline" onClick={() => setConfirmEmployee(null)} disabled={Boolean(updatingId)}>
               Cancel
             </Button>
-            <Button variant="destructive" onClick={handleDisable} disabled={Boolean(disablingId)}>
-              {disablingId ? <Loader2 className="size-3.5 animate-spin mr-1.5" /> : null}
-              Confirm Revocation
+            <Button variant={confirmEmployee?.active === false ? "default" : "destructive"} onClick={handleAccessChange} disabled={Boolean(updatingId)}>
+              {updatingId ? <Loader2 className="size-3.5 animate-spin mr-1.5" /> : null}
+              {confirmEmployee?.active === false ? "Restore access" : "Confirm revocation"}
             </Button>
           </div>
         </DialogContent>

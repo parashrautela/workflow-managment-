@@ -3,7 +3,7 @@ import { createMeetingRoutes, initializeMeetings } from './meetings.js';
 import { loginEmail, reserveGoogleAccess, migrateGoogleOnlyAccess } from './google-access.js';
 import { createGoogleAuthRoutes } from './google-auth.js';
 import {createStageLinksRoutes} from './stage-links-routes.js';
-import { createOperationsRoutes, workQueue } from './operations.js';
+import { createOperationsRoutes, workQueue, telegramConnected } from './operations.js';
 import { rolesOf, hasRole, matchesRole, roleText, isStaff } from './roles.js';
 import {reconcileGroupMigration} from './group-migration.js';
 import { closeProject } from './project-closure.js';
@@ -111,7 +111,7 @@ function bindTelegramStaff(project, member) {
   return null;
 }
 function employeeView(employee) {
-  return { workspaceRole:state.googleAccounts.some(account=>account.kind==='founder' && account.employeeId===employee.id && account.status==='Approved')?'Founder':'Employee', telegramConnected:Boolean(employee.telegramConnectedAt), active: employee.active !== false, id: employee.id, name: employee.name, designation: employee.designation, email: employee.email || '', phone: employee.phone || '', googleLinked:state.googleAccounts.some(account=>account.employeeId===employee.id && account.status==='Approved' && account.subject), googleInvited:state.googleAccounts.some(account=>account.kind==='employee' && account.employeeId===employee.id && account.status==='Approved' && !account.subject), createdAt: employee.createdAt, projectIds: state.projects.filter((project) => project.members?.some((member) => member.employeeId === employee.id && member.active!==false)).map((project) => project.id) };
+  return { workspaceRole:state.googleAccounts.some(account=>account.kind==='founder' && account.employeeId===employee.id && account.status==='Approved')?'Founder':'Employee', telegramConnected:telegramConnected(state,employee), active: employee.active !== false, id: employee.id, name: employee.name, designation: employee.designation, email: employee.email || '', phone: employee.phone || '', googleLinked:state.googleAccounts.some(account=>account.employeeId===employee.id && account.status==='Approved' && account.subject), googleInvited:state.googleAccounts.some(account=>account.kind==='employee' && account.employeeId===employee.id && account.status==='Approved' && !account.subject), createdAt: employee.createdAt, projectIds: state.projects.filter((project) => project.members?.some((member) => member.employeeId === employee.id && member.active!==false)).map((project) => project.id) };
 }
 function employeeSession(req) {
   const sid = cookieValue(req, 'iksha_employee');
@@ -254,7 +254,7 @@ const collaborationRoutes = createCollaborationRoutes({getState:()=>state, found
 const meetingRoutes = createMeetingRoutes({getState:()=>state, founder, employeeSession, body, json, save, audit, callBotBridge, checkpoint});
 const pilotRoutes = createPilotRoutes({ getState: () => state, founder, employeeSession, body, json, save, audit, projectView, callBotBridge });
 const stageLinksRoutes=createStageLinksRoutes({getState:()=>state,founder,body,json,save,audit,callBotBridge});
-const operationsRoutes = createOperationsRoutes({getState:()=>state,founder,employeeSession,body,json,save,audit,callBotBridge,integrationSecret});
+const operationsRoutes = createOperationsRoutes({getState:()=>state,founder,employeeSession,body,json,save,audit,callBotBridge,integrationSecret,checkpoint});
 const googleAuthRoutes = createGoogleAuthRoutes({getState:()=>state,founder,body,json,save,audit,cookie,production});
 async function handleRequest(req, res) {
   let before = structuredClone(state);
@@ -421,7 +421,7 @@ async function handleRequest(req, res) {
       if (!member) return json(res, 404, { error: 'Active Telegram member not found.' });
       const input = await body(req); const name = String(input.name || '').trim(); const role = roleText(input.roles || input.role);
       if (!name || !role || name.length > 100 || role.length > 160) return json(res, 400, { error: 'Enter a name and role.' });
-      if(isStaff(role) && state.employees.some((item)=>item.telegramUserId===member.telegramUserId && item.active===false)) return json(res,409,{error:'This Telegram member has a disabled staff account. Re-enable it before assignment.'});
+      if(isStaff(role) && state.employees.some((item)=>item.telegramUserId===member.telegramUserId && item.active===false)) return json(res,409,{error:'This Telegram member has a disabled staff account. Open Employees and restore access before assignment.'});
       try { await callBotBridge('/api/integrations/web/group-members', { groupChatId: group.groupChatId, telegramUserId: member.telegramUserId, name, role }); }
       catch (error) { return json(res, 502, { error: error.message }); }
       member.assignedName = name; member.assignedRole = role;
@@ -445,7 +445,7 @@ async function handleRequest(req, res) {
       const input = await body(req); const projectName = String(input.projectName || group.title).trim();
       const startDate = String(input.startDate || '').trim();
       if (!projectName || projectName.length > 120 || !validIsoDate(startDate) || !startDate) return json(res, 400, { error: 'Enter a project name and valid start date.' });
-      if(active.some((member)=>isStaff(member.assignedRole) && state.employees.some((item)=>item.telegramUserId===member.telegramUserId && item.active===false))) return json(res,409,{error:'Re-enable disabled team accounts before completing setup.'});
+      if(active.some((member)=>isStaff(member.assignedRole) && state.employees.some((item)=>item.telegramUserId===member.telegramUserId && item.active===false))) return json(res,409,{error:'Open Employees and restore access for disabled team accounts before completing setup.'});
       let botProject;
       try { botProject = await callBotBridge('/api/integrations/web/projects', { groupChatId: group.groupChatId, projectName, clientName: client.assignedName || client.telegramName, startDate }); }
       catch (error) { return json(res, 502, { error: error.message }); }

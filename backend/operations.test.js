@@ -34,3 +34,74 @@ test('replacement preserves other roles and does not steal a named colleague tas
  state.projects[0].members[0].active=false;
  assert.equal(workQueue(state,{personId:'old'}).length,0);
 });
+
+test('Start before staff assignment remains connected and receives only their actionable work once',async()=>{
+ const state=fixture();state.telegramGroups=[{members:[{telegramUserId:'77',membershipStatus:'Active'}]}];
+ const sends=[];
+ const route=createOperationsRoutes({getState:()=>state,save:async()=>{},callBotBridge:async(path,input)=>{sends.push(input);return {messageId:123};}});
+ await route.connect('77');
+ state.employees[0].telegramUserId='77';
+ state.tasks.push({id:'future',projectId:'p',assigneeId:'old',status:'Open',sourcePlannedStart:'2099-01-01',title:'Future work'});
+ state.tasks.push({id:'cancelled',projectId:'p',assigneeId:'old',status:'Cancelled',title:'Cancelled work'});
+ await route.tick(new Date('2026-10-22T04:00:00Z'));
+ await route.tick(new Date('2026-10-22T05:00:00Z'));
+ assert.equal(sends.length,1);assert.equal(sends[0].telegramUserId,'77');
+ assert.match(sends[0].text,/Site check/);assert.doesNotMatch(sends[0].text,/Future work|Cancelled work|Drawing|Old work/);
+ assert.equal(state.digestDeliveries[0].status,'Sent');
+});
+
+test('digest schedule respects local time, weekends, disabled accounts and empty work',async()=>{
+ const state=fixture();state.employees[0].telegramUserId='77';state.employees[0].telegramConnectedAt='yes';
+ const sends=[];
+ const route=createOperationsRoutes({getState:()=>state,save:async()=>{},callBotBridge:async(path,input)=>{sends.push(input);return {messageId:1};}});
+ state.digestSettings=[{enabled:true,time:'09:00',timeZone:'Asia/Kolkata',weekends:false}];
+ await route.tick(new Date('2026-10-22T03:29:00Z'));assert.equal(sends.length,0);
+ await route.tick(new Date('2026-10-24T04:00:00Z'));assert.equal(sends.length,0);
+ state.digestSettings[0].enabled=false;
+ await route.tick(new Date('2026-10-22T04:00:00Z'));assert.equal(sends.length,0);
+ state.digestSettings[0].enabled=true;state.employees[0].active=false;
+ await route.tick(new Date('2026-10-22T04:00:00Z'));assert.equal(sends.length,0);
+ state.employees[0].active=true;
+ await route.tick(new Date('2026-10-22T03:30:00Z'));assert.equal(sends.length,1);
+ assert.equal(state.digestDeliveries.length,1);
+});
+
+test('founder can preview and send today without waiting; staff and unconnected people cannot send',async()=>{
+ const state=fixture();state.employees[0].telegramUserId='77';
+ let result,allowed=true,sends=0,checkpoints=0;
+ const route=createOperationsRoutes({getState:()=>state,founder:()=>allowed,employeeSession:()=>({id:'designer'}),body:async req=>req.input,json:(res,status,data)=>{result={status,data};},save:async()=>{},checkpoint:()=>checkpoints++,callBotBridge:async(path)=>{if(path.endsWith('/profile'))return {username:'project_bot'};sends++;return {messageId:3};}});
+ const request=(method='GET',input)=>route({method,input},{},new URL('http://test/api/founder/personal-reminder?employeeId=old'));
+ await request();assert.equal(result.data.connected,false);assert.equal(result.data.taskCount,1);
+ await assert.rejects(request('POST',{employeeId:'old'}),/Start/);assert.equal(sends,0);
+ allowed=false;await assert.rejects(request(),/Sign-in/);
+ await assert.rejects(route({method:'POST',input:{employeeId:'old'}},{},new URL('http://test/api/employee/personal-reminder')),/Founder permission/);
+ allowed=true;state.telegramConnections=[{telegramUserId:'77'}];
+ await route({method:'GET'},{},new URL('http://test/api/founder/operations-settings'));assert.equal(result.data.connections[0].connected,true);
+ await request();assert.equal(result.data.connected,true);
+ await request('POST',{employeeId:'old'});assert.equal(result.data.delivery.status,'Sent');assert.ok(checkpoints>=2);
+ await request('POST',{employeeId:'old'});assert.equal(sends,1);
+ await route.tick(new Date());assert.equal(sends,1);
+ state.tasks[0].status='Completed';state.digestDeliveries=[];
+ await request('POST',{employeeId:'old'});assert.equal(result.data.empty,true);assert.equal(sends,1);
+});
+
+test('missing send confirmation stays uncertain and prevents duplicate retries',async()=>{
+ const state=fixture();state.employees[0].telegramUserId='77';state.employees[0].telegramConnectedAt='yes';
+ let sends=0,checkpointState;
+ const route=createOperationsRoutes({getState:()=>state,save:async()=>{},checkpoint:()=>{checkpointState=structuredClone(state);},callBotBridge:async()=>{sends++;return {};}});
+ await route.tick(new Date('2026-10-22T04:00:00Z'));
+ assert.equal(state.digestDeliveries[0].status,'Unknown');
+ assert.equal(checkpointState.digestDeliveries[0].status,'Unknown');
+ await route.tick(new Date('2026-10-22T05:00:00Z'));assert.equal(sends,1);
+});
+
+test('persistence failure after sending preserves a durable Sending checkpoint and does not resend',async()=>{
+ let state=fixture();state.employees[0].telegramUserId='77';state.employees[0].telegramConnectedAt='yes';
+ let sends=0,checkpointState,saves=0;
+ const route=createOperationsRoutes({getState:()=>state,save:async()=>{if(++saves===3)throw Error('disk unavailable');},checkpoint:()=>{checkpointState=structuredClone(state);},callBotBridge:async()=>{sends++;return {messageId:5};}});
+ await assert.rejects(route.tick(new Date('2026-10-22T04:00:00Z')),/disk unavailable/);
+ assert.equal(checkpointState.digestDeliveries[0].status,'Sending');
+ assert.deepEqual(checkpointState.digestDeliveries[0].messageIds,[5]);
+ state=checkpointState;
+ await route.tick(new Date('2026-10-22T05:00:00Z'));assert.equal(sends,1);
+});
