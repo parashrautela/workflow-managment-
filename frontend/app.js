@@ -20263,6 +20263,9 @@ async function suggestDecisionReply(requestId, instruction = "", outcome = "") {
 		...outcome ? { outcome } : {}
 	});
 }
+async function enableEmployee(employeeId) {
+	return await post$2(`/api/founder/employees/${encodeURIComponent(employeeId)}/enable`, {});
+}
 async function disableEmployee(employeeId) {
 	return await post$2(`/api/founder/employees/${employeeId}/disable`, {});
 }
@@ -26262,22 +26265,22 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewWork }) {
 	const [roleFilter, setRoleFilter] = (0, import_react.useState)("All");
 	const visibleEmployees = employees.filter((employee) => roleFilter === "All" || matchesRole(employee.designation, roleFilter) || projects.some((project) => project.members?.some((member) => member.employeeId === employee.id && matchesRole(member.roles || member.role, roleFilter))));
-	const [disablingId, setDisablingId] = (0, import_react.useState)(null);
+	const [updatingId, setUpdatingId] = (0, import_react.useState)(null);
 	const [confirmEmployee, setConfirmEmployee] = (0, import_react.useState)(null);
 	const [editEmployee, setEditEmployee] = (0, import_react.useState)(null);
 	const [error, setError] = (0, import_react.useState)("");
-	const handleDisable = async () => {
+	const handleAccessChange = async () => {
 		if (!confirmEmployee) return;
-		setDisablingId(confirmEmployee.id);
+		setUpdatingId(confirmEmployee.id);
 		setError("");
 		try {
-			await disableEmployee(confirmEmployee.id);
+			await (confirmEmployee.active === false ? enableEmployee : disableEmployee)(confirmEmployee.id);
 			setConfirmEmployee(null);
 			if (onUpdated) await onUpdated();
 		} catch (err) {
-			setError(err.message || "Failed to disable employee.");
+			setError(err.message || "Failed to update employee access.");
 		} finally {
-			setDisablingId(null);
+			setUpdatingId(null);
 		}
 	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -26337,45 +26340,54 @@ function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewWork }) 
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "flex items-start justify-between gap-3",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex items-start gap-3 min-w-0",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: `grid size-10 shrink-0 place-items-center rounded-full ${isActive ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"}`,
-											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { className: "size-5" })
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "min-w-0",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "flex items-center gap-2",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-													className: "truncate text-sm font-semibold",
-													children: employee.name
-												}), !isActive && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-													variant: "outline",
-													className: "border-destructive/40 bg-destructive/10 text-destructive text-[10px]",
-													children: "Revoked"
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "flex items-start gap-3 min-w-0",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: `grid size-10 shrink-0 place-items-center rounded-full ${isActive ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"}`,
+												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { className: "size-5" })
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "min-w-0",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+													className: "flex items-center gap-2",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+														className: "truncate text-sm font-semibold",
+														children: employee.name
+													}), !isActive && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+														variant: "outline",
+														className: "border-destructive/40 bg-destructive/10 text-destructive text-[10px]",
+														children: "Revoked"
+													})]
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+													className: "text-xs text-muted-foreground",
+													children: employee.designation
 												})]
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-												className: "text-xs text-muted-foreground",
-												children: employee.designation
 											})]
-										})]
-									}), isActive && employee.workspaceRole !== "Founder" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex shrink-0 items-center gap-1",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										}),
+										!isActive && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 											variant: "outline",
 											size: "sm",
-											className: "h-8 px-2.5 text-xs",
-											onClick: () => setEditEmployee(employee),
-											"aria-label": `Edit ${employee.name}`,
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Pencil, { className: "size-3.5 mr-1" }), "Edit"]
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-											variant: "ghost",
-											size: "sm",
-											className: "text-destructive hover:bg-destructive/10 text-xs h-8 px-2",
 											onClick: () => setConfirmEmployee(employee),
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(UserX, { className: "size-3.5 mr-1" }), "Revoke"]
-										})]
-									})]
+											children: "Restore access"
+										}),
+										isActive && employee.workspaceRole !== "Founder" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "flex shrink-0 items-center gap-1",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+												variant: "outline",
+												size: "sm",
+												className: "h-8 px-2.5 text-xs",
+												onClick: () => setEditEmployee(employee),
+												"aria-label": `Edit ${employee.name}`,
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Pencil, { className: "size-3.5 mr-1" }), "Edit"]
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+												variant: "ghost",
+												size: "sm",
+												className: "text-destructive hover:bg-destructive/10 text-xs h-8 px-2",
+												onClick: () => setConfirmEmployee(employee),
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(UserX, { className: "size-3.5 mr-1" }), "Revoke"]
+											})]
+										})
+									]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "font-mono text-xs text-muted-foreground",
@@ -26439,25 +26451,22 @@ function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewWork }) 
 				open: !!confirmEmployee,
 				onOpenChange: () => setConfirmEmployee(null),
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogTitle, { children: [
-					"Revoke ",
+					confirmEmployee?.active === false ? "Restore" : "Revoke",
+					" ",
 					confirmEmployee?.name,
-					"'s Access?"
-				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [
-					"This will immediately terminate all active sessions for ",
-					confirmEmployee?.id,
-					", block future logins, and clear their assigned tasks. This action cannot be undone."
-				] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					"'s access?"
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: confirmEmployee?.active === false ? "Reactivate this existing employee profile so it can be assigned a Telegram project role again. Previously approved Google login and existing project memberships become available again. Cleared task assignments and old sessions are not restored." : "This will immediately end their staff sessions, block future staff logins, and clear their task assignments. You can restore access later; cleared task assignments will need to be assigned again." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex justify-end gap-2 pt-2",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						variant: "outline",
 						onClick: () => setConfirmEmployee(null),
-						disabled: Boolean(disablingId),
+						disabled: Boolean(updatingId),
 						children: "Cancel"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						variant: "destructive",
-						onClick: handleDisable,
-						disabled: Boolean(disablingId),
-						children: [disablingId ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1.5" }) : null, "Confirm Revocation"]
+						variant: confirmEmployee?.active === false ? "default" : "destructive",
+						onClick: handleAccessChange,
+						disabled: Boolean(updatingId),
+						children: [updatingId ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin mr-1.5" }) : null, confirmEmployee?.active === false ? "Restore access" : "Confirm revocation"]
 					})]
 				})] })
 			})
