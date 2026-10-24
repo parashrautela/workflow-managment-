@@ -260,9 +260,9 @@ export async function fetchTaskMessages(taskId, after = "", limit = 100, namespa
 /**
  * Send message to task thread (POST /api/{founder|employee}/tasks/:id/messages)
  */
-export async function sendTaskMessage(taskId, { text, attachmentUrl = "" }, namespace = "founder") {
+export async function sendTaskMessage(taskId, { text, attachmentUrl = "", fileIds = [], isResource = false, clientKey = generateIdempotencyKey("task") }, namespace = "founder") {
   return await post(`/api/${namespace}/tasks/${taskId}/messages`, {
-    text: text.trim(),
+    text: text.trim(), fileIds, isResource, clientKey,
     attachmentUrl: attachmentUrl.trim() || undefined
   });
 }

@@ -1,3 +1,7 @@
+import {CalendarDays} from 'lucide-react';
+import {MeetingsView} from '@/components/Meetings';
+import {ProjectConversations} from '@/components/ProjectConversations';
+import {needsQueryAttention} from '@/lib/queryStatus';
 import { WorkQueue } from '@/components/WorkQueue';
 import React, { useEffect, useState } from "react";
 import { IkshaBrand, WorkspaceAccess } from "@/components/WorkspaceAccess";
@@ -87,7 +91,7 @@ export default function FounderApp() {
   const filteredProjects = projects.filter((project) => `${project.name} ${project.clientName} ${project.location || ""}`.toLowerCase().includes(searchQuery.toLowerCase()));
 
   // Unread badge counts (Actionable 9)
-  const pendingDecisionsCount = decisionRequests.filter((r) => !["Done", "Rejected", "Published"].includes(r.status)).length;
+  const pendingDecisionsCount = decisionRequests.filter(needsQueryAttention).length;
   const pendingGroupsCount = projects.filter((p) => p.telegramSetupPending).length;
 
   const showNotice = (message, error = false) => {
@@ -296,6 +300,8 @@ export default function FounderApp() {
     ["projects", FolderKanban, "All Projects", projects.length],
     ["actions", CheckCircle2, "Actions needed", null],
     ["decisions", MessageSquare, "Client queries", pendingDecisionsCount],
+    ["meetings", CalendarDays, "Meetings", null],
+    ["chats", MessageSquare, "Project chats", null],
     ["assistant", Sparkles, "Founder assistant", null],
     ["employees", Users, "Employees", employees.length],
     ["activity", Clock3, "Activity log", null],
@@ -432,6 +438,7 @@ export default function FounderApp() {
                   actions: "Actions needed",
                   groups: "Telegram setup",
                   decisions: "Client queries",
+                  meetings: "Meetings", chats: "Project chats",
                   assistant: "Assistant",
                   employees: "Employees",
                   activity: "Activity",
@@ -454,10 +461,10 @@ export default function FounderApp() {
 
         {/* Main Content Area */}
         <main className="mx-auto w-full max-w-6xl space-y-5 px-4 py-6 sm:px-7 sm:py-8">
-          {currentTab === "actions" ? (<WorkQueue projects={projects} initialPersonId={workPerson} onChanged={()=>{loadProjects();loadEmployees();}} />) : currentTab === "groups" ? (
+          {currentTab === "meetings" ? <MeetingsView/> : currentTab === "chats" ? <ProjectConversations projects={projects}/> : currentTab === "actions" ? (<WorkQueue projects={projects} initialPersonId={workPerson} onChanged={()=>{loadProjects();loadEmployees();}} />) : currentTab === "groups" ? (
             <TelegramGroups projects={projects} onProjectsChanged={loadProjects} />
           ) : currentTab === "decisions" ? (
-            <DecisionInbox projects={projects} onProjectsChanged={loadProjects} />
+            <DecisionInbox projects={projects} onProjectsChanged={()=>{loadProjects();loadDecisionRequests();}} />
           ) : currentTab === "employees" ? (
             <EmployeeManager onViewWork={employee=>{setWorkPerson(employee.id);openTab("actions");}} employees={employees} projects={projects} onAdd={() => setMemberOpen(true)} onUpdated={loadEmployees} />
           ) : currentTab === "trash" ? (
@@ -653,39 +660,20 @@ export default function FounderApp() {
       <Dialog open={factsOpen} onOpenChange={setFactsOpen}>
         <DialogContent className="max-h-[90dvh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle>Update project facts</DialogTitle>
-            <DialogDescription>Save updates to milestones, blockers, phase, and status.</DialogDescription>
+            <DialogTitle>Project details</DialogTitle>
+            <DialogDescription>Set the client, location and spaces for this project.</DialogDescription>
           </DialogHeader>
           {selectedProject && (
             <form
               key={selectedProject.id}
-              onSubmit={(e) => saveForm(e, `/api/founder/projects/${selectedProject.id}`, "PATCH", () => setFactsOpen(false), "Project facts updated.")}
+              onSubmit={(e) => saveForm(e, `/api/founder/projects/${selectedProject.id}`, "PATCH", () => setFactsOpen(false), "Project details updated.")}
               className="space-y-4"
             >
               <Field label="Client Name">
                 <Input name="clientName" defaultValue={selectedProject.clientName} />
               </Field>
-              <div className="grid grid-cols-2 gap-3">
-                <Field label="Phase">
-                  <NativeSelect name="phase" defaultValue={selectedProject.phase} className="w-full">
-                    {phaseOptions.map((option) => <option key={option}>{option}</option>)}
-                  </NativeSelect>
-                </Field>
-                <Field label="Status">
-                  <NativeSelect name="status" defaultValue={selectedProject.status} className="w-full">
-                    {statusOptions.filter((option) => option !== "Completed" || selectedProject.status === "Completed").map((option) => <option key={option}>{option}</option>)}
-                  </NativeSelect>
-                </Field>
-              </div>
-              <Field label="Recent task">
-                <Input name="recentTask" defaultValue={selectedProject.recentTask} />
-              </Field>
-              <Field label="Next milestone">
-                <Input name="nextMilestone" defaultValue={selectedProject.nextMilestone} />
-              </Field>
-              <Field label="Blocker">
-                <Input name="blocker" defaultValue={selectedProject.blocker} placeholder="None" />
-              </Field>
+              <Field label="Location / city"><datalist id="iksha-cities">{[...new Set(['Bangalore','Nellore','Coimbatore',...projects.map(project=>project.location).filter(Boolean)])].map(city=><option key={city} value={city}/>)}</datalist><Input list="iksha-cities" name="location" maxLength={200} defaultValue={selectedProject.location} placeholder="Bangalore, Nellore, Coimbatore…"/></Field>
+              <Field label="Spaces — one per line"><textarea name="spacesText" maxLength={6100} defaultValue={(selectedProject.spaces || []).join('\n')} className="min-h-28 w-full rounded-md border bg-background p-3 text-sm" placeholder={'Living room\nKitchen\nBedroom 1'}/></Field>
               <div className="flex justify-between items-center pt-2">
                 <Button
                   type="button"

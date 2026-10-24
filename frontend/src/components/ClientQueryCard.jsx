@@ -1,3 +1,4 @@
+import {needsQueryAttention} from '@/lib/queryStatus';
 // frontend/src/components/ClientQueryCard.jsx
 import React, { useState } from "react";
 import {
@@ -30,6 +31,7 @@ export function ClientQueryCard({
   isFounder = true
 }) {
   const [expanded, setExpanded] = useState(false);
+  const [showHandled,setShowHandled]=useState(false);
   const [internalCommentDraft, setInternalCommentDraft] = useState("");
   const [responseDraft, setResponseDraft] = useState(query.response || "");
   const [mode, setMode] = useState("discuss"); // 'discuss' | 'finalize'
@@ -182,6 +184,7 @@ export function ClientQueryCard({
     attachments = [];
   }
 
+  if(!needsQueryAttention(query)&&!showHandled)return <article className="flex items-center justify-between gap-3 rounded-xl border bg-card p-3"><div className="min-w-0"><p className="text-xs text-muted-foreground">{query.originalSenderName} · {query.status}</p><p className="truncate text-sm">{query.originalMessage || 'Shared a file'}</p><QueryOutcome request={query}/></div><Button variant="outline" size="sm" onClick={()=>setShowHandled(true)}>View history</Button></article>;
   return (
     <div
       className={`overflow-hidden rounded-2xl border bg-card transition-all ${
@@ -251,7 +254,8 @@ export function ClientQueryCard({
             </Badge>
           )}
 
-          {!isPublished && !isRejected && !isApproved && (
+          {query.status==='On hold'&&<Badge variant="outline">On hold</Badge>}
+          {!isPublished && !isRejected && !isApproved && query.status!=='On hold' && (
             <Badge variant="outline" className="border-amber-300 bg-amber-50 text-amber-900 text-[10px]">
               <Clock className="size-3 mr-1" /> Needs Action
             </Badge>
@@ -375,7 +379,7 @@ export function ClientQueryCard({
           {/* Founder decision: Accept or Reject. Both confirm the reply before anything reaches Telegram. */}
           {isFounder && (
             <div className="flex flex-wrap items-center gap-1.5">
-              <QueryDecisionButtons request={query} onAccept={() => setAcceptOpen(true)} onReject={() => setRejectOpen(true)} />
+              <QueryDecisionButtons onChanged={onQueryChanged} request={query} onAccept={() => setAcceptOpen(true)} onReject={() => setRejectOpen(true)} />
             </div>
           )}
         </div>
@@ -556,6 +560,7 @@ export function ClientQueryCard({
       {isFounder && <QueryAcceptWizard open={acceptOpen} onOpenChange={setAcceptOpen} request={query} onDone={(result) => { setSuccessMessage(result?.summary ? `Accepted: ${result.summary}` : "Query accepted."); if (onQueryChanged) onQueryChanged(); if (onTaskCreated) onTaskCreated(); }} />}
       {isFounder && <QueryRejectDialog open={rejectOpen} onOpenChange={setRejectOpen} request={query} onDone={() => { setSuccessMessage("Query rejected and the reply was sent."); if (onQueryChanged) onQueryChanged(); }} />}
 
+      {!needsQueryAttention(query)&&showHandled&&<Button variant="outline" size="sm" onClick={()=>setShowHandled(false)}>Collapse history</Button>}
       {/* Convert Query to Task Modal */}
       <Dialog open={convertModalOpen} onOpenChange={setConvertModalOpen}>
         <DialogContent>

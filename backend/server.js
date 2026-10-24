@@ -1,3 +1,5 @@
+import { createCollaborationRoutes } from './collaboration.js';
+import { createMeetingRoutes, initializeMeetings } from './meetings.js';
 import { loginEmail, reserveGoogleAccess, migrateGoogleOnlyAccess } from './google-access.js';
 import { createGoogleAuthRoutes } from './google-auth.js';
 import {createStageLinksRoutes} from './stage-links-routes.js';
@@ -45,6 +47,7 @@ await mkdir(dataDir, { recursive: true });
 const stateStore = await createStateStore({ dataFile, production });
 let state = stateStore.state;
 if (initializePilot(state)) await stateStore.save(state);
+if (initializeMeetings(state)) await stateStore.save(state);
 if (migrateGoogleOnlyAccess(state, process.env.INITIAL_FOUNDER_EMAIL || '')) await stateStore.save(state);
 console.log(`Project data store connected: ${stateStore.kind}.`);
 let saveQueue = Promise.resolve();
@@ -77,13 +80,13 @@ const json = (res, status, body, headers = {}) => { res.writeHead(status, { 'con
 const shortText = (value, limit) => typeof value === 'string' && value.length <= limit ? value : null;
 async function callBotBridge(route, payload) {
   if (!botBridgeUrl || !integrationSecret) throw new Error('Bot integration is not configured.');
-  const response = await fetch(`${botBridgeUrl}${route}`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${integrationSecret}` }, body: JSON.stringify(payload), signal: AbortSignal.timeout(route.endsWith('/content') ? 45_000 : 30_000) });
+  const response = await fetch(`${botBridgeUrl}${route}`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${integrationSecret}` }, body: JSON.stringify(payload), signal: AbortSignal.timeout(route.endsWith('/content') ? 45_000 : route.endsWith('/task-notice') ? 60_000 : 30_000) });
   const data = await response.json().catch(() => ({}));
   if (!response.ok) throw Object.assign(new Error(data.error || 'Telegram bot did not accept the update.'), { botStatus: response.status, botBody: data });
   return data;
 }
-async function body(req) {
-  let raw = ''; for await (const chunk of req) { raw += chunk; if (raw.length > 1_000_000) throw new ApiError('Request too large.',413); }
+async function body(req, maximum = 1_000_000) {
+  let raw = ''; for await (const chunk of req) { raw += chunk; if (raw.length > maximum) throw new ApiError('Request too large.',413); }
   try { const value = raw ? JSON.parse(raw) : {}; if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error(); return value; } catch { throw new ApiError('Invalid JSON object.',400); }
 }
 function projectView(project) {
@@ -244,12 +247,18 @@ function applyGroupSnapshot(input) {
       }
 }
 
+let externalRollbackState = null;
+// Preserve the saved Sending record if persistence fails after an external send.
+const checkpoint = () => { externalRollbackState = structuredClone(state); };
+const collaborationRoutes = createCollaborationRoutes({getState:()=>state, founder, employeeSession, body, json, save, audit, callBotBridge, stateStore, checkpoint});
+const meetingRoutes = createMeetingRoutes({getState:()=>state, founder, employeeSession, body, json, save, audit, callBotBridge, checkpoint});
 const pilotRoutes = createPilotRoutes({ getState: () => state, founder, employeeSession, body, json, save, audit, projectView, callBotBridge });
 const stageLinksRoutes=createStageLinksRoutes({getState:()=>state,founder,body,json,save,audit,callBotBridge});
 const operationsRoutes = createOperationsRoutes({getState:()=>state,founder,employeeSession,body,json,save,audit,callBotBridge,integrationSecret});
 const googleAuthRoutes = createGoogleAuthRoutes({getState:()=>state,founder,body,json,save,audit,cookie,production});
 async function handleRequest(req, res) {
   let before = structuredClone(state);
+  externalRollbackState = null;
   try {
     const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
     res.setHeader('x-content-type-options', 'nosniff');
@@ -347,6 +356,8 @@ async function handleRequest(req, res) {
     }
     if (await stageLinksRoutes(req,res,url)) return;
     if (await operationsRoutes(req,res,url)) return;
+    if (await collaborationRoutes(req,res,url)) return;
+    if (await meetingRoutes(req,res,url)) return;
     if (await pilotRoutes(req, res, url)) return;
     const attachmentMatch = url.pathname.match(/^\/api\/(founder|employee)\/decision-requests\/([^/]+)\/attachments\/(\d+)$/);
     if (req.method === 'GET' && attachmentMatch) {
@@ -616,7 +627,7 @@ async function handleRequest(req, res) {
         const input = await body(req); const text = String(input.message || '').trim();
         if (!text || text.length > 2000) return json(res, 400, { error: 'Enter a message under 2,000 characters.' });
         if (!canSendTeamMessage('founder', project.id)) return json(res, 429, { error: 'Too many messages. Please wait a minute.' });
-        const message = { id: randomBytes(8).toString('hex'), projectId: project.id, senderId: 'founder', senderName: 'Founder', senderRole: 'founder', text, at: new Date().toISOString() };
+        const message = { id: randomBytes(8).toString('hex'), projectId: project.id, senderId: 'founder', senderName: state.googleAccounts.find(account=>account.id===founder(req)?.googleAccountId)?.name || 'Founder', senderRole: 'founder', text, at: new Date().toISOString() };
         state.teamMessages.push(message); audit('team_message', project.id, { sender: 'Founder' }); await save();
         return json(res, 201, { message });
       }
@@ -668,9 +679,17 @@ async function handleRequest(req, res) {
     }
     if (req.method === 'PATCH' && projectMatch) {
       const project = state.projects.find((item) => item.id === projectMatch[1]); if (!project) return json(res, 404, { error: 'Project not found.' });
-      const input = await body(req); const allowed = ['phase', 'status', 'recentTask', 'nextMilestone', 'blocker'];
+      const input = await body(req); const allowed = ['clientName', 'location', 'phase', 'status', 'recentTask', 'nextMilestone', 'blocker'];
       if (input.startDate !== undefined && (typeof input.startDate !== 'string' || !validIsoDate(input.startDate))) return json(res, 400, { error: 'Start date must use YYYY-MM-DD.' });
+      if (['clientName','location'].some(key => input[key] !== undefined && (typeof input[key] !== 'string' || input[key].length > 200))) return json(res,400,{error:'Client name and location must be under 201 characters.'});
       const updates = {};
+      if(input.spacesText!==undefined){
+        if(typeof input.spacesText!=='string' || input.spacesText.length>6100)return json(res,400,{error:'Enter up to 100 space names.'});
+        const spaces=input.spacesText.split('\n').map(name=>name.trim()).filter(Boolean);
+        if(spaces.length>100 || spaces.some(name=>name.length>60) || new Set(spaces.map(name=>name.toLowerCase())).size!==spaces.length)return json(res,400,{error:'Space names must be unique, up to 60 characters each.'});
+        if((project.stages || []).flatMap(stage=>stage.spaces || []).some(name=>!spaces.includes(name)))return json(res,409,{error:'Update stages before removing spaces they use.'});
+        updates.spaces=spaces;
+      }
       if (input.startDate !== undefined) updates.startDate = input.startDate.trim();
       if (input.telegramGroupChatId !== undefined) {
         const groupId = String(input.telegramGroupChatId).trim();
@@ -781,7 +800,7 @@ async function handleRequest(req, res) {
     if (req.method === 'GET' && url.pathname.startsWith('/c/')) return sendFile(res, 'frontend/client.html');
     res.writeHead(404); res.end('Not found');
   } catch (error) {
-    state = before;
+    state = externalRollbackState || before;
     const status = error instanceof ApiError ? error.status : 500;
     if (status === 500) console.error('Request failed.');
     json(res, status, { error: status === 500 ? 'Something went wrong. Please try again.' : error.message });
@@ -792,4 +811,4 @@ let requestQueue = Promise.resolve();
 const server = http.createServer((req,res) => { requestQueue = requestQueue.catch(() => {}).then(() => handleRequest(req,res)); });
 server.listen(port, () => console.log(`Studio Iksha V1 listening on http://localhost:${port}`));
 
-if (process.env.NODE_ENV !== 'test') { const timer=setInterval(()=>{requestQueue=requestQueue.catch(()=>{}).then(()=>operationsRoutes.tick()).catch(()=>console.warn('Morning digest check failed; will retry.'));},60000);timer.unref(); }
+if (process.env.NODE_ENV !== 'test') { const timer=setInterval(()=>{requestQueue=requestQueue.catch(()=>{}).then(async()=>{externalRollbackState=null;try{await meetingRoutes.tick();}catch{console.warn('Meeting notification check failed.');}try{await operationsRoutes.tick();}catch{console.warn('Morning digest check failed.');}});},60000);timer.unref(); }

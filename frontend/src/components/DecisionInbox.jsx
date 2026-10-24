@@ -1,3 +1,4 @@
+import {needsQueryAttention} from '@/lib/queryStatus';
 // frontend/src/components/DecisionInbox.jsx
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
@@ -97,7 +98,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
   }, [projects, settingsProjectId]);
 
   const visible = requests.filter((item) => {
-    const decided = Boolean(item.decisionStatus) || item.status === "Done";
+    const decided = !needsQueryAttention(item);
     if (filter === "Open" && decided) return false;
     if (filter === "Handled" && !decided) return false;
     if (filter === "Updates" && item.requestType !== "Update") return false;
@@ -108,7 +109,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
 
   const selected = visible.find((item) => item.id === selectedId) || visible[0];
   const selectedProject = projects.find((item) => item.id === selected?.projectId);
-  const openCount = requests.filter((item) => !item.decisionStatus && item.status !== "Done").length;
+  const openCount = requests.filter((item) => needsQueryAttention(item)).length;
   const text = selected ? (mode === "internal" ? notes[selected.id] || "" : drafts[selected.id] || "") : "";
 
   const followUps = selected ? [
@@ -305,7 +306,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
                 </div>
 
                 <div className="flex items-center gap-1.5">
-                  <QueryDecisionButtons request={selected} disabled={busy} onAccept={() => setAcceptOpen(true)} onReject={() => setRejectOpen(true)} />
+                  <QueryDecisionButtons onChanged={()=>{load();onProjectsChanged?.();}} request={selected} disabled={busy} onAccept={() => setAcceptOpen(true)} onReject={() => setRejectOpen(true)} />
                   {selected.status !== "Done" && (
                     <Button variant="outline" size="sm" disabled={busy} onClick={markDone}>
                       Done

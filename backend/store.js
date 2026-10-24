@@ -1,4 +1,4 @@
-import { readFile, writeFile, rename, unlink } from 'node:fs/promises';
+import { readFile, writeFile, rename, unlink, mkdir } from 'node:fs/promises';
 import { Pool } from 'pg';
 
 const emptyState = () => ({
@@ -10,6 +10,10 @@ const emptyState = () => ({
   projects: [],
   tasks: [],
   taskMessages: [],
+  taskFiles: [],
+  meetings: [],
+  telegramConnections: [],
+  meetingDeliveries: [],
   readPositions: [],
   founderSessions: [],
   invites: [],
@@ -59,6 +63,11 @@ export async function createStateStore({ dataFile, production }) {
           await rename(temporary, dataFile);
         } finally { await unlink(temporary).catch(() => {}); }
       },
+      async putAttachment(id, bytes) {
+        await mkdir(`${dataFile}.files`, { recursive: true });
+        await writeFile(`${dataFile}.files/${id}`, bytes, { mode: 0o600 });
+      },
+      async getAttachment(id) { return readFile(`${dataFile}.files/${id}`); },
       async close() {},
       kind: 'local JSON file',
     };
@@ -74,6 +83,7 @@ export async function createStateStore({ dataFile, production }) {
     )
   `);
 
+  await pool.query('CREATE TABLE IF NOT EXISTS studio_iksha_task_files (id text PRIMARY KEY, content bytea NOT NULL)');
   let result = await pool.query('SELECT payload FROM studio_iksha_app_state WHERE state_key = $1', ['main']);
   if (result.rowCount === 0) {
     const initialState = await readLegacyState(dataFile);
@@ -91,6 +101,12 @@ export async function createStateStore({ dataFile, production }) {
         'UPDATE studio_iksha_app_state SET payload = $1::jsonb, updated_at = now() WHERE state_key = $2',
         [JSON.stringify(nextState), 'main'],
       );
+    },
+    async putAttachment(id, bytes) { await pool.query('INSERT INTO studio_iksha_task_files (id, content) VALUES ($1, $2)', [id, bytes]); },
+    async getAttachment(id) {
+      const row = await pool.query('SELECT content FROM studio_iksha_task_files WHERE id = $1', [id]);
+      if (!row.rowCount) throw new Error('File missing.');
+      return row.rows[0].content;
     },
     async close() {
       await pool.end();

@@ -1,36 +1,104 @@
-// frontend/src/components/TaskThreadDrawer.jsx
-import React, { useEffect, useState, useRef } from "react";
-import { ProjectFiles } from "@/components/ProjectFiles";
-import {
-  Calendar, CheckCircle2, Clock, MessageSquare, Send, Trash2,
-  User, AlertCircle, Check, Loader2, Link as LinkIcon, ExternalLink,
-  Lock, RefreshCw
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { NativeSelect } from "@/components/ui/native-select";
 import { Textarea } from "@/components/ui/textarea";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import {
-  fetchTask, updateTask, deleteTask, fetchTaskMessages,
-  sendTaskMessage, markTaskRead, getAttachmentUrl
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { ProjectFiles } from "@/components/ProjectFiles";
+import { MeetingEditor } from "@/components/MeetingEditor";
+import {
+  request,
+  updateTask,
+  deleteTask,
+  fetchTaskMessages,
+  markTaskRead,
+  getAttachmentUrl,
 } from "@/lib/api";
 
-const statusColors = {
-  "Open": "bg-slate-100 text-slate-800 border-slate-200",
-  "In progress": "bg-blue-50 text-blue-700 border-blue-200",
-  "Blocked": "bg-amber-50 text-amber-800 border-amber-200",
-  "Completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
-  "Cancelled": "bg-red-50 text-red-700 border-red-200",
-  // Backward compatibility with lowercase keys
-  "todo": "bg-slate-100 text-slate-800 border-slate-200",
-  "in_progress": "bg-blue-50 text-blue-700 border-blue-200",
-  "review": "bg-amber-50 text-amber-800 border-amber-200",
-  "completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
-  "cancelled": "bg-red-50 text-red-700 border-red-200"
-};
-
+export function TaskMessage({ message, namespace = "founder" }) {
+  return (
+    <article className="space-y-2 rounded-xl border bg-card p-3 text-sm">
+      <div className="flex justify-between gap-2 text-xs">
+        <strong>{message.author}</strong>
+        <time>{new Date(message.at).toLocaleString()}</time>
+      </div>
+      {message.text && (
+        <p className="whitespace-pre-wrap break-words">{message.text}</p>
+      )}
+      {message.isResource && (
+        <p className="text-xs text-primary">
+          Marked as a resource for dependent work
+        </p>
+      )}
+      {message.attachmentUrl && (
+        <a
+          className="block break-all text-xs underline"
+          href={message.attachmentUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {message.attachmentUrl}
+        </a>
+      )}
+      {(message.files || []).map((file) => {
+        const href = `/api/${namespace}/files/${file.id}/content`;
+        return (
+          <a
+            className="block text-xs underline"
+            key={file.id}
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {file.type.startsWith("image/") && (
+              <img
+                className="mb-1 max-h-60 max-w-full rounded-lg object-contain"
+                src={href}
+                alt={file.name}
+                loading="lazy"
+              />
+            )}
+            {file.name}
+          </a>
+        );
+      })}
+      {message.queryId &&
+        (message.attachments || []).map((file) => {
+          const href = getAttachmentUrl(message.queryId, file.index, namespace);
+          return (
+            <a
+              key={file.index}
+              className="block text-xs underline"
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {/photo|image/i.test(file.type) && (
+                <img
+                  src={href}
+                  className="mb-1 max-h-52 rounded-lg"
+                  alt={file.fileName || "Query photo"}
+                  loading="lazy"
+                />
+              )}
+              {file.fileName || file.type}
+            </a>
+          );
+        })}
+      {message.telegram && (
+        <p className="text-xs text-muted-foreground">
+          Telegram group · {message.telegram.status}
+          {message.telegram.error ? " — " + message.telegram.error : ""}
+        </p>
+      )}
+    </article>
+  );
+}
 export function TaskThreadDrawer({
   task: initialTask,
   project,
@@ -38,554 +106,703 @@ export function TaskThreadDrawer({
   onOpenChange,
   onTaskUpdated,
   onOpenSourceQuery,
-  currentActor = "Founder",
   isFounder = true,
-  projectMembers = []
+  projectMembers = [],
 }) {
-  const [task, setTask] = useState(initialTask);
-  const [messages, setMessages] = useState([]);
-  const [commentText, setCommentText] = useState("");
-  const [attachmentUrl, setAttachmentUrl] = useState("");
-  const [showAttachmentInput, setShowAttachmentInput] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
-  const [loadingMessages, setLoadingMessages] = useState(false);
-  const [sendingMessage, setSendingMessage] = useState(false);
-  const [savingEdits, setSavingEdits] = useState(false);
-  const [error, setError] = useState("");
-  const messagesEndRef = useRef(null);
-  const messageRequest = useRef(0);
-  const deadlineInputRef = useRef(null);
-  const [showResources, setShowResources] = useState(false);
-
-  // Edit fields
-  const [editTitle, setEditTitle] = useState("");
-  const [editDesc, setEditDesc] = useState("");
-  const [editStatus, setEditStatus] = useState("Open");
-  const [editDeadline, setEditDeadline] = useState("");
-  const [editAssigneeId, setEditAssigneeId] = useState("");
-  const [editStageId, setEditStageId] = useState("");
-
   const namespace = isFounder ? "founder" : "employee";
-
-  // Load task and messages when drawer opens
+  const [task, setTask] = useState(initialTask),
+    [messages, setMessages] = useState([]),
+    [resources, setResources] = useState([]),
+    [people, setPeople] = useState([]),
+    [draft, setDraft] = useState(""),
+    [link, setLink] = useState(""),
+    [file, setFile] = useState(null),
+    [isResource, setResource] = useState(false),
+    [error, setError] = useState(""),
+    [busy, setBusy] = useState(false),
+    [loading, setLoading] = useState(false),
+    [cursor, setCursor] = useState(null),
+    [editing, setEditing] = useState(false),
+    [fields, setFields] = useState({}),
+    [review, setReview] = useState(false),
+    [shareMessage, setShareMessage] = useState(null),
+    [recipients, setRecipients] = useState([]),
+    [meetingOpen, setMeetingOpen] = useState(false),
+    [taskMeeting, setTaskMeeting] = useState(null),
+    [remove, setRemove] = useState(false);
+  const key = useRef(crypto.randomUUID()),
+    fileInput = useRef(null),
+    version = useRef(0);
   useEffect(() => {
-    if (open && initialTask?.id) {
-      setTask(initialTask);
-      setMessages([]);
-      setCommentText("");
-      setAttachmentUrl("");
-      setShowAttachmentInput(false);
-      setEditTitle(initialTask.title || "");
-      setEditDesc(initialTask.description || "");
-      setEditStatus(initialTask.status || "Open");
-      setEditDeadline(initialTask.deadline || initialTask.dueDate || "");
-      setEditAssigneeId(initialTask.assigneeId || "");
-      setEditStageId(initialTask.stageId || "");
-      setIsEditing(false);
-      setShowResources(false);
-      setError("");
-
-      loadMessages(initialTask.id);
-    }
-    return () => { messageRequest.current++; };
-  }, [open, initialTask?.id]);
-
-  const loadMessages = async (taskId) => {
-    const requestId = ++messageRequest.current;
-    setLoadingMessages(true);
+    key.current = crypto.randomUUID();
+  }, [draft, link, file, isResource]);
+  const load = async (taskId = task?.id, append = false) => {
+    const current = version.current;
+    setLoading(true);
     try {
-      const data = await fetchTaskMessages(taskId, "", 100, namespace);
-      if (requestId !== messageRequest.current) return;
-      const list = data.messages || [];
-      setMessages(list);
-      // Mark read position if messages exist
-      if (list.length > 0) {
-        markTaskRead(taskId, list[list.length - 1].id, namespace).catch(() => {});
-      }
+      const data = await fetchTaskMessages(
+        taskId,
+        append ? cursor : "",
+        100,
+        namespace,
+      );
+      if (current !== version.current) return;
+      setMessages((previous) =>
+        append ? [...previous, ...data.messages] : data.messages,
+      );
+      setCursor(data.pagination?.nextCursor || null);
+      if (data.messages.length)
+        await markTaskRead(taskId, data.messages.at(-1).id, namespace);
+      const reference = await request(
+        `/api/${namespace}/tasks/${taskId}/resources`,
+      );
+      if (current === version.current) setResources(reference.resources);
     } catch (problem) {
-      if (requestId === messageRequest.current) setError(problem.message || "Could not refresh this thread. Please retry.");
+      if (current === version.current) setError(problem.message);
     } finally {
-      if (requestId === messageRequest.current) setLoadingMessages(false);
+      if (current === version.current) setLoading(false);
     }
   };
-
   useEffect(() => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messages.length]);
-
+    if (!open || !initialTask) return;
+    version.current++;
+    setTask(initialTask);
+    setMessages([]);
+    setResources([]);
+    setPeople([]);
+    setDraft("");
+    setLink("");
+    setFile(null);
+    setResource(false);
+    setEditing(false);
+    setReview(false);
+    setShareMessage(null);
+    setRecipients([]);
+    setMeetingOpen(false);
+    setTaskMeeting(null);
+    request(
+      `/api/${namespace}/meetings?projectId=${encodeURIComponent(initialTask.projectId)}`,
+    )
+      .then((data) => {
+        if (current === version.current)
+          setTaskMeeting(
+            data.meetings.find(
+              (row) =>
+                row.taskId === initialTask.id && row.status === "Scheduled",
+            ) || null,
+          );
+      })
+      .catch(() => {});
+    setRemove(false);
+    setError("");
+    setCursor(null);
+    key.current = crypto.randomUUID();
+    load(initialTask.id);
+    const current = version.current;
+    request(`/api/${namespace}/tasks/${initialTask.id}/participants`)
+      .then((data) => {
+        if (current === version.current) setPeople(data.people);
+      })
+      .catch((problem) => {
+        if (current === version.current) setError(problem.message);
+      });
+    return () => {
+      version.current++;
+    };
+  }, [open, initialTask?.id, namespace]);
   if (!task) return null;
-
-  const isClosed = task.status === "Completed" || task.status === "Cancelled";
-
-  const handleSendMessage = async (e) => {
-    e.preventDefault();
-    if (!commentText.trim() || sendingMessage || isClosed) return;
-
-    setSendingMessage(true);
+  const closed = ["Completed", "Cancelled"].includes(task.status),
+    projectClosed = ["Completed", "Abandoned"].includes(project?.status);
+  const upload = async (event) => {
+    const selected = event.target.files?.[0];
+    if (!selected) return;
+    setBusy(true);
     setError("");
     try {
-      const res = await sendTaskMessage(task.id, {
-        text: commentText.trim(),
-        attachmentUrl: attachmentUrl.trim() || undefined
-      }, namespace);
-
-      setCommentText("");
-      setAttachmentUrl("");
-      setShowAttachmentInput(false);
-      if (res.message) {
-        setMessages((prev) => [...prev, res.message]);
-        markTaskRead(task.id, res.message.id, namespace).catch(() => {});
-      } else {
-        await loadMessages(task.id);
-      }
-      if (onTaskUpdated) onTaskUpdated();
-    } catch (err) {
-      setError(err.message || "Failed to send message.");
+      if (selected.size > 5 * 1024 * 1024)
+        throw Error("Choose a file up to 5 MB.");
+      const data = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result).split(",")[1]);
+        reader.onerror = reject;
+        reader.readAsDataURL(selected);
+      });
+      const result = await request(`/api/${namespace}/tasks/${task.id}/files`, {
+        method: "POST",
+        body: { name: selected.name, type: selected.type, data },
+      });
+      setFile(result.file);
+    } catch (problem) {
+      setError(problem.message || "Could not upload this file.");
     } finally {
-      setSendingMessage(false);
+      setBusy(false);
+      event.target.value = "";
     }
   };
-
-  const handleSaveEdits = async () => {
-    setSavingEdits(true);
+  const send = async (publish) => {
+    setBusy(true);
     setError("");
+    let posted = false;
     try {
-      const updates = {
-        title: editTitle.trim(),
-        description: editDesc.trim(),
-        status: editStatus,
-        deadline: deadlineInputRef.current?.value ?? editDeadline,
-        stageId: editStageId
-      };
-      if (isFounder) {
-        updates.assigneeId = editAssigneeId;
+      let message = shareMessage;
+      if (!message) {
+        const result = await request(
+          `/api/${namespace}/tasks/${task.id}/messages`,
+          {
+            method: "POST",
+            body: {
+              text: draft,
+              attachmentUrl: link,
+              fileIds: file ? [file.id] : [],
+              isResource,
+              clientKey: key.current,
+            },
+          },
+        );
+        message = result.message;
+        posted = true;
+        setMessages((previous) => [
+          ...previous.filter((row) => row.id !== message.id),
+          message,
+        ]);
       }
-
-      const res = await updateTask(task.id, updates, namespace);
-      const updated = res.task || { ...task, ...updates };
-      setTask(updated);
-      setIsEditing(false);
-      if (onTaskUpdated) onTaskUpdated();
-    } catch (err) {
-      setError(err.message || "Failed to save task changes.");
+      if (publish) {
+        const shared = await request(
+          `/api/founder/tasks/${task.id}/messages/${message.id}/publish`,
+          { method: "POST", body: { confirm: true, recipientIds: recipients } },
+        );
+        message = shared.message;
+      }
+      setMessages((previous) => [
+        ...previous.filter((row) => row.id !== message.id),
+        message,
+      ]);
+      if (!shareMessage) {
+        setDraft("");
+        setLink("");
+        setFile(null);
+        setResource(false);
+        key.current = crypto.randomUUID();
+      }
+      setReview(false);
+      setShareMessage(null);
+      onTaskUpdated?.();
+    } catch (problem) {
+      setError(
+        (posted ? "Saved internally. Telegram was not sent: " : "") +
+          problem.message,
+      );
     } finally {
-      setSavingEdits(false);
+      setBusy(false);
     }
   };
-
-  const handleQuickStatus = async (newStatus) => {
+  const changeTask = async (updates) => {
+    setBusy(true);
     setError("");
     try {
-      const res = await updateTask(task.id, { status: newStatus }, namespace);
-      const updated = res.task || { ...task, status: newStatus };
-      setTask(updated);
-      setEditStatus(newStatus);
-      if (onTaskUpdated) onTaskUpdated();
-    } catch (err) {
-      setError(err.message || "Failed to update task status.");
+      const result = await updateTask(task.id, updates, "founder");
+      setTask(result.task);
+      setEditing(false);
+      onTaskUpdated?.();
+    } catch (problem) {
+      setError(problem.message);
+    } finally {
+      setBusy(false);
     }
   };
-
-  const handleReopenTask = async () => {
-    await handleQuickStatus("Open");
+  const ready =
+    Boolean(draft.trim() || link.trim() || file) &&
+    !busy &&
+    !closed &&
+    !projectClosed;
+  const startEdit = () => {
+    setFields({
+      title: task.title,
+      description: task.description || "",
+      status: task.status,
+      deadline: task.deadline || "",
+      assigneeId: task.assigneeId || "",
+      stageId: task.stageId || "",
+    });
+    setEditing(true);
   };
-
-  const handleDelete = async () => {
-    if (!isFounder) return;
-    if (confirm("Are you sure you want to delete this task? Soft deletion preserves audit history.")) {
-      try {
-        await deleteTask(task.id);
-        onOpenChange(false);
-        if (onTaskUpdated) onTaskUpdated();
-      } catch (err) {
-        setError(err.message || "Failed to delete task.");
-      }
-    }
-  };
-
-  const getAssigneeLabel = (id) => {
-    if (!id) return "Unassigned";
-    if (id === "founder") return "Founder";
-    const found = projectMembers.find((m) => m.employeeId === id || m.id === id);
-    return found ? `${found.name} (${found.role || "Member"})` : id;
-  };
-
-  const currentStageName = project?.stages?.find((s) => s.id === task.stageId)?.name || task.stageName || "General";
-
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="flex max-h-[92dvh] max-w-2xl flex-col gap-0 overflow-hidden p-0 sm:max-w-2xl sm:rounded-2xl">
-        {/* Header */}
-        <div className="shrink-0 border-b bg-card px-5 py-4 pr-12">
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0 flex-1">
-              <div className="flex flex-wrap items-center gap-2">
-                <Badge variant="outline" className={statusColors[task.status] || "bg-muted"}>
-                  {task.status}
-                </Badge>
-                {currentStageName && (
-                  <span className="text-xs text-muted-foreground">· {currentStageName}</span>
-                )}
-                {task.sourceQueryId && (
-                  <Badge variant="outline" className="border-amber-300 bg-amber-50 text-amber-900 text-[10px]">
-                    Telegram Query
-                  </Badge>
-                )}
-              </div>
-              <DialogTitle className="mt-2 break-words text-lg font-semibold tracking-tight text-foreground [overflow-wrap:anywhere]">
-                {task.title}
-              </DialogTitle>
-            </div>
-
-            <div className="flex items-center gap-1.5 shrink-0">
+    <>
+      <Dialog
+        open={open}
+        onOpenChange={(value) => {
+          if (!busy) onOpenChange(value);
+        }}
+      >
+        <DialogContent className="flex max-h-[92dvh] flex-col overflow-hidden sm:max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>{task.title}</DialogTitle>
+            <DialogDescription>
+              {project?.stages?.find((row) => row.id === task.stageId)?.name ||
+                "Task workspace"}{" "}
+              · {task.status} · Due {task.deadline || "not set"}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="min-h-0 flex-1 space-y-4 overflow-y-auto pr-1">
+            {error && (
+              <p className="text-sm text-destructive" role="alert">
+                {error}
+              </p>
+            )}
+            <div className="flex flex-wrap gap-2">
               <Button
-                variant={isEditing ? "secondary" : "outline"}
+                variant="outline"
                 size="sm"
-                onClick={() => {
-                  if (isEditing) handleSaveEdits();
-                  else setIsEditing(true);
-                }}
-                disabled={savingEdits}
+                disabled={loading}
+                onClick={() => load()}
               >
-                {savingEdits ? (
-                  <Loader2 className="size-3.5 animate-spin mr-1" />
-                ) : isEditing ? (
-                  <Check className="size-3.5 mr-1 text-emerald-600" />
-                ) : null}
-                {isEditing ? "Save" : "Edit"}
+                Refresh discussion
               </Button>
-            </div>
-          </div>
-        </div>
-
-        {error && (
-          <div className="mx-5 mt-3 flex items-center gap-2 rounded-xl border border-destructive/30 bg-destructive/10 px-3.5 py-2 text-xs text-destructive">
-            <AlertCircle className="size-4 shrink-0" />
-            <span>{error}</span>
-          </div>
-        )}
-
-        {/* Content Body */}
-        <div className="chat-scroll min-h-0 flex-1 space-y-4 overflow-y-auto p-5">
-          {/* Editing Mode */}
-          {isEditing ? (
-            <div className="space-y-3.5 rounded-xl border bg-muted/20 p-4">
-              <label className="grid gap-1.5 text-xs font-semibold">
-                Title
-                <Input value={editTitle} onChange={(e) => setEditTitle(e.target.value)} required />
-              </label>
-
-              <label className="grid gap-1.5 text-xs font-semibold">
-                Description
-                <Textarea value={editDesc} onChange={(e) => setEditDesc(e.target.value)} rows={3} />
-              </label>
-
-              <div className="grid grid-cols-2 gap-3">
-                <label className="grid gap-1.5 text-xs font-semibold">
-                  Status
-                  <NativeSelect value={editStatus} onChange={(e) => setEditStatus(e.target.value)}>
-                    <option value="Open">Open</option>
-                    <option value="In progress">In progress</option>
-                    <option value="Blocked">Blocked</option>
-                    <option value="Completed">Completed</option>
-                    <option value="Cancelled">Cancelled</option>
-                  </NativeSelect>
-                </label>
-
-                <label className="grid gap-1.5 text-xs font-semibold">
-                  Deadline
-                  <Input
-                    type="date"
-                    ref={deadlineInputRef}
-                    value={editDeadline}
-                    onChange={(e) => setEditDeadline(e.target.value)}
-                  />
-                </label>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                <label className="grid gap-1.5 text-xs font-semibold">
-                  Assignee
-                  {isFounder ? (
-                    <NativeSelect value={editAssigneeId} onChange={(e) => setEditAssigneeId(e.target.value)}>
-                      <option value="">Unassigned</option>
-                      <option value="founder">Founder</option>
-                      {projectMembers.map((m) => (
-                        <option key={m.id || m.employeeId} value={m.employeeId || m.id}>
-                          {m.name} ({m.role || "Member"})
-                        </option>
-                      ))}
-                    </NativeSelect>
-                  ) : (
-                    <Input
-                      value={getAssigneeLabel(task.assigneeId)}
-                      disabled
-                      className="bg-muted text-muted-foreground text-xs"
-                      title="Only the founder may change task assignments."
-                    />
-                  )}
-                  {!isFounder && (
-                    <span className="text-[10px] text-muted-foreground">Only founder can change assignee</span>
-                  )}
-                </label>
-
-                {project?.stages && project.stages.length > 0 && (
-                  <label className="grid gap-1.5 text-xs font-semibold">
-                    Stage
-                    <NativeSelect value={editStageId} onChange={(e) => setEditStageId(e.target.value)}>
-                      {project.stages.map((st) => (
-                        <option key={st.id} value={st.id}>{st.name}</option>
-                      ))}
-                    </NativeSelect>
-                  </label>
-                )}
-              </div>
-
-              <div className="flex justify-between items-center pt-2">
-                {isFounder && (
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    className="text-destructive hover:bg-destructive/10 text-xs"
-                    onClick={handleDelete}
-                  >
-                    <Trash2 className="size-3.5 mr-1" /> Delete Task
+              {isFounder && !projectClosed && (
+                <>
+                  <Button variant="outline" size="sm" onClick={startEdit}>
+                    Edit task
                   </Button>
-                )}
-                <Button size="sm" onClick={handleSaveEdits} disabled={savingEdits} className="ml-auto">
-                  {savingEdits ? <Loader2 className="size-3.5 animate-spin mr-1" /> : null}
-                  Save Changes
-                </Button>
-              </div>
-            </div>
-          ) : (
-            <>
-              {/* Task Metadata Bar */}
-              <div className="grid grid-cols-2 gap-2 rounded-xl border bg-muted/30 p-3 sm:grid-cols-3">
-                <div className="space-y-0.5">
-                  <span className="text-[11px] font-medium text-muted-foreground">Assignee</span>
-                  <p className="flex items-center gap-1.5 text-xs font-semibold truncate">
-                    <User className="size-3.5 text-muted-foreground shrink-0" />
-                    <span className="truncate">{getAssigneeLabel(task.assigneeId) || task.assigneeName || "Unassigned"}</span>
-                  </p>
-                </div>
-
-                <div className="space-y-0.5">
-                  <span className="text-[11px] font-medium text-muted-foreground">Deadline</span>
-                  <p className="flex items-center gap-1.5 text-xs font-semibold">
-                    <Calendar className="size-3.5 text-muted-foreground shrink-0" />
-                    <span>{task.deadline || task.dueDate ? new Date(task.deadline || task.dueDate).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }) : "No deadline"}</span>
-                  </p>
-                </div>
-
-                <div className="col-span-2 sm:col-span-1 space-y-0.5">
-                  <span className="text-[11px] font-medium text-muted-foreground">Quick Action</span>
-                  <div>
-                    {!isClosed ? (
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="h-7 px-2.5 text-xs text-emerald-700 hover:bg-emerald-50 font-semibold"
-                        onClick={() => handleQuickStatus("Completed")}
-                      >
-                        <CheckCircle2 className="size-3.5 mr-1" /> Mark Done
-                      </Button>
-                    ) : (
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="h-7 px-2.5 text-xs text-muted-foreground font-semibold"
-                        onClick={() => handleQuickStatus("Open")}
-                      >
-                        Reopen Task
-                      </Button>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Description */}
-              {task.description && (
-                <div className="text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed rounded-xl border bg-card p-3">
-                  {task.description}
-                </div>
-              )}
-
-              {/* Source client query link */}
-              {task.sourceQueryId && (
-                <div className="flex items-center justify-between rounded-xl border border-amber-200 bg-amber-50/70 p-3 text-xs text-amber-900">
-                  <div className="flex items-center gap-2">
-                    <AlertCircle className="size-4 shrink-0 text-amber-700" />
-                    <span>Converted from Telegram client query</span>
-                  </div>
-                  {onOpenSourceQuery && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    disabled={busy}
+                    onClick={() =>
+                      changeTask({ status: closed ? "Open" : "Completed" })
+                    }
+                  >
+                    {closed ? "Reopen task" : "Mark task complete"}
+                  </Button>
+                  {!closed && (
                     <Button
                       variant="outline"
                       size="sm"
-                      className="h-7 text-xs border-amber-300 bg-white text-amber-900 hover:bg-amber-100/50"
-                      onClick={() => onOpenSourceQuery(task.sourceQueryId)}
+                      onClick={() => setMeetingOpen(true)}
                     >
-                      View Query <ExternalLink className="size-3 ml-1" />
+                      {taskMeeting ? "Edit meeting" : "Schedule meeting"}
                     </Button>
                   )}
-                </div>
+                </>
               )}
-            </>
-          )}
-
-          {task.sourceBlockedReason && <p className="iksha-work-blocker">Blocked: {task.sourceBlockedReason}</p>}
-          {task.sourceApprovalStatus && <p className="iksha-work-approval">Approval: {task.sourceApprovalStatus}</p>}
-          {project?.id && <details className="iksha-task-resources" onToggle={event => setShowResources(event.currentTarget.open)}><summary>Shared project resources</summary>{showResources && <ProjectFiles projectId={project.id} namespace={namespace}/>}</details>}
-          {/* Discussion Thread Section */}
-          <div className="border-t pt-4">
-            <div className="flex items-center justify-between pb-3">
-              <h4 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                <MessageSquare className="size-3.5 text-primary" />
-                Task Discussion Thread ({messages.length})
-              </h4>
-              <Button
-                variant="ghost"
-                size="icon-sm"
-                onClick={() => loadMessages(task.id)}
-                disabled={loadingMessages}
-                aria-label="Refresh thread"
-              >
-                <RefreshCw className={`size-3.5 ${loadingMessages ? "animate-spin" : ""}`} />
-              </Button>
+              {task.sourceQueryId && onOpenSourceQuery && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => onOpenSourceQuery(task.sourceQueryId)}
+                >
+                  View source query
+                </Button>
+              )}
             </div>
-
-            {loadingMessages && messages.length === 0 ? (
-              <div className="flex items-center justify-center py-8 text-xs text-muted-foreground gap-2">
-                <Loader2 className="size-4 animate-spin text-primary" />
-                <span>Loading messages…</span>
-              </div>
-            ) : messages.length > 0 ? (
-              <div className="space-y-2.5">
-                {messages.map((msg) => (
-                  <div key={msg.id} className={`rounded-xl border p-3 shadow-xs space-y-1.5 ${msg.queryId ? "border-primary/30 bg-primary/5" : "bg-card"}`}>
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="font-semibold text-primary">{msg.author || "Team member"}</span>
-                      <span className="text-[10px] text-muted-foreground">
-                        {new Date(msg.at).toLocaleDateString([], { month: "short", day: "numeric" })} · {new Date(msg.at).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}
-                      </span>
-                    </div>
-                    <p className="text-xs text-foreground/90 whitespace-pre-wrap leading-relaxed">
-                      {msg.text}
-                    </p>
-                    {/* An accepted Telegram query keeps its photos and files here, served through the request's attachment route. */}
-                    {msg.queryId && msg.attachments?.length > 0 && (
-                      <div className="flex flex-wrap gap-2 pt-1">
-                        {msg.attachments.map((file) => {
-                          const href = getAttachmentUrl(msg.queryId, file.index, isFounder ? "founder" : "employee");
-                          return /photo|image/i.test(file.type)
-                            ? <a key={file.index} href={href} target="_blank" rel="noreferrer"><img src={href} alt="Photo from the query" loading="lazy" className="h-20 w-20 rounded-lg border object-cover" /></a>
-                            : <a key={file.index} href={href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-lg border bg-muted/40 px-2.5 py-1 text-xs text-primary hover:underline"><LinkIcon className="size-3" />{file.fileName || file.type}</a>;
-                        })}
-                      </div>
-                    )}
-                    {msg.attachmentUrl && (
-                      <a
-                        href={msg.attachmentUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-lg border bg-muted/40 px-2.5 py-1 text-xs text-primary hover:underline"
-                      >
-                        <LinkIcon className="size-3" />
-                        <span className="truncate max-w-xs">{msg.attachmentUrl}</span>
-                        <ExternalLink className="size-2.5" />
-                      </a>
-                    )}
-                  </div>
-                ))}
-                <div ref={messagesEndRef} />
-              </div>
-            ) : (
-              <p className="py-6 text-center text-xs text-muted-foreground">
-                No discussion messages yet in this task thread.
+            {!isFounder && (
+              <p className="text-xs text-muted-foreground">
+                View the whole project and contribute to discussions. Founders
+                manage task details and approvals.
               </p>
             )}
+            {editing && isFounder && (
+              <form
+                className="space-y-3 rounded-xl border p-3"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  changeTask(fields);
+                }}
+              >
+                <label className="grid gap-1 text-xs">
+                  Task title
+                  <Input
+                    required
+                    maxLength={200}
+                    value={fields.title}
+                    onChange={(e) =>
+                      setFields({ ...fields, title: e.target.value })
+                    }
+                  />
+                </label>
+                <label className="grid gap-1 text-xs">
+                  Description
+                  <Textarea
+                    maxLength={10000}
+                    value={fields.description}
+                    onChange={(e) =>
+                      setFields({ ...fields, description: e.target.value })
+                    }
+                  />
+                </label>
+                <div className="grid grid-cols-2 gap-2">
+                  <label className="grid gap-1 text-xs">
+                    Status
+                    <select
+                      value={fields.status}
+                      onChange={(e) =>
+                        setFields({ ...fields, status: e.target.value })
+                      }
+                    >
+                      {[
+                        "Open",
+                        "In progress",
+                        "Blocked",
+                        "Completed",
+                        "Cancelled",
+                      ].map((value) => (
+                        <option key={value}>{value}</option>
+                      ))}
+                    </select>
+                  </label>
+                  <label className="grid gap-1 text-xs">
+                    Deadline
+                    <Input
+                      type="date"
+                      value={fields.deadline}
+                      onChange={(e) =>
+                        setFields({ ...fields, deadline: e.target.value })
+                      }
+                    />
+                  </label>
+                  <label className="grid gap-1 text-xs">
+                    Assignee
+                    <select
+                      value={fields.assigneeId}
+                      onChange={(e) =>
+                        setFields({ ...fields, assigneeId: e.target.value })
+                      }
+                    >
+                      <option value="">Unassigned</option>
+                      <option value="founder">Founder</option>
+                      {projectMembers.map((member) => (
+                        <option
+                          key={member.employeeId || member.id}
+                          value={member.employeeId || member.id}
+                        >
+                          {member.name}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <label className="grid gap-1 text-xs">
+                    Stage
+                    <select
+                      value={fields.stageId}
+                      onChange={(e) =>
+                        setFields({ ...fields, stageId: e.target.value })
+                      }
+                    >
+                      <option value="">General</option>
+                      {project?.stages?.map((stage) => (
+                        <option key={stage.id} value={stage.id}>
+                          {stage.name}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <Button disabled={busy}>Save task</Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => setEditing(false)}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => setRemove(true)}
+                  >
+                    Delete task
+                  </Button>
+                </div>
+              </form>
+            )}
+            {task.description && (
+              <p className="whitespace-pre-wrap rounded-lg bg-muted/30 p-3 text-sm">
+                {task.description}
+              </p>
+            )}
+            {task.sourceBlockedReason && (
+              <p className="text-xs text-amber-800">
+                Blocked: {task.sourceBlockedReason}
+              </p>
+            )}
+            {task.sourceApprovalStatus && (
+              <p className="text-xs">Approval: {task.sourceApprovalStatus}</p>
+            )}
+            {resources.length > 0 && (
+              <details className="rounded-xl border p-3">
+                <summary className="text-sm font-medium">
+                  Resources from preceding work · {resources.length}
+                </summary>
+                <div className="space-y-3 pt-3">
+                  {resources.map((row) => (
+                    <section key={row.task.id} className="space-y-2">
+                      <h4 className="text-sm font-semibold">
+                        {row.task.title} · {row.task.status}
+                      </h4>
+                      {row.messages.map((message) => (
+                        <TaskMessage
+                          key={message.id}
+                          message={message}
+                          namespace={namespace}
+                        />
+                      ))}
+                    </section>
+                  ))}
+                </div>
+              </details>
+            )}
+            {project?.id && (
+              <details className="rounded-xl border p-3">
+                <summary className="text-sm">Shared project resources</summary>
+                <ProjectFiles projectId={project.id} namespace={namespace} />
+              </details>
+            )}
+            <section className="space-y-3">
+              <h3 className="text-sm font-semibold">
+                Task discussion · {messages.length}
+                {cursor ? "+" : ""}
+              </h3>
+              {messages.map((message) => (
+                <div key={message.id} className="space-y-1">
+                  <TaskMessage message={message} namespace={namespace} />
+                  {isFounder &&
+                    !projectClosed &&
+                    project?.telegramGroupChatId &&
+                    !message.queryId &&
+                    (!message.telegram ||
+                      message.telegram.status === "Failed") && (
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => {
+                          setShareMessage(message);
+                          setRecipients([]);
+                          setReview(true);
+                        }}
+                      >
+                        Review & send this message to Telegram
+                      </Button>
+                    )}
+                </div>
+              ))}
+              {cursor && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  disabled={loading}
+                  onClick={() => load(task.id, true)}
+                >
+                  Load more messages
+                </Button>
+              )}
+              {!messages.length && (
+                <p className="text-sm text-muted-foreground">
+                  {loading ? "Loading discussion…" : "No messages yet."}
+                </p>
+              )}
+            </section>
           </div>
-        </div>
-
-        {/* Message Input Footer / Reopen Banner */}
-        {isClosed ? (
-          <div className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-t bg-amber-50/70 p-3 sm:px-5 text-xs text-amber-900">
-            <span className="flex items-center gap-1.5">
-              <Lock className="size-3.5 text-amber-700 shrink-0" />
-              This task is {task.status.toLowerCase()}. Reopen it to send new messages.
-            </span>
-            <Button size="sm" variant="outline" className="border-amber-300 bg-white" onClick={handleReopenTask}>
-              Reopen Task
-            </Button>
-          </div>
-        ) : (
-          <form onSubmit={handleSendMessage} className="shrink-0 space-y-2 border-t bg-muted/20 p-3 sm:px-5">
-            {showAttachmentInput && (
-              <div className="flex items-center gap-2">
-                <Input
-                  value={attachmentUrl}
-                  onChange={(e) => setAttachmentUrl(e.target.value)}
-                  placeholder="https://... attachment or document URL (HTTPS)"
-                  className="h-8 text-xs font-mono"
+          {closed || projectClosed ? (
+            <p className="border-t pt-3 text-xs text-muted-foreground">
+              This task is closed. A founder can reopen it to continue the
+              discussion.
+            </p>
+          ) : (
+            <form
+              className="shrink-0 space-y-2 border-t pt-3"
+              onSubmit={(event) => {
+                event.preventDefault();
+                send(false);
+              }}
+            >
+              <Textarea
+                aria-label="Task comment"
+                value={draft}
+                maxLength={2000}
+                onChange={(e) => setDraft(e.target.value)}
+                placeholder="Write an internal message or describe the attached file…"
+                rows={2}
+              />
+              <Input
+                aria-label="Attachment link"
+                value={link}
+                maxLength={2048}
+                onChange={(e) => setLink(e.target.value)}
+                placeholder="Optional HTTPS reference link"
+              />
+              {file && (
+                <p className="text-xs">
+                  Attached: {file.name}{" "}
+                  <button
+                    type="button"
+                    className="underline"
+                    disabled={busy}
+                    onClick={() => setFile(null)}
+                  >
+                    Remove
+                  </button>
+                </p>
+              )}
+              <input
+                ref={fileInput}
+                className="hidden"
+                type="file"
+                accept="image/jpeg,image/png,image/webp,application/pdf"
+                onChange={upload}
+              />
+              <label className="flex gap-2 text-xs">
+                <input
+                  type="checkbox"
+                  checked={isResource}
+                  onChange={(e) => setResource(e.target.checked)}
                 />
+                Keep this message as a resource for dependent work
+              </label>
+              <div className="flex flex-wrap gap-2">
                 <Button
                   type="button"
-                  variant="ghost"
                   size="sm"
-                  className="h-8 text-xs text-muted-foreground"
-                  onClick={() => {
-                    setAttachmentUrl("");
-                    setShowAttachmentInput(false);
-                  }}
+                  variant="outline"
+                  disabled={busy}
+                  onClick={() => fileInput.current?.click()}
                 >
-                  Cancel
+                  Attach image or PDF
                 </Button>
-              </div>
-            )}
-
-            <div className="flex items-end gap-2">
-              <Button
-                type="button"
-                variant="ghost"
-                size="icon"
-                className={`size-9 shrink-0 ${showAttachmentInput ? "text-primary" : "text-muted-foreground"}`}
-                onClick={() => setShowAttachmentInput((v) => !v)}
-                title="Add attachment link"
-              >
-                <LinkIcon className="size-4" />
-              </Button>
-
-              <Textarea
-                value={commentText}
-                onChange={(e) => setCommentText(e.target.value)}
-                rows={1}
-                maxLength={2000}
-                aria-label="Task comment"
-                placeholder="Post team update or task comment…"
-                className="min-h-9 max-h-24 flex-1 resize-none text-xs"
-                disabled={sendingMessage}
-              />
-
-              <Button
-                type="submit"
-                size="icon"
-                aria-label="Send task comment"
-                disabled={!commentText.trim() || sendingMessage}
-                className="size-9 shrink-0"
-              >
-                {sendingMessage ? (
-                  <Loader2 className="size-4 animate-spin" />
-                ) : (
-                  <Send className="size-4" />
+                <Button type="submit" size="sm" disabled={!ready}>
+                  {busy ? "Saving…" : "Post internally"}
+                </Button>
+                {isFounder && (
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant="outline"
+                    disabled={!ready || !project?.telegramGroupChatId}
+                    onClick={() => {
+                      setShareMessage(null);
+                      setRecipients([]);
+                      setReview(true);
+                    }}
+                  >
+                    Review & send to Telegram
+                  </Button>
                 )}
-              </Button>
-            </div>
-          </form>
-        )}
-      </DialogContent>
-    </Dialog>
+              </div>
+            </form>
+          )}
+        </DialogContent>
+      </Dialog>
+      <Dialog
+        open={review}
+        onOpenChange={(value) => {
+          if (!busy) setReview(value);
+        }}
+      >
+        <DialogContent className="max-h-[90dvh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>Send this message to Telegram?</DialogTitle>
+            <DialogDescription>
+              Project: {project?.name}. Everyone in its Telegram group can see
+              this message and attachment.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="whitespace-pre-wrap break-words rounded-lg border p-3 text-sm">
+            {shareMessage ? (
+              <TaskMessage message={shareMessage} namespace={namespace} />
+            ) : (
+              <>
+                {draft}
+                {link && <p>{link}</p>}
+                {file && <p>File: {file.name}</p>}
+              </>
+            )}
+          </div>
+          <fieldset className="space-y-2">
+            <legend className="text-xs font-medium">
+              Tag people (optional)
+            </legend>
+            {people
+              .filter((person) => /^\d+$/.test(person.id))
+              .map((person) => (
+                <label key={person.id} className="flex gap-2 text-sm">
+                  <input
+                    type="checkbox"
+                    checked={recipients.includes(person.id)}
+                    onChange={(e) =>
+                      setRecipients(
+                        e.target.checked
+                          ? [...recipients, person.id]
+                          : recipients.filter((id) => id !== person.id),
+                      )
+                    }
+                  />
+                  {person.name} · {person.role}
+                </label>
+              ))}
+          </fieldset>
+          <p className="text-xs text-muted-foreground">
+            This message also stays in the task thread. Earlier private messages
+            are not sent.
+          </p>
+          {error && (
+            <p role="alert" className="text-sm text-destructive">
+              {error}
+            </p>
+          )}
+          <Button disabled={busy} onClick={() => send(true)}>
+            {busy ? "Sending…" : "Confirm & send to Telegram"}
+          </Button>
+        </DialogContent>
+      </Dialog>
+      <MeetingEditor
+        open={meetingOpen}
+        onOpenChange={setMeetingOpen}
+        task={task}
+        meeting={taskMeeting}
+        onSaved={() => {
+          request(
+            `/api/${namespace}/meetings?projectId=${encodeURIComponent(task.projectId)}`,
+          )
+            .then((data) =>
+              setTaskMeeting(
+                data.meetings.find(
+                  (row) => row.taskId === task.id && row.status === "Scheduled",
+                ) || null,
+              ),
+            )
+            .catch(() => {});
+          onTaskUpdated?.();
+        }}
+      />
+      <Dialog open={remove} onOpenChange={setRemove}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Delete this task?</DialogTitle>
+            <DialogDescription>
+              The task will be removed from the active project plan.
+            </DialogDescription>
+          </DialogHeader>
+          <Button
+            disabled={busy}
+            variant="destructive"
+            onClick={async () => {
+              setBusy(true);
+              try {
+                await deleteTask(task.id);
+                setRemove(false);
+                onOpenChange(false);
+                onTaskUpdated?.();
+              } catch (problem) {
+                setError(problem.message);
+                setRemove(false);
+              } finally {
+                setBusy(false);
+              }
+            }}
+          >
+            Delete task
+          </Button>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
