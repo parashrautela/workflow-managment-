@@ -11654,7 +11654,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$53 = {
+var __iconData$55 = {
 	name: "arrow-left",
 	size: 24,
 	node: [["path", {
@@ -11665,8 +11665,8 @@ var __iconData$53 = {
 		key: "x3x0zl"
 	}]]
 };
-__iconData$53.node;
-var ArrowLeft = createLucideIcon(__iconData$53);
+__iconData$55.node;
+var ArrowLeft = createLucideIcon(__iconData$55);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11674,7 +11674,7 @@ var ArrowLeft = createLucideIcon(__iconData$53);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$52 = {
+var __iconData$54 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11685,8 +11685,8 @@ var __iconData$52 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$52.node;
-var ArrowRight = createLucideIcon(__iconData$52);
+__iconData$54.node;
+var ArrowRight = createLucideIcon(__iconData$54);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11694,7 +11694,7 @@ var ArrowRight = createLucideIcon(__iconData$52);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$51 = {
+var __iconData$53 = {
 	name: "arrow-up-right",
 	size: 24,
 	node: [["path", {
@@ -11705,8 +11705,8 @@ var __iconData$51 = {
 		key: "1vkiza"
 	}]]
 };
-__iconData$51.node;
-var ArrowUpRight = createLucideIcon(__iconData$51);
+__iconData$53.node;
+var ArrowUpRight = createLucideIcon(__iconData$53);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11714,7 +11714,7 @@ var ArrowUpRight = createLucideIcon(__iconData$51);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$50 = {
+var __iconData$52 = {
 	name: "arrow-up",
 	size: 24,
 	node: [["path", {
@@ -11725,8 +11725,8 @@ var __iconData$50 = {
 		key: "x0mq9r"
 	}]]
 };
-__iconData$50.node;
-var ArrowUp = createLucideIcon(__iconData$50);
+__iconData$52.node;
+var ArrowUp = createLucideIcon(__iconData$52);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11734,7 +11734,7 @@ var ArrowUp = createLucideIcon(__iconData$50);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$49 = {
+var __iconData$51 = {
 	name: "building-complex",
 	size: 24,
 	node: [
@@ -11761,8 +11761,8 @@ var __iconData$49 = {
 	],
 	aliases: ["building-2"]
 };
-__iconData$49.node;
-var BuildingComplex = createLucideIcon(__iconData$49);
+__iconData$51.node;
+var BuildingComplex = createLucideIcon(__iconData$51);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11770,7 +11770,7 @@ var BuildingComplex = createLucideIcon(__iconData$49);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$48 = {
+var __iconData$50 = {
 	name: "calendar-days",
 	size: 24,
 	node: [
@@ -11820,8 +11820,8 @@ var __iconData$48 = {
 		}]
 	]
 };
-__iconData$48.node;
-var CalendarDays = createLucideIcon(__iconData$48);
+__iconData$50.node;
+var CalendarDays = createLucideIcon(__iconData$50);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/calendar.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11829,7 +11829,7 @@ var CalendarDays = createLucideIcon(__iconData$48);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$47 = {
+var __iconData$49 = {
 	name: "calendar",
 	size: 24,
 	node: [
@@ -11855,8 +11855,8 @@ var __iconData$47 = {
 		}]
 	]
 };
-__iconData$47.node;
-var Calendar = createLucideIcon(__iconData$47);
+__iconData$49.node;
+var Calendar = createLucideIcon(__iconData$49);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11864,7 +11864,7 @@ var Calendar = createLucideIcon(__iconData$47);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$46 = {
+var __iconData$48 = {
 	name: "check",
 	size: 24,
 	node: [["path", {
@@ -11872,8 +11872,8 @@ var __iconData$46 = {
 		key: "1gmf2c"
 	}]]
 };
-__iconData$46.node;
-var Check = createLucideIcon(__iconData$46);
+__iconData$48.node;
+var Check = createLucideIcon(__iconData$48);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11881,7 +11881,7 @@ var Check = createLucideIcon(__iconData$46);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$45 = {
+var __iconData$47 = {
 	name: "chevron-down",
 	size: 24,
 	node: [["path", {
@@ -11889,8 +11889,8 @@ var __iconData$45 = {
 		key: "qrunsl"
 	}]]
 };
-__iconData$45.node;
-var ChevronDown = createLucideIcon(__iconData$45);
+__iconData$47.node;
+var ChevronDown = createLucideIcon(__iconData$47);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11898,7 +11898,7 @@ var ChevronDown = createLucideIcon(__iconData$45);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$44 = {
+var __iconData$46 = {
 	name: "chevron-right",
 	size: 24,
 	node: [["path", {
@@ -11906,8 +11906,8 @@ var __iconData$44 = {
 		key: "mthhwq"
 	}]]
 };
-__iconData$44.node;
-var ChevronRight = createLucideIcon(__iconData$44);
+__iconData$46.node;
+var ChevronRight = createLucideIcon(__iconData$46);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11915,7 +11915,7 @@ var ChevronRight = createLucideIcon(__iconData$44);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$43 = {
+var __iconData$45 = {
 	name: "chevron-up",
 	size: 24,
 	node: [["path", {
@@ -11923,8 +11923,8 @@ var __iconData$43 = {
 		key: "153udz"
 	}]]
 };
-__iconData$43.node;
-var ChevronUp = createLucideIcon(__iconData$43);
+__iconData$45.node;
+var ChevronUp = createLucideIcon(__iconData$45);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11932,7 +11932,7 @@ var ChevronUp = createLucideIcon(__iconData$43);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$42 = {
+var __iconData$44 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -11959,8 +11959,8 @@ var __iconData$42 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$42.node;
-var CircleAlert = createLucideIcon(__iconData$42);
+__iconData$44.node;
+var CircleAlert = createLucideIcon(__iconData$44);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11968,7 +11968,7 @@ var CircleAlert = createLucideIcon(__iconData$42);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$41 = {
+var __iconData$43 = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -11982,8 +11982,8 @@ var __iconData$41 = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-__iconData$41.node;
-var CircleCheck = createLucideIcon(__iconData$41);
+__iconData$43.node;
+var CircleCheck = createLucideIcon(__iconData$43);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11991,7 +11991,7 @@ var CircleCheck = createLucideIcon(__iconData$41);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$40 = {
+var __iconData$42 = {
 	name: "circle-pause",
 	size: 24,
 	node: [
@@ -12018,8 +12018,8 @@ var __iconData$40 = {
 	],
 	aliases: ["pause-circle"]
 };
-__iconData$40.node;
-var CirclePause = createLucideIcon(__iconData$40);
+__iconData$42.node;
+var CirclePause = createLucideIcon(__iconData$42);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12027,7 +12027,7 @@ var CirclePause = createLucideIcon(__iconData$40);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$39 = {
+var __iconData$41 = {
 	name: "circle-question-mark",
 	size: 24,
 	node: [
@@ -12048,8 +12048,8 @@ var __iconData$39 = {
 	],
 	aliases: ["help-circle", "circle-help"]
 };
-__iconData$39.node;
-var CircleQuestionMark = createLucideIcon(__iconData$39);
+__iconData$41.node;
+var CircleQuestionMark = createLucideIcon(__iconData$41);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12057,7 +12057,7 @@ var CircleQuestionMark = createLucideIcon(__iconData$39);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$38 = {
+var __iconData$40 = {
 	name: "circle-x",
 	size: 24,
 	node: [
@@ -12078,8 +12078,8 @@ var __iconData$38 = {
 	],
 	aliases: ["x-circle"]
 };
-__iconData$38.node;
-var CircleX = createLucideIcon(__iconData$38);
+__iconData$40.node;
+var CircleX = createLucideIcon(__iconData$40);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12087,7 +12087,7 @@ var CircleX = createLucideIcon(__iconData$38);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$37 = {
+var __iconData$39 = {
 	name: "circle",
 	size: 24,
 	node: [["circle", {
@@ -12097,8 +12097,8 @@ var __iconData$37 = {
 		key: "1mglay"
 	}]]
 };
-__iconData$37.node;
-var Circle = createLucideIcon(__iconData$37);
+__iconData$39.node;
+var Circle = createLucideIcon(__iconData$39);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12106,7 +12106,7 @@ var Circle = createLucideIcon(__iconData$37);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$36 = {
+var __iconData$38 = {
 	name: "clock-3",
 	size: 24,
 	node: [["circle", {
@@ -12119,8 +12119,8 @@ var __iconData$36 = {
 		key: "135r8i"
 	}]]
 };
-__iconData$36.node;
-var Clock3 = createLucideIcon(__iconData$36);
+__iconData$38.node;
+var Clock3 = createLucideIcon(__iconData$38);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12128,7 +12128,7 @@ var Clock3 = createLucideIcon(__iconData$36);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$35 = {
+var __iconData$37 = {
 	name: "clock",
 	size: 24,
 	node: [["circle", {
@@ -12141,8 +12141,8 @@ var __iconData$35 = {
 		key: "mmk7yg"
 	}]]
 };
-__iconData$35.node;
-var Clock = createLucideIcon(__iconData$35);
+__iconData$37.node;
+var Clock = createLucideIcon(__iconData$37);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12150,7 +12150,7 @@ var Clock = createLucideIcon(__iconData$35);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$34 = {
+var __iconData$36 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -12166,8 +12166,8 @@ var __iconData$34 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$34.node;
-var Copy = createLucideIcon(__iconData$34);
+__iconData$36.node;
+var Copy = createLucideIcon(__iconData$36);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/external-link.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12175,7 +12175,7 @@ var Copy = createLucideIcon(__iconData$34);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$33 = {
+var __iconData$35 = {
 	name: "external-link",
 	size: 24,
 	node: [
@@ -12193,8 +12193,8 @@ var __iconData$33 = {
 		}]
 	]
 };
-__iconData$33.node;
-var ExternalLink = createLucideIcon(__iconData$33);
+__iconData$35.node;
+var ExternalLink = createLucideIcon(__iconData$35);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/file-text.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12202,7 +12202,7 @@ var ExternalLink = createLucideIcon(__iconData$33);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$32 = {
+var __iconData$34 = {
 	name: "file-text",
 	size: 24,
 	node: [
@@ -12228,8 +12228,8 @@ var __iconData$32 = {
 		}]
 	]
 };
-__iconData$32.node;
-var FileText = createLucideIcon(__iconData$32);
+__iconData$34.node;
+var FileText = createLucideIcon(__iconData$34);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12237,7 +12237,7 @@ var FileText = createLucideIcon(__iconData$32);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$31 = {
+var __iconData$33 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -12259,8 +12259,8 @@ var __iconData$31 = {
 		}]
 	]
 };
-__iconData$31.node;
-var FolderKanban = createLucideIcon(__iconData$31);
+__iconData$33.node;
+var FolderKanban = createLucideIcon(__iconData$33);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/hourglass.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12268,7 +12268,7 @@ var FolderKanban = createLucideIcon(__iconData$31);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$30 = {
+var __iconData$32 = {
 	name: "hourglass",
 	size: 24,
 	node: [
@@ -12290,8 +12290,8 @@ var __iconData$30 = {
 		}]
 	]
 };
-__iconData$30.node;
-var Hourglass = createLucideIcon(__iconData$30);
+__iconData$32.node;
+var Hourglass = createLucideIcon(__iconData$32);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/layers.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12299,7 +12299,7 @@ var Hourglass = createLucideIcon(__iconData$30);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$29 = {
+var __iconData$31 = {
 	name: "layers",
 	size: 24,
 	node: [
@@ -12318,8 +12318,8 @@ var __iconData$29 = {
 	],
 	aliases: ["layers-3"]
 };
-__iconData$29.node;
-var Layers = createLucideIcon(__iconData$29);
+__iconData$31.node;
+var Layers = createLucideIcon(__iconData$31);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/link-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12327,7 +12327,7 @@ var Layers = createLucideIcon(__iconData$29);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$28 = {
+var __iconData$30 = {
 	name: "link-2",
 	size: 24,
 	node: [
@@ -12348,8 +12348,8 @@ var __iconData$28 = {
 		}]
 	]
 };
-__iconData$28.node;
-var Link2 = createLucideIcon(__iconData$28);
+__iconData$30.node;
+var Link2 = createLucideIcon(__iconData$30);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/list-plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12357,7 +12357,7 @@ var Link2 = createLucideIcon(__iconData$28);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$27 = {
+var __iconData$29 = {
 	name: "list-plus",
 	size: 24,
 	node: [
@@ -12383,8 +12383,8 @@ var __iconData$27 = {
 		}]
 	]
 };
-__iconData$27.node;
-var ListPlus = createLucideIcon(__iconData$27);
+__iconData$29.node;
+var ListPlus = createLucideIcon(__iconData$29);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/loader-circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12392,7 +12392,7 @@ var ListPlus = createLucideIcon(__iconData$27);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$26 = {
+var __iconData$28 = {
 	name: "loader-circle",
 	size: 24,
 	node: [["path", {
@@ -12401,8 +12401,8 @@ var __iconData$26 = {
 	}]],
 	aliases: ["loader-2"]
 };
-__iconData$26.node;
-var LoaderCircle = createLucideIcon(__iconData$26);
+__iconData$28.node;
+var LoaderCircle = createLucideIcon(__iconData$28);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/lock-keyhole.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12410,7 +12410,7 @@ var LoaderCircle = createLucideIcon(__iconData$26);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$25 = {
+var __iconData$27 = {
 	name: "lock-keyhole",
 	size: 24,
 	node: [
@@ -12434,8 +12434,8 @@ var __iconData$25 = {
 		}]
 	]
 };
-__iconData$25.node;
-var LockKeyhole = createLucideIcon(__iconData$25);
+__iconData$27.node;
+var LockKeyhole = createLucideIcon(__iconData$27);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/log-out.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12443,7 +12443,7 @@ var LockKeyhole = createLucideIcon(__iconData$25);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$24 = {
+var __iconData$26 = {
 	name: "log-out",
 	size: 24,
 	node: [
@@ -12461,8 +12461,8 @@ var __iconData$24 = {
 		}]
 	]
 };
-__iconData$24.node;
-var LogOut = createLucideIcon(__iconData$24);
+__iconData$26.node;
+var LogOut = createLucideIcon(__iconData$26);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/maximize-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12470,7 +12470,7 @@ var LogOut = createLucideIcon(__iconData$24);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$23 = {
+var __iconData$25 = {
 	name: "maximize-2",
 	size: 24,
 	node: [
@@ -12492,8 +12492,8 @@ var __iconData$23 = {
 		}]
 	]
 };
-__iconData$23.node;
-var Maximize2 = createLucideIcon(__iconData$23);
+__iconData$25.node;
+var Maximize2 = createLucideIcon(__iconData$25);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/menu.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12501,7 +12501,7 @@ var Maximize2 = createLucideIcon(__iconData$23);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$22 = {
+var __iconData$24 = {
 	name: "menu",
 	size: 24,
 	node: [
@@ -12519,8 +12519,8 @@ var __iconData$22 = {
 		}]
 	]
 };
-__iconData$22.node;
-var Menu = createLucideIcon(__iconData$22);
+__iconData$24.node;
+var Menu = createLucideIcon(__iconData$24);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/message-square.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12528,7 +12528,7 @@ var Menu = createLucideIcon(__iconData$22);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$21 = {
+var __iconData$23 = {
 	name: "message-square",
 	size: 24,
 	node: [["path", {
@@ -12536,8 +12536,8 @@ var __iconData$21 = {
 		key: "18887p"
 	}]]
 };
-__iconData$21.node;
-var MessageSquare = createLucideIcon(__iconData$21);
+__iconData$23.node;
+var MessageSquare = createLucideIcon(__iconData$23);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/minus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12545,7 +12545,7 @@ var MessageSquare = createLucideIcon(__iconData$21);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$20 = {
+var __iconData$22 = {
 	name: "minus",
 	size: 24,
 	node: [["path", {
@@ -12553,8 +12553,8 @@ var __iconData$20 = {
 		key: "1ays0h"
 	}]]
 };
-__iconData$20.node;
-var Minus = createLucideIcon(__iconData$20);
+__iconData$22.node;
+var Minus = createLucideIcon(__iconData$22);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/octagon.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12562,7 +12562,7 @@ var Minus = createLucideIcon(__iconData$20);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$19 = {
+var __iconData$21 = {
 	name: "octagon",
 	size: 24,
 	node: [["path", {
@@ -12570,8 +12570,25 @@ var __iconData$19 = {
 		key: "2d38gg"
 	}]]
 };
-__iconData$19.node;
-var Octagon = createLucideIcon(__iconData$19);
+__iconData$21.node;
+var Octagon = createLucideIcon(__iconData$21);
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/paperclip.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$20 = {
+	name: "paperclip",
+	size: 24,
+	node: [["path", {
+		d: "m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551",
+		key: "1miecu"
+	}]]
+};
+__iconData$20.node;
+var Paperclip = createLucideIcon(__iconData$20);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/pencil.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12579,7 +12596,7 @@ var Octagon = createLucideIcon(__iconData$19);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$18 = {
+var __iconData$19 = {
 	name: "pencil",
 	size: 24,
 	node: [["path", {
@@ -12590,8 +12607,8 @@ var __iconData$18 = {
 		key: "1mk7zo"
 	}]]
 };
-__iconData$18.node;
-var Pencil = createLucideIcon(__iconData$18);
+__iconData$19.node;
+var Pencil = createLucideIcon(__iconData$19);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/play.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12599,7 +12616,7 @@ var Pencil = createLucideIcon(__iconData$18);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$17 = {
+var __iconData$18 = {
 	name: "play",
 	size: 24,
 	node: [["path", {
@@ -12607,8 +12624,8 @@ var __iconData$17 = {
 		key: "10ikf1"
 	}]]
 };
-__iconData$17.node;
-var Play = createLucideIcon(__iconData$17);
+__iconData$18.node;
+var Play = createLucideIcon(__iconData$18);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12616,7 +12633,7 @@ var Play = createLucideIcon(__iconData$17);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$16 = {
+var __iconData$17 = {
 	name: "plus",
 	size: 24,
 	node: [["path", {
@@ -12627,8 +12644,8 @@ var __iconData$16 = {
 		key: "s699le"
 	}]]
 };
-__iconData$16.node;
-var Plus = createLucideIcon(__iconData$16);
+__iconData$17.node;
+var Plus = createLucideIcon(__iconData$17);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/refresh-cw.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12636,7 +12653,7 @@ var Plus = createLucideIcon(__iconData$16);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$15 = {
+var __iconData$16 = {
 	name: "refresh-cw",
 	size: 24,
 	node: [
@@ -12658,8 +12675,8 @@ var __iconData$15 = {
 		}]
 	]
 };
-__iconData$15.node;
-var RefreshCw = createLucideIcon(__iconData$15);
+__iconData$16.node;
+var RefreshCw = createLucideIcon(__iconData$16);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/rotate-ccw-clock.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12667,7 +12684,7 @@ var RefreshCw = createLucideIcon(__iconData$15);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$14 = {
+var __iconData$15 = {
 	name: "rotate-ccw-clock",
 	size: 24,
 	node: [
@@ -12686,8 +12703,8 @@ var __iconData$14 = {
 	],
 	aliases: ["history"]
 };
-__iconData$14.node;
-var RotateCcwClock = createLucideIcon(__iconData$14);
+__iconData$15.node;
+var RotateCcwClock = createLucideIcon(__iconData$15);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/search.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12695,7 +12712,7 @@ var RotateCcwClock = createLucideIcon(__iconData$14);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$13 = {
+var __iconData$14 = {
 	name: "search",
 	size: 24,
 	node: [["path", {
@@ -12708,8 +12725,8 @@ var __iconData$13 = {
 		key: "4ej97u"
 	}]]
 };
-__iconData$13.node;
-var Search = createLucideIcon(__iconData$13);
+__iconData$14.node;
+var Search = createLucideIcon(__iconData$14);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/send.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12717,7 +12734,7 @@ var Search = createLucideIcon(__iconData$13);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$12 = {
+var __iconData$13 = {
 	name: "send",
 	size: 24,
 	node: [["path", {
@@ -12728,8 +12745,8 @@ var __iconData$12 = {
 		key: "12cjpa"
 	}]]
 };
-__iconData$12.node;
-var Send = createLucideIcon(__iconData$12);
+__iconData$13.node;
+var Send = createLucideIcon(__iconData$13);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/settings-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12737,7 +12754,7 @@ var Send = createLucideIcon(__iconData$12);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$11 = {
+var __iconData$12 = {
 	name: "settings-2",
 	size: 24,
 	node: [
@@ -12763,8 +12780,8 @@ var __iconData$11 = {
 		}]
 	]
 };
-__iconData$11.node;
-var Settings2 = createLucideIcon(__iconData$11);
+__iconData$12.node;
+var Settings2 = createLucideIcon(__iconData$12);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/share-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12772,7 +12789,7 @@ var Settings2 = createLucideIcon(__iconData$11);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$10 = {
+var __iconData$11 = {
 	name: "share-2",
 	size: 24,
 	node: [
@@ -12810,8 +12827,8 @@ var __iconData$10 = {
 		}]
 	]
 };
-__iconData$10.node;
-var Share2 = createLucideIcon(__iconData$10);
+__iconData$11.node;
+var Share2 = createLucideIcon(__iconData$11);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/shield-check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12819,7 +12836,7 @@ var Share2 = createLucideIcon(__iconData$10);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$9 = {
+var __iconData$10 = {
 	name: "shield-check",
 	size: 24,
 	node: [["path", {
@@ -12830,8 +12847,8 @@ var __iconData$9 = {
 		key: "dzmm74"
 	}]]
 };
-__iconData$9.node;
-var ShieldCheck = createLucideIcon(__iconData$9);
+__iconData$10.node;
+var ShieldCheck = createLucideIcon(__iconData$10);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/sparkles.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12839,7 +12856,7 @@ var ShieldCheck = createLucideIcon(__iconData$9);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$8 = {
+var __iconData$9 = {
 	name: "sparkles",
 	size: 24,
 	node: [
@@ -12864,8 +12881,8 @@ var __iconData$8 = {
 	],
 	aliases: ["stars"]
 };
-__iconData$8.node;
-var Sparkles = createLucideIcon(__iconData$8);
+__iconData$9.node;
+var Sparkles = createLucideIcon(__iconData$9);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/trash.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12873,7 +12890,7 @@ var Sparkles = createLucideIcon(__iconData$8);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$7 = {
+var __iconData$8 = {
 	name: "trash",
 	size: 24,
 	node: [
@@ -12900,8 +12917,8 @@ var __iconData$7 = {
 	],
 	aliases: ["trash-2"]
 };
-__iconData$7.node;
-var Trash = createLucideIcon(__iconData$7);
+__iconData$8.node;
+var Trash = createLucideIcon(__iconData$8);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/triangle-alert.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12909,7 +12926,7 @@ var Trash = createLucideIcon(__iconData$7);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$6 = {
+var __iconData$7 = {
 	name: "triangle-alert",
 	size: 24,
 	node: [
@@ -12928,8 +12945,8 @@ var __iconData$6 = {
 	],
 	aliases: ["alert-triangle"]
 };
-__iconData$6.node;
-var TriangleAlert = createLucideIcon(__iconData$6);
+__iconData$7.node;
+var TriangleAlert = createLucideIcon(__iconData$7);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/undo-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12937,7 +12954,7 @@ var TriangleAlert = createLucideIcon(__iconData$6);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$5 = {
+var __iconData$6 = {
 	name: "undo-2",
 	size: 24,
 	node: [["path", {
@@ -12948,8 +12965,8 @@ var __iconData$5 = {
 		key: "f3b9sd"
 	}]]
 };
-__iconData$5.node;
-var Undo2 = createLucideIcon(__iconData$5);
+__iconData$6.node;
+var Undo2 = createLucideIcon(__iconData$6);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user-plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12957,7 +12974,7 @@ var Undo2 = createLucideIcon(__iconData$5);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$4 = {
+var __iconData$5 = {
 	name: "user-plus",
 	size: 24,
 	node: [
@@ -12987,8 +13004,31 @@ var __iconData$4 = {
 		}]
 	]
 };
+__iconData$5.node;
+var UserPlus = createLucideIcon(__iconData$5);
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user-round.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$4 = {
+	name: "user-round",
+	size: 24,
+	node: [["circle", {
+		cx: "12",
+		cy: "8",
+		r: "5",
+		key: "1hypcn"
+	}], ["path", {
+		d: "M20 21a8 8 0 0 0-16 0",
+		key: "rfgkzh"
+	}]],
+	aliases: ["user-2"]
+};
 __iconData$4.node;
-var UserPlus = createLucideIcon(__iconData$4);
+var UserRound = createLucideIcon(__iconData$4);
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user-x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -20299,13 +20339,16 @@ async function fetchDefaultPlan(projectId) {
 /**
 * Accept a query: link it to a task and delay/redo/complete it, or add a new stage for it.
 * target: { kind: 'task', taskId, action: { type, days } } | { kind: 'new-stage', stage, linkTaskKey }
-* Nothing is sent to Telegram; publish the reply separately after the founder reviews it.
+* Preview sends nothing. Confirming a decision sends its reviewed status update to the source query.
 */
 async function previewAcceptDecision(requestId, target) {
 	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept-preview`, { target });
 }
-async function acceptDecisionRequest(requestId, target) {
-	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept`, { target });
+async function acceptDecisionRequest(requestId, target, notificationText) {
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept`, {
+		target,
+		notificationText
+	});
 }
 var previewTaskPlan = (taskId, input) => post$2(`/api/founder/tasks/${taskId}/plan/preview`, input);
 var applyTaskPlan = (taskId, input) => post$2(`/api/founder/tasks/${taskId}/plan/apply`, input);
@@ -20690,7 +20733,7 @@ function TaskMessage({ message, namespace = "founder" }) {
 }
 function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTaskUpdated, onOpenSourceQuery, isFounder = true, projectMembers = [] }) {
 	const namespace = isFounder ? "founder" : "employee";
-	const [task, setTask] = (0, import_react.useState)(initialTask), [messages, setMessages] = (0, import_react.useState)([]), [resources, setResources] = (0, import_react.useState)([]), [people, setPeople] = (0, import_react.useState)([]), [draft, setDraft] = (0, import_react.useState)(""), [link, setLink] = (0, import_react.useState)(""), [file, setFile] = (0, import_react.useState)(null), [isResource, setResource] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [loading, setLoading] = (0, import_react.useState)(false), [cursor, setCursor] = (0, import_react.useState)(null), [editing, setEditing] = (0, import_react.useState)(false), [fields, setFields] = (0, import_react.useState)({}), [review, setReview] = (0, import_react.useState)(false), [shareMessage, setShareMessage] = (0, import_react.useState)(null), [recipients, setRecipients] = (0, import_react.useState)([]), [meetingOpen, setMeetingOpen] = (0, import_react.useState)(false), [taskMeeting, setTaskMeeting] = (0, import_react.useState)(null), [remove, setRemove] = (0, import_react.useState)(false);
+	const [task, setTask] = (0, import_react.useState)(initialTask), [messages, setMessages] = (0, import_react.useState)([]), [resources, setResources] = (0, import_react.useState)([]), [people, setPeople] = (0, import_react.useState)([]), [draft, setDraft] = (0, import_react.useState)(""), [link, setLink] = (0, import_react.useState)(""), [attachmentOptions, setAttachmentOptions] = (0, import_react.useState)(false), [file, setFile] = (0, import_react.useState)(null), [isResource, setResource] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [loading, setLoading] = (0, import_react.useState)(false), [cursor, setCursor] = (0, import_react.useState)(null), [editing, setEditing] = (0, import_react.useState)(false), [fields, setFields] = (0, import_react.useState)({}), [review, setReview] = (0, import_react.useState)(false), [shareMessage, setShareMessage] = (0, import_react.useState)(null), [recipients, setRecipients] = (0, import_react.useState)([]), [meetingOpen, setMeetingOpen] = (0, import_react.useState)(false), [taskMeeting, setTaskMeeting] = (0, import_react.useState)(null), [remove, setRemove] = (0, import_react.useState)(false);
 	const key = (0, import_react.useRef)(crypto.randomUUID()), fileInput = (0, import_react.useRef)(null), version = (0, import_react.useRef)(0);
 	(0, import_react.useEffect)(() => {
 		key.current = crypto.randomUUID();
@@ -20726,6 +20769,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 		setPeople([]);
 		setDraft("");
 		setLink("");
+		setAttachmentOptions(false);
 		setFile(null);
 		setResource(false);
 		setEditing(false);
@@ -20864,18 +20908,33 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 				if (!busy) onOpenChange(value);
 			},
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
-				className: "flex max-h-[92dvh] flex-col overflow-hidden sm:max-w-2xl",
+				className: "task-thread-dialog",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: task.title }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [
-						project?.stages?.find((row) => row.id === task.stageId)?.name || "Task workspace",
-						" ",
-						"· ",
-						task.status,
-						" · Due ",
-						task.deadline || "not set"
-					] })] }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, {
+						className: "task-thread-header",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "task-thread-heading-row",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, {
+								className: "task-thread-context",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "task-thread-status",
+									children: task.status
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: ["· ", project?.name || "Task workspace"] })]
+							}), isFounder && !projectClosed && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "task-thread-header-actions",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									variant: "outline",
+									onClick: startEdit,
+									children: "Edit"
+								}), !closed && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+									onClick: () => setMeetingOpen(true),
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, {}), taskMeeting ? "Edit meeting" : "Schedule"]
+								})]
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: task.title })]
+					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "min-h-0 flex-1 space-y-4 overflow-y-auto pr-1",
+						className: "task-thread-body chat-scroll",
 						children: [
 							error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-sm text-destructive",
@@ -20883,43 +20942,28 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 								children: error
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex flex-wrap gap-2",
+								className: "task-thread-overview",
 								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Assignee" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(UserRound, {}), task.assigneeId === "founder" ? "Founder" : projectMembers.find((member) => (member.employeeId || member.id) === task.assigneeId)?.name || task.assigneeName || task.sourceAssigneeName || task.sourceRole || "Unassigned"] })] }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Deadline" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, {}), task.deadline ? (/* @__PURE__ */ new Date(`${task.deadline.slice(0, 10)}T00:00:00`)).toLocaleDateString("en-US", {
+										month: "short",
+										day: "numeric",
+										year: "numeric"
+									}) : "Not set"] })] }),
+									isFounder && !projectClosed && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Quick Action" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 										variant: "outline",
 										size: "sm",
-										disabled: loading,
-										onClick: () => load(),
-										children: "Refresh discussion"
-									}),
-									isFounder && !projectClosed && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-											variant: "outline",
-											size: "sm",
-											onClick: startEdit,
-											children: "Edit task"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-											variant: "outline",
-											size: "sm",
-											disabled: busy,
-											onClick: () => changeTask({ status: closed ? "Open" : "Completed" }),
-											children: closed ? "Reopen task" : "Mark task complete"
-										}),
-										!closed && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-											variant: "outline",
-											size: "sm",
-											onClick: () => setMeetingOpen(true),
-											children: taskMeeting ? "Edit meeting" : "Schedule meeting"
-										})
-									] }),
-									task.sourceQueryId && onOpenSourceQuery && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-										variant: "outline",
-										size: "sm",
-										onClick: () => onOpenSourceQuery(task.sourceQueryId),
-										children: "View source query"
-									})
+										disabled: busy,
+										onClick: () => changeTask({ status: closed ? "Open" : "Completed" }),
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, {}), closed ? "Reopen task" : "Mark Done"]
+									})] })
 								]
+							}),
+							task.sourceQueryId && onOpenSourceQuery && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "outline",
+								size: "sm",
+								onClick: () => onOpenSourceQuery(task.sourceQueryId),
+								children: "View source query"
 							}),
 							!isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-xs text-muted-foreground",
@@ -21060,9 +21104,9 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 								className: "text-xs text-amber-800",
 								children: ["Blocked: ", task.sourceBlockedReason]
 							}),
-							task.sourceApprovalStatus && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-								className: "text-xs",
-								children: ["Approval: ", task.sourceApprovalStatus]
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "text-sm text-muted-foreground",
+								children: ["Approval: ", task.sourceApprovalStatus || "Not Required"]
 							}),
 							resources.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
 								className: "rounded-xl border p-3",
@@ -21088,7 +21132,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 								})]
 							}),
 							project?.id && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
-								className: "rounded-xl border p-3",
+								className: "task-thread-resources",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", {
 									className: "text-sm",
 									children: "Shared project resources"
@@ -21098,15 +21142,24 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 								})]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-								className: "space-y-3",
+								className: "task-thread-discussion",
 								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", {
-										className: "text-sm font-semibold",
-										children: [
-											"Task discussion · ",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "task-thread-discussion-heading",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", { children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, {}),
+											" Task discussion thread (",
 											messages.length,
-											cursor ? "+" : ""
-										]
+											cursor ? "+" : "",
+											")"
+										] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+											variant: "ghost",
+											size: "icon-sm",
+											"aria-label": "Refresh discussion",
+											disabled: loading,
+											onClick: () => load(),
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: loading ? "animate-spin" : "" })
+										})]
 									}),
 									messages.map((message) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "space-y-1",
@@ -21132,8 +21185,8 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 										children: "Load more messages"
 									}),
 									!messages.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "text-sm text-muted-foreground",
-										children: loading ? "Loading discussion…" : "No messages yet."
+										className: "task-thread-empty",
+										children: loading ? "Loading discussion…" : "No discussion messages yet in this task thread."
 									})
 								]
 							})
@@ -21143,21 +21196,45 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 						className: "border-t pt-3 text-xs text-muted-foreground",
 						children: "This task is closed. A founder can reopen it to continue the discussion."
 					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-						className: "shrink-0 space-y-2 border-t pt-3",
+						className: "task-thread-composer",
 						onSubmit: (event) => {
 							event.preventDefault();
 							send(false);
 						},
 						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
-								"aria-label": "Task comment",
-								value: draft,
-								maxLength: 2e3,
-								onChange: (e) => setDraft(e.target.value),
-								placeholder: "Write an internal message or describe the attached file…",
-								rows: 2
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "task-thread-compose-row",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+										type: "button",
+										variant: "ghost",
+										size: "icon",
+										"aria-label": "Attach image or PDF",
+										title: "Attach image or PDF",
+										disabled: busy,
+										onClick: () => fileInput.current?.click(),
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Paperclip, {})
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+										"aria-label": "Task comment",
+										value: draft,
+										maxLength: 2e3,
+										onChange: (e) => setDraft(e.target.value),
+										placeholder: "Post team update or task comment…",
+										rows: 1
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+										type: "button",
+										variant: "ghost",
+										size: "icon",
+										"aria-label": "Reference link and resource options",
+										"aria-expanded": attachmentOptions,
+										onClick: () => setAttachmentOptions(!attachmentOptions),
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link2, {})
+									})
+								]
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+							attachmentOptions && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 								"aria-label": "Attachment link",
 								value: link,
 								maxLength: 2048,
@@ -21186,7 +21263,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 								accept: "image/jpeg,image/png,image/webp,application/pdf",
 								onChange: upload
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							attachmentOptions && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 								className: "flex gap-2 text-xs",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
 									type: "checkbox",
@@ -21195,35 +21272,24 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 								}), "Keep this message as a resource for dependent work"]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex flex-wrap gap-2",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-										type: "button",
-										size: "sm",
-										variant: "outline",
-										disabled: busy,
-										onClick: () => fileInput.current?.click(),
-										children: "Attach image or PDF"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-										type: "submit",
-										size: "sm",
-										disabled: !ready,
-										children: busy ? "Saving…" : "Post internally"
-									}),
-									isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-										type: "button",
-										size: "sm",
-										variant: "outline",
-										disabled: !ready || !project?.telegramGroupChatId,
-										onClick: () => {
-											setShareMessage(null);
-											setRecipients([]);
-											setReview(true);
-										},
-										children: "Review & send to Telegram"
-									})
-								]
+								className: "task-thread-post-actions",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									type: "submit",
+									size: "sm",
+									disabled: !ready,
+									children: busy ? "Saving…" : "Post internally"
+								}), isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									type: "button",
+									size: "sm",
+									variant: "outline",
+									disabled: !ready || !project?.telegramGroupChatId,
+									onClick: () => {
+										setShareMessage(null);
+										setRecipients([]);
+										setReview(true);
+									},
+									children: "Review and send it to Telegram"
+								})]
 							})
 						]
 					})
@@ -28968,86 +29034,6 @@ function SuggestReply({ requestId, disabled, onUse, baseInstruction = "", outcom
 		]
 	});
 }
-// frontend/src/components/QueryHoldDialog.jsx
-function QueryHoldDialog({ open, onOpenChange, query, onChanged }) {
-	const [workspace, setWorkspace] = (0, import_react.useState)(null), [taskId, setTaskId] = (0, import_react.useState)(""), [search, setSearch] = (0, import_react.useState)(""), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false);
-	(0, import_react.useEffect)(() => {
-		if (!open || !query) return;
-		let active = true;
-		setWorkspace(null);
-		setTaskId(query.taskId || "");
-		setSearch("");
-		setError("");
-		fetchProjectWorkspace(query.projectId).then((data) => {
-			if (active) setWorkspace(data);
-		}).catch((problem) => {
-			if (active) setError(problem.message);
-		});
-		return () => {
-			active = false;
-		};
-	}, [open, query?.id]);
-	const save = async () => {
-		setBusy(true);
-		try {
-			await request(`/api/founder/decision-requests/${encodeURIComponent(query.id)}/hold`, {
-				method: "POST",
-				body: { taskId }
-			});
-			onOpenChange(false);
-			onChanged?.();
-		} catch (problem) {
-			setError(problem.message);
-		} finally {
-			setBusy(false);
-		}
-	};
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
-		open,
-		onOpenChange: (value) => {
-			if (!busy) onOpenChange(value);
-		},
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Waiting for more context" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Keep this message and its files in a task discussion while you wait for more information. The task's dates and status stay unchanged." })] }),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-				"aria-label": "Find a task for this query",
-				value: search,
-				onChange: (e) => setSearch(e.target.value),
-				placeholder: "Find a task…"
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "max-h-72 space-y-2 overflow-y-auto",
-				children: [workspace?.tasks.filter((task) => task.status !== "Cancelled" && `${task.title} ${workspace.project.stages?.find((row) => row.id === task.stageId)?.name || ""}`.toLowerCase().includes(search.toLowerCase())).map((task) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-					className: "flex items-center gap-2 rounded-lg border p-3 text-sm",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-							type: "radio",
-							name: "hold-task",
-							checked: taskId === task.id,
-							onChange: () => setTaskId(task.id)
-						}),
-						task.title,
-						" · ",
-						task.status
-					]
-				}, task.id)), workspace && !workspace.tasks.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "text-sm",
-					children: "Add a task to this project first."
-				})]
-			}),
-			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				role: "alert",
-				className: "text-sm text-destructive",
-				children: error
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-				disabled: busy || !taskId,
-				onClick: save,
-				children: busy ? "Saving…" : "Save — waiting for more context"
-			})
-		] })
-	});
-}
 // frontend/src/lib/stageTemplate.js
 var STAGE_TASKS = [
 	{
@@ -30023,23 +30009,10 @@ var ACTIONS = [
 		text: "Save the query here while waiting for clarification. Task dates and status stay unchanged."
 	}
 ];
-async function sendReply(requestId, text, key) {
-	return publishDecisionReply(requestId, {
-		response: text,
-		idempotencyKey: key
-	});
-}
-function ReplyStep({ request, baseInstruction, outcome, value, onChange, noReply, onNoReply }) {
+function ReplyStep({ request, baseInstruction, outcome, value, onChange }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "space-y-3",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-			className: "flex items-center gap-2 text-sm",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-				type: "checkbox",
-				checked: noReply,
-				onChange: (event) => onNoReply(event.target.checked)
-			}), "Don't reply in the group"]
-		}), !noReply && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SuggestReply, {
 				requestId: request.id,
 				baseInstruction,
@@ -30051,17 +30024,17 @@ function ReplyStep({ request, baseInstruction, outcome, value, onChange, noReply
 				onChange: (event) => onChange(event.target.value),
 				rows: 4,
 				maxLength: 3e3,
-				placeholder: "Reply sent to the group, under the original message"
+				placeholder: "Update sent with this decision"
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 				className: "text-[11px] text-muted-foreground",
 				children: [
 					"Sent as a reply to ",
 					request.originalSenderName || "the sender",
-					"'s message after you confirm."
+					"'s original message when you confirm this decision."
 				]
 			})
-		] })]
+		]
 	});
 }
 function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
@@ -30078,11 +30051,9 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 	const [newStage, setNewStage] = (0, import_react.useState)(null);
 	const [linkTaskKey, setLinkTaskKey] = (0, import_react.useState)("site-check");
 	const [reply, setReply] = (0, import_react.useState)("");
-	const [noReply, setNoReply] = (0, import_react.useState)(false);
 	const [saving, setSaving] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
 	const [accepted, setAccepted] = (0, import_react.useState)(null);
-	const [replyKey, setReplyKey] = (0, import_react.useState)("");
 	const isUpdate = request$1?.requestType === "Update";
 	const defaultPlan = useDefaultPlan(request$1?.projectId, open);
 	(0, import_react.useEffect)(() => {
@@ -30097,10 +30068,8 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 		});
 		setNewStage(null);
 		setReply("");
-		setNoReply(isUpdate);
 		setError("");
 		setAccepted(null);
-		setReplyKey(generateIdempotencyKey(`pub-${request$1.id}`));
 		setWorkspace(null);
 		setLoadError("");
 		fetchProjectWorkspace(request$1.projectId, "founder").then(setWorkspace).catch((problem) => setLoadError(problem.message || "Could not load the project plan."));
@@ -30175,20 +30144,16 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 			if (!result) {
 				result = waitingForContext ? await request(`/api/founder/decision-requests/${encodeURIComponent(request$1.id)}/hold`, {
 					method: "POST",
-					body: { taskId }
-				}) : await acceptDecisionRequest(request$1.id, target);
+					body: {
+						taskId,
+						notificationText: reply.trim()
+					}
+				}) : await acceptDecisionRequest(request$1.id, target, reply.trim());
 				if (waitingForContext) result.summary = holdPreview.summary;
 				setAccepted(result);
 			}
 		} catch (problem) {
 			setError(problem.message || "Could not accept this query.");
-			setSaving(false);
-			return;
-		}
-		if (!noReply && reply.trim()) try {
-			await sendReply(request$1.id, reply.trim(), replyKey);
-		} catch (problem) {
-			setError(`${waitingForContext ? "The query is waiting for more context" : "The task was updated"}, but the reply was not sent: ${problem.message || "Telegram did not answer"}. Retry sending.`);
 			setSaving(false);
 			return;
 		}
@@ -30213,7 +30178,10 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 		setError("");
 	};
 	const canNext = step === "task" ? Boolean(taskId) : step === "action" ? previewReady && preview?.ok !== false && !previewing && !previewError && Boolean(preview) : step === "new-stage" ? previewReady && !previewing && !previewError && Boolean(preview) : false;
-	const next = () => setStep(step === "task" ? "action" : "reply");
+	const next = () => {
+		if (step !== "task") setReply(outcome);
+		setStep(step === "task" ? "action" : "reply");
+	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
 		open,
 		onOpenChange: (value) => {
@@ -30479,9 +30447,7 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 								baseInstruction,
 								outcome,
 								value: reply,
-								onChange: setReply,
-								noReply,
-								onNoReply: setNoReply
+								onChange: setReply
 							})]
 						}),
 						error && step !== "new-stage" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
@@ -30499,9 +30465,9 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 						onClick: back,
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { className: "size-4" }), "Back"]
 					}), step === "reply" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						disabled: saving || !noReply && !reply.trim(),
+						disabled: saving || !reply.trim(),
 						onClick: confirm,
-						children: saving ? "Saving…" : accepted ? "Retry sending" : noReply ? "Confirm" : "Confirm and send"
+						children: saving ? "Saving…" : accepted ? "Retry sending" : "Confirm and send"
 					}) : step !== "stage" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						disabled: !canNext,
 						onClick: next,
@@ -30554,14 +30520,12 @@ function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
 	const [saving, setSaving] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
 	const [rejected, setRejected] = (0, import_react.useState)(false);
-	const [key, setKey] = (0, import_react.useState)("");
 	(0, import_react.useEffect)(() => {
 		if (!open || !request) return;
 		setText(request.rejectionReply || "");
 		setHint("");
 		setError("");
 		setRejected(alreadyRejected);
-		setKey(generateIdempotencyKey(`pub-${request.id}`));
 	}, [open, request?.id]);
 	const confirm = async () => {
 		const message = text.trim() || "We're not able to go ahead with this request right now.";
@@ -30574,13 +30538,6 @@ function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
 			}
 		} catch (problem) {
 			setError(problem.message || "Could not reject this query.");
-			setSaving(false);
-			return;
-		}
-		try {
-			await sendReply(request.id, message, key);
-		} catch (problem) {
-			setError(`Marked as rejected, but the message was not sent: ${problem.message || "Telegram did not answer"}. Retry sending.`);
 			setSaving(false);
 			return;
 		}
@@ -30650,6 +30607,18 @@ function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
 	});
 }
 function QueryOutcome({ request }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "space-y-1",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryDecisionOutcome, { request }), request.notifications?.length > 0 && (() => {
+			const update = request.notifications.at(-1);
+			return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: `text-xs ${update.status === "Sent" ? "text-muted-foreground" : "text-amber-800"}`,
+				children: update.status === "Sent" ? "Sender updated in Telegram." : `Decision saved. ${update.error || "Telegram delivery is pending; check the group before sending again."}`
+			});
+		})()]
+	});
+}
+function QueryDecisionOutcome({ request }) {
 	if (request.status === "On hold") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 		className: "text-xs text-amber-800",
 		children: "Waiting for more context · this query needs clarification. Saved in its task thread."
@@ -30673,7 +30642,7 @@ function QueryOutcome({ request }) {
 	return null;
 }
 function QueryDecisionButtons({ request: request$2, disabled, onAccept, onReject, onChanged, size = "sm" }) {
-	const [holdOpen, setHoldOpen] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false);
+	const [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false);
 	const resume = async () => {
 		setBusy(true);
 		try {
@@ -30706,35 +30675,19 @@ function QueryDecisionButtons({ request: request$2, disabled, onAccept, onReject
 		"Published",
 		"Approved"
 	].includes(request$2.status)) return null;
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-			variant: "outline",
-			size,
-			disabled,
-			onClick: () => setHoldOpen(true),
-			children: "Waiting for more context"
-		}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryHoldDialog, {
-			open: holdOpen,
-			onOpenChange: setHoldOpen,
-			query: request$2,
-			onChanged
-		}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-			size,
-			onClick: onAccept,
-			disabled,
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5 mr-1" }), "Accept"]
-		}),
-		request$2.canReject && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-			size,
-			variant: "outline",
-			className: "text-destructive",
-			onClick: onReject,
-			disabled,
-			children: "Reject"
-		})
-	] });
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+		size,
+		onClick: onAccept,
+		disabled,
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5 mr-1" }), "Accept"]
+	}), request$2.canReject && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+		size,
+		variant: "outline",
+		className: "text-destructive",
+		onClick: onReject,
+		disabled,
+		children: "Reject"
+	})] });
 }
 // frontend/src/components/DecisionInbox.jsx
 async function api$3(url, method = "GET", data) {

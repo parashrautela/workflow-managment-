@@ -166,7 +166,10 @@ test('pilot loop: setup, start, client text/photo, two-user discussion, task ass
   const employeeMedia=await fetch(`${f.base}/api/employee/decision-requests/${id}/attachments/0`,{headers:{cookie:employeeCookie}}); assert.equal(employeeMedia.status,200);
   const published=await call(`/api/founder/decision-requests/${id}/publish`,'POST',{response:'Approved',idempotencyKey:'reply-1'}); assert.equal(published.status,200);
   assert.equal((await call(`/api/founder/decision-requests/${id}/publish`,'POST',{response:'Approved',idempotencyKey:'reply-1'})).status,200);
-  assert.equal((await readFile(path.join(f.directory,'sends.jsonl'),'utf8')).trim().split('\n').length,1);
+  const sent = (await readFile(path.join(f.directory,'sends.jsonl'),'utf8')).trim().split('\n').map(row=>JSON.parse(row));
+  assert.equal(sent.length,2);
+  assert.match(sent[0].text,/accepted/);
+  assert.equal(sent[0].reply_parameters.message_id,10);
   await f.restart();
   assert.equal((await call(`/api/founder/tasks/${task.id}`)).data.task.status,'Open');
   assert.equal((await call(`/api/founder/tasks/${task.id}/messages`)).data.messages[0].text,'Site check booked');
@@ -308,7 +311,8 @@ test('holding a query stores its evidence without changing work and only unatten
  await f.call('/api/integrations/telegram/requests','POST',payload(900),'',true);
  const task=(await call(`/api/founder/projects/${p}/tasks`)).data.tasks[0];const original=structuredClone(task);
  const path='/api/founder/decision-requests/'+payload(900).RequestID;
- assert.equal((await call(path+'/hold','POST',{taskId:task.id})).status,200);assert.equal((await call(path+'/hold','POST',{taskId:task.id})).status,409);
+ assert.equal((await call(path+'/hold','POST',{taskId:task.id})).status,200);assert.equal((await call(path+'/hold','POST',{taskId:task.id})).status,200);
+ assert.equal((await call(path)).data.request.notifications.length,1,'repeated hold sends only one update');
  const ws=(await call(`/api/founder/projects/${p}/workspace`)).data;assert.equal(ws.project.openQueryCount,0);assert.deepEqual(ws.tasks.find(row=>row.id===task.id),original);assert.equal((await call(`/api/founder/tasks/${task.id}/messages`)).data.messages.length,1);
  assert.equal((await call(path+'/publish','POST',{response:'Please share more context',idempotencyKey:'context-reply'})).status,200);
  await f.restart();assert.equal((await call(path)).data.request.status,'On hold');

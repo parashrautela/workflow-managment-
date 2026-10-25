@@ -1,7 +1,6 @@
-import {QueryHoldDialog} from '@/components/QueryHoldDialog';
 import {request as sendRequest} from '@/lib/api';
 // Accept links the query to a task with a work action or a request for more context, or adds a new stage.
-// Reject sends the founder's message to the group. Nothing reaches Telegram until the founder confirms the reply.
+// Confirming a decision sends one status update as a reply to the source query.
 import { useEffect, useMemo, useState } from "react";
 import { AlertTriangle, ArrowLeft, Check, ChevronRight, Layers, Loader2, Octagon, Plus, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,7 +10,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { SuggestReply } from "@/components/SuggestReply";
 import { AddStageForm, emptyStage, stageNameProblem, stageSpec } from "@/components/AddStageForm";
 import { useDefaultPlan, useStagePreview } from "@/components/AddStageDialog";
-import { acceptDecisionRequest, fetchProjectWorkspace, generateIdempotencyKey, previewAcceptDecision, publishDecisionReply, rejectDecisionRequest } from "@/lib/api";
+import { acceptDecisionRequest, fetchProjectWorkspace, previewAcceptDecision, rejectDecisionRequest } from "@/lib/api";
 import { timelineItems, calendarDay as DAY } from "@/lib/timeline";
 import { todayDate } from "@/lib/timelineStatus";
 import { orderStagesForPicker, defaultTaskForStage } from "@/lib/stagePicker";
@@ -45,25 +44,12 @@ const ACTIONS = [
   { type: "hold", title: "Waiting for more context", text: "Save the query here while waiting for clarification. Task dates and status stay unchanged." },
 ];
 
-// Sends the founder's reply; a failure here never undoes the decision already saved.
-async function sendReply(requestId, text, key) {
-  return publishDecisionReply(requestId, { response: text, idempotencyKey: key });
-}
-
-function ReplyStep({ request, baseInstruction, outcome, value, onChange, noReply, onNoReply }) {
+function ReplyStep({ request, baseInstruction, outcome, value, onChange }) {
   return (
     <div className="space-y-3">
-      <label className="flex items-center gap-2 text-sm">
-        <input type="checkbox" checked={noReply} onChange={(event) => onNoReply(event.target.checked)} />
-        Don't reply in the group
-      </label>
-      {!noReply && (
-        <>
-          <SuggestReply requestId={request.id} baseInstruction={baseInstruction} outcome={outcome} onUse={onChange} />
-          <Textarea value={value} onChange={(event) => onChange(event.target.value)} rows={4} maxLength={3000} placeholder="Reply sent to the group, under the original message" />
-          <p className="text-[11px] text-muted-foreground">Sent as a reply to {request.originalSenderName || "the sender"}'s message after you confirm.</p>
-        </>
-      )}
+      <SuggestReply requestId={request.id} baseInstruction={baseInstruction} outcome={outcome} onUse={onChange} />
+      <Textarea value={value} onChange={(event) => onChange(event.target.value)} rows={4} maxLength={3000} placeholder="Update sent with this decision" />
+      <p className="text-[11px] text-muted-foreground">Sent as a reply to {request.originalSenderName || "the sender"}'s original message when you confirm this decision.</p>
     </div>
   );
 }
@@ -79,18 +65,16 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
   const [newStage, setNewStage] = useState(null);
   const [linkTaskKey, setLinkTaskKey] = useState("site-check");
   const [reply, setReply] = useState("");
-  const [noReply, setNoReply] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const [accepted, setAccepted] = useState(null);
-  const [replyKey, setReplyKey] = useState("");
   const isUpdate = request?.requestType === "Update";
   const defaultPlan = useDefaultPlan(request?.projectId, open);
 
   useEffect(() => {
     if (!open || !request) return;
     setStep("stage"); setSearch(""); setStageId(""); setTaskId(""); setAction({ type: isUpdate ? "attach" : "delay", days: 1 });
-    setNewStage(null); setReply(""); setNoReply(isUpdate); setError(""); setAccepted(null); setReplyKey(generateIdempotencyKey(`pub-${request.id}`));
+    setNewStage(null); setReply(""); setError(""); setAccepted(null);
     setWorkspace(null); setLoadError("");
     fetchProjectWorkspace(request.projectId, "founder").then(setWorkspace).catch((problem) => setLoadError(problem.message || "Could not load the project plan."));
   }, [open, request?.id]);
@@ -137,22 +121,14 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
     let result = accepted;
     try {
       if (!result) { result = waitingForContext
-        ? await sendRequest(`/api/founder/decision-requests/${encodeURIComponent(request.id)}/hold`, { method: 'POST', body: { taskId } })
-        : await acceptDecisionRequest(request.id, target);
+        ? await sendRequest(`/api/founder/decision-requests/${encodeURIComponent(request.id)}/hold`, { method: 'POST', body: { taskId, notificationText: reply.trim() } })
+        : await acceptDecisionRequest(request.id, target, reply.trim());
         if (waitingForContext) result.summary = holdPreview.summary;
         setAccepted(result); }
     } catch (problem) {
       setError(problem.message || "Could not accept this query.");
       setSaving(false);
       return;
-    }
-    if (!noReply && reply.trim()) {
-      try { await sendReply(request.id, reply.trim(), replyKey); }
-      catch (problem) {
-        setError(`${waitingForContext ? "The query is waiting for more context" : "The task was updated"}, but the reply was not sent: ${problem.message || "Telegram did not answer"}. Retry sending.`);
-        setSaving(false);
-        return;
-      }
     }
     setSaving(false);
     onOpenChange(false);
@@ -162,7 +138,7 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
   const steps = newStage ? ["stage", "new-stage", "reply"] : ["stage", "task", "action", "reply"];
   const back = () => { const index = steps.indexOf(step); if (index > 0) setStep(steps[index - 1]); if (steps[index - 1] === "stage") setNewStage(null); setError(""); };
   const canNext = step === "task" ? Boolean(taskId) : step === "action" ? previewReady && preview?.ok !== false && !previewing && !previewError && Boolean(preview) : step === "new-stage" ? previewReady && !previewing && !previewError && Boolean(preview) : false;
-  const next = () => setStep(step === "task" ? "action" : "reply");
+  const next = () => { if (step !== "task") setReply(outcome); setStep(step === "task" ? "action" : "reply"); };
 
   return (
     <Dialog open={open} onOpenChange={(value) => { if (!saving) onOpenChange(value); }}>
@@ -253,7 +229,7 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
           {step === "reply" && (
             <div className="space-y-4">
               <div className="flex items-start gap-2 rounded-xl border bg-muted/40 px-3 py-2.5 text-sm"><Check className="mt-0.5 size-4 shrink-0 text-emerald-700" /><span>{summary || "Ready to accept."}</span></div>
-              <ReplyStep request={request} baseInstruction={baseInstruction} outcome={outcome} value={reply} onChange={setReply} noReply={noReply} onNoReply={setNoReply} />
+              <ReplyStep request={request} baseInstruction={baseInstruction} outcome={outcome} value={reply} onChange={setReply} />
             </div>
           )}
 
@@ -263,7 +239,7 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
         <div className="flex shrink-0 items-center justify-between gap-2 border-t px-5 py-3">
           <Button variant="ghost" disabled={step === "stage" || saving || Boolean(accepted)} onClick={back}><ArrowLeft className="size-4" />Back</Button>
           {step === "reply"
-            ? <Button disabled={saving || (!noReply && !reply.trim())} onClick={confirm}>{saving ? "Saving…" : accepted ? "Retry sending" : noReply ? "Confirm" : "Confirm and send"}</Button>
+            ? <Button disabled={saving || !reply.trim()} onClick={confirm}>{saving ? "Saving…" : accepted ? "Retry sending" : "Confirm and send"}</Button>
             : step !== "stage" && <Button disabled={!canNext} onClick={next}>Next</Button>}
         </div>
       </DialogContent>
@@ -292,10 +268,9 @@ export function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const [rejected, setRejected] = useState(false);
-  const [key, setKey] = useState("");
   useEffect(() => {
     if (!open || !request) return;
-    setText(request.rejectionReply || ""); setHint(""); setError(""); setRejected(alreadyRejected); setKey(generateIdempotencyKey(`pub-${request.id}`));
+    setText(request.rejectionReply || ""); setHint(""); setError(""); setRejected(alreadyRejected);
   }, [open, request?.id]);
 
   const confirm = async () => {
@@ -304,8 +279,6 @@ export function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
     try {
       if (!rejected) { await rejectDecisionRequest(request.id, message); setRejected(true); }
     } catch (problem) { setError(problem.message || "Could not reject this query."); setSaving(false); return; }
-    try { await sendReply(request.id, message, key); }
-    catch (problem) { setError(`Marked as rejected, but the message was not sent: ${problem.message || "Telegram did not answer"}. Retry sending.`); setSaving(false); return; }
     setSaving(false);
     onOpenChange(false);
     onDone?.();
@@ -335,6 +308,14 @@ export function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
 
 // One line on a handled query: what was decided.
 export function QueryOutcome({ request }) {
+  return <div className="space-y-1"><QueryDecisionOutcome request={request} />{request.notifications?.length > 0 && (() => {
+    const update = request.notifications.at(-1);
+    return <p className={`text-xs ${update.status === 'Sent' ? 'text-muted-foreground' : 'text-amber-800'}`}>
+      {update.status === 'Sent' ? 'Sender updated in Telegram.' : `Decision saved. ${update.error || 'Telegram delivery is pending; check the group before sending again.'}`}
+    </p>;
+  })()}</div>;
+}
+function QueryDecisionOutcome({ request }) {
   if(request.status==='On hold')return <p className="text-xs text-amber-800">Waiting for more context · this query needs clarification. Saved in its task thread.</p>;
   if (request.acceptSummary) return <p className="flex items-start gap-1.5 text-xs text-emerald-800"><Layers className="mt-0.5 size-3.5 shrink-0" />Accepted · {request.acceptSummary}</p>;
   if (request.rejectionReply) return <p className="text-xs text-destructive">Rejected · "{request.rejectionReply}"</p>;
@@ -343,7 +324,7 @@ export function QueryOutcome({ request }) {
 
 // Accept / Reject buttons, shown until the query has a decision.
 export function QueryDecisionButtons({ request, disabled, onAccept, onReject, onChanged, size = "sm" }) {
-  const [holdOpen,setHoldOpen]=useState(false),[error,setError]=useState(''),[busy,setBusy]=useState(false);
+  const [error,setError]=useState(''),[busy,setBusy]=useState(false);
   const resume=async()=>{setBusy(true);try{await sendRequest(`/api/founder/decision-requests/${encodeURIComponent(request.id)}/resume`,{method:'POST',body:{}});onChanged?.();}catch(problem){setError(problem.message);}finally{setBusy(false);}};
   if(request.requestType === "Message") return null;
   if(request.status==='On hold')return <><Button variant="outline" size={size} disabled={busy||disabled} onClick={resume}>Return to review</Button>{error&&<p role="alert" className="text-xs text-destructive">{error}</p>}</>;
@@ -352,8 +333,6 @@ export function QueryDecisionButtons({ request, disabled, onAccept, onReject, on
   if (decided) return null;
   return (
     <>
-      <Button variant="outline" size={size} disabled={disabled} onClick={()=>setHoldOpen(true)}>Waiting for more context</Button>
-      <QueryHoldDialog open={holdOpen} onOpenChange={setHoldOpen} query={request} onChanged={onChanged}/>
       <Button size={size} onClick={onAccept} disabled={disabled}><Check className="size-3.5 mr-1" />Accept</Button>
       {request.canReject && <Button size={size} variant="outline" className="text-destructive" onClick={onReject} disabled={disabled}>Reject</Button>}
     </>

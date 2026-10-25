@@ -1,3 +1,4 @@
+import { queryUpdateText } from "./query-notifications.js";
 import { isClientQuery, queryView } from './query-context.js';
 import { rolesOf, hasRole, matchesRole, roleText, isStaff } from './roles.js';
 import { canWorkOnTask } from './work-access.js';
@@ -61,7 +62,7 @@ export function projectSummary(state, project) {
 }
 
 // Additive routes: founder/employee cookies and the existing {error} contract stay intact.
-export function createPilotRoutes({ getState, founder, employeeSession, body, json, save, audit, projectView, callBotBridge }) {
+export function createPilotRoutes({ getState, founder, employeeSession, body, json, save, audit, projectView, callBotBridge, notifyQuery = async () => {} }) {
   const actor = (req, namespace) => {
     if (namespace === 'founder') { if (!founder(req)) fail('Founder session required.', 401); return { id: 'founder', name: 'Founder', founder: true }; }
     const employee = employeeSession(req);
@@ -468,6 +469,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
       const project = projectFor(state,user,request.projectId); requireLinked(project);
       if (request.requestType === 'Message') fail('Group messages are context, not decision requests.',409);
       const input = await body(req); const apply = m[2] === 'accept'; const target = input.target || {};
+      const notificationText = input.notificationText === undefined ? '' : text(input.notificationText, 'reply', 3000);
       const projectTasks = () => state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt);
       if (request.acceptedAt) {
         if (apply && JSON.stringify(request.acceptInput) === JSON.stringify(target)) { json(res,200,{ok:true,request,task:state.tasks.find((t) => t.id === request.taskId) || null,summary:request.acceptSummary,tasks:projectTasks()}); return true; }
@@ -516,6 +518,8 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
         fail('The schedule was updated but the query could not be linked. Do not repeat the action; open the timeline to confirm.',500);
       }
       await save();
+      const action = target.kind === 'task' ? target.action.type : 'new-stage';
+      await notifyQuery(request, project, action, notificationText || queryUpdateText(action, linkTask, result));
       json(res,200,{ ok: true, request, task: linkTask, summary: result.summary, affected: result.affected || [], warnings: result.warnings || [], finish: result.finish || '', tasks: projectTasks() });
       return true;
     }
@@ -534,6 +538,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
         if (m[2] === 'convert' && request.taskId) { const task = state.tasks.find((t) => t.id === request.taskId); json(res,200,{request,task}); return true; }
         const target = m[2] === 'reject' ? 'Rejected' : 'Approved';
         if (['Rejected','Done'].includes(request.status) && request.status !== target) fail('This query is already closed.',409);
+        if (request.decisionStatus === target) { json(res,200,{request}); return true; }
         // The reason is also the reply the founder sends to the group (published separately, after review).
         if (m[2] === 'reject') { request.reviewNote = text(input.reason === undefined || input.reason === '' || (typeof input.reason === 'string' && !input.reason.trim()) ? "We're not able to go ahead with this request right now." : input.reason,'rejection reason',3000); request.rejectionReply = request.reviewNote; request.rejectedAt = timestamp(); }
         if (m[2] === 'convert') {
@@ -544,7 +549,9 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
         // Decision and delivery are separate: approving does not publish any message.
         request.decisionStatus = target; if (request.status !== 'Published') request.status = target;
         request.reviewedAt = timestamp(); request.reviewedBy = user.id;
-        audit('query_'+m[2],project.id,{requestId:request.id,taskId:request.taskId || ''}); await save(); json(res,200,{request,task:state.tasks.find((t) => t.id === request.taskId) || null}); return true;
+        audit('query_'+m[2],project.id,{requestId:request.id,taskId:request.taskId || ''}); await save();
+        await notifyQuery(request, project, m[2], request.rejectionReply || queryUpdateText(m[2]));
+        json(res,200,{request,task:state.tasks.find((t) => t.id === request.taskId) || null}); return true;
       }
     }
     // Let legacy routes handle existing operations where no new method matched.

@@ -402,13 +402,13 @@ export async function fetchDefaultPlan(projectId) {
 /**
  * Accept a query: link it to a task and delay/redo/complete it, or add a new stage for it.
  * target: { kind: 'task', taskId, action: { type, days } } | { kind: 'new-stage', stage, linkTaskKey }
- * Nothing is sent to Telegram; publish the reply separately after the founder reviews it.
+ * Preview sends nothing. Confirming a decision sends its reviewed status update to the source query.
  */
 export async function previewAcceptDecision(requestId, target) {
   return await post(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept-preview`, { target });
 }
-export async function acceptDecisionRequest(requestId, target) {
-  return await post(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept`, { target });
+export async function acceptDecisionRequest(requestId, target, notificationText) {
+  return await post(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept`, { target, notificationText });
 }
 
 export const previewTaskPlan = (taskId, input) => post(`/api/founder/tasks/${taskId}/plan/preview`, input);

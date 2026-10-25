@@ -1,4 +1,6 @@
 import { useEffect, useState, useRef } from "react";
+import { CalendarDays, CheckCircle2, Link2, MessageSquare, Paperclip, RefreshCw, UserRound } from "lucide-react";
+import "./task-thread.css";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -116,6 +118,7 @@ export function TaskThreadDrawer({
     [people, setPeople] = useState([]),
     [draft, setDraft] = useState(""),
     [link, setLink] = useState(""),
+    [attachmentOptions, setAttachmentOptions] = useState(false),
     [file, setFile] = useState(null),
     [isResource, setResource] = useState(false),
     [error, setError] = useState(""),
@@ -172,6 +175,7 @@ export function TaskThreadDrawer({
     setPeople([]);
     setDraft("");
     setLink("");
+    setAttachmentOptions(false);
     setFile(null);
     setResource(false);
     setEditing(false);
@@ -334,66 +338,53 @@ export function TaskThreadDrawer({
           if (!busy) onOpenChange(value);
         }}
       >
-        <DialogContent className="flex max-h-[92dvh] flex-col overflow-hidden sm:max-w-2xl">
-          <DialogHeader>
-            <DialogTitle>{task.title}</DialogTitle>
-            <DialogDescription>
-              {project?.stages?.find((row) => row.id === task.stageId)?.name ||
-                "Task workspace"}{" "}
-              · {task.status} · Due {task.deadline || "not set"}
-            </DialogDescription>
-          </DialogHeader>
-          <div className="min-h-0 flex-1 space-y-4 overflow-y-auto pr-1">
-            {error && (
-              <p className="text-sm text-destructive" role="alert">
-                {error}
-              </p>
-            )}
-            <div className="flex flex-wrap gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                disabled={loading}
-                onClick={() => load()}
-              >
-                Refresh discussion
-              </Button>
+        <DialogContent className="task-thread-dialog">
+          <DialogHeader className="task-thread-header">
+            <div className="task-thread-heading-row">
+              <DialogDescription className="task-thread-context">
+                <span className="task-thread-status">{task.status}</span>
+                <span>· {project?.name || "Task workspace"}</span>
+              </DialogDescription>
               {isFounder && !projectClosed && (
-                <>
-                  <Button variant="outline" size="sm" onClick={startEdit}>
-                    Edit task
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    disabled={busy}
-                    onClick={() =>
-                      changeTask({ status: closed ? "Open" : "Completed" })
-                    }
-                  >
-                    {closed ? "Reopen task" : "Mark task complete"}
-                  </Button>
+                <div className="task-thread-header-actions">
+                  <Button variant="outline" onClick={startEdit}>Edit</Button>
                   {!closed && (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => setMeetingOpen(true)}
-                    >
-                      {taskMeeting ? "Edit meeting" : "Schedule meeting"}
+                    <Button onClick={() => setMeetingOpen(true)}>
+                      <CalendarDays />{taskMeeting ? "Edit meeting" : "Schedule"}
                     </Button>
                   )}
-                </>
-              )}
-              {task.sourceQueryId && onOpenSourceQuery && (
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => onOpenSourceQuery(task.sourceQueryId)}
-                >
-                  View source query
-                </Button>
+                </div>
               )}
             </div>
+            <DialogTitle>{task.title}</DialogTitle>
+          </DialogHeader>
+          <div className="task-thread-body chat-scroll">
+            {error && (
+              <p className="text-sm text-destructive" role="alert">{error}</p>
+            )}
+            <div className="task-thread-overview">
+              <div><span>Assignee</span><p><UserRound />{
+                task.assigneeId === "founder" ? "Founder" :
+                projectMembers.find((member) => (member.employeeId || member.id) === task.assigneeId)?.name ||
+                task.assigneeName || task.sourceAssigneeName || task.sourceRole || "Unassigned"
+              }</p></div>
+              <div><span>Deadline</span><p><CalendarDays />{task.deadline
+                ? new Date(`${task.deadline.slice(0, 10)}T00:00:00`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
+                : "Not set"}</p></div>
+              {isFounder && !projectClosed && (
+                <div><span>Quick Action</span>
+                  <Button variant="outline" size="sm" disabled={busy}
+                    onClick={() => changeTask({ status: closed ? "Open" : "Completed" })}>
+                    <CheckCircle2 />{closed ? "Reopen task" : "Mark Done"}
+                  </Button>
+                </div>
+              )}
+            </div>
+            {task.sourceQueryId && onOpenSourceQuery && (
+              <Button variant="outline" size="sm" onClick={() => onOpenSourceQuery(task.sourceQueryId)}>
+                View source query
+              </Button>
+            )}
             {!isFounder && (
               <p className="text-xs text-muted-foreground">
                 View the whole project and contribute to discussions. Founders
@@ -525,9 +516,9 @@ export function TaskThreadDrawer({
                 Blocked: {task.sourceBlockedReason}
               </p>
             )}
-            {task.sourceApprovalStatus && (
-              <p className="text-xs">Approval: {task.sourceApprovalStatus}</p>
-            )}
+            <p className="text-sm text-muted-foreground">
+              Approval: {task.sourceApprovalStatus || "Not Required"}
+            </p>
             {resources.length > 0 && (
               <details className="rounded-xl border p-3">
                 <summary className="text-sm font-medium">
@@ -552,16 +543,18 @@ export function TaskThreadDrawer({
               </details>
             )}
             {project?.id && (
-              <details className="rounded-xl border p-3">
+              <details className="task-thread-resources">
                 <summary className="text-sm">Shared project resources</summary>
                 <ProjectFiles projectId={project.id} namespace={namespace} />
               </details>
             )}
-            <section className="space-y-3">
-              <h3 className="text-sm font-semibold">
-                Task discussion · {messages.length}
-                {cursor ? "+" : ""}
-              </h3>
+            <section className="task-thread-discussion">
+              <div className="task-thread-discussion-heading">
+                <h3><MessageSquare /> Task discussion thread ({messages.length}{cursor ? "+" : ""})</h3>
+                <Button variant="ghost" size="icon-sm" aria-label="Refresh discussion" disabled={loading} onClick={() => load()}>
+                  <RefreshCw className={loading ? "animate-spin" : ""} />
+                </Button>
+              </div>
               {messages.map((message) => (
                 <div key={message.id} className="space-y-1">
                   <TaskMessage message={message} namespace={namespace} />
@@ -596,8 +589,8 @@ export function TaskThreadDrawer({
                 </Button>
               )}
               {!messages.length && (
-                <p className="text-sm text-muted-foreground">
-                  {loading ? "Loading discussion…" : "No messages yet."}
+                <p className="task-thread-empty">
+                  {loading ? "Loading discussion…" : "No discussion messages yet in this task thread."}
                 </p>
               )}
             </section>
@@ -609,27 +602,31 @@ export function TaskThreadDrawer({
             </p>
           ) : (
             <form
-              className="shrink-0 space-y-2 border-t pt-3"
+              className="task-thread-composer"
               onSubmit={(event) => {
                 event.preventDefault();
                 send(false);
               }}
             >
-              <Textarea
+              <div className="task-thread-compose-row">
+                <Button type="button" variant="ghost" size="icon" aria-label="Attach image or PDF" title="Attach image or PDF" disabled={busy} onClick={() => fileInput.current?.click()}><Paperclip /></Button>
+                <Textarea
                 aria-label="Task comment"
                 value={draft}
                 maxLength={2000}
                 onChange={(e) => setDraft(e.target.value)}
-                placeholder="Write an internal message or describe the attached file…"
-                rows={2}
+                placeholder="Post team update or task comment…"
+                rows={1}
               />
-              <Input
+                <Button type="button" variant="ghost" size="icon" aria-label="Reference link and resource options" aria-expanded={attachmentOptions} onClick={() => setAttachmentOptions(!attachmentOptions)}><Link2 /></Button>
+              </div>
+              {attachmentOptions && <Input
                 aria-label="Attachment link"
                 value={link}
                 maxLength={2048}
                 onChange={(e) => setLink(e.target.value)}
                 placeholder="Optional HTTPS reference link"
-              />
+              />}
               {file && (
                 <p className="text-xs">
                   Attached: {file.name}{" "}
@@ -650,24 +647,15 @@ export function TaskThreadDrawer({
                 accept="image/jpeg,image/png,image/webp,application/pdf"
                 onChange={upload}
               />
-              <label className="flex gap-2 text-xs">
+              {attachmentOptions && <label className="flex gap-2 text-xs">
                 <input
                   type="checkbox"
                   checked={isResource}
                   onChange={(e) => setResource(e.target.checked)}
                 />
                 Keep this message as a resource for dependent work
-              </label>
-              <div className="flex flex-wrap gap-2">
-                <Button
-                  type="button"
-                  size="sm"
-                  variant="outline"
-                  disabled={busy}
-                  onClick={() => fileInput.current?.click()}
-                >
-                  Attach image or PDF
-                </Button>
+              </label>}
+              <div className="task-thread-post-actions">
                 <Button type="submit" size="sm" disabled={!ready}>
                   {busy ? "Saving…" : "Post internally"}
                 </Button>
@@ -683,7 +671,7 @@ export function TaskThreadDrawer({
                       setReview(true);
                     }}
                   >
-                    Review & send to Telegram
+                    Review and send it to Telegram
                   </Button>
                 )}
               </div>

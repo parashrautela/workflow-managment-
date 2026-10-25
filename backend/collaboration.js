@@ -1,3 +1,4 @@
+import { queryUpdateText } from "./query-notifications.js";
 import { randomUUID, createHash } from "node:crypto";
 import { ApiError } from "./api-error.js";
 import { pushQueryMessage } from "./pilot.js";
@@ -161,6 +162,7 @@ export function createCollaborationRoutes({
   callBotBridge,
   stateStore,
   checkpoint = () => {},
+  notifyQuery = async () => {},
 }) {
   return async (req, res, url) => {
     const match = url.pathname.match(
@@ -229,6 +231,9 @@ export function createCollaborationRoutes({
     if (closed(project)) fail("This project is closed.", 409);
     if (match[8]) {
       if (!user.founder) fail("Founder permission required.", 403);
+      const input = await body(req);
+      if (input.notificationText !== undefined && (typeof input.notificationText !== 'string' || !input.notificationText.trim() || input.notificationText.length > 3000)) fail('Enter a reply under 3,000 characters.');
+      if (match[8] === "hold" && request.status === "On hold" && request.taskId === input.taskId) { json(res,200,{request}); return true; }
       if (match[8] === "resume") {
         if (request.status !== "On hold")
           fail("Only a held query can return to review.", 409);
@@ -238,7 +243,6 @@ export function createCollaborationRoutes({
       } else {
         if (!unattended(request))
           fail("This query has already been handled.", 409);
-        const input = await body(req);
         const target = state.tasks.find(
           (row) =>
             row.id === input.taskId &&
@@ -260,6 +264,7 @@ export function createCollaborationRoutes({
         taskId: request.taskId,
       });
       await save();
+      await notifyQuery(request, project, match[8], input.notificationText?.trim() || queryUpdateText(match[8]));
       json(res, 200, { request });
       return true;
     }
