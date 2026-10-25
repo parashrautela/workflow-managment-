@@ -418,6 +418,17 @@ async function handleRequest(req, res) {
       try{return json(res,200,await callBotBridge('/api/integrations/web/workflows',{groupChatId:project.telegramGroupChatId}));}
       catch(error){return json(res,502,{error:error.message});}
     }
+    const groupConnection = url.pathname.match(/^\/api\/founder\/telegram-groups\/(-?\d+)\/connection$/);
+    if (req.method === 'GET' && groupConnection) {
+      const groupId = groupConnection[1];
+      if (!state.telegramGroups.some(group => group.groupChatId === groupId)) return json(res,404,{error:'Telegram group not found.'});
+      try {
+        const snapshot = await callBotBridge('/api/integrations/web/groups',{groupChatId:groupId});
+        const group = snapshot.groups?.find(group => group.groupChatId === groupId);
+        if (!group) return json(res,502,{error:'The bot did not return this group.'});
+        return json(res,200,{groupChatId:groupId,botUsername:group.botUsername,botIsAdmin:group.botIsAdmin,telegramMemberCount:group.telegramMemberCount,warning:group.discoveryWarning || ''});
+      } catch (error) { return json(res,502,{error:error.message}); }
+    }
     if(req.method==='POST' && url.pathname==='/api/founder/telegram-groups/refresh') {
       const input = await body(req);
       if (input.groupChatId && !state.telegramGroups.some(group => group.groupChatId === String(input.groupChatId))) return json(res,404,{error:'Telegram group not found.'});
