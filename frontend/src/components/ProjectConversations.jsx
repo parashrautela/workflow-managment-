@@ -50,6 +50,7 @@ export function ProjectConversations({
               key={project.id}
               endpoint={`/api/${namespace}/projects/${project.id}/team-chat`}
               currentActor={actor}
+              members={project.members}
             />
           </div>
         ) : (

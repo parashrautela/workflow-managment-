@@ -846,6 +846,7 @@ export function ProjectDetailView({
             key={project.id}
             endpoint={`/api/founder/projects/${project.id}/team-chat`}
             currentActor="founder"
+            members={project.members}
           />
         </TabsContent>
 
