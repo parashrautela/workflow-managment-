@@ -7,6 +7,7 @@ const fail = (message, status = 400) => {
 };
 const closed = (project) => ["Completed", "Abandoned"].includes(project.status);
 export const unattended = (request) =>
+  request.requestType !== "Message" &&
   !request.decisionStatus &&
   !["On hold", "Done", "Rejected", "Published", "Approved"].includes(
     request.status,

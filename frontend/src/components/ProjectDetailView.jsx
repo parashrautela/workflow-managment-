@@ -496,7 +496,7 @@ export function ProjectDetailView({
               {/* Telegram Query Status */}
               <div className="rounded-xl border bg-background/80 p-3 space-y-1">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">Client Queries</span>
+                  <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">Queries & Group Chat</span>
                   {pendingQueriesCount > 0 ? (
                     <Badge variant="outline" className="border-amber-300 bg-amber-50 text-amber-900 text-[10px]">
                       {pendingQueriesCount} Pending
@@ -857,9 +857,9 @@ export function ProjectDetailView({
         <TabsContent value="queries" className="space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <h3 className="text-base font-semibold">Telegram Client Queries</h3>
+              <h3 className="text-base font-semibold">Telegram Queries & Group Chat</h3>
               <p className="text-xs text-muted-foreground">
-                Real-time questions, approvals, and photos submitted by the client via Telegram.
+                Messages, questions, updates, and shared files from everyone in the Telegram group.
               </p>
             </div>
           </div>

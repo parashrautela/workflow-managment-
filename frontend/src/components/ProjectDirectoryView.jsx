@@ -1,3 +1,4 @@
+import { needsQueryAttention } from '@/lib/queryStatus';
 // frontend/src/components/ProjectDirectoryView.jsx
 import React, { useState } from "react";
 import {
@@ -136,7 +137,7 @@ export function ProjectDirectoryView({
           filtered.map((project) => {
             const taskCount = project.taskCount || 0;
             const progress = project.progress || 0;
-            const pendingQueries = decisionRequests.filter((q) => q.projectId === project.id && !["Done", "Rejected", "Published"].includes(q.status)).length;
+            const pendingQueries = decisionRequests.filter((q) => q.projectId === project.id && needsQueryAttention(q)).length;
             const isMissingClient = needsSetup(project);
 
             return (

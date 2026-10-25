@@ -57,7 +57,7 @@ export function QueryHoldDialog({ open, onOpenChange, query, onChanged }) {
     >
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Acknowledge & hold</DialogTitle>
+          <DialogTitle>Waiting for more context</DialogTitle>
           <DialogDescription>
             Keep this message and its files in a task discussion while you wait
             for more information. The task's dates and status stay unchanged.
@@ -102,7 +102,7 @@ export function QueryHoldDialog({ open, onOpenChange, query, onChanged }) {
           </p>
         )}
         <Button disabled={busy || !taskId} onClick={save}>
-          {busy ? "Saving…" : "Hold on this task"}
+          {busy ? "Saving…" : "Save — waiting for more context"}
         </Button>
       </DialogContent>
     </Dialog>
