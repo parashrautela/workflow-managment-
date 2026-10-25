@@ -368,3 +368,26 @@ test('all group messages appear as context and only client queries offer optiona
  assert.equal(rejected.rejectionReply,"We're not able to go ahead with this request right now.");
  await f.restart();assert.equal((await call(route(context.RequestID))).data.request.originalMessage,'Materials arrived');
 });
+
+
+test('founder connection check reads the actual linked bot and rejects unregistered groups',async t=>{
+ let checks=0;
+ const bridge=http.createServer(async(req,res)=>{
+  assert.equal(req.url,'/api/integrations/web/groups');
+  assert.equal(req.headers.authorization,'Bearer test-secret');
+  let raw='';for await(const chunk of req)raw+=chunk;
+  assert.equal(JSON.parse(raw).groupChatId,'-123');checks++;
+  res.writeHead(200,{'content-type':'application/json'});
+  res.end(JSON.stringify({groups:[{groupChatId:'-123',botUsername:'project_bot',botIsAdmin:true,telegramMemberCount:5,discoveryWarning:''}]}));
+ });
+ await new Promise(resolve=>bridge.listen(0,'127.0.0.1',resolve));
+ t.after(()=>new Promise(resolve=>bridge.close(resolve)));
+ const f=await fixture(t,{botBridgeUrl:`http://127.0.0.1:${bridge.address().port}`});
+ const route='/api/founder/telegram-groups/-123/connection';
+ assert.equal((await f.call(route)).status,401);
+ assert.equal((await f.call(route,'GET',undefined,f.cookie)).status,404);
+ assert.equal(checks,0);
+ await f.call('/api/integrations/telegram/groups/snapshot','POST',{groups:[{groupChatId:'-123',title:'House',status:'Available',members:[]}]},'',true);
+ const status=await f.call(route,'GET',undefined,f.cookie);
+ assert.equal(status.status,200);assert.equal(status.data.botIsAdmin,true);assert.equal(status.data.botUsername,'project_bot');assert.equal(checks,1);
+});
