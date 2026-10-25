@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { calendarDate } from './timeline.js';
-import { canMove, itemStatus, moveFor, scheduleSummary, swapMoves, undoMoves, unscheduledReason } from './timelineStatus.js';
+import { canChooseMoveMode, canMove, itemStatus, moveFor, scheduleSummary, swapMoves, undoMoves, unscheduledReason } from './timelineStatus.js';
 
 const today = calendarDate('2026-10-16');
 const item = (task, start, end) => ({ task: { id: task.id || 'x', status: 'Open', ...task }, start: start && calendarDate(start), end: end && calendarDate(end) });
@@ -50,4 +50,14 @@ test('only linked, open, dated work can be dragged, and undated work says why', 
   assert.equal(canMove(item({ sheetPlan: true, telegramTaskId: 'x' }, '2026-10-01', '2026-10-02')), false);
   assert.equal(unscheduledReason(item({ sheetPlan: true, missingDuration: true }, null, null)), 'Duration missing in the Google Sheet');
   assert.equal(unscheduledReason(item({}, null, null)), 'No dates in the Google Sheet yet');
+});
+
+
+test('only whole translations offer the two move options',()=>{
+  const a={taskId:'a',fromStart:'2026-10-01',fromEnd:'2026-10-03',start:'2026-10-03',end:'2026-10-05'};
+  assert.equal(canChooseMoveMode([a]),true);
+  assert.equal(canChooseMoveMode([{...a,end:'2026-10-06'}]),false);
+  assert.equal(canChooseMoveMode([a,{...a,taskId:'b',start:'2026-10-02',end:'2026-10-04'}]),false);
+  assert.equal(canChooseMoveMode([{...a,forecastOnly:true}]),false);
+  assert.equal(canChooseMoveMode([]),false);
 });

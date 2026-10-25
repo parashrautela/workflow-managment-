@@ -313,3 +313,30 @@ test('holding a query stores its evidence without changing work and only unatten
  await f.restart();assert.equal((await call(path)).data.request.status,'On hold');
  assert.equal((await call(path+'/resume','POST',{})).status,200);assert.equal((await call(`/api/founder/projects/${p}/workspace`)).data.project.openQueryCount,1);
 });
+
+
+test('custom timeline options preview, reject stale schedules, and persist dates and removed links',async t=>{
+ const f=await fixture(t);const call=(route,method,input)=>f.call(route,method,input,f.cookie);
+ const p=(await call('/api/founder/projects','POST',{name:'Move options test'})).data.project.id;
+ const route=`/api/founder/projects/${p}`;
+ const stage={custom:true,name:'Planning',placement:{type:'date',startDate:'2026-11-01'},tasks:[{title:'Brief',role:'Founder',assigneeId:'founder',durationDays:2},{title:'Plan',role:'Founder',assigneeId:'founder',durationDays:3}]};
+ const built=await call(route+'/stages/apply','POST',{stage});assert.equal(built.status,200);
+ const [a,b]=built.data.tasks;
+ const move={taskId:b.id,fromStart:b.sourceForecastStart,fromEnd:b.deadline,start:'2026-11-01',end:'2026-11-03'};
+ const input={moves:[move],mode:'parallel'};
+ const preview=await call(route+'/schedule/preview','POST',input);assert.equal(preview.status,200);assert.equal(preview.data.dependencyChanges.length,1);
+ const file=path.join(f.directory,'backend/data.json');let stored=JSON.parse(await readFile(file,'utf8'));
+ assert.equal(stored.tasks.find(task=>task.id===b.id).planPredecessorId,a.id);
+ assert.equal((await call(route+'/schedule/apply','POST',input)).status,409);
+ stored.tasks.find(task=>task.id===a.id).deadline='2026-11-03';await writeFile(file,JSON.stringify(stored));await f.restart();
+ assert.equal((await call(route+'/schedule/apply','POST',{...input,fingerprint:preview.data.fingerprint})).status,409);
+ const fresh=await call(route+'/schedule/preview','POST',input);
+ const applied=await call(route+'/schedule/apply','POST',{...input,fingerprint:fresh.data.fingerprint});assert.equal(applied.status,200);
+ await f.restart();stored=JSON.parse(await readFile(file,'utf8'));const saved=stored.tasks.find(task=>task.id===b.id);
+ assert.equal(saved.sourceForecastStart,'2026-11-01');assert.equal(saved.planPredecessorId,'');assert.deepEqual(saved.planPredecessors,[]);assert.equal(saved.sourcePlannedStart,'2026-11-03');
+ const cascade={moves:[{taskId:a.id,fromStart:a.sourceForecastStart,fromEnd:'2026-11-03',start:'2026-11-03',end:'2026-11-05'}],mode:'shift-following'};
+ const shifted=await call(route+'/schedule/preview','POST',cascade);assert.equal(shifted.status,200);assert.equal(shifted.data.affected.length,2);
+ assert.equal((await call(route+'/schedule/apply','POST',{...cascade,fingerprint:shifted.data.fingerprint})).status,200);
+});
+
+

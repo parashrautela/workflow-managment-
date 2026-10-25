@@ -91,3 +91,10 @@ export function stageMoves(items, stageId, shiftDays) {
     .filter((item) => (item.stage?.id || 'other') === stageId && !isClosed(item.task) && item.start !== null && item.end !== null && (item.task.telegramTaskId || item.task.customPlan))
     .map((item) => moveFor(item, shiftDays));
 }
+
+
+export function canChooseMoveMode(moves) {
+  if(!moves?.length || moves.some(move=>move.forecastOnly))return false;
+  const delta=Date.parse(moves[0].start)-Date.parse(moves[0].fromStart);
+  return Number.isFinite(delta) && delta!==0 && moves.every(move=>Date.parse(move.start)-Date.parse(move.fromStart)===delta && Date.parse(move.end)-Date.parse(move.fromEnd)===delta);
+}
