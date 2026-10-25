@@ -1,4 +1,4 @@
-import {needsQueryAttention} from '@/lib/queryStatus';
+import {needsQueryAttention, queryStatusLabel} from '@/lib/queryStatus';
 // frontend/src/components/DecisionInbox.jsx
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
@@ -37,7 +37,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
   const [requests, setRequests] = useState([]);
   const [selectedId, setSelectedId] = useState("");
   const [mobileThread, setMobileThread] = useState(false);
-  const [filter, setFilter] = useState("Open");
+  const [filter, setFilter] = useState("All");
   const [projectFilter, setProjectFilter] = useState("All projects");
   const [search, setSearch] = useState("");
   const [mode, setMode] = useState("internal");
@@ -100,7 +100,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
   const visible = requests.filter((item) => {
     const decided = !needsQueryAttention(item);
     if (filter === "Open" && decided) return false;
-    if (filter === "Handled" && !decided) return false;
+    if (filter === "Handled" && (!decided || item.requestType === "Message")) return false;
     if (filter === "Updates" && item.requestType !== "Update") return false;
     if (projectFilter !== "All projects" && item.projectId !== projectFilter) return false;
     const project = projects.find((candidate) => candidate.id === item.projectId);
@@ -263,7 +263,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
                       <span className="mt-1 block truncate text-xs">{preview(item)}</span>
                       <span className="mt-1.5 flex flex-wrap items-center gap-1.5">
                         <span className={`text-[10px] font-medium ${item.status === "Pending" ? "text-amber-700" : item.status === "Published" ? "text-primary" : "text-emerald-700"}`}>
-                          {item.status}
+                          {queryStatusLabel(item)}
                         </span>
                         {item.taskId && (
                           <Badge variant="outline" className="text-[9px] px-1 py-0 border-indigo-200 bg-indigo-50 text-indigo-700">
@@ -299,7 +299,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
                   <div className="min-w-0">
                     <h2 className="truncate text-sm font-semibold">{selected.originalSenderName}</h2>
                     <p className="truncate text-xs text-muted-foreground">
-                      {selectedProject?.name || "Project"} · {selected.requestType} · {selected.status}
+                      {selectedProject?.name || "Project"} · {selected.requestType} · {queryStatusLabel(selected)}
                       {selected.decisionStatus && ` (${selected.decisionStatus})`}
                     </p>
                   </div>
@@ -496,8 +496,8 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
         </section>
       </div>
 
-      {selected && <QueryAcceptWizard open={acceptOpen} onOpenChange={setAcceptOpen} request={selected} onDone={async (result) => { await load(); setNotice(result?.summary ? `Accepted: ${result.summary}` : "Query accepted."); }} />}
-      {selected && <QueryRejectDialog open={rejectOpen} onOpenChange={setRejectOpen} request={selected} onDone={async () => { await load(); setNotice("Query rejected and the reply was sent."); }} />}
+      {selected && <QueryAcceptWizard open={acceptOpen} onOpenChange={setAcceptOpen} request={selected} onDone={async (result) => { await load(); setNotice(result?.summary || "Query updated."); }} />}
+      {selected && <QueryRejectDialog open={rejectOpen} onOpenChange={setRejectOpen} request={selected} onDone={async () => { await load(); setNotice("Client query rejected and the reply was sent."); }} />}
     </div>
   );
 }

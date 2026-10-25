@@ -69,3 +69,24 @@ Use **Hold** on an incoming query to save it on a task while waiting for more in
 The Purchase template is under Timeline → Reusable plan templates. Preview and edit its selection, proposal and client order-confirmation steps before adding it. Project details now groups client name, city and spaces in one place.
 
 Deployment order: release the companion bot's task-notice endpoint first, then this web app. The web startup creates the attachment table in the existing PostgreSQL database; preserve that table with normal database backups. No extra dependency, OAuth scope or environment variable is required. Real Telegram delivery and physical mobile acceptance remain deployment checks.
+
+
+### Queries and group context
+
+The Queries tab includes ordinary Telegram text and supported photo, document,
+video, voice, and audio messages from everyone in the linked project group.
+Client messages remain queries; other ordinary messages are labelled Group message
+and do not add to the pending-query count. Explicit question/approval commands
+remain available. Only queries from assigned clients can be rejected. A founder
+can confirm rejection with the default reply or add optional context.
+
+In Accept → stage → task → action, **Waiting for more context** is the fourth
+choice beside Delay, Redo, and Mark complete. It saves the query and its files in
+the chosen task discussion while leaving task status and dates unchanged. The
+same wording replaces Hold elsewhere. A clarification reply does not clear this
+waiting state; Return to review makes it actionable again.
+
+Capture applies to new messages received by the bot after deployment; Telegram
+history is not imported. The group bot must receive ordinary group messages
+(administrator access or disabled BotFather privacy). Bot and service messages
+are excluded. Deploy both bot capture and web changes.

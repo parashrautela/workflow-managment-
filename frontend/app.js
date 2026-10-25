@@ -22041,13 +22041,14 @@ function ProjectConversations({ projects = [], namespace = "founder", actor = "f
 	});
 }
 // frontend/src/lib/queryStatus.js
-var needsQueryAttention = (request) => !request.decisionStatus && ![
+var needsQueryAttention = (request) => request.requestType !== "Message" && !request.decisionStatus && ![
 	"On hold",
 	"Done",
 	"Rejected",
 	"Published",
 	"Approved"
 ].includes(request.status);
+var queryStatusLabel = (request) => request.requestType === "Message" ? "Group message" : request.status === "On hold" ? "Waiting for more context" : request.status;
 // frontend/src/components/PersonalReminders.jsx
 function PersonalReminders({ connections, onChanged }) {
 	const [link, setLink] = (0, import_react.useState)("");
@@ -29007,7 +29008,7 @@ function QueryHoldDialog({ open, onOpenChange, query, onChanged }) {
 			if (!busy) onOpenChange(value);
 		},
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Acknowledge & hold" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Keep this message and its files in a task discussion while you wait for more information. The task's dates and status stay unchanged." })] }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Waiting for more context" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Keep this message and its files in a task discussion while you wait for more information. The task's dates and status stay unchanged." })] }),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 				"aria-label": "Find a task for this query",
 				value: search,
@@ -29042,7 +29043,7 @@ function QueryHoldDialog({ open, onOpenChange, query, onChanged }) {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 				disabled: busy || !taskId,
 				onClick: save,
-				children: busy ? "Saving…" : "Hold on this task"
+				children: busy ? "Saving…" : "Save — waiting for more context"
 			})
 		] })
 	});
@@ -29989,6 +29990,7 @@ function clientOutcome(target, preview, taskTitle) {
 	}
 	const name = shortTitle(taskTitle);
 	const moved = (preview.affected || []).find((item) => item.moved);
+	if (target.action.type === "hold") return `We've received your message about "${name}". Please share more context so we can act on it.`;
 	if (target.action.type === "complete") return `"${name}" is complete.`;
 	if (target.action.type === "attach") return `Thanks, we've noted this against "${name}".`;
 	const end = moved?.forecastEnd ? ` and will now be ready by ${niceDate$1(moved.forecastEnd)}` : "";
@@ -30014,6 +30016,11 @@ var ACTIONS = [
 		type: "complete",
 		title: "Mark complete",
 		text: "It's done. The next task can start."
+	},
+	{
+		type: "hold",
+		title: "Waiting for more context",
+		text: "Save the query here while waiting for clarification. Task dates and status stay unchanged."
 	}
 ];
 async function sendReply(requestId, text, key) {
@@ -30057,7 +30064,7 @@ function ReplyStep({ request, baseInstruction, outcome, value, onChange, noReply
 		] })]
 	});
 }
-function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
+function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 	const [workspace, setWorkspace] = (0, import_react.useState)(null);
 	const [loadError, setLoadError] = (0, import_react.useState)("");
 	const [step, setStep] = (0, import_react.useState)("stage");
@@ -30076,10 +30083,10 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 	const [error, setError] = (0, import_react.useState)("");
 	const [accepted, setAccepted] = (0, import_react.useState)(null);
 	const [replyKey, setReplyKey] = (0, import_react.useState)("");
-	const isUpdate = request?.requestType === "Update";
-	const defaultPlan = useDefaultPlan(request?.projectId, open);
+	const isUpdate = request$1?.requestType === "Update";
+	const defaultPlan = useDefaultPlan(request$1?.projectId, open);
 	(0, import_react.useEffect)(() => {
-		if (!open || !request) return;
+		if (!open || !request$1) return;
 		setStep("stage");
 		setSearch("");
 		setStageId("");
@@ -30093,11 +30100,11 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 		setNoReply(isUpdate);
 		setError("");
 		setAccepted(null);
-		setReplyKey(generateIdempotencyKey(`pub-${request.id}`));
+		setReplyKey(generateIdempotencyKey(`pub-${request$1.id}`));
 		setWorkspace(null);
 		setLoadError("");
-		fetchProjectWorkspace(request.projectId, "founder").then(setWorkspace).catch((problem) => setLoadError(problem.message || "Could not load the project plan."));
-	}, [open, request?.id]);
+		fetchProjectWorkspace(request$1.projectId, "founder").then(setWorkspace).catch((problem) => setLoadError(problem.message || "Could not load the project plan."));
+	}, [open, request$1?.id]);
 	const stages = workspace?.project?.stages || [];
 	const items = (0, import_react.useMemo)(() => workspace ? timelineItems(workspace.tasks || [], stages) : [], [workspace]);
 	const rows = (0, import_react.useMemo)(() => orderStagesForPicker(stages, items), [workspace]);
@@ -30118,9 +30125,18 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 		} : { type: action.type }
 	};
 	const previewReady = Boolean(target) && !accepted && (step === "action" || step === "new-stage" || step === "reply") && (target.kind !== "new-stage" || !stageNameProblem(newStage, stages));
-	const { preview, previewing, error: previewError } = useStagePreview(target, open && previewReady, () => previewAcceptDecision(request.id, target));
+	const waitingForContext = target?.kind === "task" && target.action.type === "hold";
+	const schedulePreview = useStagePreview(target, open && previewReady && !waitingForContext, () => previewAcceptDecision(request$1.id, target));
+	const holdPreview = (0, import_react.useMemo)(() => ({
+		ok: true,
+		summary: `Waiting for more context. Saved on "${task?.title || "this task"}"; task dates and status stay unchanged.`,
+		affected: []
+	}), [task?.title]);
+	const preview = waitingForContext ? holdPreview : schedulePreview.preview;
+	const previewing = !waitingForContext && schedulePreview.previewing;
+	const previewError = waitingForContext ? "" : schedulePreview.error;
 	const summary = accepted?.summary || preview?.summary || "";
-	const baseInstruction = summary ? `The founder accepted this. Outcome: ${summary} Tell the sender plainly.` : "";
+	const baseInstruction = summary ? `The founder ${waitingForContext ? "is waiting for more context on this" : "accepted this"}. Outcome: ${summary} Tell the sender plainly.` : "";
 	const [outcome, setOutcome] = (0, import_react.useState)("");
 	(0, import_react.useEffect)(() => {
 		if (preview && !accepted) setOutcome(clientOutcome(target, preview, task?.title));
@@ -30157,7 +30173,11 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 		let result = accepted;
 		try {
 			if (!result) {
-				result = await acceptDecisionRequest(request.id, target);
+				result = waitingForContext ? await request(`/api/founder/decision-requests/${encodeURIComponent(request$1.id)}/hold`, {
+					method: "POST",
+					body: { taskId }
+				}) : await acceptDecisionRequest(request$1.id, target);
+				if (waitingForContext) result.summary = holdPreview.summary;
 				setAccepted(result);
 			}
 		} catch (problem) {
@@ -30166,9 +30186,9 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 			return;
 		}
 		if (!noReply && reply.trim()) try {
-			await sendReply(request.id, reply.trim(), replyKey);
+			await sendReply(request$1.id, reply.trim(), replyKey);
 		} catch (problem) {
-			setError(`The task was updated, but the reply was not sent: ${problem.message || "Telegram did not answer"}. Retry sending.`);
+			setError(`${waitingForContext ? "The query is waiting for more context" : "The task was updated"}, but the reply was not sent: ${problem.message || "Telegram did not answer"}. Retry sending.`);
 			setSaving(false);
 			return;
 		}
@@ -30225,9 +30245,9 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 							className: "line-clamp-2 text-xs",
 							children: [
 								"\"",
-								request?.originalMessage || "Shared a file",
+								request$1?.originalMessage || "Shared a file",
 								"\" · ",
-								request?.originalSenderName
+								request$1?.originalSenderName
 							]
 						})
 					]
@@ -30340,7 +30360,7 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 							className: "space-y-3",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "grid gap-2 sm:grid-cols-3",
+									className: "grid gap-2 sm:grid-cols-2",
 									role: "radiogroup",
 									children: [...ACTIONS, ...isUpdate ? [{
 										type: "attach",
@@ -30455,7 +30475,7 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 								className: "flex items-start gap-2 rounded-xl border bg-muted/40 px-3 py-2.5 text-sm",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "mt-0.5 size-4 shrink-0 text-emerald-700" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: summary || "Ready to accept." })]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ReplyStep, {
-								request,
+								request: request$1,
 								baseInstruction,
 								outcome,
 								value: reply,
@@ -30544,8 +30564,7 @@ function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
 		setKey(generateIdempotencyKey(`pub-${request.id}`));
 	}, [open, request?.id]);
 	const confirm = async () => {
-		const message = text.trim();
-		if (message.length < 3) return;
+		const message = text.trim() || "We're not able to go ahead with this request right now.";
 		setSaving(true);
 		setError("");
 		try {
@@ -30578,7 +30597,7 @@ function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
 			className: "max-w-lg",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Reject this query" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [
-					"This message is sent to the group as a reply to ",
+					"Reject with the default reply, or add context below. The reply is sent to ",
 					request?.originalSenderName || "the sender",
 					"."
 				] })] }),
@@ -30603,7 +30622,7 @@ function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
 							onChange: (event) => setText(event.target.value),
 							rows: 4,
 							maxLength: 3e3,
-							placeholder: "Message to the group"
+							placeholder: "Optional reason or reply. Leave blank to send: We’re not able to go ahead with this request right now."
 						}),
 						error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "text-xs text-destructive",
@@ -30621,7 +30640,7 @@ function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
 						children: "Cancel"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						variant: "destructive",
-						disabled: saving || text.trim().length < 3,
+						disabled: saving,
 						onClick: confirm,
 						children: saving ? "Sending…" : rejected ? "Retry sending" : "Reject and send"
 					})]
@@ -30633,7 +30652,7 @@ function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
 function QueryOutcome({ request }) {
 	if (request.status === "On hold") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 		className: "text-xs text-amber-800",
-		children: "Acknowledged · waiting for more information. Saved in its task thread."
+		children: "Waiting for more context · this query needs clarification. Saved in its task thread."
 	});
 	if (request.acceptSummary) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 		className: "flex items-start gap-1.5 text-xs text-emerald-800",
@@ -30653,12 +30672,12 @@ function QueryOutcome({ request }) {
 	});
 	return null;
 }
-function QueryDecisionButtons({ request: request$1, disabled, onAccept, onReject, onChanged, size = "sm" }) {
+function QueryDecisionButtons({ request: request$2, disabled, onAccept, onReject, onChanged, size = "sm" }) {
 	const [holdOpen, setHoldOpen] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false);
 	const resume = async () => {
 		setBusy(true);
 		try {
-			await request(`/api/founder/decision-requests/${encodeURIComponent(request$1.id)}/resume`, {
+			await request(`/api/founder/decision-requests/${encodeURIComponent(request$2.id)}/resume`, {
 				method: "POST",
 				body: {}
 			});
@@ -30669,7 +30688,8 @@ function QueryDecisionButtons({ request: request$1, disabled, onAccept, onReject
 			setBusy(false);
 		}
 	};
-	if (request$1.status === "On hold") return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+	if (request$2.requestType === "Message") return null;
+	if (request$2.status === "On hold") return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 		variant: "outline",
 		size,
 		disabled: busy || disabled,
@@ -30680,24 +30700,24 @@ function QueryDecisionButtons({ request: request$1, disabled, onAccept, onReject
 		className: "text-xs text-destructive",
 		children: error
 	})] });
-	if (Boolean(request$1.decisionStatus) || [
+	if (Boolean(request$2.decisionStatus) || [
 		"Rejected",
 		"Done",
 		"Published",
 		"Approved"
-	].includes(request$1.status)) return null;
+	].includes(request$2.status)) return null;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
 		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 			variant: "outline",
 			size,
 			disabled,
 			onClick: () => setHoldOpen(true),
-			children: "Hold"
+			children: "Waiting for more context"
 		}),
 		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryHoldDialog, {
 			open: holdOpen,
 			onOpenChange: setHoldOpen,
-			query: request$1,
+			query: request$2,
 			onChanged
 		}),
 		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
@@ -30706,7 +30726,7 @@ function QueryDecisionButtons({ request: request$1, disabled, onAccept, onReject
 			disabled,
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5 mr-1" }), "Accept"]
 		}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+		request$2.canReject && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 			size,
 			variant: "outline",
 			className: "text-destructive",
@@ -30740,7 +30760,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 	const [requests, setRequests] = (0, import_react.useState)([]);
 	const [selectedId, setSelectedId] = (0, import_react.useState)("");
 	const [mobileThread, setMobileThread] = (0, import_react.useState)(false);
-	const [filter, setFilter] = (0, import_react.useState)("Open");
+	const [filter, setFilter] = (0, import_react.useState)("All");
 	const [projectFilter, setProjectFilter] = (0, import_react.useState)("All projects");
 	const [search, setSearch] = (0, import_react.useState)("");
 	const [mode, setMode] = (0, import_react.useState)("internal");
@@ -30796,7 +30816,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 	const visible = requests.filter((item) => {
 		const decided = !needsQueryAttention(item);
 		if (filter === "Open" && decided) return false;
-		if (filter === "Handled" && !decided) return false;
+		if (filter === "Handled" && (!decided || item.requestType === "Message")) return false;
 		if (filter === "Updates" && item.requestType !== "Update") return false;
 		if (projectFilter !== "All projects" && item.projectId !== projectFilter) return false;
 		return `${projects.find((candidate) => candidate.id === item.projectId)?.name || ""} ${item.originalSenderName} ${item.originalMessage} ${item.context}`.toLowerCase().includes(search.toLowerCase());
@@ -31051,7 +31071,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 												children: [
 													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 														className: `text-[10px] font-medium ${item.status === "Pending" ? "text-amber-700" : item.status === "Published" ? "text-primary" : "text-emerald-700"}`,
-														children: item.status
+														children: queryStatusLabel(item)
 													}),
 													item.taskId && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
 														variant: "outline",
@@ -31107,7 +31127,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 												" · ",
 												selected.requestType,
 												" · ",
-												selected.status,
+												queryStatusLabel(selected),
 												selected.decisionStatus && ` (${selected.decisionStatus})`
 											]
 										})]
@@ -31350,7 +31370,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 				request: selected,
 				onDone: async (result) => {
 					await load();
-					setNotice(result?.summary ? `Accepted: ${result.summary}` : "Query accepted.");
+					setNotice(result?.summary || "Query updated.");
 				}
 			}),
 			selected && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryRejectDialog, {
@@ -31359,7 +31379,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 				request: selected,
 				onDone: async () => {
 					await load();
-					setNotice("Query rejected and the reply was sent.");
+					setNotice("Client query rejected and the reply was sent.");
 				}
 			})
 		]
@@ -31853,7 +31873,7 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 	} catch {
 		attachments = [];
 	}
-	if (!needsQueryAttention(query) && !showHandled) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+	if (query.requestType !== "Message" && !needsQueryAttention(query) && !showHandled) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
 		className: "flex items-center justify-between gap-3 rounded-xl border bg-card p-3",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "min-w-0",
@@ -31863,7 +31883,7 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 					children: [
 						query.originalSenderName,
 						" · ",
-						query.status
+						queryStatusLabel(query)
 					]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
@@ -31880,7 +31900,7 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 		})]
 	});
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: `overflow-hidden rounded-2xl border bg-card transition-all ${isPublished ? "border-emerald-300/80 shadow-2xs" : isRejected ? "border-destructive/30 bg-card/60" : isDone ? "border-muted" : "border-amber-300/80 shadow-xs"}`,
+		className: `overflow-hidden rounded-2xl border bg-card transition-all ${query.requestType === "Message" ? "border-muted" : isPublished ? "border-emerald-300/80 shadow-2xs" : isRejected ? "border-destructive/30 bg-card/60" : isDone ? "border-muted" : "border-amber-300/80 shadow-xs"}`,
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex flex-wrap items-center justify-between gap-2 border-b bg-muted/30 px-4 py-2.5 text-xs",
@@ -31956,11 +31976,15 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 							className: "border-emerald-300 bg-emerald-50 text-emerald-800 text-[10px]",
 							children: "Approved"
 						}),
+						query.requestType === "Message" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+							variant: "outline",
+							children: "Group message"
+						}),
 						query.status === "On hold" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
 							variant: "outline",
-							children: "On hold"
+							children: "Waiting for more context"
 						}),
-						!isPublished && !isRejected && !isApproved && query.status !== "On hold" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
+						query.requestType !== "Message" && !isPublished && !isRejected && !isApproved && query.status !== "On hold" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
 							variant: "outline",
 							className: "border-amber-300 bg-amber-50 text-amber-900 text-[10px]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock, { className: "size-3 mr-1" }), " Needs Action"]
@@ -32281,7 +32305,7 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 				onOpenChange: setAcceptOpen,
 				request: query,
 				onDone: (result) => {
-					setSuccessMessage(result?.summary ? `Accepted: ${result.summary}` : "Query accepted.");
+					setSuccessMessage(result?.summary || "Query updated.");
 					if (onQueryChanged) onQueryChanged();
 					if (onTaskCreated) onTaskCreated();
 				}
@@ -49805,7 +49829,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 										className: "flex items-center justify-between",
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 											className: "text-[11px] font-semibold text-muted-foreground uppercase tracking-wider",
-											children: "Client Queries"
+											children: "Queries & Group Chat"
 										}), pendingQueriesCount > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
 											variant: "outline",
 											className: "border-amber-300 bg-amber-50 text-amber-900 text-[10px]",
@@ -50280,10 +50304,10 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							className: "flex flex-wrap items-center justify-between gap-3",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 								className: "text-base font-semibold",
-								children: "Telegram Client Queries"
+								children: "Telegram Queries & Group Chat"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-xs text-muted-foreground",
-								children: "Real-time questions, approvals, and photos submitted by the client via Telegram."
+								children: "Messages, questions, updates, and shared files from everyone in the Telegram group."
 							})] })
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "space-y-3",
@@ -50799,11 +50823,7 @@ function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectPr
 				children: filtered.length ? filtered.map((project) => {
 					const taskCount = project.taskCount || 0;
 					const progress = project.progress || 0;
-					const pendingQueries = decisionRequests.filter((q) => q.projectId === project.id && ![
-						"Done",
-						"Rejected",
-						"Published"
-					].includes(q.status)).length;
+					const pendingQueries = decisionRequests.filter((q) => q.projectId === project.id && needsQueryAttention(q)).length;
 					const isMissingClient = needsSetup(project);
 					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
 						onClick: () => onSelectProject(project.id),

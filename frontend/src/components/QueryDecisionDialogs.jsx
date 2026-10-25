@@ -1,7 +1,6 @@
 import {QueryHoldDialog} from '@/components/QueryHoldDialog';
 import {request as sendRequest} from '@/lib/api';
-// Accept or Reject: the only two decisions on a Telegram query.
-// Accept links the query to a task and applies one action (delay, redo, complete), or adds a new stage for it.
+// Accept links the query to a task with a work action or a request for more context, or adds a new stage.
 // Reject sends the founder's message to the group. Nothing reaches Telegram until the founder confirms the reply.
 import { useEffect, useMemo, useState } from "react";
 import { AlertTriangle, ArrowLeft, Check, ChevronRight, Layers, Loader2, Octagon, Plus, Search } from "lucide-react";
@@ -32,6 +31,7 @@ export function clientOutcome(target, preview, taskTitle) {
   }
   const name = shortTitle(taskTitle);
   const moved = (preview.affected || []).find((item) => item.moved);
+  if (target.action.type === "hold") return `We've received your message about "${name}". Please share more context so we can act on it.`;
   if (target.action.type === "complete") return `"${name}" is complete.`;
   if (target.action.type === "attach") return `Thanks, we've noted this against "${name}".`;
   const end = moved?.forecastEnd ? ` and will now be ready by ${niceDate(moved.forecastEnd)}` : "";
@@ -42,6 +42,7 @@ const ACTIONS = [
   { type: "delay", title: "Delay", text: "Give it more days. Later tasks move back." },
   { type: "redo", title: "Redo", text: "Send it back for rework with its full time again." },
   { type: "complete", title: "Mark complete", text: "It's done. The next task can start." },
+  { type: "hold", title: "Waiting for more context", text: "Save the query here while waiting for clarification. Task dates and status stay unchanged." },
 ];
 
 // Sends the founder's reply; a failure here never undoes the decision already saved.
@@ -106,9 +107,14 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
     ? newStage && { kind: "new-stage", stage: stageSpec(newStage), linkTaskKey }
     : taskId && { kind: "task", taskId, action: action.type === "delay" ? { type: "delay", days: Number(action.days) } : { type: action.type } };
   const previewReady = Boolean(target) && !accepted && (step === "action" || step === "new-stage" || step === "reply") && (target.kind !== "new-stage" || !stageNameProblem(newStage, stages));
-  const { preview, previewing, error: previewError } = useStagePreview(target, open && previewReady, () => previewAcceptDecision(request.id, target));
+  const waitingForContext = target?.kind === "task" && target.action.type === "hold";
+  const schedulePreview = useStagePreview(target, open && previewReady && !waitingForContext, () => previewAcceptDecision(request.id, target));
+  const holdPreview = useMemo(() => ({ ok: true, summary: `Waiting for more context. Saved on "${task?.title || 'this task'}"; task dates and status stay unchanged.`, affected: [] }), [task?.title]);
+  const preview = waitingForContext ? holdPreview : schedulePreview.preview;
+  const previewing = !waitingForContext && schedulePreview.previewing;
+  const previewError = waitingForContext ? "" : schedulePreview.error;
   const summary = accepted?.summary || preview?.summary || "";
-  const baseInstruction = summary ? `The founder accepted this. Outcome: ${summary} Tell the sender plainly.` : "";
+  const baseInstruction = summary ? `The founder ${waitingForContext ? "is waiting for more context on this" : "accepted this"}. Outcome: ${summary} Tell the sender plainly.` : "";
   const [outcome, setOutcome] = useState("");
   useEffect(() => { if (preview && !accepted) setOutcome(clientOutcome(target, preview, task?.title)); }, [preview]);
 
@@ -130,7 +136,11 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
     setSaving(true); setError("");
     let result = accepted;
     try {
-      if (!result) { result = await acceptDecisionRequest(request.id, target); setAccepted(result); }
+      if (!result) { result = waitingForContext
+        ? await sendRequest(`/api/founder/decision-requests/${encodeURIComponent(request.id)}/hold`, { method: 'POST', body: { taskId } })
+        : await acceptDecisionRequest(request.id, target);
+        if (waitingForContext) result.summary = holdPreview.summary;
+        setAccepted(result); }
     } catch (problem) {
       setError(problem.message || "Could not accept this query.");
       setSaving(false);
@@ -139,7 +149,7 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
     if (!noReply && reply.trim()) {
       try { await sendReply(request.id, reply.trim(), replyKey); }
       catch (problem) {
-        setError(`The task was updated, but the reply was not sent: ${problem.message || "Telegram did not answer"}. Retry sending.`);
+        setError(`${waitingForContext ? "The query is waiting for more context" : "The task was updated"}, but the reply was not sent: ${problem.message || "Telegram did not answer"}. Retry sending.`);
         setSaving(false);
         return;
       }
@@ -207,7 +217,7 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 
           {workspace && step === "action" && (
             <div className="space-y-3">
-              <div className="grid gap-2 sm:grid-cols-3" role="radiogroup">
+              <div className="grid gap-2 sm:grid-cols-2" role="radiogroup">
                 {[...ACTIONS, ...(isUpdate ? [{ type: "attach", title: "Just attach", text: "Keep it on the task. No date changes." }] : [])].map((option) => (
                   <label key={option.type} className={`cursor-pointer rounded-xl border p-3 ${action.type === option.type ? "border-primary bg-primary/5" : ""}`}>
                     <span className="flex items-center gap-2 text-sm font-medium"><input type="radio" name="action" checked={action.type === option.type} onChange={() => setAction({ ...action, type: option.type })} />{option.title}</span>
@@ -289,8 +299,7 @@ export function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
   }, [open, request?.id]);
 
   const confirm = async () => {
-    const message = text.trim();
-    if (message.length < 3) return;
+    const message = text.trim() || "We're not able to go ahead with this request right now.";
     setSaving(true); setError("");
     try {
       if (!rejected) { await rejectDecisionRequest(request.id, message); setRejected(true); }
@@ -307,17 +316,17 @@ export function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
       <DialogContent className="max-w-lg">
         <DialogHeader>
           <DialogTitle>Reject this query</DialogTitle>
-          <DialogDescription>This message is sent to the group as a reply to {request?.originalSenderName || "the sender"}.</DialogDescription>
+          <DialogDescription>Reject with the default reply, or add context below. The reply is sent to {request?.originalSenderName || "the sender"}.</DialogDescription>
         </DialogHeader>
         <div className="space-y-3">
           <Input value={hint} maxLength={200} onChange={(event) => setHint(event.target.value)} placeholder="Why? (only used to draft the message, never sent)" />
           <SuggestReply requestId={request?.id} baseInstruction={`Politely decline this request.${hint.trim() ? ` Reason from the founder: ${hint.trim()}.` : ""}`} outcome="We're not able to go ahead with this request right now." onUse={setText} />
-          <Textarea autoFocus value={text} onChange={(event) => setText(event.target.value)} rows={4} maxLength={3000} placeholder="Message to the group" />
+          <Textarea autoFocus value={text} onChange={(event) => setText(event.target.value)} rows={4} maxLength={3000} placeholder="Optional reason or reply. Leave blank to send: We’re not able to go ahead with this request right now." />
           {error && <p className="text-xs text-destructive" role="alert">{error}</p>}
         </div>
         <div className="flex justify-end gap-2">
           <Button variant="outline" disabled={saving} onClick={() => onOpenChange(false)}>Cancel</Button>
-          <Button variant="destructive" disabled={saving || text.trim().length < 3} onClick={confirm}>{saving ? "Sending…" : rejected ? "Retry sending" : "Reject and send"}</Button>
+          <Button variant="destructive" disabled={saving} onClick={confirm}>{saving ? "Sending…" : rejected ? "Retry sending" : "Reject and send"}</Button>
         </div>
       </DialogContent>
     </Dialog>
@@ -326,7 +335,7 @@ export function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
 
 // One line on a handled query: what was decided.
 export function QueryOutcome({ request }) {
-  if(request.status==='On hold')return <p className="text-xs text-amber-800">Acknowledged · waiting for more information. Saved in its task thread.</p>;
+  if(request.status==='On hold')return <p className="text-xs text-amber-800">Waiting for more context · this query needs clarification. Saved in its task thread.</p>;
   if (request.acceptSummary) return <p className="flex items-start gap-1.5 text-xs text-emerald-800"><Layers className="mt-0.5 size-3.5 shrink-0" />Accepted · {request.acceptSummary}</p>;
   if (request.rejectionReply) return <p className="text-xs text-destructive">Rejected · "{request.rejectionReply}"</p>;
   return null;
@@ -336,16 +345,17 @@ export function QueryOutcome({ request }) {
 export function QueryDecisionButtons({ request, disabled, onAccept, onReject, onChanged, size = "sm" }) {
   const [holdOpen,setHoldOpen]=useState(false),[error,setError]=useState(''),[busy,setBusy]=useState(false);
   const resume=async()=>{setBusy(true);try{await sendRequest(`/api/founder/decision-requests/${encodeURIComponent(request.id)}/resume`,{method:'POST',body:{}});onChanged?.();}catch(problem){setError(problem.message);}finally{setBusy(false);}};
+  if(request.requestType === "Message") return null;
   if(request.status==='On hold')return <><Button variant="outline" size={size} disabled={busy||disabled} onClick={resume}>Return to review</Button>{error&&<p role="alert" className="text-xs text-destructive">{error}</p>}</>;
 
   const decided = Boolean(request.decisionStatus) || ["Rejected", "Done", "Published", "Approved"].includes(request.status);
   if (decided) return null;
   return (
     <>
-      <Button variant="outline" size={size} disabled={disabled} onClick={()=>setHoldOpen(true)}>Hold</Button>
+      <Button variant="outline" size={size} disabled={disabled} onClick={()=>setHoldOpen(true)}>Waiting for more context</Button>
       <QueryHoldDialog open={holdOpen} onOpenChange={setHoldOpen} query={request} onChanged={onChanged}/>
       <Button size={size} onClick={onAccept} disabled={disabled}><Check className="size-3.5 mr-1" />Accept</Button>
-      <Button size={size} variant="outline" className="text-destructive" onClick={onReject} disabled={disabled}>Reject</Button>
+      {request.canReject && <Button size={size} variant="outline" className="text-destructive" onClick={onReject} disabled={disabled}>Reject</Button>}
     </>
   );
 }

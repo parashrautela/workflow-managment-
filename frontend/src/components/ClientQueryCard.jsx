@@ -1,4 +1,4 @@
-import {needsQueryAttention} from '@/lib/queryStatus';
+import {needsQueryAttention, queryStatusLabel} from '@/lib/queryStatus';
 // frontend/src/components/ClientQueryCard.jsx
 import React, { useState } from "react";
 import {
@@ -184,11 +184,13 @@ export function ClientQueryCard({
     attachments = [];
   }
 
-  if(!needsQueryAttention(query)&&!showHandled)return <article className="flex items-center justify-between gap-3 rounded-xl border bg-card p-3"><div className="min-w-0"><p className="text-xs text-muted-foreground">{query.originalSenderName} · {query.status}</p><p className="truncate text-sm">{query.originalMessage || 'Shared a file'}</p><QueryOutcome request={query}/></div><Button variant="outline" size="sm" onClick={()=>setShowHandled(true)}>View history</Button></article>;
+  if(query.requestType !== "Message"&&!needsQueryAttention(query)&&!showHandled)return <article className="flex items-center justify-between gap-3 rounded-xl border bg-card p-3"><div className="min-w-0"><p className="text-xs text-muted-foreground">{query.originalSenderName} · {queryStatusLabel(query)}</p><p className="truncate text-sm">{query.originalMessage || 'Shared a file'}</p><QueryOutcome request={query}/></div><Button variant="outline" size="sm" onClick={()=>setShowHandled(true)}>View history</Button></article>;
   return (
     <div
       className={`overflow-hidden rounded-2xl border bg-card transition-all ${
-        isPublished
+        query.requestType === "Message"
+          ? "border-muted"
+          : isPublished
           ? "border-emerald-300/80 shadow-2xs"
           : isRejected
           ? "border-destructive/30 bg-card/60"
@@ -254,8 +256,9 @@ export function ClientQueryCard({
             </Badge>
           )}
 
-          {query.status==='On hold'&&<Badge variant="outline">On hold</Badge>}
-          {!isPublished && !isRejected && !isApproved && query.status!=='On hold' && (
+          {query.requestType === 'Message' && <Badge variant="outline">Group message</Badge>}
+          {query.status==='On hold'&&<Badge variant="outline">Waiting for more context</Badge>}
+          {query.requestType !== "Message" && !isPublished && !isRejected && !isApproved && query.status!=='On hold' && (
             <Badge variant="outline" className="border-amber-300 bg-amber-50 text-amber-900 text-[10px]">
               <Clock className="size-3 mr-1" /> Needs Action
             </Badge>
@@ -557,7 +560,7 @@ export function ClientQueryCard({
         </DialogContent>
       </Dialog>
 
-      {isFounder && <QueryAcceptWizard open={acceptOpen} onOpenChange={setAcceptOpen} request={query} onDone={(result) => { setSuccessMessage(result?.summary ? `Accepted: ${result.summary}` : "Query accepted."); if (onQueryChanged) onQueryChanged(); if (onTaskCreated) onTaskCreated(); }} />}
+      {isFounder && <QueryAcceptWizard open={acceptOpen} onOpenChange={setAcceptOpen} request={query} onDone={(result) => { setSuccessMessage(result?.summary || "Query updated."); if (onQueryChanged) onQueryChanged(); if (onTaskCreated) onTaskCreated(); }} />}
       {isFounder && <QueryRejectDialog open={rejectOpen} onOpenChange={setRejectOpen} request={query} onDone={() => { setSuccessMessage("Query rejected and the reply was sent."); if (onQueryChanged) onQueryChanged(); }} />}
 
       {!needsQueryAttention(query)&&showHandled&&<Button variant="outline" size="sm" onClick={()=>setShowHandled(false)}>Collapse history</Button>}

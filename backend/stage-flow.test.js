@@ -5,7 +5,7 @@ import { createPilotRoutes } from './pilot.js';
 // Drives the pilot routes directly with a fake bot bridge, so stage and query flows can be checked without a server.
 function harness({ botRows = [], onBot } = {}) {
   const state = {
-    projects: [{ id: 'p1', name: 'Sameep Residence', telegramGroupChatId: '-900', telegramProjectId: 'P009', workflowStartedAt: '2026-10-16T00:00:00Z', stages: [], members: [{ id: 'm1', employeeId: 'EMP-1', telegramUserId: '51', name: 'Riya' }] }],
+    projects: [{ id: 'p1', name: 'Sameep Residence', telegramGroupChatId: '-900', telegramProjectId: 'P009', clientTelegramId: '42', workflowStartedAt: '2026-10-16T00:00:00Z', stages: [], members: [{ id: 'm1', employeeId: 'EMP-1', telegramUserId: '51', name: 'Riya' }] }],
     tasks: [], taskMessages: [], readPositions: [], employees: [{ id: 'EMP-1', name: 'Riya', active: true }], decisionRequests: [],
   };
   const calls = [];
@@ -141,7 +141,7 @@ test('stage changes wait until local edits are synced, and bot refusals keep the
 });
 
 function withQuery(h, changes = {}) {
-  h.state.decisionRequests.push({ id: 'REQ--900-10-question', projectId: 'p1', groupChatId: '-900', requestType: 'Question', originalSenderName: 'Asha', originalMessage: 'Can the drawing wait?', context: '', attachments: [{ type: 'Photo', fileId: 'f' }], status: 'Pending', comments: [], ...changes });
+  h.state.decisionRequests.push({ id: 'REQ--900-10-question', projectId: 'p1', groupChatId: '-900', requestType: 'Question', originalSenderName: 'Asha', originalSenderTelegramId: '42', originalMessage: 'Can the drawing wait?', context: '', attachments: [{ type: 'Photo', fileId: 'f' }], status: 'Pending', comments: [], ...changes });
   return h.state.decisionRequests.at(-1);
 }
 
@@ -226,4 +226,21 @@ test('a blank project starts with no stages and no tasks; templates still need t
   const started = await h.call('POST', '/api/founder/projects/p1/workflow/start', { workflowId: 'BLANK-V1' });
   assert.equal(started.status, 200);
   assert.deepEqual([started.data.project.stages, started.data.project.phase, started.data.project.status, h.state.tasks.length], [[], 'Planning', 'Active', 0]);
+});
+
+
+test('rejection is client-only with an optional reply and group context never becomes work', async () => {
+  const h = harness();
+  const client = withQuery(h);
+  const route = id => `/api/founder/decision-requests/${id}`;
+  assert.equal((await h.call('GET', route(client.id))).data.request.canReject, true);
+  assert.equal((await h.call('POST', route(client.id) + '/reject', {})).status, 200);
+  assert.equal(client.rejectionReply, "We're not able to go ahead with this request right now.");
+  const staff = withQuery(h, { id: 'REQ--900-15-question', originalSenderTelegramId: '51' });
+  assert.equal((await h.call('GET', route(staff.id))).data.request.canReject, false);
+  assert.equal((await h.call('POST', route(staff.id) + '/reject', {reason:'No'})).status, 403);
+  assert.equal(staff.status,'Pending');
+  const context = withQuery(h, { id: 'REQ--900-16-message', requestType:'Message', originalSenderTelegramId:'51' });
+  assert.equal((await h.call('POST', route(context.id) + '/accept-preview', {target:{}})).status,409);
+  assert.equal((await h.call('POST', route(context.id) + '/reject', {})).status,403);
 });

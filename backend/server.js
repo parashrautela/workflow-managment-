@@ -1,3 +1,4 @@
+import { queryView } from './query-context.js';
 import { createCollaborationRoutes } from './collaboration.js';
 import { createMeetingRoutes, initializeMeetings } from './meetings.js';
 import { loginEmail, reserveGoogleAccess, migrateGoogleOnlyAccess } from './google-access.js';
@@ -310,7 +311,7 @@ async function handleRequest(req, res) {
       const message = shortText(input.OriginalMessage, 4096);
       const context = shortText(input.RequestContext, 2000);
       const sender = shortText(input.OriginalSenderName, 160);
-      if (!id || !/^REQ--?\d+-\d+-(approval|question|update)$/.test(id) || !['Approval', 'Question', 'Update'].includes(requestType) || message === null || context === null || !sender || !/^[-]?\d+$/.test(groupId) || !/^\d+$/.test(String(input.SourceMessageID || ''))) return json(res, 400, { error: 'Invalid Telegram request.' });
+      if (!id || !/^REQ--?\d+-\d+-(approval|question|update|message)$/.test(id) || !['Approval', 'Question', 'Update', 'Message'].includes(requestType) || message === null || context === null || !sender || !/^[-]?\d+$/.test(groupId) || !/^\d+$/.test(String(input.SourceMessageID || ''))) return json(res, 400, { error: 'Invalid Telegram request.' });
       if (id !== `REQ-${groupId}-${input.SourceMessageID}-${requestType.toLowerCase()}`) return json(res,400,{error:'Request identity does not match its source.'});
       const existing = state.decisionRequests.find((item) => item.id === id);
       if (existing) return existing.projectId === project.id ? json(res, 200, { request: existing, created: false }) : json(res, 409, { error: 'Request ID belongs to another project.' });
@@ -457,7 +458,7 @@ async function handleRequest(req, res) {
       return json(res, 201, { project: projectView(project) });
     }
     if (req.method === 'GET' && url.pathname === '/api/founder/decision-requests') {
-      return json(res, 200, { requests: state.decisionRequests.filter((item) => state.projects.some((project) => project.id === item.projectId)) });
+      return json(res, 200, { requests: state.decisionRequests.filter((item) => state.projects.some((project) => project.id === item.projectId)).map(item => queryView(state, item)) });
     }
     // AI-suggested reply for a client query. Only drafts text for the founder to edit; publishing stays a separate, confirmed step.
     const suggestMatch = url.pathname.match(/^\/api\/founder\/decision-requests\/([^/]+)\/suggest-reply$/);
@@ -535,7 +536,7 @@ async function handleRequest(req, res) {
           request.deliveryStatus = 'Unknown'; request.deliveryError = 'Delivery is uncertain. Check Telegram before sending again.';
           await save(); return json(res,502,{error:request.deliveryError,request});
         }
-        request.status = 'Published'; request.deliveryStatus = 'Sent'; request.publishedMessageId = String(telegramResult.result.message_id); request.publishedAt = new Date().toISOString();
+        if (request.status !== 'On hold') request.status = 'Published'; request.deliveryStatus = 'Sent'; request.publishedMessageId = String(telegramResult.result.message_id); request.publishedAt = new Date().toISOString();
         audit('decision_request_published', request.projectId, { requestId: request.id, telegramMessageId: request.publishedMessageId }); await save();
         return json(res, 200, { request });
       } finally { publishingRequests.delete(request.id); }

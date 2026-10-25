@@ -1,3 +1,4 @@
+import { isClientQuery, queryView } from './query-context.js';
 import { rolesOf, hasRole, matchesRole, roleText, isStaff } from './roles.js';
 import { canWorkOnTask } from './work-access.js';
 import { syncProjectTasks, refreshStageDates } from './task-sync.js';
@@ -56,7 +57,7 @@ export function projectSummary(state, project) {
     currentStage: project.stages?.find((s) => tasks.some((t) => t.stageId === s.id && t.status !== 'Completed'))?.name || project.phase,
     deadline: project.stages?.at(-1)?.deadline || '',
     upcomingDeadlines: tasks.filter((t) => t.deadline && t.status !== 'Completed').sort((a,b) => a.deadline.localeCompare(b.deadline)).slice(0,5).map((t) => ({ id: t.id, title: t.title, deadline: t.deadline })),
-    openQueryCount: state.decisionRequests.filter((r) => r.projectId === project.id && !r.decisionStatus && !['Done','Rejected','Published','On hold','Approved'].includes(r.status)).length };
+    openQueryCount: state.decisionRequests.filter((r) => r.projectId === project.id && r.requestType !== 'Message' && !r.decisionStatus && !['Done','Rejected','Published','On hold','Approved'].includes(r.status)).length };
 }
 
 // Additive routes: founder/employee cookies and the existing {error} contract stay intact.
@@ -409,7 +410,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
       if (m[2]==='tasks' && method==='GET') await synchronize(state,project);
       if (m[2] === 'workspace' && method === 'GET') {
         const refreshResult = await refreshProjectWorkspaceSnapshot(state, project);
-        const requests = state.decisionRequests.filter((r) => r.projectId === project.id);
+        const requests = state.decisionRequests.filter((r) => r.projectId === project.id).map(r => queryView(state,r));
         const projectTasks = state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt);
         json(res,200,{project:projectView(project),tasks:projectTasks,requests,staleData:Boolean(refreshResult?.staleData),syncWarning:refreshResult?.warning || ''}); return true;
       }
@@ -458,13 +459,14 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
       }
     }
     if (route === 'decision-requests' && method === 'GET' && !user.founder) {
-      json(res,200,{requests:state.decisionRequests.filter((r) => state.projects.some((p) => p.id === r.projectId && p.members?.some((m) => m.employeeId === user.id && m.active!==false)))}); return true;
+      json(res,200,{requests:state.decisionRequests.filter((r) => state.projects.some((p) => p.id === r.projectId && p.members?.some((m) => m.employeeId === user.id && m.active!==false))).map(r => queryView(state,r))}); return true;
     }
     if ((m = route.match(/^decision-requests\/([^/]+)\/(accept|accept-preview)$/)) && method === 'POST') {
       // Accept = link the query to a task (or a new stage) and apply one action. Replies are sent separately, after review.
       admin(user);
       const request = state.decisionRequests.find((r) => r.id === decodeURIComponent(m[1])); if (!request) fail('Request not found.',404);
       const project = projectFor(state,user,request.projectId); requireLinked(project);
+      if (request.requestType === 'Message') fail('Group messages are context, not decision requests.',409);
       const input = await body(req); const apply = m[2] === 'accept'; const target = input.target || {};
       const projectTasks = () => state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt);
       if (request.acceptedAt) {
@@ -520,18 +522,20 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
     if ((m = route.match(/^decision-requests\/([^/]+)(?:\/(comment|approve|reject|convert|read))?$/))) {
       const request = state.decisionRequests.find((r) => r.id === decodeURIComponent(m[1])); if (!request) fail('Request not found.',404);
       const project = projectFor(state,user,request.projectId);
-      if (!m[2] && method === 'GET') { json(res,200,{request}); return true; }
+      if (!m[2] && method === 'GET') { json(res,200,{request:queryView(state,request)}); return true; }
       if (m[2] === 'comment' && method === 'POST') {
         const input = await body(req); const comment = {id:randomUUID(),author:user.name,authorId:user.id,text:text(input.text,'comment'),at:timestamp()};
         (request.comments ||= []).push(comment); audit('decision_request_comment',project.id,{requestId:request.id,actorId:user.id}); await save(); json(res,200,{request}); return true;
       }
       if (['approve','reject','convert'].includes(m[2]) && method === 'POST') {
         admin(user); const input = await body(req);
+        if (m[2] === 'reject' && !isClientQuery(state,request)) fail('Only client queries can be rejected.',403);
+        if (request.requestType === 'Message') fail('Group messages are context, not decision requests.',409);
         if (m[2] === 'convert' && request.taskId) { const task = state.tasks.find((t) => t.id === request.taskId); json(res,200,{request,task}); return true; }
         const target = m[2] === 'reject' ? 'Rejected' : 'Approved';
         if (['Rejected','Done'].includes(request.status) && request.status !== target) fail('This query is already closed.',409);
         // The reason is also the reply the founder sends to the group (published separately, after review).
-        if (m[2] === 'reject') { request.reviewNote = text(input.reason,'rejection reason',3000); request.rejectionReply = request.reviewNote; request.rejectedAt = timestamp(); }
+        if (m[2] === 'reject') { request.reviewNote = text(input.reason === undefined || input.reason === '' || (typeof input.reason === 'string' && !input.reason.trim()) ? "We're not able to go ahead with this request right now." : input.reason,'rejection reason',3000); request.rejectionReply = request.reviewNote; request.rejectedAt = timestamp(); }
         if (m[2] === 'convert') {
           if (!project.workflowStartedAt) fail('Start a workflow before converting to a task.',409);
           const fields = taskFields(state,project,{...input,title:input.title || request.originalMessage || 'Client query'});
