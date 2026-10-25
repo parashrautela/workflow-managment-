@@ -389,6 +389,7 @@ export default function EmployeeApp() {
                   key={selected.id}
                   endpoint={`/api/employee/projects/${selected.id}/team-chat`}
                   currentActor={employee.id}
+                  members={selected.members}
                 />
               </TabsContent>
 

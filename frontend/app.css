@@ -597,6 +597,10 @@
     bottom: calc(var(--spacing) * 24);
   }
 
+  .bottom-full {
+    bottom: 100%;
+  }
+
   .left-0 {
     left: 0;
   }
@@ -1094,6 +1098,10 @@
 
   .max-h-32 {
     max-height: calc(var(--spacing) * 32);
+  }
+
+  .max-h-48 {
+    max-height: calc(var(--spacing) * 48);
   }
 
   .max-h-52 {
@@ -2379,6 +2387,10 @@
     }
   }
 
+  .bg-popover {
+    background-color: var(--popover);
+  }
+
   .bg-primary, .bg-primary\/5 {
     background-color: var(--primary);
   }
@@ -2952,6 +2964,10 @@
     .text-muted-foreground\/50 {
       color: color-mix(in oklab, var(--muted-foreground) 50%, transparent);
     }
+  }
+
+  .text-popover-foreground {
+    color: var(--popover-foreground);
   }
 
   .text-primary {

@@ -17807,14 +17807,14 @@ var __name$12 = (target, value) => __defProp$12(target, "name", {
 });
 var useReactId = import_react[" useId ".trim().toString()] || (() => void 0);
 var count$1 = 0;
-function useId$1(deterministicId) {
+function useId$2(deterministicId) {
 	const [id, setId] = import_react.useState(useReactId());
 	useLayoutEffect2(() => {
 		if (!deterministicId) setId((reactId) => reactId ?? String(count$1++));
 	}, [deterministicId]);
 	return deterministicId || (id ? `radix-${id}` : "");
 }
-__name$12(useId$1, "useId");
+__name$12(useId$2, "useId");
 // ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-direction/dist/index.mjs
 var __defProp$11 = Object.defineProperty;
 var __name$11 = (target, value) => __defProp$11(target, "name", {
@@ -19190,9 +19190,9 @@ var Dialog$1 = /* @__PURE__ */ __name$5((props) => {
 		scope: __scopeDialog,
 		triggerRef,
 		contentRef,
-		contentId: useId$1(),
-		titleId: useId$1(),
-		descriptionId: useId$1(),
+		contentId: useId$2(),
+		titleId: useId$2(),
+		descriptionId: useId$2(),
 		titlePresent: titleCount > 0,
 		descriptionPresent: descriptionCount > 0,
 		setTitleCount,
@@ -19601,7 +19601,7 @@ var RovingFocusGroupImpl = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ 
 var ITEM_NAME = "RovingFocusGroupItem";
 var RovingFocusGroupItem = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$2(function RovingFocusGroupItem2(props, forwardedRef) {
 	const { __scopeRovingFocusGroup, focusable = true, active = false, tabStopId, children, ...itemProps } = props;
-	const autoId = useId$1();
+	const autoId = useId$2();
 	const id = tabStopId || autoId;
 	const context = useRovingFocusContext(ITEM_NAME, __scopeRovingFocusGroup);
 	const isCurrentTabStop = context.currentTabStopId === id;
@@ -19755,7 +19755,7 @@ var Tabs$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name(func
 	});
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsProvider, {
 		scope: __scopeTabs,
-		baseId: useId$1(),
+		baseId: useId$2(),
 		value,
 		onValueChange: setValue,
 		orientation,
@@ -21681,13 +21681,79 @@ function MessageFooter({ className, ...props }) {
 		...props
 	});
 }
+// frontend/src/lib/chatMentions.js
+function projectChatMembers(members = []) {
+	const seen = /* @__PURE__ */ new Set();
+	return members.filter((member) => member.employeeId && member.name?.trim() && member.active !== false && !seen.has(member.employeeId) && seen.add(member.employeeId));
+}
+function mentionAt(text, cursor) {
+	const match = text.slice(0, cursor).match(/(?:^|\s)@([^\s@]*)$/u);
+	return match ? {
+		start: cursor - match[1].length - 1,
+		end: cursor,
+		query: match[1]
+	} : null;
+}
+function mentionCandidates(members, query) {
+	const search = query.toLocaleLowerCase();
+	return members.filter((member) => `${member.name} ${member.role || member.designation || ""} ${member.employeeId}`.toLocaleLowerCase().includes(search));
+}
+function insertMention(text, mention, name) {
+	const label = `@${name} `;
+	return {
+		text: text.slice(0, mention.start) + label + text.slice(mention.end),
+		cursor: mention.start + label.length
+	};
+}
 // frontend/src/components/TeamChat.jsx
-function TeamChat({ endpoint, currentActor }) {
+function TeamChat({ endpoint, currentActor, members = [] }) {
 	const [messages, setMessages] = (0, import_react.useState)([]);
 	const [draft, setDraft] = (0, import_react.useState)("");
 	const [sending, setSending] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
 	const scrollRef = (0, import_react.useRef)(null);
+	const inputRef = (0, import_react.useRef)(null);
+	const listRef = (0, import_react.useRef)(null);
+	const listId = (0, import_react.useId)();
+	const [mention, setMention] = (0, import_react.useState)(null);
+	const [activeOption, setActiveOption] = (0, import_react.useState)(0);
+	const team = projectChatMembers(members);
+	const candidates = mention ? mentionCandidates(team, mention.query) : [];
+	const optionIndex = Math.min(activeOption, Math.max(0, candidates.length - 1));
+	(0, import_react.useEffect)(() => {
+		listRef.current?.querySelector("[aria-selected=\"true\"]")?.scrollIntoView({ block: "nearest" });
+	}, [optionIndex, mention?.query]);
+	const updateMention = (input) => {
+		setMention(input.selectionStart === input.selectionEnd ? mentionAt(input.value, input.selectionStart) : null);
+		setActiveOption(0);
+	};
+	const chooseMention = (member) => {
+		const next = insertMention(draft, mention, member.name.trim());
+		if (next.text.length > 2e3) {
+			setError("This mention would exceed the 2,000 character limit.");
+			return;
+		}
+		setDraft(next.text);
+		setMention(null);
+		setError("");
+		requestAnimationFrame(() => {
+			inputRef.current?.focus();
+			inputRef.current?.setSelectionRange(next.cursor, next.cursor);
+		});
+	};
+	const handleKeyDown = (event) => {
+		if (!mention || event.nativeEvent.isComposing) return;
+		if (event.key === "Escape") {
+			event.preventDefault();
+			setMention(null);
+		} else if (candidates.length && ["ArrowDown", "ArrowUp"].includes(event.key)) {
+			event.preventDefault();
+			setActiveOption((optionIndex + (event.key === "ArrowDown" ? 1 : -1) + candidates.length) % candidates.length);
+		} else if (candidates.length && ["Enter", "Tab"].includes(event.key)) {
+			event.preventDefault();
+			chooseMention(candidates[optionIndex]);
+		}
+	};
 	(0, import_react.useEffect)(() => {
 		let active = true;
 		setMessages([]);
@@ -21733,6 +21799,7 @@ function TeamChat({ endpoint, currentActor }) {
 			if (!response.ok) throw new Error(data.error || "Could not send message.");
 			setMessages((current) => current.some((item) => item.id === data.message.id) ? current : [...current, data.message]);
 			setDraft("");
+			setMention(null);
 		} catch (problem) {
 			setError(problem.message);
 		} finally {
@@ -21743,17 +21810,37 @@ function TeamChat({ endpoint, currentActor }) {
 		className: "flex min-h-[420px] gap-0 overflow-hidden p-0",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex items-center gap-3 border-b px-4 py-3",
+				className: "flex items-start gap-3 border-b px-4 py-3",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "grid size-9 place-items-center rounded-xl bg-primary/10 text-primary",
+					className: "grid size-9 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-4" })
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-					className: "text-sm font-semibold",
-					children: "Project team chat"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "text-xs text-muted-foreground",
-					children: "Founder and assigned employees"
-				})] })]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "min-w-0",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+							className: "text-sm font-semibold",
+							children: "Project team chat"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "text-xs text-muted-foreground",
+							children: ["Founder · ", team.length ? `${team.length} assigned ${team.length === 1 ? "employee" : "employees"}` : "No employees assigned yet"]
+						}),
+						team.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+							"aria-label": "Assigned project employees",
+							className: "mt-2 flex flex-wrap gap-2",
+							children: team.map((member) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
+								className: "max-w-full break-words rounded-lg bg-secondary px-2 py-1 text-xs",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "font-medium",
+									children: member.name
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "text-muted-foreground",
+									children: [" · ", member.role || member.designation || "Team member"]
+								})]
+							}, member.employeeId))
+						})
+					]
+				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				ref: scrollRef,
@@ -21807,14 +21894,81 @@ function TeamChat({ endpoint, currentActor }) {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 				onSubmit: send,
 				className: "flex items-end gap-2 border-t p-3",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
-					value: draft,
-					onChange: (event) => setDraft(event.target.value),
-					rows: 1,
-					maxLength: 2e3,
-					placeholder: "Message your team…",
-					"aria-label": "Message your team",
-					className: "max-h-28 min-h-11 flex-1 resize-none"
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "relative min-w-0 flex-1",
+					children: [mention && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "absolute bottom-full z-20 mb-2 w-full rounded-xl border bg-popover p-1 text-popover-foreground shadow-md",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "px-2 py-1 text-xs text-muted-foreground",
+								children: "Mention a project team member"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+								ref: listRef,
+								id: listId,
+								role: "listbox",
+								"aria-label": "Project team members",
+								className: "max-h-48 overflow-y-auto",
+								children: candidates.map((member, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
+									role: "presentation",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+										id: `${listId}-${index}`,
+										type: "button",
+										role: "option",
+										"aria-selected": index === optionIndex,
+										tabIndex: -1,
+										onMouseDown: (event) => event.preventDefault(),
+										onClick: () => chooseMention(member),
+										className: `w-full break-words rounded-lg px-2 py-2 text-left text-sm ${index === optionIndex ? "bg-accent text-accent-foreground" : "hover:bg-accent"}`,
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "block font-medium",
+											children: member.name
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+											className: "block text-xs text-muted-foreground",
+											children: [
+												member.role || member.designation || "Team member",
+												" · ",
+												member.employeeId
+											]
+										})]
+									})
+								}, member.employeeId))
+							}),
+							!candidates.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								role: "status",
+								className: "px-2 py-3 text-xs text-muted-foreground",
+								children: team.length ? "No matching project team members." : "No employees assigned to this project yet."
+							})
+						]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+						ref: inputRef,
+						value: draft,
+						onChange: (event) => {
+							setDraft(event.target.value);
+							updateMention(event.target);
+						},
+						onClick: (event) => updateMention(event.target),
+						onKeyUp: (event) => {
+							if ([
+								"ArrowLeft",
+								"ArrowRight",
+								"Home",
+								"End"
+							].includes(event.key)) updateMention(event.target);
+						},
+						onKeyDown: handleKeyDown,
+						onBlur: () => setMention(null),
+						rows: 1,
+						maxLength: 2e3,
+						placeholder: "Message your team… Type @ to mention",
+						"aria-label": "Message your team",
+						role: "combobox",
+						"aria-autocomplete": "list",
+						"aria-expanded": Boolean(mention),
+						"aria-controls": mention ? listId : void 0,
+						"aria-activedescendant": mention && candidates.length ? `${listId}-${optionIndex}` : void 0,
+						className: "max-h-28 min-h-11 resize-none"
+					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 					type: "submit",
 					size: "icon-lg",
@@ -21876,7 +22030,8 @@ function ProjectConversations({ projects = [], namespace = "founder", actor = "f
 					children: project.name
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TeamChat, {
 					endpoint: `/api/${namespace}/projects/${project.id}/team-chat`,
-					currentActor: actor
+					currentActor: actor,
+					members: project.members
 				}, project.id)]
 			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				className: "text-sm text-muted-foreground",
@@ -50084,7 +50239,8 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							})]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TeamChat, {
 							endpoint: `/api/founder/projects/${project.id}/team-chat`,
-							currentActor: "founder"
+							currentActor: "founder",
+							members: project.members
 						}, project.id)]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
@@ -52430,7 +52586,8 @@ function EmployeeApp() {
 									value: "chat",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TeamChat, {
 										endpoint: `/api/employee/projects/${selected.id}/team-chat`,
-										currentActor: employee.id
+										currentActor: employee.id,
+										members: selected.members
 									}, selected.id)
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
