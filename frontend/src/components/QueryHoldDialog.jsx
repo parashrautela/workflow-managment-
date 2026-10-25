@@ -7,11 +7,13 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { fetchProjectWorkspace, request } from "@/lib/api";
 export function QueryHoldDialog({ open, onOpenChange, query, onChanged }) {
   const [workspace, setWorkspace] = useState(null),
     [taskId, setTaskId] = useState(""),
+    [reply, setReply] = useState(""),
     [search, setSearch] = useState(""),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false);
@@ -21,6 +23,7 @@ export function QueryHoldDialog({ open, onOpenChange, query, onChanged }) {
     setWorkspace(null);
     setTaskId(query.taskId || "");
     setSearch("");
+    setReply("Your query is on hold while we wait for more information. Please share any details needed to continue.");
     setError("");
     fetchProjectWorkspace(query.projectId)
       .then((data) => {
@@ -38,7 +41,7 @@ export function QueryHoldDialog({ open, onOpenChange, query, onChanged }) {
     try {
       await request(
         `/api/founder/decision-requests/${encodeURIComponent(query.id)}/hold`,
-        { method: "POST", body: { taskId } },
+        { method: "POST", body: { taskId, notificationText: reply.trim() } },
       );
       onOpenChange(false);
       onChanged?.();
@@ -96,13 +99,17 @@ export function QueryHoldDialog({ open, onOpenChange, query, onChanged }) {
             <p className="text-sm">Add a task to this project first.</p>
           )}
         </div>
+        <label className="grid gap-2 text-sm">Update to the sender
+          <Textarea value={reply} maxLength={3000} onChange={(event) => setReply(event.target.value)} />
+        </label>
+        <p className="text-xs text-muted-foreground">Sent as a reply to the original query when you confirm.</p>
         {error && (
           <p role="alert" className="text-sm text-destructive">
             {error}
           </p>
         )}
-        <Button disabled={busy || !taskId} onClick={save}>
-          {busy ? "Saving…" : "Save — waiting for more context"}
+        <Button disabled={busy || !taskId || !reply.trim()} onClick={save}>
+          {busy ? "Saving…" : "Put on hold and update sender"}
         </Button>
       </DialogContent>
     </Dialog>

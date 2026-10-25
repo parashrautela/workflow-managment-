@@ -17,6 +17,7 @@ function harness({ botRows = [], onBot } = {}) {
     if (reply instanceof Error) throw reply;
     return reply;
   };
+  const notifications = [];
   let saves = 0;
   const routes = createPilotRoutes({
     getState: () => state,
@@ -28,6 +29,7 @@ function harness({ botRows = [], onBot } = {}) {
     audit: () => {},
     projectView: (project) => project,
     callBotBridge,
+    notifyQuery: async (...args) => notifications.push(args),
   });
   const call = async (method, path, input, role = 'founder') => {
     const res = {};
@@ -37,7 +39,7 @@ function harness({ botRows = [], onBot } = {}) {
     } catch (error) { return { status: error.status || 500, data: { error: error.message } }; }
     return res;
   };
-  return { state, calls, rows, call, saves: () => saves };
+  return { state, calls, rows, call, notifications, saves: () => saves };
 }
 
 const botRow = (id, stage, name, start, end, extra = {}) => ({ TaskID: id, ProjectID: 'P009', Stage: stage, TaskName: `${stage} — ${name}`, Status: 'Pending', Sequence: id.split('-').at(-1), PlannedStart: start, PlannedEnd: end, ForecastStart: start, ForecastEnd: end, ...extra });
@@ -145,7 +147,7 @@ function withQuery(h, changes = {}) {
   return h.state.decisionRequests.at(-1);
 }
 
-test('accepting a query applies one action, links the task thread, and never messages Telegram', async () => {
+test('accepting a query applies one action and sends one decision update', async () => {
   const rows = [botRow('P009-ST1-2', 'Civil', 'Drawing', '2026-11-03', '2026-11-04')];
   const h = harness({
     botRows: rows,
@@ -165,18 +167,22 @@ test('accepting a query applies one action, links the task thread, and never mes
   assert.equal(preview.status, 200);
   assert.equal(preview.data.summary, 'Delayed "Drawing" by 3 days. Projected finish 7 Nov.');
   assert.equal(request.acceptedAt, undefined);
+  assert.equal(h.notifications.length, 0, 'preview does not notify');
   const accepted = await h.call('POST', `/api/founder/decision-requests/${request.id}/accept`, { target });
   assert.equal(accepted.status, 200);
   assert.deepEqual([request.status, request.decisionStatus, request.taskId, request.acceptSummary], ['Approved', 'Approved', task.id, preview.data.summary]);
   assert.equal(task.deadline, '2026-11-07');
   const message = h.state.taskMessages.find((item) => item.queryId === request.id);
   assert.deepEqual([message.taskId, message.author, message.text, message.attachments], [task.id, 'Query from Asha', 'Can the drawing wait?', [{ index: 0, type: 'Photo', fileName: '' }]]);
-  assert.ok(!h.calls.some((item) => /publish|sendMessage/.test(item.route)), 'no reply is sent');
+  assert.equal(h.notifications.length, 1);
+  assert.equal(h.notifications[0][2], 'delay');
+  assert.match(h.notifications[0][3], /accepted.*delayed/);
   const actionCalls = () => h.calls.filter((item) => item.route.endsWith('/tasks/action')).length;
   const before = actionCalls();
   const again = await h.call('POST', `/api/founder/decision-requests/${request.id}/accept`, { target });
   assert.equal(again.status, 200);
   assert.equal(actionCalls(), before, 'a repeated accept does not delay twice');
+  assert.equal(h.notifications.length, 1, 'a repeated accept does not notify twice');
   assert.equal((await h.call('POST', `/api/founder/decision-requests/${request.id}/accept`, { target: { ...target, action: { type: 'redo' } } })).status, 409);
   assert.equal(h.state.taskMessages.filter((item) => item.queryId === request.id).length, 1);
 });
@@ -214,6 +220,10 @@ test('closed, refused and attach-only accepts are handled before anything change
   const rejected = withQuery(h, { id: 'REQ--900-12-question' });
   assert.equal((await h.call('POST', `/api/founder/decision-requests/${rejected.id}/reject`, { reason: 'Not this week, sorry.' })).status, 200);
   assert.equal(rejected.rejectionReply, 'Not this week, sorry.');
+  assert.equal(h.notifications.at(-1)[3], 'Not this week, sorry.');
+  const noticeCount = h.notifications.length;
+  await h.call('POST', `/api/founder/decision-requests/${rejected.id}/reject`, { reason: 'Not this week, sorry.' });
+  assert.equal(h.notifications.length, noticeCount);
   assert.equal((await h.call('POST', `/api/founder/decision-requests/${rejected.id}/accept`, { target: { kind: 'task', taskId: task.id, action: { type: 'attach' } } })).status, 409);
   assert.equal((await h.call('POST', `/api/employee/decision-requests/${update.id}/accept`, { target: {} }, 'employee')).status, 403);
 });

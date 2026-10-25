@@ -1,3 +1,4 @@
+import { createQueryNotifier } from "./query-notifications.js";
 import { queryView } from './query-context.js';
 import { createCollaborationRoutes } from './collaboration.js';
 import { createMeetingRoutes, initializeMeetings } from './meetings.js';
@@ -251,9 +252,20 @@ function applyGroupSnapshot(input) {
 let externalRollbackState = null;
 // Preserve the saved Sending record if persistence fails after an external send.
 const checkpoint = () => { externalRollbackState = structuredClone(state); };
-const collaborationRoutes = createCollaborationRoutes({getState:()=>state, founder, employeeSession, body, json, save, audit, callBotBridge, stateStore, checkpoint});
+const notifyQuery = createQueryNotifier({ save, checkpoint, callBotBridge, sendUpdate: async (payload) => {
+  if (botBridgeUrl && integrationSecret) return callBotBridge('/api/integrations/web/decisions/notify', payload);
+  if (!process.env.GROUP_BOT_TOKEN) return { ok: false, deliveryStatus: 'Failed' };
+  const response = await fetch(`https://api.telegram.org/bot${process.env.GROUP_BOT_TOKEN}/sendMessage`, {
+    method: 'POST', headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ chat_id: payload.groupChatId, text: payload.response, reply_parameters: { message_id: Number(payload.sourceMessageId), allow_sending_without_reply: true } }),
+    signal: AbortSignal.timeout(10_000), redirect: 'error',
+  });
+  const result = await response.json();
+  return response.ok && result.ok ? result : { ok: false, deliveryStatus: result.ok === false && response.status < 500 ? 'Failed' : 'Unknown' };
+} });
+const collaborationRoutes = createCollaborationRoutes({notifyQuery,getState:()=>state, founder, employeeSession, body, json, save, audit, callBotBridge, stateStore, checkpoint});
 const meetingRoutes = createMeetingRoutes({getState:()=>state, founder, employeeSession, body, json, save, audit, callBotBridge, checkpoint});
-const pilotRoutes = createPilotRoutes({ getState: () => state, founder, employeeSession, body, json, save, audit, projectView, callBotBridge });
+const pilotRoutes = createPilotRoutes({ notifyQuery, getState: () => state, founder, employeeSession, body, json, save, audit, projectView, callBotBridge });
 const stageLinksRoutes=createStageLinksRoutes({getState:()=>state,founder,body,json,save,audit,callBotBridge});
 const operationsRoutes = createOperationsRoutes({getState:()=>state,founder,employeeSession,body,json,save,audit,callBotBridge,integrationSecret,checkpoint});
 const googleAuthRoutes = createGoogleAuthRoutes({getState:()=>state,founder,body,json,save,audit,cookie,production});
