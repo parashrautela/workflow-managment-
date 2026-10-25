@@ -310,6 +310,57 @@ test('holding a query stores its evidence without changing work and only unatten
  const path='/api/founder/decision-requests/'+payload(900).RequestID;
  assert.equal((await call(path+'/hold','POST',{taskId:task.id})).status,200);assert.equal((await call(path+'/hold','POST',{taskId:task.id})).status,409);
  const ws=(await call(`/api/founder/projects/${p}/workspace`)).data;assert.equal(ws.project.openQueryCount,0);assert.deepEqual(ws.tasks.find(row=>row.id===task.id),original);assert.equal((await call(`/api/founder/tasks/${task.id}/messages`)).data.messages.length,1);
+ assert.equal((await call(path+'/publish','POST',{response:'Please share more context',idempotencyKey:'context-reply'})).status,200);
  await f.restart();assert.equal((await call(path)).data.request.status,'On hold');
  assert.equal((await call(path+'/resume','POST',{})).status,200);assert.equal((await call(`/api/founder/projects/${p}/workspace`)).data.project.openQueryCount,1);
+});
+
+
+test('custom timeline options preview, reject stale schedules, and persist dates and removed links',async t=>{
+ const f=await fixture(t);const call=(route,method,input)=>f.call(route,method,input,f.cookie);
+ const p=(await call('/api/founder/projects','POST',{name:'Move options test'})).data.project.id;
+ const route=`/api/founder/projects/${p}`;
+ const stage={custom:true,name:'Planning',placement:{type:'date',startDate:'2026-11-01'},tasks:[{title:'Brief',role:'Founder',assigneeId:'founder',durationDays:2},{title:'Plan',role:'Founder',assigneeId:'founder',durationDays:3}]};
+ const built=await call(route+'/stages/apply','POST',{stage});assert.equal(built.status,200);
+ const [a,b]=built.data.tasks;
+ const move={taskId:b.id,fromStart:b.sourceForecastStart,fromEnd:b.deadline,start:'2026-11-01',end:'2026-11-03'};
+ const input={moves:[move],mode:'parallel'};
+ const preview=await call(route+'/schedule/preview','POST',input);assert.equal(preview.status,200);assert.equal(preview.data.dependencyChanges.length,1);
+ const file=path.join(f.directory,'backend/data.json');let stored=JSON.parse(await readFile(file,'utf8'));
+ assert.equal(stored.tasks.find(task=>task.id===b.id).planPredecessorId,a.id);
+ assert.equal((await call(route+'/schedule/apply','POST',input)).status,409);
+ stored.tasks.find(task=>task.id===a.id).deadline='2026-11-03';await writeFile(file,JSON.stringify(stored));await f.restart();
+ assert.equal((await call(route+'/schedule/apply','POST',{...input,fingerprint:preview.data.fingerprint})).status,409);
+ const fresh=await call(route+'/schedule/preview','POST',input);
+ const applied=await call(route+'/schedule/apply','POST',{...input,fingerprint:fresh.data.fingerprint});assert.equal(applied.status,200);
+ await f.restart();stored=JSON.parse(await readFile(file,'utf8'));const saved=stored.tasks.find(task=>task.id===b.id);
+ assert.equal(saved.sourceForecastStart,'2026-11-01');assert.equal(saved.planPredecessorId,'');assert.deepEqual(saved.planPredecessors,[]);assert.equal(saved.sourcePlannedStart,'2026-11-03');
+ const cascade={moves:[{taskId:a.id,fromStart:a.sourceForecastStart,fromEnd:'2026-11-03',start:'2026-11-03',end:'2026-11-05'}],mode:'shift-following'};
+ const shifted=await call(route+'/schedule/preview','POST',cascade);assert.equal(shifted.status,200);assert.equal(shifted.data.affected.length,2);
+ assert.equal((await call(route+'/schedule/apply','POST',{...cascade,fingerprint:shifted.data.fingerprint})).status,200);
+});
+
+
+test('all group messages appear as context and only client queries offer optional rejection',async t=>{
+ const f=await fixture(t),call=(r,m,i)=>f.call(r,m,i,f.cookie);
+ const p=(await call('/api/founder/projects','POST',{name:'Group context'})).data.project.id;
+ await call(`/api/founder/projects/${p}/client`,'POST',{clientName:'Maya',clientTelegramId:'42'});
+ await call(`/api/founder/projects/${p}/workflow/start`,'POST',{workflowId:'PILOT-DESIGN-V1',startDate:'2026-11-01'});
+ await call(`/api/founder/projects/${p}`,'PATCH',{telegramGroupChatId:'-123'});
+ const context=payload(901,{RequestID:'REQ--123-901-message',RequestType:'Message',OriginalSenderName:'Site supervisor',OriginalSenderTelegramID:'51',OriginalMessage:'Materials arrived',AttachmentsJSON:'[{"type":"Photo","fileId":"large"}]'});
+ const intake=()=>f.call('/api/integrations/telegram/requests','POST',context,'',true);
+ assert.equal((await intake()).status,201);assert.equal((await intake()).status,200);
+ const client=payload(902,{AutomaticClientQuery:true});await f.call('/api/integrations/telegram/requests','POST',client,'',true);
+ const staff=payload(903,{OriginalSenderTelegramID:'51'});await f.call('/api/integrations/telegram/requests','POST',staff,'',true);
+ const inbox=(await call('/api/founder/decision-requests')).data.requests;
+ assert.equal(inbox.find(r=>r.id===context.RequestID).canReject,false);
+ assert.equal(inbox.find(r=>r.id===client.RequestID).canReject,true);
+ assert.equal(inbox.find(r=>r.id===staff.RequestID).canReject,false);
+ assert.equal((await call(`/api/founder/projects/${p}/workspace`)).data.project.openQueryCount,2);
+ const route=id=>`/api/founder/decision-requests/${id}`;
+ assert.equal((await call(route(staff.RequestID)+'/reject','POST',{})).status,403);
+ assert.equal((await call(route(client.RequestID)+'/reject','POST',{})).status,200);
+ const rejected=(await call(route(client.RequestID))).data.request;
+ assert.equal(rejected.rejectionReply,"We're not able to go ahead with this request right now.");
+ await f.restart();assert.equal((await call(route(context.RequestID))).data.request.originalMessage,'Materials arrived');
 });

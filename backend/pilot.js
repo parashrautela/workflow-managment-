@@ -300,7 +300,9 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
       if (!project.telegramGroupChatId) {
         const input = await body(req);
         const local = state.tasks.filter((task) => task.projectId === project.id && !task.deletedAt);
-        const result = previewCustomMoves(local, input.moves);
+        const mode=input.mode || 'keep';
+        const result = previewCustomMoves(local, input.moves, {mode});
+        if(m[2]==='apply' && mode!=='keep' && input.fingerprint!==result.fingerprint)fail('The schedule changed. Preview this move again.',409);
         if (m[2] === 'apply') {
           for (const task of result.tasks) Object.assign(state.tasks.find((item) => item.id === task.id), task);
           refreshStageDates(project, result.tasks); audit('schedule_changed', project.id, { actorId: user.id, affected: result.affected.length }); await save();
@@ -320,8 +322,9 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
         return { taskId: task.telegramTaskId, start: move.start, end: move.end, fromStart: move.fromStart, fromEnd: move.fromEnd, forecastOnly: move.forecastOnly === true };
       });
       let result;
-      try { result = await callBotBridge('/api/integrations/web/schedule/'+m[2], { groupChatId: project.telegramGroupChatId, moves, actorName: user.name || 'Founder' }); }
-      catch (error) { fail(error.message, /changed since|being saved|cannot|waits for/i.test(error.message) ? 409 : 502); }
+      try { result = await callBotBridge('/api/integrations/web/schedule/'+m[2], { groupChatId: project.telegramGroupChatId, moves, mode:input.mode || 'keep',fingerprint:input.fingerprint,actorName: user.name || 'Founder' }); }
+      catch (error) { fail(error.message, error.botStatus===409 || /changed since|schedule changed|being saved|cannot|waits for/i.test(error.message) ? 409 : 502); }
+      if(input.mode && input.mode!=='keep' && result.mode!==input.mode)fail('Update the Telegram scheduler before using these move options.',409);
       const webId = (botId) => webIds.get(botId) || state.tasks.find((t) => t.projectId === project.id && t.telegramTaskId === botId)?.id || '';
       const mapItems = (items = []) => items.map((item) => ({ ...item, webTaskId: webId(item.taskId) }));
       if (m[2] === 'apply') {
@@ -329,7 +332,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
         audit('schedule_changed',project.id,{actorId:user.id,moved:moves.map((move)=>move.taskId),affected:(result.affected||[]).length});
         await save();
       }
-      json(res,200,{ ok: result.ok, conflicts: mapItems(result.conflicts), warnings: mapItems(result.warnings), affected: mapItems(result.affected), finish: result.finish || '', tasks: state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt) });
+      json(res,200,{ mode:result.mode,fingerprint:result.fingerprint,dependencyChanges:result.dependencyChanges || [],ok: result.ok, conflicts: mapItems(result.conflicts), warnings: mapItems(result.warnings), affected: mapItems(result.affected), finish: result.finish || '', tasks: state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt) });
       return true;
     }
     if ((m = route.match(/^projects\/([^/]+)\/(tasks|workflow\/start|client|workspace)$/))) {

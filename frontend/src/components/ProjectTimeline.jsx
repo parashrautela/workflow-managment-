@@ -5,7 +5,7 @@ import { AlertTriangle, ArrowLeft, ArrowRight, ArrowUpRight, CalendarDays, Check
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { calendarDate, calendarDay as DAY, timelineItems } from '@/lib/timeline';
-import { canMove, itemStatus, moveFor, scheduleSummary, stageMoves, swapMoves, todayDate, undoMoves, unscheduledReason } from '@/lib/timelineStatus';
+import { canChooseMoveMode, canMove, itemStatus, moveFor, scheduleSummary, stageMoves, swapMoves, todayDate, undoMoves, unscheduledReason } from '@/lib/timelineStatus';
 import { AddStageDialog } from '@/components/AddStageDialog';
 import { EditTimelineTaskDialog } from '@/components/EditTimelineTaskDialog';
 import { RenameWorkTypeDialog } from '@/components/RenameWorkTypeDialog';
@@ -86,6 +86,7 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], spaces 
   const [drag, setDrag] = useState(null);
   const [picked, setPicked] = useState(null);
   const [proposal, setProposal] = useState(null);
+  const proposalRequest = useRef(0);
   const [notice, setNotice] = useState(null);
   const dragRef = useRef(null);
   const pressRef = useRef(null);
@@ -157,23 +158,27 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], spaces 
     return base && task.title.startsWith(`${base} — `) ? task.title.slice(base.length + 3) : task.title;
   };
 
-  async function propose(moves, description) {
-    setProposal({ moves, description, loading: true });
+  const cancelProposal = () => { proposalRequest.current++; setProposal(null); };
+  async function propose(moves, description, mode) {
+    const request=++proposalRequest.current, chooseMode=canChooseMoveMode(moves);
+    if(chooseMode && !mode){setProposal({moves,description,chooseMode,mode:null});return;}
+    const options={mode:mode || 'keep'};
+    setProposal({moves,description,chooseMode,mode:options.mode,loading:true});
     try {
-      const preview = await onSchedulePreview(moves);
-      setProposal({ moves, description, preview });
+      const preview = await onSchedulePreview(moves,options);
+      if(request===proposalRequest.current)setProposal({moves,description,chooseMode,mode:options.mode,preview});
     } catch (error) {
-      setProposal({ moves, description, error: error.message || 'Could not check this change.' });
+      if(request===proposalRequest.current)setProposal({moves,description,chooseMode,mode:options.mode,error:error.message || 'Could not check this change.'});
     }
   }
   async function confirm() {
     const { moves, description } = proposal;
     setProposal({ ...proposal, saving: true });
     try {
-      const result = await onScheduleApply(moves);
+      const result = await onScheduleApply(moves,{mode:proposal.mode || 'keep',fingerprint:proposal.preview.fingerprint});
       setProposal(null);
       const pushed = result.affected.filter((item) => !item.moved).length;
-      setNotice({ text: `${description} saved to the Google Sheet${pushed ? ` · ${pushed} dependent task${pushed === 1 ? '' : 's'} moved` : ''}.`, undo: undoMoves(result.affected) });
+      setNotice({ text: `${description} saved${telegramLinked?' to the Google Sheet':''}${pushed ? ` · ${pushed} dependent task${pushed === 1 ? '' : 's'} moved` : ''}.`, undo: result.dependencyChanges?.length || result.affected.length>60 ? null : undoMoves(result.affected) });
     } catch (error) {
       setProposal({ ...proposal, saving: false, error: error.message || 'Could not save this change.' });
     }
@@ -512,13 +517,21 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], spaces 
       <div className="iksha-adjust-footer"><button onClick={() => { setPicked(null); onOpenTask(pickedItem.task); }}>Open task</button>{canPlan && pickedItem.stage && <button onClick={() => { setPicked(null); setInsertTask({ stage: pickedItem.stage, afterTask: pickedItem.task }); }}>Add task after</button>}<button onClick={() => setPicked(null)}>Done</button></div>
     </div>}
 
-    <Dialog open={Boolean(proposal)} onOpenChange={(open) => { if (!open && !proposal?.saving) setProposal(null); }}>
+    <Dialog open={Boolean(proposal)} onOpenChange={(open) => { if (!open && !proposal?.saving) cancelProposal(); }}>
       <DialogContent className="iksha-schedule-preview">
         <DialogHeader>
           <span className="iksha-eyebrow">CHECK BEFORE SAVING</span>
           <DialogTitle>{proposal?.description}</DialogTitle>
-          <DialogDescription>Nothing changes until you confirm. Confirmed changes are written to the Google Sheet, so Telegram and the web app stay in step.</DialogDescription>
+          <DialogDescription>Nothing changes until you confirm.{telegramLinked ? ' Confirmed changes are written to the Google Sheet, so Telegram and the web app stay in step.' : ' Preview the dates and connections before saving.'}</DialogDescription>
         </DialogHeader>
+        {proposal?.chooseMode && <fieldset className="grid gap-3 sm:grid-cols-2" disabled={proposal.saving}>
+          <legend className="mb-2 text-sm font-semibold">How should this move affect the timeline?</legend>
+          {[
+            ['parallel','Move in parallel','Move only the selected work. Other dates stay unchanged; connections to other work are removed.'],
+            ['shift-following','Shift everything after it','Move this work and every following task by the same number of days. Earlier work stays unchanged.'],
+          ].map(([mode,label,detail])=><label key={mode} className={`flex cursor-pointer items-start gap-2 rounded-lg border p-3 ${proposal.mode===mode?'border-primary bg-primary/5':''}`}><input className="mt-1" type="radio" name="timeline-move-mode" checked={proposal.mode===mode} onChange={()=>propose(proposal.moves,proposal.description,mode)}/><span><span className="block text-sm font-medium">{label}</span><span className="mt-1 block text-xs text-muted-foreground">{detail}</span></span></label>)}
+        </fieldset>}
+        {proposal?.chooseMode && !proposal.mode && <p className="iksha-preview-note">Choose an option to preview the new dates.</p>}
         {proposal?.loading && <p className="iksha-preview-note">Checking dependencies…</p>}
         {proposal?.error && <p className="iksha-preview-conflict" role="alert">{proposal.error}</p>}
         {proposal?.preview && <div className="iksha-preview-body">
@@ -527,15 +540,16 @@ export function ProjectTimeline({ tasks = [], stages = [], members = [], spaces 
             <h4>You are moving</h4>
             <ul>{proposal.preview.affected.filter((item) => item.moved).map((item) => <li key={item.taskId}><strong>{item.taskName}</strong><span>{isoRange(item.previousStart, item.previousEnd)} → <b>{isoRange(item.forecastStart, item.forecastEnd)}</b></span></li>)}</ul>
             {proposal.preview.affected.some((item) => !item.moved) ? <>
-              <h4>These dependent tasks move later</h4>
+              <h4>These following tasks also move</h4>
               <ul>{proposal.preview.affected.filter((item) => !item.moved).map((item) => <li key={item.taskId}><strong>{item.taskName}</strong><span>{isoLabel(item.previousStart)} → <b>{isoLabel(item.forecastStart)}</b></span></li>)}</ul>
-            </> : <p className="iksha-preview-note">No other tasks are affected.</p>}
+            </> : <p className="iksha-preview-note">No other task dates change.</p>}
             {proposal.preview.warnings.map((warning, index) => <p key={index} className="iksha-preview-warning"><AlertTriangle size={14} />{warning.reason}</p>)}
+            {proposal.preview.dependencyChanges?.length>0 && <><h4>Connections that will change</h4><ul>{proposal.preview.dependencyChanges.map(change=><li key={change.taskId}>{change.reason}</li>)}</ul><p className="iksha-preview-note">These connections will be removed when you confirm. Undo is unavailable for moves that change connections.</p></>}
             <p className="iksha-preview-note">{proposal.preview.finish ? `Projected finish after this change: ${isoLabel(proposal.preview.finish)}` : 'Finish date stays unconfirmed until every task has dates.'}</p>
           </>}
         </div>}
         <div className="iksha-preview-actions">
-          <Button variant="outline" disabled={proposal?.saving} onClick={() => setProposal(null)}>Cancel</Button>
+          <Button variant="outline" disabled={proposal?.saving} onClick={cancelProposal}>Cancel</Button>
           <Button disabled={!proposal?.preview?.ok || proposal?.saving} onClick={confirm}>{proposal?.saving ? 'Saving…' : 'Confirm and save'}</Button>
         </div>
       </DialogContent>

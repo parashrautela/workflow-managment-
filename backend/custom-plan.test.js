@@ -77,3 +77,19 @@ test('task editing preserves the old plan, supports parallel placement, and reje
   assert.equal(second.title, 'Submit permit');
   assert.throws(() => editCustomTask(p, built.tasks, { ...input, taskId: first.id, fromTitle: first.title, fromStart: first.sourceForecastStart, fromEnd: first.deadline, placement: { type: 'after', taskId: second.id } }, owner), /cycle/);
 });
+
+
+test('custom move options persist removed links and preserve baseline dates', () => {
+  const {tasks}=buildCustomStage(project,[],spec,owner);
+  const moved=move(tasks[1],'2026-11-01','2026-11-03');
+  const parallel=previewCustomMoves(tasks,[moved],{mode:'parallel'});
+  assert.equal(parallel.tasks[1].planPredecessorId,'');
+  assert.deepEqual(parallel.tasks[1].planPredecessors,[]);
+  assert.equal(parallel.tasks[1].sourcePlannedStart,'2026-11-03');
+  assert.equal(tasks[1].planPredecessorId,tasks[0].id);
+  assert.equal(parallel.dependencyChanges.length,1);
+  assert.throws(()=>previewCustomMoves(tasks,[{...moved,fromStart:''}],{mode:'parallel'}),error=>error.status===409);
+  const cascade=previewCustomMoves(tasks,[move(tasks[0],'2026-11-03','2026-11-04')],{mode:'shift-following'});
+  assert.equal(cascade.tasks[1].sourceForecastStart,'2026-11-05');
+  assert.equal(cascade.tasks[1].planPredecessorId,tasks[0].id);
+});

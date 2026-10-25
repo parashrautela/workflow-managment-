@@ -1,3 +1,4 @@
+import { planMoveMode } from './schedule-move-modes.js';
 import { ApiError } from './api-error.js';
 import { randomUUID } from 'node:crypto';
 
@@ -57,7 +58,17 @@ export function buildCustomStage(project, tasks, spec, validateOwner) {
   return { stage, tasks: created };
 }
 
-export function previewCustomMoves(tasks, moves) {
+export function previewCustomMoves(tasks, moves, {mode='keep'}={}) {
+  if(mode!=='keep'){
+    const active=tasks.filter(task=>!task.deletedAt && task.status!=='Cancelled');
+    const normalized=active.map(task=>({id:task.id,title:task.title,sequence:task.sourceSequence,start:task.sourceForecastStart,end:task.deadline,status:task.status,actualStart:task.sourceActualStart || '',dependencies:task.planPredecessors?.map(edge=>({id:edge.taskId,type:edge.type})) || (task.planPredecessorId?[{id:task.planPredecessorId,type:task.planDependencyType || 'FS'}]:[])}));
+    let result;
+    try { result=planMoveMode(normalized,moves,mode); } catch(error) { fail(error.message,error.status || 409); }
+    return {...result,mode,tasks:result.tasks.map(row=>{
+      const task=active.find(task=>task.id===row.id),edges=row.dependencies.map(edge=>({taskId:edge.id,type:edge.type}));
+      return {...task,sourceForecastStart:row.start,sourceForecastEnd:row.end,deadline:row.end,planPredecessors:edges,planPredecessorId:edges.find(edge=>edge.type==='FS')?.taskId || '',planDependencyType:edges[0]?.type || 'FS'};
+    })};
+  }
   if (!Array.isArray(moves) || !moves.length || moves.length > 60) fail('Send between 1 and 60 schedule moves.');
   const active = tasks.filter((task) => !task.deletedAt && task.status !== 'Cancelled');
   const copies = active.map((task) => ({ ...task }));

@@ -20,7 +20,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 	value: mod,
 	enumerable: true
 }) : target, mod));
-// node_modules/react/cjs/react.production.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react/cjs/react.production.js
 /**
 * @license React
 * react.production.js
@@ -406,11 +406,11 @@ var require_react_production = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 	exports.version = "19.3.0";
 }));
-// node_modules/react/index.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react/index.js
 var require_react = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_react_production();
 }));
-// node_modules/scheduler/cjs/scheduler.production.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/scheduler/cjs/scheduler.production.js
 /**
 * @license React
 * scheduler.production.js
@@ -664,11 +664,11 @@ var require_scheduler_production = /* @__PURE__ */ __commonJSMin(((exports) => {
 		};
 	};
 }));
-// node_modules/scheduler/index.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/scheduler/index.js
 var require_scheduler = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_scheduler_production();
 }));
-// node_modules/react-dom/cjs/react-dom.production.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react-dom/cjs/react-dom.production.js
 /**
 * @license React
 * react-dom.production.js
@@ -820,7 +820,7 @@ var require_react_dom_production = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 	exports.version = "19.3.0";
 }));
-// node_modules/react-dom/index.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react-dom/index.js
 var require_react_dom = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	function checkDCE() {
 		if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") return;
@@ -833,7 +833,7 @@ var require_react_dom = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	checkDCE();
 	module.exports = require_react_dom_production();
 }));
-// node_modules/react-dom/cjs/react-dom-client.production.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react-dom/cjs/react-dom-client.production.js
 /**
 * @license React
 * react-dom-client.production.js
@@ -11407,7 +11407,7 @@ var require_react_dom_client_production = /* @__PURE__ */ __commonJSMin(((export
 		return new ReactDOMRoot(options);
 	};
 }));
-// node_modules/react-dom/client.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react-dom/client.js
 var require_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	function checkDCE() {
 		if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") return;
@@ -11420,7 +11420,7 @@ var require_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	checkDCE();
 	module.exports = require_react_dom_client_production();
 }));
-// node_modules/lucide-react/dist/esm/shared/src/utils/toKebabCase.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toKebabCase.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11428,7 +11428,7 @@ var require_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 * See the LICENSE file in the root directory of this source tree.
 */
 var toKebabCase = (string) => string?.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
-// node_modules/lucide-react/dist/esm/shared/src/utils/toLucideIconData.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toLucideIconData.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11444,7 +11444,7 @@ function toLucideIconData(iconName, iconNode, aliases = []) {
 		...aliases.length > 0 ? { aliases } : {}
 	};
 }
-// node_modules/lucide-react/dist/esm/shared/src/utils/toCamelCase.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toCamelCase.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11465,7 +11465,7 @@ var toCamelCase = (string) => {
 	}
 	return out;
 };
-// node_modules/lucide-react/dist/esm/shared/src/utils/toPascalCase.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toPascalCase.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11476,7 +11476,7 @@ var toPascalCase = (string) => {
 	const camelCase = toCamelCase(string);
 	return camelCase.charAt(0).toUpperCase() + camelCase.slice(1);
 };
-// node_modules/lucide-react/dist/esm/shared/src/utils/mergeClasses.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/mergeClasses.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11486,7 +11486,7 @@ var toPascalCase = (string) => {
 var mergeClasses = (...classes) => classes.filter((className, index, array) => {
 	return Boolean(className) && className.trim() !== "" && array.indexOf(className) === index;
 }).join(" ").trim();
-// node_modules/lucide-react/dist/esm/shared/src/build/defaultAttributes.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/build/defaultAttributes.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11504,7 +11504,7 @@ var defaultAttributes = {
 	"stroke-linecap": "round",
 	"stroke-linejoin": "round"
 };
-// node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconNode.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconNode.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11558,7 +11558,7 @@ function buildLucideIconNode(icon, params = {}) {
 		})
 	];
 }
-// node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconForReact.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconForReact.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11578,7 +11578,7 @@ function buildLucideIconForReact(icon, params = {}) {
 		}
 	});
 }
-// node_modules/lucide-react/dist/esm/shared/src/utils/hasA11yProp.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/hasA11yProp.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11589,7 +11589,7 @@ var hasA11yProp = (props) => {
 	for (const prop in props) if (prop.startsWith("aria-") || prop === "role" || prop === "title") return true;
 	return false;
 };
-// node_modules/lucide-react/dist/esm/context.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/context.mjs
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11599,7 +11599,7 @@ var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 */
 var LucideContext = (0, import_react.createContext)({});
 var useLucideContext = () => (0, import_react.useContext)(LucideContext);
-// node_modules/lucide-react/dist/esm/Icon.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/Icon.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11629,7 +11629,7 @@ var Icon = (0, import_react.forwardRef)(({ color, size, width, height, strokeWid
 		...svgAttributes
 	}, [...builtIconNode.map(([tag, attrs]) => (0, import_react.createElement)(tag, attrs)), ...Array.isArray(children) ? children : [children]]);
 });
-// node_modules/lucide-react/dist/esm/createLucideIcon.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/createLucideIcon.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11647,7 +11647,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 	if (iconData.name) Component.displayName = toPascalCase(iconData.name);
 	return Component;
 }
-// node_modules/lucide-react/dist/esm/icons/arrow-left.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-left.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11667,7 +11667,7 @@ var __iconData$53 = {
 };
 __iconData$53.node;
 var ArrowLeft = createLucideIcon(__iconData$53);
-// node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11687,7 +11687,7 @@ var __iconData$52 = {
 };
 __iconData$52.node;
 var ArrowRight = createLucideIcon(__iconData$52);
-// node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11707,7 +11707,7 @@ var __iconData$51 = {
 };
 __iconData$51.node;
 var ArrowUpRight = createLucideIcon(__iconData$51);
-// node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11727,7 +11727,7 @@ var __iconData$50 = {
 };
 __iconData$50.node;
 var ArrowUp = createLucideIcon(__iconData$50);
-// node_modules/lucide-react/dist/esm/icons/building-complex.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11763,7 +11763,7 @@ var __iconData$49 = {
 };
 __iconData$49.node;
 var BuildingComplex = createLucideIcon(__iconData$49);
-// node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11822,7 +11822,7 @@ var __iconData$48 = {
 };
 __iconData$48.node;
 var CalendarDays = createLucideIcon(__iconData$48);
-// node_modules/lucide-react/dist/esm/icons/calendar.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/calendar.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11857,7 +11857,7 @@ var __iconData$47 = {
 };
 __iconData$47.node;
 var Calendar = createLucideIcon(__iconData$47);
-// node_modules/lucide-react/dist/esm/icons/check.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11874,7 +11874,7 @@ var __iconData$46 = {
 };
 __iconData$46.node;
 var Check = createLucideIcon(__iconData$46);
-// node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11891,7 +11891,7 @@ var __iconData$45 = {
 };
 __iconData$45.node;
 var ChevronDown = createLucideIcon(__iconData$45);
-// node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11908,7 +11908,7 @@ var __iconData$44 = {
 };
 __iconData$44.node;
 var ChevronRight = createLucideIcon(__iconData$44);
-// node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11925,7 +11925,7 @@ var __iconData$43 = {
 };
 __iconData$43.node;
 var ChevronUp = createLucideIcon(__iconData$43);
-// node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11961,7 +11961,7 @@ var __iconData$42 = {
 };
 __iconData$42.node;
 var CircleAlert = createLucideIcon(__iconData$42);
-// node_modules/lucide-react/dist/esm/icons/circle-check.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11984,7 +11984,7 @@ var __iconData$41 = {
 };
 __iconData$41.node;
 var CircleCheck = createLucideIcon(__iconData$41);
-// node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12020,7 +12020,7 @@ var __iconData$40 = {
 };
 __iconData$40.node;
 var CirclePause = createLucideIcon(__iconData$40);
-// node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12050,7 +12050,7 @@ var __iconData$39 = {
 };
 __iconData$39.node;
 var CircleQuestionMark = createLucideIcon(__iconData$39);
-// node_modules/lucide-react/dist/esm/icons/circle-x.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12080,7 +12080,7 @@ var __iconData$38 = {
 };
 __iconData$38.node;
 var CircleX = createLucideIcon(__iconData$38);
-// node_modules/lucide-react/dist/esm/icons/circle.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12099,7 +12099,7 @@ var __iconData$37 = {
 };
 __iconData$37.node;
 var Circle = createLucideIcon(__iconData$37);
-// node_modules/lucide-react/dist/esm/icons/clock-3.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12121,7 +12121,7 @@ var __iconData$36 = {
 };
 __iconData$36.node;
 var Clock3 = createLucideIcon(__iconData$36);
-// node_modules/lucide-react/dist/esm/icons/clock.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12143,7 +12143,7 @@ var __iconData$35 = {
 };
 __iconData$35.node;
 var Clock = createLucideIcon(__iconData$35);
-// node_modules/lucide-react/dist/esm/icons/copy.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12168,7 +12168,7 @@ var __iconData$34 = {
 };
 __iconData$34.node;
 var Copy = createLucideIcon(__iconData$34);
-// node_modules/lucide-react/dist/esm/icons/external-link.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/external-link.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12195,7 +12195,7 @@ var __iconData$33 = {
 };
 __iconData$33.node;
 var ExternalLink = createLucideIcon(__iconData$33);
-// node_modules/lucide-react/dist/esm/icons/file-text.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/file-text.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12230,7 +12230,7 @@ var __iconData$32 = {
 };
 __iconData$32.node;
 var FileText = createLucideIcon(__iconData$32);
-// node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12261,7 +12261,7 @@ var __iconData$31 = {
 };
 __iconData$31.node;
 var FolderKanban = createLucideIcon(__iconData$31);
-// node_modules/lucide-react/dist/esm/icons/hourglass.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/hourglass.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12292,7 +12292,7 @@ var __iconData$30 = {
 };
 __iconData$30.node;
 var Hourglass = createLucideIcon(__iconData$30);
-// node_modules/lucide-react/dist/esm/icons/layers.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/layers.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12320,7 +12320,7 @@ var __iconData$29 = {
 };
 __iconData$29.node;
 var Layers = createLucideIcon(__iconData$29);
-// node_modules/lucide-react/dist/esm/icons/link-2.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/link-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12350,7 +12350,7 @@ var __iconData$28 = {
 };
 __iconData$28.node;
 var Link2 = createLucideIcon(__iconData$28);
-// node_modules/lucide-react/dist/esm/icons/list-plus.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/list-plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12385,7 +12385,7 @@ var __iconData$27 = {
 };
 __iconData$27.node;
 var ListPlus = createLucideIcon(__iconData$27);
-// node_modules/lucide-react/dist/esm/icons/loader-circle.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/loader-circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12403,7 +12403,7 @@ var __iconData$26 = {
 };
 __iconData$26.node;
 var LoaderCircle = createLucideIcon(__iconData$26);
-// node_modules/lucide-react/dist/esm/icons/lock-keyhole.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/lock-keyhole.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12436,7 +12436,7 @@ var __iconData$25 = {
 };
 __iconData$25.node;
 var LockKeyhole = createLucideIcon(__iconData$25);
-// node_modules/lucide-react/dist/esm/icons/log-out.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/log-out.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12463,7 +12463,7 @@ var __iconData$24 = {
 };
 __iconData$24.node;
 var LogOut = createLucideIcon(__iconData$24);
-// node_modules/lucide-react/dist/esm/icons/maximize-2.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/maximize-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12494,7 +12494,7 @@ var __iconData$23 = {
 };
 __iconData$23.node;
 var Maximize2 = createLucideIcon(__iconData$23);
-// node_modules/lucide-react/dist/esm/icons/menu.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/menu.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12521,7 +12521,7 @@ var __iconData$22 = {
 };
 __iconData$22.node;
 var Menu = createLucideIcon(__iconData$22);
-// node_modules/lucide-react/dist/esm/icons/message-square.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/message-square.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12538,7 +12538,7 @@ var __iconData$21 = {
 };
 __iconData$21.node;
 var MessageSquare = createLucideIcon(__iconData$21);
-// node_modules/lucide-react/dist/esm/icons/minus.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/minus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12555,7 +12555,7 @@ var __iconData$20 = {
 };
 __iconData$20.node;
 var Minus = createLucideIcon(__iconData$20);
-// node_modules/lucide-react/dist/esm/icons/octagon.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/octagon.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12572,7 +12572,7 @@ var __iconData$19 = {
 };
 __iconData$19.node;
 var Octagon = createLucideIcon(__iconData$19);
-// node_modules/lucide-react/dist/esm/icons/pencil.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/pencil.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12592,7 +12592,7 @@ var __iconData$18 = {
 };
 __iconData$18.node;
 var Pencil = createLucideIcon(__iconData$18);
-// node_modules/lucide-react/dist/esm/icons/play.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/play.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12609,7 +12609,7 @@ var __iconData$17 = {
 };
 __iconData$17.node;
 var Play = createLucideIcon(__iconData$17);
-// node_modules/lucide-react/dist/esm/icons/plus.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12629,7 +12629,7 @@ var __iconData$16 = {
 };
 __iconData$16.node;
 var Plus = createLucideIcon(__iconData$16);
-// node_modules/lucide-react/dist/esm/icons/refresh-cw.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/refresh-cw.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12660,7 +12660,7 @@ var __iconData$15 = {
 };
 __iconData$15.node;
 var RefreshCw = createLucideIcon(__iconData$15);
-// node_modules/lucide-react/dist/esm/icons/rotate-ccw-clock.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/rotate-ccw-clock.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12688,7 +12688,7 @@ var __iconData$14 = {
 };
 __iconData$14.node;
 var RotateCcwClock = createLucideIcon(__iconData$14);
-// node_modules/lucide-react/dist/esm/icons/search.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/search.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12710,7 +12710,7 @@ var __iconData$13 = {
 };
 __iconData$13.node;
 var Search = createLucideIcon(__iconData$13);
-// node_modules/lucide-react/dist/esm/icons/send.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/send.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12730,7 +12730,7 @@ var __iconData$12 = {
 };
 __iconData$12.node;
 var Send = createLucideIcon(__iconData$12);
-// node_modules/lucide-react/dist/esm/icons/settings-2.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/settings-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12765,7 +12765,7 @@ var __iconData$11 = {
 };
 __iconData$11.node;
 var Settings2 = createLucideIcon(__iconData$11);
-// node_modules/lucide-react/dist/esm/icons/share-2.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/share-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12812,7 +12812,7 @@ var __iconData$10 = {
 };
 __iconData$10.node;
 var Share2 = createLucideIcon(__iconData$10);
-// node_modules/lucide-react/dist/esm/icons/shield-check.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/shield-check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12832,7 +12832,7 @@ var __iconData$9 = {
 };
 __iconData$9.node;
 var ShieldCheck = createLucideIcon(__iconData$9);
-// node_modules/lucide-react/dist/esm/icons/sparkles.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/sparkles.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12866,7 +12866,7 @@ var __iconData$8 = {
 };
 __iconData$8.node;
 var Sparkles = createLucideIcon(__iconData$8);
-// node_modules/lucide-react/dist/esm/icons/trash.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/trash.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12902,7 +12902,7 @@ var __iconData$7 = {
 };
 __iconData$7.node;
 var Trash = createLucideIcon(__iconData$7);
-// node_modules/lucide-react/dist/esm/icons/triangle-alert.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/triangle-alert.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12930,7 +12930,7 @@ var __iconData$6 = {
 };
 __iconData$6.node;
 var TriangleAlert = createLucideIcon(__iconData$6);
-// node_modules/lucide-react/dist/esm/icons/undo-2.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/undo-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12950,7 +12950,7 @@ var __iconData$5 = {
 };
 __iconData$5.node;
 var Undo2 = createLucideIcon(__iconData$5);
-// node_modules/lucide-react/dist/esm/icons/user-plus.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user-plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12989,7 +12989,7 @@ var __iconData$4 = {
 };
 __iconData$4.node;
 var UserPlus = createLucideIcon(__iconData$4);
-// node_modules/lucide-react/dist/esm/icons/user-x.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user-x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13028,7 +13028,7 @@ var __iconData$3 = {
 };
 __iconData$3.node;
 var UserX = createLucideIcon(__iconData$3);
-// node_modules/lucide-react/dist/esm/icons/user.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13050,7 +13050,7 @@ var __iconData$2 = {
 };
 __iconData$2.node;
 var User = createLucideIcon(__iconData$2);
-// node_modules/lucide-react/dist/esm/icons/users.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/users.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13083,7 +13083,7 @@ var __iconData$1 = {
 };
 __iconData$1.node;
 var Users = createLucideIcon(__iconData$1);
-// node_modules/lucide-react/dist/esm/icons/x.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13103,7 +13103,7 @@ var __iconData = {
 };
 __iconData.node;
 var X$1 = createLucideIcon(__iconData);
-// node_modules/clsx/dist/clsx.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/clsx/dist/clsx.mjs
 var import_client = /* @__PURE__ */ __toESM(require_client(), 1);
 function r(e) {
 	var t, f, n = "";
@@ -13118,7 +13118,7 @@ function clsx() {
 	for (var e, t, f = 0, n = "", o = arguments.length; f < o; f++) (e = arguments[f]) && (t = r(e)) && (n && (n += " "), n += t);
 	return n;
 }
-// node_modules/class-variance-authority/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/class-variance-authority/dist/index.mjs
 /**
 * Copyright 2022 Joe Bell. All rights reserved.
 *
@@ -13170,7 +13170,7 @@ var cva = (base, config) => (props) => {
 		] : acc;
 	}, []), props === null || props === void 0 ? void 0 : props.class, props === null || props === void 0 ? void 0 : props.className);
 };
-// node_modules/tailwind-merge/dist/bundle-mjs.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/tailwind-merge/dist/bundle-mjs.mjs
 /**
 * Concatenates two arrays faster than the array spread operator.
 */
@@ -16632,7 +16632,7 @@ var twMerge = /*#__PURE__*/ createTailwindMerge(getDefaultConfig);
 function cn$1(...inputs) {
 	return twMerge(clsx(inputs));
 }
-// node_modules/@radix-ui/react-compose-refs/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-compose-refs/dist/index.mjs
 var __defProp$21 = Object.defineProperty;
 var __name$21 = (target, value) => __defProp$21(target, "name", {
 	value,
@@ -16665,7 +16665,7 @@ function useComposedRefs(...refs) {
 	return import_react.useCallback(composeRefs(...refs), refs);
 }
 __name$21(useComposedRefs, "useComposedRefs");
-// node_modules/@radix-ui/react-slot/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-slot/dist/index.mjs
 var __defProp$20 = Object.defineProperty;
 var __name$20 = (target, value) => __defProp$20(target, "name", {
 	value,
@@ -16777,7 +16777,7 @@ var createSlottableError = /* @__PURE__ */ __name$20((ownerName) => {
 	return `${ownerName} failed to slot onto its \`Slottable\`. Expected \`Slottable\` to receive a single React element child.`;
 }, "createSlottableError");
 var use = import_react[" use ".trim().toString()];
-// node_modules/react/cjs/react-jsx-runtime.production.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react/cjs/react-jsx-runtime.production.js
 /**
 * @license React
 * react-jsx-runtime.production.js
@@ -16811,11 +16811,11 @@ var require_react_jsx_runtime_production = /* @__PURE__ */ __commonJSMin(((expor
 	exports.jsx = jsxProd;
 	exports.jsxs = jsxProd;
 }));
-// node_modules/react/jsx-runtime.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react/jsx-runtime.js
 var require_jsx_runtime = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_react_jsx_runtime_production();
 }));
-// node_modules/@radix-ui/react-primitive/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-primitive/dist/index.mjs
 var import_react_dom = /* @__PURE__ */ __toESM(require_react_dom(), 1);
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp$19 = Object.defineProperty;
@@ -16862,7 +16862,7 @@ function dispatchDiscreteCustomEvent(target, event) {
 	if (target) import_react_dom.flushSync(() => target.dispatchEvent(event));
 }
 __name$19(dispatchDiscreteCustomEvent, "dispatchDiscreteCustomEvent");
-// node_modules/@radix-ui/react-context/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-context/dist/index.mjs
 var __defProp$18 = Object.defineProperty;
 var __name$18 = (target, value) => __defProp$18(target, "name", {
 	value,
@@ -16963,7 +16963,7 @@ function composeContextScopes(...scopes) {
 	return createScope;
 }
 __name$18(composeContextScopes, "composeContextScopes");
-// node_modules/@radix-ui/react-collection/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-collection/dist/index.mjs
 var __defProp$17 = Object.defineProperty;
 var __name$17 = (target, value) => __defProp$17(target, "name", {
 	value,
@@ -17491,7 +17491,7 @@ function getChildListObserver(callback) {
 	});
 }
 __name$17(getChildListObserver, "getChildListObserver");
-// node_modules/@radix-ui/primitive/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/primitive/dist/index.mjs
 var __defProp$16 = Object.defineProperty;
 var __name$16 = (target, value) => __defProp$16(target, "name", {
 	value,
@@ -17533,9 +17533,9 @@ function isFrame(element) {
 	return element.tagName === "IFRAME";
 }
 __name$16(isFrame, "isFrame");
-// node_modules/@radix-ui/react-use-layout-effect/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-use-layout-effect/dist/index.mjs
 var useLayoutEffect2 = globalThis?.document ? import_react.useLayoutEffect : () => {};
-// node_modules/@radix-ui/react-use-effect-event/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-use-effect-event/dist/index.mjs
 var __defProp$15 = Object.defineProperty;
 var __name$15 = (target, value) => __defProp$15(target, "name", {
 	value,
@@ -17557,7 +17557,7 @@ function useEffectEvent(callback) {
 	return import_react.useMemo(() => ((...args) => ref.current?.(...args)), []);
 }
 __name$15(useEffectEvent, "useEffectEvent");
-// node_modules/@radix-ui/react-use-controllable-state/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-use-controllable-state/dist/index.mjs
 var __defProp$14 = Object.defineProperty;
 var __name$14 = (target, value) => __defProp$14(target, "name", {
 	value,
@@ -17658,7 +17658,7 @@ function useControllableStateReducer(reducer, userArgs, initialArg, init) {
 	return [state, dispatch];
 }
 __name$14(useControllableStateReducer, "useControllableStateReducer");
-// node_modules/@radix-ui/react-presence/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-presence/dist/index.mjs
 var __defProp$13 = Object.defineProperty;
 var __name$13 = (target, value) => __defProp$13(target, "name", {
 	value,
@@ -17799,7 +17799,7 @@ function getElementRef(element) {
 	return element.props.ref || element.ref;
 }
 __name$13(getElementRef, "getElementRef");
-// node_modules/@radix-ui/react-id/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-id/dist/index.mjs
 var __defProp$12 = Object.defineProperty;
 var __name$12 = (target, value) => __defProp$12(target, "name", {
 	value,
@@ -17815,7 +17815,7 @@ function useId$1(deterministicId) {
 	return deterministicId || (id ? `radix-${id}` : "");
 }
 __name$12(useId$1, "useId");
-// node_modules/@radix-ui/react-direction/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-direction/dist/index.mjs
 var __defProp$11 = Object.defineProperty;
 var __name$11 = (target, value) => __defProp$11(target, "name", {
 	value,
@@ -17827,7 +17827,7 @@ function useDirection(localDir) {
 	return localDir || globalDir || "ltr";
 }
 __name$11(useDirection, "useDirection");
-// node_modules/@radix-ui/react-use-callback-ref/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-use-callback-ref/dist/index.mjs
 var __defProp$10 = Object.defineProperty;
 var __name$10 = (target, value) => __defProp$10(target, "name", {
 	value,
@@ -17841,7 +17841,7 @@ function useCallbackRef$1(callback) {
 	return import_react.useMemo(() => ((...args) => callbackRef.current?.(...args)), []);
 }
 __name$10(useCallbackRef$1, "useCallbackRef");
-// node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs
 var __defProp$9 = Object.defineProperty;
 var __name$9 = (target, value) => __defProp$9(target, "name", {
 	value,
@@ -18104,7 +18104,7 @@ function handleAndDispatchCustomEvent(name, handler, detail, { discrete }) {
 	else target.dispatchEvent(event);
 }
 __name$9(handleAndDispatchCustomEvent, "handleAndDispatchCustomEvent");
-// node_modules/@radix-ui/react-focus-scope/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-focus-scope/dist/index.mjs
 var __defProp$8 = Object.defineProperty;
 var __name$8 = (target, value) => __defProp$8(target, "name", {
 	value,
@@ -18309,7 +18309,7 @@ function removeLinks(items) {
 	return items.filter((item) => item.tagName !== "A");
 }
 __name$8(removeLinks, "removeLinks");
-// node_modules/@radix-ui/react-portal/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-portal/dist/index.mjs
 var __defProp$7 = Object.defineProperty;
 var __name$7 = (target, value) => __defProp$7(target, "name", {
 	value,
@@ -18325,7 +18325,7 @@ var Portal = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$7(fu
 		ref: forwardedRef
 	}), container) : null;
 }, "Portal"));
-// node_modules/@radix-ui/react-focus-guards/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-focus-guards/dist/index.mjs
 var __defProp$6 = Object.defineProperty;
 var __name$6 = (target, value) => __defProp$6(target, "name", {
 	value,
@@ -18370,7 +18370,7 @@ function createFocusGuard() {
 	return element;
 }
 __name$6(createFocusGuard, "createFocusGuard");
-// node_modules/tslib/tslib.es6.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/tslib/tslib.es6.mjs
 var __assign = function() {
 	__assign = Object.assign || function __assign(t) {
 		for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -18398,7 +18398,7 @@ function __spreadArray(to, from, pack) {
 	}
 	return to.concat(ar || Array.prototype.slice.call(from));
 }
-// node_modules/react-remove-scroll-bar/dist/es2015/constants.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react-remove-scroll-bar/dist/es2015/constants.js
 var zeroRightClassName = "right-scroll-bar-position";
 var fullWidthClassName = "width-before-scroll-bar";
 var noScrollbarsClassName = "with-scroll-bars-hidden";
@@ -18407,7 +18407,7 @@ var noScrollbarsClassName = "with-scroll-bars-hidden";
 * ! might be undefined ! use will fallback!
 */
 var removedBarSizeVariable = "--removed-body-scroll-bar-size";
-// node_modules/use-callback-ref/dist/es2015/assignRef.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/use-callback-ref/dist/es2015/assignRef.js
 /**
 * Assigns a value for a given ref, no matter of the ref format
 * @param {RefObject} ref - a callback function or ref object
@@ -18426,7 +18426,7 @@ function assignRef(ref, value) {
 	else if (ref) ref.current = value;
 	return ref;
 }
-// node_modules/use-callback-ref/dist/es2015/useRef.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/use-callback-ref/dist/es2015/useRef.js
 /**
 * creates a MutableRef with ref change callback
 * @param initialValue - initial ref value
@@ -18463,7 +18463,7 @@ function useCallbackRef(initialValue, callback) {
 	ref.callback = callback;
 	return ref.facade;
 }
-// node_modules/use-callback-ref/dist/es2015/useMergeRef.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/use-callback-ref/dist/es2015/useMergeRef.js
 var useIsomorphicLayoutEffect$1 = typeof window !== "undefined" ? import_react.useLayoutEffect : import_react.useEffect;
 var currentValues = /* @__PURE__ */ new WeakMap();
 /**
@@ -18503,7 +18503,7 @@ function useMergeRefs(refs, defaultValue) {
 	}, [refs]);
 	return callbackRef;
 }
-// node_modules/use-sidecar/dist/es2015/medium.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/use-sidecar/dist/es2015/medium.js
 function ItoI(a) {
 	return a;
 }
@@ -18582,7 +18582,7 @@ function createSidecarMedium(options) {
 	}, options);
 	return medium;
 }
-// node_modules/use-sidecar/dist/es2015/exports.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/use-sidecar/dist/es2015/exports.js
 var SideCar = function(_a) {
 	var sideCar = _a.sideCar, rest = __rest(_a, ["sideCar"]);
 	if (!sideCar) throw new Error("Sidecar: please provide `sideCar` property to import the right car");
@@ -18595,9 +18595,9 @@ function exportSidecar(medium, exported) {
 	medium.useMedium(exported);
 	return SideCar;
 }
-// node_modules/react-remove-scroll/dist/es2015/medium.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/medium.js
 var effectCar = createSidecarMedium();
-// node_modules/react-remove-scroll/dist/es2015/UI.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/UI.js
 var nothing = function() {};
 /**
 * Removes scrollbar from the page and contain the scroll within the Lock
@@ -18655,7 +18655,7 @@ RemoveScroll.classNames = {
 var getNonce = function() {
 	if (typeof __webpack_nonce__ !== "undefined") return __webpack_nonce__;
 };
-// node_modules/react-style-singleton/dist/es2015/singleton.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react-style-singleton/dist/es2015/singleton.js
 function makeStyleTag() {
 	if (!document) return null;
 	var tag = document.createElement("style");
@@ -18693,7 +18693,7 @@ var stylesheetSingleton = function() {
 		}
 	};
 };
-// node_modules/react-style-singleton/dist/es2015/hook.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react-style-singleton/dist/es2015/hook.js
 /**
 * creates a hook to control style singleton
 * @see {@link styleSingleton} for a safer component version
@@ -18714,7 +18714,7 @@ var styleHookSingleton = function() {
 		}, [styles && isDynamic]);
 	};
 };
-// node_modules/react-style-singleton/dist/es2015/component.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react-style-singleton/dist/es2015/component.js
 /**
 * create a Component to add styles on demand
 * - styles are added when first instance is mounted
@@ -18730,7 +18730,7 @@ var styleSingleton = function() {
 	};
 	return Sheet;
 };
-// node_modules/react-remove-scroll-bar/dist/es2015/utils.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react-remove-scroll-bar/dist/es2015/utils.js
 var zeroGap = {
 	left: 0,
 	top: 0,
@@ -18764,7 +18764,7 @@ var getGapWidth = function(gapMode) {
 		gap: Math.max(0, windowWidth - documentWidth + offsets[2] - offsets[0])
 	};
 };
-// node_modules/react-remove-scroll-bar/dist/es2015/component.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react-remove-scroll-bar/dist/es2015/component.js
 var Style = styleSingleton();
 var lockAttribute = "data-scroll-locked";
 var getStyles = function(_a, allowRelative, gapMode, important) {
@@ -18801,7 +18801,7 @@ var RemoveScrollBar = function(_a) {
 	}, [gapMode]);
 	return import_react.createElement(Style, { styles: getStyles(gap, !noRelative, gapMode, !noImportant ? "!important" : "") });
 };
-// node_modules/react-remove-scroll/dist/es2015/aggresiveCapture.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/aggresiveCapture.js
 var passiveSupported = false;
 if (typeof window !== "undefined") try {
 	var options = Object.defineProperty({}, "passive", { get: function() {
@@ -18814,7 +18814,7 @@ if (typeof window !== "undefined") try {
 	passiveSupported = false;
 }
 var nonPassive = passiveSupported ? { passive: false } : false;
-// node_modules/react-remove-scroll/dist/es2015/handleScroll.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/handleScroll.js
 var alwaysContainsScroll = function(node) {
 	return node.tagName === "TEXTAREA";
 };
@@ -18896,7 +18896,7 @@ var handleScroll = function(axis, endTarget, event, sourceDelta, noOverscroll) {
 	else if (!isDeltaPositive && (noOverscroll && Math.abs(availableScrollTop) < 1 || !noOverscroll && -delta > availableScrollTop)) shouldCancelScroll = true;
 	return shouldCancelScroll;
 };
-// node_modules/react-remove-scroll/dist/es2015/SideEffect.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
 var getTouchXY = function(event) {
 	return "changedTouches" in event ? [event.changedTouches[0].clientX, event.changedTouches[0].clientY] : [0, 0];
 };
@@ -19050,9 +19050,9 @@ function getOutermostShadowParent(node) {
 	}
 	return shadowParent;
 }
-// node_modules/react-remove-scroll/dist/es2015/sidecar.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/sidecar.js
 var sidecar_default = exportSidecar(effectCar, RemoveScrollSideCar);
-// node_modules/react-remove-scroll/dist/es2015/Combination.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/Combination.js
 var ReactRemoveScroll = import_react.forwardRef(function(props, ref) {
 	return import_react.createElement(RemoveScroll, __assign({}, props, {
 		ref,
@@ -19060,7 +19060,7 @@ var ReactRemoveScroll = import_react.forwardRef(function(props, ref) {
 	}));
 });
 ReactRemoveScroll.classNames = RemoveScroll.classNames;
-// node_modules/aria-hidden/dist/es2015/index.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/aria-hidden/dist/es2015/index.js
 var getDefaultParent = function(originalTarget) {
 	if (typeof document === "undefined") return null;
 	return (Array.isArray(originalTarget) ? originalTarget[0] : originalTarget).ownerDocument.body;
@@ -19165,7 +19165,7 @@ var hideOthers = function(originalTarget, parentNode, markerName) {
 	targets.push.apply(targets, Array.from(activeParentNode.querySelectorAll("[aria-live], script")));
 	return applyAttributeToOthers(targets, activeParentNode, markerName, "aria-hidden");
 };
-// node_modules/@radix-ui/react-dialog/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-dialog/dist/index.mjs
 var __defProp$5 = Object.defineProperty;
 var __name$5 = (target, value) => __defProp$5(target, "name", {
 	value,
@@ -19394,7 +19394,7 @@ function getState(open) {
 	return open ? "open" : "closed";
 }
 __name$5(getState, "getState");
-// node_modules/@radix-ui/react-avatar/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-avatar/dist/index.mjs
 var __defProp$4 = Object.defineProperty;
 var __name$4 = (target, value) => __defProp$4(target, "name", {
 	value,
@@ -19478,7 +19478,7 @@ function useImageCount() {
 __name$4(useImageCount, "useImageCount");
 function useUpdateImageCount(setImageCount) {}
 __name$4(useUpdateImageCount, "useUpdateImageCount");
-// node_modules/@radix-ui/react-use-is-hydrated/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-use-is-hydrated/dist/index.mjs
 var __defProp$3 = Object.defineProperty;
 var __name$3 = (target, value) => __defProp$3(target, "name", {
 	value,
@@ -19506,7 +19506,7 @@ function useIsHydratedModern() {
 }
 __name$3(useIsHydratedModern, "useIsHydratedModern");
 var useIsHydrated2 = typeof useReactSyncExternalStore === "function" ? useIsHydratedModern : useIsHydrated;
-// node_modules/@radix-ui/react-roving-focus/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-roving-focus/dist/index.mjs
 var __defProp$2 = Object.defineProperty;
 var __name$2 = (target, value) => __defProp$2(target, "name", {
 	value,
@@ -19707,7 +19707,7 @@ function wrapArray(array, startIndex) {
 __name$2(wrapArray, "wrapArray");
 var Root$1 = RovingFocusGroup;
 var Item = RovingFocusGroupItem;
-// node_modules/@radix-ui/react-separator/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-separator/dist/index.mjs
 var __defProp$1 = Object.defineProperty;
 var __name$1 = (target, value) => __defProp$1(target, "name", {
 	value,
@@ -19734,7 +19734,7 @@ function isValidOrientation(orientation) {
 }
 __name$1(isValidOrientation, "isValidOrientation");
 var Root = Separator$1;
-// node_modules/@radix-ui/react-tabs/dist/index.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@radix-ui/react-tabs/dist/index.mjs
 var __defProp = Object.defineProperty;
 var __name = (target, value) => __defProp(target, "name", {
 	value,
@@ -20166,14 +20166,20 @@ async function createTask(projectId, taskData) {
 * Preview a founder timeline change (POST /api/founder/projects/:id/schedule/preview).
 * The bot checks dependencies against the Google Sheet and lists every task that would move.
 */
-async function previewSchedule(projectId, moves) {
-	return await post$2(`/api/founder/projects/${projectId}/schedule/preview`, { moves });
+async function previewSchedule(projectId, moves, options = {}) {
+	return await post$2(`/api/founder/projects/${projectId}/schedule/preview`, {
+		moves,
+		...options
+	});
 }
 /**
 * Save a founder timeline change to the Google Sheet (POST /api/founder/projects/:id/schedule/apply).
 */
-async function applySchedule(projectId, moves) {
-	return await post$2(`/api/founder/projects/${projectId}/schedule/apply`, { moves });
+async function applySchedule(projectId, moves, options = {}) {
+	return await post$2(`/api/founder/projects/${projectId}/schedule/apply`, {
+		moves,
+		...options
+	});
 }
 async function updateTask(taskId, updates, namespace = "founder") {
 	return await patch$1(`/api/${namespace}/tasks/${taskId}`, updates);
@@ -22910,7 +22916,7 @@ function Skeleton({ className, ...props }) {
 		...props
 	});
 }
-// node_modules/liquid-gooey/dist/index.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/liquid-gooey/dist/index.js
 var GooeyContext = (0, import_react.createContext)(null);
 function useGooeyContext() {
 	const ctx = (0, import_react.useContext)(GooeyContext);
@@ -26669,7 +26675,7 @@ function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewWork }) 
 		]
 	});
 }
-// node_modules/thinking-orbs/dist/index-B8WsUNf5.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/thinking-orbs/dist/index-B8WsUNf5.js
 function lerp(a, b, f) {
 	return a + (b - a) * f;
 }
@@ -27694,7 +27700,7 @@ function resolvePreset(state, size) {
 	cache.set(key, resolved);
 	return resolved;
 }
-// node_modules/thinking-orbs/dist/index.es.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/thinking-orbs/dist/index.es.js
 function ancestorTheme(el) {
 	let node = el;
 	while (node) {
@@ -29757,6 +29763,11 @@ function undoMoves(affected = []) {
 var canMove = (item) => (Boolean(item.task.telegramTaskId) || item.task.customPlan === true) && !item.task.sheetPlan && !isClosed(item.task) && item.start !== null && item.end !== null;
 function stageMoves(items, stageId, shiftDays) {
 	return items.filter((item) => (item.stage?.id || "other") === stageId && !isClosed(item.task) && item.start !== null && item.end !== null && (item.task.telegramTaskId || item.task.customPlan)).map((item) => moveFor(item, shiftDays));
+}
+function canChooseMoveMode(moves) {
+	if (!moves?.length || moves.some((move) => move.forecastOnly)) return false;
+	const delta = Date.parse(moves[0].start) - Date.parse(moves[0].fromStart);
+	return Number.isFinite(delta) && delta !== 0 && moves.every((move) => Date.parse(move.start) - Date.parse(move.fromStart) === delta && Date.parse(move.end) - Date.parse(move.fromEnd) === delta);
 }
 // frontend/src/lib/stagePicker.js
 var done = (task) => [
@@ -32613,7 +32624,7 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 		})
 	});
 }
-// node_modules/classcat/index.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/classcat/index.js
 function cc(names) {
 	if (typeof names === "string" || typeof names === "number") return "" + names;
 	let out = "";
@@ -32622,7 +32633,7 @@ function cc(names) {
 	} else for (let k in names) if (names[k]) out += (out && " ") + k;
 	return out;
 }
-// node_modules/d3-dispatch/src/dispatch.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-dispatch/src/dispatch.js
 var noop = { value: () => {} };
 function dispatch() {
 	for (var i = 0, n = arguments.length, _ = {}, t; i < n; ++i) {
@@ -32694,7 +32705,7 @@ var namespaces_default = {
 	xml: "http://www.w3.org/XML/1998/namespace",
 	xmlns: "http://www.w3.org/2000/xmlns/"
 };
-// node_modules/d3-selection/src/namespace.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/namespace.js
 function namespace_default(name) {
 	var prefix = name += "", i = prefix.indexOf(":");
 	if (i >= 0 && (prefix = name.slice(0, i)) !== "xmlns") name = name.slice(i + 1);
@@ -32703,7 +32714,7 @@ function namespace_default(name) {
 		local: name
 	} : name;
 }
-// node_modules/d3-selection/src/creator.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/creator.js
 function creatorInherit(name) {
 	return function() {
 		var document = this.ownerDocument, uri = this.namespaceURI;
@@ -32719,14 +32730,14 @@ function creator_default(name) {
 	var fullname = namespace_default(name);
 	return (fullname.local ? creatorFixed : creatorInherit)(fullname);
 }
-// node_modules/d3-selection/src/selector.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selector.js
 function none() {}
 function selector_default(selector) {
 	return selector == null ? none : function() {
 		return this.querySelector(selector);
 	};
 }
-// node_modules/d3-selection/src/selection/select.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/select.js
 function select_default$2(select) {
 	if (typeof select !== "function") select = selector_default(select);
 	for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) for (var group = groups[j], n = group.length, subgroup = subgroups[j] = new Array(n), node, subnode, i = 0; i < n; ++i) if ((node = group[i]) && (subnode = select.call(node, node.__data__, i, group))) {
@@ -32735,11 +32746,11 @@ function select_default$2(select) {
 	}
 	return new Selection$1(subgroups, this._parents);
 }
-// node_modules/d3-selection/src/array.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/array.js
 function array(x) {
 	return x == null ? [] : Array.isArray(x) ? x : Array.from(x);
 }
-// node_modules/d3-selection/src/selectorAll.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selectorAll.js
 function empty() {
 	return [];
 }
@@ -32748,7 +32759,7 @@ function selectorAll_default(selector) {
 		return this.querySelectorAll(selector);
 	};
 }
-// node_modules/d3-selection/src/selection/selectAll.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/selectAll.js
 function arrayAll(select) {
 	return function() {
 		return array(select.apply(this, arguments));
@@ -32763,7 +32774,7 @@ function selectAll_default$1(select) {
 	}
 	return new Selection$1(subgroups, parents);
 }
-// node_modules/d3-selection/src/matcher.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/matcher.js
 function matcher_default(selector) {
 	return function() {
 		return this.matches(selector);
@@ -32774,7 +32785,7 @@ function childMatcher(selector) {
 		return node.matches(selector);
 	};
 }
-// node_modules/d3-selection/src/selection/selectChild.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/selectChild.js
 var find = Array.prototype.find;
 function childFind(match) {
 	return function() {
@@ -32787,7 +32798,7 @@ function childFirst() {
 function selectChild_default(match) {
 	return this.select(match == null ? childFirst : childFind(typeof match === "function" ? match : childMatcher(match)));
 }
-// node_modules/d3-selection/src/selection/selectChildren.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/selectChildren.js
 var filter = Array.prototype.filter;
 function children() {
 	return Array.from(this.children);
@@ -32800,17 +32811,17 @@ function childrenFilter(match) {
 function selectChildren_default(match) {
 	return this.selectAll(match == null ? children : childrenFilter(typeof match === "function" ? match : childMatcher(match)));
 }
-// node_modules/d3-selection/src/selection/filter.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/filter.js
 function filter_default$1(match) {
 	if (typeof match !== "function") match = matcher_default(match);
 	for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) for (var group = groups[j], n = group.length, subgroup = subgroups[j] = [], node, i = 0; i < n; ++i) if ((node = group[i]) && match.call(node, node.__data__, i, group)) subgroup.push(node);
 	return new Selection$1(subgroups, this._parents);
 }
-// node_modules/d3-selection/src/selection/sparse.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/sparse.js
 function sparse_default(update) {
 	return new Array(update.length);
 }
-// node_modules/d3-selection/src/selection/enter.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/enter.js
 function enter_default() {
 	return new Selection$1(this._enter || this._groups.map(sparse_default), this._parents);
 }
@@ -32836,13 +32847,13 @@ EnterNode.prototype = {
 		return this._parent.querySelectorAll(selector);
 	}
 };
-// node_modules/d3-selection/src/constant.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/constant.js
 function constant_default$3(x) {
 	return function() {
 		return x;
 	};
 }
-// node_modules/d3-selection/src/selection/data.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/data.js
 function bindIndex(parent, group, enter, update, exit, data) {
 	var i = 0, node, groupLength = group.length, dataLength = data.length;
 	for (; i < dataLength; ++i) if (node = group[i]) {
@@ -32892,11 +32903,11 @@ function data_default(value, key) {
 function arraylike(data) {
 	return typeof data === "object" && "length" in data ? data : Array.from(data);
 }
-// node_modules/d3-selection/src/selection/exit.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/exit.js
 function exit_default() {
 	return new Selection$1(this._exit || this._groups.map(sparse_default), this._parents);
 }
-// node_modules/d3-selection/src/selection/join.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/join.js
 function join_default(onenter, onupdate, onexit) {
 	var enter = this.enter(), update = this, exit = this.exit();
 	if (typeof onenter === "function") {
@@ -32911,14 +32922,14 @@ function join_default(onenter, onupdate, onexit) {
 	else onexit(exit);
 	return enter && update ? enter.merge(update).order() : update;
 }
-// node_modules/d3-selection/src/selection/merge.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/merge.js
 function merge_default$1(context) {
 	var selection = context.selection ? context.selection() : context;
 	for (var groups0 = this._groups, groups1 = selection._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) for (var group0 = groups0[j], group1 = groups1[j], n = group0.length, merge = merges[j] = new Array(n), node, i = 0; i < n; ++i) if (node = group0[i] || group1[i]) merge[i] = node;
 	for (; j < m0; ++j) merges[j] = groups0[j];
 	return new Selection$1(merges, this._parents);
 }
-// node_modules/d3-selection/src/selection/order.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/order.js
 function order_default() {
 	for (var groups = this._groups, j = -1, m = groups.length; ++j < m;) for (var group = groups[j], i = group.length - 1, next = group[i], node; --i >= 0;) if (node = group[i]) {
 		if (next && node.compareDocumentPosition(next) ^ 4) next.parentNode.insertBefore(node, next);
@@ -32926,7 +32937,7 @@ function order_default() {
 	}
 	return this;
 }
-// node_modules/d3-selection/src/selection/sort.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/sort.js
 function sort_default(compare) {
 	if (!compare) compare = ascending;
 	function compareNode(a, b) {
@@ -32941,18 +32952,18 @@ function sort_default(compare) {
 function ascending(a, b) {
 	return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
 }
-// node_modules/d3-selection/src/selection/call.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/call.js
 function call_default() {
 	var callback = arguments[0];
 	arguments[0] = this;
 	callback.apply(null, arguments);
 	return this;
 }
-// node_modules/d3-selection/src/selection/nodes.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/nodes.js
 function nodes_default() {
 	return Array.from(this);
 }
-// node_modules/d3-selection/src/selection/node.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/node.js
 function node_default() {
 	for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) for (var group = groups[j], i = 0, n = group.length; i < n; ++i) {
 		var node = group[i];
@@ -32960,22 +32971,22 @@ function node_default() {
 	}
 	return null;
 }
-// node_modules/d3-selection/src/selection/size.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/size.js
 function size_default() {
 	let size = 0;
 	for (const node of this) ++size;
 	return size;
 }
-// node_modules/d3-selection/src/selection/empty.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/empty.js
 function empty_default() {
 	return !this.node();
 }
-// node_modules/d3-selection/src/selection/each.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/each.js
 function each_default(callback) {
 	for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) for (var group = groups[j], i = 0, n = group.length, node; i < n; ++i) if (node = group[i]) callback.call(node, node.__data__, i, group);
 	return this;
 }
-// node_modules/d3-selection/src/selection/attr.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/attr.js
 function attrRemove$1(name) {
 	return function() {
 		this.removeAttribute(name);
@@ -33018,11 +33029,11 @@ function attr_default$1(name, value) {
 	}
 	return this.each((value == null ? fullname.local ? attrRemoveNS$1 : attrRemove$1 : typeof value === "function" ? fullname.local ? attrFunctionNS$1 : attrFunction$1 : fullname.local ? attrConstantNS$1 : attrConstant$1)(fullname, value));
 }
-// node_modules/d3-selection/src/window.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/window.js
 function window_default(node) {
 	return node.ownerDocument && node.ownerDocument.defaultView || node.document && node || node.defaultView;
 }
-// node_modules/d3-selection/src/selection/style.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/style.js
 function styleRemove$1(name) {
 	return function() {
 		this.style.removeProperty(name);
@@ -33046,7 +33057,7 @@ function style_default$1(name, value, priority) {
 function styleValue(node, name) {
 	return node.style.getPropertyValue(name) || window_default(node).getComputedStyle(node, null).getPropertyValue(name);
 }
-// node_modules/d3-selection/src/selection/property.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/property.js
 function propertyRemove(name) {
 	return function() {
 		delete this[name];
@@ -33067,7 +33078,7 @@ function propertyFunction(name, value) {
 function property_default(name, value) {
 	return arguments.length > 1 ? this.each((value == null ? propertyRemove : typeof value === "function" ? propertyFunction : propertyConstant)(name, value)) : this.node()[name];
 }
-// node_modules/d3-selection/src/selection/classed.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/classed.js
 function classArray(string) {
 	return string.trim().split(/^|\s+/);
 }
@@ -33128,7 +33139,7 @@ function classed_default(name, value) {
 	}
 	return this.each((typeof value === "function" ? classedFunction : value ? classedTrue : classedFalse)(names, value));
 }
-// node_modules/d3-selection/src/selection/text.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/text.js
 function textRemove() {
 	this.textContent = "";
 }
@@ -33146,7 +33157,7 @@ function textFunction$1(value) {
 function text_default$1(value) {
 	return arguments.length ? this.each(value == null ? textRemove : (typeof value === "function" ? textFunction$1 : textConstant$1)(value)) : this.node().textContent;
 }
-// node_modules/d3-selection/src/selection/html.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/html.js
 function htmlRemove() {
 	this.innerHTML = "";
 }
@@ -33164,28 +33175,28 @@ function htmlFunction(value) {
 function html_default(value) {
 	return arguments.length ? this.each(value == null ? htmlRemove : (typeof value === "function" ? htmlFunction : htmlConstant)(value)) : this.node().innerHTML;
 }
-// node_modules/d3-selection/src/selection/raise.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/raise.js
 function raise() {
 	if (this.nextSibling) this.parentNode.appendChild(this);
 }
 function raise_default() {
 	return this.each(raise);
 }
-// node_modules/d3-selection/src/selection/lower.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/lower.js
 function lower() {
 	if (this.previousSibling) this.parentNode.insertBefore(this, this.parentNode.firstChild);
 }
 function lower_default() {
 	return this.each(lower);
 }
-// node_modules/d3-selection/src/selection/append.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/append.js
 function append_default(name) {
 	var create = typeof name === "function" ? name : creator_default(name);
 	return this.select(function() {
 		return this.appendChild(create.apply(this, arguments));
 	});
 }
-// node_modules/d3-selection/src/selection/insert.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/insert.js
 function constantNull() {
 	return null;
 }
@@ -33195,7 +33206,7 @@ function insert_default(name, before) {
 		return this.insertBefore(create.apply(this, arguments), select.apply(this, arguments) || null);
 	});
 }
-// node_modules/d3-selection/src/selection/remove.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/remove.js
 function remove() {
 	var parent = this.parentNode;
 	if (parent) parent.removeChild(this);
@@ -33203,7 +33214,7 @@ function remove() {
 function remove_default$1() {
 	return this.each(remove);
 }
-// node_modules/d3-selection/src/selection/clone.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/clone.js
 function selection_cloneShallow() {
 	var clone = this.cloneNode(false), parent = this.parentNode;
 	return parent ? parent.insertBefore(clone, this.nextSibling) : clone;
@@ -33215,11 +33226,11 @@ function selection_cloneDeep() {
 function clone_default(deep) {
 	return this.select(deep ? selection_cloneDeep : selection_cloneShallow);
 }
-// node_modules/d3-selection/src/selection/datum.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/datum.js
 function datum_default(value) {
 	return arguments.length ? this.property("__data__", value) : this.node().__data__;
 }
-// node_modules/d3-selection/src/selection/on.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/on.js
 function contextListener(listener) {
 	return function(event) {
 		listener.call(this, event, this.__data__);
@@ -33281,7 +33292,7 @@ function on_default$1(typename, value, options) {
 	for (i = 0; i < n; ++i) this.each(on(typenames[i], value, options));
 	return this;
 }
-// node_modules/d3-selection/src/selection/dispatch.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/dispatch.js
 function dispatchEvent(node, type, params) {
 	var window = window_default(node), event = window.CustomEvent;
 	if (typeof event === "function") event = new event(type, params);
@@ -33305,11 +33316,11 @@ function dispatchFunction(type, params) {
 function dispatch_default(type, params) {
 	return this.each((typeof params === "function" ? dispatchFunction : dispatchConstant)(type, params));
 }
-// node_modules/d3-selection/src/selection/iterator.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/iterator.js
 function* iterator_default() {
 	for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) for (var group = groups[j], i = 0, n = group.length, node; i < n; ++i) if (node = group[i]) yield node;
 }
-// node_modules/d3-selection/src/selection/index.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/index.js
 var root = [null];
 function Selection$1(groups, parents) {
 	this._groups = groups;
@@ -33359,17 +33370,17 @@ Selection$1.prototype = selection.prototype = {
 	dispatch: dispatch_default,
 	[Symbol.iterator]: iterator_default
 };
-// node_modules/d3-selection/src/select.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/select.js
 function select_default$1(selector) {
 	return typeof selector === "string" ? new Selection$1([[document.querySelector(selector)]], [document.documentElement]) : new Selection$1([[selector]], root);
 }
-// node_modules/d3-selection/src/sourceEvent.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/sourceEvent.js
 function sourceEvent_default(event) {
 	let sourceEvent;
 	while (sourceEvent = event.sourceEvent) event = sourceEvent;
 	return event;
 }
-// node_modules/d3-selection/src/pointer.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-selection/src/pointer.js
 function pointer_default(event, node) {
 	event = sourceEvent_default(event);
 	if (node === void 0) node = event.currentTarget;
@@ -33388,7 +33399,7 @@ function pointer_default(event, node) {
 	}
 	return [event.pageX, event.pageY];
 }
-// node_modules/d3-drag/src/noevent.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-drag/src/noevent.js
 var nonpassive = { passive: false };
 var nonpassivecapture = {
 	capture: true,
@@ -33401,7 +33412,7 @@ function noevent_default$1(event) {
 	event.preventDefault();
 	event.stopImmediatePropagation();
 }
-// node_modules/d3-drag/src/nodrag.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-drag/src/nodrag.js
 function nodrag_default(view) {
 	var root = view.document.documentElement, selection = select_default$1(view).on("dragstart.drag", noevent_default$1, nonpassivecapture);
 	if ("onselectstart" in root) selection.on("selectstart.drag", noevent_default$1, nonpassivecapture);
@@ -33424,9 +33435,9 @@ function yesdrag(view, noclick) {
 		delete root.__noselect;
 	}
 }
-// node_modules/d3-drag/src/constant.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-drag/src/constant.js
 var constant_default$2 = (x) => () => x;
-// node_modules/d3-drag/src/event.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-drag/src/event.js
 function DragEvent(type, { sourceEvent, subject, target, identifier, active, x, y, dx, dy, dispatch }) {
 	Object.defineProperties(this, {
 		type: {
@@ -33486,7 +33497,7 @@ DragEvent.prototype.on = function() {
 	var value = this._.on.apply(this._, arguments);
 	return value === this._ ? this : value;
 };
-// node_modules/d3-drag/src/drag.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-drag/src/drag.js
 function defaultFilter$1(event) {
 	return !event.ctrlKey && !event.button;
 }
@@ -33618,7 +33629,7 @@ function drag_default() {
 	};
 	return drag;
 }
-// node_modules/d3-color/src/define.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-color/src/define.js
 function define_default(constructor, factory, prototype) {
 	constructor.prototype = factory.prototype = prototype;
 	prototype.constructor = constructor;
@@ -33628,7 +33639,7 @@ function extend(parent, definition) {
 	for (var key in definition) prototype[key] = definition[key];
 	return prototype;
 }
-// node_modules/d3-color/src/color.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-color/src/color.js
 function Color() {}
 var darker = .7;
 var brighter = 1 / darker;
@@ -33954,9 +33965,9 @@ function clampt(value) {
 function hsl2rgb(h, m1, m2) {
 	return (h < 60 ? m1 + (m2 - m1) * h / 60 : h < 180 ? m2 : h < 240 ? m1 + (m2 - m1) * (240 - h) / 60 : m1) * 255;
 }
-// node_modules/d3-interpolate/src/constant.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-interpolate/src/constant.js
 var constant_default$1 = (x) => () => x;
-// node_modules/d3-interpolate/src/color.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-interpolate/src/color.js
 function linear(a, d) {
 	return function(t) {
 		return a + t * d;
@@ -33976,7 +33987,7 @@ function nogamma(a, b) {
 	var d = b - a;
 	return d ? linear(a, d) : constant_default$1(isNaN(a) ? b : a);
 }
-// node_modules/d3-interpolate/src/rgb.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-interpolate/src/rgb.js
 var rgb_default = (function rgbGamma(y) {
 	var color = gamma(y);
 	function rgb$1(start, end) {
@@ -33992,7 +34003,7 @@ var rgb_default = (function rgbGamma(y) {
 	rgb$1.gamma = rgbGamma;
 	return rgb$1;
 })(1);
-// node_modules/d3-interpolate/src/numberArray.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-interpolate/src/numberArray.js
 function numberArray_default(a, b) {
 	if (!b) b = [];
 	var n = a ? Math.min(b.length, a.length) : 0, c = b.slice(), i;
@@ -34004,7 +34015,7 @@ function numberArray_default(a, b) {
 function isNumberArray(x) {
 	return ArrayBuffer.isView(x) && !(x instanceof DataView);
 }
-// node_modules/d3-interpolate/src/array.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-interpolate/src/array.js
 function genericArray(a, b) {
 	var nb = b ? b.length : 0, na = a ? Math.min(nb, a.length) : 0, x = new Array(na), c = new Array(nb), i = 0;
 	for (; i < na; ++i) x[i] = value_default(a[i], b[i]);
@@ -34014,20 +34025,20 @@ function genericArray(a, b) {
 		return c;
 	};
 }
-// node_modules/d3-interpolate/src/date.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-interpolate/src/date.js
 function date_default(a, b) {
 	var d = /* @__PURE__ */ new Date();
 	return a = +a, b = +b, function(t) {
 		return d.setTime(a * (1 - t) + b * t), d;
 	};
 }
-// node_modules/d3-interpolate/src/number.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-interpolate/src/number.js
 function number_default(a, b) {
 	return a = +a, b = +b, function(t) {
 		return a * (1 - t) + b * t;
 	};
 }
-// node_modules/d3-interpolate/src/object.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-interpolate/src/object.js
 function object_default(a, b) {
 	var i = {}, c = {}, k;
 	if (a === null || typeof a !== "object") a = {};
@@ -34039,7 +34050,7 @@ function object_default(a, b) {
 		return c;
 	};
 }
-// node_modules/d3-interpolate/src/string.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-interpolate/src/string.js
 var reA = /[-+]?(?:\d+\.?\d*|\.?\d+)(?:[eE][-+]?\d+)?/g;
 var reB = new RegExp(reA.source, "g");
 function zero(b) {
@@ -34083,12 +34094,12 @@ function string_default(a, b) {
 		return s.join("");
 	});
 }
-// node_modules/d3-interpolate/src/value.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-interpolate/src/value.js
 function value_default(a, b) {
 	var t = typeof b, c;
 	return b == null || t === "boolean" ? constant_default$1(b) : (t === "number" ? number_default : t === "string" ? (c = color(b)) ? (b = c, rgb_default) : string_default : b instanceof color ? rgb_default : b instanceof Date ? date_default : isNumberArray(b) ? numberArray_default : Array.isArray(b) ? genericArray : typeof b.valueOf !== "function" && typeof b.toString !== "function" || isNaN(b) ? object_default : number_default)(a, b);
 }
-// node_modules/d3-interpolate/src/transform/decompose.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-interpolate/src/transform/decompose.js
 var degrees = 180 / Math.PI;
 var identity$2 = {
 	translateX: 0,
@@ -34113,7 +34124,7 @@ function decompose_default(a, b, c, d, e, f) {
 		scaleY
 	};
 }
-// node_modules/d3-interpolate/src/transform/parse.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-interpolate/src/transform/parse.js
 var svgNode;
 function parseCss(value) {
 	const m = new (typeof DOMMatrix === "function" ? DOMMatrix : WebKitCSSMatrix)(value + "");
@@ -34127,7 +34138,7 @@ function parseSvg(value) {
 	value = value.matrix;
 	return decompose_default(value.a, value.b, value.c, value.d, value.e, value.f);
 }
-// node_modules/d3-interpolate/src/transform/index.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-interpolate/src/transform/index.js
 function interpolateTransform(parse, pxComma, pxParen, degParen) {
 	function pop(s) {
 		return s.length ? s.pop() + " " : "";
@@ -34190,7 +34201,7 @@ function interpolateTransform(parse, pxComma, pxParen, degParen) {
 }
 var interpolateTransformCss = interpolateTransform(parseCss, "px, ", "px)", "deg)");
 var interpolateTransformSvg = interpolateTransform(parseSvg, ", ", ")", ")");
-// node_modules/d3-interpolate/src/zoom.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-interpolate/src/zoom.js
 var epsilon2 = 1e-12;
 function cosh(x) {
 	return ((x = Math.exp(x)) + 1 / x) / 2;
@@ -34234,7 +34245,7 @@ var zoom_default$1 = (function zoomRho(rho, rho2, rho4) {
 	};
 	return zoom;
 })(Math.SQRT2, 2, 4);
-// node_modules/d3-timer/src/timer.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-timer/src/timer.js
 var frame = 0;
 var timeout = 0;
 var interval = 0;
@@ -34332,7 +34343,7 @@ function sleep(time) {
 		frame = 1, setFrame(wake);
 	}
 }
-// node_modules/d3-timer/src/timeout.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-timer/src/timeout.js
 function timeout_default(callback, delay, time) {
 	var t = new Timer();
 	delay = delay == null ? 0 : +delay;
@@ -34342,7 +34353,7 @@ function timeout_default(callback, delay, time) {
 	}, delay, time);
 	return t;
 }
-// node_modules/d3-transition/src/transition/schedule.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/schedule.js
 var emptyOn = dispatch("start", "end", "cancel", "interrupt");
 var emptyTween = [];
 function schedule_default(node, name, id, index, group, timing) {
@@ -34437,7 +34448,7 @@ function create(node, id, self) {
 		delete node.__transition;
 	}
 }
-// node_modules/d3-transition/src/interrupt.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/interrupt.js
 function interrupt_default$1(node, name) {
 	var schedules = node.__transition, schedule, active, empty = true, i;
 	if (!schedules) return;
@@ -34455,13 +34466,13 @@ function interrupt_default$1(node, name) {
 	}
 	if (empty) delete node.__transition;
 }
-// node_modules/d3-transition/src/selection/interrupt.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/selection/interrupt.js
 function interrupt_default(name) {
 	return this.each(function() {
 		interrupt_default$1(this, name);
 	});
 }
-// node_modules/d3-transition/src/transition/tween.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/tween.js
 function tweenRemove(id, name) {
 	var tween0, tween1;
 	return function() {
@@ -34516,12 +34527,12 @@ function tweenValue(transition, name, value) {
 		return get(node, id).value[name];
 	};
 }
-// node_modules/d3-transition/src/transition/interpolate.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/interpolate.js
 function interpolate_default(a, b) {
 	var c;
 	return (typeof b === "number" ? number_default : b instanceof color ? rgb_default : (c = color(b)) ? (b = c, rgb_default) : string_default)(a, b);
 }
-// node_modules/d3-transition/src/transition/attr.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/attr.js
 function attrRemove(name) {
 	return function() {
 		this.removeAttribute(name);
@@ -34570,7 +34581,7 @@ function attr_default(name, value) {
 	var fullname = namespace_default(name), i = fullname === "transform" ? interpolateTransformSvg : interpolate_default;
 	return this.attrTween(name, typeof value === "function" ? (fullname.local ? attrFunctionNS : attrFunction)(fullname, i, tweenValue(this, "attr." + name, value)) : value == null ? (fullname.local ? attrRemoveNS : attrRemove)(fullname) : (fullname.local ? attrConstantNS : attrConstant)(fullname, i, value));
 }
-// node_modules/d3-transition/src/transition/attrTween.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/attrTween.js
 function attrInterpolate(name, i) {
 	return function(t) {
 		this.setAttribute(name, i.call(this, t));
@@ -34609,7 +34620,7 @@ function attrTween_default(name, value) {
 	var fullname = namespace_default(name);
 	return this.tween(key, (fullname.local ? attrTweenNS : attrTween)(fullname, value));
 }
-// node_modules/d3-transition/src/transition/delay.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/delay.js
 function delayFunction(id, value) {
 	return function() {
 		init(this, id).delay = +value.apply(this, arguments);
@@ -34624,7 +34635,7 @@ function delay_default(value) {
 	var id = this._id;
 	return arguments.length ? this.each((typeof value === "function" ? delayFunction : delayConstant)(id, value)) : get(this.node(), id).delay;
 }
-// node_modules/d3-transition/src/transition/duration.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/duration.js
 function durationFunction(id, value) {
 	return function() {
 		set(this, id).duration = +value.apply(this, arguments);
@@ -34639,7 +34650,7 @@ function duration_default(value) {
 	var id = this._id;
 	return arguments.length ? this.each((typeof value === "function" ? durationFunction : durationConstant)(id, value)) : get(this.node(), id).duration;
 }
-// node_modules/d3-transition/src/transition/ease.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/ease.js
 function easeConstant(id, value) {
 	if (typeof value !== "function") throw new Error();
 	return function() {
@@ -34650,7 +34661,7 @@ function ease_default(value) {
 	var id = this._id;
 	return arguments.length ? this.each(easeConstant(id, value)) : get(this.node(), id).ease;
 }
-// node_modules/d3-transition/src/transition/easeVarying.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/easeVarying.js
 function easeVarying(id, value) {
 	return function() {
 		var v = value.apply(this, arguments);
@@ -34662,20 +34673,20 @@ function easeVarying_default(value) {
 	if (typeof value !== "function") throw new Error();
 	return this.each(easeVarying(this._id, value));
 }
-// node_modules/d3-transition/src/transition/filter.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/filter.js
 function filter_default(match) {
 	if (typeof match !== "function") match = matcher_default(match);
 	for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) for (var group = groups[j], n = group.length, subgroup = subgroups[j] = [], node, i = 0; i < n; ++i) if ((node = group[i]) && match.call(node, node.__data__, i, group)) subgroup.push(node);
 	return new Transition(subgroups, this._parents, this._name, this._id);
 }
-// node_modules/d3-transition/src/transition/merge.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/merge.js
 function merge_default(transition) {
 	if (transition._id !== this._id) throw new Error();
 	for (var groups0 = this._groups, groups1 = transition._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) for (var group0 = groups0[j], group1 = groups1[j], n = group0.length, merge = merges[j] = new Array(n), node, i = 0; i < n; ++i) if (node = group0[i] || group1[i]) merge[i] = node;
 	for (; j < m0; ++j) merges[j] = groups0[j];
 	return new Transition(merges, this._parents, this._name, this._id);
 }
-// node_modules/d3-transition/src/transition/on.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/on.js
 function start(name) {
 	return (name + "").trim().split(/^|\s+/).every(function(t) {
 		var i = t.indexOf(".");
@@ -34695,7 +34706,7 @@ function on_default(name, listener) {
 	var id = this._id;
 	return arguments.length < 2 ? get(this.node(), id).on.on(name) : this.each(onFunction(id, name, listener));
 }
-// node_modules/d3-transition/src/transition/remove.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/remove.js
 function removeFunction(id) {
 	return function() {
 		var parent = this.parentNode;
@@ -34706,7 +34717,7 @@ function removeFunction(id) {
 function remove_default() {
 	return this.on("end.remove", removeFunction(this._id));
 }
-// node_modules/d3-transition/src/transition/select.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/select.js
 function select_default(select) {
 	var name = this._name, id = this._id;
 	if (typeof select !== "function") select = selector_default(select);
@@ -34717,7 +34728,7 @@ function select_default(select) {
 	}
 	return new Transition(subgroups, this._parents, name, id);
 }
-// node_modules/d3-transition/src/transition/selectAll.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/selectAll.js
 function selectAll_default(select) {
 	var name = this._name, id = this._id;
 	if (typeof select !== "function") select = selectorAll_default(select);
@@ -34728,12 +34739,12 @@ function selectAll_default(select) {
 	}
 	return new Transition(subgroups, parents, name, id);
 }
-// node_modules/d3-transition/src/transition/selection.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/selection.js
 var Selection = selection.prototype.constructor;
 function selection_default() {
 	return new Selection(this._groups, this._parents);
 }
-// node_modules/d3-transition/src/transition/style.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/style.js
 function styleNull(name, interpolate) {
 	var string00, string10, interpolate0;
 	return function() {
@@ -34773,7 +34784,7 @@ function style_default(name, value, priority) {
 	var i = (name += "") === "transform" ? interpolateTransformCss : interpolate_default;
 	return value == null ? this.styleTween(name, styleNull(name, i)).on("end.style." + name, styleRemove(name)) : typeof value === "function" ? this.styleTween(name, styleFunction(name, i, tweenValue(this, "style." + name, value))).each(styleMaybeRemove(this._id, name)) : this.styleTween(name, styleConstant(name, i, value), priority).on("end.style." + name, null);
 }
-// node_modules/d3-transition/src/transition/styleTween.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/styleTween.js
 function styleInterpolate(name, i, priority) {
 	return function(t) {
 		this.style.setProperty(name, i.call(this, t), priority);
@@ -34796,7 +34807,7 @@ function styleTween_default(name, value, priority) {
 	if (typeof value !== "function") throw new Error();
 	return this.tween(key, styleTween(name, value, priority == null ? "" : priority));
 }
-// node_modules/d3-transition/src/transition/text.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/text.js
 function textConstant(value) {
 	return function() {
 		this.textContent = value;
@@ -34811,7 +34822,7 @@ function textFunction(value) {
 function text_default(value) {
 	return this.tween("text", typeof value === "function" ? textFunction(tweenValue(this, "text", value)) : textConstant(value == null ? "" : value + ""));
 }
-// node_modules/d3-transition/src/transition/textTween.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/textTween.js
 function textInterpolate(i) {
 	return function(t) {
 		this.textContent = i.call(this, t);
@@ -34834,7 +34845,7 @@ function textTween_default(value) {
 	if (typeof value !== "function") throw new Error();
 	return this.tween(key, textTween(value));
 }
-// node_modules/d3-transition/src/transition/transition.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/transition.js
 function transition_default$1() {
 	var name = this._name, id0 = this._id, id1 = newId();
 	for (var groups = this._groups, m = groups.length, j = 0; j < m; ++j) for (var group = groups[j], n = group.length, node, i = 0; i < n; ++i) if (node = group[i]) {
@@ -34848,7 +34859,7 @@ function transition_default$1() {
 	}
 	return new Transition(groups, this._parents, name, id1);
 }
-// node_modules/d3-transition/src/transition/end.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/end.js
 function end_default() {
 	var on0, on1, that = this, id = that._id, size = that.size();
 	return new Promise(function(resolve, reject) {
@@ -34868,7 +34879,7 @@ function end_default() {
 		if (size === 0) resolve();
 	});
 }
-// node_modules/d3-transition/src/transition/index.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/index.js
 var id = 0;
 function Transition(groups, parents, name, id) {
 	this._groups = groups;
@@ -34915,11 +34926,11 @@ Transition.prototype = transition.prototype = {
 	end: end_default,
 	[Symbol.iterator]: selection_prototype[Symbol.iterator]
 };
-// node_modules/d3-ease/src/cubic.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-ease/src/cubic.js
 function cubicInOut(t) {
 	return ((t *= 2) <= 1 ? t * t * t : (t -= 2) * t * t + 2) / 2;
 }
-// node_modules/d3-transition/src/selection/transition.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/selection/transition.js
 var defaultTiming = {
 	time: null,
 	delay: 0,
@@ -34938,12 +34949,12 @@ function transition_default(name) {
 	for (var groups = this._groups, m = groups.length, j = 0; j < m; ++j) for (var group = groups[j], n = group.length, node, i = 0; i < n; ++i) if (node = group[i]) schedule_default(node, name, id, i, group, timing || inherit(node, id));
 	return new Transition(groups, this._parents, name, id);
 }
-// node_modules/d3-transition/src/selection/index.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-transition/src/selection/index.js
 selection.prototype.interrupt = interrupt_default;
 selection.prototype.transition = transition_default;
-// node_modules/d3-zoom/src/constant.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-zoom/src/constant.js
 var constant_default = (x) => () => x;
-// node_modules/d3-zoom/src/event.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-zoom/src/event.js
 function ZoomEvent(type, { sourceEvent, target, transform, dispatch }) {
 	Object.defineProperties(this, {
 		type: {
@@ -34969,7 +34980,7 @@ function ZoomEvent(type, { sourceEvent, target, transform, dispatch }) {
 		_: { value: dispatch }
 	});
 }
-// node_modules/d3-zoom/src/transform.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-zoom/src/transform.js
 function Transform(k, x, y) {
 	this.k = k;
 	this.x = x;
@@ -35017,7 +35028,7 @@ function transform(node) {
 	while (!node.__zoom) if (!(node = node.parentNode)) return identity$1;
 	return node.__zoom;
 }
-// node_modules/d3-zoom/src/noevent.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-zoom/src/noevent.js
 function nopropagation(event) {
 	event.stopImmediatePropagation();
 }
@@ -35025,7 +35036,7 @@ function noevent_default(event) {
 	event.preventDefault();
 	event.stopImmediatePropagation();
 }
-// node_modules/d3-zoom/src/zoom.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/d3-zoom/src/zoom.js
 function defaultFilter(event) {
 	return (!event.ctrlKey || event.type === "wheel") && !event.button;
 }
@@ -35323,7 +35334,7 @@ function zoom_default() {
 	};
 	return zoom;
 }
-// node_modules/@xyflow/system/dist/esm/index.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@xyflow/system/dist/esm/index.js
 var errorMessages = {
 	error001: (lib = "react") => `Seems like you have not used ${lib === "svelte" ? "SvelteFlowProvider" : "ReactFlowProvider"} as an ancestor. Help: https://${lib}flow.dev/error#001`,
 	error002: () => "It looks like you've created a new nodeTypes or edgeTypes object. If this wasn't on purpose please define the nodeTypes/edgeTypes outside of the component or memoize them.",
@@ -38148,7 +38159,7 @@ function XYResizer({ domNode, nodeId, getStoreItems, onChange, onEnd }) {
 		destroy
 	};
 }
-// node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.production.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.production.js
 /**
 * @license React
 * use-sync-external-store-shim.production.js
@@ -38207,11 +38218,11 @@ var require_use_sync_external_store_shim_production = /* @__PURE__ */ __commonJS
 	var shim = "undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement ? useSyncExternalStore$1 : useSyncExternalStore$2;
 	exports.useSyncExternalStore = void 0 !== React.useSyncExternalStore ? React.useSyncExternalStore : shim;
 }));
-// node_modules/use-sync-external-store/shim/index.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/use-sync-external-store/shim/index.js
 var require_shim = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_use_sync_external_store_shim_production();
 }));
-// node_modules/use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.production.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.production.js
 /**
 * @license React
 * use-sync-external-store-shim/with-selector.production.js
@@ -38282,7 +38293,7 @@ var require_with_selector_production = /* @__PURE__ */ __commonJSMin(((exports) 
 		return value;
 	};
 }));
-// node_modules/zustand/esm/vanilla.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/zustand/esm/vanilla.mjs
 var import_with_selector = /* @__PURE__ */ __toESM((/* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_with_selector_production();
 })))(), 1);
@@ -38317,7 +38328,7 @@ var createStoreImpl = (createState) => {
 	return api;
 };
 var createStore$1 = (createState) => createState ? createStoreImpl(createState) : createStoreImpl;
-// node_modules/zustand/esm/traditional.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/zustand/esm/traditional.mjs
 var { useDebugValue } = import_react.default;
 var { useSyncExternalStoreWithSelector } = import_with_selector.default;
 var identity = (arg) => arg;
@@ -38333,7 +38344,7 @@ var createWithEqualityFnImpl = (createState, defaultEqualityFn) => {
 	return useBoundStoreWithEqualityFn;
 };
 var createWithEqualityFn = (createState, defaultEqualityFn) => createState ? createWithEqualityFnImpl(createState, defaultEqualityFn) : createWithEqualityFnImpl;
-// node_modules/zustand/esm/shallow.mjs
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/zustand/esm/shallow.mjs
 function shallow$1(objA, objB) {
 	if (Object.is(objA, objB)) return true;
 	if (typeof objA !== "object" || objA === null || typeof objB !== "object" || objB === null) return false;
@@ -38352,7 +38363,7 @@ function shallow$1(objA, objB) {
 	for (const keyA of keysA) if (!Object.prototype.hasOwnProperty.call(objB, keyA) || !Object.is(objA[keyA], objB[keyA])) return false;
 	return true;
 }
-// node_modules/@xyflow/react/dist/esm/index.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@xyflow/react/dist/esm/index.js
 var StoreContext = (0, import_react.createContext)(null);
 var Provider$1 = StoreContext.Provider;
 var zustandErrorMessage = errorMessages["error001"]("react");
@@ -44700,6 +44711,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], p
 	const [drag, setDrag] = (0, import_react.useState)(null);
 	const [picked, setPicked] = (0, import_react.useState)(null);
 	const [proposal, setProposal] = (0, import_react.useState)(null);
+	const proposalRequest = (0, import_react.useRef)(0);
 	const [notice, setNotice] = (0, import_react.useState)(null);
 	const dragRef = (0, import_react.useRef)(null);
 	const pressRef = (0, import_react.useRef)(null);
@@ -44821,23 +44833,44 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], p
 		const base = String(stage?.name || "").replace(/ \([0-9a-z]+\)$/i, "");
 		return base && task.title.startsWith(`${base} — `) ? task.title.slice(base.length + 3) : task.title;
 	};
-	async function propose(moves, description) {
+	const cancelProposal = () => {
+		proposalRequest.current++;
+		setProposal(null);
+	};
+	async function propose(moves, description, mode) {
+		const request = ++proposalRequest.current, chooseMode = canChooseMoveMode(moves);
+		if (chooseMode && !mode) {
+			setProposal({
+				moves,
+				description,
+				chooseMode,
+				mode: null
+			});
+			return;
+		}
+		const options = { mode: mode || "keep" };
 		setProposal({
 			moves,
 			description,
+			chooseMode,
+			mode: options.mode,
 			loading: true
 		});
 		try {
-			const preview = await onSchedulePreview(moves);
-			setProposal({
+			const preview = await onSchedulePreview(moves, options);
+			if (request === proposalRequest.current) setProposal({
 				moves,
 				description,
+				chooseMode,
+				mode: options.mode,
 				preview
 			});
 		} catch (error) {
-			setProposal({
+			if (request === proposalRequest.current) setProposal({
 				moves,
 				description,
+				chooseMode,
+				mode: options.mode,
 				error: error.message || "Could not check this change."
 			});
 		}
@@ -44849,12 +44882,15 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], p
 			saving: true
 		});
 		try {
-			const result = await onScheduleApply(moves);
+			const result = await onScheduleApply(moves, {
+				mode: proposal.mode || "keep",
+				fingerprint: proposal.preview.fingerprint
+			});
 			setProposal(null);
 			const pushed = result.affected.filter((item) => !item.moved).length;
 			setNotice({
-				text: `${description} saved to the Google Sheet${pushed ? ` · ${pushed} dependent task${pushed === 1 ? "" : "s"} moved` : ""}.`,
-				undo: undoMoves(result.affected)
+				text: `${description} saved${telegramLinked ? " to the Google Sheet" : ""}${pushed ? ` · ${pushed} dependent task${pushed === 1 ? "" : "s"} moved` : ""}.`,
+				undo: result.dependencyChanges?.length || result.affected.length > 60 ? null : undoMoves(result.affected)
 			});
 		} catch (error) {
 			setProposal({
@@ -45631,7 +45667,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], p
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
 				open: Boolean(proposal),
 				onOpenChange: (open) => {
-					if (!open && !proposal?.saving) setProposal(null);
+					if (!open && !proposal?.saving) cancelProposal();
 				},
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
 					className: "iksha-schedule-preview",
@@ -45642,8 +45678,43 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], p
 								children: "CHECK BEFORE SAVING"
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: proposal?.description }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Nothing changes until you confirm. Confirmed changes are written to the Google Sheet, so Telegram and the web app stay in step." })
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: ["Nothing changes until you confirm.", telegramLinked ? " Confirmed changes are written to the Google Sheet, so Telegram and the web app stay in step." : " Preview the dates and connections before saving."] })
 						] }),
+						proposal?.chooseMode && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+							className: "grid gap-3 sm:grid-cols-2",
+							disabled: proposal.saving,
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
+								className: "mb-2 text-sm font-semibold",
+								children: "How should this move affect the timeline?"
+							}), [[
+								"parallel",
+								"Move in parallel",
+								"Move only the selected work. Other dates stay unchanged; connections to other work are removed."
+							], [
+								"shift-following",
+								"Shift everything after it",
+								"Move this work and every following task by the same number of days. Earlier work stays unchanged."
+							]].map(([mode, label, detail]) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: `flex cursor-pointer items-start gap-2 rounded-lg border p-3 ${proposal.mode === mode ? "border-primary bg-primary/5" : ""}`,
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+									className: "mt-1",
+									type: "radio",
+									name: "timeline-move-mode",
+									checked: proposal.mode === mode,
+									onChange: () => propose(proposal.moves, proposal.description, mode)
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "block text-sm font-medium",
+									children: label
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "mt-1 block text-xs text-muted-foreground",
+									children: detail
+								})] })]
+							}, mode))]
+						}),
+						proposal?.chooseMode && !proposal.mode && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "iksha-preview-note",
+							children: "Choose an option to preview the new dates."
+						}),
 						proposal?.loading && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "iksha-preview-note",
 							children: "Checking dependencies…"
@@ -45666,18 +45737,26 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], p
 									" → ",
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: isoRange(item.forecastStart, item.forecastEnd) })
 								] })] }, item.taskId)) }),
-								proposal.preview.affected.some((item) => !item.moved) ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", { children: "These dependent tasks move later" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: proposal.preview.affected.filter((item) => !item.moved).map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.taskName }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+								proposal.preview.affected.some((item) => !item.moved) ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", { children: "These following tasks also move" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: proposal.preview.affected.filter((item) => !item.moved).map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.taskName }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
 									isoLabel(item.previousStart),
 									" → ",
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: isoLabel(item.forecastStart) })
 								] })] }, item.taskId)) })] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "iksha-preview-note",
-									children: "No other tasks are affected."
+									children: "No other task dates change."
 								}),
 								proposal.preview.warnings.map((warning, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 									className: "iksha-preview-warning",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { size: 14 }), warning.reason]
 								}, index)),
+								proposal.preview.dependencyChanges?.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", { children: "Connections that will change" }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: proposal.preview.dependencyChanges.map((change) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: change.reason }, change.taskId)) }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "iksha-preview-note",
+										children: "These connections will be removed when you confirm. Undo is unavailable for moves that change connections."
+									})
+								] }),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "iksha-preview-note",
 									children: proposal.preview.finish ? `Projected finish after this change: ${isoLabel(proposal.preview.finish)}` : "Finish date stays unconfirmed until every task has dates."
@@ -45689,7 +45768,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], p
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 								variant: "outline",
 								disabled: proposal?.saving,
-								onClick: () => setProposal(null),
+								onClick: cancelProposal,
 								children: "Cancel"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 								disabled: !proposal?.preview?.ok || proposal?.saving,
@@ -45924,7 +46003,7 @@ function ProjectTimelineWorkspace({ tasks = [], stages = [], members = [], space
 		})
 	});
 }
-// node_modules/@dagrejs/dagre/dist/dagre.esm.js
+// ../../../Users/parashrautela/Documents/Telegram bot /work/production-web/node_modules/@dagrejs/dagre/dist/dagre.esm.js
 var Te = Object.defineProperty;
 var In = (e, n, t) => n in e ? Te(e, n, {
 	enumerable: !0,
@@ -50026,9 +50105,9 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 								setSelectedTask(task);
 								setTaskDrawerOpen(true);
 							},
-							onSchedulePreview: !["Completed", "Abandoned"].includes(project.status) ? (moves) => previewSchedule(project.id, moves) : void 0,
-							onScheduleApply: !["Completed", "Abandoned"].includes(project.status) ? async (moves) => {
-								const result = await applySchedule(project.id, moves);
+							onSchedulePreview: !["Completed", "Abandoned"].includes(project.status) ? (moves, options) => previewSchedule(project.id, moves, options) : void 0,
+							onScheduleApply: !["Completed", "Abandoned"].includes(project.status) ? async (moves, options) => {
+								const result = await applySchedule(project.id, moves, options);
 								setTasks(result.tasks);
 								return result;
 							} : void 0,
