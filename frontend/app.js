@@ -30679,7 +30679,7 @@ function QueryDecisionButtons({ request: request$2, disabled, onAccept, onReject
 		onClick: onAccept,
 		disabled,
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5 mr-1" }), "Accept"]
-	}), request$2.canReject && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+	}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 		size,
 		variant: "outline",
 		className: "text-destructive",
