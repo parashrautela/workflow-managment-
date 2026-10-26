@@ -467,7 +467,6 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
       admin(user);
       const request = state.decisionRequests.find((r) => r.id === decodeURIComponent(m[1])); if (!request) fail('Request not found.',404);
       const project = projectFor(state,user,request.projectId); requireLinked(project);
-      if (request.requestType === 'Message') fail('Group messages are context, not decision requests.',409);
       const input = await body(req); const apply = m[2] === 'accept'; const target = input.target || {};
       const notificationText = input.notificationText === undefined ? '' : text(input.notificationText, 'reply', 3000);
       const projectTasks = () => state.tasks.filter((t) => t.projectId === project.id && !t.deletedAt);
@@ -484,7 +483,7 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
         if (!linkTask?.telegramTaskId) fail('Task not found in this project.',404);
         const type = target.action?.type;
         if (type === 'attach') {
-          if (request.requestType !== 'Update') fail('Only updates can be attached without a schedule change.');
+          if (!['Update','Message'].includes(request.requestType)) fail('Only updates and group messages can be attached without a schedule change.');
           result = { ok: true, conflicts: [], warnings: [], affected: [], finish: '', summary: `Attached to "${linkTask.title}".` };
         } else {
           if (!['delay','redo','complete'].includes(type)) fail('Choose delay, redo or mark complete.');

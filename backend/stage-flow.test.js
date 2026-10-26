@@ -239,7 +239,7 @@ test('a blank project starts with no stages and no tasks; templates still need t
 });
 
 
-test('rejection is client-only with an optional reply and group context never becomes work', async () => {
+test('rejection is client-only with an optional reply and group messages can become work', async () => {
   const h = harness();
   const client = withQuery(h);
   const route = id => `/api/founder/decision-requests/${id}`;
@@ -251,6 +251,27 @@ test('rejection is client-only with an optional reply and group context never be
   assert.equal((await h.call('POST', route(staff.id) + '/reject', {reason:'No'})).status, 403);
   assert.equal(staff.status,'Pending');
   const context = withQuery(h, { id: 'REQ--900-16-message', requestType:'Message', originalSenderTelegramId:'51' });
-  assert.equal((await h.call('POST', route(context.id) + '/accept-preview', {target:{}})).status,409);
+  assert.equal((await h.call('POST', route(context.id) + '/accept-preview', {target:{}})).status,400);
   assert.equal((await h.call('POST', route(context.id) + '/reject', {})).status,403);
+});
+
+
+test('founder accepts group messages into task discussion without requiring a schedule change', async () => {
+  const h = harness({botRows:[botRow('P009-ST1-2','Civil','Drawing','2026-11-03','2026-11-04')]});
+  await h.call('GET','/api/founder/projects/p1/tasks');
+  const task=h.state.tasks[0];task.telegramSyncStatus='Synced';const before=structuredClone(task);
+  const request=withQuery(h,{id:'REQ--900-25-message',requestType:'Message',originalSenderTelegramId:'51'});
+  const route=`/api/founder/decision-requests/${request.id}`;
+  const target={kind:'task',taskId:task.id,action:{type:'attach'}};
+  assert.equal((await h.call('POST',route+'/accept-preview',{target})).status,200);
+  assert.equal(request.status,'Pending');
+  assert.equal((await h.call('POST',route.replace('/founder/','/employee/')+'/accept',{target},'employee')).status,403);
+  assert.equal((await h.call('POST',route+'/reject',{})).status,403);
+  const result=await h.call('POST',route+'/accept',{target});
+  assert.equal(result.status,200);assert.equal(request.decisionStatus,'Approved');assert.equal(request.taskId,task.id);
+  assert.equal(task.deadline,before.deadline);assert.equal(task.status,before.status);
+  assert.equal(h.state.taskMessages.filter(row=>row.queryId===request.id).length,1);
+  assert.equal((await h.call('POST',route+'/accept',{target})).status,200);
+  assert.equal(h.state.taskMessages.filter(row=>row.queryId===request.id).length,1);
+  assert.equal(h.calls.filter(row=>row.route.endsWith('/tasks/action')).length,0);
 });

@@ -30054,7 +30054,7 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 	const [saving, setSaving] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
 	const [accepted, setAccepted] = (0, import_react.useState)(null);
-	const isUpdate = request$1?.requestType === "Update";
+	const canAttach = ["Update", "Message"].includes(request$1?.requestType);
 	const defaultPlan = useDefaultPlan(request$1?.projectId, open);
 	(0, import_react.useEffect)(() => {
 		if (!open || !request$1) return;
@@ -30063,7 +30063,7 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 		setStageId("");
 		setTaskId("");
 		setAction({
-			type: isUpdate ? "attach" : "delay",
+			type: canAttach ? "attach" : "delay",
 			days: 1
 		});
 		setNewStage(null);
@@ -30111,7 +30111,7 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 		if (preview && !accepted) setOutcome(clientOutcome(target, preview, task?.title));
 	}, [preview]);
 	const chooseStage = (row) => {
-		if (!row.selectable && !isUpdate) {
+		if (!row.selectable && !canAttach) {
 			setNewStage(emptyStage({
 				stages,
 				placement: {
@@ -30330,7 +30330,7 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "grid gap-2 sm:grid-cols-2",
 									role: "radiogroup",
-									children: [...ACTIONS, ...isUpdate ? [{
+									children: [...ACTIONS, ...canAttach ? [{
 										type: "attach",
 										title: "Just attach",
 										text: "Keep it on the task. No date changes."
@@ -30657,7 +30657,6 @@ function QueryDecisionButtons({ request: request$2, disabled, onAccept, onReject
 			setBusy(false);
 		}
 	};
-	if (request$2.requestType === "Message") return null;
 	if (request$2.status === "On hold") return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 		variant: "outline",
 		size,

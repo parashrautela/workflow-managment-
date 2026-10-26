@@ -68,12 +68,12 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const [accepted, setAccepted] = useState(null);
-  const isUpdate = request?.requestType === "Update";
+  const canAttach = ["Update", "Message"].includes(request?.requestType);
   const defaultPlan = useDefaultPlan(request?.projectId, open);
 
   useEffect(() => {
     if (!open || !request) return;
-    setStep("stage"); setSearch(""); setStageId(""); setTaskId(""); setAction({ type: isUpdate ? "attach" : "delay", days: 1 });
+    setStep("stage"); setSearch(""); setStageId(""); setTaskId(""); setAction({ type: canAttach ? "attach" : "delay", days: 1 });
     setNewStage(null); setReply(""); setError(""); setAccepted(null);
     setWorkspace(null); setLoadError("");
     fetchProjectWorkspace(request.projectId, "founder").then(setWorkspace).catch((problem) => setLoadError(problem.message || "Could not load the project plan."));
@@ -103,7 +103,7 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
   useEffect(() => { if (preview && !accepted) setOutcome(clientOutcome(target, preview, task?.title)); }, [preview]);
 
   const chooseStage = (row) => {
-    if (!row.selectable && !isUpdate) {
+    if (!row.selectable && !canAttach) {
       setNewStage(emptyStage({ stages, placement: { type: "after", stageName: row.stage.name } }));
       setError(`${row.stage.name} is finished. Add a new stage for this work.`);
       setStep("new-stage");
@@ -194,7 +194,7 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
           {workspace && step === "action" && (
             <div className="space-y-3">
               <div className="grid gap-2 sm:grid-cols-2" role="radiogroup">
-                {[...ACTIONS, ...(isUpdate ? [{ type: "attach", title: "Just attach", text: "Keep it on the task. No date changes." }] : [])].map((option) => (
+                {[...ACTIONS, ...(canAttach ? [{ type: "attach", title: "Just attach", text: "Keep it on the task. No date changes." }] : [])].map((option) => (
                   <label key={option.type} className={`cursor-pointer rounded-xl border p-3 ${action.type === option.type ? "border-primary bg-primary/5" : ""}`}>
                     <span className="flex items-center gap-2 text-sm font-medium"><input type="radio" name="action" checked={action.type === option.type} onChange={() => setAction({ ...action, type: option.type })} />{option.title}</span>
                     <span className="mt-1 block text-xs text-muted-foreground">{option.text}</span>
@@ -326,7 +326,6 @@ function QueryDecisionOutcome({ request }) {
 export function QueryDecisionButtons({ request, disabled, onAccept, onReject, onChanged, size = "sm" }) {
   const [error,setError]=useState(''),[busy,setBusy]=useState(false);
   const resume=async()=>{setBusy(true);try{await sendRequest(`/api/founder/decision-requests/${encodeURIComponent(request.id)}/resume`,{method:'POST',body:{}});onChanged?.();}catch(problem){setError(problem.message);}finally{setBusy(false);}};
-  if(request.requestType === "Message") return null;
   if(request.status==='On hold')return <><Button variant="outline" size={size} disabled={busy||disabled} onClick={resume}>Return to review</Button>{error&&<p role="alert" className="text-xs text-destructive">{error}</p>}</>;
 
   const decided = Boolean(request.decisionStatus) || ["Rejected", "Done", "Published", "Approved"].includes(request.status);
