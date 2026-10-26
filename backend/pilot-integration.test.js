@@ -391,3 +391,24 @@ test('founder connection check reads the actual linked bot and rejects unregiste
  const status=await f.call(route,'GET',undefined,f.cookie);
  assert.equal(status.status,200);assert.equal(status.data.botIsAdmin,true);assert.equal(status.data.botUsername,'project_bot');assert.equal(checks,1);
 });
+
+
+test('a group message can wait for context while task dates and pending counts stay unchanged',async t=>{
+ const f=await fixture(t),call=(r,m,i)=>f.call(r,m,i,f.cookie);
+ const p=(await call('/api/founder/projects','POST',{name:'Context review'})).data.project.id;
+ await call(`/api/founder/projects/${p}/client`,'POST',{clientName:'Maya',clientTelegramId:'42'});
+ await call(`/api/founder/projects/${p}/workflow/start`,'POST',{workflowId:'PILOT-DESIGN-V1',startDate:'2026-11-01'});
+ await call(`/api/founder/projects/${p}`,'PATCH',{telegramGroupChatId:'-123'});
+ const context=payload(911,{RequestID:'REQ--123-911-message',RequestType:'Message',OriginalSenderTelegramID:'51'});
+ await f.call('/api/integrations/telegram/requests','POST',context,'',true);
+ const task=(await call(`/api/founder/projects/${p}/tasks`)).data.tasks[0];
+ const original=structuredClone(task),route=`/api/founder/decision-requests/${context.RequestID}`;
+ assert.equal((await call(route+'/reject','POST',{})).status,403);
+ assert.equal((await call(route+'/hold','POST',{taskId:task.id})).status,200);
+ assert.equal((await call(route)).data.request.status,'On hold');
+ const workspace=(await call(`/api/founder/projects/${p}/workspace`)).data;
+ assert.equal(workspace.project.openQueryCount,0);
+ assert.deepEqual(workspace.tasks.find(row=>row.id===task.id),original);
+ assert.equal((await call(route+'/resume','POST',{})).status,200);
+ assert.equal((await call(route+'/hold','POST',{taskId:task.id})).status,200);
+});

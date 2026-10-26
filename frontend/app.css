@@ -2691,10 +2691,6 @@
     padding-top: calc(var(--spacing) * 5);
   }
 
-  .pr-1 {
-    padding-right: var(--spacing);
-  }
-
   .pr-6 {
     padding-right: calc(var(--spacing) * 6);
   }
