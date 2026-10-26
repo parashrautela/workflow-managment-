@@ -345,7 +345,7 @@ test('custom timeline options preview, reject stale schedules, and persist dates
 });
 
 
-test('all group messages appear as context and only client queries offer optional rejection',async t=>{
+test('all group messages appear as context and any sender can receive a founder decision',async t=>{
  const f=await fixture(t),call=(r,m,i)=>f.call(r,m,i,f.cookie);
  const p=(await call('/api/founder/projects','POST',{name:'Group context'})).data.project.id;
  await call(`/api/founder/projects/${p}/client`,'POST',{clientName:'Maya',clientTelegramId:'42'});
@@ -357,12 +357,12 @@ test('all group messages appear as context and only client queries offer optiona
  const client=payload(902,{AutomaticClientQuery:true});await f.call('/api/integrations/telegram/requests','POST',client,'',true);
  const staff=payload(903,{OriginalSenderTelegramID:'51'});await f.call('/api/integrations/telegram/requests','POST',staff,'',true);
  const inbox=(await call('/api/founder/decision-requests')).data.requests;
- assert.equal(inbox.find(r=>r.id===context.RequestID).canReject,false);
+ assert.equal(inbox.find(r=>r.id===context.RequestID).canReject,true);
  assert.equal(inbox.find(r=>r.id===client.RequestID).canReject,true);
- assert.equal(inbox.find(r=>r.id===staff.RequestID).canReject,false);
+ assert.equal(inbox.find(r=>r.id===staff.RequestID).canReject,true);
  assert.equal((await call(`/api/founder/projects/${p}/workspace`)).data.project.openQueryCount,2);
  const route=id=>`/api/founder/decision-requests/${id}`;
- assert.equal((await call(route(staff.RequestID)+'/reject','POST',{})).status,403);
+ assert.equal((await call(route(staff.RequestID)+'/reject','POST',{})).status,200);
  assert.equal((await call(route(client.RequestID)+'/reject','POST',{})).status,200);
  const rejected=(await call(route(client.RequestID))).data.request;
  assert.equal(rejected.rejectionReply,"We're not able to go ahead with this request right now.");
@@ -403,7 +403,6 @@ test('a group message can wait for context while task dates and pending counts s
  await f.call('/api/integrations/telegram/requests','POST',context,'',true);
  const task=(await call(`/api/founder/projects/${p}/tasks`)).data.tasks[0];
  const original=structuredClone(task),route=`/api/founder/decision-requests/${context.RequestID}`;
- assert.equal((await call(route+'/reject','POST',{})).status,403);
  assert.equal((await call(route+'/hold','POST',{taskId:task.id})).status,200);
  assert.equal((await call(route)).data.request.status,'On hold');
  const workspace=(await call(`/api/founder/projects/${p}/workspace`)).data;
@@ -411,4 +410,20 @@ test('a group message can wait for context while task dates and pending counts s
  assert.deepEqual(workspace.tasks.find(row=>row.id===task.id),original);
  assert.equal((await call(route+'/resume','POST',{})).status,200);
  assert.equal((await call(route+'/hold','POST',{taskId:task.id})).status,200);
+});
+
+
+test('founder rejection handles ordinary group messages and keeps evidence across restart',async t=>{
+ const f=await fixture(t),call=(r,m,i)=>f.call(r,m,i,f.cookie);
+ const p=(await call('/api/founder/projects','POST',{name:'Every sender'})).data.project.id;
+ await call(`/api/founder/projects/${p}`,'PATCH',{telegramGroupChatId:'-123'});
+ const context=payload(921,{RequestID:'REQ--123-921-message',RequestType:'Message',OriginalSenderTelegramID:'51',OriginalSenderName:'Site team'});
+ await f.call('/api/integrations/telegram/requests','POST',context,'',true);
+ const route=`/api/founder/decision-requests/${context.RequestID}`;
+ assert.equal((await f.call(route+'/reject','POST',{})).status,401);
+ assert.equal((await call(route+'/reject','POST',{})).status,200);
+ await f.restart();
+ const saved=(await call(route)).data.request;
+ assert.equal(saved.decisionStatus,'Rejected');assert.equal(saved.originalMessage,context.OriginalMessage);
+ assert.equal(saved.rejectionReply,"We're not able to go ahead with this request right now.");
 });

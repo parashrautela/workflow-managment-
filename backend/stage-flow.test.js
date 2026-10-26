@@ -239,7 +239,7 @@ test('a blank project starts with no stages and no tasks; templates still need t
 });
 
 
-test('rejection is client-only with an optional reply and group messages can become work', async () => {
+test('founders can reject any sender with an optional reply and group messages can become work', async () => {
   const h = harness();
   const client = withQuery(h);
   const route = id => `/api/founder/decision-requests/${id}`;
@@ -247,12 +247,12 @@ test('rejection is client-only with an optional reply and group messages can bec
   assert.equal((await h.call('POST', route(client.id) + '/reject', {})).status, 200);
   assert.equal(client.rejectionReply, "We're not able to go ahead with this request right now.");
   const staff = withQuery(h, { id: 'REQ--900-15-question', originalSenderTelegramId: '51' });
-  assert.equal((await h.call('GET', route(staff.id))).data.request.canReject, false);
-  assert.equal((await h.call('POST', route(staff.id) + '/reject', {reason:'No'})).status, 403);
-  assert.equal(staff.status,'Pending');
+  assert.equal((await h.call('GET', route(staff.id))).data.request.canReject, true);
+  assert.equal((await h.call('POST', route(staff.id) + '/reject', {reason:'No'})).status, 200);
+  assert.equal(staff.status,'Rejected');
   const context = withQuery(h, { id: 'REQ--900-16-message', requestType:'Message', originalSenderTelegramId:'51' });
   assert.equal((await h.call('POST', route(context.id) + '/accept-preview', {target:{}})).status,400);
-  assert.equal((await h.call('POST', route(context.id) + '/reject', {})).status,403);
+  assert.equal((await h.call('POST', route(context.id) + '/reject', {})).status,200);
 });
 
 
@@ -266,7 +266,7 @@ test('founder accepts group messages into task discussion without requiring a sc
   assert.equal((await h.call('POST',route+'/accept-preview',{target})).status,200);
   assert.equal(request.status,'Pending');
   assert.equal((await h.call('POST',route.replace('/founder/','/employee/')+'/accept',{target},'employee')).status,403);
-  assert.equal((await h.call('POST',route+'/reject',{})).status,403);
+  assert.equal((await h.call('POST',route.replace('/founder/','/employee/')+'/reject',{},'employee')).status,403);
   const result=await h.call('POST',route+'/accept',{target});
   assert.equal(result.status,200);assert.equal(request.decisionStatus,'Approved');assert.equal(request.taskId,task.id);
   assert.equal(task.deadline,before.deadline);assert.equal(task.status,before.status);

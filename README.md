@@ -78,7 +78,7 @@ video, voice, and audio messages from everyone in the linked project group.
 Client messages remain queries; other ordinary messages are labelled Group message
 and do not add to the pending-query count. Founders can accept them into a task,
 including attaching without changing dates or waiting for more context. Explicit question/approval commands
-remain available. Only queries from assigned clients can be rejected. A founder
+remain available. Founders can accept or reject messages from any sender. A founder
 can confirm rejection with the default reply or add optional context.
 
 In Accept → stage → task → action, **Waiting for more context** is the fourth

@@ -1,5 +1,5 @@
 import { queryUpdateText } from "./query-notifications.js";
-import { isClientQuery, queryView } from './query-context.js';
+import { queryView } from './query-context.js';
 import { rolesOf, hasRole, matchesRole, roleText, isStaff } from './roles.js';
 import { canWorkOnTask } from './work-access.js';
 import { syncProjectTasks, refreshStageDates } from './task-sync.js';
@@ -532,8 +532,6 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
       }
       if (['approve','reject','convert'].includes(m[2]) && method === 'POST') {
         admin(user); const input = await body(req);
-        if (m[2] === 'reject' && !isClientQuery(state,request)) fail('Only client queries can be rejected.',403);
-        if (request.requestType === 'Message') fail('Group messages are context, not decision requests.',409);
         if (m[2] === 'convert' && request.taskId) { const task = state.tasks.find((t) => t.id === request.taskId); json(res,200,{request,task}); return true; }
         const target = m[2] === 'reject' ? 'Rejected' : 'Approved';
         if (['Rejected','Done'].includes(request.status) && request.status !== target) fail('This query is already closed.',409);

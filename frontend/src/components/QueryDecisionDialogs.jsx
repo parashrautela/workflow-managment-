@@ -333,7 +333,7 @@ export function QueryDecisionButtons({ request, disabled, onAccept, onReject, on
   return (
     <>
       <Button size={size} onClick={onAccept} disabled={disabled}><Check className="size-3.5 mr-1" />Accept</Button>
-      {request.canReject && <Button size={size} variant="outline" className="text-destructive" onClick={onReject} disabled={disabled}>Reject</Button>}
+      <Button size={size} variant="outline" className="text-destructive" onClick={onReject} disabled={disabled}>Reject</Button>
     </>
   );
 }
