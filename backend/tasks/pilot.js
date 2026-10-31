@@ -1,5 +1,5 @@
 import { queryUpdateText } from '../queries/query-notifications.js';
-import { isClientQuery, queryView } from '../queries/query-context.js';
+import { queryView } from '../queries/query-context.js';
 import { rolesOf, hasRole, matchesRole, roleText, isStaff } from '../auth/roles.js';
 import { canWorkOnTask } from '../auth/work-access.js';
 import { syncProjectTasks, refreshStageDates } from './task-sync.js';
@@ -1198,8 +1198,6 @@ export function createPilotRoutes({
       if (!request) fail('Request not found.', 404);
       const project = projectFor(state, user, request.projectId);
       requireLinked(project);
-      if (request.requestType === 'Message')
-        fail('Group messages are context, not decision requests.', 409);
       const input = await body(req);
       const apply = m[2] === 'accept';
       const target = input.target || {};
@@ -1237,8 +1235,8 @@ export function createPilotRoutes({
         if (!linkTask?.telegramTaskId) fail('Task not found in this project.', 404);
         const type = target.action?.type;
         if (type === 'attach') {
-          if (request.requestType !== 'Update')
-            fail('Only updates can be attached without a schedule change.');
+          if (!['Update', 'Message'].includes(request.requestType))
+            fail('Only updates and group messages can be attached without a schedule change.');
           result = {
             ok: true,
             conflicts: [],
@@ -1368,10 +1366,6 @@ export function createPilotRoutes({
       if (['approve', 'reject', 'convert'].includes(m[2]) && method === 'POST') {
         admin(user);
         const input = await body(req);
-        if (m[2] === 'reject' && !isClientQuery(state, request))
-          fail('Only client queries can be rejected.', 403);
-        if (request.requestType === 'Message')
-          fail('Group messages are context, not decision requests.', 409);
         if (m[2] === 'convert' && request.taskId) {
           const task = state.tasks.find((t) => t.id === request.taskId);
           json(res, 200, { request, task });

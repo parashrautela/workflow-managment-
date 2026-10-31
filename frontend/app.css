@@ -8465,4 +8465,191 @@ details[open] > summary::after {
     font-size: 16px;
   }
 }
+/* Local Unslop trial. Workflow by Damir Sokolovsky: https://github.com/heydamir/unslop (CC BY 4.0). */
+.unslop-home {
+  --muted-foreground: #62705f;
+}
+.unslop-home .iksha-sidebar {
+  padding: 24px 20px;
+}
+.unslop-home .iksha-navigation {
+  gap: 16px;
+}
+.unslop-home .iksha-navigation > .iksha-wordmark {
+  padding: 8px 0 24px;
+}
+.unslop-home .iksha-navigation-label {
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.unslop-home .iksha-projects-label {
+  margin-top: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.unslop-home .iksha-navigation input {
+  height: 36px;
+  border-radius: 8px;
+  background: var(--card);
+  box-shadow: none;
+}
+.unslop-home .iksha-project-shortcut {
+  min-height: 56px;
+  padding: 8px;
+  border-radius: 8px;
+}
+.unslop-home .iksha-project-shortcut .font-semibold {
+  font-size: 13px;
+  font-weight: 500;
+}
+.unslop-home .iksha-project-shortcut .font-normal {
+  font-size: 12px;
+}
+.unslop-home .iksha-founder-profile {
+  gap: 12px;
+}
+.unslop-home svg {
+  stroke-width: 1.5;
+}
+.unslop-home main {
+  padding: 32px;
+}
+.unslop-home .work-queue > * + * {
+  margin-top: 24px;
+}
+.unslop-home .work-queue-header {
+  gap: 24px;
+  padding-bottom: 8px;
+}
+.unslop-home .work-queue-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+.unslop-home .work-queue-eyebrow::before {
+  content: '';
+  width: 20px;
+  height: 2px;
+  background: var(--primary);
+}
+.unslop-home .work-queue-description {
+  margin-top: 8px;
+  font-size: 13px;
+}
+.unslop-home .work-queue-actions [data-slot='button'] {
+  height: 36px;
+  padding-inline: 12px;
+  border-radius: 8px;
+}
+.unslop-home .work-connection[data-connected='true'] {
+  border-color: transparent;
+  background: transparent;
+  color: var(--muted-foreground);
+}
+.unslop-home .work-connection[data-connected='true']::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+.unslop-home .work-queue-filters {
+  gap: 16px;
+}
+.unslop-home .work-queue-filters label {
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted-foreground);
+}
+.unslop-home .work-queue-filters select {
+  box-shadow: none;
+}
+.unslop-home .work-queue-item {
+  min-height: 88px;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  transition: background-color 150ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.unslop-home .work-queue-item-content {
+  display: grid;
+  min-width: 0;
+  flex: 1;
+  gap: 8px;
+}
+.unslop-home .work-queue-item-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+.unslop-home .work-queue-item-context {
+  color: var(--muted-foreground);
+  font-size: 12px;
+  line-height: 20px;
+}
+.unslop-home .work-queue-item-meta {
+  display: grid;
+  flex-shrink: 0;
+  gap: 8px;
+  color: var(--muted-foreground);
+  text-align: right;
+  font-size: 12px;
+  line-height: 20px;
+  font-variant-numeric: tabular-nums;
+}
+.unslop-home .work-queue-item-meta time {
+  color: var(--foreground);
+}
+.unslop-home .work-queue-overdue {
+  color: #a33736;
+}
+.unslop-home .work-queue-item-arrow {
+  color: var(--muted-foreground);
+}
+.unslop-home .work-queue-item:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+.unslop-home details {
+  box-shadow: none;
+}
+@media (max-width: 639px) {
+  .unslop-home main {
+    padding: 24px 16px;
+  }
+  .unslop-home .work-queue-header {
+    gap: 16px;
+  }
+  .unslop-home .work-queue-actions [data-slot='button'] {
+    min-height: 44px;
+  }
+  .unslop-home .work-queue-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+  .unslop-home .work-queue-filters label:last-child {
+    grid-column: 1 / -1;
+  }
+  .unslop-home .work-queue-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 16px;
+    gap: 12px;
+    padding: 16px;
+  }
+  .unslop-home .work-queue-item-meta {
+    grid-column: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px 12px;
+    text-align: left;
+  }
+  .unslop-home .work-queue-item-arrow {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
 /*$vite$:1*/

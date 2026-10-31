@@ -23,7 +23,7 @@ export function createGroupSetupRoutes({
         return true;
       }
       if (!project.telegramGroupChatId) {
-        json(res, 200, { workflows: (await import('./tasks/pilot.js')).workflows });
+        json(res, 200, { workflows: (await import('../tasks/pilot.js')).workflows });
         return true;
       }
       try {
@@ -34,6 +34,37 @@ export function createGroupSetupRoutes({
             groupChatId: project.telegramGroupChatId,
           }),
         );
+        return true;
+      } catch (error) {
+        json(res, 502, { error: error.message });
+        return true;
+      }
+    }
+    const groupConnection = url.pathname.match(
+      /^\/api\/founder\/telegram-groups\/(-?\d+)\/connection$/,
+    );
+    if (req.method === 'GET' && groupConnection) {
+      const groupId = groupConnection[1];
+      if (!state.telegramGroups.some((group) => group.groupChatId === groupId)) {
+        json(res, 404, { error: 'Telegram group not found.' });
+        return true;
+      }
+      try {
+        const snapshot = await callBotBridge('/api/integrations/web/groups', {
+          groupChatId: groupId,
+        });
+        const group = snapshot.groups?.find((row) => row.groupChatId === groupId);
+        if (!group) {
+          json(res, 502, { error: 'The bot did not return this group.' });
+          return true;
+        }
+        json(res, 200, {
+          groupChatId: groupId,
+          botUsername: group.botUsername,
+          botIsAdmin: group.botIsAdmin,
+          telegramMemberCount: group.telegramMemberCount,
+          warning: group.discoveryWarning || '',
+        });
         return true;
       } catch (error) {
         json(res, 502, { error: error.message });

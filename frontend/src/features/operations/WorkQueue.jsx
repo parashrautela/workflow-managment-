@@ -187,7 +187,9 @@ export function WorkQueue({
                 <p className="text-sm font-medium">
                   {task.projectName} — {task.stageName} — {task.title}
                 </p>
-                <p className={`mt-1 text-xs ${task.overdue ? 'text-destructive' : 'text-muted-foreground'}`}>
+                <p
+                  className={`mt-1 text-xs ${task.overdue ? 'text-destructive' : 'text-muted-foreground'}`}
+                >
                   {task.approval ? 'Approval pending' : task.status}
                   {task.overdue ? ' · Overdue' : ''}
                   {task.deadline ? ` · ${task.deadline}` : ''}

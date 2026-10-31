@@ -7,10 +7,10 @@ const fail = (message, status = 400) => {
   throw new ApiError(message, status);
 };
 const closed = (project) => ['Completed', 'Abandoned'].includes(project.status);
-export const unattended = (request) =>
-  request.requestType !== 'Message' &&
+const reviewable = (request) =>
   !request.decisionStatus &&
   !['On hold', 'Done', 'Rejected', 'Published', 'Approved'].includes(request.status);
+export const unattended = (request) => request.requestType !== 'Message' && reviewable(request);
 export function projectPeople(state, project) {
   const group = state.telegramGroups.find((row) => row.groupChatId === project.telegramGroupChatId);
   const people = (group?.members || [])
@@ -215,7 +215,7 @@ export function createCollaborationRoutes({
         request.decisionStatus = '';
         request.resumedAt = new Date().toISOString();
       } else {
-        if (!unattended(request)) fail('This query has already been handled.', 409);
+        if (!reviewable(request)) fail('This query has already been handled.', 409);
         const target = state.tasks.find(
           (row) => row.id === input.taskId && row.projectId === project.id && !row.deletedAt,
         );

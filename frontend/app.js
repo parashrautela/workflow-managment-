@@ -22561,19 +22561,31 @@ function WorkQueue({ projects = [], isFounder = true, initialPersonId = "founder
 		}
 	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-		className: "space-y-4",
+		className: "work-queue space-y-4",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-wrap items-center justify-between gap-3",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "text-xs font-semibold uppercase tracking-wider text-primary",
-					children: "Daily work"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-					className: "text-2xl font-semibold",
-					children: "Actions needed"
-				})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex gap-2",
+				className: "work-queue-header flex flex-wrap items-center justify-between gap-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "work-queue-heading",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "work-queue-eyebrow text-xs text-primary",
+							children: "Daily work"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+							className: "text-2xl font-semibold",
+							children: "Actions needed"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "work-queue-description text-sm text-muted-foreground",
+							children: "Review approvals and follow up on project work"
+						})
+					]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "work-queue-actions flex gap-2",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						className: "work-connection",
+						"data-connected": connected,
 						variant: "outline",
 						size: "sm",
 						onClick: connect,
@@ -22603,7 +22615,7 @@ function WorkQueue({ projects = [], isFounder = true, initialPersonId = "founder
 				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "grid gap-3 sm:grid-cols-3",
+				className: "work-queue-filters grid gap-3 sm:grid-cols-3",
 				children: [
 					isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 						className: "grid gap-1 text-xs font-medium",
@@ -22685,14 +22697,37 @@ function WorkQueue({ projects = [], isFounder = true, initialPersonId = "founder
 				children: error
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "space-y-2",
+				className: "work-queue-list space-y-2",
 				children: [tasks.map((task) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-					className: "flex w-full items-center justify-between gap-3 rounded-xl border bg-card p-4 text-left hover:bg-muted",
+					className: "work-queue-item flex w-full items-center justify-between gap-3 rounded-xl border bg-card p-4 text-left hover:bg-muted",
 					onClick: () => navigate({
 						section: "actions",
 						taskId: task.id
 					}),
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+					children: [isFounder ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						className: "work-queue-item-content",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "work-queue-item-title",
+							children: task.title
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "work-queue-item-context",
+							children: [
+								task.projectName,
+								" · ",
+								task.stageName,
+								task.spaces?.length ? ` · ${task.spaces.join(", ")}` : ""
+							]
+						})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						className: "work-queue-item-meta",
+						children: [task.deadline && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("time", {
+							dateTime: task.deadline,
+							children: ["Due ", task.deadline]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: task.overdue ? "work-queue-overdue" : "",
+							children: [task.approval ? "Approval pending" : task.status, task.overdue ? " · Overdue" : ""]
+						})]
+					})] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 						className: "text-sm font-medium",
 						children: [
 							task.projectName,
@@ -22709,7 +22744,7 @@ function WorkQueue({ projects = [], isFounder = true, initialPersonId = "founder
 							task.deadline ? ` · ${task.deadline}` : "",
 							task.spaces?.length ? ` · ${task.spaces.join(", ")}` : ""
 						]
-					})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { className: "size-4 shrink-0" })]
+					})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { className: "work-queue-item-arrow size-4 shrink-0" })]
 				}, task.id)), !tasks.length && !error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "rounded-xl border p-6 text-center text-sm text-muted-foreground",
 					children: "No pending work matches these filters."
@@ -30238,7 +30273,7 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 	const [saving, setSaving] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
 	const [accepted, setAccepted] = (0, import_react.useState)(null);
-	const isUpdate = request$1?.requestType === "Update";
+	const canAttach = ["Update", "Message"].includes(request$1?.requestType);
 	const defaultPlan = useDefaultPlan(request$1?.projectId, open);
 	(0, import_react.useEffect)(() => {
 		if (!open || !request$1) return;
@@ -30247,7 +30282,7 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 		setStageId("");
 		setTaskId("");
 		setAction({
-			type: isUpdate ? "attach" : "delay",
+			type: canAttach ? "attach" : "delay",
 			days: 1
 		});
 		setNewStage(null);
@@ -30295,7 +30330,7 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 		if (preview && !accepted) setOutcome(clientOutcome(target, preview, task?.title));
 	}, [preview]);
 	const chooseStage = (row) => {
-		if (!row.selectable && !isUpdate) {
+		if (!row.selectable && !canAttach) {
 			setNewStage(emptyStage({
 				stages,
 				placement: {
@@ -30516,7 +30551,7 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "grid gap-2 sm:grid-cols-2",
 									role: "radiogroup",
-									children: [...ACTIONS, ...isUpdate ? [{
+									children: [...ACTIONS, ...canAttach ? [{
 										type: "attach",
 										title: "Just attach",
 										text: "Keep it on the task. No date changes."
@@ -30845,7 +30880,6 @@ function QueryDecisionButtons({ request: request$2, disabled, onAccept, onReject
 			setBusy(false);
 		}
 	};
-	if (request$2.requestType === "Message") return null;
 	if (request$2.status === "On hold") return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 		variant: "outline",
 		size,
@@ -30868,7 +30902,7 @@ function QueryDecisionButtons({ request: request$2, disabled, onAccept, onReject
 		onClick: onAccept,
 		disabled,
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5 mr-1" }), "Accept"]
-	}), request$2.canReject && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+	}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 		size,
 		variant: "outline",
 		className: "text-destructive",
@@ -51732,13 +51766,13 @@ function FounderApp() {
 		]
 	];
 	const navigation = /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "flex h-full flex-col gap-5",
+		className: "iksha-navigation flex h-full flex-col gap-5",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Brand, {}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
 				"aria-label": "Workspace",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-					className: "grid gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground",
+					className: "iksha-navigation-label grid gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground",
 					children: ["Workspace", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
 						"aria-label": "Workspace section",
 						value: currentTab === "projects" && viewMode === "detail" ? "project-detail" : currentTab,
@@ -51756,38 +51790,35 @@ function FounderApp() {
 				})
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Separator, {}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "flex items-center justify-between",
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-xs font-semibold uppercase tracking-wider text-muted-foreground",
-					children: "Quick Projects"
-				})
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "iksha-projects-label flex items-center justify-between",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "text-xs text-muted-foreground",
+					children: "Ongoing projects"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "text-xs text-muted-foreground",
+					children: filteredProjects.filter((p) => p.status !== "Completed").length
+				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "relative",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 					value: searchQuery,
 					onChange: (e) => setSearchQuery(e.target.value),
-					placeholder: "Filter projects…",
+					placeholder: "Search projects",
+					"aria-label": "Search projects",
 					className: "pl-8 text-xs h-8"
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "min-h-0 flex-1 space-y-4 overflow-y-auto",
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 					className: "space-y-1",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-						className: "px-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground",
-						children: [
-							"Ongoing Projects (",
-							filteredProjects.filter((p) => p.status !== "Completed").length,
-							")"
-						]
-					}), filteredProjects.filter((p) => p.status !== "Completed").map((project) => {
+					children: filteredProjects.filter((p) => p.status !== "Completed").map((project) => {
 						const isSelected = project.id === selectedProjectId && currentTab === "projects" && viewMode === "detail";
 						return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 							variant: isSelected ? "outline" : "ghost",
-							className: `h-auto w-full justify-start px-3 py-2 text-left ${isSelected ? "border-primary/40 bg-accent/60" : ""}`,
+							className: `iksha-project-shortcut h-auto w-full justify-start px-3 py-2 text-left ${isSelected ? "border-primary/40 bg-accent/60" : ""}`,
 							onClick: () => {
 								handleSelectProjectFromDir(project.id);
 							},
@@ -51802,12 +51833,12 @@ function FounderApp() {
 								})]
 							})]
 						}, project.id);
-					})]
+					})
 				})
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Separator, {}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex items-center gap-2",
+				className: "iksha-founder-profile flex items-center gap-2",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, { name: "Project Founder" }),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -51833,7 +51864,7 @@ function FounderApp() {
 	});
 	if (currentTab === "assistant") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderAssistant, { onBack: () => goBack() });
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "iksha-workspace app-glow min-h-dvh bg-background pb-20 md:pb-0",
+		className: `iksha-workspace app-glow min-h-dvh bg-background pb-20 md:pb-0 ${currentTab === "actions" ? "unslop-home" : ""}`,
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("aside", {
 				className: "iksha-sidebar fixed inset-y-0 left-0 hidden w-64 border-r p-5 md:block",
@@ -51844,7 +51875,7 @@ function FounderApp() {
 				onOpenChange: setSidebarOpen,
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SheetContent, {
 					side: "left",
-					className: "w-[min(88vw,19rem)] gap-0 p-5",
+					className: `w-[min(88vw,19rem)] gap-0 p-5 ${currentTab === "actions" ? "unslop-home" : ""}`,
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SheetHeader, {
 						className: "sr-only",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetTitle, { children: "Workspace navigation" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetDescription, { children: "Choose a project or section" })]

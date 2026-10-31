@@ -127,7 +127,7 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
   const [accepted, setAccepted] = useState(null);
-  const isUpdate = request?.requestType === 'Update';
+  const canAttach = ['Update', 'Message'].includes(request?.requestType);
   const defaultPlan = useDefaultPlan(request?.projectId, open);
 
   useEffect(() => {
@@ -136,7 +136,7 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
     setSearch('');
     setStageId('');
     setTaskId('');
-    setAction({ type: isUpdate ? 'attach' : 'delay', days: 1 });
+    setAction({ type: canAttach ? 'attach' : 'delay', days: 1 });
     setNewStage(null);
     setReply('');
     setError('');
@@ -204,7 +204,7 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
   }, [preview]);
 
   const chooseStage = (row) => {
-    if (!row.selectable && !isUpdate) {
+    if (!row.selectable && !canAttach) {
       setNewStage(emptyStage({ stages, placement: { type: 'after', stageName: row.stage.name } }));
       setError(`${row.stage.name} is finished. Add a new stage for this work.`);
       setStep('new-stage');
@@ -419,7 +419,7 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
               <div className="grid gap-2 sm:grid-cols-2" role="radiogroup">
                 {[
                   ...ACTIONS,
-                  ...(isUpdate
+                  ...(canAttach
                     ? [
                         {
                           type: 'attach',
@@ -775,7 +775,6 @@ export function QueryDecisionButtons({
       setBusy(false);
     }
   };
-  if (request.requestType === 'Message') return null;
   if (request.status === 'On hold')
     return (
       <>
@@ -800,17 +799,15 @@ export function QueryDecisionButtons({
         <Check className="size-3.5 mr-1" />
         Accept
       </Button>
-      {request.canReject && (
-        <Button
-          size={size}
-          variant="outline"
-          className="text-destructive"
-          onClick={onReject}
-          disabled={disabled}
-        >
-          Reject
-        </Button>
-      )}
+      <Button
+        size={size}
+        variant="outline"
+        className="text-destructive"
+        onClick={onReject}
+        disabled={disabled}
+      >
+        Reject
+      </Button>
     </>
   );
 }
