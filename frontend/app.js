@@ -11654,7 +11654,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$53 = {
+var __iconData$56 = {
 	name: "arrow-left",
 	size: 24,
 	node: [["path", {
@@ -11665,8 +11665,8 @@ var __iconData$53 = {
 		key: "x3x0zl"
 	}]]
 };
-__iconData$53.node;
-var ArrowLeft = createLucideIcon(__iconData$53);
+__iconData$56.node;
+var ArrowLeft = createLucideIcon(__iconData$56);
 // node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11674,7 +11674,7 @@ var ArrowLeft = createLucideIcon(__iconData$53);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$52 = {
+var __iconData$55 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11685,8 +11685,8 @@ var __iconData$52 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$52.node;
-var ArrowRight = createLucideIcon(__iconData$52);
+__iconData$55.node;
+var ArrowRight = createLucideIcon(__iconData$55);
 // node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11694,7 +11694,7 @@ var ArrowRight = createLucideIcon(__iconData$52);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$51 = {
+var __iconData$54 = {
 	name: "arrow-up-right",
 	size: 24,
 	node: [["path", {
@@ -11705,8 +11705,8 @@ var __iconData$51 = {
 		key: "1vkiza"
 	}]]
 };
-__iconData$51.node;
-var ArrowUpRight = createLucideIcon(__iconData$51);
+__iconData$54.node;
+var ArrowUpRight = createLucideIcon(__iconData$54);
 // node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11714,7 +11714,7 @@ var ArrowUpRight = createLucideIcon(__iconData$51);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$50 = {
+var __iconData$53 = {
 	name: "arrow-up",
 	size: 24,
 	node: [["path", {
@@ -11725,8 +11725,8 @@ var __iconData$50 = {
 		key: "x0mq9r"
 	}]]
 };
-__iconData$50.node;
-var ArrowUp = createLucideIcon(__iconData$50);
+__iconData$53.node;
+var ArrowUp = createLucideIcon(__iconData$53);
 // node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11734,7 +11734,7 @@ var ArrowUp = createLucideIcon(__iconData$50);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$49 = {
+var __iconData$52 = {
 	name: "building-complex",
 	size: 24,
 	node: [
@@ -11761,8 +11761,8 @@ var __iconData$49 = {
 	],
 	aliases: ["building-2"]
 };
-__iconData$49.node;
-var BuildingComplex = createLucideIcon(__iconData$49);
+__iconData$52.node;
+var BuildingComplex = createLucideIcon(__iconData$52);
 // node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11770,7 +11770,7 @@ var BuildingComplex = createLucideIcon(__iconData$49);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$48 = {
+var __iconData$51 = {
 	name: "calendar-days",
 	size: 24,
 	node: [
@@ -11820,8 +11820,8 @@ var __iconData$48 = {
 		}]
 	]
 };
-__iconData$48.node;
-var CalendarDays = createLucideIcon(__iconData$48);
+__iconData$51.node;
+var CalendarDays = createLucideIcon(__iconData$51);
 // node_modules/lucide-react/dist/esm/icons/calendar.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11829,7 +11829,7 @@ var CalendarDays = createLucideIcon(__iconData$48);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$47 = {
+var __iconData$50 = {
 	name: "calendar",
 	size: 24,
 	node: [
@@ -11855,8 +11855,8 @@ var __iconData$47 = {
 		}]
 	]
 };
-__iconData$47.node;
-var Calendar = createLucideIcon(__iconData$47);
+__iconData$50.node;
+var Calendar = createLucideIcon(__iconData$50);
 // node_modules/lucide-react/dist/esm/icons/check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11864,7 +11864,7 @@ var Calendar = createLucideIcon(__iconData$47);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$46 = {
+var __iconData$49 = {
 	name: "check",
 	size: 24,
 	node: [["path", {
@@ -11872,8 +11872,8 @@ var __iconData$46 = {
 		key: "1gmf2c"
 	}]]
 };
-__iconData$46.node;
-var Check = createLucideIcon(__iconData$46);
+__iconData$49.node;
+var Check = createLucideIcon(__iconData$49);
 // node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11881,7 +11881,7 @@ var Check = createLucideIcon(__iconData$46);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$45 = {
+var __iconData$48 = {
 	name: "chevron-down",
 	size: 24,
 	node: [["path", {
@@ -11889,8 +11889,8 @@ var __iconData$45 = {
 		key: "qrunsl"
 	}]]
 };
-__iconData$45.node;
-var ChevronDown = createLucideIcon(__iconData$45);
+__iconData$48.node;
+var ChevronDown = createLucideIcon(__iconData$48);
 // node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11898,7 +11898,7 @@ var ChevronDown = createLucideIcon(__iconData$45);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$44 = {
+var __iconData$47 = {
 	name: "chevron-right",
 	size: 24,
 	node: [["path", {
@@ -11906,8 +11906,8 @@ var __iconData$44 = {
 		key: "mthhwq"
 	}]]
 };
-__iconData$44.node;
-var ChevronRight = createLucideIcon(__iconData$44);
+__iconData$47.node;
+var ChevronRight = createLucideIcon(__iconData$47);
 // node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11915,7 +11915,7 @@ var ChevronRight = createLucideIcon(__iconData$44);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$43 = {
+var __iconData$46 = {
 	name: "chevron-up",
 	size: 24,
 	node: [["path", {
@@ -11923,8 +11923,8 @@ var __iconData$43 = {
 		key: "153udz"
 	}]]
 };
-__iconData$43.node;
-var ChevronUp = createLucideIcon(__iconData$43);
+__iconData$46.node;
+var ChevronUp = createLucideIcon(__iconData$46);
 // node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11932,7 +11932,7 @@ var ChevronUp = createLucideIcon(__iconData$43);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$42 = {
+var __iconData$45 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -11959,8 +11959,8 @@ var __iconData$42 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$42.node;
-var CircleAlert = createLucideIcon(__iconData$42);
+__iconData$45.node;
+var CircleAlert = createLucideIcon(__iconData$45);
 // node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11968,7 +11968,7 @@ var CircleAlert = createLucideIcon(__iconData$42);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$41 = {
+var __iconData$44 = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -11982,8 +11982,8 @@ var __iconData$41 = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-__iconData$41.node;
-var CircleCheck = createLucideIcon(__iconData$41);
+__iconData$44.node;
+var CircleCheck = createLucideIcon(__iconData$44);
 // node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11991,7 +11991,7 @@ var CircleCheck = createLucideIcon(__iconData$41);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$40 = {
+var __iconData$43 = {
 	name: "circle-pause",
 	size: 24,
 	node: [
@@ -12018,8 +12018,8 @@ var __iconData$40 = {
 	],
 	aliases: ["pause-circle"]
 };
-__iconData$40.node;
-var CirclePause = createLucideIcon(__iconData$40);
+__iconData$43.node;
+var CirclePause = createLucideIcon(__iconData$43);
 // node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12027,7 +12027,7 @@ var CirclePause = createLucideIcon(__iconData$40);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$39 = {
+var __iconData$42 = {
 	name: "circle-question-mark",
 	size: 24,
 	node: [
@@ -12048,8 +12048,8 @@ var __iconData$39 = {
 	],
 	aliases: ["help-circle", "circle-help"]
 };
-__iconData$39.node;
-var CircleQuestionMark = createLucideIcon(__iconData$39);
+__iconData$42.node;
+var CircleQuestionMark = createLucideIcon(__iconData$42);
 // node_modules/lucide-react/dist/esm/icons/circle-x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12057,7 +12057,7 @@ var CircleQuestionMark = createLucideIcon(__iconData$39);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$38 = {
+var __iconData$41 = {
 	name: "circle-x",
 	size: 24,
 	node: [
@@ -12078,8 +12078,8 @@ var __iconData$38 = {
 	],
 	aliases: ["x-circle"]
 };
-__iconData$38.node;
-var CircleX = createLucideIcon(__iconData$38);
+__iconData$41.node;
+var CircleX = createLucideIcon(__iconData$41);
 // node_modules/lucide-react/dist/esm/icons/circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12087,7 +12087,7 @@ var CircleX = createLucideIcon(__iconData$38);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$37 = {
+var __iconData$40 = {
 	name: "circle",
 	size: 24,
 	node: [["circle", {
@@ -12097,8 +12097,8 @@ var __iconData$37 = {
 		key: "1mglay"
 	}]]
 };
-__iconData$37.node;
-var Circle = createLucideIcon(__iconData$37);
+__iconData$40.node;
+var Circle = createLucideIcon(__iconData$40);
 // node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12106,7 +12106,7 @@ var Circle = createLucideIcon(__iconData$37);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$36 = {
+var __iconData$39 = {
 	name: "clock-3",
 	size: 24,
 	node: [["circle", {
@@ -12119,8 +12119,8 @@ var __iconData$36 = {
 		key: "135r8i"
 	}]]
 };
-__iconData$36.node;
-var Clock3 = createLucideIcon(__iconData$36);
+__iconData$39.node;
+var Clock3 = createLucideIcon(__iconData$39);
 // node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12128,7 +12128,7 @@ var Clock3 = createLucideIcon(__iconData$36);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$35 = {
+var __iconData$38 = {
 	name: "clock",
 	size: 24,
 	node: [["circle", {
@@ -12141,8 +12141,8 @@ var __iconData$35 = {
 		key: "mmk7yg"
 	}]]
 };
-__iconData$35.node;
-var Clock = createLucideIcon(__iconData$35);
+__iconData$38.node;
+var Clock = createLucideIcon(__iconData$38);
 // node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12150,7 +12150,7 @@ var Clock = createLucideIcon(__iconData$35);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$34 = {
+var __iconData$37 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -12166,8 +12166,8 @@ var __iconData$34 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$34.node;
-var Copy = createLucideIcon(__iconData$34);
+__iconData$37.node;
+var Copy = createLucideIcon(__iconData$37);
 // node_modules/lucide-react/dist/esm/icons/external-link.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12175,7 +12175,7 @@ var Copy = createLucideIcon(__iconData$34);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$33 = {
+var __iconData$36 = {
 	name: "external-link",
 	size: 24,
 	node: [
@@ -12193,8 +12193,8 @@ var __iconData$33 = {
 		}]
 	]
 };
-__iconData$33.node;
-var ExternalLink = createLucideIcon(__iconData$33);
+__iconData$36.node;
+var ExternalLink = createLucideIcon(__iconData$36);
 // node_modules/lucide-react/dist/esm/icons/file-text.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12202,7 +12202,7 @@ var ExternalLink = createLucideIcon(__iconData$33);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$32 = {
+var __iconData$35 = {
 	name: "file-text",
 	size: 24,
 	node: [
@@ -12228,8 +12228,8 @@ var __iconData$32 = {
 		}]
 	]
 };
-__iconData$32.node;
-var FileText = createLucideIcon(__iconData$32);
+__iconData$35.node;
+var FileText = createLucideIcon(__iconData$35);
 // node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12237,7 +12237,7 @@ var FileText = createLucideIcon(__iconData$32);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$31 = {
+var __iconData$34 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -12259,8 +12259,59 @@ var __iconData$31 = {
 		}]
 	]
 };
-__iconData$31.node;
-var FolderKanban = createLucideIcon(__iconData$31);
+__iconData$34.node;
+var FolderKanban = createLucideIcon(__iconData$34);
+// node_modules/lucide-react/dist/esm/icons/grip-vertical.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$33 = {
+	name: "grip-vertical",
+	size: 24,
+	node: [
+		["circle", {
+			cx: "9",
+			cy: "12",
+			r: "1",
+			key: "1vctgf"
+		}],
+		["circle", {
+			cx: "9",
+			cy: "5",
+			r: "1",
+			key: "hp0tcf"
+		}],
+		["circle", {
+			cx: "9",
+			cy: "19",
+			r: "1",
+			key: "fkjjf6"
+		}],
+		["circle", {
+			cx: "15",
+			cy: "12",
+			r: "1",
+			key: "1tmaij"
+		}],
+		["circle", {
+			cx: "15",
+			cy: "5",
+			r: "1",
+			key: "19l28e"
+		}],
+		["circle", {
+			cx: "15",
+			cy: "19",
+			r: "1",
+			key: "f4zoj3"
+		}]
+	]
+};
+__iconData$33.node;
+var GripVertical = createLucideIcon(__iconData$33);
 // node_modules/lucide-react/dist/esm/icons/hourglass.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12268,7 +12319,7 @@ var FolderKanban = createLucideIcon(__iconData$31);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$30 = {
+var __iconData$32 = {
 	name: "hourglass",
 	size: 24,
 	node: [
@@ -12290,8 +12341,8 @@ var __iconData$30 = {
 		}]
 	]
 };
-__iconData$30.node;
-var Hourglass = createLucideIcon(__iconData$30);
+__iconData$32.node;
+var Hourglass = createLucideIcon(__iconData$32);
 // node_modules/lucide-react/dist/esm/icons/layers.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12299,7 +12350,7 @@ var Hourglass = createLucideIcon(__iconData$30);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$29 = {
+var __iconData$31 = {
 	name: "layers",
 	size: 24,
 	node: [
@@ -12318,8 +12369,8 @@ var __iconData$29 = {
 	],
 	aliases: ["layers-3"]
 };
-__iconData$29.node;
-var Layers = createLucideIcon(__iconData$29);
+__iconData$31.node;
+var Layers = createLucideIcon(__iconData$31);
 // node_modules/lucide-react/dist/esm/icons/link-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12327,7 +12378,7 @@ var Layers = createLucideIcon(__iconData$29);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$28 = {
+var __iconData$30 = {
 	name: "link-2",
 	size: 24,
 	node: [
@@ -12348,8 +12399,8 @@ var __iconData$28 = {
 		}]
 	]
 };
-__iconData$28.node;
-var Link2 = createLucideIcon(__iconData$28);
+__iconData$30.node;
+var Link2 = createLucideIcon(__iconData$30);
 // node_modules/lucide-react/dist/esm/icons/list-plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12357,7 +12408,7 @@ var Link2 = createLucideIcon(__iconData$28);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$27 = {
+var __iconData$29 = {
 	name: "list-plus",
 	size: 24,
 	node: [
@@ -12383,8 +12434,8 @@ var __iconData$27 = {
 		}]
 	]
 };
-__iconData$27.node;
-var ListPlus = createLucideIcon(__iconData$27);
+__iconData$29.node;
+var ListPlus = createLucideIcon(__iconData$29);
 // node_modules/lucide-react/dist/esm/icons/loader-circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12392,7 +12443,7 @@ var ListPlus = createLucideIcon(__iconData$27);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$26 = {
+var __iconData$28 = {
 	name: "loader-circle",
 	size: 24,
 	node: [["path", {
@@ -12401,8 +12452,8 @@ var __iconData$26 = {
 	}]],
 	aliases: ["loader-2"]
 };
-__iconData$26.node;
-var LoaderCircle = createLucideIcon(__iconData$26);
+__iconData$28.node;
+var LoaderCircle = createLucideIcon(__iconData$28);
 // node_modules/lucide-react/dist/esm/icons/lock-keyhole.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12410,7 +12461,7 @@ var LoaderCircle = createLucideIcon(__iconData$26);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$25 = {
+var __iconData$27 = {
 	name: "lock-keyhole",
 	size: 24,
 	node: [
@@ -12434,8 +12485,8 @@ var __iconData$25 = {
 		}]
 	]
 };
-__iconData$25.node;
-var LockKeyhole = createLucideIcon(__iconData$25);
+__iconData$27.node;
+var LockKeyhole = createLucideIcon(__iconData$27);
 // node_modules/lucide-react/dist/esm/icons/log-out.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12443,7 +12494,7 @@ var LockKeyhole = createLucideIcon(__iconData$25);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$24 = {
+var __iconData$26 = {
 	name: "log-out",
 	size: 24,
 	node: [
@@ -12461,8 +12512,8 @@ var __iconData$24 = {
 		}]
 	]
 };
-__iconData$24.node;
-var LogOut = createLucideIcon(__iconData$24);
+__iconData$26.node;
+var LogOut = createLucideIcon(__iconData$26);
 // node_modules/lucide-react/dist/esm/icons/maximize-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12470,7 +12521,7 @@ var LogOut = createLucideIcon(__iconData$24);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$23 = {
+var __iconData$25 = {
 	name: "maximize-2",
 	size: 24,
 	node: [
@@ -12492,8 +12543,8 @@ var __iconData$23 = {
 		}]
 	]
 };
-__iconData$23.node;
-var Maximize2 = createLucideIcon(__iconData$23);
+__iconData$25.node;
+var Maximize2 = createLucideIcon(__iconData$25);
 // node_modules/lucide-react/dist/esm/icons/menu.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12501,7 +12552,7 @@ var Maximize2 = createLucideIcon(__iconData$23);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$22 = {
+var __iconData$24 = {
 	name: "menu",
 	size: 24,
 	node: [
@@ -12519,8 +12570,8 @@ var __iconData$22 = {
 		}]
 	]
 };
-__iconData$22.node;
-var Menu = createLucideIcon(__iconData$22);
+__iconData$24.node;
+var Menu = createLucideIcon(__iconData$24);
 // node_modules/lucide-react/dist/esm/icons/message-square.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12528,7 +12579,7 @@ var Menu = createLucideIcon(__iconData$22);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$21 = {
+var __iconData$23 = {
 	name: "message-square",
 	size: 24,
 	node: [["path", {
@@ -12536,8 +12587,8 @@ var __iconData$21 = {
 		key: "18887p"
 	}]]
 };
-__iconData$21.node;
-var MessageSquare = createLucideIcon(__iconData$21);
+__iconData$23.node;
+var MessageSquare = createLucideIcon(__iconData$23);
 // node_modules/lucide-react/dist/esm/icons/minus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12545,7 +12596,7 @@ var MessageSquare = createLucideIcon(__iconData$21);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$20 = {
+var __iconData$22 = {
 	name: "minus",
 	size: 24,
 	node: [["path", {
@@ -12553,8 +12604,8 @@ var __iconData$20 = {
 		key: "1ays0h"
 	}]]
 };
-__iconData$20.node;
-var Minus = createLucideIcon(__iconData$20);
+__iconData$22.node;
+var Minus = createLucideIcon(__iconData$22);
 // node_modules/lucide-react/dist/esm/icons/octagon.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12562,7 +12613,7 @@ var Minus = createLucideIcon(__iconData$20);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$19 = {
+var __iconData$21 = {
 	name: "octagon",
 	size: 24,
 	node: [["path", {
@@ -12570,8 +12621,25 @@ var __iconData$19 = {
 		key: "2d38gg"
 	}]]
 };
-__iconData$19.node;
-var Octagon = createLucideIcon(__iconData$19);
+__iconData$21.node;
+var Octagon = createLucideIcon(__iconData$21);
+// node_modules/lucide-react/dist/esm/icons/paperclip.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$20 = {
+	name: "paperclip",
+	size: 24,
+	node: [["path", {
+		d: "m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551",
+		key: "1miecu"
+	}]]
+};
+__iconData$20.node;
+var Paperclip = createLucideIcon(__iconData$20);
 // node_modules/lucide-react/dist/esm/icons/pencil.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12579,7 +12647,7 @@ var Octagon = createLucideIcon(__iconData$19);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$18 = {
+var __iconData$19 = {
 	name: "pencil",
 	size: 24,
 	node: [["path", {
@@ -12590,8 +12658,8 @@ var __iconData$18 = {
 		key: "1mk7zo"
 	}]]
 };
-__iconData$18.node;
-var Pencil = createLucideIcon(__iconData$18);
+__iconData$19.node;
+var Pencil = createLucideIcon(__iconData$19);
 // node_modules/lucide-react/dist/esm/icons/play.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12599,7 +12667,7 @@ var Pencil = createLucideIcon(__iconData$18);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$17 = {
+var __iconData$18 = {
 	name: "play",
 	size: 24,
 	node: [["path", {
@@ -12607,8 +12675,8 @@ var __iconData$17 = {
 		key: "10ikf1"
 	}]]
 };
-__iconData$17.node;
-var Play = createLucideIcon(__iconData$17);
+__iconData$18.node;
+var Play = createLucideIcon(__iconData$18);
 // node_modules/lucide-react/dist/esm/icons/plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12616,7 +12684,7 @@ var Play = createLucideIcon(__iconData$17);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$16 = {
+var __iconData$17 = {
 	name: "plus",
 	size: 24,
 	node: [["path", {
@@ -12627,8 +12695,8 @@ var __iconData$16 = {
 		key: "s699le"
 	}]]
 };
-__iconData$16.node;
-var Plus = createLucideIcon(__iconData$16);
+__iconData$17.node;
+var Plus = createLucideIcon(__iconData$17);
 // node_modules/lucide-react/dist/esm/icons/refresh-cw.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12636,7 +12704,7 @@ var Plus = createLucideIcon(__iconData$16);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$15 = {
+var __iconData$16 = {
 	name: "refresh-cw",
 	size: 24,
 	node: [
@@ -12658,8 +12726,8 @@ var __iconData$15 = {
 		}]
 	]
 };
-__iconData$15.node;
-var RefreshCw = createLucideIcon(__iconData$15);
+__iconData$16.node;
+var RefreshCw = createLucideIcon(__iconData$16);
 // node_modules/lucide-react/dist/esm/icons/rotate-ccw-clock.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12667,7 +12735,7 @@ var RefreshCw = createLucideIcon(__iconData$15);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$14 = {
+var __iconData$15 = {
 	name: "rotate-ccw-clock",
 	size: 24,
 	node: [
@@ -12686,8 +12754,8 @@ var __iconData$14 = {
 	],
 	aliases: ["history"]
 };
-__iconData$14.node;
-var RotateCcwClock = createLucideIcon(__iconData$14);
+__iconData$15.node;
+var RotateCcwClock = createLucideIcon(__iconData$15);
 // node_modules/lucide-react/dist/esm/icons/search.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12695,7 +12763,7 @@ var RotateCcwClock = createLucideIcon(__iconData$14);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$13 = {
+var __iconData$14 = {
 	name: "search",
 	size: 24,
 	node: [["path", {
@@ -12708,8 +12776,8 @@ var __iconData$13 = {
 		key: "4ej97u"
 	}]]
 };
-__iconData$13.node;
-var Search = createLucideIcon(__iconData$13);
+__iconData$14.node;
+var Search = createLucideIcon(__iconData$14);
 // node_modules/lucide-react/dist/esm/icons/send.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12717,7 +12785,7 @@ var Search = createLucideIcon(__iconData$13);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$12 = {
+var __iconData$13 = {
 	name: "send",
 	size: 24,
 	node: [["path", {
@@ -12728,8 +12796,8 @@ var __iconData$12 = {
 		key: "12cjpa"
 	}]]
 };
-__iconData$12.node;
-var Send = createLucideIcon(__iconData$12);
+__iconData$13.node;
+var Send = createLucideIcon(__iconData$13);
 // node_modules/lucide-react/dist/esm/icons/settings-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12737,7 +12805,7 @@ var Send = createLucideIcon(__iconData$12);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$11 = {
+var __iconData$12 = {
 	name: "settings-2",
 	size: 24,
 	node: [
@@ -12763,8 +12831,8 @@ var __iconData$11 = {
 		}]
 	]
 };
-__iconData$11.node;
-var Settings2 = createLucideIcon(__iconData$11);
+__iconData$12.node;
+var Settings2 = createLucideIcon(__iconData$12);
 // node_modules/lucide-react/dist/esm/icons/share-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12772,7 +12840,7 @@ var Settings2 = createLucideIcon(__iconData$11);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$10 = {
+var __iconData$11 = {
 	name: "share-2",
 	size: 24,
 	node: [
@@ -12810,8 +12878,8 @@ var __iconData$10 = {
 		}]
 	]
 };
-__iconData$10.node;
-var Share2 = createLucideIcon(__iconData$10);
+__iconData$11.node;
+var Share2 = createLucideIcon(__iconData$11);
 // node_modules/lucide-react/dist/esm/icons/shield-check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12819,7 +12887,7 @@ var Share2 = createLucideIcon(__iconData$10);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$9 = {
+var __iconData$10 = {
 	name: "shield-check",
 	size: 24,
 	node: [["path", {
@@ -12830,8 +12898,8 @@ var __iconData$9 = {
 		key: "dzmm74"
 	}]]
 };
-__iconData$9.node;
-var ShieldCheck = createLucideIcon(__iconData$9);
+__iconData$10.node;
+var ShieldCheck = createLucideIcon(__iconData$10);
 // node_modules/lucide-react/dist/esm/icons/sparkles.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12839,7 +12907,7 @@ var ShieldCheck = createLucideIcon(__iconData$9);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$8 = {
+var __iconData$9 = {
 	name: "sparkles",
 	size: 24,
 	node: [
@@ -12864,8 +12932,8 @@ var __iconData$8 = {
 	],
 	aliases: ["stars"]
 };
-__iconData$8.node;
-var Sparkles = createLucideIcon(__iconData$8);
+__iconData$9.node;
+var Sparkles = createLucideIcon(__iconData$9);
 // node_modules/lucide-react/dist/esm/icons/trash.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12873,7 +12941,7 @@ var Sparkles = createLucideIcon(__iconData$8);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$7 = {
+var __iconData$8 = {
 	name: "trash",
 	size: 24,
 	node: [
@@ -12900,8 +12968,8 @@ var __iconData$7 = {
 	],
 	aliases: ["trash-2"]
 };
-__iconData$7.node;
-var Trash = createLucideIcon(__iconData$7);
+__iconData$8.node;
+var Trash = createLucideIcon(__iconData$8);
 // node_modules/lucide-react/dist/esm/icons/triangle-alert.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12909,7 +12977,7 @@ var Trash = createLucideIcon(__iconData$7);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$6 = {
+var __iconData$7 = {
 	name: "triangle-alert",
 	size: 24,
 	node: [
@@ -12928,8 +12996,8 @@ var __iconData$6 = {
 	],
 	aliases: ["alert-triangle"]
 };
-__iconData$6.node;
-var TriangleAlert = createLucideIcon(__iconData$6);
+__iconData$7.node;
+var TriangleAlert = createLucideIcon(__iconData$7);
 // node_modules/lucide-react/dist/esm/icons/undo-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12937,7 +13005,7 @@ var TriangleAlert = createLucideIcon(__iconData$6);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$5 = {
+var __iconData$6 = {
 	name: "undo-2",
 	size: 24,
 	node: [["path", {
@@ -12948,8 +13016,8 @@ var __iconData$5 = {
 		key: "f3b9sd"
 	}]]
 };
-__iconData$5.node;
-var Undo2 = createLucideIcon(__iconData$5);
+__iconData$6.node;
+var Undo2 = createLucideIcon(__iconData$6);
 // node_modules/lucide-react/dist/esm/icons/user-plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12957,7 +13025,7 @@ var Undo2 = createLucideIcon(__iconData$5);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$4 = {
+var __iconData$5 = {
 	name: "user-plus",
 	size: 24,
 	node: [
@@ -12987,8 +13055,31 @@ var __iconData$4 = {
 		}]
 	]
 };
+__iconData$5.node;
+var UserPlus = createLucideIcon(__iconData$5);
+// node_modules/lucide-react/dist/esm/icons/user-round.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$4 = {
+	name: "user-round",
+	size: 24,
+	node: [["circle", {
+		cx: "12",
+		cy: "8",
+		r: "5",
+		key: "1hypcn"
+	}], ["path", {
+		d: "M20 21a8 8 0 0 0-16 0",
+		key: "rfgkzh"
+	}]],
+	aliases: ["user-2"]
+};
 __iconData$4.node;
-var UserPlus = createLucideIcon(__iconData$4);
+var UserRound = createLucideIcon(__iconData$4);
 // node_modules/lucide-react/dist/esm/icons/user-x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -17807,14 +17898,14 @@ var __name$12 = (target, value) => __defProp$12(target, "name", {
 });
 var useReactId = import_react[" useId ".trim().toString()] || (() => void 0);
 var count$1 = 0;
-function useId$1(deterministicId) {
+function useId$2(deterministicId) {
 	const [id, setId] = import_react.useState(useReactId());
 	useLayoutEffect2(() => {
 		if (!deterministicId) setId((reactId) => reactId ?? String(count$1++));
 	}, [deterministicId]);
 	return deterministicId || (id ? `radix-${id}` : "");
 }
-__name$12(useId$1, "useId");
+__name$12(useId$2, "useId");
 // node_modules/@radix-ui/react-direction/dist/index.mjs
 var __defProp$11 = Object.defineProperty;
 var __name$11 = (target, value) => __defProp$11(target, "name", {
@@ -19190,9 +19281,9 @@ var Dialog$1 = /* @__PURE__ */ __name$5((props) => {
 		scope: __scopeDialog,
 		triggerRef,
 		contentRef,
-		contentId: useId$1(),
-		titleId: useId$1(),
-		descriptionId: useId$1(),
+		contentId: useId$2(),
+		titleId: useId$2(),
+		descriptionId: useId$2(),
 		titlePresent: titleCount > 0,
 		descriptionPresent: descriptionCount > 0,
 		setTitleCount,
@@ -19497,12 +19588,12 @@ function useIsHydrated() {
 }
 __name$3(useIsHydrated, "useIsHydrated");
 var useReactSyncExternalStore = import_react[" useSyncExternalStore ".trim().toString()];
-function subscribe() {
+function subscribe$1() {
 	return () => {};
 }
-__name$3(subscribe, "subscribe");
+__name$3(subscribe$1, "subscribe");
 function useIsHydratedModern() {
-	return useReactSyncExternalStore(subscribe, () => true, () => false);
+	return useReactSyncExternalStore(subscribe$1, () => true, () => false);
 }
 __name$3(useIsHydratedModern, "useIsHydratedModern");
 var useIsHydrated2 = typeof useReactSyncExternalStore === "function" ? useIsHydratedModern : useIsHydrated;
@@ -19601,7 +19692,7 @@ var RovingFocusGroupImpl = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ 
 var ITEM_NAME = "RovingFocusGroupItem";
 var RovingFocusGroupItem = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$2(function RovingFocusGroupItem2(props, forwardedRef) {
 	const { __scopeRovingFocusGroup, focusable = true, active = false, tabStopId, children, ...itemProps } = props;
-	const autoId = useId$1();
+	const autoId = useId$2();
 	const id = tabStopId || autoId;
 	const context = useRovingFocusContext(ITEM_NAME, __scopeRovingFocusGroup);
 	const isCurrentTabStop = context.currentTabStopId === id;
@@ -19755,7 +19846,7 @@ var Tabs$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name(func
 	});
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsProvider, {
 		scope: __scopeTabs,
-		baseId: useId$1(),
+		baseId: useId$2(),
 		value,
 		onValueChange: setValue,
 		orientation,
@@ -20166,14 +20257,20 @@ async function createTask(projectId, taskData) {
 * Preview a founder timeline change (POST /api/founder/projects/:id/schedule/preview).
 * The bot checks dependencies against the Google Sheet and lists every task that would move.
 */
-async function previewSchedule(projectId, moves) {
-	return await post$2(`/api/founder/projects/${projectId}/schedule/preview`, { moves });
+async function previewSchedule(projectId, moves, options = {}) {
+	return await post$2(`/api/founder/projects/${projectId}/schedule/preview`, {
+		moves,
+		...options
+	});
 }
 /**
 * Save a founder timeline change to the Google Sheet (POST /api/founder/projects/:id/schedule/apply).
 */
-async function applySchedule(projectId, moves) {
-	return await post$2(`/api/founder/projects/${projectId}/schedule/apply`, { moves });
+async function applySchedule(projectId, moves, options = {}) {
+	return await post$2(`/api/founder/projects/${projectId}/schedule/apply`, {
+		moves,
+		...options
+	});
 }
 async function updateTask(taskId, updates, namespace = "founder") {
 	return await patch$1(`/api/${namespace}/tasks/${taskId}`, updates);
@@ -20293,13 +20390,16 @@ async function fetchDefaultPlan(projectId) {
 /**
 * Accept a query: link it to a task and delay/redo/complete it, or add a new stage for it.
 * target: { kind: 'task', taskId, action: { type, days } } | { kind: 'new-stage', stage, linkTaskKey }
-* Nothing is sent to Telegram; publish the reply separately after the founder reviews it.
+* Preview sends nothing. Confirming a decision sends its reviewed status update to the source query.
 */
 async function previewAcceptDecision(requestId, target) {
 	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept-preview`, { target });
 }
-async function acceptDecisionRequest(requestId, target) {
-	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept`, { target });
+async function acceptDecisionRequest(requestId, target, notificationText) {
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept`, {
+		target,
+		notificationText
+	});
 }
 var previewTaskPlan = (taskId, input) => post$2(`/api/founder/tasks/${taskId}/plan/preview`, input);
 var applyTaskPlan = (taskId, input) => post$2(`/api/founder/tasks/${taskId}/plan/apply`, input);
@@ -20313,7 +20413,7 @@ function Input({ className, type, ...props }) {
 		...props
 	});
 }
-// frontend/src/components/MeetingEditor.jsx
+// frontend/src/features/meetings/MeetingEditor.jsx
 var localTime = (value) => new Date(Date.parse(value) + 198e5).toISOString().slice(0, 16);
 function MeetingEditor({ open, onOpenChange, task, meeting, onSaved }) {
 	const [people, setPeople] = (0, import_react.useState)([]), [form, setForm] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [custom, setCustom] = (0, import_react.useState)("");
@@ -20530,7 +20630,7 @@ function Textarea({ className, ...props }) {
 		...props
 	});
 }
-// frontend/src/components/ProjectFiles.jsx
+// frontend/src/features/projects/ProjectFiles.jsx
 function ProjectFiles({ projectId, namespace = "founder" }) {
 	const [files, setFiles] = (0, import_react.useState)([]);
 	const [error, setError] = (0, import_react.useState)("");
@@ -20590,7 +20690,8 @@ function ProjectFiles({ projectId, namespace = "founder" }) {
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: file.name || "Untitled file" }),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
 							file.submittedBy || "Team member",
-							" · ",
+							" ·",
+							" ",
 							file.status === "Stored" ? "Saved to Google Drive" : "Waiting for Google Drive save"
 						] }),
 						file.submittedAt && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("time", { children: new Date(file.submittedAt).toLocaleDateString([], {
@@ -20617,7 +20718,7 @@ function ProjectFiles({ projectId, namespace = "founder" }) {
 		]
 	});
 }
-// frontend/src/components/TaskThreadDrawer.jsx
+// frontend/src/features/tasks/TaskThreadDrawer.jsx
 function TaskMessage({ message, namespace = "founder" }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
 		className: "space-y-2 rounded-xl border bg-card p-3 text-sm",
@@ -20684,7 +20785,7 @@ function TaskMessage({ message, namespace = "founder" }) {
 }
 function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTaskUpdated, onOpenSourceQuery, isFounder = true, projectMembers = [] }) {
 	const namespace = isFounder ? "founder" : "employee";
-	const [task, setTask] = (0, import_react.useState)(initialTask), [messages, setMessages] = (0, import_react.useState)([]), [resources, setResources] = (0, import_react.useState)([]), [people, setPeople] = (0, import_react.useState)([]), [draft, setDraft] = (0, import_react.useState)(""), [link, setLink] = (0, import_react.useState)(""), [file, setFile] = (0, import_react.useState)(null), [isResource, setResource] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [loading, setLoading] = (0, import_react.useState)(false), [cursor, setCursor] = (0, import_react.useState)(null), [editing, setEditing] = (0, import_react.useState)(false), [fields, setFields] = (0, import_react.useState)({}), [review, setReview] = (0, import_react.useState)(false), [shareMessage, setShareMessage] = (0, import_react.useState)(null), [recipients, setRecipients] = (0, import_react.useState)([]), [meetingOpen, setMeetingOpen] = (0, import_react.useState)(false), [taskMeeting, setTaskMeeting] = (0, import_react.useState)(null), [remove, setRemove] = (0, import_react.useState)(false);
+	const [task, setTask] = (0, import_react.useState)(initialTask), [messages, setMessages] = (0, import_react.useState)([]), [resources, setResources] = (0, import_react.useState)([]), [people, setPeople] = (0, import_react.useState)([]), [draft, setDraft] = (0, import_react.useState)(""), [link, setLink] = (0, import_react.useState)(""), [attachmentOptions, setAttachmentOptions] = (0, import_react.useState)(false), [file, setFile] = (0, import_react.useState)(null), [isResource, setResource] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [loading, setLoading] = (0, import_react.useState)(false), [cursor, setCursor] = (0, import_react.useState)(null), [editing, setEditing] = (0, import_react.useState)(false), [fields, setFields] = (0, import_react.useState)({}), [review, setReview] = (0, import_react.useState)(false), [shareMessage, setShareMessage] = (0, import_react.useState)(null), [recipients, setRecipients] = (0, import_react.useState)([]), [meetingOpen, setMeetingOpen] = (0, import_react.useState)(false), [taskMeeting, setTaskMeeting] = (0, import_react.useState)(null), [remove, setRemove] = (0, import_react.useState)(false);
 	const key = (0, import_react.useRef)(crypto.randomUUID()), fileInput = (0, import_react.useRef)(null), version = (0, import_react.useRef)(0);
 	(0, import_react.useEffect)(() => {
 		key.current = crypto.randomUUID();
@@ -20720,6 +20821,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 		setPeople([]);
 		setDraft("");
 		setLink("");
+		setAttachmentOptions(false);
 		setFile(null);
 		setResource(false);
 		setEditing(false);
@@ -20858,18 +20960,33 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 				if (!busy) onOpenChange(value);
 			},
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
-				className: "flex max-h-[92dvh] flex-col overflow-hidden sm:max-w-2xl",
+				className: "task-thread-dialog",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: task.title }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [
-						project?.stages?.find((row) => row.id === task.stageId)?.name || "Task workspace",
-						" ",
-						"· ",
-						task.status,
-						" · Due ",
-						task.deadline || "not set"
-					] })] }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, {
+						className: "task-thread-header",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "task-thread-heading-row",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, {
+								className: "task-thread-context",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "task-thread-status",
+									children: task.status
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: ["· ", project?.name || "Task workspace"] })]
+							}), isFounder && !projectClosed && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "task-thread-header-actions",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									variant: "outline",
+									onClick: startEdit,
+									children: "Edit"
+								}), !closed && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+									onClick: () => setMeetingOpen(true),
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, {}), taskMeeting ? "Edit meeting" : "Schedule"]
+								})]
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: task.title })]
+					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "min-h-0 flex-1 space-y-4 overflow-y-auto pr-1",
+						className: "task-thread-body chat-scroll",
 						children: [
 							error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-sm text-destructive",
@@ -20877,43 +20994,28 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 								children: error
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex flex-wrap gap-2",
+								className: "task-thread-overview",
 								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Assignee" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(UserRound, {}), task.assigneeId === "founder" ? "Founder" : projectMembers.find((member) => (member.employeeId || member.id) === task.assigneeId)?.name || task.assigneeName || task.sourceAssigneeName || task.sourceRole || "Unassigned"] })] }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Deadline" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, {}), task.deadline ? (/* @__PURE__ */ new Date(`${task.deadline.slice(0, 10)}T00:00:00`)).toLocaleDateString("en-US", {
+										month: "short",
+										day: "numeric",
+										year: "numeric"
+									}) : "Not set"] })] }),
+									isFounder && !projectClosed && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Quick Action" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 										variant: "outline",
 										size: "sm",
-										disabled: loading,
-										onClick: () => load(),
-										children: "Refresh discussion"
-									}),
-									isFounder && !projectClosed && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-											variant: "outline",
-											size: "sm",
-											onClick: startEdit,
-											children: "Edit task"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-											variant: "outline",
-											size: "sm",
-											disabled: busy,
-											onClick: () => changeTask({ status: closed ? "Open" : "Completed" }),
-											children: closed ? "Reopen task" : "Mark task complete"
-										}),
-										!closed && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-											variant: "outline",
-											size: "sm",
-											onClick: () => setMeetingOpen(true),
-											children: taskMeeting ? "Edit meeting" : "Schedule meeting"
-										})
-									] }),
-									task.sourceQueryId && onOpenSourceQuery && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-										variant: "outline",
-										size: "sm",
-										onClick: () => onOpenSourceQuery(task.sourceQueryId),
-										children: "View source query"
-									})
+										disabled: busy,
+										onClick: () => changeTask({ status: closed ? "Open" : "Completed" }),
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, {}), closed ? "Reopen task" : "Mark Done"]
+									})] })
 								]
+							}),
+							task.sourceQueryId && onOpenSourceQuery && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "outline",
+								size: "sm",
+								onClick: () => onOpenSourceQuery(task.sourceQueryId),
+								children: "View source query"
 							}),
 							!isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-xs text-muted-foreground",
@@ -21054,9 +21156,9 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 								className: "text-xs text-amber-800",
 								children: ["Blocked: ", task.sourceBlockedReason]
 							}),
-							task.sourceApprovalStatus && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-								className: "text-xs",
-								children: ["Approval: ", task.sourceApprovalStatus]
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "text-sm text-muted-foreground",
+								children: ["Approval: ", task.sourceApprovalStatus || "Not Required"]
 							}),
 							resources.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
 								className: "rounded-xl border p-3",
@@ -21082,7 +21184,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 								})]
 							}),
 							project?.id && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
-								className: "rounded-xl border p-3",
+								className: "task-thread-resources",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", {
 									className: "text-sm",
 									children: "Shared project resources"
@@ -21092,15 +21194,24 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 								})]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-								className: "space-y-3",
+								className: "task-thread-discussion",
 								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", {
-										className: "text-sm font-semibold",
-										children: [
-											"Task discussion · ",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "task-thread-discussion-heading",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", { children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, {}),
+											" Task discussion thread (",
 											messages.length,
-											cursor ? "+" : ""
-										]
+											cursor ? "+" : "",
+											")"
+										] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+											variant: "ghost",
+											size: "icon-sm",
+											"aria-label": "Refresh discussion",
+											disabled: loading,
+											onClick: () => load(),
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: loading ? "animate-spin" : "" })
+										})]
 									}),
 									messages.map((message) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "space-y-1",
@@ -21126,8 +21237,8 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 										children: "Load more messages"
 									}),
 									!messages.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "text-sm text-muted-foreground",
-										children: loading ? "Loading discussion…" : "No messages yet."
+										className: "task-thread-empty",
+										children: loading ? "Loading discussion…" : "No discussion messages yet in this task thread."
 									})
 								]
 							})
@@ -21137,21 +21248,45 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 						className: "border-t pt-3 text-xs text-muted-foreground",
 						children: "This task is closed. A founder can reopen it to continue the discussion."
 					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-						className: "shrink-0 space-y-2 border-t pt-3",
+						className: "task-thread-composer",
 						onSubmit: (event) => {
 							event.preventDefault();
 							send(false);
 						},
 						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
-								"aria-label": "Task comment",
-								value: draft,
-								maxLength: 2e3,
-								onChange: (e) => setDraft(e.target.value),
-								placeholder: "Write an internal message or describe the attached file…",
-								rows: 2
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "task-thread-compose-row",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+										type: "button",
+										variant: "ghost",
+										size: "icon",
+										"aria-label": "Attach image or PDF",
+										title: "Attach image or PDF",
+										disabled: busy,
+										onClick: () => fileInput.current?.click(),
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Paperclip, {})
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+										"aria-label": "Task comment",
+										value: draft,
+										maxLength: 2e3,
+										onChange: (e) => setDraft(e.target.value),
+										placeholder: "Post team update or task comment…",
+										rows: 1
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+										type: "button",
+										variant: "ghost",
+										size: "icon",
+										"aria-label": "Reference link and resource options",
+										"aria-expanded": attachmentOptions,
+										onClick: () => setAttachmentOptions(!attachmentOptions),
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link2, {})
+									})
+								]
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+							attachmentOptions && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 								"aria-label": "Attachment link",
 								value: link,
 								maxLength: 2048,
@@ -21180,7 +21315,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 								accept: "image/jpeg,image/png,image/webp,application/pdf",
 								onChange: upload
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							attachmentOptions && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 								className: "flex gap-2 text-xs",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
 									type: "checkbox",
@@ -21189,35 +21324,24 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 								}), "Keep this message as a resource for dependent work"]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex flex-wrap gap-2",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-										type: "button",
-										size: "sm",
-										variant: "outline",
-										disabled: busy,
-										onClick: () => fileInput.current?.click(),
-										children: "Attach image or PDF"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-										type: "submit",
-										size: "sm",
-										disabled: !ready,
-										children: busy ? "Saving…" : "Post internally"
-									}),
-									isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-										type: "button",
-										size: "sm",
-										variant: "outline",
-										disabled: !ready || !project?.telegramGroupChatId,
-										onClick: () => {
-											setShareMessage(null);
-											setRecipients([]);
-											setReview(true);
-										},
-										children: "Review & send to Telegram"
-									})
-								]
+								className: "task-thread-post-actions",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									type: "submit",
+									size: "sm",
+									disabled: !ready,
+									children: busy ? "Saving…" : "Post internally"
+								}), isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									type: "button",
+									size: "sm",
+									variant: "outline",
+									disabled: !ready || !project?.telegramGroupChatId,
+									onClick: () => {
+										setShareMessage(null);
+										setRecipients([]);
+										setReview(true);
+									},
+									children: "Review and send it to Telegram"
+								})]
 							})
 						]
 					})
@@ -21319,7 +21443,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 		})
 	] });
 }
-// frontend/src/components/Meetings.jsx
+// frontend/src/features/meetings/Meetings.jsx
 var when$1 = (value) => new Date(value).toLocaleString("en-IN", {
 	timeZone: "Asia/Kolkata",
 	dateStyle: "medium",
@@ -21563,6 +21687,102 @@ function MeetingsView({ namespace = "founder", projectId = "", onOpenTask }) {
 		]
 	});
 }
+// frontend/src/lib/navigation.js
+var eventName = "iksha:navigation";
+var fields = {
+	section: "section",
+	projectId: "project",
+	projectTab: "tab",
+	taskId: "task",
+	queryId: "query",
+	conversationId: "conversation"
+};
+var sections = /* @__PURE__ */ new Set([
+	"actions",
+	"projects",
+	"groups",
+	"decisions",
+	"meetings",
+	"chats",
+	"assistant",
+	"employees",
+	"activity",
+	"trash"
+]);
+var tabs = /* @__PURE__ */ new Set([
+	"schedule",
+	"timeline",
+	"tasks",
+	"meetings",
+	"chat",
+	"queries",
+	"files",
+	"team",
+	"overview"
+]);
+function readNavigation(href) {
+	const params = new URL(href).searchParams;
+	const section = params.get("section");
+	return {
+		section: sections.has(section) ? section : "actions",
+		projectId: params.get("project") || "",
+		projectTab: tabs.has(params.get("tab")) ? params.get("tab") : "",
+		taskId: params.get("task") || "",
+		queryId: params.get("query") || "",
+		conversationId: params.get("conversation") || ""
+	};
+}
+function navigationUrl(href, changes) {
+	const url = new URL(href);
+	const params = url.searchParams;
+	("section" in changes ? [
+		"project",
+		"tab",
+		"task",
+		"query",
+		"conversation"
+	] : "projectId" in changes ? [
+		"tab",
+		"task",
+		"query"
+	] : "projectTab" in changes ? ["task", "query"] : []).forEach((key) => params.delete(key));
+	for (const [field, key] of Object.entries(fields)) {
+		if (!(field in changes)) continue;
+		const value = changes[field];
+		if (!value || field === "section" && value === "actions") params.delete(key);
+		else params.set(key, value);
+	}
+	return url.href;
+}
+function navigate(changes, { replace = false } = {}) {
+	const url = navigationUrl(window.location.href, changes);
+	if (url === window.location.href) return;
+	const current = window.history.state;
+	const depth = current?.ikshaPath === window.location.pathname ? current.ikshaDepth || 0 : 0;
+	window.history[replace ? "replaceState" : "pushState"]({
+		...current,
+		ikshaPath: window.location.pathname,
+		ikshaDepth: depth + (replace ? 0 : 1)
+	}, "", url);
+	window.dispatchEvent(new Event(eventName));
+}
+function goBack(fallback = { section: "actions" }) {
+	const state = window.history.state;
+	if (state?.ikshaPath === window.location.pathname && state.ikshaDepth > 0) window.history.back();
+	else navigate(fallback, { replace: true });
+}
+function subscribe(listener) {
+	window.addEventListener("popstate", listener);
+	window.addEventListener(eventName, listener);
+	return () => {
+		window.removeEventListener("popstate", listener);
+		window.removeEventListener(eventName, listener);
+	};
+}
+var snapshot = () => window.location.href;
+function useNavigation() {
+	return readNavigation((0, import_react.useSyncExternalStore)(subscribe, snapshot));
+}
 // frontend/src/components/ui/avatar.jsx
 function Avatar$1({ className, size = "default", ...props }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$2, {
@@ -21675,13 +21895,79 @@ function MessageFooter({ className, ...props }) {
 		...props
 	});
 }
-// frontend/src/components/TeamChat.jsx
-function TeamChat({ endpoint, currentActor }) {
+// frontend/src/features/collaboration/lib/chatMentions.js
+function projectChatMembers(members = []) {
+	const seen = /* @__PURE__ */ new Set();
+	return members.filter((member) => member.employeeId && member.name?.trim() && member.active !== false && !seen.has(member.employeeId) && seen.add(member.employeeId));
+}
+function mentionAt(text, cursor) {
+	const match = text.slice(0, cursor).match(/(?:^|\s)@([^\s@]*)$/u);
+	return match ? {
+		start: cursor - match[1].length - 1,
+		end: cursor,
+		query: match[1]
+	} : null;
+}
+function mentionCandidates(members, query) {
+	const search = query.toLocaleLowerCase();
+	return members.filter((member) => `${member.name} ${member.role || member.designation || ""} ${member.employeeId}`.toLocaleLowerCase().includes(search));
+}
+function insertMention(text, mention, name) {
+	const label = `@${name} `;
+	return {
+		text: text.slice(0, mention.start) + label + text.slice(mention.end),
+		cursor: mention.start + label.length
+	};
+}
+// frontend/src/features/collaboration/TeamChat.jsx
+function TeamChat({ endpoint, currentActor, members = [] }) {
 	const [messages, setMessages] = (0, import_react.useState)([]);
 	const [draft, setDraft] = (0, import_react.useState)("");
 	const [sending, setSending] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
 	const scrollRef = (0, import_react.useRef)(null);
+	const inputRef = (0, import_react.useRef)(null);
+	const listRef = (0, import_react.useRef)(null);
+	const listId = (0, import_react.useId)();
+	const [mention, setMention] = (0, import_react.useState)(null);
+	const [activeOption, setActiveOption] = (0, import_react.useState)(0);
+	const team = projectChatMembers(members);
+	const candidates = mention ? mentionCandidates(team, mention.query) : [];
+	const optionIndex = Math.min(activeOption, Math.max(0, candidates.length - 1));
+	(0, import_react.useEffect)(() => {
+		listRef.current?.querySelector("[aria-selected=\"true\"]")?.scrollIntoView({ block: "nearest" });
+	}, [optionIndex, mention?.query]);
+	const updateMention = (input) => {
+		setMention(input.selectionStart === input.selectionEnd ? mentionAt(input.value, input.selectionStart) : null);
+		setActiveOption(0);
+	};
+	const chooseMention = (member) => {
+		const next = insertMention(draft, mention, member.name.trim());
+		if (next.text.length > 2e3) {
+			setError("This mention would exceed the 2,000 character limit.");
+			return;
+		}
+		setDraft(next.text);
+		setMention(null);
+		setError("");
+		requestAnimationFrame(() => {
+			inputRef.current?.focus();
+			inputRef.current?.setSelectionRange(next.cursor, next.cursor);
+		});
+	};
+	const handleKeyDown = (event) => {
+		if (!mention || event.nativeEvent.isComposing) return;
+		if (event.key === "Escape") {
+			event.preventDefault();
+			setMention(null);
+		} else if (candidates.length && ["ArrowDown", "ArrowUp"].includes(event.key)) {
+			event.preventDefault();
+			setActiveOption((optionIndex + (event.key === "ArrowDown" ? 1 : -1) + candidates.length) % candidates.length);
+		} else if (candidates.length && ["Enter", "Tab"].includes(event.key)) {
+			event.preventDefault();
+			chooseMention(candidates[optionIndex]);
+		}
+	};
 	(0, import_react.useEffect)(() => {
 		let active = true;
 		setMessages([]);
@@ -21727,6 +22013,7 @@ function TeamChat({ endpoint, currentActor }) {
 			if (!response.ok) throw new Error(data.error || "Could not send message.");
 			setMessages((current) => current.some((item) => item.id === data.message.id) ? current : [...current, data.message]);
 			setDraft("");
+			setMention(null);
 		} catch (problem) {
 			setError(problem.message);
 		} finally {
@@ -21737,17 +22024,45 @@ function TeamChat({ endpoint, currentActor }) {
 		className: "flex min-h-[420px] gap-0 overflow-hidden p-0",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex items-center gap-3 border-b px-4 py-3",
+				className: "flex items-start gap-3 border-b px-4 py-3",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "grid size-9 place-items-center rounded-xl bg-primary/10 text-primary",
+					className: "grid size-9 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-4" })
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-					className: "text-sm font-semibold",
-					children: "Project team chat"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "text-xs text-muted-foreground",
-					children: "Founder and assigned employees"
-				})] })]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "min-w-0",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+							className: "text-sm font-semibold",
+							children: "Project team chat"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "text-xs text-muted-foreground",
+							children: [
+								"Founder ·",
+								" ",
+								team.length ? `${team.length} assigned ${team.length === 1 ? "employee" : "employees"}` : "No employees assigned yet"
+							]
+						}),
+						team.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+							"aria-label": "Assigned project employees",
+							className: "mt-2 flex flex-wrap gap-2",
+							children: team.map((member) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
+								className: "max-w-full break-words rounded-lg bg-secondary px-2 py-1 text-xs",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "font-medium",
+									children: member.name
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "text-muted-foreground",
+									children: [
+										" ",
+										"· ",
+										member.role || member.designation || "Team member"
+									]
+								})]
+							}, member.employeeId))
+						})
+					]
+				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				ref: scrollRef,
@@ -21767,7 +22082,8 @@ function TeamChat({ endpoint, currentActor }) {
 								className: own ? "justify-end" : "",
 								children: [
 									own ? "You" : item.senderName,
-									" · ",
+									" ·",
+									" ",
 									new Date(item.at).toLocaleTimeString([], {
 										hour: "numeric",
 										minute: "2-digit"
@@ -21801,14 +22117,81 @@ function TeamChat({ endpoint, currentActor }) {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 				onSubmit: send,
 				className: "flex items-end gap-2 border-t p-3",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
-					value: draft,
-					onChange: (event) => setDraft(event.target.value),
-					rows: 1,
-					maxLength: 2e3,
-					placeholder: "Message your team…",
-					"aria-label": "Message your team",
-					className: "max-h-28 min-h-11 flex-1 resize-none"
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "relative min-w-0 flex-1",
+					children: [mention && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "absolute bottom-full z-20 mb-2 w-full rounded-xl border bg-popover p-1 text-popover-foreground shadow-md",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "px-2 py-1 text-xs text-muted-foreground",
+								children: "Mention a project team member"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+								ref: listRef,
+								id: listId,
+								role: "listbox",
+								"aria-label": "Project team members",
+								className: "max-h-48 overflow-y-auto",
+								children: candidates.map((member, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
+									role: "presentation",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+										id: `${listId}-${index}`,
+										type: "button",
+										role: "option",
+										"aria-selected": index === optionIndex,
+										tabIndex: -1,
+										onMouseDown: (event) => event.preventDefault(),
+										onClick: () => chooseMention(member),
+										className: `w-full break-words rounded-lg px-2 py-2 text-left text-sm ${index === optionIndex ? "bg-accent text-accent-foreground" : "hover:bg-accent"}`,
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "block font-medium",
+											children: member.name
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+											className: "block text-xs text-muted-foreground",
+											children: [
+												member.role || member.designation || "Team member",
+												" · ",
+												member.employeeId
+											]
+										})]
+									})
+								}, member.employeeId))
+							}),
+							!candidates.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								role: "status",
+								className: "px-2 py-3 text-xs text-muted-foreground",
+								children: team.length ? "No matching project team members." : "No employees assigned to this project yet."
+							})
+						]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+						ref: inputRef,
+						value: draft,
+						onChange: (event) => {
+							setDraft(event.target.value);
+							updateMention(event.target);
+						},
+						onClick: (event) => updateMention(event.target),
+						onKeyUp: (event) => {
+							if ([
+								"ArrowLeft",
+								"ArrowRight",
+								"Home",
+								"End"
+							].includes(event.key)) updateMention(event.target);
+						},
+						onKeyDown: handleKeyDown,
+						onBlur: () => setMention(null),
+						rows: 1,
+						maxLength: 2e3,
+						placeholder: "Message your team… Type @ to mention",
+						"aria-label": "Message your team",
+						role: "combobox",
+						"aria-autocomplete": "list",
+						"aria-expanded": Boolean(mention),
+						"aria-controls": mention ? listId : void 0,
+						"aria-activedescendant": mention && candidates.length ? `${listId}-${optionIndex}` : void 0,
+						className: "max-h-28 min-h-11 resize-none"
+					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 					type: "submit",
 					size: "icon-lg",
@@ -21826,9 +22209,10 @@ function TeamChat({ endpoint, currentActor }) {
 		]
 	});
 }
-// frontend/src/components/ProjectConversations.jsx
+// frontend/src/features/collaboration/ProjectConversations.jsx
 function ProjectConversations({ projects = [], namespace = "founder", actor = "founder" }) {
-	const [selected, setSelected] = (0, import_react.useState)(""), [search, setSearch] = (0, import_react.useState)("");
+	const selected = useNavigation().conversationId;
+	const [search, setSearch] = (0, import_react.useState)("");
 	const visible = projects.filter((project) => `${project.name} ${project.location || ""}`.toLowerCase().includes(search.toLowerCase()));
 	const project = projects.find((row) => row.id === selected) || visible[0];
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
@@ -21856,7 +22240,7 @@ function ProjectConversations({ projects = [], namespace = "founder", actor = "f
 					onChange: (e) => setSearch(e.target.value),
 					placeholder: "Find a project or city…"
 				}), visible.map((row) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-					onClick: () => setSelected(row.id),
+					onClick: () => navigate({ conversationId: row.id }),
 					className: `w-full rounded-xl border p-3 text-left text-sm ${row.id === project?.id ? "border-primary bg-primary/5" : ""}`,
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
 						className: "block",
@@ -21870,7 +22254,8 @@ function ProjectConversations({ projects = [], namespace = "founder", actor = "f
 					children: project.name
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TeamChat, {
 					endpoint: `/api/${namespace}/projects/${project.id}/team-chat`,
-					currentActor: actor
+					currentActor: actor,
+					members: project.members
 				}, project.id)]
 			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				className: "text-sm text-muted-foreground",
@@ -21879,15 +22264,16 @@ function ProjectConversations({ projects = [], namespace = "founder", actor = "f
 		})]
 	});
 }
-// frontend/src/lib/queryStatus.js
-var needsQueryAttention = (request) => !request.decisionStatus && ![
+// frontend/src/features/queries/lib/queryStatus.js
+var needsQueryAttention = (request) => request.requestType !== "Message" && !request.decisionStatus && ![
 	"On hold",
 	"Done",
 	"Rejected",
 	"Published",
 	"Approved"
 ].includes(request.status);
-// frontend/src/components/PersonalReminders.jsx
+var queryStatusLabel = (request) => request.requestType === "Message" ? "Group message" : request.status === "On hold" ? "Waiting for more context" : request.status;
+// frontend/src/features/operations/PersonalReminders.jsx
 function PersonalReminders({ connections, onChanged }) {
 	const [link, setLink] = (0, import_react.useState)("");
 	const [preview, setPreview] = (0, import_react.useState)(null);
@@ -22009,7 +22395,8 @@ function PersonalReminders({ connections, onChanged }) {
 							preview.name,
 							" · ",
 							preview.taskCount,
-							" actionable ",
+							" actionable",
+							" ",
 							preview.taskCount === 1 ? "task" : "tasks"
 						]
 					}),
@@ -22054,7 +22441,8 @@ function PersonalReminders({ connections, onChanged }) {
 						children: [
 							"Today’s delivery: ",
 							preview.delivery.status,
-							". ",
+							".",
+							" ",
 							preview.delivery.error || "A daily reminder has already been attempted; another will not be sent."
 						]
 					}),
@@ -22078,7 +22466,7 @@ function PersonalReminders({ connections, onChanged }) {
 		]
 	});
 }
-// backend/roles.js
+// backend/auth/roles.js
 var rolesOf = (value) => [...new Set((Array.isArray(value) ? value : String(value || "").split(/[,;|]/)).map((role) => String(role).trim()).filter(Boolean))];
 var key = (role) => {
 	const value = String(role).toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -22087,7 +22475,7 @@ var key = (role) => {
 var hasRole = (value, role) => rolesOf(value).some((item) => key(item) === key(role));
 var matchesRole = (value, role) => hasRole(value, role) || key(role) === "designheadadmin" && (hasRole(value, "Founder") || hasRole(value, "Design Head") || hasRole(value, "Admin"));
 var isStaff = (value) => rolesOf(value).some((role) => !hasRole(role, "Client"));
-// frontend/src/components/LocationProjectPicker.jsx
+// frontend/src/features/projects/LocationProjectPicker.jsx
 function LocationProjectPicker({ projects, selected, onChange }) {
 	const groups = /* @__PURE__ */ new Map();
 	for (const project of projects) {
@@ -22130,10 +22518,12 @@ function LocationProjectPicker({ projects, selected, onChange }) {
 		})
 	});
 }
-// frontend/src/components/WorkQueue.jsx
+// frontend/src/features/operations/WorkQueue.jsx
 function WorkQueue({ projects = [], isFounder = true, initialPersonId = "founder", personName = "Me", onChanged }) {
 	const [person, setPerson] = (0, import_react.useState)(initialPersonId), [projectId, setProjectId] = (0, import_react.useState)(""), [status, setStatus] = (0, import_react.useState)("pending");
-	const [tasks, setTasks] = (0, import_react.useState)([]), [employees, setEmployees] = (0, import_react.useState)([]), [selected, setSelected] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [link, setLink] = (0, import_react.useState)(""), [syncWarning, setSyncWarning] = (0, import_react.useState)(""), [connected, setConnected] = (0, import_react.useState)(false);
+	const [tasks, setTasks] = (0, import_react.useState)([]), [employees, setEmployees] = (0, import_react.useState)([]), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [link, setLink] = (0, import_react.useState)(""), [syncWarning, setSyncWarning] = (0, import_react.useState)(""), [connected, setConnected] = (0, import_react.useState)(false);
+	const navigation = useNavigation();
+	const selected = navigation.section === "actions" ? tasks.find((task) => task.id === navigation.taskId) || null : null;
 	const namespace = isFounder ? "founder" : "employee";
 	const load = async () => {
 		try {
@@ -22199,7 +22589,8 @@ function WorkQueue({ projects = [], isFounder = true, initialPersonId = "founder
 			link && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 				className: "rounded-xl border p-3 text-sm",
 				children: [
-					"Open ",
+					"Open",
+					" ",
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
 						className: "underline",
 						href: link,
@@ -22207,7 +22598,8 @@ function WorkQueue({ projects = [], isFounder = true, initialPersonId = "founder
 						rel: "noreferrer",
 						children: "the project bot"
 					}),
-					" and press Start once. Each employee connects from their own Telegram account."
+					" ",
+					"and press Start once. Each employee connects from their own Telegram account."
 				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -22296,7 +22688,10 @@ function WorkQueue({ projects = [], isFounder = true, initialPersonId = "founder
 				className: "space-y-2",
 				children: [tasks.map((task) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 					className: "flex w-full items-center justify-between gap-3 rounded-xl border bg-card p-4 text-left hover:bg-muted",
-					onClick: () => setSelected(task),
+					onClick: () => navigate({
+						section: "actions",
+						taskId: task.id
+					}),
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 						className: "text-sm font-medium",
 						children: [
@@ -22323,7 +22718,7 @@ function WorkQueue({ projects = [], isFounder = true, initialPersonId = "founder
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TaskThreadDrawer, {
 				open: Boolean(selected),
 				onOpenChange: (open) => {
-					if (!open) setSelected(null);
+					if (!open) goBack({ taskId: "" });
 				},
 				task: selected,
 				project: selected?.project,
@@ -22564,7 +22959,8 @@ function SupervisorTools({ employees, projects, onChanged }) {
 							className: "text-xs",
 							children: [
 								employees.find((row) => row.id === delivery.employeeId)?.name || delivery.employeeId,
-								" · ",
+								" ",
+								"· ",
 								delivery.date,
 								" · ",
 								delivery.status,
@@ -22587,7 +22983,7 @@ function SupervisorTools({ employees, projects, onChanged }) {
 		]
 	});
 }
-// frontend/src/components/GoogleSignIn.jsx
+// frontend/src/features/auth/GoogleSignIn.jsx
 var sdk;
 function loadGoogle() {
 	if (window.google?.accounts?.id) return Promise.resolve(window.google.accounts.id);
@@ -22710,7 +23106,7 @@ function GoogleSignIn({ mode = "login", onComplete }) {
 		]
 	});
 }
-// frontend/src/components/WorkspaceAccess.jsx
+// frontend/src/features/auth/WorkspaceAccess.jsx
 function IkshaBrand({ compact = false }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: `iksha-wordmark ${compact ? "compact" : ""}`,
@@ -25728,7 +26124,7 @@ function GooeyNewButton({ hasProject, onAddMember, onShareClientLink }) {
 		})]
 	});
 }
-// frontend/src/components/GoogleAccessRequests.jsx
+// frontend/src/features/auth/GoogleAccessRequests.jsx
 function GoogleAccessRequests({ employees, projects, onChanged }) {
 	const [accounts, setAccounts] = (0, import_react.useState)([]), [currentId, setCurrentId] = (0, import_react.useState)(""), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [confirm, setConfirm] = (0, import_react.useState)(null);
 	const load = async () => {
@@ -25817,7 +26213,8 @@ function GoogleAccessRequests({ employees, projects, onChanged }) {
 							className: "text-xs text-muted-foreground",
 							children: [
 								account.email,
-								" · ",
+								" ·",
+								" ",
 								account.claimed ? "Connected" : "Pre-approved; awaiting first sign-in"
 							]
 						})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
@@ -25900,7 +26297,8 @@ function GoogleAccessRequests({ employees, projects, onChanged }) {
 						children: [
 							"Access requests · ",
 							requests.filter((account) => account.status === "Pending").length,
-							" pending"
+							" ",
+							"pending"
 						]
 					}),
 					requests.map((account) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AccessRequest, {
@@ -26133,7 +26531,7 @@ function TabsContent({ className, ...props }) {
 		...props
 	});
 }
-// frontend/src/components/EmployeeManager.jsx
+// frontend/src/features/people/EmployeeManager.jsx
 var roles = [
 	"Designer",
 	"Site supervisor",
@@ -26591,11 +26989,19 @@ function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewWork }) 
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 									className: "text-xs text-muted-foreground",
-									children: ["Google access: ", employee.workspaceRole === "Founder" ? "Founder · manage role above" : employee.googleLinked ? "Connected" : employee.googleInvited ? "Pre-approved" : "Add their Google email"]
+									children: [
+										"Google access:",
+										" ",
+										employee.workspaceRole === "Founder" ? "Founder · manage role above" : employee.googleLinked ? "Connected" : employee.googleInvited ? "Pre-approved" : "Add their Google email"
+									]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 									className: "text-xs text-muted-foreground",
-									children: ["Telegram digest: ", employee.telegramConnected ? "Connected" : "Awaiting Start in bot"]
+									children: [
+										"Telegram digest:",
+										" ",
+										employee.telegramConnected ? "Connected" : "Awaiting Start in bot"
+									]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 									variant: "outline",
@@ -28432,7 +28838,7 @@ function ThinkingOrb({ state = "working", size = 64, theme = "auto", speed = 1, 
 		...rest
 	});
 }
-// frontend/src/components/FounderAssistant.jsx
+// frontend/src/features/assistant/FounderAssistant.jsx
 var suggestions = [
 	"Summarize all ongoing projects",
 	"Which projects have blockers?",
@@ -28545,7 +28951,7 @@ function FounderAssistant({ onBack }) {
 						variant: "ghost",
 						size: "icon",
 						onClick: onBack,
-						"aria-label": "Back to projects",
+						"aria-label": "Back",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { className: "size-5" })
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
@@ -28686,7 +29092,7 @@ function FounderAssistant({ onBack }) {
 		})]
 	});
 }
-// frontend/src/components/SuggestReply.jsx
+// frontend/src/features/queries/SuggestReply.jsx
 function SuggestReply({ requestId, disabled, onUse, baseInstruction = "", outcome = "" }) {
 	const [busy, setBusy] = (0, import_react.useState)(false);
 	const [suggestion, setSuggestion] = (0, import_react.useState)(null);
@@ -28761,7 +29167,8 @@ function SuggestReply({ requestId, disabled, onUse, baseInstruction = "", outcom
 							suggestion.basedOn.inProgress,
 							" in-progress, ",
 							suggestion.basedOn.late,
-							" late and ",
+							" late and",
+							" ",
 							suggestion.basedOn.nextUp,
 							" upcoming work items",
 							suggestion.basedOn.previousReplies ? `, ${suggestion.basedOn.previousReplies} earlier replies` : "",
@@ -28806,87 +29213,7 @@ function SuggestReply({ requestId, disabled, onUse, baseInstruction = "", outcom
 		]
 	});
 }
-// frontend/src/components/QueryHoldDialog.jsx
-function QueryHoldDialog({ open, onOpenChange, query, onChanged }) {
-	const [workspace, setWorkspace] = (0, import_react.useState)(null), [taskId, setTaskId] = (0, import_react.useState)(""), [search, setSearch] = (0, import_react.useState)(""), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false);
-	(0, import_react.useEffect)(() => {
-		if (!open || !query) return;
-		let active = true;
-		setWorkspace(null);
-		setTaskId(query.taskId || "");
-		setSearch("");
-		setError("");
-		fetchProjectWorkspace(query.projectId).then((data) => {
-			if (active) setWorkspace(data);
-		}).catch((problem) => {
-			if (active) setError(problem.message);
-		});
-		return () => {
-			active = false;
-		};
-	}, [open, query?.id]);
-	const save = async () => {
-		setBusy(true);
-		try {
-			await request(`/api/founder/decision-requests/${encodeURIComponent(query.id)}/hold`, {
-				method: "POST",
-				body: { taskId }
-			});
-			onOpenChange(false);
-			onChanged?.();
-		} catch (problem) {
-			setError(problem.message);
-		} finally {
-			setBusy(false);
-		}
-	};
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
-		open,
-		onOpenChange: (value) => {
-			if (!busy) onOpenChange(value);
-		},
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Acknowledge & hold" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Keep this message and its files in a task discussion while you wait for more information. The task's dates and status stay unchanged." })] }),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-				"aria-label": "Find a task for this query",
-				value: search,
-				onChange: (e) => setSearch(e.target.value),
-				placeholder: "Find a task…"
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "max-h-72 space-y-2 overflow-y-auto",
-				children: [workspace?.tasks.filter((task) => task.status !== "Cancelled" && `${task.title} ${workspace.project.stages?.find((row) => row.id === task.stageId)?.name || ""}`.toLowerCase().includes(search.toLowerCase())).map((task) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-					className: "flex items-center gap-2 rounded-lg border p-3 text-sm",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-							type: "radio",
-							name: "hold-task",
-							checked: taskId === task.id,
-							onChange: () => setTaskId(task.id)
-						}),
-						task.title,
-						" · ",
-						task.status
-					]
-				}, task.id)), workspace && !workspace.tasks.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "text-sm",
-					children: "Add a task to this project first."
-				})]
-			}),
-			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				role: "alert",
-				className: "text-sm text-destructive",
-				children: error
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-				disabled: busy || !taskId,
-				onClick: save,
-				children: busy ? "Saving…" : "Hold on this task"
-			})
-		] })
-	});
-}
-// frontend/src/lib/stageTemplate.js
+// frontend/src/features/timeline/lib/stageTemplate.js
 var STAGE_TASKS = [
 	{
 		key: "site-check",
@@ -28961,7 +29288,7 @@ function defaultPlanSpecs(stages, startDate) {
 		};
 	});
 }
-// frontend/src/components/AddStageForm.jsx
+// frontend/src/features/timeline/AddStageForm.jsx
 var today = () => (/* @__PURE__ */ new Date()).toISOString().slice(0, 10);
 var label$1 = (value) => value ? (/* @__PURE__ */ new Date(`${value}T00:00:00Z`)).toLocaleDateString([], {
 	day: "numeric",
@@ -29214,10 +29541,14 @@ function AddStageForm({ value, onChange, stages = [], members = [], spaces = [],
 				className: "space-y-2",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 					className: "text-xs font-medium",
-					children: ["Tasks ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "font-normal text-muted-foreground",
-						children: "· always in this order, one after another"
-					})]
+					children: [
+						"Tasks",
+						" ",
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "font-normal text-muted-foreground",
+							children: "· always in this order, one after another"
+						})
+					]
 				}), value.custom ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "space-y-3",
 					children: [value.tasks.map((task, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
@@ -29391,7 +29722,8 @@ function AddStageForm({ value, onChange, stages = [], members = [], spaces = [],
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, { className: "size-3.5" }),
 							stage.startDate ? `${label$1(stage.startDate)} – ${label$1(stage.endDate)}` : "No dates yet",
-							" · ",
+							" ",
+							"· ",
 							created,
 							" task",
 							created === 1 ? "" : "s",
@@ -29409,7 +29741,7 @@ function AddStageForm({ value, onChange, stages = [], members = [], spaces = [],
 		]
 	});
 }
-// frontend/src/components/AddStageDialog.jsx
+// frontend/src/features/timeline/AddStageDialog.jsx
 function useStagePreview(value, enabled, request) {
 	const [state, setState] = (0, import_react.useState)({
 		preview: null,
@@ -29608,7 +29940,7 @@ function AddStageDialog({ open, onOpenChange, projectId, stages = [], members = 
 		})
 	});
 }
-// frontend/src/lib/timeline.js
+// frontend/src/features/timeline/lib/timeline.js
 var DAY = 864e5;
 function calendarDate(value) {
 	if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
@@ -29647,7 +29979,7 @@ function stageSummary(items, stage) {
 		progress: group.length ? Math.round(complete / group.length * 100) : 0
 	};
 }
-// frontend/src/lib/timelineStatus.js
+// frontend/src/features/timeline/lib/timelineStatus.js
 var todayDate = (now = /* @__PURE__ */ new Date()) => Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
 var isoDate = (value) => new Date(value).toISOString().slice(0, 10);
 var isComplete = (task) => [
@@ -29758,7 +30090,12 @@ var canMove = (item) => (Boolean(item.task.telegramTaskId) || item.task.customPl
 function stageMoves(items, stageId, shiftDays) {
 	return items.filter((item) => (item.stage?.id || "other") === stageId && !isClosed(item.task) && item.start !== null && item.end !== null && (item.task.telegramTaskId || item.task.customPlan)).map((item) => moveFor(item, shiftDays));
 }
-// frontend/src/lib/stagePicker.js
+function canChooseMoveMode(moves) {
+	if (!moves?.length || moves.some((move) => move.forecastOnly)) return false;
+	const delta = Date.parse(moves[0].start) - Date.parse(moves[0].fromStart);
+	return Number.isFinite(delta) && delta !== 0 && moves.every((move) => Date.parse(move.start) - Date.parse(move.fromStart) === delta && Date.parse(move.end) - Date.parse(move.fromEnd) === delta);
+}
+// frontend/src/features/timeline/lib/stagePicker.js
 var done = (task) => [
 	"Completed",
 	"completed",
@@ -29797,7 +30134,7 @@ function defaultTaskForStage(items = [], stageId, today = todayDate()) {
 	const open = items.filter((item) => item.stage?.id === stageId && !done(item.task)).sort((a, b) => (Number(a.task.sourceSequence) || 0) - (Number(b.task.sourceSequence) || 0));
 	return open.find((item) => item.start !== null && item.start <= today && item.end > today) || open[0] || null;
 }
-// frontend/src/components/QueryDecisionDialogs.jsx
+// frontend/src/features/queries/QueryDecisionDialogs.jsx
 var dayLabel = (value) => value === null || value === void 0 ? "no dates" : new Date(value).toLocaleDateString([], {
 	day: "numeric",
 	month: "short",
@@ -29823,6 +30160,7 @@ function clientOutcome(target, preview, taskTitle) {
 	}
 	const name = shortTitle(taskTitle);
 	const moved = (preview.affected || []).find((item) => item.moved);
+	if (target.action.type === "hold") return `We've received your message about "${name}". Please share more context so we can act on it.`;
 	if (target.action.type === "complete") return `"${name}" is complete.`;
 	if (target.action.type === "attach") return `Thanks, we've noted this against "${name}".`;
 	const end = moved?.forecastEnd ? ` and will now be ready by ${niceDate$1(moved.forecastEnd)}` : "";
@@ -29848,25 +30186,17 @@ var ACTIONS = [
 		type: "complete",
 		title: "Mark complete",
 		text: "It's done. The next task can start."
+	},
+	{
+		type: "hold",
+		title: "Waiting for more context",
+		text: "Save the query here while waiting for clarification. Task dates and status stay unchanged."
 	}
 ];
-async function sendReply(requestId, text, key) {
-	return publishDecisionReply(requestId, {
-		response: text,
-		idempotencyKey: key
-	});
-}
-function ReplyStep({ request, baseInstruction, outcome, value, onChange, noReply, onNoReply }) {
+function ReplyStep({ request, baseInstruction, outcome, value, onChange }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "space-y-3",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-			className: "flex items-center gap-2 text-sm",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-				type: "checkbox",
-				checked: noReply,
-				onChange: (event) => onNoReply(event.target.checked)
-			}), "Don't reply in the group"]
-		}), !noReply && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SuggestReply, {
 				requestId: request.id,
 				baseInstruction,
@@ -29878,20 +30208,20 @@ function ReplyStep({ request, baseInstruction, outcome, value, onChange, noReply
 				onChange: (event) => onChange(event.target.value),
 				rows: 4,
 				maxLength: 3e3,
-				placeholder: "Reply sent to the group, under the original message"
+				placeholder: "Update sent with this decision"
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 				className: "text-[11px] text-muted-foreground",
 				children: [
 					"Sent as a reply to ",
 					request.originalSenderName || "the sender",
-					"'s message after you confirm."
+					"'s original message when you confirm this decision."
 				]
 			})
-		] })]
+		]
 	});
 }
-function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
+function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 	const [workspace, setWorkspace] = (0, import_react.useState)(null);
 	const [loadError, setLoadError] = (0, import_react.useState)("");
 	const [step, setStep] = (0, import_react.useState)("stage");
@@ -29905,15 +30235,13 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 	const [newStage, setNewStage] = (0, import_react.useState)(null);
 	const [linkTaskKey, setLinkTaskKey] = (0, import_react.useState)("site-check");
 	const [reply, setReply] = (0, import_react.useState)("");
-	const [noReply, setNoReply] = (0, import_react.useState)(false);
 	const [saving, setSaving] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
 	const [accepted, setAccepted] = (0, import_react.useState)(null);
-	const [replyKey, setReplyKey] = (0, import_react.useState)("");
-	const isUpdate = request?.requestType === "Update";
-	const defaultPlan = useDefaultPlan(request?.projectId, open);
+	const isUpdate = request$1?.requestType === "Update";
+	const defaultPlan = useDefaultPlan(request$1?.projectId, open);
 	(0, import_react.useEffect)(() => {
-		if (!open || !request) return;
+		if (!open || !request$1) return;
 		setStep("stage");
 		setSearch("");
 		setStageId("");
@@ -29924,14 +30252,12 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 		});
 		setNewStage(null);
 		setReply("");
-		setNoReply(isUpdate);
 		setError("");
 		setAccepted(null);
-		setReplyKey(generateIdempotencyKey(`pub-${request.id}`));
 		setWorkspace(null);
 		setLoadError("");
-		fetchProjectWorkspace(request.projectId, "founder").then(setWorkspace).catch((problem) => setLoadError(problem.message || "Could not load the project plan."));
-	}, [open, request?.id]);
+		fetchProjectWorkspace(request$1.projectId, "founder").then(setWorkspace).catch((problem) => setLoadError(problem.message || "Could not load the project plan."));
+	}, [open, request$1?.id]);
 	const stages = workspace?.project?.stages || [];
 	const items = (0, import_react.useMemo)(() => workspace ? timelineItems(workspace.tasks || [], stages) : [], [workspace]);
 	const rows = (0, import_react.useMemo)(() => orderStagesForPicker(stages, items), [workspace]);
@@ -29952,9 +30278,18 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 		} : { type: action.type }
 	};
 	const previewReady = Boolean(target) && !accepted && (step === "action" || step === "new-stage" || step === "reply") && (target.kind !== "new-stage" || !stageNameProblem(newStage, stages));
-	const { preview, previewing, error: previewError } = useStagePreview(target, open && previewReady, () => previewAcceptDecision(request.id, target));
+	const waitingForContext = target?.kind === "task" && target.action.type === "hold";
+	const schedulePreview = useStagePreview(target, open && previewReady && !waitingForContext, () => previewAcceptDecision(request$1.id, target));
+	const holdPreview = (0, import_react.useMemo)(() => ({
+		ok: true,
+		summary: `Waiting for more context. Saved on "${task?.title || "this task"}"; task dates and status stay unchanged.`,
+		affected: []
+	}), [task?.title]);
+	const preview = waitingForContext ? holdPreview : schedulePreview.preview;
+	const previewing = !waitingForContext && schedulePreview.previewing;
+	const previewError = waitingForContext ? "" : schedulePreview.error;
 	const summary = accepted?.summary || preview?.summary || "";
-	const baseInstruction = summary ? `The founder accepted this. Outcome: ${summary} Tell the sender plainly.` : "";
+	const baseInstruction = summary ? `The founder ${waitingForContext ? "is waiting for more context on this" : "accepted this"}. Outcome: ${summary} Tell the sender plainly.` : "";
 	const [outcome, setOutcome] = (0, import_react.useState)("");
 	(0, import_react.useEffect)(() => {
 		if (preview && !accepted) setOutcome(clientOutcome(target, preview, task?.title));
@@ -29991,18 +30326,18 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 		let result = accepted;
 		try {
 			if (!result) {
-				result = await acceptDecisionRequest(request.id, target);
+				result = waitingForContext ? await request(`/api/founder/decision-requests/${encodeURIComponent(request$1.id)}/hold`, {
+					method: "POST",
+					body: {
+						taskId,
+						notificationText: reply.trim()
+					}
+				}) : await acceptDecisionRequest(request$1.id, target, reply.trim());
+				if (waitingForContext) result.summary = holdPreview.summary;
 				setAccepted(result);
 			}
 		} catch (problem) {
 			setError(problem.message || "Could not accept this query.");
-			setSaving(false);
-			return;
-		}
-		if (!noReply && reply.trim()) try {
-			await sendReply(request.id, reply.trim(), replyKey);
-		} catch (problem) {
-			setError(`The task was updated, but the reply was not sent: ${problem.message || "Telegram did not answer"}. Retry sending.`);
 			setSaving(false);
 			return;
 		}
@@ -30027,7 +30362,10 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 		setError("");
 	};
 	const canNext = step === "task" ? Boolean(taskId) : step === "action" ? previewReady && preview?.ok !== false && !previewing && !previewError && Boolean(preview) : step === "new-stage" ? previewReady && !previewing && !previewError && Boolean(preview) : false;
-	const next = () => setStep(step === "task" ? "action" : "reply");
+	const next = () => {
+		if (step !== "task") setReply(outcome);
+		setStep(step === "task" ? "action" : "reply");
+	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
 		open,
 		onOpenChange: (value) => {
@@ -30059,9 +30397,9 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 							className: "line-clamp-2 text-xs",
 							children: [
 								"\"",
-								request?.originalMessage || "Shared a file",
+								request$1?.originalMessage || "Shared a file",
 								"\" · ",
-								request?.originalSenderName
+								request$1?.originalSenderName
 							]
 						})
 					]
@@ -30116,7 +30454,8 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 													className: "text-xs text-muted-foreground",
 													children: [
 														row.start !== null ? `${dayLabel(row.start)} – ${dayLabel(row.end - 864e5)}` : "No dates yet",
-														" · ",
+														" ",
+														"· ",
 														row.taskCount,
 														" tasks",
 														row.selectable ? "" : " · finished: add a new stage instead"
@@ -30161,7 +30500,8 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 											className: "text-xs text-muted-foreground",
 											children: [
 												item.task.sourceAssigneeName || item.task.sourceRole || "Unassigned",
-												" · ",
+												" ·",
+												" ",
 												item.start !== null ? `${dayLabel(item.start)} – ${dayLabel(item.end - 864e5)}` : "no dates",
 												finished ? " · done" : item.start !== null && item.start <= todayDate() && item.end > todayDate() ? " · in progress" : ""
 											]
@@ -30174,7 +30514,7 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 							className: "space-y-3",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "grid gap-2 sm:grid-cols-3",
+									className: "grid gap-2 sm:grid-cols-2",
 									role: "radiogroup",
 									children: [...ACTIONS, ...isUpdate ? [{
 										type: "attach",
@@ -30289,13 +30629,11 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 								className: "flex items-start gap-2 rounded-xl border bg-muted/40 px-3 py-2.5 text-sm",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "mt-0.5 size-4 shrink-0 text-emerald-700" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: summary || "Ready to accept." })]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ReplyStep, {
-								request,
+								request: request$1,
 								baseInstruction,
 								outcome,
 								value: reply,
-								onChange: setReply,
-								noReply,
-								onNoReply: setNoReply
+								onChange: setReply
 							})]
 						}),
 						error && step !== "new-stage" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
@@ -30313,9 +30651,9 @@ function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 						onClick: back,
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { className: "size-4" }), "Back"]
 					}), step === "reply" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						disabled: saving || !noReply && !reply.trim(),
+						disabled: saving || !reply.trim(),
 						onClick: confirm,
-						children: saving ? "Saving…" : accepted ? "Retry sending" : noReply ? "Confirm" : "Confirm and send"
+						children: saving ? "Saving…" : accepted ? "Retry sending" : "Confirm and send"
 					}) : step !== "stage" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						disabled: !canNext,
 						onClick: next,
@@ -30348,7 +30686,8 @@ function PreviewPanel({ preview, previewing, error }) {
 			pushed.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 				className: "text-muted-foreground",
 				children: [
-					"Moves back: ",
+					"Moves back:",
+					" ",
 					pushed.slice(0, 4).map((item) => shortTitle(item.taskName)).join(", "),
 					pushed.length > 4 ? ` and ${pushed.length - 4} more` : "",
 					"."
@@ -30368,18 +30707,15 @@ function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
 	const [saving, setSaving] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
 	const [rejected, setRejected] = (0, import_react.useState)(false);
-	const [key, setKey] = (0, import_react.useState)("");
 	(0, import_react.useEffect)(() => {
 		if (!open || !request) return;
 		setText(request.rejectionReply || "");
 		setHint("");
 		setError("");
 		setRejected(alreadyRejected);
-		setKey(generateIdempotencyKey(`pub-${request.id}`));
 	}, [open, request?.id]);
 	const confirm = async () => {
-		const message = text.trim();
-		if (message.length < 3) return;
+		const message = text.trim() || "We're not able to go ahead with this request right now.";
 		setSaving(true);
 		setError("");
 		try {
@@ -30389,13 +30725,6 @@ function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
 			}
 		} catch (problem) {
 			setError(problem.message || "Could not reject this query.");
-			setSaving(false);
-			return;
-		}
-		try {
-			await sendReply(request.id, message, key);
-		} catch (problem) {
-			setError(`Marked as rejected, but the message was not sent: ${problem.message || "Telegram did not answer"}. Retry sending.`);
 			setSaving(false);
 			return;
 		}
@@ -30412,7 +30741,8 @@ function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
 			className: "max-w-lg",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Reject this query" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [
-					"This message is sent to the group as a reply to ",
+					"Reject with the default reply, or add context below. The reply is sent to",
+					" ",
 					request?.originalSenderName || "the sender",
 					"."
 				] })] }),
@@ -30437,7 +30767,7 @@ function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
 							onChange: (event) => setText(event.target.value),
 							rows: 4,
 							maxLength: 3e3,
-							placeholder: "Message to the group"
+							placeholder: "Optional reason or reply. Leave blank to send: We’re not able to go ahead with this request right now."
 						}),
 						error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "text-xs text-destructive",
@@ -30455,7 +30785,7 @@ function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
 						children: "Cancel"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						variant: "destructive",
-						disabled: saving || text.trim().length < 3,
+						disabled: saving,
 						onClick: confirm,
 						children: saving ? "Sending…" : rejected ? "Retry sending" : "Reject and send"
 					})]
@@ -30465,9 +30795,21 @@ function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
 	});
 }
 function QueryOutcome({ request }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "space-y-1",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryDecisionOutcome, { request }), request.notifications?.length > 0 && (() => {
+			const update = request.notifications.at(-1);
+			return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: `text-xs ${update.status === "Sent" ? "text-muted-foreground" : "text-amber-800"}`,
+				children: update.status === "Sent" ? "Sender updated in Telegram." : `Decision saved. ${update.error || "Telegram delivery is pending; check the group before sending again."}`
+			});
+		})()]
+	});
+}
+function QueryDecisionOutcome({ request }) {
 	if (request.status === "On hold") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 		className: "text-xs text-amber-800",
-		children: "Acknowledged · waiting for more information. Saved in its task thread."
+		children: "Waiting for more context · this query needs clarification. Saved in its task thread."
 	});
 	if (request.acceptSummary) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 		className: "flex items-start gap-1.5 text-xs text-emerald-800",
@@ -30487,12 +30829,12 @@ function QueryOutcome({ request }) {
 	});
 	return null;
 }
-function QueryDecisionButtons({ request: request$1, disabled, onAccept, onReject, onChanged, size = "sm" }) {
-	const [holdOpen, setHoldOpen] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false);
+function QueryDecisionButtons({ request: request$2, disabled, onAccept, onReject, onChanged, size = "sm" }) {
+	const [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false);
 	const resume = async () => {
 		setBusy(true);
 		try {
-			await request(`/api/founder/decision-requests/${encodeURIComponent(request$1.id)}/resume`, {
+			await request(`/api/founder/decision-requests/${encodeURIComponent(request$2.id)}/resume`, {
 				method: "POST",
 				body: {}
 			});
@@ -30503,7 +30845,8 @@ function QueryDecisionButtons({ request: request$1, disabled, onAccept, onReject
 			setBusy(false);
 		}
 	};
-	if (request$1.status === "On hold") return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+	if (request$2.requestType === "Message") return null;
+	if (request$2.status === "On hold") return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 		variant: "outline",
 		size,
 		disabled: busy || disabled,
@@ -30514,43 +30857,27 @@ function QueryDecisionButtons({ request: request$1, disabled, onAccept, onReject
 		className: "text-xs text-destructive",
 		children: error
 	})] });
-	if (Boolean(request$1.decisionStatus) || [
+	if (Boolean(request$2.decisionStatus) || [
 		"Rejected",
 		"Done",
 		"Published",
 		"Approved"
-	].includes(request$1.status)) return null;
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-			variant: "outline",
-			size,
-			disabled,
-			onClick: () => setHoldOpen(true),
-			children: "Hold"
-		}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryHoldDialog, {
-			open: holdOpen,
-			onOpenChange: setHoldOpen,
-			query: request$1,
-			onChanged
-		}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-			size,
-			onClick: onAccept,
-			disabled,
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5 mr-1" }), "Accept"]
-		}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-			size,
-			variant: "outline",
-			className: "text-destructive",
-			onClick: onReject,
-			disabled,
-			children: "Reject"
-		})
-	] });
+	].includes(request$2.status)) return null;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+		size,
+		onClick: onAccept,
+		disabled,
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5 mr-1" }), "Accept"]
+	}), request$2.canReject && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+		size,
+		variant: "outline",
+		className: "text-destructive",
+		onClick: onReject,
+		disabled,
+		children: "Reject"
+	})] });
 }
-// frontend/src/components/DecisionInbox.jsx
+// frontend/src/features/queries/DecisionInbox.jsx
 async function api$3(url, method = "GET", data) {
 	const response = await fetch(url, {
 		method,
@@ -30572,9 +30899,9 @@ var initials$1 = (name = "") => name.trim().split(/\s+/).map((part) => part[0]).
 var preview = (item) => item.originalMessage || item.context || (item.attachments?.length ? "Attachment" : "Request");
 function DecisionInbox({ projects, onProjectsChanged }) {
 	const [requests, setRequests] = (0, import_react.useState)([]);
-	const [selectedId, setSelectedId] = (0, import_react.useState)("");
-	const [mobileThread, setMobileThread] = (0, import_react.useState)(false);
-	const [filter, setFilter] = (0, import_react.useState)("Open");
+	const navigation = useNavigation();
+	const selectedId = navigation.queryId;
+	const [filter, setFilter] = (0, import_react.useState)("All");
 	const [projectFilter, setProjectFilter] = (0, import_react.useState)("All projects");
 	const [search, setSearch] = (0, import_react.useState)("");
 	const [mode, setMode] = (0, import_react.useState)("internal");
@@ -30630,12 +30957,13 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 	const visible = requests.filter((item) => {
 		const decided = !needsQueryAttention(item);
 		if (filter === "Open" && decided) return false;
-		if (filter === "Handled" && !decided) return false;
+		if (filter === "Handled" && (!decided || item.requestType === "Message")) return false;
 		if (filter === "Updates" && item.requestType !== "Update") return false;
 		if (projectFilter !== "All projects" && item.projectId !== projectFilter) return false;
 		return `${projects.find((candidate) => candidate.id === item.projectId)?.name || ""} ${item.originalSenderName} ${item.originalMessage} ${item.context}`.toLowerCase().includes(search.toLowerCase());
 	});
 	const selected = visible.find((item) => item.id === selectedId) || visible[0];
+	const mobileThread = Boolean(navigation.queryId && selected);
 	const selectedProject = projects.find((item) => item.id === selected?.projectId);
 	const openCount = requests.filter((item) => needsQueryAttention(item)).length;
 	const text = selected ? mode === "internal" ? notes[selected.id] || "" : drafts[selected.id] || "" : "";
@@ -30662,9 +30990,6 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 		selected?.status,
 		selected?.deliveryStatus
 	]);
-	(0, import_react.useEffect)(() => {
-		if (!visible.length) setMobileThread(false);
-	}, [visible.length]);
 	const run = async (action, success) => {
 		setBusy(true);
 		setError("");
@@ -30844,8 +31169,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 							return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 								type: "button",
 								onClick: () => {
-									setSelectedId(item.id);
-									setMobileThread(true);
+									navigate({ queryId: item.id });
 									setMode("internal");
 								},
 								className: `w-full overflow-hidden border-b px-4 py-3 text-left transition-colors hover:bg-muted/70 ${selected?.id === item.id ? "bg-accent/70" : ""}`,
@@ -30885,7 +31209,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 												children: [
 													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 														className: `text-[10px] font-medium ${item.status === "Pending" ? "text-amber-700" : item.status === "Published" ? "text-primary" : "text-emerald-700"}`,
-														children: item.status
+														children: queryStatusLabel(item)
 													}),
 													item.taskId && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
 														variant: "outline",
@@ -30921,7 +31245,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 										variant: "ghost",
 										size: "icon",
 										className: "lg:hidden",
-										onClick: () => setMobileThread(false),
+										onClick: () => goBack({ queryId: "" }),
 										"aria-label": "Back to conversations",
 										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { className: "size-4" })
 									}),
@@ -30940,8 +31264,9 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 												selectedProject?.name || "Project",
 												" · ",
 												selected.requestType,
-												" · ",
-												selected.status,
+												" ·",
+												" ",
+												queryStatusLabel(selected),
 												selected.decisionStatus && ` (${selected.decisionStatus})`
 											]
 										})]
@@ -31184,7 +31509,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 				request: selected,
 				onDone: async (result) => {
 					await load();
-					setNotice(result?.summary ? `Accepted: ${result.summary}` : "Query accepted.");
+					setNotice(result?.summary || "Query updated.");
 				}
 			}),
 			selected && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryRejectDialog, {
@@ -31193,13 +31518,13 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 				request: selected,
 				onDone: async () => {
 					await load();
-					setNotice("Query rejected and the reply was sent.");
+					setNotice("Client query rejected and the reply was sent.");
 				}
 			})
 		]
 	});
 }
-// frontend/src/components/TelegramGroups.jsx
+// frontend/src/features/telegram/TelegramGroups.jsx
 async function api$2(url, method = "GET", data) {
 	const response = await fetch(url, {
 		method,
@@ -31337,7 +31662,8 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 								className: "mt-1 block text-xs text-muted-foreground",
 								children: [
 									active.length,
-									" people · ",
+									" people ·",
+									" ",
 									active.filter((member) => !member.assignedRole).length,
 									" roles pending"
 								]
@@ -31370,9 +31696,11 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 							className: "rounded-lg border bg-secondary/40 p-3 text-sm text-muted-foreground",
 							children: [
-								"Missing someone? Telegram does not let bots fetch the full existing member list. Ask each missing person to send ",
+								"Missing someone? Telegram does not let bots fetch the full existing member list. Ask each missing person to send",
+								" ",
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("code", { children: ["/join", group.botUsername ? `@${group.botUsername}` : ""] }),
-								" in this Telegram group, then refresh. If there are multiple bots, use ",
+								" in this Telegram group, then refresh. If there are multiple bots, use",
+								" ",
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("code", { children: "/join@YourBotUsername" }),
 								" with this project bot’s username. Make the bot a group admin to receive future membership updates."
 							]
@@ -31569,7 +31897,7 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 		]
 	});
 }
-// frontend/src/components/ClientQueryCard.jsx
+// frontend/src/features/queries/ClientQueryCard.jsx
 function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpenTask, stages = [], projectMembers = [], isFounder = true }) {
 	const [expanded, setExpanded] = (0, import_react.useState)(false);
 	const [showHandled, setShowHandled] = (0, import_react.useState)(false);
@@ -31687,7 +32015,7 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 	} catch {
 		attachments = [];
 	}
-	if (!needsQueryAttention(query) && !showHandled) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+	if (query.requestType !== "Message" && !needsQueryAttention(query) && !showHandled) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
 		className: "flex items-center justify-between gap-3 rounded-xl border bg-card p-3",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "min-w-0",
@@ -31697,7 +32025,7 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 					children: [
 						query.originalSenderName,
 						" · ",
-						query.status
+						queryStatusLabel(query)
 					]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
@@ -31714,7 +32042,7 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 		})]
 	});
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: `overflow-hidden rounded-2xl border bg-card transition-all ${isPublished ? "border-emerald-300/80 shadow-2xs" : isRejected ? "border-destructive/30 bg-card/60" : isDone ? "border-muted" : "border-amber-300/80 shadow-xs"}`,
+		className: `overflow-hidden rounded-2xl border bg-card transition-all ${query.requestType === "Message" ? "border-muted" : isPublished ? "border-emerald-300/80 shadow-2xs" : isRejected ? "border-destructive/30 bg-card/60" : isDone ? "border-muted" : "border-amber-300/80 shadow-xs"}`,
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex flex-wrap items-center justify-between gap-2 border-b bg-muted/30 px-4 py-2.5 text-xs",
@@ -31744,7 +32072,8 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 									month: "short",
 									day: "numeric"
 								}),
-								" · ",
+								" ·",
+								" ",
 								new Date(query.createdAt).toLocaleTimeString([], {
 									hour: "numeric",
 									minute: "2-digit"
@@ -31790,11 +32119,15 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 							className: "border-emerald-300 bg-emerald-50 text-emerald-800 text-[10px]",
 							children: "Approved"
 						}),
+						query.requestType === "Message" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+							variant: "outline",
+							children: "Group message"
+						}),
 						query.status === "On hold" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
 							variant: "outline",
-							children: "On hold"
+							children: "Waiting for more context"
 						}),
-						!isPublished && !isRejected && !isApproved && query.status !== "On hold" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
+						query.requestType !== "Message" && !isPublished && !isRejected && !isApproved && query.status !== "On hold" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
 							variant: "outline",
 							className: "border-amber-300 bg-amber-50 text-amber-900 text-[10px]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock, { className: "size-3 mr-1" }), " Needs Action"]
@@ -31966,7 +32299,9 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 															month: "short",
 															day: "numeric"
 														}),
-														" · ",
+														" ",
+														"·",
+														" ",
 														new Date(c.at).toLocaleTimeString([], {
 															hour: "numeric",
 															minute: "2-digit"
@@ -32018,7 +32353,7 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 											className: "font-bold flex items-center gap-1.5",
 											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { className: "size-4 text-amber-700" }), "Delivery Status Unknown"]
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: ["The previous attempt interrupted or timed out. Telegram delivery is not guaranteed to be idempotent.", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: " Check the Telegram group manually before sending again; do not retry automatically." })] })]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: ["The previous attempt interrupted or timed out. Telegram delivery is not guaranteed to be idempotent.", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [" ", "Check the Telegram group manually before sending again; do not retry automatically."] })] })]
 									}),
 									deliveryStatus === "Failed" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "rounded-xl border border-destructive/30 bg-destructive/10 p-3 text-xs text-destructive space-y-1",
@@ -32115,7 +32450,7 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 				onOpenChange: setAcceptOpen,
 				request: query,
 				onDone: (result) => {
-					setSuccessMessage(result?.summary ? `Accepted: ${result.summary}` : "Query accepted.");
+					setSuccessMessage(result?.summary || "Query updated.");
 					if (onQueryChanged) onQueryChanged();
 					if (onTaskCreated) onTaskCreated();
 				}
@@ -32252,7 +32587,7 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 		]
 	});
 }
-// frontend/src/components/WorkflowTemplateModal.jsx
+// frontend/src/features/timeline/WorkflowTemplateModal.jsx
 var BLANK = "BLANK-V1";
 var CUSTOM_OPTION = {
 	id: BLANK,
@@ -32490,7 +32825,8 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 										children: [
 											"Stages (",
 											planStages?.filter((stage) => stage.include).length ?? "…",
-											" of ",
+											" of",
+											" ",
 											planStages?.length ?? "…",
 											")"
 										]
@@ -32610,6 +32946,322 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 					})]
 				})
 			]
+		})
+	});
+}
+// frontend/src/features/timeline/lib/stageOrder.js
+function movedStageIds(stages, sourceId, targetId, after = false) {
+	const ids = stages.map((stage) => stage.id);
+	if (sourceId === targetId || !ids.includes(sourceId) || !ids.includes(targetId)) return ids;
+	const next = ids.filter((id) => id !== sourceId);
+	next.splice(next.indexOf(targetId) + (after ? 1 : 0), 0, sourceId);
+	return next;
+}
+function stageDropPosition(stages, sourceId, targetId, y, heading) {
+	if (!heading || !Number.isFinite(y) || sourceId === targetId || !stages.some((stage) => stage.id === sourceId) || !stages.some((stage) => stage.id === targetId)) return null;
+	const after = y >= heading.top + heading.height / 2;
+	if (movedStageIds(stages, sourceId, targetId, after).every((id, index) => id === stages[index].id)) return null;
+	return {
+		targetId,
+		after
+	};
+}
+// frontend/src/features/timeline/StageOrderControl.jsx
+function useStageOrder({ projectId, stages, tasks, onChanged, enabled }) {
+	const [drag, setDrag] = (0, import_react.useState)(null), [proposal, setProposal] = (0, import_react.useState)(null);
+	const gesture = (0, import_react.useRef)(null), generation = (0, import_react.useRef)(0);
+	const latest = (0, import_react.useRef)({
+		stages,
+		enabled
+	});
+	latest.current = {
+		stages,
+		enabled
+	};
+	const cancelDrag = () => {
+		if (gesture.current) {
+			clearTimeout(gesture.current.timer);
+			cancelAnimationFrame(gesture.current.frame);
+		}
+		gesture.current = null;
+		setDrag(null);
+	};
+	(0, import_react.useEffect)(() => () => {
+		if (gesture.current) {
+			clearTimeout(gesture.current.timer);
+			cancelAnimationFrame(gesture.current.frame);
+		}
+		generation.current++;
+	}, []);
+	const preview = async (ids) => {
+		if (ids.every((id, index) => id === stages[index]?.id)) return;
+		const token = ++generation.current;
+		setProposal({
+			stageIds: ids,
+			loading: true
+		});
+		try {
+			const result = await request(`/api/founder/projects/${projectId}/stage-order/preview`, {
+				method: "POST",
+				body: { stageIds: ids }
+			});
+			if (generation.current === token) setProposal({
+				stageIds: ids,
+				preview: result
+			});
+		} catch (error) {
+			if (generation.current === token) setProposal({
+				stageIds: ids,
+				error: error.message
+			});
+		}
+	};
+	const locate = (current) => {
+		const target = document.elementFromPoint(current.x, current.y)?.closest("[data-reorder-stage]");
+		const heading = target?.querySelector(".iksha-stage-row");
+		const drop = target && current.container?.contains(target) ? stageDropPosition(latest.current.stages, current.sourceId, target.dataset.reorderStage, current.y, heading?.getBoundingClientRect()) : null;
+		current.targetId = drop?.targetId || null;
+		current.after = drop?.after || false;
+		setDrag({
+			sourceId: current.sourceId,
+			targetId: current.targetId,
+			after: current.after
+		});
+	};
+	const gripProps = (stage) => ({
+		disabled: !enabled || Boolean(proposal),
+		"aria-label": `Reorder ${stage.name}. Hold and drag, or use Arrow Up and Arrow Down.`,
+		"aria-pressed": drag?.sourceId === stage.id,
+		onPointerDown: (event) => {
+			if (!enabled || proposal || event.pointerType === "mouse" && event.button !== 0) return;
+			event.preventDefault();
+			event.stopPropagation();
+			event.currentTarget.focus();
+			event.currentTarget.setPointerCapture(event.pointerId);
+			const container = event.currentTarget.closest(".iksha-schedule-scroll");
+			const current = {
+				sourceId: stage.id,
+				targetId: null,
+				container,
+				x: event.clientX,
+				y: event.clientY,
+				originX: event.clientX,
+				originY: event.clientY,
+				active: false
+			};
+			gesture.current = current;
+			current.timer = setTimeout(() => {
+				if (gesture.current !== current) return;
+				current.active = true;
+				setDrag({
+					sourceId: stage.id,
+					targetId: stage.id
+				});
+				const scroll = () => {
+					if (gesture.current !== current) return;
+					if (container) {
+						const rect = container.getBoundingClientRect();
+						const speed = current.y < rect.top + 45 ? -12 : current.y > rect.bottom - 45 ? 12 : 0;
+						if (speed) {
+							container.scrollTop += speed;
+							locate(current);
+						}
+					}
+					current.frame = requestAnimationFrame(scroll);
+				};
+				current.frame = requestAnimationFrame(scroll);
+			}, event.pointerType === "mouse" ? 0 : 300);
+		},
+		onPointerMove: (event) => {
+			const current = gesture.current;
+			if (!current) return;
+			current.x = event.clientX;
+			current.y = event.clientY;
+			if (!current.active) {
+				if (Math.hypot(current.x - current.originX, current.y - current.originY) > 8) cancelDrag();
+				return;
+			}
+			event.preventDefault();
+			locate(current);
+		},
+		onPointerUp: (event) => {
+			const current = gesture.current;
+			if (!current) return;
+			event.preventDefault();
+			event.stopPropagation();
+			if (current.active) {
+				current.x = event.clientX;
+				current.y = event.clientY;
+				locate(current);
+			}
+			const ids = current.active && current.targetId ? movedStageIds(latest.current.stages, current.sourceId, current.targetId, current.after) : null;
+			cancelDrag();
+			if (ids) preview(ids);
+		},
+		onPointerCancel: cancelDrag,
+		onLostPointerCapture: cancelDrag,
+		onClick: (event) => {
+			event.preventDefault();
+			event.stopPropagation();
+		},
+		onKeyDown: (event) => {
+			if (event.key === "Escape") {
+				cancelDrag();
+				return;
+			}
+			if (!enabled || proposal || !["ArrowUp", "ArrowDown"].includes(event.key)) return;
+			event.preventDefault();
+			event.stopPropagation();
+			const target = stages[stages.findIndex((row) => row.id === stage.id) + (event.key === "ArrowUp" ? -1 : 1)];
+			if (target) preview(movedStageIds(stages, stage.id, target.id, event.key === "ArrowDown"));
+		}
+	});
+	const close = () => {
+		if (proposal?.saving) return;
+		generation.current++;
+		setProposal(null);
+	};
+	const apply = async () => {
+		setProposal({
+			...proposal,
+			saving: true
+		});
+		try {
+			const result = await request(`/api/founder/projects/${projectId}/stage-order/apply`, {
+				method: "POST",
+				body: {
+					stageIds: proposal.stageIds,
+					fingerprint: proposal.preview.fingerprint,
+					botFingerprint: proposal.preview.botFingerprint
+				}
+			});
+			setProposal(null);
+			onChanged(result);
+		} catch (error) {
+			setProposal({
+				...proposal,
+				error: error.message,
+				saving: false
+			});
+		}
+	};
+	const names = new Map(tasks.map((task) => [task.telegramTaskId || task.id, task.title]));
+	return {
+		drag,
+		gripProps,
+		dialog: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+			open: Boolean(proposal),
+			onOpenChange: (open) => {
+				if (!open) close();
+			},
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
+				className: "max-h-[85vh] overflow-y-auto sm:max-w-2xl",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Review stage order" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Stages take their new positions in the workflow. Task durations and parallel work are preserved. Review changes to dates and prerequisites before saving." })] }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ol", {
+						className: "flex flex-wrap gap-2 text-sm",
+						"aria-label": "Proposed stage order",
+						children: proposal?.stageIds.map((id, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
+							className: "rounded border px-2 py-1",
+							children: [
+								index + 1,
+								". ",
+								stages.find((stage) => stage.id === id)?.name
+							]
+						}, id))
+					}),
+					proposal?.loading && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						role: "status",
+						children: "Checking dates and dependencies…"
+					}),
+					proposal?.error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						role: "alert",
+						className: "text-sm text-destructive",
+						children: proposal.error
+					}),
+					proposal?.preview && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", {
+							className: "text-sm font-semibold",
+							children: [
+								"Date changes · ",
+								proposal.preview.affected.length,
+								" tasks"
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "space-y-2",
+							children: proposal.preview.affected.map((task) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "rounded border p-2 text-sm",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: task.taskName }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+									task.previousStart,
+									" – ",
+									task.previousEnd,
+									" → ",
+									task.forecastStart,
+									" –",
+									" ",
+									task.forecastEnd
+								] })]
+							}, task.taskId))
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", {
+							className: "text-sm font-semibold",
+							children: [
+								"Prerequisite changes · ",
+								proposal.preview.dependencyChanges.length,
+								" tasks"
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "space-y-2",
+							children: proposal.preview.dependencyChanges.map((task) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "rounded border p-2 text-sm",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: task.taskName }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+										"Before:",
+										" ",
+										task.previous.map((edge) => names.get(edge.id) || edge.id).join(", ") || "No prerequisite"
+									] }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+										"After:",
+										" ",
+										task.dependencies.map((edge) => `${names.get(edge.id) || edge.id}${edge.type === "SS" ? " (start together)" : " (after finish)"}`).join(", ") || "No prerequisite"
+									] })
+								]
+							}, task.taskId))
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "text-sm",
+							children: ["Projected finish: ", proposal.preview.finish || "Not confirmed"]
+						})
+					] }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex justify-end gap-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							disabled: proposal?.saving,
+							onClick: close,
+							children: "Cancel"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							disabled: !proposal?.preview || Boolean(proposal?.error) || proposal?.saving,
+							onClick: apply,
+							children: proposal?.saving ? "Saving…" : "Save order and schedule"
+						})]
+					})
+				]
+			})
+		})
+	};
+}
+function StageOrderGrip({ stage, reorder }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+		type: "button",
+		className: "iksha-stage-reorder-grip",
+		...reorder.gripProps(stage),
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GripVertical, {
+			size: 16,
+			"aria-hidden": "true"
 		})
 	});
 }
@@ -43311,7 +43963,7 @@ function ResizeControl({ nodeId, position, variant = ResizeControlVariant.Handle
 	});
 }
 (0, import_react.memo)(ResizeControl);
-// backend/stage-connections.js
+// backend/tasks/stage-connections.js
 function stageLinksFor(tasks) {
 	const byId = new Map(tasks.map((task) => [task.id, task])), links = /* @__PURE__ */ new Map();
 	for (const task of tasks) for (const edge of task.dependencies || []) {
@@ -43357,7 +44009,7 @@ function connectionTasks(tasks) {
 		})))
 	}));
 }
-// frontend/src/components/StageConnections.jsx
+// frontend/src/features/timeline/StageConnections.jsx
 function StageNode({ data }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "min-w-44 rounded-lg border bg-card p-3 text-xs shadow-sm",
@@ -43544,9 +44196,11 @@ function StageConnections({ projectId, stages = [], tasks = [], onChanged }) {
 					className: "flex items-center justify-between gap-2 text-xs",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
 						stages.find((stage) => stage.id === link.source)?.name,
-						" → ",
+						" →",
+						" ",
 						stages.find((stage) => stage.id === link.target)?.name,
-						" · ",
+						" ·",
+						" ",
 						link.type === "SS" ? "Start together" : "After finish"
 					] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 						className: "underline",
@@ -43593,7 +44247,7 @@ function StageConnections({ projectId, stages = [], tasks = [], onChanged }) {
 		]
 	});
 }
-// frontend/src/components/PlanTemplates.jsx
+// frontend/src/features/timeline/PlanTemplates.jsx
 function PlanTemplates({ projectId, spaces = [], onChanged }) {
 	const [templates, setTemplates] = (0, import_react.useState)([]), [name, setName] = (0, import_react.useState)(""), [selected, setSelected] = (0, import_react.useState)(""), [draft, setDraft] = (0, import_react.useState)([]), [start, setStart] = (0, import_react.useState)((/* @__PURE__ */ new Date()).toLocaleDateString("en-CA")), [preview, setPreview] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [notice, setNotice] = (0, import_react.useState)("");
 	const load = async () => {
@@ -43829,7 +44483,7 @@ function PlanTemplates({ projectId, spaces = [], onChanged }) {
 		]
 	});
 }
-// frontend/src/components/TaskPlacement.jsx
+// frontend/src/features/tasks/TaskPlacement.jsx
 function TaskPlacement({ value, onChange, tasks = [], allowKeep = false, allowFirst = false, sequential = true }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
 		className: "space-y-2",
@@ -43910,7 +44564,7 @@ function TaskPlacement({ value, onChange, tasks = [], allowKeep = false, allowFi
 		]
 	});
 }
-// frontend/src/components/ScheduleImpact.jsx
+// frontend/src/features/timeline/ScheduleImpact.jsx
 var label = (value) => value ? (/* @__PURE__ */ new Date(`${value}T00:00:00Z`)).toLocaleDateString([], {
 	day: "numeric",
 	month: "short",
@@ -43944,7 +44598,8 @@ function ScheduleImpact({ preview, pending, error }) {
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.taskName || item.title }),
 				": ",
 				label(item.previousStart),
-				" – ",
+				" –",
+				" ",
 				label(item.previousEnd),
 				" → ",
 				label(item.forecastStart),
@@ -43962,7 +44617,7 @@ function ScheduleImpact({ preview, pending, error }) {
 		] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Complete the fields to preview the dates and any effect on other work." })
 	});
 }
-// frontend/src/components/EditTimelineTaskDialog.jsx
+// frontend/src/features/timeline/EditTimelineTaskDialog.jsx
 function EditTimelineTaskDialog({ item, tasks = [], members = [], telegramLinked, onClose, onSaved }) {
 	const [value, setValue] = (0, import_react.useState)(null), [saving, setSaving] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)("");
 	(0, import_react.useEffect)(() => {
@@ -44120,7 +44775,7 @@ function EditTimelineTaskDialog({ item, tasks = [], members = [], telegramLinked
 		})
 	});
 }
-// frontend/src/components/RenameWorkTypeDialog.jsx
+// frontend/src/features/timeline/RenameWorkTypeDialog.jsx
 function RenameWorkTypeDialog({ stage, projectId, onClose, onSaved }) {
 	const [name, setName] = (0, import_react.useState)(""), [saving, setSaving] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)("");
 	(0, import_react.useEffect)(() => {
@@ -44181,7 +44836,7 @@ function RenameWorkTypeDialog({ stage, projectId, onClose, onSaved }) {
 		] })
 	});
 }
-// frontend/src/components/InsertTaskDialog.jsx
+// frontend/src/features/timeline/InsertTaskDialog.jsx
 function InsertTaskDialog({ open, onOpenChange, projectId, stage, afterTask, initialPlacement, members = [], tasks = [], telegramLinked = true, onAdded }) {
 	const [value, setValue] = (0, import_react.useState)({
 		title: "",
@@ -44376,7 +45031,7 @@ function InsertTaskDialog({ open, onOpenChange, projectId, stage, afterTask, ini
 		})
 	});
 }
-// frontend/src/components/TimelineStageDetails.jsx
+// frontend/src/features/timeline/TimelineStageDetails.jsx
 var timelineOwner = (task, members) => members.find((member) => (member.employeeId || member.id) === task.assigneeId)?.name || (task.assigneeId === "founder" ? "Founder" : task.assigneeName || "Unassigned");
 var timelineDate = (value) => value === null ? "Not scheduled" : new Date(value).toLocaleDateString([], {
 	month: "short",
@@ -44426,7 +45081,8 @@ function TimelineStageDetails({ stage, items, members, projectId, namespace, onC
 						className: "iksha-stage-dates",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, { size: 16 }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: stage.sheetPlan ? "Draft planned window" : "Scheduled window" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [
 							timelineDate(summary.start),
-							" → ",
+							" →",
+							" ",
 							timelineDate(summary.end === null ? null : summary.end - 864e5)
 						] })] })]
 					}),
@@ -44468,7 +45124,8 @@ function TimelineStageDetails({ stage, items, members, projectId, namespace, onC
 												className: "iksha-stage-description",
 												children: [
 													item.task.sheetDurationDays === null ? "Duration missing" : item.task.sheetDurationDays + " calendar days",
-													" · Work ",
+													" ",
+													"· Work ",
 													item.task.sheetTaskOrder,
 													" · ",
 													item.task.sheetSourceTab,
@@ -44521,7 +45178,7 @@ function TimelineStageDetails({ stage, items, members, projectId, namespace, onC
 		})
 	});
 }
-// frontend/src/lib/taskPeople.js
+// frontend/src/features/timeline/lib/taskPeople.js
 var initialsOf = (name) => name.split(/[\s/&]+/).filter(Boolean).map((part) => part[0]).slice(0, 2).join("").toUpperCase();
 function personFor(task, ownerName) {
 	const assigned = ownerName(task);
@@ -44571,7 +45228,7 @@ function avatarHue(name) {
 	for (const character of name) hash = (hash * 31 + character.charCodeAt(0)) % 360;
 	return hash;
 }
-// frontend/src/components/ProjectTimeline.jsx
+// frontend/src/features/timeline/ProjectTimeline.jsx
 var dateLabel = (value) => new Date(value).toLocaleDateString([], {
 	month: "short",
 	day: "numeric",
@@ -44679,13 +45336,26 @@ function OffscreenChip({ value, before, onClick }) {
 		children: before ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { size: 11 }), dateLabel(value)] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [dateLabel(value), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { size: 11 })] })
 	});
 }
-function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], projectId, namespace = "founder", telegramLinked = false, onOpenTask, onSchedulePreview, onScheduleApply, onPlanChanged }) {
+function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = [], spaces = [], projectId, namespace = "founder", telegramLinked = false, onOpenTask, onSchedulePreview, onScheduleApply, onPlanChanged }) {
+	const [savedStageOrder, setSavedStageOrder] = (0, import_react.useState)(null);
+	(0, import_react.useEffect)(() => setSavedStageOrder(null), [suppliedStages]);
+	const stages = savedStageOrder || suppliedStages;
 	const today = todayDate();
 	const items = timelineItems(tasks, stages);
 	const scheduled = items.filter((item) => item.start !== null && item.end !== null);
 	const summary = scheduleSummary(items, today);
 	const editable = Boolean(onSchedulePreview && onScheduleApply);
 	const canPlan = editable && Boolean(onPlanChanged);
+	const reorder = useStageOrder({
+		projectId,
+		stages,
+		tasks,
+		enabled: canPlan,
+		onChanged: (result) => {
+			setSavedStageOrder(result.project.stages);
+			onPlanChanged(result);
+		}
+	});
 	const [origin, setOrigin] = (0, import_react.useState)(today - 7 * calendarDay);
 	const [days, setDays] = (0, import_react.useState)(42);
 	const [collapsed, setCollapsed] = (0, import_react.useState)(() => /* @__PURE__ */ new Set([...stages.map((stage) => stage.id), "other"]));
@@ -44700,6 +45370,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], p
 	const [drag, setDrag] = (0, import_react.useState)(null);
 	const [picked, setPicked] = (0, import_react.useState)(null);
 	const [proposal, setProposal] = (0, import_react.useState)(null);
+	const proposalRequest = (0, import_react.useRef)(0);
 	const [notice, setNotice] = (0, import_react.useState)(null);
 	const dragRef = (0, import_react.useRef)(null);
 	const pressRef = (0, import_react.useRef)(null);
@@ -44821,23 +45492,44 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], p
 		const base = String(stage?.name || "").replace(/ \([0-9a-z]+\)$/i, "");
 		return base && task.title.startsWith(`${base} — `) ? task.title.slice(base.length + 3) : task.title;
 	};
-	async function propose(moves, description) {
+	const cancelProposal = () => {
+		proposalRequest.current++;
+		setProposal(null);
+	};
+	async function propose(moves, description, mode) {
+		const request = ++proposalRequest.current, chooseMode = canChooseMoveMode(moves);
+		if (chooseMode && !mode) {
+			setProposal({
+				moves,
+				description,
+				chooseMode,
+				mode: null
+			});
+			return;
+		}
+		const options = { mode: mode || "keep" };
 		setProposal({
 			moves,
 			description,
+			chooseMode,
+			mode: options.mode,
 			loading: true
 		});
 		try {
-			const preview = await onSchedulePreview(moves);
-			setProposal({
+			const preview = await onSchedulePreview(moves, options);
+			if (request === proposalRequest.current) setProposal({
 				moves,
 				description,
+				chooseMode,
+				mode: options.mode,
 				preview
 			});
 		} catch (error) {
-			setProposal({
+			if (request === proposalRequest.current) setProposal({
 				moves,
 				description,
+				chooseMode,
+				mode: options.mode,
 				error: error.message || "Could not check this change."
 			});
 		}
@@ -44849,12 +45541,15 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], p
 			saving: true
 		});
 		try {
-			const result = await onScheduleApply(moves);
+			const result = await onScheduleApply(moves, {
+				mode: proposal.mode || "keep",
+				fingerprint: proposal.preview.fingerprint
+			});
 			setProposal(null);
 			const pushed = result.affected.filter((item) => !item.moved).length;
 			setNotice({
-				text: `${description} saved to the Google Sheet${pushed ? ` · ${pushed} dependent task${pushed === 1 ? "" : "s"} moved` : ""}.`,
-				undo: undoMoves(result.affected)
+				text: `${description} saved${telegramLinked ? " to the Google Sheet" : ""}${pushed ? ` · ${pushed} dependent task${pushed === 1 ? "" : "s"} moved` : ""}.`,
+				undo: result.dependencyChanges?.length || result.affected.length > 60 ? null : undoMoves(result.affected)
 			});
 		} catch (error) {
 			setProposal({
@@ -45336,28 +46031,36 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], p
 							const stageMovable = editable && stage.id !== "other" && group.some((item) => canMove(item));
 							const ordered = [...group].sort((a, b) => (Number(a.task.sourceSequence) || 0) - (Number(b.task.sourceSequence) || 0) || String(a.task.createdAt || "").localeCompare(String(b.task.createdAt || "")));
 							return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-								className: `iksha-stage color-${index % 8}`,
+								"data-reorder-stage": stage.id,
+								className: `iksha-stage color-${index % 8} ${reorder.drag?.sourceId === stage.id ? "is-reordering-stage" : ""} ${reorder.drag?.targetId === stage.id && reorder.drag.sourceId !== stage.id ? reorder.drag.after ? "reorder-after" : "reorder-before" : ""}`,
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "iksha-schedule-row iksha-stage-row",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-										className: "iksha-schedule-label iksha-stage-heading",
-										onClick: () => toggle(stage.id),
-										onContextMenu: (event) => stage.id !== "other" && openMenu(event, { stage }),
-										"aria-expanded": !isCollapsed,
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "iksha-stage-number",
-												children: String(index + 1).padStart(2, "0")
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: stage.name }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
-												group.filter((item) => complete(item.task)).length,
-												"/",
-												group.length,
-												" done",
-												lateCount ? ` · ${lateCount} late` : ""
-											] })] }),
-											isCollapsed ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, { size: 14 }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, { size: 14 })
-										]
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "iksha-schedule-label iksha-stage-heading iksha-stage-reorder-label",
+										children: [canPlan && stage.id !== "other" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StageOrderGrip, {
+											stage,
+											reorder
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+											className: "iksha-stage-toggle",
+											onClick: () => toggle(stage.id),
+											onContextMenu: (event) => stage.id !== "other" && openMenu(event, { stage }),
+											"aria-expanded": !isCollapsed,
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "iksha-stage-number",
+													children: String(index + 1).padStart(2, "0")
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: stage.name }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
+													group.filter((item) => complete(item.task)).length,
+													"/",
+													group.length,
+													" ",
+													"done",
+													lateCount ? ` · ${lateCount} late` : ""
+												] })] }),
+												isCollapsed ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, { size: 14 }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, { size: 14 })
+											]
+										})]
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "iksha-schedule-track",
 										onClick: (event) => {
@@ -45404,7 +46107,8 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], p
 												},
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: stage.name }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", { children: [
 													dateLabel(groupStart + stageShift * calendarDay),
-													" – ",
+													" –",
+													" ",
 													dateLabel(groupEnd - calendarDay + stageShift * calendarDay)
 												] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { size: 14 })]
 											}) : groupStart === null ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
@@ -45571,7 +46275,8 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], p
 							dateLabel(pickedItem.start),
 							" – ",
 							dateLabel(pickedItem.end - 864e5),
-							" · ",
+							" ·",
+							" ",
 							Math.round((pickedItem.end - pickedItem.start) / 864e5),
 							" day",
 							pickedItem.end - pickedItem.start === 864e5 ? "" : "s"
@@ -45631,7 +46336,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], p
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
 				open: Boolean(proposal),
 				onOpenChange: (open) => {
-					if (!open && !proposal?.saving) setProposal(null);
+					if (!open && !proposal?.saving) cancelProposal();
 				},
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
 					className: "iksha-schedule-preview",
@@ -45642,8 +46347,43 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], p
 								children: "CHECK BEFORE SAVING"
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: proposal?.description }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Nothing changes until you confirm. Confirmed changes are written to the Google Sheet, so Telegram and the web app stay in step." })
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: ["Nothing changes until you confirm.", telegramLinked ? " Confirmed changes are written to the Google Sheet, so Telegram and the web app stay in step." : " Preview the dates and connections before saving."] })
 						] }),
+						proposal?.chooseMode && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+							className: "grid gap-3 sm:grid-cols-2",
+							disabled: proposal.saving,
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
+								className: "mb-2 text-sm font-semibold",
+								children: "How should this move affect the timeline?"
+							}), [[
+								"parallel",
+								"Move in parallel",
+								"Move only the selected work. Other dates stay unchanged; connections to other work are removed."
+							], [
+								"shift-following",
+								"Shift everything after it",
+								"Move this work and every following task by the same number of days. Earlier work stays unchanged."
+							]].map(([mode, label, detail]) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: `flex cursor-pointer items-start gap-2 rounded-lg border p-3 ${proposal.mode === mode ? "border-primary bg-primary/5" : ""}`,
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+									className: "mt-1",
+									type: "radio",
+									name: "timeline-move-mode",
+									checked: proposal.mode === mode,
+									onChange: () => propose(proposal.moves, proposal.description, mode)
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "block text-sm font-medium",
+									children: label
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "mt-1 block text-xs text-muted-foreground",
+									children: detail
+								})] })]
+							}, mode))]
+						}),
+						proposal?.chooseMode && !proposal.mode && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "iksha-preview-note",
+							children: "Choose an option to preview the new dates."
+						}),
 						proposal?.loading && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "iksha-preview-note",
 							children: "Checking dependencies…"
@@ -45663,21 +46403,31 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], p
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", { children: "You are moving" }),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: proposal.preview.affected.filter((item) => item.moved).map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.taskName }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
 									isoRange(item.previousStart, item.previousEnd),
-									" → ",
+									" →",
+									" ",
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: isoRange(item.forecastStart, item.forecastEnd) })
 								] })] }, item.taskId)) }),
-								proposal.preview.affected.some((item) => !item.moved) ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", { children: "These dependent tasks move later" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: proposal.preview.affected.filter((item) => !item.moved).map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.taskName }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+								proposal.preview.affected.some((item) => !item.moved) ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", { children: "These following tasks also move" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: proposal.preview.affected.filter((item) => !item.moved).map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.taskName }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
 									isoLabel(item.previousStart),
-									" → ",
+									" →",
+									" ",
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: isoLabel(item.forecastStart) })
 								] })] }, item.taskId)) })] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "iksha-preview-note",
-									children: "No other tasks are affected."
+									children: "No other task dates change."
 								}),
 								proposal.preview.warnings.map((warning, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 									className: "iksha-preview-warning",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { size: 14 }), warning.reason]
 								}, index)),
+								proposal.preview.dependencyChanges?.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", { children: "Connections that will change" }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: proposal.preview.dependencyChanges.map((change) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: change.reason }, change.taskId)) }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "iksha-preview-note",
+										children: "These connections will be removed when you confirm. Undo is unavailable for moves that change connections."
+									})
+								] }),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "iksha-preview-note",
 									children: proposal.preview.finish ? `Projected finish after this change: ${isoLabel(proposal.preview.finish)}` : "Finish date stays unconfirmed until every task has dates."
@@ -45689,7 +46439,7 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], p
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 								variant: "outline",
 								disabled: proposal?.saving,
-								onClick: () => setProposal(null),
+								onClick: cancelProposal,
 								children: "Cancel"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 								disabled: !proposal?.preview?.ok || proposal?.saving,
@@ -45888,6 +46638,12 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], p
 				onClose: () => setSelectedStageId(null),
 				onOpenTask
 			}),
+			reorder.drag && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "iksha-stage-drop-hint",
+				role: "status",
+				children: reorder.drag.targetId ? `Place ${stages.find((stage) => stage.id === reorder.drag.sourceId)?.name} ${reorder.drag.after ? "below" : "above"} ${stages.find((stage) => stage.id === reorder.drag.targetId)?.name}` : "Move over a stage to choose a new position"
+			}),
+			reorder.dialog,
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("footer", {
 				className: "iksha-schedule-caption",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: editable ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
@@ -45899,13 +46655,14 @@ function ProjectTimeline({ tasks = [], stages = [], members = [], spaces = [], p
 						className: "iksha-only-coarse",
 						children: "Press and hold a task to pick it up, then drag · Hold its right edge to change its length"
 					}),
-					" · You confirm every change"
+					" ",
+					"· Hold a stage grip to reorder it · You confirm every change"
 				] }) : "Tap a stage for its breakdown · Tap a work item for its discussion" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Calendar days · Today is marked in red" })]
 			})
 		]
 	});
 }
-// frontend/src/components/ProjectTimelineWorkspace.jsx
+// frontend/src/features/timeline/ProjectTimelineWorkspace.jsx
 function ProjectTimelineWorkspace({ tasks = [], stages = [], members = [], spaces = [], projectId, namespace = "founder", telegramLinked = false, onOpenTask, onSchedulePreview, onScheduleApply, onPlanChanged }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 		className: "iksha-sheet-workspace",
@@ -48404,7 +49161,7 @@ function computeGraphLayout({ tasks = [], employees = [], stages = [], selectedT
 		warnings
 	};
 }
-// frontend/src/components/ProjectDependencyGraph.jsx
+// frontend/src/features/timeline/ProjectDependencyGraph.jsx
 /**
 * Status icons with accessible, non-color-only distinction.
 */
@@ -48896,7 +49653,7 @@ function DependencyGraphInner({ tasks = [], employees = [], stages = [], onOpenT
 function ProjectDependencyGraph(props) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ReactFlowProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DependencyGraphInner, { ...props }) });
 }
-// frontend/src/lib/projectWorkflowStore.js
+// frontend/src/features/timeline/lib/projectWorkflowStore.js
 var STORAGE_PREFIX = "studio_iksha_workflow_v1";
 function loadStorage(key, defaultValue) {
 	try {
@@ -49025,37 +49782,44 @@ function addDriveLink(projectId, name, category, url) {
 	const links = [...current.drive?.links || [], newLink];
 	return updateDriveSettings(projectId, current.drive?.folderUrl, links);
 }
-// frontend/src/components/ProjectDetailView.jsx
+// frontend/src/features/projects/ProjectDetailView.jsx
 var statusBadgeStyles$1 = {
 	"On track": "border-emerald-200 bg-emerald-50 text-emerald-800",
-	"Active": "border-emerald-200 bg-emerald-50 text-emerald-800",
+	Active: "border-emerald-200 bg-emerald-50 text-emerald-800",
 	"At risk": "border-amber-200 bg-amber-50 text-amber-800",
 	"On hold": "border-slate-200 bg-slate-100 text-slate-700",
-	"Completed": "border-blue-200 bg-blue-50 text-blue-800",
-	"Setup": "border-purple-200 bg-purple-50 text-purple-800"
+	Completed: "border-blue-200 bg-blue-50 text-blue-800",
+	Setup: "border-purple-200 bg-purple-50 text-purple-800"
 };
 var taskStatusColors$1 = {
-	"Open": "bg-slate-100 text-slate-800 border-slate-200",
+	Open: "bg-slate-100 text-slate-800 border-slate-200",
 	"In progress": "bg-blue-50 text-blue-700 border-blue-200",
-	"Blocked": "bg-amber-50 text-amber-800 border-amber-200",
-	"Completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
-	"Cancelled": "bg-red-50 text-red-700 border-red-200",
-	"todo": "bg-slate-100 text-slate-800 border-slate-200",
-	"in_progress": "bg-blue-50 text-blue-700 border-blue-200",
-	"review": "bg-amber-50 text-amber-800 border-amber-200",
-	"completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
-	"cancelled": "bg-red-50 text-red-700 border-red-200"
+	Blocked: "bg-amber-50 text-amber-800 border-amber-200",
+	Completed: "bg-emerald-50 text-emerald-800 border-emerald-200",
+	Cancelled: "bg-red-50 text-red-700 border-red-200",
+	todo: "bg-slate-100 text-slate-800 border-slate-200",
+	in_progress: "bg-blue-50 text-blue-700 border-blue-200",
+	review: "bg-amber-50 text-amber-800 border-amber-200",
+	completed: "bg-emerald-50 text-emerald-800 border-emerald-200",
+	cancelled: "bg-red-50 text-red-700 border-red-200"
 };
-function ProjectDetailView({ project, allProjects = [], employees = [], decisionRequests = [], onBackToDirectory, onProjectUpdated, onQueriesUpdated, onOpenInviteModal, onOpenTrashModal, onOpenCompleteModal, onOpenFactsModal, onOpenMemberModal }) {
+function ProjectDetailView({ project, allProjects = [], employees = [], decisionRequests = [], onBack, onProjectUpdated, onQueriesUpdated, onOpenInviteModal, onOpenTrashModal, onOpenCompleteModal, onOpenFactsModal, onOpenMemberModal }) {
 	const [localWorkflow, setLocalWorkflow] = (0, import_react.useState)(() => getProjectWorkflow(project?.id, project));
 	const [tasks, setTasks] = (0, import_react.useState)([]);
 	const [loadingTasks, setLoadingTasks] = (0, import_react.useState)(false);
 	const [taskViewMode, setTaskViewMode] = (0, import_react.useState)("list");
 	const [staleData, setStaleData] = (0, import_react.useState)(false);
-	const [activeTab, setActiveTab] = (0, import_react.useState)("schedule");
+	const navigation = useNavigation();
+	const activeTab = navigation.projectTab || "schedule";
+	const setActiveTab = (projectTab) => navigate({ projectTab });
 	const [templateModalOpen, setTemplateModalOpen] = (0, import_react.useState)(false);
-	const [selectedTask, setSelectedTask] = (0, import_react.useState)(null);
-	const [taskDrawerOpen, setTaskDrawerOpen] = (0, import_react.useState)(false);
+	const [taskSelection, setTaskSelection] = (0, import_react.useState)(null);
+	const selectedTask = tasks.find((task) => task.id === navigation.taskId) || (taskSelection?.id === navigation.taskId ? taskSelection : null);
+	const taskDrawerOpen = Boolean(selectedTask);
+	const openTask = (task) => {
+		setTaskSelection(task);
+		navigate({ taskId: task.id });
+	};
 	const [createTaskOpen, setCreateTaskOpen] = (0, import_react.useState)(false);
 	const [addDriveLinkOpen, setAddDriveLinkOpen] = (0, import_react.useState)(false);
 	const [assignClientModalOpen, setAssignClientModalOpen] = (0, import_react.useState)(false);
@@ -49249,8 +50013,8 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 				variant: "ghost",
-				onClick: onBackToDirectory,
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { className: "size-4" }), "All projects"]
+				onClick: onBack,
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { className: "size-4" }), "Back"]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 				className: "text-xl font-semibold",
@@ -49281,8 +50045,8 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 				variant: "ghost",
-				onClick: onBackToDirectory,
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { className: "size-4" }), "All projects"]
+				onClick: onBack,
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { className: "size-4" }), "Back"]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "rounded-2xl border bg-card p-6 space-y-3",
@@ -49353,9 +50117,9 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 						variant: "ghost",
 						size: "sm",
-						onClick: onBackToDirectory,
+						onClick: onBack,
 						className: "group -ml-2 text-xs font-semibold text-muted-foreground hover:text-foreground",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { className: "size-4 mr-1.5 transition-transform group-hover:-translate-x-1" }), "All Projects Directory"]
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { className: "size-4 mr-1.5 transition-transform group-hover:-translate-x-1" }), "Back"]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex flex-wrap items-center gap-2",
 						children: [
@@ -49408,7 +50172,8 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 						className: "mt-1 text-xs text-muted-foreground",
 						children: [
-							"Client: ",
+							"Client:",
+							" ",
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 								className: "font-semibold text-foreground",
 								children: project.clientName || "Unassigned"
@@ -49424,7 +50189,8 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							" · ",
 							project.location || "Location not set",
 							" · ",
-							"Started ",
+							"Started",
+							" ",
 							project.startDate ? new Date(project.startDate).toLocaleDateString(void 0, {
 								month: "short",
 								day: "numeric",
@@ -49571,7 +50337,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 										className: "flex items-center justify-between",
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 											className: "text-[11px] font-semibold text-muted-foreground uppercase tracking-wider",
-											children: "Client Queries"
+											children: "Queries & Group Chat"
 										}), pendingQueriesCount > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
 											variant: "outline",
 											className: "border-amber-300 bg-amber-50 text-amber-900 text-[10px]",
@@ -49882,8 +50648,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 								employees,
 								stages,
 								onOpenTask: (taskItem) => {
-									setSelectedTask(taskItem);
-									setTaskDrawerOpen(true);
+									openTask(taskItem);
 								},
 								onSwitchToList: () => setTaskViewMode("list"),
 								isFounder: true,
@@ -49927,8 +50692,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
 													className: `text-sm font-semibold tracking-tight transition-colors cursor-pointer hover:text-primary ${isCompleted ? "line-through text-muted-foreground" : "text-foreground"}`,
 													onClick: () => {
-														setSelectedTask(t);
-														setTaskDrawerOpen(true);
+														openTask(t);
 													},
 													children: t.title
 												}),
@@ -49956,8 +50720,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 												size: "sm",
 												className: "h-8 text-xs font-semibold gap-1.5",
 												onClick: () => {
-													setSelectedTask(t);
-													setTaskDrawerOpen(true);
+													openTask(t);
 												},
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Thread" })]
 											})]
@@ -50005,7 +50768,8 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							})]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TeamChat, {
 							endpoint: `/api/founder/projects/${project.id}/team-chat`,
-							currentActor: "founder"
+							currentActor: "founder",
+							members: project.members
 						}, project.id)]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
@@ -50023,12 +50787,11 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							members: project.members || employees,
 							telegramLinked: Boolean(project.telegramGroupChatId),
 							onOpenTask: (task) => {
-								setSelectedTask(task);
-								setTaskDrawerOpen(true);
+								openTask(task);
 							},
-							onSchedulePreview: !["Completed", "Abandoned"].includes(project.status) ? (moves) => previewSchedule(project.id, moves) : void 0,
-							onScheduleApply: !["Completed", "Abandoned"].includes(project.status) ? async (moves) => {
-								const result = await applySchedule(project.id, moves);
+							onSchedulePreview: !["Completed", "Abandoned"].includes(project.status) ? (moves, options) => previewSchedule(project.id, moves, options) : void 0,
+							onScheduleApply: !["Completed", "Abandoned"].includes(project.status) ? async (moves, options) => {
+								const result = await applySchedule(project.id, moves, options);
 								setTasks(result.tasks);
 								return result;
 							} : void 0,
@@ -50045,10 +50808,10 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							className: "flex flex-wrap items-center justify-between gap-3",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 								className: "text-base font-semibold",
-								children: "Telegram Client Queries"
+								children: "Telegram Queries & Group Chat"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-xs text-muted-foreground",
-								children: "Real-time questions, approvals, and photos submitted by the client via Telegram."
+								children: "Messages, questions, updates, and shared files from everyone in the Telegram group."
 							})] })
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "space-y-3",
@@ -50065,15 +50828,11 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 								},
 								onTaskCreated: (newTask) => {
 									loadProjectTasks();
-									setSelectedTask(newTask);
-									setTaskDrawerOpen(true);
+									openTask(newTask);
 								},
 								onOpenTask: (taskId) => {
 									const found = tasks.find((t) => t.id === taskId);
-									if (found) {
-										setSelectedTask(found);
-										setTaskDrawerOpen(true);
-									}
+									if (found) openTask(found);
 								}
 							}, query.id)) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
 								className: "py-12 text-center text-xs text-muted-foreground",
@@ -50187,7 +50946,9 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 				task: selectedTask,
 				project,
 				open: taskDrawerOpen,
-				onOpenChange: setTaskDrawerOpen,
+				onOpenChange: (open) => {
+					if (!open) goBack({ taskId: "" });
+				},
 				onTaskUpdated: loadProjectTasks,
 				onOpenSourceQuery: () => setActiveTab("queries"),
 				currentActor: "founder",
@@ -50442,13 +51203,13 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 		]
 	});
 }
-// frontend/src/components/ProjectDirectoryView.jsx
+// frontend/src/features/projects/ProjectDirectoryView.jsx
 var statusBadgeStyles = {
 	"On track": "border-emerald-200 bg-emerald-50 text-emerald-800",
 	"At risk": "border-amber-200 bg-amber-50 text-amber-800",
 	"On hold": "border-slate-200 bg-slate-100 text-slate-700",
-	"Completed": "border-blue-200 bg-blue-50 text-blue-800",
-	"Setup": "border-purple-200 bg-purple-50 text-purple-800"
+	Completed: "border-blue-200 bg-blue-50 text-blue-800",
+	Setup: "border-purple-200 bg-purple-50 text-purple-800"
 };
 function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectProject, onCreateProject, onOpenGroups }) {
 	const [search, setSearch] = (0, import_react.useState)("");
@@ -50564,11 +51325,7 @@ function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectPr
 				children: filtered.length ? filtered.map((project) => {
 					const taskCount = project.taskCount || 0;
 					const progress = project.progress || 0;
-					const pendingQueries = decisionRequests.filter((q) => q.projectId === project.id && ![
-						"Done",
-						"Rejected",
-						"Published"
-					].includes(q.status)).length;
+					const pendingQueries = decisionRequests.filter((q) => q.projectId === project.id && needsQueryAttention(q)).length;
 					const isMissingClient = needsSetup(project);
 					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
 						onClick: () => onSelectProject(project.id),
@@ -50599,10 +51356,14 @@ function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectPr
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 										className: "text-xs text-muted-foreground mt-0.5 line-clamp-1",
-										children: ["Client: ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "font-semibold text-foreground/90",
-											children: project.clientName || "Unassigned"
-										})]
+										children: [
+											"Client:",
+											" ",
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "font-semibold text-foreground/90",
+												children: project.clientName || "Unassigned"
+											})
+										]
 									}),
 									project.location && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 										className: "text-[11px] text-muted-foreground mt-0.5",
@@ -50657,7 +51418,7 @@ function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectPr
 		]
 	});
 }
-// frontend/src/FounderApp.jsx
+// frontend/src/apps/FounderApp.jsx
 var api$1 = async (url, options = {}) => {
 	const response = await fetch(url, {
 		credentials: "same-origin",
@@ -50714,10 +51475,11 @@ function FounderApp() {
 	const [employees, setEmployees] = (0, import_react.useState)([]);
 	const [trashedProjects, setTrashedProjects] = (0, import_react.useState)([]);
 	const [decisionRequests, setDecisionRequests] = (0, import_react.useState)([]);
-	const [selectedProjectId, setSelectedProjectId] = (0, import_react.useState)(null);
-	const [viewMode, setViewMode] = (0, import_react.useState)("directory");
+	const navigationState = useNavigation();
+	const currentTab = navigationState.section;
+	const selectedProjectId = navigationState.projectId;
+	const viewMode = selectedProjectId ? "detail" : "directory";
 	const [activities, setActivities] = (0, import_react.useState)([]);
-	const [currentTab, setCurrentTab] = (0, import_react.useState)("actions");
 	const [workPerson, setWorkPerson] = (0, import_react.useState)("founder");
 	const [searchQuery, setSearchQuery] = (0, import_react.useState)("");
 	const [sidebarOpen, setSidebarOpen] = (0, import_react.useState)(false);
@@ -50814,18 +51576,23 @@ function FounderApp() {
 		return () => document.documentElement.classList.remove("founder-login");
 	}, [authState]);
 	const openTab = (tab) => {
-		setCurrentTab(tab);
+		navigate({ section: tab });
 		setSidebarOpen(false);
-		if (tab === "projects") setViewMode("directory");
-		if (tab === "activity") loadActivities();
-		if (tab === "employees") loadEmployees();
-		if (tab === "trash") loadTrash();
-		if (tab === "decisions") loadDecisionRequests();
 	};
+	(0, import_react.useEffect)(() => {
+		if (authState !== "signed-in") return;
+		if (currentTab === "activity") loadActivities();
+		if (currentTab === "employees") loadEmployees();
+		if (currentTab === "trash") loadTrash();
+		if (currentTab === "decisions") loadDecisionRequests();
+		setSidebarOpen(false);
+	}, [currentTab, authState]);
 	const handleSelectProjectFromDir = (projectId) => {
-		setSelectedProjectId(projectId);
-		setViewMode("detail");
-		setCurrentTab("projects");
+		navigate({
+			section: "projects",
+			projectId
+		});
+		setSidebarOpen(false);
 	};
 	const handleLogout = async () => {
 		await post$1("/api/founder/logout");
@@ -50860,8 +51627,7 @@ function FounderApp() {
 		try {
 			const result = await post$1(`/api/founder/projects/${selectedProject.id}/trash`);
 			setTrashConfirmOpen(false);
-			setViewMode("directory");
-			setSelectedProjectId(null);
+			navigate({ section: "projects" }, { replace: true });
 			await loadProjects();
 			showNotice(result.announcementStatus === "Failed" ? "Project moved to Trash, but its Telegram group could not be found. No group message was sent." : result.announcementStatus === "Unknown" ? "Project moved to Trash. Telegram delivery is unconfirmed; check the group." : "Project moved to Trash. You can restore it later.");
 		} catch (error) {
@@ -50885,10 +51651,10 @@ function FounderApp() {
 		try {
 			const data = await (method === "PATCH" ? patch : post$1)(url, Object.fromEntries(new FormData(event.currentTarget)));
 			await loadProjects();
-			if (data.project?.id) {
-				setSelectedProjectId(data.project.id);
-				setViewMode("detail");
-			}
+			if (data.project?.id) navigate({
+				section: "projects",
+				projectId: data.project.id
+			});
 			after();
 			showNotice(success);
 		} catch (error) {
@@ -51023,10 +51789,7 @@ function FounderApp() {
 							variant: isSelected ? "outline" : "ghost",
 							className: `h-auto w-full justify-start px-3 py-2 text-left ${isSelected ? "border-primary/40 bg-accent/60" : ""}`,
 							onClick: () => {
-								setSelectedProjectId(project.id);
-								setViewMode("detail");
-								setCurrentTab("projects");
-								setSidebarOpen(false);
+								handleSelectProjectFromDir(project.id);
 							},
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: `size-2 shrink-0 rounded-full mr-2.5 ${project.status === "At risk" || project.telegramSetupPending ? "bg-amber-500" : "bg-emerald-500"}` }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 								className: "min-w-0 flex-1",
@@ -51068,7 +51831,7 @@ function FounderApp() {
 			})
 		]
 	});
-	if (currentTab === "assistant") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderAssistant, { onBack: () => openTab("projects") });
+	if (currentTab === "assistant") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderAssistant, { onBack: () => goBack() });
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "iksha-workspace app-glow min-h-dvh bg-background pb-20 md:pb-0",
 		children: [
@@ -51105,18 +51868,22 @@ function FounderApp() {
 							className: "min-w-0",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 								className: "text-xs text-muted-foreground",
-								children: ["Workspace / ", {
-									projects: viewMode === "directory" ? "All Projects" : selectedProject?.name || "Project Detail",
-									actions: "Actions needed",
-									groups: "Telegram setup",
-									decisions: "Client queries",
-									meetings: "Meetings",
-									chats: "Project chats",
-									assistant: "Assistant",
-									employees: "Employees",
-									activity: "Activity",
-									trash: "Trash"
-								}[currentTab]]
+								children: [
+									"Workspace /",
+									" ",
+									{
+										projects: viewMode === "directory" ? "All Projects" : selectedProject?.name || "Project Detail",
+										actions: "Actions needed",
+										groups: "Telegram setup",
+										decisions: "Client queries",
+										meetings: "Meetings",
+										chats: "Project chats",
+										assistant: "Assistant",
+										employees: "Employees",
+										activity: "Activity",
+										trash: "Trash"
+									}[currentTab]
+								]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
 								className: "block truncate text-sm",
 								children: currentTab === "projects" && viewMode === "detail" ? selectedProject?.name || "Project Workspace" : "Studio Iksha"
@@ -51261,7 +52028,7 @@ function FounderApp() {
 						allProjects: projects,
 						employees,
 						decisionRequests,
-						onBackToDirectory: () => setViewMode("directory"),
+						onBack: () => goBack({ section: "projects" }),
 						onProjectUpdated: loadProjects,
 						onQueriesUpdated: loadDecisionRequests,
 						onOpenInviteModal: handleInvite,
@@ -51397,9 +52164,11 @@ function FounderApp() {
 					selectedProject?.name,
 					"?"
 				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [
-					"The project will be marked completed and unfinished work will be closed. ",
+					"The project will be marked completed and unfinished work will be closed.",
+					" ",
 					selectedProject?.telegramGroupChatId ? "Its Telegram group will receive: This project is now completed." : "No Telegram group is linked.",
-					" History stays available."
+					" ",
+					"History stays available."
 				] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex justify-end gap-2",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
@@ -51421,10 +52190,15 @@ function FounderApp() {
 				},
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogTitle, { children: [
 					selectedProject?.status === "Completed" ? "Move to trash" : "Abandon project",
-					": ",
+					":",
+					" ",
 					selectedProject?.name,
 					"?"
-				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [selectedProject?.status === "Completed" ? "The completed project will move to recoverable trash." : "The project will be marked abandoned, its unfinished work will be closed, and its linked Telegram group will be notified.", " You can restore its history from Trash later."] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [
+					selectedProject?.status === "Completed" ? "The completed project will move to recoverable trash." : "The project will be marked abandoned, its unfinished work will be closed, and its linked Telegram group will be notified.",
+					" ",
+					"You can restore its history from Trash later."
+				] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex justify-end gap-2",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						variant: "outline",
@@ -51554,7 +52328,7 @@ function FounderApp() {
 		]
 	});
 }
-// frontend/src/ClientApp.jsx
+// frontend/src/apps/ClientApp.jsx
 var api = async (url, options = {}) => {
 	const response = await fetch(url, {
 		credentials: "same-origin",
@@ -51782,7 +52556,8 @@ function ClientApp() {
 											children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(BubbleContent, { children: [
 												"Hi ",
 												firstName,
-												"! I can share the latest updates for ",
+												"! I can share the latest updates for",
+												" ",
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: project.name }),
 												". What would you like to know?"
 											] })
@@ -51886,28 +52661,39 @@ function ClientApp() {
 		})]
 	});
 }
-// frontend/src/EmployeeApp.jsx
+// frontend/src/apps/EmployeeApp.jsx
 var taskStatusColors = {
-	"Open": "bg-slate-100 text-slate-800 border-slate-200",
+	Open: "bg-slate-100 text-slate-800 border-slate-200",
 	"In progress": "bg-blue-50 text-blue-700 border-blue-200",
-	"Blocked": "bg-amber-50 text-amber-800 border-amber-200",
-	"Completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
-	"Cancelled": "bg-red-50 text-red-700 border-red-200",
-	"todo": "bg-slate-100 text-slate-800 border-slate-200",
-	"in_progress": "bg-blue-50 text-blue-700 border-blue-200",
-	"review": "bg-amber-50 text-amber-800 border-amber-200",
-	"completed": "bg-emerald-50 text-emerald-800 border-emerald-200",
-	"cancelled": "bg-red-50 text-red-700 border-red-200"
+	Blocked: "bg-amber-50 text-amber-800 border-amber-200",
+	Completed: "bg-emerald-50 text-emerald-800 border-emerald-200",
+	Cancelled: "bg-red-50 text-red-700 border-red-200",
+	todo: "bg-slate-100 text-slate-800 border-slate-200",
+	in_progress: "bg-blue-50 text-blue-700 border-blue-200",
+	review: "bg-amber-50 text-amber-800 border-amber-200",
+	completed: "bg-emerald-50 text-emerald-800 border-emerald-200",
+	cancelled: "bg-red-50 text-red-700 border-red-200"
 };
 function EmployeeApp() {
 	const [auth, setAuth] = (0, import_react.useState)("checking");
 	const [employee, setEmployee] = (0, import_react.useState)(null);
 	const [projects, setProjects] = (0, import_react.useState)([]);
-	const [selectedId, setSelectedId] = (0, import_react.useState)(null);
+	const navigation = useNavigation();
+	const selectedId = navigation.projectId || projects[0]?.id || null;
 	const [tasks, setTasks] = (0, import_react.useState)([]);
 	const [decisionRequests, setDecisionRequests] = (0, import_react.useState)([]);
-	const [selectedTask, setSelectedTask] = (0, import_react.useState)(null);
-	const [taskDrawerOpen, setTaskDrawerOpen] = (0, import_react.useState)(false);
+	const [taskSelection, setTaskSelection] = (0, import_react.useState)(null);
+	const selectedTask = navigation.section === "projects" ? tasks.find((task) => task.id === navigation.taskId) || (taskSelection?.id === navigation.taskId ? taskSelection : null) : null;
+	const taskDrawerOpen = Boolean(selectedTask);
+	const openTask = (task) => {
+		setTaskSelection(task);
+		navigate({
+			section: "projects",
+			projectId: selectedId,
+			projectTab: navigation.projectTab || "timeline",
+			taskId: task.id
+		});
+	};
 	const [taskViewMode, setTaskViewMode] = (0, import_react.useState)("list");
 	const [taskSearch, setTaskSearch] = (0, import_react.useState)(""), [taskStatus, setTaskStatus] = (0, import_react.useState)("all");
 	const [staleData, setStaleData] = (0, import_react.useState)(false);
@@ -51918,7 +52704,6 @@ function EmployeeApp() {
 			const data = await request("/api/employee/me");
 			setEmployee(data.employee);
 			setProjects(data.projects || []);
-			setSelectedId((current) => (data.projects || []).some((project) => project.id === current) ? current : data.projects?.[0]?.id || null);
 			setAuth("signed-in");
 		} catch (problem) {
 			if (problem.status === 401) setAuth("signed-out");
@@ -52068,7 +52853,10 @@ function EmployeeApp() {
 					className: "grid gap-3 sm:grid-cols-2",
 					children: projects.map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 						type: "button",
-						onClick: () => setSelectedId(project.id),
+						onClick: () => navigate({
+							section: "projects",
+							projectId: project.id
+						}),
 						className: `rounded-2xl border bg-card p-4 text-left shadow-xs transition-colors duration-200 hover:border-primary/40 ${selectedId === project.id ? "border-primary ring-2 ring-primary/10" : ""}`,
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "flex items-start gap-3",
@@ -52134,7 +52922,12 @@ function EmployeeApp() {
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Tabs, {
-							defaultValue: "timeline",
+							value: navigation.projectTab || "timeline",
+							onValueChange: (projectTab) => navigate({
+								section: "projects",
+								projectId: selected.id,
+								projectTab
+							}),
 							className: "gap-4",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
@@ -52195,8 +52988,7 @@ function EmployeeApp() {
 										stages: selected.stages || [],
 										members: selected.members || [],
 										onOpenTask: (task) => {
-											setSelectedTask(task);
-											setTaskDrawerOpen(true);
+											openTask(task);
 										}
 									})
 								}),
@@ -52252,8 +53044,7 @@ function EmployeeApp() {
 											})) : [],
 											stages: selected.stages || [],
 											onOpenTask: (taskItem) => {
-												setSelectedTask(taskItem);
-												setTaskDrawerOpen(true);
+												openTask(taskItem);
 											},
 											onSwitchToList: () => setTaskViewMode("list"),
 											isFounder: false,
@@ -52273,8 +53064,7 @@ function EmployeeApp() {
 														children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 															className: `break-words text-sm font-semibold cursor-pointer hover:text-primary transition-colors ${isCompleted ? "line-through text-muted-foreground" : "text-foreground"}`,
 															onClick: () => {
-																setSelectedTask(t);
-																setTaskDrawerOpen(true);
+																openTask(t);
 															},
 															children: t.title
 														}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
@@ -52293,8 +53083,7 @@ function EmployeeApp() {
 														size: "sm",
 														className: "h-8 text-xs font-semibold gap-1.5",
 														onClick: () => {
-															setSelectedTask(t);
-															setTaskDrawerOpen(true);
+															openTask(t);
 														},
 														children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Discussion" })]
 													})]
@@ -52327,10 +53116,7 @@ function EmployeeApp() {
 										onQueryChanged: loadWorkspaceData,
 										onOpenTask: (taskId) => {
 											const found = tasks.find((t) => t.id === taskId);
-											if (found) {
-												setSelectedTask(found);
-												setTaskDrawerOpen(true);
-											}
+											if (found) openTask(found);
 										}
 									}, query.id)) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
 										className: "py-10 text-center text-xs text-muted-foreground",
@@ -52351,7 +53137,8 @@ function EmployeeApp() {
 									value: "chat",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TeamChat, {
 										endpoint: `/api/employee/projects/${selected.id}/team-chat`,
-										currentActor: employee.id
+										currentActor: employee.id,
+										members: selected.members
 									}, selected.id)
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
@@ -52422,7 +53209,9 @@ function EmployeeApp() {
 							task: selectedTask,
 							project: selected,
 							open: taskDrawerOpen,
-							onOpenChange: setTaskDrawerOpen,
+							onOpenChange: (open) => {
+								if (!open) goBack({ taskId: "" });
+							},
 							onTaskUpdated: loadWorkspaceData,
 							currentActor: employee.name || "Team Member",
 							isFounder: false,

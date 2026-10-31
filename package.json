@@ -7,7 +7,12 @@
     "start": "node backend/server.js",
     "dev": "node --env-file=.env --watch backend/server.js",
     "build": "vite build",
-    "test:decisions": "node --test backend/decision-integration.test.js"
+    "test:decisions": "node --test backend/tests/decision-integration.test.js",
+    "test": "node --test backend/**/*.test.js frontend/src/lib/*.test.js frontend/src/features/*/lib/*.test.js scripts/*.test.js",
+    "check": "node scripts/check-source.js",
+    "verify": "npm run check && npm test && npm run build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "engines": {
     "node": ">=20"
@@ -30,6 +35,7 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
     "@vitejs/plugin-react": "^6.1.1",
+    "prettier": "3.9.6",
     "tailwindcss": "^4.3.3",
     "vite": "^8.3.1"
   }

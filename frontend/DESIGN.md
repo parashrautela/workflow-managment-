@@ -3,15 +3,15 @@
 The approved workspace preview defines the visual direction for the production
 web app. Use the shared variables in `src/index.css` and rules in `src/iksha.css`.
 
-| Token | Value | Use |
-| --- | --- | --- |
-| Canvas | #fafbf7 | Main workspace |
-| Sidebar | #f1f3ed | Project navigation |
-| Surface | #ffffff | Cards and inputs |
-| Ink | #273c36 | Primary text |
-| Muted | #6e7c6c | Supporting text |
-| Accent | #315e4c | Actions and selected tabs |
-| Border | #e1e6db | Dividers and cards |
+| Token   | Value   | Use                       |
+| ------- | ------- | ------------------------- |
+| Canvas  | #fafbf7 | Main workspace            |
+| Sidebar | #f1f3ed | Project navigation        |
+| Surface | #ffffff | Cards and inputs          |
+| Ink     | #273c36 | Primary text              |
+| Muted   | #6e7c6c | Supporting text           |
+| Accent  | #315e4c | Actions and selected tabs |
+| Border  | #e1e6db | Dividers and cards        |
 
 Use Georgia for project and page headings and system sans-serif for controls
 and body text. Keep borders light, shadows minimal, controls compact, and

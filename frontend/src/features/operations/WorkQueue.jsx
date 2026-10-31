@@ -1,0 +1,447 @@
+import { PersonalReminders } from '@/features/operations/PersonalReminders';
+import { matchesRole } from '@/features/people/lib/roles';
+import { LocationProjectPicker } from '@/features/projects/LocationProjectPicker';
+import { useEffect, useState } from 'react';
+import { ArrowUpRight, RefreshCw } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { TaskThreadDrawer } from '@/features/tasks/TaskThreadDrawer';
+import { request } from '@/lib/api';
+import { useNavigation, navigate, goBack } from '@/lib/navigation';
+
+export function WorkQueue({
+  projects = [],
+  isFounder = true,
+  initialPersonId = 'founder',
+  personName = 'Me',
+  onChanged,
+}) {
+  const [person, setPerson] = useState(initialPersonId),
+    [projectId, setProjectId] = useState(''),
+    [status, setStatus] = useState('pending');
+  const [tasks, setTasks] = useState([]),
+    [employees, setEmployees] = useState([]),
+    [error, setError] = useState(''),
+    [busy, setBusy] = useState(false),
+    [link, setLink] = useState(''),
+    [syncWarning, setSyncWarning] = useState(''),
+    [connected, setConnected] = useState(false);
+  const navigation = useNavigation();
+  const selected =
+    navigation.section === 'actions'
+      ? tasks.find((task) => task.id === navigation.taskId) || null
+      : null;
+  const namespace = isFounder ? 'founder' : 'employee';
+  const load = async () => {
+    try {
+      const data = await request(
+        `/api/${namespace}/work-queue?personId=${encodeURIComponent(person)}&projectId=${encodeURIComponent(projectId)}&status=${status}`,
+      );
+      setTasks(data.tasks);
+      setConnected(Boolean(data.telegramConnected));
+      setSyncWarning(data.syncWarning || '');
+      setEmployees(data.employees || []);
+      setError('');
+    } catch (problem) {
+      setError(problem.message);
+    }
+  };
+  useEffect(() => {
+    setPerson(initialPersonId);
+  }, [initialPersonId]);
+  useEffect(() => {
+    load();
+    const timer = setInterval(() => {
+      if (document.visibilityState === 'visible') load();
+    }, 15000);
+    return () => clearInterval(timer);
+  }, [person, projectId, status, namespace]);
+  const connect = async () => {
+    try {
+      const data = await request(`/api/${namespace}/personal-connection`);
+      setLink(data.link);
+    } catch (problem) {
+      setError(problem.message);
+    }
+  };
+  return (
+    <section className="work-queue space-y-4">
+      <div className="work-queue-header flex flex-wrap items-center justify-between gap-3">
+        <div className="work-queue-heading">
+          <p className="work-queue-eyebrow text-xs text-primary">Daily work</p>
+          <h1 className="text-2xl font-semibold">Actions needed</h1>
+          <p className="work-queue-description text-sm text-muted-foreground">
+            Review approvals and follow up on project work
+          </p>
+        </div>
+        <div className="work-queue-actions flex gap-2">
+          <Button
+            className="work-connection"
+            data-connected={connected}
+            variant="outline"
+            size="sm"
+            onClick={connect}
+          >
+            {connected ? 'Telegram connected' : 'Connect Telegram digests'}
+          </Button>
+          <Button variant="outline" size="sm" onClick={load}>
+            <RefreshCw className="size-4" />
+            Refresh
+          </Button>
+        </div>
+      </div>
+      {link && (
+        <p className="rounded-xl border p-3 text-sm">
+          Open{' '}
+          <a className="underline" href={link} target="_blank" rel="noreferrer">
+            the project bot
+          </a>{' '}
+          and press Start once. Each employee connects from their own Telegram account.
+        </p>
+      )}
+      <div className="work-queue-filters grid gap-3 sm:grid-cols-3">
+        {isFounder && (
+          <label className="grid gap-1 text-xs font-medium">
+            Person
+            <select
+              className="h-10 rounded-md border bg-background px-3"
+              value={person}
+              onChange={(event) => setPerson(event.target.value)}
+            >
+              <option value="founder">My work (Founder)</option>
+              <option value="all">Everyone</option>
+              {employees.map((employee) => (
+                <option key={employee.id} value={employee.id}>
+                  {employee.name}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
+        <label className="grid gap-1 text-xs font-medium">
+          Project
+          <select
+            className="h-10 rounded-md border bg-background px-3"
+            value={projectId}
+            onChange={(event) => setProjectId(event.target.value)}
+          >
+            <option value="">All projects</option>
+            {projects.map((project) => (
+              <option key={project.id} value={project.id}>
+                {project.name}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="grid gap-1 text-xs font-medium">
+          Status
+          <select
+            className="h-10 rounded-md border bg-background px-3"
+            value={status}
+            onChange={(event) => setStatus(event.target.value)}
+          >
+            <option value="pending">All pending work</option>
+            <option value="approvals">Pending approvals</option>
+            <option value="overdue">Overdue</option>
+            <option value="blocked">Blocked</option>
+            <option value="in-progress">In progress</option>
+          </select>
+        </label>
+      </div>
+      {syncWarning && (
+        <p role="status" className="text-sm text-amber-800">
+          {syncWarning}
+        </p>
+      )}
+      {error && (
+        <p role="alert" className="text-sm text-destructive">
+          {error}
+        </p>
+      )}
+      <div className="work-queue-list space-y-2">
+        {tasks.map((task) => (
+          <button
+            key={task.id}
+            className="work-queue-item flex w-full items-center justify-between gap-3 rounded-xl border bg-card p-4 text-left hover:bg-muted"
+            onClick={() => navigate({ section: 'actions', taskId: task.id })}
+          >
+            {isFounder ? (
+              <>
+                <span className="work-queue-item-content">
+                  <span className="work-queue-item-title">{task.title}</span>
+                  <span className="work-queue-item-context">
+                    {task.projectName} · {task.stageName}
+                    {task.spaces?.length ? ` · ${task.spaces.join(', ')}` : ''}
+                  </span>
+                </span>
+                <span className="work-queue-item-meta">
+                  {task.deadline && <time dateTime={task.deadline}>Due {task.deadline}</time>}
+                  <span className={task.overdue ? 'work-queue-overdue' : ''}>
+                    {task.approval ? 'Approval pending' : task.status}
+                    {task.overdue ? ' · Overdue' : ''}
+                  </span>
+                </span>
+              </>
+            ) : (
+              <div>
+                <p className="text-sm font-medium">
+                  {task.projectName} — {task.stageName} — {task.title}
+                </p>
+                <p className={`mt-1 text-xs ${task.overdue ? 'text-destructive' : 'text-muted-foreground'}`}>
+                  {task.approval ? 'Approval pending' : task.status}
+                  {task.overdue ? ' · Overdue' : ''}
+                  {task.deadline ? ` · ${task.deadline}` : ''}
+                  {task.spaces?.length ? ` · ${task.spaces.join(', ')}` : ''}
+                </p>
+              </div>
+            )}
+            <ArrowUpRight className="work-queue-item-arrow size-4 shrink-0" />
+          </button>
+        ))}
+        {!tasks.length && !error && (
+          <p className="rounded-xl border p-6 text-center text-sm text-muted-foreground">
+            No pending work matches these filters.
+          </p>
+        )}
+      </div>
+      <TaskThreadDrawer
+        open={Boolean(selected)}
+        onOpenChange={(open) => {
+          if (!open) goBack({ taskId: '' });
+        }}
+        task={selected}
+        project={selected?.project}
+        projectMembers={selected?.project.members || []}
+        isFounder={isFounder}
+        currentActor={personName}
+        onTaskUpdated={() => {
+          load();
+          onChanged?.();
+        }}
+      />
+      {isFounder && (
+        <SupervisorTools
+          employees={employees}
+          projects={projects}
+          onChanged={() => {
+            load();
+            onChanged?.();
+          }}
+        />
+      )}
+    </section>
+  );
+}
+
+function SupervisorTools({ employees, projects, onChanged }) {
+  const [form, setForm] = useState({ fromId: '', toId: '', projectIds: [] }),
+    [preview, setPreview] = useState(null),
+    [error, setError] = useState(''),
+    [busy, setBusy] = useState(false),
+    [notice, setNotice] = useState(''),
+    [settings, setSettings] = useState(null),
+    [deliveries, setDeliveries] = useState([]),
+    [connections, setConnections] = useState([]);
+  const change = (next) => {
+    setForm(next);
+    setPreview(null);
+    setNotice('');
+  };
+  const run = async (apply) => {
+    setBusy(true);
+    setError('');
+    try {
+      const result = await request(
+        `/api/founder/supervisor-replacement/${apply ? 'apply' : 'preview'}`,
+        {
+          method: 'POST',
+          body: { ...form, ...(apply ? { fingerprint: preview.fingerprint } : {}) },
+        },
+      );
+      if (apply) {
+        setPreview(null);
+        setNotice('Supervisor responsibilities transferred. Completed work was preserved.');
+        onChanged();
+      } else setPreview(result);
+    } catch (problem) {
+      setError(problem.message);
+    } finally {
+      setBusy(false);
+    }
+  };
+  const loadSettings = async () => {
+    try {
+      const data = await request('/api/founder/operations-settings');
+      setSettings(data.digest);
+      setDeliveries(data.deliveries || []);
+      setConnections(data.connections || []);
+    } catch (problem) {
+      setError(problem.message);
+    }
+  };
+  const saveSettings = async () => {
+    setBusy(true);
+    try {
+      await request('/api/founder/operations-settings', { method: 'POST', body: settings });
+      setNotice('Morning digest schedule saved.');
+    } catch (problem) {
+      setError(problem.message);
+    } finally {
+      setBusy(false);
+    }
+  };
+  return (
+    <div className="space-y-3 border-t pt-4">
+      <details className="rounded-xl border p-4">
+        <summary className="cursor-pointer text-sm font-semibold">
+          Replace a site supervisor
+        </summary>
+        <div className="mt-3 space-y-3">
+          <div className="grid gap-3 sm:grid-cols-2">
+            {[
+              ['fromId', 'Departing supervisor'],
+              ['toId', 'Replacement'],
+            ].map(([key, label]) => (
+              <label key={key} className="grid gap-1 text-xs">
+                {label}
+                <select
+                  className="h-10 rounded-md border bg-background px-3"
+                  value={form[key]}
+                  onChange={(event) => change({ ...form, [key]: event.target.value })}
+                >
+                  <option value="">Choose employee…</option>
+                  {employees.map((employee) => (
+                    <option key={employee.id} value={employee.id}>
+                      {employee.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            ))}
+          </div>
+          <fieldset className="space-y-2">
+            <legend className="text-xs font-medium">Projects to transfer</legend>
+            {!form.fromId && (
+              <p className="text-xs text-muted-foreground">
+                Choose the departing supervisor to see their projects by city.
+              </p>
+            )}
+            <LocationProjectPicker
+              projects={projects.filter(
+                (project) =>
+                  !['Completed', 'Abandoned'].includes(project.status) &&
+                  project.members?.some(
+                    (member) =>
+                      member.employeeId === form.fromId &&
+                      member.active !== false &&
+                      matchesRole(member.roles || member.role, 'Site Supervisor'),
+                  ),
+              )}
+              selected={form.projectIds}
+              onChange={(projectIds) => change({ ...form, projectIds })}
+            />
+          </fieldset>
+          <Button
+            disabled={busy || !form.fromId || !form.toId || !form.projectIds.length}
+            variant="outline"
+            onClick={() => run(false)}
+          >
+            Preview transfer
+          </Button>
+          {preview && (
+            <div className="space-y-2 rounded-lg bg-muted p-3 text-sm">
+              <p>
+                {preview.tasks.length} pending tasks across {preview.projects.length} projects will
+                transfer from {preview.from.name} to {preview.to.name}.
+              </p>
+              {preview.tasks.map((task) => (
+                <p key={task.id} className="text-xs">
+                  {task.title}
+                </p>
+              ))}
+              <p className="text-xs">
+                Add the replacement to each selected Telegram group first. Their personal digest
+                requires pressing Start in the bot.
+              </p>
+              <Button disabled={busy} onClick={() => run(true)}>
+                Confirm replacement
+              </Button>
+            </div>
+          )}
+        </div>
+      </details>
+      <details
+        className="rounded-xl border p-4"
+        onToggle={(event) => {
+          if (event.currentTarget.open && !settings) loadSettings();
+        }}
+      >
+        <summary className="cursor-pointer text-sm font-semibold">Morning digest settings</summary>
+        {settings && (
+          <div className="mt-3 space-y-3">
+            <label className="flex items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={settings.enabled}
+                onChange={(event) => setSettings({ ...settings, enabled: event.target.checked })}
+              />
+              Send personal morning digests
+            </label>
+            <label className="grid gap-1 text-xs">
+              Time
+              <Input
+                type="time"
+                value={settings.time}
+                onChange={(event) => setSettings({ ...settings, time: event.target.value })}
+              />
+            </label>
+            <label className="grid gap-1 text-xs">
+              Timezone
+              <Input
+                value={settings.timeZone}
+                onChange={(event) => setSettings({ ...settings, timeZone: event.target.value })}
+              />
+            </label>
+            <label className="flex items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={settings.weekends}
+                onChange={(event) => setSettings({ ...settings, weekends: event.target.checked })}
+              />
+              Include weekends
+            </label>
+            <p className="text-xs text-muted-foreground">
+              Empty digests are skipped. Only active employees who connected the bot receive their
+              work.
+            </p>
+            <Button disabled={busy} onClick={saveSettings}>
+              Save schedule
+            </Button>
+            <PersonalReminders connections={connections} onChanged={loadSettings} />
+            {deliveries
+              .slice(-10)
+              .reverse()
+              .map((delivery) => (
+                <p key={delivery.id} className="text-xs">
+                  {employees.find((row) => row.id === delivery.employeeId)?.name ||
+                    delivery.employeeId}{' '}
+                  · {delivery.date} · {delivery.status}
+                  {delivery.error ? ` · ${delivery.error}` : ''}
+                </p>
+              ))}
+          </div>
+        )}
+      </details>
+      {error && (
+        <p role="alert" className="text-sm text-destructive">
+          {error}
+        </p>
+      )}
+      {notice && (
+        <p role="status" className="text-sm text-emerald-800">
+          {notice}
+        </p>
+      )}
+    </div>
+  );
+}

@@ -1,0 +1,146 @@
+@import 'tailwindcss';
+@import '@xyflow/react/dist/style.css';
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+}
+
+:root {
+  color-scheme: light;
+  --background: #fafbf7;
+  --foreground: #273c36;
+  --card: #ffffff;
+  --card-foreground: #273c36;
+  --popover: #ffffff;
+  --popover-foreground: #273c36;
+  --primary: #315e4c;
+  --primary-foreground: #ffffff;
+  --secondary: #edf1e8;
+  --secondary-foreground: #3f5443;
+  --muted: #f1f3ed;
+  --muted-foreground: #6e7c6c;
+  --accent: #e5edde;
+  --accent-foreground: #3d603b;
+  --destructive: #d83b4d;
+  --border: #e1e6db;
+  --input: #dce3d4;
+  --ring: #315e4c;
+  --radius: 0.875rem;
+}
+
+:root.founder-login {
+  color-scheme: light;
+  background: #fafbf7;
+}
+
+:root.founder-login body {
+  background: #fafbf7;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: var(--border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0;
+    background: var(--background);
+    color: var(--foreground);
+    font-family:
+      Inter,
+      ui-sans-serif,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+  button {
+    touch-action: manipulation;
+  }
+}
+
+.app-glow {
+  background-image: none;
+}
+
+.chat-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #d2dcc9 transparent;
+}
+.chat-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-scroll::-webkit-scrollbar-thumb {
+  background: #d2dcc9;
+  border-radius: 999px;
+}
+
+.safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+[data-slot='dialog-content'] {
+  width: calc(100vw - 2rem);
+}
+[data-slot='dialog-title'] {
+  overflow-wrap: anywhere;
+  line-height: 1.35;
+}
+[data-slot='dialog-content'] input,
+[data-slot='dialog-content'] textarea,
+[data-slot='dialog-content'] select {
+  min-width: 0;
+}
+@media (max-width: 639px) {
+  [data-slot='dialog-content'] {
+    max-width: calc(100vw - 2rem);
+  }
+}

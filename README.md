@@ -1,71 +1,98 @@
-# Workflow Management Tool 🚀
+# Studio Iksha Workflow Web
 
-A modern, intuitive workflow and project management platform designed to streamline task tracking, automation, and team collaboration.
+The workflow management web application for founders, staff, and clients. This is
+an independent Git repository and deploys separately from the Telegram bot service.
 
-## 📋 Overview
+## Start locally
 
-The **Workflow Management Tool** provides teams with a clean, distraction-free environment to organize, automate, and monitor their day-to-day operations and project lifecycles. Built with modern design principles inspired by calm, paper-like productivity systems.
+Use Node.js 22.13+ and npm:
 
-## ✨ Features
+```sh
+npm ci
+cp .env.example .env
+npm run build
+npm run dev
+```
 
-- **Project workspaces**: Track status, phase, recent work, milestones, team members, and update history.
-- **Client portal**: Share a private link for project questions and assistant replies based on recorded facts.
-- **Conversation review**: Founders can review the client Q&A transcript in Messages.
-- **Installable app**: PWA metadata lets supported browsers open the site as a standalone app.
-- **Telegram decision inbox**: A conversation view for `/approval` and `/question` requests, with private notes, a separate Telegram reply composer, and completion tracking. Link each project group from its settings panel. The first version shows marked requests, not every group message.
-- **Telegram group setup**: A newly discovered group appears immediately as a project needing setup on the founder home screen. Assign member names and roles, then finish its bot workflow setup. The bot announces role assignments in the group.
-- **UI system**: Responsive screens built with shadcn/ui components and Tailwind CSS.
+Configure `GOOGLE_CLIENT_ID` and, on a fresh installation,
+`INITIAL_FOUNDER_EMAIL` before signing in. Google sign-in is the login mechanism;
+legacy password/founder keys are not accepted. Register the local origin in the
+Google OAuth client. See [Google sign-in setup](docs/google-sign-in-setup-2026-10-22.md).
 
-## 🛠️ Tech Stack & Design
+Local development uses `backend/data.json` unless `DATABASE_URL` is set.
+Production requires PostgreSQL, `NODE_ENV=production`, and an HTTPS `PUBLIC_URL`.
+Set optional OpenAI and bot integration variables only for the features you need.
+Keep credentials in the ignored `.env` or hosting environment.
 
-- **Frontend**: React, Vite, Tailwind CSS v4, and shadcn/ui registry components
-- **Figma Board**: [Figma Project Board](https://www.figma.com/board/UWscIC0R0NrqZyKUmmuGEB/Untitled?node-id=0-1&t=EMt7WHN72keLxW68-1)
-- **Design Tokens**: Standardized color, spacing, and typography scales (see [frontend/DESIGN.md](frontend/DESIGN.md))
-- **Architecture**: Modular and scalable architecture
+The default server address is `http://localhost:3000`. The backend serves the
+compiled frontend, so rebuild after source UI changes.
 
-## 🚀 Getting Started
+## Verification
 
-### Prerequisites
+```sh
+npm run verify
+npm run format:check
+```
 
-- Node.js (v20.6+ recommended)
+`verify` runs backend/script syntax checks, all backend and browser-helper tests,
+and the frontend build. HTTP integration tests copy the backend into temporary
+fixtures and mock Google and Telegram. No live production credentials are needed.
 
-### Setup & Run Locally
+| Command                  | Purpose                                                      |
+| ------------------------ | ------------------------------------------------------------ |
+| `npm start`              | Start the production entry point                             |
+| `npm run dev`            | Load `.env` and restart the backend on source changes        |
+| `npm run build`          | Compile `frontend/src/` to `frontend/app.js` and `app.css`   |
+| `npm test`               | Run all tests                                                |
+| `npm run test:decisions` | Run the Telegram decision HTTP integration test              |
+| `npm run check`          | Syntax-check backend code and scripts without executing them |
+| `npm run format`         | Apply the pinned formatter                                   |
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/parashrautela/workflow-managment-.git
-   cd workflow-managment-
-   ```
+## Source map
 
-2. **Configure environment:**
-   ```bash
-   cp .env.example .env
-   ```
-   Open `.env` and set `GOOGLE_CLIENT_ID` to your Google Web OAuth client ID. On a fresh installation only, set `INITIAL_FOUNDER_EMAIL` to the first founder’s Gmail or Google Workspace email; it is ignored after an approved founder exists. Login is Google-only; passwords and founder keys are not accepted. Register your local origin (for example `http://localhost:3000`) in that OAuth client. Add `OPENAI_API_KEY` optionally for AI-powered Q&A responses. Add `DATABASE_URL` to use PostgreSQL; when running locally without it, the app stores data in `backend/data.json`. For Telegram group setup, set `BOT_BRIDGE_URL` to the Telegram bot service's HTTPS origin and use the same `INTEGRATION_SHARED_SECRET` in both services. The bot needs `WEB_APP_URL` pointed at this app.
+```text
+backend/
+  server.js       Process entry, shared state, route composition
+  auth/           Google identity, admission, roles, task access
+  projects/       Group migration and project closure
+  tasks/          Workflow routes, task adapters, schedules and dependency links
+  queries/        Query context, notifications, reply/project assistants
+  collaboration/  Messages, uploads and discussion routes
+  meetings/       Meetings and reminder delivery
+  operations/     Work queues, digests and Telegram connection status
+  integrations/   Bot HTTP client and Telegram media loading
+  storage/        PostgreSQL and local state persistence
+  http/           Request parsing and shared API errors
+  tests/          HTTP integration tests and identity fixtures
+frontend/src/
+  apps/           Founder, employee and client application shells
+  features/       Product UI and feature-specific helpers/tests
+  components/     Shared UI components and UI primitives
+  lib/            Generic HTTP client and styling utility
+  styles/         Global design system and application styles
+  data/           Generated workflow input
+scripts/          Source checks
+docs/             Architecture, API, setup and historical notes
+```
 
-3. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
-   Or start in production mode with `npm start`.
+Unit tests are colocated with their modules. UI and backend features share names
+where their responsibilities correspond. Imports use explicit paths; there are
+no catch-all barrel exports to hide dependencies.
 
-4. **Access the application:**
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
+## Integration and operating constraints
 
-### UI components
+The bot service uses Google Sheets for operational schedules. This app calls it
+through `BOT_BRIDGE_URL` with `INTEGRATION_SHARED_SECRET`; request intake arrives
+through authenticated `/api/integrations/telegram/*` routes. Confirm the deployed
+bot supports the required routes before releasing an integrated feature.
 
-The frontend uses shadcn/ui components in `frontend/src/components/ui` with the configuration in `components.json`. To add another component, run `npx shadcn@latest add <component>` from the repository root, then run `npm run build` to refresh `frontend/app.js` and `frontend/app.css`.
+The current state store uses one in-memory state object and a PostgreSQL JSON
+record. Run one writer/service instance. Requests are serialized to protect
+mutation/rollback behavior. See [architecture](docs/ARCHITECTURE.md) for the
+implications and deferred work.
 
-## 📄 License
-
-This project is licensed under the MIT License.
-
-### Project communication and meetings
-
-Founders manage work; staff can view every task in their assigned projects and contribute messages, images and PDFs. Use a task's **Post internally** button for team discussion, or review a selected message before sending it to the project Telegram group. Mark measurements or briefs as resources to make them available to dependent tasks.
-
-Use **Hold** on an incoming query to save it on a task while waiting for more information. Held and handled queries remain in history. Open a task to schedule a meeting; the **Meetings** page manages attendees, reminder times, edits and cancellations. **Project chats** lists all accessible internal project conversations.
-
-The Purchase template is under Timeline → Reusable plan templates. Preview and edit its selection, proposal and client order-confirmation steps before adding it. Project details now groups client name, city and spaces in one place.
-
-Deployment order: release the companion bot's task-notice endpoint first, then this web app. The web startup creates the attachment table in the existing PostgreSQL database; preserve that table with normal database backups. No extra dependency, OAuth scope or environment variable is required. Real Telegram delivery and physical mobile acceptance remain deployment checks.
+- [Architecture and engineering conventions](docs/ARCHITECTURE.md)
+- [API reference](docs/api.md)
+- [Product feature history](docs/features.md)
+- [Design system](frontend/DESIGN.md)
+- [Original product overview](docs/guides/product-overview.md)

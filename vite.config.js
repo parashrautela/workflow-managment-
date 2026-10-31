@@ -1,18 +1,18 @@
-process.env.NODE_ENV = "production";
+process.env.NODE_ENV = 'production';
 
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";
-import path from "node:path";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+import path from 'node:path';
 
 export default defineConfig({
-  mode: "production",
+  mode: 'production',
   resolve: {
-    alias: { "@": path.resolve("frontend/src") },
+    alias: { '@': path.resolve('frontend/src') },
   },
   plugins: [
     react({
-      jsxRuntime: "automatic",
+      jsxRuntime: 'automatic',
       development: false,
     }),
     tailwindcss(),
@@ -23,25 +23,25 @@ export default defineConfig({
     },
   },
   define: {
-    "process.env.NODE_ENV": JSON.stringify("production"),
+    'process.env.NODE_ENV': JSON.stringify('production'),
   },
   build: {
-    outDir: "frontend",
+    outDir: 'frontend',
     emptyOutDir: false,
     minify: false,
     lib: {
-      entry: path.resolve("frontend/src/main.jsx"),
-      name: "App",
-      formats: ["es"],
-      fileName: () => "app.js",
+      entry: path.resolve('frontend/src/main.jsx'),
+      name: 'App',
+      formats: ['es'],
+      fileName: () => 'app.js',
     },
     rollupOptions: {
       output: {
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name && assetInfo.name.endsWith(".css")) {
-            return "app.css";
+          if (assetInfo.name && assetInfo.name.endsWith('.css')) {
+            return 'app.css';
           }
-          return "[name].[ext]";
+          return '[name].[ext]';
         },
       },
     },

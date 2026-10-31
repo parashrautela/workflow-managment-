@@ -1,0 +1,11 @@
+node_modules/
+frontend/app.js
+frontend/app.css
+backend/data.json
+backend/data.json.files/
+work/
+.env*
+package-lock.json
+docs/archive/
+.agents/skills/
+.agents/plugins/

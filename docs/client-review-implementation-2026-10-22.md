@@ -2,12 +2,12 @@
 
 Google sign-in was excluded initially and is now implemented following the user's subsequent authorization. See google-sign-in-setup-2026-10-22.md. All other scoped deliverables have source implementations; deployment and live acceptance are separate.
 
-| Priority | Deliverables implemented |
-|---|---|
-| P0 | Verified Telegram member recovery and honest roster guidance; multiple roles/clients; shared-role/founder task eligibility and duplicate approval protection; accidental standalone creation/navigation cleanup |
-| P1 | Actions needed and employee workload views; selected-project supervisor replacement; personal morning digests; project spaces; editable branching stage connections; sequential task forms |
-| P2 | Editable six-task defaults and Skip; reusable workspace plan templates; Assignee wording/project roles; direct stage collapse; concise work summaries and welcomes; retained empty-command validation |
-| Added scope | Google sign-in, pending founder admission, profile linking/project grants and authenticated founder Google linking |
+| Priority    | Deliverables implemented                                                                                                                                                                                        |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| P0          | Verified Telegram member recovery and honest roster guidance; multiple roles/clients; shared-role/founder task eligibility and duplicate approval protection; accidental standalone creation/navigation cleanup |
+| P1          | Actions needed and employee workload views; selected-project supervisor replacement; personal morning digests; project spaces; editable branching stage connections; sequential task forms                      |
+| P2          | Editable six-task defaults and Skip; reusable workspace plan templates; Assignee wording/project roles; direct stage collapse; concise work summaries and welcomes; retained empty-command validation           |
+| Added scope | Google sign-in, pending founder admission, profile linking/project grants and authenticated founder Google linking                                                                                              |
 
 ## Validation
 

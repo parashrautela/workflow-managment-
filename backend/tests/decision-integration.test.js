@@ -1,0 +1,587 @@
+import { googleTestIdentity } from './helpers/google-identity.js';
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdtemp, cp, rm, symlink, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import net from 'node:net';
+import http from 'node:http';
+import { spawn } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+
+async function freePort() {
+  const server = net.createServer();
+  await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
+  const port = server.address().port;
+  await new Promise((resolve) => server.close(resolve));
+  return port;
+}
+
+test('Telegram request enters founder inbox once, stays private, and can be resolved', async () => {
+  const root = await mkdtemp(path.join(tmpdir(), 'iksha-decision-'));
+  const source = fileURLToPath(new URL('../', import.meta.url));
+  await cp(source, path.join(root, 'backend'), {
+    recursive: true,
+    filter: (sourcePath) => !sourcePath.endsWith('.test.js'),
+  });
+  await cp(path.join(source, '../package.json'), path.join(root, 'package.json'));
+  await symlink(path.join(source, '../node_modules'), path.join(root, 'node_modules'));
+  await writeFile(
+    path.join(root, 'mock-telegram.js'),
+    `const originalFetch = globalThis.fetch;
+globalThis.fetch = async (url, options) => {
+  if (String(url).endsWith('/sendMessage') && String(url).startsWith('https://api.telegram.org/bot')) {
+    const input = JSON.parse(options.body);
+    if (input.chat_id !== '-123' || input.reply_parameters.message_id !== 10 || input.text !== 'Approved') return Response.json({ ok: false }, { status: 400 });
+    return Response.json({ ok: true, result: { message_id: 99 } });
+  }
+  return originalFetch(url, options);
+};`,
+  );
+  const google = await googleTestIdentity(root);
+  await google.seed(path.join(root, 'backend/data.json'));
+  const port = await freePort();
+  let starts = 0,
+    refreshSnapshot = { groups: [] };
+  const bridge = http.createServer(async (req, res) => {
+    assert.equal(req.headers.authorization, 'Bearer test-secret');
+    let raw = '';
+    for await (const part of req) raw += part;
+    const input = JSON.parse(raw);
+    res.setHeader('content-type', 'application/json');
+    if (req.url.endsWith('/decisions/content')) {
+      assert.equal(input.attachmentIndex, 0);
+      res.end(
+        JSON.stringify({
+          bytes: Buffer.from('PHOTO').toString('base64'),
+          mime: 'image/jpeg',
+          inline: true,
+        }),
+      );
+    } else if (req.url.endsWith('/decisions/publish')) {
+      assert.equal(input.response, 'Approved');
+      res.end(JSON.stringify({ ok: true, result: { message_id: 99 } }));
+    } else if (req.url.endsWith('/groups')) res.end(JSON.stringify(refreshSnapshot));
+    else if (req.url.endsWith('/group-members')) {
+      assert.equal(input.groupChatId, '-456');
+      res.end(JSON.stringify({ ok: true, changed: true }));
+    } else if (req.url.endsWith('/projects')) {
+      assert.equal(input.clientName, 'Asha Kumar');
+      res.end(JSON.stringify({ projectId: 'P999', projectName: input.projectName }));
+    } else if (req.url.endsWith('/tasks/sync')) {
+      res.end(
+        JSON.stringify({
+          tasks: input.updates.map((t) => ({
+            TaskID: t.taskId,
+            TaskName: t.title,
+            Status: t.status,
+            Stage: t.stage,
+            PlannedEnd: t.deadline,
+          })),
+        }),
+      );
+    } else if (req.url.endsWith('/workflows'))
+      res.end(
+        JSON.stringify({ workflows: [{ id: 'RESTORATION-V1', name: 'Restoration', stages: [] }] }),
+      );
+    else if (req.url.endsWith('/projects/start')) {
+      starts++;
+      res.end(
+        JSON.stringify({
+          workflowId: 'RESTORATION-V1',
+          workflowName: 'Restoration',
+          announcementStatus: 'Sent',
+          tasks: [
+            {
+              TaskID: 'P999-T001',
+              TaskName: 'Collect drawings',
+              Stage: 'Resources',
+              Status: 'Pending',
+              PlannedStart: '2026-10-07',
+              PlannedEnd: '2026-10-07',
+            },
+          ],
+        }),
+      );
+    } else if (req.url.endsWith('/resources/content'))
+      res.end(
+        JSON.stringify({
+          bytes: Buffer.from('FILE').toString('base64'),
+          mimeType: 'application/pdf',
+        }),
+      );
+    else {
+      res.statusCode = 404;
+      res.end('{}');
+    }
+  });
+  await new Promise((resolve) => bridge.listen(0, '127.0.0.1', resolve));
+  const bridgeUrl = `http://127.0.0.1:${bridge.address().port}`;
+  const child = spawn(
+    process.execPath,
+    [
+      '--import',
+      path.join(root, 'mock-telegram.js'),
+      '--import',
+      google.mock,
+      path.join(root, 'backend/server.js'),
+    ],
+    {
+      cwd: root,
+      env: {
+        ...process.env,
+        PORT: String(port),
+        GOOGLE_CLIENT_ID: google.clientId,
+        INITIAL_FOUNDER_EMAIL: '',
+        INTEGRATION_SHARED_SECRET: 'test-secret',
+        GROUP_BOT_TOKEN: '',
+        BOT_BRIDGE_URL: bridgeUrl,
+        DATABASE_URL: '',
+        NODE_ENV: 'test',
+      },
+      stdio: 'ignore',
+    },
+  );
+  const base = `http://127.0.0.1:${port}`;
+  const call = async (route, method = 'GET', value, headers = {}) => {
+    const response = await fetch(base + route, {
+      method,
+      headers: { 'content-type': 'application/json', ...headers },
+      ...(value === undefined ? {} : { body: JSON.stringify(value) }),
+    });
+    return {
+      status: response.status,
+      data: await response.json(),
+      cookie: response.headers.get('set-cookie'),
+    };
+  };
+  try {
+    let ready = false;
+    for (let i = 0; i < 30; i++) {
+      try {
+        await call('/api/founder/projects');
+        ready = true;
+        break;
+      } catch {
+        await new Promise((resolve) => setTimeout(resolve, 100));
+      }
+    }
+    assert.ok(ready, 'server started');
+    const session = await google.signIn(base);
+    assert.equal(session.status, 200);
+    assert.ok(session.cookie);
+    const cookie = { cookie: session.cookie.split(';')[0] };
+    const project = await call(
+      '/api/founder/projects',
+      'POST',
+      { name: 'Test Home', clientName: 'Client' },
+      cookie,
+    );
+    assert.equal(project.status, 201);
+    const projectId = project.data.project.id;
+    const payload = {
+      RequestID: 'REQ--123-10-approval',
+      GroupChatID: '-123',
+      SourceMessageID: '10',
+      RequestType: 'Approval',
+      OriginalMessage: 'Approve lights?',
+      RequestContext: '',
+      OriginalSenderName: 'Client',
+      RequestedByName: 'Designer',
+      AttachmentsJSON: JSON.stringify([{ type: 'Photo', fileId: 'photo-id' }]),
+    };
+    assert.equal((await call('/api/integrations/telegram/requests', 'POST', payload)).status, 401);
+    const bridgeHeaders = { authorization: 'Bearer test-secret' };
+    assert.equal(
+      (await call('/api/integrations/telegram/requests', 'POST', payload, bridgeHeaders)).status,
+      409,
+    );
+    assert.equal(
+      (
+        await call(
+          `/api/founder/projects/${projectId}`,
+          'PATCH',
+          { telegramGroupChatId: '-123' },
+          cookie,
+        )
+      ).status,
+      200,
+    );
+    assert.equal(
+      (await call('/api/integrations/telegram/requests', 'POST', payload, bridgeHeaders)).status,
+      201,
+    );
+    assert.equal(
+      (await call('/api/integrations/telegram/requests', 'POST', payload, bridgeHeaders)).status,
+      200,
+    );
+    assert.equal((await call('/api/founder/decision-requests')).status, 401);
+    const inbox = await call('/api/founder/decision-requests', 'GET', undefined, cookie);
+    assert.equal(inbox.data.requests.length, 1);
+    assert.equal(inbox.data.requests[0].projectId, projectId);
+    const item = encodeURIComponent(payload.RequestID);
+    assert.equal(
+      (await fetch(base + `/api/founder/decision-requests/${item}/attachments/0`)).status,
+      401,
+    );
+    const image = await fetch(base + `/api/founder/decision-requests/${item}/attachments/0`, {
+      headers: cookie,
+    });
+    assert.equal(image.status, 200);
+    assert.equal(image.headers.get('content-type'), 'image/jpeg');
+    assert.equal(await image.text(), 'PHOTO');
+
+    assert.equal(
+      (
+        await call(
+          `/api/founder/decision-requests/${item}/comment`,
+          'POST',
+          { text: 'Check dimensions' },
+          cookie,
+        )
+      ).status,
+      200,
+    );
+    assert.equal(
+      (
+        await call(
+          `/api/founder/decision-requests/${item}/publish`,
+          'POST',
+          { response: 'Approved' },
+          cookie,
+        )
+      ).status,
+      200,
+    );
+    assert.equal(
+      (
+        await call(
+          `/api/founder/decision-requests/${item}/publish`,
+          'POST',
+          { response: 'Approved' },
+          cookie,
+        )
+      ).status,
+      409,
+    );
+    assert.equal(
+      (await call(`/api/founder/decision-requests/${item}/resolve`, 'POST', {}, cookie)).status,
+      200,
+    );
+    const finalInbox = await call('/api/founder/decision-requests', 'GET', undefined, cookie);
+    assert.equal(finalInbox.data.requests[0].status, 'Done');
+    assert.equal(finalInbox.data.requests[0].publishedMessageId, '99');
+    assert.equal(finalInbox.data.requests[0].comments[0].text, 'Check dimensions');
+    const snapshot = {
+      groups: [
+        {
+          groupChatId: '-456',
+          title: 'New Site Group',
+          status: 'Available',
+          members: [
+            {
+              telegramUserId: '123',
+              telegramName: 'Asha',
+              membershipStatus: 'Active',
+              assignedName: '',
+              assignedRole: '',
+            },
+            {
+              telegramUserId: '124',
+              telegramName: 'Painter',
+              membershipStatus: 'Active',
+              assignedName: '',
+              assignedRole: '',
+            },
+          ],
+        },
+      ],
+    };
+    assert.equal(
+      (await call('/api/integrations/telegram/groups/snapshot', 'POST', snapshot)).status,
+      401,
+    );
+    assert.equal(
+      (await call('/api/integrations/telegram/groups/snapshot', 'POST', snapshot, bridgeHeaders))
+        .status,
+      200,
+    );
+    const pending = await call('/api/founder/projects', 'GET', undefined, cookie);
+    const pendingProject = pending.data.projects.find(
+      (item) => item.telegramGroupChatId === '-456',
+    );
+    assert.equal(pendingProject.name, 'New Site Group');
+    assert.equal(pendingProject.status, 'Needs setup');
+    assert.equal(pendingProject.telegramSetupPending, true);
+    assert.equal(pendingProject.telegramMembers.length, 2);
+    assert.equal(
+      (await call('/api/integrations/telegram/groups/snapshot', 'POST', snapshot, bridgeHeaders))
+        .status,
+      200,
+    );
+    assert.equal(
+      (await call('/api/founder/projects', 'GET', undefined, cookie)).data.projects.filter(
+        (item) => item.telegramGroupChatId === '-456',
+      ).length,
+      1,
+    );
+    assert.equal((await call('/api/founder/telegram-groups')).status, 401);
+    const discovered = await call('/api/founder/telegram-groups', 'GET', undefined, cookie);
+    assert.equal(discovered.data.groups[0].members.length, 2);
+    assert.equal(
+      (
+        await call(
+          '/api/founder/telegram-groups/-456/create-project',
+          'POST',
+          { projectName: 'New Site Group', startDate: '2026-09-30' },
+          cookie,
+        )
+      ).status,
+      409,
+    );
+    assert.equal(
+      (
+        await call(
+          '/api/founder/telegram-groups/-456/members/123',
+          'POST',
+          { name: 'Asha Kumar', role: 'Client' },
+          cookie,
+        )
+      ).status,
+      200,
+    );
+    const staff = await call(
+      '/api/founder/telegram-groups/-456/members/124',
+      'POST',
+      { name: 'Painter', role: 'Painter' },
+      cookie,
+    );
+    assert.ok(!staff.data.credentials);
+    const created = await call(
+      '/api/founder/telegram-groups/-456/create-project',
+      'POST',
+      { projectName: 'New Site Group', startDate: '2026-09-30' },
+      cookie,
+    );
+    assert.equal(created.status, 201);
+    assert.equal(created.data.project.id, pendingProject.id);
+    assert.equal(created.data.project.telegramSetupPending, false);
+    assert.equal(created.data.project.telegramGroupChatId, '-456');
+    assert.equal(
+      (
+        await call(
+          '/api/founder/telegram-groups/-456/create-project',
+          'POST',
+          { projectName: 'New Site Group', startDate: '2026-09-30' },
+          cookie,
+        )
+      ).status,
+      409,
+    );
+    const linkedId = created.data.project.id;
+    const painter = (
+      await call('/api/founder/employees', 'GET', undefined, cookie)
+    ).data.employees.find((employee) => employee.name === 'Painter');
+    assert.equal(created.data.project.members[0].employeeId, painter.id);
+    assert.equal(
+      (await call(`/api/founder/projects/${linkedId}/workflows`, 'GET', undefined, cookie)).data
+        .workflows[0].id,
+      'RESTORATION-V1',
+    );
+    assert.equal(
+      (
+        await call(
+          `/api/founder/projects/${linkedId}/workflow/start`,
+          'POST',
+          { workflowId: 'RESTORATION-V1', startDate: '2026-10-07' },
+          cookie,
+        )
+      ).status,
+      200,
+    );
+    await call(
+      `/api/founder/projects/${linkedId}/workflow/start`,
+      'POST',
+      { workflowId: 'RESTORATION-V1' },
+      cookie,
+    );
+    assert.equal(
+      (await call(`/api/founder/projects/${linkedId}/tasks`, 'GET', undefined, cookie)).data.tasks
+        .length,
+      1,
+    );
+    assert.equal(starts, 2);
+    const resource = {
+      SubmissionID: 'RES--456-15',
+      SourceMessageID: '15',
+      ProjectID: 'P999',
+      GroupChatID: '-456',
+      TelegramUserID: '123',
+      TelegramFileID: 'fake-file',
+      FileName: 'drawing.pdf',
+      ResourceType: 'Document',
+      DriveStatus: 'Pending',
+    };
+    assert.equal(
+      (await call('/api/integrations/telegram/resources', 'POST', resource)).status,
+      401,
+    );
+    assert.equal(
+      (
+        await call(
+          '/api/integrations/telegram/resources',
+          'POST',
+          { ...resource, TelegramUserID: '777' },
+          bridgeHeaders,
+        )
+      ).status,
+      403,
+    );
+    assert.equal(
+      (await call('/api/integrations/telegram/resources', 'POST', resource, bridgeHeaders)).status,
+      200,
+    );
+    assert.equal((await call(`/api/founder/projects/${linkedId}/files`)).status, 401);
+    assert.equal(
+      (await call(`/api/founder/projects/${linkedId}/files`, 'GET', undefined, cookie)).data
+        .files[0].status,
+      'Pending',
+    );
+    await call(
+      '/api/integrations/telegram/resources',
+      'POST',
+      { ...resource, DriveStatus: 'Stored', DriveFileID: 'stored-file' },
+      bridgeHeaders,
+    );
+    const files = (await call(`/api/founder/projects/${linkedId}/files`, 'GET', undefined, cookie))
+      .data.files;
+    assert.equal(files.length, 1);
+    assert.equal(files[0].status, 'Stored');
+    assert.equal(files[0].driveFileId, undefined);
+    const downloaded = await fetch(base + `/api/founder/projects/${linkedId}/files/RES--456-15`, {
+      headers: cookie,
+    });
+    assert.equal(downloaded.status, 200);
+    assert.equal(await downloaded.text(), 'FILE');
+    await call(
+      `/api/founder/employees/${created.data.project.members[0].employeeId}`,
+      'PATCH',
+      { email: 'painter@gmail.com' },
+      cookie,
+    );
+    const staffSession = await google.signIn(base, {
+      sub: 'painter-google',
+      email: 'painter@gmail.com',
+      name: 'Painter',
+    });
+    const staffCookie = { cookie: staffSession.cookie.split(';')[0] };
+    assert.equal(
+      (await call(`/api/employee/projects/${linkedId}/files`, 'GET', undefined, staffCookie))
+        .status,
+      200,
+    );
+    assert.equal(
+      (await call(`/api/employee/projects/${projectId}/files`, 'GET', undefined, staffCookie))
+        .status,
+      404,
+    );
+    const upgradedMembers = [
+      {
+        telegramUserId: '123',
+        telegramName: 'Asha',
+        membershipStatus: 'Active',
+        assignedName: 'Asha Kumar',
+        assignedRole: 'Client',
+      },
+      {
+        telegramUserId: '124',
+        telegramName: 'Painter',
+        membershipStatus: 'Active',
+        assignedName: 'Painter',
+        assignedRole: 'Painter',
+      },
+    ];
+    await call(
+      '/api/integrations/telegram/groups/snapshot',
+      'POST',
+      {
+        groups: [
+          {
+            groupChatId: '-100999999',
+            title: 'Upgraded Site',
+            status: 'Available',
+            members: upgradedMembers,
+          },
+        ],
+      },
+      bridgeHeaders,
+    );
+    const migration = {
+      groups: [
+        {
+          groupChatId: '-456',
+          title: 'Old Site',
+          status: 'Migrated',
+          migratedTo: '-100999999',
+          members: [],
+        },
+        {
+          groupChatId: '-100999999',
+          title: 'Upgraded Site',
+          status: 'Linked',
+          members: upgradedMembers,
+        },
+      ],
+    };
+    refreshSnapshot = migration;
+    assert.equal((await call('/api/founder/telegram-groups/refresh', 'POST', {})).status, 401);
+    assert.equal(
+      (await call('/api/founder/telegram-groups/refresh', 'POST', {}, cookie)).status,
+      200,
+    );
+    assert.equal(
+      (await call('/api/integrations/telegram/groups/snapshot', 'POST', migration, bridgeHeaders))
+        .status,
+      200,
+    );
+    const migratedProjects = (await call('/api/founder/projects', 'GET', undefined, cookie)).data
+      .projects;
+    assert.equal(
+      migratedProjects.filter((row) => row.telegramGroupChatId === '-100999999').length,
+      1,
+    );
+    assert.equal(
+      migratedProjects.find((row) => row.telegramGroupChatId === '-100999999').id,
+      linkedId,
+    );
+    assert.equal(
+      migratedProjects.some((row) => row.telegramGroupChatId === '-456'),
+      false,
+    );
+    assert.equal(
+      (
+        await call(
+          '/api/integrations/telegram/resources',
+          'POST',
+          {
+            ...resource,
+            GroupChatID: '-100999999',
+            DriveStatus: 'Stored',
+            DriveFileID: 'stored-file',
+          },
+          bridgeHeaders,
+        )
+      ).status,
+      200,
+    );
+    assert.equal(
+      (await call(`/api/founder/projects/${linkedId}/files`, 'GET', undefined, cookie)).data.files
+        .length,
+      1,
+    );
+  } finally {
+    child.kill();
+    await new Promise((resolve) => bridge.close(resolve));
+    await rm(root, { recursive: true, force: true });
+  }
+});

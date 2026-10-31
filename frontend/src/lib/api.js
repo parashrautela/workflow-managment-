@@ -4,7 +4,7 @@
 export class ApiError extends Error {
   constructor(message, status = 400, data = {}) {
     super(message);
-    this.name = "ApiError";
+    this.name = 'ApiError';
     this.status = status;
     this.data = data;
   }
@@ -14,68 +14,91 @@ export class ApiError extends Error {
  * Core HTTP fetch wrapper with same-origin credentials and JSON payload support
  */
 export async function request(url, options = {}) {
-  const method = options.method || "GET";
+  const method = options.method || 'GET';
   const headers = {
-    Accept: "application/json",
-    ...(options.headers || {})
+    Accept: 'application/json',
+    ...(options.headers || {}),
   };
 
-  if (options.body && typeof options.body === "object" && !(options.body instanceof FormData)) {
-    headers["content-type"] = "application/json";
+  if (options.body && typeof options.body === 'object' && !(options.body instanceof FormData)) {
+    headers['content-type'] = 'application/json';
     options.body = JSON.stringify(options.body);
   }
 
   const fetchOptions = {
-    credentials: "same-origin",
+    credentials: 'same-origin',
     ...options,
     method,
-    headers
+    headers,
   };
 
   let response;
   try {
     response = await fetch(url, fetchOptions);
   } catch (netErr) {
-    throw new ApiError(netErr.message || "Network connection failure. Please check your connection.", 0);
+    throw new ApiError(
+      netErr.message || 'Network connection failure. Please check your connection.',
+      0,
+    );
   }
 
-  const isJson = (response.headers.get("content-type") || "").includes("application/json");
+  const isJson = (response.headers.get('content-type') || '').includes('application/json');
   const data = isJson ? await response.json().catch(() => ({})) : {};
 
   if (!response.ok) {
     const errorMsg = data.error || data.message || `Request failed with status ${response.status}`;
-    
+
     // 401 Session expired or missing
     if (response.status === 401) {
-      if (!url.endsWith("/login") && !url.startsWith("/api/auth/") && typeof window !== "undefined") {
-        window.dispatchEvent(new CustomEvent("studio-iksha:unauthorized", { detail: { url } }));
+      if (
+        !url.endsWith('/login') &&
+        !url.startsWith('/api/auth/') &&
+        typeof window !== 'undefined'
+      ) {
+        window.dispatchEvent(new CustomEvent('studio-iksha:unauthorized', { detail: { url } }));
       }
       throw new ApiError(errorMsg, 401, data);
     }
 
     // 403 Forbidden / Permission denied
     if (response.status === 403) {
-      throw new ApiError(errorMsg || "Restricted action: You do not have permission to perform this update.", 403, data);
+      throw new ApiError(
+        errorMsg || 'Restricted action: You do not have permission to perform this update.',
+        403,
+        data,
+      );
     }
 
     // 404 Not Found
     if (response.status === 404) {
-      throw new ApiError(errorMsg || "Record or access is no longer available in your workspace.", 404, data);
+      throw new ApiError(
+        errorMsg || 'Record or access is no longer available in your workspace.',
+        404,
+        data,
+      );
     }
 
     // 409 Conflict
     if (response.status === 409) {
-      throw new ApiError(errorMsg || "Conflict with current project or task state.", 409, data);
+      throw new ApiError(errorMsg || 'Conflict with current project or task state.', 409, data);
     }
 
     // 429 Rate limited
     if (response.status === 429) {
-      throw new ApiError("Too many requests from this address. Please wait a moment before trying again.", 429, data);
+      throw new ApiError(
+        'Too many requests from this address. Please wait a moment before trying again.',
+        429,
+        data,
+      );
     }
 
     // 502 / Upstream failures
     if (response.status === 502) {
-      throw new ApiError(errorMsg || "Upstream delivery error from external service (Telegram/Bot).", 502, data);
+      throw new ApiError(
+        errorMsg || 'Upstream delivery error from external service (Telegram/Bot).',
+        502,
+        data,
+      );
     }
 
     throw new ApiError(errorMsg, response.status, data);
@@ -84,14 +107,15 @@ export async function request(url, options = {}) {
   return data;
 }
 
-export const get = (url, options = {}) => request(url, { method: "GET", ...options });
-export const post = (url, body, options = {}) => request(url, { method: "POST", body, ...options });
-export const patch = (url, body, options = {}) => request(url, { method: "PATCH", body, ...options });
-export const del = (url, options = {}) => request(url, { method: "DELETE", ...options });
+export const get = (url, options = {}) => request(url, { method: 'GET', ...options });
+export const post = (url, body, options = {}) => request(url, { method: 'POST', body, ...options });
+export const patch = (url, body, options = {}) =>
+  request(url, { method: 'PATCH', body, ...options });
+export const del = (url, options = {}) => request(url, { method: 'DELETE', ...options });
 
 // Generate unique idempotency key for requests
-export function generateIdempotencyKey(prefix = "reply") {
-  if (typeof crypto !== "undefined" && crypto.randomUUID) {
+export function generateIdempotencyKey(prefix = 'reply') {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
     return `${prefix}-${crypto.randomUUID()}`;
   }
   return `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
@@ -102,27 +126,57 @@ export function generateIdempotencyKey(prefix = "reply") {
 // -------------------------------------------------------------
 export const DEFAULT_PILOT_WORKFLOWS = [
   {
-    id: "PILOT-DESIGN-V1",
-    name: "Design pilot",
-    category: "Design",
+    id: 'PILOT-DESIGN-V1',
+    name: 'Design pilot',
+    category: 'Design',
     estimatedDays: 6,
     stages: [
-      { id: "stage-resources", name: "Resources", durationDays: 1, tasks: ["Collect site plans and client references"] },
-      { id: "stage-design", name: "Design", durationDays: 3, tasks: ["Prepare concept and review with client"] },
-      { id: "stage-delivery", name: "Delivery", durationDays: 2, tasks: ["Deliver approved drawings"] }
-    ]
+      {
+        id: 'stage-resources',
+        name: 'Resources',
+        durationDays: 1,
+        tasks: ['Collect site plans and client references'],
+      },
+      {
+        id: 'stage-design',
+        name: 'Design',
+        durationDays: 3,
+        tasks: ['Prepare concept and review with client'],
+      },
+      {
+        id: 'stage-delivery',
+        name: 'Delivery',
+        durationDays: 2,
+        tasks: ['Deliver approved drawings'],
+      },
+    ],
   },
   {
-    id: "PILOT-PAINTING-V1",
-    name: "Painting pilot",
-    category: "Finishing",
+    id: 'PILOT-PAINTING-V1',
+    name: 'Painting pilot',
+    category: 'Finishing',
     estimatedDays: 6,
     stages: [
-      { id: "stage-paint-resources", name: "Resources", durationDays: 1, tasks: ["Collect site photos and measurements"] },
-      { id: "stage-prep", name: "Preparation", durationDays: 2, tasks: ["Prepare walls and approve colour sample"] },
-      { id: "stage-paint", name: "Painting", durationDays: 3, tasks: ["Apply coats and inspect finish"] }
-    ]
-  }
+      {
+        id: 'stage-paint-resources',
+        name: 'Resources',
+        durationDays: 1,
+        tasks: ['Collect site photos and measurements'],
+      },
+      {
+        id: 'stage-prep',
+        name: 'Preparation',
+        durationDays: 2,
+        tasks: ['Prepare walls and approve colour sample'],
+      },
+      {
+        id: 'stage-paint',
+        name: 'Painting',
+        durationDays: 3,
+        tasks: ['Apply coats and inspect finish'],
+      },
+    ],
+  },
 ];
 
 // -------------------------------------------------------------
@@ -132,9 +186,13 @@ export const DEFAULT_PILOT_WORKFLOWS = [
 /**
  * Fetch available workflow templates (GET /api/{founder|employee}/workflows)
  */
-export async function fetchWorkflows(namespace = "founder", projectId = "") {
+export async function fetchWorkflows(namespace = 'founder', projectId = '') {
   try {
-    const data = await get(projectId ? `/api/${namespace}/projects/${projectId}/workflows` : `/api/${namespace}/workflows`);
+    const data = await get(
+      projectId
+        ? `/api/${namespace}/projects/${projectId}/workflows`
+        : `/api/${namespace}/workflows`,
+    );
     if (data.workflows && data.workflows.length > 0) {
       return data.workflows;
     }
@@ -151,16 +209,18 @@ export async function fetchWorkflows(namespace = "founder", projectId = "") {
 /**
  * Assign client name and Telegram User ID (POST /api/founder/projects/:id/client)
  */
-export async function assignClient(projectId, { clientName, clientTelegramId = "" }) {
+export async function assignClient(projectId, { clientName, clientTelegramId = '' }) {
   try {
     return await post(`/api/founder/projects/${projectId}/client`, {
       clientName: clientName.trim(),
-      clientTelegramId: clientTelegramId.trim()
+      clientTelegramId: clientTelegramId.trim(),
     });
   } catch (err) {
     // Fallback for pre-PR5 running server: PATCH project clientName
     if (err.status === 404) {
-      const res = await patch(`/api/founder/projects/${projectId}`, { clientName: clientName.trim() });
+      const res = await patch(`/api/founder/projects/${projectId}`, {
+        clientName: clientName.trim(),
+      });
       return { project: res.project || res };
     }
     throw err;
@@ -174,14 +234,14 @@ export async function startWorkflow(projectId, { workflowId, startDate, assignee
   return await post(`/api/founder/projects/${projectId}/workflow/start`, {
     workflowId,
     startDate: startDate || undefined,
-    assigneeId: assigneeId || undefined
+    assigneeId: assigneeId || undefined,
   });
 }
 
 /**
  * Fetch complete project workspace (GET /api/{founder|employee}/projects/:id/workspace)
  */
-export async function fetchProjectWorkspace(projectId, namespace = "founder") {
+export async function fetchProjectWorkspace(projectId, namespace = 'founder') {
   return await get(`/api/${namespace}/projects/${projectId}/workspace`);
 }
 
@@ -192,7 +252,7 @@ export async function fetchProjectWorkspace(projectId, namespace = "founder") {
 /**
  * List tasks for a project (GET /api/{founder|employee}/projects/:id/tasks)
  */
-export async function fetchTasks(projectId, namespace = "founder") {
+export async function fetchTasks(projectId, namespace = 'founder') {
   return await get(`/api/${namespace}/projects/${projectId}/tasks`);
 }
 
@@ -202,18 +262,18 @@ export async function fetchTasks(projectId, namespace = "founder") {
 export async function createTask(projectId, taskData) {
   return await post(`/api/founder/projects/${projectId}/tasks`, {
     title: taskData.title.trim(),
-    description: taskData.description ? taskData.description.trim() : "",
+    description: taskData.description ? taskData.description.trim() : '',
     assigneeId: taskData.assigneeId !== undefined ? taskData.assigneeId : undefined,
     deadline: taskData.deadline || undefined,
     stageId: taskData.stageId || undefined,
-    status: taskData.status || "Open"
+    status: taskData.status || 'Open',
   });
 }
 
 /**
  * Get single task details (GET /api/{founder|employee}/tasks/:id)
  */
-export async function fetchTask(taskId, namespace = "founder") {
+export async function fetchTask(taskId, namespace = 'founder') {
   return await get(`/api/${namespace}/tasks/${taskId}`);
 }
 
@@ -224,18 +284,18 @@ export async function fetchTask(taskId, namespace = "founder") {
  * Preview a founder timeline change (POST /api/founder/projects/:id/schedule/preview).
  * The bot checks dependencies against the Google Sheet and lists every task that would move.
  */
-export async function previewSchedule(projectId, moves) {
-  return await post(`/api/founder/projects/${projectId}/schedule/preview`, { moves });
+export async function previewSchedule(projectId, moves, options = {}) {
+  return await post(`/api/founder/projects/${projectId}/schedule/preview`, { moves, ...options });
 }
 
 /**
  * Save a founder timeline change to the Google Sheet (POST /api/founder/projects/:id/schedule/apply).
  */
-export async function applySchedule(projectId, moves) {
-  return await post(`/api/founder/projects/${projectId}/schedule/apply`, { moves });
+export async function applySchedule(projectId, moves, options = {}) {
+  return await post(`/api/founder/projects/${projectId}/schedule/apply`, { moves, ...options });
 }
 
-export async function updateTask(taskId, updates, namespace = "founder") {
+export async function updateTask(taskId, updates, namespace = 'founder') {
   return await patch(`/api/${namespace}/tasks/${taskId}`, updates);
 }
 
@@ -249,28 +309,41 @@ export async function deleteTask(taskId) {
 /**
  * Fetch task messages (GET /api/{founder|employee}/tasks/:id/messages?after=...&limit=100)
  */
-export async function fetchTaskMessages(taskId, after = "", limit = 100, namespace = "founder") {
+export async function fetchTaskMessages(taskId, after = '', limit = 100, namespace = 'founder') {
   const query = new URLSearchParams();
-  if (after) query.set("after", after);
-  if (limit) query.set("limit", String(limit));
-  const queryString = query.toString() ? `?${query.toString()}` : "";
+  if (after) query.set('after', after);
+  if (limit) query.set('limit', String(limit));
+  const queryString = query.toString() ? `?${query.toString()}` : '';
   return await get(`/api/${namespace}/tasks/${taskId}/messages${queryString}`);
 }
 
 /**
  * Send message to task thread (POST /api/{founder|employee}/tasks/:id/messages)
  */
-export async function sendTaskMessage(taskId, { text, attachmentUrl = "", fileIds = [], isResource = false, clientKey = generateIdempotencyKey("task") }, namespace = "founder") {
+export async function sendTaskMessage(
+  taskId,
+  {
+    text,
+    attachmentUrl = '',
+    fileIds = [],
+    isResource = false,
+    clientKey = generateIdempotencyKey('task'),
+  },
+  namespace = 'founder',
+) {
   return await post(`/api/${namespace}/tasks/${taskId}/messages`, {
-    text: text.trim(), fileIds, isResource, clientKey,
-    attachmentUrl: attachmentUrl.trim() || undefined
+    text: text.trim(),
+    fileIds,
+    isResource,
+    clientKey,
+    attachmentUrl: attachmentUrl.trim() || undefined,
   });
 }
 
 /**
  * Mark read cursor for task (POST /api/{founder|employee}/tasks/:id/read)
  */
-export async function markTaskRead(taskId, lastMessageId, namespace = "founder") {
+export async function markTaskRead(taskId, lastMessageId, namespace = 'founder') {
   if (!lastMessageId) return { ok: true };
   return await post(`/api/${namespace}/tasks/${taskId}/read`, { lastMessageId });
 }
@@ -282,24 +355,27 @@ export async function markTaskRead(taskId, lastMessageId, namespace = "founder")
 /**
  * List client queries (GET /api/{founder|employee}/decision-requests)
  */
-export async function fetchDecisionRequests(namespace = "founder") {
+export async function fetchDecisionRequests(namespace = 'founder') {
   return await get(`/api/${namespace}/decision-requests`);
 }
 
 /**
  * Get single client query details (GET /api/{founder|employee}/decision-requests/:id)
  */
-export async function fetchDecisionRequest(requestId, namespace = "founder") {
+export async function fetchDecisionRequest(requestId, namespace = 'founder') {
   return await get(`/api/${namespace}/decision-requests/${encodeURIComponent(requestId)}`);
 }
 
 /**
  * Add private internal comment (POST /api/{founder|employee}/decision-requests/:id/comment)
  */
-export async function addDecisionComment(requestId, text, namespace = "founder") {
-  return await post(`/api/${namespace}/decision-requests/${encodeURIComponent(requestId)}/comment`, {
-    text: text.trim()
-  });
+export async function addDecisionComment(requestId, text, namespace = 'founder') {
+  return await post(
+    `/api/${namespace}/decision-requests/${encodeURIComponent(requestId)}/comment`,
+    {
+      text: text.trim(),
+    },
+  );
 }
 
 /**
@@ -314,7 +390,7 @@ export async function approveDecisionRequest(requestId) {
  */
 export async function rejectDecisionRequest(requestId, reason) {
   return await post(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/reject`, {
-    reason: reason.trim()
+    reason: reason.trim(),
   });
 }
 
@@ -322,7 +398,10 @@ export async function rejectDecisionRequest(requestId, reason) {
  * Convert query to task (POST /api/founder/decision-requests/:id/convert) - Founder only
  */
 export async function convertDecisionRequest(requestId, taskFields) {
-  return await post(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/convert`, taskFields);
+  return await post(
+    `/api/founder/decision-requests/${encodeURIComponent(requestId)}/convert`,
+    taskFields,
+  );
 }
 
 /**
@@ -332,14 +411,14 @@ export async function publishDecisionReply(requestId, { response, idempotencyKey
   const key = idempotencyKey || generateIdempotencyKey(`reply-${requestId}`);
   return await post(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/publish`, {
     response: response.trim(),
-    idempotencyKey: key
+    idempotencyKey: key,
   });
 }
 
 /**
  * Authenticated media/attachment URL for Telegram photos & documents
  */
-export function getAttachmentUrl(requestId, index = 0, namespace = "founder") {
+export function getAttachmentUrl(requestId, index = 0, namespace = 'founder') {
   return `/api/${namespace}/decision-requests/${encodeURIComponent(requestId)}/attachments/${index}`;
 }
 
@@ -359,12 +438,15 @@ export async function removeProjectMember(projectId, memberId) {
  */
 /** Edit an employee's profile (PATCH /api/founder/employees/:id). */
 export async function updateEmployee(employeeId, fields) {
-  return await request(`/api/founder/employees/${employeeId}`, { method: "PATCH", body: fields });
+  return await request(`/api/founder/employees/${employeeId}`, { method: 'PATCH', body: fields });
 }
 
 /** Ask for an AI-suggested reply to a client query, built from project records (POST /api/founder/decision-requests/:id/suggest-reply). Sends nothing. */
-export async function suggestDecisionReply(requestId, instruction = "", outcome = "") {
-  return await post(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/suggest-reply`, { ...(instruction ? { instruction } : {}), ...(outcome ? { outcome } : {}) });
+export async function suggestDecisionReply(requestId, instruction = '', outcome = '') {
+  return await post(
+    `/api/founder/decision-requests/${encodeURIComponent(requestId)}/suggest-reply`,
+    { ...(instruction ? { instruction } : {}), ...(outcome ? { outcome } : {}) },
+  );
 }
 
 export async function enableEmployee(employeeId) {
@@ -402,15 +484,24 @@ export async function fetchDefaultPlan(projectId) {
 /**
  * Accept a query: link it to a task and delay/redo/complete it, or add a new stage for it.
  * target: { kind: 'task', taskId, action: { type, days } } | { kind: 'new-stage', stage, linkTaskKey }
- * Nothing is sent to Telegram; publish the reply separately after the founder reviews it.
+ * Preview sends nothing. Confirming a decision sends its reviewed status update to the source query.
  */
 export async function previewAcceptDecision(requestId, target) {
-  return await post(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept-preview`, { target });
+  return await post(
+    `/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept-preview`,
+    { target },
+  );
 }
-export async function acceptDecisionRequest(requestId, target) {
-  return await post(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept`, { target });
+export async function acceptDecisionRequest(requestId, target, notificationText) {
+  return await post(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept`, {
+    target,
+    notificationText,
+  });
 }
 
-export const previewTaskPlan = (taskId, input) => post(`/api/founder/tasks/${taskId}/plan/preview`, input);
-export const applyTaskPlan = (taskId, input) => post(`/api/founder/tasks/${taskId}/plan/apply`, input);
-export const renameWorkType = (projectId, stageId, input) => post(`/api/founder/projects/${projectId}/stages/${stageId}/rename/apply`, input);
+export const previewTaskPlan = (taskId, input) =>
+  post(`/api/founder/tasks/${taskId}/plan/preview`, input);
+export const applyTaskPlan = (taskId, input) =>
+  post(`/api/founder/tasks/${taskId}/plan/apply`, input);
+export const renameWorkType = (projectId, stageId, input) =>
+  post(`/api/founder/projects/${projectId}/stages/${stageId}/rename/apply`, input);
