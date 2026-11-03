@@ -1,0 +1,205 @@
+/* Shared by plain selects, NativeSelect and portalled dialogs. Unlayered, so it beats utilities. */
+select:not([multiple]):not([size]) {
+  appearance: none;
+  min-width: 0;
+  max-width: 100%;
+  /* One line: the chosen label is cut with an ellipsis. The full text shows in the open list. */
+  height: 36px;
+  min-height: 36px;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: var(--space-4) var(--space-32) var(--space-4) var(--space-12);
+  border: 1px solid var(--input);
+  border-radius: var(--radius);
+  background: var(--card)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2362705f' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")
+    no-repeat right 12px center;
+  color: var(--foreground);
+  font: var(--type-label-14);
+  text-overflow: ellipsis;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+  transition:
+    border-color 150ms,
+    box-shadow 150ms,
+    background-color 150ms;
+}
+select:not([multiple]):not([size])[data-size='sm'] {
+  height: 32px;
+  min-height: 32px;
+  font-size: var(--text-xs);
+}
+select:not([multiple]):not([size]):hover:not(:disabled) {
+  border-color: var(--border-strong);
+}
+select:not([multiple]):not([size]):focus-visible {
+  outline: none;
+  border-color: var(--ring);
+}
+select:not([multiple]):not([size]):disabled {
+  background-color: var(--muted);
+  color: var(--muted-foreground);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+select:not([multiple]):not([size])[aria-invalid='true'] {
+  border-color: var(--destructive);
+}
+
+/* Keep the native picker as a fallback on browsers without customizable select. */
+@supports (appearance: base-select) {
+  select:not([multiple]):not([size]),
+  select:not([multiple]):not([size])::picker(select) {
+    appearance: base-select;
+  }
+  select:not([multiple]):not([size]) {
+    background-image: none;
+    padding-right: var(--space-12);
+    align-items: center;
+    gap: var(--space-12);
+  }
+  /* The chosen option shows inside the closed select: keep it on one line with an ellipsis. */
+  select:not([multiple]):not([size]):not(:open) option:checked {
+    min-width: 0;
+    flex: 1 1 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  select::picker-icon {
+    content: '';
+    width: 8px;
+    height: 8px;
+    margin: calc(var(--space-4) * -1) var(--space-4) 0 auto;
+    border-right: 1.5px solid var(--muted-foreground);
+    border-bottom: 1.5px solid var(--muted-foreground);
+    rotate: 45deg;
+    flex-shrink: 0;
+    transition: rotate 150ms;
+  }
+  select:open::picker-icon {
+    rotate: 225deg;
+    margin-top: var(--space-4);
+  }
+  select::picker(select) {
+    margin-block: var(--space-8);
+    padding: var(--space-4);
+    border: 1px solid var(--input);
+    border-radius: var(--radius);
+    background: var(--card);
+    color: var(--foreground);
+    box-shadow:
+      0 8px 28px #273c361a,
+      0 2px 6px #273c360a;
+    max-height: min(320px, 60dvh);
+    max-width: calc(100vw - 24px);
+    overflow: auto;
+    scrollbar-width: thin;
+  }
+  select option {
+    display: flex;
+    align-items: center;
+    gap: var(--space-12);
+    min-height: 38px;
+    padding: var(--space-8) var(--space-12);
+    border-radius: var(--radius);
+    background: var(--card);
+    color: var(--foreground);
+    font: var(--type-label-14);
+    white-space: normal;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+  }
+  select option:hover,
+  select option:focus-visible {
+    background: var(--muted);
+    outline: none;
+  }
+  select option:checked {
+    background: var(--secondary);
+    color: var(--primary);
+    font-weight: 600;
+  }
+  select option:disabled {
+    color: var(--muted-foreground);
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  select option::checkmark {
+    order: 1;
+    margin-left: auto;
+    color: var(--primary);
+  }
+}
+
+/* Whole-row disclosure headers retain native Enter/Space and open-state semantics. */
+details {
+  min-width: 0;
+  padding: var(--space-16);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--card);
+}
+details > summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  min-height: 48px;
+  margin: calc(var(--space-16) * -1);
+  padding: var(--space-12) var(--space-16);
+  border-radius: var(--radius-card);
+  color: var(--foreground);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: var(--leading-copy);
+  list-style: none;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+  transition: background-color 150ms;
+}
+details > summary::marker,
+details > summary::-webkit-details-marker {
+  display: none;
+  content: '';
+}
+details > summary::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  margin: calc(var(--space-4) * -1) var(--space-4) 0 auto;
+  flex: 0 0 8px;
+  border-right: 1.5px solid var(--muted-foreground);
+  border-bottom: 1.5px solid var(--muted-foreground);
+  rotate: 45deg;
+  transition: rotate 150ms;
+}
+details > summary:hover {
+  background: var(--muted);
+}
+details[open] > summary {
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+  background: var(--subtle);
+}
+details[open] > summary::after {
+  rotate: 225deg;
+  margin-top: var(--space-4);
+}
+.iksha-task-resources > summary {
+  padding: var(--space-12) var(--space-16);
+  font-size: var(--text-sm);
+}
+
+@media (max-width: 639px) {
+  select:not([multiple]):not([size]),
+  select:not([multiple]):not([size])[data-size='sm'] {
+    height: 44px;
+    min-height: 44px;
+    font-size: var(--text-base);
+  }
+  select option {
+    min-height: 44px;
+    font-size: var(--text-base);
+  }
+}

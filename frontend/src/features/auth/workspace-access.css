@@ -1,0 +1,416 @@
+/* Sign-in: one calm card, with the form beside a fan of glass arched windows.
+   The form never depends on animation. The artwork is decoration. */
+.iksha-access {
+  --access-ink: #f7f2e8;
+  --access-soft: #d5dacb;
+  display: grid;
+  min-height: 100dvh;
+  place-items: center;
+  padding: var(--space-24);
+  background:
+    radial-gradient(60% 50% at 50% 42%, #f1f2ec, transparent 72%),
+    linear-gradient(160deg, #e3e5de, #cfd3ca);
+  color: var(--foreground);
+}
+.iksha-access-card {
+  display: grid;
+  width: min(1080px, 100%);
+  min-height: min(680px, calc(100dvh - 2 * var(--space-24)));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: var(--space-8);
+  border-radius: 24px;
+  background: var(--card);
+  box-shadow:
+    0 1px 2px rgb(20 36 30 / 0.06),
+    0 32px 80px rgb(20 36 30 / 0.16);
+}
+
+/* Form */
+.iksha-access-form {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: var(--space-16) var(--space-24);
+}
+.iksha-access-top,
+.iksha-access-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+.iksha-access-top .iksha-wordmark {
+  font-size: 24px;
+}
+.iksha-access-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-8);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: var(--text-xs);
+  line-height: 1.4;
+  color: var(--muted-foreground);
+}
+.iksha-access-tag svg {
+  width: 12px;
+  height: 12px;
+}
+.iksha-access-body {
+  display: flex;
+  width: min(340px, 100%);
+  flex: 1;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+  padding: var(--space-32) 0;
+  text-align: center;
+}
+.iksha-access-icon {
+  display: grid;
+  width: 72px;
+  height: 72px;
+  place-items: center;
+  align-self: center;
+  margin-bottom: var(--space-16);
+  border-radius: 50%;
+  background: linear-gradient(to bottom, var(--muted), transparent);
+}
+.iksha-access-icon span {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--card);
+  box-shadow: 0 2px 8px rgb(20 36 30 / 0.08);
+  color: var(--primary);
+}
+.iksha-access-icon svg {
+  width: 20px;
+  height: 20px;
+}
+.iksha-access-body h1 {
+  font:
+    32px/1.2 Georgia,
+    serif;
+  letter-spacing: -0.01em;
+}
+.iksha-access-body > p {
+  margin-top: var(--space-8);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+.iksha-access-foot {
+  font-size: var(--text-xs);
+  line-height: 1.4;
+  color: var(--muted-foreground);
+}
+.iksha-access-foot a {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Artwork panel */
+.iksha-access-story {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-32);
+  overflow: hidden;
+  padding: var(--space-32);
+  border-radius: var(--radius-panel);
+  background:
+    radial-gradient(70% 55% at 88% 96%, rgb(247 189 120 / 0.42), transparent 70%),
+    radial-gradient(60% 50% at 62% 62%, rgb(112 196 160 / 0.3), transparent 72%),
+    radial-gradient(90% 60% at 10% 0%, #3f7560, transparent 72%),
+    linear-gradient(170deg, #264a3d, #12251e 74%);
+  color: var(--access-ink);
+}
+.iksha-access-grain {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+.iksha-access-brand {
+  position: relative;
+}
+.iksha-access-tile {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  margin-bottom: var(--space-16);
+  border-radius: var(--radius-card);
+  background: var(--access-ink);
+  box-shadow: 0 8px 24px rgb(8 16 13 / 0.3);
+  font:
+    26px/1 Georgia,
+    serif;
+  color: #1f3a30;
+}
+.iksha-access-tile i {
+  font-style: normal;
+  color: #b4701f;
+}
+.iksha-access-brand h2 {
+  font:
+    24px/1.2 Georgia,
+    serif;
+  letter-spacing: -0.01em;
+}
+.iksha-access-brand p {
+  margin-top: var(--space-4);
+  font-size: var(--text-base);
+  line-height: 1.5;
+}
+.iksha-access-brand p span {
+  color: var(--access-soft);
+}
+.iksha-access-notes {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-24);
+  padding: var(--space-16);
+  border-radius: var(--radius-card);
+  background: rgb(10 20 16 / 0.42);
+  backdrop-filter: blur(14px);
+}
+.iksha-access-notes div + div {
+  padding-left: var(--space-24);
+  border-left: 1px solid rgb(247 242 232 / 0.22);
+}
+.iksha-access-notes dt {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1.4;
+}
+.iksha-access-notes dd {
+  margin-top: var(--space-4);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  color: var(--access-soft);
+}
+
+/* Glass arches */
+.iksha-glass {
+  position: absolute;
+  right: -26%;
+  bottom: -30%;
+  z-index: -1;
+  width: 124%;
+  aspect-ratio: 1;
+  transform: translate(calc(var(--pointer-x, 0) * -18px), calc(var(--pointer-y, 0) * -12px));
+  transition: transform 0.6s ease-out;
+}
+.iksha-glass-arch {
+  --film: calc(205deg + var(--pointer-x, 0) * 120deg);
+  --bar: rgb(255 255 255 / 0.5);
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  width: 29%;
+  height: 58%;
+  margin-left: -14.5%;
+  overflow: hidden;
+  border-radius: 999px 999px 8px 8px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(50% - 1px),
+      var(--bar) calc(50% - 1px) calc(50% + 1px),
+      transparent calc(50% + 1px)
+    ),
+    linear-gradient(
+      transparent calc(46% - 1px),
+      var(--bar) calc(46% - 1px) calc(46% + 1px),
+      transparent calc(46% + 1px)
+    ),
+    linear-gradient(
+      165deg,
+      rgb(255 255 255 / 0.3),
+      rgb(255 255 255 / 0.02) 46%,
+      rgb(247 189 120 / 0.34)
+    ),
+    conic-gradient(
+      from var(--film) at 50% 82%,
+      rgb(255 196 120 / 0.78),
+      rgb(246 140 130 / 0.62),
+      rgb(176 150 242 / 0.62),
+      rgb(110 200 232 / 0.68),
+      rgb(120 226 170 / 0.68),
+      rgb(255 228 140 / 0.78),
+      rgb(255 196 120 / 0.78)
+    );
+  box-shadow:
+    inset 0 0 24px rgb(255 255 255 / 0.22),
+    0 0 36px rgb(247 189 120 / 0.2),
+    0 24px 48px rgb(8 16 13 / 0.36);
+  backdrop-filter: blur(6px) saturate(170%);
+  transform: rotate(var(--turn)) translateY(-3%) scale(var(--scale));
+  transform-origin: 50% 100%;
+  animation: access-fan 1.2s cubic-bezier(0.2, 0.75, 0.2, 1) var(--delay) both;
+}
+/* Bright, colour-shifting glass edge. */
+.iksha-glass-arch::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 3px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--film) at 50% 60%,
+    #fff,
+    #ffd9a3,
+    #f6a6a0,
+    #c9b6f2,
+    #9fd8e8,
+    #a8e6c1,
+    #fff
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+}
+/* A slow band of light crossing the pane. */
+.iksha-glass-arch::after {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background: linear-gradient(
+    115deg,
+    transparent 38%,
+    rgb(255 255 255 / 0.42) 50%,
+    transparent 62%
+  );
+  transform: translateX(-34%);
+  animation: access-sheen 9s ease-in-out var(--delay) infinite alternate;
+}
+.iksha-glass-base {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 30%, #2c4e41, #12251e 70%);
+  box-shadow:
+    inset 0 2px 1px rgb(255 255 255 / 0.3),
+    0 -12px 44px rgb(8 16 13 / 0.5);
+  transform: translate(-50%, -50%);
+}
+
+@keyframes access-fan {
+  from {
+    transform: rotate(calc(var(--turn) * 0.3)) translateY(8%) scale(calc(var(--scale) * 0.88));
+  }
+}
+@keyframes access-sheen {
+  to {
+    transform: translateX(34%);
+  }
+}
+
+/* Short laptops: lower the glass so it clears the tagline. */
+@media (min-width: 901px) and (max-height: 760px) {
+  .iksha-glass {
+    right: -14%;
+    bottom: -50%;
+    width: 104%;
+  }
+}
+
+/* Tablets and phones: artwork becomes a short banner so sign-in stays on the first screen. */
+@media (max-width: 900px) {
+  .iksha-access {
+    padding: var(--space-12);
+  }
+  .iksha-access-card {
+    width: min(520px, 100%);
+    min-height: calc(100dvh - 2 * var(--space-12));
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    border-radius: 20px;
+  }
+  .iksha-access-story {
+    order: -1;
+    min-height: 200px;
+    padding: var(--space-16);
+  }
+  .iksha-access-tile {
+    width: 40px;
+    height: 40px;
+    margin-bottom: var(--space-12);
+    font-size: 22px;
+  }
+  .iksha-access-brand h2 {
+    font-size: 20px;
+  }
+  .iksha-access-brand p {
+    font-size: var(--text-sm);
+  }
+  .iksha-access-notes {
+    display: none;
+  }
+  .iksha-glass {
+    right: -58%;
+    bottom: -104%;
+    width: 112%;
+  }
+  .iksha-access-story::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      90deg,
+      rgb(18 37 30 / 0.82),
+      rgb(18 37 30 / 0.5) 58%,
+      transparent 82%
+    );
+  }
+  .iksha-access-top .iksha-wordmark {
+    display: none;
+  }
+  .iksha-access-top {
+    justify-content: center;
+  }
+  .iksha-access-form {
+    padding: var(--space-16);
+  }
+  .iksha-access-body {
+    padding: var(--space-16) 0;
+  }
+}
+
+/* Anyone who asks for less motion gets a still image. */
+@media (prefers-reduced-motion: reduce) {
+  .iksha-access {
+    --pointer-x: 0 !important;
+    --pointer-y: 0 !important;
+  }
+  .iksha-glass {
+    transition: none;
+  }
+  .iksha-glass-arch,
+  .iksha-glass-arch::after {
+    animation: none;
+  }
+}

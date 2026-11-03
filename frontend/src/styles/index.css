@@ -1,0 +1,326 @@
+@import 'tailwindcss';
+@import '@xyflow/react/dist/style.css';
+
+/* There is no dark theme yet: dark: classes must not follow the device setting. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* The design system, see frontend/DESIGN.md. Only these scales exist: a class outside them,
+   such as text-lg or text-amber-500, generates no CSS. */
+@theme static {
+  --color-*: initial;
+  --color-white: #fff;
+  --color-black: #000;
+
+  --text-*: initial;
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.4;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.5;
+  --text-base: 1rem;
+  --text-base--line-height: 1.5;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.2;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 1.2;
+  --text-3xl: 2rem;
+  --text-3xl--line-height: 1.2;
+
+  --font-weight-*: initial;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  --leading-*: initial;
+  --leading-heading: 1.2;
+  --leading-label: 1.4;
+  --leading-copy: 1.5;
+
+  --radius-*: initial;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-overdue: var(--overdue-text);
+  --color-overdue-bg: var(--overdue-bg);
+  --color-overdue-border: var(--overdue-border);
+  --color-overdue-fill: var(--overdue-fill);
+  --color-warning: var(--warning-text);
+  --color-warning-bg: var(--warning-bg);
+  --color-warning-border: var(--warning-border);
+  --color-warning-fill: var(--warning-fill);
+  --color-success: var(--success-text);
+  --color-success-bg: var(--success-bg);
+  --color-success-border: var(--success-border);
+  --color-success-fill: var(--success-fill);
+  --color-info: var(--info-text);
+  --color-info-bg: var(--info-bg);
+  --color-info-border: var(--info-border);
+  --color-info-fill: var(--info-fill);
+
+  --radius-sm: var(--radius);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius);
+  --radius-xl: var(--radius-card);
+  --radius-2xl: var(--radius-panel);
+}
+
+:root {
+  color-scheme: light;
+
+  /* Surfaces and ink */
+  --background: #fafbf7;
+  --foreground: #273c36;
+  --card: #ffffff;
+  --card-foreground: #273c36;
+  --popover: #ffffff;
+  --popover-foreground: #273c36;
+  --subtle: #f6f8f1;
+  --muted: #f1f3ed;
+  --muted-foreground: #62705f;
+  --secondary: #edf1e8;
+  --secondary-foreground: #3f5443;
+  --border: #e1e6db;
+  --border-strong: #cdd8c2;
+  --input: #dce3d4;
+
+  /* Accent: fill, focus, then the tint behind hovered and selected rows. */
+  --primary: #315e4c;
+  --primary-foreground: #ffffff;
+  --ring: #315e4c;
+  --accent: #ebf1e6;
+  --accent-foreground: #3d603b;
+
+  /* Status. Each step has one job: tint, outline, solid fill, text. */
+  --overdue-bg: #fbeeee;
+  --overdue-border: #efc9cd;
+  --overdue-fill: #b62c41;
+  --overdue-text: #a8263a;
+  --warning-bg: #fbf2df;
+  --warning-border: #ecd6a6;
+  --warning-fill: #a1670f;
+  --warning-text: #7f5206;
+  --success-bg: #e8f3ec;
+  --success-border: #bfdccb;
+  --success-fill: #2b7a55;
+  --success-text: #1f6b48;
+  --info-bg: #e8f0f8;
+  --info-border: #c2d6ea;
+  --info-fill: #3a72a8;
+  --info-text: #2a5f94;
+  --destructive: var(--overdue-fill);
+
+  /* Corners all derive from --radius. */
+  --radius: 0.5rem;
+  --radius-card: calc(var(--radius) * 1.5);
+  --radius-panel: calc(var(--radius) * 2);
+  --radius-chip: 999px;
+
+  /* Spacing */
+  --space-4: 0.25rem;
+  --space-8: 0.5rem;
+  --space-12: 0.75rem;
+  --space-16: 1rem;
+  --space-24: 1.5rem;
+  --space-32: 2rem;
+  --gap-list: var(--space-12);
+  --gap-grid: var(--space-16);
+  --gap-section: var(--space-24);
+
+  /* Type roles: size, line height and weight travel together. */
+  --font-heading: Georgia, serif;
+  --font-body: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --type-heading-32: 400 var(--text-3xl) / var(--leading-heading) var(--font-heading);
+  --type-heading-24: 400 var(--text-2xl) / var(--leading-heading) var(--font-heading);
+  --type-heading-20: 400 var(--text-xl) / var(--leading-heading) var(--font-heading);
+  --type-heading-16: 600 var(--text-base) / var(--leading-heading) var(--font-body);
+  --type-label-14: 400 var(--text-sm) / var(--leading-label) var(--font-body);
+  --type-label-14-strong: 500 var(--text-sm) / var(--leading-label) var(--font-body);
+  --type-label-12: 400 var(--text-xs) / var(--leading-label) var(--font-body);
+  --type-label-12-strong: 500 var(--text-xs) / var(--leading-label) var(--font-body);
+  --type-copy-16: 400 var(--text-base) / var(--leading-copy) var(--font-body);
+  --type-copy-14: 400 var(--text-sm) / var(--leading-copy) var(--font-body);
+  --type-copy-12: 400 var(--text-xs) / var(--leading-copy) var(--font-body);
+  --type-button-14: 500 var(--text-sm) / var(--leading-label) var(--font-body);
+  --type-button-12: 500 var(--text-xs) / var(--leading-label) var(--font-body);
+}
+
+/* The shared card box for anything that is not a Card component. Add its background alongside. */
+@utility card-box {
+  border-width: 1px;
+  border-radius: var(--radius-card);
+  padding: var(--space-16);
+}
+
+@utility type-heading-32 {
+  font: var(--type-heading-32);
+  letter-spacing: -0.6px;
+}
+@utility type-heading-24 {
+  font: var(--type-heading-24);
+  letter-spacing: -0.4px;
+}
+@utility type-heading-20 {
+  font: var(--type-heading-20);
+}
+@utility type-heading-16 {
+  font: var(--type-heading-16);
+}
+@utility type-label-14 {
+  font: var(--type-label-14);
+}
+@utility type-label-14-strong {
+  font: var(--type-label-14-strong);
+}
+@utility type-label-12 {
+  font: var(--type-label-12);
+}
+@utility type-label-12-strong {
+  font: var(--type-label-12-strong);
+}
+@utility type-copy-16 {
+  font: var(--type-copy-16);
+}
+@utility type-copy-14 {
+  font: var(--type-copy-14);
+}
+@utility type-copy-12 {
+  font: var(--type-copy-12);
+}
+@utility type-button-14 {
+  font: var(--type-button-14);
+}
+@utility type-button-12 {
+  font: var(--type-button-12);
+}
+
+:root.founder-login {
+  color-scheme: light;
+  background: var(--background);
+}
+
+:root.founder-login body {
+  background: var(--background);
+}
+
+@layer base {
+  /* Focus is one thin line just inside the element, so nothing can clip it. Never a halo. */
+  :focus-visible {
+    outline: 1px solid var(--ring);
+    outline-offset: -1px;
+  }
+  * {
+    box-sizing: border-box;
+    border-color: var(--border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0;
+    background: var(--background);
+    color: var(--foreground);
+    font: var(--type-copy-14);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 {
+    font: var(--type-heading-32);
+    letter-spacing: -0.6px;
+    overflow-wrap: anywhere;
+  }
+  h2 {
+    font: var(--type-heading-24);
+    letter-spacing: -0.4px;
+  }
+  h3 {
+    font: var(--type-heading-16);
+  }
+  b,
+  strong {
+    font-weight: var(--font-weight-semibold);
+  }
+  small {
+    font-size: var(--text-xs);
+  }
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+  button {
+    touch-action: manipulation;
+  }
+}
+
+.app-glow {
+  background-image: none;
+}
+
+.chat-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+.chat-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-scroll::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: var(--radius-chip);
+}
+
+.safe-bottom {
+  padding-bottom: max(var(--space-16), env(safe-area-inset-bottom));
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+[data-slot='dialog-content'] {
+  width: calc(100vw - 2rem);
+}
+[data-slot='dialog-title'] {
+  overflow-wrap: anywhere;
+}
+[data-slot='dialog-content'] input,
+[data-slot='dialog-content'] textarea,
+[data-slot='dialog-content'] select {
+  min-width: 0;
+}
+@media (max-width: 639px) {
+  [data-slot='dialog-content'] {
+    max-width: calc(100vw - 2rem);
+  }
+}

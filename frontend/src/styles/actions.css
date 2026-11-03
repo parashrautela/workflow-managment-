@@ -1,0 +1,89 @@
+/* Actions screen layout only. Workflow by Damir Sokolovsky: https://github.com/heydamir/unslop (CC BY 4.0). */
+.work-queue > * + * {
+  margin-top: var(--gap-section);
+}
+.work-queue-header {
+  gap: var(--space-24);
+}
+.work-connection[data-connected='true'] {
+  border-color: transparent;
+  background: transparent;
+  color: var(--muted-foreground);
+}
+.work-connection[data-connected='true']::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+.work-queue-filters {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--gap-grid);
+}
+.work-queue-filters label {
+  grid-template-rows: auto 1fr;
+}
+.work-queue-item {
+  min-height: 88px;
+  gap: var(--space-24);
+  padding: var(--space-16);
+  border-radius: var(--radius-card);
+  transition: background-color 150ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.work-queue-item-content {
+  display: grid;
+  min-width: 0;
+  flex: 1;
+  gap: var(--space-8);
+}
+.work-queue-item-title {
+  font: var(--type-label-14-strong);
+}
+.work-queue-item-context {
+  color: var(--muted-foreground);
+  font: var(--type-copy-12);
+}
+.work-queue-item-meta {
+  display: grid;
+  flex-shrink: 0;
+  gap: var(--space-8);
+  color: var(--muted-foreground);
+  text-align: right;
+  font: var(--type-copy-12);
+  font-variant-numeric: tabular-nums;
+}
+.work-queue-item-meta time {
+  color: var(--foreground);
+}
+.work-queue-item-arrow {
+  color: var(--muted-foreground);
+}
+@media (max-width: 639px) {
+  .work-queue-header {
+    gap: var(--space-16);
+  }
+  .work-queue-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+  .work-queue-filters label:last-child {
+    grid-column: 1 / -1;
+  }
+  .work-queue-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 16px;
+    gap: var(--space-12);
+  }
+  .work-queue-item-meta {
+    grid-column: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-4) var(--space-12);
+    text-align: left;
+  }
+  .work-queue-item-arrow {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
