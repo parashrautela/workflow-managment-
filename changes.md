@@ -118,3 +118,10 @@ Verification: 116 backend/frontend tests pass, production build and whitespace c
 
 
 Timeline move options: dragging or nudging a task/stage offers Move in parallel (selected dates only; external connections removed) or Shift everything after it (same offset for selected and subsequent sequence tasks, earlier work unchanged). Preview lists date and connection changes; full-schedule fingerprint rejects stale saves. Started/finished work stays protected, baseline dates preserved. Dependency-changing moves have no Undo. Tests use disposable data; no live project moved.
+
+
+## 2026-11-03 — Client queries inbox tabs (Intercom-style)
+
+User asked for one Intercom-inspired screen and approved it from a fake-data preview of the component. The Client queries inbox now has status tabs with counts — Needs action, Waiting for context, Handled, Group messages, All — and opens on Needs action. Waiting-for-context queries have their own tab instead of falling under Handled; undecided group messages have their own tab. The status dropdown and the separate Updates filter are removed (updates appear under Needs action, labelled Update). List rows show the message first, project and type underneath, and the age of open queries in amber after one day and red after three. Search and the project filter share one row. A link to a query opens the tab it belongs to; accepting or rejecting does not switch tabs. Conversation, Accept/Reject flow and backend are unchanged; the global sidebar is untouched.
+
+Verification: 180 backend/frontend tests pass, including a new test for tab assignment; production build passes. Fake-data browser preview checked at desktop and phone width. Frontend only; no backend files changed.
