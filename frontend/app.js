@@ -11654,7 +11654,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$57 = {
+var __iconData$58 = {
 	name: "arrow-left",
 	size: 24,
 	node: [["path", {
@@ -11665,8 +11665,8 @@ var __iconData$57 = {
 		key: "x3x0zl"
 	}]]
 };
-__iconData$57.node;
-var ArrowLeft = createLucideIcon(__iconData$57);
+__iconData$58.node;
+var ArrowLeft = createLucideIcon(__iconData$58);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11674,7 +11674,7 @@ var ArrowLeft = createLucideIcon(__iconData$57);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$56 = {
+var __iconData$57 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11685,8 +11685,8 @@ var __iconData$56 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$56.node;
-var ArrowRight = createLucideIcon(__iconData$56);
+__iconData$57.node;
+var ArrowRight = createLucideIcon(__iconData$57);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11694,7 +11694,7 @@ var ArrowRight = createLucideIcon(__iconData$56);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$55 = {
+var __iconData$56 = {
 	name: "arrow-up-right",
 	size: 24,
 	node: [["path", {
@@ -11705,8 +11705,8 @@ var __iconData$55 = {
 		key: "1vkiza"
 	}]]
 };
-__iconData$55.node;
-var ArrowUpRight = createLucideIcon(__iconData$55);
+__iconData$56.node;
+var ArrowUpRight = createLucideIcon(__iconData$56);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11714,7 +11714,7 @@ var ArrowUpRight = createLucideIcon(__iconData$55);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$54 = {
+var __iconData$55 = {
 	name: "arrow-up",
 	size: 24,
 	node: [["path", {
@@ -11725,8 +11725,8 @@ var __iconData$54 = {
 		key: "x0mq9r"
 	}]]
 };
-__iconData$54.node;
-var ArrowUp = createLucideIcon(__iconData$54);
+__iconData$55.node;
+var ArrowUp = createLucideIcon(__iconData$55);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11734,7 +11734,7 @@ var ArrowUp = createLucideIcon(__iconData$54);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$53 = {
+var __iconData$54 = {
 	name: "building-complex",
 	size: 24,
 	node: [
@@ -11761,8 +11761,8 @@ var __iconData$53 = {
 	],
 	aliases: ["building-2"]
 };
-__iconData$53.node;
-var BuildingComplex = createLucideIcon(__iconData$53);
+__iconData$54.node;
+var BuildingComplex = createLucideIcon(__iconData$54);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11770,7 +11770,7 @@ var BuildingComplex = createLucideIcon(__iconData$53);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$52 = {
+var __iconData$53 = {
 	name: "calendar-days",
 	size: 24,
 	node: [
@@ -11820,8 +11820,8 @@ var __iconData$52 = {
 		}]
 	]
 };
-__iconData$52.node;
-var CalendarDays = createLucideIcon(__iconData$52);
+__iconData$53.node;
+var CalendarDays = createLucideIcon(__iconData$53);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/calendar.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11829,7 +11829,7 @@ var CalendarDays = createLucideIcon(__iconData$52);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$51 = {
+var __iconData$52 = {
 	name: "calendar",
 	size: 24,
 	node: [
@@ -11855,8 +11855,8 @@ var __iconData$51 = {
 		}]
 	]
 };
-__iconData$51.node;
-var Calendar = createLucideIcon(__iconData$51);
+__iconData$52.node;
+var Calendar = createLucideIcon(__iconData$52);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11864,7 +11864,7 @@ var Calendar = createLucideIcon(__iconData$51);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$50 = {
+var __iconData$51 = {
 	name: "check",
 	size: 24,
 	node: [["path", {
@@ -11872,8 +11872,8 @@ var __iconData$50 = {
 		key: "1gmf2c"
 	}]]
 };
-__iconData$50.node;
-var Check = createLucideIcon(__iconData$50);
+__iconData$51.node;
+var Check = createLucideIcon(__iconData$51);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11881,7 +11881,7 @@ var Check = createLucideIcon(__iconData$50);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$49 = {
+var __iconData$50 = {
 	name: "chevron-down",
 	size: 24,
 	node: [["path", {
@@ -11889,8 +11889,8 @@ var __iconData$49 = {
 		key: "qrunsl"
 	}]]
 };
-__iconData$49.node;
-var ChevronDown = createLucideIcon(__iconData$49);
+__iconData$50.node;
+var ChevronDown = createLucideIcon(__iconData$50);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11898,7 +11898,7 @@ var ChevronDown = createLucideIcon(__iconData$49);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$48 = {
+var __iconData$49 = {
 	name: "chevron-right",
 	size: 24,
 	node: [["path", {
@@ -11906,8 +11906,8 @@ var __iconData$48 = {
 		key: "mthhwq"
 	}]]
 };
-__iconData$48.node;
-var ChevronRight = createLucideIcon(__iconData$48);
+__iconData$49.node;
+var ChevronRight = createLucideIcon(__iconData$49);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11915,7 +11915,7 @@ var ChevronRight = createLucideIcon(__iconData$48);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$47 = {
+var __iconData$48 = {
 	name: "chevron-up",
 	size: 24,
 	node: [["path", {
@@ -11923,8 +11923,8 @@ var __iconData$47 = {
 		key: "153udz"
 	}]]
 };
-__iconData$47.node;
-var ChevronUp = createLucideIcon(__iconData$47);
+__iconData$48.node;
+var ChevronUp = createLucideIcon(__iconData$48);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11932,7 +11932,7 @@ var ChevronUp = createLucideIcon(__iconData$47);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$46 = {
+var __iconData$47 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -11959,8 +11959,8 @@ var __iconData$46 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$46.node;
-var CircleAlert = createLucideIcon(__iconData$46);
+__iconData$47.node;
+var CircleAlert = createLucideIcon(__iconData$47);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11968,7 +11968,7 @@ var CircleAlert = createLucideIcon(__iconData$46);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$45 = {
+var __iconData$46 = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -11982,8 +11982,8 @@ var __iconData$45 = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-__iconData$45.node;
-var CircleCheck = createLucideIcon(__iconData$45);
+__iconData$46.node;
+var CircleCheck = createLucideIcon(__iconData$46);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11991,7 +11991,7 @@ var CircleCheck = createLucideIcon(__iconData$45);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$44 = {
+var __iconData$45 = {
 	name: "circle-pause",
 	size: 24,
 	node: [
@@ -12018,8 +12018,8 @@ var __iconData$44 = {
 	],
 	aliases: ["pause-circle"]
 };
-__iconData$44.node;
-var CirclePause = createLucideIcon(__iconData$44);
+__iconData$45.node;
+var CirclePause = createLucideIcon(__iconData$45);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12027,7 +12027,7 @@ var CirclePause = createLucideIcon(__iconData$44);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$43 = {
+var __iconData$44 = {
 	name: "circle-question-mark",
 	size: 24,
 	node: [
@@ -12048,8 +12048,8 @@ var __iconData$43 = {
 	],
 	aliases: ["help-circle", "circle-help"]
 };
-__iconData$43.node;
-var CircleQuestionMark = createLucideIcon(__iconData$43);
+__iconData$44.node;
+var CircleQuestionMark = createLucideIcon(__iconData$44);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12057,7 +12057,7 @@ var CircleQuestionMark = createLucideIcon(__iconData$43);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$42 = {
+var __iconData$43 = {
 	name: "circle-x",
 	size: 24,
 	node: [
@@ -12078,8 +12078,8 @@ var __iconData$42 = {
 	],
 	aliases: ["x-circle"]
 };
-__iconData$42.node;
-var CircleX = createLucideIcon(__iconData$42);
+__iconData$43.node;
+var CircleX = createLucideIcon(__iconData$43);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12087,7 +12087,7 @@ var CircleX = createLucideIcon(__iconData$42);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$41 = {
+var __iconData$42 = {
 	name: "circle",
 	size: 24,
 	node: [["circle", {
@@ -12097,8 +12097,8 @@ var __iconData$41 = {
 		key: "1mglay"
 	}]]
 };
-__iconData$41.node;
-var Circle = createLucideIcon(__iconData$41);
+__iconData$42.node;
+var Circle = createLucideIcon(__iconData$42);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12106,7 +12106,7 @@ var Circle = createLucideIcon(__iconData$41);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$40 = {
+var __iconData$41 = {
 	name: "clock-3",
 	size: 24,
 	node: [["circle", {
@@ -12119,8 +12119,8 @@ var __iconData$40 = {
 		key: "135r8i"
 	}]]
 };
-__iconData$40.node;
-var Clock3 = createLucideIcon(__iconData$40);
+__iconData$41.node;
+var Clock3 = createLucideIcon(__iconData$41);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12128,7 +12128,7 @@ var Clock3 = createLucideIcon(__iconData$40);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$39 = {
+var __iconData$40 = {
 	name: "clock",
 	size: 24,
 	node: [["circle", {
@@ -12141,8 +12141,8 @@ var __iconData$39 = {
 		key: "mmk7yg"
 	}]]
 };
-__iconData$39.node;
-var Clock = createLucideIcon(__iconData$39);
+__iconData$40.node;
+var Clock = createLucideIcon(__iconData$40);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12150,7 +12150,7 @@ var Clock = createLucideIcon(__iconData$39);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$38 = {
+var __iconData$39 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -12166,8 +12166,8 @@ var __iconData$38 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$38.node;
-var Copy = createLucideIcon(__iconData$38);
+__iconData$39.node;
+var Copy = createLucideIcon(__iconData$39);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/ellipsis-vertical.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12175,7 +12175,7 @@ var Copy = createLucideIcon(__iconData$38);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$37 = {
+var __iconData$38 = {
 	name: "ellipsis-vertical",
 	size: 24,
 	node: [
@@ -12200,8 +12200,8 @@ var __iconData$37 = {
 	],
 	aliases: ["more-vertical"]
 };
-__iconData$37.node;
-var EllipsisVertical = createLucideIcon(__iconData$37);
+__iconData$38.node;
+var EllipsisVertical = createLucideIcon(__iconData$38);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/external-link.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12209,7 +12209,7 @@ var EllipsisVertical = createLucideIcon(__iconData$37);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$36 = {
+var __iconData$37 = {
 	name: "external-link",
 	size: 24,
 	node: [
@@ -12227,8 +12227,8 @@ var __iconData$36 = {
 		}]
 	]
 };
-__iconData$36.node;
-var ExternalLink = createLucideIcon(__iconData$36);
+__iconData$37.node;
+var ExternalLink = createLucideIcon(__iconData$37);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/file-text.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12236,7 +12236,7 @@ var ExternalLink = createLucideIcon(__iconData$36);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$35 = {
+var __iconData$36 = {
 	name: "file-text",
 	size: 24,
 	node: [
@@ -12262,8 +12262,8 @@ var __iconData$35 = {
 		}]
 	]
 };
-__iconData$35.node;
-var FileText = createLucideIcon(__iconData$35);
+__iconData$36.node;
+var FileText = createLucideIcon(__iconData$36);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12271,7 +12271,7 @@ var FileText = createLucideIcon(__iconData$35);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$34 = {
+var __iconData$35 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -12293,8 +12293,8 @@ var __iconData$34 = {
 		}]
 	]
 };
-__iconData$34.node;
-var FolderKanban = createLucideIcon(__iconData$34);
+__iconData$35.node;
+var FolderKanban = createLucideIcon(__iconData$35);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/funnel.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12302,7 +12302,7 @@ var FolderKanban = createLucideIcon(__iconData$34);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$33 = {
+var __iconData$34 = {
 	name: "funnel",
 	size: 24,
 	node: [["path", {
@@ -12311,8 +12311,59 @@ var __iconData$33 = {
 	}]],
 	aliases: ["filter"]
 };
+__iconData$34.node;
+var Funnel = createLucideIcon(__iconData$34);
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/grip-vertical.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$33 = {
+	name: "grip-vertical",
+	size: 24,
+	node: [
+		["circle", {
+			cx: "9",
+			cy: "12",
+			r: "1",
+			key: "1vctgf"
+		}],
+		["circle", {
+			cx: "9",
+			cy: "5",
+			r: "1",
+			key: "hp0tcf"
+		}],
+		["circle", {
+			cx: "9",
+			cy: "19",
+			r: "1",
+			key: "fkjjf6"
+		}],
+		["circle", {
+			cx: "15",
+			cy: "12",
+			r: "1",
+			key: "1tmaij"
+		}],
+		["circle", {
+			cx: "15",
+			cy: "5",
+			r: "1",
+			key: "19l28e"
+		}],
+		["circle", {
+			cx: "15",
+			cy: "19",
+			r: "1",
+			key: "f4zoj3"
+		}]
+	]
+};
 __iconData$33.node;
-var Funnel = createLucideIcon(__iconData$33);
+var GripVertical = createLucideIcon(__iconData$33);
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/hourglass.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -36380,6 +36431,17 @@ function useStageOrder({ projectId, stages, tasks, onChanged, enabled }) {
 		})
 	};
 }
+function StageOrderGrip({ stage, reorder }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+		type: "button",
+		className: "iksha-stage-reorder-grip",
+		...reorder.gripProps(stage),
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GripVertical, {
+			size: 16,
+			"aria-hidden": "true"
+		})
+	});
+}
 // ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/classcat/index.js
 function cc(names) {
 	if (typeof names === "string" || typeof names === "number") return "" + names;
@@ -48438,12 +48500,11 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 	const summary = scheduleSummary(items, today);
 	const editable = Boolean(onSchedulePreview && onScheduleApply);
 	const canPlan = editable && Boolean(onPlanChanged);
-	const canReorder = false;
 	const reorder = useStageOrder({
 		projectId,
 		stages,
 		tasks,
-		enabled: canReorder,
+		enabled: canPlan,
 		onChanged: (result) => {
 			setSavedStageOrder(result.project.stages);
 			onPlanChanged(result);
@@ -49100,7 +49161,10 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 									className: "iksha-schedule-row iksha-stage-row",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "iksha-schedule-label iksha-stage-heading iksha-stage-reorder-label",
-										children: [canReorder, /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+										children: [canPlan && stage.id !== "other" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StageOrderGrip, {
+											stage,
+											reorder
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 											className: "iksha-stage-toggle",
 											onClick: () => toggle(stage.id),
 											onContextMenu: (event) => stage.id !== "other" && openMenu(event, { stage }),

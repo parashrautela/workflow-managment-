@@ -5,6 +5,7 @@ import { createMeetingRoutes, initializeMeetings } from './meetings.js';
 import { loginEmail, reserveGoogleAccess, migrateGoogleOnlyAccess } from './google-access.js';
 import { createGoogleAuthRoutes } from './google-auth.js';
 import {createStageLinksRoutes} from './stage-links-routes.js';
+import { createStageOrderRoutes } from './stage-order-routes.js';
 import { createOperationsRoutes, workQueue, telegramConnected } from './operations.js';
 import { rolesOf, hasRole, matchesRole, roleText, isStaff } from './roles.js';
 import {reconcileGroupMigration} from './group-migration.js';
@@ -267,6 +268,7 @@ const collaborationRoutes = createCollaborationRoutes({notifyQuery,getState:()=>
 const meetingRoutes = createMeetingRoutes({getState:()=>state, founder, employeeSession, body, json, save, audit, callBotBridge, checkpoint});
 const pilotRoutes = createPilotRoutes({ notifyQuery, getState: () => state, founder, employeeSession, body, json, save, audit, projectView, callBotBridge });
 const stageLinksRoutes=createStageLinksRoutes({getState:()=>state,founder,body,json,save,audit,callBotBridge});
+const stageOrderRoutes = createStageOrderRoutes({ getState: () => state, founder, body, json, save, audit, callBotBridge, checkpoint });
 const operationsRoutes = createOperationsRoutes({getState:()=>state,founder,employeeSession,body,json,save,audit,callBotBridge,integrationSecret,checkpoint});
 const googleAuthRoutes = createGoogleAuthRoutes({getState:()=>state,founder,body,json,save,audit,cookie,production});
 async function handleRequest(req, res) {
@@ -368,6 +370,7 @@ async function handleRequest(req, res) {
       res.writeHead(200,{'content-type':mime,'content-disposition':`attachment; filename*=UTF-8''${encodeURIComponent(file.name)}`,'cache-control':'private, no-store','content-security-policy':"default-src 'none'; sandbox"});return res.end(bytes);
     }
     if (await stageLinksRoutes(req,res,url)) return;
+    if (await stageOrderRoutes(req,res,url)) return;
     if (await operationsRoutes(req,res,url)) return;
     if (await collaborationRoutes(req,res,url)) return;
     if (await meetingRoutes(req,res,url)) return;

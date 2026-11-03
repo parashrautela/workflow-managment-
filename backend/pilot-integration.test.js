@@ -427,3 +427,90 @@ test('founder rejection handles ordinary group messages and keeps evidence acros
  assert.equal(saved.decisionStatus,'Rejected');assert.equal(saved.originalMessage,context.OriginalMessage);
  assert.equal(saved.rejectionReply,"We're not able to go ahead with this request right now.");
 });
+
+test('stage reorder previews without writing, requires founder confirmation and persists order, dates and prerequisites across restart', async (t) => {
+  const f = await fixture(t);
+  const file = path.join(f.directory, 'backend/data.json');
+  const stored = JSON.parse(await readFile(file, 'utf8'));
+  const stages = ['Resources', 'Discovery', 'Planning'].map((name, index) => ({
+    id: `order-stage-${index}`,
+    name,
+    order: index,
+  }));
+  stored.projects = [
+    {
+      id: 'order-demo',
+      name: 'Order test',
+      clientName: 'Sample client',
+      status: 'On track',
+      phase: 'Resources',
+      stages,
+      members: [],
+      workflowStartedAt: new Date().toISOString(),
+    },
+  ];
+  stored.tasks = stages.map((stage, index) => ({
+    id: `order-task-${index}`,
+    projectId: 'order-demo',
+    stageId: stage.id,
+    title: stage.name,
+    status: 'Open',
+    customPlan: true,
+    sourceSequence: String((index + 1) * 10),
+    sourceForecastStart: `2026-10-0${index * 2 + 1}`,
+    sourceForecastEnd: `2026-10-0${index * 2 + 2}`,
+    sourcePlannedStart: `2026-10-0${index * 2 + 1}`,
+    deadline: `2026-10-0${index * 2 + 2}`,
+    planPredecessorId: index ? `order-task-${index - 1}` : '',
+    planDependencyType: 'FS',
+  }));
+  await writeFile(file, JSON.stringify(stored));
+  await f.restart();
+  const route = '/api/founder/projects/order-demo/stage-order';
+  const input = { stageIds: ['order-stage-0', 'order-stage-2', 'order-stage-1'] };
+  assert.equal((await f.call(route + '/preview', 'POST', input)).status, 401);
+  const preview = await f.call(route + '/preview', 'POST', input, f.cookie);
+  assert.equal(preview.status, 200);
+  assert.equal(preview.data.affected.length, 2);
+  assert.equal(preview.data.dependencyChanges.length, 2);
+  assert.deepEqual(JSON.parse(await readFile(file, 'utf8')).tasks, stored.tasks);
+  assert.equal(
+    (await f.call(route + '/apply', 'POST', { ...input, fingerprint: 'stale' }, f.cookie)).status,
+    409,
+  );
+  const result = await f.call(
+    route + '/apply',
+    'POST',
+    { ...input, fingerprint: preview.data.fingerprint },
+    f.cookie,
+  );
+  assert.equal(result.status, 200);
+  assert.deepEqual(
+    result.data.project.stages.map((stage) => stage.name),
+    ['Resources', 'Planning', 'Discovery'],
+  );
+  await f.restart();
+  const saved = JSON.parse(await readFile(file, 'utf8'));
+  assert.deepEqual(
+    saved.projects[0].stages.map((stage) => stage.id),
+    input.stageIds,
+  );
+  assert.equal(saved.tasks[2].sourceForecastStart, '2026-10-03');
+  assert.equal(saved.tasks[2].sourcePlannedStart, '2026-10-05');
+  assert.equal(saved.tasks[1].planPredecessorId, 'order-task-2');
+  assert.equal(saved.activity[0].action, 'stage_order_changed');
+  saved.tasks[2].status = 'In progress';
+  await writeFile(file, JSON.stringify(saved));
+  await f.restart();
+  assert.equal(
+    (
+      await f.call(
+        route + '/preview',
+        'POST',
+        { stageIds: stages.map((stage) => stage.id) },
+        f.cookie,
+      )
+    ).status,
+    409,
+  );
+});

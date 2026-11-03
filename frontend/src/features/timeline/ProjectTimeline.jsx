@@ -207,13 +207,11 @@ export function ProjectTimeline({
   const editable = Boolean(onSchedulePreview && onScheduleApply);
   // Founders build the plan here: add stages, add a task inside a stage. Needs a project linked to its Telegram group.
   const canPlan = editable && Boolean(onPlanChanged);
-  // Reordering stages needs the stage-order API, which the live backend does not have yet.
-  const canReorder = false;
   const reorder = useStageOrder({
     projectId,
     stages,
     tasks,
-    enabled: canReorder,
+    enabled: canPlan,
     onChanged: (result) => {
       setSavedStageOrder(result.project.stages);
       onPlanChanged(result);
@@ -966,7 +964,7 @@ export function ProjectTimeline({
                   >
                     <div className="iksha-schedule-row iksha-stage-row">
                       <div className="iksha-schedule-label iksha-stage-heading iksha-stage-reorder-label">
-                        {canReorder && stage.id !== 'other' && (
+                        {canPlan && stage.id !== 'other' && (
                           <StageOrderGrip stage={stage} reorder={reorder} />
                         )}
                         <button
