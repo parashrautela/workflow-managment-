@@ -1,4 +1,9 @@
-import { needsQueryAttention, queryStatusLabel } from '@/features/queries/lib/queryStatus';
+import {
+  INBOX_TABS,
+  needsQueryAttention,
+  queryInboxTab,
+  queryStatusLabel,
+} from '@/features/queries/lib/queryStatus';
 import { useNavigation, navigate, goBack } from '@/lib/navigation';
 // frontend/src/components/DecisionInbox.jsx
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
@@ -41,6 +46,7 @@ import { generateIdempotencyKey, getAttachmentUrl } from '@/lib/api';
 import { Time } from '@/components/ui/time';
 import { SegmentedControl } from '@/components/ui/segmented-control';
 import { Empty } from '@/components/ui/empty';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 async function api(url, method = 'GET', data) {
   const response = await fetch(url, {
@@ -65,11 +71,31 @@ const initials = (name = '') =>
 const preview = (item) =>
   item.originalMessage || item.context || (item.attachments?.length ? 'Attachment' : 'Request');
 
+// Open queries turn amber after a day and red after three, so the longest waits stand out.
+const waitingTone = (item) => {
+  if (queryInboxTab(item) !== 'action') return 'text-muted-foreground';
+  const hours = (Date.now() - new Date(item.createdAt).getTime()) / 3600000;
+  if (hours >= 72) return 'font-medium text-overdue';
+  if (hours >= 24) return 'font-medium text-warning';
+  return 'text-muted-foreground';
+};
+
+const emptyTab = {
+  action: ['Nothing needs action', 'New questions from linked Telegram groups appear here.'],
+  waiting: [
+    'Nothing is waiting',
+    'Queries marked Waiting for more context stay here until you return them to review.',
+  ],
+  handled: ['Nothing handled yet', 'Accepted, rejected and answered queries appear here.'],
+  group: ['No group messages', 'Everyday messages from linked Telegram groups appear here.'],
+  all: ['No client queries', 'Questions from linked Telegram groups appear here.'],
+};
+
 export function DecisionInbox({ projects, onProjectsChanged }) {
   const [requests, setRequests] = useState([]);
   const navigation = useNavigation();
   const selectedId = navigation.queryId;
-  const [filter, setFilter] = useState('All');
+  const [tab, setTab] = useState('action');
   const [projectFilter, setProjectFilter] = useState('All projects');
   const [search, setSearch] = useState('');
   const [mode, setMode] = useState('internal');
@@ -131,12 +157,27 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
     }
   }, [projects, settingsProjectId]);
 
+  const inProject = (item) => projectFilter === 'All projects' || item.projectId === projectFilter;
+  const tabCounts = Object.fromEntries(INBOX_TABS.map(({ value }) => [value, 0]));
+  for (const item of requests) {
+    if (!inProject(item)) continue;
+    tabCounts[queryInboxTab(item)] += 1;
+    tabCounts.all += 1;
+  }
+
+  // A link to a query opens the tab it sits in. Picking a row or deciding on a query never switches tabs.
+  const linkedIdRef = useRef(null);
+  useEffect(() => {
+    if (!selectedId || linkedIdRef.current === selectedId) return;
+    const linked = requests.find((item) => item.id === selectedId);
+    if (!linked) return;
+    linkedIdRef.current = selectedId;
+    if (tab !== 'all' && queryInboxTab(linked) !== tab) setTab(queryInboxTab(linked));
+  }, [selectedId, requests]);
+
   const visible = requests.filter((item) => {
-    const decided = !needsQueryAttention(item);
-    if (filter === 'Open' && decided) return false;
-    if (filter === 'Handled' && (!decided || item.requestType === 'Message')) return false;
-    if (filter === 'Updates' && item.requestType !== 'Update') return false;
-    if (projectFilter !== 'All projects' && item.projectId !== projectFilter) return false;
+    if (tab !== 'all' && queryInboxTab(item) !== tab) return false;
+    if (!inProject(item)) return false;
     const project = projects.find((candidate) => candidate.id === item.projectId);
     return `${project?.name || ''} ${item.originalSenderName} ${item.originalMessage} ${item.context}`
       .toLowerCase()
@@ -335,41 +376,55 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
       <div
         ref={panelRef}
         style={panelHeight ? { height: panelHeight } : undefined}
-        className="grid min-h-[420px] grid-cols-[minmax(0,1fr)] grid-rows-[minmax(0,1fr)] overflow-hidden rounded-2xl border bg-card shadow-sm lg:grid-cols-[300px_minmax(0,1fr)]"
+        className="flex min-h-[420px] flex-col overflow-hidden rounded-2xl border bg-card shadow-sm"
       >
-        {/* Left conversations list */}
-        <aside
-          className={`${mobileThread ? 'hidden lg:flex' : 'flex'} min-h-0 min-w-0 flex-col border-r`}
-          aria-label="Decision conversations"
+        <Tabs
+          value={tab}
+          onValueChange={setTab}
+          className={`${mobileThread ? 'hidden lg:flex' : 'flex'} shrink-0 border-b`}
         >
-          <div className="space-y-3 border-b p-3">
-            <label className="relative block">
-              <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                value={search}
-                onChange={(event) => setSearch(event.target.value)}
-                placeholder="Search conversations"
-                className="pl-8"
-                aria-label="Search decision conversations"
-              />
-            </label>
-            <div className="flex gap-2">
-              <NativeSelect
-                value={filter}
-                onChange={(event) => setFilter(event.target.value)}
-                aria-label="Filter by status"
-                className="w-28"
-              >
-                <option>Open</option>
-                <option>Handled</option>
-                <option>Updates</option>
-                <option>All</option>
-              </NativeSelect>
+          <TabsList
+            variant="line"
+            aria-label="Query status"
+            className="h-auto w-full justify-start overflow-x-auto px-2 pt-1 pb-[5px] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {INBOX_TABS.map(({ value, label }) => (
+              <TabsTrigger key={value} value={value} className="flex-none px-3 pb-2">
+                {label}
+                {value !== 'all' && tabCounts[value] > 0 && (
+                  <span
+                    className={`rounded-full px-1.5 text-xs tabular-nums ${value === 'action' ? 'bg-warning-bg text-warning' : 'bg-muted text-muted-foreground'}`}
+                  >
+                    {tabCounts[value]}
+                  </span>
+                )}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs>
+
+        <div className="grid min-h-0 flex-1 grid-cols-[minmax(0,1fr)] grid-rows-[minmax(0,1fr)] lg:grid-cols-[320px_minmax(0,1fr)]">
+          {/* Left conversations list */}
+          <aside
+            className={`${mobileThread ? 'hidden lg:flex' : 'flex'} min-h-0 min-w-0 flex-col border-r`}
+            aria-label="Decision conversations"
+          >
+            <div className="flex gap-2 border-b p-3">
+              <label className="relative block min-w-0 flex-1">
+                <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
+                <Input
+                  value={search}
+                  onChange={(event) => setSearch(event.target.value)}
+                  placeholder="Search"
+                  className="pl-8"
+                  aria-label="Search decision conversations"
+                />
+              </label>
               <NativeSelect
                 value={projectFilter}
                 onChange={(event) => setProjectFilter(event.target.value)}
                 aria-label="Filter by project"
-                className="min-w-0 flex-1"
+                className="w-32 shrink-0"
               >
                 <option>All projects</option>
                 {projects.map((project) => (
@@ -379,362 +434,363 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
                 ))}
               </NativeSelect>
             </div>
-          </div>
 
-          <div className="chat-scroll min-h-0 flex-1 overflow-y-auto overscroll-contain">
-            {visible.length ? (
-              visible.map((item) => {
-                const project = projects.find((candidate) => candidate.id === item.projectId);
-                return (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => {
-                      navigate({ queryId: item.id });
-                      setMode('internal');
-                    }}
-                    className={`w-full overflow-hidden border-b px-4 py-3 text-left transition-colors hover:bg-muted/70 ${selected?.id === item.id ? 'bg-accent/70' : ''}`}
-                    aria-current={selected?.id === item.id ? 'true' : undefined}
-                  >
-                    <span className="flex items-start gap-3">
-                      <span className="grid size-9 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold text-secondary-foreground">
-                        {initials(item.originalSenderName)}
-                      </span>
-                      <span className="min-w-0 flex-1">
-                        <span className="flex min-w-0 items-center gap-2">
-                          <strong className="min-w-0 flex-1 truncate text-sm">
-                            {item.originalSenderName}
-                          </strong>
-                          <time className="shrink-0 text-xs text-muted-foreground">
-                            <Time value={item.createdAt} />
-                          </time>
+            <div className="chat-scroll min-h-0 flex-1 overflow-y-auto overscroll-contain">
+              {visible.length ? (
+                visible.map((item) => {
+                  const project = projects.find((candidate) => candidate.id === item.projectId);
+                  const isSelected = selected?.id === item.id;
+                  const showStatus = tab === 'all' || tab === 'handled';
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => {
+                        navigate({ queryId: item.id });
+                        setMode('internal');
+                      }}
+                      className={`relative w-full overflow-hidden border-b px-4 py-3 text-left transition-colors hover:bg-muted/70 ${isSelected ? 'bg-accent/70 before:absolute before:inset-y-0 before:left-0 before:w-0.5 before:bg-primary' : ''}`}
+                      aria-current={isSelected ? 'true' : undefined}
+                    >
+                      <span className="flex items-start gap-3">
+                        <span className="grid size-8 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold text-secondary-foreground">
+                          {initials(item.originalSenderName)}
                         </span>
-                        <span className="mt-1 block truncate text-xs text-muted-foreground">
-                          {project?.name || 'Project'} · {item.requestType}
-                        </span>
-                        <span className="mt-1 block truncate text-xs">{preview(item)}</span>
-                        <span className="mt-2 flex flex-wrap items-center gap-2">
-                          <span
-                            className={`text-xs font-medium ${item.status === 'Pending' ? 'text-warning' : item.status === 'Published' ? 'text-primary' : 'text-success'}`}
-                          >
-                            {queryStatusLabel(item)}
+                        <span className="min-w-0 flex-1">
+                          <span className="flex min-w-0 items-baseline gap-2">
+                            <strong
+                              className={`min-w-0 flex-1 truncate text-sm ${needsQueryAttention(item) ? 'font-semibold' : 'font-medium'}`}
+                            >
+                              {item.originalSenderName}
+                            </strong>
+                            <Time
+                              value={item.createdAt}
+                              className={`shrink-0 text-xs ${waitingTone(item)}`}
+                            />
                           </span>
-                          {item.taskId && (
-                            <Badge
-                              variant="outline"
-                              className="text-xs px-1 py-0 border-info-border bg-info-bg text-info"
-                            >
-                              Task
-                            </Badge>
-                          )}
-                          {item.deliveryStatus === 'Unknown' && (
-                            <Badge
-                              variant="outline"
-                              className="text-xs px-1 py-0 border-warning-border bg-warning-bg text-warning"
-                            >
-                              Unknown
-                            </Badge>
-                          )}
+                          <span className="mt-0.5 line-clamp-2 text-sm text-foreground/80">
+                            {preview(item)}
+                          </span>
+                          <span className="mt-1.5 flex min-w-0 items-center gap-2 text-xs text-muted-foreground">
+                            <span className="min-w-0 truncate">
+                              {project?.name || 'Project'} · {item.requestType}
+                              {showStatus && ` · ${queryStatusLabel(item)}`}
+                            </span>
+                            {item.taskId && (
+                              <Badge
+                                variant="outline"
+                                className="shrink-0 border-info-border bg-info-bg px-1 py-0 text-xs text-info"
+                              >
+                                Task
+                              </Badge>
+                            )}
+                            {item.deliveryStatus === 'Unknown' && (
+                              <Badge
+                                variant="outline"
+                                className="shrink-0 border-warning-border bg-warning-bg px-1 py-0 text-xs text-warning"
+                              >
+                                Unknown
+                              </Badge>
+                            )}
+                          </span>
                         </span>
                       </span>
-                    </span>
-                  </button>
-                );
-              })
-            ) : (
-              <Empty
-                kind={requests.length ? 'no-results' : 'first-use'}
-                className="m-4"
-                icon={MessageSquare}
-                title={requests.length ? 'No conversations match' : 'No client queries'}
-                description={
-                  requests.length
-                    ? 'Try another filter, or clear the search.'
-                    : 'Questions from linked Telegram groups appear here.'
-                }
-              />
-            )}
-          </div>
-        </aside>
+                    </button>
+                  );
+                })
+              ) : (
+                <Empty
+                  kind={search.trim() ? 'no-results' : 'first-use'}
+                  className="m-4"
+                  icon={MessageSquare}
+                  title={search.trim() ? 'No conversations match' : emptyTab[tab][0]}
+                  description={search.trim() ? 'Try another search.' : emptyTab[tab][1]}
+                />
+              )}
+            </div>
+          </aside>
 
-        {/* Right conversation view */}
-        <section
-          className={`${mobileThread ? 'flex' : 'hidden lg:flex'} min-h-0 min-w-0 flex-col`}
-          aria-label="Selected decision conversation"
-        >
-          {selected ? (
-            <>
-              <div className="flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3">
-                <div className="flex items-center gap-3 min-w-0">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="lg:hidden"
-                    onClick={() => goBack({ queryId: '' })}
-                    aria-label="Back to conversations"
-                  >
-                    <ArrowLeft className="size-4" />
-                  </Button>
-                  <span className="grid size-10 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold">
-                    {initials(selected.originalSenderName)}
-                  </span>
-                  <div className="min-w-0">
-                    <h2 className="truncate type-label-14-strong">{selected.originalSenderName}</h2>
-                    <p className="truncate text-xs text-muted-foreground">
-                      {selectedProject?.name || 'Project'} · {selected.requestType} ·{' '}
-                      {queryStatusLabel(selected)}
-                      {selected.decisionStatus && ` (${selected.decisionStatus})`}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <QueryDecisionButtons
-                    onChanged={() => {
-                      load();
-                      onProjectsChanged?.();
-                    }}
-                    request={selected}
-                    disabled={busy}
-                    onAccept={() => setAcceptOpen(true)}
-                    onReject={() => setRejectOpen(true)}
-                  />
-                  {selected.status !== 'Done' && (
-                    <Button variant="outline" size="sm" disabled={busy} onClick={markDone}>
-                      Done
+          {/* Right conversation view */}
+          <section
+            className={`${mobileThread ? 'flex' : 'hidden lg:flex'} min-h-0 min-w-0 flex-col`}
+            aria-label="Selected decision conversation"
+          >
+            {selected ? (
+              <>
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="lg:hidden"
+                      onClick={() => goBack({ queryId: '' })}
+                      aria-label="Back to conversations"
+                    >
+                      <ArrowLeft className="size-4" />
                     </Button>
-                  )}
-                </div>
-              </div>
-
-              <div
-                ref={scrollRef}
-                className="chat-scroll min-h-0 flex-1 space-y-6 overflow-y-auto overscroll-contain bg-muted/30 px-4 py-6 sm:px-6"
-              >
-                <p className="text-center text-xs text-muted-foreground">
-                  Request received <Time value={selected.createdAt} format="datetime" />
-                </p>
-
-                {/* Delivery Status Warning */}
-                {selected.deliveryStatus === 'Unknown' && (
-                  <div className="mx-auto max-w-[85%] card-box border-warning-border bg-warning-bg text-xs text-warning flex items-start gap-2">
-                    <AlertTriangle className="size-4 shrink-0 text-warning mt-1" />
-                    <div>
-                      <strong>Delivery status unknown:</strong> A previous send attempt timed out or
-                      interrupted. Check the Telegram group manually before sending again. Do not
-                      retry automatically.
-                    </div>
-                  </div>
-                )}
-
-                {selected.deliveryStatus === 'Failed' && (
-                  <div className="mx-auto max-w-[85%] card-box border-destructive/30 bg-destructive/10 text-xs text-destructive flex items-start gap-2">
-                    <XCircle className="size-4 shrink-0 text-destructive mt-1" />
-                    <div>
-                      <strong>Delivery failed:</strong>{' '}
-                      {selected.deliveryError ||
-                        'Telegram rejected the message. You may retry publishing.'}
-                    </div>
-                  </div>
-                )}
-
-                {/* Main Client Message */}
-                <div className="flex items-end gap-2">
-                  <span className="grid size-7 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold">
-                    {initials(selected.originalSenderName)}
-                  </span>
-                  <div className="max-w-[85%] space-y-1">
-                    <p className="text-xs text-muted-foreground">
-                      {selected.originalSenderName} · Telegram
-                    </p>
-                    <div className="rounded-2xl rounded-bl-sm border bg-card px-4 py-3 text-sm shadow-sm space-y-2">
-                      <p className="whitespace-pre-wrap">
-                        {selected.originalMessage || 'Shared an attachment'}
+                    <span className="grid size-10 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold">
+                      {initials(selected.originalSenderName)}
+                    </span>
+                    <div className="min-w-0">
+                      <h2 className="truncate type-label-14-strong">
+                        {selected.originalSenderName}
+                      </h2>
+                      <p className="truncate text-xs text-muted-foreground">
+                        {selectedProject?.name || 'Project'} · {selected.requestType} ·{' '}
+                        {queryStatusLabel(selected)}
+                        {selected.decisionStatus && ` (${selected.decisionStatus})`}
                       </p>
+                    </div>
+                  </div>
 
-                      {/* Photo / Attachment previews */}
-                      {selected.attachments?.length > 0 && (
-                        <div className="mt-3 space-y-3">
-                          {selected.attachments.map((attachment, index) => {
-                            const isPhoto =
-                              attachment.type === 'Photo' ||
-                              /\.(png|jpe?g|webp|gif)$/i.test(attachment.fileName || '');
-                            const mediaUrl = getAttachmentUrl(selected.id, index, 'founder');
+                  <div className="flex items-center gap-2">
+                    <QueryDecisionButtons
+                      onChanged={() => {
+                        load();
+                        onProjectsChanged?.();
+                      }}
+                      request={selected}
+                      disabled={busy}
+                      onAccept={() => setAcceptOpen(true)}
+                      onReject={() => setRejectOpen(true)}
+                    />
+                    {selected.status !== 'Done' && (
+                      <Button variant="outline" size="sm" disabled={busy} onClick={markDone}>
+                        Done
+                      </Button>
+                    )}
+                  </div>
+                </div>
 
-                            return (
-                              <div key={index} className="space-y-1">
-                                {isPhoto ? (
-                                  <div className="overflow-hidden rounded-xl border bg-muted/20">
-                                    <img
-                                      src={mediaUrl}
-                                      alt={attachment.fileName || `Photo ${index + 1}`}
-                                      className="max-h-56 max-w-full rounded-xl object-contain"
-                                      onError={(e) => {
-                                        e.currentTarget.style.display = 'none';
-                                      }}
-                                    />
+                <div
+                  ref={scrollRef}
+                  className="chat-scroll min-h-0 flex-1 space-y-6 overflow-y-auto overscroll-contain bg-muted/30 px-4 py-6 sm:px-6"
+                >
+                  <p className="text-center text-xs text-muted-foreground">
+                    Request received <Time value={selected.createdAt} format="datetime" />
+                  </p>
+
+                  {/* Delivery Status Warning */}
+                  {selected.deliveryStatus === 'Unknown' && (
+                    <div className="mx-auto max-w-[85%] card-box border-warning-border bg-warning-bg text-xs text-warning flex items-start gap-2">
+                      <AlertTriangle className="size-4 shrink-0 text-warning mt-1" />
+                      <div>
+                        <strong>Delivery status unknown:</strong> A previous send attempt timed out
+                        or interrupted. Check the Telegram group manually before sending again. Do
+                        not retry automatically.
+                      </div>
+                    </div>
+                  )}
+
+                  {selected.deliveryStatus === 'Failed' && (
+                    <div className="mx-auto max-w-[85%] card-box border-destructive/30 bg-destructive/10 text-xs text-destructive flex items-start gap-2">
+                      <XCircle className="size-4 shrink-0 text-destructive mt-1" />
+                      <div>
+                        <strong>Delivery failed:</strong>{' '}
+                        {selected.deliveryError ||
+                          'Telegram rejected the message. You may retry publishing.'}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Main Client Message */}
+                  <div className="flex items-end gap-2">
+                    <span className="grid size-7 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold">
+                      {initials(selected.originalSenderName)}
+                    </span>
+                    <div className="max-w-[85%] space-y-1">
+                      <p className="text-xs text-muted-foreground">
+                        {selected.originalSenderName} · Telegram
+                      </p>
+                      <div className="rounded-2xl rounded-bl-sm border bg-card px-4 py-3 text-sm shadow-sm space-y-2">
+                        <p className="whitespace-pre-wrap">
+                          {selected.originalMessage || 'Shared an attachment'}
+                        </p>
+
+                        {/* Photo / Attachment previews */}
+                        {selected.attachments?.length > 0 && (
+                          <div className="mt-3 space-y-3">
+                            {selected.attachments.map((attachment, index) => {
+                              const isPhoto =
+                                attachment.type === 'Photo' ||
+                                /\.(png|jpe?g|webp|gif)$/i.test(attachment.fileName || '');
+                              const mediaUrl = getAttachmentUrl(selected.id, index, 'founder');
+
+                              return (
+                                <div key={index} className="space-y-1">
+                                  {isPhoto ? (
+                                    <div className="overflow-hidden rounded-xl border bg-muted/20">
+                                      <img
+                                        src={mediaUrl}
+                                        alt={attachment.fileName || `Photo ${index + 1}`}
+                                        className="max-h-56 max-w-full rounded-xl object-contain"
+                                        onError={(e) => {
+                                          e.currentTarget.style.display = 'none';
+                                        }}
+                                      />
+                                      <a
+                                        className="mt-1 inline-flex items-center gap-1 text-xs text-primary hover:underline px-2 py-1"
+                                        href={mediaUrl}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                      >
+                                        <FileText className="size-3" />
+                                        {attachment.fileName || 'View full image'}
+                                        <ExternalLink className="size-2.5" />
+                                      </a>
+                                    </div>
+                                  ) : (
                                     <a
-                                      className="mt-1 inline-flex items-center gap-1 text-xs text-primary hover:underline px-2 py-1"
+                                      key={index}
+                                      className="inline-flex items-center gap-1 rounded-lg bg-muted px-2 py-2 text-xs text-primary hover:underline"
                                       href={mediaUrl}
                                       target="_blank"
                                       rel="noreferrer"
                                     >
                                       <FileText className="size-3" />
-                                      {attachment.fileName || 'View full image'}
-                                      <ExternalLink className="size-2.5" />
+                                      {attachment.fileName || attachment.type || 'Document'}
+                                      <ExternalLink className="size-3" />
                                     </a>
-                                  </div>
-                                ) : (
-                                  <a
-                                    key={index}
-                                    className="inline-flex items-center gap-1 rounded-lg bg-muted px-2 py-2 text-xs text-primary hover:underline"
-                                    href={mediaUrl}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                  >
-                                    <FileText className="size-3" />
-                                    {attachment.fileName || attachment.type || 'Document'}
-                                    <ExternalLink className="size-3" />
-                                  </a>
-                                )}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                {selected.context && (
-                  <div className="mx-auto max-w-[85%] rounded-xl border border-warning-border bg-warning-bg px-4 py-2 text-xs text-warning">
-                    <strong>{selected.requestedByName} added:</strong> {selected.context}
-                  </div>
-                )}
-
-                {selected.reviewNote && (
-                  <div className="mx-auto max-w-[85%] rounded-xl border border-destructive/20 bg-destructive/5 px-4 py-2 text-xs text-destructive">
-                    <strong>Rejection reason:</strong> {selected.reviewNote}
-                  </div>
-                )}
-
-                {followUps.map((event, idx) =>
-                  event.type === 'comment' ? (
-                    <div key={event.value.id || idx} className="flex justify-end">
-                      <div className="max-w-[85%] space-y-1">
-                        <p className="text-right text-xs text-muted-foreground">
-                          {event.value.author} · private note · <Time value={event.at} />
-                        </p>
-                        <p className="whitespace-pre-wrap rounded-2xl rounded-br-sm border border-warning-border bg-warning-bg px-4 py-3 text-sm text-warning">
-                          {event.value.text}
-                        </p>
+                                  )}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        )}
                       </div>
                     </div>
-                  ) : (
-                    <div key="published" className="flex justify-end">
-                      <div className="max-w-[85%] space-y-1">
-                        <p className="text-right text-xs text-muted-foreground">
-                          Sent to Telegram · <Time value={event.at} />
-                        </p>
-                        <p className="whitespace-pre-wrap rounded-2xl rounded-br-sm bg-primary px-4 py-3 text-sm text-primary-foreground">
-                          {event.value}
-                        </p>
-                      </div>
-                    </div>
-                  ),
-                )}
-
-                <div className="flex justify-center">
-                  <QueryOutcome request={selected} />
-                </div>
-                {selected.status === 'Done' && (
-                  <p className="text-center text-xs text-success">
-                    Marked done <Time value={selected.resolvedAt} format="datetime" />
-                  </p>
-                )}
-              </div>
-
-              {selected.status !== 'Done' && (
-                <form onSubmit={send} className="space-y-2 border-t p-3 sm:p-4">
-                  <div className="flex items-center gap-2">
-                    <SegmentedControl
-                      className="flex-nowrap whitespace-nowrap"
-                      label="Message type"
-                      value={mode}
-                      onValueChange={setMode}
-                      options={[
-                        { value: 'internal', label: 'Private note' },
-                        ...(selected.status === 'Pending' || selected.deliveryStatus === 'Failed'
-                          ? [{ value: 'publish', label: 'Reply to Telegram' }]
-                          : []),
-                      ]}
-                    />
-                    <span className="ml-auto hidden text-xs text-muted-foreground sm:inline">
-                      {mode === 'internal' ? 'Stays in web app' : 'The group will see this'}
-                    </span>
                   </div>
 
-                  {mode === 'publish' && (
-                    <SuggestReply
-                      key={selected.id}
-                      requestId={selected.id}
-                      disabled={busy}
-                      onUse={(suggested) =>
-                        setDrafts((current) => ({ ...current, [selected.id]: suggested }))
-                      }
-                    />
+                  {selected.context && (
+                    <div className="mx-auto max-w-[85%] rounded-xl border border-warning-border bg-warning-bg px-4 py-2 text-xs text-warning">
+                      <strong>{selected.requestedByName} added:</strong> {selected.context}
+                    </div>
                   )}
 
-                  <div className="flex items-end gap-2">
-                    <Textarea
-                      value={text}
-                      onChange={(event) =>
-                        mode === 'internal'
-                          ? setNotes((current) => ({
-                              ...current,
-                              [selected.id]: event.target.value,
-                            }))
-                          : setDrafts((current) => ({
-                              ...current,
-                              [selected.id]: event.target.value,
-                            }))
-                      }
-                      rows={2}
-                      maxLength={mode === 'internal' ? 2000 : 3000}
-                      placeholder={
-                        mode === 'internal'
-                          ? 'Discuss or record an internal decision…'
-                          : 'Write the final answer for the Telegram group…'
-                      }
-                      aria-label={mode === 'internal' ? 'Private note' : 'Telegram reply'}
-                      className="max-h-32 flex-1 resize-y text-xs"
-                    />
-                    <Button
-                      type="submit"
-                      disabled={
-                        busy ||
-                        !text.trim() ||
-                        (mode === 'publish' && selected.deliveryStatus === 'Unknown')
-                      }
-                      aria-label={mode === 'internal' ? 'Save note' : 'Send to Telegram'}
-                    >
-                      <Send className="size-4 mr-1" />
-                      <span className="hidden sm:inline">
-                        {mode === 'internal' ? 'Save note' : 'Send to Telegram'}
-                      </span>
-                    </Button>
+                  {selected.reviewNote && (
+                    <div className="mx-auto max-w-[85%] rounded-xl border border-destructive/20 bg-destructive/5 px-4 py-2 text-xs text-destructive">
+                      <strong>Rejection reason:</strong> {selected.reviewNote}
+                    </div>
+                  )}
+
+                  {followUps.map((event, idx) =>
+                    event.type === 'comment' ? (
+                      <div key={event.value.id || idx} className="flex justify-end">
+                        <div className="max-w-[85%] space-y-1">
+                          <p className="text-right text-xs text-muted-foreground">
+                            {event.value.author} · private note · <Time value={event.at} />
+                          </p>
+                          <p className="whitespace-pre-wrap rounded-2xl rounded-br-sm border border-warning-border bg-warning-bg px-4 py-3 text-sm text-warning">
+                            {event.value.text}
+                          </p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div key="published" className="flex justify-end">
+                        <div className="max-w-[85%] space-y-1">
+                          <p className="text-right text-xs text-muted-foreground">
+                            Sent to Telegram · <Time value={event.at} />
+                          </p>
+                          <p className="whitespace-pre-wrap rounded-2xl rounded-br-sm bg-primary px-4 py-3 text-sm text-primary-foreground">
+                            {event.value}
+                          </p>
+                        </div>
+                      </div>
+                    ),
+                  )}
+
+                  <div className="flex justify-center">
+                    <QueryOutcome request={selected} />
                   </div>
-                </form>
-              )}
-            </>
-          ) : (
-            <div className="flex flex-1 flex-col items-center justify-center gap-2 p-8 text-center text-muted-foreground">
-              <MessageSquare className="size-9 opacity-50" />
-              <p className="text-sm font-medium">Select a conversation</p>
-              <p className="text-xs">Telegram requests and founder decisions appear here.</p>
-            </div>
-          )}
-        </section>
+                  {selected.status === 'Done' && (
+                    <p className="text-center text-xs text-success">
+                      Marked done <Time value={selected.resolvedAt} format="datetime" />
+                    </p>
+                  )}
+                </div>
+
+                {selected.status !== 'Done' && (
+                  <form onSubmit={send} className="space-y-2 border-t p-3 sm:p-4">
+                    <div className="flex items-center gap-2">
+                      <SegmentedControl
+                        className="flex-nowrap whitespace-nowrap"
+                        label="Message type"
+                        value={mode}
+                        onValueChange={setMode}
+                        options={[
+                          { value: 'internal', label: 'Private note' },
+                          ...(selected.status === 'Pending' || selected.deliveryStatus === 'Failed'
+                            ? [{ value: 'publish', label: 'Reply to Telegram' }]
+                            : []),
+                        ]}
+                      />
+                      <span className="ml-auto hidden text-xs text-muted-foreground sm:inline">
+                        {mode === 'internal' ? 'Stays in web app' : 'The group will see this'}
+                      </span>
+                    </div>
+
+                    {mode === 'publish' && (
+                      <SuggestReply
+                        key={selected.id}
+                        requestId={selected.id}
+                        disabled={busy}
+                        onUse={(suggested) =>
+                          setDrafts((current) => ({ ...current, [selected.id]: suggested }))
+                        }
+                      />
+                    )}
+
+                    <div className="flex items-end gap-2">
+                      <Textarea
+                        value={text}
+                        onChange={(event) =>
+                          mode === 'internal'
+                            ? setNotes((current) => ({
+                                ...current,
+                                [selected.id]: event.target.value,
+                              }))
+                            : setDrafts((current) => ({
+                                ...current,
+                                [selected.id]: event.target.value,
+                              }))
+                        }
+                        rows={2}
+                        maxLength={mode === 'internal' ? 2000 : 3000}
+                        placeholder={
+                          mode === 'internal'
+                            ? 'Discuss or record an internal decision…'
+                            : 'Write the final answer for the Telegram group…'
+                        }
+                        aria-label={mode === 'internal' ? 'Private note' : 'Telegram reply'}
+                        className="max-h-32 flex-1 resize-y text-xs"
+                      />
+                      <Button
+                        type="submit"
+                        disabled={
+                          busy ||
+                          !text.trim() ||
+                          (mode === 'publish' && selected.deliveryStatus === 'Unknown')
+                        }
+                        aria-label={mode === 'internal' ? 'Save note' : 'Send to Telegram'}
+                      >
+                        <Send className="size-4 mr-1" />
+                        <span className="hidden sm:inline">
+                          {mode === 'internal' ? 'Save note' : 'Send to Telegram'}
+                        </span>
+                      </Button>
+                    </div>
+                  </form>
+                )}
+              </>
+            ) : (
+              <div className="flex flex-1 flex-col items-center justify-center gap-2 p-8 text-center text-muted-foreground">
+                <MessageSquare className="size-9 opacity-50" />
+                <p className="text-sm font-medium">Select a conversation</p>
+                <p className="text-xs">Telegram requests and founder decisions appear here.</p>
+              </div>
+            )}
+          </section>
+        </div>
       </div>
 
       {selected && (
