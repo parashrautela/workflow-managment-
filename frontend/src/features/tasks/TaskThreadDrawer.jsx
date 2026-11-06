@@ -4,14 +4,17 @@ import {
   CheckCircle2,
   ChevronDown,
   ChevronUp,
+  FolderOpen,
+  Layers,
   Link2,
   MessageSquare,
   Paperclip,
   RefreshCw,
   Trash2,
-  UserRound,
 } from 'lucide-react';
 import './task-thread.css';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -42,9 +45,17 @@ import { taskStatus } from '@/lib/taskStatus';
 export function TaskMessage({ message, namespace = 'founder' }) {
   return (
     <article className="space-y-2 card-box bg-card text-sm">
-      <div className="flex justify-between gap-2 text-xs">
-        <strong>{message.author}</strong>
-        <Time value={message.at} />
+      <div className="flex items-center gap-2 text-xs">
+        <Avatar size="sm" aria-hidden="true">
+          <AvatarFallback className="bg-secondary font-medium text-secondary-foreground">
+            {String(message.author || '?')
+              .trim()
+              .charAt(0)
+              .toUpperCase()}
+          </AvatarFallback>
+        </Avatar>
+        <strong className="min-w-0 flex-1 truncate">{message.author}</strong>
+        <Time value={message.at} className="shrink-0 text-muted-foreground" />
       </div>
       {message.text && <p className="whitespace-pre-wrap break-words">{message.text}</p>}
       {message.isResource && (
@@ -345,7 +356,6 @@ export function TaskThreadDrawer({
             <div className="task-thread-heading-row">
               <div className="task-thread-context">
                 <StatusChip status={chip} />
-                <span>· {project?.name || 'Task workspace'}</span>
               </div>
               {canStep && (
                 <div className="task-thread-steps">
@@ -374,26 +384,40 @@ export function TaskThreadDrawer({
               )}
             </div>
             <SheetTitle>{task.title}</SheetTitle>
-            <dl className="task-thread-overview">
-              <div>
-                <dt>Assignee</dt>
-                <dd>
-                  <UserRound />
-                  {assigneeLabel}
-                </dd>
-              </div>
-              <div>
-                <dt>Deadline</dt>
-                <dd>
-                  <CalendarDays />
-                  {formatCalendar(task.deadline) || 'Not set'}
-                </dd>
-              </div>
-              <div>
-                <dt>Stage</dt>
-                <dd>{stage?.name || 'General'}</dd>
-              </div>
-            </dl>
+            <ul className="task-thread-chips">
+              <li>
+                <Badge variant="outline" className="bg-card" title="Project">
+                  <FolderOpen aria-hidden="true" />
+                  <span className="sr-only">Project: </span>
+                  <span className="truncate">{project?.name || 'Task workspace'}</span>
+                </Badge>
+              </li>
+              <li>
+                <Badge variant="outline" className="bg-card" title="Assignee">
+                  <Avatar size="sm" className="-my-1 -ml-1.5 size-5" aria-hidden="true">
+                    <AvatarFallback className="bg-secondary text-xs font-medium text-secondary-foreground">
+                      {assigneeLabel.trim().charAt(0).toUpperCase()}
+                    </AvatarFallback>
+                  </Avatar>
+                  <span className="sr-only">Assignee: </span>
+                  <span className="truncate">{assigneeLabel}</span>
+                </Badge>
+              </li>
+              <li>
+                <Badge variant="outline" className="bg-card" title="Deadline">
+                  <CalendarDays aria-hidden="true" />
+                  <span className="sr-only">Deadline: </span>
+                  {formatCalendar(task.deadline) || 'No deadline'}
+                </Badge>
+              </li>
+              <li>
+                <Badge variant="outline" className="bg-card" title="Stage">
+                  <Layers aria-hidden="true" />
+                  <span className="sr-only">Stage: </span>
+                  <span className="truncate">{stage?.name || 'General'}</span>
+                </Badge>
+              </li>
+            </ul>
             {isFounder && !projectClosed && !editing && (
               <div className="task-thread-header-actions">
                 <Button variant="outline" size="sm" onClick={startEdit}>

@@ -27,7 +27,6 @@ import {
   Menu,
   MessageSquare,
   Plus,
-  RefreshCw,
   Search,
   Send,
   Sparkles,
@@ -40,6 +39,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { RefreshButton } from '@/components/ui/refresh-button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Dialog,
@@ -68,7 +68,6 @@ import { DecisionInbox } from '@/features/queries/DecisionInbox';
 import { TelegramGroups } from '@/features/telegram/TelegramGroups';
 import { ProjectDetailView } from '@/features/projects/ProjectDetailView';
 import { ProjectDirectoryView } from '@/features/projects/ProjectDirectoryView';
-import { todayInput } from '@/lib/dates';
 import { Time } from '@/components/ui/time';
 import { Empty } from '@/components/ui/empty';
 
@@ -216,7 +215,6 @@ export default function FounderApp() {
   const [workPerson, setWorkPerson] = useState('founder');
   const [searchQuery, setSearchQuery] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [createOpen, setCreateOpen] = useState(false);
   const [memberOpen, setMemberOpen] = useState(false);
   const [memberDialogLabel, setMemberDialogLabel] = useState('Add employee');
   const [factsOpen, setFactsOpen] = useState(false);
@@ -334,7 +332,7 @@ export default function FounderApp() {
     const isLogin = authState === 'signed-out';
     document.documentElement.classList.toggle('founder-login', isLogin);
     const themeColor = document.querySelector('meta[name="theme-color"]');
-    if (themeColor) themeColor.content = '#fafbf7';
+    if (themeColor) themeColor.content = '#f7f7ff';
     return () => document.documentElement.classList.remove('founder-login');
   }, [authState]);
 
@@ -570,7 +568,7 @@ export default function FounderApp() {
         </div>
       </div>
 
-      <div className="flex items-center gap-3 border-t pt-3">
+      <div className="flex items-center gap-3 pt-3">
         <InitialAvatar name="Project founder" />
         <div className="min-w-0 flex-1">
           <p className="truncate text-xs font-semibold">Project founder</p>
@@ -586,7 +584,7 @@ export default function FounderApp() {
   return (
     <div className="iksha-workspace app-glow min-h-dvh bg-background pb-20 lg:pb-0">
       {/* Desktop Sidebar Navigation */}
-      <aside className="iksha-sidebar fixed inset-y-0 left-0 hidden w-64 border-r px-3 py-3 lg:block">
+      <aside className="iksha-sidebar fixed inset-y-0 left-0 hidden w-64 px-3 py-3 lg:block">
         {navigation}
       </aside>
 
@@ -601,229 +599,237 @@ export default function FounderApp() {
         </SheetContent>
       </Sheet>
 
-      <div className="lg:pl-64">
-        {/* Sticky App Header */}
-        <header className="sticky top-0 z-20 flex h-16 items-center justify-between border-b bg-card/95 px-4 backdrop-blur sm:px-8">
-          <div className="flex min-w-0 items-center gap-3">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="lg:hidden"
-              aria-label="Open navigation"
-              onClick={() => setSidebarOpen(true)}
-            >
-              <Menu />
-            </Button>
-            <nav aria-label="Breadcrumb" className="min-w-0 text-sm">
-              {currentTab === 'projects' && viewMode === 'detail' ? (
-                <ol className="flex min-w-0 items-center gap-2">
-                  <li className="shrink-0">
-                    <button
-                      type="button"
-                      className="text-muted-foreground hover:text-foreground"
-                      onClick={() => openTab('projects')}
+      {/* On desktop the page is a white sheet floating on the canvas; this band keeps the gap above it clear while scrolling. */}
+      <div
+        aria-hidden="true"
+        className="fixed inset-x-0 top-0 z-30 hidden h-2 bg-background lg:block"
+      />
+      <div className="lg:py-2 lg:pr-2 lg:pl-64">
+        <div className="iksha-sheet lg:min-h-[calc(100dvh-1rem)] lg:rounded-xl lg:bg-card">
+          {/* Sticky App Header */}
+          <header className="sticky top-0 z-20 flex h-16 items-center justify-between border-b bg-card/95 px-4 backdrop-blur sm:px-8 lg:top-2 lg:rounded-t-xl lg:border-transparent">
+            <div className="flex min-w-0 items-center gap-3">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="lg:hidden"
+                aria-label="Open navigation"
+                onClick={() => setSidebarOpen(true)}
+              >
+                <Menu />
+              </Button>
+              <nav aria-label="Breadcrumb" className="min-w-0 text-sm">
+                {currentTab === 'projects' && viewMode === 'detail' ? (
+                  <ol className="flex min-w-0 items-center gap-2">
+                    <li className="shrink-0">
+                      <button
+                        type="button"
+                        className="text-muted-foreground hover:text-foreground"
+                        onClick={() => openTab('projects')}
+                      >
+                        Projects
+                      </button>
+                    </li>
+                    <li aria-hidden="true" className="shrink-0 text-muted-foreground">
+                      /
+                    </li>
+                    <li
+                      className="min-w-0 truncate font-semibold"
+                      aria-current="page"
+                      title={selectedProject?.name}
                     >
-                      Projects
-                    </button>
-                  </li>
-                  <li aria-hidden="true" className="shrink-0 text-muted-foreground">
-                    /
-                  </li>
-                  <li
-                    className="min-w-0 truncate font-semibold"
-                    aria-current="page"
-                    title={selectedProject?.name}
-                  >
-                    {selectedProject?.name || 'Project not found'}
-                  </li>
-                </ol>
-              ) : (
-                <strong className="block truncate" aria-current="page">
-                  {founderSectionLabel(currentTab)}
-                </strong>
-              )}
-            </nav>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <InitialAvatar name="Project founder" />
-          </div>
-        </header>
-
-        {/* Main Content Area */}
-        <main
-          className={
-            currentTab === 'assistant'
-              ? 'h-[calc(100dvh-9rem)] lg:h-[calc(100dvh-4rem)]'
-              : 'mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:px-8 sm:py-8'
-          }
-        >
-          {currentTab === 'assistant' ? (
-            <FounderAssistant />
-          ) : currentTab === 'meetings' ? (
-            <MeetingsView />
-          ) : currentTab === 'chats' ? (
-            <ProjectConversations projects={projects} />
-          ) : currentTab === 'actions' ? (
-            <WorkQueue
-              projects={projects}
-              initialPersonId={workPerson}
-              onChanged={() => {
-                loadProjects();
-                loadEmployees();
-              }}
-            />
-          ) : currentTab === 'groups' ? (
-            <TelegramGroups projects={projects} onProjectsChanged={loadProjects} />
-          ) : currentTab === 'decisions' ? (
-            <DecisionInbox
-              projects={projects}
-              onProjectsChanged={() => {
-                loadProjects();
-                loadDecisionRequests();
-              }}
-            />
-          ) : currentTab === 'employees' ? (
-            <EmployeeManager
-              onViewWork={(employee) => {
-                setWorkPerson(employee.id);
-                openTab('actions');
-              }}
-              employees={employees}
-              projects={projects}
-              onAdd={() => {
-                setMemberDialogLabel('Add employee');
-                setMemberOpen(true);
-              }}
-              onUpdated={loadEmployees}
-            />
-          ) : currentTab === 'trash' ? (
-            <div className="space-y-6">
-              <div>
-                <h1>Trash</h1>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Projects here are hidden from employees. Restore them whenever you need to.
-                </p>
-              </div>
-              {trashedProjects.length ? (
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {trashedProjects.map((proj) => (
-                    <Card key={proj.id}>
-                      <CardContent className="flex items-center gap-3">
-                        <FolderKanban className="size-5 shrink-0 text-muted-foreground" />
-                        <div className="min-w-0 flex-1">
-                          <p className="truncate text-sm font-semibold">{proj.name}</p>
-                          <p className="truncate text-xs text-muted-foreground">
-                            {proj.clientName}
-                          </p>
-                        </div>
-                        <Button variant="outline" size="sm" onClick={() => restoreProject(proj.id)}>
-                          Restore
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              ) : (
-                <Empty
-                  icon={Trash2}
-                  title="Trash is empty"
-                  description="Projects you move to trash stay here until you restore them."
-                />
-              )}
+                      {selectedProject?.name || 'Project not found'}
+                    </li>
+                  </ol>
+                ) : (
+                  <strong className="block truncate lg:sr-only" aria-current="page">
+                    {founderSectionLabel(currentTab)}
+                  </strong>
+                )}
+              </nav>
             </div>
-          ) : currentTab === 'activity' ? (
-            <>
-              <div className="flex items-start justify-between gap-3">
+
+            <div className="flex items-center gap-2">
+              <InitialAvatar name="Project founder" />
+            </div>
+          </header>
+
+          {/* Main Content Area */}
+          <main
+            className={
+              currentTab === 'assistant'
+                ? 'h-[calc(100dvh-9rem)] lg:h-[calc(100dvh-5rem)]'
+                : 'mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:px-8 sm:py-8'
+            }
+          >
+            {currentTab === 'assistant' ? (
+              <FounderAssistant />
+            ) : currentTab === 'meetings' ? (
+              <MeetingsView />
+            ) : currentTab === 'chats' ? (
+              <ProjectConversations projects={projects} />
+            ) : currentTab === 'actions' ? (
+              <WorkQueue
+                projects={projects}
+                initialPersonId={workPerson}
+                onChanged={() => {
+                  loadProjects();
+                  loadEmployees();
+                }}
+              />
+            ) : currentTab === 'groups' ? (
+              <TelegramGroups projects={projects} onProjectsChanged={loadProjects} />
+            ) : currentTab === 'decisions' ? (
+              <DecisionInbox
+                projects={projects}
+                onProjectsChanged={() => {
+                  loadProjects();
+                  loadDecisionRequests();
+                }}
+              />
+            ) : currentTab === 'employees' ? (
+              <EmployeeManager
+                onViewWork={(employee) => {
+                  setWorkPerson(employee.id);
+                  openTab('actions');
+                }}
+                employees={employees}
+                projects={projects}
+                onAdd={() => {
+                  setMemberDialogLabel('Add employee');
+                  setMemberOpen(true);
+                }}
+                onUpdated={loadEmployees}
+              />
+            ) : currentTab === 'trash' ? (
+              <div className="space-y-6">
                 <div>
-                  <h1>Activity</h1>
+                  <h1>Trash</h1>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    Recent updates across your projects.
+                    Projects here are hidden from employees. Restore them whenever you need to.
                   </p>
                 </div>
-                <Button variant="outline" size="sm" onClick={loadActivities}>
-                  <RefreshCw /> Refresh
-                </Button>
-              </div>
-              <Card>
-                <CardContent className="divide-y">
-                  {activities.length ? (
-                    activities.map((item, index) => {
-                      const { who, what, project } = describeActivity(item, {
-                        projects,
-                        employees,
-                      });
-                      return (
-                        <div key={item.id || index} className="flex gap-3 py-4 first:pt-0">
-                          <InitialAvatar name={who} className="size-8" />
+                {trashedProjects.length ? (
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    {trashedProjects.map((proj) => (
+                      <Card key={proj.id}>
+                        <CardContent className="flex items-center gap-3">
+                          <FolderKanban className="size-5 shrink-0 text-muted-foreground" />
                           <div className="min-w-0 flex-1">
-                            <p className="text-sm">
-                              <strong className="font-semibold">{who}</strong> {what}
-                            </p>
-                            <p className="mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-                              {project && <span className="truncate">{project}</span>}
-                              <Time value={item.at} />
+                            <p className="truncate text-sm font-semibold">{proj.name}</p>
+                            <p className="truncate text-xs text-muted-foreground">
+                              {proj.clientName}
                             </p>
                           </div>
-                        </div>
-                      );
-                    })
-                  ) : (
-                    <Empty
-                      className="border-0"
-                      icon={History}
-                      title="No activity yet"
-                      description="Project changes appear here as they happen."
-                    />
-                  )}
-                </CardContent>
-              </Card>
-            </>
-          ) : currentTab === 'projects' && viewMode === 'directory' ? (
-            /* Actionable 21: Obvious All Projects Directory Screen */
-            <ProjectDirectoryView
-              projects={projects}
-              decisionRequests={decisionRequests}
-              onSelectProject={handleSelectProjectFromDir}
-              onCreateProject={() => setCreateOpen(true)}
-              onOpenGroups={() => openTab('groups')}
-            />
-          ) : currentTab === 'projects' && viewMode === 'detail' && selectedProject ? (
-            /* Actionables 1, 3, 4, 5, 6, 7, 8, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20: Detailed Project Workspace */
-            <ProjectDetailView
-              key={selectedProject.id}
-              project={selectedProject}
-              allProjects={projects}
-              employees={employees}
-              decisionRequests={decisionRequests}
-              onBack={() => goBack({ section: 'projects' })}
-              onProjectUpdated={loadProjects}
-              onQueriesUpdated={loadDecisionRequests}
-              onOpenTrashModal={() => setTrashConfirmOpen(true)}
-              onOpenCompleteModal={() => setCompleteConfirmOpen(true)}
-              onOpenFactsModal={() => setFactsOpen(true)}
-              onOpenMemberModal={() => {
-                setMemberDialogLabel('Add team member');
-                setMemberOpen(true);
-              }}
-            />
-          ) : (
-            <div className="space-y-4">
-              <h1>Project not found</h1>
-              <Empty
-                kind="no-results"
-                icon={FolderKanban}
-                title="No project at this link"
-                description="This link may be out of date, or the project may have moved to trash."
-                action={
-                  <Button size="sm" onClick={() => openTab('projects')}>
-                    View all projects
-                  </Button>
-                }
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => restoreProject(proj.id)}
+                          >
+                            Restore
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                ) : (
+                  <Empty
+                    icon={Trash2}
+                    title="Trash is empty"
+                    description="Projects you move to trash stay here until you restore them."
+                  />
+                )}
+              </div>
+            ) : currentTab === 'activity' ? (
+              <>
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <h1>Activity</h1>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      Recent updates across your projects.
+                    </p>
+                  </div>
+                  <RefreshButton onRefresh={loadActivities} />
+                </div>
+                <Card>
+                  <CardContent className="divide-y">
+                    {activities.length ? (
+                      activities.map((item, index) => {
+                        const { who, what, project } = describeActivity(item, {
+                          projects,
+                          employees,
+                        });
+                        return (
+                          <div key={item.id || index} className="flex gap-3 py-4 first:pt-0">
+                            <InitialAvatar name={who} className="size-8" />
+                            <div className="min-w-0 flex-1">
+                              <p className="text-sm">
+                                <strong className="font-semibold">{who}</strong> {what}
+                              </p>
+                              <p className="mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                                {project && <span className="truncate">{project}</span>}
+                                <Time value={item.at} />
+                              </p>
+                            </div>
+                          </div>
+                        );
+                      })
+                    ) : (
+                      <Empty
+                        className="border-0"
+                        icon={History}
+                        title="No activity yet"
+                        description="Project changes appear here as they happen."
+                      />
+                    )}
+                  </CardContent>
+                </Card>
+              </>
+            ) : currentTab === 'projects' && viewMode === 'directory' ? (
+              /* Actionable 21: Obvious All Projects Directory Screen */
+              <ProjectDirectoryView
+                projects={projects}
+                decisionRequests={decisionRequests}
+                onSelectProject={handleSelectProjectFromDir}
+                onOpenGroups={() => openTab('groups')}
               />
-            </div>
-          )}
-        </main>
+            ) : currentTab === 'projects' && viewMode === 'detail' && selectedProject ? (
+              /* Actionables 1, 3, 4, 5, 6, 7, 8, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20: Detailed Project Workspace */
+              <ProjectDetailView
+                key={selectedProject.id}
+                project={selectedProject}
+                allProjects={projects}
+                employees={employees}
+                decisionRequests={decisionRequests}
+                onBack={() => goBack({ section: 'projects' })}
+                onProjectUpdated={loadProjects}
+                onQueriesUpdated={loadDecisionRequests}
+                onOpenTrashModal={() => setTrashConfirmOpen(true)}
+                onOpenCompleteModal={() => setCompleteConfirmOpen(true)}
+                onOpenFactsModal={() => setFactsOpen(true)}
+                onOpenMemberModal={() => {
+                  setMemberDialogLabel('Add team member');
+                  setMemberOpen(true);
+                }}
+              />
+            ) : (
+              <div className="space-y-4">
+                <h1>Project not found</h1>
+                <Empty
+                  kind="no-results"
+                  icon={FolderKanban}
+                  title="No project at this link"
+                  description="This link may be out of date, or the project may have moved to trash."
+                  action={
+                    <Button size="sm" onClick={() => openTab('projects')}>
+                      View all projects
+                    </Button>
+                  }
+                />
+              </div>
+            )}
+          </main>
+        </div>
       </div>
 
       {/* Mobile Sticky Navigation Footer (Actionable 22: Responsive mobile usability) */}
@@ -858,56 +864,6 @@ export default function FounderApp() {
           }}
         />
       </nav>
-
-      {/* Create Project Modal (Phase 2) */}
-      <Dialog open={createOpen} onOpenChange={setCreateOpen}>
-        <DialogContent className="max-h-[90dvh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle>Create project</DialogTitle>
-            <DialogDescription>
-              Set up the basics. New projects start in Setup. You can assign the client and select a
-              workflow next.
-            </DialogDescription>
-          </DialogHeader>
-          <form
-            onSubmit={(e) =>
-              saveForm(
-                e,
-                '/api/founder/projects',
-                'POST',
-                () => setCreateOpen(false),
-                'Project created in Setup.',
-              )
-            }
-            className="space-y-4"
-          >
-            <Field label="Project name">
-              <Input name="name" placeholder="Kumar Residence" required />
-            </Field>
-            <Field label="Client name (optional)">
-              <Input name="clientName" placeholder="Asha Kumar" />
-            </Field>
-            <Field label="Location (optional)">
-              <Input name="location" placeholder="Pune, Maharashtra" />
-            </Field>
-            <Field label="Start date (optional)">
-              <Input name="startDate" type="date" defaultValue={todayInput()} />
-            </Field>
-            <div className="card-box bg-muted/30 text-xs text-muted-foreground leading-copy">
-              New projects begin in <strong>Setup</strong> status. You can assign an identified
-              client and select a workflow template to generate sequential stages and tasks.
-            </div>
-            <DialogFooter>
-              <Button type="button" variant="outline" onClick={() => setCreateOpen(false)}>
-                Cancel
-              </Button>
-              <Button type="submit" disabled={busy}>
-                {busy ? 'Creating project…' : 'Create project'}
-              </Button>
-            </DialogFooter>
-          </form>
-        </DialogContent>
-      </Dialog>
 
       {/* Add Employee Modal */}
       <EmployeeDialog

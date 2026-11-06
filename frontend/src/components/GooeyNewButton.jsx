@@ -43,7 +43,7 @@ export function GooeyNewButton({ hasProject, onAddMember }) {
       className="relative z-40 flex h-12 items-center justify-center overflow-visible"
     >
       <Liquid
-        fill="#273c36"
+        fill="#2b2a36"
         blur={5}
         contrast={18}
         filterPadding={200}

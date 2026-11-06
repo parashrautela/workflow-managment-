@@ -10,7 +10,6 @@ import {
   Clock,
   FolderKanban,
   MapPin,
-  Plus,
   Search,
   Users,
   Sparkles,
@@ -29,7 +28,6 @@ export function ProjectDirectoryView({
   projects = [],
   decisionRequests = [],
   onSelectProject,
-  onCreateProject,
   onOpenGroups,
 }) {
   const [search, setSearch] = useState('');
@@ -76,11 +74,6 @@ export function ProjectDirectoryView({
             Select a project to manage its tasks, internal chat, schedule, and client queries.
           </p>
         </div>
-
-        <Button onClick={onCreateProject}>
-          <Plus className="size-4 mr-2" />
-          Create project
-        </Button>
       </div>
 
       {/* Filter Tabs & Search Bar (Actionable 21) */}
@@ -209,7 +202,7 @@ export function ProjectDirectoryView({
             description={
               projects.length
                 ? 'Try another status, or search by a different name, client or location.'
-                : 'Create your first project to manage its tasks, team chat and client queries.'
+                : 'Projects are created from Telegram groups. Open Telegram groups to create one.'
             }
             action={
               projects.length ? (
@@ -223,12 +216,7 @@ export function ProjectDirectoryView({
                 >
                   Clear filters
                 </Button>
-              ) : (
-                <Button size="sm" onClick={onCreateProject}>
-                  <Plus />
-                  Create project
-                </Button>
-              )
+              ) : null
             }
           />
         )}

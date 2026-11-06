@@ -2,8 +2,9 @@ import { PersonalReminders } from '@/features/operations/PersonalReminders';
 import { matchesRole } from '@/features/people/lib/roles';
 import { LocationProjectPicker } from '@/features/projects/LocationProjectPicker';
 import { useEffect, useState } from 'react';
-import { ArrowUpRight, CheckCircle2, RefreshCw } from 'lucide-react';
+import { CheckCircle2, FolderOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { RefreshButton } from '@/components/ui/refresh-button';
 import { Input } from '@/components/ui/input';
 import { TaskThreadDrawer } from '@/features/tasks/TaskThreadDrawer';
 import { request } from '@/lib/api';
@@ -13,7 +14,17 @@ import { Time } from '@/components/ui/time';
 import { StatusChip } from '@/components/ui/status-chip';
 import { matchesTaskStatus, taskStatus } from '@/lib/taskStatus';
 import { Empty } from '@/components/ui/empty';
+import { NativeSelect } from '@/components/ui/native-select';
+import { SegmentedControl } from '@/components/ui/segmented-control';
 
+// The status filter is a short fixed set, so it is pill tabs; people and projects come from data, so they stay selects.
+const STATUS_FILTERS = [
+  { value: 'pending', label: 'All' },
+  { value: 'approvals', label: 'Approvals' },
+  { value: 'overdue', label: 'Overdue' },
+  { value: 'blocked', label: 'Blocked' },
+  { value: 'in-progress', label: 'In progress' },
+];
 const statusOf = (task) =>
   taskStatus(task, { stage: task.project?.stages?.find((stage) => stage.id === task.stageId) });
 const matchesStatusFilter = (status, filter) =>
@@ -40,7 +51,8 @@ export function WorkQueue({
     [busy, setBusy] = useState(false),
     [link, setLink] = useState(''),
     [syncWarning, setSyncWarning] = useState(''),
-    [connected, setConnected] = useState(false);
+    [connected, setConnected] = useState(false),
+    [railGroup, setRailGroup] = useState('');
   const navigation = useNavigation();
   const selected =
     navigation.section === 'actions'
@@ -49,6 +61,12 @@ export function WorkQueue({
   const namespace = isFounder ? 'founder' : 'employee';
   // The status filter uses the same words as the rows, so a row can never contradict its filter.
   const visibleTasks = tasks.filter((task) => matchesStatusFilter(statusOf(task), status));
+  // One card per project, in the order the queue already sorts its work.
+  const groups = new Map();
+  for (const task of visibleTasks) {
+    const name = task.projectName || 'Other work';
+    groups.set(name, [...(groups.get(name) || []), task]);
+  }
   const load = async () => {
     try {
       const data = await request(
@@ -100,10 +118,7 @@ export function WorkQueue({
           >
             {connected ? 'Telegram connected' : 'Connect Telegram digests'}
           </Button>
-          <Button variant="outline" size="sm" onClick={load}>
-            <RefreshCw className="size-4" />
-            Refresh
-          </Button>
+          <RefreshButton onRefresh={load} />
         </div>
       </div>
       {link && (
@@ -115,12 +130,20 @@ export function WorkQueue({
           and press Start once. Each employee connects from their own Telegram account.
         </p>
       )}
-      <div className="work-queue-filters grid gap-3 sm:grid-cols-3">
-        {isFounder && (
-          <label className="grid min-w-0 gap-1 text-xs">
-            Person
-            <select
-              className="h-10 w-full min-w-0 truncate rounded-md border bg-background px-3 max-sm:h-11"
+      <div className="work-queue-filters">
+        <SegmentedControl
+          label="Status"
+          value={status}
+          onValueChange={setStatus}
+          options={STATUS_FILTERS}
+          className="work-queue-status no-scrollbar"
+        />
+        <div className="work-queue-pickers">
+          {isFounder && (
+            <NativeSelect
+              size="sm"
+              variant="pill"
+              aria-label="Person"
               value={person}
               onChange={(event) => setPerson(event.target.value)}
             >
@@ -131,13 +154,12 @@ export function WorkQueue({
                   {employee.name}
                 </option>
               ))}
-            </select>
-          </label>
-        )}
-        <label className="grid min-w-0 gap-1 text-xs">
-          Project
-          <select
-            className="h-10 w-full min-w-0 truncate rounded-md border bg-background px-3 max-sm:h-11"
+            </NativeSelect>
+          )}
+          <NativeSelect
+            size="sm"
+            variant="pill"
+            aria-label="Project"
             value={projectId}
             onChange={(event) => setProjectId(event.target.value)}
           >
@@ -147,22 +169,8 @@ export function WorkQueue({
                 {project.name}
               </option>
             ))}
-          </select>
-        </label>
-        <label className="grid min-w-0 gap-1 text-xs">
-          Status
-          <select
-            className="h-10 w-full min-w-0 truncate rounded-md border bg-background px-3 max-sm:h-11"
-            value={status}
-            onChange={(event) => setStatus(event.target.value)}
-          >
-            <option value="pending">All pending work</option>
-            <option value="approvals">Pending approvals</option>
-            <option value="overdue">Overdue</option>
-            <option value="blocked">Blocked</option>
-            <option value="in-progress">In progress</option>
-          </select>
-        </label>
+          </NativeSelect>
+        </div>
       </div>
       {syncWarning && (
         <p role="status" className="text-sm text-warning">
@@ -174,64 +182,116 @@ export function WorkQueue({
           {error}
         </p>
       )}
-      <div className="work-queue-list space-y-3">
-        {visibleTasks.map((task) => (
-          <button
-            key={task.id}
-            className="work-queue-item flex w-full items-center justify-between gap-3 card-box bg-card text-left hover:bg-muted"
-            onClick={() => navigate({ section: 'actions', taskId: task.id })}
-          >
-            {isFounder ? (
-              <>
-                <span className="work-queue-item-content">
-                  <span className="work-queue-item-title">{task.title}</span>
-                  <span className="work-queue-item-context">
-                    {task.projectName} · {task.stageName}
-                    {task.spaces?.length ? ` · ${task.spaces.join(', ')}` : ''}
-                  </span>
+      <div className="work-queue-body">
+        {/* Keyed by the status pill, so only the list fades in when the filter changes. */}
+        <div key={status} className="work-queue-list">
+          {[...groups].map(([projectName, rows], index) => (
+            <section
+              key={projectName}
+              id={`work-queue-group-${index}`}
+              className="work-queue-group"
+              aria-label={projectName}
+            >
+              <h2 className="work-queue-group-title">
+                <span
+                  className={`work-queue-group-icon iksha-stage color-${index % 8}`}
+                  aria-hidden="true"
+                >
+                  <FolderOpen />
                 </span>
-                <span className="work-queue-item-meta">
-                  {task.deadline && (
-                    <span>
-                      Due <Time value={task.deadline} format="calendar" />
-                    </span>
-                  )}
-                  <StatusChip status={statusOf(task)} className="justify-self-end" />
-                </span>
-              </>
-            ) : (
-              <div>
-                <p className="text-sm font-medium">
-                  {task.projectName} — {task.stageName} — {task.title}
-                </p>
-                <p className="mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-                  <StatusChip status={statusOf(task)} />
-                  {task.deadline ? ` · Due ${formatCalendar(task.deadline)}` : ''}
-                  {task.spaces?.length ? ` · ${task.spaces.join(', ')}` : ''}
-                </p>
+                <span className="min-w-0 truncate">{projectName}</span>
+                <span className="work-queue-group-count">{rows.length}</span>
+              </h2>
+              <div className="work-queue-card">
+                {rows.map((task) => {
+                  const taskState = statusOf(task);
+                  return (
+                    <button
+                      key={task.id}
+                      className="work-queue-item flex w-full items-center justify-between gap-3 text-left hover:bg-accent"
+                      onClick={() => navigate({ section: 'actions', taskId: task.id })}
+                    >
+                      {isFounder ? (
+                        <>
+                          <span className="work-queue-item-content">
+                            <span className="work-queue-item-title">{task.title}</span>
+                            <span className="work-queue-item-context">
+                              {task.stageName}
+                              {task.spaces?.length ? ` · ${task.spaces.join(', ')}` : ''}
+                            </span>
+                          </span>
+                          <span className="work-queue-item-meta">
+                            <StatusChip
+                              status={taskState}
+                              action={taskState.key === 'waiting'}
+                              className="justify-self-end"
+                            />
+                            {task.deadline && (
+                              <span>
+                                Due <Time value={task.deadline} format="calendar" />
+                              </span>
+                            )}
+                          </span>
+                        </>
+                      ) : (
+                        <div>
+                          <p className="text-sm font-medium">
+                            {task.stageName} — {task.title}
+                          </p>
+                          <p className="mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                            <StatusChip status={taskState} action={taskState.key === 'waiting'} />
+                            {task.deadline ? ` · Due ${formatCalendar(task.deadline)}` : ''}
+                            {task.spaces?.length ? ` · ${task.spaces.join(', ')}` : ''}
+                          </p>
+                        </div>
+                      )}
+                    </button>
+                  );
+                })}
               </div>
-            )}
-            <ArrowUpRight className="work-queue-item-arrow size-4 shrink-0" />
-          </button>
-        ))}
-        {!visibleTasks.length && !error && (
-          <Empty
-            kind={tasks.length ? 'no-results' : 'first-use'}
-            icon={CheckCircle2}
-            title={tasks.length ? 'No work matches these filters' : 'No pending work'}
-            description={
-              tasks.length
-                ? 'Try another status, or clear the filter.'
-                : 'Work that needs action appears here.'
-            }
-            action={
-              tasks.length ? (
-                <Button variant="outline" size="sm" onClick={() => setStatus('pending')}>
-                  Show all pending work
-                </Button>
-              ) : null
-            }
-          />
+            </section>
+          ))}
+          {!visibleTasks.length && !error && (
+            <Empty
+              kind={tasks.length ? 'no-results' : 'first-use'}
+              icon={CheckCircle2}
+              title={tasks.length ? 'No work matches these filters' : 'No pending work'}
+              description={
+                tasks.length
+                  ? 'Try another status, or clear the filter.'
+                  : 'Work that needs action appears here.'
+              }
+              action={
+                tasks.length ? (
+                  <Button variant="outline" size="sm" onClick={() => setStatus('pending')}>
+                    Show all pending work
+                  </Button>
+                ) : null
+              }
+            />
+          )}
+        </div>
+        {groups.size > 1 && (
+          // Sol's "view as" rail: every project with its count; picking one scrolls to its card.
+          <nav className="work-queue-rail" aria-label="Jump to a project">
+            <p className="work-queue-rail-label">By project</p>
+            {[...groups].map(([projectName, rows], index) => (
+              <button
+                key={projectName}
+                type="button"
+                data-active={(railGroup || [...groups.keys()][0]) === projectName}
+                onClick={() => {
+                  setRailGroup(projectName);
+                  document
+                    .getElementById(`work-queue-group-${index}`)
+                    ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+              >
+                <span className="min-w-0 truncate">{projectName}</span>
+                <span className="tabular-nums">{rows.length}</span>
+              </button>
+            ))}
+          </nav>
         )}
       </div>
       <TaskThreadDrawer

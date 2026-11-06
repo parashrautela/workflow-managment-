@@ -125,3 +125,18 @@ Timeline move options: dragging or nudging a task/stage offers Move in parallel 
 User asked for one Intercom-inspired screen and approved it from a fake-data preview of the component. The Client queries inbox now has status tabs with counts — Needs action, Waiting for context, Handled, Group messages, All — and opens on Needs action. Waiting-for-context queries have their own tab instead of falling under Handled; undecided group messages have their own tab. The status dropdown and the separate Updates filter are removed (updates appear under Needs action, labelled Update). List rows show the message first, project and type underneath, and the age of open queries in amber after one day and red after three. Search and the project filter share one row. A link to a query opens the tab it belongs to; accepting or rejecting does not switch tabs. Conversation, Accept/Reject flow and backend are unchanged; the global sidebar is untouched.
 
 Verification: 180 backend/frontend tests pass, including a new test for tab assignment; production build passes. Fake-data browser preview checked at desktop and phone width. Frontend only; no backend files changed.
+
+
+## 2026-11-06 — Sol-inspired UI refresh (black and white)
+
+User asked for the founder workspace to look like Sol (hellosol.app) and reviewed every step in the running app before approving the push. Frontend only; no backend files changed.
+
+- Theme: cool neutral palette (canvas #f7f7ff, ink #2b2a36, near-black main action), Geist body text and Roboto Slab headings from Google Fonts, hairline shadows on raised controls, and on desktop a white rounded page sheet floating on the canvas. Client portal and employee app share the stylesheet and get the same look. DESIGN.md updated to match.
+- Shared parts: status chips are white pills with a tone dot; segmented controls are pills; outline buttons carry a soft shadow; buttons space icon and label evenly; the active sidebar row is raised; one RefreshButton spins while reloading; icons nudge on hover (off under reduced motion). The scrollbar gutter is reserved so pages never shift sideways.
+- Actions needed: tasks grouped by project in one card per project with coloured folders, a "By project" rail on wide screens, status pills (All, Approvals, Overdue, Blocked, In progress) beside Person and Project pill selects, a chevron on Approval pending, and a short fade when the filter changes.
+- Task drawer: project, assignee, deadline and stage as chips under the title; a face on each discussion message.
+- Client queries: tabs aligned with the search field, the client's message as a card, chips under the sender, less repeated text, and the suggested reply shown as the message the group will read.
+- Assistant: rebuilt inside the page sheet. Empty, it is a centred question box with suggestion tiles; after asking, a thread with the box docked below (Enter sends, Shift+Enter adds a line). Answers render as a report: task lists grouped by project with status chips, project facts as label/value cards, missing facts in grey; unknown formats fall back to plain text.
+- Projects: the Create project button and its dialog are removed at the user's request; projects are created from Telegram groups.
+
+Verification: 185 backend/frontend tests pass on this branch, including new tests for reading assistant answers; production build passes. Checked in a demo-data copy of the app at desktop and phone width: all ten founder sections and seven project tabs have no sideways scroll on a 375px screen.

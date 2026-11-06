@@ -1,75 +1,147 @@
 import { useEffect, useRef, useState } from 'react';
 import { ThinkingOrb } from 'thinking-orbs';
-import { ArrowUp, LockKeyhole } from 'lucide-react';
+import { AlertCircle, ArrowUp, Flag, FolderOpen, ListChecks, Sparkles, Users } from 'lucide-react';
+import './assistant.css';
 import { Bubble, BubbleContent } from '@/components/ui/bubble';
 import { Button } from '@/components/ui/button';
-import { Message, MessageContent, MessageHeader } from '@/components/ui/message';
+import { StatusChip } from '@/components/ui/status-chip';
 import { Textarea } from '@/components/ui/textarea';
+import { Time } from '@/components/ui/time';
+import { parseAnswer, statusTone } from '@/features/assistant/lib/answer';
 
 const suggestions = [
-  'Summarize all ongoing projects',
-  'Which projects have blockers?',
-  'What milestones are next?',
-  'Who is working on each project?',
+  { text: 'Summarize all ongoing projects', icon: ListChecks },
+  { text: 'Which projects have blockers?', icon: AlertCircle },
+  { text: 'What milestones are next?', icon: Flag },
+  { text: 'Who is working on each project?', icon: Users },
 ];
 
-function FormattedAnswer({ answer }) {
-  const blocks = [];
-  for (const rawLine of String(answer || '').split('\n')) {
-    const line = rawLine.trim();
-    if (!line) continue;
-    if (line.startsWith('# ')) blocks.push({ type: 'title', text: line.slice(2) });
-    else if (line.startsWith('## ')) blocks.push({ type: 'heading', text: line.slice(3) });
-    else if (line.startsWith('- ')) {
-      const previous = blocks.at(-1);
-      if (previous?.type === 'list') previous.items.push(line.slice(2));
-      else blocks.push({ type: 'list', items: [line.slice(2)] });
-    } else blocks.push({ type: 'paragraph', text: line });
-  }
+function AnswerItem({ item }) {
+  if (item.kind === 'field')
+    return (
+      <div className="assistant-field">
+        <span className="assistant-field-label">{item.label}</span>
+        <span className={item.empty ? 'text-muted-foreground' : undefined}>{item.value}</span>
+      </div>
+    );
+  if (item.kind === 'pair')
+    return (
+      <div className="assistant-pair">
+        <span>{item.primary}</span>
+        <span className="text-muted-foreground">{item.secondary}</span>
+      </div>
+    );
+  if (item.kind === 'bullet')
+    return (
+      <p className={item.empty ? 'assistant-row text-muted-foreground' : 'assistant-row'}>
+        {item.text}
+      </p>
+    );
   return (
-    <div className="space-y-3">
-      {blocks.map((block, index) =>
-        block.type === 'title' ? (
-          <h2 key={index} className="type-label-14-strong text-foreground">
-            {block.text}
+    <p className="assistant-row">
+      {item.lines.map((line, index) => (
+        <span key={index} className={index ? 'block text-muted-foreground' : 'block'}>
+          {line}
+        </span>
+      ))}
+    </p>
+  );
+}
+
+// A project heading with its folder colour, the same mark the Actions list uses.
+function GroupTitle({ index, name, count }) {
+  return (
+    <h3 className="assistant-group-title">
+      <span className={`assistant-group-icon iksha-stage color-${index % 8}`} aria-hidden="true">
+        <FolderOpen />
+      </span>
+      <span className="min-w-0 truncate">{name}</span>
+      {count != null && <span className="assistant-group-count">{count}</span>}
+    </h3>
+  );
+}
+
+// Answers read as a short report: a title and one line of context, then one card per project.
+function Answer({ answer }) {
+  const { title, intro, sections, tasks } = parseAnswer(answer);
+  const projects = new Map();
+  for (const task of tasks)
+    projects.set(task.project, [...(projects.get(task.project) || []), task]);
+  const overdue = tasks.filter((task) => statusTone(task.status) === 'overdue').length;
+  const waiting = tasks.filter((task) => /approval/i.test(task.status)).length;
+  return (
+    <div className="assistant-report">
+      {(title || tasks.length > 0) && (
+        <header className="assistant-report-head">
+          <h2 className="type-heading-20">
+            {title ||
+              `${tasks.length} pending ${tasks.length === 1 ? 'task' : 'tasks'} across ${projects.size} ${projects.size === 1 ? 'project' : 'projects'}`}
           </h2>
-        ) : block.type === 'heading' ? (
-          <h3
-            key={index}
-            className="border-t border-border/70 pt-2 text-sm font-semibold text-foreground first:border-0 first:pt-0"
-          >
-            {block.text}
-          </h3>
-        ) : block.type === 'list' ? (
-          <ul key={index} className="space-y-2 pl-4 text-sm marker:text-primary">
-            {block.items.map((item, itemIndex) => {
-              const colon = item.indexOf(':');
-              return (
-                <li key={itemIndex} className="list-disc pl-1">
-                  {colon > 0 && colon < 24 ? (
-                    <>
-                      <strong className="font-semibold">{item.slice(0, colon + 1)}</strong>
-                      {item.slice(colon + 1)}
-                    </>
-                  ) : (
-                    item
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        ) : (
-          <p key={index} className="text-sm text-muted-foreground">
-            {block.text}
-          </p>
-        ),
+          {tasks.length > 0 && (overdue > 0 || waiting > 0) && (
+            <p className="text-sm text-muted-foreground">
+              {[overdue && `${overdue} overdue`, waiting && `${waiting} awaiting approval`]
+                .filter(Boolean)
+                .join(' · ')}
+            </p>
+          )}
+          {intro.map((item, index) =>
+            item.kind === 'text' ? (
+              <p key={index} className="text-sm text-muted-foreground">
+                {item.lines.join(' ')}
+              </p>
+            ) : null,
+          )}
+        </header>
       )}
+      {!title &&
+        !tasks.length &&
+        intro.map((item, index) => <AnswerItem key={index} item={item} />)}
+      {title && intro.some((item) => item.kind !== 'text') && (
+        <div className="assistant-card">
+          {intro
+            .filter((item) => item.kind !== 'text')
+            .map((item, index) => (
+              <AnswerItem key={index} item={item} />
+            ))}
+        </div>
+      )}
+      {[...projects].map(([project, rows], index) => (
+        <section key={project} className="assistant-group">
+          <GroupTitle index={index} name={project} count={rows.length} />
+          <div className="assistant-card">
+            {rows.map((task, row) => (
+              <div key={row} className="assistant-task">
+                <div className="min-w-0">
+                  <p className="assistant-task-title">{task.title}</p>
+                  <p className="assistant-task-meta">{task.stage || 'General'}</p>
+                </div>
+                <StatusChip tone={statusTone(task.status)}>{task.status}</StatusChip>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+      {sections.map((section, index) => (
+        <section key={index} className="assistant-group">
+          <GroupTitle index={index} name={section.heading} />
+          {section.items.length > 0 && (
+            <div className="assistant-card">
+              {section.items.map((item, row) => (
+                <AnswerItem key={row} item={item} />
+              ))}
+            </div>
+          )}
+        </section>
+      ))}
     </div>
   );
 }
 
+// One centred column inside the page sheet. Before the first question the page is the question box;
+// after it, the conversation reads top to bottom with the box docked underneath.
 export function FounderAssistant() {
   const [messages, setMessages] = useState([]);
+  const [loaded, setLoaded] = useState(false);
   const [draft, setDraft] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -79,7 +151,9 @@ export function FounderAssistant() {
     fetch('/api/founder/assistant', { credentials: 'same-origin' })
       .then((response) => response.json())
       .then((data) => setMessages(data.messages || []))
-      .catch(() => setError('Could not load earlier questions.'));
+      .catch(() => setError('Could not load earlier questions.'))
+      // Nothing shows until history arrives, so the empty screen never flashes before it.
+      .finally(() => setLoaded(true));
   }, []);
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
@@ -120,132 +194,141 @@ export function FounderAssistant() {
     }
   };
 
+  const composer = (
+    <form onSubmit={ask} className="assistant-composer">
+      <Textarea
+        value={draft}
+        onChange={(event) => setDraft(event.target.value)}
+        // Enter asks; Shift+Enter starts a new line.
+        onKeyDown={(event) => {
+          if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing)
+            ask(event);
+        }}
+        rows={1}
+        maxLength={1000}
+        placeholder="Ask about your projects…"
+        aria-label="Ask the founder assistant"
+      />
+      <Button
+        type="submit"
+        size="icon-sm"
+        disabled={!draft.trim() || busy}
+        aria-label="Send question"
+      >
+        <ArrowUp />
+      </Button>
+    </form>
+  );
+  const errorLine = error && (
+    <p role="alert" className="text-xs text-destructive">
+      {error}
+    </p>
+  );
+
   return (
-    <div className="flex h-full min-h-0 flex-col overflow-hidden bg-background">
-      <header className="hidden shrink-0 border-b bg-card sm:block">
-        <div className="mx-auto flex min-h-16 max-w-4xl items-center gap-3 px-3 py-2 sm:px-6">
-          <div className="hidden shrink-0 sm:block">
-            <ThinkingOrb
-              state={busy ? 'working' : 'breathing'}
-              size={32}
-              speed={busy ? 0.6 : 0.3}
-              theme="light"
-              color="#315e4c"
-              aria-hidden="true"
-            />
-          </div>
-          <div className="min-w-0 flex-1">
-            <h1 className="truncate">Assistant</h1>
-            <p className="truncate text-xs text-muted-foreground">
-              Ask Studio Iksha about your projects
-            </p>
-          </div>
-          <LockKeyhole className="size-4 text-muted-foreground" aria-label="Founder only" />
-        </div>
+    <div className="assistant">
+      <header className="assistant-header">
+        <h1>Assistant</h1>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Ask about your projects. Answers come from saved project facts, and only founders can see
+          them.
+        </p>
       </header>
-      <div className="mx-auto flex min-h-0 w-full max-w-4xl flex-1 flex-col bg-card md:border-x">
-        <div
-          ref={scrollRef}
-          className="chat-scroll min-h-0 flex-1 space-y-6 overflow-y-auto px-4 py-4 sm:px-6"
-          aria-label="Founder assistant conversation"
-          aria-live="polite"
-        >
-          {!messages.length && (
-            <div className="mx-auto flex max-w-sm flex-col items-center py-8 text-center">
-              <ThinkingOrb
-                state="breathing"
-                size={64}
-                speed={0.3}
-                theme="light"
-                color="#315e4c"
-                aria-hidden="true"
-              />
-              <h2 className="mt-6 type-label-14-strong">Your projects, one question away</h2>
-              <p className="mt-2 text-xs leading-copy text-muted-foreground">
-                Ask about progress, blockers, milestones, team assignments, or recent client
-                questions. Answers come from saved project facts.
-              </p>
-            </div>
-          )}
-          {messages.map((item) => (
-            <div key={item.id} className="space-y-3">
-              <Message align="end">
-                <MessageContent className="max-w-[88%] sm:max-w-[75%]">
-                  <MessageHeader className="justify-end">You</MessageHeader>
-                  <Bubble align="end">
-                    <BubbleContent>{item.question}</BubbleContent>
-                  </Bubble>
-                </MessageContent>
-              </Message>
-              {item.answer && (
-                <Message align="start">
-                  <MessageContent className="max-w-[92%] sm:max-w-[82%]">
-                    <MessageHeader>Studio Iksha</MessageHeader>
-                    <Bubble variant="secondary" className="max-w-full">
-                      <BubbleContent className="w-full p-4">
-                        <FormattedAnswer answer={item.answer} />
-                      </BubbleContent>
-                    </Bubble>
-                  </MessageContent>
-                </Message>
-              )}
-            </div>
-          ))}
-          {busy && (
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <ThinkingOrb
-                state="working"
-                size={20}
-                speed={0.65}
-                theme="light"
-                color="#315e4c"
-                aria-hidden="true"
-              />
-              Reading your project records…
-            </div>
-          )}
-        </div>
-        <div className="safe-bottom shrink-0 border-t bg-card">
-          <div className="flex max-h-32 flex-wrap gap-2 overflow-y-auto px-4 py-3 sm:px-6">
-            {suggestions.map((suggestion) => (
-              <Button
-                key={suggestion}
-                variant="outline"
-                size="sm"
-                className="h-auto min-h-8 max-w-full whitespace-normal py-1 text-left"
+
+      {!loaded ? null : !messages.length ? (
+        <section className="assistant-start" aria-label="Ask the assistant">
+          <ThinkingOrb
+            state="breathing"
+            size={32}
+            speed={0.3}
+            theme="light"
+            color="#2b2a36"
+            aria-hidden="true"
+          />
+          <h2 className="type-heading-24">What do you want to know?</h2>
+          <p className="text-sm text-muted-foreground">
+            Progress, blockers, milestones, team assignments or recent client questions.
+          </p>
+          {composer}
+          {errorLine}
+          <div className="assistant-suggestions">
+            {suggestions.map(({ text, icon: Icon }) => (
+              <button
+                key={text}
+                type="button"
+                className="assistant-suggestion"
                 disabled={busy}
-                onClick={(event) => ask(event, suggestion)}
+                onClick={(event) => ask(event, text)}
               >
-                {suggestion}
-              </Button>
+                <Icon aria-hidden="true" />
+                <span>{text}</span>
+              </button>
             ))}
           </div>
-          <form onSubmit={ask} className="flex items-end gap-2 border-t px-3 pt-3 sm:px-4">
-            <Textarea
-              value={draft}
-              onChange={(event) => setDraft(event.target.value)}
-              rows={1}
-              maxLength={1000}
-              placeholder="Ask about your projects…"
-              aria-label="Ask the founder assistant"
-              className="max-h-32 min-h-11 flex-1 resize-none"
-            />
-            <Button
-              type="submit"
-              size="icon"
-              disabled={!draft.trim() || busy}
-              aria-label="Send question"
-            >
-              <ArrowUp className="size-5" />
-            </Button>
-          </form>
-          {error && (
-            <p role="alert" className="px-4 pt-2 text-xs text-destructive">
-              {error}
-            </p>
-          )}
-        </div>
-      </div>
+        </section>
+      ) : (
+        <>
+          <div
+            ref={scrollRef}
+            className="assistant-thread chat-scroll"
+            aria-label="Founder assistant conversation"
+            aria-live="polite"
+          >
+            <div className="assistant-column assistant-turns">
+              {messages.map((item) => (
+                <article key={item.id} className="assistant-turn">
+                  <Bubble variant="secondary" align="end">
+                    <BubbleContent className="type-copy-14">{item.question}</BubbleContent>
+                  </Bubble>
+                  {item.answer && (
+                    <div className="assistant-answer">
+                      <p className="assistant-answer-label">
+                        <Sparkles aria-hidden="true" />
+                        Studio Iksha
+                        {item.at && <Time value={item.at} />}
+                      </p>
+                      <Answer answer={item.answer} />
+                    </div>
+                  )}
+                </article>
+              ))}
+              {busy && (
+                <p role="status" className="assistant-working">
+                  <ThinkingOrb
+                    state="working"
+                    size={20}
+                    speed={0.65}
+                    theme="light"
+                    color="#2b2a36"
+                    aria-hidden="true"
+                  />
+                  Reading your project records…
+                </p>
+              )}
+            </div>
+          </div>
+          <div className="assistant-dock safe-bottom">
+            <div className="assistant-column">
+              <div className="assistant-chips no-scrollbar">
+                {suggestions.map(({ text }) => (
+                  <Button
+                    key={text}
+                    variant="outline"
+                    size="sm"
+                    className="shrink-0"
+                    disabled={busy}
+                    onClick={(event) => ask(event, text)}
+                  >
+                    {text}
+                  </Button>
+                ))}
+              </div>
+              {composer}
+              {errorLine}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

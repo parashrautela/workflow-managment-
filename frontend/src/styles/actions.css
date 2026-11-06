@@ -17,32 +17,154 @@
   border-radius: 50%;
   background: var(--primary);
 }
+/* Sol's filter row: status pills on the left, person and project pickers on the right. */
 .work-queue-filters {
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: var(--gap-grid);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
 }
-.work-queue-filters label {
-  grid-template-rows: auto 1fr;
+.work-queue-status[data-slot='segmented-control'] {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.work-queue-pickers {
+  display: flex;
+  min-width: 0;
+  gap: var(--space-8);
+}
+.work-queue-pickers select {
+  width: auto;
+  max-width: 220px;
+}
+.work-queue-list {
+  display: grid;
+  min-width: 0;
+  gap: var(--gap-section);
+  animation: work-queue-in 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes work-queue-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+/* Wide screens get Sol's rail of projects beside the list. */
+.work-queue-body {
+  display: grid;
+  gap: var(--space-32);
+}
+@media (min-width: 1280px) {
+  .work-queue-body {
+    grid-template-columns: minmax(0, 1fr) 200px;
+  }
+}
+.work-queue-rail {
+  display: none;
+}
+@media (min-width: 1280px) {
+  .work-queue-rail {
+    position: sticky;
+    top: 88px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-self: start;
+    gap: var(--space-4);
+    padding-left: var(--space-16);
+  }
+}
+.work-queue-rail-label {
+  margin-bottom: var(--space-8);
+  color: var(--secondary-foreground);
+  font: var(--type-label-14);
+}
+.work-queue-rail button {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  justify-content: space-between;
+  gap: var(--space-12);
+  padding: var(--space-4) 0;
+  color: var(--muted-foreground);
+  font: var(--type-label-14);
+  text-align: left;
+}
+.work-queue-rail button:hover,
+.work-queue-rail button[data-active='true'] {
+  color: var(--foreground);
+}
+.work-queue-rail button[data-active='true']::before {
+  content: '';
+  position: absolute;
+  inset: 4px auto 4px calc(var(--space-16) * -1);
+  width: 2px;
+  border-radius: var(--radius-chip);
+  background: var(--foreground);
+}
+.work-queue-group {
+  display: grid;
+  gap: var(--space-12);
+  scroll-margin-top: 88px;
+}
+/* The project label sits outside the card; the card holds only rows. */
+.work-queue-group-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  min-width: 0;
+  font: 500 var(--text-base) / var(--leading-heading) var(--font-body);
+  letter-spacing: normal;
+}
+/* Each project gets its own folder colour from the stage palette, like Sol's topic folders. */
+.work-queue-group-icon {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border: 1px solid var(--stage-border);
+  border-radius: var(--radius);
+  background: var(--stage-bg);
+  color: var(--stage-ink);
+}
+.work-queue-group-icon svg {
+  width: 14px;
+  height: 14px;
+}
+.work-queue-group-count {
+  color: var(--muted-foreground);
+  font: var(--type-label-12);
+  font-variant-numeric: tabular-nums;
+}
+.work-queue-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--card);
 }
 .work-queue-item {
-  min-height: 88px;
-  gap: var(--space-24);
-  padding: var(--space-16);
-  border-radius: var(--radius-card);
+  gap: var(--space-32);
+  padding: var(--space-12) var(--space-16);
   transition: background-color 150ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.work-queue-item + .work-queue-item {
+  border-top: 1px solid var(--border);
 }
 .work-queue-item-content {
   display: grid;
   min-width: 0;
   flex: 1;
-  gap: var(--space-8);
+  gap: var(--space-4);
 }
+/* Sol's rows: regular-weight title in ink, the line under it the same size in grey. */
 .work-queue-item-title {
-  font: var(--type-label-14-strong);
+  font: var(--type-copy-14);
 }
 .work-queue-item-context {
   color: var(--muted-foreground);
-  font: var(--type-copy-12);
+  font: var(--type-copy-14);
 }
 .work-queue-item-meta {
   display: grid;
@@ -56,34 +178,27 @@
 .work-queue-item-meta time {
   color: var(--foreground);
 }
-.work-queue-item-arrow {
-  color: var(--muted-foreground);
-}
 @media (max-width: 639px) {
   .work-queue-header {
     gap: var(--space-16);
   }
-  .work-queue-filters {
-    grid-template-columns: 1fr 1fr;
+  .work-queue-pickers {
+    width: 100%;
   }
-  .work-queue-filters label:last-child {
-    grid-column: 1 / -1;
+  .work-queue-pickers select {
+    flex: 1 1 0;
+    max-width: none;
   }
   .work-queue-item {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 16px;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-12);
   }
   .work-queue-item-meta {
-    grid-column: 1;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: var(--space-4) var(--space-12);
     text-align: left;
-  }
-  .work-queue-item-arrow {
-    grid-column: 2;
-    grid-row: 1;
   }
 }

@@ -3,10 +3,10 @@
     38px/1 Georgia,
     serif;
   letter-spacing: 5px;
-  color: #273c36;
+  color: var(--foreground);
 }
 .iksha-wordmark > span {
-  color: #5d7a50;
+  color: var(--muted-foreground);
 }
 .iksha-wordmark small {
   display: block;
@@ -26,8 +26,9 @@
   color: var(--muted-foreground);
   text-transform: uppercase;
 }
+/* The sidebar sits on the canvas; only the page sheet is white. */
 .iksha-sidebar {
-  background: var(--muted);
+  background: var(--background);
 }
 .iksha-navigation > .iksha-wordmark {
   padding: var(--space-4) var(--space-8) var(--space-12);
@@ -43,10 +44,6 @@
 }
 
 .iksha-workspace [data-slot='card'] {
-  box-shadow: none;
-}
-
-.iksha-workspace [data-slot='button'] {
   box-shadow: none;
 }
 
