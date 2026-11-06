@@ -1,0 +1,285 @@
+/* Assistant: lives inside the page sheet like every other page, with one centred reading column. */
+.assistant {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+  flex-direction: column;
+}
+/* Phones already show the page name in the top bar. */
+.assistant-header {
+  display: none;
+}
+@media (min-width: 640px) {
+  .assistant-header {
+    display: block;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: var(--space-32) var(--space-32) 0;
+  }
+}
+.assistant-column {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--space-16);
+}
+
+/* Before the first question: the question box is the page. */
+.assistant-start {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-12);
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-24) var(--space-16) 12vh;
+  overflow-y: auto;
+  text-align: center;
+}
+.assistant-start > p {
+  max-width: 46ch;
+}
+.assistant-start > .assistant-composer {
+  width: 100%;
+  margin-top: var(--space-12);
+  text-align: left;
+}
+.assistant-suggestions {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-8);
+  margin-top: var(--space-4);
+}
+.assistant-suggestion {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-12) var(--space-16);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--card);
+  color: var(--foreground);
+  font: var(--type-label-14);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color 150ms,
+    border-color 150ms;
+}
+.assistant-suggestion:hover:not(:disabled) {
+  border-color: var(--border-strong);
+  background: var(--accent);
+}
+.assistant-suggestion:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.assistant-suggestion svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--muted-foreground);
+}
+
+/* One box for the question: the field and its send button share a border, and focus lights the border. */
+.assistant-composer {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-8);
+  padding: var(--space-8) var(--space-8) var(--space-8) var(--space-16);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-panel);
+  background: var(--card);
+  box-shadow: var(--shadow-float);
+  transition: border-color 150ms;
+}
+.assistant-composer:focus-within {
+  border-color: var(--ring);
+}
+.assistant-composer [data-slot='textarea'] {
+  min-height: 32px;
+  max-height: 160px;
+  flex: 1;
+  padding: 6px 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  resize: none;
+  font: var(--type-copy-14);
+}
+.assistant-composer [data-slot='textarea']:focus-visible {
+  outline: none;
+}
+/* 16px on phones so iOS does not zoom into the field. */
+@media (max-width: 639px) {
+  .assistant-composer [data-slot='textarea'] {
+    font-size: var(--text-base);
+  }
+}
+
+/* After the first question: the conversation, then the docked box. */
+.assistant-thread {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-24) 0;
+}
+.assistant-turns {
+  display: grid;
+  gap: var(--space-32);
+}
+.assistant-turn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+.assistant-answer {
+  display: grid;
+  gap: var(--space-8);
+}
+.assistant-answer-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  color: var(--muted-foreground);
+  font: var(--type-label-12-strong);
+}
+.assistant-answer-label svg {
+  width: 14px;
+  height: 14px;
+}
+.assistant-answer-label time {
+  font-weight: var(--font-weight-normal);
+}
+.assistant-working {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  color: var(--muted-foreground);
+  font: var(--type-label-12);
+}
+.assistant-dock {
+  flex-shrink: 0;
+  padding-top: var(--space-8);
+  background: var(--card);
+}
+.assistant-chips {
+  display: flex;
+  gap: var(--space-8);
+  overflow-x: auto;
+  padding-bottom: var(--space-8);
+}
+
+/* Answers as a short report: title and context, then one card per project with rows inside. */
+.assistant-report {
+  display: grid;
+  gap: var(--space-24);
+}
+.assistant-report-head {
+  display: grid;
+  gap: var(--space-4);
+}
+.assistant-group {
+  display: grid;
+  gap: var(--space-8);
+}
+.assistant-group-title {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: var(--space-8);
+  font: var(--type-label-14-strong);
+  letter-spacing: normal;
+}
+.assistant-group-icon {
+  display: grid;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  place-items: center;
+  border: 1px solid var(--stage-border);
+  border-radius: 6px;
+  background: var(--stage-bg);
+  color: var(--stage-ink);
+}
+.assistant-group-icon svg {
+  width: 13px;
+  height: 13px;
+}
+.assistant-group-count {
+  color: var(--muted-foreground);
+  font: var(--type-label-12);
+  font-variant-numeric: tabular-nums;
+}
+.assistant-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--card);
+}
+.assistant-card > * + * {
+  border-top: 1px solid var(--border);
+}
+.assistant-task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+  padding: var(--space-12) var(--space-16);
+}
+.assistant-task-title {
+  font: var(--type-copy-14);
+}
+.assistant-task-meta {
+  color: var(--muted-foreground);
+  font: var(--type-label-12);
+}
+/* Label on the left, fact on the right; facts that were never recorded stay grey. */
+.assistant-field {
+  display: grid;
+  grid-template-columns: 136px minmax(0, 1fr);
+  gap: var(--space-16);
+  padding: var(--space-12) var(--space-16);
+  font: var(--type-copy-14);
+}
+.assistant-field-label {
+  color: var(--muted-foreground);
+}
+.assistant-pair {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-16);
+  padding: var(--space-12) var(--space-16);
+  font: var(--type-copy-14);
+}
+.assistant-row {
+  padding: var(--space-12) var(--space-16);
+  font: var(--type-copy-14);
+}
+.assistant-report > .assistant-row {
+  padding: 0;
+}
+@media (max-width: 639px) {
+  .assistant-task {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-8);
+  }
+  .assistant-field {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+  }
+  .assistant-pair {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+}

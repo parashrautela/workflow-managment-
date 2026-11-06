@@ -40,7 +40,7 @@ function SidebarItem({
       aria-current={active ? 'page' : undefined}
       title={title}
       className={cn(
-        'flex h-11 w-full min-w-0 items-center gap-2 rounded-md border border-transparent px-2 text-left text-sm text-foreground transition-colors hover:bg-card data-[active=true]:border-border data-[active=true]:bg-card data-[active=true]:font-semibold',
+        'flex h-11 w-full min-w-0 items-center gap-2 rounded-md px-2 text-left text-sm text-muted-foreground transition-colors hover:bg-card hover:text-foreground data-[active=true]:bg-card data-[active=true]:font-semibold data-[active=true]:text-foreground data-[active=true]:shadow-[var(--shadow-raised)]',
         'lg:h-8',
         className,
       )}

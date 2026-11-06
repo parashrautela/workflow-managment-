@@ -37,14 +37,21 @@ export function SuggestReply({ requestId, disabled, onUse, baseInstruction = '',
   return (
     <div className="space-y-2">
       <div className="flex flex-wrap items-center gap-2">
-        <Button type="button" size="sm" variant="outline" disabled={disabled || busy} onClick={run}>
-          {busy ? (
-            <Loader2 className="size-3.5 mr-2 animate-spin" />
-          ) : (
+        {/* While drafting, a quiet line replaces the button so finished drafts are what stand out. */}
+        {busy ? (
+          <span
+            role="status"
+            className="inline-flex min-h-8 items-center gap-2 text-xs text-muted-foreground"
+          >
+            <Loader2 className="size-3.5 animate-spin" aria-hidden="true" />
+            Drafting from project data…
+          </span>
+        ) : (
+          <Button type="button" size="sm" variant="outline" disabled={disabled} onClick={run}>
             <Sparkles className="size-3.5 mr-2" />
-          )}
-          {busy ? 'Drafting from project data…' : suggestion ? 'Suggest again' : 'Suggest reply'}
-        </Button>
+            {suggestion ? 'Suggest again' : 'Suggest reply'}
+          </Button>
+        )}
         <button
           type="button"
           className="text-xs text-muted-foreground underline-offset-2 hover:underline"
@@ -72,18 +79,21 @@ export function SuggestReply({ requestId, disabled, onUse, baseInstruction = '',
           {error}
         </p>
       )}
+      {/* The draft is shown as the message the group will read, with its actions underneath. */}
       {suggestion && (
-        <div className="card-box border-primary/25 bg-primary/5 space-y-2" aria-live="polite">
-          <p className="flex items-center gap-2 text-xs font-semibold text-primary">
-            <Sparkles className="size-3.5" />
-            {suggestion.ai
-              ? "Suggested reply · from this project's records"
-              : 'Draft from project records (AI not available)'}
-          </p>
-          <p className="whitespace-pre-wrap break-words text-xs text-foreground">
+        <article className="overflow-hidden rounded-xl border bg-card" aria-live="polite">
+          <header className="flex flex-wrap items-center gap-x-2 gap-y-1 border-b px-4 py-2 text-xs text-muted-foreground">
+            <Sparkles className="size-3.5 text-primary" aria-hidden="true" />
+            <span className="font-medium text-foreground">
+              {suggestion.ai ? 'Suggested reply' : 'Draft from project records'}
+            </span>
+            <span>{suggestion.ai ? "· from this project's records" : '· AI not available'}</span>
+            <span className="ml-auto">To the Telegram group</span>
+          </header>
+          <p className="whitespace-pre-wrap break-words px-4 pt-3 type-copy-14">
             {suggestion.suggestion}
           </p>
-          <p className="text-xs text-muted-foreground">
+          <p className="px-4 pt-2 pb-3 text-xs text-muted-foreground">
             Based on {suggestion.basedOn.inProgress} in-progress, {suggestion.basedOn.late} late and{' '}
             {suggestion.basedOn.nextUp} upcoming work items
             {suggestion.basedOn.previousReplies
@@ -94,7 +104,17 @@ export function SuggestReply({ requestId, disabled, onUse, baseInstruction = '',
               : ''}
             . Check it before sending.
           </p>
-          <div className="flex flex-wrap gap-2">
+          <footer className="flex flex-wrap items-center justify-between gap-2 border-t bg-subtle px-3 py-2">
+            <div className="flex flex-wrap gap-1">
+              <Button type="button" size="sm" variant="ghost" disabled={busy} onClick={run}>
+                <RefreshCw className="size-3.5 mr-1" />
+                Try again
+              </Button>
+              <Button type="button" size="sm" variant="ghost" onClick={() => setSuggestion(null)}>
+                <X className="size-3.5 mr-1" />
+                Discard
+              </Button>
+            </div>
             <Button
               type="button"
               size="sm"
@@ -106,16 +126,8 @@ export function SuggestReply({ requestId, disabled, onUse, baseInstruction = '',
               <Check className="size-3.5 mr-1" />
               Use this reply
             </Button>
-            <Button type="button" size="sm" variant="outline" disabled={busy} onClick={run}>
-              <RefreshCw className="size-3.5 mr-1" />
-              Try again
-            </Button>
-            <Button type="button" size="sm" variant="ghost" onClick={() => setSuggestion(null)}>
-              <X className="size-3.5 mr-1" />
-              Discard
-            </Button>
-          </div>
-        </div>
+          </footer>
+        </article>
       )}
     </div>
   );

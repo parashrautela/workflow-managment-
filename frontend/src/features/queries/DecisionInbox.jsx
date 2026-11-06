@@ -12,7 +12,6 @@ import {
   Check,
   ExternalLink,
   MessageSquare,
-  RefreshCw,
   Search,
   Send,
   Settings2,
@@ -22,9 +21,11 @@ import {
   Plus,
   XCircle,
   FileText,
+  FolderOpen,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { RefreshButton } from '@/components/ui/refresh-button';
 import { Input } from '@/components/ui/input';
 import { NativeSelect } from '@/components/ui/native-select';
 import { Textarea } from '@/components/ui/textarea';
@@ -307,10 +308,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
           </p>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" size="sm" onClick={load}>
-            <RefreshCw />
-            Refresh
-          </Button>
+          <RefreshButton onRefresh={load} />
           <Button
             variant="outline"
             size="sm"
@@ -381,7 +379,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
         <Tabs
           value={tab}
           onValueChange={setTab}
-          className={`${mobileThread ? 'hidden lg:flex' : 'flex'} shrink-0 border-b`}
+          className={`${mobileThread ? 'hidden lg:flex' : 'flex'} shrink-0 border-b px-3`}
         >
           <TabsList
             variant="line"
@@ -473,7 +471,9 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
                           </span>
                           <span className="mt-1.5 flex min-w-0 items-center gap-2 text-xs text-muted-foreground">
                             <span className="min-w-0 truncate">
-                              {project?.name || 'Project'} · {item.requestType}
+                              {project?.name || 'Project'}
+                              {(showStatus || item.requestType !== 'Question') &&
+                                ` · ${item.requestType}`}
                               {showStatus && ` · ${queryStatusLabel(item)}`}
                             </span>
                             {item.taskId && (
@@ -535,11 +535,21 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
                       <h2 className="truncate type-label-14-strong">
                         {selected.originalSenderName}
                       </h2>
-                      <p className="truncate text-xs text-muted-foreground">
-                        {selectedProject?.name || 'Project'} · {selected.requestType} ·{' '}
-                        {queryStatusLabel(selected)}
-                        {selected.decisionStatus && ` (${selected.decisionStatus})`}
-                      </p>
+                      <div className="mt-1 flex min-w-0 flex-wrap gap-1">
+                        <Badge variant="outline" className="bg-card" title="Project">
+                          <FolderOpen aria-hidden="true" />
+                          <span className="truncate">{selectedProject?.name || 'Project'}</span>
+                        </Badge>
+                        {selected.requestType !== 'Question' && (
+                          <Badge variant="outline" className="bg-card">
+                            {selected.requestType}
+                          </Badge>
+                        )}
+                        <Badge variant="outline" className="bg-card">
+                          {queryStatusLabel(selected)}
+                          {selected.decisionStatus && ` (${selected.decisionStatus})`}
+                        </Badge>
+                      </div>
                     </div>
                   </div>
 
@@ -566,10 +576,6 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
                   ref={scrollRef}
                   className="chat-scroll min-h-0 flex-1 space-y-6 overflow-y-auto overscroll-contain bg-muted/30 px-4 py-6 sm:px-6"
                 >
-                  <p className="text-center text-xs text-muted-foreground">
-                    Request received <Time value={selected.createdAt} format="datetime" />
-                  </p>
-
                   {/* Delivery Status Warning */}
                   {selected.deliveryStatus === 'Unknown' && (
                     <div className="mx-auto max-w-[85%] card-box border-warning-border bg-warning-bg text-xs text-warning flex items-start gap-2">
@@ -593,73 +599,80 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
                     </div>
                   )}
 
-                  {/* Main Client Message */}
-                  <div className="flex items-end gap-2">
-                    <span className="grid size-7 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold">
-                      {initials(selected.originalSenderName)}
-                    </span>
-                    <div className="max-w-[85%] space-y-1">
-                      <p className="text-xs text-muted-foreground">
-                        {selected.originalSenderName} · Telegram
-                      </p>
-                      <div className="rounded-2xl rounded-bl-sm border bg-card px-4 py-3 text-sm shadow-sm space-y-2">
-                        <p className="whitespace-pre-wrap">
-                          {selected.originalMessage || 'Shared an attachment'}
+                  {/* The client's message reads as a card: who, where and when on top, then the message. */}
+                  <article className="rounded-xl border bg-card">
+                    <header className="flex items-center gap-3 px-4 pt-3">
+                      <span className="grid size-8 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold">
+                        {initials(selected.originalSenderName)}
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate type-label-14-strong">
+                          {selected.originalSenderName}
                         </p>
+                        <p className="truncate text-xs text-muted-foreground">Telegram</p>
+                      </div>
+                      <Time
+                        value={selected.createdAt}
+                        className="shrink-0 text-xs text-muted-foreground"
+                      />
+                    </header>
+                    <div className="space-y-2 px-4 pt-3 pb-4 type-copy-14">
+                      <p className="whitespace-pre-wrap">
+                        {selected.originalMessage || 'Shared an attachment'}
+                      </p>
 
-                        {/* Photo / Attachment previews */}
-                        {selected.attachments?.length > 0 && (
-                          <div className="mt-3 space-y-3">
-                            {selected.attachments.map((attachment, index) => {
-                              const isPhoto =
-                                attachment.type === 'Photo' ||
-                                /\.(png|jpe?g|webp|gif)$/i.test(attachment.fileName || '');
-                              const mediaUrl = getAttachmentUrl(selected.id, index, 'founder');
+                      {/* Photo / Attachment previews */}
+                      {selected.attachments?.length > 0 && (
+                        <div className="mt-3 space-y-3">
+                          {selected.attachments.map((attachment, index) => {
+                            const isPhoto =
+                              attachment.type === 'Photo' ||
+                              /\.(png|jpe?g|webp|gif)$/i.test(attachment.fileName || '');
+                            const mediaUrl = getAttachmentUrl(selected.id, index, 'founder');
 
-                              return (
-                                <div key={index} className="space-y-1">
-                                  {isPhoto ? (
-                                    <div className="overflow-hidden rounded-xl border bg-muted/20">
-                                      <img
-                                        src={mediaUrl}
-                                        alt={attachment.fileName || `Photo ${index + 1}`}
-                                        className="max-h-56 max-w-full rounded-xl object-contain"
-                                        onError={(e) => {
-                                          e.currentTarget.style.display = 'none';
-                                        }}
-                                      />
-                                      <a
-                                        className="mt-1 inline-flex items-center gap-1 text-xs text-primary hover:underline px-2 py-1"
-                                        href={mediaUrl}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                      >
-                                        <FileText className="size-3" />
-                                        {attachment.fileName || 'View full image'}
-                                        <ExternalLink className="size-2.5" />
-                                      </a>
-                                    </div>
-                                  ) : (
+                            return (
+                              <div key={index} className="space-y-1">
+                                {isPhoto ? (
+                                  <div className="overflow-hidden rounded-xl border bg-muted/20">
+                                    <img
+                                      src={mediaUrl}
+                                      alt={attachment.fileName || `Photo ${index + 1}`}
+                                      className="max-h-56 max-w-full rounded-xl object-contain"
+                                      onError={(e) => {
+                                        e.currentTarget.style.display = 'none';
+                                      }}
+                                    />
                                     <a
-                                      key={index}
-                                      className="inline-flex items-center gap-1 rounded-lg bg-muted px-2 py-2 text-xs text-primary hover:underline"
+                                      className="mt-1 inline-flex items-center gap-1 text-xs text-primary hover:underline px-2 py-1"
                                       href={mediaUrl}
                                       target="_blank"
                                       rel="noreferrer"
                                     >
                                       <FileText className="size-3" />
-                                      {attachment.fileName || attachment.type || 'Document'}
-                                      <ExternalLink className="size-3" />
+                                      {attachment.fileName || 'View full image'}
+                                      <ExternalLink className="size-2.5" />
                                     </a>
-                                  )}
-                                </div>
-                              );
-                            })}
-                          </div>
-                        )}
-                      </div>
+                                  </div>
+                                ) : (
+                                  <a
+                                    key={index}
+                                    className="inline-flex items-center gap-1 rounded-lg bg-muted px-2 py-2 text-xs text-primary hover:underline"
+                                    href={mediaUrl}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                  >
+                                    <FileText className="size-3" />
+                                    {attachment.fileName || attachment.type || 'Document'}
+                                    <ExternalLink className="size-3" />
+                                  </a>
+                                )}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
                     </div>
-                  </div>
+                  </article>
 
                   {selected.context && (
                     <div className="mx-auto max-w-[85%] rounded-xl border border-warning-border bg-warning-bg px-4 py-2 text-xs text-warning">

@@ -263,7 +263,7 @@ export default function ClientApp() {
                         size={20}
                         speed={0.6}
                         theme="light"
-                        color="#315e4c"
+                        color="#2b2a36"
                         aria-hidden="true"
                       />
                     </BubbleContent>

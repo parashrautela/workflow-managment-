@@ -20,7 +20,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 	value: mod,
 	enumerable: true
 }) : target, mod));
-// node_modules/react/cjs/react.production.js
+// ../Telegram bot /work/production-web/node_modules/react/cjs/react.production.js
 /**
 * @license React
 * react.production.js
@@ -406,11 +406,11 @@ var require_react_production = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 	exports.version = "19.3.0";
 }));
-// node_modules/react/index.js
+// ../Telegram bot /work/production-web/node_modules/react/index.js
 var require_react = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_react_production();
 }));
-// node_modules/scheduler/cjs/scheduler.production.js
+// ../Telegram bot /work/production-web/node_modules/scheduler/cjs/scheduler.production.js
 /**
 * @license React
 * scheduler.production.js
@@ -664,11 +664,11 @@ var require_scheduler_production = /* @__PURE__ */ __commonJSMin(((exports) => {
 		};
 	};
 }));
-// node_modules/scheduler/index.js
+// ../Telegram bot /work/production-web/node_modules/scheduler/index.js
 var require_scheduler = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_scheduler_production();
 }));
-// node_modules/react-dom/cjs/react-dom.production.js
+// ../Telegram bot /work/production-web/node_modules/react-dom/cjs/react-dom.production.js
 /**
 * @license React
 * react-dom.production.js
@@ -820,7 +820,7 @@ var require_react_dom_production = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 	exports.version = "19.3.0";
 }));
-// node_modules/react-dom/index.js
+// ../Telegram bot /work/production-web/node_modules/react-dom/index.js
 var require_react_dom = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	function checkDCE() {
 		if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") return;
@@ -833,7 +833,7 @@ var require_react_dom = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	checkDCE();
 	module.exports = require_react_dom_production();
 }));
-// node_modules/react-dom/cjs/react-dom-client.production.js
+// ../Telegram bot /work/production-web/node_modules/react-dom/cjs/react-dom-client.production.js
 /**
 * @license React
 * react-dom-client.production.js
@@ -11407,7 +11407,7 @@ var require_react_dom_client_production = /* @__PURE__ */ __commonJSMin(((export
 		return new ReactDOMRoot(options);
 	};
 }));
-// node_modules/react-dom/client.js
+// ../Telegram bot /work/production-web/node_modules/react-dom/client.js
 var require_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	function checkDCE() {
 		if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") return;
@@ -11420,7 +11420,7 @@ var require_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	checkDCE();
 	module.exports = require_react_dom_client_production();
 }));
-// node_modules/lucide-react/dist/esm/shared/src/utils/toKebabCase.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toKebabCase.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11428,7 +11428,7 @@ var require_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 * See the LICENSE file in the root directory of this source tree.
 */
 var toKebabCase = (string) => string?.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
-// node_modules/lucide-react/dist/esm/shared/src/utils/toLucideIconData.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toLucideIconData.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11444,7 +11444,7 @@ function toLucideIconData(iconName, iconNode, aliases = []) {
 		...aliases.length > 0 ? { aliases } : {}
 	};
 }
-// node_modules/lucide-react/dist/esm/shared/src/utils/toCamelCase.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toCamelCase.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11465,7 +11465,7 @@ var toCamelCase = (string) => {
 	}
 	return out;
 };
-// node_modules/lucide-react/dist/esm/shared/src/utils/toPascalCase.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toPascalCase.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11476,7 +11476,7 @@ var toPascalCase = (string) => {
 	const camelCase = toCamelCase(string);
 	return camelCase.charAt(0).toUpperCase() + camelCase.slice(1);
 };
-// node_modules/lucide-react/dist/esm/shared/src/utils/mergeClasses.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/mergeClasses.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11486,7 +11486,7 @@ var toPascalCase = (string) => {
 var mergeClasses = (...classes) => classes.filter((className, index, array) => {
 	return Boolean(className) && className.trim() !== "" && array.indexOf(className) === index;
 }).join(" ").trim();
-// node_modules/lucide-react/dist/esm/shared/src/build/defaultAttributes.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/build/defaultAttributes.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11504,7 +11504,7 @@ var defaultAttributes = {
 	"stroke-linecap": "round",
 	"stroke-linejoin": "round"
 };
-// node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconNode.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconNode.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11558,7 +11558,7 @@ function buildLucideIconNode(icon, params = {}) {
 		})
 	];
 }
-// node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconForReact.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconForReact.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11578,7 +11578,7 @@ function buildLucideIconForReact(icon, params = {}) {
 		}
 	});
 }
-// node_modules/lucide-react/dist/esm/shared/src/utils/hasA11yProp.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/hasA11yProp.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11589,7 +11589,7 @@ var hasA11yProp = (props) => {
 	for (const prop in props) if (prop.startsWith("aria-") || prop === "role" || prop === "title") return true;
 	return false;
 };
-// node_modules/lucide-react/dist/esm/context.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/context.mjs
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11599,7 +11599,7 @@ var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 */
 var LucideContext = (0, import_react.createContext)({});
 var useLucideContext = () => (0, import_react.useContext)(LucideContext);
-// node_modules/lucide-react/dist/esm/Icon.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/Icon.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11629,7 +11629,7 @@ var Icon = (0, import_react.forwardRef)(({ color, size, width, height, strokeWid
 		...svgAttributes
 	}, [...builtIconNode.map(([tag, attrs]) => (0, import_react.createElement)(tag, attrs)), ...Array.isArray(children) ? children : [children]]);
 });
-// node_modules/lucide-react/dist/esm/createLucideIcon.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/createLucideIcon.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11647,14 +11647,14 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 	if (iconData.name) Component.displayName = toPascalCase(iconData.name);
 	return Component;
 }
-// node_modules/lucide-react/dist/esm/icons/arrow-left.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-left.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$58 = {
+var __iconData$61 = {
 	name: "arrow-left",
 	size: 24,
 	node: [["path", {
@@ -11665,16 +11665,16 @@ var __iconData$58 = {
 		key: "x3x0zl"
 	}]]
 };
-__iconData$58.node;
-var ArrowLeft = createLucideIcon(__iconData$58);
-// node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
+__iconData$61.node;
+var ArrowLeft = createLucideIcon(__iconData$61);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$57 = {
+var __iconData$60 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11685,16 +11685,16 @@ var __iconData$57 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$57.node;
-var ArrowRight = createLucideIcon(__iconData$57);
-// node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
+__iconData$60.node;
+var ArrowRight = createLucideIcon(__iconData$60);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$56 = {
+var __iconData$59 = {
 	name: "arrow-up-right",
 	size: 24,
 	node: [["path", {
@@ -11705,16 +11705,16 @@ var __iconData$56 = {
 		key: "1vkiza"
 	}]]
 };
-__iconData$56.node;
-var ArrowUpRight = createLucideIcon(__iconData$56);
-// node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
+__iconData$59.node;
+var ArrowUpRight = createLucideIcon(__iconData$59);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$55 = {
+var __iconData$58 = {
 	name: "arrow-up",
 	size: 24,
 	node: [["path", {
@@ -11725,16 +11725,16 @@ var __iconData$55 = {
 		key: "x0mq9r"
 	}]]
 };
-__iconData$55.node;
-var ArrowUp = createLucideIcon(__iconData$55);
-// node_modules/lucide-react/dist/esm/icons/building-complex.mjs
+__iconData$58.node;
+var ArrowUp = createLucideIcon(__iconData$58);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$54 = {
+var __iconData$57 = {
 	name: "building-complex",
 	size: 24,
 	node: [
@@ -11761,16 +11761,16 @@ var __iconData$54 = {
 	],
 	aliases: ["building-2"]
 };
-__iconData$54.node;
-var BuildingComplex = createLucideIcon(__iconData$54);
-// node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
+__iconData$57.node;
+var BuildingComplex = createLucideIcon(__iconData$57);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$53 = {
+var __iconData$56 = {
 	name: "calendar-days",
 	size: 24,
 	node: [
@@ -11820,16 +11820,16 @@ var __iconData$53 = {
 		}]
 	]
 };
-__iconData$53.node;
-var CalendarDays = createLucideIcon(__iconData$53);
-// node_modules/lucide-react/dist/esm/icons/calendar.mjs
+__iconData$56.node;
+var CalendarDays = createLucideIcon(__iconData$56);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/calendar.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$52 = {
+var __iconData$55 = {
 	name: "calendar",
 	size: 24,
 	node: [
@@ -11855,16 +11855,16 @@ var __iconData$52 = {
 		}]
 	]
 };
-__iconData$52.node;
-var Calendar = createLucideIcon(__iconData$52);
-// node_modules/lucide-react/dist/esm/icons/check.mjs
+__iconData$55.node;
+var Calendar = createLucideIcon(__iconData$55);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$51 = {
+var __iconData$54 = {
 	name: "check",
 	size: 24,
 	node: [["path", {
@@ -11872,16 +11872,16 @@ var __iconData$51 = {
 		key: "1gmf2c"
 	}]]
 };
-__iconData$51.node;
-var Check = createLucideIcon(__iconData$51);
-// node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
+__iconData$54.node;
+var Check = createLucideIcon(__iconData$54);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$50 = {
+var __iconData$53 = {
 	name: "chevron-down",
 	size: 24,
 	node: [["path", {
@@ -11889,16 +11889,16 @@ var __iconData$50 = {
 		key: "qrunsl"
 	}]]
 };
-__iconData$50.node;
-var ChevronDown = createLucideIcon(__iconData$50);
-// node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
+__iconData$53.node;
+var ChevronDown = createLucideIcon(__iconData$53);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$49 = {
+var __iconData$52 = {
 	name: "chevron-right",
 	size: 24,
 	node: [["path", {
@@ -11906,16 +11906,16 @@ var __iconData$49 = {
 		key: "mthhwq"
 	}]]
 };
-__iconData$49.node;
-var ChevronRight = createLucideIcon(__iconData$49);
-// node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
+__iconData$52.node;
+var ChevronRight = createLucideIcon(__iconData$52);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$48 = {
+var __iconData$51 = {
 	name: "chevron-up",
 	size: 24,
 	node: [["path", {
@@ -11923,16 +11923,16 @@ var __iconData$48 = {
 		key: "153udz"
 	}]]
 };
-__iconData$48.node;
-var ChevronUp = createLucideIcon(__iconData$48);
-// node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
+__iconData$51.node;
+var ChevronUp = createLucideIcon(__iconData$51);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$47 = {
+var __iconData$50 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -11959,16 +11959,16 @@ var __iconData$47 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$47.node;
-var CircleAlert = createLucideIcon(__iconData$47);
-// node_modules/lucide-react/dist/esm/icons/circle-check.mjs
+__iconData$50.node;
+var CircleAlert = createLucideIcon(__iconData$50);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$46 = {
+var __iconData$49 = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -11982,16 +11982,16 @@ var __iconData$46 = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-__iconData$46.node;
-var CircleCheck = createLucideIcon(__iconData$46);
-// node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
+__iconData$49.node;
+var CircleCheck = createLucideIcon(__iconData$49);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$45 = {
+var __iconData$48 = {
 	name: "circle-pause",
 	size: 24,
 	node: [
@@ -12018,16 +12018,16 @@ var __iconData$45 = {
 	],
 	aliases: ["pause-circle"]
 };
-__iconData$45.node;
-var CirclePause = createLucideIcon(__iconData$45);
-// node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
+__iconData$48.node;
+var CirclePause = createLucideIcon(__iconData$48);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$44 = {
+var __iconData$47 = {
 	name: "circle-question-mark",
 	size: 24,
 	node: [
@@ -12048,16 +12048,16 @@ var __iconData$44 = {
 	],
 	aliases: ["help-circle", "circle-help"]
 };
-__iconData$44.node;
-var CircleQuestionMark = createLucideIcon(__iconData$44);
-// node_modules/lucide-react/dist/esm/icons/circle-x.mjs
+__iconData$47.node;
+var CircleQuestionMark = createLucideIcon(__iconData$47);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$43 = {
+var __iconData$46 = {
 	name: "circle-x",
 	size: 24,
 	node: [
@@ -12078,16 +12078,16 @@ var __iconData$43 = {
 	],
 	aliases: ["x-circle"]
 };
-__iconData$43.node;
-var CircleX = createLucideIcon(__iconData$43);
-// node_modules/lucide-react/dist/esm/icons/circle.mjs
+__iconData$46.node;
+var CircleX = createLucideIcon(__iconData$46);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$42 = {
+var __iconData$45 = {
 	name: "circle",
 	size: 24,
 	node: [["circle", {
@@ -12097,16 +12097,16 @@ var __iconData$42 = {
 		key: "1mglay"
 	}]]
 };
-__iconData$42.node;
-var Circle = createLucideIcon(__iconData$42);
-// node_modules/lucide-react/dist/esm/icons/clock-3.mjs
+__iconData$45.node;
+var Circle = createLucideIcon(__iconData$45);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$41 = {
+var __iconData$44 = {
 	name: "clock-3",
 	size: 24,
 	node: [["circle", {
@@ -12119,16 +12119,16 @@ var __iconData$41 = {
 		key: "135r8i"
 	}]]
 };
-__iconData$41.node;
-var Clock3 = createLucideIcon(__iconData$41);
-// node_modules/lucide-react/dist/esm/icons/clock.mjs
+__iconData$44.node;
+var Clock3 = createLucideIcon(__iconData$44);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$40 = {
+var __iconData$43 = {
 	name: "clock",
 	size: 24,
 	node: [["circle", {
@@ -12141,16 +12141,16 @@ var __iconData$40 = {
 		key: "mmk7yg"
 	}]]
 };
-__iconData$40.node;
-var Clock = createLucideIcon(__iconData$40);
-// node_modules/lucide-react/dist/esm/icons/copy.mjs
+__iconData$43.node;
+var Clock = createLucideIcon(__iconData$43);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$39 = {
+var __iconData$42 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -12166,16 +12166,16 @@ var __iconData$39 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$39.node;
-var Copy = createLucideIcon(__iconData$39);
-// node_modules/lucide-react/dist/esm/icons/ellipsis-vertical.mjs
+__iconData$42.node;
+var Copy = createLucideIcon(__iconData$42);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/ellipsis-vertical.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$38 = {
+var __iconData$41 = {
 	name: "ellipsis-vertical",
 	size: 24,
 	node: [
@@ -12200,16 +12200,16 @@ var __iconData$38 = {
 	],
 	aliases: ["more-vertical"]
 };
-__iconData$38.node;
-var EllipsisVertical = createLucideIcon(__iconData$38);
-// node_modules/lucide-react/dist/esm/icons/external-link.mjs
+__iconData$41.node;
+var EllipsisVertical = createLucideIcon(__iconData$41);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/external-link.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$37 = {
+var __iconData$40 = {
 	name: "external-link",
 	size: 24,
 	node: [
@@ -12227,16 +12227,16 @@ var __iconData$37 = {
 		}]
 	]
 };
-__iconData$37.node;
-var ExternalLink = createLucideIcon(__iconData$37);
-// node_modules/lucide-react/dist/esm/icons/file-text.mjs
+__iconData$40.node;
+var ExternalLink = createLucideIcon(__iconData$40);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/file-text.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$36 = {
+var __iconData$39 = {
 	name: "file-text",
 	size: 24,
 	node: [
@@ -12262,16 +12262,33 @@ var __iconData$36 = {
 		}]
 	]
 };
-__iconData$36.node;
-var FileText = createLucideIcon(__iconData$36);
-// node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
+__iconData$39.node;
+var FileText = createLucideIcon(__iconData$39);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/flag.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$35 = {
+var __iconData$38 = {
+	name: "flag",
+	size: 24,
+	node: [["path", {
+		d: "M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528",
+		key: "1jaruq"
+	}]]
+};
+__iconData$38.node;
+var Flag = createLucideIcon(__iconData$38);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$37 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -12293,16 +12310,33 @@ var __iconData$35 = {
 		}]
 	]
 };
-__iconData$35.node;
-var FolderKanban = createLucideIcon(__iconData$35);
-// node_modules/lucide-react/dist/esm/icons/funnel.mjs
+__iconData$37.node;
+var FolderKanban = createLucideIcon(__iconData$37);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/folder-open.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$34 = {
+var __iconData$36 = {
+	name: "folder-open",
+	size: 24,
+	node: [["path", {
+		d: "m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2",
+		key: "usdka0"
+	}]]
+};
+__iconData$36.node;
+var FolderOpen = createLucideIcon(__iconData$36);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/funnel.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$35 = {
 	name: "funnel",
 	size: 24,
 	node: [["path", {
@@ -12311,16 +12345,16 @@ var __iconData$34 = {
 	}]],
 	aliases: ["filter"]
 };
-__iconData$34.node;
-var Funnel = createLucideIcon(__iconData$34);
-// node_modules/lucide-react/dist/esm/icons/grip-vertical.mjs
+__iconData$35.node;
+var Funnel = createLucideIcon(__iconData$35);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/grip-vertical.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$33 = {
+var __iconData$34 = {
 	name: "grip-vertical",
 	size: 24,
 	node: [
@@ -12362,16 +12396,16 @@ var __iconData$33 = {
 		}]
 	]
 };
-__iconData$33.node;
-var GripVertical = createLucideIcon(__iconData$33);
-// node_modules/lucide-react/dist/esm/icons/hourglass.mjs
+__iconData$34.node;
+var GripVertical = createLucideIcon(__iconData$34);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/hourglass.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$32 = {
+var __iconData$33 = {
 	name: "hourglass",
 	size: 24,
 	node: [
@@ -12393,16 +12427,16 @@ var __iconData$32 = {
 		}]
 	]
 };
-__iconData$32.node;
-var Hourglass = createLucideIcon(__iconData$32);
-// node_modules/lucide-react/dist/esm/icons/layers.mjs
+__iconData$33.node;
+var Hourglass = createLucideIcon(__iconData$33);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/layers.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$31 = {
+var __iconData$32 = {
 	name: "layers",
 	size: 24,
 	node: [
@@ -12421,16 +12455,16 @@ var __iconData$31 = {
 	],
 	aliases: ["layers-3"]
 };
-__iconData$31.node;
-var Layers = createLucideIcon(__iconData$31);
-// node_modules/lucide-react/dist/esm/icons/link-2.mjs
+__iconData$32.node;
+var Layers = createLucideIcon(__iconData$32);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/link-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$30 = {
+var __iconData$31 = {
 	name: "link-2",
 	size: 24,
 	node: [
@@ -12451,9 +12485,44 @@ var __iconData$30 = {
 		}]
 	]
 };
+__iconData$31.node;
+var Link2 = createLucideIcon(__iconData$31);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/list-checks.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$30 = {
+	name: "list-checks",
+	size: 24,
+	node: [
+		["path", {
+			d: "M13 5h8",
+			key: "a7qcls"
+		}],
+		["path", {
+			d: "M13 12h8",
+			key: "h98zly"
+		}],
+		["path", {
+			d: "M13 19h8",
+			key: "c3s6r1"
+		}],
+		["path", {
+			d: "m3 17 2 2 4-4",
+			key: "1jhpwq"
+		}],
+		["path", {
+			d: "m3 7 2 2 4-4",
+			key: "1obspn"
+		}]
+	]
+};
 __iconData$30.node;
-var Link2 = createLucideIcon(__iconData$30);
-// node_modules/lucide-react/dist/esm/icons/list-plus.mjs
+var ListChecks = createLucideIcon(__iconData$30);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/list-plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12488,7 +12557,7 @@ var __iconData$29 = {
 };
 __iconData$29.node;
 var ListPlus = createLucideIcon(__iconData$29);
-// node_modules/lucide-react/dist/esm/icons/loader-circle.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/loader-circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12506,7 +12575,7 @@ var __iconData$28 = {
 };
 __iconData$28.node;
 var LoaderCircle = createLucideIcon(__iconData$28);
-// node_modules/lucide-react/dist/esm/icons/lock-keyhole.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/lock-keyhole.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12539,7 +12608,7 @@ var __iconData$27 = {
 };
 __iconData$27.node;
 var LockKeyhole = createLucideIcon(__iconData$27);
-// node_modules/lucide-react/dist/esm/icons/log-out.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/log-out.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12566,7 +12635,7 @@ var __iconData$26 = {
 };
 __iconData$26.node;
 var LogOut = createLucideIcon(__iconData$26);
-// node_modules/lucide-react/dist/esm/icons/map-pin.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/map-pin.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12588,7 +12657,7 @@ var __iconData$25 = {
 };
 __iconData$25.node;
 var MapPin = createLucideIcon(__iconData$25);
-// node_modules/lucide-react/dist/esm/icons/maximize-2.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/maximize-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12619,7 +12688,7 @@ var __iconData$24 = {
 };
 __iconData$24.node;
 var Maximize2 = createLucideIcon(__iconData$24);
-// node_modules/lucide-react/dist/esm/icons/menu.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/menu.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12646,7 +12715,7 @@ var __iconData$23 = {
 };
 __iconData$23.node;
 var Menu$1 = createLucideIcon(__iconData$23);
-// node_modules/lucide-react/dist/esm/icons/message-square.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/message-square.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12663,7 +12732,7 @@ var __iconData$22 = {
 };
 __iconData$22.node;
 var MessageSquare = createLucideIcon(__iconData$22);
-// node_modules/lucide-react/dist/esm/icons/minus.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/minus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12680,7 +12749,7 @@ var __iconData$21 = {
 };
 __iconData$21.node;
 var Minus = createLucideIcon(__iconData$21);
-// node_modules/lucide-react/dist/esm/icons/octagon.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/octagon.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12697,7 +12766,7 @@ var __iconData$20 = {
 };
 __iconData$20.node;
 var Octagon = createLucideIcon(__iconData$20);
-// node_modules/lucide-react/dist/esm/icons/paperclip.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/paperclip.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12714,7 +12783,7 @@ var __iconData$19 = {
 };
 __iconData$19.node;
 var Paperclip = createLucideIcon(__iconData$19);
-// node_modules/lucide-react/dist/esm/icons/pencil.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/pencil.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12734,7 +12803,7 @@ var __iconData$18 = {
 };
 __iconData$18.node;
 var Pencil = createLucideIcon(__iconData$18);
-// node_modules/lucide-react/dist/esm/icons/play.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/play.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12751,7 +12820,7 @@ var __iconData$17 = {
 };
 __iconData$17.node;
 var Play = createLucideIcon(__iconData$17);
-// node_modules/lucide-react/dist/esm/icons/plus.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12771,7 +12840,7 @@ var __iconData$16 = {
 };
 __iconData$16.node;
 var Plus = createLucideIcon(__iconData$16);
-// node_modules/lucide-react/dist/esm/icons/refresh-cw.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/refresh-cw.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12802,7 +12871,7 @@ var __iconData$15 = {
 };
 __iconData$15.node;
 var RefreshCw = createLucideIcon(__iconData$15);
-// node_modules/lucide-react/dist/esm/icons/rotate-ccw-clock.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/rotate-ccw-clock.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12830,7 +12899,7 @@ var __iconData$14 = {
 };
 __iconData$14.node;
 var RotateCcwClock = createLucideIcon(__iconData$14);
-// node_modules/lucide-react/dist/esm/icons/search.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/search.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12852,7 +12921,7 @@ var __iconData$13 = {
 };
 __iconData$13.node;
 var Search = createLucideIcon(__iconData$13);
-// node_modules/lucide-react/dist/esm/icons/send.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/send.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12872,7 +12941,7 @@ var __iconData$12 = {
 };
 __iconData$12.node;
 var Send = createLucideIcon(__iconData$12);
-// node_modules/lucide-react/dist/esm/icons/settings-2.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/settings-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12907,7 +12976,7 @@ var __iconData$11 = {
 };
 __iconData$11.node;
 var Settings2 = createLucideIcon(__iconData$11);
-// node_modules/lucide-react/dist/esm/icons/shield-check.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/shield-check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12927,7 +12996,7 @@ var __iconData$10 = {
 };
 __iconData$10.node;
 var ShieldCheck = createLucideIcon(__iconData$10);
-// node_modules/lucide-react/dist/esm/icons/sparkles.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/sparkles.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12961,7 +13030,7 @@ var __iconData$9 = {
 };
 __iconData$9.node;
 var Sparkles = createLucideIcon(__iconData$9);
-// node_modules/lucide-react/dist/esm/icons/trash.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/trash.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12997,7 +13066,7 @@ var __iconData$8 = {
 };
 __iconData$8.node;
 var Trash = createLucideIcon(__iconData$8);
-// node_modules/lucide-react/dist/esm/icons/triangle-alert.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/triangle-alert.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13025,7 +13094,7 @@ var __iconData$7 = {
 };
 __iconData$7.node;
 var TriangleAlert = createLucideIcon(__iconData$7);
-// node_modules/lucide-react/dist/esm/icons/undo-2.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/undo-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13045,7 +13114,7 @@ var __iconData$6 = {
 };
 __iconData$6.node;
 var Undo2 = createLucideIcon(__iconData$6);
-// node_modules/lucide-react/dist/esm/icons/user-plus.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user-plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13084,7 +13153,7 @@ var __iconData$5 = {
 };
 __iconData$5.node;
 var UserPlus = createLucideIcon(__iconData$5);
-// node_modules/lucide-react/dist/esm/icons/user-round.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user-round.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13107,7 +13176,7 @@ var __iconData$4 = {
 };
 __iconData$4.node;
 var UserRound = createLucideIcon(__iconData$4);
-// node_modules/lucide-react/dist/esm/icons/user-x.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user-x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13146,7 +13215,7 @@ var __iconData$3 = {
 };
 __iconData$3.node;
 var UserX = createLucideIcon(__iconData$3);
-// node_modules/lucide-react/dist/esm/icons/user.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13168,7 +13237,7 @@ var __iconData$2 = {
 };
 __iconData$2.node;
 var User = createLucideIcon(__iconData$2);
-// node_modules/lucide-react/dist/esm/icons/users.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/users.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13201,7 +13270,7 @@ var __iconData$1 = {
 };
 __iconData$1.node;
 var Users = createLucideIcon(__iconData$1);
-// node_modules/lucide-react/dist/esm/icons/x.mjs
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13221,7 +13290,7 @@ var __iconData = {
 };
 __iconData.node;
 var X$1 = createLucideIcon(__iconData);
-// node_modules/clsx/dist/clsx.mjs
+// ../Telegram bot /work/production-web/node_modules/clsx/dist/clsx.mjs
 var import_client = /* @__PURE__ */ __toESM(require_client(), 1);
 function r(e) {
 	var t, f, n = "";
@@ -13236,7 +13305,7 @@ function clsx() {
 	for (var e, t, f = 0, n = "", o = arguments.length; f < o; f++) (e = arguments[f]) && (t = r(e)) && (n && (n += " "), n += t);
 	return n;
 }
-// node_modules/class-variance-authority/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/class-variance-authority/dist/index.mjs
 /**
 * Copyright 2022 Joe Bell. All rights reserved.
 *
@@ -13288,7 +13357,7 @@ var cva = (base, config) => (props) => {
 		] : acc;
 	}, []), props === null || props === void 0 ? void 0 : props.class, props === null || props === void 0 ? void 0 : props.className);
 };
-// node_modules/tailwind-merge/dist/bundle-mjs.mjs
+// ../Telegram bot /work/production-web/node_modules/tailwind-merge/dist/bundle-mjs.mjs
 /**
 * Concatenates two arrays faster than the array spread operator.
 */
@@ -16750,7 +16819,7 @@ var twMerge = /*#__PURE__*/ createTailwindMerge(getDefaultConfig);
 function cn$1(...inputs) {
 	return twMerge(clsx(inputs));
 }
-// node_modules/@radix-ui/react-compose-refs/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-compose-refs/dist/index.mjs
 var __defProp$27 = Object.defineProperty;
 var __name$27 = (target, value) => __defProp$27(target, "name", {
 	value,
@@ -16783,7 +16852,7 @@ function useComposedRefs(...refs) {
 	return import_react.useCallback(composeRefs(...refs), refs);
 }
 __name$27(useComposedRefs, "useComposedRefs");
-// node_modules/@radix-ui/react-slot/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-slot/dist/index.mjs
 var __defProp$26 = Object.defineProperty;
 var __name$26 = (target, value) => __defProp$26(target, "name", {
 	value,
@@ -16895,7 +16964,7 @@ var createSlottableError = /* @__PURE__ */ __name$26((ownerName) => {
 	return `${ownerName} failed to slot onto its \`Slottable\`. Expected \`Slottable\` to receive a single React element child.`;
 }, "createSlottableError");
 var use = import_react[" use ".trim().toString()];
-// node_modules/react/cjs/react-jsx-runtime.production.js
+// ../Telegram bot /work/production-web/node_modules/react/cjs/react-jsx-runtime.production.js
 /**
 * @license React
 * react-jsx-runtime.production.js
@@ -16929,11 +16998,11 @@ var require_react_jsx_runtime_production = /* @__PURE__ */ __commonJSMin(((expor
 	exports.jsx = jsxProd;
 	exports.jsxs = jsxProd;
 }));
-// node_modules/react/jsx-runtime.js
+// ../Telegram bot /work/production-web/node_modules/react/jsx-runtime.js
 var require_jsx_runtime = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_react_jsx_runtime_production();
 }));
-// node_modules/@radix-ui/react-primitive/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-primitive/dist/index.mjs
 var import_react_dom = /* @__PURE__ */ __toESM(require_react_dom(), 1);
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp$25 = Object.defineProperty;
@@ -16980,7 +17049,7 @@ function dispatchDiscreteCustomEvent(target, event) {
 	if (target) import_react_dom.flushSync(() => target.dispatchEvent(event));
 }
 __name$25(dispatchDiscreteCustomEvent, "dispatchDiscreteCustomEvent");
-// node_modules/@radix-ui/react-context/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-context/dist/index.mjs
 var __defProp$24 = Object.defineProperty;
 var __name$24 = (target, value) => __defProp$24(target, "name", {
 	value,
@@ -17081,7 +17150,7 @@ function composeContextScopes(...scopes) {
 	return createScope;
 }
 __name$24(composeContextScopes, "composeContextScopes");
-// node_modules/@radix-ui/react-collection/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-collection/dist/index.mjs
 var __defProp$23 = Object.defineProperty;
 var __name$23 = (target, value) => __defProp$23(target, "name", {
 	value,
@@ -17609,7 +17678,7 @@ function getChildListObserver(callback) {
 	});
 }
 __name$23(getChildListObserver, "getChildListObserver");
-// node_modules/@radix-ui/primitive/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/primitive/dist/index.mjs
 var __defProp$22 = Object.defineProperty;
 var __name$22 = (target, value) => __defProp$22(target, "name", {
 	value,
@@ -17651,9 +17720,9 @@ function isFrame(element) {
 	return element.tagName === "IFRAME";
 }
 __name$22(isFrame, "isFrame");
-// node_modules/@radix-ui/react-use-layout-effect/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-use-layout-effect/dist/index.mjs
 var useLayoutEffect2 = globalThis?.document ? import_react.useLayoutEffect : () => {};
-// node_modules/@radix-ui/react-use-effect-event/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-use-effect-event/dist/index.mjs
 var __defProp$21 = Object.defineProperty;
 var __name$21 = (target, value) => __defProp$21(target, "name", {
 	value,
@@ -17675,7 +17744,7 @@ function useEffectEvent(callback) {
 	return import_react.useMemo(() => ((...args) => ref.current?.(...args)), []);
 }
 __name$21(useEffectEvent, "useEffectEvent");
-// node_modules/@radix-ui/react-use-controllable-state/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-use-controllable-state/dist/index.mjs
 var __defProp$20 = Object.defineProperty;
 var __name$20 = (target, value) => __defProp$20(target, "name", {
 	value,
@@ -17776,7 +17845,7 @@ function useControllableStateReducer(reducer, userArgs, initialArg, init) {
 	return [state, dispatch];
 }
 __name$20(useControllableStateReducer, "useControllableStateReducer");
-// node_modules/@radix-ui/react-presence/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-presence/dist/index.mjs
 var __defProp$19 = Object.defineProperty;
 var __name$19 = (target, value) => __defProp$19(target, "name", {
 	value,
@@ -17917,7 +17986,7 @@ function getElementRef(element) {
 	return element.props.ref || element.ref;
 }
 __name$19(getElementRef, "getElementRef");
-// node_modules/@radix-ui/react-id/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-id/dist/index.mjs
 var __defProp$18 = Object.defineProperty;
 var __name$18 = (target, value) => __defProp$18(target, "name", {
 	value,
@@ -17933,7 +18002,7 @@ function useId$2(deterministicId) {
 	return deterministicId || (id ? `radix-${id}` : "");
 }
 __name$18(useId$2, "useId");
-// node_modules/@radix-ui/react-direction/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-direction/dist/index.mjs
 var __defProp$17 = Object.defineProperty;
 var __name$17 = (target, value) => __defProp$17(target, "name", {
 	value,
@@ -17945,7 +18014,7 @@ function useDirection(localDir) {
 	return localDir || globalDir || "ltr";
 }
 __name$17(useDirection, "useDirection");
-// node_modules/@radix-ui/react-use-callback-ref/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-use-callback-ref/dist/index.mjs
 var __defProp$16 = Object.defineProperty;
 var __name$16 = (target, value) => __defProp$16(target, "name", {
 	value,
@@ -17959,7 +18028,7 @@ function useCallbackRef$1(callback) {
 	return import_react.useMemo(() => ((...args) => callbackRef.current?.(...args)), []);
 }
 __name$16(useCallbackRef$1, "useCallbackRef");
-// node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs
 var __defProp$15 = Object.defineProperty;
 var __name$15 = (target, value) => __defProp$15(target, "name", {
 	value,
@@ -18222,7 +18291,7 @@ function handleAndDispatchCustomEvent(name, handler, detail, { discrete }) {
 	else target.dispatchEvent(event);
 }
 __name$15(handleAndDispatchCustomEvent, "handleAndDispatchCustomEvent");
-// node_modules/@radix-ui/react-focus-scope/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-focus-scope/dist/index.mjs
 var __defProp$14 = Object.defineProperty;
 var __name$14 = (target, value) => __defProp$14(target, "name", {
 	value,
@@ -18427,7 +18496,7 @@ function removeLinks(items) {
 	return items.filter((item) => item.tagName !== "A");
 }
 __name$14(removeLinks, "removeLinks");
-// node_modules/@radix-ui/react-portal/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-portal/dist/index.mjs
 var __defProp$13 = Object.defineProperty;
 var __name$13 = (target, value) => __defProp$13(target, "name", {
 	value,
@@ -18443,7 +18512,7 @@ var Portal$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$13
 		ref: forwardedRef
 	}), container) : null;
 }, "Portal"));
-// node_modules/@radix-ui/react-focus-guards/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-focus-guards/dist/index.mjs
 var __defProp$12 = Object.defineProperty;
 var __name$12 = (target, value) => __defProp$12(target, "name", {
 	value,
@@ -18488,7 +18557,7 @@ function createFocusGuard() {
 	return element;
 }
 __name$12(createFocusGuard, "createFocusGuard");
-// node_modules/tslib/tslib.es6.mjs
+// ../Telegram bot /work/production-web/node_modules/tslib/tslib.es6.mjs
 var __assign = function() {
 	__assign = Object.assign || function __assign(t) {
 		for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -18516,7 +18585,7 @@ function __spreadArray(to, from, pack) {
 	}
 	return to.concat(ar || Array.prototype.slice.call(from));
 }
-// node_modules/react-remove-scroll-bar/dist/es2015/constants.js
+// ../Telegram bot /work/production-web/node_modules/react-remove-scroll-bar/dist/es2015/constants.js
 var zeroRightClassName = "right-scroll-bar-position";
 var fullWidthClassName = "width-before-scroll-bar";
 var noScrollbarsClassName = "with-scroll-bars-hidden";
@@ -18525,7 +18594,7 @@ var noScrollbarsClassName = "with-scroll-bars-hidden";
 * ! might be undefined ! use will fallback!
 */
 var removedBarSizeVariable = "--removed-body-scroll-bar-size";
-// node_modules/use-callback-ref/dist/es2015/assignRef.js
+// ../Telegram bot /work/production-web/node_modules/use-callback-ref/dist/es2015/assignRef.js
 /**
 * Assigns a value for a given ref, no matter of the ref format
 * @param {RefObject} ref - a callback function or ref object
@@ -18544,7 +18613,7 @@ function assignRef(ref, value) {
 	else if (ref) ref.current = value;
 	return ref;
 }
-// node_modules/use-callback-ref/dist/es2015/useRef.js
+// ../Telegram bot /work/production-web/node_modules/use-callback-ref/dist/es2015/useRef.js
 /**
 * creates a MutableRef with ref change callback
 * @param initialValue - initial ref value
@@ -18581,7 +18650,7 @@ function useCallbackRef(initialValue, callback) {
 	ref.callback = callback;
 	return ref.facade;
 }
-// node_modules/use-callback-ref/dist/es2015/useMergeRef.js
+// ../Telegram bot /work/production-web/node_modules/use-callback-ref/dist/es2015/useMergeRef.js
 var useIsomorphicLayoutEffect$1 = typeof window !== "undefined" ? import_react.useLayoutEffect : import_react.useEffect;
 var currentValues = /* @__PURE__ */ new WeakMap();
 /**
@@ -18621,7 +18690,7 @@ function useMergeRefs(refs, defaultValue) {
 	}, [refs]);
 	return callbackRef;
 }
-// node_modules/use-sidecar/dist/es2015/medium.js
+// ../Telegram bot /work/production-web/node_modules/use-sidecar/dist/es2015/medium.js
 function ItoI(a) {
 	return a;
 }
@@ -18700,7 +18769,7 @@ function createSidecarMedium(options) {
 	}, options);
 	return medium;
 }
-// node_modules/use-sidecar/dist/es2015/exports.js
+// ../Telegram bot /work/production-web/node_modules/use-sidecar/dist/es2015/exports.js
 var SideCar = function(_a) {
 	var sideCar = _a.sideCar, rest = __rest(_a, ["sideCar"]);
 	if (!sideCar) throw new Error("Sidecar: please provide `sideCar` property to import the right car");
@@ -18713,9 +18782,9 @@ function exportSidecar(medium, exported) {
 	medium.useMedium(exported);
 	return SideCar;
 }
-// node_modules/react-remove-scroll/dist/es2015/medium.js
+// ../Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/medium.js
 var effectCar = createSidecarMedium();
-// node_modules/react-remove-scroll/dist/es2015/UI.js
+// ../Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/UI.js
 var nothing = function() {};
 /**
 * Removes scrollbar from the page and contain the scroll within the Lock
@@ -18773,7 +18842,7 @@ RemoveScroll.classNames = {
 var getNonce = function() {
 	if (typeof __webpack_nonce__ !== "undefined") return __webpack_nonce__;
 };
-// node_modules/react-style-singleton/dist/es2015/singleton.js
+// ../Telegram bot /work/production-web/node_modules/react-style-singleton/dist/es2015/singleton.js
 function makeStyleTag() {
 	if (!document) return null;
 	var tag = document.createElement("style");
@@ -18811,7 +18880,7 @@ var stylesheetSingleton = function() {
 		}
 	};
 };
-// node_modules/react-style-singleton/dist/es2015/hook.js
+// ../Telegram bot /work/production-web/node_modules/react-style-singleton/dist/es2015/hook.js
 /**
 * creates a hook to control style singleton
 * @see {@link styleSingleton} for a safer component version
@@ -18832,7 +18901,7 @@ var styleHookSingleton = function() {
 		}, [styles && isDynamic]);
 	};
 };
-// node_modules/react-style-singleton/dist/es2015/component.js
+// ../Telegram bot /work/production-web/node_modules/react-style-singleton/dist/es2015/component.js
 /**
 * create a Component to add styles on demand
 * - styles are added when first instance is mounted
@@ -18848,7 +18917,7 @@ var styleSingleton = function() {
 	};
 	return Sheet;
 };
-// node_modules/react-remove-scroll-bar/dist/es2015/utils.js
+// ../Telegram bot /work/production-web/node_modules/react-remove-scroll-bar/dist/es2015/utils.js
 var zeroGap = {
 	left: 0,
 	top: 0,
@@ -18882,7 +18951,7 @@ var getGapWidth = function(gapMode) {
 		gap: Math.max(0, windowWidth - documentWidth + offsets[2] - offsets[0])
 	};
 };
-// node_modules/react-remove-scroll-bar/dist/es2015/component.js
+// ../Telegram bot /work/production-web/node_modules/react-remove-scroll-bar/dist/es2015/component.js
 var Style = styleSingleton();
 var lockAttribute = "data-scroll-locked";
 var getStyles = function(_a, allowRelative, gapMode, important) {
@@ -18919,7 +18988,7 @@ var RemoveScrollBar = function(_a) {
 	}, [gapMode]);
 	return import_react.createElement(Style, { styles: getStyles(gap, !noRelative, gapMode, !noImportant ? "!important" : "") });
 };
-// node_modules/react-remove-scroll/dist/es2015/aggresiveCapture.js
+// ../Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/aggresiveCapture.js
 var passiveSupported = false;
 if (typeof window !== "undefined") try {
 	var options = Object.defineProperty({}, "passive", { get: function() {
@@ -18932,7 +19001,7 @@ if (typeof window !== "undefined") try {
 	passiveSupported = false;
 }
 var nonPassive = passiveSupported ? { passive: false } : false;
-// node_modules/react-remove-scroll/dist/es2015/handleScroll.js
+// ../Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/handleScroll.js
 var alwaysContainsScroll = function(node) {
 	return node.tagName === "TEXTAREA";
 };
@@ -19014,7 +19083,7 @@ var handleScroll = function(axis, endTarget, event, sourceDelta, noOverscroll) {
 	else if (!isDeltaPositive && (noOverscroll && Math.abs(availableScrollTop) < 1 || !noOverscroll && -delta > availableScrollTop)) shouldCancelScroll = true;
 	return shouldCancelScroll;
 };
-// node_modules/react-remove-scroll/dist/es2015/SideEffect.js
+// ../Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
 var getTouchXY = function(event) {
 	return "changedTouches" in event ? [event.changedTouches[0].clientX, event.changedTouches[0].clientY] : [0, 0];
 };
@@ -19168,9 +19237,9 @@ function getOutermostShadowParent(node) {
 	}
 	return shadowParent;
 }
-// node_modules/react-remove-scroll/dist/es2015/sidecar.js
+// ../Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/sidecar.js
 var sidecar_default = exportSidecar(effectCar, RemoveScrollSideCar);
-// node_modules/react-remove-scroll/dist/es2015/Combination.js
+// ../Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/Combination.js
 var ReactRemoveScroll = import_react.forwardRef(function(props, ref) {
 	return import_react.createElement(RemoveScroll, __assign({}, props, {
 		ref,
@@ -19178,7 +19247,7 @@ var ReactRemoveScroll = import_react.forwardRef(function(props, ref) {
 	}));
 });
 ReactRemoveScroll.classNames = RemoveScroll.classNames;
-// node_modules/aria-hidden/dist/es2015/index.js
+// ../Telegram bot /work/production-web/node_modules/aria-hidden/dist/es2015/index.js
 var getDefaultParent = function(originalTarget) {
 	if (typeof document === "undefined") return null;
 	return (Array.isArray(originalTarget) ? originalTarget[0] : originalTarget).ownerDocument.body;
@@ -19283,7 +19352,7 @@ var hideOthers = function(originalTarget, parentNode, markerName) {
 	targets.push.apply(targets, Array.from(activeParentNode.querySelectorAll("[aria-live], script")));
 	return applyAttributeToOthers(targets, activeParentNode, markerName, "aria-hidden");
 };
-// node_modules/@radix-ui/react-dialog/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-dialog/dist/index.mjs
 var __defProp$11 = Object.defineProperty;
 var __name$11 = (target, value) => __defProp$11(target, "name", {
 	value,
@@ -19512,7 +19581,7 @@ function getState(open) {
 	return open ? "open" : "closed";
 }
 __name$11(getState, "getState");
-// node_modules/@radix-ui/react-avatar/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-avatar/dist/index.mjs
 var __defProp$10 = Object.defineProperty;
 var __name$10 = (target, value) => __defProp$10(target, "name", {
 	value,
@@ -19596,7 +19665,7 @@ function useImageCount() {
 __name$10(useImageCount, "useImageCount");
 function useUpdateImageCount(setImageCount) {}
 __name$10(useUpdateImageCount, "useUpdateImageCount");
-// node_modules/@radix-ui/react-use-size/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-use-size/dist/index.mjs
 var __defProp$9 = Object.defineProperty;
 var __name$9 = (target, value) => __defProp$9(target, "name", {
 	value,
@@ -19637,7 +19706,7 @@ function useSize(element) {
 	return size;
 }
 __name$9(useSize, "useSize");
-// node_modules/@floating-ui/utils/dist/floating-ui.utils.mjs
+// ../Telegram bot /work/production-web/node_modules/@floating-ui/utils/dist/floating-ui.utils.mjs
 /**
 * Custom positioning reference element.
 * @see https://floating-ui.com/docs/virtual-elements
@@ -19765,7 +19834,7 @@ function rectToClientRect(rect) {
 		y
 	};
 }
-// node_modules/@floating-ui/core/dist/floating-ui.core.mjs
+// ../Telegram bot /work/production-web/node_modules/@floating-ui/core/dist/floating-ui.core.mjs
 function computeCoordsFromPlacement(_ref, placement, rtl) {
 	let { reference, floating } = _ref;
 	const sideAxis = getSideAxis(placement);
@@ -20305,7 +20374,7 @@ var size$1 = function(options) {
 		}
 	};
 };
-// node_modules/@floating-ui/utils/dist/floating-ui.utils.dom.mjs
+// ../Telegram bot /work/production-web/node_modules/@floating-ui/utils/dist/floating-ui.utils.dom.mjs
 function hasWindow() {
 	return typeof window !== "undefined";
 }
@@ -20417,7 +20486,7 @@ function getOverflowAncestors(node, list, traverseIframes) {
 function getFrameElement(win) {
 	return win.parent && Object.getPrototypeOf(win.parent) ? win.frameElement : null;
 }
-// node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs
+// ../Telegram bot /work/production-web/node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs
 function getCssDimensions(element) {
 	const css = getComputedStyle$1(element);
 	let width = parseFloat(css.width) || 0;
@@ -20950,7 +21019,7 @@ var computePosition = (reference, floating, options) => {
 		platform: platformWithCache
 	});
 };
-// node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.mjs
+// ../Telegram bot /work/production-web/node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.mjs
 var index$1 = typeof document !== "undefined" ? import_react.useLayoutEffect : function noop() {};
 function deepEqual(a, b) {
 	if (a === b) return true;
@@ -21263,7 +21332,7 @@ var arrow = (options, deps) => {
 		options: [options, deps]
 	};
 };
-// node_modules/@radix-ui/react-popper/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-popper/dist/index.mjs
 var __defProp$8 = Object.defineProperty;
 var __name$8 = (target, value) => __defProp$8(target, "name", {
 	value,
@@ -21487,7 +21556,7 @@ __name$8(getSideAndAlignFromPlacement, "getSideAndAlignFromPlacement");
 var Root2$2 = Popper;
 var Anchor = PopperAnchor;
 var Content$1 = PopperContent;
-// node_modules/@radix-ui/react-use-is-hydrated/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-use-is-hydrated/dist/index.mjs
 var __defProp$7 = Object.defineProperty;
 var __name$7 = (target, value) => __defProp$7(target, "name", {
 	value,
@@ -21515,7 +21584,7 @@ function useIsHydratedModern() {
 }
 __name$7(useIsHydratedModern, "useIsHydratedModern");
 var useIsHydrated2 = typeof useReactSyncExternalStore === "function" ? useIsHydratedModern : useIsHydrated;
-// node_modules/@radix-ui/react-roving-focus/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-roving-focus/dist/index.mjs
 var __defProp$6 = Object.defineProperty;
 var __name$6 = (target, value) => __defProp$6(target, "name", {
 	value,
@@ -21716,7 +21785,7 @@ function wrapArray$1(array, startIndex) {
 __name$6(wrapArray$1, "wrapArray");
 var Root$1 = RovingFocusGroup;
 var Item = RovingFocusGroupItem;
-// node_modules/@radix-ui/react-menu/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-menu/dist/index.mjs
 var __defProp$5 = Object.defineProperty;
 var __name$5 = (target, value) => __defProp$5(target, "name", {
 	value,
@@ -22177,7 +22246,7 @@ var Anchor2 = MenuAnchor;
 var Portal = MenuPortal;
 var Content2$1 = MenuContent;
 var Item2$1 = MenuItem;
-// node_modules/@radix-ui/react-dropdown-menu/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-dropdown-menu/dist/index.mjs
 var __defProp$4 = Object.defineProperty;
 var __name$4 = (target, value) => __defProp$4(target, "name", {
 	value,
@@ -22310,7 +22379,7 @@ var Trigger$1 = DropdownMenuTrigger;
 var Portal2 = DropdownMenuPortal;
 var Content2 = DropdownMenuContent;
 var Item2 = DropdownMenuItem;
-// node_modules/@radix-ui/react-separator/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-separator/dist/index.mjs
 var __defProp$3 = Object.defineProperty;
 var __name$3 = (target, value) => __defProp$3(target, "name", {
 	value,
@@ -22337,7 +22406,7 @@ function isValidOrientation(orientation) {
 }
 __name$3(isValidOrientation, "isValidOrientation");
 var Root = Separator$1;
-// node_modules/@radix-ui/react-tabs/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-tabs/dist/index.mjs
 var __defProp$2 = Object.defineProperty;
 var __name$2 = (target, value) => __defProp$2(target, "name", {
 	value,
@@ -22474,7 +22543,7 @@ var Root2 = Tabs$1;
 var List = TabsList$1;
 var Trigger = TabsTrigger$1;
 var Content = TabsContent$1;
-// node_modules/@radix-ui/react-toggle/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-toggle/dist/index.mjs
 var __defProp$1 = Object.defineProperty;
 var __name$1 = (target, value) => __defProp$1(target, "name", {
 	value,
@@ -22501,7 +22570,7 @@ var Toggle = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$1(fu
 		})
 	});
 }, "Toggle"));
-// node_modules/@radix-ui/react-toggle-group/dist/index.mjs
+// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-toggle-group/dist/index.mjs
 var __defProp = Object.defineProperty;
 var __name = (target, value) => __defProp(target, "name", {
 	value,
@@ -22644,21 +22713,21 @@ var ToggleGroupItemImpl = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ *
 	});
 }, "ToggleGroupItemImpl"));
 // frontend/src/components/ui/button.jsx
-var buttonVariants = cva("inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm leading-label font-medium whitespace-nowrap transition-colors disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4", {
+var buttonVariants = cva("inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm leading-label font-medium whitespace-nowrap transition-colors disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive [&_svg]:pointer-events-none [&_svg]:shrink-0 [&>svg]:mx-0 [&_svg:not([class*='size-'])]:size-4", {
 	variants: {
 		variant: {
 			default: "bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:outline-primary-foreground",
 			destructive: "bg-destructive text-white hover:bg-destructive/90 focus-visible:outline-white",
 			"destructive-outline": "border border-overdue-border bg-background text-destructive shadow-xs hover:bg-overdue-bg hover:text-destructive",
 			"destructive-ghost": "text-destructive hover:bg-overdue-bg hover:text-destructive",
-			outline: "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",
+			outline: "border bg-card shadow-[var(--shadow-pill)] hover:bg-accent hover:text-accent-foreground",
 			secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
 			ghost: "hover:bg-accent hover:text-accent-foreground",
 			link: "text-primary underline-offset-4 hover:underline"
 		},
 		size: {
-			default: "h-9 px-4 py-2 has-[>svg]:px-3 max-sm:min-h-11",
-			sm: "h-8 gap-2 px-3 has-[>svg]:px-2 max-sm:min-h-11",
+			default: "h-9 px-4 py-2 has-[>svg]:pl-3 max-sm:min-h-11",
+			sm: "h-8 gap-1.5 px-3 has-[>svg]:pl-2.5 max-sm:min-h-11",
 			icon: "size-9 max-sm:size-11",
 			"icon-sm": "size-8 max-sm:size-11"
 		}
@@ -23392,6 +23461,43 @@ function MeetingEditor({ open, onOpenChange, task, meeting, onSaved }) {
 		})
 	});
 }
+// frontend/src/components/ui/avatar.jsx
+function Avatar$1({ className, size = "default", ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$2, {
+		"data-slot": "avatar",
+		"data-size": size,
+		className: cn$1("group/avatar relative flex size-8 shrink-0 overflow-hidden rounded-full select-none data-[size=lg]:size-10 data-[size=sm]:size-6", className),
+		...props
+	});
+}
+function AvatarFallback({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback$1, {
+		"data-slot": "avatar-fallback",
+		className: cn$1("flex size-full items-center justify-center rounded-full bg-muted text-sm text-muted-foreground group-data-[size=sm]/avatar:text-xs", className),
+		...props
+	});
+}
+// frontend/src/components/ui/badge.jsx
+var badgeVariants = cva("inline-flex w-fit max-w-full shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border border-transparent px-2 py-1 text-xs font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring aria-invalid:border-destructive [&>svg]:pointer-events-none [&>svg]:size-3", {
+	variants: { variant: {
+		default: "bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
+		secondary: "bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
+		destructive: "bg-destructive text-white [a&]:hover:bg-destructive/90",
+		outline: "border-border text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+		ghost: "[a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+		link: "text-primary underline-offset-4 [a&]:hover:underline"
+	} },
+	defaultVariants: { variant: "default" }
+});
+function Badge({ className, variant = "default", asChild = false, ...props }) {
+	const Comp = asChild ? Slot$2 : "span";
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Comp, {
+		"data-slot": "badge",
+		"data-variant": variant,
+		className: cn$1(badgeVariants({ variant }), className),
+		...props
+	});
+}
 // frontend/src/components/ui/textarea.jsx
 function Textarea({ className, ...props }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("textarea", {
@@ -23642,45 +23748,29 @@ function ProjectFiles({ projectId, namespace = "founder" }) {
 		]
 	});
 }
-// frontend/src/components/ui/badge.jsx
-var badgeVariants = cva("inline-flex w-fit max-w-full shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border border-transparent px-2 py-1 text-xs font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring aria-invalid:border-destructive [&>svg]:pointer-events-none [&>svg]:size-3", {
-	variants: { variant: {
-		default: "bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
-		secondary: "bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
-		destructive: "bg-destructive text-white [a&]:hover:bg-destructive/90",
-		outline: "border-border text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
-		ghost: "[a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
-		link: "text-primary underline-offset-4 [a&]:hover:underline"
-	} },
-	defaultVariants: { variant: "default" }
-});
-function Badge({ className, variant = "default", asChild = false, ...props }) {
-	const Comp = asChild ? Slot$2 : "span";
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Comp, {
-		"data-slot": "badge",
-		"data-variant": variant,
-		className: cn$1(badgeVariants({ variant }), className),
-		...props
-	});
-}
 // frontend/src/components/ui/status-chip.jsx
-var tones = {
-	neutral: "border-border bg-muted text-foreground",
-	info: "border-info-border bg-info-bg text-info",
-	warning: "border-warning-border bg-warning-bg text-warning",
-	success: "border-success-border bg-success-bg text-success",
-	overdue: "border-overdue-border bg-overdue-bg text-overdue"
+var dots = {
+	neutral: "bg-border-strong",
+	info: "bg-info-fill",
+	warning: "bg-warning-fill",
+	success: "bg-success-fill",
+	overdue: "bg-overdue-fill"
 };
-function StatusChip({ status, tone, children, className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+function StatusChip({ status, tone, action = false, children, className, ...props }) {
+	const key = tone ?? status?.tone;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
 		variant: "outline",
 		"data-slot": "status-chip",
-		className: cn$1(tones[tone ?? status?.tone] ?? tones.neutral, className),
+		className: cn$1("border-border bg-card font-normal text-foreground shadow-[var(--shadow-pill)]", className),
 		...props,
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-			className: "truncate",
-			children: children ?? status?.text
-		})
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: cn$1("size-1.5 shrink-0 rounded-full", dots[key] ?? dots.neutral) }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				className: "truncate",
+				children: children ?? status?.text
+			}),
+			action && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, { "aria-hidden": "true" })
+		]
 	});
 }
 // frontend/src/features/timeline/lib/timeline.js
@@ -23849,8 +23939,25 @@ function TaskMessage({ message, namespace = "founder" }) {
 		className: "space-y-2 card-box bg-card text-sm",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex justify-between gap-2 text-xs",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: message.author }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Time, { value: message.at })]
+				className: "flex items-center gap-2 text-xs",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$1, {
+						size: "sm",
+						"aria-hidden": "true",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
+							className: "bg-secondary font-medium text-secondary-foreground",
+							children: String(message.author || "?").trim().charAt(0).toUpperCase()
+						})
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+						className: "min-w-0 flex-1 truncate",
+						children: message.author
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Time, {
+						value: message.at,
+						className: "shrink-0 text-muted-foreground"
+					})
+				]
 			}),
 			message.text && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				className: "whitespace-pre-wrap break-words",
@@ -24102,9 +24209,9 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "task-thread-heading-row",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "task-thread-context",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(StatusChip, { status: chip }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: ["· ", project?.name || "Task workspace"] })]
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StatusChip, { status: chip })
 								}), canStep && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "task-thread-steps",
 									children: [
@@ -24136,12 +24243,78 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 								})]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetTitle, { children: task.title }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("dl", {
-								className: "task-thread-overview",
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("ul", {
+								className: "task-thread-chips",
 								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Assignee" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("dd", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(UserRound, {}), assigneeLabel] })] }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Deadline" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("dd", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, {}), formatCalendar(task.deadline) || "Not set"] })] }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Stage" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: stage?.name || "General" })] })
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
+										variant: "outline",
+										className: "bg-card",
+										title: "Project",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderOpen, { "aria-hidden": "true" }),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "sr-only",
+												children: "Project: "
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "truncate",
+												children: project?.name || "Task workspace"
+											})
+										]
+									}) }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
+										variant: "outline",
+										className: "bg-card",
+										title: "Assignee",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$1, {
+												size: "sm",
+												className: "-my-1 -ml-1.5 size-5",
+												"aria-hidden": "true",
+												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
+													className: "bg-secondary text-xs font-medium text-secondary-foreground",
+													children: assigneeLabel.trim().charAt(0).toUpperCase()
+												})
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "sr-only",
+												children: "Assignee: "
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "truncate",
+												children: assigneeLabel
+											})
+										]
+									}) }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
+										variant: "outline",
+										className: "bg-card",
+										title: "Deadline",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, { "aria-hidden": "true" }),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "sr-only",
+												children: "Deadline: "
+											}),
+											formatCalendar(task.deadline) || "No deadline"
+										]
+									}) }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
+										variant: "outline",
+										className: "bg-card",
+										title: "Stage",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { "aria-hidden": "true" }),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "sr-only",
+												children: "Stage: "
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "truncate",
+												children: stage?.name || "General"
+											})
+										]
+									}) })
 								]
 							}),
 							isFounder && !projectClosed && !editing && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -25049,22 +25222,6 @@ function MeetingsView({ namespace = "founder", projectId = "", onOpenTask, embed
 		]
 	});
 }
-// frontend/src/components/ui/avatar.jsx
-function Avatar$1({ className, size = "default", ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$2, {
-		"data-slot": "avatar",
-		"data-size": size,
-		className: cn$1("group/avatar relative flex size-8 shrink-0 overflow-hidden rounded-full select-none data-[size=lg]:size-10 data-[size=sm]:size-6", className),
-		...props
-	});
-}
-function AvatarFallback({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback$1, {
-		"data-slot": "avatar-fallback",
-		className: cn$1("flex size-full items-center justify-center rounded-full bg-muted text-sm text-muted-foreground group-data-[size=sm]/avatar:text-xs", className),
-		...props
-	});
-}
 // frontend/src/components/ui/bubble.jsx
 var bubbleVariants = cva("group/bubble relative flex w-fit max-w-[80%] min-w-0 flex-col gap-1 group-data-[align=end]/message:self-end data-[align=end]:self-end data-[variant=ghost]:max-w-full", {
 	variants: { variant: {
@@ -25796,7 +25953,88 @@ function LocationProjectPicker({ projects, selected, onChange }) {
 		})
 	});
 }
+// frontend/src/components/ui/refresh-button.jsx
+function RefreshButton({ onRefresh, children = "Refresh", className, ...props }) {
+	const [busy, setBusy] = import_react.useState(false);
+	const refresh = async () => {
+		if (busy) return;
+		setBusy(true);
+		try {
+			await Promise.all([onRefresh(), new Promise((resolve) => setTimeout(resolve, 600))]);
+		} finally {
+			setBusy(false);
+		}
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+		variant: "outline",
+		size: "sm",
+		"aria-busy": busy,
+		className,
+		onClick: refresh,
+		...props,
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, {
+			className: cn$1(busy && "animate-spin"),
+			"aria-hidden": "true"
+		}), children]
+	});
+}
+// frontend/src/components/ui/native-select.jsx
+function NativeSelect({ className, size = "default", variant = "default", ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
+		"data-slot": "native-select",
+		"data-size": size,
+		"data-variant": variant,
+		className: cn$1("h-9 w-full min-w-0 appearance-none truncate rounded-md border border-input bg-card px-3 py-2 pr-8 text-sm shadow-xs transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed data-[size=sm]:h-8 data-[size=sm]:py-1", "focus-visible:border-ring", "aria-invalid:border-destructive", className),
+		...props
+	});
+}
+function NativeSelectOption({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+		"data-slot": "native-select-option",
+		className: cn$1("bg-[Canvas] text-[CanvasText]", className),
+		...props
+	});
+}
+// frontend/src/components/ui/segmented-control.jsx
+function SegmentedControl({ label, value, onValueChange, options, className }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ToggleGroup, {
+		type: "single",
+		"aria-label": label,
+		value,
+		onValueChange: (next) => next && onValueChange(next),
+		"data-slot": "segmented-control",
+		className: cn$1("inline-flex w-fit max-w-full flex-wrap items-center gap-1 rounded-full bg-subtle p-1", className),
+		children: options.map((option) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(ToggleGroupItem, {
+			value: option.value,
+			"data-slot": "segmented-control-item",
+			className: "inline-flex min-h-8 items-center justify-center gap-2 rounded-full px-3 text-xs font-medium text-secondary-foreground transition-colors hover:text-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-card data-[state=on]:text-foreground data-[state=on]:shadow-[var(--shadow-pill)] max-sm:min-h-11 [&_svg]:size-3.5 [&_svg]:shrink-0",
+			children: [option.icon, option.label]
+		}, option.value))
+	});
+}
 // frontend/src/features/operations/WorkQueue.jsx
+var STATUS_FILTERS = [
+	{
+		value: "pending",
+		label: "All"
+	},
+	{
+		value: "approvals",
+		label: "Approvals"
+	},
+	{
+		value: "overdue",
+		label: "Overdue"
+	},
+	{
+		value: "blocked",
+		label: "Blocked"
+	},
+	{
+		value: "in-progress",
+		label: "In progress"
+	}
+];
 var statusOf = (task) => taskStatus(task, { stage: task.project?.stages?.find((stage) => stage.id === task.stageId) });
 var matchesStatusFilter = (status, filter) => ({
 	approvals: status.key === "waiting",
@@ -25806,11 +26044,16 @@ var matchesStatusFilter = (status, filter) => ({
 })[filter] ?? true;
 function WorkQueue({ projects = [], isFounder = true, initialPersonId = "founder", personName = "Me", onChanged }) {
 	const [person, setPerson] = (0, import_react.useState)(initialPersonId), [projectId, setProjectId] = (0, import_react.useState)(""), [status, setStatus] = (0, import_react.useState)("pending");
-	const [tasks, setTasks] = (0, import_react.useState)([]), [employees, setEmployees] = (0, import_react.useState)([]), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [link, setLink] = (0, import_react.useState)(""), [syncWarning, setSyncWarning] = (0, import_react.useState)(""), [connected, setConnected] = (0, import_react.useState)(false);
+	const [tasks, setTasks] = (0, import_react.useState)([]), [employees, setEmployees] = (0, import_react.useState)([]), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [link, setLink] = (0, import_react.useState)(""), [syncWarning, setSyncWarning] = (0, import_react.useState)(""), [connected, setConnected] = (0, import_react.useState)(false), [railGroup, setRailGroup] = (0, import_react.useState)("");
 	const navigation = useNavigation();
 	const selected = navigation.section === "actions" ? tasks.find((task) => task.id === navigation.taskId) || null : null;
 	const namespace = isFounder ? "founder" : "employee";
 	const visibleTasks = tasks.filter((task) => matchesStatusFilter(statusOf(task), status));
+	const groups = /* @__PURE__ */ new Map();
+	for (const task of visibleTasks) {
+		const name = task.projectName || "Other work";
+		groups.set(name, [...groups.get(name) || [], task]);
+	}
 	const load = async () => {
 		try {
 			const data = await request(`/api/${namespace}/work-queue?personId=${encodeURIComponent(person)}&projectId=${encodeURIComponent(projectId)}&status=pending`);
@@ -25862,12 +26105,7 @@ function WorkQueue({ projects = [], isFounder = true, initialPersonId = "founder
 						size: "sm",
 						onClick: connect,
 						children: connected ? "Telegram connected" : "Connect Telegram digests"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						variant: "outline",
-						size: "sm",
-						onClick: load,
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: "size-4" }), "Refresh"]
-					})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshButton, { onRefresh: load })]
 				})]
 			}),
 			link && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
@@ -25887,76 +26125,50 @@ function WorkQueue({ projects = [], isFounder = true, initialPersonId = "founder
 				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "work-queue-filters grid gap-3 sm:grid-cols-3",
-				children: [
-					isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-						className: "grid min-w-0 gap-1 text-xs",
-						children: ["Person", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
-							className: "h-10 w-full min-w-0 truncate rounded-md border bg-background px-3 max-sm:h-11",
-							value: person,
-							onChange: (event) => setPerson(event.target.value),
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-									value: "founder",
-									children: "My work (Founder)"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-									value: "all",
-									children: "Everyone"
-								}),
-								employees.map((employee) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-									value: employee.id,
-									children: employee.name
-								}, employee.id))
-							]
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-						className: "grid min-w-0 gap-1 text-xs",
-						children: ["Project", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
-							className: "h-10 w-full min-w-0 truncate rounded-md border bg-background px-3 max-sm:h-11",
-							value: projectId,
-							onChange: (event) => setProjectId(event.target.value),
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-								value: "",
-								children: "All projects"
-							}), projects.map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-								value: project.id,
-								children: project.name
-							}, project.id))]
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-						className: "grid min-w-0 gap-1 text-xs",
-						children: ["Status", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
-							className: "h-10 w-full min-w-0 truncate rounded-md border bg-background px-3 max-sm:h-11",
-							value: status,
-							onChange: (event) => setStatus(event.target.value),
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-									value: "pending",
-									children: "All pending work"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-									value: "approvals",
-									children: "Pending approvals"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-									value: "overdue",
-									children: "Overdue"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-									value: "blocked",
-									children: "Blocked"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-									value: "in-progress",
-									children: "In progress"
-								})
-							]
-						})]
-					})
-				]
+				className: "work-queue-filters",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SegmentedControl, {
+					label: "Status",
+					value: status,
+					onValueChange: setStatus,
+					options: STATUS_FILTERS,
+					className: "work-queue-status no-scrollbar"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "work-queue-pickers",
+					children: [isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+						size: "sm",
+						variant: "pill",
+						"aria-label": "Person",
+						value: person,
+						onChange: (event) => setPerson(event.target.value),
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: "founder",
+								children: "My work (Founder)"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: "all",
+								children: "Everyone"
+							}),
+							employees.map((employee) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: employee.id,
+								children: employee.name
+							}, employee.id))
+						]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+						size: "sm",
+						variant: "pill",
+						"aria-label": "Project",
+						value: projectId,
+						onChange: (event) => setProjectId(event.target.value),
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+							value: "",
+							children: "All projects"
+						}), projects.map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+							value: project.id,
+							children: project.name
+						}, project.id))]
+					})]
+				})]
 			}),
 			syncWarning && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				role: "status",
@@ -25969,64 +26181,116 @@ function WorkQueue({ projects = [], isFounder = true, initialPersonId = "founder
 				children: error
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "work-queue-list space-y-3",
-				children: [visibleTasks.map((task) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-					className: "work-queue-item flex w-full items-center justify-between gap-3 card-box bg-card text-left hover:bg-muted",
-					onClick: () => navigate({
-						section: "actions",
-						taskId: task.id
-					}),
-					children: [isFounder ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-						className: "work-queue-item-content",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "work-queue-item-title",
-							children: task.title
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-							className: "work-queue-item-context",
+				className: "work-queue-body",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "work-queue-list",
+					children: [[...groups].map(([projectName, rows], index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+						id: `work-queue-group-${index}`,
+						className: "work-queue-group",
+						"aria-label": projectName,
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", {
+							className: "work-queue-group-title",
 							children: [
-								task.projectName,
-								" · ",
-								task.stageName,
-								task.spaces?.length ? ` · ${task.spaces.join(", ")}` : ""
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: `work-queue-group-icon iksha-stage color-${index % 8}`,
+									"aria-hidden": "true",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderOpen, {})
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "min-w-0 truncate",
+									children: projectName
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "work-queue-group-count",
+									children: rows.length
+								})
 							]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "work-queue-card",
+							children: rows.map((task) => {
+								const taskState = statusOf(task);
+								return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+									className: "work-queue-item flex w-full items-center justify-between gap-3 text-left hover:bg-accent",
+									onClick: () => navigate({
+										section: "actions",
+										taskId: task.id
+									}),
+									children: isFounder ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										className: "work-queue-item-content",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "work-queue-item-title",
+											children: task.title
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+											className: "work-queue-item-context",
+											children: [task.stageName, task.spaces?.length ? ` · ${task.spaces.join(", ")}` : ""]
+										})]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										className: "work-queue-item-meta",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(StatusChip, {
+											status: taskState,
+											action: taskState.key === "waiting",
+											className: "justify-self-end"
+										}), task.deadline && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: ["Due ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Time, {
+											value: task.deadline,
+											format: "calendar"
+										})] })]
+									})] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+										className: "text-sm font-medium",
+										children: [
+											task.stageName,
+											" — ",
+											task.title
+										]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+										className: "mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(StatusChip, {
+												status: taskState,
+												action: taskState.key === "waiting"
+											}),
+											task.deadline ? ` · Due ${formatCalendar(task.deadline)}` : "",
+											task.spaces?.length ? ` · ${task.spaces.join(", ")}` : ""
+										]
+									})] })
+								}, task.id);
+							})
 						})]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-						className: "work-queue-item-meta",
-						children: [task.deadline && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: ["Due ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Time, {
-							value: task.deadline,
-							format: "calendar"
-						})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StatusChip, {
-							status: statusOf(task),
-							className: "justify-self-end"
+					}, projectName)), !visibleTasks.length && !error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
+						kind: tasks.length ? "no-results" : "first-use",
+						icon: CircleCheck,
+						title: tasks.length ? "No work matches these filters" : "No pending work",
+						description: tasks.length ? "Try another status, or clear the filter." : "Work that needs action appears here.",
+						action: tasks.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							size: "sm",
+							onClick: () => setStatus("pending"),
+							children: "Show all pending work"
+						}) : null
+					})]
+				}, status), groups.size > 1 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
+					className: "work-queue-rail",
+					"aria-label": "Jump to a project",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "work-queue-rail-label",
+						children: "By project"
+					}), [...groups].map(([projectName, rows], index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+						type: "button",
+						"data-active": (railGroup || [...groups.keys()][0]) === projectName,
+						onClick: () => {
+							setRailGroup(projectName);
+							document.getElementById(`work-queue-group-${index}`)?.scrollIntoView({
+								behavior: "smooth",
+								block: "start"
+							});
+						},
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "min-w-0 truncate",
+							children: projectName
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "tabular-nums",
+							children: rows.length
 						})]
-					})] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-						className: "text-sm font-medium",
-						children: [
-							task.projectName,
-							" — ",
-							task.stageName,
-							" — ",
-							task.title
-						]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-						className: "mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(StatusChip, { status: statusOf(task) }),
-							task.deadline ? ` · Due ${formatCalendar(task.deadline)}` : "",
-							task.spaces?.length ? ` · ${task.spaces.join(", ")}` : ""
-						]
-					})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { className: "work-queue-item-arrow size-4 shrink-0" })]
-				}, task.id)), !visibleTasks.length && !error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
-					kind: tasks.length ? "no-results" : "first-use",
-					icon: CircleCheck,
-					title: tasks.length ? "No work matches these filters" : "No pending work",
-					description: tasks.length ? "Try another status, or clear the filter." : "Work that needs action appears here.",
-					action: tasks.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						variant: "outline",
-						size: "sm",
-						onClick: () => setStatus("pending"),
-						children: "Show all pending work"
-					}) : null
+					}, projectName))]
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TaskThreadDrawer, {
@@ -26628,7 +26892,7 @@ function SidebarItem({ active = false, icon: Icon, badge, dot, className, childr
 		"data-active": active ? "true" : void 0,
 		"aria-current": active ? "page" : void 0,
 		title,
-		className: cn$1("flex h-11 w-full min-w-0 items-center gap-2 rounded-md border border-transparent px-2 text-left text-sm text-foreground transition-colors hover:bg-card data-[active=true]:border-border data-[active=true]:bg-card data-[active=true]:font-semibold", "lg:h-8", className),
+		className: cn$1("flex h-11 w-full min-w-0 items-center gap-2 rounded-md px-2 text-left text-sm text-muted-foreground transition-colors hover:bg-card hover:text-foreground data-[active=true]:bg-card data-[active=true]:font-semibold data-[active=true]:text-foreground data-[active=true]:shadow-[var(--shadow-raised)]", "lg:h-8", className),
 		...props,
 		children: [
 			Icon && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, {
@@ -26668,7 +26932,7 @@ function Skeleton({ className, ...props }) {
 		...props
 	});
 }
-// node_modules/liquid-gooey/dist/index.js
+// ../Telegram bot /work/production-web/node_modules/liquid-gooey/dist/index.js
 var GooeyContext = (0, import_react.createContext)(null);
 function useGooeyContext() {
 	const ctx = (0, import_react.useContext)(GooeyContext);
@@ -29430,7 +29694,7 @@ function GooeyNewButton({ hasProject, onAddMember }) {
 		ref: rootRef,
 		className: "relative z-40 flex h-12 items-center justify-center overflow-visible",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Liquid, {
-			fill: "#273c36",
+			fill: "#2b2a36",
 			blur: 5,
 			contrast: 18,
 			filterPadding: 200,
@@ -29841,22 +30105,6 @@ function AccessRequest({ account, employees, projects, onChanged, onFounder }) {
 		]
 	});
 }
-// frontend/src/components/ui/native-select.jsx
-function NativeSelect({ className, size = "default", ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
-		"data-slot": "native-select",
-		"data-size": size,
-		className: cn$1("h-9 w-full min-w-0 appearance-none truncate rounded-md border border-input bg-card px-3 py-2 pr-8 text-sm shadow-xs transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed data-[size=sm]:h-8 data-[size=sm]:py-1", "focus-visible:border-ring", "aria-invalid:border-destructive", className),
-		...props
-	});
-}
-function NativeSelectOption({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-		"data-slot": "native-select-option",
-		className: cn$1("bg-[Canvas] text-[CanvasText]", className),
-		...props
-	});
-}
 // frontend/src/components/ui/tabs.jsx
 function Tabs({ className, orientation = "horizontal", ...props }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Root2, {
@@ -29894,23 +30142,6 @@ function TabsContent({ className, ...props }) {
 		"data-slot": "tabs-content",
 		className: cn$1("flex-1 outline-none", className),
 		...props
-	});
-}
-// frontend/src/components/ui/segmented-control.jsx
-function SegmentedControl({ label, value, onValueChange, options, className }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ToggleGroup, {
-		type: "single",
-		"aria-label": label,
-		value,
-		onValueChange: (next) => next && onValueChange(next),
-		"data-slot": "segmented-control",
-		className: cn$1("inline-flex w-fit max-w-full flex-wrap items-center gap-1 rounded-lg bg-muted p-1", className),
-		children: options.map((option) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(ToggleGroupItem, {
-			value: option.value,
-			"data-slot": "segmented-control-item",
-			className: "inline-flex min-h-8 items-center justify-center gap-2 rounded-md px-3 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-card data-[state=on]:text-foreground data-[state=on]:shadow-xs max-sm:min-h-11 [&_svg]:size-3.5 [&_svg]:shrink-0",
-			children: [option.icon, option.label]
-		}, option.value))
 	});
 }
 // frontend/src/features/people/EmployeeManager.jsx
@@ -30422,7 +30653,7 @@ function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewWork }) 
 		]
 	});
 }
-// node_modules/thinking-orbs/dist/index-B8WsUNf5.js
+// ../Telegram bot /work/production-web/node_modules/thinking-orbs/dist/index-B8WsUNf5.js
 function lerp(a, b, f) {
 	return a + (b - a) * f;
 }
@@ -31447,7 +31678,7 @@ function resolvePreset(state, size) {
 	cache.set(key, resolved);
 	return resolved;
 }
-// node_modules/thinking-orbs/dist/index.es.js
+// ../Telegram bot /work/production-web/node_modules/thinking-orbs/dist/index.es.js
 function ancestorTheme(el) {
 	let node = el;
 	while (node) {
@@ -32185,72 +32416,232 @@ function ThinkingOrb({ state = "working", size = 64, theme = "auto", speed = 1, 
 		...rest
 	});
 }
+// frontend/src/features/assistant/lib/answer.js
+var TASK = /^(.+?) — (.*?) — (.+)$/;
+var EMPTY_VALUE = /not recorded|none recorded|no one assigned|not set|^no .+ (assigned|recorded)\.?$/i;
+function listItem(text) {
+	const colon = text.indexOf(":");
+	if (colon > 0 && colon <= 24 && !text.slice(0, colon).includes(" — ")) {
+		const value = text.slice(colon + 1).trim();
+		return {
+			kind: "field",
+			label: text.slice(0, colon),
+			value,
+			empty: EMPTY_VALUE.test(value)
+		};
+	}
+	const dash = text.indexOf(" — ");
+	if (dash > 0) return {
+		kind: "pair",
+		primary: text.slice(0, dash),
+		secondary: text.slice(dash + 3)
+	};
+	return {
+		kind: "bullet",
+		text,
+		empty: EMPTY_VALUE.test(text)
+	};
+}
+function parseAnswer(text) {
+	const answer = {
+		title: "",
+		intro: [],
+		sections: [],
+		tasks: []
+	};
+	let section = null;
+	let group = null;
+	const target = () => section ? section.items : answer.intro;
+	const flush = () => {
+		if (!group) return;
+		const [first, ...rest] = group;
+		const task = rest.length ? first.match(TASK) : null;
+		if (task) answer.tasks.push({
+			project: task[1],
+			stage: task[2],
+			title: task[3],
+			status: rest.join(" · ")
+		});
+		else target().push({
+			kind: "text",
+			lines: group
+		});
+		group = null;
+	};
+	for (const raw of String(text || "").split("\n")) {
+		const line = raw.trim();
+		if (!line || line.startsWith("#") || line.startsWith("- ")) flush();
+		if (!line) continue;
+		if (line.startsWith("# ") && !answer.title && !section) answer.title = line.slice(2);
+		else if (line.startsWith("## ")) answer.sections.push(section = {
+			heading: line.slice(3),
+			items: []
+		});
+		else if (line.startsWith("# ")) target().push({
+			kind: "text",
+			lines: [line.slice(2)]
+		});
+		else if (line.startsWith("- ")) target().push(listItem(line.slice(2)));
+		else (group ||= []).push(line);
+	}
+	flush();
+	return answer;
+}
+function statusTone(status) {
+	if (/overdue/i.test(status)) return "overdue";
+	if (/approval|blocked/i.test(status)) return "warning";
+	if (/in progress/i.test(status)) return "info";
+	if (/done|completed/i.test(status)) return "success";
+	return "neutral";
+}
 // frontend/src/features/assistant/FounderAssistant.jsx
 var suggestions = [
-	"Summarize all ongoing projects",
-	"Which projects have blockers?",
-	"What milestones are next?",
-	"Who is working on each project?"
-];
-function FormattedAnswer({ answer }) {
-	const blocks = [];
-	for (const rawLine of String(answer || "").split("\n")) {
-		const line = rawLine.trim();
-		if (!line) continue;
-		if (line.startsWith("# ")) blocks.push({
-			type: "title",
-			text: line.slice(2)
-		});
-		else if (line.startsWith("## ")) blocks.push({
-			type: "heading",
-			text: line.slice(3)
-		});
-		else if (line.startsWith("- ")) {
-			const previous = blocks.at(-1);
-			if (previous?.type === "list") previous.items.push(line.slice(2));
-			else blocks.push({
-				type: "list",
-				items: [line.slice(2)]
-			});
-		} else blocks.push({
-			type: "paragraph",
-			text: line
-		});
+	{
+		text: "Summarize all ongoing projects",
+		icon: ListChecks
+	},
+	{
+		text: "Which projects have blockers?",
+		icon: CircleAlert
+	},
+	{
+		text: "What milestones are next?",
+		icon: Flag
+	},
+	{
+		text: "Who is working on each project?",
+		icon: Users
 	}
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		className: "space-y-3",
-		children: blocks.map((block, index) => block.type === "title" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-			className: "type-label-14-strong text-foreground",
-			children: block.text
-		}, index) : block.type === "heading" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-			className: "border-t border-border/70 pt-2 text-sm font-semibold text-foreground first:border-0 first:pt-0",
-			children: block.text
-		}, index) : block.type === "list" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
-			className: "space-y-2 pl-4 text-sm marker:text-primary",
-			children: block.items.map((item, itemIndex) => {
-				const colon = item.indexOf(":");
-				return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
-					className: "list-disc pl-1",
-					children: colon > 0 && colon < 24 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-						className: "font-semibold",
-						children: item.slice(0, colon + 1)
-					}), item.slice(colon + 1)] }) : item
-				}, itemIndex);
-			})
-		}, index) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-			className: "text-sm text-muted-foreground",
-			children: block.text
+];
+function AnswerItem({ item }) {
+	if (item.kind === "field") return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "assistant-field",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+			className: "assistant-field-label",
+			children: item.label
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+			className: item.empty ? "text-muted-foreground" : void 0,
+			children: item.value
+		})]
+	});
+	if (item.kind === "pair") return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "assistant-pair",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: item.primary }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+			className: "text-muted-foreground",
+			children: item.secondary
+		})]
+	});
+	if (item.kind === "bullet") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+		className: item.empty ? "assistant-row text-muted-foreground" : "assistant-row",
+		children: item.text
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+		className: "assistant-row",
+		children: item.lines.map((line, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+			className: index ? "block text-muted-foreground" : "block",
+			children: line
 		}, index))
+	});
+}
+function GroupTitle({ index, name, count }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", {
+		className: "assistant-group-title",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				className: `assistant-group-icon iksha-stage color-${index % 8}`,
+				"aria-hidden": "true",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderOpen, {})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				className: "min-w-0 truncate",
+				children: name
+			}),
+			count != null && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				className: "assistant-group-count",
+				children: count
+			})
+		]
+	});
+}
+function Answer({ answer }) {
+	const { title, intro, sections, tasks } = parseAnswer(answer);
+	const projects = /* @__PURE__ */ new Map();
+	for (const task of tasks) projects.set(task.project, [...projects.get(task.project) || [], task]);
+	const overdue = tasks.filter((task) => statusTone(task.status) === "overdue").length;
+	const waiting = tasks.filter((task) => /approval/i.test(task.status)).length;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "assistant-report",
+		children: [
+			(title || tasks.length > 0) && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
+				className: "assistant-report-head",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+						className: "type-heading-20",
+						children: title || `${tasks.length} pending ${tasks.length === 1 ? "task" : "tasks"} across ${projects.size} ${projects.size === 1 ? "project" : "projects"}`
+					}),
+					tasks.length > 0 && (overdue > 0 || waiting > 0) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-sm text-muted-foreground",
+						children: [overdue && `${overdue} overdue`, waiting && `${waiting} awaiting approval`].filter(Boolean).join(" · ")
+					}),
+					intro.map((item, index) => item.kind === "text" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-sm text-muted-foreground",
+						children: item.lines.join(" ")
+					}, index) : null)
+				]
+			}),
+			!title && !tasks.length && intro.map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AnswerItem, { item }, index)),
+			title && intro.some((item) => item.kind !== "text") && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "assistant-card",
+				children: intro.filter((item) => item.kind !== "text").map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AnswerItem, { item }, index))
+			}),
+			[...projects].map(([project, rows], index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+				className: "assistant-group",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(GroupTitle, {
+					index,
+					name: project,
+					count: rows.length
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "assistant-card",
+					children: rows.map((task, row) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "assistant-task",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "min-w-0",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "assistant-task-title",
+								children: task.title
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "assistant-task-meta",
+								children: task.stage || "General"
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StatusChip, {
+							tone: statusTone(task.status),
+							children: task.status
+						})]
+					}, row))
+				})]
+			}, project)),
+			sections.map((section, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+				className: "assistant-group",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(GroupTitle, {
+					index,
+					name: section.heading
+				}), section.items.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "assistant-card",
+					children: section.items.map((item, row) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AnswerItem, { item }, row))
+				})]
+			}, index))
+		]
 	});
 }
 function FounderAssistant() {
 	const [messages, setMessages] = (0, import_react.useState)([]);
+	const [loaded, setLoaded] = (0, import_react.useState)(false);
 	const [draft, setDraft] = (0, import_react.useState)("");
 	const [busy, setBusy] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
 	const scrollRef = (0, import_react.useRef)(null);
 	(0, import_react.useEffect)(() => {
-		fetch("/api/founder/assistant", { credentials: "same-origin" }).then((response) => response.json()).then((data) => setMessages(data.messages || [])).catch(() => setError("Could not load earlier questions."));
+		fetch("/api/founder/assistant", { credentials: "same-origin" }).then((response) => response.json()).then((data) => setMessages(data.messages || [])).catch(() => setError("Could not load earlier questions.")).finally(() => setLoaded(true));
 	}, []);
 	(0, import_react.useEffect)(() => {
 		if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
@@ -32287,151 +32678,134 @@ function FounderAssistant() {
 			setBusy(false);
 		}
 	};
+	const composer = /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+		onSubmit: ask,
+		className: "assistant-composer",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
+			value: draft,
+			onChange: (event) => setDraft(event.target.value),
+			onKeyDown: (event) => {
+				if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) ask(event);
+			},
+			rows: 1,
+			maxLength: 1e3,
+			placeholder: "Ask about your projects…",
+			"aria-label": "Ask the founder assistant"
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+			type: "submit",
+			size: "icon-sm",
+			disabled: !draft.trim() || busy,
+			"aria-label": "Send question",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUp, {})
+		})]
+	});
+	const errorLine = error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+		role: "alert",
+		className: "text-xs text-destructive",
+		children: error
+	});
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "flex h-full min-h-0 flex-col overflow-hidden bg-background",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
-			className: "hidden shrink-0 border-b bg-card sm:block",
+		className: "assistant",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
+			className: "assistant-header",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", { children: "Assistant" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-1 text-sm text-muted-foreground",
+				children: "Ask about your projects. Answers come from saved project facts, and only founders can see them."
+			})]
+		}), !loaded ? null : !messages.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+			className: "assistant-start",
+			"aria-label": "Ask the assistant",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
+					state: "breathing",
+					size: 32,
+					speed: .3,
+					theme: "light",
+					color: "#2b2a36",
+					"aria-hidden": "true"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+					className: "type-heading-24",
+					children: "What do you want to know?"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "text-sm text-muted-foreground",
+					children: "Progress, blockers, milestones, team assignments or recent client questions."
+				}),
+				composer,
+				errorLine,
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "assistant-suggestions",
+					children: suggestions.map(({ text, icon: Icon }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+						type: "button",
+						className: "assistant-suggestion",
+						disabled: busy,
+						onClick: (event) => ask(event, text),
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, { "aria-hidden": "true" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: text })]
+					}, text))
+				})
+			]
+		}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			ref: scrollRef,
+			className: "assistant-thread chat-scroll",
+			"aria-label": "Founder assistant conversation",
+			"aria-live": "polite",
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mx-auto flex min-h-16 max-w-4xl items-center gap-3 px-3 py-2 sm:px-6",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "hidden shrink-0 sm:block",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
-							state: busy ? "working" : "breathing",
-							size: 32,
-							speed: busy ? .6 : .3,
-							theme: "light",
-							color: "#315e4c",
-							"aria-hidden": "true"
+				className: "assistant-column assistant-turns",
+				children: [messages.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+					className: "assistant-turn",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
+						variant: "secondary",
+						align: "end",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, {
+							className: "type-copy-14",
+							children: item.question
 						})
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "min-w-0 flex-1",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-							className: "truncate",
-							children: "Assistant"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "truncate text-xs text-muted-foreground",
-							children: "Ask Studio Iksha about your projects"
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LockKeyhole, {
-						className: "size-4 text-muted-foreground",
-						"aria-label": "Founder only"
-					})
-				]
+					}), item.answer && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "assistant-answer",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "assistant-answer-label",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { "aria-hidden": "true" }),
+								"Studio Iksha",
+								item.at && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Time, { value: item.at })
+							]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Answer, { answer: item.answer })]
+					})]
+				}, item.id)), busy && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+					role: "status",
+					className: "assistant-working",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
+						state: "working",
+						size: 20,
+						speed: .65,
+						theme: "light",
+						color: "#2b2a36",
+						"aria-hidden": "true"
+					}), "Reading your project records…"]
+				})]
 			})
-		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "mx-auto flex min-h-0 w-full max-w-4xl flex-1 flex-col bg-card md:border-x",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				ref: scrollRef,
-				className: "chat-scroll min-h-0 flex-1 space-y-6 overflow-y-auto px-4 py-4 sm:px-6",
-				"aria-label": "Founder assistant conversation",
-				"aria-live": "polite",
-				children: [
-					!messages.length && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "mx-auto flex max-w-sm flex-col items-center py-8 text-center",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
-								state: "breathing",
-								size: 64,
-								speed: .3,
-								theme: "light",
-								color: "#315e4c",
-								"aria-hidden": "true"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-								className: "mt-6 type-label-14-strong",
-								children: "Your projects, one question away"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "mt-2 text-xs leading-copy text-muted-foreground",
-								children: "Ask about progress, blockers, milestones, team assignments, or recent client questions. Answers come from saved project facts."
-							})
-						]
-					}),
-					messages.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "space-y-3",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Message, {
-							align: "end",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
-								className: "max-w-[88%] sm:max-w-[75%]",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageHeader, {
-									className: "justify-end",
-									children: "You"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
-									align: "end",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, { children: item.question })
-								})]
-							})
-						}), item.answer && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Message, {
-							align: "start",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
-								className: "max-w-[92%] sm:max-w-[82%]",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageHeader, { children: "Studio Iksha" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
-									variant: "secondary",
-									className: "max-w-full",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, {
-										className: "w-full p-4",
-										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormattedAnswer, { answer: item.answer })
-									})
-								})]
-							})
-						})]
-					}, item.id)),
-					busy && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center gap-2 text-xs text-muted-foreground",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
-							state: "working",
-							size: 20,
-							speed: .65,
-							theme: "light",
-							color: "#315e4c",
-							"aria-hidden": "true"
-						}), "Reading your project records…"]
-					})
-				]
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "safe-bottom shrink-0 border-t bg-card",
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "assistant-dock safe-bottom",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "assistant-column",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "flex max-h-32 flex-wrap gap-2 overflow-y-auto px-4 py-3 sm:px-6",
-						children: suggestions.map((suggestion) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						className: "assistant-chips no-scrollbar",
+						children: suggestions.map(({ text }) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 							variant: "outline",
 							size: "sm",
-							className: "h-auto min-h-8 max-w-full whitespace-normal py-1 text-left",
+							className: "shrink-0",
 							disabled: busy,
-							onClick: (event) => ask(event, suggestion),
-							children: suggestion
-						}, suggestion))
+							onClick: (event) => ask(event, text),
+							children: text
+						}, text))
 					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-						onSubmit: ask,
-						className: "flex items-end gap-2 border-t px-3 pt-3 sm:px-4",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
-							value: draft,
-							onChange: (event) => setDraft(event.target.value),
-							rows: 1,
-							maxLength: 1e3,
-							placeholder: "Ask about your projects…",
-							"aria-label": "Ask the founder assistant",
-							className: "max-h-32 min-h-11 flex-1 resize-none"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							type: "submit",
-							size: "icon",
-							disabled: !draft.trim() || busy,
-							"aria-label": "Send question",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUp, { className: "size-5" })
-						})]
-					}),
-					error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						role: "alert",
-						className: "px-4 pt-2 text-xs text-destructive",
-						children: error
-					})
+					composer,
+					errorLine
 				]
-			})]
-		})]
+			})
+		})] })]
 	});
 }
 // frontend/src/features/queries/SuggestReply.jsx
@@ -32457,13 +32831,20 @@ function SuggestReply({ requestId, disabled, onUse, baseInstruction = "", outcom
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex flex-wrap items-center gap-2",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+				children: [busy ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+					role: "status",
+					className: "inline-flex min-h-8 items-center gap-2 text-xs text-muted-foreground",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, {
+						className: "size-3.5 animate-spin",
+						"aria-hidden": "true"
+					}), "Drafting from project data…"]
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 					type: "button",
 					size: "sm",
 					variant: "outline",
-					disabled: disabled || busy,
+					disabled,
 					onClick: run,
-					children: [busy ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 mr-2 animate-spin" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3.5 mr-2" }), busy ? "Drafting from project data…" : suggestion ? "Suggest again" : "Suggest reply"]
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3.5 mr-2" }), suggestion ? "Suggest again" : "Suggest reply"]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 					type: "button",
 					className: "text-xs text-muted-foreground underline-offset-2 hover:underline",
@@ -32488,20 +32869,34 @@ function SuggestReply({ requestId, disabled, onUse, baseInstruction = "", outcom
 				className: "text-xs text-destructive",
 				children: error
 			}),
-			suggestion && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "card-box border-primary/25 bg-primary/5 space-y-2",
+			suggestion && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+				className: "overflow-hidden rounded-xl border bg-card",
 				"aria-live": "polite",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-						className: "flex items-center gap-2 text-xs font-semibold text-primary",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3.5" }), suggestion.ai ? "Suggested reply · from this project's records" : "Draft from project records (AI not available)"]
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
+						className: "flex flex-wrap items-center gap-x-2 gap-y-1 border-b px-4 py-2 text-xs text-muted-foreground",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, {
+								className: "size-3.5 text-primary",
+								"aria-hidden": "true"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "font-medium text-foreground",
+								children: suggestion.ai ? "Suggested reply" : "Draft from project records"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: suggestion.ai ? "· from this project's records" : "· AI not available" }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "ml-auto",
+								children: "To the Telegram group"
+							})
+						]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "whitespace-pre-wrap break-words text-xs text-foreground",
+						className: "whitespace-pre-wrap break-words px-4 pt-3 type-copy-14",
 						children: suggestion.suggestion
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-						className: "text-xs text-muted-foreground",
+						className: "px-4 pt-2 pb-3 text-xs text-muted-foreground",
 						children: [
 							"Based on ",
 							suggestion.basedOn.inProgress,
@@ -32516,34 +32911,33 @@ function SuggestReply({ requestId, disabled, onUse, baseInstruction = "", outcom
 							". Check it before sending."
 						]
 					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex flex-wrap gap-2",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("footer", {
+						className: "flex flex-wrap items-center justify-between gap-2 border-t bg-subtle px-3 py-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex flex-wrap gap-1",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 								type: "button",
 								size: "sm",
-								onClick: () => {
-									onUse(suggestion.suggestion);
-									setSuggestion(null);
-								},
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5 mr-1" }), "Use this reply"]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-								type: "button",
-								size: "sm",
-								variant: "outline",
+								variant: "ghost",
 								disabled: busy,
 								onClick: run,
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: "size-3.5 mr-1" }), "Try again"]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 								type: "button",
 								size: "sm",
 								variant: "ghost",
 								onClick: () => setSuggestion(null),
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(X$1, { className: "size-3.5 mr-1" }), "Discard"]
-							})
-						]
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+							type: "button",
+							size: "sm",
+							onClick: () => {
+								onUse(suggestion.suggestion);
+								setSuggestion(null);
+							},
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5 mr-1" }), "Use this reply"]
+						})]
 					})
 				]
 			})
@@ -34358,12 +34752,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 					]
 				})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex gap-2",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						variant: "outline",
-						size: "sm",
-						onClick: load,
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, {}), "Refresh"]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshButton, { onRefresh: load }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 						variant: "outline",
 						size: "sm",
 						onClick: () => setSettingsOpen((current) => !current),
@@ -34423,7 +34812,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Tabs, {
 					value: tab,
 					onValueChange: setTab,
-					className: `${mobileThread ? "hidden lg:flex" : "flex"} shrink-0 border-b`,
+					className: `${mobileThread ? "hidden lg:flex" : "flex"} shrink-0 border-b px-3`,
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsList, {
 						variant: "line",
 						"aria-label": "Query status",
@@ -34506,8 +34895,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 															className: "min-w-0 truncate",
 															children: [
 																project?.name || "Project",
-																" · ",
-																item.requestType,
+																(showStatus || item.requestType !== "Question") && ` · ${item.requestType}`,
 																showStatus && ` · ${queryStatusLabel(item)}`
 															]
 														}),
@@ -34561,16 +34949,28 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 												className: "truncate type-label-14-strong",
 												children: selected.originalSenderName
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-												className: "truncate text-xs text-muted-foreground",
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "mt-1 flex min-w-0 flex-wrap gap-1",
 												children: [
-													selectedProject?.name || "Project",
-													" · ",
-													selected.requestType,
-													" ·",
-													" ",
-													queryStatusLabel(selected),
-													selected.decisionStatus && ` (${selected.decisionStatus})`
+													/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
+														variant: "outline",
+														className: "bg-card",
+														title: "Project",
+														children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderOpen, { "aria-hidden": "true" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+															className: "truncate",
+															children: selectedProject?.name || "Project"
+														})]
+													}),
+													selected.requestType !== "Question" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+														variant: "outline",
+														className: "bg-card",
+														children: selected.requestType
+													}),
+													/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
+														variant: "outline",
+														className: "bg-card",
+														children: [queryStatusLabel(selected), selected.decisionStatus && ` (${selected.decisionStatus})`]
+													})
 												]
 											})]
 										})
@@ -34599,13 +34999,6 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 								ref: scrollRef,
 								className: "chat-scroll min-h-0 flex-1 space-y-6 overflow-y-auto overscroll-contain bg-muted/30 px-4 py-6 sm:px-6",
 								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-										className: "text-center text-xs text-muted-foreground",
-										children: ["Request received ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Time, {
-											value: selected.createdAt,
-											format: "datetime"
-										})]
-									}),
 									selected.deliveryStatus === "Unknown" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "mx-auto max-w-[85%] card-box border-warning-border bg-warning-bg text-xs text-warning flex items-start gap-2",
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { className: "size-4 shrink-0 text-warning mt-1" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "Delivery status unknown:" }), " A previous send attempt timed out or interrupted. Check the Telegram group manually before sending again. Do not retry automatically."] })]
@@ -34618,62 +35011,75 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 											selected.deliveryError || "Telegram rejected the message. You may retry publishing."
 										] })]
 									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex items-end gap-2",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "grid size-7 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold",
-											children: initials$1(selected.originalSenderName)
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+										className: "rounded-xl border bg-card",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
+											className: "flex items-center gap-3 px-4 pt-3",
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "grid size-8 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold",
+													children: initials$1(selected.originalSenderName)
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+													className: "min-w-0 flex-1",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+														className: "truncate type-label-14-strong",
+														children: selected.originalSenderName
+													}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+														className: "truncate text-xs text-muted-foreground",
+														children: "Telegram"
+													})]
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Time, {
+													value: selected.createdAt,
+													className: "shrink-0 text-xs text-muted-foreground"
+												})
+											]
 										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "max-w-[85%] space-y-1",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-												className: "text-xs text-muted-foreground",
-												children: [selected.originalSenderName, " · Telegram"]
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "rounded-2xl rounded-bl-sm border bg-card px-4 py-3 text-sm shadow-sm space-y-2",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-													className: "whitespace-pre-wrap",
-													children: selected.originalMessage || "Shared an attachment"
-												}), selected.attachments?.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-													className: "mt-3 space-y-3",
-													children: selected.attachments.map((attachment, index) => {
-														const isPhoto = attachment.type === "Photo" || /\.(png|jpe?g|webp|gif)$/i.test(attachment.fileName || "");
-														const mediaUrl = getAttachmentUrl(selected.id, index, "founder");
-														return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-															className: "space-y-1",
-															children: isPhoto ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-																className: "overflow-hidden rounded-xl border bg-muted/20",
-																children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-																	src: mediaUrl,
-																	alt: attachment.fileName || `Photo ${index + 1}`,
-																	className: "max-h-56 max-w-full rounded-xl object-contain",
-																	onError: (e) => {
-																		e.currentTarget.style.display = "none";
-																	}
-																}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-																	className: "mt-1 inline-flex items-center gap-1 text-xs text-primary hover:underline px-2 py-1",
-																	href: mediaUrl,
-																	target: "_blank",
-																	rel: "noreferrer",
-																	children: [
-																		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { className: "size-3" }),
-																		attachment.fileName || "View full image",
-																		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-2.5" })
-																	]
-																})]
-															}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-																className: "inline-flex items-center gap-1 rounded-lg bg-muted px-2 py-2 text-xs text-primary hover:underline",
+											className: "space-y-2 px-4 pt-3 pb-4 type-copy-14",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+												className: "whitespace-pre-wrap",
+												children: selected.originalMessage || "Shared an attachment"
+											}), selected.attachments?.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+												className: "mt-3 space-y-3",
+												children: selected.attachments.map((attachment, index) => {
+													const isPhoto = attachment.type === "Photo" || /\.(png|jpe?g|webp|gif)$/i.test(attachment.fileName || "");
+													const mediaUrl = getAttachmentUrl(selected.id, index, "founder");
+													return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+														className: "space-y-1",
+														children: isPhoto ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+															className: "overflow-hidden rounded-xl border bg-muted/20",
+															children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+																src: mediaUrl,
+																alt: attachment.fileName || `Photo ${index + 1}`,
+																className: "max-h-56 max-w-full rounded-xl object-contain",
+																onError: (e) => {
+																	e.currentTarget.style.display = "none";
+																}
+															}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+																className: "mt-1 inline-flex items-center gap-1 text-xs text-primary hover:underline px-2 py-1",
 																href: mediaUrl,
 																target: "_blank",
 																rel: "noreferrer",
 																children: [
 																	/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { className: "size-3" }),
-																	attachment.fileName || attachment.type || "Document",
-																	/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-3" })
+																	attachment.fileName || "View full image",
+																	/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-2.5" })
 																]
-															}, index)
-														}, index);
-													})
-												})]
+															})]
+														}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+															className: "inline-flex items-center gap-1 rounded-lg bg-muted px-2 py-2 text-xs text-primary hover:underline",
+															href: mediaUrl,
+															target: "_blank",
+															rel: "noreferrer",
+															children: [
+																/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { className: "size-3" }),
+																attachment.fileName || attachment.type || "Document",
+																/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "size-3" })
+															]
+														}, index)
+													}, index);
+												})
 											})]
 										})]
 									}),
@@ -36506,7 +36912,7 @@ function StageOrderGrip({ stage, reorder }) {
 		})
 	});
 }
-// node_modules/classcat/index.js
+// ../Telegram bot /work/production-web/node_modules/classcat/index.js
 function cc(names) {
 	if (typeof names === "string" || typeof names === "number") return "" + names;
 	let out = "";
@@ -36515,7 +36921,7 @@ function cc(names) {
 	} else for (let k in names) if (names[k]) out += (out && " ") + k;
 	return out;
 }
-// node_modules/d3-dispatch/src/dispatch.js
+// ../Telegram bot /work/production-web/node_modules/d3-dispatch/src/dispatch.js
 var noop = { value: () => {} };
 function dispatch() {
 	for (var i = 0, n = arguments.length, _ = {}, t; i < n; ++i) {
@@ -36587,7 +36993,7 @@ var namespaces_default = {
 	xml: "http://www.w3.org/XML/1998/namespace",
 	xmlns: "http://www.w3.org/2000/xmlns/"
 };
-// node_modules/d3-selection/src/namespace.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/namespace.js
 function namespace_default(name) {
 	var prefix = name += "", i = prefix.indexOf(":");
 	if (i >= 0 && (prefix = name.slice(0, i)) !== "xmlns") name = name.slice(i + 1);
@@ -36596,7 +37002,7 @@ function namespace_default(name) {
 		local: name
 	} : name;
 }
-// node_modules/d3-selection/src/creator.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/creator.js
 function creatorInherit(name) {
 	return function() {
 		var document = this.ownerDocument, uri = this.namespaceURI;
@@ -36612,14 +37018,14 @@ function creator_default(name) {
 	var fullname = namespace_default(name);
 	return (fullname.local ? creatorFixed : creatorInherit)(fullname);
 }
-// node_modules/d3-selection/src/selector.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selector.js
 function none() {}
 function selector_default(selector) {
 	return selector == null ? none : function() {
 		return this.querySelector(selector);
 	};
 }
-// node_modules/d3-selection/src/selection/select.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/select.js
 function select_default$2(select) {
 	if (typeof select !== "function") select = selector_default(select);
 	for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) for (var group = groups[j], n = group.length, subgroup = subgroups[j] = new Array(n), node, subnode, i = 0; i < n; ++i) if ((node = group[i]) && (subnode = select.call(node, node.__data__, i, group))) {
@@ -36628,11 +37034,11 @@ function select_default$2(select) {
 	}
 	return new Selection$1(subgroups, this._parents);
 }
-// node_modules/d3-selection/src/array.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/array.js
 function array(x) {
 	return x == null ? [] : Array.isArray(x) ? x : Array.from(x);
 }
-// node_modules/d3-selection/src/selectorAll.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selectorAll.js
 function empty() {
 	return [];
 }
@@ -36641,7 +37047,7 @@ function selectorAll_default(selector) {
 		return this.querySelectorAll(selector);
 	};
 }
-// node_modules/d3-selection/src/selection/selectAll.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/selectAll.js
 function arrayAll(select) {
 	return function() {
 		return array(select.apply(this, arguments));
@@ -36656,7 +37062,7 @@ function selectAll_default$1(select) {
 	}
 	return new Selection$1(subgroups, parents);
 }
-// node_modules/d3-selection/src/matcher.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/matcher.js
 function matcher_default(selector) {
 	return function() {
 		return this.matches(selector);
@@ -36667,7 +37073,7 @@ function childMatcher(selector) {
 		return node.matches(selector);
 	};
 }
-// node_modules/d3-selection/src/selection/selectChild.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/selectChild.js
 var find = Array.prototype.find;
 function childFind(match) {
 	return function() {
@@ -36680,7 +37086,7 @@ function childFirst() {
 function selectChild_default(match) {
 	return this.select(match == null ? childFirst : childFind(typeof match === "function" ? match : childMatcher(match)));
 }
-// node_modules/d3-selection/src/selection/selectChildren.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/selectChildren.js
 var filter = Array.prototype.filter;
 function children() {
 	return Array.from(this.children);
@@ -36693,17 +37099,17 @@ function childrenFilter(match) {
 function selectChildren_default(match) {
 	return this.selectAll(match == null ? children : childrenFilter(typeof match === "function" ? match : childMatcher(match)));
 }
-// node_modules/d3-selection/src/selection/filter.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/filter.js
 function filter_default$1(match) {
 	if (typeof match !== "function") match = matcher_default(match);
 	for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) for (var group = groups[j], n = group.length, subgroup = subgroups[j] = [], node, i = 0; i < n; ++i) if ((node = group[i]) && match.call(node, node.__data__, i, group)) subgroup.push(node);
 	return new Selection$1(subgroups, this._parents);
 }
-// node_modules/d3-selection/src/selection/sparse.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/sparse.js
 function sparse_default(update) {
 	return new Array(update.length);
 }
-// node_modules/d3-selection/src/selection/enter.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/enter.js
 function enter_default() {
 	return new Selection$1(this._enter || this._groups.map(sparse_default), this._parents);
 }
@@ -36729,13 +37135,13 @@ EnterNode.prototype = {
 		return this._parent.querySelectorAll(selector);
 	}
 };
-// node_modules/d3-selection/src/constant.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/constant.js
 function constant_default$3(x) {
 	return function() {
 		return x;
 	};
 }
-// node_modules/d3-selection/src/selection/data.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/data.js
 function bindIndex(parent, group, enter, update, exit, data) {
 	var i = 0, node, groupLength = group.length, dataLength = data.length;
 	for (; i < dataLength; ++i) if (node = group[i]) {
@@ -36785,11 +37191,11 @@ function data_default(value, key) {
 function arraylike(data) {
 	return typeof data === "object" && "length" in data ? data : Array.from(data);
 }
-// node_modules/d3-selection/src/selection/exit.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/exit.js
 function exit_default() {
 	return new Selection$1(this._exit || this._groups.map(sparse_default), this._parents);
 }
-// node_modules/d3-selection/src/selection/join.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/join.js
 function join_default(onenter, onupdate, onexit) {
 	var enter = this.enter(), update = this, exit = this.exit();
 	if (typeof onenter === "function") {
@@ -36804,14 +37210,14 @@ function join_default(onenter, onupdate, onexit) {
 	else onexit(exit);
 	return enter && update ? enter.merge(update).order() : update;
 }
-// node_modules/d3-selection/src/selection/merge.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/merge.js
 function merge_default$1(context) {
 	var selection = context.selection ? context.selection() : context;
 	for (var groups0 = this._groups, groups1 = selection._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) for (var group0 = groups0[j], group1 = groups1[j], n = group0.length, merge = merges[j] = new Array(n), node, i = 0; i < n; ++i) if (node = group0[i] || group1[i]) merge[i] = node;
 	for (; j < m0; ++j) merges[j] = groups0[j];
 	return new Selection$1(merges, this._parents);
 }
-// node_modules/d3-selection/src/selection/order.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/order.js
 function order_default() {
 	for (var groups = this._groups, j = -1, m = groups.length; ++j < m;) for (var group = groups[j], i = group.length - 1, next = group[i], node; --i >= 0;) if (node = group[i]) {
 		if (next && node.compareDocumentPosition(next) ^ 4) next.parentNode.insertBefore(node, next);
@@ -36819,7 +37225,7 @@ function order_default() {
 	}
 	return this;
 }
-// node_modules/d3-selection/src/selection/sort.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/sort.js
 function sort_default(compare) {
 	if (!compare) compare = ascending;
 	function compareNode(a, b) {
@@ -36834,18 +37240,18 @@ function sort_default(compare) {
 function ascending(a, b) {
 	return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
 }
-// node_modules/d3-selection/src/selection/call.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/call.js
 function call_default() {
 	var callback = arguments[0];
 	arguments[0] = this;
 	callback.apply(null, arguments);
 	return this;
 }
-// node_modules/d3-selection/src/selection/nodes.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/nodes.js
 function nodes_default() {
 	return Array.from(this);
 }
-// node_modules/d3-selection/src/selection/node.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/node.js
 function node_default() {
 	for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) for (var group = groups[j], i = 0, n = group.length; i < n; ++i) {
 		var node = group[i];
@@ -36853,22 +37259,22 @@ function node_default() {
 	}
 	return null;
 }
-// node_modules/d3-selection/src/selection/size.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/size.js
 function size_default() {
 	let size = 0;
 	for (const node of this) ++size;
 	return size;
 }
-// node_modules/d3-selection/src/selection/empty.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/empty.js
 function empty_default() {
 	return !this.node();
 }
-// node_modules/d3-selection/src/selection/each.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/each.js
 function each_default(callback) {
 	for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) for (var group = groups[j], i = 0, n = group.length, node; i < n; ++i) if (node = group[i]) callback.call(node, node.__data__, i, group);
 	return this;
 }
-// node_modules/d3-selection/src/selection/attr.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/attr.js
 function attrRemove$1(name) {
 	return function() {
 		this.removeAttribute(name);
@@ -36911,11 +37317,11 @@ function attr_default$1(name, value) {
 	}
 	return this.each((value == null ? fullname.local ? attrRemoveNS$1 : attrRemove$1 : typeof value === "function" ? fullname.local ? attrFunctionNS$1 : attrFunction$1 : fullname.local ? attrConstantNS$1 : attrConstant$1)(fullname, value));
 }
-// node_modules/d3-selection/src/window.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/window.js
 function window_default(node) {
 	return node.ownerDocument && node.ownerDocument.defaultView || node.document && node || node.defaultView;
 }
-// node_modules/d3-selection/src/selection/style.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/style.js
 function styleRemove$1(name) {
 	return function() {
 		this.style.removeProperty(name);
@@ -36939,7 +37345,7 @@ function style_default$1(name, value, priority) {
 function styleValue(node, name) {
 	return node.style.getPropertyValue(name) || window_default(node).getComputedStyle(node, null).getPropertyValue(name);
 }
-// node_modules/d3-selection/src/selection/property.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/property.js
 function propertyRemove(name) {
 	return function() {
 		delete this[name];
@@ -36960,7 +37366,7 @@ function propertyFunction(name, value) {
 function property_default(name, value) {
 	return arguments.length > 1 ? this.each((value == null ? propertyRemove : typeof value === "function" ? propertyFunction : propertyConstant)(name, value)) : this.node()[name];
 }
-// node_modules/d3-selection/src/selection/classed.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/classed.js
 function classArray(string) {
 	return string.trim().split(/^|\s+/);
 }
@@ -37021,7 +37427,7 @@ function classed_default(name, value) {
 	}
 	return this.each((typeof value === "function" ? classedFunction : value ? classedTrue : classedFalse)(names, value));
 }
-// node_modules/d3-selection/src/selection/text.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/text.js
 function textRemove() {
 	this.textContent = "";
 }
@@ -37039,7 +37445,7 @@ function textFunction$1(value) {
 function text_default$1(value) {
 	return arguments.length ? this.each(value == null ? textRemove : (typeof value === "function" ? textFunction$1 : textConstant$1)(value)) : this.node().textContent;
 }
-// node_modules/d3-selection/src/selection/html.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/html.js
 function htmlRemove() {
 	this.innerHTML = "";
 }
@@ -37057,28 +37463,28 @@ function htmlFunction(value) {
 function html_default(value) {
 	return arguments.length ? this.each(value == null ? htmlRemove : (typeof value === "function" ? htmlFunction : htmlConstant)(value)) : this.node().innerHTML;
 }
-// node_modules/d3-selection/src/selection/raise.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/raise.js
 function raise() {
 	if (this.nextSibling) this.parentNode.appendChild(this);
 }
 function raise_default() {
 	return this.each(raise);
 }
-// node_modules/d3-selection/src/selection/lower.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/lower.js
 function lower() {
 	if (this.previousSibling) this.parentNode.insertBefore(this, this.parentNode.firstChild);
 }
 function lower_default() {
 	return this.each(lower);
 }
-// node_modules/d3-selection/src/selection/append.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/append.js
 function append_default(name) {
 	var create = typeof name === "function" ? name : creator_default(name);
 	return this.select(function() {
 		return this.appendChild(create.apply(this, arguments));
 	});
 }
-// node_modules/d3-selection/src/selection/insert.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/insert.js
 function constantNull() {
 	return null;
 }
@@ -37088,7 +37494,7 @@ function insert_default(name, before) {
 		return this.insertBefore(create.apply(this, arguments), select.apply(this, arguments) || null);
 	});
 }
-// node_modules/d3-selection/src/selection/remove.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/remove.js
 function remove() {
 	var parent = this.parentNode;
 	if (parent) parent.removeChild(this);
@@ -37096,7 +37502,7 @@ function remove() {
 function remove_default$1() {
 	return this.each(remove);
 }
-// node_modules/d3-selection/src/selection/clone.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/clone.js
 function selection_cloneShallow() {
 	var clone = this.cloneNode(false), parent = this.parentNode;
 	return parent ? parent.insertBefore(clone, this.nextSibling) : clone;
@@ -37108,11 +37514,11 @@ function selection_cloneDeep() {
 function clone_default(deep) {
 	return this.select(deep ? selection_cloneDeep : selection_cloneShallow);
 }
-// node_modules/d3-selection/src/selection/datum.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/datum.js
 function datum_default(value) {
 	return arguments.length ? this.property("__data__", value) : this.node().__data__;
 }
-// node_modules/d3-selection/src/selection/on.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/on.js
 function contextListener(listener) {
 	return function(event) {
 		listener.call(this, event, this.__data__);
@@ -37174,7 +37580,7 @@ function on_default$1(typename, value, options) {
 	for (i = 0; i < n; ++i) this.each(on(typenames[i], value, options));
 	return this;
 }
-// node_modules/d3-selection/src/selection/dispatch.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/dispatch.js
 function dispatchEvent(node, type, params) {
 	var window = window_default(node), event = window.CustomEvent;
 	if (typeof event === "function") event = new event(type, params);
@@ -37198,11 +37604,11 @@ function dispatchFunction(type, params) {
 function dispatch_default(type, params) {
 	return this.each((typeof params === "function" ? dispatchFunction : dispatchConstant)(type, params));
 }
-// node_modules/d3-selection/src/selection/iterator.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/iterator.js
 function* iterator_default() {
 	for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) for (var group = groups[j], i = 0, n = group.length, node; i < n; ++i) if (node = group[i]) yield node;
 }
-// node_modules/d3-selection/src/selection/index.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/index.js
 var root = [null];
 function Selection$1(groups, parents) {
 	this._groups = groups;
@@ -37252,17 +37658,17 @@ Selection$1.prototype = selection.prototype = {
 	dispatch: dispatch_default,
 	[Symbol.iterator]: iterator_default
 };
-// node_modules/d3-selection/src/select.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/select.js
 function select_default$1(selector) {
 	return typeof selector === "string" ? new Selection$1([[document.querySelector(selector)]], [document.documentElement]) : new Selection$1([[selector]], root);
 }
-// node_modules/d3-selection/src/sourceEvent.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/sourceEvent.js
 function sourceEvent_default(event) {
 	let sourceEvent;
 	while (sourceEvent = event.sourceEvent) event = sourceEvent;
 	return event;
 }
-// node_modules/d3-selection/src/pointer.js
+// ../Telegram bot /work/production-web/node_modules/d3-selection/src/pointer.js
 function pointer_default(event, node) {
 	event = sourceEvent_default(event);
 	if (node === void 0) node = event.currentTarget;
@@ -37281,7 +37687,7 @@ function pointer_default(event, node) {
 	}
 	return [event.pageX, event.pageY];
 }
-// node_modules/d3-drag/src/noevent.js
+// ../Telegram bot /work/production-web/node_modules/d3-drag/src/noevent.js
 var nonpassive = { passive: false };
 var nonpassivecapture = {
 	capture: true,
@@ -37294,7 +37700,7 @@ function noevent_default$1(event) {
 	event.preventDefault();
 	event.stopImmediatePropagation();
 }
-// node_modules/d3-drag/src/nodrag.js
+// ../Telegram bot /work/production-web/node_modules/d3-drag/src/nodrag.js
 function nodrag_default(view) {
 	var root = view.document.documentElement, selection = select_default$1(view).on("dragstart.drag", noevent_default$1, nonpassivecapture);
 	if ("onselectstart" in root) selection.on("selectstart.drag", noevent_default$1, nonpassivecapture);
@@ -37317,9 +37723,9 @@ function yesdrag(view, noclick) {
 		delete root.__noselect;
 	}
 }
-// node_modules/d3-drag/src/constant.js
+// ../Telegram bot /work/production-web/node_modules/d3-drag/src/constant.js
 var constant_default$2 = (x) => () => x;
-// node_modules/d3-drag/src/event.js
+// ../Telegram bot /work/production-web/node_modules/d3-drag/src/event.js
 function DragEvent(type, { sourceEvent, subject, target, identifier, active, x, y, dx, dy, dispatch }) {
 	Object.defineProperties(this, {
 		type: {
@@ -37379,7 +37785,7 @@ DragEvent.prototype.on = function() {
 	var value = this._.on.apply(this._, arguments);
 	return value === this._ ? this : value;
 };
-// node_modules/d3-drag/src/drag.js
+// ../Telegram bot /work/production-web/node_modules/d3-drag/src/drag.js
 function defaultFilter$1(event) {
 	return !event.ctrlKey && !event.button;
 }
@@ -37511,7 +37917,7 @@ function drag_default() {
 	};
 	return drag;
 }
-// node_modules/d3-color/src/define.js
+// ../Telegram bot /work/production-web/node_modules/d3-color/src/define.js
 function define_default(constructor, factory, prototype) {
 	constructor.prototype = factory.prototype = prototype;
 	prototype.constructor = constructor;
@@ -37521,7 +37927,7 @@ function extend(parent, definition) {
 	for (var key in definition) prototype[key] = definition[key];
 	return prototype;
 }
-// node_modules/d3-color/src/color.js
+// ../Telegram bot /work/production-web/node_modules/d3-color/src/color.js
 function Color() {}
 var darker = .7;
 var brighter = 1 / darker;
@@ -37847,9 +38253,9 @@ function clampt(value) {
 function hsl2rgb(h, m1, m2) {
 	return (h < 60 ? m1 + (m2 - m1) * h / 60 : h < 180 ? m2 : h < 240 ? m1 + (m2 - m1) * (240 - h) / 60 : m1) * 255;
 }
-// node_modules/d3-interpolate/src/constant.js
+// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/constant.js
 var constant_default$1 = (x) => () => x;
-// node_modules/d3-interpolate/src/color.js
+// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/color.js
 function linear(a, d) {
 	return function(t) {
 		return a + t * d;
@@ -37869,7 +38275,7 @@ function nogamma(a, b) {
 	var d = b - a;
 	return d ? linear(a, d) : constant_default$1(isNaN(a) ? b : a);
 }
-// node_modules/d3-interpolate/src/rgb.js
+// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/rgb.js
 var rgb_default = (function rgbGamma(y) {
 	var color = gamma(y);
 	function rgb$1(start, end) {
@@ -37885,7 +38291,7 @@ var rgb_default = (function rgbGamma(y) {
 	rgb$1.gamma = rgbGamma;
 	return rgb$1;
 })(1);
-// node_modules/d3-interpolate/src/numberArray.js
+// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/numberArray.js
 function numberArray_default(a, b) {
 	if (!b) b = [];
 	var n = a ? Math.min(b.length, a.length) : 0, c = b.slice(), i;
@@ -37897,7 +38303,7 @@ function numberArray_default(a, b) {
 function isNumberArray(x) {
 	return ArrayBuffer.isView(x) && !(x instanceof DataView);
 }
-// node_modules/d3-interpolate/src/array.js
+// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/array.js
 function genericArray(a, b) {
 	var nb = b ? b.length : 0, na = a ? Math.min(nb, a.length) : 0, x = new Array(na), c = new Array(nb), i = 0;
 	for (; i < na; ++i) x[i] = value_default(a[i], b[i]);
@@ -37907,20 +38313,20 @@ function genericArray(a, b) {
 		return c;
 	};
 }
-// node_modules/d3-interpolate/src/date.js
+// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/date.js
 function date_default(a, b) {
 	var d = /* @__PURE__ */ new Date();
 	return a = +a, b = +b, function(t) {
 		return d.setTime(a * (1 - t) + b * t), d;
 	};
 }
-// node_modules/d3-interpolate/src/number.js
+// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/number.js
 function number_default(a, b) {
 	return a = +a, b = +b, function(t) {
 		return a * (1 - t) + b * t;
 	};
 }
-// node_modules/d3-interpolate/src/object.js
+// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/object.js
 function object_default(a, b) {
 	var i = {}, c = {}, k;
 	if (a === null || typeof a !== "object") a = {};
@@ -37932,7 +38338,7 @@ function object_default(a, b) {
 		return c;
 	};
 }
-// node_modules/d3-interpolate/src/string.js
+// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/string.js
 var reA = /[-+]?(?:\d+\.?\d*|\.?\d+)(?:[eE][-+]?\d+)?/g;
 var reB = new RegExp(reA.source, "g");
 function zero(b) {
@@ -37976,12 +38382,12 @@ function string_default(a, b) {
 		return s.join("");
 	});
 }
-// node_modules/d3-interpolate/src/value.js
+// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/value.js
 function value_default(a, b) {
 	var t = typeof b, c;
 	return b == null || t === "boolean" ? constant_default$1(b) : (t === "number" ? number_default : t === "string" ? (c = color(b)) ? (b = c, rgb_default) : string_default : b instanceof color ? rgb_default : b instanceof Date ? date_default : isNumberArray(b) ? numberArray_default : Array.isArray(b) ? genericArray : typeof b.valueOf !== "function" && typeof b.toString !== "function" || isNaN(b) ? object_default : number_default)(a, b);
 }
-// node_modules/d3-interpolate/src/transform/decompose.js
+// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/transform/decompose.js
 var degrees = 180 / Math.PI;
 var identity$2 = {
 	translateX: 0,
@@ -38006,7 +38412,7 @@ function decompose_default(a, b, c, d, e, f) {
 		scaleY
 	};
 }
-// node_modules/d3-interpolate/src/transform/parse.js
+// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/transform/parse.js
 var svgNode;
 function parseCss(value) {
 	const m = new (typeof DOMMatrix === "function" ? DOMMatrix : WebKitCSSMatrix)(value + "");
@@ -38020,7 +38426,7 @@ function parseSvg(value) {
 	value = value.matrix;
 	return decompose_default(value.a, value.b, value.c, value.d, value.e, value.f);
 }
-// node_modules/d3-interpolate/src/transform/index.js
+// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/transform/index.js
 function interpolateTransform(parse, pxComma, pxParen, degParen) {
 	function pop(s) {
 		return s.length ? s.pop() + " " : "";
@@ -38083,7 +38489,7 @@ function interpolateTransform(parse, pxComma, pxParen, degParen) {
 }
 var interpolateTransformCss = interpolateTransform(parseCss, "px, ", "px)", "deg)");
 var interpolateTransformSvg = interpolateTransform(parseSvg, ", ", ")", ")");
-// node_modules/d3-interpolate/src/zoom.js
+// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/zoom.js
 var epsilon2 = 1e-12;
 function cosh(x) {
 	return ((x = Math.exp(x)) + 1 / x) / 2;
@@ -38127,7 +38533,7 @@ var zoom_default$1 = (function zoomRho(rho, rho2, rho4) {
 	};
 	return zoom;
 })(Math.SQRT2, 2, 4);
-// node_modules/d3-timer/src/timer.js
+// ../Telegram bot /work/production-web/node_modules/d3-timer/src/timer.js
 var frame = 0;
 var timeout = 0;
 var interval = 0;
@@ -38225,7 +38631,7 @@ function sleep(time) {
 		frame = 1, setFrame(wake);
 	}
 }
-// node_modules/d3-timer/src/timeout.js
+// ../Telegram bot /work/production-web/node_modules/d3-timer/src/timeout.js
 function timeout_default(callback, delay, time) {
 	var t = new Timer();
 	delay = delay == null ? 0 : +delay;
@@ -38235,7 +38641,7 @@ function timeout_default(callback, delay, time) {
 	}, delay, time);
 	return t;
 }
-// node_modules/d3-transition/src/transition/schedule.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/schedule.js
 var emptyOn = dispatch("start", "end", "cancel", "interrupt");
 var emptyTween = [];
 function schedule_default(node, name, id, index, group, timing) {
@@ -38330,7 +38736,7 @@ function create(node, id, self) {
 		delete node.__transition;
 	}
 }
-// node_modules/d3-transition/src/interrupt.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/interrupt.js
 function interrupt_default$1(node, name) {
 	var schedules = node.__transition, schedule, active, empty = true, i;
 	if (!schedules) return;
@@ -38348,13 +38754,13 @@ function interrupt_default$1(node, name) {
 	}
 	if (empty) delete node.__transition;
 }
-// node_modules/d3-transition/src/selection/interrupt.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/selection/interrupt.js
 function interrupt_default(name) {
 	return this.each(function() {
 		interrupt_default$1(this, name);
 	});
 }
-// node_modules/d3-transition/src/transition/tween.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/tween.js
 function tweenRemove(id, name) {
 	var tween0, tween1;
 	return function() {
@@ -38409,12 +38815,12 @@ function tweenValue(transition, name, value) {
 		return get(node, id).value[name];
 	};
 }
-// node_modules/d3-transition/src/transition/interpolate.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/interpolate.js
 function interpolate_default(a, b) {
 	var c;
 	return (typeof b === "number" ? number_default : b instanceof color ? rgb_default : (c = color(b)) ? (b = c, rgb_default) : string_default)(a, b);
 }
-// node_modules/d3-transition/src/transition/attr.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/attr.js
 function attrRemove(name) {
 	return function() {
 		this.removeAttribute(name);
@@ -38463,7 +38869,7 @@ function attr_default(name, value) {
 	var fullname = namespace_default(name), i = fullname === "transform" ? interpolateTransformSvg : interpolate_default;
 	return this.attrTween(name, typeof value === "function" ? (fullname.local ? attrFunctionNS : attrFunction)(fullname, i, tweenValue(this, "attr." + name, value)) : value == null ? (fullname.local ? attrRemoveNS : attrRemove)(fullname) : (fullname.local ? attrConstantNS : attrConstant)(fullname, i, value));
 }
-// node_modules/d3-transition/src/transition/attrTween.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/attrTween.js
 function attrInterpolate(name, i) {
 	return function(t) {
 		this.setAttribute(name, i.call(this, t));
@@ -38502,7 +38908,7 @@ function attrTween_default(name, value) {
 	var fullname = namespace_default(name);
 	return this.tween(key, (fullname.local ? attrTweenNS : attrTween)(fullname, value));
 }
-// node_modules/d3-transition/src/transition/delay.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/delay.js
 function delayFunction(id, value) {
 	return function() {
 		init(this, id).delay = +value.apply(this, arguments);
@@ -38517,7 +38923,7 @@ function delay_default(value) {
 	var id = this._id;
 	return arguments.length ? this.each((typeof value === "function" ? delayFunction : delayConstant)(id, value)) : get(this.node(), id).delay;
 }
-// node_modules/d3-transition/src/transition/duration.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/duration.js
 function durationFunction(id, value) {
 	return function() {
 		set(this, id).duration = +value.apply(this, arguments);
@@ -38532,7 +38938,7 @@ function duration_default(value) {
 	var id = this._id;
 	return arguments.length ? this.each((typeof value === "function" ? durationFunction : durationConstant)(id, value)) : get(this.node(), id).duration;
 }
-// node_modules/d3-transition/src/transition/ease.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/ease.js
 function easeConstant(id, value) {
 	if (typeof value !== "function") throw new Error();
 	return function() {
@@ -38543,7 +38949,7 @@ function ease_default(value) {
 	var id = this._id;
 	return arguments.length ? this.each(easeConstant(id, value)) : get(this.node(), id).ease;
 }
-// node_modules/d3-transition/src/transition/easeVarying.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/easeVarying.js
 function easeVarying(id, value) {
 	return function() {
 		var v = value.apply(this, arguments);
@@ -38555,20 +38961,20 @@ function easeVarying_default(value) {
 	if (typeof value !== "function") throw new Error();
 	return this.each(easeVarying(this._id, value));
 }
-// node_modules/d3-transition/src/transition/filter.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/filter.js
 function filter_default(match) {
 	if (typeof match !== "function") match = matcher_default(match);
 	for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) for (var group = groups[j], n = group.length, subgroup = subgroups[j] = [], node, i = 0; i < n; ++i) if ((node = group[i]) && match.call(node, node.__data__, i, group)) subgroup.push(node);
 	return new Transition(subgroups, this._parents, this._name, this._id);
 }
-// node_modules/d3-transition/src/transition/merge.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/merge.js
 function merge_default(transition) {
 	if (transition._id !== this._id) throw new Error();
 	for (var groups0 = this._groups, groups1 = transition._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) for (var group0 = groups0[j], group1 = groups1[j], n = group0.length, merge = merges[j] = new Array(n), node, i = 0; i < n; ++i) if (node = group0[i] || group1[i]) merge[i] = node;
 	for (; j < m0; ++j) merges[j] = groups0[j];
 	return new Transition(merges, this._parents, this._name, this._id);
 }
-// node_modules/d3-transition/src/transition/on.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/on.js
 function start(name) {
 	return (name + "").trim().split(/^|\s+/).every(function(t) {
 		var i = t.indexOf(".");
@@ -38588,7 +38994,7 @@ function on_default(name, listener) {
 	var id = this._id;
 	return arguments.length < 2 ? get(this.node(), id).on.on(name) : this.each(onFunction(id, name, listener));
 }
-// node_modules/d3-transition/src/transition/remove.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/remove.js
 function removeFunction(id) {
 	return function() {
 		var parent = this.parentNode;
@@ -38599,7 +39005,7 @@ function removeFunction(id) {
 function remove_default() {
 	return this.on("end.remove", removeFunction(this._id));
 }
-// node_modules/d3-transition/src/transition/select.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/select.js
 function select_default(select) {
 	var name = this._name, id = this._id;
 	if (typeof select !== "function") select = selector_default(select);
@@ -38610,7 +39016,7 @@ function select_default(select) {
 	}
 	return new Transition(subgroups, this._parents, name, id);
 }
-// node_modules/d3-transition/src/transition/selectAll.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/selectAll.js
 function selectAll_default(select) {
 	var name = this._name, id = this._id;
 	if (typeof select !== "function") select = selectorAll_default(select);
@@ -38621,12 +39027,12 @@ function selectAll_default(select) {
 	}
 	return new Transition(subgroups, parents, name, id);
 }
-// node_modules/d3-transition/src/transition/selection.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/selection.js
 var Selection = selection.prototype.constructor;
 function selection_default() {
 	return new Selection(this._groups, this._parents);
 }
-// node_modules/d3-transition/src/transition/style.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/style.js
 function styleNull(name, interpolate) {
 	var string00, string10, interpolate0;
 	return function() {
@@ -38666,7 +39072,7 @@ function style_default(name, value, priority) {
 	var i = (name += "") === "transform" ? interpolateTransformCss : interpolate_default;
 	return value == null ? this.styleTween(name, styleNull(name, i)).on("end.style." + name, styleRemove(name)) : typeof value === "function" ? this.styleTween(name, styleFunction(name, i, tweenValue(this, "style." + name, value))).each(styleMaybeRemove(this._id, name)) : this.styleTween(name, styleConstant(name, i, value), priority).on("end.style." + name, null);
 }
-// node_modules/d3-transition/src/transition/styleTween.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/styleTween.js
 function styleInterpolate(name, i, priority) {
 	return function(t) {
 		this.style.setProperty(name, i.call(this, t), priority);
@@ -38689,7 +39095,7 @@ function styleTween_default(name, value, priority) {
 	if (typeof value !== "function") throw new Error();
 	return this.tween(key, styleTween(name, value, priority == null ? "" : priority));
 }
-// node_modules/d3-transition/src/transition/text.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/text.js
 function textConstant(value) {
 	return function() {
 		this.textContent = value;
@@ -38704,7 +39110,7 @@ function textFunction(value) {
 function text_default(value) {
 	return this.tween("text", typeof value === "function" ? textFunction(tweenValue(this, "text", value)) : textConstant(value == null ? "" : value + ""));
 }
-// node_modules/d3-transition/src/transition/textTween.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/textTween.js
 function textInterpolate(i) {
 	return function(t) {
 		this.textContent = i.call(this, t);
@@ -38727,7 +39133,7 @@ function textTween_default(value) {
 	if (typeof value !== "function") throw new Error();
 	return this.tween(key, textTween(value));
 }
-// node_modules/d3-transition/src/transition/transition.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/transition.js
 function transition_default$1() {
 	var name = this._name, id0 = this._id, id1 = newId();
 	for (var groups = this._groups, m = groups.length, j = 0; j < m; ++j) for (var group = groups[j], n = group.length, node, i = 0; i < n; ++i) if (node = group[i]) {
@@ -38741,7 +39147,7 @@ function transition_default$1() {
 	}
 	return new Transition(groups, this._parents, name, id1);
 }
-// node_modules/d3-transition/src/transition/end.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/end.js
 function end_default() {
 	var on0, on1, that = this, id = that._id, size = that.size();
 	return new Promise(function(resolve, reject) {
@@ -38761,7 +39167,7 @@ function end_default() {
 		if (size === 0) resolve();
 	});
 }
-// node_modules/d3-transition/src/transition/index.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/index.js
 var id = 0;
 function Transition(groups, parents, name, id) {
 	this._groups = groups;
@@ -38808,11 +39214,11 @@ Transition.prototype = transition.prototype = {
 	end: end_default,
 	[Symbol.iterator]: selection_prototype[Symbol.iterator]
 };
-// node_modules/d3-ease/src/cubic.js
+// ../Telegram bot /work/production-web/node_modules/d3-ease/src/cubic.js
 function cubicInOut(t) {
 	return ((t *= 2) <= 1 ? t * t * t : (t -= 2) * t * t + 2) / 2;
 }
-// node_modules/d3-transition/src/selection/transition.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/selection/transition.js
 var defaultTiming = {
 	time: null,
 	delay: 0,
@@ -38831,12 +39237,12 @@ function transition_default(name) {
 	for (var groups = this._groups, m = groups.length, j = 0; j < m; ++j) for (var group = groups[j], n = group.length, node, i = 0; i < n; ++i) if (node = group[i]) schedule_default(node, name, id, i, group, timing || inherit(node, id));
 	return new Transition(groups, this._parents, name, id);
 }
-// node_modules/d3-transition/src/selection/index.js
+// ../Telegram bot /work/production-web/node_modules/d3-transition/src/selection/index.js
 selection.prototype.interrupt = interrupt_default;
 selection.prototype.transition = transition_default;
-// node_modules/d3-zoom/src/constant.js
+// ../Telegram bot /work/production-web/node_modules/d3-zoom/src/constant.js
 var constant_default = (x) => () => x;
-// node_modules/d3-zoom/src/event.js
+// ../Telegram bot /work/production-web/node_modules/d3-zoom/src/event.js
 function ZoomEvent(type, { sourceEvent, target, transform, dispatch }) {
 	Object.defineProperties(this, {
 		type: {
@@ -38862,7 +39268,7 @@ function ZoomEvent(type, { sourceEvent, target, transform, dispatch }) {
 		_: { value: dispatch }
 	});
 }
-// node_modules/d3-zoom/src/transform.js
+// ../Telegram bot /work/production-web/node_modules/d3-zoom/src/transform.js
 function Transform(k, x, y) {
 	this.k = k;
 	this.x = x;
@@ -38910,7 +39316,7 @@ function transform(node) {
 	while (!node.__zoom) if (!(node = node.parentNode)) return identity$1;
 	return node.__zoom;
 }
-// node_modules/d3-zoom/src/noevent.js
+// ../Telegram bot /work/production-web/node_modules/d3-zoom/src/noevent.js
 function nopropagation(event) {
 	event.stopImmediatePropagation();
 }
@@ -38918,7 +39324,7 @@ function noevent_default(event) {
 	event.preventDefault();
 	event.stopImmediatePropagation();
 }
-// node_modules/d3-zoom/src/zoom.js
+// ../Telegram bot /work/production-web/node_modules/d3-zoom/src/zoom.js
 function defaultFilter(event) {
 	return (!event.ctrlKey || event.type === "wheel") && !event.button;
 }
@@ -39216,7 +39622,7 @@ function zoom_default() {
 	};
 	return zoom;
 }
-// node_modules/@xyflow/system/dist/esm/index.js
+// ../Telegram bot /work/production-web/node_modules/@xyflow/system/dist/esm/index.js
 var errorMessages = {
 	error001: (lib = "react") => `Seems like you have not used ${lib === "svelte" ? "SvelteFlowProvider" : "ReactFlowProvider"} as an ancestor. Help: https://${lib}flow.dev/error#001`,
 	error002: () => "It looks like you've created a new nodeTypes or edgeTypes object. If this wasn't on purpose please define the nodeTypes/edgeTypes outside of the component or memoize them.",
@@ -42041,7 +42447,7 @@ function XYResizer({ domNode, nodeId, getStoreItems, onChange, onEnd }) {
 		destroy
 	};
 }
-// node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.production.js
+// ../Telegram bot /work/production-web/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.production.js
 /**
 * @license React
 * use-sync-external-store-shim.production.js
@@ -42100,11 +42506,11 @@ var require_use_sync_external_store_shim_production = /* @__PURE__ */ __commonJS
 	var shim = "undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement ? useSyncExternalStore$1 : useSyncExternalStore$2;
 	exports.useSyncExternalStore = void 0 !== React.useSyncExternalStore ? React.useSyncExternalStore : shim;
 }));
-// node_modules/use-sync-external-store/shim/index.js
+// ../Telegram bot /work/production-web/node_modules/use-sync-external-store/shim/index.js
 var require_shim = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_use_sync_external_store_shim_production();
 }));
-// node_modules/use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.production.js
+// ../Telegram bot /work/production-web/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.production.js
 /**
 * @license React
 * use-sync-external-store-shim/with-selector.production.js
@@ -42175,7 +42581,7 @@ var require_with_selector_production = /* @__PURE__ */ __commonJSMin(((exports) 
 		return value;
 	};
 }));
-// node_modules/zustand/esm/vanilla.mjs
+// ../Telegram bot /work/production-web/node_modules/zustand/esm/vanilla.mjs
 var import_with_selector = /* @__PURE__ */ __toESM((/* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_with_selector_production();
 })))(), 1);
@@ -42210,7 +42616,7 @@ var createStoreImpl = (createState) => {
 	return api;
 };
 var createStore$1 = (createState) => createState ? createStoreImpl(createState) : createStoreImpl;
-// node_modules/zustand/esm/traditional.mjs
+// ../Telegram bot /work/production-web/node_modules/zustand/esm/traditional.mjs
 var { useDebugValue } = import_react.default;
 var { useSyncExternalStoreWithSelector } = import_with_selector.default;
 var identity = (arg) => arg;
@@ -42226,7 +42632,7 @@ var createWithEqualityFnImpl = (createState, defaultEqualityFn) => {
 	return useBoundStoreWithEqualityFn;
 };
 var createWithEqualityFn = (createState, defaultEqualityFn) => createState ? createWithEqualityFnImpl(createState, defaultEqualityFn) : createWithEqualityFnImpl;
-// node_modules/zustand/esm/shallow.mjs
+// ../Telegram bot /work/production-web/node_modules/zustand/esm/shallow.mjs
 function shallow$1(objA, objB) {
 	if (Object.is(objA, objB)) return true;
 	if (typeof objA !== "object" || objA === null || typeof objB !== "object" || objB === null) return false;
@@ -42245,7 +42651,7 @@ function shallow$1(objA, objB) {
 	for (const keyA of keysA) if (!Object.prototype.hasOwnProperty.call(objB, keyA) || !Object.is(objA[keyA], objB[keyA])) return false;
 	return true;
 }
-// node_modules/@xyflow/react/dist/esm/index.js
+// ../Telegram bot /work/production-web/node_modules/@xyflow/react/dist/esm/index.js
 var StoreContext = (0, import_react.createContext)(null);
 var Provider$1 = StoreContext.Provider;
 var zustandErrorMessage = errorMessages["error001"]("react");
@@ -49875,7 +50281,7 @@ function ProjectTimelineWorkspace({ tasks = [], stages = [], members = [], space
 		})
 	});
 }
-// node_modules/@dagrejs/dagre/dist/dagre.esm.js
+// ../Telegram bot /work/production-web/node_modules/@dagrejs/dagre/dist/dagre.esm.js
 var Te = Object.defineProperty;
 var In = (e, n, t) => n in e ? Te(e, n, {
 	enumerable: !0,
@@ -54300,7 +54706,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	});
 }
 // frontend/src/features/projects/ProjectDirectoryView.jsx
-function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectProject, onCreateProject, onOpenGroups }) {
+function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectProject, onOpenGroups }) {
 	const [search, setSearch] = (0, import_react.useState)("");
 	const [filter, setFilter] = (0, import_react.useState)("all");
 	const needsSetup = (p) => !["Completed", "Abandoned"].includes(p.status) && !p.workflowStartedAt && (p.telegramSetupPending || !p.clientName || ["Unassigned Client", "Client pending"].includes(p.clientName));
@@ -54322,18 +54728,15 @@ function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectPr
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "space-y-6",
 		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 					className: "text-foreground",
 					children: "Projects"
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "mt-1 text-xs text-muted-foreground",
 					children: "Select a project to manage its tasks, internal chat, schedule, and client queries."
-				})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-					onClick: onCreateProject,
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-4 mr-2" }), "Create project"]
-				})]
+				})] })
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3",
@@ -54463,7 +54866,7 @@ function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectPr
 					kind: projects.length ? "no-results" : "first-use",
 					icon: FolderKanban,
 					title: projects.length ? "No projects match your filter" : "No projects yet",
-					description: projects.length ? "Try another status, or search by a different name, client or location." : "Create your first project to manage its tasks, team chat and client queries.",
+					description: projects.length ? "Try another status, or search by a different name, client or location." : "Projects are created from Telegram groups. Open Telegram groups to create one.",
 					action: projects.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						variant: "outline",
 						size: "sm",
@@ -54472,11 +54875,7 @@ function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectPr
 							setSearch("");
 						},
 						children: "Clear filters"
-					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						size: "sm",
-						onClick: onCreateProject,
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {}), "Create project"]
-					})
+					}) : null
 				})
 			})
 		]
@@ -54607,7 +55006,6 @@ function FounderApp() {
 	const [workPerson, setWorkPerson] = (0, import_react.useState)("founder");
 	const [searchQuery, setSearchQuery] = (0, import_react.useState)("");
 	const [sidebarOpen, setSidebarOpen] = (0, import_react.useState)(false);
-	const [createOpen, setCreateOpen] = (0, import_react.useState)(false);
 	const [memberOpen, setMemberOpen] = (0, import_react.useState)(false);
 	const [memberDialogLabel, setMemberDialogLabel] = (0, import_react.useState)("Add employee");
 	const [factsOpen, setFactsOpen] = (0, import_react.useState)(false);
@@ -54702,7 +55100,7 @@ function FounderApp() {
 		const isLogin = authState === "signed-out";
 		document.documentElement.classList.toggle("founder-login", isLogin);
 		const themeColor = document.querySelector("meta[name=\"theme-color\"]");
-		if (themeColor) themeColor.content = "#fafbf7";
+		if (themeColor) themeColor.content = "#f7f7ff";
 		return () => document.documentElement.classList.remove("founder-login");
 	}, [authState]);
 	const openTab = (tab) => {
@@ -54885,7 +55283,7 @@ function FounderApp() {
 				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex items-center gap-3 border-t pt-3",
+				className: "flex items-center gap-3 pt-3",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, { name: "Project founder" }),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -54913,7 +55311,7 @@ function FounderApp() {
 		className: "iksha-workspace app-glow min-h-dvh bg-background pb-20 lg:pb-0",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("aside", {
-				className: "iksha-sidebar fixed inset-y-0 left-0 hidden w-64 border-r px-3 py-3 lg:block",
+				className: "iksha-sidebar fixed inset-y-0 left-0 hidden w-64 px-3 py-3 lg:block",
 				children: navigation
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sheet, {
@@ -54928,206 +55326,207 @@ function FounderApp() {
 					}), navigation]
 				})
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "lg:pl-64",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
-					className: "sticky top-0 z-20 flex h-16 items-center justify-between border-b bg-card/95 px-4 backdrop-blur sm:px-8",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex min-w-0 items-center gap-3",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							variant: "ghost",
-							size: "icon",
-							className: "lg:hidden",
-							"aria-label": "Open navigation",
-							onClick: () => setSidebarOpen(true),
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Menu$1, {})
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
-							"aria-label": "Breadcrumb",
-							className: "min-w-0 text-sm",
-							children: currentTab === "projects" && viewMode === "detail" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("ol", {
-								className: "flex min-w-0 items-center gap-2",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
-										className: "shrink-0",
-										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-											type: "button",
-											className: "text-muted-foreground hover:text-foreground",
-											onClick: () => openTab("projects"),
-											children: "Projects"
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				"aria-hidden": "true",
+				className: "fixed inset-x-0 top-0 z-30 hidden h-2 bg-background lg:block"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "lg:py-2 lg:pr-2 lg:pl-64",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "iksha-sheet lg:min-h-[calc(100dvh-1rem)] lg:rounded-xl lg:bg-card",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
+						className: "sticky top-0 z-20 flex h-16 items-center justify-between border-b bg-card/95 px-4 backdrop-blur sm:px-8 lg:top-2 lg:rounded-t-xl lg:border-transparent",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex min-w-0 items-center gap-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "ghost",
+								size: "icon",
+								className: "lg:hidden",
+								"aria-label": "Open navigation",
+								onClick: () => setSidebarOpen(true),
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Menu$1, {})
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
+								"aria-label": "Breadcrumb",
+								className: "min-w-0 text-sm",
+								children: currentTab === "projects" && viewMode === "detail" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("ol", {
+									className: "flex min-w-0 items-center gap-2",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
+											className: "shrink-0",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+												type: "button",
+												className: "text-muted-foreground hover:text-foreground",
+												onClick: () => openTab("projects"),
+												children: "Projects"
+											})
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
+											"aria-hidden": "true",
+											className: "shrink-0 text-muted-foreground",
+											children: "/"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
+											className: "min-w-0 truncate font-semibold",
+											"aria-current": "page",
+											title: selectedProject?.name,
+											children: selectedProject?.name || "Project not found"
 										})
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
-										"aria-hidden": "true",
-										className: "shrink-0 text-muted-foreground",
-										children: "/"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
-										className: "min-w-0 truncate font-semibold",
-										"aria-current": "page",
-										title: selectedProject?.name,
-										children: selectedProject?.name || "Project not found"
-									})
-								]
-							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-								className: "block truncate",
-								"aria-current": "page",
-								children: founderSectionLabel(currentTab)
-							})
+									]
+								}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+									className: "block truncate lg:sr-only",
+									"aria-current": "page",
+									children: founderSectionLabel(currentTab)
+								})
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "flex items-center gap-2",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, { name: "Project founder" })
 						})]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "flex items-center gap-2",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, { name: "Project founder" })
-					})]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
-					className: currentTab === "assistant" ? "h-[calc(100dvh-9rem)] lg:h-[calc(100dvh-4rem)]" : "mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:px-8 sm:py-8",
-					children: currentTab === "assistant" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderAssistant, {}) : currentTab === "meetings" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MeetingsView, {}) : currentTab === "chats" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectConversations, { projects }) : currentTab === "actions" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkQueue, {
-						projects,
-						initialPersonId: workPerson,
-						onChanged: () => {
-							loadProjects();
-							loadEmployees();
-						}
-					}) : currentTab === "groups" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TelegramGroups, {
-						projects,
-						onProjectsChanged: loadProjects
-					}) : currentTab === "decisions" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DecisionInbox, {
-						projects,
-						onProjectsChanged: () => {
-							loadProjects();
-							loadDecisionRequests();
-						}
-					}) : currentTab === "employees" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmployeeManager, {
-						onViewWork: (employee) => {
-							setWorkPerson(employee.id);
-							openTab("actions");
-						},
-						employees,
-						projects,
-						onAdd: () => {
-							setMemberDialogLabel("Add employee");
-							setMemberOpen(true);
-						},
-						onUpdated: loadEmployees
-					}) : currentTab === "trash" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "space-y-6",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", { children: "Trash" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "mt-1 text-sm text-muted-foreground",
-							children: "Projects here are hidden from employees. Restore them whenever you need to."
-						})] }), trashedProjects.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "grid gap-4 sm:grid-cols-2",
-							children: trashedProjects.map((proj) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
-								className: "flex items-center gap-3",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "size-5 shrink-0 text-muted-foreground" }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
+						className: currentTab === "assistant" ? "h-[calc(100dvh-9rem)] lg:h-[calc(100dvh-5rem)]" : "mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:px-8 sm:py-8",
+						children: currentTab === "assistant" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderAssistant, {}) : currentTab === "meetings" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MeetingsView, {}) : currentTab === "chats" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectConversations, { projects }) : currentTab === "actions" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkQueue, {
+							projects,
+							initialPersonId: workPerson,
+							onChanged: () => {
+								loadProjects();
+								loadEmployees();
+							}
+						}) : currentTab === "groups" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TelegramGroups, {
+							projects,
+							onProjectsChanged: loadProjects
+						}) : currentTab === "decisions" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DecisionInbox, {
+							projects,
+							onProjectsChanged: () => {
+								loadProjects();
+								loadDecisionRequests();
+							}
+						}) : currentTab === "employees" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmployeeManager, {
+							onViewWork: (employee) => {
+								setWorkPerson(employee.id);
+								openTab("actions");
+							},
+							employees,
+							projects,
+							onAdd: () => {
+								setMemberDialogLabel("Add employee");
+								setMemberOpen(true);
+							},
+							onUpdated: loadEmployees
+						}) : currentTab === "trash" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "space-y-6",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", { children: "Trash" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-1 text-sm text-muted-foreground",
+								children: "Projects here are hidden from employees. Restore them whenever you need to."
+							})] }), trashedProjects.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "grid gap-4 sm:grid-cols-2",
+								children: trashedProjects.map((proj) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+									className: "flex items-center gap-3",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "size-5 shrink-0 text-muted-foreground" }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "min-w-0 flex-1",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+												className: "truncate text-sm font-semibold",
+												children: proj.name
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+												className: "truncate text-xs text-muted-foreground",
+												children: proj.clientName
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+											variant: "outline",
+											size: "sm",
+											onClick: () => restoreProject(proj.id),
+											children: "Restore"
+										})
+									]
+								}) }, proj.id))
+							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
+								icon: Trash,
+								title: "Trash is empty",
+								description: "Projects you move to trash stay here until you restore them."
+							})]
+						}) : currentTab === "activity" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-start justify-between gap-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", { children: "Activity" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-1 text-sm text-muted-foreground",
+								children: "Recent updates across your projects."
+							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshButton, { onRefresh: loadActivities })]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
+							className: "divide-y",
+							children: activities.length ? activities.map((item, index) => {
+								const { who, what, project } = describeActivity(item, {
+									projects,
+									employees
+								});
+								return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex gap-3 py-4 first:pt-0",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, {
+										name: who,
+										className: "size-8"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "min-w-0 flex-1",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "truncate text-sm font-semibold",
-											children: proj.name
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "truncate text-xs text-muted-foreground",
-											children: proj.clientName
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+											className: "text-sm",
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+													className: "font-semibold",
+													children: who
+												}),
+												" ",
+												what
+											]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+											className: "mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground",
+											children: [project && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "truncate",
+												children: project
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Time, { value: item.at })]
 										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-										variant: "outline",
-										size: "sm",
-										onClick: () => restoreProject(proj.id),
-										children: "Restore"
-									})
-								]
-							}) }, proj.id))
-						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
-							icon: Trash,
-							title: "Trash is empty",
-							description: "Projects you move to trash stay here until you restore them."
-						})]
-					}) : currentTab === "activity" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-start justify-between gap-3",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", { children: "Activity" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "mt-1 text-sm text-muted-foreground",
-							children: "Recent updates across your projects."
-						})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-							variant: "outline",
-							size: "sm",
-							onClick: loadActivities,
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, {}), " Refresh"]
-						})]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-						className: "divide-y",
-						children: activities.length ? activities.map((item, index) => {
-							const { who, what, project } = describeActivity(item, {
-								projects,
-								employees
-							});
-							return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex gap-3 py-4 first:pt-0",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, {
-									name: who,
-									className: "size-8"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "min-w-0 flex-1",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-										className: "text-sm",
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-												className: "font-semibold",
-												children: who
-											}),
-											" ",
-											what
-										]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-										className: "mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground",
-										children: [project && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "truncate",
-											children: project
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Time, { value: item.at })]
 									})]
-								})]
-							}, item.id || index);
-						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
-							className: "border-0",
-							icon: RotateCcwClock,
-							title: "No activity yet",
-							description: "Project changes appear here as they happen."
-						})
-					}) })] }) : currentTab === "projects" && viewMode === "directory" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectDirectoryView, {
-						projects,
-						decisionRequests,
-						onSelectProject: handleSelectProjectFromDir,
-						onCreateProject: () => setCreateOpen(true),
-						onOpenGroups: () => openTab("groups")
-					}) : currentTab === "projects" && viewMode === "detail" && selectedProject ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectDetailView, {
-						project: selectedProject,
-						allProjects: projects,
-						employees,
-						decisionRequests,
-						onBack: () => goBack({ section: "projects" }),
-						onProjectUpdated: loadProjects,
-						onQueriesUpdated: loadDecisionRequests,
-						onOpenTrashModal: () => setTrashConfirmOpen(true),
-						onOpenCompleteModal: () => setCompleteConfirmOpen(true),
-						onOpenFactsModal: () => setFactsOpen(true),
-						onOpenMemberModal: () => {
-							setMemberDialogLabel("Add team member");
-							setMemberOpen(true);
-						}
-					}, selectedProject.id) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "space-y-4",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", { children: "Project not found" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
-							kind: "no-results",
-							icon: FolderKanban,
-							title: "No project at this link",
-							description: "This link may be out of date, or the project may have moved to trash.",
-							action: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								size: "sm",
-								onClick: () => openTab("projects"),
-								children: "View all projects"
+								}, item.id || index);
+							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
+								className: "border-0",
+								icon: RotateCcwClock,
+								title: "No activity yet",
+								description: "Project changes appear here as they happen."
 							})
-						})]
-					})
-				})]
+						}) })] }) : currentTab === "projects" && viewMode === "directory" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectDirectoryView, {
+							projects,
+							decisionRequests,
+							onSelectProject: handleSelectProjectFromDir,
+							onOpenGroups: () => openTab("groups")
+						}) : currentTab === "projects" && viewMode === "detail" && selectedProject ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectDetailView, {
+							project: selectedProject,
+							allProjects: projects,
+							employees,
+							decisionRequests,
+							onBack: () => goBack({ section: "projects" }),
+							onProjectUpdated: loadProjects,
+							onQueriesUpdated: loadDecisionRequests,
+							onOpenTrashModal: () => setTrashConfirmOpen(true),
+							onOpenCompleteModal: () => setCompleteConfirmOpen(true),
+							onOpenFactsModal: () => setFactsOpen(true),
+							onOpenMemberModal: () => {
+								setMemberDialogLabel("Add team member");
+								setMemberOpen(true);
+							}
+						}, selectedProject.id) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "space-y-4",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", { children: "Project not found" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
+								kind: "no-results",
+								icon: FolderKanban,
+								title: "No project at this link",
+								description: "This link may be out of date, or the project may have moved to trash.",
+								action: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									size: "sm",
+									onClick: () => openTab("projects"),
+									children: "View all projects"
+								})
+							})]
+						})
+					})]
+				})
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
 				className: `safe-bottom fixed inset-x-0 bottom-0 z-30 grid ${selectedProject ? "grid-cols-4" : "grid-cols-3"} items-center overflow-visible border-t bg-card/95 px-2 pt-3 backdrop-blur lg:hidden`,
@@ -55157,67 +55556,6 @@ function FounderApp() {
 						setMemberOpen(true);
 					}
 				})]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
-				open: createOpen,
-				onOpenChange: setCreateOpen,
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
-					className: "max-h-[90dvh] overflow-y-auto",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Create project" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Set up the basics. New projects start in Setup. You can assign the client and select a workflow next." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-						onSubmit: (e) => saveForm(e, "/api/founder/projects", "POST", () => setCreateOpen(false), "Project created in Setup."),
-						className: "space-y-4",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-								label: "Project name",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									name: "name",
-									placeholder: "Kumar Residence",
-									required: true
-								})
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-								label: "Client name (optional)",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									name: "clientName",
-									placeholder: "Asha Kumar"
-								})
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-								label: "Location (optional)",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									name: "location",
-									placeholder: "Pune, Maharashtra"
-								})
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-								label: "Start date (optional)",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									name: "startDate",
-									type: "date",
-									defaultValue: todayInput()
-								})
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "card-box bg-muted/30 text-xs text-muted-foreground leading-copy",
-								children: [
-									"New projects begin in ",
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "Setup" }),
-									" status. You can assign an identified client and select a workflow template to generate sequential stages and tasks."
-								]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogFooter, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								type: "button",
-								variant: "outline",
-								onClick: () => setCreateOpen(false),
-								children: "Cancel"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								type: "submit",
-								disabled: busy,
-								children: busy ? "Creating project…" : "Create project"
-							})] })
-						]
-					})]
-				})
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmployeeDialog, {
 				open: memberOpen,
@@ -55628,7 +55966,7 @@ function ClientApp() {
 											size: 20,
 											speed: .6,
 											theme: "light",
-											color: "#315e4c",
+											color: "#2b2a36",
 											"aria-hidden": "true"
 										}) })
 									})] })]

@@ -1,8 +1,9 @@
 # Studio Iksha workspace design
 
-The approved workspace preview defines the visual direction for the production
-web app: Georgia headings, Inter body text, a calm green palette, light borders,
-minimal shadows. Every value below is a token in `src/styles/index.css`. Use the
+The workspace follows Sol's product look: a white page sheet floating on a faint
+lavender canvas, Roboto Slab headings, Geist body text, cool neutral ink with a
+near-black main action, light borders, and hairline shadows only on raised controls
+(the active sidebar row, the chosen segmented option, outline buttons, chips). Every value below is a token in `src/styles/index.css`. Use the
 token. If a value is missing, add it there rather than writing a one-off.
 
 The Tailwind theme is cleared down to these scales, so an off-system class such
@@ -21,7 +22,7 @@ Each role sets size, line height and weight together. Use `type-<role>` in JSX a
 | `heading-32`    | 32         | 1.2         | 400    | Page title, one per screen (`h1`)    |
 | `heading-24`    | 24         | 1.2         | 400    | Section, dialog, sheet, drawer title |
 | `heading-20`    | 20         | 1.2         | 400    | Card-level heading                   |
-| `heading-16`    | 16         | 1.2         | 600    | Card title, in Inter                 |
+| `heading-16`    | 16         | 1.2         | 600    | Card title, in Geist                 |
 | `label-14`      | 14         | 1.4         | 400    | Single line: fields, rows            |
 | `label-12`      | 12         | 1.4         | 400    | Single line: metadata, captions      |
 | `copy-16/14/12` | 16, 14, 12 | 1.5         | 400    | Multi-line text                      |
@@ -62,25 +63,30 @@ Side sheets touch the screen edge, so they have square corners.
 
 | Token                    | Value   | Job                               |
 | ------------------------ | ------- | --------------------------------- |
-| `--background`           | #fafbf7 | Canvas                            |
-| `--card`                 | #ffffff | Cards and inputs                  |
-| `--subtle`               | #f6f8f1 | Inset strips and wells            |
-| `--muted`                | #f1f3ed | Sidebar and quiet panels          |
-| `--secondary`            | #edf1e8 | Quiet chips and tiles             |
-| `--foreground`           | #273c36 | Primary text                      |
-| `--secondary-foreground` | #3f5443 | Text on `--secondary`             |
-| `--muted-foreground`     | #62705f | Supporting text, one value only   |
-| `--border`               | #e1e6db | Dividers and cards                |
-| `--border-strong`        | #cdd8c2 | Dashed outlines and hover borders |
-| `--input`                | #dce3d4 | Form control borders              |
+| `--background`           | #f7f7ff | Canvas and sidebar                |
+| `--card`                 | #ffffff | Page sheet, cards and inputs      |
+| `--subtle`               | #f9f9fb | Inset strips, wells, pill tracks  |
+| `--muted`                | #f4f4f8 | Quiet panels                      |
+| `--secondary`            | #f1f1f6 | Quiet chips and tiles             |
+| `--foreground`           | #2b2a36 | Primary text                      |
+| `--secondary-foreground` | #545361 | Text on `--secondary`             |
+| `--muted-foreground`     | #6e6d7c | Supporting text, one value only   |
+| `--border`               | #e4e4ec | Dividers and cards                |
+| `--border-strong`        | #d4d4de | Dashed outlines and hover borders |
+| `--input`                | #e4e4ec | Form control borders              |
 
-The accent is green and belongs to actions and selection: `--primary` #315e4c is
-the fill, focus line and active tab; `--accent` #ebf1e6 is the tint behind hovered
-and selected rows, chosen so that muted text passes on it.
+The accent is near-black ink and belongs to actions and selection: `--primary`
+#1a1825 is the fill, focus line and active tab; `--accent` #f4f4f8 is the tint
+behind hovered and selected rows. Muted text is #6e6d7c rather than Sol's lighter
+grey so it still reaches 4.5:1 on every surface.
 
-Focus and selection are one thin line. A focused field turns its 1px border green,
+Depth comes from three shadows, never from heavier borders: `--shadow-raised` for
+the active sidebar row, `--shadow-pill` for the chosen segmented option, outline
+buttons and status chips, and `--shadow-float` for floating panels.
+
+Focus and selection are one thin line. A focused field turns its 1px border to ink,
 any other control gets a 1px line just inside its edge, and a selected item keeps
-its green border. Never add a ring, glow or halo around an element.
+its ink border. Never add a ring, glow or halo around an element.
 
 Each status has one colour with four steps, and each step has one job.
 
@@ -127,6 +133,14 @@ part so every screen gets it.
 
 Do not pass height, shape, text size or colour through `className`. Width and spacing are fine.
 
+An icon in a button never gets its own margin: the button's gap is the only space between icon and
+label (8px, or 6px at `size="sm"`). A leading icon carries its own whitespace, so the icon side is
+tighter than the label side: 12px and 16px by default, 10px and 12px at `size="sm"`.
+
+Use `RefreshButton` from `components/ui/refresh-button.jsx` for every Refresh. Its icon spins while
+the reload runs, for at least 600ms, so a fast reload still shows that it happened. Icons in buttons
+nudge on hover (refresh turns, send lifts, arrows step forward), set once in `styles/controls.css`.
+
 Labels are verbs that say what happens: `Send to Telegram`, `Post to team`, `Save note`,
 `Review and send`. Use sentence case on every button, label, tab and dialog title. Keep capitals
 only for proper nouns such as Telegram, Google and Drive.
@@ -141,6 +155,10 @@ destructive action that is not the point of the dialog can sit far left with `mr
 `lib/taskStatus.js` is the only place that decides what a task's status is, and `StatusChip` in
 `components/ui/status-chip.jsx` is the only way to show it. It reads the task and never changes it,
 so call `taskStatus(task, { stage })`, or pass `schedule` if you already have the dates.
+
+The chip is a white pill with a hairline shadow; its tone is a small dot in the tone's fill colour,
+so a long list of late work stays calm. Pass `action` when the item waits on the reader and its row
+opens it: the chip then ends in a chevron.
 
 | Status             | Tone    | Meaning                                                                                       |
 | ------------------ | ------- | --------------------------------------------------------------------------------------------- |
@@ -181,6 +199,9 @@ yesterday in the early morning in India.
 Use `SegmentedControl` from `components/ui/segmented-control.jsx` for one choice from a short,
 visible set: project status, role, timeline zoom, list or graph, a composer mode. Use the shared
 select when the options are long or come from data, such as people, projects and stages.
+
+When both sit in one filter row, as on Actions needed, give the selects `variant="pill"` and
+`size="sm"` so they match the segmented pills: status pills on the left, pickers on the right.
 
 ### Empty states
 

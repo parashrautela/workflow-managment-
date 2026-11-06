@@ -14,7 +14,7 @@ function SegmentedControl({ label, value, onValueChange, options, className }) {
       onValueChange={(next) => next && onValueChange(next)}
       data-slot="segmented-control"
       className={cn(
-        'inline-flex w-fit max-w-full flex-wrap items-center gap-1 rounded-lg bg-muted p-1',
+        'inline-flex w-fit max-w-full flex-wrap items-center gap-1 rounded-full bg-subtle p-1',
         className,
       )}
     >
@@ -23,7 +23,7 @@ function SegmentedControl({ label, value, onValueChange, options, className }) {
           key={option.value}
           value={option.value}
           data-slot="segmented-control-item"
-          className="inline-flex min-h-8 items-center justify-center gap-2 rounded-md px-3 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-card data-[state=on]:text-foreground data-[state=on]:shadow-xs max-sm:min-h-11 [&_svg]:size-3.5 [&_svg]:shrink-0"
+          className="inline-flex min-h-8 items-center justify-center gap-2 rounded-full px-3 text-xs font-medium text-secondary-foreground transition-colors hover:text-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-card data-[state=on]:text-foreground data-[state=on]:shadow-[var(--shadow-pill)] max-sm:min-h-11 [&_svg]:size-3.5 [&_svg]:shrink-0"
         >
           {option.icon}
           {option.label}
