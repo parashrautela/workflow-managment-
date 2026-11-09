@@ -160,7 +160,7 @@ export function ProjectDirectoryView({
                   {isMissingClient && (
                     <div className="card-box bg-warning-bg/70 border-warning-border text-xs text-warning flex items-center gap-2">
                       <AlertCircle className="size-3.5 shrink-0 text-warning" />
-                      <span>Setup needed: Client role must be assigned to start.</span>
+                      <span>Setup needed: start a workflow to begin.</span>
                     </div>
                   )}
 
