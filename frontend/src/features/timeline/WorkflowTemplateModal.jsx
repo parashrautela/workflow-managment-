@@ -46,7 +46,6 @@ export function WorkflowTemplateModal({
   projectId,
   projectStartDate,
   telegramLinked = false,
-  clientAssigned = true,
   projectMembers = [],
   onApplied,
 }) {
@@ -108,10 +107,6 @@ export function WorkflowTemplateModal({
 
   const handleStartWorkflow = async () => {
     if (!projectId || !selectedTemplate) return;
-    if (!clientAssigned && !isBlank) {
-      setError('You must assign a client to this project before starting a workflow.');
-      return;
-    }
 
     setSubmitting(true);
     setError('');
@@ -166,15 +161,6 @@ export function WorkflowTemplateModal({
           <div className="mx-6 mt-3 flex items-center gap-2 rounded-xl border border-destructive/30 bg-destructive/10 px-3 py-2 text-xs text-destructive">
             <AlertCircle className="size-4 shrink-0" />
             <span>{error}</span>
-          </div>
-        )}
-
-        {!clientAssigned && !isBlank && (
-          <div className="mx-6 mt-3 flex items-center gap-2 rounded-xl border border-warning-border bg-warning-bg px-3 py-2 text-xs text-warning">
-            <AlertCircle className="size-4 shrink-0 text-warning" />
-            <span>
-              Client assignment required: Assign a client to unlock starting this workflow.
-            </span>
           </div>
         )}
 
@@ -432,7 +418,6 @@ export function WorkflowTemplateModal({
               onClick={handleStartWorkflow}
               disabled={
                 submitting ||
-                (!clientAssigned && !isBlank) ||
                 !selectedTemplate ||
                 (isDefaultPlan && !planStages?.some((stage) => stage.include))
               }

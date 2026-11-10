@@ -387,7 +387,6 @@ export function createPilotRoutes({ getState, founder, employeeSession, body, js
         }
         const workflow = workflows.find((w) => w.id === input.workflowId);
         if (!workflow) fail('Choose a valid workflow.');
-        if (workflow.id !== BLANK_WORKFLOW_ID && (!project.clientName || project.clientName === 'Client pending')) fail('Assign a client before starting the workflow.',409);
         if (project.status === 'Completed') fail('Completed projects cannot start a workflow.',409);
         if (project.workflowStartedAt) {
           if (project.workflowId !== workflow.id && !(workflow.id === BLANK_WORKFLOW_ID && project.workflowId === 'CUSTOM-V1')) fail('This project already has a workflow.',409);

@@ -36257,7 +36257,7 @@ var DEFAULT_PLAN_OPTION = {
 	description: "The studio's usual interior plan as stages of six tasks. Untick stages this project does not need and change any days before it is created.",
 	stages: []
 };
-function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate, telegramLinked = false, clientAssigned = true, projectMembers = [], onApplied }) {
+function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate, telegramLinked = false, projectMembers = [], onApplied }) {
 	const [workflows, setWorkflows] = (0, import_react.useState)([]);
 	const [selectedWorkflowId, setSelectedWorkflowId] = (0, import_react.useState)("");
 	const [startDate, setStartDate] = (0, import_react.useState)(projectStartDate || todayInput());
@@ -36306,10 +36306,6 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 	} : stage));
 	const handleStartWorkflow = async () => {
 		if (!projectId || !selectedTemplate) return;
-		if (!clientAssigned && !isBlank) {
-			setError("You must assign a client to this project before starting a workflow.");
-			return;
-		}
 		setSubmitting(true);
 		setError("");
 		try {
@@ -36358,10 +36354,6 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 				error && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "mx-6 mt-3 flex items-center gap-2 rounded-xl border border-destructive/30 bg-destructive/10 px-3 py-2 text-xs text-destructive",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: error })]
-				}),
-				!clientAssigned && !isBlank && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "mx-6 mt-3 flex items-center gap-2 rounded-xl border border-warning-border bg-warning-bg px-3 py-2 text-xs text-warning",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 shrink-0 text-warning" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Client assignment required: Assign a client to unlock starting this workflow." })]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "grid min-h-0 flex-1 grid-cols-1 overflow-y-auto md:grid-cols-[270px_1fr] md:overflow-hidden",
@@ -36590,7 +36582,7 @@ function WorkflowTemplateModal({ open, onOpenChange, projectId, projectStartDate
 							children: "Cancel"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 							onClick: handleStartWorkflow,
-							disabled: submitting || !clientAssigned && !isBlank || !selectedTemplate || isDefaultPlan && !planStages?.some((stage) => stage.include),
+							disabled: submitting || !selectedTemplate || isDefaultPlan && !planStages?.some((stage) => stage.include),
 							children: submitting ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 mr-2 animate-spin" }), "Starting workflow…"] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3.5 mr-2" }), isBlank ? "Start custom plan" : `Start ${selectedTemplate?.name || "workflow"}`] })
 						})]
 					})]
@@ -53682,7 +53674,6 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 				projectId: project.id,
 				telegramLinked: true,
 				projectStartDate: project.startDate,
-				clientAssigned: true,
 				projectMembers: project.members || [],
 				onApplied: () => {
 					if (onProjectUpdated) onProjectUpdated();
@@ -53833,7 +53824,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AlertDescription, {
 						className: "mt-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-warning",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "You can create a custom timeline below. Assign a client to use workflow templates and receive client queries." }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Assign a client to receive client queries for this project." }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 							size: "sm",
 							className: "shrink-0",
 							onClick: () => {
@@ -53846,7 +53837,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 					})
 				]
 			}),
-			isClientAssigned && !hasWorkflowStarted && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
+			!project.telegramSetupPending && !hasWorkflowStarted && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
 				className: "border-primary/30 bg-primary/5 shadow-xs",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
 					className: "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4",
@@ -54238,7 +54229,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 										size: "sm",
 										onClick: () => setCreateTaskOpen(true),
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {}), "Add task"]
-									}) : isClientAssigned ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+									}) : !project.telegramSetupPending ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 										size: "sm",
 										onClick: () => setTemplateModalOpen(true),
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, {}), "Start workflow"]
@@ -54461,7 +54452,6 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 				onOpenChange: setTemplateModalOpen,
 				projectId: project.id,
 				projectStartDate: project.startDate,
-				clientAssigned: isClientAssigned,
 				projectMembers: project.members || [],
 				onApplied: () => {
 					if (onProjectUpdated) onProjectUpdated();
@@ -54833,7 +54823,7 @@ function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectPr
 								] }),
 								isMissingClient && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "card-box bg-warning-bg/70 border-warning-border text-xs text-warning flex items-center gap-2",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-3.5 shrink-0 text-warning" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Setup needed: Client role must be assigned to start." })]
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-3.5 shrink-0 text-warning" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Setup needed: start a workflow to begin." })]
 								}),
 								taskCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "space-y-1",

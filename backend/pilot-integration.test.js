@@ -135,10 +135,16 @@ test('custom timelines persist across restart, close read-only, and abandonment 
   assert.equal((await call(`/api/founder/projects/${abandoned}/workspace`)).data.tasks[0].title, 'Apply for permit');
 });
 
+test('a workflow template starts before any client is assigned',async(t)=>{
+  const f=await fixture(t); const call=(r,m,i)=>f.call(r,m,i,f.cookie);
+  const p=(await call('/api/founder/projects','POST',{name:'No client yet'})).data.project.id;
+  const started=await call(`/api/founder/projects/${p}/workflow/start`,'POST',{workflowId:'PILOT-DESIGN-V1',startDate:'2026-10-07'});
+  assert.equal(started.status,200); assert.ok(started.data.project.workflowStartedAt);
+});
+
 test('pilot loop: setup, start, client text/photo, two-user discussion, task assignment and persistent reply',async(t)=>{
   const f=await fixture(t); const call=(r,m,i)=>f.call(r,m,i,f.cookie);
   const created=await call('/api/founder/projects','POST',{name:'Pilot home'}); assert.equal(created.status,201); const p=created.data.project.id;
-  assert.equal((await call(`/api/founder/projects/${p}/workflow/start`,'POST',{workflowId:'PILOT-DESIGN-V1'})).status,409);
   assert.equal((await call(`/api/founder/projects/${p}/client`,'POST',{clientName:'Maya',clientTelegramId:'42'})).status,200);
   const employee=await call('/api/founder/employees','POST',{name:'Neha',designation:'Designer',projectId:p,role:'Designer',email:'neha@gmail.com'});
   const credentials={employeeId:employee.data.employee.id};

@@ -194,7 +194,7 @@ single application writer. Production PostgreSQL verification is still required.
   previews. Initial templates are `PILOT-DESIGN-V1` and `PILOT-PAINTING-V1`.
 - `POST /api/founder/projects/:id/workflow/start`:
   `{ "workflowId": "PILOT-DESIGN-V1", "startDate": "2026-10-07",
-  "assigneeId": "EMP-..." }`. Requires a client, generates stages/tasks/deadlines,
+  "assigneeId": "EMP-..." }`. Generates stages/tasks/deadlines (no client needed),
   and returns `{ project }`. Repeating the same workflow is idempotent; switching
   it returns `409`. Omit assignee to assign the founder.
 - `GET /api/{founder|employee}/projects/:id/workspace`:

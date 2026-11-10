@@ -140,3 +140,10 @@ User asked for the founder workspace to look like Sol (hellosol.app) and reviewe
 - Projects: the Create project button and its dialog are removed at the user's request; projects are created from Telegram groups.
 
 Verification: 185 backend/frontend tests pass on this branch, including new tests for reading assistant answers; production build passes. Checked in a demo-data copy of the app at desktop and phone width: all ten founder sections and seven project tabs have no sideways scroll on a 375px screen.
+
+
+## 2026-11-09 — Start a workflow without a client
+
+User asked to remove the rule that a project needs a client before it can start. Workflow templates now start whether or not a client is assigned (the blank custom plan already could). Removed the backend check in `workflow/start`, the matching check, warning and disabled Start button in the template dialog, and the "client is assigned" condition on the project page's Start workflow prompt and button (the Telegram-setup condition stays). Wording updated where it claimed a client was required: the project page banner, the Projects card ("Setup needed: start a workflow to begin.") and the activation error. A client is still needed for client queries, and creating a project from a Telegram group still requires a Client member; neither changed. The Projects "Needs setup" rule and all styles are unchanged.
+
+Verification: 186 backend/frontend tests pass, including a new test that a template starts with no client; production build passes and the bundle diff matches the source change only. In a demo-data app: a no-client project started a template from the dialog; blank plan, repeat start, workflow switch (409), activation before start (409), completed project (409), bad template (400) and the Telegram client requirement (409) behave as before.

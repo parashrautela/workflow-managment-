@@ -250,7 +250,7 @@ export function ProjectDetailView({
   const currentStageSchedule = schedule.find((stage) => stage.id === currentStage?.id);
   const latestQuery = projectQueries[0];
 
-  // Client assignment check: required for pilot workflow start
+  // A client is needed for client queries; starting work does not need one.
   const isClientAssigned = Boolean(
     project.clientName &&
     project.clientName.trim() !== '' &&
@@ -491,7 +491,6 @@ export function ProjectDetailView({
           projectId={project.id}
           telegramLinked
           projectStartDate={project.startDate}
-          clientAssigned
           projectMembers={project.members || []}
           onApplied={() => {
             if (onProjectUpdated) onProjectUpdated();
@@ -639,10 +638,7 @@ export function ProjectDetailView({
             Add client details when ready
           </AlertTitle>
           <AlertDescription className="mt-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-warning">
-            <span>
-              You can create a custom timeline below. Assign a client to use workflow templates and
-              receive client queries.
-            </span>
+            <span>Assign a client to receive client queries for this project.</span>
             <Button
               size="sm"
               className="shrink-0"
@@ -663,8 +659,8 @@ export function ProjectDetailView({
         </Alert>
       )}
 
-      {/* Workflow Start Prompt (Shown once client is assigned but workflow not started) */}
-      {isClientAssigned && !hasWorkflowStarted && (
+      {/* Workflow Start Prompt (Shown until a workflow starts; no client needed) */}
+      {!project.telegramSetupPending && !hasWorkflowStarted && (
         <Card className="border-primary/30 bg-primary/5 shadow-xs">
           <CardContent className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex items-start gap-4">
@@ -1042,7 +1038,7 @@ export function ProjectDetailView({
                         <Plus />
                         Add task
                       </Button>
-                    ) : isClientAssigned ? (
+                    ) : !project.telegramSetupPending ? (
                       <Button size="sm" onClick={() => setTemplateModalOpen(true)}>
                         <Layers />
                         Start workflow
@@ -1288,7 +1284,6 @@ export function ProjectDetailView({
         onOpenChange={setTemplateModalOpen}
         projectId={project.id}
         projectStartDate={project.startDate}
-        clientAssigned={isClientAssigned}
         projectMembers={project.members || []}
         onApplied={() => {
           if (onProjectUpdated) onProjectUpdated();

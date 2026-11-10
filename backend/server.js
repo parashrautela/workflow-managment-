@@ -735,7 +735,7 @@ async function handleRequest(req, res) {
       for (const key of allowed) if (typeof input[key] === 'string') updates[key] = input[key].trim();
       if (['Completed', 'Abandoned'].includes(updates.status) && updates.status !== project.status) return json(res, 409, { error: 'Use Complete project or Abandon & move to trash to notify the group and close the work.' });
       if (['Completed', 'Abandoned'].includes(project.status) && updates.status && updates.status !== project.status) return json(res, 409, { error: 'Closed projects retain their final status.' });
-      if (updates.status && !['Setup','Needs setup','Completed'].includes(updates.status) && !project.workflowStartedAt && ['Setup','Needs setup'].includes(project.status)) return json(res,409,{error:'Assign a client and start a workflow before activating this project.'});
+      if (updates.status && !['Setup','Needs setup','Completed'].includes(updates.status) && !project.workflowStartedAt && ['Setup','Needs setup'].includes(project.status)) return json(res,409,{error:'Start a workflow before activating this project.'});
       if (updates.status === 'Completed' && project.status !== 'Completed') updates.completedAt = new Date().toISOString();
       if (updates.status && updates.status !== 'Completed' && project.status === 'Completed') updates.completedAt = null;
       const changes = {};
