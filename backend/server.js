@@ -21,6 +21,7 @@ import { readFile, mkdir } from 'node:fs/promises';
 import { createStateStore } from './store.js';
 import { loadTelegramAttachment, mediaKind } from './telegram-media.js';
 import { forwardVoiceToFounders } from './voice-forward.js';
+import { transcribeAudio, transcriptionEnabled } from './voice-transcript.js';
 import { ApiError, createPilotRoutes, initializePilot, projectSummary } from './pilot.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -93,6 +94,32 @@ async function callBotBridge(route, payload) {
   const data = await response.json().catch(() => ({}));
   if (!response.ok) throw Object.assign(new Error(data.error || 'Telegram bot did not accept the update.'), { botStatus: response.status, botBody: data });
   return data;
+}
+// A request attachment's bytes: the bot's stored copy when it is connected, otherwise straight from Telegram.
+async function loadAttachment(request, index) {
+  const attachment = request.attachments[index];
+  if (botBridgeUrl && integrationSecret) {
+    const stored = await callBotBridge('/api/integrations/web/decisions/content', { requestId: request.id, groupChatId: request.groupChatId, attachmentIndex: index });
+    if (typeof stored.bytes !== 'string' || stored.bytes.length > 27000000) throw new ApiError('Attachment exceeds the download limit.', 502);
+    const bytes = Buffer.from(stored.bytes, 'base64');
+    if (bytes.length > 20000000) throw new ApiError('Attachment exceeds the 20 MB pilot limit.', 413);
+    return { bytes, ...mediaKind(attachment) };
+  }
+  return loadTelegramAttachment(attachment, process.env.GROUP_BOT_TOKEN);
+}
+// Writes the transcript onto the voice note. One call per note at a time and never twice: a double click or the automatic run would otherwise pay again.
+const transcribing = new Map();
+function transcribeVoice(request, index) {
+  const attachment = request.attachments[index], key = `${request.id}:${index}`;
+  if (attachment.transcript) return Promise.resolve(attachment.transcript);
+  if (!transcribing.has(key)) transcribing.set(key, (async () => {
+    const { text, model } = await transcribeAudio(await loadAttachment(request, index));
+    attachment.transcript = { text, model, at: new Date().toISOString() };
+    audit('voice_transcribed', request.projectId, { requestId: request.id });
+    await save();
+    return attachment.transcript;
+  })().finally(() => transcribing.delete(key)));
+  return transcribing.get(key);
 }
 async function body(req, maximum = 1_000_000) {
   let raw = ''; for await (const chunk of req) { raw += chunk; if (raw.length > maximum) throw new ApiError('Request too large.',413); }
@@ -372,6 +399,8 @@ async function handleRequest(req, res) {
       const request = { id, projectId: project.id, groupChatId: groupId, telegramProjectId: shortText(input.TelegramProjectID, 100) || '', sourceMessageId: String(input.SourceMessageID), commandMessageId: String(input.CommandMessageID || ''), requestedByName: shortText(input.RequestedByName, 160) || 'Unknown', requestedByRole: shortText(input.RequestedByRole, 100) || '', originalSenderName: sender, originalSenderTelegramId: String(input.OriginalSenderTelegramID || ''), automaticClientQuery: input.AutomaticClientQuery === true, requestType, originalMessage: message, context, attachments, status: 'Pending', createdAt: new Date().toISOString(), comments: [], response: '', publishedMessageId: '', publishedAt: '', resolvedAt: '' };
       state.decisionRequests.unshift(request); audit('decision_request_received', project.id, { requestId: id }); await save();
       forwardVoiceToFounders(state, request, callBotBridge);
+      // Best effort and in the background: the inbox already has the note, and "Transcribe" is there if this fails. Group chatter (Message) is left to that button.
+      if (transcriptionEnabled() && requestType !== 'Message') attachments.forEach((item, index) => item.type === 'voice' && transcribeVoice(request, index).catch((error) => console.error('Voice transcript unavailable:', String(error?.message || error).slice(0, 200))));
       return json(res, 201, { request, created: true });
     }
     if (req.method === 'POST' && ['/api/founder/login', '/api/employee/login'].includes(url.pathname)) return json(res, 410, { error: 'Password login has been removed. Continue with Google.' });
@@ -422,14 +451,7 @@ async function handleRequest(req, res) {
       if (!project) return json(res,404,{error:'Request not found in your workspace.'});
       const attachment = request.attachments[Number(attachmentMatch[3])];
       if (!attachment) return json(res,404,{error:'Attachment not found.'});
-      let file;
-      if (botBridgeUrl && integrationSecret) {
-        const stored = await callBotBridge('/api/integrations/web/decisions/content',{requestId:request.id,groupChatId:request.groupChatId,attachmentIndex:Number(attachmentMatch[3])});
-        if (typeof stored.bytes !== 'string' || stored.bytes.length > 27000000) throw new ApiError('Attachment exceeds the download limit.',502);
-        const bytes=Buffer.from(stored.bytes,'base64');
-        if(bytes.length>20000000) throw new ApiError('Attachment exceeds the 20 MB pilot limit.',413);
-        file={bytes,...mediaKind(attachment)};
-      } else file = await loadTelegramAttachment(attachment, process.env.GROUP_BOT_TOKEN);
+      const file = await loadAttachment(request, Number(attachmentMatch[3]));
       // shortcut: no HTTP Range support, so audio can't be scrubbed (fine for short voice notes); add Range handling if long recordings matter.
       res.writeHead(200,{'content-type':file.mime,'content-length':file.bytes.length,'x-content-type-options':'nosniff','content-disposition':file.inline ? 'inline' : 'attachment','cache-control':'private, no-store','content-security-policy':"default-src 'none'; sandbox"});
       return res.end(file.bytes);
@@ -543,6 +565,20 @@ async function handleRequest(req, res) {
       const result = await suggestReply(context, { instruction });
       audit('reply_suggested', request.projectId, { requestId: request.id, ai: result.ai });
       return json(res, 200, { ...result, basedOn: { projectedFinish: context.project.projected_finish, inProgress: context.schedule.in_progress.length, late: context.schedule.late.length, nextUp: context.schedule.next_up.length, previousReplies: context.previous_replies.length, internalNotes: context.internal_notes.length } });
+    }
+    // "Transcribe" on a voice note. The studio must have opted in, because the recording is sent to the AI provider.
+    const transcriptMatch = url.pathname.match(/^\/api\/founder\/decision-requests\/([^/]+)\/attachments\/(\d+)\/transcript$/);
+    if (transcriptMatch && req.method === 'POST') {
+      const request = state.decisionRequests.find((item) => item.id === decodeURIComponent(transcriptMatch[1]) && state.projects.some((project) => project.id === item.projectId));
+      const attachment = request?.attachments[Number(transcriptMatch[2])];
+      if (!attachment || !(['voice', 'audio'].includes(attachment.type) || /^audio\//.test(attachment.mimeType || ''))) return json(res, 404, { error: 'Voice note not found.' });
+      if (!transcriptionEnabled()) return json(res, 409, { error: 'Voice transcripts are switched off for this studio.' });
+      try { return json(res, 200, { transcript: await transcribeVoice(request, Number(transcriptMatch[2])) }); }
+      catch (error) {
+        if (error instanceof ApiError) throw error;
+        console.error('Voice transcript unavailable:', String(error?.message || error).slice(0, 200));
+        return json(res, 502, { error: 'Could not transcribe this voice note. Try again later.' });
+      }
     }
     const decisionAction = url.pathname.match(/^\/api\/founder\/decision-requests\/([^/]+)\/(comment|publish|resolve)$/);
     if (req.method === 'POST' && decisionAction) {

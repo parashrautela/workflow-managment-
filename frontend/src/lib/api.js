@@ -422,6 +422,14 @@ export function getAttachmentUrl(requestId, index = 0, namespace = 'founder') {
   return `/api/${namespace}/decision-requests/${encodeURIComponent(requestId)}/attachments/${index}`;
 }
 
+/** Transcribe a voice note with the AI provider (POST /api/founder/decision-requests/:id/attachments/:index/transcript). Opt-in per studio. */
+export async function transcribeVoiceNote(requestId, index) {
+  return await post(
+    `/api/founder/decision-requests/${encodeURIComponent(requestId)}/attachments/${index}/transcript`,
+    {},
+  );
+}
+
 // -------------------------------------------------------------
 // Phase 8: Access & Revocation Operations
 // -------------------------------------------------------------
