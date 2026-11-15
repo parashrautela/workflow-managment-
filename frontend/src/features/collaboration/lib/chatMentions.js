@@ -31,3 +31,39 @@ export function insertMention(text, mention, name) {
     cursor: mention.start + label.length,
   };
 }
+
+export function mentionsUser(text, userName) {
+  if (!text || !userName) return false;
+  const name = userName.trim();
+  if (!name) return false;
+  const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`@${escaped}(?=[\\s.,!?]|$)`, 'iu');
+  return regex.test(text);
+}
+
+export function formatMessageMentions(text, memberNames = []) {
+  if (!text) return [];
+  const validNames = memberNames
+    .map((name) => name?.trim())
+    .filter(Boolean)
+    .sort((a, b) => b.length - a.length);
+  if (!validNames.length) {
+    return [{ text, isMention: false }];
+  }
+  const pattern = validNames.map((n) => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+  const regex = new RegExp(`(@(?:${pattern}))(?=[\\s.,!?]|$)`, 'gu');
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push({ text: text.slice(lastIndex, match.index), isMention: false });
+    }
+    parts.push({ text: match[1], isMention: true });
+    lastIndex = regex.lastIndex;
+  }
+  if (lastIndex < text.length) {
+    parts.push({ text: text.slice(lastIndex), isMention: false });
+  }
+  return parts;
+}

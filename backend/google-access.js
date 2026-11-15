@@ -9,6 +9,7 @@ export function loginEmail(value) {
 export function revokeAccountSessions(state, accountId) {
   state.founderSessions = state.founderSessions.filter(row => row.googleAccountId !== accountId);
   state.employeeSessions = state.employeeSessions.filter(row => row.googleAccountId !== accountId);
+  state.mcpTokens = (state.mcpTokens || []).filter(row => row.googleAccountId !== accountId);
 }
 export function reserveGoogleAccess(state, { email: value, name, kind = 'employee', employeeId = '' }) {
   const email = loginEmail(value);

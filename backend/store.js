@@ -16,6 +16,7 @@ const emptyState = () => ({
   meetingDeliveries: [],
   readPositions: [],
   founderSessions: [],
+  mcpTokens: [],
   invites: [],
   clientSessions: [],
   conversations: [],

@@ -15,6 +15,7 @@ async function fixture(t, {botBridgeUrl=''}={}) {
   await cp(source,path.join(directory,'backend'),{recursive:true,filter:(p)=>!p.endsWith('.test.js') && !p.endsWith('data.json')});
   await cp(path.join(source,'../package.json'),path.join(directory,'package.json'));
   await symlink(path.join(source,'../node_modules'),path.join(directory,'node_modules'));
+  await symlink(path.join(source,'../frontend'),path.join(directory,'frontend')); // backend imports the app's shared status rule
   const mock = path.join(directory,'mock.js');
   await writeFile(mock,`import { appendFile } from 'node:fs/promises';
 const original = fetch;
@@ -133,6 +134,10 @@ test('custom timelines persist across restart, close read-only, and abandonment 
   assert.equal(trash.data.projects.find((project) => project.id === abandoned).status, 'Abandoned');
   assert.equal((await call(`/api/founder/trash/${abandoned}/restore`, 'POST', {})).status, 200);
   assert.equal((await call(`/api/founder/projects/${abandoned}/workspace`)).data.tasks[0].title, 'Apply for permit');
+  const reopened = await call(`/api/founder/projects/${abandoned}/reopen`, 'POST', {});
+  assert.equal(reopened.status, 200);
+  assert.equal((await call(`/api/founder/projects/${abandoned}/workspace`)).data.project.status, 'Active');
+  assert.equal((await call(`/api/founder/projects/${abandoned}/workspace`)).data.tasks[0].status, 'Open');
 });
 
 test('a workflow template starts before any client is assigned',async(t)=>{
@@ -519,4 +524,13 @@ test('stage reorder previews without writing, requires founder confirmation and 
     ).status,
     409,
   );
+});
+
+test('founder profile returns the signed-in founder information', async (t) => {
+  const f = await fixture(t);
+  const profileRes = await f.call('/api/founder/profile', 'GET', undefined, f.cookie);
+  assert.equal(profileRes.status, 200);
+  assert.equal(profileRes.data.founder.role, 'Founder');
+  assert.ok(profileRes.data.founder.name);
+  assert.equal((await f.call('/api/founder/profile', 'GET')).status, 401);
 });

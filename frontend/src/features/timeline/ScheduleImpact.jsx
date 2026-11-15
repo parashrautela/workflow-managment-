@@ -19,11 +19,26 @@ export function ScheduleImpact({ preview, pending, error }) {
               {item.reason}
             </p>
           ))}
-          {(preview.created || []).map((item, index) => (
-            <p key={index}>
-              <strong>{item.title}</strong>: {label(item.start)} – {label(item.end)}
-            </p>
-          ))}
+          {(preview.created || []).map((item, index) => {
+            const todayStr = new Date().toISOString().slice(0, 10);
+            const overdueDays =
+              item.end && item.end < todayStr
+                ? Math.max(1, Math.round((new Date(todayStr) - new Date(item.end)) / 86400000))
+                : 0;
+            return (
+              <div key={index} className="space-y-1">
+                <p>
+                  <strong>{item.title}</strong>: {label(item.start)} – {label(item.end)}
+                </p>
+                {overdueDays > 0 && (
+                  <p className="font-medium text-warning">
+                    ⚠️ This task ends in the past and will start {overdueDays}{' '}
+                    {overdueDays === 1 ? 'day' : 'days'} overdue.
+                  </p>
+                )}
+              </div>
+            );
+          })}
           {(preview.affected || []).map((item) => (
             <p key={item.taskId}>
               <strong>{item.taskName || item.title}</strong>: {label(item.previousStart)} –{' '}

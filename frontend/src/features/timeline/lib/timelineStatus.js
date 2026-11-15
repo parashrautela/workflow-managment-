@@ -25,7 +25,7 @@ export function unscheduledReason(item) {
   const { task } = item;
   if (task.sheetPlan)
     return task.missingDuration
-      ? 'Duration missing in the Google Sheet'
+      ? 'Duration missing in the project plan'
       : 'Waits on an earlier step with no duration';
   if (task.sourceBlockedReason) return task.sourceBlockedReason;
   return 'No dates yet';

@@ -4,13 +4,16 @@ import {stageLinksFor,connectionTasks} from './stage-connections.js';
 import { randomUUID } from 'node:crypto';
 import { hasRole, matchesRole, rolesOf, roleText } from './roles.js';
 import { canWorkOnTask } from './work-access.js';
+// The app's one status rule (pure modules), so the Assistant says what the task chips say.
+import { taskStatus } from '../frontend/src/lib/taskStatus.js';
+import { calendarDate } from '../frontend/src/features/timeline/lib/timeline.js';
 
 export const purchaseTemplate={id:'builtin-purchase-v1',name:'Purchase — selection to order',builtin:true,stages:[{name:'Purchase',spaces:[],tasks:[{title:'Select items and specifications',role:'Founder',durationDays:1},{title:'Prepare and send purchase proposal',role:'Designer',durationDays:1},{title:'Client confirms payment and order',role:'Client',durationDays:1}]}]};
 
 const closed = project => ['Completed','Abandoned'].includes(project.status);
 const open = task => !task.deletedAt && !['Completed','Cancelled'].includes(task.status);
 const fail = (message,status=400) => { throw new ApiError(message,status); };
-const dayAt = (now,timeZone='Asia/Kolkata') => new Intl.DateTimeFormat('en-CA',{timeZone,year:'numeric',month:'2-digit',day:'2-digit'}).format(now);
+export const dayAt = (now,timeZone='Asia/Kolkata') => new Intl.DateTimeFormat('en-CA',{timeZone,year:'numeric',month:'2-digit',day:'2-digit'}).format(now);
 export function responsibleFor(project,task,id) {
   if (id !== 'founder' && !project.members?.some(member => member.employeeId === id && member.active !== false)) return false;
   if (task.assigneeId) return task.assigneeId===id;
@@ -18,20 +21,28 @@ export function responsibleFor(project,task,id) {
   const roles = id==='founder' ? 'Founder' : project.members?.find(member=>member.employeeId===id);
   return matchesRole(typeof roles==='string'?roles:roles?.roles || roles?.role,task.sourceRole || task.role);
 }
-export function workQueue(state,{personId='founder',projectId='',status='pending',now=new Date(),user={founder:true}}={}) {
+export function workQueue(state,{personId='founder',projectId='',status='all',now=new Date(),user={founder:true}}={}) {
   const today=dayAt(now);
   return state.tasks.flatMap(task=>{
     const project=state.projects.find(row=>row.id===task.projectId);
     if(!project || closed(project) || !open(task) || (projectId && project.id!==projectId))return [];
     if(!user.founder && !canWorkOnTask(project,task,user))return [];
     if(personId && personId!=='all' && !responsibleFor(project,task,personId))return [];
-    const approval=task.sourceGateType==='approval' || /approval|approve|final check/i.test(task.title);
-    const overdue=Boolean(task.deadline && task.deadline<today);
-    if(status==='approvals' && !approval || status==='overdue' && !overdue || status==='blocked' && task.status!=='Blocked' || status==='in-progress' && task.status!=='In progress')return [];
     const stage=project.stages?.find(row=>row.id===task.stageId);
-    return [{...task,projectName:project.name,stageName:stage?.name || '',spaces:stage?.spaces || [],approval,overdue,project:{id:project.id,name:project.name,status:project.status,telegramGroupChatId:project.telegramGroupChatId || '',stages:project.stages || [],members:project.members || []}}];
+    const taskState=taskStatus(task,{stage,today:calendarDate(today)});
+    const approval=taskState.key==='waiting';
+    const overdue=taskState.overdue;
+    if(status==='approvals' && !approval)return [];
+    if(status==='overdue' && !overdue)return [];
+    if(status==='blocked' && taskState.key!=='blocked')return [];
+    if(status==='in-progress' && taskState.key!=='active')return [];
+    if(status==='upcoming' && taskState.key!=='upcoming')return [];
+    if(status==='pending' && taskState.key==='upcoming')return [];
+    return [{...task,projectName:project.name,stageName:stage?.name || '',spaces:stage?.spaces || [],approval,overdue,statusState:taskState,project:{id:project.id,name:project.name,status:project.status,telegramGroupChatId:project.telegramGroupChatId || '',stages:project.stages || [],members:project.members || []}}];
   }).sort((a,b)=>Number(b.overdue)-Number(a.overdue) || (a.deadline || '9999').localeCompare(b.deadline || '9999') || a.projectName.localeCompare(b.projectName));
 }
+// The chip text for a workQueue row, with today on the IST calendar like the queue's own overdue check.
+export const assistantStatusText=(task,now=new Date())=>taskStatus(task,{stage:task.project?.stages?.find(row=>row.id===task.stageId),today:calendarDate(dayAt(now))}).text;
 export function replacementPreview(state,input) {
   const from=state.employees.find(row=>row.id===input.fromId),to=state.employees.find(row=>row.id===input.toId && row.active!==false);
   if(!from || !to || from.id===to.id)fail('Choose different existing employees and an active replacement.');

@@ -146,8 +146,15 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
     load();
     const timer = setInterval(() => {
       if (document.visibilityState === 'visible') load();
-    }, 10000);
-    return () => clearInterval(timer);
+    }, 6000);
+    const onVisibility = () => {
+      if (document.visibilityState === 'visible') load();
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => {
+      clearInterval(timer);
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
   }, []);
 
   useEffect(() => {
@@ -565,8 +572,14 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
                       onReject={() => setRejectOpen(true)}
                     />
                     {selected.status !== 'Done' && (
-                      <Button variant="outline" size="sm" disabled={busy} onClick={markDone}>
-                        Done
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        disabled={busy}
+                        onClick={markDone}
+                        title="Mark this query done without schedule changes"
+                      >
+                        Mark done
                       </Button>
                     )}
                   </div>

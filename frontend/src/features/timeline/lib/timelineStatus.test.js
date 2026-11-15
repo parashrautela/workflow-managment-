@@ -136,7 +136,7 @@ test('only linked, open, dated work can be dragged, and undated work says why', 
   );
   assert.equal(
     unscheduledReason(item({ sheetPlan: true, missingDuration: true }, null, null)),
-    'Duration missing in the Google Sheet',
+    'Duration missing in the project plan',
   );
   assert.equal(unscheduledReason(item({}, null, null)), 'No dates yet');
 });

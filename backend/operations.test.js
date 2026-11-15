@@ -1,8 +1,46 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {workQueue,replacementPreview,createOperationsRoutes} from './operations.js';
+import {workQueue,replacementPreview,createOperationsRoutes,assistantStatusText} from './operations.js';
 const fixture=()=>({projects:[{id:'p',name:'House',status:'Active',members:[{employeeId:'old',role:'Site Supervisor'},{employeeId:'designer',role:'Designer'}],stages:[{id:'s',name:'Painting'}]}],employees:[{id:'old',name:'Old',active:true},{id:'new',name:'New',active:true,telegramUserId:'42',telegramConnectedAt:'yes'},{id:'designer',name:'Designer',active:true}],tasks:[{id:'a',projectId:'p',stageId:'s',title:'Site check',sourceRole:'Site Supervisor',assigneeId:'old',status:'Open',deadline:'2026-10-20'},{id:'b',projectId:'p',stageId:'s',title:'Drawing',sourceRole:'Designer',status:'Open',deadline:'2026-10-25'},{id:'c',projectId:'p',title:'Old work',assigneeId:'old',status:'Completed'}]});
+test('workQueue unifies approval and overdue states with taskStatus without false approval counts for future tasks', () => {
+  const state = fixture();
+  // Task in future unstarted stage with "approval" in title should NOT be flagged as approval pending
+  state.projects[0].stages.push({ id: 'future-stage', name: 'Handover', startDate: '2099-01-01' });
+  state.tasks.push({
+    id: 'future-approval',
+    projectId: 'p',
+    stageId: 'future-stage',
+    title: 'Client approval of final work',
+    status: 'Open',
+    deadline: '2099-01-10',
+    sourceRole: 'Founder'
+  });
+  // Active task with "approval" in title should be flagged as approval pending
+  state.projects[0].stages[0].startDate = '2026-10-01';
+  state.tasks.push({
+    id: 'active-approval',
+    projectId: 'p',
+    stageId: 's',
+    title: 'Review and approve drawings',
+    status: 'In progress',
+    deadline: '2026-10-23',
+    sourceRole: 'Founder'
+  });
+
+  const now = new Date('2026-10-22T06:00:00Z');
+  const allQueue = workQueue(state, { personId: 'all', now });
+  const futureItem = allQueue.find(t => t.id === 'future-approval');
+  const activeItem = allQueue.find(t => t.id === 'active-approval');
+
+  assert.equal(futureItem.approval, false, 'future unstarted approval task should not be approval pending');
+  assert.equal(activeItem.approval, true, 'active started approval task should be approval pending');
+
+  const approvalsQueue = workQueue(state, { personId: 'all', status: 'approvals', now });
+  assert.ok(approvalsQueue.some(t => t.id === 'active-approval'));
+  assert.ok(!approvalsQueue.some(t => t.id === 'future-approval'));
+});
 test('daily queue filters the responsible person and rejects leaking other work',()=>{
+
  const state=fixture();const now=new Date('2026-10-22T06:00:00Z');
  assert.deepEqual(workQueue(state,{personId:'old',now}).map(task=>task.id),['a']);
  assert.deepEqual(workQueue(state,{personId:'all',user:{id:'designer'},now}).map(task=>task.id),['b']);
@@ -143,4 +181,14 @@ test('long edited reminder is chunked without losing text or splitting Unicode c
  assert.equal(sent.map(row=>row.text).join(''),text);assert.equal(sent.length,3);
  assert.ok(sent.every(row=>row.text.length<=3500 && !/[\uD800-\uDBFF]$/.test(row.text)));
  assert.equal(state.digestDeliveries[0].text,text);assert.equal(state.digestDeliveries[0].status,'Sent');
+});
+
+test('assistant status line is the chip text, judged on the IST day',()=>{
+ const now=new Date('2026-10-22T20:00:00Z');// 23 Oct 01:30 in IST
+ const row=(task,startDate)=>{const state=fixture();state.projects[0].stages=[{id:'s',name:'Painting',startDate}];state.tasks=[{id:'t',projectId:'p',stageId:'s',status:'Open',deadline:'2026-11-30',...task}];return workQueue(state,{personId:'all',now})[0];};
+ assert.equal(assistantStatusText(row({title:'Client approval'},'2026-11-01'),now),'Upcoming');
+ assert.equal(assistantStatusText(row({title:'Client approval'},'2026-10-01'),now),'Approval pending');
+ assert.equal(assistantStatusText(row({title:'Drawing'},'2026-10-01'),now),'In progress');
+ assert.equal(assistantStatusText(row({title:'Drawing',deadline:'2026-10-20'},'2026-10-01'),now),'Overdue · 3d');
+ assert.equal(assistantStatusText(row({title:'Drawing',status:'Blocked',deadline:'2026-10-20'},'2026-10-01'),now),'Blocked · overdue');
 });

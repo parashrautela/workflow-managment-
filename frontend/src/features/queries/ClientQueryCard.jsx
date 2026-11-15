@@ -696,7 +696,7 @@ export function ClientQueryCard({
           onDone={(result) => {
             setSuccessMessage(result?.summary || 'Query updated.');
             if (onQueryChanged) onQueryChanged();
-            if (onTaskCreated) onTaskCreated();
+            if (onTaskCreated) onTaskCreated(result?.task);
           }}
         />
       )}

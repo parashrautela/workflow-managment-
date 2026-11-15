@@ -121,6 +121,7 @@ export function EmployeeDialog({
   open,
   onOpenChange,
   projects,
+  employees = [],
   defaultProjectId,
   onUpdated,
   label = 'Add employee',
@@ -129,7 +130,18 @@ export function EmployeeDialog({
     [access, setAccess] = useState(null),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(''),
-    [copied, setCopied] = useState(false);
+    [copied, setCopied] = useState(false),
+    [employeeList, setEmployeeList] = useState(employees);
+
+  useEffect(() => {
+    if (employees?.length) {
+      setEmployeeList(employees);
+    } else if (open) {
+      request('/api/founder/employees')
+        .then((data) => setEmployeeList(data.employees || []))
+        .catch(() => {});
+    }
+  }, [open, employees]);
   useEffect(() => {
     if (open) {
       setProjectId(defaultProjectId || projects[0]?.id || '');
@@ -157,6 +169,12 @@ export function EmployeeDialog({
       setBusy(false);
     }
   };
+  const selectedProj = projects.find((p) => p.id === projectId);
+  const assignedIds = new Set((selectedProj?.members || []).map((m) => m.employeeId));
+  const availableEmployees = employeeList.filter(
+    (emp) => emp.active !== false && !assignedIds.has(emp.id),
+  );
+
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(
@@ -278,8 +296,19 @@ export function EmployeeDialog({
               <TabsContent value="existing">
                 <form onSubmit={(event) => submit(event, true)} className="space-y-3">
                   <label className="grid gap-1 text-xs">
-                    Employee ID
-                    <Input name="employeeId" required placeholder="EMP-XXXXXXXXXX" />
+                    Choose employee
+                    <NativeSelect name="employeeId" required disabled={!availableEmployees.length}>
+                      <option value="">
+                        {availableEmployees.length
+                          ? 'Choose an employee…'
+                          : 'All employees are already on this project'}
+                      </option>
+                      {availableEmployees.map((emp) => (
+                        <option key={emp.id} value={emp.id}>
+                          {emp.name} ({emp.designation || emp.role || 'Employee'})
+                        </option>
+                      ))}
+                    </NativeSelect>
                   </label>
                   <label className="grid gap-1 text-xs">
                     Project role
@@ -297,7 +326,7 @@ export function EmployeeDialog({
                     <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
                       Cancel
                     </Button>
-                    <Button disabled={busy || !projectId} type="submit">
+                    <Button disabled={busy || !projectId || !availableEmployees.length} type="submit">
                       Assign to project
                     </Button>
                   </DialogFooter>

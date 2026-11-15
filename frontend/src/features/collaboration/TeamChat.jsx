@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { ArrowUp, MessageSquare } from 'lucide-react';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
 import { Bubble, BubbleContent } from '@/components/ui/bubble';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -11,12 +12,16 @@ import {
   mentionAt,
   mentionCandidates,
   projectChatMembers,
+  mentionsUser,
+  formatMessageMentions,
 } from '@/features/collaboration/lib/chatMentions';
 import { Time } from '@/components/ui/time';
 import { Empty } from '@/components/ui/empty';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export function TeamChat({ endpoint, currentActor, members = [] }) {
   const [messages, setMessages] = useState([]);
+  const [loaded, setLoaded] = useState(false);
   const [draft, setDraft] = useState('');
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
@@ -27,6 +32,9 @@ export function TeamChat({ endpoint, currentActor, members = [] }) {
   const [mention, setMention] = useState(null);
   const [activeOption, setActiveOption] = useState(0);
   const team = projectChatMembers(members);
+  const memberNames = team.map((m) => m.name);
+  const currentMember = team.find((m) => m.employeeId === currentActor);
+  const currentUserName = currentMember ? currentMember.name : currentActor === 'founder' ? 'Founder' : '';
   const candidates = mention ? mentionCandidates(team, mention.query) : [];
   const optionIndex = Math.min(activeOption, Math.max(0, candidates.length - 1));
 
@@ -75,15 +83,15 @@ export function TeamChat({ endpoint, currentActor, members = [] }) {
 
   useEffect(() => {
     let active = true;
-    setMessages([]);
+    setLoaded(false);
     const refresh = async () => {
-      if (document.visibilityState === 'hidden') return;
       try {
         const response = await fetch(endpoint, { credentials: 'same-origin' });
         const data = await response.json();
         if (!response.ok) throw new Error(data.error || 'Could not load team chat.');
         if (active) {
           setMessages(data.messages || []);
+          setLoaded(true);
           setError('');
         }
       } catch (problem) {
@@ -91,10 +99,17 @@ export function TeamChat({ endpoint, currentActor, members = [] }) {
       }
     };
     refresh();
-    const timer = setInterval(refresh, 6000);
+    const timer = setInterval(() => {
+      if (document.visibilityState === 'visible') refresh();
+    }, 6000);
+    const onVisibility = () => {
+      if (document.visibilityState === 'visible') refresh();
+    };
+    document.addEventListener('visibilitychange', onVisibility);
     return () => {
       active = false;
       clearInterval(timer);
+      document.removeEventListener('visibilitychange', onVisibility);
     };
   }, [endpoint]);
 
@@ -168,9 +183,28 @@ export function TeamChat({ endpoint, currentActor, members = [] }) {
         aria-label="Project team messages"
         aria-live="polite"
       >
-        {messages.length ? (
+        {!loaded ? (
+          <div className="space-y-4 py-2" aria-label="Loading messages">
+            <div className="flex items-start gap-3">
+              <Skeleton className="size-8 rounded-full" />
+              <div className="space-y-2">
+                <Skeleton className="h-3 w-24" />
+                <Skeleton className="h-10 w-48 rounded-xl" />
+              </div>
+            </div>
+            <div className="flex flex-row-reverse items-start gap-3">
+              <Skeleton className="size-8 rounded-full" />
+              <div className="flex flex-col items-end space-y-2">
+                <Skeleton className="h-3 w-20" />
+                <Skeleton className="h-12 w-56 rounded-xl" />
+              </div>
+            </div>
+          </div>
+        ) : messages.length ? (
           messages.map((item) => {
             const own = item.senderId === currentActor;
+            const mentioned = !own && mentionsUser(item.text, currentUserName);
+            const tokens = formatMessageMentions(item.text, memberNames);
             return (
               <Message key={item.id} align={own ? 'end' : 'start'}>
                 <MessageAvatar>
@@ -181,11 +215,38 @@ export function TeamChat({ endpoint, currentActor, members = [] }) {
                   </Avatar>
                 </MessageAvatar>
                 <MessageContent className="max-w-[88%] sm:max-w-[75%]">
-                  <MessageHeader className={own ? 'justify-end' : ''}>
-                    {own ? 'You' : item.senderName} · <Time value={item.at} />
+                  <MessageHeader className={own ? 'justify-end' : 'flex flex-wrap items-center gap-1.5'}>
+                    <span>
+                      {own ? 'You' : item.senderName} · <Time value={item.at} />
+                    </span>
+                    {mentioned && (
+                      <Badge
+                        variant="outline"
+                        className="border-primary/40 bg-primary/10 px-1.5 py-0 text-[10px] font-medium text-primary"
+                      >
+                        Mentioned you
+                      </Badge>
+                    )}
                   </MessageHeader>
-                  <Bubble align={own ? 'end' : 'start'} variant={own ? undefined : 'secondary'}>
-                    <BubbleContent className="whitespace-pre-wrap">{item.text}</BubbleContent>
+                  <Bubble
+                    align={own ? 'end' : 'start'}
+                    variant={own ? undefined : 'secondary'}
+                    className={mentioned ? 'ring-2 ring-primary/40' : undefined}
+                  >
+                    <BubbleContent className="whitespace-pre-wrap">
+                      {tokens.map((token, index) =>
+                        token.isMention ? (
+                          <span
+                            key={index}
+                            className="rounded bg-primary/15 px-1 py-0.5 font-medium text-primary"
+                          >
+                            {token.text}
+                          </span>
+                        ) : (
+                          token.text
+                        ),
+                      )}
+                    </BubbleContent>
                   </Bubble>
                 </MessageContent>
               </Message>

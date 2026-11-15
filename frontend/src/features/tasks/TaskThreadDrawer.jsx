@@ -227,6 +227,34 @@ export function TaskThreadDrawer({
       version.current++;
     };
   }, [open, initialTask?.id, namespace]);
+
+  // Silent background poll while drawer is open (every 6 s and on tab focus)
+  useEffect(() => {
+    if (!open || !task?.id) return;
+    const silentRefresh = async () => {
+      if (document.visibilityState === 'hidden') return;
+      try {
+        const data = await fetchTaskMessages(task.id, '', 100, namespace);
+        setMessages(data.messages || []);
+        setCursor(data.pagination?.nextCursor || null);
+        if (data.messages?.length) markTaskRead(task.id, data.messages.at(-1).id, namespace).catch(() => {});
+        const ref = await request(`/api/${namespace}/tasks/${task.id}/resources`);
+        if (ref?.resources) setResources(ref.resources);
+      } catch {
+        /* Ignore transient poll errors to preserve existing state */
+      }
+    };
+    const interval = setInterval(silentRefresh, 6000);
+    const onVisibility = () => {
+      if (document.visibilityState === 'visible') silentRefresh();
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
+  }, [open, task?.id, namespace]);
+
   if (!task) return null;
   const closed = ['Completed', 'Cancelled'].includes(task.status),
     projectClosed = ['Completed', 'Abandoned'].includes(project?.status);
@@ -300,6 +328,11 @@ export function TaskThreadDrawer({
       setBusy(false);
     }
   };
+  const [notice, setNotice] = useState('');
+  const showNotice = (msg) => {
+    setNotice(msg);
+    setTimeout(() => setNotice(''), 3500);
+  };
   const changeTask = async (updates) => {
     setBusy(true);
     setError('');
@@ -307,6 +340,9 @@ export function TaskThreadDrawer({
       const result = await updateTask(task.id, updates, 'founder');
       setTask(result.task);
       setEditing(false);
+      if (updates.status === 'Completed') showNotice('Task marked done.');
+      else if (updates.status === 'Open') showNotice('Task reopened.');
+      else showNotice('Task updated.');
       onTaskUpdated?.();
     } catch (problem) {
       setError(problem.message);
@@ -441,6 +477,11 @@ export function TaskThreadDrawer({
               </div>
             )}
           </SheetHeader>
+          {notice && (
+            <p role="status" className="mx-4 mt-2 rounded-md bg-success-bg p-2 text-xs text-success">
+              {notice}
+            </p>
+          )}
           {editing && isFounder ? (
             <form
               className="task-thread-edit"
@@ -850,6 +891,7 @@ export function TaskThreadDrawer({
         task={task}
         meeting={taskMeeting}
         onSaved={() => {
+          showNotice(taskMeeting ? 'Meeting updated.' : 'Meeting scheduled.');
           request(`/api/${namespace}/meetings?projectId=${encodeURIComponent(task.projectId)}`)
             .then((data) =>
               setTaskMeeting(
