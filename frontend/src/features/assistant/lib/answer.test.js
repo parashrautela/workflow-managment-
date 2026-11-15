@@ -1,6 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parseAnswer, statusTone } from './answer.js';
+import { parseAnswer, proseBlocks, statusTone } from './answer.js';
+
+test('a short answer becomes paragraphs and one list', () => {
+  assert.deepEqual(proseBlocks('Sharma is active.\n- Next: sign-off\n- Late: 2 tasks\n\nAsk me more.'), [
+    { text: 'Sharma is active.' },
+    { items: ['Next: sign-off', 'Late: 2 tasks'] },
+    { text: 'Ask me more.' },
+  ]);
+});
 
 test('a work list becomes tasks with project, stage, title and status', () => {
   const answer = parseAnswer(

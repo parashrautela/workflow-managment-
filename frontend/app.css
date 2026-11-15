@@ -832,7 +832,7 @@
   position: absolute;
   top: 50%;
   right: calc(100% + var(--space-8));
-  display: none;
+  display: flex;
   width: 260px;
   flex-direction: column;
   gap: var(--space-4);
@@ -842,12 +842,22 @@
   background: var(--card);
   box-shadow: var(--shadow-float);
   text-align: left;
-  transform: translateY(-50%);
   z-index: 5;
+  /* Fades in beside its tick instead of popping, so moving down the rail reads as one motion. */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(6px, -50%);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease,
+    visibility 0.15s;
 }
 .assistant-rail-item:hover .assistant-rail-card,
 .assistant-rail-item:focus-visible .assistant-rail-card {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, -50%);
 }
 .assistant-rail-question {
   display: -webkit-box;
@@ -1005,6 +1015,18 @@
 }
 .assistant-report > .assistant-row {
   padding: 0;
+}
+/* Short answers: plain paragraphs and a bulleted list, like a chat reply. */
+.assistant-prose {
+  display: grid;
+  gap: var(--space-8);
+  font: var(--type-copy-14);
+}
+.assistant-prose ul {
+  display: grid;
+  gap: var(--space-4);
+  padding-left: var(--space-16);
+  list-style: disc;
 }
 @media (max-width: 639px) {
   .assistant-task {
@@ -2248,10 +2270,6 @@
 
   .w-64 {
     width: calc(var(--spacing) * 64);
-  }
-
-  .w-72 {
-    width: calc(var(--spacing) * 72);
   }
 
   .w-\[280px\] {

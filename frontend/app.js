@@ -32815,6 +32815,17 @@ function parseAnswer(text) {
 	flush();
 	return answer;
 }
+function proseBlocks(text) {
+	const blocks = [];
+	for (const raw of String(text || "").split("\n")) {
+		const line = raw.trim();
+		if (!line) continue;
+		if (!line.startsWith("- ")) blocks.push({ text: line });
+		else if (blocks.at(-1)?.items) blocks.at(-1).items.push(line.slice(2));
+		else blocks.push({ items: [line.slice(2)] });
+	}
+	return blocks;
+}
 function statusTone(status) {
 	if (/overdue/i.test(status)) return "overdue";
 	if (/approval|blocked/i.test(status)) return "warning";
@@ -32891,8 +32902,15 @@ function GroupTitle({ index, name, count }) {
 		]
 	});
 }
+function Prose({ answer }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "assistant-prose",
+		children: proseBlocks(answer).map((block, index) => block.items ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: block.items.map((text, row) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: text }, row)) }, index) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: block.text }, index))
+	});
+}
 function Answer({ answer }) {
 	const { title, intro, sections, tasks } = parseAnswer(answer);
+	if (!title && !sections.length && !tasks.length) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Prose, { answer });
 	const projects = /* @__PURE__ */ new Map();
 	for (const task of tasks) projects.set(task.project, [...projects.get(task.project) || [], task]);
 	const overdue = tasks.filter((task) => statusTone(task.status) === "overdue").length;
@@ -32963,12 +32981,18 @@ function Answer({ answer }) {
 }
 function TurnRail({ messages, scrollRef }) {
 	const [active, setActive] = (0, import_react.useState)(0);
+	const pinned = (0, import_react.useRef)(false);
 	(0, import_react.useEffect)(() => {
 		const thread = scrollRef.current;
 		if (!thread) return void 0;
 		let frame = 0;
+		pinned.current = false;
+		const release = () => {
+			pinned.current = false;
+		};
 		const update = () => {
 			frame = 0;
+			if (pinned.current) return;
 			const turns = [...thread.querySelectorAll(".assistant-turn")];
 			const atEnd = thread.scrollTop + thread.clientHeight >= thread.scrollHeight - 4;
 			const line = thread.getBoundingClientRect().top + 48;
@@ -32982,16 +33006,27 @@ function TurnRail({ messages, scrollRef }) {
 			if (!frame) frame = requestAnimationFrame(update);
 		};
 		update();
+		const input = [
+			"wheel",
+			"pointerdown",
+			"keydown"
+		];
 		thread.addEventListener("scroll", onScroll, { passive: true });
+		input.forEach((type) => thread.addEventListener(type, release, { passive: true }));
 		return () => {
 			thread.removeEventListener("scroll", onScroll);
+			input.forEach((type) => thread.removeEventListener(type, release));
 			cancelAnimationFrame(frame);
 		};
 	}, [messages.length, scrollRef]);
-	const jump = (index) => scrollRef.current?.querySelectorAll(".assistant-turn")[index]?.scrollIntoView({
-		block: "start",
-		behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
-	});
+	const jump = (index) => {
+		pinned.current = true;
+		setActive(index);
+		scrollRef.current?.querySelectorAll(".assistant-turn")[index]?.scrollIntoView({
+			block: "start",
+			behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+		});
+	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
 		className: "assistant-rail",
 		"aria-label": "Jump to a question",
