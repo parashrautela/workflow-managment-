@@ -34,15 +34,17 @@ globalThis.fetch = async (url, options) => {
   return originalFetch(url, options);
 };`);
   const google=await googleTestIdentity(root);
-  await google.seed(path.join(root,'backend/data.json'));
+  const founderAccount=(n,employeeId)=>({id:`acct-${n}`,subject:`sub-${n}`,email:`${n}@gmail.com`,name:n,kind:'founder',status:'Approved',employeeId});
+  await google.seed(path.join(root,'backend/data.json'),{employees:[{id:'emp-b',name:'Connected Founder',telegramUserId:'9001',telegramConnectedAt:'2026-11-01T00:00:00.000Z',active:true},{id:'emp-c',name:'Silent Founder',telegramUserId:'9002',active:true},{id:'emp-s',name:'Connected Staff',telegramUserId:'9003',telegramConnectedAt:'2026-11-01T00:00:00.000Z',active:true}],googleAccounts:[founderAccount('b','emp-b'),founderAccount('c','emp-c')]});
   const port = await freePort();
-  let starts=0,refreshSnapshot={groups:[]};
+  let starts=0,refreshSnapshot={groups:[]};const voiceCalls=[];
   const bridge = http.createServer(async (req, res) => {
     assert.equal(req.headers.authorization, 'Bearer test-secret');
     let raw = ''; for await (const part of req) raw += part;
     const input = JSON.parse(raw);
     res.setHeader('content-type', 'application/json');
     if(req.url.endsWith('/decisions/content')) { assert.equal(input.attachmentIndex,0);res.end(JSON.stringify({bytes:Buffer.from('PHOTO').toString('base64'),mime:'image/jpeg',inline:true})); }
+    else if(req.url.endsWith('/decisions/voice')) { voiceCalls.push(input);res.end(JSON.stringify({sent:1})); }
     else if(req.url.endsWith('/decisions/publish')) { assert.equal(input.response,'Approved');res.end(JSON.stringify({ok:true,result:{message_id:99}})); }
     else if(req.url.endsWith('/groups'))res.end(JSON.stringify(refreshSnapshot));
     else if (req.url.endsWith('/group-members')) { assert.equal(input.groupChatId, '-456'); res.end(JSON.stringify({ ok: true, changed: true })); }
@@ -156,7 +158,16 @@ globalThis.fetch = async (url, options) => {
     assert.equal((await call('/api/integrations/telegram/resources','POST',{...resource,GroupChatID:'-100999999',DriveStatus:'Stored',DriveFileID:'stored-file'},bridgeHeaders)).status,200);
     assert.equal((await call(`/api/founder/projects/${linkedId}/files`,'GET',undefined,cookie)).data.files.length,1);
 
-
+    // A client's voice note is forwarded once, to connected founders only; ordinary staff chatter is not.
+    const voiceHome=await call('/api/founder/projects','POST',{name:'Voice Home',clientName:'Client'},cookie);
+    await call(`/api/founder/projects/${voiceHome.data.project.id}`,'PATCH',{telegramGroupChatId:'-777'},cookie);
+    const voiceRequest={...payload,RequestID:'REQ--777-20-question',GroupChatID:'-777',SourceMessageID:'20',RequestType:'Question',AttachmentsJSON:JSON.stringify([{type:'voice',fileId:'v1',mimeType:'audio/ogg'}])};
+    assert.equal((await call('/api/integrations/telegram/requests','POST',voiceRequest,bridgeHeaders)).status,201);
+    assert.equal((await call('/api/integrations/telegram/requests','POST',voiceRequest,bridgeHeaders)).status,200);
+    assert.equal((await call('/api/integrations/telegram/requests','POST',{...voiceRequest,RequestID:'REQ--777-21-message',SourceMessageID:'21',RequestType:'Message'},bridgeHeaders)).status,201);
+    for (let i=0;i<20 && !voiceCalls.length;i++) await new Promise((resolve)=>setTimeout(resolve,100)); // the forward is not awaited by the request
+    await new Promise((resolve)=>setTimeout(resolve,200));
+    assert.deepEqual(voiceCalls,[{requestId:'REQ--777-20-question',groupChatId:'-777',telegramUserIds:['9001']}]);
   } finally {
     child.kill();
     await new Promise((resolve) => bridge.close(resolve));

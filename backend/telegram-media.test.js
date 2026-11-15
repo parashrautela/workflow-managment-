@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { loadTelegramAttachment } from './telegram-media.js';
+import { loadTelegramAttachment, mediaKind } from './telegram-media.js';
 import { initializePilot } from './pilot.js';
 
 test('media rejects unsafe file paths, oversize content and sanitizes transport errors',async()=>{
@@ -23,4 +23,12 @@ test('startup preserves existing records and blocks an interrupted Telegram send
   assert.equal(state.decisionRequests[0].deliveryStatus,'Unknown');
   assert.equal(state.decisionRequests[0].comments[0].text,'keep');
   assert.equal(initializePilot(state),false);
+});
+
+test('voice notes play inline; unknown or unsafe types stay downloads',()=>{
+  assert.deepEqual(mediaKind({type:'voice',mimeType:'audio/ogg'}),{mime:'audio/ogg',inline:true});
+  assert.deepEqual(mediaKind({type:'voice',mimeType:''}),{mime:'audio/ogg',inline:true});
+  assert.equal(mediaKind({type:'audio',mimeType:'audio/mpeg'}).inline,true);
+  assert.deepEqual(mediaKind({type:'Photo'}),{mime:'image/jpeg',inline:true});
+  for (const mimeType of ['text/html','image/svg+xml','application/pdf','']) assert.deepEqual(mediaKind({type:'document',mimeType}),{mime:'application/octet-stream',inline:false});
 });

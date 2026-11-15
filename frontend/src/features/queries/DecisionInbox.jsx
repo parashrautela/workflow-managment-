@@ -44,6 +44,7 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog';
 import { generateIdempotencyKey, getAttachmentUrl } from '@/lib/api';
+import { AudioAttachment, isAudioAttachment } from '@/components/AudioAttachment';
 import { Time } from '@/components/ui/time';
 import { SegmentedControl } from '@/components/ui/segmented-control';
 import { Empty } from '@/components/ui/empty';
@@ -645,7 +646,12 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
 
                             return (
                               <div key={index} className="space-y-1">
-                                {isPhoto ? (
+                                {isAudioAttachment(attachment) ? (
+                                  <AudioAttachment
+                                    src={mediaUrl}
+                                    label={attachment.type === 'voice' ? 'Voice message' : attachment.fileName || 'Audio'}
+                                  />
+                                ) : isPhoto ? (
                                   <div className="overflow-hidden rounded-xl border bg-muted/20">
                                     <img
                                       src={mediaUrl}

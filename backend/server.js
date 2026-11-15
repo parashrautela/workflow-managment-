@@ -19,7 +19,8 @@ import http from 'node:http';
 import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
 import { readFile, mkdir } from 'node:fs/promises';
 import { createStateStore } from './store.js';
-import { loadTelegramAttachment } from './telegram-media.js';
+import { loadTelegramAttachment, mediaKind } from './telegram-media.js';
+import { forwardVoiceToFounders } from './voice-forward.js';
 import { ApiError, createPilotRoutes, initializePilot, projectSummary } from './pilot.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -353,6 +354,7 @@ async function handleRequest(req, res) {
       if (!Array.isArray(attachments) || attachments.length > 8 || attachments.some((item) => !item || typeof item !== 'object' || typeof item.type !== 'string' || item.type.length > 40 || typeof item.fileId !== 'string' || !item.fileId || item.fileId.length > 300 || ['fileName','mimeType'].some((key) => item[key] !== undefined && (typeof item[key] !== 'string' || item[key].length > 200)))) return json(res, 400, { error: 'Invalid attachments.' });
       const request = { id, projectId: project.id, groupChatId: groupId, telegramProjectId: shortText(input.TelegramProjectID, 100) || '', sourceMessageId: String(input.SourceMessageID), commandMessageId: String(input.CommandMessageID || ''), requestedByName: shortText(input.RequestedByName, 160) || 'Unknown', requestedByRole: shortText(input.RequestedByRole, 100) || '', originalSenderName: sender, originalSenderTelegramId: String(input.OriginalSenderTelegramID || ''), automaticClientQuery: input.AutomaticClientQuery === true, requestType, originalMessage: message, context, attachments, status: 'Pending', createdAt: new Date().toISOString(), comments: [], response: '', publishedMessageId: '', publishedAt: '', resolvedAt: '' };
       state.decisionRequests.unshift(request); audit('decision_request_received', project.id, { requestId: id }); await save();
+      forwardVoiceToFounders(state, request, callBotBridge);
       return json(res, 201, { request, created: true });
     }
     if (req.method === 'POST' && ['/api/founder/login', '/api/employee/login'].includes(url.pathname)) return json(res, 410, { error: 'Password login has been removed. Continue with Google.' });
@@ -409,10 +411,10 @@ async function handleRequest(req, res) {
         if (typeof stored.bytes !== 'string' || stored.bytes.length > 27000000) throw new ApiError('Attachment exceeds the download limit.',502);
         const bytes=Buffer.from(stored.bytes,'base64');
         if(bytes.length>20000000) throw new ApiError('Attachment exceeds the 20 MB pilot limit.',413);
-        const inline=['image/jpeg','image/png','image/gif','image/webp'].includes(stored.mime);
-        file={bytes,mime:inline?stored.mime:'application/octet-stream',inline};
+        file={bytes,...mediaKind(attachment)};
       } else file = await loadTelegramAttachment(attachment, process.env.GROUP_BOT_TOKEN);
-      res.writeHead(200,{'content-type':file.mime,'content-disposition':file.inline ? 'inline' : 'attachment','cache-control':'private, no-store','content-security-policy':"default-src 'none'; sandbox"});
+      // shortcut: no HTTP Range support, so audio can't be scrubbed (fine for short voice notes); add Range handling if long recordings matter.
+      res.writeHead(200,{'content-type':file.mime,'content-length':file.bytes.length,'x-content-type-options':'nosniff','content-disposition':file.inline ? 'inline' : 'attachment','cache-control':'private, no-store','content-security-policy':"default-src 'none'; sandbox"});
       return res.end(file.bytes);
     }
     const employeeChatMatch = url.pathname.match(/^\/api\/employee\/projects\/([^/]+)\/team-chat$/);
