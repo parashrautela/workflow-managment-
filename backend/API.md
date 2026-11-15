@@ -250,6 +250,14 @@ Completed/cancelled threads must be reopened before new messages. A task has
   the core database; the bot token never appears in a client URL. The bounded
   proxy fetches fresh Telegram file paths and supports up to 20 MB. Independent
   cloud archival of Telegram media is deferred.
+- `POST /api/founder/decision-requests/:id/attachments/:index/transcript`:
+  founder only. Transcribes a voice note with the AI provider and saves
+  `{ text, model, at }` on the attachment as `transcript` (the text keeps the
+  spoken language). Returns `{ transcript }`; a note that already has one is
+  returned without another provider call. `409` when the studio has not set
+  `VOICE_TRANSCRIPT_ENABLED=true` with `OPENAI_API_KEY`. With the same two
+  settings, new client queries (not group chatter) get a transcript in the
+  background; failures are only logged and "Transcribe" stays available.
 
 Approve, reject, convert, and internal comments never send messages externally.
 Retain the existing explicit Publish confirmation in the UI. Publish remains

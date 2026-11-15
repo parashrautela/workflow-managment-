@@ -53,6 +53,7 @@ import {
 } from '@/lib/api';
 import { Time } from '@/components/ui/time';
 import { AudioAttachment, isAudioAttachment } from '@/components/AudioAttachment';
+import { VoiceTranscript } from '@/components/VoiceTranscript';
 import { SegmentedControl } from '@/components/ui/segmented-control';
 
 export function ClientQueryCard({
@@ -398,10 +399,18 @@ export function ClientQueryCard({
                       className={isAudioAttachment(att) ? 'w-full space-y-2' : 'space-y-2'}
                     >
                       {isAudioAttachment(att) ? (
-                        <AudioAttachment
-                          src={mediaUrl}
-                          label={att.type === 'voice' ? 'Voice message' : att.fileName || 'Audio'}
-                        />
+                        <>
+                          <AudioAttachment
+                            src={mediaUrl}
+                            label={att.type === 'voice' ? 'Voice message' : att.fileName || 'Audio'}
+                          />
+                          <VoiceTranscript
+                            requestId={query.id}
+                            index={idx}
+                            transcript={att.transcript}
+                            canTranscribe={isFounder && query.canTranscribe}
+                          />
+                        </>
                       ) : isPhoto ? (
                         <div className="group relative overflow-hidden rounded-xl border bg-muted/20">
                           <img

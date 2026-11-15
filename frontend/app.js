@@ -23191,6 +23191,10 @@ async function publishDecisionReply(requestId, { response, idempotencyKey }) {
 function getAttachmentUrl(requestId, index = 0, namespace = "founder") {
 	return `/api/${namespace}/decision-requests/${encodeURIComponent(requestId)}/attachments/${index}`;
 }
+/** Transcribe a voice note with the AI provider (POST /api/founder/decision-requests/:id/attachments/:index/transcript). Opt-in per studio. */
+async function transcribeVoiceNote(requestId, index) {
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/attachments/${index}/transcript`, {});
+}
 /**
 * Remove project member (DELETE /api/founder/projects/:id/members/:memberId)
 */
@@ -35004,6 +35008,49 @@ function QueryDecisionButtons({ request, disabled, onAccept, onReject, onChanged
 		children: "Reject"
 	})] });
 }
+// frontend/src/components/VoiceTranscript.jsx
+function VoiceTranscript({ requestId, index, transcript, canTranscribe }) {
+	const [fetched, setFetched] = (0, import_react.useState)("");
+	const [busy, setBusy] = (0, import_react.useState)(false);
+	const [error, setError] = (0, import_react.useState)("");
+	const text = transcript?.text || fetched;
+	const run = async () => {
+		setBusy(true);
+		setError("");
+		try {
+			setFetched((await transcribeVoiceNote(requestId, index)).transcript.text);
+		} catch (problem) {
+			setError(problem.message || "Could not transcribe this voice note.");
+		} finally {
+			setBusy(false);
+		}
+	};
+	if (text) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "w-full max-w-lg space-y-1 rounded-xl border bg-muted/20 p-3",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "text-xs text-muted-foreground",
+			children: "AI transcript · may contain mistakes"
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "whitespace-pre-wrap text-sm",
+			children: text
+		})]
+	});
+	if (!canTranscribe) return null;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "space-y-1",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+			variant: "outline",
+			size: "sm",
+			disabled: busy,
+			onClick: run,
+			children: [busy ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "animate-spin" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, {}), "Transcribe"]
+		}), error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			role: "alert",
+			className: "text-xs text-overdue",
+			children: error
+		})]
+	});
+}
 // frontend/src/features/queries/DecisionInbox.jsx
 async function api$3(url, method = "GET", data) {
 	const response = await fetch(url, {
@@ -35500,10 +35547,15 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 													const mediaUrl = getAttachmentUrl(selected.id, index, "founder");
 													return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 														className: "space-y-1",
-														children: isAudioAttachment(attachment) ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AudioAttachment, {
+														children: isAudioAttachment(attachment) ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AudioAttachment, {
 															src: mediaUrl,
 															label: attachment.type === "voice" ? "Voice message" : attachment.fileName || "Audio"
-														}) : isPhoto ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+														}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(VoiceTranscript, {
+															requestId: selected.id,
+															index,
+															transcript: attachment.transcript,
+															canTranscribe: selected.canTranscribe
+														})] }) : isPhoto ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 															className: "overflow-hidden rounded-xl border bg-muted/20",
 															children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 																src: mediaUrl,
@@ -36501,10 +36553,15 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 										const isPhoto = att.type === "Photo" || /\.(png|jpe?g|webp|gif)$/i.test(att.fileName || "");
 										return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 											className: isAudioAttachment(att) ? "w-full space-y-2" : "space-y-2",
-											children: isAudioAttachment(att) ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AudioAttachment, {
+											children: isAudioAttachment(att) ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AudioAttachment, {
 												src: mediaUrl,
 												label: att.type === "voice" ? "Voice message" : att.fileName || "Audio"
-											}) : isPhoto ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(VoiceTranscript, {
+												requestId: query.id,
+												index: idx,
+												transcript: att.transcript,
+												canTranscribe: isFounder && query.canTranscribe
+											})] }) : isPhoto ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 												className: "group relative overflow-hidden rounded-xl border bg-muted/20",
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 													src: mediaUrl,
