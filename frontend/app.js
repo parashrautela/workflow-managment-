@@ -35563,6 +35563,7 @@ function setupBlocker(members, draftFor) {
 	const unsaved = members.filter((member) => !isMemberSaved(member)).length;
 	if (unsaved) return `Save ${unsaved} more ${unsaved === 1 ? "person" : "people"} first.`;
 	if (members.some((member) => memberChanged(member, draftFor(member)))) return "Save your changes first.";
+	if (members.length < 2) return "A project needs at least two people: a client and a team member.";
 	if (!members.some((member) => hasRole(member.assignedRole, "Client"))) return "Give one person the Client role.";
 	if (!members.some((member) => isStaff(member.assignedRole))) return "Give at least one person a team role, such as Supervisor or Designer.";
 	return "";
@@ -35943,6 +35944,11 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 								className: "rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground",
 								children: needsSetup ? "Project needs setup" : `Linked to ${linkedProject.name}`
 							})]
+						}),
+						embedded && !needsSetup && blocker && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							role: "status",
+							className: "text-sm text-warning",
+							children: ["To continue to the project type: ", blocker]
 						}),
 						group.discoveryWarning && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							role: "status",
@@ -54456,7 +54462,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 		setLocalWorkflow(getProjectWorkflow(project.id, project));
 	};
 	const roster = project.telegramMembers || [];
-	const profilesReady = roster.length >= 2 && roster.every((member) => member.assignedName && member.assignedRole) && roster.filter((member) => /\bclient\b/i.test(member.assignedRole)).length >= 1 && roster.some((member) => !/\b(client|founder)\b/i.test(member.assignedRole));
+	const profilesReady = roster.length >= 2 && roster.every((member) => member.assignedName && member.assignedRole) && roster.filter((member) => /\bclient\b/i.test(member.assignedRole)).length >= 1 && roster.some((member) => isStaff(member.assignedRole));
 	if (!["Completed", "Abandoned"].includes(project.status) && project.telegramGroupChatId && (project.telegramSetupPending || !profilesReady)) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "space-y-4",
 		children: [

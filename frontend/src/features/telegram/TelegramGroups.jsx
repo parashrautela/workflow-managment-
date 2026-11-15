@@ -395,6 +395,11 @@ export function TelegramGroups({ projects = [], onProjectsChanged, project, embe
                 </span>
               </div>
             )}
+            {embedded && !needsSetup && blocker && (
+              <p role="status" className="text-sm text-warning">
+                To continue to the project type: {blocker}
+              </p>
+            )}
             {group.discoveryWarning && (
               <p role="status" className="text-sm text-warning">
                 {group.discoveryWarning}

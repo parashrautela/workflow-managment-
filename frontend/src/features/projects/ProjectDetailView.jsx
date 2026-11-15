@@ -34,7 +34,7 @@ import {
   Loader2,
 } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { matchesRole } from '@/features/people/lib/roles';
+import { isStaff, matchesRole } from '@/features/people/lib/roles';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -423,7 +423,7 @@ export function ProjectDetailView({
     roster.length >= 2 &&
     roster.every((member) => member.assignedName && member.assignedRole) &&
     roster.filter((member) => /\bclient\b/i.test(member.assignedRole)).length >= 1 &&
-    roster.some((member) => !/\b(client|founder)\b/i.test(member.assignedRole));
+    roster.some((member) => isStaff(member.assignedRole));
   if (
     !['Completed', 'Abandoned'].includes(project.status) &&
     project.telegramGroupChatId &&

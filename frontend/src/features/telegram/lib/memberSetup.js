@@ -21,6 +21,7 @@ export function setupBlocker(members, draftFor) {
   if (unsaved) return `Save ${unsaved} more ${unsaved === 1 ? 'person' : 'people'} first.`;
   if (members.some((member) => memberChanged(member, draftFor(member))))
     return 'Save your changes first.';
+  if (members.length < 2) return 'A project needs at least two people: a client and a team member.';
   if (!members.some((member) => hasRole(member.assignedRole, 'Client')))
     return 'Give one person the Client role.';
   if (!members.some((member) => isStaff(member.assignedRole)))

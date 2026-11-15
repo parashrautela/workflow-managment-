@@ -41,7 +41,13 @@ test('Finish setup names the one thing still missing, in order', () => {
     setupBlocker([client, designer], (m) => (m === designer ? { role: 'Painter' } : undefined)),
     'Save your changes first.',
   );
+  assert.match(
+    setupBlocker([person({ assignedName: 'Asha', assignedRole: 'Client, Designer' })], none),
+    /at least two people/,
+  );
   assert.equal(setupBlocker([designer, designer], none), 'Give one person the Client role.');
   assert.match(setupBlocker([client, client], none), /team role/);
   assert.equal(setupBlocker([client, designer], none), '');
+  const founder = person({ assignedName: 'Gousic', assignedRole: 'Founder' });
+  assert.equal(setupBlocker([client, founder], none), ''); // a Founder counts as the team member, as on the server
 });
