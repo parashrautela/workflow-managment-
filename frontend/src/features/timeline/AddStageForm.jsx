@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { rolesOf } from '@/features/people/lib/roles';
 // The one pop-up for a new stage: a name, where it starts, and how many days each of the six fixed tasks takes.
 // The bot works out every date; this form only shows what its preview returns.
 import { AlertTriangle, CalendarDays, Loader2, Octagon } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { FieldError } from '@/components/ui/field-error';
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 import {
   STAGE_TASKS,
@@ -127,7 +129,9 @@ export function AddStageForm({
         .filter((task) => !value.custom || Number(task.durationDays) > 0)
         .map((task) => (task.key === key ? { ...task, ...changes } : task)),
     });
-  const nameProblem = value.name ? stageNameProblem(value, stages) : '';
+  const [nameTouched, setNameTouched] = useState(false);
+  const nameProblem =
+    value.name || nameTouched || value.nameTouched ? stageNameProblem(value, stages) : '';
   const clash = nameProblem.startsWith('A stage called');
   const created = value.tasks.filter((task) => Number(task.durationDays) > 0).length;
   const peopleFor = (role) => {
@@ -159,24 +163,26 @@ export function AddStageForm({
                 nameProblem.startsWith('A stage called') ||
                 nameProblem.startsWith('Stage names')),
             )}
-            onChange={(event) => set({ name: event.target.value })}
+            onBlur={() => setNameTouched(true)}
+            onChange={(event) => {
+              setNameTouched(true);
+              set({ name: event.target.value });
+            }}
           />
+          <FieldError>
+            {nameProblem}{' '}
+            {clash && (
+              <button
+                type="button"
+                className="underline"
+                onClick={() => set({ name: `${value.name.trim()} (2)` })}
+              >
+                Use "{value.name.trim()} (2)"
+              </button>
+            )}
+          </FieldError>
         </label>
       </div>
-      {nameProblem && (
-        <p className="text-xs text-destructive" role="alert">
-          {nameProblem}{' '}
-          {clash && (
-            <button
-              type="button"
-              className="underline"
-              onClick={() => set({ name: `${value.name.trim()} (2)` })}
-            >
-              Use "{value.name.trim()} (2)"
-            </button>
-          )}
-        </p>
-      )}
 
       {spaces.length > 0 && (
         <fieldset className="space-y-2">

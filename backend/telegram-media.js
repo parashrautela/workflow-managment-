@@ -1,5 +1,14 @@
 import { ApiError } from './pilot.js';
 
+const INLINE_MEDIA = ['image/jpeg','image/png','image/gif','image/webp','audio/ogg','audio/mpeg','audio/mp4','audio/aac','audio/wav','audio/webm'];
+
+// Telegram voice notes are Ogg/Opus; anything outside the allowlist stays a forced download.
+export function mediaKind(attachment) {
+  const mime = attachment.type === 'Photo' ? 'image/jpeg' : attachment.mimeType || (attachment.type === 'voice' ? 'audio/ogg' : '');
+  const inline = INLINE_MEDIA.includes(mime);
+  return {mime:inline ? mime : 'application/octet-stream',inline};
+}
+
 export async function loadTelegramAttachment(attachment, token, fetchImpl = fetch) {
   if (!token) throw new ApiError('Telegram media is not configured.',503);
   const maximum = 20_000_000;
@@ -13,9 +22,7 @@ export async function loadTelegramAttachment(attachment, token, fetchImpl = fetc
     if (Number(response.headers.get('content-length')) > maximum) { await response.body.cancel(); throw new ApiError('Attachment too large.',413); }
     let size=0; const chunks=[];
     for await (const chunk of response.body) { size+=chunk.byteLength; if (size>maximum) throw new ApiError('Attachment too large.',413); chunks.push(Buffer.from(chunk)); }
-    const mime = attachment.type === 'Photo' ? 'image/jpeg' : attachment.mimeType;
-    const inline = ['image/jpeg','image/png','image/gif','image/webp'].includes(mime);
-    return {bytes:Buffer.concat(chunks),mime:inline ? mime : 'application/octet-stream',inline};
+    return {bytes:Buffer.concat(chunks),...mediaKind(attachment)};
   } catch (error) {
     if (error instanceof ApiError) throw error;
     throw new ApiError('Could not load Telegram attachment. Try again later.',502);

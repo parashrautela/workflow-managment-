@@ -122,6 +122,10 @@ export function AddStageDialog({
   );
 
   const save = async () => {
+    if (problem) {
+      setValue((current) => ({ ...current, nameTouched: true }));
+      return;
+    }
     setSaving(true);
     setError('');
     try {
@@ -224,7 +228,7 @@ export function AddStageDialog({
             Cancel
           </Button>
           <Button
-            disabled={saving || Boolean(problem) || previewing || Boolean(previewError) || !preview}
+            disabled={saving || previewing || Boolean(previewError)}
             onClick={save}
           >
             {saving ? 'Adding…' : 'Add stage'}

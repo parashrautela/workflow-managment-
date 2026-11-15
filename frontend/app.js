@@ -11654,7 +11654,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$61 = {
+var __iconData$62 = {
 	name: "arrow-left",
 	size: 24,
 	node: [["path", {
@@ -11665,8 +11665,8 @@ var __iconData$61 = {
 		key: "x3x0zl"
 	}]]
 };
-__iconData$61.node;
-var ArrowLeft = createLucideIcon(__iconData$61);
+__iconData$62.node;
+var ArrowLeft = createLucideIcon(__iconData$62);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11674,7 +11674,7 @@ var ArrowLeft = createLucideIcon(__iconData$61);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$60 = {
+var __iconData$61 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11685,8 +11685,8 @@ var __iconData$60 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$60.node;
-var ArrowRight = createLucideIcon(__iconData$60);
+__iconData$61.node;
+var ArrowRight = createLucideIcon(__iconData$61);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11694,7 +11694,7 @@ var ArrowRight = createLucideIcon(__iconData$60);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$59 = {
+var __iconData$60 = {
 	name: "arrow-up-right",
 	size: 24,
 	node: [["path", {
@@ -11705,8 +11705,8 @@ var __iconData$59 = {
 		key: "1vkiza"
 	}]]
 };
-__iconData$59.node;
-var ArrowUpRight = createLucideIcon(__iconData$59);
+__iconData$60.node;
+var ArrowUpRight = createLucideIcon(__iconData$60);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11714,7 +11714,7 @@ var ArrowUpRight = createLucideIcon(__iconData$59);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$58 = {
+var __iconData$59 = {
 	name: "arrow-up",
 	size: 24,
 	node: [["path", {
@@ -11725,8 +11725,8 @@ var __iconData$58 = {
 		key: "x0mq9r"
 	}]]
 };
-__iconData$58.node;
-var ArrowUp = createLucideIcon(__iconData$58);
+__iconData$59.node;
+var ArrowUp = createLucideIcon(__iconData$59);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11734,7 +11734,7 @@ var ArrowUp = createLucideIcon(__iconData$58);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$57 = {
+var __iconData$58 = {
 	name: "building-complex",
 	size: 24,
 	node: [
@@ -11761,8 +11761,8 @@ var __iconData$57 = {
 	],
 	aliases: ["building-2"]
 };
-__iconData$57.node;
-var BuildingComplex = createLucideIcon(__iconData$57);
+__iconData$58.node;
+var BuildingComplex = createLucideIcon(__iconData$58);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11770,7 +11770,7 @@ var BuildingComplex = createLucideIcon(__iconData$57);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$56 = {
+var __iconData$57 = {
 	name: "calendar-days",
 	size: 24,
 	node: [
@@ -11820,8 +11820,8 @@ var __iconData$56 = {
 		}]
 	]
 };
-__iconData$56.node;
-var CalendarDays = createLucideIcon(__iconData$56);
+__iconData$57.node;
+var CalendarDays = createLucideIcon(__iconData$57);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/calendar.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11829,7 +11829,7 @@ var CalendarDays = createLucideIcon(__iconData$56);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$55 = {
+var __iconData$56 = {
 	name: "calendar",
 	size: 24,
 	node: [
@@ -11855,8 +11855,8 @@ var __iconData$55 = {
 		}]
 	]
 };
-__iconData$55.node;
-var Calendar = createLucideIcon(__iconData$55);
+__iconData$56.node;
+var Calendar = createLucideIcon(__iconData$56);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11864,7 +11864,7 @@ var Calendar = createLucideIcon(__iconData$55);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$54 = {
+var __iconData$55 = {
 	name: "check",
 	size: 24,
 	node: [["path", {
@@ -11872,8 +11872,8 @@ var __iconData$54 = {
 		key: "1gmf2c"
 	}]]
 };
-__iconData$54.node;
-var Check = createLucideIcon(__iconData$54);
+__iconData$55.node;
+var Check = createLucideIcon(__iconData$55);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11881,7 +11881,7 @@ var Check = createLucideIcon(__iconData$54);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$53 = {
+var __iconData$54 = {
 	name: "chevron-down",
 	size: 24,
 	node: [["path", {
@@ -11889,8 +11889,8 @@ var __iconData$53 = {
 		key: "qrunsl"
 	}]]
 };
-__iconData$53.node;
-var ChevronDown = createLucideIcon(__iconData$53);
+__iconData$54.node;
+var ChevronDown = createLucideIcon(__iconData$54);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11898,7 +11898,7 @@ var ChevronDown = createLucideIcon(__iconData$53);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$52 = {
+var __iconData$53 = {
 	name: "chevron-right",
 	size: 24,
 	node: [["path", {
@@ -11906,8 +11906,8 @@ var __iconData$52 = {
 		key: "mthhwq"
 	}]]
 };
-__iconData$52.node;
-var ChevronRight = createLucideIcon(__iconData$52);
+__iconData$53.node;
+var ChevronRight = createLucideIcon(__iconData$53);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11915,7 +11915,7 @@ var ChevronRight = createLucideIcon(__iconData$52);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$51 = {
+var __iconData$52 = {
 	name: "chevron-up",
 	size: 24,
 	node: [["path", {
@@ -11923,8 +11923,8 @@ var __iconData$51 = {
 		key: "153udz"
 	}]]
 };
-__iconData$51.node;
-var ChevronUp = createLucideIcon(__iconData$51);
+__iconData$52.node;
+var ChevronUp = createLucideIcon(__iconData$52);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11932,7 +11932,7 @@ var ChevronUp = createLucideIcon(__iconData$51);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$50 = {
+var __iconData$51 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -11959,8 +11959,8 @@ var __iconData$50 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$50.node;
-var CircleAlert = createLucideIcon(__iconData$50);
+__iconData$51.node;
+var CircleAlert = createLucideIcon(__iconData$51);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11968,7 +11968,7 @@ var CircleAlert = createLucideIcon(__iconData$50);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$49 = {
+var __iconData$50 = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -11982,8 +11982,8 @@ var __iconData$49 = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-__iconData$49.node;
-var CircleCheck = createLucideIcon(__iconData$49);
+__iconData$50.node;
+var CircleCheck = createLucideIcon(__iconData$50);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11991,7 +11991,7 @@ var CircleCheck = createLucideIcon(__iconData$49);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$48 = {
+var __iconData$49 = {
 	name: "circle-pause",
 	size: 24,
 	node: [
@@ -12018,8 +12018,8 @@ var __iconData$48 = {
 	],
 	aliases: ["pause-circle"]
 };
-__iconData$48.node;
-var CirclePause = createLucideIcon(__iconData$48);
+__iconData$49.node;
+var CirclePause = createLucideIcon(__iconData$49);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12027,7 +12027,7 @@ var CirclePause = createLucideIcon(__iconData$48);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$47 = {
+var __iconData$48 = {
 	name: "circle-question-mark",
 	size: 24,
 	node: [
@@ -12048,8 +12048,8 @@ var __iconData$47 = {
 	],
 	aliases: ["help-circle", "circle-help"]
 };
-__iconData$47.node;
-var CircleQuestionMark = createLucideIcon(__iconData$47);
+__iconData$48.node;
+var CircleQuestionMark = createLucideIcon(__iconData$48);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12057,7 +12057,7 @@ var CircleQuestionMark = createLucideIcon(__iconData$47);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$46 = {
+var __iconData$47 = {
 	name: "circle-x",
 	size: 24,
 	node: [
@@ -12078,8 +12078,8 @@ var __iconData$46 = {
 	],
 	aliases: ["x-circle"]
 };
-__iconData$46.node;
-var CircleX = createLucideIcon(__iconData$46);
+__iconData$47.node;
+var CircleX = createLucideIcon(__iconData$47);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12087,7 +12087,7 @@ var CircleX = createLucideIcon(__iconData$46);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$45 = {
+var __iconData$46 = {
 	name: "circle",
 	size: 24,
 	node: [["circle", {
@@ -12097,8 +12097,8 @@ var __iconData$45 = {
 		key: "1mglay"
 	}]]
 };
-__iconData$45.node;
-var Circle = createLucideIcon(__iconData$45);
+__iconData$46.node;
+var Circle = createLucideIcon(__iconData$46);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12106,7 +12106,7 @@ var Circle = createLucideIcon(__iconData$45);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$44 = {
+var __iconData$45 = {
 	name: "clock-3",
 	size: 24,
 	node: [["circle", {
@@ -12119,8 +12119,8 @@ var __iconData$44 = {
 		key: "135r8i"
 	}]]
 };
-__iconData$44.node;
-var Clock3 = createLucideIcon(__iconData$44);
+__iconData$45.node;
+var Clock3 = createLucideIcon(__iconData$45);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12128,7 +12128,7 @@ var Clock3 = createLucideIcon(__iconData$44);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$43 = {
+var __iconData$44 = {
 	name: "clock",
 	size: 24,
 	node: [["circle", {
@@ -12141,8 +12141,8 @@ var __iconData$43 = {
 		key: "mmk7yg"
 	}]]
 };
-__iconData$43.node;
-var Clock = createLucideIcon(__iconData$43);
+__iconData$44.node;
+var Clock = createLucideIcon(__iconData$44);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12150,7 +12150,7 @@ var Clock = createLucideIcon(__iconData$43);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$42 = {
+var __iconData$43 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -12166,8 +12166,8 @@ var __iconData$42 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$42.node;
-var Copy = createLucideIcon(__iconData$42);
+__iconData$43.node;
+var Copy = createLucideIcon(__iconData$43);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/ellipsis-vertical.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12175,7 +12175,7 @@ var Copy = createLucideIcon(__iconData$42);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$41 = {
+var __iconData$42 = {
 	name: "ellipsis-vertical",
 	size: 24,
 	node: [
@@ -12200,8 +12200,8 @@ var __iconData$41 = {
 	],
 	aliases: ["more-vertical"]
 };
-__iconData$41.node;
-var EllipsisVertical = createLucideIcon(__iconData$41);
+__iconData$42.node;
+var EllipsisVertical = createLucideIcon(__iconData$42);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/external-link.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12209,7 +12209,7 @@ var EllipsisVertical = createLucideIcon(__iconData$41);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$40 = {
+var __iconData$41 = {
 	name: "external-link",
 	size: 24,
 	node: [
@@ -12227,8 +12227,8 @@ var __iconData$40 = {
 		}]
 	]
 };
-__iconData$40.node;
-var ExternalLink = createLucideIcon(__iconData$40);
+__iconData$41.node;
+var ExternalLink = createLucideIcon(__iconData$41);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/file-text.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12236,7 +12236,7 @@ var ExternalLink = createLucideIcon(__iconData$40);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$39 = {
+var __iconData$40 = {
 	name: "file-text",
 	size: 24,
 	node: [
@@ -12262,8 +12262,8 @@ var __iconData$39 = {
 		}]
 	]
 };
-__iconData$39.node;
-var FileText = createLucideIcon(__iconData$39);
+__iconData$40.node;
+var FileText = createLucideIcon(__iconData$40);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/flag.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12271,7 +12271,7 @@ var FileText = createLucideIcon(__iconData$39);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$38 = {
+var __iconData$39 = {
 	name: "flag",
 	size: 24,
 	node: [["path", {
@@ -12279,8 +12279,8 @@ var __iconData$38 = {
 		key: "1jaruq"
 	}]]
 };
-__iconData$38.node;
-var Flag = createLucideIcon(__iconData$38);
+__iconData$39.node;
+var Flag = createLucideIcon(__iconData$39);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12288,7 +12288,7 @@ var Flag = createLucideIcon(__iconData$38);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$37 = {
+var __iconData$38 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -12310,8 +12310,8 @@ var __iconData$37 = {
 		}]
 	]
 };
-__iconData$37.node;
-var FolderKanban = createLucideIcon(__iconData$37);
+__iconData$38.node;
+var FolderKanban = createLucideIcon(__iconData$38);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/folder-open.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12319,7 +12319,7 @@ var FolderKanban = createLucideIcon(__iconData$37);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$36 = {
+var __iconData$37 = {
 	name: "folder-open",
 	size: 24,
 	node: [["path", {
@@ -12327,8 +12327,8 @@ var __iconData$36 = {
 		key: "usdka0"
 	}]]
 };
-__iconData$36.node;
-var FolderOpen = createLucideIcon(__iconData$36);
+__iconData$37.node;
+var FolderOpen = createLucideIcon(__iconData$37);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/funnel.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12336,7 +12336,7 @@ var FolderOpen = createLucideIcon(__iconData$36);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$35 = {
+var __iconData$36 = {
 	name: "funnel",
 	size: 24,
 	node: [["path", {
@@ -12345,8 +12345,8 @@ var __iconData$35 = {
 	}]],
 	aliases: ["filter"]
 };
-__iconData$35.node;
-var Funnel = createLucideIcon(__iconData$35);
+__iconData$36.node;
+var Funnel = createLucideIcon(__iconData$36);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/grip-vertical.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12354,7 +12354,7 @@ var Funnel = createLucideIcon(__iconData$35);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$34 = {
+var __iconData$35 = {
 	name: "grip-vertical",
 	size: 24,
 	node: [
@@ -12396,8 +12396,8 @@ var __iconData$34 = {
 		}]
 	]
 };
-__iconData$34.node;
-var GripVertical = createLucideIcon(__iconData$34);
+__iconData$35.node;
+var GripVertical = createLucideIcon(__iconData$35);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/hourglass.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12405,7 +12405,7 @@ var GripVertical = createLucideIcon(__iconData$34);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$33 = {
+var __iconData$34 = {
 	name: "hourglass",
 	size: 24,
 	node: [
@@ -12427,8 +12427,8 @@ var __iconData$33 = {
 		}]
 	]
 };
-__iconData$33.node;
-var Hourglass = createLucideIcon(__iconData$33);
+__iconData$34.node;
+var Hourglass = createLucideIcon(__iconData$34);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/layers.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12436,7 +12436,7 @@ var Hourglass = createLucideIcon(__iconData$33);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$32 = {
+var __iconData$33 = {
 	name: "layers",
 	size: 24,
 	node: [
@@ -12455,8 +12455,8 @@ var __iconData$32 = {
 	],
 	aliases: ["layers-3"]
 };
-__iconData$32.node;
-var Layers = createLucideIcon(__iconData$32);
+__iconData$33.node;
+var Layers = createLucideIcon(__iconData$33);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/link-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12464,7 +12464,7 @@ var Layers = createLucideIcon(__iconData$32);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$31 = {
+var __iconData$32 = {
 	name: "link-2",
 	size: 24,
 	node: [
@@ -12485,8 +12485,8 @@ var __iconData$31 = {
 		}]
 	]
 };
-__iconData$31.node;
-var Link2 = createLucideIcon(__iconData$31);
+__iconData$32.node;
+var Link2 = createLucideIcon(__iconData$32);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/list-checks.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12494,7 +12494,7 @@ var Link2 = createLucideIcon(__iconData$31);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$30 = {
+var __iconData$31 = {
 	name: "list-checks",
 	size: 24,
 	node: [
@@ -12520,8 +12520,8 @@ var __iconData$30 = {
 		}]
 	]
 };
-__iconData$30.node;
-var ListChecks = createLucideIcon(__iconData$30);
+__iconData$31.node;
+var ListChecks = createLucideIcon(__iconData$31);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/list-plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12529,7 +12529,7 @@ var ListChecks = createLucideIcon(__iconData$30);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$29 = {
+var __iconData$30 = {
 	name: "list-plus",
 	size: 24,
 	node: [
@@ -12555,8 +12555,8 @@ var __iconData$29 = {
 		}]
 	]
 };
-__iconData$29.node;
-var ListPlus = createLucideIcon(__iconData$29);
+__iconData$30.node;
+var ListPlus = createLucideIcon(__iconData$30);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/loader-circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12564,7 +12564,7 @@ var ListPlus = createLucideIcon(__iconData$29);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$28 = {
+var __iconData$29 = {
 	name: "loader-circle",
 	size: 24,
 	node: [["path", {
@@ -12573,8 +12573,8 @@ var __iconData$28 = {
 	}]],
 	aliases: ["loader-2"]
 };
-__iconData$28.node;
-var LoaderCircle = createLucideIcon(__iconData$28);
+__iconData$29.node;
+var LoaderCircle = createLucideIcon(__iconData$29);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/lock-keyhole.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12582,7 +12582,7 @@ var LoaderCircle = createLucideIcon(__iconData$28);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$27 = {
+var __iconData$28 = {
 	name: "lock-keyhole",
 	size: 24,
 	node: [
@@ -12606,8 +12606,8 @@ var __iconData$27 = {
 		}]
 	]
 };
-__iconData$27.node;
-var LockKeyhole = createLucideIcon(__iconData$27);
+__iconData$28.node;
+var LockKeyhole = createLucideIcon(__iconData$28);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/log-out.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12615,7 +12615,7 @@ var LockKeyhole = createLucideIcon(__iconData$27);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$26 = {
+var __iconData$27 = {
 	name: "log-out",
 	size: 24,
 	node: [
@@ -12633,8 +12633,8 @@ var __iconData$26 = {
 		}]
 	]
 };
-__iconData$26.node;
-var LogOut = createLucideIcon(__iconData$26);
+__iconData$27.node;
+var LogOut = createLucideIcon(__iconData$27);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/map-pin.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12642,7 +12642,7 @@ var LogOut = createLucideIcon(__iconData$26);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$25 = {
+var __iconData$26 = {
 	name: "map-pin",
 	size: 24,
 	node: [["path", {
@@ -12655,8 +12655,8 @@ var __iconData$25 = {
 		key: "ilqhr7"
 	}]]
 };
-__iconData$25.node;
-var MapPin = createLucideIcon(__iconData$25);
+__iconData$26.node;
+var MapPin = createLucideIcon(__iconData$26);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/maximize-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12664,7 +12664,7 @@ var MapPin = createLucideIcon(__iconData$25);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$24 = {
+var __iconData$25 = {
 	name: "maximize-2",
 	size: 24,
 	node: [
@@ -12686,8 +12686,8 @@ var __iconData$24 = {
 		}]
 	]
 };
-__iconData$24.node;
-var Maximize2 = createLucideIcon(__iconData$24);
+__iconData$25.node;
+var Maximize2 = createLucideIcon(__iconData$25);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/menu.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12695,7 +12695,7 @@ var Maximize2 = createLucideIcon(__iconData$24);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$23 = {
+var __iconData$24 = {
 	name: "menu",
 	size: 24,
 	node: [
@@ -12713,8 +12713,8 @@ var __iconData$23 = {
 		}]
 	]
 };
-__iconData$23.node;
-var Menu$1 = createLucideIcon(__iconData$23);
+__iconData$24.node;
+var Menu$1 = createLucideIcon(__iconData$24);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/message-square.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12722,7 +12722,7 @@ var Menu$1 = createLucideIcon(__iconData$23);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$22 = {
+var __iconData$23 = {
 	name: "message-square",
 	size: 24,
 	node: [["path", {
@@ -12730,8 +12730,39 @@ var __iconData$22 = {
 		key: "18887p"
 	}]]
 };
+__iconData$23.node;
+var MessageSquare = createLucideIcon(__iconData$23);
+// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/mic.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$22 = {
+	name: "mic",
+	size: 24,
+	node: [
+		["path", {
+			d: "M12 19v3",
+			key: "npa21l"
+		}],
+		["path", {
+			d: "M19 10v2a7 7 0 0 1-14 0v-2",
+			key: "1vc78b"
+		}],
+		["rect", {
+			x: "9",
+			y: "2",
+			width: "6",
+			height: "13",
+			rx: "3",
+			key: "s6n7sd"
+		}]
+	]
+};
 __iconData$22.node;
-var MessageSquare = createLucideIcon(__iconData$22);
+var Mic = createLucideIcon(__iconData$22);
 // ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/minus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -23175,6 +23206,17 @@ function Input({ className, type, ...props }) {
 		...props
 	});
 }
+// frontend/src/components/ui/field-error.jsx
+function FieldError({ className, children, ...props }) {
+	if (!children) return null;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+		"data-slot": "field-error",
+		role: "alert",
+		className: cn$1("text-xs text-destructive type-label-12 font-normal", className),
+		...props,
+		children
+	});
+}
 // frontend/src/components/ui/sheet.jsx
 function Sheet({ ...props }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog$1, {
@@ -23241,12 +23283,13 @@ function SheetDescription({ className, ...props }) {
 // frontend/src/features/meetings/MeetingEditor.jsx
 var localTime = (value) => new Date(Date.parse(value) + 198e5).toISOString().slice(0, 16);
 function MeetingEditor({ open, onOpenChange, task, meeting, onSaved }) {
-	const [people, setPeople] = (0, import_react.useState)([]), [form, setForm] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [custom, setCustom] = (0, import_react.useState)("");
+	const [people, setPeople] = (0, import_react.useState)([]), [form, setForm] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [titleError, setTitleError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [custom, setCustom] = (0, import_react.useState)("");
 	(0, import_react.useEffect)(() => {
 		if (!open || !task) return;
 		let active = true;
 		setPeople([]);
 		setError("");
+		setTitleError("");
 		setCustom("");
 		setForm({
 			title: meeting?.title || task.title,
@@ -23276,6 +23319,11 @@ function MeetingEditor({ open, onOpenChange, task, meeting, onSaved }) {
 	}));
 	const save = async (event) => {
 		event.preventDefault();
+		if (!form?.title?.trim()) {
+			setTitleError("Enter a meeting title.");
+			return;
+		}
+		setTitleError("");
 		setBusy(true);
 		setError("");
 		try {
@@ -23307,18 +23355,26 @@ function MeetingEditor({ open, onOpenChange, task, meeting, onSaved }) {
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetTitle, { children: meeting ? "Edit meeting" : "Schedule a task meeting" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetDescription, { children: "Choose who needs to attend. Scheduling queues their notifications; the task stays open." })]
 			}), form && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 				onSubmit: save,
+				noValidate: true,
 				className: "flex min-h-0 flex-1 flex-col",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "min-h-0 flex-1 space-y-4 overflow-y-auto p-4 sm:p-6",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 							className: "grid gap-1 text-xs",
-							children: ["Meeting title", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								required: true,
-								maxLength: 180,
-								value: form.title,
-								onChange: (e) => set("title", e.target.value)
-							})]
+							children: [
+								"Meeting title",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									maxLength: 180,
+									value: form.title,
+									"aria-invalid": Boolean(titleError),
+									onChange: (e) => {
+										set("title", e.target.value);
+										if (titleError) setTitleError("");
+									}
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FieldError, { children: titleError })
+							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 							className: "grid gap-1 text-xs",
@@ -23748,6 +23804,22 @@ function ProjectFiles({ projectId, namespace = "founder" }) {
 		]
 	});
 }
+// frontend/src/components/AudioAttachment.jsx
+var isAudioAttachment = (file) => ["voice", "audio"].includes(file.type) || /^audio\//.test(file.mimeType || "");
+function AudioAttachment({ src, label }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "space-y-1",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+			className: "inline-flex items-center gap-1 text-xs text-muted-foreground",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Mic, { className: "size-3" }), label]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("audio", {
+			controls: true,
+			preload: "none",
+			src,
+			className: "block h-10 w-72 max-w-full"
+		})]
+	});
+}
 // frontend/src/components/ui/status-chip.jsx
 var dots = {
 	neutral: "bg-border-strong",
@@ -23991,6 +24063,10 @@ function TaskMessage({ message, namespace = "founder" }) {
 			}),
 			message.queryId && (message.attachments || []).map((file) => {
 				const href = getAttachmentUrl(message.queryId, file.index, namespace);
+				if (isAudioAttachment(file)) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AudioAttachment, {
+					src: href,
+					label: file.type === "voice" ? "Voice message" : file.fileName || "Audio"
+				}, file.index);
 				return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
 					className: "block text-xs underline",
 					href,
@@ -32966,6 +33042,10 @@ function FounderAssistant() {
 								item.ai && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "text-xs text-muted-foreground",
 									children: "Answered with AI from your saved project records."
+								}),
+								!item.ai && item.aiStatus && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "text-xs text-muted-foreground",
+									children: item.aiStatus === "unavailable" ? "The AI was unavailable, so this answer comes from saved project facts." : "Answered from saved project facts. The AI Assistant is switched off."
 								})
 							]
 						})]
@@ -33297,7 +33377,8 @@ function AddStageForm({ value, onChange, stages = [], members = [], spaces = [],
 		...task,
 		...changes
 	} : task) });
-	const nameProblem = value.name ? stageNameProblem(value, stages) : "";
+	const [nameTouched, setNameTouched] = (0, import_react.useState)(false);
+	const nameProblem = value.name || nameTouched || value.nameTouched ? stageNameProblem(value, stages) : "";
 	const clash = nameProblem.startsWith("A stage called");
 	const created = value.tasks.filter((task) => Number(task.durationDays) > 0).length;
 	const peopleFor = (role) => {
@@ -33313,36 +33394,39 @@ function AddStageForm({ value, onChange, stages = [], members = [], spaces = [],
 				className: "grid gap-3 sm:grid-cols-[1fr_auto] sm:items-end",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 					className: "space-y-2",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "text-xs font-medium",
-						children: "Stage name"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-						autoFocus: true,
-						value: value.name,
-						maxLength: 60,
-						placeholder: "e.g. Flooring",
-						"aria-invalid": Boolean(nameProblem && (nameProblem.startsWith("Enter a stage name") || nameProblem.startsWith("Keep the stage") || nameProblem.startsWith("A stage called") || nameProblem.startsWith("Stage names"))),
-						onChange: (event) => set({ name: event.target.value })
-					})]
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "text-xs font-medium",
+							children: "Stage name"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+							autoFocus: true,
+							value: value.name,
+							maxLength: 60,
+							placeholder: "e.g. Flooring",
+							"aria-invalid": Boolean(nameProblem && (nameProblem.startsWith("Enter a stage name") || nameProblem.startsWith("Keep the stage") || nameProblem.startsWith("A stage called") || nameProblem.startsWith("Stage names"))),
+							onBlur: () => setNameTouched(true),
+							onChange: (event) => {
+								setNameTouched(true);
+								set({ name: event.target.value });
+							}
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(FieldError, { children: [
+							nameProblem,
+							" ",
+							clash && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								type: "button",
+								className: "underline",
+								onClick: () => set({ name: `${value.name.trim()} (2)` }),
+								children: [
+									"Use \"",
+									value.name.trim(),
+									" (2)\""
+								]
+							})
+						] })
+					]
 				})
-			}),
-			nameProblem && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-				className: "text-xs text-destructive",
-				role: "alert",
-				children: [
-					nameProblem,
-					" ",
-					clash && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-						type: "button",
-						className: "underline",
-						onClick: () => set({ name: `${value.name.trim()} (2)` }),
-						children: [
-							"Use \"",
-							value.name.trim(),
-							" (2)\""
-						]
-					})
-				]
 			}),
 			spaces.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
 				className: "space-y-2",
@@ -33778,6 +33862,13 @@ function AddStageDialog({ open, onOpenChange, projectId, stages = [], members = 
 	const problem = stageNameProblem(value, stages);
 	const { preview, previewing, error: previewError } = useStagePreview(value, open && !problem, () => previewStages(projectId, { stage: stageSpec(value) }));
 	const save = async () => {
+		if (problem) {
+			setValue((current) => ({
+				...current,
+				nameTouched: true
+			}));
+			return;
+		}
 		setSaving(true);
 		setError("");
 		try {
@@ -33884,7 +33975,7 @@ function AddStageDialog({ open, onOpenChange, projectId, stages = [], members = 
 						onClick: () => onOpenChange(false),
 						children: "Cancel"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						disabled: saving || Boolean(problem) || previewing || Boolean(previewError) || !preview,
+						disabled: saving || previewing || Boolean(previewError),
 						onClick: save,
 						children: saving ? "Adding…" : "Add stage"
 					})]
@@ -35266,7 +35357,10 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 													const mediaUrl = getAttachmentUrl(selected.id, index, "founder");
 													return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 														className: "space-y-1",
-														children: isPhoto ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+														children: isAudioAttachment(attachment) ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AudioAttachment, {
+															src: mediaUrl,
+															label: attachment.type === "voice" ? "Voice message" : attachment.fileName || "Audio"
+														}) : isPhoto ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 															className: "overflow-hidden rounded-xl border bg-muted/20",
 															children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 																src: mediaUrl,
@@ -35392,7 +35486,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 										}))
 									}, selected.id),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex items-end gap-2",
+										className: "flex flex-wrap items-end gap-2",
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
 											value: text,
 											onChange: (event) => mode === "internal" ? setNotes((current) => ({
@@ -35406,8 +35500,9 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 											maxLength: mode === "internal" ? 2e3 : 3e3,
 											placeholder: mode === "internal" ? "Discuss or record an internal decision…" : "Write the final answer for the Telegram group…",
 											"aria-label": mode === "internal" ? "Private note" : "Telegram reply",
-											className: "max-h-32 flex-1 resize-y text-xs"
+											className: "max-h-32 min-w-0 flex-1 basis-56 resize-y text-base sm:text-sm"
 										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+											className: "ml-auto",
 											type: "submit",
 											disabled: busy || !text.trim() || mode === "publish" && selected.deliveryStatus === "Unknown",
 											"aria-label": mode === "internal" ? "Save note" : "Send to Telegram",
@@ -36078,7 +36173,10 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 										const isPhoto = att.type === "Photo" || /\.(png|jpe?g|webp|gif)$/i.test(att.fileName || "");
 										return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 											className: "space-y-2",
-											children: isPhoto ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											children: isAudioAttachment(att) ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AudioAttachment, {
+												src: mediaUrl,
+												label: att.type === "voice" ? "Voice message" : att.fileName || "Audio"
+											}) : isPhoto ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 												className: "group relative overflow-hidden rounded-xl border bg-muted/20",
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 													src: mediaUrl,
@@ -48645,17 +48743,23 @@ function EditTimelineTaskDialog({ item, tasks = [], members = [], telegramLinked
 }
 // frontend/src/features/timeline/RenameWorkTypeDialog.jsx
 function RenameWorkTypeDialog({ stage, projectId, onClose, onSaved }) {
-	const [name, setName] = (0, import_react.useState)(""), [saving, setSaving] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)("");
+	const [name, setName] = (0, import_react.useState)(""), [saving, setSaving] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)(""), [nameError, setNameError] = (0, import_react.useState)("");
 	(0, import_react.useEffect)(() => {
 		setName(stage?.name || "");
 		setError("");
+		setNameError("");
 	}, [stage?.id]);
 	const save = async () => {
+		if (!name.trim()) {
+			setNameError("Enter a stage name.");
+			return;
+		}
+		setNameError("");
 		setSaving(true);
 		setError("");
 		try {
 			onSaved(await renameWorkType(projectId, stage.id, {
-				name,
+				name: name.trim(),
 				fromName: stage.name
 			}));
 			onClose();
@@ -48674,14 +48778,22 @@ function RenameWorkTypeDialog({ stage, projectId, onClose, onSaved }) {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Edit work type" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Renaming this stage keeps its tasks, dates and dependencies. No schedule dates change." })] }),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 				className: "space-y-1",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-xs",
-					children: "Work type name"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-					value: name,
-					maxLength: 60,
-					onChange: (event) => setName(event.target.value)
-				})]
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-xs",
+						children: "Work type name"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+						value: name,
+						maxLength: 60,
+						"aria-invalid": Boolean(nameError),
+						onChange: (event) => {
+							setName(event.target.value);
+							if (nameError) setNameError("");
+						}
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FieldError, { children: nameError })
+				]
 			}),
 			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				className: "text-xs text-destructive",
@@ -48694,7 +48806,7 @@ function RenameWorkTypeDialog({ stage, projectId, onClose, onSaved }) {
 				onClick: onClose,
 				children: "Cancel"
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-				disabled: saving || !name.trim() || name.trim() === stage?.name,
+				disabled: saving || name.trim() === stage?.name,
 				onClick: save,
 				children: saving ? "Saving…" : "Confirm rename"
 			})] })
@@ -49218,6 +49330,7 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 	const menuRef = (0, import_react.useRef)(null);
 	const helpRef = (0, import_react.useRef)(null);
 	const [helpOpen, setHelpOpen] = (0, import_react.useState)(false);
+	const [helpModalOpen, setHelpModalOpen] = (0, import_react.useState)(false);
 	const [search, setSearch] = (0, import_react.useState)("");
 	const [selectedStageId, setSelectedStageId] = (0, import_react.useState)(null);
 	const [drag, setDrag] = (0, import_react.useState)(null);
@@ -49651,6 +49764,15 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 		summary.blocked && `${summary.blocked} blocked`,
 		summary.waiting && `${summary.waiting} waiting on you`
 	].filter(Boolean);
+	const handleShowAll = () => {
+		if (scheduled.length === 0) return;
+		const first = Math.min(...scheduled.map((item) => item.start));
+		setOrigin(first);
+		setDays(Math.max(28, Math.ceil((Math.max(...scheduled.map((item) => item.end)) - first) / calendarDay)));
+	};
+	const handleToggleExpand = () => {
+		setCollapsed(allGroups.some((stage) => collapsed.has(stage.id)) ? /* @__PURE__ */ new Set() : new Set(allGroups.map((stage) => stage.id)));
+	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "iksha-timeline",
 		children: [
@@ -49721,22 +49843,20 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 						scheduled.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 							variant: "outline",
 							size: "sm",
+							className: "hidden sm:inline-flex",
 							"aria-pressed": !ZOOMS.some((zoom) => zoom.days === days),
-							onClick: () => {
-								const first = Math.min(...scheduled.map((item) => item.start));
-								setOrigin(first);
-								setDays(Math.max(28, Math.ceil((Math.max(...scheduled.map((item) => item.end)) - first) / 864e5)));
-							},
+							onClick: handleShowAll,
 							children: "Show all"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 							variant: "outline",
 							size: "sm",
-							onClick: () => setCollapsed(allGroups.some((stage) => collapsed.has(stage.id)) ? /* @__PURE__ */ new Set() : new Set(allGroups.map((stage) => stage.id))),
+							className: "hidden sm:inline-flex",
+							onClick: handleToggleExpand,
 							children: allGroups.some((stage) => collapsed.has(stage.id)) ? "Expand all" : "Collapse all"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
-							className: "iksha-help",
+							className: "iksha-help hidden sm:block",
 							ref: helpRef,
 							onToggle: (event) => setHelpOpen(event.currentTarget.open),
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", {
@@ -49758,7 +49878,38 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Hold a stage grip to reorder it. You confirm every change." })
 								] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Tap a stage for its breakdown. Tap a task for its discussion." })
 							})]
-						})
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Root2$1, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trigger$1, {
+							asChild: true,
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "outline",
+								size: "sm",
+								className: "sm:hidden",
+								"aria-label": "More timeline options",
+								children: "More"
+							})
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Portal2, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Content2, {
+							align: "end",
+							sideOffset: 4,
+							className: "z-50 min-w-40 rounded-lg border bg-card p-1 shadow-md",
+							children: [
+								scheduled.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Item2, {
+									className: "flex h-9 cursor-pointer items-center rounded-md px-2 text-sm outline-none data-[highlighted]:bg-muted",
+									onSelect: handleShowAll,
+									children: "Show all"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Item2, {
+									className: "flex h-9 cursor-pointer items-center rounded-md px-2 text-sm outline-none data-[highlighted]:bg-muted",
+									onSelect: handleToggleExpand,
+									children: allGroups.some((stage) => collapsed.has(stage.id)) ? "Expand all" : "Collapse all"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Item2, {
+									className: "flex h-9 cursor-pointer items-center rounded-md px-2 text-sm outline-none data-[highlighted]:bg-muted",
+									onSelect: () => setHelpModalOpen(true),
+									children: "Help"
+								})
+							]
+						}) })] })
 					]
 				})]
 			}),
@@ -50498,6 +50649,32 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 					projectId,
 					onChanged: onPlanChanged
 				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				open: helpModalOpen,
+				onOpenChange: setHelpModalOpen,
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogHeader, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "How to use the timeline" }) }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "space-y-3 text-sm text-muted-foreground",
+						children: editable ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "iksha-only-fine",
+								children: "Drag a stage bar to move the whole stage. Drag a task to move it. Pull its right edge to change its length. Click a task or stage for edit and add options."
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "iksha-only-coarse",
+								children: "Press and hold a task to pick it up, then drag. Hold its right edge to change its length."
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Hold a stage grip to reorder it. You confirm every change." })
+						] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Tap a stage for its breakdown. Tap a task for its discussion." })
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogFooter, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						onClick: () => setHelpModalOpen(false),
+						children: "Close"
+					}) })
+				] })
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("footer", {
 				className: "iksha-schedule-caption",
@@ -53922,11 +54099,13 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	const [newLinkCategory, setNewLinkCategory] = (0, import_react.useState)("Drawings");
 	const [newLinkUrl, setNewLinkUrl] = (0, import_react.useState)("");
 	const [newTaskTitle, setNewTaskTitle] = (0, import_react.useState)("");
+	const [newTaskTitleError, setNewTaskTitleError] = (0, import_react.useState)("");
 	const [newTaskDesc, setNewTaskDesc] = (0, import_react.useState)("");
 	const [newTaskStageId, setNewTaskStageId] = (0, import_react.useState)("");
 	const [newTaskAssigneeId, setNewTaskAssigneeId] = (0, import_react.useState)("founder");
 	const [newTaskDeadline, setNewTaskDeadline] = (0, import_react.useState)("");
 	const [newTaskStatus, setNewTaskStatus] = (0, import_react.useState)("Open");
+	const [clientNameError, setClientNameError] = (0, import_react.useState)("");
 	const [tldrExpanded, setTldrExpanded] = (0, import_react.useState)(false);
 	const [removeTarget, setRemoveTarget] = (0, import_react.useState)(null);
 	const [removingMember, setRemovingMember] = (0, import_react.useState)(false);
@@ -54012,7 +54191,12 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	const isEmptyProject = !loadingTasks && tasks.length === 0 && stages.length === 0;
 	const handleAssignClientSubmit = async (e) => {
 		e.preventDefault();
-		if (!clientNameInput.trim() || assigningClient) return;
+		if (!clientNameInput.trim()) {
+			setClientNameError("Enter a client name.");
+			return;
+		}
+		if (assigningClient) return;
+		setClientNameError("");
 		setAssigningClient(true);
 		try {
 			await assignClient(project.id, {
@@ -54031,7 +54215,12 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	};
 	const handleCreateTaskSubmit = async (e) => {
 		e.preventDefault();
-		if (!newTaskTitle.trim() || creatingTask) return;
+		if (!newTaskTitle.trim()) {
+			setNewTaskTitleError("Enter a task title.");
+			return;
+		}
+		if (creatingTask) return;
+		setNewTaskTitleError("");
 		setCreatingTask(true);
 		try {
 			await createTask(project.id, {
@@ -54045,6 +54234,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 			setNewTaskTitle("");
 			setNewTaskDesc("");
 			setNewTaskDeadline("");
+			setNewTaskTitleError("");
 			setCreateTaskOpen(false);
 			showNotice("Task created.");
 			await loadProjectTasks();
@@ -54780,20 +54970,29 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 					if (!open) {
 						setNewTaskTitle("");
 						setNewTaskDesc("");
+						setNewTaskTitleError("");
 					}
 				},
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Add task" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Add a deliverable or checklist item for your project team." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 					onSubmit: handleCreateTaskSubmit,
+					noValidate: true,
 					className: "space-y-4",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 							className: "grid gap-2 text-xs font-semibold",
-							children: ["Task title", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								value: newTaskTitle,
-								onChange: (e) => setNewTaskTitle(e.target.value),
-								placeholder: "e.g. Prepare structural layout drawings",
-								required: true
-							})]
+							children: [
+								"Task title",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									value: newTaskTitle,
+									onChange: (e) => {
+										setNewTaskTitle(e.target.value);
+										if (newTaskTitleError) setNewTaskTitleError("");
+									},
+									placeholder: "e.g. Prepare structural layout drawings",
+									"aria-invalid": Boolean(newTaskTitleError)
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FieldError, { children: newTaskTitleError })
+							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 							className: "grid gap-2 text-xs font-semibold",
@@ -54899,20 +55098,31 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
 				open: assignClientModalOpen,
-				onOpenChange: setAssignClientModalOpen,
+				onOpenChange: (open) => {
+					setAssignClientModalOpen(open);
+					if (!open) setClientNameError("");
+				},
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Assign client to project" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "A client must be assigned before starting the workflow pipeline." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 					onSubmit: handleAssignClientSubmit,
+					noValidate: true,
 					className: "space-y-4",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 							className: "grid gap-2 text-xs font-semibold",
-							children: ["Client full name", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								value: clientNameInput,
-								onChange: (e) => setClientNameInput(e.target.value),
-								placeholder: "e.g. Maya Sharma",
-								required: true,
-								disabled: hasWorkflowStarted && project.workflowId !== "CUSTOM-V1"
-							})]
+							children: [
+								"Client full name",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+									value: clientNameInput,
+									onChange: (e) => {
+										setClientNameInput(e.target.value);
+										if (clientNameError) setClientNameError("");
+									},
+									placeholder: "e.g. Maya Sharma",
+									"aria-invalid": Boolean(clientNameError),
+									disabled: hasWorkflowStarted && project.workflowId !== "CUSTOM-V1"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FieldError, { children: clientNameError })
+							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 							className: "grid gap-2 text-xs font-semibold",
@@ -55324,6 +55534,7 @@ function FounderApp() {
 	const [memberOpen, setMemberOpen] = (0, import_react.useState)(false);
 	const [memberDialogLabel, setMemberDialogLabel] = (0, import_react.useState)("Add employee");
 	const [factsOpen, setFactsOpen] = (0, import_react.useState)(false);
+	const [clientNameError, setClientNameError] = (0, import_react.useState)("");
 	const [trashConfirmOpen, setTrashConfirmOpen] = (0, import_react.useState)(false);
 	const [completeConfirmOpen, setCompleteConfirmOpen] = (0, import_react.useState)(false);
 	const [notice, setNotice] = (0, import_react.useState)(null);
@@ -55963,19 +56174,35 @@ function FounderApp() {
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
 				open: factsOpen,
-				onOpenChange: setFactsOpen,
+				onOpenChange: (open) => {
+					setFactsOpen(open);
+					if (!open) setClientNameError("");
+				},
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
 					className: "max-h-[90dvh] overflow-y-auto",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Project details" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: "Set the client, location and spaces for this project." })] }), selectedProject && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-						onSubmit: (e) => saveForm(e, `/api/founder/projects/${selectedProject.id}`, "PATCH", () => setFactsOpen(false), "Project details updated."),
+						noValidate: true,
+						onSubmit: (e) => {
+							if (!new FormData(e.currentTarget).get("clientName")?.trim()) {
+								e.preventDefault();
+								setClientNameError("Enter a client name.");
+								return;
+							}
+							setClientNameError("");
+							saveForm(e, `/api/founder/projects/${selectedProject.id}`, "PATCH", () => setFactsOpen(false), "Project details updated.");
+						},
 						className: "space-y-4",
 						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Field, {
 								label: "Client name",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 									name: "clientName",
-									defaultValue: selectedProject.clientName
-								})
+									defaultValue: selectedProject.clientName,
+									"aria-invalid": Boolean(clientNameError),
+									onChange: () => {
+										if (clientNameError) setClientNameError("");
+									}
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FieldError, { children: clientNameError })]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Field, {
 								label: "Location / city",

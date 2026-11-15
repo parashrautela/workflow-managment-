@@ -44,6 +44,7 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog';
 import { generateIdempotencyKey, getAttachmentUrl } from '@/lib/api';
+import { AudioAttachment, isAudioAttachment } from '@/components/AudioAttachment';
 import { Time } from '@/components/ui/time';
 import { SegmentedControl } from '@/components/ui/segmented-control';
 import { Empty } from '@/components/ui/empty';
@@ -645,7 +646,12 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
 
                             return (
                               <div key={index} className="space-y-1">
-                                {isPhoto ? (
+                                {isAudioAttachment(attachment) ? (
+                                  <AudioAttachment
+                                    src={mediaUrl}
+                                    label={attachment.type === 'voice' ? 'Voice message' : attachment.fileName || 'Audio'}
+                                  />
+                                ) : isPhoto ? (
                                   <div className="overflow-hidden rounded-xl border bg-muted/20">
                                     <img
                                       src={mediaUrl}
@@ -766,7 +772,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
                       />
                     )}
 
-                    <div className="flex items-end gap-2">
+                    <div className="flex flex-wrap items-end gap-2">
                       <Textarea
                         value={text}
                         onChange={(event) =>
@@ -788,9 +794,10 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
                             : 'Write the final answer for the Telegram group…'
                         }
                         aria-label={mode === 'internal' ? 'Private note' : 'Telegram reply'}
-                        className="max-h-32 flex-1 resize-y text-xs"
+                        className="max-h-32 min-w-0 flex-1 basis-56 resize-y text-base sm:text-sm"
                       />
                       <Button
+                        className="ml-auto"
                         type="submit"
                         disabled={
                           busy ||

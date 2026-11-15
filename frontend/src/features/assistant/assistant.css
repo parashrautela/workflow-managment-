@@ -16,7 +16,8 @@
     width: 100%;
     max-width: 72rem;
     margin: 0 auto;
-    padding: var(--space-32) var(--space-32) 0;
+    /* The top bar already gives this page its air, and the conversation needs the height. */
+    padding: var(--space-8) var(--space-32) var(--space-8);
   }
 }
 .assistant-column {

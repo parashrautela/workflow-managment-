@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {workQueue,replacementPreview,createOperationsRoutes,assistantStatusText} from './operations.js';
+import {workQueue,replacementPreview,createOperationsRoutes,assistantStatusText,founderBriefing} from './operations.js';
 const fixture=()=>({projects:[{id:'p',name:'House',status:'Active',members:[{employeeId:'old',role:'Site Supervisor'},{employeeId:'designer',role:'Designer'}],stages:[{id:'s',name:'Painting'}]}],employees:[{id:'old',name:'Old',active:true},{id:'new',name:'New',active:true,telegramUserId:'42',telegramConnectedAt:'yes'},{id:'designer',name:'Designer',active:true}],tasks:[{id:'a',projectId:'p',stageId:'s',title:'Site check',sourceRole:'Site Supervisor',assigneeId:'old',status:'Open',deadline:'2026-10-20'},{id:'b',projectId:'p',stageId:'s',title:'Drawing',sourceRole:'Designer',status:'Open',deadline:'2026-10-25'},{id:'c',projectId:'p',title:'Old work',assigneeId:'old',status:'Completed'}]});
 test('workQueue unifies approval and overdue states with taskStatus without false approval counts for future tasks', () => {
   const state = fixture();
@@ -191,4 +191,25 @@ test('assistant status line is the chip text, judged on the IST day',()=>{
  assert.equal(assistantStatusText(row({title:'Drawing'},'2026-10-01'),now),'In progress');
  assert.equal(assistantStatusText(row({title:'Drawing',deadline:'2026-10-20'},'2026-10-01'),now),'Overdue · 3d');
  assert.equal(assistantStatusText(row({title:'Drawing',status:'Blocked',deadline:'2026-10-20'},'2026-10-01'),now),'Blocked · overdue');
+});
+
+test('founder briefing lists what needs the founder, in the order they act',()=>{
+ const now=new Date('2026-10-22T20:00:00Z');
+ const state=fixture();
+ state.projects[0].stages=[{id:'s',name:'Painting',startDate:'2026-10-01'}];
+ state.tasks=[
+  {id:'a',projectId:'p',stageId:'s',title:'Client approval',status:'Open',deadline:'2026-10-20'},
+  {id:'b',projectId:'p',stageId:'s',title:'Site check',status:'Blocked',deadline:'2026-12-01'},
+  {id:'c',projectId:'p',stageId:'s',title:'Drawing',status:'Open',deadline:'2026-10-21'},
+ ];
+ state.decisionRequests=[{id:'q',projectId:'p',requestType:'Question',status:'Pending',originalSenderName:'Isha',originalMessage:'Is the glass partition 2400 mm?'},{id:'m',projectId:'p',requestType:'Message',status:'Pending',originalSenderName:'Raj',originalMessage:'hello'}];
+ const text=founderBriefing(state,now);
+ assert.match(text,/^# What needs you today\n1 approval waiting · 1 blocked · 1 overdue · 1 client query to answer/);
+ assert.ok(text.indexOf('## Approvals waiting on you')<text.indexOf('## Blocked work'));
+ assert.ok(text.indexOf('## Blocked work')<text.indexOf('## Overdue work'));
+ assert.ok(text.indexOf('## Overdue work')<text.indexOf('## Client queries to answer'));
+ assert.match(text,/- Isha \(House\) — Is the glass partition 2400 mm\?/);
+ assert.doesNotMatch(text,/hello/);
+ state.tasks=[];state.decisionRequests=[];
+ assert.equal(founderBriefing(state,now),'# What needs you today\nNothing needs your attention right now.');
 });

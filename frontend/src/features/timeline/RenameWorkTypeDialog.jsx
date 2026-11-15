@@ -9,21 +9,32 @@ import {
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { FieldError } from '@/components/ui/field-error';
 import { renameWorkType } from '@/lib/api';
 
 export function RenameWorkTypeDialog({ stage, projectId, onClose, onSaved }) {
   const [name, setName] = useState(''),
     [saving, setSaving] = useState(false),
-    [error, setError] = useState('');
+    [error, setError] = useState(''),
+    [nameError, setNameError] = useState('');
   useEffect(() => {
     setName(stage?.name || '');
     setError('');
+    setNameError('');
   }, [stage?.id]);
   const save = async () => {
+    if (!name.trim()) {
+      setNameError('Enter a stage name.');
+      return;
+    }
+    setNameError('');
     setSaving(true);
     setError('');
     try {
-      const result = await renameWorkType(projectId, stage.id, { name, fromName: stage.name });
+      const result = await renameWorkType(projectId, stage.id, {
+        name: name.trim(),
+        fromName: stage.name,
+      });
       onSaved(result);
       onClose();
     } catch (problem) {
@@ -48,7 +59,16 @@ export function RenameWorkTypeDialog({ stage, projectId, onClose, onSaved }) {
         </DialogHeader>
         <label className="space-y-1">
           <span className="text-xs">Work type name</span>
-          <Input value={name} maxLength={60} onChange={(event) => setName(event.target.value)} />
+          <Input
+            value={name}
+            maxLength={60}
+            aria-invalid={Boolean(nameError)}
+            onChange={(event) => {
+              setName(event.target.value);
+              if (nameError) setNameError('');
+            }}
+          />
+          <FieldError>{nameError}</FieldError>
         </label>
         {error && (
           <p className="text-xs text-destructive" role="alert">
@@ -59,7 +79,7 @@ export function RenameWorkTypeDialog({ stage, projectId, onClose, onSaved }) {
           <Button variant="outline" disabled={saving} onClick={onClose}>
             Cancel
           </Button>
-          <Button disabled={saving || !name.trim() || name.trim() === stage?.name} onClick={save}>
+          <Button disabled={saving || name.trim() === stage?.name} onClick={save}>
             {saving ? 'Saving…' : 'Confirm rename'}
           </Button>
         </DialogFooter>

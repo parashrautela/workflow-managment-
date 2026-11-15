@@ -239,3 +239,33 @@ export function createOperationsRoutes({getState,founder,employeeSession,body,js
   };
   return route;
 }
+
+// "What should I do today?" answered from saved records alone, so it works with the AI off.
+// Order is the order a founder acts in: approvals waiting on them, blocked work, late work, unanswered client queries, projects to set up.
+export function founderBriefing(state,now=new Date()) {
+  const rows=workQueue(state,{personId:'all',projectId:'',now}).map(task=>({task,text:assistantStatusText(task,now)}));
+  const approvals=rows.filter(({text})=>text.startsWith('Approval pending'));
+  const blocked=rows.filter(({text})=>text.startsWith('Blocked'));
+  const late=rows.filter(({text})=>/overdue/i.test(text) && !text.startsWith('Approval pending') && !text.startsWith('Blocked'));
+  const open=project=>project && !['Completed','Abandoned'].includes(project.status);
+  const queries=(state.decisionRequests||[]).filter(item=>item.requestType!=='Message' && !item.decisionStatus && !['On hold','Done','Rejected','Published','Approved'].includes(item.status) && open(state.projects.find(project=>project.id===item.projectId)));
+  const setup=state.projects.filter(project=>open(project) && (project.telegramSetupPending || project.status==='Setup' || project.status==='Needs setup'));
+  const cap=(items,line)=>items.slice(0,8).map(line).concat(items.length>8?[`- ${items.length-8} more in Actions needed`]:[]);
+  const task=({task,text})=>`- ${task.projectName} — ${task.title} · ${text}`;
+  const parts=[
+    approvals.length&&`${approvals.length} ${approvals.length===1?'approval':'approvals'} waiting`,
+    blocked.length&&`${blocked.length} blocked`,
+    late.length&&`${late.length} overdue`,
+    queries.length&&`${queries.length} client ${queries.length===1?'query':'queries'} to answer`,
+    setup.length&&`${setup.length} ${setup.length===1?'project needs':'projects need'} setup`,
+  ].filter(Boolean);
+  if (!parts.length) return '# What needs you today\nNothing needs your attention right now.';
+  const section=(title,lines)=>lines.length?['',`## ${title}`,...lines]:[];
+  return ['# What needs you today',parts.join(' · '),
+    ...section('Approvals waiting on you',cap(approvals,task)),
+    ...section('Blocked work',cap(blocked,task)),
+    ...section('Overdue work',cap(late,task)),
+    ...section('Client queries to answer',cap(queries,item=>`- ${item.originalSenderName||'Client'} (${state.projects.find(project=>project.id===item.projectId)?.name||'Project'}) — ${String(item.originalMessage||'').replace(/\s+/g,' ').slice(0,90)}`)),
+    ...section('Projects that need setup',cap(setup,project=>`- ${project.name}`)),
+  ].join('\n');
+}
