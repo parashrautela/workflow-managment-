@@ -39,6 +39,7 @@ import {
 } from '@/lib/api';
 import { formatCalendar } from '@/lib/dates';
 import { Time } from '@/components/ui/time';
+import { AudioAttachment, isAudioAttachment } from '@/components/AudioAttachment';
 import { StatusChip } from '@/components/ui/status-chip';
 import { taskStatus } from '@/lib/taskStatus';
 
@@ -96,6 +97,14 @@ export function TaskMessage({ message, namespace = 'founder' }) {
       {message.queryId &&
         (message.attachments || []).map((file) => {
           const href = getAttachmentUrl(message.queryId, file.index, namespace);
+          if (isAudioAttachment(file))
+            return (
+              <AudioAttachment
+                key={file.index}
+                src={href}
+                label={file.type === 'voice' ? 'Voice message' : file.fileName || 'Audio'}
+              />
+            );
           return (
             <a
               key={file.index}

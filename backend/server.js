@@ -8,7 +8,7 @@ import { createMcpRoutes, founderTools } from './mcp.js';
 import { answerWithAi } from './founder-ai.js';
 import {createStageLinksRoutes} from './stage-links-routes.js';
 import { createStageOrderRoutes } from './stage-order-routes.js';
-import { createOperationsRoutes, workQueue, telegramConnected, assistantStatusText, dayAt } from './operations.js';
+import { createOperationsRoutes, workQueue, telegramConnected, assistantStatusText, dayAt, founderBriefing } from './operations.js';
 import { taskStatus } from '../frontend/src/lib/taskStatus.js';
 import { calendarDate } from '../frontend/src/features/timeline/lib/timeline.js';
 import { rolesOf, hasRole, matchesRole, roleText, isStaff } from './roles.js';
@@ -19,7 +19,8 @@ import http from 'node:http';
 import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
 import { readFile, mkdir } from 'node:fs/promises';
 import { createStateStore } from './store.js';
-import { loadTelegramAttachment } from './telegram-media.js';
+import { loadTelegramAttachment, mediaKind } from './telegram-media.js';
+import { forwardVoiceToFounders } from './voice-forward.js';
 import { ApiError, createPilotRoutes, initializePilot, projectSummary } from './pilot.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -173,6 +174,8 @@ async function answerProjectQuestion(project, question) {
 }
 
 function founderAssistantAnswer(question) {
+  // "What should I do?" gets a real to-do list from saved records, not a project dump.
+  if (/what.*(should|supposed|need|have|must).*\b(do|focus|handle|attend)|to-?do|priorit|focus on|needs? (my )?attention|where (do|should) i start|what.*\b(today|this week)\b/i.test(question)) return founderBriefing(state);
   const isProjectSummary = /summari[sz]e.*(project|all)|ongoing.*project|project.*summary/i.test(question);
   if (!isProjectSummary && /pending|my work|my task|what.*doing/i.test(question)) {
     const q=question.toLowerCase(),person=state.employees.find(employee=>employee.name?.length>2 && q.includes(employee.name.toLowerCase())),project=state.projects.find(project=>q.includes(project.name.toLowerCase()));
@@ -353,6 +356,7 @@ async function handleRequest(req, res) {
       if (!Array.isArray(attachments) || attachments.length > 8 || attachments.some((item) => !item || typeof item !== 'object' || typeof item.type !== 'string' || item.type.length > 40 || typeof item.fileId !== 'string' || !item.fileId || item.fileId.length > 300 || ['fileName','mimeType'].some((key) => item[key] !== undefined && (typeof item[key] !== 'string' || item[key].length > 200)))) return json(res, 400, { error: 'Invalid attachments.' });
       const request = { id, projectId: project.id, groupChatId: groupId, telegramProjectId: shortText(input.TelegramProjectID, 100) || '', sourceMessageId: String(input.SourceMessageID), commandMessageId: String(input.CommandMessageID || ''), requestedByName: shortText(input.RequestedByName, 160) || 'Unknown', requestedByRole: shortText(input.RequestedByRole, 100) || '', originalSenderName: sender, originalSenderTelegramId: String(input.OriginalSenderTelegramID || ''), automaticClientQuery: input.AutomaticClientQuery === true, requestType, originalMessage: message, context, attachments, status: 'Pending', createdAt: new Date().toISOString(), comments: [], response: '', publishedMessageId: '', publishedAt: '', resolvedAt: '' };
       state.decisionRequests.unshift(request); audit('decision_request_received', project.id, { requestId: id }); await save();
+      forwardVoiceToFounders(state, request, callBotBridge);
       return json(res, 201, { request, created: true });
     }
     if (req.method === 'POST' && ['/api/founder/login', '/api/employee/login'].includes(url.pathname)) return json(res, 410, { error: 'Password login has been removed. Continue with Google.' });
@@ -409,10 +413,10 @@ async function handleRequest(req, res) {
         if (typeof stored.bytes !== 'string' || stored.bytes.length > 27000000) throw new ApiError('Attachment exceeds the download limit.',502);
         const bytes=Buffer.from(stored.bytes,'base64');
         if(bytes.length>20000000) throw new ApiError('Attachment exceeds the 20 MB pilot limit.',413);
-        const inline=['image/jpeg','image/png','image/gif','image/webp'].includes(stored.mime);
-        file={bytes,mime:inline?stored.mime:'application/octet-stream',inline};
+        file={bytes,...mediaKind(attachment)};
       } else file = await loadTelegramAttachment(attachment, process.env.GROUP_BOT_TOKEN);
-      res.writeHead(200,{'content-type':file.mime,'content-disposition':file.inline ? 'inline' : 'attachment','cache-control':'private, no-store','content-security-policy':"default-src 'none'; sandbox"});
+      // shortcut: no HTTP Range support, so audio can't be scrubbed (fine for short voice notes); add Range handling if long recordings matter.
+      res.writeHead(200,{'content-type':file.mime,'content-length':file.bytes.length,'x-content-type-options':'nosniff','content-disposition':file.inline ? 'inline' : 'attachment','cache-control':'private, no-store','content-security-policy':"default-src 'none'; sandbox"});
       return res.end(file.bytes);
     }
     const employeeChatMatch = url.pathname.match(/^\/api\/employee\/projects\/([^/]+)\/team-chat$/);
@@ -646,16 +650,17 @@ async function handleRequest(req, res) {
       if (!question || question.length > 1000) return json(res, 400, { error: 'Enter a question under 1,000 characters.' });
       limit.count += 1; founderChatLimits.set(key, limit);
       // Opt-in: off unless the studio sets both. Any failure falls back to the rule-based answer.
-      let answer = '', ai = false;
+      let answer = '', ai = false, aiStatus = 'off';
       if (process.env.FOUNDER_AI_ASSISTANT_ENABLED === 'true' && process.env.OPENAI_API_KEY) {
+        aiStatus = 'unavailable';
         try {
           answer = await answerWithAi({ question, history: state.founderChat.slice(-6), ...founderTools(handleRequest, req, founder(req)),
             apiKey: process.env.OPENAI_API_KEY, model: process.env.OPENAI_MODEL || 'gpt-5-mini', baseUrl: process.env.OPENAI_BASE_URL || undefined });
-          ai = Boolean(answer);
-        } catch { answer = ''; }
+          ai = Boolean(answer); if (ai) aiStatus = 'ai';
+        } catch (error) { console.error('Founder AI unavailable:', String(error?.message || error).slice(0, 200)); answer = ''; }
       }
       if (!answer) answer = founderAssistantAnswer(question);
-      const message = { id: randomBytes(8).toString('hex'), question, answer, ...(ai && { ai: true }), at: new Date().toISOString() };
+      const message = { id: randomBytes(8).toString('hex'), question, answer, ...(ai ? { ai: true } : { aiStatus }), at: new Date().toISOString() };
       state.founderChat.push(message); state.founderChat = state.founderChat.slice(-200); await save();
       return json(res, 200, { message });
     }

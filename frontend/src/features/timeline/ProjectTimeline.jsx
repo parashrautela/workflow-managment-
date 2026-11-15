@@ -2,6 +2,7 @@ import { StageOrderGrip, useStageOrder } from './StageOrderControl';
 import { StageConnections } from '@/features/timeline/StageConnections';
 import { PlanTemplates } from '@/features/timeline/PlanTemplates';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { DropdownMenu } from 'radix-ui';
 import {
   AlertTriangle,
   ArrowLeft,
@@ -232,6 +233,7 @@ export function ProjectTimeline({
   const menuRef = useRef(null);
   const helpRef = useRef(null);
   const [helpOpen, setHelpOpen] = useState(false);
+  const [helpModalOpen, setHelpModalOpen] = useState(false);
   const [search, setSearch] = useState('');
   const [selectedStageId, setSelectedStageId] = useState(null);
   const [drag, setDrag] = useState(null);
@@ -727,6 +729,26 @@ export function ProjectTimeline({
     summary.waiting && `${summary.waiting} waiting on you`,
   ].filter(Boolean);
 
+  const handleShowAll = () => {
+    if (scheduled.length === 0) return;
+    const first = Math.min(...scheduled.map((item) => item.start));
+    setOrigin(first);
+    setDays(
+      Math.max(
+        28,
+        Math.ceil((Math.max(...scheduled.map((item) => item.end)) - first) / DAY),
+      ),
+    );
+  };
+
+  const handleToggleExpand = () => {
+    setCollapsed(
+      allGroups.some((stage) => collapsed.has(stage.id))
+        ? new Set()
+        : new Set(allGroups.map((stage) => stage.id)),
+    );
+  };
+
   return (
     <div className="iksha-timeline">
       <div className="iksha-timeline-heading">
@@ -783,17 +805,9 @@ export function ProjectTimeline({
             <Button
               variant="outline"
               size="sm"
+              className="hidden sm:inline-flex"
               aria-pressed={!ZOOMS.some((zoom) => zoom.days === days)}
-              onClick={() => {
-                const first = Math.min(...scheduled.map((item) => item.start));
-                setOrigin(first);
-                setDays(
-                  Math.max(
-                    28,
-                    Math.ceil((Math.max(...scheduled.map((item) => item.end)) - first) / DAY),
-                  ),
-                );
-              }}
+              onClick={handleShowAll}
             >
               Show all
             </Button>
@@ -801,18 +815,13 @@ export function ProjectTimeline({
           <Button
             variant="outline"
             size="sm"
-            onClick={() =>
-              setCollapsed(
-                allGroups.some((stage) => collapsed.has(stage.id))
-                  ? new Set()
-                  : new Set(allGroups.map((stage) => stage.id)),
-              )
-            }
+            className="hidden sm:inline-flex"
+            onClick={handleToggleExpand}
           >
             {allGroups.some((stage) => collapsed.has(stage.id)) ? 'Expand all' : 'Collapse all'}
           </Button>
           <details
-            className="iksha-help"
+            className="iksha-help hidden sm:block"
             ref={helpRef}
             onToggle={(event) => setHelpOpen(event.currentTarget.open)}
           >
@@ -841,6 +850,49 @@ export function ProjectTimeline({
               )}
             </div>
           </details>
+
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger asChild>
+              <Button
+                variant="outline"
+                size="sm"
+                className="sm:hidden"
+                aria-label="More timeline options"
+              >
+                More
+              </Button>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Portal>
+              <DropdownMenu.Content
+                align="end"
+                sideOffset={4}
+                className="z-50 min-w-40 rounded-lg border bg-card p-1 shadow-md"
+              >
+                {scheduled.length > 0 && (
+                  <DropdownMenu.Item
+                    className="flex h-9 cursor-pointer items-center rounded-md px-2 text-sm outline-none data-[highlighted]:bg-muted"
+                    onSelect={handleShowAll}
+                  >
+                    Show all
+                  </DropdownMenu.Item>
+                )}
+                <DropdownMenu.Item
+                  className="flex h-9 cursor-pointer items-center rounded-md px-2 text-sm outline-none data-[highlighted]:bg-muted"
+                  onSelect={handleToggleExpand}
+                >
+                  {allGroups.some((stage) => collapsed.has(stage.id))
+                    ? 'Expand all'
+                    : 'Collapse all'}
+                </DropdownMenu.Item>
+                <DropdownMenu.Item
+                  className="flex h-9 cursor-pointer items-center rounded-md px-2 text-sm outline-none data-[highlighted]:bg-muted"
+                  onSelect={() => setHelpModalOpen(true)}
+                >
+                  Help
+                </DropdownMenu.Item>
+              </DropdownMenu.Content>
+            </DropdownMenu.Portal>
+          </DropdownMenu.Root>
         </div>
       </div>
 
@@ -1776,6 +1828,35 @@ export function ProjectTimeline({
           <PlanTemplates spaces={spaces} projectId={projectId} onChanged={onPlanChanged} />
         )}
       </div>
+      <Dialog open={helpModalOpen} onOpenChange={setHelpModalOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>How to use the timeline</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-3 text-sm text-muted-foreground">
+            {editable ? (
+              <>
+                <p className="iksha-only-fine">
+                  Drag a stage bar to move the whole stage. Drag a task to move it. Pull its right
+                  edge to change its length. Click a task or stage for edit and add options.
+                </p>
+                <p className="iksha-only-coarse">
+                  Press and hold a task to pick it up, then drag. Hold its right edge to change its
+                  length.
+                </p>
+                <p>Hold a stage grip to reorder it. You confirm every change.</p>
+              </>
+            ) : (
+              <p>Tap a stage for its breakdown. Tap a task for its discussion.</p>
+            )}
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setHelpModalOpen(false)}>
+              Close
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
       <footer className="iksha-schedule-caption">
         <span>Calendar days · Today is marked in red</span>
       </footer>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { FieldError } from '@/components/ui/field-error';
 import {
   Sheet,
   SheetContent,
@@ -15,6 +16,7 @@ export function MeetingEditor({ open, onOpenChange, task, meeting, onSaved }) {
   const [people, setPeople] = useState([]),
     [form, setForm] = useState(null),
     [error, setError] = useState(''),
+    [titleError, setTitleError] = useState(''),
     [busy, setBusy] = useState(false),
     [custom, setCustom] = useState('');
   useEffect(() => {
@@ -22,6 +24,7 @@ export function MeetingEditor({ open, onOpenChange, task, meeting, onSaved }) {
     let active = true;
     setPeople([]);
     setError('');
+    setTitleError('');
     setCustom('');
     setForm({
       title: meeting?.title || task.title,
@@ -46,6 +49,11 @@ export function MeetingEditor({ open, onOpenChange, task, meeting, onSaved }) {
   const set = (key, value) => setForm((current) => ({ ...current, [key]: value }));
   const save = async (event) => {
     event.preventDefault();
+    if (!form?.title?.trim()) {
+      setTitleError('Enter a meeting title.');
+      return;
+    }
+    setTitleError('');
     setBusy(true);
     setError('');
     try {
@@ -83,16 +91,20 @@ export function MeetingEditor({ open, onOpenChange, task, meeting, onSaved }) {
           </SheetDescription>
         </SheetHeader>
         {form && (
-          <form onSubmit={save} className="flex min-h-0 flex-1 flex-col">
+          <form onSubmit={save} noValidate className="flex min-h-0 flex-1 flex-col">
             <div className="min-h-0 flex-1 space-y-4 overflow-y-auto p-4 sm:p-6">
               <label className="grid gap-1 text-xs">
                 Meeting title
                 <Input
-                  required
                   maxLength={180}
                   value={form.title}
-                  onChange={(e) => set('title', e.target.value)}
+                  aria-invalid={Boolean(titleError)}
+                  onChange={(e) => {
+                    set('title', e.target.value);
+                    if (titleError) setTitleError('');
+                  }}
                 />
+                <FieldError>{titleError}</FieldError>
               </label>
               <label className="grid gap-1 text-xs">
                 Date and time · India (IST)

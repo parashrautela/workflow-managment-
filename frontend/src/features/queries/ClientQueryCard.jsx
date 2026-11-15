@@ -52,6 +52,7 @@ import {
   generateIdempotencyKey,
 } from '@/lib/api';
 import { Time } from '@/components/ui/time';
+import { AudioAttachment, isAudioAttachment } from '@/components/AudioAttachment';
 import { SegmentedControl } from '@/components/ui/segmented-control';
 
 export function ClientQueryCard({
@@ -389,7 +390,12 @@ export function ClientQueryCard({
 
                   return (
                     <div key={idx} className="space-y-2">
-                      {isPhoto ? (
+                      {isAudioAttachment(att) ? (
+                        <AudioAttachment
+                          src={mediaUrl}
+                          label={att.type === 'voice' ? 'Voice message' : att.fileName || 'Audio'}
+                        />
+                      ) : isPhoto ? (
                         <div className="group relative overflow-hidden rounded-xl border bg-muted/20">
                           <img
                             src={mediaUrl}

@@ -52,6 +52,7 @@ import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { DropdownMenu } from 'radix-ui';
 import { Textarea } from '@/components/ui/textarea';
+import { FieldError } from '@/components/ui/field-error';
 
 import { TelegramGroups } from '@/features/telegram/TelegramGroups';
 import { ProjectFiles } from '@/features/projects/ProjectFiles';
@@ -141,11 +142,13 @@ export function ProjectDetailView({
 
   // New task form state
   const [newTaskTitle, setNewTaskTitle] = useState('');
+  const [newTaskTitleError, setNewTaskTitleError] = useState('');
   const [newTaskDesc, setNewTaskDesc] = useState('');
   const [newTaskStageId, setNewTaskStageId] = useState('');
   const [newTaskAssigneeId, setNewTaskAssigneeId] = useState('founder');
   const [newTaskDeadline, setNewTaskDeadline] = useState('');
   const [newTaskStatus, setNewTaskStatus] = useState('Open');
+  const [clientNameError, setClientNameError] = useState('');
 
   // Project summary visibility
   const [tldrExpanded, setTldrExpanded] = useState(false);
@@ -284,7 +287,12 @@ export function ProjectDetailView({
   // Assign Client submission
   const handleAssignClientSubmit = async (e) => {
     e.preventDefault();
-    if (!clientNameInput.trim() || assigningClient) return;
+    if (!clientNameInput.trim()) {
+      setClientNameError('Enter a client name.');
+      return;
+    }
+    if (assigningClient) return;
+    setClientNameError('');
 
     setAssigningClient(true);
     try {
@@ -306,7 +314,12 @@ export function ProjectDetailView({
   // Add task submission
   const handleCreateTaskSubmit = async (e) => {
     e.preventDefault();
-    if (!newTaskTitle.trim() || creatingTask) return;
+    if (!newTaskTitle.trim()) {
+      setNewTaskTitleError('Enter a task title.');
+      return;
+    }
+    if (creatingTask) return;
+    setNewTaskTitleError('');
 
     setCreatingTask(true);
     try {
@@ -322,6 +335,7 @@ export function ProjectDetailView({
       setNewTaskTitle('');
       setNewTaskDesc('');
       setNewTaskDeadline('');
+      setNewTaskTitleError('');
       setCreateTaskOpen(false);
       showNotice('Task created.');
       await loadProjectTasks();
@@ -1090,6 +1104,7 @@ export function ProjectDetailView({
           if (!open) {
             setNewTaskTitle('');
             setNewTaskDesc('');
+            setNewTaskTitleError('');
           }
         }}
       >
@@ -1101,15 +1116,19 @@ export function ProjectDetailView({
             </DialogDescription>
           </DialogHeader>
 
-          <form onSubmit={handleCreateTaskSubmit} className="space-y-4">
+          <form onSubmit={handleCreateTaskSubmit} noValidate className="space-y-4">
             <label className="grid gap-2 text-xs font-semibold">
               Task title
               <Input
                 value={newTaskTitle}
-                onChange={(e) => setNewTaskTitle(e.target.value)}
+                onChange={(e) => {
+                  setNewTaskTitle(e.target.value);
+                  if (newTaskTitleError) setNewTaskTitleError('');
+                }}
                 placeholder="e.g. Prepare structural layout drawings"
-                required
+                aria-invalid={Boolean(newTaskTitleError)}
               />
+              <FieldError>{newTaskTitleError}</FieldError>
             </label>
 
             <label className="grid gap-2 text-xs font-semibold">
@@ -1208,7 +1227,13 @@ export function ProjectDetailView({
       </Dialog>
 
       {/* Assign Client Modal (Phase 2) */}
-      <Dialog open={assignClientModalOpen} onOpenChange={setAssignClientModalOpen}>
+      <Dialog
+        open={assignClientModalOpen}
+        onOpenChange={(open) => {
+          setAssignClientModalOpen(open);
+          if (!open) setClientNameError('');
+        }}
+      >
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Assign client to project</DialogTitle>
@@ -1217,16 +1242,20 @@ export function ProjectDetailView({
             </DialogDescription>
           </DialogHeader>
 
-          <form onSubmit={handleAssignClientSubmit} className="space-y-4">
+          <form onSubmit={handleAssignClientSubmit} noValidate className="space-y-4">
             <label className="grid gap-2 text-xs font-semibold">
               Client full name
               <Input
                 value={clientNameInput}
-                onChange={(e) => setClientNameInput(e.target.value)}
+                onChange={(e) => {
+                  setClientNameInput(e.target.value);
+                  if (clientNameError) setClientNameError('');
+                }}
                 placeholder="e.g. Maya Sharma"
-                required
+                aria-invalid={Boolean(clientNameError)}
                 disabled={hasWorkflowStarted && project.workflowId !== 'CUSTOM-V1'}
               />
+              <FieldError>{clientNameError}</FieldError>
             </label>
 
             <label className="grid gap-2 text-xs font-semibold">

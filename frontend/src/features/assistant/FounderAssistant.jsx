@@ -350,6 +350,13 @@ export function FounderAssistant() {
                           Answered with AI from your saved project records.
                         </p>
                       )}
+                      {!item.ai && item.aiStatus && (
+                        <p className="text-xs text-muted-foreground">
+                          {item.aiStatus === 'unavailable'
+                            ? 'The AI was unavailable, so this answer comes from saved project facts.'
+                            : 'Answered from saved project facts. The AI Assistant is switched off.'}
+                        </p>
+                      )}
                     </div>
                   )}
                 </article>

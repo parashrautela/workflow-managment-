@@ -50,6 +50,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
+import { FieldError } from '@/components/ui/field-error';
 import { SidebarGroup, SidebarGroupLabel, SidebarItem } from '@/components/ui/sidebar';
 import { Separator } from '@/components/ui/separator';
 import {
@@ -223,6 +224,7 @@ export default function FounderApp() {
   const [memberOpen, setMemberOpen] = useState(false);
   const [memberDialogLabel, setMemberDialogLabel] = useState('Add employee');
   const [factsOpen, setFactsOpen] = useState(false);
+  const [clientNameError, setClientNameError] = useState('');
   const [trashConfirmOpen, setTrashConfirmOpen] = useState(false);
   const [completeConfirmOpen, setCompleteConfirmOpen] = useState(false);
   const [notice, setNotice] = useState(null);
@@ -981,7 +983,13 @@ export default function FounderApp() {
       </Dialog>
 
       {/* Update Project Facts Modal */}
-      <Dialog open={factsOpen} onOpenChange={setFactsOpen}>
+      <Dialog
+        open={factsOpen}
+        onOpenChange={(open) => {
+          setFactsOpen(open);
+          if (!open) setClientNameError('');
+        }}
+      >
         <DialogContent className="max-h-[90dvh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Project details</DialogTitle>
@@ -992,19 +1000,36 @@ export default function FounderApp() {
           {selectedProject && (
             <form
               key={selectedProject.id}
-              onSubmit={(e) =>
+              noValidate
+              onSubmit={(e) => {
+                const formData = new FormData(e.currentTarget);
+                const clientName = formData.get('clientName')?.trim();
+                if (!clientName) {
+                  e.preventDefault();
+                  setClientNameError('Enter a client name.');
+                  return;
+                }
+                setClientNameError('');
                 saveForm(
                   e,
                   `/api/founder/projects/${selectedProject.id}`,
                   'PATCH',
                   () => setFactsOpen(false),
                   'Project details updated.',
-                )
-              }
+                );
+              }}
               className="space-y-4"
             >
               <Field label="Client name">
-                <Input name="clientName" defaultValue={selectedProject.clientName} />
+                <Input
+                  name="clientName"
+                  defaultValue={selectedProject.clientName}
+                  aria-invalid={Boolean(clientNameError)}
+                  onChange={() => {
+                    if (clientNameError) setClientNameError('');
+                  }}
+                />
+                <FieldError>{clientNameError}</FieldError>
               </Field>
               <Field label="Location / city">
                 <datalist id="iksha-cities">

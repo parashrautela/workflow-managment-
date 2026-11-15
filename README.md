@@ -75,6 +75,8 @@ Deployment order: release the companion bot's task-notice endpoint first, then t
 
 The Queries tab includes ordinary Telegram text and supported photo, document,
 video, voice, and audio messages from everyone in the linked project group.
+Voice and audio messages reach founders as the original recording with a play button (no transcript), in the Queries inbox and in the task discussion once accepted.
+A client's voice message is also sent to every founder who connected Telegram (Connect Telegram digests → Start) as the original recording; staff chatter is not forwarded. Deploy the bot first: it adds the `decisions/voice` route the web app calls, and an older bot just ignores the forward.
 Client messages remain queries; other ordinary messages are labelled Group message
 and do not add to the pending-query count. Founders can accept them into a task,
 including attaching without changing dates or waiting for more context. Explicit question/approval commands
