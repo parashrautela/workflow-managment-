@@ -25,11 +25,16 @@ export function MeetingsView({
   const Heading = embedded ? 'h2' : 'h1';
   const [meetings, setMeetings] = useState([]),
     [error, setError] = useState(''),
+    [notice, setNotice] = useState(''),
     [edit, setEdit] = useState(null),
     [action, setAction] = useState(null),
     [history, setHistory] = useState(false),
     [busy, setBusy] = useState(false),
     [selectedTask, setSelectedTask] = useState(null);
+  const showNotice = (msg) => {
+    setNotice(msg);
+    setTimeout(() => setNotice(''), 3500);
+  };
   const load = async () => {
     try {
       const data = await request(
@@ -60,6 +65,7 @@ export function MeetingsView({
         method: 'PATCH',
         body: { revision: action.meeting.revision, status: action.status },
       });
+      showNotice(action.status === 'Cancelled' ? 'Meeting cancelled.' : 'Meeting updated.');
       setAction(null);
       await load();
     } catch (problem) {
@@ -89,13 +95,20 @@ export function MeetingsView({
         <div>
           <Heading>Meetings</Heading>
           <p className="text-xs text-muted-foreground">
-            Open a task and choose Schedule meeting to arrange a visit or review.
+            {namespace === 'employee'
+              ? 'Scheduled visits and reviews for your projects.'
+              : 'Open a task and choose Schedule meeting to arrange a visit or review.'}
           </p>
         </div>
         <Button variant="outline" size="sm" onClick={load}>
           Refresh
         </Button>
       </div>
+      {notice && (
+        <p role="status" className="rounded-md bg-success-bg p-2 text-xs text-success">
+          {notice}
+        </p>
+      )}
       <label className="flex gap-2 text-sm">
         <input type="checkbox" checked={history} onChange={(e) => setHistory(e.target.checked)} />
         Include completed and cancelled meetings

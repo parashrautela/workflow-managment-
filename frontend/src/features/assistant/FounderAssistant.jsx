@@ -137,6 +137,62 @@ function Answer({ answer }) {
   );
 }
 
+// A thin rail beside a long conversation: one tick per question, the tick for the turn in view is dark,
+// hovering one previews the question and clicking it jumps there.
+function TurnRail({ messages, scrollRef }) {
+  const [active, setActive] = useState(0);
+  useEffect(() => {
+    const thread = scrollRef.current;
+    if (!thread) return undefined;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const turns = [...thread.querySelectorAll('.assistant-turn')];
+      const atEnd = thread.scrollTop + thread.clientHeight >= thread.scrollHeight - 4;
+      const line = thread.getBoundingClientRect().top + 48;
+      let current = 0;
+      turns.forEach((turn, index) => {
+        if (turn.getBoundingClientRect().top <= line) current = index;
+      });
+      setActive(atEnd ? turns.length - 1 : current);
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    thread.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      thread.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, [messages.length, scrollRef]);
+  const jump = (index) =>
+    scrollRef.current?.querySelectorAll('.assistant-turn')[index]?.scrollIntoView({
+      block: 'start',
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    });
+  return (
+    <nav className="assistant-rail" aria-label="Jump to a question">
+      {messages.map((item, index) => (
+        <button
+          key={item.id}
+          type="button"
+          className="assistant-rail-item"
+          aria-label={`Go to: ${item.question}`}
+          aria-current={index === active ? 'true' : undefined}
+          onClick={() => jump(index)}
+        >
+          <span className="assistant-rail-tick" />
+          <span className="assistant-rail-card" aria-hidden="true">
+            <span className="assistant-rail-question">{item.question}</span>
+            {item.at && <Time value={item.at} />}
+          </span>
+        </button>
+      ))}
+    </nav>
+  );
+}
+
 // One centred column inside the page sheet. Before the first question the page is the question box;
 // after it, the conversation reads top to bottom with the box docked underneath.
 export function FounderAssistant() {
@@ -268,6 +324,7 @@ export function FounderAssistant() {
         </section>
       ) : (
         <>
+          <div className={`assistant-thread-wrap${messages.length > 1 ? ' has-rail' : ''}`}>
           <div
             ref={scrollRef}
             className="assistant-thread chat-scroll"
@@ -288,6 +345,11 @@ export function FounderAssistant() {
                         {item.at && <Time value={item.at} />}
                       </p>
                       <Answer answer={item.answer} />
+                      {item.ai && (
+                        <p className="text-xs text-muted-foreground">
+                          Answered with AI from your saved project records.
+                        </p>
+                      )}
                     </div>
                   )}
                 </article>
@@ -306,6 +368,8 @@ export function FounderAssistant() {
                 </p>
               )}
             </div>
+          </div>
+          {messages.length > 1 && <TurnRail messages={messages} scrollRef={scrollRef} />}
           </div>
           <div className="assistant-dock safe-bottom">
             <div className="assistant-column">

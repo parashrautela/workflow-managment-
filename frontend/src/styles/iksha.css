@@ -1287,8 +1287,17 @@
   .iksha-timeline-heading {
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-8);
-    margin: var(--space-16) 0;
+    gap: var(--space-4);
+    margin: var(--space-8) 0;
+  }
+  .iksha-timeline-heading h2 {
+    font-size: var(--text-base);
+    line-height: 1.3;
+    margin: 0;
+  }
+  .iksha-timeline-heading p {
+    font-size: 11px;
+    line-height: 1.3;
   }
   .iksha-timeline-heading > span {
     display: none;
@@ -1296,19 +1305,42 @@
   .iksha-timeline-toolbar {
     flex-direction: column;
     align-items: stretch;
-    gap: var(--space-8);
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
   }
   .iksha-date-nav {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
     margin: 0;
+    gap: var(--space-4);
+  }
+  .iksha-date-nav strong {
+    font-size: 11px;
   }
   .iksha-year {
     display: none;
   }
   /* The primary action comes first and the rest wrap, so nothing sits off-screen. */
   .iksha-toolbar-chips {
+    display: flex;
+    align-items: center;
     flex-wrap: wrap;
-    padding-bottom: var(--space-4);
+    gap: var(--space-6);
+    padding-bottom: 0;
+  }
+  .iksha-toolbar-chips button {
+    height: 30px;
+    padding: 0 var(--space-8);
+    font-size: 11px;
+  }
+  .iksha-toolbar-chips [data-slot='segmented-control'] {
+    padding: 2px;
+  }
+  .iksha-toolbar-chips [data-slot='segmented-control-item'] {
+    min-height: 28px !important;
+    padding: 0 8px;
+    font-size: 11px;
   }
   .iksha-toolbar-chips > * {
     flex-shrink: 0;
@@ -1771,8 +1803,13 @@
   color: var(--foreground);
   font-weight: 500;
 }
-.iksha-help {
+/* A <details> toggle, so it drops the card every details gets in controls.css and looks like the outline buttons beside it. */
+details.iksha-help {
   position: relative;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
 }
 details.iksha-help > summary,
 details.iksha-help[open] > summary {
@@ -1785,7 +1822,8 @@ details.iksha-help[open] > summary {
   place-items: center;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--background);
+  background: var(--card);
+  box-shadow: var(--shadow-pill);
   color: var(--muted-foreground);
   cursor: pointer;
   list-style: none;
@@ -1795,7 +1833,8 @@ details.iksha-help > summary::after {
   content: none;
 }
 details.iksha-help > summary:hover {
-  background: var(--muted);
+  background: var(--accent);
+  color: var(--accent-foreground);
 }
 .iksha-help > summary::-webkit-details-marker {
   display: none;
@@ -1817,8 +1856,7 @@ details.iksha-help > summary:hover {
 }
 .iksha-help-body > * + * {
   margin-top: var(--space-8);
-}
-.iksha-plan-tools {
+}.iksha-plan-tools {
   display: grid;
   gap: var(--space-12);
   margin-top: var(--space-24);

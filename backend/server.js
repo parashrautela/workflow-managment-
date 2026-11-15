@@ -4,9 +4,13 @@ import { createCollaborationRoutes } from './collaboration.js';
 import { createMeetingRoutes, initializeMeetings } from './meetings.js';
 import { loginEmail, reserveGoogleAccess, migrateGoogleOnlyAccess } from './google-access.js';
 import { createGoogleAuthRoutes } from './google-auth.js';
+import { createMcpRoutes, founderTools } from './mcp.js';
+import { answerWithAi } from './founder-ai.js';
 import {createStageLinksRoutes} from './stage-links-routes.js';
 import { createStageOrderRoutes } from './stage-order-routes.js';
-import { createOperationsRoutes, workQueue, telegramConnected } from './operations.js';
+import { createOperationsRoutes, workQueue, telegramConnected, assistantStatusText, dayAt } from './operations.js';
+import { taskStatus } from '../frontend/src/lib/taskStatus.js';
+import { calendarDate } from '../frontend/src/features/timeline/lib/timeline.js';
 import { rolesOf, hasRole, matchesRole, roleText, isStaff } from './roles.js';
 import {reconcileGroupMigration} from './group-migration.js';
 import { closeProject } from './project-closure.js';
@@ -125,6 +129,7 @@ function clientProjectView(project) {
   return { name: project.name, clientName: project.clientName, phase: project.phase, status: project.status, recentTask: project.recentTask, nextMilestone: project.nextMilestone, blocker: project.blocker };
 }
 function founder(req) {
+  if (req.mcpFounder) return req.mcpFounder; // set only by mcp.js for an in-process replay after its token check
   const sid = cookieValue(req, 'iksha_founder');
   return state.founderSessions.find((item) => safeEqual(item.idHash, hash(sid)) && item.expiresAt > Date.now() && state.googleAccounts.some(account => account.id === item.googleAccountId && account.subject && account.kind === 'founder' && account.status === 'Approved'));
 }
@@ -168,10 +173,11 @@ async function answerProjectQuestion(project, question) {
 }
 
 function founderAssistantAnswer(question) {
-  if (/pending|my work|my task|ongoing|summari[sz]e|what.*doing/i.test(question)) {
+  const isProjectSummary = /summari[sz]e.*(project|all)|ongoing.*project|project.*summary/i.test(question);
+  if (!isProjectSummary && /pending|my work|my task|what.*doing/i.test(question)) {
     const q=question.toLowerCase(),person=state.employees.find(employee=>employee.name?.length>2 && q.includes(employee.name.toLowerCase())),project=state.projects.find(project=>q.includes(project.name.toLowerCase()));
     const items=workQueue(state,{personId:person?.id || (/my work|my task/i.test(question)?'founder':'all'),projectId:project?.id || ''});
-    return items.length ? items.slice(0,60).map(task=>`${task.projectName} — ${task.stageName} — ${task.title}\n${task.approval?'Approval pending':task.status}${task.overdue?' · Overdue':''}`).join('\n\n') : 'No pending work recorded.';
+    return items.length ? items.slice(0,60).map(task=>`${task.projectName} — ${task.stageName} — ${task.title}\n${assistantStatusText(task)}`).join('\n\n') : 'No pending work recorded.';
   }
   const q = question.toLowerCase();
   const named = state.projects.filter((project) => q.includes(project.name.toLowerCase()) || q.includes(project.clientName.toLowerCase()));
@@ -206,7 +212,18 @@ function founderAssistantAnswer(question) {
     }
     if (wantsMilestones) { lines.push(`- Next milestone: ${project.nextMilestone || 'Not recorded'}`, `- Current phase: ${project.phase || 'Not recorded'}`); continue; }
     if (wantsBlockers) { lines.push(`- Status: ${project.status || 'Setup'}`, `- Blocker: ${project.blocker || 'Marked at risk; details not recorded'}`); continue; }
-    lines.push(`- Client: ${project.clientName || 'Not recorded'}`, `- Status: ${project.status || 'Setup'} · ${project.phase || 'Phase not set'}`, `- Location: ${project.location || 'Not recorded'}`, `- Recent work: ${project.recentTask || 'Not recorded'}`, `- Next milestone: ${project.nextMilestone || 'Not recorded'}`, `- Blocker: ${project.blocker || 'None recorded'}`, `- Team: ${project.members?.length ? project.members.map((member) => member.name).join(', ') : 'No one assigned'}`);
+    const projectTasks = (state.tasks || []).filter((task) => task.projectId === project.id && !task.deletedAt);
+    const openTasks = projectTasks.filter((task) => !['Completed', 'completed', 'Done', 'done', 'Cancelled', 'cancelled'].includes(task.status));
+    const completedTasks = projectTasks.filter((task) => ['Completed', 'completed', 'Done', 'done'].includes(task.status));
+    const today = calendarDate(dayAt(new Date()));
+    const overdueCount = openTasks.filter((task) => {
+      const stage = project.stages?.find((s) => s.id === task.stageId);
+      return taskStatus(task, { stage, today }).overdue;
+    }).length;
+    const progressText = projectTasks.length
+      ? `${completedTasks.length}/${projectTasks.length} tasks completed${overdueCount ? ` · ${overdueCount} overdue` : ''}`
+      : 'No tasks recorded';
+    lines.push(`- Client: ${project.clientName || 'Not recorded'}`, `- Status: ${project.status || 'Setup'} · ${project.phase || 'Phase not set'}`, `- Progress: ${progressText}`, `- Location: ${project.location || 'Not recorded'}`, `- Recent work: ${project.recentTask || 'Not recorded'}`, `- Next milestone: ${project.nextMilestone || 'Not recorded'}`, `- Blocker: ${project.blocker || 'None recorded'}`, `- Team: ${project.members?.length ? project.members.map((member) => member.name).join(', ') : 'No one assigned'}`);
   }
   if (projects.length > 20) lines.push(`${projects.length - 20} more matching projects. Ask for a project by name.`);
   return lines.join('\n');
@@ -271,6 +288,7 @@ const stageLinksRoutes=createStageLinksRoutes({getState:()=>state,founder,body,j
 const stageOrderRoutes = createStageOrderRoutes({ getState: () => state, founder, body, json, save, audit, callBotBridge, checkpoint });
 const operationsRoutes = createOperationsRoutes({getState:()=>state,founder,employeeSession,body,json,save,audit,callBotBridge,integrationSecret,checkpoint});
 const googleAuthRoutes = createGoogleAuthRoutes({getState:()=>state,founder,body,json,save,audit,cookie,production});
+const mcpRoutes = createMcpRoutes({getState:()=>state,handleRequest,json,body});
 async function handleRequest(req, res) {
   let before = structuredClone(state);
   externalRollbackState = null;
@@ -280,6 +298,7 @@ async function handleRequest(req, res) {
     res.setHeader('referrer-policy', 'no-referrer');
     if (!['GET','HEAD'].includes(req.method) && url.pathname.startsWith('/api/') && !url.pathname.startsWith('/api/integrations/') && req.headers.origin && req.headers.origin !== (process.env.PUBLIC_URL?.replace(/\/$/, '') || `http://${req.headers.host}`)) return json(res,403,{error:'Origin is not allowed.'});
     if (await googleAuthRoutes(req,res,url)) return;
+    if (await mcpRoutes(req,res,url)) return;
     if (req.method === 'POST' && url.pathname === '/api/integrations/telegram/connect') {
       const supplied=(req.headers.authorization || '').replace(/^Bearer /i,'');
       if(!integrationSecret || !safeEqual(supplied,integrationSecret))return json(res,401,{error:'Integration authentication required.'});
@@ -626,8 +645,17 @@ async function handleRequest(req, res) {
       const input = await body(req); const question = String(input.question || '').trim();
       if (!question || question.length > 1000) return json(res, 400, { error: 'Enter a question under 1,000 characters.' });
       limit.count += 1; founderChatLimits.set(key, limit);
-      const answer = founderAssistantAnswer(question);
-      const message = { id: randomBytes(8).toString('hex'), question, answer, at: new Date().toISOString() };
+      // Opt-in: off unless the studio sets both. Any failure falls back to the rule-based answer.
+      let answer = '', ai = false;
+      if (process.env.FOUNDER_AI_ASSISTANT_ENABLED === 'true' && process.env.OPENAI_API_KEY) {
+        try {
+          answer = await answerWithAi({ question, history: state.founderChat.slice(-6), ...founderTools(handleRequest, req, founder(req)),
+            apiKey: process.env.OPENAI_API_KEY, model: process.env.OPENAI_MODEL || 'gpt-5-mini', baseUrl: process.env.OPENAI_BASE_URL || undefined });
+          ai = Boolean(answer);
+        } catch { answer = ''; }
+      }
+      if (!answer) answer = founderAssistantAnswer(question);
+      const message = { id: randomBytes(8).toString('hex'), question, answer, ...(ai && { ai: true }), at: new Date().toISOString() };
       state.founderChat.push(message); state.founderChat = state.founderChat.slice(-200); await save();
       return json(res, 200, { message });
     }
@@ -659,15 +687,56 @@ async function handleRequest(req, res) {
         return json(res, 201, { message });
       }
     }
+    if (req.method === 'GET' && url.pathname === '/api/founder/profile') {
+      const session = founder(req);
+      const account = session && state.googleAccounts.find((a) => a.id === session.googleAccountId);
+      return json(res, 200, {
+        founder: {
+          id: account?.id || 'founder',
+          name: account?.name || 'Founder',
+          email: account?.email || '',
+          role: 'Founder',
+        },
+      });
+    }
     if (req.method === 'GET' && url.pathname === '/api/founder/projects') return json(res, 200, { projects: state.projects.map(projectView) });
     if (req.method === 'GET' && url.pathname === '/api/founder/trash') return json(res, 200, { projects: state.trashedProjects.map(projectView) });
     const restoreMatch = url.pathname.match(/^\/api\/founder\/trash\/([^/]+)\/restore$/);
     if (req.method === 'POST' && restoreMatch) {
       const project = state.trashedProjects.find((item) => item.id === restoreMatch[1]);
       if (!project) return json(res, 404, { error: 'Project not found in Trash.' });
+      const input = await body(req).catch(() => ({}));
       state.trashedProjects = state.trashedProjects.filter((item) => item.id !== project.id);
-      delete project.trashedAt; state.projects.unshift(project);
-      audit('project_restored', project.id, { name: project.name }); await save();
+      delete project.trashedAt;
+      if (input.reopen) {
+        project.status = project.workflowStartedAt ? 'Active' : 'Setup';
+        delete project.closedAt;
+        delete project.completedAt;
+        for (const task of state.tasks) {
+          if (task.projectId === project.id && task.status === 'Cancelled') {
+            task.status = 'Open';
+          }
+        }
+      }
+      state.projects.unshift(project);
+      audit('project_restored', project.id, { name: project.name, reopened: Boolean(input.reopen) }); await save();
+      return json(res, 200, { project: projectView(project) });
+    }
+    const reopenMatch = url.pathname.match(/^\/api\/founder\/projects\/([^/]+)\/reopen$/);
+    if (req.method === 'POST' && reopenMatch) {
+      const project = state.projects.find((item) => item.id === reopenMatch[1]);
+      if (!project) return json(res, 404, { error: 'Project not found.' });
+      if (!['Completed', 'Abandoned'].includes(project.status)) return json(res, 400, { error: 'Only completed or abandoned projects can be reopened.' });
+      project.status = project.workflowStartedAt ? 'Active' : 'Setup';
+      delete project.closedAt;
+      delete project.completedAt;
+      delete project.closureAnnouncementStatus;
+      for (const task of state.tasks) {
+        if (task.projectId === project.id && task.status === 'Cancelled') {
+          task.status = 'Open';
+        }
+      }
+      audit('project_reopened', project.id, { name: project.name }); await save();
       return json(res, 200, { project: projectView(project) });
     }
     if (req.method === 'POST' && url.pathname === '/api/founder/projects') {
@@ -688,6 +757,8 @@ async function handleRequest(req, res) {
       try {
         const announcementStatus = await closeProject({ state, project, outcome: 'Completed', callBotBridge, save, audit });
         return json(res, 200, { project: projectView(project), announcementStatus });
+      } catch (err) {
+        return json(res, err.status || 502, { error: err.message || 'Could not close project. Telegram group could not be notified.' });
       } finally { closingProjects.delete(project.id); }
     }
     const trashMatch = url.pathname.match(/^\/api\/founder\/projects\/([^/]+)\/trash$/);
@@ -702,6 +773,8 @@ async function handleRequest(req, res) {
         project.trashedAt = new Date().toISOString(); state.trashedProjects.unshift(project);
         audit('project_moved_to_trash', project.id, { name: project.name }); await save();
         return json(res, 200, { ok: true, announcementStatus });
+      } catch (err) {
+        return json(res, err.status || 502, { error: err.message || 'Could not move project to trash. Telegram group could not be notified.' });
       } finally { closingProjects.delete(project.id); }
     }
     if (req.method === 'PATCH' && projectMatch) {

@@ -230,6 +230,8 @@ export function ProjectTimeline({
   const [editingTaskId, setEditingTaskId] = useState(null);
   const [renamingStageId, setRenamingStageId] = useState(null);
   const menuRef = useRef(null);
+  const helpRef = useRef(null);
+  const [helpOpen, setHelpOpen] = useState(false);
   const [search, setSearch] = useState('');
   const [selectedStageId, setSelectedStageId] = useState(null);
   const [drag, setDrag] = useState(null);
@@ -400,7 +402,7 @@ export function ProjectTimeline({
       setProposal(null);
       const pushed = result.affected.filter((item) => !item.moved).length;
       setNotice({
-        text: `${description} saved${telegramLinked ? ' to the Google Sheet' : ''}${pushed ? ` · ${pushed} dependent task${pushed === 1 ? '' : 's'} moved` : ''}.`,
+        text: `${description} saved${telegramLinked ? ' to the project plan' : ''}${pushed ? ` · ${pushed} dependent task${pushed === 1 ? '' : 's'} moved` : ''}.`,
         undo:
           result.dependencyChanges?.length || result.affected.length > 60
             ? null
@@ -419,7 +421,7 @@ export function ProjectTimeline({
     setNotice({ text: 'Undoing…' });
     try {
       await onScheduleApply(moves);
-      setNotice({ text: 'Change undone. The Google Sheet is back to the earlier dates.' });
+      setNotice({ text: 'Change undone. The earlier dates are back.' });
     } catch (error) {
       setNotice({ text: `Could not undo: ${error.message}` });
     }
@@ -638,6 +640,23 @@ export function ProjectTimeline({
       window.removeEventListener('scroll', close, true);
     };
   }, [menu]);
+  useEffect(() => {
+    if (!helpOpen) return undefined;
+    // Like the menu above: a press outside the help note or Escape closes it.
+    const close = (event) => {
+      if (
+        event.type === 'keydown' ? event.key !== 'Escape' : helpRef.current?.contains(event.target)
+      )
+        return;
+      helpRef.current.open = false;
+    };
+    window.addEventListener('pointerdown', close);
+    window.addEventListener('keydown', close);
+    return () => {
+      window.removeEventListener('pointerdown', close);
+      window.removeEventListener('keydown', close);
+    };
+  }, [helpOpen]);
 
   // Touch moves are handled on the document with a non-passive listener, so an active drag can stop the page from scrolling.
   useEffect(() => {
@@ -792,16 +811,24 @@ export function ProjectTimeline({
           >
             {allGroups.some((stage) => collapsed.has(stage.id)) ? 'Expand all' : 'Collapse all'}
           </Button>
-          <details className="iksha-help">
-            <summary aria-label="How to use the timeline" title="How to use the timeline">
-              <CircleHelp size={16} />
+          <details
+            className="iksha-help"
+            ref={helpRef}
+            onToggle={(event) => setHelpOpen(event.currentTarget.open)}
+          >
+            {/* The same button closes the note: it turns into a cross while the note is open. */}
+            <summary
+              aria-label={helpOpen ? 'Close help' : 'How to use the timeline'}
+              title={helpOpen ? 'Close help' : 'How to use the timeline'}
+            >
+              {helpOpen ? <X size={16} /> : <CircleHelp size={16} />}
             </summary>
             <div className="iksha-help-body" role="note">
               {editable ? (
                 <>
                   <p className="iksha-only-fine">
                     Drag a stage bar to move the whole stage. Drag a task to move it. Pull its right
-                    edge to change its length. Click a task or work type for edit and add options.
+                    edge to change its length. Click a task or stage for edit and add options.
                   </p>
                   <p className="iksha-only-coarse">
                     Press and hold a task to pick it up, then drag. Hold its right edge to change
@@ -810,7 +837,7 @@ export function ProjectTimeline({
                   <p>Hold a stage grip to reorder it. You confirm every change.</p>
                 </>
               ) : (
-                <p>Tap a stage for its breakdown. Tap a work item for its discussion.</p>
+                <p>Tap a stage for its breakdown. Tap a task for its discussion.</p>
               )}
             </div>
           </details>
@@ -821,7 +848,7 @@ export function ProjectTimeline({
         <span className="sr-only">Search timeline tasks</span>
         <Input
           type="search"
-          placeholder="Find a work item or person…"
+          placeholder="Find a task or person…"
           value={search}
           onChange={(event) => setSearch(event.target.value)}
         />
@@ -867,7 +894,7 @@ export function ProjectTimeline({
         ) : (
           <Empty
             icon={Layers}
-            title="No work items yet"
+            title="No tasks yet"
             description={
               editable
                 ? 'Link this project to its Telegram group to plan its stages here.'
@@ -881,7 +908,7 @@ export function ProjectTimeline({
           style={gridStyle}
         >
           <div className="iksha-schedule-headbar">
-            <div className="iksha-schedule-label">Stage / work item</div>
+            <div className="iksha-schedule-label">Stage / task</div>
             <div className="iksha-headbar-viewport">
               <div className="iksha-schedule-dates" ref={datesRef}>
                 {todayInView && (
@@ -1286,7 +1313,7 @@ export function ProjectTimeline({
                 );
               })}
               {!visible.length && (
-                <p className="iksha-empty-search">No work items match your search.</p>
+                <p className="iksha-empty-search">No tasks match your search.</p>
               )}
             </div>
           </div>
@@ -1398,7 +1425,7 @@ export function ProjectTimeline({
             <DialogDescription>
               Nothing changes until you confirm.
               {telegramLinked
-                ? ' Confirmed changes are written to the Google Sheet, so Telegram and the web app stay in step.'
+                ? ' Confirmed changes are saved to the project plan and sent to Telegram.'
                 : ' Preview the dates and connections before saving.'}
             </DialogDescription>
           </DialogHeader>
@@ -1550,7 +1577,7 @@ export function ProjectTimeline({
                     setMenu(null);
                   }}
                 >
-                  Edit work item
+                  Edit task
                 </button>
               )}
               <button
@@ -1597,7 +1624,7 @@ export function ProjectTimeline({
                   setMenu(null);
                 }}
               >
-                Edit work type name
+                Rename stage
               </button>
               <button
                 role="menuitem"
@@ -1615,7 +1642,7 @@ export function ProjectTimeline({
                   setMenu(null);
                 }}
               >
-                View work type details
+                View stage details
               </button>
               <button
                 role="menuitem"
@@ -1637,7 +1664,7 @@ export function ProjectTimeline({
             }}
           >
             <Plus size={14} />
-            Add a work type after this one
+            Add a stage after this one
           </button>
           <button
             role="menuitem"
@@ -1647,7 +1674,7 @@ export function ProjectTimeline({
             }}
           >
             <Layers size={14} />
-            Add a parallel work type
+            Add a parallel stage
           </button>
         </div>
       )}

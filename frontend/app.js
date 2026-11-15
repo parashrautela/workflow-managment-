@@ -22836,7 +22836,7 @@ var ApiError = class extends Error {
 /**
 * Core HTTP fetch wrapper with same-origin credentials and JSON payload support
 */
-async function request(url, options = {}) {
+async function request$1(url, options = {}) {
 	const method = options.method || "GET";
 	const headers = {
 		Accept: "application/json",
@@ -22874,21 +22874,21 @@ async function request(url, options = {}) {
 	}
 	return data;
 }
-var get$2 = (url, options = {}) => request(url, {
+var get$2 = (url, options = {}) => request$1(url, {
 	method: "GET",
 	...options
 });
-var post$2 = (url, body, options = {}) => request(url, {
+var post$2 = (url, body, options = {}) => request$1(url, {
 	method: "POST",
 	body,
 	...options
 });
-var patch$1 = (url, body, options = {}) => request(url, {
+var patch$1 = (url, body, options = {}) => request$1(url, {
 	method: "PATCH",
 	body,
 	...options
 });
-var del = (url, options = {}) => request(url, {
+var del = (url, options = {}) => request$1(url, {
 	method: "DELETE",
 	...options
 });
@@ -23110,7 +23110,7 @@ async function removeProjectMember(projectId, memberId) {
 */
 /** Edit an employee's profile (PATCH /api/founder/employees/:id). */
 async function updateEmployee(employeeId, fields) {
-	return await request(`/api/founder/employees/${employeeId}`, {
+	return await request$1(`/api/founder/employees/${employeeId}`, {
 		method: "PATCH",
 		body: fields
 	});
@@ -23257,7 +23257,7 @@ function MeetingEditor({ open, onOpenChange, task, meeting, onSaved }) {
 			previousEvening: meeting?.previousEvening ?? true,
 			groupFallback: meeting?.groupFallback ?? false
 		});
-		request(`/api/founder/tasks/${task.id}/participants`).then((data) => {
+		request$1(`/api/founder/tasks/${task.id}/participants`).then((data) => {
 			if (active) setPeople(data.people);
 		}).catch((problem) => {
 			if (active) setError(problem.message);
@@ -23279,7 +23279,7 @@ function MeetingEditor({ open, onOpenChange, task, meeting, onSaved }) {
 		setBusy(true);
 		setError("");
 		try {
-			await request(meeting ? `/api/founder/meetings/${meeting.id}` : `/api/founder/tasks/${task.id}/meeting`, {
+			await request$1(meeting ? `/api/founder/meetings/${meeting.id}` : `/api/founder/tasks/${task.id}/meeting`, {
 				method: meeting ? "PATCH" : "POST",
 				body: {
 					...form,
@@ -23673,7 +23673,7 @@ function ProjectFiles({ projectId, namespace = "founder" }) {
 		const current = ++requestId.current;
 		if (!background) setLoading(true);
 		try {
-			const data = await request("/api/" + namespace + "/projects/" + projectId + "/files", { signal });
+			const data = await request$1("/api/" + namespace + "/projects/" + projectId + "/files", { signal });
 			if (current !== requestId.current || signal?.aborted) return;
 			setFiles(data.files || []);
 			setError("");
@@ -24036,7 +24036,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 			setMessages((previous) => append ? [...previous, ...data.messages] : data.messages);
 			setCursor(data.pagination?.nextCursor || null);
 			if (data.messages.length) await markTaskRead(taskId, data.messages.at(-1).id, namespace);
-			const reference = await request(`/api/${namespace}/tasks/${taskId}/resources`);
+			const reference = await request$1(`/api/${namespace}/tasks/${taskId}/resources`);
 			if (current === version.current) setResources(reference.resources);
 		} catch (problem) {
 			if (current === version.current) setError(problem.message);
@@ -24062,7 +24062,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 		setRecipients([]);
 		setMeetingOpen(false);
 		setTaskMeeting(null);
-		request(`/api/${namespace}/meetings?projectId=${encodeURIComponent(initialTask.projectId)}`).then((data) => {
+		request$1(`/api/${namespace}/meetings?projectId=${encodeURIComponent(initialTask.projectId)}`).then((data) => {
 			if (current === version.current) setTaskMeeting(data.meetings.find((row) => row.taskId === initialTask.id && row.status === "Scheduled") || null);
 		}).catch(() => {});
 		setRemove(false);
@@ -24071,7 +24071,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 		key.current = crypto.randomUUID();
 		load(initialTask.id);
 		const current = version.current;
-		request(`/api/${namespace}/tasks/${initialTask.id}/participants`).then((data) => {
+		request$1(`/api/${namespace}/tasks/${initialTask.id}/participants`).then((data) => {
 			if (current === version.current) setPeople(data.people);
 		}).catch((problem) => {
 			if (current === version.current) setError(problem.message);
@@ -24082,6 +24082,33 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 	}, [
 		open,
 		initialTask?.id,
+		namespace
+	]);
+	(0, import_react.useEffect)(() => {
+		if (!open || !task?.id) return;
+		const silentRefresh = async () => {
+			if (document.visibilityState === "hidden") return;
+			try {
+				const data = await fetchTaskMessages(task.id, "", 100, namespace);
+				setMessages(data.messages || []);
+				setCursor(data.pagination?.nextCursor || null);
+				if (data.messages?.length) markTaskRead(task.id, data.messages.at(-1).id, namespace).catch(() => {});
+				const ref = await request$1(`/api/${namespace}/tasks/${task.id}/resources`);
+				if (ref?.resources) setResources(ref.resources);
+			} catch {}
+		};
+		const interval = setInterval(silentRefresh, 6e3);
+		const onVisibility = () => {
+			if (document.visibilityState === "visible") silentRefresh();
+		};
+		document.addEventListener("visibilitychange", onVisibility);
+		return () => {
+			clearInterval(interval);
+			document.removeEventListener("visibilitychange", onVisibility);
+		};
+	}, [
+		open,
+		task?.id,
 		namespace
 	]);
 	if (!task) return null;
@@ -24099,7 +24126,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 				reader.onerror = reject;
 				reader.readAsDataURL(selected);
 			});
-			const result = await request(`/api/${namespace}/tasks/${task.id}/files`, {
+			const result = await request$1(`/api/${namespace}/tasks/${task.id}/files`, {
 				method: "POST",
 				body: {
 					name: selected.name,
@@ -24122,7 +24149,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 		try {
 			let message = shareMessage;
 			if (!message) {
-				message = (await request(`/api/${namespace}/tasks/${task.id}/messages`, {
+				message = (await request$1(`/api/${namespace}/tasks/${task.id}/messages`, {
 					method: "POST",
 					body: {
 						text: draft,
@@ -24135,7 +24162,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 				posted = true;
 				setMessages((previous) => [...previous.filter((row) => row.id !== message.id), message]);
 			}
-			if (publish) message = (await request(`/api/founder/tasks/${task.id}/messages/${message.id}/publish`, {
+			if (publish) message = (await request$1(`/api/founder/tasks/${task.id}/messages/${message.id}/publish`, {
 				method: "POST",
 				body: {
 					confirm: true,
@@ -24159,6 +24186,11 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 			setBusy(false);
 		}
 	};
+	const [notice, setNotice] = (0, import_react.useState)("");
+	const showNotice = (msg) => {
+		setNotice(msg);
+		setTimeout(() => setNotice(""), 3500);
+	};
 	const changeTask = async (updates) => {
 		setBusy(true);
 		setError("");
@@ -24166,6 +24198,9 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 			const result = await updateTask(task.id, updates, "founder");
 			setTask(result.task);
 			setEditing(false);
+			if (updates.status === "Completed") showNotice("Task marked done.");
+			else if (updates.status === "Open") showNotice("Task reopened.");
+			else showNotice("Task updated.");
 			onTaskUpdated?.();
 		} catch (problem) {
 			setError(problem.message);
@@ -24341,6 +24376,11 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 								]
 							})
 						]
+					}),
+					notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						role: "status",
+						className: "mx-4 mt-2 rounded-md bg-success-bg p-2 text-xs text-success",
+						children: notice
 					}),
 					editing && isFounder ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 						className: "task-thread-edit",
@@ -24780,7 +24820,8 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 			task,
 			meeting: taskMeeting,
 			onSaved: () => {
-				request(`/api/${namespace}/meetings?projectId=${encodeURIComponent(task.projectId)}`).then((data) => setTaskMeeting(data.meetings.find((row) => row.taskId === task.id && row.status === "Scheduled") || null)).catch(() => {});
+				showNotice(taskMeeting ? "Meeting updated." : "Meeting scheduled.");
+				request$1(`/api/${namespace}/meetings?projectId=${encodeURIComponent(task.projectId)}`).then((data) => setTaskMeeting(data.meetings.find((row) => row.taskId === task.id && row.status === "Scheduled") || null)).catch(() => {});
 				onTaskUpdated?.();
 			}
 		}),
@@ -24982,10 +25023,14 @@ function useNavigation() {
 var when = (value) => `${formatDateTime(value, { timeZone: STUDIO_TIME_ZONE })} IST`;
 function MeetingsView({ namespace = "founder", projectId = "", onOpenTask, embedded = false }) {
 	const Heading = embedded ? "h2" : "h1";
-	const [meetings, setMeetings] = (0, import_react.useState)([]), [error, setError] = (0, import_react.useState)(""), [edit, setEdit] = (0, import_react.useState)(null), [action, setAction] = (0, import_react.useState)(null), [history, setHistory] = (0, import_react.useState)(false), [busy, setBusy] = (0, import_react.useState)(false), [selectedTask, setSelectedTask] = (0, import_react.useState)(null);
+	const [meetings, setMeetings] = (0, import_react.useState)([]), [error, setError] = (0, import_react.useState)(""), [notice, setNotice] = (0, import_react.useState)(""), [edit, setEdit] = (0, import_react.useState)(null), [action, setAction] = (0, import_react.useState)(null), [history, setHistory] = (0, import_react.useState)(false), [busy, setBusy] = (0, import_react.useState)(false), [selectedTask, setSelectedTask] = (0, import_react.useState)(null);
+	const showNotice = (msg) => {
+		setNotice(msg);
+		setTimeout(() => setNotice(""), 3500);
+	};
 	const load = async () => {
 		try {
-			const data = await request(`/api/${namespace}/meetings${projectId ? "?projectId=" + encodeURIComponent(projectId) : ""}`);
+			const data = await request$1(`/api/${namespace}/meetings${projectId ? "?projectId=" + encodeURIComponent(projectId) : ""}`);
 			setMeetings(data.meetings);
 			setError("");
 		} catch (problem) {
@@ -25007,13 +25052,14 @@ function MeetingsView({ namespace = "founder", projectId = "", onOpenTask, embed
 	const update = async () => {
 		setBusy(true);
 		try {
-			await request(`/api/founder/meetings/${action.meeting.id}`, {
+			await request$1(`/api/founder/meetings/${action.meeting.id}`, {
 				method: "PATCH",
 				body: {
 					revision: action.meeting.revision,
 					status: action.status
 				}
 			});
+			showNotice(action.status === "Cancelled" ? "Meeting cancelled." : "Meeting updated.");
 			setAction(null);
 			await load();
 		} catch (problem) {
@@ -25028,7 +25074,7 @@ function MeetingsView({ namespace = "founder", projectId = "", onOpenTask, embed
 			return;
 		}
 		try {
-			const workspace = await request(`/api/${namespace}/projects/${meeting.projectId}/workspace`);
+			const workspace = await request$1(`/api/${namespace}/projects/${meeting.projectId}/workspace`);
 			const task = workspace.tasks.find((row) => row.id === meeting.taskId);
 			if (!task) throw Error("Task is no longer available.");
 			setSelectedTask({
@@ -25047,13 +25093,18 @@ function MeetingsView({ namespace = "founder", projectId = "", onOpenTask, embed
 				className: "flex flex-wrap items-center justify-between gap-3",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Heading, { children: "Meetings" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "text-xs text-muted-foreground",
-					children: "Open a task and choose Schedule meeting to arrange a visit or review."
+					children: namespace === "employee" ? "Scheduled visits and reviews for your projects." : "Open a task and choose Schedule meeting to arrange a visit or review."
 				})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 					variant: "outline",
 					size: "sm",
 					onClick: load,
 					children: "Refresh"
 				})]
+			}),
+			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "status",
+				className: "rounded-md bg-success-bg p-2 text-xs text-success",
+				children: notice
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 				className: "flex gap-2 text-sm",
@@ -25342,9 +25393,54 @@ function insertMention(text, mention, name) {
 		cursor: mention.start + label.length
 	};
 }
+function mentionsUser(text, userName) {
+	if (!text || !userName) return false;
+	const name = userName.trim();
+	if (!name) return false;
+	const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+	return new RegExp(`@${escaped}(?=[\\s.,!?]|$)`, "iu").test(text);
+}
+function formatMessageMentions(text, memberNames = []) {
+	if (!text) return [];
+	const validNames = memberNames.map((name) => name?.trim()).filter(Boolean).sort((a, b) => b.length - a.length);
+	if (!validNames.length) return [{
+		text,
+		isMention: false
+	}];
+	const pattern = validNames.map((n) => n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
+	const regex = new RegExp(`(@(?:${pattern}))(?=[\\s.,!?]|$)`, "gu");
+	const parts = [];
+	let lastIndex = 0;
+	let match;
+	while ((match = regex.exec(text)) !== null) {
+		if (match.index > lastIndex) parts.push({
+			text: text.slice(lastIndex, match.index),
+			isMention: false
+		});
+		parts.push({
+			text: match[1],
+			isMention: true
+		});
+		lastIndex = regex.lastIndex;
+	}
+	if (lastIndex < text.length) parts.push({
+		text: text.slice(lastIndex),
+		isMention: false
+	});
+	return parts;
+}
+// frontend/src/components/ui/skeleton.jsx
+function Skeleton({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "skeleton",
+		className: cn$1("animate-pulse rounded-md bg-accent", className),
+		...props
+	});
+}
 // frontend/src/features/collaboration/TeamChat.jsx
 function TeamChat({ endpoint, currentActor, members = [] }) {
 	const [messages, setMessages] = (0, import_react.useState)([]);
+	const [loaded, setLoaded] = (0, import_react.useState)(false);
 	const [draft, setDraft] = (0, import_react.useState)("");
 	const [sending, setSending] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
@@ -25355,6 +25451,9 @@ function TeamChat({ endpoint, currentActor, members = [] }) {
 	const [mention, setMention] = (0, import_react.useState)(null);
 	const [activeOption, setActiveOption] = (0, import_react.useState)(0);
 	const team = projectChatMembers(members);
+	const memberNames = team.map((m) => m.name);
+	const currentMember = team.find((m) => m.employeeId === currentActor);
+	const currentUserName = currentMember ? currentMember.name : currentActor === "founder" ? "Founder" : "";
 	const candidates = mention ? mentionCandidates(team, mention.query) : [];
 	const optionIndex = Math.min(activeOption, Math.max(0, candidates.length - 1));
 	(0, import_react.useEffect)(() => {
@@ -25393,15 +25492,15 @@ function TeamChat({ endpoint, currentActor, members = [] }) {
 	};
 	(0, import_react.useEffect)(() => {
 		let active = true;
-		setMessages([]);
+		setLoaded(false);
 		const refresh = async () => {
-			if (document.visibilityState === "hidden") return;
 			try {
 				const response = await fetch(endpoint, { credentials: "same-origin" });
 				const data = await response.json();
 				if (!response.ok) throw new Error(data.error || "Could not load team chat.");
 				if (active) {
 					setMessages(data.messages || []);
+					setLoaded(true);
 					setError("");
 				}
 			} catch (problem) {
@@ -25409,10 +25508,17 @@ function TeamChat({ endpoint, currentActor, members = [] }) {
 			}
 		};
 		refresh();
-		const timer = setInterval(refresh, 6e3);
+		const timer = setInterval(() => {
+			if (document.visibilityState === "visible") refresh();
+		}, 6e3);
+		const onVisibility = () => {
+			if (document.visibilityState === "visible") refresh();
+		};
+		document.addEventListener("visibilitychange", onVisibility);
 		return () => {
 			active = false;
 			clearInterval(timer);
+			document.removeEventListener("visibilitychange", onVisibility);
 		};
 	}, [endpoint]);
 	(0, import_react.useEffect)(() => {
@@ -25492,8 +25598,26 @@ function TeamChat({ endpoint, currentActor, members = [] }) {
 				className: "chat-scroll min-h-64 max-h-[50dvh] flex-1 space-y-4 overflow-y-auto px-4 py-4",
 				"aria-label": "Project team messages",
 				"aria-live": "polite",
-				children: messages.length ? messages.map((item) => {
+				children: !loaded ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "space-y-4 py-2",
+					"aria-label": "Loading messages",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-start gap-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "size-8 rounded-full" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "space-y-2",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-3 w-24" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-10 w-48 rounded-xl" })]
+						})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex flex-row-reverse items-start gap-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "size-8 rounded-full" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex flex-col items-end space-y-2",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-3 w-20" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-12 w-56 rounded-xl" })]
+						})]
+					})]
+				}) : messages.length ? messages.map((item) => {
 					const own = item.senderId === currentActor;
+					const mentioned = !own && mentionsUser(item.text, currentUserName);
+					const tokens = formatMessageMentions(item.text, memberNames);
 					return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Message, {
 						align: own ? "end" : "start",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageAvatar, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$1, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
@@ -25502,18 +25626,26 @@ function TeamChat({ endpoint, currentActor, members = [] }) {
 						}) }) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageContent, {
 							className: "max-w-[88%] sm:max-w-[75%]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(MessageHeader, {
-								className: own ? "justify-end" : "",
-								children: [
+								className: own ? "justify-end" : "flex flex-wrap items-center gap-1.5",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
 									own ? "You" : item.senderName,
 									" · ",
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Time, { value: item.at })
-								]
+								] }), mentioned && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+									variant: "outline",
+									className: "border-primary/40 bg-primary/10 px-1.5 py-0 text-[10px] font-medium text-primary",
+									children: "Mentioned you"
+								})]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
 								align: own ? "end" : "start",
 								variant: own ? void 0 : "secondary",
+								className: mentioned ? "ring-2 ring-primary/40" : void 0,
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, {
 									className: "whitespace-pre-wrap",
-									children: item.text
+									children: tokens.map((token, index) => token.isMention ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "rounded bg-primary/15 px-1 py-0.5 font-medium text-primary",
+										children: token.text
+									}, index) : token.text)
 								})
 							})]
 						})]
@@ -25728,15 +25860,15 @@ function PersonalReminders({ connections, onChanged }) {
 		}
 	};
 	const showLink = () => run(async () => {
-		const data = await request("/api/founder/personal-connection");
+		const data = await request$1("/api/founder/personal-connection");
 		setLink(data.link);
 	});
 	const showPreview = (employeeId) => run(async () => {
 		setPreview(null);
-		setPreview(await request(`/api/founder/personal-reminder?employeeId=${encodeURIComponent(employeeId)}`));
+		setPreview(await request$1(`/api/founder/personal-reminder?employeeId=${encodeURIComponent(employeeId)}`));
 	});
 	const send = () => run(async () => {
-		const data = await request("/api/founder/personal-reminder", {
+		const data = await request$1("/api/founder/personal-reminder", {
 			method: "POST",
 			body: {
 				employeeId: preview.employeeId,
@@ -26016,7 +26148,7 @@ function SegmentedControl({ label, value, onValueChange, options, className }) {
 var STATUS_FILTERS = [
 	{
 		value: "pending",
-		label: "All"
+		label: "Now"
 	},
 	{
 		value: "approvals",
@@ -26033,14 +26165,20 @@ var STATUS_FILTERS = [
 	{
 		value: "in-progress",
 		label: "In progress"
+	},
+	{
+		value: "upcoming",
+		label: "Upcoming"
 	}
 ];
 var statusOf = (task) => taskStatus(task, { stage: task.project?.stages?.find((stage) => stage.id === task.stageId) });
 var matchesStatusFilter = (status, filter) => ({
+	pending: status.key !== "upcoming",
 	approvals: status.key === "waiting",
 	overdue: status.overdue,
 	blocked: status.key === "blocked",
-	"in-progress": matchesTaskStatus(status, "active")
+	"in-progress": matchesTaskStatus(status, "active"),
+	upcoming: status.key === "upcoming"
 })[filter] ?? true;
 function WorkQueue({ projects = [], isFounder = true, initialPersonId = "founder", personName = "Me", onChanged }) {
 	const [person, setPerson] = (0, import_react.useState)(initialPersonId), [projectId, setProjectId] = (0, import_react.useState)(""), [status, setStatus] = (0, import_react.useState)("pending");
@@ -26056,7 +26194,7 @@ function WorkQueue({ projects = [], isFounder = true, initialPersonId = "founder
 	}
 	const load = async () => {
 		try {
-			const data = await request(`/api/${namespace}/work-queue?personId=${encodeURIComponent(person)}&projectId=${encodeURIComponent(projectId)}&status=pending`);
+			const data = await request$1(`/api/${namespace}/work-queue?personId=${encodeURIComponent(person)}&projectId=${encodeURIComponent(projectId)}&status=all`);
 			setTasks(data.tasks);
 			setConnected(Boolean(data.telegramConnected));
 			setSyncWarning(data.syncWarning || "");
@@ -26082,7 +26220,7 @@ function WorkQueue({ projects = [], isFounder = true, initialPersonId = "founder
 	]);
 	const connect = async () => {
 		try {
-			const data = await request(`/api/${namespace}/personal-connection`);
+			const data = await request$1(`/api/${namespace}/personal-connection`);
 			setLink(data.link);
 		} catch (problem) {
 			setError(problem.message);
@@ -26209,13 +26347,13 @@ function WorkQueue({ projects = [], isFounder = true, initialPersonId = "founder
 							className: "work-queue-card",
 							children: rows.map((task) => {
 								const taskState = statusOf(task);
-								return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+								return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 									className: "work-queue-item flex w-full items-center justify-between gap-3 text-left hover:bg-accent",
 									onClick: () => navigate({
 										section: "actions",
 										taskId: task.id
 									}),
-									children: isFounder ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 										className: "work-queue-item-content",
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 											className: "work-queue-item-title",
@@ -26234,38 +26372,26 @@ function WorkQueue({ projects = [], isFounder = true, initialPersonId = "founder
 											value: task.deadline,
 											format: "calendar"
 										})] })]
-									})] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-										className: "text-sm font-medium",
-										children: [
-											task.stageName,
-											" — ",
-											task.title
-										]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-										className: "mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground",
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(StatusChip, {
-												status: taskState,
-												action: taskState.key === "waiting"
-											}),
-											task.deadline ? ` · Due ${formatCalendar(task.deadline)}` : "",
-											task.spaces?.length ? ` · ${task.spaces.join(", ")}` : ""
-										]
-									})] })
+									})]
 								}, task.id);
 							})
 						})]
 					}, projectName)), !visibleTasks.length && !error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
 						kind: tasks.length ? "no-results" : "first-use",
 						icon: CircleCheck,
-						title: tasks.length ? "No work matches these filters" : "No pending work",
-						description: tasks.length ? "Try another status, or clear the filter." : "Work that needs action appears here.",
-						action: tasks.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						title: !tasks.length ? "No pending work" : status === "pending" ? "Nothing needs action right now" : "No work matches these filters",
+						description: !tasks.length ? "Work that needs action appears here." : status === "pending" ? "Everything left is upcoming work that has not started yet." : "Try another status, or clear the filter.",
+						action: !tasks.length ? null : status === "pending" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							size: "sm",
+							onClick: () => setStatus("upcoming"),
+							children: "Show upcoming work"
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 							variant: "outline",
 							size: "sm",
 							onClick: () => setStatus("pending"),
-							children: "Show all pending work"
-						}) : null
+							children: "Show work for now"
+						})
 					})]
 				}, status), groups.size > 1 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
 					className: "work-queue-rail",
@@ -26334,7 +26460,7 @@ function SupervisorTools({ employees, projects, onChanged }) {
 		setBusy(true);
 		setError("");
 		try {
-			const result = await request(`/api/founder/supervisor-replacement/${apply ? "apply" : "preview"}`, {
+			const result = await request$1(`/api/founder/supervisor-replacement/${apply ? "apply" : "preview"}`, {
 				method: "POST",
 				body: {
 					...form,
@@ -26354,7 +26480,7 @@ function SupervisorTools({ employees, projects, onChanged }) {
 	};
 	const loadSettings = async () => {
 		try {
-			const data = await request("/api/founder/operations-settings");
+			const data = await request$1("/api/founder/operations-settings");
 			setSettings(data.digest);
 			setDeliveries(data.deliveries || []);
 			setConnections(data.connections || []);
@@ -26365,7 +26491,7 @@ function SupervisorTools({ employees, projects, onChanged }) {
 	const saveSettings = async () => {
 		setBusy(true);
 		try {
-			await request("/api/founder/operations-settings", {
+			await request$1("/api/founder/operations-settings", {
 				method: "POST",
 				body: settings
 			});
@@ -26599,14 +26725,14 @@ function GoogleSignIn({ mode = "login", onComplete }) {
 	(0, import_react.useEffect)(() => {
 		let cancelled = false;
 		(async () => {
-			const config = await request("/api/auth/google/config");
+			const config = await request$1("/api/auth/google/config");
 			if (cancelled) return;
 			if (!config.enabled) {
 				setError("Google sign-in is not configured. Contact a founder.");
 				return;
 			}
 			setEnabled(true);
-			const [google, challenge] = await Promise.all([loadGoogle(), request("/api/auth/google/challenge", {
+			const [google, challenge] = await Promise.all([loadGoogle(), request$1("/api/auth/google/challenge", {
 				method: "POST",
 				body: { mode }
 			})]);
@@ -26621,7 +26747,7 @@ function GoogleSignIn({ mode = "login", onComplete }) {
 					setBusy(true);
 					setError("");
 					try {
-						const result = await request("/api/auth/google/sign-in", {
+						const result = await request$1("/api/auth/google/sign-in", {
 							method: "POST",
 							body: {
 								credential: response.credential,
@@ -26921,14 +27047,6 @@ function Separator({ className, orientation = "horizontal", decorative = true, .
 		decorative,
 		orientation,
 		className: cn$1("shrink-0 bg-border data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px", className),
-		...props
-	});
-}
-// frontend/src/components/ui/skeleton.jsx
-function Skeleton({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "skeleton",
-		className: cn$1("animate-pulse rounded-md bg-accent", className),
 		...props
 	});
 }
@@ -29745,7 +29863,7 @@ function GoogleAccessRequests({ employees, projects, onChanged }) {
 	const [accounts, setAccounts] = (0, import_react.useState)([]), [currentId, setCurrentId] = (0, import_react.useState)(""), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [confirm, setConfirm] = (0, import_react.useState)(null);
 	const load = async () => {
 		try {
-			const data = await request("/api/founder/google/accounts");
+			const data = await request$1("/api/founder/google/accounts");
 			setAccounts(data.accounts);
 			setCurrentId(data.currentAccountId);
 			setError("");
@@ -29776,7 +29894,7 @@ function GoogleAccessRequests({ employees, projects, onChanged }) {
 		setBusy(true);
 		setError("");
 		try {
-			const result = await request(confirm.action === "invite" ? "/api/founder/google/founders" : `/api/founder/google/accounts/${confirm.account.id}/founder`, {
+			const result = await request$1(confirm.action === "invite" ? "/api/founder/google/founders" : `/api/founder/google/accounts/${confirm.account.id}/founder`, {
 				method: "POST",
 				body: confirm.action === "invite" ? {
 					name: confirm.name,
@@ -30003,7 +30121,7 @@ function AccessRequest({ account, employees, projects, onChanged, onFounder }) {
 		setBusy(true);
 		setError("");
 		try {
-			await request(`/api/founder/google/accounts/${account.id}/decision`, {
+			await request$1(`/api/founder/google/accounts/${account.id}/decision`, {
 				method: "POST",
 				body: {
 					status,
@@ -30260,8 +30378,12 @@ function EditEmployeeDialog({ employee, onOpenChange, onUpdated }) {
 		})] })
 	});
 }
-function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpdated, label = "Add employee" }) {
-	const [projectId, setProjectId] = (0, import_react.useState)(""), [access, setAccess] = (0, import_react.useState)(null), [busy, setBusy] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)(""), [copied, setCopied] = (0, import_react.useState)(false);
+function EmployeeDialog({ open, onOpenChange, projects, employees = [], defaultProjectId, onUpdated, label = "Add employee" }) {
+	const [projectId, setProjectId] = (0, import_react.useState)(""), [access, setAccess] = (0, import_react.useState)(null), [busy, setBusy] = (0, import_react.useState)(false), [error, setError] = (0, import_react.useState)(""), [copied, setCopied] = (0, import_react.useState)(false), [employeeList, setEmployeeList] = (0, import_react.useState)(employees);
+	(0, import_react.useEffect)(() => {
+		if (employees?.length) setEmployeeList(employees);
+		else if (open) request$1("/api/founder/employees").then((data) => setEmployeeList(data.employees || [])).catch(() => {});
+	}, [open, employees]);
 	(0, import_react.useEffect)(() => {
 		if (open) {
 			setProjectId(defaultProjectId || projects[0]?.id || "");
@@ -30276,7 +30398,7 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 		setError("");
 		const data = Object.fromEntries(new FormData(event.currentTarget));
 		try {
-			const result = await request(existing ? `/api/founder/projects/${projectId}/employees` : "/api/founder/employees", {
+			const result = await request$1(existing ? `/api/founder/projects/${projectId}/employees` : "/api/founder/employees", {
 				method: "POST",
 				body: existing ? data : {
 					...data,
@@ -30292,6 +30414,9 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 			setBusy(false);
 		}
 	};
+	const selectedProj = projects.find((p) => p.id === projectId);
+	const assignedIds = new Set((selectedProj?.members || []).map((m) => m.employeeId));
+	const availableEmployees = employeeList.filter((emp) => emp.active !== false && !assignedIds.has(emp.id));
 	const copy = async () => {
 		try {
 			await navigator.clipboard.writeText(`Studio Iksha access\n${location.origin}/employee\nSign in with Google: ${access.email}`);
@@ -30436,10 +30561,22 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 									children: [
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 											className: "grid gap-1 text-xs",
-											children: ["Employee ID", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+											children: ["Choose employee", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
 												name: "employeeId",
 												required: true,
-												placeholder: "EMP-XXXXXXXXXX"
+												disabled: !availableEmployees.length,
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+													value: "",
+													children: availableEmployees.length ? "Choose an employee…" : "All employees are already on this project"
+												}), availableEmployees.map((emp) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
+													value: emp.id,
+													children: [
+														emp.name,
+														" (",
+														emp.designation || emp.role || "Employee",
+														")"
+													]
+												}, emp.id))]
 											})]
 										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
@@ -30459,7 +30596,7 @@ function EmployeeDialog({ open, onOpenChange, projects, defaultProjectId, onUpda
 											onClick: () => onOpenChange(false),
 											children: "Cancel"
 										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-											disabled: busy || !projectId,
+											disabled: busy || !projectId || !availableEmployees.length,
 											type: "submit",
 											children: "Assign to project"
 										})] })
@@ -32633,6 +32770,57 @@ function Answer({ answer }) {
 		]
 	});
 }
+function TurnRail({ messages, scrollRef }) {
+	const [active, setActive] = (0, import_react.useState)(0);
+	(0, import_react.useEffect)(() => {
+		const thread = scrollRef.current;
+		if (!thread) return void 0;
+		let frame = 0;
+		const update = () => {
+			frame = 0;
+			const turns = [...thread.querySelectorAll(".assistant-turn")];
+			const atEnd = thread.scrollTop + thread.clientHeight >= thread.scrollHeight - 4;
+			const line = thread.getBoundingClientRect().top + 48;
+			let current = 0;
+			turns.forEach((turn, index) => {
+				if (turn.getBoundingClientRect().top <= line) current = index;
+			});
+			setActive(atEnd ? turns.length - 1 : current);
+		};
+		const onScroll = () => {
+			if (!frame) frame = requestAnimationFrame(update);
+		};
+		update();
+		thread.addEventListener("scroll", onScroll, { passive: true });
+		return () => {
+			thread.removeEventListener("scroll", onScroll);
+			cancelAnimationFrame(frame);
+		};
+	}, [messages.length, scrollRef]);
+	const jump = (index) => scrollRef.current?.querySelectorAll(".assistant-turn")[index]?.scrollIntoView({
+		block: "start",
+		behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
+		className: "assistant-rail",
+		"aria-label": "Jump to a question",
+		children: messages.map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+			type: "button",
+			className: "assistant-rail-item",
+			"aria-label": `Go to: ${item.question}`,
+			"aria-current": index === active ? "true" : void 0,
+			onClick: () => jump(index),
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "assistant-rail-tick" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+				className: "assistant-rail-card",
+				"aria-hidden": "true",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "assistant-rail-question",
+					children: item.question
+				}), item.at && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Time, { value: item.at })]
+			})]
+		}, item.id))
+	});
+}
 function FounderAssistant() {
 	const [messages, setMessages] = (0, import_react.useState)([]);
 	const [loaded, setLoaded] = (0, import_react.useState)(false);
@@ -32745,46 +32933,59 @@ function FounderAssistant() {
 					}, text))
 				})
 			]
-		}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-			ref: scrollRef,
-			className: "assistant-thread chat-scroll",
-			"aria-label": "Founder assistant conversation",
-			"aria-live": "polite",
-			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "assistant-column assistant-turns",
-				children: [messages.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
-					className: "assistant-turn",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
-						variant: "secondary",
-						align: "end",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, {
-							className: "type-copy-14",
-							children: item.question
-						})
-					}), item.answer && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "assistant-answer",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "assistant-answer-label",
+		}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: `assistant-thread-wrap${messages.length > 1 ? " has-rail" : ""}`,
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				ref: scrollRef,
+				className: "assistant-thread chat-scroll",
+				"aria-label": "Founder assistant conversation",
+				"aria-live": "polite",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "assistant-column assistant-turns",
+					children: [messages.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+						className: "assistant-turn",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bubble, {
+							variant: "secondary",
+							align: "end",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BubbleContent, {
+								className: "type-copy-14",
+								children: item.question
+							})
+						}), item.answer && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "assistant-answer",
 							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { "aria-hidden": "true" }),
-								"Studio Iksha",
-								item.at && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Time, { value: item.at })
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+									className: "assistant-answer-label",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { "aria-hidden": "true" }),
+										"Studio Iksha",
+										item.at && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Time, { value: item.at })
+									]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Answer, { answer: item.answer }),
+								item.ai && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "text-xs text-muted-foreground",
+									children: "Answered with AI from your saved project records."
+								})
 							]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Answer, { answer: item.answer })]
+						})]
+					}, item.id)), busy && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						role: "status",
+						className: "assistant-working",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
+							state: "working",
+							size: 20,
+							speed: .65,
+							theme: "light",
+							color: "#2b2a36",
+							"aria-hidden": "true"
+						}), "Reading your project records…"]
 					})]
-				}, item.id)), busy && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-					role: "status",
-					className: "assistant-working",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThinkingOrb, {
-						state: "working",
-						size: 20,
-						speed: .65,
-						theme: "light",
-						color: "#2b2a36",
-						"aria-hidden": "true"
-					}), "Reading your project records…"]
-				})]
-			})
+				})
+			}), messages.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TurnRail, {
+				messages,
+				scrollRef
+			})]
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 			className: "assistant-dock safe-bottom",
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -33718,7 +33919,7 @@ function itemStatus(item, today = todayDate()) {
 }
 function unscheduledReason(item) {
 	const { task } = item;
-	if (task.sheetPlan) return task.missingDuration ? "Duration missing in the Google Sheet" : "Waits on an earlier step with no duration";
+	if (task.sheetPlan) return task.missingDuration ? "Duration missing in the project plan" : "Waits on an earlier step with no duration";
 	if (task.sourceBlockedReason) return task.sourceBlockedReason;
 	return "No dates yet";
 }
@@ -33901,7 +34102,7 @@ function ReplyStep({ request, baseInstruction, outcome, value, onChange }) {
 		]
 	});
 }
-function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
+function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 	const [workspace, setWorkspace] = (0, import_react.useState)(null);
 	const [loadError, setLoadError] = (0, import_react.useState)("");
 	const [step, setStep] = (0, import_react.useState)("stage");
@@ -33918,10 +34119,10 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 	const [saving, setSaving] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
 	const [accepted, setAccepted] = (0, import_react.useState)(null);
-	const canAttach = ["Update", "Message"].includes(request$1?.requestType);
-	const defaultPlan = useDefaultPlan(request$1?.projectId, open);
+	const canAttach = ["Update", "Message"].includes(request?.requestType);
+	const defaultPlan = useDefaultPlan(request?.projectId, open);
 	(0, import_react.useEffect)(() => {
-		if (!open || !request$1) return;
+		if (!open || !request) return;
 		setStep("stage");
 		setSearch("");
 		setStageId("");
@@ -33936,8 +34137,8 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 		setAccepted(null);
 		setWorkspace(null);
 		setLoadError("");
-		fetchProjectWorkspace(request$1.projectId, "founder").then(setWorkspace).catch((problem) => setLoadError(problem.message || "Could not load the project plan."));
-	}, [open, request$1?.id]);
+		fetchProjectWorkspace(request.projectId, "founder").then(setWorkspace).catch((problem) => setLoadError(problem.message || "Could not load the project plan."));
+	}, [open, request?.id]);
 	const stages = workspace?.project?.stages || [];
 	const items = (0, import_react.useMemo)(() => workspace ? timelineItems(workspace.tasks || [], stages) : [], [workspace]);
 	const rows = (0, import_react.useMemo)(() => orderStagesForPicker(stages, items), [workspace]);
@@ -33959,7 +34160,7 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 	};
 	const previewReady = Boolean(target) && !accepted && (step === "action" || step === "new-stage" || step === "reply") && (target.kind !== "new-stage" || !stageNameProblem(newStage, stages));
 	const waitingForContext = target?.kind === "task" && target.action.type === "hold";
-	const schedulePreview = useStagePreview(target, open && previewReady && !waitingForContext, () => previewAcceptDecision(request$1.id, target));
+	const schedulePreview = useStagePreview(target, open && previewReady && !waitingForContext, () => previewAcceptDecision(request.id, target));
 	const holdPreview = (0, import_react.useMemo)(() => ({
 		ok: true,
 		summary: `Waiting for more context. Saved on "${task?.title || "this task"}"; task dates and status stay unchanged.`,
@@ -33972,7 +34173,11 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 	const baseInstruction = summary ? `The founder ${waitingForContext ? "is waiting for more context on this" : "accepted this"}. Outcome: ${summary} Tell the sender plainly.` : "";
 	const [outcome, setOutcome] = (0, import_react.useState)("");
 	(0, import_react.useEffect)(() => {
-		if (preview && !accepted) setOutcome(clientOutcome(target, preview, task?.title));
+		if (preview && !accepted) {
+			const generated = clientOutcome(target, preview, task?.title);
+			setOutcome(generated);
+			setReply((current) => current || generated);
+		}
 	}, [preview]);
 	const chooseStage = (row) => {
 		if (!row.selectable && !canAttach) {
@@ -34006,13 +34211,13 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 		let result = accepted;
 		try {
 			if (!result) {
-				result = waitingForContext ? await request(`/api/founder/decision-requests/${encodeURIComponent(request$1.id)}/hold`, {
+				result = waitingForContext ? await request$1(`/api/founder/decision-requests/${encodeURIComponent(request.id)}/hold`, {
 					method: "POST",
 					body: {
 						taskId,
 						notificationText: reply.trim()
 					}
-				}) : await acceptDecisionRequest(request$1.id, target, reply.trim());
+				}) : await acceptDecisionRequest(request.id, target, reply.trim());
 				if (waitingForContext) result.summary = holdPreview.summary;
 				setAccepted(result);
 			}
@@ -34077,9 +34282,9 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 							className: "line-clamp-2 text-xs",
 							children: [
 								"\"",
-								request$1?.originalMessage || "Shared a file",
+								request?.originalMessage || "Shared a file",
 								"\" · ",
-								request$1?.originalSenderName
+								request?.originalSenderName
 							]
 						})
 					]
@@ -34219,44 +34424,47 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 										})]
 									}, option.type))
 								}),
-								action.type === "delay" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex flex-wrap items-center gap-2",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-sm",
-											children: "By"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-											type: "number",
-											min: 1,
-											max: 60,
-											value: action.days,
-											onChange: (event) => setAction({
-												...action,
-												days: Math.max(1, Math.min(60, Number(event.target.value) || 1))
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "min-h-10",
+									children: action.type === "delay" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "flex flex-wrap items-center gap-2",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "text-sm",
+												children: "By"
 											}),
-											className: "h-9 w-20"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-sm",
-											children: "days"
-										}),
-										[
-											1,
-											2,
-											3,
-											5
-										].map((days) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-											type: "button",
-											size: "sm",
-											variant: Number(action.days) === days ? "default" : "outline",
-											onClick: () => setAction({
-												...action,
-												days
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+												type: "number",
+												min: 1,
+												max: 60,
+												value: action.days,
+												onChange: (event) => setAction({
+													...action,
+													days: Math.max(1, Math.min(60, Number(event.target.value) || 1))
+												}),
+												className: "h-9 w-20"
 											}),
-											children: ["+", days]
-										}, days))
-									]
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "text-sm",
+												children: "days"
+											}),
+											[
+												1,
+												2,
+												3,
+												5
+											].map((days) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+												type: "button",
+												size: "sm",
+												variant: Number(action.days) === days ? "default" : "outline",
+												onClick: () => setAction({
+													...action,
+													days
+												}),
+												children: ["+", days]
+											}, days))
+										]
+									})
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PreviewPanel, {
 									preview,
@@ -34309,7 +34517,7 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 								className: "flex items-start gap-2 rounded-xl border bg-muted/40 px-3 py-2 text-sm",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "mt-1 size-4 shrink-0 text-success" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: summary || "Ready to accept." })]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ReplyStep, {
-								request: request$1,
+								request,
 								baseInstruction,
 								outcome,
 								value: reply,
@@ -34345,39 +34553,42 @@ function QueryAcceptWizard({ open, onOpenChange, request: request$1, onDone }) {
 	});
 }
 function PreviewPanel({ preview, previewing, error }) {
-	if (previewing) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-		className: "flex items-center gap-2 text-xs text-muted-foreground",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin" }), "Checking the schedule…"]
-	});
-	if (error) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-		className: "flex items-start gap-2 rounded-lg bg-destructive/10 px-3 py-2 text-xs text-destructive",
-		role: "alert",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Octagon, { className: "mt-1 size-3.5 shrink-0" }), error]
-	});
-	if (!preview) return null;
-	const pushed = (preview.affected || []).filter((item) => !item.moved);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "space-y-2 rounded-xl bg-muted/50 px-3 py-2 text-xs",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "font-medium",
-				children: preview.summary
-			}),
-			pushed.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-				className: "text-muted-foreground",
-				children: [
-					"Moves back:",
-					" ",
-					pushed.slice(0, 4).map((item) => shortTitle(item.taskName)).join(", "),
-					pushed.length > 4 ? ` and ${pushed.length - 4} more` : "",
-					"."
-				]
-			}),
-			(preview.warnings || []).map((warning, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-				className: "flex items-start gap-2 text-warning",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { className: "mt-1 size-3.5 shrink-0" }), warning.reason]
-			}, index))
-		]
+	const pushed = (preview?.affected || []).filter((item) => !item.moved);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "min-h-[88px] rounded-xl transition-all",
+		children: previewing ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "flex min-h-[88px] items-center gap-2 rounded-xl border bg-muted/20 p-3 text-xs text-muted-foreground",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Checking the schedule…" })]
+		}) : error ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "flex min-h-[88px] items-start gap-2 rounded-xl bg-destructive/10 p-3 text-xs text-destructive",
+			role: "alert",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Octagon, { className: "mt-0.5 size-3.5 shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: error })]
+		}) : preview ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "min-h-[88px] space-y-2 rounded-xl bg-muted/50 px-3 py-2 text-xs",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "font-medium",
+					children: preview.summary
+				}),
+				pushed.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+					className: "text-muted-foreground",
+					children: [
+						"Moves back:",
+						" ",
+						pushed.slice(0, 4).map((item) => shortTitle(item.taskName)).join(", "),
+						pushed.length > 4 ? ` and ${pushed.length - 4} more` : "",
+						"."
+					]
+				}),
+				(preview.warnings || []).map((warning, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+					className: "flex items-start gap-2 text-warning",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { className: "mt-1 size-3.5 shrink-0" }), warning.reason]
+				}, index))
+			]
+		}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "flex min-h-[88px] items-center gap-2 rounded-xl border bg-muted/10 p-3 text-xs text-muted-foreground",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, { className: "size-3.5 animate-spin" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Checking the schedule…" })]
+		})
 	});
 }
 function QueryRejectDialog({ open, onOpenChange, request, onDone }) {
@@ -34506,12 +34717,12 @@ function QueryDecisionOutcome({ request }) {
 	});
 	return null;
 }
-function QueryDecisionButtons({ request: request$2, disabled, onAccept, onReject, onChanged, size = "sm" }) {
+function QueryDecisionButtons({ request, disabled, onAccept, onReject, onChanged, size = "sm" }) {
 	const [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false);
 	const resume = async () => {
 		setBusy(true);
 		try {
-			await request(`/api/founder/decision-requests/${encodeURIComponent(request$2.id)}/resume`, {
+			await request$1(`/api/founder/decision-requests/${encodeURIComponent(request.id)}/resume`, {
 				method: "POST",
 				body: {}
 			});
@@ -34522,7 +34733,7 @@ function QueryDecisionButtons({ request: request$2, disabled, onAccept, onReject
 			setBusy(false);
 		}
 	};
-	if (request$2.status === "On hold") return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+	if (request.status === "On hold") return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 		variant: "outline",
 		size,
 		disabled: busy || disabled,
@@ -34533,12 +34744,12 @@ function QueryDecisionButtons({ request: request$2, disabled, onAccept, onReject
 		className: "text-xs text-destructive",
 		children: error
 	})] });
-	if (Boolean(request$2.decisionStatus) || [
+	if (Boolean(request.decisionStatus) || [
 		"Rejected",
 		"Done",
 		"Published",
 		"Approved"
-	].includes(request$2.status)) return null;
+	].includes(request.status)) return null;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 		size,
 		onClick: onAccept,
@@ -34564,7 +34775,7 @@ async function api$3(url, method = "GET", data) {
 	if (!response.ok) throw new Error(result.error || "Request failed.");
 	return result;
 }
-var initials$1 = (name = "") => name.trim().split(/\s+/).map((part) => part[0]).slice(0, 2).join("").toUpperCase() || "?";
+var initials$2 = (name = "") => name.trim().split(/\s+/).map((part) => part[0]).slice(0, 2).join("").toUpperCase() || "?";
 var preview = (item) => item.originalMessage || item.context || (item.attachments?.length ? "Attachment" : "Request");
 var waitingTone = (item) => {
 	if (queryInboxTab(item) !== "action") return "text-muted-foreground";
@@ -34627,8 +34838,15 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 		load();
 		const timer = setInterval(() => {
 			if (document.visibilityState === "visible") load();
-		}, 1e4);
-		return () => clearInterval(timer);
+		}, 6e3);
+		const onVisibility = () => {
+			if (document.visibilityState === "visible") load();
+		};
+		document.addEventListener("visibilitychange", onVisibility);
+		return () => {
+			clearInterval(timer);
+			document.removeEventListener("visibilitychange", onVisibility);
+		};
 	}, []);
 	(0, import_react.useEffect)(() => {
 		const project = projects.find((item) => item.id === settingsProjectId) || projects[0];
@@ -34870,7 +35088,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 										className: "flex items-start gap-3",
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 											className: "grid size-8 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold text-secondary-foreground",
-											children: initials$1(item.originalSenderName)
+											children: initials$2(item.originalSenderName)
 										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 											className: "min-w-0 flex-1",
 											children: [
@@ -34942,7 +35160,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 											className: "grid size-10 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold",
-											children: initials$1(selected.originalSenderName)
+											children: initials$2(selected.originalSenderName)
 										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 											className: "min-w-0",
@@ -34991,7 +35209,8 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 										size: "sm",
 										disabled: busy,
 										onClick: markDone,
-										children: "Done"
+										title: "Mark this query done without schedule changes",
+										children: "Mark done"
 									})]
 								})]
 							}),
@@ -35018,7 +35237,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 											children: [
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 													className: "grid size-8 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold",
-													children: initials$1(selected.originalSenderName)
+													children: initials$2(selected.originalSenderName)
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 													className: "min-w-0 flex-1",
@@ -36113,7 +36332,7 @@ function ClientQueryCard({ query, project, onQueryChanged, onTaskCreated, onOpen
 				onDone: (result) => {
 					setSuccessMessage(result?.summary || "Query updated.");
 					if (onQueryChanged) onQueryChanged();
-					if (onTaskCreated) onTaskCreated();
+					if (onTaskCreated) onTaskCreated(result?.task);
 				}
 			}),
 			isFounder && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryRejectDialog, {
@@ -36643,7 +36862,7 @@ function useStageOrder({ projectId, stages, tasks, onChanged, enabled }) {
 			loading: true
 		});
 		try {
-			const result = await request(`/api/founder/projects/${projectId}/stage-order/preview`, {
+			const result = await request$1(`/api/founder/projects/${projectId}/stage-order/preview`, {
 				method: "POST",
 				body: { stageIds: ids }
 			});
@@ -36769,7 +36988,7 @@ function useStageOrder({ projectId, stages, tasks, onChanged, enabled }) {
 			saving: true
 		});
 		try {
-			const result = await request(`/api/founder/projects/${projectId}/stage-order/apply`, {
+			const result = await request$1(`/api/founder/projects/${projectId}/stage-order/apply`, {
 				method: "POST",
 				body: {
 					stageIds: proposal.stageIds,
@@ -47717,7 +47936,7 @@ function StageConnections({ projectId, stages = [], tasks = [], onChanged }) {
 		setBusy(true);
 		setError("");
 		try {
-			const result = await request(`/api/founder/projects/${projectId}/stage-links/${apply ? "apply" : "preview"}`, {
+			const result = await request$1(`/api/founder/projects/${projectId}/stage-links/${apply ? "apply" : "preview"}`, {
 				method: "POST",
 				body: {
 					links,
@@ -47892,7 +48111,7 @@ function PlanTemplates({ projectId, spaces = [], onChanged }) {
 	const [templates, setTemplates] = (0, import_react.useState)([]), [name, setName] = (0, import_react.useState)(""), [selected, setSelected] = (0, import_react.useState)(""), [draft, setDraft] = (0, import_react.useState)([]), [start, setStart] = (0, import_react.useState)(todayInput()), [preview, setPreview] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [notice, setNotice] = (0, import_react.useState)("");
 	const load = async () => {
 		try {
-			setTemplates((await request("/api/founder/plan-templates")).templates);
+			setTemplates((await request$1("/api/founder/plan-templates")).templates);
 		} catch (problem) {
 			setError(problem.message);
 		}
@@ -47949,7 +48168,7 @@ function PlanTemplates({ projectId, spaces = [], onChanged }) {
 		setBusy(true);
 		setError("");
 		try {
-			await request("/api/founder/plan-templates", {
+			await request$1("/api/founder/plan-templates", {
 				method: "POST",
 				body: {
 					projectId,
@@ -48223,13 +48442,29 @@ function ScheduleImpact({ preview, pending, error }) {
 				className: "text-destructive",
 				children: item.reason
 			}, index)),
-			(preview.created || []).map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.title }),
-				": ",
-				label(item.start),
-				" – ",
-				label(item.end)
-			] }, index)),
+			(preview.created || []).map((item, index) => {
+				const todayStr = (/* @__PURE__ */ new Date()).toISOString().slice(0, 10);
+				const overdueDays = item.end && item.end < todayStr ? Math.max(1, Math.round((new Date(todayStr) - new Date(item.end)) / 864e5)) : 0;
+				return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "space-y-1",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.title }),
+						": ",
+						label(item.start),
+						" – ",
+						label(item.end)
+					] }), overdueDays > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "font-medium text-warning",
+						children: [
+							"⚠️ This task ends in the past and will start ",
+							overdueDays,
+							" ",
+							overdueDays === 1 ? "day" : "days",
+							" overdue."
+						]
+					})]
+				}, index);
+			}),
 			(preview.affected || []).map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: item.taskName || item.title }),
 				": ",
@@ -48981,6 +49216,8 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 	const [editingTaskId, setEditingTaskId] = (0, import_react.useState)(null);
 	const [renamingStageId, setRenamingStageId] = (0, import_react.useState)(null);
 	const menuRef = (0, import_react.useRef)(null);
+	const helpRef = (0, import_react.useRef)(null);
+	const [helpOpen, setHelpOpen] = (0, import_react.useState)(false);
 	const [search, setSearch] = (0, import_react.useState)("");
 	const [selectedStageId, setSelectedStageId] = (0, import_react.useState)(null);
 	const [drag, setDrag] = (0, import_react.useState)(null);
@@ -49151,7 +49388,7 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 			setProposal(null);
 			const pushed = result.affected.filter((item) => !item.moved).length;
 			setNotice({
-				text: `${description} saved${telegramLinked ? " to the Google Sheet" : ""}${pushed ? ` · ${pushed} dependent task${pushed === 1 ? "" : "s"} moved` : ""}.`,
+				text: `${description} saved${telegramLinked ? " to the project plan" : ""}${pushed ? ` · ${pushed} dependent task${pushed === 1 ? "" : "s"} moved` : ""}.`,
 				undo: result.dependencyChanges?.length || result.affected.length > 60 ? null : undoMoves(result.affected)
 			});
 		} catch (error) {
@@ -49167,7 +49404,7 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 		setNotice({ text: "Undoing…" });
 		try {
 			await onScheduleApply(moves);
-			setNotice({ text: "Change undone. The Google Sheet is back to the earlier dates." });
+			setNotice({ text: "Change undone. The earlier dates are back." });
 		} catch (error) {
 			setNotice({ text: `Could not undo: ${error.message}` });
 		}
@@ -49353,6 +49590,19 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 		};
 	}, [menu]);
 	(0, import_react.useEffect)(() => {
+		if (!helpOpen) return void 0;
+		const close = (event) => {
+			if (event.type === "keydown" ? event.key !== "Escape" : helpRef.current?.contains(event.target)) return;
+			helpRef.current.open = false;
+		};
+		window.addEventListener("pointerdown", close);
+		window.addEventListener("keydown", close);
+		return () => {
+			window.removeEventListener("pointerdown", close);
+			window.removeEventListener("keydown", close);
+		};
+	}, [helpOpen]);
+	(0, import_react.useEffect)(() => {
 		const cancelPress = () => {
 			if (pressRef.current) {
 				clearTimeout(pressRef.current.timer);
@@ -49487,24 +49737,26 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
 							className: "iksha-help",
+							ref: helpRef,
+							onToggle: (event) => setHelpOpen(event.currentTarget.open),
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", {
-								"aria-label": "How to use the timeline",
-								title: "How to use the timeline",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleQuestionMark, { size: 16 })
+								"aria-label": helpOpen ? "Close help" : "How to use the timeline",
+								title: helpOpen ? "Close help" : "How to use the timeline",
+								children: helpOpen ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(X$1, { size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleQuestionMark, { size: 16 })
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 								className: "iksha-help-body",
 								role: "note",
 								children: editable ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 										className: "iksha-only-fine",
-										children: "Drag a stage bar to move the whole stage. Drag a task to move it. Pull its right edge to change its length. Click a task or work type for edit and add options."
+										children: "Drag a stage bar to move the whole stage. Drag a task to move it. Pull its right edge to change its length. Click a task or stage for edit and add options."
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 										className: "iksha-only-coarse",
 										children: "Press and hold a task to pick it up, then drag. Hold its right edge to change its length."
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Hold a stage grip to reorder it. You confirm every change." })
-								] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Tap a stage for its breakdown. Tap a work item for its discussion." })
+								] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Tap a stage for its breakdown. Tap a task for its discussion." })
 							})]
 						})
 					]
@@ -49517,7 +49769,7 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 					children: "Search timeline tasks"
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
 					type: "search",
-					placeholder: "Find a work item or person…",
+					placeholder: "Find a task or person…",
 					value: search,
 					onChange: (event) => setSearch(event.target.value)
 				})]
@@ -49555,7 +49807,7 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 				})] })
 			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
 				icon: Layers,
-				title: "No work items yet",
+				title: "No tasks yet",
 				description: editable ? "Link this project to its Telegram group to plan its stages here." : "The founder has not planned any stages yet."
 			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: `iksha-schedule-frame ${compactHeader ? "iksha-plan-fit" : ""} ${todayInView ? "has-today" : ""} ${drag ? "is-dragging-any" : ""}`,
@@ -49564,7 +49816,7 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 					className: "iksha-schedule-headbar",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "iksha-schedule-label",
-						children: "Stage / work item"
+						children: "Stage / task"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "iksha-headbar-viewport",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -49834,7 +50086,7 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 							}, stage.id);
 						}), !visible.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "iksha-empty-search",
-							children: "No work items match your search."
+							children: "No tasks match your search."
 						})]
 					})
 				})]
@@ -49937,7 +50189,7 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 								children: "CHECK BEFORE SAVING"
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: proposal?.description }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: ["Nothing changes until you confirm.", telegramLinked ? " Confirmed changes are written to the Google Sheet, so Telegram and the web app stay in step." : " Preview the dates and connections before saving."] })
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: ["Nothing changes until you confirm.", telegramLinked ? " Confirmed changes are saved to the project plan and sent to Telegram." : " Preview the dates and connections before saving."] })
 						] }),
 						proposal?.chooseMode && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
 							className: "grid gap-3 sm:grid-cols-2",
@@ -50060,7 +50312,7 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 								setEditingTaskId(menu.task.id);
 								setMenu(null);
 							},
-							children: "Edit work item"
+							children: "Edit task"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 							role: "menuitem",
@@ -50103,7 +50355,7 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 								setRenamingStageId(menu.stage.id);
 								setMenu(null);
 							},
-							children: "Edit work type name"
+							children: "Rename stage"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 							role: "menuitem",
@@ -50119,7 +50371,7 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 								setSelectedStageId(menu.stage.id);
 								setMenu(null);
 							},
-							children: "View work type details"
+							children: "View stage details"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 							role: "menuitem",
@@ -50146,7 +50398,7 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 							} });
 							setMenu(null);
 						},
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { size: 14 }), "Add a work type after this one"]
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { size: 14 }), "Add a stage after this one"]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 						role: "menuitem",
@@ -50157,7 +50409,7 @@ function ProjectTimeline({ tasks = [], stages: suppliedStages = [], members = []
 							} });
 							setMenu(null);
 						},
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { size: 14 }), "Add a parallel work type"]
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { size: 14 }), "Add a parallel stage"]
 					})
 				]
 			}),
@@ -53250,6 +53502,269 @@ function DependencyGraphInner({ tasks = [], employees = [], stages = [], onOpenT
 function ProjectDependencyGraph(props) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ReactFlowProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DependencyGraphInner, { ...props }) });
 }
+// frontend/src/features/tasks/ProjectTaskList.jsx
+function useTaskFilters(tasks, stages) {
+	const [status, setStatus] = (0, import_react.useState)("all");
+	const [stage, setStage] = (0, import_react.useState)("all");
+	const [search, setSearch] = (0, import_react.useState)("");
+	const [person, setPerson] = (0, import_react.useState)("all");
+	const [space, setSpace] = (0, import_react.useState)("all");
+	const statusOf = (t) => taskStatus(t, { stage: stages.find((s) => s.id === t.stageId) });
+	return {
+		status,
+		setStatus,
+		stage,
+		setStage,
+		search,
+		setSearch,
+		person,
+		setPerson,
+		space,
+		setSpace,
+		filtered: tasks.filter((t) => {
+			if (person !== "all" && (t.assigneeId || "unassigned") !== person) return false;
+			if (space !== "all" && !(stages.find((s) => s.id === t.stageId)?.spaces || []).includes(space)) return false;
+			if (status === "unfinished" && isTaskClosed(t)) return false;
+			if (!["all", "unfinished"].includes(status) && !matchesTaskStatus(statusOf(t), status)) return false;
+			if (stage !== "all" && t.stageId !== stage) return false;
+			if (search.trim()) {
+				const query = search.toLowerCase();
+				return t.title.toLowerCase().includes(query) || (t.description || "").toLowerCase().includes(query);
+			}
+			return true;
+		}),
+		statusOf,
+		activeCount: [
+			person,
+			space,
+			status,
+			stage
+		].filter((value) => value !== "all").length,
+		clear: () => {
+			setStatus("all");
+			setStage("all");
+			setPerson("all");
+			setSpace("all");
+			setSearch("");
+		}
+	};
+}
+function ProjectTaskList({ project, tasks, stages, employees, filters, onOpenTask, onToggleTask, onRefresh, refreshing = false, staleData = false, isFounder = false, actions = null, emptyDescription, emptyAction = null }) {
+	const [viewMode, setViewMode] = (0, import_react.useState)("list");
+	const [filtersOpen, setFiltersOpen] = (0, import_react.useState)(false);
+	const canToggle = Boolean(onToggleTask);
+	const assigneeName = (assigneeId) => {
+		if (!assigneeId) return "Unassigned";
+		if (assigneeId === "founder") return "Founder";
+		const found = (project.members || []).find((m) => m.employeeId === assigneeId || m.id === assigneeId);
+		return found ? found.name : assigneeId;
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "flex flex-wrap items-center gap-2",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "relative min-w-44 max-w-sm flex-1",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+						value: filters.search,
+						onChange: (e) => filters.setSearch(e.target.value),
+						placeholder: "Search tasks",
+						"aria-label": "Search tasks",
+						className: "pl-8"
+					})]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+					variant: "outline",
+					"aria-expanded": filtersOpen,
+					onClick: () => setFiltersOpen(!filtersOpen),
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Funnel, { className: "size-4" }),
+						"Filters",
+						filters.activeCount > 0 ? ` (${filters.activeCount})` : ""
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "ml-auto flex items-center gap-2",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SegmentedControl, {
+							label: "Task view",
+							value: viewMode,
+							onValueChange: setViewMode,
+							options: [{
+								value: "list",
+								label: "List"
+							}, {
+								value: "graph",
+								label: "Graph"
+							}]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							size: "icon",
+							"aria-label": "Refresh tasks",
+							onClick: onRefresh,
+							disabled: refreshing,
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: refreshing ? "animate-spin" : "" })
+						}),
+						actions
+					]
+				})
+			]
+		}),
+		filtersOpen && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "grid gap-3 rounded-lg border bg-card p-3 sm:grid-cols-2 lg:grid-cols-4",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+					className: "grid gap-1 text-xs",
+					children: ["Person", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+						value: filters.person,
+						onChange: (e) => filters.setPerson(e.target.value),
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: "all",
+								children: "All people"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: "founder",
+								children: "Founder"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: "unassigned",
+								children: "Role-based / unassigned"
+							}),
+							(project.members || []).map((member) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: member.employeeId || member.id,
+								children: member.name
+							}, member.employeeId || member.id))
+						]
+					})]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+					className: "grid gap-1 text-xs",
+					children: ["Space", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+						value: filters.space,
+						onChange: (e) => filters.setSpace(e.target.value),
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+							value: "all",
+							children: "All spaces"
+						}), (project.spaces || []).map((space) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: space }, space))]
+					})]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+					className: "grid gap-1 text-xs",
+					children: ["Status", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+						value: filters.status,
+						onChange: (e) => filters.setStatus(e.target.value),
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: "all",
+								children: "All statuses"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: "unfinished",
+								children: "All unfinished"
+							}),
+							TASK_STATUS_OPTIONS.map((option) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: option.key,
+								children: option.label
+							}, option.key))
+						]
+					})]
+				}),
+				stages.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+					className: "grid gap-1 text-xs",
+					children: ["Stage", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+						value: filters.stage,
+						onChange: (e) => filters.setStage(e.target.value),
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+							value: "all",
+							children: "All stages"
+						}), stages.map((st) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+							value: st.id,
+							children: st.name
+						}, st.id))]
+					})]
+				})
+			]
+		}),
+		viewMode === "graph" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectDependencyGraph, {
+			tasks: filters.filtered,
+			employees,
+			stages,
+			onOpenTask,
+			onSwitchToList: () => setViewMode("list"),
+			isFounder,
+			staleDataNotice: staleData
+		}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "space-y-3",
+			children: filters.filtered.length ? filters.filtered.map((t) => {
+				const isCompleted = t.status === "Completed" || t.status === "completed";
+				const stageName = stages.find((s) => s.id === t.stageId)?.name || t.stageName || "General";
+				return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: `group grid items-center gap-x-3 gap-y-1 card-box bg-card transition-all hover:border-primary/40 ${canToggle ? "grid-cols-[32px_minmax(0,1fr)_auto] sm:grid-cols-[32px_minmax(0,1fr)_112px_136px_112px_auto]" : "grid-cols-[minmax(0,1fr)_auto] sm:grid-cols-[minmax(0,1fr)_112px_136px_112px_auto]"}`,
+					children: [
+						canToggle && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							type: "button",
+							onClick: () => onToggleTask(t),
+							className: `grid size-8 place-items-center rounded-md border transition-colors ${isCompleted ? "bg-success-fill border-success-fill text-white" : "border-muted-foreground/30 hover:border-primary"}`,
+							"aria-label": "Toggle task completion",
+							children: isCompleted && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-4" })
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "min-w-0",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
+								title: t.title,
+								className: `cursor-pointer truncate text-sm font-semibold transition-colors hover:text-primary ${isCompleted ? "line-through text-muted-foreground" : "text-foreground"}`,
+								onClick: () => onOpenTask(t),
+								children: t.title
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "truncate text-xs text-muted-foreground",
+								title: stageName,
+								children: [stageName, t.sourceQueryId && " · Telegram query"]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "justify-self-end sm:justify-self-start",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StatusChip, { status: filters.statusOf(t) })
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: `${canToggle ? "col-start-2" : "col-start-1"} flex min-w-0 items-center gap-1 truncate text-xs text-muted-foreground sm:col-start-auto`,
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, { className: "size-3 shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "truncate",
+								children: assigneeName(t.assigneeId) || t.assigneeName || t.role || t.sourceRole || "Unassigned"
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "whitespace-nowrap flex items-center gap-1 text-xs text-muted-foreground",
+							children: (t.deadline || t.dueDate) && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-3 shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Time, {
+								value: t.deadline || t.dueDate,
+								format: "calendar"
+							})] })
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+							variant: "outline",
+							size: "sm",
+							className: `${canToggle ? "col-start-3" : "col-start-2"} row-start-2 sm:col-start-auto sm:row-start-auto`,
+							onClick: () => onOpenTask(t),
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-4 text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Thread" })]
+						})
+					]
+				}, t.id);
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
+				kind: tasks.length ? "no-results" : "first-use",
+				icon: CircleCheck,
+				title: tasks.length ? "No tasks match these filters" : "No tasks yet",
+				description: tasks.length ? "Try another status, person or stage, or clear the search." : emptyDescription,
+				action: tasks.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: "outline",
+					size: "sm",
+					onClick: filters.clear,
+					children: "Clear filters"
+				}) : emptyAction
+			})
+		})
+	] });
+}
 // frontend/src/features/timeline/lib/projectWorkflowStore.js
 var STORAGE_PREFIX = "studio_iksha_workflow_v1";
 function loadStorage(key, defaultValue) {
@@ -53380,7 +53895,6 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	const [localWorkflow, setLocalWorkflow] = (0, import_react.useState)(() => getProjectWorkflow(project?.id, project));
 	const [tasks, setTasks] = (0, import_react.useState)([]);
 	const [loadingTasks, setLoadingTasks] = (0, import_react.useState)(false);
-	const [taskViewMode, setTaskViewMode] = (0, import_react.useState)("list");
 	const [staleData, setStaleData] = (0, import_react.useState)(false);
 	const navigation = useNavigation();
 	const activeTab = founderProjectTab(navigation.projectTab);
@@ -53390,6 +53904,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	const selectedTask = tasks.find((task) => task.id === navigation.taskId) || (taskSelection?.id === navigation.taskId ? taskSelection : null);
 	const taskDrawerOpen = Boolean(selectedTask);
 	const openTask = (task) => {
+		if (!task?.id) return;
 		setTaskSelection(task);
 		navigate({ taskId: task.id });
 	};
@@ -53400,10 +53915,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	const [creatingTask, setCreatingTask] = (0, import_react.useState)(false);
 	const [clientNameInput, setClientNameInput] = (0, import_react.useState)(project?.clientName || "");
 	const [clientTelegramIdInput, setClientTelegramIdInput] = (0, import_react.useState)(project?.clientTelegramId || "");
-	const [taskStatusFilter, setTaskStatusFilter] = (0, import_react.useState)("all");
-	const [taskStageFilter, setTaskStageFilter] = (0, import_react.useState)("all");
-	const [taskSearch, setTaskSearch] = (0, import_react.useState)("");
-	const [personFilter, setPersonFilter] = (0, import_react.useState)("all"), [spaceFilter, setSpaceFilter] = (0, import_react.useState)("all");
+	const taskFilters = useTaskFilters(tasks, project?.stages || []);
 	const [driveFolderInput, setDriveFolderInput] = (0, import_react.useState)(localWorkflow?.drive?.folderUrl || "");
 	const [isEditingDriveFolder, setIsEditingDriveFolder] = (0, import_react.useState)(false);
 	const [newLinkName, setNewLinkName] = (0, import_react.useState)("");
@@ -53416,7 +53928,6 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	const [newTaskDeadline, setNewTaskDeadline] = (0, import_react.useState)("");
 	const [newTaskStatus, setNewTaskStatus] = (0, import_react.useState)("Open");
 	const [tldrExpanded, setTldrExpanded] = (0, import_react.useState)(false);
-	const [filtersOpen, setFiltersOpen] = (0, import_react.useState)(false);
 	const [removeTarget, setRemoveTarget] = (0, import_react.useState)(null);
 	const [removingMember, setRemovingMember] = (0, import_react.useState)(false);
 	const [notice, setNotice] = (0, import_react.useState)(null);
@@ -53474,6 +53985,12 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	if (!project) return null;
 	const stages = project.stages || [];
 	const schedule = computeStageSchedule(project.startDate || project.createdAt, stages);
+	const newTaskStage = stages.find((s) => s.id === (newTaskStageId || stages[0]?.id));
+	const newTaskDerivedStatus = taskStatus({
+		status: newTaskStatus,
+		deadline: newTaskDeadline || void 0,
+		stageId: newTaskStage?.id
+	}, { stage: newTaskStage });
 	const projectQueries = decisionRequests.filter((req) => req.projectId === project.id);
 	const pendingQueriesCount = projectQueries.filter(needsQueryAttention).length;
 	const blockedTasks = tasks.filter((t) => t.status === "Blocked");
@@ -53484,30 +54001,15 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	const isClientAssigned = Boolean(project.clientName && project.clientName.trim() !== "" && !["Unassigned Client", "Client pending"].includes(project.clientName) && !project.telegramSetupPending);
 	const hasWorkflowStarted = Boolean(project.workflowStartedAt || project.workflowId || stages.length > 0 && project.status !== "Setup");
 	const statusOfTask = (t) => taskStatus(t, { stage: stages.find((stage) => stage.id === t.stageId) });
-	const filteredTasks = tasks.filter((t) => {
-		if (personFilter !== "all" && (t.assigneeId || "unassigned") !== personFilter) return false;
-		if (spaceFilter !== "all" && !(stages.find((stage) => stage.id === t.stageId)?.spaces || []).includes(spaceFilter)) return false;
-		if (taskStatusFilter === "unfinished" && isTaskClosed(t)) return false;
-		if (!["all", "unfinished"].includes(taskStatusFilter) && !matchesTaskStatus(statusOfTask(t), taskStatusFilter)) return false;
-		if (taskStageFilter !== "all" && t.stageId !== taskStageFilter) return false;
-		if (taskSearch.trim()) {
-			const query = taskSearch.toLowerCase();
-			return t.title.toLowerCase().includes(query) || (t.description || "").toLowerCase().includes(query);
-		}
-		return true;
-	});
-	const completedTasksCount = tasks.filter((t) => t.status === "Completed" || t.status === "completed").length;
-	const activeTaskCount = tasks.filter((task) => !["Cancelled", "cancelled"].includes(task.status)).length;
+	const filteredTasks = taskFilters.filtered;
+	const nonDeletedTasks = tasks.filter((t) => !t.deletedAt);
+	const completedTasksCount = nonDeletedTasks.filter((t) => t.status === "Completed" || t.status === "completed").length;
+	nonDeletedTasks.filter((t) => ["Cancelled", "cancelled"].includes(t.status)).length;
+	const activeTaskCount = nonDeletedTasks.filter((task) => !["Cancelled", "cancelled"].includes(task.status)).length;
 	const progressPercent = activeTaskCount ? Math.round(completedTasksCount / activeTaskCount * 100) : 0;
-	const overdueTasksCount = tasks.filter((t) => statusOfTask(t).key === "overdue").length;
+	const overdueTasksCount = tasks.filter((t) => !t.deletedAt && !isTaskClosed(t) && statusOfTask(t).overdue).length;
 	const teamCount = (project.members || []).length;
 	const isEmptyProject = !loadingTasks && tasks.length === 0 && stages.length === 0;
-	const activeFilterCount = [
-		personFilter,
-		spaceFilter,
-		taskStatusFilter,
-		taskStageFilter
-	].filter((value) => value !== "all").length;
 	const handleAssignClientSubmit = async (e) => {
 		e.preventDefault();
 		if (!clientNameInput.trim() || assigningClient) return;
@@ -53566,6 +54068,21 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 			showNotice(err.message || "Could not update task.", true);
 		}
 	};
+	const [reopeningProject, setReopeningProject] = (0, import_react.useState)(false);
+	const handleReopenProject = async () => {
+		if (reopeningProject) return;
+		setReopeningProject(true);
+		try {
+			await request(`/api/founder/projects/${project.id}/reopen`, { method: "POST" });
+			showNotice("Project reopened.");
+			await loadProjectTasks();
+			if (onProjectUpdated) onProjectUpdated();
+		} catch (err) {
+			showNotice(err.message || "Could not reopen project.", true);
+		} finally {
+			setReopeningProject(false);
+		}
+	};
 	const handleRemoveMember = async () => {
 		const member = removeTarget;
 		if (!member || removingMember) return;
@@ -53590,12 +54107,6 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 		setNewLinkUrl("");
 		setAddDriveLinkOpen(false);
 		setLocalWorkflow(getProjectWorkflow(project.id, project));
-	};
-	const getAssigneeName = (assigneeId) => {
-		if (!assigneeId) return "Unassigned";
-		if (assigneeId === "founder") return "Founder";
-		const found = (project.members || []).find((m) => m.employeeId === assigneeId || m.id === assigneeId);
-		return found ? found.name : assigneeId;
 	};
 	const roster = project.telegramMembers || [];
 	const profilesReady = roster.length >= 2 && roster.every((member) => member.assignedName && member.assignedRole) && roster.filter((member) => /\bclient\b/i.test(member.assignedRole)).length >= 1 && roster.some((member) => !/\b(client|founder)\b/i.test(member.assignedRole));
@@ -53726,7 +54237,11 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 										onSelect: onOpenFactsModal,
 										children: "Project details"
 									}),
-									!["Completed", "Abandoned"].includes(project.status) && !isEmptyProject && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Item2, {
+									["Completed", "Abandoned"].includes(project.status) ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Item2, {
+										className: "flex h-9 cursor-pointer items-center rounded-md px-2 text-sm outline-none data-[highlighted]:bg-muted",
+										onSelect: handleReopenProject,
+										children: "Reopen project"
+									}) : !isEmptyProject && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Item2, {
 										className: "flex h-9 cursor-pointer items-center rounded-md px-2 text-sm outline-none data-[highlighted]:bg-muted",
 										onSelect: onOpenCompleteModal,
 										children: "Complete project"
@@ -53981,7 +54496,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
 								value: "chat",
-								children: "Project chat"
+								children: "Team chat"
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
 								value: "queries",
@@ -54004,239 +54519,38 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							})
 						]
 					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
 						value: "tasks",
 						className: "space-y-4",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex flex-wrap items-center gap-2",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "relative min-w-44 max-w-sm flex-1",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-											value: taskSearch,
-											onChange: (e) => setTaskSearch(e.target.value),
-											placeholder: "Search tasks",
-											"aria-label": "Search tasks",
-											className: "pl-8"
-										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-										variant: "outline",
-										"aria-expanded": filtersOpen,
-										onClick: () => setFiltersOpen(!filtersOpen),
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Funnel, { className: "size-4" }),
-											"Filters",
-											activeFilterCount > 0 ? ` (${activeFilterCount})` : ""
-										]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "ml-auto flex items-center gap-2",
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SegmentedControl, {
-												label: "Task view",
-												value: taskViewMode,
-												onValueChange: setTaskViewMode,
-												options: [{
-													value: "list",
-													label: "List"
-												}, {
-													value: "graph",
-													label: "Graph"
-												}]
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-												variant: "outline",
-												size: "icon",
-												"aria-label": "Refresh tasks",
-												onClick: loadProjectTasks,
-												disabled: loadingTasks,
-												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: loadingTasks ? "animate-spin" : "" })
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-												onClick: () => setCreateTaskOpen(true),
-												disabled: !hasWorkflowStarted,
-												title: !hasWorkflowStarted ? "Start a workflow before adding custom tasks." : void 0,
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-4" }), " Add task"]
-											})
-										]
-									})
-								]
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTaskList, {
+							project,
+							tasks,
+							stages,
+							employees,
+							filters: taskFilters,
+							onOpenTask: openTask,
+							onToggleTask: handleToggleTaskStatus,
+							onRefresh: loadProjectTasks,
+							refreshing: loadingTasks,
+							staleData,
+							isFounder: true,
+							actions: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								onClick: () => setCreateTaskOpen(true),
+								disabled: !hasWorkflowStarted,
+								title: !hasWorkflowStarted ? "Start a workflow before adding custom tasks." : void 0,
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-4" }), " Add task"]
 							}),
-							filtersOpen && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "grid gap-3 rounded-lg border bg-card p-3 sm:grid-cols-2 lg:grid-cols-4",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-										className: "grid gap-1 text-xs",
-										children: ["Person", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
-											value: personFilter,
-											onChange: (e) => setPersonFilter(e.target.value),
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: "all",
-													children: "All people"
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: "founder",
-													children: "Founder"
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: "unassigned",
-													children: "Role-based / unassigned"
-												}),
-												(project.members || []).map((member) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: member.employeeId || member.id,
-													children: member.name
-												}, member.employeeId || member.id))
-											]
-										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-										className: "grid gap-1 text-xs",
-										children: ["Space", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
-											value: spaceFilter,
-											onChange: (e) => setSpaceFilter(e.target.value),
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: "all",
-												children: "All spaces"
-											}), (project.spaces || []).map((space) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: space }, space))]
-										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-										className: "grid gap-1 text-xs",
-										children: ["Status", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
-											value: taskStatusFilter,
-											onChange: (e) => setTaskStatusFilter(e.target.value),
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: "all",
-													children: "All statuses"
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: "unfinished",
-													children: "All unfinished"
-												}),
-												TASK_STATUS_OPTIONS.map((option) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-													value: option.key,
-													children: option.label
-												}, option.key))
-											]
-										})]
-									}),
-									stages.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-										className: "grid gap-1 text-xs",
-										children: ["Stage", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
-											value: taskStageFilter,
-											onChange: (e) => setTaskStageFilter(e.target.value),
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: "all",
-												children: "All stages"
-											}), stages.map((st) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-												value: st.id,
-												children: st.name
-											}, st.id))]
-										})]
-									})
-								]
-							}),
-							taskViewMode === "graph" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectDependencyGraph, {
-								tasks: filteredTasks,
-								employees,
-								stages,
-								onOpenTask: (taskItem) => {
-									openTask(taskItem);
-								},
-								onSwitchToList: () => setTaskViewMode("list"),
-								isFounder: true,
-								staleDataNotice: staleData
-							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "space-y-3",
-								children: filteredTasks.length ? filteredTasks.map((t) => {
-									const isCompleted = t.status === "Completed" || t.status === "completed";
-									const stageName = stages.find((s) => s.id === t.stageId)?.name || t.stageName || "General";
-									return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "group grid grid-cols-[32px_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1 card-box bg-card transition-all hover:border-primary/40 sm:grid-cols-[32px_minmax(0,1fr)_112px_136px_112px_auto]",
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-												type: "button",
-												onClick: () => handleToggleTaskStatus(t),
-												className: `grid size-8 place-items-center rounded-md border transition-colors ${isCompleted ? "bg-success-fill border-success-fill text-white" : "border-muted-foreground/30 hover:border-primary"}`,
-												"aria-label": "Toggle task completion",
-												children: isCompleted && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-4" })
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "min-w-0",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
-													title: t.title,
-													className: `cursor-pointer truncate text-sm font-semibold transition-colors hover:text-primary ${isCompleted ? "line-through text-muted-foreground" : "text-foreground"}`,
-													onClick: () => {
-														openTask(t);
-													},
-													children: t.title
-												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-													className: "truncate text-xs text-muted-foreground",
-													title: stageName,
-													children: [stageName, t.sourceQueryId && " · Telegram query"]
-												})]
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-												className: "justify-self-end sm:justify-self-start",
-												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StatusChip, { status: statusOfTask(t) })
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-												className: "col-start-2 flex min-w-0 items-center gap-1 truncate text-xs text-muted-foreground sm:col-start-auto",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, { className: "size-3 shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-													className: "truncate",
-													children: getAssigneeName(t.assigneeId) || t.assigneeName || "Unassigned"
-												})]
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "whitespace-nowrap flex items-center gap-1 text-xs text-muted-foreground",
-												children: (t.deadline || t.dueDate) && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-3 shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Time, {
-													value: t.deadline || t.dueDate,
-													format: "calendar"
-												})] })
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-												variant: "outline",
-												size: "sm",
-												className: "col-start-3 row-start-2 sm:col-start-auto sm:row-start-auto",
-												onClick: () => {
-													openTask(t);
-												},
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-4 text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Thread" })]
-											})
-										]
-									}, t.id);
-								}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
-									kind: tasks.length ? "no-results" : "first-use",
-									icon: CircleCheck,
-									title: tasks.length ? "No tasks match these filters" : "No tasks yet",
-									description: tasks.length ? "Try another status, person or stage, or clear the search." : hasWorkflowStarted ? "Add the first deliverable for this project." : "Start a workflow to generate the starter tasks.",
-									action: tasks.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-										variant: "outline",
-										size: "sm",
-										onClick: () => {
-											setTaskStatusFilter("all");
-											setTaskStageFilter("all");
-											setPersonFilter("all");
-											setSpaceFilter("all");
-											setTaskSearch("");
-										},
-										children: "Clear filters"
-									}) : hasWorkflowStarted ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-										size: "sm",
-										onClick: () => setCreateTaskOpen(true),
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {}), "Add task"]
-									}) : !project.telegramSetupPending ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-										size: "sm",
-										onClick: () => setTemplateModalOpen(true),
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, {}), "Start workflow"]
-									}) : null
-								})
-							})
-						]
+							emptyDescription: hasWorkflowStarted ? "Add the first deliverable for this project." : "Start a workflow to generate the starter tasks.",
+							emptyAction: hasWorkflowStarted ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								size: "sm",
+								onClick: () => setCreateTaskOpen(true),
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {}), "Add task"]
+							}) : !project.telegramSetupPending ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								size: "sm",
+								onClick: () => setTemplateModalOpen(true),
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, {}), "Start workflow"]
+							}) : null
+						})
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
 						value: "chat",
@@ -54306,7 +54620,8 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 								},
 								onTaskCreated: (newTask) => {
 									loadProjectTasks();
-									openTask(newTask);
+									if (onQueriesUpdated) onQueriesUpdated();
+									if (newTask?.id) openTask(newTask);
 								},
 								onOpenTask: (taskId) => {
 									const found = tasks.find((t) => t.id === taskId);
@@ -54343,7 +54658,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 							className: "space-y-2",
 							children: project.members && project.members.length > 0 ? project.members.map((member, idx) => {
 								const memberId = member.employeeId || member.id;
-								const memberTasksCount = tasks.filter((t) => t.assigneeId === memberId).length;
+								const memberTasksCount = tasks.filter((t) => !t.deletedAt && !["Cancelled", "cancelled"].includes(t.status) && (t.assigneeId === memberId || !t.assigneeId && matchesRole(member.roles || member.role, t.sourceRole || t.role))).length;
 								return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
 									className: "py-0",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
@@ -54537,25 +54852,32 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 								})]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 								className: "grid gap-2 text-xs font-semibold",
-								children: ["Initial status", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
-									value: newTaskStatus,
-									onChange: (e) => setNewTaskStatus(e.target.value),
-									className: "w-full",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-											value: "Open",
-											children: "Open"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-											value: "In progress",
-											children: "In progress"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-											value: "Blocked",
-											children: "Blocked"
-										})
-									]
-								})]
+								children: [
+									"Initial status",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(NativeSelect, {
+										value: newTaskStatus,
+										onChange: (e) => setNewTaskStatus(e.target.value),
+										className: "w-full",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: "Open",
+												children: "Open"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: "In progress",
+												children: "In progress"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+												value: "Blocked",
+												children: "Blocked"
+											})
+										]
+									}),
+									newTaskDerivedStatus.text !== (newTaskStatus === "Completed" ? "Done" : newTaskStatus) && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("small", {
+										className: "font-normal text-muted-foreground",
+										children: ["Shown as ", newTaskDerivedStatus.text]
+									})
+								]
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogFooter, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
@@ -54829,7 +55151,7 @@ function ProjectDirectoryView({ projects = [], decisionRequests = [], onSelectPr
 									className: "space-y-1",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "flex items-center justify-between text-xs text-muted-foreground",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: ["Tasks: ", taskCount] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [progress, "%"] })]
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: project.completedCount !== void 0 ? `${project.completedCount} of ${taskCount} done` : `Tasks: ${taskCount}` }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [progress, "%"] })]
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 										className: "h-1.5 w-full overflow-hidden rounded-full bg-muted",
 										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
@@ -54898,7 +55220,7 @@ var patch = (url, data = {}) => api$1(url, {
 	method: "PATCH",
 	body: JSON.stringify(data)
 });
-var initials = (name = "") => name.trim().split(/\s+/).map((part) => part[0]).slice(0, 2).join("").toUpperCase() || "P";
+var initials$1 = (name = "") => name.trim().split(/\s+/).map((part) => part[0]).slice(0, 2).join("").toUpperCase() || "P";
 var activityWho = {
 	client_link_claimed: "Client",
 	client_link_created: "Founder",
@@ -54923,6 +55245,7 @@ var activityWhat = {
 	project_member_removed: "removed a team member",
 	project_moved_to_trash: "moved the project to trash",
 	project_restored: "restored the project",
+	project_reopened: "reopened the project",
 	project_spaces_updated: "updated the project spaces",
 	query_accepted: "accepted a client query",
 	reply_suggested: "drafted a reply",
@@ -54948,6 +55271,7 @@ function describeActivity(item, { projects, employees }) {
 	const person = (id) => employees.find((employee) => employee.id === id)?.name;
 	const who = details.sender || person(details.actorId) || activityWho[action] || (action.startsWith("google_access_") ? "A teammate" : "Founder");
 	let what = activityWhat[action] || (action.startsWith("query_") ? `${action.slice(6).replace(/_/g, " ")} a client query` : "") || action.replace(/_/g, " ");
+	if (action === "project_closed") what = details.outcome === "Completed" ? "marked the project complete" : "abandoned the project";
 	if (action === "project_update") {
 		const changes = details.changes;
 		const fields = Array.isArray(changes) ? changes : Object.keys(changes || {});
@@ -54972,7 +55296,7 @@ function InitialAvatar({ name, className = "" }) {
 		className,
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
 			className: "bg-accent font-semibold text-accent-foreground",
-			children: initials(name)
+			children: initials$1(name)
 		})
 	});
 }
@@ -54984,6 +55308,7 @@ function Field({ label, children }) {
 }
 function FounderApp() {
 	const [authState, setAuthState] = (0, import_react.useState)("checking");
+	const [founderProfile, setFounderProfile] = (0, import_react.useState)(null);
 	const [projects, setProjects] = (0, import_react.useState)([]);
 	const [employees, setEmployees] = (0, import_react.useState)([]);
 	const [trashedProjects, setTrashedProjects] = (0, import_react.useState)([]);
@@ -55012,7 +55337,8 @@ function FounderApp() {
 		projectTab: navigationState.projectTab
 	}));
 	const filteredProjects = projects.filter((project) => `${project.name} ${project.clientName} ${project.location || ""}`.toLowerCase().includes(searchQuery.toLowerCase()));
-	const pendingDecisionsCount = decisionRequests.filter(needsQueryAttention).length;
+	const openProjectIds = new Set(projects.filter((p) => !["Completed", "Abandoned"].includes(p.status)).map((p) => p.id));
+	const pendingDecisionsCount = decisionRequests.filter((req) => needsQueryAttention(req) && (!req.projectId || openProjectIds.has(req.projectId))).length;
 	projects.filter((p) => p.telegramSetupPending).length;
 	const showNotice = (message, error = false) => {
 		setNotice({
@@ -55026,6 +55352,9 @@ function FounderApp() {
 			const data = await api$1("/api/founder/projects");
 			setProjects(data.projects || []);
 			setAuthState("signed-in");
+			api$1("/api/founder/profile").then((res) => {
+				if (res?.founder) setFounderProfile(res.founder);
+			}).catch(() => {});
 		} catch (error) {
 			if (error.status === 401) setAuthState("signed-out");
 			else {
@@ -55076,15 +55405,23 @@ function FounderApp() {
 	}, []);
 	(0, import_react.useEffect)(() => {
 		if (authState !== "signed-in") return;
-		const timer = setInterval(async () => {
+		const refreshData = async () => {
 			if (document.visibilityState !== "visible") return;
 			try {
 				const [projData, decData] = await Promise.allSettled([api$1("/api/founder/projects"), api$1("/api/founder/decision-requests")]);
 				if (projData.status === "fulfilled") setProjects(projData.value.projects || []);
 				if (decData.status === "fulfilled") setDecisionRequests(decData.value.requests || []);
 			} catch {}
-		}, 8e3);
-		return () => clearInterval(timer);
+		};
+		const timer = setInterval(refreshData, 6e3);
+		const onVisibility = () => {
+			if (document.visibilityState === "visible") refreshData();
+		};
+		document.addEventListener("visibilitychange", onVisibility);
+		return () => {
+			clearInterval(timer);
+			document.removeEventListener("visibilitychange", onVisibility);
+		};
 	}, [authState]);
 	(0, import_react.useEffect)(() => {
 		const isLogin = authState === "signed-out";
@@ -55148,11 +55485,11 @@ function FounderApp() {
 			setBusy(false);
 		}
 	};
-	const restoreProject = async (id) => {
+	const restoreProject = async (id, reopen = false) => {
 		try {
-			await post$1(`/api/founder/trash/${id}/restore`);
+			await post$1(`/api/founder/trash/${id}/restore`, { reopen });
 			await Promise.all([loadProjects(), loadTrash()]);
-			showNotice("Project restored.");
+			showNotice(reopen ? "Project restored and reopened." : "Project restored.");
 		} catch (error) {
 			showNotice(error.message, true);
 		}
@@ -55218,8 +55555,9 @@ function FounderApp() {
 	};
 	const sectionBadges = { decisions: pendingDecisionsCount };
 	const needsSetup = (project) => project.status !== "Completed" && (project.telegramSetupPending || project.status === "Setup");
-	const ongoingProjects = filteredProjects.filter((project) => project.status !== "Completed" && !needsSetup(project));
+	const ongoingProjects = filteredProjects.filter((project) => !["Completed", "Abandoned"].includes(project.status) && !needsSetup(project));
 	const setupProjects = filteredProjects.filter(needsSetup);
+	const abandonedProjects = filteredProjects.filter((project) => project.status === "Abandoned");
 	const renderSectionItem = (section) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SidebarItem, {
 		icon: sectionIcons[section.id],
 		badge: sectionBadges[section.id],
@@ -55262,28 +55600,35 @@ function FounderApp() {
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "space-y-3",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SidebarGroup, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SidebarGroupLabel, {
-							count: ongoingProjects.length,
-							children: "Ongoing projects"
-						}), ongoingProjects.map(renderProjectItem)] }), setupProjects.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SidebarGroup, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SidebarGroupLabel, {
-							count: setupProjects.length,
-							children: "Needs setup"
-						}), setupProjects.map(renderProjectItem)] })]
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SidebarGroup, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SidebarGroupLabel, {
+								count: ongoingProjects.length,
+								children: "Ongoing projects"
+							}), ongoingProjects.map(renderProjectItem)] }),
+							setupProjects.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SidebarGroup, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SidebarGroupLabel, {
+								count: setupProjects.length,
+								children: "Needs setup"
+							}), setupProjects.map(renderProjectItem)] }),
+							abandonedProjects.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SidebarGroup, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SidebarGroupLabel, {
+								count: abandonedProjects.length,
+								children: "Abandoned"
+							}), abandonedProjects.map(renderProjectItem)] })
+						]
 					})
 				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex items-center gap-3 pt-3",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, { name: "Project founder" }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, { name: founderProfile?.name || "Project founder" }),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "min-w-0 flex-1",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "truncate text-xs font-semibold",
-							children: "Project founder"
+							children: founderProfile?.name || "Project founder"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "text-xs text-muted-foreground",
-							children: "Workspace founder"
+							children: founderProfile?.email || "Workspace founder"
 						})]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
@@ -55370,7 +55715,7 @@ function FounderApp() {
 							})]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "flex items-center gap-2",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, { name: "Project founder" })
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, { name: founderProfile?.name || "Project founder" })
 						})]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
 						className: currentTab === "assistant" ? "h-[calc(100dvh-9rem)] lg:h-[calc(100dvh-5rem)]" : "mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:px-8 sm:py-8",
@@ -55423,11 +55768,18 @@ function FounderApp() {
 												children: proj.clientName
 											})]
 										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-											variant: "outline",
-											size: "sm",
-											onClick: () => restoreProject(proj.id),
-											children: "Restore"
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "flex items-center gap-2",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+												variant: "outline",
+												size: "sm",
+												onClick: () => restoreProject(proj.id, false),
+												children: "Restore"
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+												size: "sm",
+												onClick: () => restoreProject(proj.id, true),
+												children: "Restore & Reopen"
+											})]
 										})
 									]
 								}) }, proj.id))
@@ -55552,6 +55904,7 @@ function FounderApp() {
 				onOpenChange: setMemberOpen,
 				label: memberDialogLabel,
 				projects,
+				employees,
 				defaultProjectId: selectedProject?.id,
 				onUpdated: () => Promise.all([loadProjects(), loadEmployees()])
 			}),
@@ -56015,15 +56368,49 @@ function ClientApp() {
 		})]
 	});
 }
+// frontend/src/features/meetings/lib/meetingNotice.js
+/**
+* Counts upcoming scheduled meetings that include the specified employee.
+*
+* @param {Array} meetings - List of meeting objects
+* @param {string} employeeId - ID of the employee
+* @param {number} [now=Date.now()] - Timestamp to compare startsAt against
+* @returns {number}
+*/
+function countUpcomingEmployeeMeetings(meetings = [], employeeId, now = Date.now()) {
+	if (!employeeId || !Array.isArray(meetings)) return 0;
+	return meetings.filter((meeting) => {
+		if (meeting.status !== "Scheduled") return false;
+		const start = Date.parse(meeting.startsAt);
+		if (isNaN(start) || start <= now) return false;
+		return Boolean(meeting.attendeeIds?.includes(employeeId) || meeting.attendees?.some((a) => a.id === employeeId));
+	}).length;
+}
 // frontend/src/apps/EmployeeApp.jsx
+var EMPLOYEE_SECTIONS = [
+	"actions",
+	"meetings",
+	"chats",
+	"projects"
+];
+var sectionIcons = {
+	actions: CircleCheck,
+	meetings: CalendarDays,
+	chats: MessageSquare,
+	projects: FolderKanban
+};
+var initials = (name = "") => name.split(/\s+/).filter(Boolean).slice(0, 2).map((part) => part[0].toUpperCase()).join("");
 function EmployeeApp() {
 	const [auth, setAuth] = (0, import_react.useState)("checking");
 	const [employee, setEmployee] = (0, import_react.useState)(null);
 	const [projects, setProjects] = (0, import_react.useState)([]);
+	const [sidebarOpen, setSidebarOpen] = (0, import_react.useState)(false);
 	const navigation = useNavigation();
-	const selectedId = navigation.projectId || projects[0]?.id || null;
+	const section = EMPLOYEE_SECTIONS.includes(navigation.section) ? navigation.section : "actions";
+	const selectedId = section === "projects" ? navigation.projectId || null : null;
 	const [tasks, setTasks] = (0, import_react.useState)([]);
 	const [decisionRequests, setDecisionRequests] = (0, import_react.useState)([]);
+	const [meetings, setMeetings] = (0, import_react.useState)([]);
 	const [taskSelection, setTaskSelection] = (0, import_react.useState)(null);
 	const selectedTask = navigation.section === "projects" ? tasks.find((task) => task.id === navigation.taskId) || (taskSelection?.id === navigation.taskId ? taskSelection : null) : null;
 	const taskDrawerOpen = Boolean(selectedTask);
@@ -56036,20 +56423,21 @@ function EmployeeApp() {
 			taskId: task.id
 		});
 	};
-	const [taskViewMode, setTaskViewMode] = (0, import_react.useState)("list");
-	const [taskSearch, setTaskSearch] = (0, import_react.useState)(""), [taskStatusFilter, setTaskStatusFilter] = (0, import_react.useState)("all");
 	const [staleData, setStaleData] = (0, import_react.useState)(false);
 	const [loadingWorkspace, setLoadingWorkspace] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
-	const load = async () => {
+	const [revocationMessage, setRevocationMessage] = (0, import_react.useState)("");
+	const load = async ({ background = false } = {}) => {
 		try {
-			const data = await request("/api/employee/me");
+			const data = await request$1("/api/employee/me");
 			setEmployee(data.employee);
 			setProjects(data.projects || []);
 			setAuth("signed-in");
 		} catch (problem) {
-			if (problem.status === 401) setAuth("signed-out");
-			else {
+			if (problem.status === 401) {
+				if (auth === "signed-in") setRevocationMessage("Your access was removed. Contact the founder.");
+				setAuth("signed-out");
+			} else if (!background) {
 				setError("Could not connect to the workspace. Please retry.");
 				setAuth((current) => current === "checking" ? "signed-out" : current);
 			}
@@ -56057,16 +56445,25 @@ function EmployeeApp() {
 	};
 	(0, import_react.useEffect)(() => {
 		load();
-		const expired = () => setAuth("signed-out");
+		const expired = () => {
+			setRevocationMessage("Your access was removed. Contact the founder.");
+			setAuth("signed-out");
+		};
 		window.addEventListener("studio-iksha:unauthorized", expired);
 		return () => window.removeEventListener("studio-iksha:unauthorized", expired);
 	}, []);
 	const selected = projects.find((project) => project.id === selectedId);
-	const statusOfTask = (t) => taskStatus(t, { stage: selected?.stages?.find((stage) => stage.id === t.stageId) });
-	const loadWorkspaceData = (0, import_react.useCallback)(async () => {
+	useDocumentTitle(auth === "signed-out" ? pageTitle("Sign in") : pageTitle(selected?.name || founderSectionLabel(section)));
+	const taskFilters = useTaskFilters(tasks, selected?.stages || []);
+	(0, import_react.useEffect)(() => {
+		taskFilters.clear();
+	}, [selectedId]);
+	const loadWorkspaceData = (0, import_react.useCallback)(async ({ background = false } = {}) => {
 		if (!selected?.id) return;
-		setLoadingWorkspace(true);
-		setError("");
+		if (!background) {
+			setLoadingWorkspace(true);
+			setError("");
+		}
 		try {
 			const wsData = await fetchProjectWorkspace(selected.id, "employee").catch(() => null);
 			if (wsData && Array.isArray(wsData.tasks)) {
@@ -56080,21 +56477,52 @@ function EmployeeApp() {
 			const decData = await fetchDecisionRequests("employee");
 			setDecisionRequests(decData.requests || []);
 		} catch (problem) {
-			setError(problem.message || "Could not refresh the workspace. Please retry.");
+			if (!background) setError(problem.message || "Could not refresh the workspace. Please retry.");
 		} finally {
-			setLoadingWorkspace(false);
+			if (!background) setLoadingWorkspace(false);
 		}
 	}, [selected?.id]);
 	(0, import_react.useEffect)(() => {
 		if (selected?.id) loadWorkspaceData();
 	}, [selected?.id, loadWorkspaceData]);
+	const loadMeetings = (0, import_react.useCallback)(async () => {
+		try {
+			const data = await request$1("/api/employee/meetings");
+			setMeetings(data.meetings || []);
+		} catch {}
+	}, []);
+	const polling = (0, import_react.useRef)(false);
+	(0, import_react.useEffect)(() => {
+		if (auth !== "signed-in") return void 0;
+		loadMeetings();
+		const timer = setInterval(async () => {
+			if (document.visibilityState !== "visible" || polling.current) return;
+			polling.current = true;
+			try {
+				await Promise.all([
+					load({ background: true }),
+					loadWorkspaceData({ background: true }),
+					loadMeetings()
+				]);
+			} finally {
+				polling.current = false;
+			}
+		}, 8e3);
+		return () => clearInterval(timer);
+	}, [
+		auth,
+		loadWorkspaceData,
+		loadMeetings
+	]);
 	const logout = async () => {
-		await request("/api/employee/logout", { method: "POST" });
+		setRevocationMessage("");
+		await request$1("/api/employee/logout", { method: "POST" }).catch(() => {});
 		setAuth("signed-out");
 		setEmployee(null);
 		setProjects([]);
 		setTasks([]);
 		setDecisionRequests([]);
+		setMeetings([]);
 	};
 	if (auth === "checking") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
 		className: "grid min-h-dvh place-items-center bg-background p-6",
@@ -56103,445 +56531,442 @@ function EmployeeApp() {
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-12 w-48" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-52 w-full" })]
 		})
 	});
-	if (auth === "signed-out") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkspaceAccess, { team: true });
+	if (auth === "signed-out") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkspaceAccess, {
+		team: true,
+		children: revocationMessage && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			role: "alert",
+			className: "my-3 rounded-lg border border-destructive/30 bg-destructive/10 p-3 text-sm font-medium text-destructive",
+			children: revocationMessage
+		})
+	});
 	const projectQueries = decisionRequests.filter((r) => r.projectId === selected?.id);
 	const pendingQueriesCount = projectQueries.filter(needsQueryAttention).length;
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "iksha-workspace app-glow min-h-dvh bg-background pb-[max(24px,env(safe-area-inset-bottom))]",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
-			className: "sticky top-0 z-20 border-b bg-card/95 px-4 py-4 backdrop-blur",
-			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mx-auto flex max-w-5xl items-center gap-3",
+	const sectionBadges = { meetings: countUpcomingEmployeeMeetings(meetings, employee?.id) };
+	const openSection = (id) => {
+		setSidebarOpen(false);
+		navigate({ section: id });
+	};
+	const openProject = (id) => {
+		setSidebarOpen(false);
+		navigate({
+			section: "projects",
+			projectId: id
+		});
+	};
+	const sidebar = /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "iksha-navigation flex h-full min-h-0 flex-col",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(IkshaBrand, { compact: true }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "iksha-nav-scroll -mx-1 min-h-0 flex-1 space-y-3 overflow-y-auto px-1 py-1",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(IkshaBrand, { compact: true }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
+						"aria-label": "Workspace",
+						className: "grid gap-3",
+						children: ["main", "workspace"].map((group) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SidebarGroup, { children: [group === "workspace" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SidebarGroupLabel, { children: "Workspace" }), founderSections.filter((item) => item.group === group && EMPLOYEE_SECTIONS.includes(item.id)).map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SidebarItem, {
+							icon: sectionIcons[item.id],
+							badge: sectionBadges[item.id],
+							active: section === item.id && !selected,
+							onClick: () => openSection(item.id),
+							children: item.label
+						}, item.id))] }, group))
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Separator, {}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SidebarGroup, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SidebarGroupLabel, {
+						count: projects.length,
+						children: "Your projects"
+					}), projects.map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SidebarItem, {
+						active: project.id === selectedId,
+						title: `${project.name}${project.clientName ? ` · ${project.clientName}` : ""}`,
+						dot: project.status === "Completed" ? "bg-neutral-fill" : project.status === "At risk" ? "bg-warning-fill" : "bg-success-fill",
+						onClick: () => openProject(project.id),
+						children: project.name
+					}, project.id))] })
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex items-center gap-3 pt-3",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$1, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
+						className: "bg-accent font-semibold text-accent-foreground",
+						children: initials(employee?.name)
+					}) }),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "min-w-0 flex-1",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "truncate text-sm font-semibold",
-							children: "Studio Iksha"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "truncate text-xs text-muted-foreground",
-							children: [employee?.name, " · Team workspace"]
+							className: "truncate text-xs font-semibold",
+							children: employee?.name
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-xs text-muted-foreground",
+							children: "Team member"
 						})]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						variant: "ghost",
-						size: "icon",
+						size: "icon-sm",
 						"aria-label": "Sign out",
 						onClick: logout,
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LogOut, { className: "size-4" })
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LogOut, {})
 					})
 				]
 			})
-		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
-			className: "mx-auto max-w-5xl space-y-6 px-4 py-6 sm:px-6",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkQueue, {
-					projects,
-					isFounder: false,
-					initialPersonId: employee?.id || "",
-					personName: employee?.name || "Me",
-					onChanged: loadWorkspaceData
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
-					className: "card-box bg-card",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", {
-						className: "text-sm font-semibold",
-						children: "Project conversations"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "pt-4",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectConversations, {
+		]
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "iksha-workspace app-glow min-h-dvh bg-background pb-[max(24px,env(safe-area-inset-bottom))] lg:pb-0",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("aside", {
+				className: "iksha-sidebar fixed inset-y-0 left-0 hidden w-64 px-3 py-3 lg:block",
+				children: sidebar
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sheet, {
+				open: sidebarOpen,
+				onOpenChange: setSidebarOpen,
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SheetContent, {
+					side: "left",
+					className: "w-[min(88vw,19rem)] gap-0 px-3 py-3",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SheetHeader, {
+						className: "sr-only",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetTitle, { children: "Workspace navigation" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetDescription, { children: "Choose a project or section" })]
+					}), sidebar]
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				"aria-hidden": "true",
+				className: "fixed inset-x-0 top-0 z-30 hidden h-2 bg-background lg:block"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "lg:py-2 lg:pr-2 lg:pl-64",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "iksha-sheet lg:min-h-[calc(100dvh-1rem)] lg:rounded-xl lg:bg-card",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
+						className: "sticky top-0 z-20 flex h-16 items-center justify-between border-b bg-card/95 px-4 backdrop-blur sm:px-8 lg:top-2 lg:rounded-t-xl lg:border-transparent",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex min-w-0 items-center gap-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "ghost",
+								size: "icon",
+								className: "lg:hidden",
+								"aria-label": "Open navigation",
+								onClick: () => setSidebarOpen(true),
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Menu$1, {})
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
+								"aria-label": "Breadcrumb",
+								className: "min-w-0 text-sm",
+								children: selected ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("ol", {
+									className: "flex min-w-0 items-center gap-2",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
+											className: "shrink-0",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+												type: "button",
+												className: "text-muted-foreground hover:text-foreground",
+												onClick: () => openSection("projects"),
+												children: "Projects"
+											})
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
+											"aria-hidden": "true",
+											className: "shrink-0 text-muted-foreground",
+											children: "/"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
+											className: "min-w-0 truncate font-semibold",
+											"aria-current": "page",
+											children: selected.name
+										})
+									]
+								}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+									className: "block truncate lg:sr-only",
+									"aria-current": "page",
+									children: founderSectionLabel(section)
+								})
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Avatar$1, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, {
+							className: "bg-accent font-semibold text-accent-foreground",
+							children: initials(employee?.name)
+						}) })]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
+						className: "mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:px-8 sm:py-8",
+						children: [error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							role: "alert",
+							className: "card-box border-destructive/30 bg-destructive/10 text-sm text-destructive",
+							children: error
+						}), section === "actions" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkQueue, {
+							projects,
+							isFounder: false,
+							initialPersonId: employee?.id || "",
+							personName: employee?.name || "Me",
+							onChanged: loadWorkspaceData
+						}) : section === "meetings" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MeetingsView, { namespace: "employee" }) : section === "chats" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectConversations, {
 							projects,
 							namespace: "employee",
-							actor: employee.id,
-							embedded: true
-						})
-					})]
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
-					className: "card-box bg-card",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", {
-						className: "text-sm font-semibold",
-						children: "Scheduled meetings"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "pt-4",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MeetingsView, {
-							namespace: "employee",
-							embedded: true
-						})
-					})]
-				}),
-				error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					role: "alert",
-					className: "card-box border-destructive/30 bg-destructive/10 text-sm text-destructive",
-					children: error
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "iksha-eyebrow",
-						children: "My workspace"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-						className: "mt-1",
-						children: "Your projects"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-						className: "mt-1 text-sm text-muted-foreground",
-						children: [
-							"You are assigned to ",
-							projects.length,
-							" ",
-							projects.length === 1 ? "project" : "projects",
-							"."
-						]
-					})
-				] }),
-				projects.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					className: "grid gap-4 sm:grid-cols-2",
-					children: projects.map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-						type: "button",
-						onClick: () => navigate({
-							section: "projects",
-							projectId: project.id
-						}),
-						className: `card-box bg-card text-left shadow-xs transition-colors duration-200 hover:border-primary/40 ${selectedId === project.id ? "border-primary" : ""}`,
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-start gap-3",
+							actor: employee.id
+						}) : !selected ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", { children: "Projects" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-1 text-sm text-muted-foreground",
+							children: navigation.projectId ? "That project is not assigned to you. Choose one of yours." : `You are assigned to ${projects.length} ${projects.length === 1 ? "project" : "projects"}.`
+						})] }), projects.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "grid gap-4 sm:grid-cols-2",
+							children: projects.map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+								type: "button",
+								onClick: () => openProject(project.id),
+								className: "card-box bg-card text-left shadow-xs transition-colors duration-200 hover:border-primary/40",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-start gap-3",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "grid size-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "size-5" })
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "min-w-0 flex-1",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+												className: "block truncate text-sm",
+												children: project.name
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+												className: "mt-1 truncate text-xs text-muted-foreground",
+												children: project.location || project.clientName
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+											variant: "secondary",
+											children: project.status || "Setup"
+										})
+									]
+								})
+							}, project.id))
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
+							icon: FolderKanban,
+							title: "No projects assigned yet",
+							description: "Ask your founder to add you to a project."
+						})] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+							className: "space-y-6",
 							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "grid size-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderKanban, { className: "size-5" })
-								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "min-w-0 flex-1",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-										className: "block truncate text-sm",
-										children: project.name
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "mt-1 truncate text-xs text-muted-foreground",
-										children: project.location || project.clientName
+									className: "flex flex-wrap items-start justify-between gap-3",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "min-w-0 space-y-1",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "flex min-w-0 items-start gap-3",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+												className: "line-clamp-2 min-w-0 [overflow-wrap:anywhere]",
+												title: selected.name,
+												children: selected.name
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StatusChip, {
+												tone: PROJECT_STATUS_TONES[selected.status],
+												className: "mt-1 shrink-0",
+												children: selected.status || "Setup"
+											})]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "truncate text-sm text-muted-foreground",
+											children: [selected.clientName, selected.location].filter(Boolean).join(" · ")
+										})]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										variant: "outline",
+										size: "sm",
+										onClick: loadWorkspaceData,
+										disabled: loadingWorkspace,
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: `size-3.5 ${loadingWorkspace ? "animate-spin" : ""}` }), "Refresh"]
 									})]
 								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-									variant: "secondary",
-									children: project.status || "Setup"
-								})
-							]
-						})
-					}, project.id))
-				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
-					icon: FolderKanban,
-					title: "No projects assigned yet",
-					description: "Ask your founder to add your employee ID to a project."
-				}),
-				selected && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-					className: "space-y-4",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center justify-between gap-3",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "iksha-eyebrow",
-								children: "Selected project"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-								className: "mt-1",
-								children: selected.name
-							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center gap-2",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-									variant: "outline",
-									size: "sm",
-									onClick: loadWorkspaceData,
-									disabled: loadingWorkspace,
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: `size-3.5 mr-1 ${loadingWorkspace ? "animate-spin" : ""}` }), "Refresh"]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-									variant: "outline",
-									children: selected.status
-								})]
-							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Tabs, {
-							value: navigation.projectTab || "timeline",
-							onValueChange: (projectTab) => navigate({
-								section: "projects",
-								projectId: selected.id,
-								projectTab
-							}),
-							className: "gap-4",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
-									className: "flex flex-wrap w-full justify-start h-auto gap-1 bg-muted/60 p-1 rounded-xl",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Tabs, {
+									value: navigation.projectTab || "timeline",
+									onValueChange: (projectTab) => navigate({
+										section: "projects",
+										projectId: selected.id,
+										projectTab
+									}),
+									className: "space-y-4",
 									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
-											value: "timeline",
-											className: "font-semibold text-xs px-3 py-2",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, { className: "size-4 mr-2" }), "Timeline"]
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
-											value: "tasks",
-											className: "font-semibold text-xs px-3 py-2",
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
+											className: "iksha-project-tabs",
+											"aria-label": "Project sections",
 											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-4 mr-2" }),
-												"Tasks (",
-												tasks.length,
-												")"
-											]
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
-											value: "queries",
-											className: "font-semibold text-xs px-3 py-2",
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-4 mr-2" }),
-												"Client queries",
-												pendingQueriesCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-													variant: "secondary",
-													className: "ml-2 size-4 p-0 text-xs justify-center bg-warning-bg text-warning",
-													children: pendingQueriesCount
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
+													value: "timeline",
+													children: "Timeline"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+													value: "tasks",
+													children: ["Tasks ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+														className: "ml-1 font-normal tabular-nums",
+														children: tasks.length
+													})]
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+													value: "queries",
+													children: ["Client queries", pendingQueriesCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+														variant: "secondary",
+														className: "ml-2 h-5 min-w-5 justify-center bg-warning-bg px-1 text-xs text-warning",
+														children: pendingQueriesCount
+													})]
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
+													value: "chat",
+													children: "Team chat"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
+													value: "files",
+													children: "Files"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
+													value: "overview",
+													children: "Overview"
 												})
 											]
 										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
-											value: "chat",
-											className: "font-semibold text-xs px-3 py-2",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-4 mr-2" }), "Team chat"]
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
-											value: "files",
-											className: "font-semibold text-xs px-3 py-2",
-											children: "Files"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
-											value: "overview",
-											className: "font-semibold text-xs px-3 py-2",
-											children: "Overview"
-										})
-									]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
-									value: "timeline",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTimelineWorkspace, {
-										projectId: selected.id,
-										projectStartDate: selected.startDate,
-										namespace: "employee",
-										tasks,
-										stages: selected.stages || [],
-										members: selected.members || [],
-										onOpenTask: (task) => {
-											openTask(task);
-										}
-									})
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
-									value: "tasks",
-									className: "space-y-3",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-											className: "flex items-center justify-between gap-2 pb-1",
-											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SegmentedControl, {
-												label: "Task view",
-												value: taskViewMode,
-												onValueChange: setTaskViewMode,
-												options: [{
-													value: "list",
-													label: "List"
-												}, {
-													value: "graph",
-													label: "Dependency graph"
-												}]
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
+											value: "timeline",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTimelineWorkspace, {
+												projectId: selected.id,
+												projectStartDate: selected.startDate,
+												namespace: "employee",
+												tasks,
+												stages: selected.stages || [],
+												members: selected.members || [],
+												onOpenTask: (task) => {
+													openTask(task);
+												}
 											})
 										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "grid gap-2 sm:grid-cols-2",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-												"aria-label": "Find project tasks",
-												value: taskSearch,
-												onChange: (e) => setTaskSearch(e.target.value),
-												placeholder: "Find task, stage or role…"
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-												className: "grid gap-1 text-xs",
-												children: ["Task status", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
-													value: taskStatusFilter,
-													onChange: (e) => setTaskStatusFilter(e.target.value),
-													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-														value: "all",
-														children: "All statuses"
-													}), TASK_STATUS_OPTIONS.map((option) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-														value: option.key,
-														children: option.label
-													}, option.key))]
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
+											value: "tasks",
+											className: "space-y-4",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectTaskList, {
+												project: selected,
+												tasks,
+												stages: selected.stages || [],
+												employees: (selected.members || []).map((m) => ({
+													id: m.employeeId,
+													name: m.name
+												})),
+												filters: taskFilters,
+												onOpenTask: openTask,
+												onRefresh: loadWorkspaceData,
+												refreshing: loadingWorkspace,
+												staleData,
+												emptyDescription: "Tasks appear here once the founder starts this project's workflow."
+											})
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
+											value: "queries",
+											className: "space-y-3",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "card-box bg-muted/20 text-xs",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+													className: "font-semibold text-foreground",
+													children: "Assigned project Telegram queries"
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+													className: "text-muted-foreground mt-1",
+													children: "View questions and photos received from the client. Contribute internal team notes to discuss resolutions."
 												})]
+											}), projectQueries.length ? projectQueries.map((query) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClientQueryCard, {
+												query,
+												project: selected,
+												stages: selected.stages || [],
+												projectMembers: selected.members || [],
+												isFounder: false,
+												onQueryChanged: loadWorkspaceData,
+												onOpenTask: (taskId) => {
+													const found = tasks.find((t) => t.id === taskId);
+													if (found) openTask(found);
+												}
+											}, query.id)) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
+												icon: MessageSquare,
+												title: "No client queries",
+												description: "Questions from the client in Telegram appear here for team review."
 											})]
 										}),
-										taskViewMode === "graph" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectDependencyGraph, {
-											tasks,
-											employees: selected?.members ? selected.members.map((m) => ({
-												id: m.employeeId,
-												name: m.name
-											})) : [],
-											stages: selected.stages || [],
-											onOpenTask: (taskItem) => {
-												openTask(taskItem);
-											},
-											onSwitchToList: () => setTaskViewMode("list"),
-											isFounder: false,
-											staleDataNotice: staleData
-										}) : tasks.length ? tasks.filter((t) => (taskStatusFilter === "all" || matchesTaskStatus(statusOfTask(t), taskStatusFilter)) && `${t.title} ${t.sourceRole || ""} ${selected.stages?.find((stage) => stage.id === t.stageId)?.name || ""}`.toLowerCase().includes(taskSearch.toLowerCase())).map((t) => {
-											const isCompleted = t.status === "Completed" || t.status === "completed";
-											return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "flex flex-col items-stretch justify-between gap-3 card-box bg-card sm:flex-row sm:items-center shadow-2xs hover:border-primary/40 transition-colors",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-													className: "flex items-center gap-3 min-w-0 flex-1",
-													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-														"aria-label": isCompleted ? "Completed" : "Pending",
-														className: "grid size-5 shrink-0 place-items-center rounded-md border",
-														children: isCompleted && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5" })
-													}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-														className: "min-w-0 flex-1",
-														children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-															className: `break-words text-sm font-semibold cursor-pointer hover:text-primary transition-colors ${isCompleted ? "line-through text-muted-foreground" : "text-foreground"}`,
-															onClick: () => {
-																openTask(t);
-															},
-															children: t.title
-														}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-															className: "text-xs text-muted-foreground",
-															children: [selected.stages?.find((stage) => stage.id === t.stageId)?.name || t.stageName || "General", t.deadline && ` · Due ${formatCalendar(t.deadline)}`]
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
+											value: "chat",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TeamChat, {
+												endpoint: `/api/employee/projects/${selected.id}/team-chat`,
+												currentActor: employee.id,
+												members: selected.members
+											}, selected.id)
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
+											value: "files",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectFiles, {
+												projectId: selected.id,
+												namespace: "employee"
+											})
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
+											value: "overview",
+											className: "space-y-3",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "grid grid-cols-2 gap-3",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
+													className: "pb-2",
+													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
+														className: "text-xs text-muted-foreground",
+														children: "Current phase"
+													})
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
+													className: "text-sm font-semibold",
+													children: selected.phase || "Not set"
+												})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
+													className: "pb-2",
+													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
+														className: "text-xs text-muted-foreground",
+														children: "Team members"
+													})
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
+													className: "text-sm font-semibold",
+													children: selected.members?.length || 0
+												})] })]
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+												className: "space-y-4",
+												children: [
+													/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+														className: "flex items-center gap-2 text-primary",
+														children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(BuildingComplex, { className: "size-4" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+															className: "type-label-14-strong",
+															children: "Current work"
 														})]
-													})]
-												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-													className: "flex items-center gap-2",
-													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(StatusChip, { status: statusOfTask(t) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-														variant: "outline",
-														size: "sm",
-														onClick: () => {
-															openTask(t);
-														},
-														children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-3.5 text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Discussion" })]
-													})]
-												})]
-											}, t.id);
-										}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
-											icon: CircleCheck,
-											title: "No active tasks in this project yet"
+													}),
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+														className: "text-sm",
+														children: selected.recentTask || "No recent work recorded yet."
+													}),
+													/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+														className: "border-t pt-4",
+														children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+															className: "text-xs text-muted-foreground",
+															children: "Next milestone"
+														}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+															className: "mt-1 text-sm font-medium",
+															children: selected.nextMilestone || "Not scheduled"
+														})]
+													}),
+													selected.blocker && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+														className: "rounded-xl bg-warning-bg p-3 text-sm text-warning",
+														children: ["Blocker: ", selected.blocker]
+													})
+												]
+											}) })]
 										})
 									]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
-									value: "queries",
-									className: "space-y-3",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "card-box bg-muted/20 text-xs",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "font-semibold text-foreground",
-											children: "Assigned project Telegram queries"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "text-muted-foreground mt-1",
-											children: "View questions and photos received from the client. Contribute internal team notes to discuss resolutions."
-										})]
-									}), projectQueries.length ? projectQueries.map((query) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClientQueryCard, {
-										query,
-										project: selected,
-										stages: selected.stages || [],
-										projectMembers: selected.members || [],
-										isFounder: false,
-										onQueryChanged: loadWorkspaceData,
-										onOpenTask: (taskId) => {
-											const found = tasks.find((t) => t.id === taskId);
-											if (found) openTask(found);
-										}
-									}, query.id)) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
-										icon: MessageSquare,
-										title: "No client queries",
-										description: "Questions from the client in Telegram appear here for team review."
-									})]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
-									value: "chat",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TeamChat, {
-										endpoint: `/api/employee/projects/${selected.id}/team-chat`,
-										currentActor: employee.id,
-										members: selected.members
-									}, selected.id)
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
-									value: "files",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectFiles, {
-										projectId: selected.id,
-										namespace: "employee"
-									})
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
-									value: "overview",
-									className: "space-y-3",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "grid grid-cols-2 gap-3",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
-											className: "pb-2",
-											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
-												className: "text-xs text-muted-foreground",
-												children: "Current phase"
-											})
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-											className: "text-sm font-semibold",
-											children: selected.phase || "Not set"
-										})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
-											className: "pb-2",
-											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
-												className: "text-xs text-muted-foreground",
-												children: "Team members"
-											})
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-											className: "text-sm font-semibold",
-											children: selected.members?.length || 0
-										})] })]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
-										className: "space-y-4",
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "flex items-center gap-2 text-primary",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(BuildingComplex, { className: "size-4" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-													className: "type-label-14-strong",
-													children: "Current work"
-												})]
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-												className: "text-sm",
-												children: selected.recentTask || "No recent work recorded yet."
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "border-t pt-4",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-													className: "text-xs text-muted-foreground",
-													children: "Next milestone"
-												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-													className: "mt-1 text-sm font-medium",
-													children: selected.nextMilestone || "Not scheduled"
-												})]
-											}),
-											selected.blocker && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "rounded-xl bg-warning-bg p-3 text-sm text-warning",
-												children: ["Blocker: ", selected.blocker]
-											})
-										]
-									}) })]
+								}, selected.id),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TaskThreadDrawer, {
+									task: selectedTask,
+									project: selected,
+									open: taskDrawerOpen,
+									onOpenChange: (open) => {
+										if (!open) goBack({ taskId: "" });
+									},
+									onTaskUpdated: loadWorkspaceData,
+									currentActor: employee.name || "Team Member",
+									isFounder: false,
+									projectMembers: selected.members || []
 								})
 							]
-						}, selected.id),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TaskThreadDrawer, {
-							task: selectedTask,
-							project: selected,
-							open: taskDrawerOpen,
-							onOpenChange: (open) => {
-								if (!open) goBack({ taskId: "" });
-							},
-							onTaskUpdated: loadWorkspaceData,
-							currentActor: employee.name || "Team Member",
-							isFounder: false,
-							projectMembers: selected.members || []
-						})
-					]
+						})]
+					})]
 				})
-			]
-		})]
+			})
+		]
 	});
 }
 // frontend/src/main.jsx

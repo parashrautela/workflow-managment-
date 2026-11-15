@@ -18,21 +18,26 @@ import { NativeSelect } from '@/components/ui/native-select';
 import { SegmentedControl } from '@/components/ui/segmented-control';
 
 // The status filter is a short fixed set, so it is pill tabs; people and projects come from data, so they stay selects.
+// "Now" is every open task except work that has not started yet; that waits under "Upcoming",
+// the same word its row chip shows. Overdue, blocked and approval work is never upcoming.
 const STATUS_FILTERS = [
-  { value: 'pending', label: 'All' },
+  { value: 'pending', label: 'Now' },
   { value: 'approvals', label: 'Approvals' },
   { value: 'overdue', label: 'Overdue' },
   { value: 'blocked', label: 'Blocked' },
   { value: 'in-progress', label: 'In progress' },
+  { value: 'upcoming', label: 'Upcoming' },
 ];
 const statusOf = (task) =>
   taskStatus(task, { stage: task.project?.stages?.find((stage) => stage.id === task.stageId) });
 const matchesStatusFilter = (status, filter) =>
   ({
+    pending: status.key !== 'upcoming',
     approvals: status.key === 'waiting',
     overdue: status.overdue,
     blocked: status.key === 'blocked',
     'in-progress': matchesTaskStatus(status, 'active'),
+    upcoming: status.key === 'upcoming',
   })[filter] ?? true;
 
 export function WorkQueue({
@@ -70,7 +75,7 @@ export function WorkQueue({
   const load = async () => {
     try {
       const data = await request(
-        `/api/${namespace}/work-queue?personId=${encodeURIComponent(person)}&projectId=${encodeURIComponent(projectId)}&status=pending`,
+        `/api/${namespace}/work-queue?personId=${encodeURIComponent(person)}&projectId=${encodeURIComponent(projectId)}&status=all`,
       );
       setTasks(data.tasks);
       setConnected(Boolean(data.telegramConnected));
@@ -211,40 +216,26 @@ export function WorkQueue({
                       className="work-queue-item flex w-full items-center justify-between gap-3 text-left hover:bg-accent"
                       onClick={() => navigate({ section: 'actions', taskId: task.id })}
                     >
-                      {isFounder ? (
-                        <>
-                          <span className="work-queue-item-content">
-                            <span className="work-queue-item-title">{task.title}</span>
-                            <span className="work-queue-item-context">
-                              {task.stageName}
-                              {task.spaces?.length ? ` · ${task.spaces.join(', ')}` : ''}
-                            </span>
+                      {/* One row design for founders and employees: the title, then its stage on the line below. */}
+                      <span className="work-queue-item-content">
+                        <span className="work-queue-item-title">{task.title}</span>
+                        <span className="work-queue-item-context">
+                          {task.stageName}
+                          {task.spaces?.length ? ` · ${task.spaces.join(', ')}` : ''}
+                        </span>
+                      </span>
+                      <span className="work-queue-item-meta">
+                        <StatusChip
+                          status={taskState}
+                          action={taskState.key === 'waiting'}
+                          className="justify-self-end"
+                        />
+                        {task.deadline && (
+                          <span>
+                            Due <Time value={task.deadline} format="calendar" />
                           </span>
-                          <span className="work-queue-item-meta">
-                            <StatusChip
-                              status={taskState}
-                              action={taskState.key === 'waiting'}
-                              className="justify-self-end"
-                            />
-                            {task.deadline && (
-                              <span>
-                                Due <Time value={task.deadline} format="calendar" />
-                              </span>
-                            )}
-                          </span>
-                        </>
-                      ) : (
-                        <div>
-                          <p className="text-sm font-medium">
-                            {task.stageName} — {task.title}
-                          </p>
-                          <p className="mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-                            <StatusChip status={taskState} action={taskState.key === 'waiting'} />
-                            {task.deadline ? ` · Due ${formatCalendar(task.deadline)}` : ''}
-                            {task.spaces?.length ? ` · ${task.spaces.join(', ')}` : ''}
-                          </p>
-                        </div>
-                      )}
+                        )}
+                      </span>
                     </button>
                   );
                 })}
@@ -255,18 +246,30 @@ export function WorkQueue({
             <Empty
               kind={tasks.length ? 'no-results' : 'first-use'}
               icon={CheckCircle2}
-              title={tasks.length ? 'No work matches these filters' : 'No pending work'}
+              title={
+                !tasks.length
+                  ? 'No pending work'
+                  : status === 'pending'
+                    ? 'Nothing needs action right now'
+                    : 'No work matches these filters'
+              }
               description={
-                tasks.length
-                  ? 'Try another status, or clear the filter.'
-                  : 'Work that needs action appears here.'
+                !tasks.length
+                  ? 'Work that needs action appears here.'
+                  : status === 'pending'
+                    ? 'Everything left is upcoming work that has not started yet.'
+                    : 'Try another status, or clear the filter.'
               }
               action={
-                tasks.length ? (
-                  <Button variant="outline" size="sm" onClick={() => setStatus('pending')}>
-                    Show all pending work
+                !tasks.length ? null : status === 'pending' ? (
+                  <Button variant="outline" size="sm" onClick={() => setStatus('upcoming')}>
+                    Show upcoming work
                   </Button>
-                ) : null
+                ) : (
+                  <Button variant="outline" size="sm" onClick={() => setStatus('pending')}>
+                    Show work for now
+                  </Button>
+                )
               }
             />
           )}

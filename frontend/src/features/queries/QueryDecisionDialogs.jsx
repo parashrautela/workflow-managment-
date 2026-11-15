@@ -193,7 +193,11 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
     : '';
   const [outcome, setOutcome] = useState('');
   useEffect(() => {
-    if (preview && !accepted) setOutcome(clientOutcome(target, preview, task?.title));
+    if (preview && !accepted) {
+      const generated = clientOutcome(target, preview, task?.title);
+      setOutcome(generated);
+      setReply((current) => current || generated);
+    }
   }, [preview]);
 
   const chooseStage = (row) => {
@@ -439,36 +443,38 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
                   </label>
                 ))}
               </div>
-              {action.type === 'delay' && (
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-sm">By</span>
-                  <Input
-                    type="number"
-                    min={1}
-                    max={60}
-                    value={action.days}
-                    onChange={(event) =>
-                      setAction({
-                        ...action,
-                        days: Math.max(1, Math.min(60, Number(event.target.value) || 1)),
-                      })
-                    }
-                    className="h-9 w-20"
-                  />
-                  <span className="text-sm">days</span>
-                  {[1, 2, 3, 5].map((days) => (
-                    <Button
-                      key={days}
-                      type="button"
-                      size="sm"
-                      variant={Number(action.days) === days ? 'default' : 'outline'}
-                      onClick={() => setAction({ ...action, days })}
-                    >
-                      +{days}
-                    </Button>
-                  ))}
-                </div>
-              )}
+              <div className="min-h-10">
+                {action.type === 'delay' && (
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-sm">By</span>
+                    <Input
+                      type="number"
+                      min={1}
+                      max={60}
+                      value={action.days}
+                      onChange={(event) =>
+                        setAction({
+                          ...action,
+                          days: Math.max(1, Math.min(60, Number(event.target.value) || 1)),
+                        })
+                      }
+                      className="h-9 w-20"
+                    />
+                    <span className="text-sm">days</span>
+                    {[1, 2, 3, 5].map((days) => (
+                      <Button
+                        key={days}
+                        type="button"
+                        size="sm"
+                        variant={Number(action.days) === days ? 'default' : 'outline'}
+                        onClick={() => setAction({ ...action, days })}
+                      >
+                        +{days}
+                      </Button>
+                    ))}
+                  </div>
+                )}
+              </div>
               <PreviewPanel preview={preview} previewing={previewing} error={previewError} />
             </div>
           )}
@@ -572,44 +578,48 @@ export function QueryAcceptWizard({ open, onOpenChange, request, onDone }) {
 }
 
 function PreviewPanel({ preview, previewing, error }) {
-  if (previewing)
-    return (
-      <p className="flex items-center gap-2 text-xs text-muted-foreground">
-        <Loader2 className="size-3.5 animate-spin" />
-        Checking the schedule…
-      </p>
-    );
-  if (error)
-    return (
-      <p
-        className="flex items-start gap-2 rounded-lg bg-destructive/10 px-3 py-2 text-xs text-destructive"
-        role="alert"
-      >
-        <Octagon className="mt-1 size-3.5 shrink-0" />
-        {error}
-      </p>
-    );
-  if (!preview) return null;
-  const pushed = (preview.affected || []).filter((item) => !item.moved);
+  const pushed = (preview?.affected || []).filter((item) => !item.moved);
   return (
-    <div className="space-y-2 rounded-xl bg-muted/50 px-3 py-2 text-xs">
-      <p className="font-medium">{preview.summary}</p>
-      {pushed.length > 0 && (
-        <p className="text-muted-foreground">
-          Moves back:{' '}
-          {pushed
-            .slice(0, 4)
-            .map((item) => shortTitle(item.taskName))
-            .join(', ')}
-          {pushed.length > 4 ? ` and ${pushed.length - 4} more` : ''}.
-        </p>
+    <div className="min-h-[88px] rounded-xl transition-all">
+      {previewing ? (
+        <div className="flex min-h-[88px] items-center gap-2 rounded-xl border bg-muted/20 p-3 text-xs text-muted-foreground">
+          <Loader2 className="size-3.5 animate-spin" />
+          <span>Checking the schedule…</span>
+        </div>
+      ) : error ? (
+        <div
+          className="flex min-h-[88px] items-start gap-2 rounded-xl bg-destructive/10 p-3 text-xs text-destructive"
+          role="alert"
+        >
+          <Octagon className="mt-0.5 size-3.5 shrink-0" />
+          <span>{error}</span>
+        </div>
+      ) : preview ? (
+        <div className="min-h-[88px] space-y-2 rounded-xl bg-muted/50 px-3 py-2 text-xs">
+          <p className="font-medium">{preview.summary}</p>
+          {pushed.length > 0 && (
+            <p className="text-muted-foreground">
+              Moves back:{' '}
+              {pushed
+                .slice(0, 4)
+                .map((item) => shortTitle(item.taskName))
+                .join(', ')}
+              {pushed.length > 4 ? ` and ${pushed.length - 4} more` : ''}.
+            </p>
+          )}
+          {(preview.warnings || []).map((warning, index) => (
+            <p key={index} className="flex items-start gap-2 text-warning">
+              <AlertTriangle className="mt-1 size-3.5 shrink-0" />
+              {warning.reason}
+            </p>
+          ))}
+        </div>
+      ) : (
+        <div className="flex min-h-[88px] items-center gap-2 rounded-xl border bg-muted/10 p-3 text-xs text-muted-foreground">
+          <Loader2 className="size-3.5 animate-spin" />
+          <span>Checking the schedule…</span>
+        </div>
       )}
-      {(preview.warnings || []).map((warning, index) => (
-        <p key={index} className="flex items-start gap-2 text-warning">
-          <AlertTriangle className="mt-1 size-3.5 shrink-0" />
-          {warning.reason}
-        </p>
-      ))}
     </div>
   );
 }

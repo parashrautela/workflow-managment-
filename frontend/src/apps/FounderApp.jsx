@@ -133,6 +133,7 @@ const activityWhat = {
   project_member_removed: 'removed a team member',
   project_moved_to_trash: 'moved the project to trash',
   project_restored: 'restored the project',
+  project_reopened: 'reopened the project',
   project_spaces_updated: 'updated the project spaces',
   query_accepted: 'accepted a client query',
   reply_suggested: 'drafted a reply',
@@ -165,6 +166,9 @@ function describeActivity(item, { projects, employees }) {
     activityWhat[action] ||
     (action.startsWith('query_') ? `${action.slice(6).replace(/_/g, ' ')} a client query` : '') ||
     action.replace(/_/g, ' ');
+  if (action === 'project_closed') {
+    what = details.outcome === 'Completed' ? 'marked the project complete' : 'abandoned the project';
+  }
   if (action === 'project_update') {
     const changes = details.changes;
     const fields = Array.isArray(changes) ? changes : Object.keys(changes || {});
@@ -203,6 +207,7 @@ function Field({ label, children }) {
 
 export default function FounderApp() {
   const [authState, setAuthState] = useState('checking');
+  const [founderProfile, setFounderProfile] = useState(null);
   const [projects, setProjects] = useState([]);
   const [employees, setEmployees] = useState([]);
   const [trashedProjects, setTrashedProjects] = useState([]);
@@ -239,8 +244,15 @@ export default function FounderApp() {
       .includes(searchQuery.toLowerCase()),
   );
 
-  // Unread badge counts (Actionable 9)
-  const pendingDecisionsCount = decisionRequests.filter(needsQueryAttention).length;
+  // Unread badge counts (Actionable 9) - only for open projects
+  const openProjectIds = new Set(
+    projects
+      .filter((p) => !['Completed', 'Abandoned'].includes(p.status))
+      .map((p) => p.id),
+  );
+  const pendingDecisionsCount = decisionRequests.filter(
+    (req) => needsQueryAttention(req) && (!req.projectId || openProjectIds.has(req.projectId)),
+  ).length;
   const pendingGroupsCount = projects.filter((p) => p.telegramSetupPending).length;
 
   const showNotice = (message, error = false) => {
@@ -253,6 +265,11 @@ export default function FounderApp() {
       const data = await api('/api/founder/projects');
       setProjects(data.projects || []);
       setAuthState('signed-in');
+      api('/api/founder/profile')
+        .then((res) => {
+          if (res?.founder) setFounderProfile(res.founder);
+        })
+        .catch(() => {});
     } catch (error) {
       if (error.status === 401) setAuthState('signed-out');
       else {
@@ -312,7 +329,7 @@ export default function FounderApp() {
 
   useEffect(() => {
     if (authState !== 'signed-in') return;
-    const timer = setInterval(async () => {
+    const refreshData = async () => {
       if (document.visibilityState !== 'visible') return;
       try {
         const [projData, decData] = await Promise.allSettled([
@@ -324,8 +341,16 @@ export default function FounderApp() {
       } catch {
         /* Preserve current screen during momentary network refresh failure */
       }
-    }, 8000);
-    return () => clearInterval(timer);
+    };
+    const timer = setInterval(refreshData, 6000);
+    const onVisibility = () => {
+      if (document.visibilityState === 'visible') refreshData();
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => {
+      clearInterval(timer);
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
   }, [authState]);
 
   useEffect(() => {
@@ -406,11 +431,11 @@ export default function FounderApp() {
     }
   };
 
-  const restoreProject = async (id) => {
+  const restoreProject = async (id, reopen = false) => {
     try {
-      await post(`/api/founder/trash/${id}/restore`);
+      await post(`/api/founder/trash/${id}/restore`, { reopen });
       await Promise.all([loadProjects(), loadTrash()]);
-      showNotice('Project restored.');
+      showNotice(reopen ? 'Project restored and reopened.' : 'Project restored.');
     } catch (error) {
       showNotice(error.message, true);
     }
@@ -493,9 +518,12 @@ export default function FounderApp() {
   const needsSetup = (project) =>
     project.status !== 'Completed' && (project.telegramSetupPending || project.status === 'Setup');
   const ongoingProjects = filteredProjects.filter(
-    (project) => project.status !== 'Completed' && !needsSetup(project),
+    (project) => !['Completed', 'Abandoned'].includes(project.status) && !needsSetup(project),
   );
   const setupProjects = filteredProjects.filter(needsSetup);
+  const abandonedProjects = filteredProjects.filter(
+    (project) => project.status === 'Abandoned',
+  );
   const renderSectionItem = (section) => (
     <SidebarItem
       key={section.id}
@@ -565,14 +593,20 @@ export default function FounderApp() {
               {setupProjects.map(renderProjectItem)}
             </SidebarGroup>
           )}
+          {abandonedProjects.length > 0 && (
+            <SidebarGroup>
+              <SidebarGroupLabel count={abandonedProjects.length}>Abandoned</SidebarGroupLabel>
+              {abandonedProjects.map(renderProjectItem)}
+            </SidebarGroup>
+          )}
         </div>
       </div>
 
       <div className="flex items-center gap-3 pt-3">
-        <InitialAvatar name="Project founder" />
+        <InitialAvatar name={founderProfile?.name || 'Project founder'} />
         <div className="min-w-0 flex-1">
-          <p className="truncate text-xs font-semibold">Project founder</p>
-          <p className="text-xs text-muted-foreground">Workspace founder</p>
+          <p className="truncate text-xs font-semibold">{founderProfile?.name || 'Project founder'}</p>
+          <p className="text-xs text-muted-foreground">{founderProfile?.email || 'Workspace founder'}</p>
         </div>
         <Button variant="ghost" size="icon-sm" aria-label="Sign out" onClick={handleLogout}>
           <LogOut />
@@ -650,7 +684,7 @@ export default function FounderApp() {
             </div>
 
             <div className="flex items-center gap-2">
-              <InitialAvatar name="Project founder" />
+              <InitialAvatar name={founderProfile?.name || 'Project founder'} />
             </div>
           </header>
 
@@ -721,13 +755,21 @@ export default function FounderApp() {
                               {proj.clientName}
                             </p>
                           </div>
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => restoreProject(proj.id)}
-                          >
-                            Restore
-                          </Button>
+                          <div className="flex items-center gap-2">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => restoreProject(proj.id, false)}
+                            >
+                              Restore
+                            </Button>
+                            <Button
+                              size="sm"
+                              onClick={() => restoreProject(proj.id, true)}
+                            >
+                              Restore & Reopen
+                            </Button>
+                          </div>
                         </CardContent>
                       </Card>
                     ))}
@@ -871,6 +913,7 @@ export default function FounderApp() {
         onOpenChange={setMemberOpen}
         label={memberDialogLabel}
         projects={projects}
+        employees={employees}
         defaultProjectId={selectedProject?.id}
         onUpdated={() => Promise.all([loadProjects(), loadEmployees()])}
       />

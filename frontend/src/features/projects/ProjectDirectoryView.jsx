@@ -168,7 +168,11 @@ export function ProjectDirectoryView({
                   {taskCount > 0 && (
                     <div className="space-y-1">
                       <div className="flex items-center justify-between text-xs text-muted-foreground">
-                        <span>Tasks: {taskCount}</span>
+                        <span>
+                          {project.completedCount !== undefined
+                            ? `${project.completedCount} of ${taskCount} done`
+                            : `Tasks: ${taskCount}`}
+                        </span>
                         <span>{progress}%</span>
                       </div>
                       <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">

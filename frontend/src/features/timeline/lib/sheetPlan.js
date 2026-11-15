@@ -51,10 +51,10 @@ export function buildSheetPlan(plan, startDate, liveTasks = [], liveStages = [])
       sheetName: stage.name,
       description:
         stage.lane === 'main'
-          ? 'Main sequence from the Google Sheet.'
+          ? 'Main sequence from the template.'
           : 'Parallel work positioned alongside stage ' +
             stage.parallelAnchor.stageCode +
-            ' in the Google Sheet.',
+            ' in the template.',
     });
     for (const item of window.tasks) {
       const source = item.source;

@@ -51,9 +51,10 @@ export function initializePilot(state) {
   return recovered;
 }
 export function projectSummary(state, project) {
-  const tasks = (state.tasks || []).filter((t) => t.projectId === project.id && !t.deletedAt && t.status !== 'Cancelled');
-  const done = tasks.filter((t) => t.status === 'Completed').length;
+  const tasks = (state.tasks || []).filter((t) => t.projectId === project.id && !t.deletedAt && !['Cancelled', 'cancelled'].includes(t.status));
+  const done = tasks.filter((t) => ['Completed', 'completed'].includes(t.status)).length;
   return { workflowId: project.workflowId || '', workflowStartedAt: project.workflowStartedAt || '', stages: project.stages || [],
+    completedCount: done,
     progress: tasks.length ? Math.round(done / tasks.length * 100) : 0, taskCount: tasks.length,
     currentStage: project.stages?.find((s) => tasks.some((t) => t.stageId === s.id && t.status !== 'Completed'))?.name || project.phase,
     deadline: project.stages?.at(-1)?.deadline || '',

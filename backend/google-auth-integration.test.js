@@ -14,6 +14,7 @@ test('Google admission, linking, founder sign-in and sessions work over HTTP wit
  await cp(source,path.join(directory,'backend'),{recursive:true,filter:p=>!p.endsWith('.test.js') && !p.endsWith('data.json')});
  await cp(path.join(source,'../package.json'),path.join(directory,'package.json'));
  await symlink(path.join(source,'../node_modules'),path.join(directory,'node_modules'));
+ await symlink(path.join(source,'../frontend'),path.join(directory,'frontend')); // backend imports the app's shared status rule
  await writeFile(path.join(directory,'backend/data.json'),JSON.stringify({googleAccounts:[{id:'initial-founder',subject:'owner-google',email:'owner@example.com',name:'Owner',kind:'founder',status:'Approved'}]}));
  const keys=generateKeyPairSync('rsa',{modulusLength:2048});
  const mock=path.join(directory,'mock-certs.js');

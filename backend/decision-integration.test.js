@@ -23,6 +23,7 @@ test('Telegram request enters founder inbox once, stays private, and can be reso
   await cp(source, path.join(root, 'backend'), { recursive: true, filter: (sourcePath) => !sourcePath.endsWith('.test.js') });
   await cp(path.join(source, '../package.json'), path.join(root, 'package.json'));
   await symlink(path.join(source, '../node_modules'), path.join(root, 'node_modules'));
+  await symlink(path.join(source,'../frontend'),path.join(root,'frontend')); // backend imports the app's shared status rule
   await writeFile(path.join(root, 'mock-telegram.js'), `const originalFetch = globalThis.fetch;
 globalThis.fetch = async (url, options) => {
   if (String(url).endsWith('/sendMessage') && String(url).startsWith('https://api.telegram.org/bot')) {
