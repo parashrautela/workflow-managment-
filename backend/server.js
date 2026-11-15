@@ -88,7 +88,8 @@ const json = (res, status, body, headers = {}) => { res.writeHead(status, { 'con
 const shortText = (value, limit) => typeof value === 'string' && value.length <= limit ? value : null;
 async function callBotBridge(route, payload) {
   if (!botBridgeUrl || !integrationSecret) throw new Error('Bot integration is not configured.');
-  const response = await fetch(`${botBridgeUrl}${route}`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${integrationSecret}` }, body: JSON.stringify(payload), signal: AbortSignal.timeout(route.endsWith('/content') ? 45_000 : route.endsWith('/task-notice') ? 60_000 : 30_000) });
+  // A network failure or timeout has no botStatus, which callers read as "the bot never answered"; only the wording changes.
+  const response = await fetch(`${botBridgeUrl}${route}`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${integrationSecret}` }, body: JSON.stringify(payload), signal: AbortSignal.timeout(route.endsWith('/content') ? 45_000 : route.endsWith('/task-notice') ? 60_000 : 30_000) }).catch(() => { throw new Error('Could not reach the Telegram bot. Check that it is running, then try again.'); });
   const data = await response.json().catch(() => ({}));
   if (!response.ok) throw Object.assign(new Error(data.error || 'Telegram bot did not accept the update.'), { botStatus: response.status, botBody: data });
   return data;

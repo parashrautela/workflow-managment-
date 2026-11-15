@@ -168,6 +168,11 @@ globalThis.fetch = async (url, options) => {
     for (let i=0;i<20 && !voiceCalls.length;i++) await new Promise((resolve)=>setTimeout(resolve,100)); // the forward is not awaited by the request
     await new Promise((resolve)=>setTimeout(resolve,200));
     assert.deepEqual(voiceCalls,[{requestId:'REQ--777-20-question',groupChatId:'-777',telegramUserIds:['9001']}]);
+    // With the bot unreachable, Abandon says so in plain words and leaves the project open to retry.
+    bridge.closeAllConnections();await new Promise((resolve) => bridge.close(resolve));
+    const abandon=await call(`/api/founder/projects/${linkedId}/trash`,'POST',{},cookie);
+    assert.equal(abandon.status,502);assert.match(abandon.data.error,/Could not reach the Telegram bot/);
+    assert.equal((await call('/api/founder/projects','GET',undefined,cookie)).data.projects.some(row=>row.id===linkedId),true);
   } finally {
     child.kill();
     await new Promise((resolve) => bridge.close(resolve));
