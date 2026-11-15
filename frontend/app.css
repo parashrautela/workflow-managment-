@@ -2018,6 +2018,10 @@
     height: calc(var(--spacing) * .5);
   }
 
+  .h-1 {
+    height: var(--spacing);
+  }
+
   .h-1\.5 {
     height: calc(var(--spacing) * 1.5);
   }
@@ -3314,6 +3318,10 @@
     mask-repeat: repeat;
   }
 
+  .fill-current {
+    fill: currentColor;
+  }
+
   .object-contain {
     object-fit: contain;
   }
@@ -4418,6 +4426,10 @@
 
   .disabled\:pointer-events-none:disabled {
     pointer-events: none;
+  }
+
+  .disabled\:cursor-default:disabled {
+    cursor: default;
   }
 
   .disabled\:cursor-not-allowed:disabled {

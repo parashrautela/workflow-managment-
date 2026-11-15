@@ -360,10 +360,14 @@ export function ClientQueryCard({
         )}
 
         <div className="space-y-2">
-          <p className="text-sm font-medium leading-copy text-foreground whitespace-pre-wrap">
-            {query.originalMessage ||
-              'Client sent an attachment or query requiring project team input.'}
-          </p>
+          {/* A voice message with no typed text is just the player: the fallback sentence reads wrong beside it. */}
+          {(query.originalMessage ||
+            !(attachments.length && attachments.every((att) => att.type === 'voice'))) && (
+            <p className="text-sm font-medium leading-copy text-foreground whitespace-pre-wrap">
+              {query.originalMessage ||
+                'Client sent an attachment or query requiring project team input.'}
+            </p>
+          )}
 
           {query.context && (
             <div className="card-box border-warning-border/70 bg-warning-bg/50 text-xs text-warning">
@@ -389,7 +393,10 @@ export function ClientQueryCard({
                     att.type === 'Photo' || /\.(png|jpe?g|webp|gif)$/i.test(att.fileName || '');
 
                   return (
-                    <div key={idx} className="space-y-2">
+                    <div
+                      key={idx}
+                      className={isAudioAttachment(att) ? 'w-full space-y-2' : 'space-y-2'}
+                    >
                       {isAudioAttachment(att) ? (
                         <AudioAttachment
                           src={mediaUrl}
