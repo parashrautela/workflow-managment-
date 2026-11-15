@@ -1,3 +1,4 @@
+import { toast } from '@/components/ui/toaster';
 import { useEffect, useState, useRef } from 'react';
 import {
   CalendarDays,
@@ -337,11 +338,7 @@ export function TaskThreadDrawer({
       setBusy(false);
     }
   };
-  const [notice, setNotice] = useState('');
-  const showNotice = (msg) => {
-    setNotice(msg);
-    setTimeout(() => setNotice(''), 3500);
-  };
+  const showNotice = (msg) => toast(msg);
   const changeTask = async (updates) => {
     setBusy(true);
     setError('');
@@ -486,11 +483,6 @@ export function TaskThreadDrawer({
               </div>
             )}
           </SheetHeader>
-          {notice && (
-            <p role="status" className="mx-4 mt-2 rounded-md bg-success-bg p-2 text-xs text-success">
-              {notice}
-            </p>
-          )}
           {editing && isFounder ? (
             <form
               className="task-thread-edit"

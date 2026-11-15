@@ -1,3 +1,4 @@
+import { toast } from '@/components/ui/toaster';
 import { useEffect, useMemo, useState } from 'react';
 import { ReactFlow, Background, Controls, Handle, Position } from '@xyflow/react';
 import { Button } from '@/components/ui/button';
@@ -30,8 +31,7 @@ export function StageConnections({ projectId, stages = [], tasks = [], onChanged
     [target, setTarget] = useState(''),
     [preview, setPreview] = useState(null),
     [error, setError] = useState(''),
-    [busy, setBusy] = useState(false),
-    [notice, setNotice] = useState('');
+    [busy, setBusy] = useState(false);
   useEffect(() => {
     setLinks(saved);
     setPreview(null);
@@ -39,7 +39,6 @@ export function StageConnections({ projectId, stages = [], tasks = [], onChanged
   const change = (next) => {
     setLinks(next);
     setPreview(null);
-    setNotice('');
   };
   const connect = (connection) => {
     if (!connection.source || !connection.target || connection.source === connection.target) return;
@@ -92,7 +91,7 @@ export function StageConnections({ projectId, stages = [], tasks = [], onChanged
         },
       );
       if (apply) {
-        setNotice('Stage connections and schedule saved.');
+        toast('Stage connections and schedule saved.');
         setPreview(null);
         onChanged?.(result);
       } else setPreview(result);
@@ -241,11 +240,6 @@ export function StageConnections({ projectId, stages = [], tasks = [], onChanged
       {error && (
         <p role="alert" className="mt-2 text-sm text-destructive">
           {error}
-        </p>
-      )}
-      {notice && (
-        <p role="status" className="mt-2 text-sm text-success">
-          {notice}
         </p>
       )}
     </details>

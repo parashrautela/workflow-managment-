@@ -1,3 +1,4 @@
+import { toast } from '@/components/ui/toaster';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -8,11 +9,9 @@ export function PersonalReminders({ connections, onChanged }) {
   const [preview, setPreview] = useState(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
-  const [notice, setNotice] = useState('');
   const run = async (action) => {
     setBusy(true);
     setError('');
-    setNotice('');
     try {
       await action();
     } catch (problem) {
@@ -42,7 +41,7 @@ export function PersonalReminders({ connections, onChanged }) {
         body: { employeeId: preview.employeeId, text: preview.text },
       });
       setPreview(null);
-      setNotice(
+      toast(
         data.empty
           ? 'No actionable work today; no message sent.'
           : data.delivery.status === 'Sent'
@@ -81,7 +80,7 @@ export function PersonalReminders({ connections, onChanged }) {
             onClick={() =>
               run(async () => {
                 await navigator.clipboard.writeText(link);
-                setNotice('Bot link copied. Share it with the site admin.');
+                toast('Bot link copied. Share it with the site admin.');
               })
             }
           >
@@ -184,11 +183,6 @@ export function PersonalReminders({ connections, onChanged }) {
       {error && (
         <p role="alert" className="text-sm text-destructive">
           {error}
-        </p>
-      )}
-      {notice && (
-        <p role="status" className="text-sm">
-          {notice}
         </p>
       )}
     </div>

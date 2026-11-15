@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import FounderApp from './apps/FounderApp';
 import ClientApp from './apps/ClientApp';
 import EmployeeApp from './apps/EmployeeApp';
+import { Toaster } from './components/ui/toaster';
 import './styles/index.css';
 import './styles/iksha.css';
 import './styles/controls.css';
@@ -20,6 +21,7 @@ if (rootElement) {
       ) : (
         <FounderApp />
       )}
+      <Toaster />
     </React.StrictMode>,
   );
 }

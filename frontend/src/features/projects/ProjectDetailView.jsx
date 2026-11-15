@@ -1,3 +1,4 @@
+import { toast } from '@/components/ui/toaster';
 import { MeetingsView } from '@/features/meetings/Meetings';
 import { needsQueryAttention } from '@/features/queries/lib/queryStatus';
 // frontend/src/components/ProjectDetailView.jsx
@@ -155,12 +156,8 @@ export function ProjectDetailView({
   const [removeTarget, setRemoveTarget] = useState(null);
   const [removingMember, setRemovingMember] = useState(false);
 
-  const [notice, setNotice] = useState(null);
 
-  const showNotice = (message, error = false) => {
-    setNotice({ message, error });
-    setTimeout(() => setNotice(null), 3500);
-  };
+  const showNotice = (message, error = false) => toast(message, { error });
 
   // Load project tasks from API or workspace
   const loadProjectTasks = useCallback(
@@ -495,21 +492,6 @@ export function ProjectDetailView({
 
   return (
     <div className="iksha-project-detail space-y-6">
-      {/* Toast Notice */}
-      {notice && (
-        <div
-          role="status"
-          className="fixed right-4 bottom-24 z-[60] max-w-sm rounded-lg border bg-card px-4 py-3 text-sm shadow-lg lg:bottom-4"
-        >
-          {notice.error ? (
-            <AlertCircle className="mr-2 inline size-4 text-destructive" />
-          ) : (
-            <Check className="mr-2 inline size-4 text-success" />
-          )}
-          {notice.message}
-        </div>
-      )}
-
       {project.workflowAnnouncementStatus && project.workflowAnnouncementStatus !== 'Sent' && (
         <p role="alert" className="card-box border-warning-border bg-warning-bg text-sm">
           The project plan is saved, but the Telegram start announcement could not be confirmed.

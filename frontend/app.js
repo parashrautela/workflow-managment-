@@ -20,7 +20,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 	value: mod,
 	enumerable: true
 }) : target, mod));
-// ../Telegram bot /work/production-web/node_modules/react/cjs/react.production.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react/cjs/react.production.js
 /**
 * @license React
 * react.production.js
@@ -406,11 +406,11 @@ var require_react_production = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 	exports.version = "19.3.0";
 }));
-// ../Telegram bot /work/production-web/node_modules/react/index.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react/index.js
 var require_react = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_react_production();
 }));
-// ../Telegram bot /work/production-web/node_modules/scheduler/cjs/scheduler.production.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/scheduler/cjs/scheduler.production.js
 /**
 * @license React
 * scheduler.production.js
@@ -664,11 +664,11 @@ var require_scheduler_production = /* @__PURE__ */ __commonJSMin(((exports) => {
 		};
 	};
 }));
-// ../Telegram bot /work/production-web/node_modules/scheduler/index.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/scheduler/index.js
 var require_scheduler = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_scheduler_production();
 }));
-// ../Telegram bot /work/production-web/node_modules/react-dom/cjs/react-dom.production.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-dom/cjs/react-dom.production.js
 /**
 * @license React
 * react-dom.production.js
@@ -820,7 +820,7 @@ var require_react_dom_production = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 	exports.version = "19.3.0";
 }));
-// ../Telegram bot /work/production-web/node_modules/react-dom/index.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-dom/index.js
 var require_react_dom = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	function checkDCE() {
 		if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") return;
@@ -833,7 +833,7 @@ var require_react_dom = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	checkDCE();
 	module.exports = require_react_dom_production();
 }));
-// ../Telegram bot /work/production-web/node_modules/react-dom/cjs/react-dom-client.production.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-dom/cjs/react-dom-client.production.js
 /**
 * @license React
 * react-dom-client.production.js
@@ -11407,7 +11407,7 @@ var require_react_dom_client_production = /* @__PURE__ */ __commonJSMin(((export
 		return new ReactDOMRoot(options);
 	};
 }));
-// ../Telegram bot /work/production-web/node_modules/react-dom/client.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-dom/client.js
 var require_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	function checkDCE() {
 		if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") return;
@@ -11420,7 +11420,7 @@ var require_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	checkDCE();
 	module.exports = require_react_dom_client_production();
 }));
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toKebabCase.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toKebabCase.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11428,7 +11428,7 @@ var require_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 * See the LICENSE file in the root directory of this source tree.
 */
 var toKebabCase = (string) => string?.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toLucideIconData.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toLucideIconData.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11444,7 +11444,7 @@ function toLucideIconData(iconName, iconNode, aliases = []) {
 		...aliases.length > 0 ? { aliases } : {}
 	};
 }
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toCamelCase.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toCamelCase.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11465,7 +11465,7 @@ var toCamelCase = (string) => {
 	}
 	return out;
 };
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toPascalCase.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toPascalCase.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11476,7 +11476,7 @@ var toPascalCase = (string) => {
 	const camelCase = toCamelCase(string);
 	return camelCase.charAt(0).toUpperCase() + camelCase.slice(1);
 };
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/mergeClasses.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/mergeClasses.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11486,7 +11486,7 @@ var toPascalCase = (string) => {
 var mergeClasses = (...classes) => classes.filter((className, index, array) => {
 	return Boolean(className) && className.trim() !== "" && array.indexOf(className) === index;
 }).join(" ").trim();
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/build/defaultAttributes.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/build/defaultAttributes.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11504,7 +11504,7 @@ var defaultAttributes = {
 	"stroke-linecap": "round",
 	"stroke-linejoin": "round"
 };
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconNode.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconNode.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11558,7 +11558,7 @@ function buildLucideIconNode(icon, params = {}) {
 		})
 	];
 }
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconForReact.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconForReact.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11578,7 +11578,7 @@ function buildLucideIconForReact(icon, params = {}) {
 		}
 	});
 }
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/hasA11yProp.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/hasA11yProp.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11589,7 +11589,7 @@ var hasA11yProp = (props) => {
 	for (const prop in props) if (prop.startsWith("aria-") || prop === "role" || prop === "title") return true;
 	return false;
 };
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/context.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/context.mjs
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11599,7 +11599,7 @@ var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 */
 var LucideContext = (0, import_react.createContext)({});
 var useLucideContext = () => (0, import_react.useContext)(LucideContext);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/Icon.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/Icon.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11629,7 +11629,7 @@ var Icon = (0, import_react.forwardRef)(({ color, size, width, height, strokeWid
 		...svgAttributes
 	}, [...builtIconNode.map(([tag, attrs]) => (0, import_react.createElement)(tag, attrs)), ...Array.isArray(children) ? children : [children]]);
 });
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/createLucideIcon.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/createLucideIcon.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11647,7 +11647,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 	if (iconData.name) Component.displayName = toPascalCase(iconData.name);
 	return Component;
 }
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-left.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-left.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11667,7 +11667,7 @@ var __iconData$62 = {
 };
 __iconData$62.node;
 var ArrowLeft = createLucideIcon(__iconData$62);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11687,7 +11687,7 @@ var __iconData$61 = {
 };
 __iconData$61.node;
 var ArrowRight = createLucideIcon(__iconData$61);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11707,7 +11707,7 @@ var __iconData$60 = {
 };
 __iconData$60.node;
 var ArrowUpRight = createLucideIcon(__iconData$60);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11727,7 +11727,7 @@ var __iconData$59 = {
 };
 __iconData$59.node;
 var ArrowUp = createLucideIcon(__iconData$59);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/building-complex.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11763,7 +11763,7 @@ var __iconData$58 = {
 };
 __iconData$58.node;
 var BuildingComplex = createLucideIcon(__iconData$58);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11822,7 +11822,7 @@ var __iconData$57 = {
 };
 __iconData$57.node;
 var CalendarDays = createLucideIcon(__iconData$57);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/calendar.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/calendar.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11857,7 +11857,7 @@ var __iconData$56 = {
 };
 __iconData$56.node;
 var Calendar = createLucideIcon(__iconData$56);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/check.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11874,7 +11874,7 @@ var __iconData$55 = {
 };
 __iconData$55.node;
 var Check = createLucideIcon(__iconData$55);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11891,7 +11891,7 @@ var __iconData$54 = {
 };
 __iconData$54.node;
 var ChevronDown = createLucideIcon(__iconData$54);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11908,7 +11908,7 @@ var __iconData$53 = {
 };
 __iconData$53.node;
 var ChevronRight = createLucideIcon(__iconData$53);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11925,7 +11925,7 @@ var __iconData$52 = {
 };
 __iconData$52.node;
 var ChevronUp = createLucideIcon(__iconData$52);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11961,7 +11961,7 @@ var __iconData$51 = {
 };
 __iconData$51.node;
 var CircleAlert = createLucideIcon(__iconData$51);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-check.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11984,7 +11984,7 @@ var __iconData$50 = {
 };
 __iconData$50.node;
 var CircleCheck = createLucideIcon(__iconData$50);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12020,7 +12020,7 @@ var __iconData$49 = {
 };
 __iconData$49.node;
 var CirclePause = createLucideIcon(__iconData$49);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12050,7 +12050,7 @@ var __iconData$48 = {
 };
 __iconData$48.node;
 var CircleQuestionMark = createLucideIcon(__iconData$48);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-x.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12080,7 +12080,7 @@ var __iconData$47 = {
 };
 __iconData$47.node;
 var CircleX = createLucideIcon(__iconData$47);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12099,7 +12099,7 @@ var __iconData$46 = {
 };
 __iconData$46.node;
 var Circle = createLucideIcon(__iconData$46);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/clock-3.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12121,7 +12121,7 @@ var __iconData$45 = {
 };
 __iconData$45.node;
 var Clock3 = createLucideIcon(__iconData$45);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/clock.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12143,7 +12143,7 @@ var __iconData$44 = {
 };
 __iconData$44.node;
 var Clock = createLucideIcon(__iconData$44);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/copy.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12168,7 +12168,7 @@ var __iconData$43 = {
 };
 __iconData$43.node;
 var Copy = createLucideIcon(__iconData$43);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/ellipsis-vertical.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/ellipsis-vertical.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12202,7 +12202,7 @@ var __iconData$42 = {
 };
 __iconData$42.node;
 var EllipsisVertical = createLucideIcon(__iconData$42);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/external-link.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/external-link.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12229,7 +12229,7 @@ var __iconData$41 = {
 };
 __iconData$41.node;
 var ExternalLink = createLucideIcon(__iconData$41);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/file-text.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/file-text.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12264,7 +12264,7 @@ var __iconData$40 = {
 };
 __iconData$40.node;
 var FileText = createLucideIcon(__iconData$40);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/flag.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/flag.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12281,7 +12281,7 @@ var __iconData$39 = {
 };
 __iconData$39.node;
 var Flag = createLucideIcon(__iconData$39);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12312,7 +12312,7 @@ var __iconData$38 = {
 };
 __iconData$38.node;
 var FolderKanban = createLucideIcon(__iconData$38);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/folder-open.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/folder-open.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12329,7 +12329,7 @@ var __iconData$37 = {
 };
 __iconData$37.node;
 var FolderOpen = createLucideIcon(__iconData$37);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/funnel.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/funnel.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12347,7 +12347,7 @@ var __iconData$36 = {
 };
 __iconData$36.node;
 var Funnel = createLucideIcon(__iconData$36);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/grip-vertical.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/grip-vertical.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12398,7 +12398,7 @@ var __iconData$35 = {
 };
 __iconData$35.node;
 var GripVertical = createLucideIcon(__iconData$35);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/hourglass.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/hourglass.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12429,7 +12429,7 @@ var __iconData$34 = {
 };
 __iconData$34.node;
 var Hourglass = createLucideIcon(__iconData$34);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/layers.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/layers.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12457,7 +12457,7 @@ var __iconData$33 = {
 };
 __iconData$33.node;
 var Layers = createLucideIcon(__iconData$33);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/link-2.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/link-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12487,7 +12487,7 @@ var __iconData$32 = {
 };
 __iconData$32.node;
 var Link2 = createLucideIcon(__iconData$32);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/list-checks.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/list-checks.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12522,7 +12522,7 @@ var __iconData$31 = {
 };
 __iconData$31.node;
 var ListChecks = createLucideIcon(__iconData$31);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/list-plus.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/list-plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12557,7 +12557,7 @@ var __iconData$30 = {
 };
 __iconData$30.node;
 var ListPlus = createLucideIcon(__iconData$30);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/loader-circle.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/loader-circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12575,7 +12575,7 @@ var __iconData$29 = {
 };
 __iconData$29.node;
 var LoaderCircle = createLucideIcon(__iconData$29);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/lock-keyhole.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/lock-keyhole.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12608,7 +12608,7 @@ var __iconData$28 = {
 };
 __iconData$28.node;
 var LockKeyhole = createLucideIcon(__iconData$28);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/log-out.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/log-out.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12635,7 +12635,7 @@ var __iconData$27 = {
 };
 __iconData$27.node;
 var LogOut = createLucideIcon(__iconData$27);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/map-pin.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/map-pin.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12657,7 +12657,7 @@ var __iconData$26 = {
 };
 __iconData$26.node;
 var MapPin = createLucideIcon(__iconData$26);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/maximize-2.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/maximize-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12688,7 +12688,7 @@ var __iconData$25 = {
 };
 __iconData$25.node;
 var Maximize2 = createLucideIcon(__iconData$25);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/menu.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/menu.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12715,7 +12715,7 @@ var __iconData$24 = {
 };
 __iconData$24.node;
 var Menu$1 = createLucideIcon(__iconData$24);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/message-square.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/message-square.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12732,7 +12732,7 @@ var __iconData$23 = {
 };
 __iconData$23.node;
 var MessageSquare = createLucideIcon(__iconData$23);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/mic.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/mic.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12763,7 +12763,7 @@ var __iconData$22 = {
 };
 __iconData$22.node;
 var Mic = createLucideIcon(__iconData$22);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/minus.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/minus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12780,7 +12780,7 @@ var __iconData$21 = {
 };
 __iconData$21.node;
 var Minus = createLucideIcon(__iconData$21);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/octagon.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/octagon.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12797,7 +12797,7 @@ var __iconData$20 = {
 };
 __iconData$20.node;
 var Octagon = createLucideIcon(__iconData$20);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/paperclip.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/paperclip.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12814,7 +12814,7 @@ var __iconData$19 = {
 };
 __iconData$19.node;
 var Paperclip = createLucideIcon(__iconData$19);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/pencil.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/pencil.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12834,7 +12834,7 @@ var __iconData$18 = {
 };
 __iconData$18.node;
 var Pencil = createLucideIcon(__iconData$18);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/play.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/play.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12851,7 +12851,7 @@ var __iconData$17 = {
 };
 __iconData$17.node;
 var Play = createLucideIcon(__iconData$17);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/plus.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12871,7 +12871,7 @@ var __iconData$16 = {
 };
 __iconData$16.node;
 var Plus = createLucideIcon(__iconData$16);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/refresh-cw.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/refresh-cw.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12902,7 +12902,7 @@ var __iconData$15 = {
 };
 __iconData$15.node;
 var RefreshCw = createLucideIcon(__iconData$15);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/rotate-ccw-clock.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/rotate-ccw-clock.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12930,7 +12930,7 @@ var __iconData$14 = {
 };
 __iconData$14.node;
 var RotateCcwClock = createLucideIcon(__iconData$14);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/search.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/search.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12952,7 +12952,7 @@ var __iconData$13 = {
 };
 __iconData$13.node;
 var Search = createLucideIcon(__iconData$13);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/send.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/send.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12972,7 +12972,7 @@ var __iconData$12 = {
 };
 __iconData$12.node;
 var Send = createLucideIcon(__iconData$12);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/settings-2.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/settings-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13007,7 +13007,7 @@ var __iconData$11 = {
 };
 __iconData$11.node;
 var Settings2 = createLucideIcon(__iconData$11);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/shield-check.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/shield-check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13027,7 +13027,7 @@ var __iconData$10 = {
 };
 __iconData$10.node;
 var ShieldCheck = createLucideIcon(__iconData$10);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/sparkles.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/sparkles.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13061,7 +13061,7 @@ var __iconData$9 = {
 };
 __iconData$9.node;
 var Sparkles = createLucideIcon(__iconData$9);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/trash.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/trash.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13097,7 +13097,7 @@ var __iconData$8 = {
 };
 __iconData$8.node;
 var Trash = createLucideIcon(__iconData$8);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/triangle-alert.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/triangle-alert.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13125,7 +13125,7 @@ var __iconData$7 = {
 };
 __iconData$7.node;
 var TriangleAlert = createLucideIcon(__iconData$7);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/undo-2.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/undo-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13145,7 +13145,7 @@ var __iconData$6 = {
 };
 __iconData$6.node;
 var Undo2 = createLucideIcon(__iconData$6);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user-plus.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user-plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13184,7 +13184,7 @@ var __iconData$5 = {
 };
 __iconData$5.node;
 var UserPlus = createLucideIcon(__iconData$5);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user-round.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user-round.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13207,7 +13207,7 @@ var __iconData$4 = {
 };
 __iconData$4.node;
 var UserRound = createLucideIcon(__iconData$4);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user-x.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user-x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13246,7 +13246,7 @@ var __iconData$3 = {
 };
 __iconData$3.node;
 var UserX = createLucideIcon(__iconData$3);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13268,7 +13268,7 @@ var __iconData$2 = {
 };
 __iconData$2.node;
 var User = createLucideIcon(__iconData$2);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/users.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/users.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13301,7 +13301,7 @@ var __iconData$1 = {
 };
 __iconData$1.node;
 var Users = createLucideIcon(__iconData$1);
-// ../Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/x.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13321,8 +13321,80 @@ var __iconData = {
 };
 __iconData.node;
 var X$1 = createLucideIcon(__iconData);
-// ../Telegram bot /work/production-web/node_modules/clsx/dist/clsx.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react/cjs/react-jsx-runtime.production.js
+/**
+* @license React
+* react-jsx-runtime.production.js
+*
+* Copyright (c) Meta Platforms, Inc. and affiliates.
+*
+* This source code is licensed under the MIT license found in the
+* LICENSE file in the root directory of this source tree.
+*/
+var require_react_jsx_runtime_production = /* @__PURE__ */ __commonJSMin(((exports) => {
+	var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
+	var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
+	function jsxProd(type, config, maybeKey) {
+		var key = null;
+		void 0 !== maybeKey && (key = "" + maybeKey);
+		void 0 !== config.key && (key = "" + config.key);
+		if ("key" in config) {
+			maybeKey = {};
+			for (var propName in config) "key" !== propName && (maybeKey[propName] = config[propName]);
+		} else maybeKey = config;
+		config = maybeKey.ref;
+		return {
+			$$typeof: REACT_ELEMENT_TYPE,
+			type,
+			key,
+			ref: void 0 !== config ? config : null,
+			props: maybeKey
+		};
+	}
+	exports.Fragment = REACT_FRAGMENT_TYPE;
+	exports.jsx = jsxProd;
+	exports.jsxs = jsxProd;
+}));
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react/jsx-runtime.js
+var require_jsx_runtime = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+	module.exports = require_react_jsx_runtime_production();
+}));
+// frontend/src/components/ui/toaster.jsx
 var import_client = /* @__PURE__ */ __toESM(require_client(), 1);
+var import_jsx_runtime = require_jsx_runtime();
+var listeners = /* @__PURE__ */ new Set();
+var nextId = 0;
+function toast(message, { error = false } = {}) {
+	if (!message) return;
+	const item = {
+		id: nextId++,
+		message,
+		error
+	};
+	listeners.forEach((listener) => listener(item));
+}
+function Toaster() {
+	const [items, setItems] = import_react.useState([]);
+	import_react.useEffect(() => {
+		const show = (item) => {
+			setItems((current) => [...current.slice(-2), item]);
+			setTimeout(() => setItems((current) => current.filter((entry) => entry.id !== item.id)), item.error ? 6e3 : 3500);
+		};
+		listeners.add(show);
+		return () => listeners.delete(show);
+	}, []);
+	if (!items.length) return null;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"aria-live": "polite",
+		className: "fixed right-4 bottom-24 z-[60] flex max-w-sm flex-col gap-2 md:bottom-4",
+		children: items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			role: item.error ? "alert" : "status",
+			className: "rounded-lg border bg-card px-4 py-3 text-sm shadow-lg",
+			children: [item.error ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(X$1, { className: "mr-2 inline size-4 text-destructive" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "mr-2 inline size-4 text-success" }), item.message]
+		}, item.id))
+	});
+}
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/clsx/dist/clsx.mjs
 function r(e) {
 	var t, f, n = "";
 	if ("string" == typeof e || "number" == typeof e) n += e;
@@ -13336,7 +13408,7 @@ function clsx() {
 	for (var e, t, f = 0, n = "", o = arguments.length; f < o; f++) (e = arguments[f]) && (t = r(e)) && (n && (n += " "), n += t);
 	return n;
 }
-// ../Telegram bot /work/production-web/node_modules/class-variance-authority/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/class-variance-authority/dist/index.mjs
 /**
 * Copyright 2022 Joe Bell. All rights reserved.
 *
@@ -13388,7 +13460,7 @@ var cva = (base, config) => (props) => {
 		] : acc;
 	}, []), props === null || props === void 0 ? void 0 : props.class, props === null || props === void 0 ? void 0 : props.className);
 };
-// ../Telegram bot /work/production-web/node_modules/tailwind-merge/dist/bundle-mjs.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/tailwind-merge/dist/bundle-mjs.mjs
 /**
 * Concatenates two arrays faster than the array spread operator.
 */
@@ -16850,7 +16922,7 @@ var twMerge = /*#__PURE__*/ createTailwindMerge(getDefaultConfig);
 function cn$1(...inputs) {
 	return twMerge(clsx(inputs));
 }
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-compose-refs/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-compose-refs/dist/index.mjs
 var __defProp$27 = Object.defineProperty;
 var __name$27 = (target, value) => __defProp$27(target, "name", {
 	value,
@@ -16883,7 +16955,7 @@ function useComposedRefs(...refs) {
 	return import_react.useCallback(composeRefs(...refs), refs);
 }
 __name$27(useComposedRefs, "useComposedRefs");
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-slot/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-slot/dist/index.mjs
 var __defProp$26 = Object.defineProperty;
 var __name$26 = (target, value) => __defProp$26(target, "name", {
 	value,
@@ -16995,47 +17067,8 @@ var createSlottableError = /* @__PURE__ */ __name$26((ownerName) => {
 	return `${ownerName} failed to slot onto its \`Slottable\`. Expected \`Slottable\` to receive a single React element child.`;
 }, "createSlottableError");
 var use = import_react[" use ".trim().toString()];
-// ../Telegram bot /work/production-web/node_modules/react/cjs/react-jsx-runtime.production.js
-/**
-* @license React
-* react-jsx-runtime.production.js
-*
-* Copyright (c) Meta Platforms, Inc. and affiliates.
-*
-* This source code is licensed under the MIT license found in the
-* LICENSE file in the root directory of this source tree.
-*/
-var require_react_jsx_runtime_production = /* @__PURE__ */ __commonJSMin(((exports) => {
-	var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
-	var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
-	function jsxProd(type, config, maybeKey) {
-		var key = null;
-		void 0 !== maybeKey && (key = "" + maybeKey);
-		void 0 !== config.key && (key = "" + config.key);
-		if ("key" in config) {
-			maybeKey = {};
-			for (var propName in config) "key" !== propName && (maybeKey[propName] = config[propName]);
-		} else maybeKey = config;
-		config = maybeKey.ref;
-		return {
-			$$typeof: REACT_ELEMENT_TYPE,
-			type,
-			key,
-			ref: void 0 !== config ? config : null,
-			props: maybeKey
-		};
-	}
-	exports.Fragment = REACT_FRAGMENT_TYPE;
-	exports.jsx = jsxProd;
-	exports.jsxs = jsxProd;
-}));
-// ../Telegram bot /work/production-web/node_modules/react/jsx-runtime.js
-var require_jsx_runtime = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	module.exports = require_react_jsx_runtime_production();
-}));
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-primitive/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-primitive/dist/index.mjs
 var import_react_dom = /* @__PURE__ */ __toESM(require_react_dom(), 1);
-var import_jsx_runtime = require_jsx_runtime();
 var __defProp$25 = Object.defineProperty;
 var __name$25 = (target, value) => __defProp$25(target, "name", {
 	value,
@@ -17080,7 +17113,7 @@ function dispatchDiscreteCustomEvent(target, event) {
 	if (target) import_react_dom.flushSync(() => target.dispatchEvent(event));
 }
 __name$25(dispatchDiscreteCustomEvent, "dispatchDiscreteCustomEvent");
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-context/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-context/dist/index.mjs
 var __defProp$24 = Object.defineProperty;
 var __name$24 = (target, value) => __defProp$24(target, "name", {
 	value,
@@ -17181,7 +17214,7 @@ function composeContextScopes(...scopes) {
 	return createScope;
 }
 __name$24(composeContextScopes, "composeContextScopes");
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-collection/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-collection/dist/index.mjs
 var __defProp$23 = Object.defineProperty;
 var __name$23 = (target, value) => __defProp$23(target, "name", {
 	value,
@@ -17709,7 +17742,7 @@ function getChildListObserver(callback) {
 	});
 }
 __name$23(getChildListObserver, "getChildListObserver");
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/primitive/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/primitive/dist/index.mjs
 var __defProp$22 = Object.defineProperty;
 var __name$22 = (target, value) => __defProp$22(target, "name", {
 	value,
@@ -17751,9 +17784,9 @@ function isFrame(element) {
 	return element.tagName === "IFRAME";
 }
 __name$22(isFrame, "isFrame");
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-use-layout-effect/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-use-layout-effect/dist/index.mjs
 var useLayoutEffect2 = globalThis?.document ? import_react.useLayoutEffect : () => {};
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-use-effect-event/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-use-effect-event/dist/index.mjs
 var __defProp$21 = Object.defineProperty;
 var __name$21 = (target, value) => __defProp$21(target, "name", {
 	value,
@@ -17775,7 +17808,7 @@ function useEffectEvent(callback) {
 	return import_react.useMemo(() => ((...args) => ref.current?.(...args)), []);
 }
 __name$21(useEffectEvent, "useEffectEvent");
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-use-controllable-state/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-use-controllable-state/dist/index.mjs
 var __defProp$20 = Object.defineProperty;
 var __name$20 = (target, value) => __defProp$20(target, "name", {
 	value,
@@ -17876,7 +17909,7 @@ function useControllableStateReducer(reducer, userArgs, initialArg, init) {
 	return [state, dispatch];
 }
 __name$20(useControllableStateReducer, "useControllableStateReducer");
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-presence/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-presence/dist/index.mjs
 var __defProp$19 = Object.defineProperty;
 var __name$19 = (target, value) => __defProp$19(target, "name", {
 	value,
@@ -18017,7 +18050,7 @@ function getElementRef(element) {
 	return element.props.ref || element.ref;
 }
 __name$19(getElementRef, "getElementRef");
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-id/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-id/dist/index.mjs
 var __defProp$18 = Object.defineProperty;
 var __name$18 = (target, value) => __defProp$18(target, "name", {
 	value,
@@ -18033,7 +18066,7 @@ function useId$2(deterministicId) {
 	return deterministicId || (id ? `radix-${id}` : "");
 }
 __name$18(useId$2, "useId");
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-direction/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-direction/dist/index.mjs
 var __defProp$17 = Object.defineProperty;
 var __name$17 = (target, value) => __defProp$17(target, "name", {
 	value,
@@ -18045,7 +18078,7 @@ function useDirection(localDir) {
 	return localDir || globalDir || "ltr";
 }
 __name$17(useDirection, "useDirection");
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-use-callback-ref/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-use-callback-ref/dist/index.mjs
 var __defProp$16 = Object.defineProperty;
 var __name$16 = (target, value) => __defProp$16(target, "name", {
 	value,
@@ -18059,7 +18092,7 @@ function useCallbackRef$1(callback) {
 	return import_react.useMemo(() => ((...args) => callbackRef.current?.(...args)), []);
 }
 __name$16(useCallbackRef$1, "useCallbackRef");
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs
 var __defProp$15 = Object.defineProperty;
 var __name$15 = (target, value) => __defProp$15(target, "name", {
 	value,
@@ -18322,7 +18355,7 @@ function handleAndDispatchCustomEvent(name, handler, detail, { discrete }) {
 	else target.dispatchEvent(event);
 }
 __name$15(handleAndDispatchCustomEvent, "handleAndDispatchCustomEvent");
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-focus-scope/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-focus-scope/dist/index.mjs
 var __defProp$14 = Object.defineProperty;
 var __name$14 = (target, value) => __defProp$14(target, "name", {
 	value,
@@ -18527,7 +18560,7 @@ function removeLinks(items) {
 	return items.filter((item) => item.tagName !== "A");
 }
 __name$14(removeLinks, "removeLinks");
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-portal/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-portal/dist/index.mjs
 var __defProp$13 = Object.defineProperty;
 var __name$13 = (target, value) => __defProp$13(target, "name", {
 	value,
@@ -18543,7 +18576,7 @@ var Portal$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$13
 		ref: forwardedRef
 	}), container) : null;
 }, "Portal"));
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-focus-guards/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-focus-guards/dist/index.mjs
 var __defProp$12 = Object.defineProperty;
 var __name$12 = (target, value) => __defProp$12(target, "name", {
 	value,
@@ -18588,7 +18621,7 @@ function createFocusGuard() {
 	return element;
 }
 __name$12(createFocusGuard, "createFocusGuard");
-// ../Telegram bot /work/production-web/node_modules/tslib/tslib.es6.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/tslib/tslib.es6.mjs
 var __assign = function() {
 	__assign = Object.assign || function __assign(t) {
 		for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -18616,7 +18649,7 @@ function __spreadArray(to, from, pack) {
 	}
 	return to.concat(ar || Array.prototype.slice.call(from));
 }
-// ../Telegram bot /work/production-web/node_modules/react-remove-scroll-bar/dist/es2015/constants.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll-bar/dist/es2015/constants.js
 var zeroRightClassName = "right-scroll-bar-position";
 var fullWidthClassName = "width-before-scroll-bar";
 var noScrollbarsClassName = "with-scroll-bars-hidden";
@@ -18625,7 +18658,7 @@ var noScrollbarsClassName = "with-scroll-bars-hidden";
 * ! might be undefined ! use will fallback!
 */
 var removedBarSizeVariable = "--removed-body-scroll-bar-size";
-// ../Telegram bot /work/production-web/node_modules/use-callback-ref/dist/es2015/assignRef.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/use-callback-ref/dist/es2015/assignRef.js
 /**
 * Assigns a value for a given ref, no matter of the ref format
 * @param {RefObject} ref - a callback function or ref object
@@ -18644,7 +18677,7 @@ function assignRef(ref, value) {
 	else if (ref) ref.current = value;
 	return ref;
 }
-// ../Telegram bot /work/production-web/node_modules/use-callback-ref/dist/es2015/useRef.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/use-callback-ref/dist/es2015/useRef.js
 /**
 * creates a MutableRef with ref change callback
 * @param initialValue - initial ref value
@@ -18681,7 +18714,7 @@ function useCallbackRef(initialValue, callback) {
 	ref.callback = callback;
 	return ref.facade;
 }
-// ../Telegram bot /work/production-web/node_modules/use-callback-ref/dist/es2015/useMergeRef.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/use-callback-ref/dist/es2015/useMergeRef.js
 var useIsomorphicLayoutEffect$1 = typeof window !== "undefined" ? import_react.useLayoutEffect : import_react.useEffect;
 var currentValues = /* @__PURE__ */ new WeakMap();
 /**
@@ -18721,7 +18754,7 @@ function useMergeRefs(refs, defaultValue) {
 	}, [refs]);
 	return callbackRef;
 }
-// ../Telegram bot /work/production-web/node_modules/use-sidecar/dist/es2015/medium.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/use-sidecar/dist/es2015/medium.js
 function ItoI(a) {
 	return a;
 }
@@ -18800,7 +18833,7 @@ function createSidecarMedium(options) {
 	}, options);
 	return medium;
 }
-// ../Telegram bot /work/production-web/node_modules/use-sidecar/dist/es2015/exports.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/use-sidecar/dist/es2015/exports.js
 var SideCar = function(_a) {
 	var sideCar = _a.sideCar, rest = __rest(_a, ["sideCar"]);
 	if (!sideCar) throw new Error("Sidecar: please provide `sideCar` property to import the right car");
@@ -18813,9 +18846,9 @@ function exportSidecar(medium, exported) {
 	medium.useMedium(exported);
 	return SideCar;
 }
-// ../Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/medium.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/medium.js
 var effectCar = createSidecarMedium();
-// ../Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/UI.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/UI.js
 var nothing = function() {};
 /**
 * Removes scrollbar from the page and contain the scroll within the Lock
@@ -18873,7 +18906,7 @@ RemoveScroll.classNames = {
 var getNonce = function() {
 	if (typeof __webpack_nonce__ !== "undefined") return __webpack_nonce__;
 };
-// ../Telegram bot /work/production-web/node_modules/react-style-singleton/dist/es2015/singleton.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-style-singleton/dist/es2015/singleton.js
 function makeStyleTag() {
 	if (!document) return null;
 	var tag = document.createElement("style");
@@ -18911,7 +18944,7 @@ var stylesheetSingleton = function() {
 		}
 	};
 };
-// ../Telegram bot /work/production-web/node_modules/react-style-singleton/dist/es2015/hook.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-style-singleton/dist/es2015/hook.js
 /**
 * creates a hook to control style singleton
 * @see {@link styleSingleton} for a safer component version
@@ -18932,7 +18965,7 @@ var styleHookSingleton = function() {
 		}, [styles && isDynamic]);
 	};
 };
-// ../Telegram bot /work/production-web/node_modules/react-style-singleton/dist/es2015/component.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-style-singleton/dist/es2015/component.js
 /**
 * create a Component to add styles on demand
 * - styles are added when first instance is mounted
@@ -18948,7 +18981,7 @@ var styleSingleton = function() {
 	};
 	return Sheet;
 };
-// ../Telegram bot /work/production-web/node_modules/react-remove-scroll-bar/dist/es2015/utils.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll-bar/dist/es2015/utils.js
 var zeroGap = {
 	left: 0,
 	top: 0,
@@ -18982,7 +19015,7 @@ var getGapWidth = function(gapMode) {
 		gap: Math.max(0, windowWidth - documentWidth + offsets[2] - offsets[0])
 	};
 };
-// ../Telegram bot /work/production-web/node_modules/react-remove-scroll-bar/dist/es2015/component.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll-bar/dist/es2015/component.js
 var Style = styleSingleton();
 var lockAttribute = "data-scroll-locked";
 var getStyles = function(_a, allowRelative, gapMode, important) {
@@ -19019,7 +19052,7 @@ var RemoveScrollBar = function(_a) {
 	}, [gapMode]);
 	return import_react.createElement(Style, { styles: getStyles(gap, !noRelative, gapMode, !noImportant ? "!important" : "") });
 };
-// ../Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/aggresiveCapture.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/aggresiveCapture.js
 var passiveSupported = false;
 if (typeof window !== "undefined") try {
 	var options = Object.defineProperty({}, "passive", { get: function() {
@@ -19032,7 +19065,7 @@ if (typeof window !== "undefined") try {
 	passiveSupported = false;
 }
 var nonPassive = passiveSupported ? { passive: false } : false;
-// ../Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/handleScroll.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/handleScroll.js
 var alwaysContainsScroll = function(node) {
 	return node.tagName === "TEXTAREA";
 };
@@ -19114,7 +19147,7 @@ var handleScroll = function(axis, endTarget, event, sourceDelta, noOverscroll) {
 	else if (!isDeltaPositive && (noOverscroll && Math.abs(availableScrollTop) < 1 || !noOverscroll && -delta > availableScrollTop)) shouldCancelScroll = true;
 	return shouldCancelScroll;
 };
-// ../Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
 var getTouchXY = function(event) {
 	return "changedTouches" in event ? [event.changedTouches[0].clientX, event.changedTouches[0].clientY] : [0, 0];
 };
@@ -19268,9 +19301,9 @@ function getOutermostShadowParent(node) {
 	}
 	return shadowParent;
 }
-// ../Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/sidecar.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/sidecar.js
 var sidecar_default = exportSidecar(effectCar, RemoveScrollSideCar);
-// ../Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/Combination.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/Combination.js
 var ReactRemoveScroll = import_react.forwardRef(function(props, ref) {
 	return import_react.createElement(RemoveScroll, __assign({}, props, {
 		ref,
@@ -19278,7 +19311,7 @@ var ReactRemoveScroll = import_react.forwardRef(function(props, ref) {
 	}));
 });
 ReactRemoveScroll.classNames = RemoveScroll.classNames;
-// ../Telegram bot /work/production-web/node_modules/aria-hidden/dist/es2015/index.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/aria-hidden/dist/es2015/index.js
 var getDefaultParent = function(originalTarget) {
 	if (typeof document === "undefined") return null;
 	return (Array.isArray(originalTarget) ? originalTarget[0] : originalTarget).ownerDocument.body;
@@ -19383,7 +19416,7 @@ var hideOthers = function(originalTarget, parentNode, markerName) {
 	targets.push.apply(targets, Array.from(activeParentNode.querySelectorAll("[aria-live], script")));
 	return applyAttributeToOthers(targets, activeParentNode, markerName, "aria-hidden");
 };
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-dialog/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-dialog/dist/index.mjs
 var __defProp$11 = Object.defineProperty;
 var __name$11 = (target, value) => __defProp$11(target, "name", {
 	value,
@@ -19612,7 +19645,7 @@ function getState(open) {
 	return open ? "open" : "closed";
 }
 __name$11(getState, "getState");
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-avatar/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-avatar/dist/index.mjs
 var __defProp$10 = Object.defineProperty;
 var __name$10 = (target, value) => __defProp$10(target, "name", {
 	value,
@@ -19696,7 +19729,7 @@ function useImageCount() {
 __name$10(useImageCount, "useImageCount");
 function useUpdateImageCount(setImageCount) {}
 __name$10(useUpdateImageCount, "useUpdateImageCount");
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-use-size/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-use-size/dist/index.mjs
 var __defProp$9 = Object.defineProperty;
 var __name$9 = (target, value) => __defProp$9(target, "name", {
 	value,
@@ -19737,7 +19770,7 @@ function useSize(element) {
 	return size;
 }
 __name$9(useSize, "useSize");
-// ../Telegram bot /work/production-web/node_modules/@floating-ui/utils/dist/floating-ui.utils.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@floating-ui/utils/dist/floating-ui.utils.mjs
 /**
 * Custom positioning reference element.
 * @see https://floating-ui.com/docs/virtual-elements
@@ -19865,7 +19898,7 @@ function rectToClientRect(rect) {
 		y
 	};
 }
-// ../Telegram bot /work/production-web/node_modules/@floating-ui/core/dist/floating-ui.core.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@floating-ui/core/dist/floating-ui.core.mjs
 function computeCoordsFromPlacement(_ref, placement, rtl) {
 	let { reference, floating } = _ref;
 	const sideAxis = getSideAxis(placement);
@@ -20405,7 +20438,7 @@ var size$1 = function(options) {
 		}
 	};
 };
-// ../Telegram bot /work/production-web/node_modules/@floating-ui/utils/dist/floating-ui.utils.dom.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@floating-ui/utils/dist/floating-ui.utils.dom.mjs
 function hasWindow() {
 	return typeof window !== "undefined";
 }
@@ -20517,7 +20550,7 @@ function getOverflowAncestors(node, list, traverseIframes) {
 function getFrameElement(win) {
 	return win.parent && Object.getPrototypeOf(win.parent) ? win.frameElement : null;
 }
-// ../Telegram bot /work/production-web/node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs
 function getCssDimensions(element) {
 	const css = getComputedStyle$1(element);
 	let width = parseFloat(css.width) || 0;
@@ -21050,7 +21083,7 @@ var computePosition = (reference, floating, options) => {
 		platform: platformWithCache
 	});
 };
-// ../Telegram bot /work/production-web/node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.mjs
 var index$1 = typeof document !== "undefined" ? import_react.useLayoutEffect : function noop() {};
 function deepEqual(a, b) {
 	if (a === b) return true;
@@ -21363,7 +21396,7 @@ var arrow = (options, deps) => {
 		options: [options, deps]
 	};
 };
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-popper/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-popper/dist/index.mjs
 var __defProp$8 = Object.defineProperty;
 var __name$8 = (target, value) => __defProp$8(target, "name", {
 	value,
@@ -21587,7 +21620,7 @@ __name$8(getSideAndAlignFromPlacement, "getSideAndAlignFromPlacement");
 var Root2$2 = Popper;
 var Anchor = PopperAnchor;
 var Content$1 = PopperContent;
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-use-is-hydrated/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-use-is-hydrated/dist/index.mjs
 var __defProp$7 = Object.defineProperty;
 var __name$7 = (target, value) => __defProp$7(target, "name", {
 	value,
@@ -21615,7 +21648,7 @@ function useIsHydratedModern() {
 }
 __name$7(useIsHydratedModern, "useIsHydratedModern");
 var useIsHydrated2 = typeof useReactSyncExternalStore === "function" ? useIsHydratedModern : useIsHydrated;
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-roving-focus/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-roving-focus/dist/index.mjs
 var __defProp$6 = Object.defineProperty;
 var __name$6 = (target, value) => __defProp$6(target, "name", {
 	value,
@@ -21816,7 +21849,7 @@ function wrapArray$1(array, startIndex) {
 __name$6(wrapArray$1, "wrapArray");
 var Root$1 = RovingFocusGroup;
 var Item = RovingFocusGroupItem;
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-menu/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-menu/dist/index.mjs
 var __defProp$5 = Object.defineProperty;
 var __name$5 = (target, value) => __defProp$5(target, "name", {
 	value,
@@ -22277,7 +22310,7 @@ var Anchor2 = MenuAnchor;
 var Portal = MenuPortal;
 var Content2$1 = MenuContent;
 var Item2$1 = MenuItem;
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-dropdown-menu/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-dropdown-menu/dist/index.mjs
 var __defProp$4 = Object.defineProperty;
 var __name$4 = (target, value) => __defProp$4(target, "name", {
 	value,
@@ -22410,7 +22443,7 @@ var Trigger$1 = DropdownMenuTrigger;
 var Portal2 = DropdownMenuPortal;
 var Content2 = DropdownMenuContent;
 var Item2 = DropdownMenuItem;
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-separator/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-separator/dist/index.mjs
 var __defProp$3 = Object.defineProperty;
 var __name$3 = (target, value) => __defProp$3(target, "name", {
 	value,
@@ -22437,7 +22470,7 @@ function isValidOrientation(orientation) {
 }
 __name$3(isValidOrientation, "isValidOrientation");
 var Root = Separator$1;
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-tabs/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-tabs/dist/index.mjs
 var __defProp$2 = Object.defineProperty;
 var __name$2 = (target, value) => __defProp$2(target, "name", {
 	value,
@@ -22574,7 +22607,7 @@ var Root2 = Tabs$1;
 var List = TabsList$1;
 var Trigger = TabsTrigger$1;
 var Content = TabsContent$1;
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-toggle/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-toggle/dist/index.mjs
 var __defProp$1 = Object.defineProperty;
 var __name$1 = (target, value) => __defProp$1(target, "name", {
 	value,
@@ -22601,7 +22634,7 @@ var Toggle = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$1(fu
 		})
 	});
 }, "Toggle"));
-// ../Telegram bot /work/production-web/node_modules/@radix-ui/react-toggle-group/dist/index.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-toggle-group/dist/index.mjs
 var __defProp = Object.defineProperty;
 var __name = (target, value) => __defProp(target, "name", {
 	value,
@@ -24262,11 +24295,7 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 			setBusy(false);
 		}
 	};
-	const [notice, setNotice] = (0, import_react.useState)("");
-	const showNotice = (msg) => {
-		setNotice(msg);
-		setTimeout(() => setNotice(""), 3500);
-	};
+	const showNotice = (msg) => toast(msg);
 	const changeTask = async (updates) => {
 		setBusy(true);
 		setError("");
@@ -24452,11 +24481,6 @@ function TaskThreadDrawer({ task: initialTask, project, open, onOpenChange, onTa
 								]
 							})
 						]
-					}),
-					notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						role: "status",
-						className: "mx-4 mt-2 rounded-md bg-success-bg p-2 text-xs text-success",
-						children: notice
 					}),
 					editing && isFounder ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 						className: "task-thread-edit",
@@ -25099,11 +25123,8 @@ function useNavigation() {
 var when = (value) => `${formatDateTime(value, { timeZone: STUDIO_TIME_ZONE })} IST`;
 function MeetingsView({ namespace = "founder", projectId = "", onOpenTask, embedded = false }) {
 	const Heading = embedded ? "h2" : "h1";
-	const [meetings, setMeetings] = (0, import_react.useState)([]), [error, setError] = (0, import_react.useState)(""), [notice, setNotice] = (0, import_react.useState)(""), [edit, setEdit] = (0, import_react.useState)(null), [action, setAction] = (0, import_react.useState)(null), [history, setHistory] = (0, import_react.useState)(false), [busy, setBusy] = (0, import_react.useState)(false), [selectedTask, setSelectedTask] = (0, import_react.useState)(null);
-	const showNotice = (msg) => {
-		setNotice(msg);
-		setTimeout(() => setNotice(""), 3500);
-	};
+	const [meetings, setMeetings] = (0, import_react.useState)([]), [error, setError] = (0, import_react.useState)(""), [edit, setEdit] = (0, import_react.useState)(null), [action, setAction] = (0, import_react.useState)(null), [history, setHistory] = (0, import_react.useState)(false), [busy, setBusy] = (0, import_react.useState)(false), [selectedTask, setSelectedTask] = (0, import_react.useState)(null);
+	const showNotice = (msg) => toast(msg);
 	const load = async () => {
 		try {
 			const data = await request$1(`/api/${namespace}/meetings${projectId ? "?projectId=" + encodeURIComponent(projectId) : ""}`);
@@ -25176,11 +25197,6 @@ function MeetingsView({ namespace = "founder", projectId = "", onOpenTask, embed
 					onClick: load,
 					children: "Refresh"
 				})]
-			}),
-			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				role: "status",
-				className: "rounded-md bg-success-bg p-2 text-xs text-success",
-				children: notice
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 				className: "flex gap-2 text-sm",
@@ -25922,11 +25938,9 @@ function PersonalReminders({ connections, onChanged }) {
 	const [preview, setPreview] = (0, import_react.useState)(null);
 	const [busy, setBusy] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
-	const [notice, setNotice] = (0, import_react.useState)("");
 	const run = async (action) => {
 		setBusy(true);
 		setError("");
-		setNotice("");
 		try {
 			await action();
 		} catch (problem) {
@@ -25952,7 +25966,7 @@ function PersonalReminders({ connections, onChanged }) {
 			}
 		});
 		setPreview(null);
-		setNotice(data.empty ? "No actionable work today; no message sent." : data.delivery.status === "Sent" ? "Today’s reminder was sent. The scheduled run will not send it again today." : "Delivery is uncertain. Check the employee’s Telegram chat before taking any further action.");
+		toast(data.empty ? "No actionable work today; no message sent." : data.delivery.status === "Sent" ? "Today’s reminder was sent. The scheduled run will not send it again today." : "Delivery is uncertain. Check the employee’s Telegram chat before taking any further action.");
 		await onChanged();
 	});
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -25999,7 +26013,7 @@ function PersonalReminders({ connections, onChanged }) {
 						disabled: busy,
 						onClick: () => run(async () => {
 							await navigator.clipboard.writeText(link);
-							setNotice("Bot link copied. Share it with the site admin.");
+							toast("Bot link copied. Share it with the site admin.");
 						}),
 						children: "Copy bot link"
 					}),
@@ -26100,11 +26114,6 @@ function PersonalReminders({ connections, onChanged }) {
 				role: "alert",
 				className: "text-sm text-destructive",
 				children: error
-			}),
-			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				role: "status",
-				className: "text-sm",
-				children: notice
 			})
 		]
 	});
@@ -26526,11 +26535,10 @@ function SupervisorTools({ employees, projects, onChanged }) {
 		fromId: "",
 		toId: "",
 		projectIds: []
-	}), [preview, setPreview] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [notice, setNotice] = (0, import_react.useState)(""), [settings, setSettings] = (0, import_react.useState)(null), [deliveries, setDeliveries] = (0, import_react.useState)([]), [connections, setConnections] = (0, import_react.useState)([]);
+	}), [preview, setPreview] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [settings, setSettings] = (0, import_react.useState)(null), [deliveries, setDeliveries] = (0, import_react.useState)([]), [connections, setConnections] = (0, import_react.useState)([]);
 	const change = (next) => {
 		setForm(next);
 		setPreview(null);
-		setNotice("");
 	};
 	const run = async (apply) => {
 		setBusy(true);
@@ -26545,7 +26553,7 @@ function SupervisorTools({ employees, projects, onChanged }) {
 			});
 			if (apply) {
 				setPreview(null);
-				setNotice("Supervisor responsibilities transferred. Completed work was preserved.");
+				toast("Supervisor responsibilities transferred. Completed work was preserved.");
 				onChanged();
 			} else setPreview(result);
 		} catch (problem) {
@@ -26571,7 +26579,7 @@ function SupervisorTools({ employees, projects, onChanged }) {
 				method: "POST",
 				body: settings
 			});
-			setNotice("Morning digest schedule saved.");
+			toast("Morning digest schedule saved.");
 		} catch (problem) {
 			setError(problem.message);
 		} finally {
@@ -26754,11 +26762,6 @@ function SupervisorTools({ employees, projects, onChanged }) {
 				role: "alert",
 				className: "text-sm text-destructive",
 				children: error
-			}),
-			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				role: "status",
-				className: "text-sm text-success",
-				children: notice
 			})
 		]
 	});
@@ -27126,7 +27129,7 @@ function Separator({ className, orientation = "horizontal", decorative = true, .
 		...props
 	});
 }
-// ../Telegram bot /work/production-web/node_modules/liquid-gooey/dist/index.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/liquid-gooey/dist/index.js
 var GooeyContext = (0, import_react.createContext)(null);
 function useGooeyContext() {
 	const ctx = (0, import_react.useContext)(GooeyContext);
@@ -30866,7 +30869,7 @@ function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewWork }) 
 		]
 	});
 }
-// ../Telegram bot /work/production-web/node_modules/thinking-orbs/dist/index-B8WsUNf5.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/thinking-orbs/dist/index-B8WsUNf5.js
 function lerp(a, b, f) {
 	return a + (b - a) * f;
 }
@@ -31891,7 +31894,7 @@ function resolvePreset(state, size) {
 	cache.set(key, resolved);
 	return resolved;
 }
-// ../Telegram bot /work/production-web/node_modules/thinking-orbs/dist/index.es.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/thinking-orbs/dist/index.es.js
 function ancestorTheme(el) {
 	let node = el;
 	while (node) {
@@ -34896,7 +34899,6 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 	const [settingsProjectId, setSettingsProjectId] = (0, import_react.useState)("");
 	const [groupId, setGroupId] = (0, import_react.useState)("");
 	const [error, setError] = (0, import_react.useState)("");
-	const [notice, setNotice] = (0, import_react.useState)("");
 	const [busy, setBusy] = (0, import_react.useState)(false);
 	const [acceptOpen, setAcceptOpen] = (0, import_react.useState)(false);
 	const [rejectOpen, setRejectOpen] = (0, import_react.useState)(false);
@@ -35002,14 +35004,13 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 	const run = async (action, success) => {
 		setBusy(true);
 		setError("");
-		setNotice("");
 		try {
 			await action();
 			await load();
-			setNotice(success);
+			toast(success);
 			return true;
 		} catch (failure) {
-			setError(failure.message);
+			toast(failure.message, { error: true });
 			return false;
 		} finally {
 			setBusy(false);
@@ -35074,11 +35075,6 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 				role: "alert",
 				className: "card-box border-overdue-border bg-overdue-bg text-sm text-overdue",
 				children: error
-			}),
-			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				role: "status",
-				className: "card-box border-success-border bg-success-bg text-sm text-success",
-				children: notice
 			}),
 			settingsOpen && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex flex-wrap items-end gap-3 card-box bg-card",
@@ -35537,7 +35533,7 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 				request: selected,
 				onDone: async (result) => {
 					await load();
-					setNotice(result?.summary || "Query updated.");
+					toast(result?.summary || "Query updated.");
 				}
 			}),
 			selected && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryRejectDialog, {
@@ -35546,11 +35542,30 @@ function DecisionInbox({ projects, onProjectsChanged }) {
 				request: selected,
 				onDone: async () => {
 					await load();
-					setNotice("Client query rejected and the reply was sent.");
+					toast("Client query rejected and the reply was sent.");
 				}
 			})
 		]
 	});
+}
+// frontend/src/features/telegram/lib/memberSetup.js
+var memberValues = (member, draft = {}) => ({
+	name: (draft.name ?? (member.assignedName || member.telegramName)).trim(),
+	role: (draft.role ?? member.assignedRole ?? "").trim()
+});
+var isMemberSaved = (member) => Boolean(member.assignedName && member.assignedRole);
+function memberChanged(member, draft) {
+	if (!isMemberSaved(member)) return true;
+	const { name, role } = memberValues(member, draft);
+	return name !== member.assignedName.trim() || role !== member.assignedRole.trim();
+}
+function setupBlocker(members, draftFor) {
+	const unsaved = members.filter((member) => !isMemberSaved(member)).length;
+	if (unsaved) return `Save ${unsaved} more ${unsaved === 1 ? "person" : "people"} first.`;
+	if (members.some((member) => memberChanged(member, draftFor(member)))) return "Save your changes first.";
+	if (!members.some((member) => hasRole(member.assignedRole, "Client"))) return "Give one person the Client role.";
+	if (!members.some((member) => isStaff(member.assignedRole))) return "Give at least one person a team role, such as Supervisor or Designer.";
+	return "";
 }
 // frontend/src/features/telegram/TelegramGroups.jsx
 async function api$2(url, method = "GET", data) {
@@ -35574,16 +35589,19 @@ var suggestedRoles = [
 	"Electrician",
 	"Contractor"
 ];
+var without = (...keys) => (current) => Object.fromEntries(Object.entries(current).filter(([key]) => !keys.includes(key)));
 function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = false }) {
 	const [groups, setGroups] = (0, import_react.useState)([]);
 	const [selectedId, setSelectedId] = (0, import_react.useState)("");
 	const [drafts, setDrafts] = (0, import_react.useState)({});
+	const [editing, setEditing] = (0, import_react.useState)({});
+	const [cards, setCards] = (0, import_react.useState)({});
+	const [savingAll, setSavingAll] = (0, import_react.useState)(false);
 	const [projectName, setProjectName] = (0, import_react.useState)("");
 	const [startDate, setStartDate] = (0, import_react.useState)(() => todayInput());
 	const [busy, setBusy] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
 	const [memberId, setMemberId] = (0, import_react.useState)("");
-	const [notice, setNotice] = (0, import_react.useState)("");
 	const load = async () => {
 		try {
 			const data = await api$2("/api/founder/telegram-groups");
@@ -35602,30 +35620,99 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 	}, []);
 	const group = project ? groups.find((item) => item.groupChatId === project.telegramGroupChatId) : groups.find((item) => item.groupChatId === selectedId) || groups[0];
 	const activeMembers = group?.members.filter((member) => member.membershipStatus === "Active") || [];
-	const pendingCount = activeMembers.filter((member) => !member.assignedName || !member.assignedRole).length;
 	const linkedProject = project || projects.find((project) => project.telegramGroupChatId === group?.groupChatId);
 	const needsSetup = !linkedProject || linkedProject.telegramSetupPending;
+	const keyOf = (member) => `${group.groupChatId}:${member.telegramUserId}`;
+	const draftOf = (member) => drafts[keyOf(member)];
+	const isOpen = (member) => !isMemberSaved(member) || editing[keyOf(member)];
+	const toSave = activeMembers.filter((member) => isOpen(member) && memberChanged(member, draftOf(member)) && memberValues(member, draftOf(member)).role);
+	const savedCount = activeMembers.filter(isMemberSaved).length;
+	const blocker = setupBlocker(activeMembers, draftOf);
+	const anySaving = savingAll || Object.values(cards).some((card) => card?.status === "saving");
 	const run = async (work, message) => {
 		setBusy(true);
 		setError("");
-		setNotice("");
 		try {
 			await work();
 			await load();
 			if (onProjectsChanged) await onProjectsChanged();
-			setNotice(message);
+			toast(message);
 		} catch (failure) {
-			setError(failure.message);
+			toast(failure.message, { error: true });
 		} finally {
 			setBusy(false);
 		}
 	};
-	const saveMember = (member) => {
-		const draft = drafts[`${group.groupChatId}:${member.telegramUserId}`] || {};
-		return run(() => api$2(`/api/founder/telegram-groups/${group.groupChatId}/members/${member.telegramUserId}`, "POST", {
-			name: (draft.name ?? member.assignedName ?? member.telegramName).trim(),
-			role: (draft.role ?? member.assignedRole ?? "").trim()
-		}), "Role saved and announced in Telegram. Team members need their Google email added in Employees for web access.");
+	const postMember = (member) => {
+		const { name, role } = memberValues(member, draftOf(member));
+		return api$2(`/api/founder/telegram-groups/${group.groupChatId}/members/${member.telegramUserId}`, "POST", {
+			name,
+			role
+		});
+	};
+	const finishSaved = async (keys, message) => {
+		await load();
+		if (onProjectsChanged) await onProjectsChanged();
+		setDrafts(without(...keys));
+		setEditing(without(...keys));
+		setCards((current) => ({
+			...current,
+			...Object.fromEntries(keys.map((key) => [key, { status: "saved" }]))
+		}));
+		toast(message);
+	};
+	const failCard = (key, failure) => setCards((current) => ({
+		...current,
+		[key]: {
+			status: "error",
+			text: failure.message
+		}
+	}));
+	const saveMember = async (member) => {
+		const key = keyOf(member);
+		const { name } = memberValues(member, draftOf(member));
+		setCards((current) => ({
+			...current,
+			[key]: { status: "saving" }
+		}));
+		try {
+			await postMember(member);
+			await finishSaved([key], `${name} saved and announced in Telegram.`);
+		} catch (failure) {
+			failCard(key, failure);
+		}
+	};
+	const saveAll = async () => {
+		setSavingAll(true);
+		const done = [];
+		for (const member of toSave) {
+			const key = keyOf(member);
+			setCards((current) => ({
+				...current,
+				[key]: { status: "saving" }
+			}));
+			try {
+				await postMember(member);
+				done.push(key);
+			} catch (failure) {
+				failCard(key, failure);
+				break;
+			}
+		}
+		if (done.length) await finishSaved(done, `Saved ${done.length} ${done.length === 1 ? "person" : "people"}.`);
+		setSavingAll(false);
+	};
+	const startEdit = (member) => {
+		setEditing((current) => ({
+			...current,
+			[keyOf(member)]: true
+		}));
+		setCards(without(keyOf(member)));
+	};
+	const cancelEdit = (member) => {
+		setEditing(without(keyOf(member)));
+		setDrafts(without(keyOf(member)));
+		setCards(without(keyOf(member)));
 	};
 	const createProject = () => run(async () => {
 		return api$2(`/api/founder/telegram-groups/${group.groupChatId}/create-project`, "POST", {
@@ -35633,31 +35720,177 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 			startDate
 		});
 	}, "Members saved. Choose the project type next.");
+	const avatar = /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+		className: "grid size-8 place-items-center rounded-full bg-secondary text-xs font-semibold",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { className: "size-4" })
+	});
+	const renderMember = (member) => {
+		const key = keyOf(member);
+		const draft = drafts[key] || {};
+		const card = cards[key];
+		const saving = card?.status === "saving";
+		if (!isOpen(member)) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "card-box space-y-2",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-wrap items-center gap-3",
+				children: [
+					avatar,
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "min-w-0 flex-1",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "truncate text-sm font-semibold",
+							children: member.assignedName
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "text-xs text-muted-foreground",
+							children: ["Telegram ID ", member.telegramUserId]
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "flex flex-wrap gap-1",
+						children: rolesOf(member.assignedRole).map((role) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground",
+							children: role
+						}, role))
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						size: "sm",
+						disabled: anySaving,
+						"aria-label": `Edit ${member.assignedName}`,
+						onClick: () => startEdit(member),
+						children: "Edit"
+					})
+				]
+			}), card?.status === "saved" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				role: "status",
+				className: "inline-flex items-center gap-1 text-xs text-success",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3" }), "Saved and announced in Telegram."]
+			})]
+		}, member.telegramUserId);
+		const saved = isMemberSaved(member);
+		const changed = memberChanged(member, draft);
+		const values = memberValues(member, draft);
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "card-box",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mb-3 flex items-center gap-2",
+					children: [
+						avatar,
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "min-w-0 flex-1",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "truncate text-sm font-semibold",
+								children: member.telegramName
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "text-xs text-muted-foreground",
+								children: ["Telegram ID ", member.telegramUserId]
+							})]
+						}),
+						changed && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "text-xs text-warning",
+							children: saved ? "Unsaved changes" : "Not saved yet"
+						})
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "space-y-1 text-xs font-medium",
+						children: ["Name in project", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+							value: draft.name ?? (member.assignedName || member.telegramName),
+							onChange: (event) => setDrafts((current) => ({
+								...current,
+								[key]: {
+									...current[key],
+									name: event.target.value
+								}
+							}))
+						})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+						className: "min-w-0 space-y-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
+							className: "text-xs font-medium",
+							children: "Roles (choose one or more)"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "flex flex-wrap gap-x-4 gap-y-1",
+							children: suggestedRoles.map((role) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+								className: "flex min-h-8 items-center gap-2 text-sm",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+									type: "checkbox",
+									className: "size-5 shrink-0 accent-primary",
+									checked: hasRole(values.role, role),
+									onChange: (event) => {
+										const current = rolesOf(values.role);
+										setDrafts((all) => ({
+											...all,
+											[key]: {
+												...all[key],
+												role: (event.target.checked ? [...current, role] : current.filter((item) => item !== role)).join(", ")
+											}
+										}));
+									}
+								}), role]
+							}, role))
+						})]
+					})]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mt-3 flex flex-wrap items-center justify-end gap-2",
+					children: [
+						card?.status === "error" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							role: "alert",
+							className: "mr-auto text-sm text-overdue",
+							children: card.text
+						}) : !values.role && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mr-auto text-xs text-muted-foreground",
+							children: "Choose at least one role to save."
+						}),
+						saved && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							variant: "outline",
+							size: "sm",
+							disabled: saving,
+							onClick: () => cancelEdit(member),
+							children: "Cancel"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							size: "sm",
+							disabled: anySaving || !values.role || !changed,
+							onClick: () => saveMember(member),
+							children: saving ? "Saving…" : saved ? "Save changes" : "Save"
+						})
+					]
+				})
+			]
+		}, member.telegramUserId);
+	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "space-y-4",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex flex-wrap items-start justify-between gap-3",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", { children: embedded ? "Add members first" : "Telegram groups" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "mt-1 text-sm text-muted-foreground",
-					children: "Set the names and roles of the client and team members discovered in this project’s Telegram group before choosing a project type."
-				})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-					variant: "outline",
-					size: "sm",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+					embedded && needsSetup && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs font-medium text-primary",
+						children: "Step 1 · Members"
+					}),
+					embedded ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+						className: "type-heading-20",
+						children: "Add members"
+					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", { children: "Telegram groups" }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "mt-1 text-sm text-muted-foreground",
+						children: embedded ? "Give each person in this Telegram group a name and a role. You need at least one client and one team member." : "Set the names and roles of the client and team members discovered in this project’s Telegram group before choosing a project type."
+					})
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshButton, {
 					disabled: busy,
-					onClick: () => run(() => api$2("/api/founder/telegram-groups/refresh", "POST", { groupChatId: group?.groupChatId }), "Recorded Telegram members refreshed. If someone is missing, ask them to send /join in the group."),
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, {}), "Refresh"]
+					onRefresh: () => run(() => api$2("/api/founder/telegram-groups/refresh", "POST", { groupChatId: group?.groupChatId }), "Recorded Telegram members refreshed. If someone is missing, ask them to send /join in the group.")
 				})]
 			}),
 			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				role: "alert",
 				className: "card-box border-overdue-border bg-overdue-bg text-sm text-overdue",
 				children: error
-			}),
-			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				role: "status",
-				className: "card-box border-success-border bg-success-bg text-sm text-success",
-				children: notice
 			}),
 			group ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: embedded ? "space-y-4" : "grid gap-4 lg:grid-cols-[260px_minmax(0,1fr)]",
@@ -35689,9 +35922,9 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 						}, item.groupChatId);
 					})
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-					className: "min-w-0 space-y-4 card-box bg-card sm:p-4",
+					className: embedded ? "min-w-0 space-y-4" : "min-w-0 space-y-4 card-box bg-card sm:p-4",
 					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						!embedded && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "flex flex-wrap items-center justify-between gap-2",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 								className: "type-heading-20",
@@ -35711,186 +35944,128 @@ function TelegramGroups({ projects = [], onProjectsChanged, project, embedded = 
 								children: needsSetup ? "Project needs setup" : `Linked to ${linkedProject.name}`
 							})]
 						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "card-box bg-secondary/40 text-sm text-muted-foreground",
-							children: [
-								"Missing someone? Telegram does not let bots fetch the full existing member list. Ask each missing person to send",
-								" ",
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("code", { children: ["/join", group.botUsername ? `@${group.botUsername}` : ""] }),
-								" in this Telegram group, then refresh. If there are multiple bots, use",
-								" ",
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("code", { children: "/join@YourBotUsername" }),
-								" with this project bot’s username. Make the bot a group admin to receive future membership updates."
-							]
-						}),
 						group.discoveryWarning && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							role: "status",
 							className: "text-sm text-warning",
 							children: group.discoveryWarning
 						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-							className: "flex flex-wrap items-end gap-2",
-							onSubmit: (event) => {
-								event.preventDefault();
-								run(() => api$2("/api/founder/telegram-groups/refresh", "POST", {
-									groupChatId: group.groupChatId,
-									telegramUserId: memberId
-								}), "Member verified in Telegram and added to the roster.").then(() => setMemberId(""));
-							},
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-								className: "space-y-1 text-xs font-medium",
-								children: ["Recover a missing member by Telegram ID", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									value: memberId,
-									onChange: (event) => setMemberId(event.target.value),
-									inputMode: "numeric",
-									pattern: "[0-9]+",
-									required: true,
-									placeholder: "Telegram user ID"
-								})]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						activeMembers.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex flex-wrap items-center justify-between gap-2",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								role: "status",
+								className: "text-xs text-muted-foreground",
+								children: [
+									savedCount,
+									" of ",
+									activeMembers.length,
+									" saved"
+								]
+							}), toSave.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 								variant: "outline",
-								disabled: busy || !/^\d+$/.test(memberId),
-								children: "Verify and add"
+								size: "sm",
+								disabled: anySaving,
+								onClick: saveAll,
+								children: savingAll ? "Saving…" : `Save all (${toSave.length})`
 							})]
-						}),
-						pendingCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "card-box border-warning-border bg-warning-bg text-sm text-warning",
-							children: [
-								pendingCount,
-								" person",
-								pendingCount === 1 ? "" : "s",
-								" need a name or role. Ask each person to send /join in Telegram if someone is missing."
-							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "space-y-3",
-							children: activeMembers.length ? activeMembers.map((member) => {
-								const key = `${group.groupChatId}:${member.telegramUserId}`;
-								const draft = drafts[key] || {};
-								return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "card-box",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "mb-3 flex items-center gap-2",
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "grid size-8 place-items-center rounded-full bg-secondary text-xs font-semibold",
-												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { className: "size-4" })
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "min-w-0 flex-1",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-													className: "truncate text-sm font-semibold",
-													children: member.telegramName
-												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-													className: "text-xs text-muted-foreground",
-													children: ["Telegram ID ", member.telegramUserId]
-												})]
-											}),
-											member.assignedRole && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-												className: "inline-flex items-center gap-1 text-xs text-success",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3" }), member.assignedRole]
-											})
-										]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "grid gap-2 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)_auto]",
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-												className: "space-y-1 text-xs font-medium",
-												children: ["Name in project", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-													value: draft.name ?? member.assignedName ?? member.telegramName,
-													onChange: (event) => setDrafts((current) => ({
-														...current,
-														[key]: {
-															...current[key],
-															name: event.target.value
-														}
-													}))
-												})]
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
-												className: "col-span-full min-w-0 space-y-2 sm:col-span-1",
-												children: [
-													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
-														className: "text-xs font-medium",
-														children: "Roles (choose one or more)"
-													}),
-													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-														className: "flex flex-wrap gap-x-4 gap-y-1",
-														children: suggestedRoles.map((role) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-															className: "flex min-h-8 items-center gap-2 text-sm",
-															children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-																type: "checkbox",
-																className: "size-5 shrink-0 accent-primary",
-																checked: hasRole(draft.role ?? member.assignedRole, role),
-																onChange: (event) => {
-																	const current = rolesOf(draft.role ?? member.assignedRole);
-																	setDrafts((values) => ({
-																		...values,
-																		[key]: {
-																			...values[key],
-																			role: (event.target.checked ? [...current, role] : current.filter((item) => item !== role)).join(", ")
-																		}
-																	}));
-																}
-															}), role]
-														}, role))
-													}),
-													/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-														className: "text-xs text-muted-foreground",
-														children: [
-															"Chosen:",
-															" ",
-															rolesOf(draft.role ?? member.assignedRole).join(", ") || "none yet"
-														]
-													})
-												]
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-												className: "self-end",
-												size: "sm",
-												onClick: () => saveMember(member),
-												disabled: busy || !(draft.role ?? member.assignedRole),
-												children: "Save name and roles"
-											})
-										]
-									})]
-								}, member.telegramUserId);
-							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							children: activeMembers.length ? activeMembers.map(renderMember) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "py-8 text-center text-sm text-muted-foreground",
 								children: "No people observed yet. Add members after the bot, or ask them to send /join."
 							})
 						}),
 						needsSetup && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "space-y-3 border-t pt-4",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-								className: "type-label-14-strong",
-								children: "Finish project setup"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-xs text-muted-foreground",
-								children: "Assign at least one client and one team member. Finish setup here, then choose the project type in this project."
-							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "grid gap-2 sm:grid-cols-[minmax(0,1fr)_160px_auto]",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+									className: "type-label-14-strong",
+									children: "Finish project setup"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "text-xs text-muted-foreground",
+									children: "Next you choose the project type, which creates the tasks and announces the start in the Telegram group. Team members need their Google email added in Employees to use the web app."
+								})] }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "grid gap-2 sm:grid-cols-[minmax(0,1fr)_160px_auto]",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+											className: "space-y-1 text-xs font-medium",
+											children: ["Project name", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+												value: projectName || group.title,
+												onChange: (event) => setProjectName(event.target.value)
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+											className: "space-y-1 text-xs font-medium",
+											children: ["Start date", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+												type: "date",
+												value: startDate,
+												onChange: (event) => setStartDate(event.target.value)
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+											className: "self-end",
+											onClick: createProject,
+											disabled: busy || anySaving || Boolean(blocker),
+											children: "Finish setup"
+										})
+									]
+								}),
+								blocker && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									role: "status",
+									className: "text-xs text-muted-foreground",
+									children: blocker
+								})
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("details", {
+							className: "card-box",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("summary", {
+								className: "cursor-pointer text-sm font-semibold",
+								children: "Someone missing from the list?"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "mt-3 space-y-3",
 								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-										className: "space-y-1 text-xs font-medium",
-										children: ["Project name", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-											value: projectName || group.title,
-											onChange: (event) => setProjectName(event.target.value)
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+										className: "text-sm text-muted-foreground",
+										children: [
+											"Telegram does not let the bot list everyone in a group. Ask each missing person to send ",
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("code", { children: ["/join", group.botUsername ? `@${group.botUsername}` : ""] }),
+											" in the group, then press Refresh. Making the bot a group admin lets it see new members on its own."
+										]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+										className: "flex flex-wrap items-end gap-2",
+										onSubmit: (event) => {
+											event.preventDefault();
+											run(() => api$2("/api/founder/telegram-groups/refresh", "POST", {
+												groupChatId: group.groupChatId,
+												telegramUserId: memberId
+											}), "Member verified in Telegram and added to the roster.").then(() => setMemberId(""));
+										},
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+											className: "space-y-1 text-xs font-medium",
+											children: ["Or add them by Telegram ID", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+												value: memberId,
+												onChange: (event) => setMemberId(event.target.value),
+												inputMode: "numeric",
+												pattern: "[0-9]+",
+												required: true,
+												placeholder: "Telegram user ID"
+											})]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+											variant: "outline",
+											disabled: busy || !/^\d+$/.test(memberId),
+											children: "Verify and add"
 										})]
 									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-										className: "space-y-1 text-xs font-medium",
-										children: ["Start date", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-											type: "date",
-											value: startDate,
-											onChange: (event) => setStartDate(event.target.value)
-										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-										className: "self-end",
-										onClick: createProject,
-										disabled: busy || pendingCount > 0 || !activeMembers.some((member) => hasRole(member.assignedRole, "Client")) || !activeMembers.some((member) => isStaff(member.assignedRole)),
-										children: "Finish setup"
+									embedded && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+										className: "text-xs text-muted-foreground",
+										children: [
+											"Telegram group ID ",
+											group.groupChatId,
+											group.telegramMemberCount ? ` · ${group.telegramMemberCount} Telegram accounts including bots` : ""
+										]
 									})
 								]
 							})]
@@ -37221,7 +37396,7 @@ function StageOrderGrip({ stage, reorder }) {
 		})
 	});
 }
-// ../Telegram bot /work/production-web/node_modules/classcat/index.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/classcat/index.js
 function cc(names) {
 	if (typeof names === "string" || typeof names === "number") return "" + names;
 	let out = "";
@@ -37230,7 +37405,7 @@ function cc(names) {
 	} else for (let k in names) if (names[k]) out += (out && " ") + k;
 	return out;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-dispatch/src/dispatch.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-dispatch/src/dispatch.js
 var noop = { value: () => {} };
 function dispatch() {
 	for (var i = 0, n = arguments.length, _ = {}, t; i < n; ++i) {
@@ -37302,7 +37477,7 @@ var namespaces_default = {
 	xml: "http://www.w3.org/XML/1998/namespace",
 	xmlns: "http://www.w3.org/2000/xmlns/"
 };
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/namespace.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/namespace.js
 function namespace_default(name) {
 	var prefix = name += "", i = prefix.indexOf(":");
 	if (i >= 0 && (prefix = name.slice(0, i)) !== "xmlns") name = name.slice(i + 1);
@@ -37311,7 +37486,7 @@ function namespace_default(name) {
 		local: name
 	} : name;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/creator.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/creator.js
 function creatorInherit(name) {
 	return function() {
 		var document = this.ownerDocument, uri = this.namespaceURI;
@@ -37327,14 +37502,14 @@ function creator_default(name) {
 	var fullname = namespace_default(name);
 	return (fullname.local ? creatorFixed : creatorInherit)(fullname);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selector.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selector.js
 function none() {}
 function selector_default(selector) {
 	return selector == null ? none : function() {
 		return this.querySelector(selector);
 	};
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/select.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/select.js
 function select_default$2(select) {
 	if (typeof select !== "function") select = selector_default(select);
 	for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) for (var group = groups[j], n = group.length, subgroup = subgroups[j] = new Array(n), node, subnode, i = 0; i < n; ++i) if ((node = group[i]) && (subnode = select.call(node, node.__data__, i, group))) {
@@ -37343,11 +37518,11 @@ function select_default$2(select) {
 	}
 	return new Selection$1(subgroups, this._parents);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/array.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/array.js
 function array(x) {
 	return x == null ? [] : Array.isArray(x) ? x : Array.from(x);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selectorAll.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selectorAll.js
 function empty() {
 	return [];
 }
@@ -37356,7 +37531,7 @@ function selectorAll_default(selector) {
 		return this.querySelectorAll(selector);
 	};
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/selectAll.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/selectAll.js
 function arrayAll(select) {
 	return function() {
 		return array(select.apply(this, arguments));
@@ -37371,7 +37546,7 @@ function selectAll_default$1(select) {
 	}
 	return new Selection$1(subgroups, parents);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/matcher.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/matcher.js
 function matcher_default(selector) {
 	return function() {
 		return this.matches(selector);
@@ -37382,7 +37557,7 @@ function childMatcher(selector) {
 		return node.matches(selector);
 	};
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/selectChild.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/selectChild.js
 var find = Array.prototype.find;
 function childFind(match) {
 	return function() {
@@ -37395,7 +37570,7 @@ function childFirst() {
 function selectChild_default(match) {
 	return this.select(match == null ? childFirst : childFind(typeof match === "function" ? match : childMatcher(match)));
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/selectChildren.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/selectChildren.js
 var filter = Array.prototype.filter;
 function children() {
 	return Array.from(this.children);
@@ -37408,17 +37583,17 @@ function childrenFilter(match) {
 function selectChildren_default(match) {
 	return this.selectAll(match == null ? children : childrenFilter(typeof match === "function" ? match : childMatcher(match)));
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/filter.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/filter.js
 function filter_default$1(match) {
 	if (typeof match !== "function") match = matcher_default(match);
 	for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) for (var group = groups[j], n = group.length, subgroup = subgroups[j] = [], node, i = 0; i < n; ++i) if ((node = group[i]) && match.call(node, node.__data__, i, group)) subgroup.push(node);
 	return new Selection$1(subgroups, this._parents);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/sparse.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/sparse.js
 function sparse_default(update) {
 	return new Array(update.length);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/enter.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/enter.js
 function enter_default() {
 	return new Selection$1(this._enter || this._groups.map(sparse_default), this._parents);
 }
@@ -37444,13 +37619,13 @@ EnterNode.prototype = {
 		return this._parent.querySelectorAll(selector);
 	}
 };
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/constant.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/constant.js
 function constant_default$3(x) {
 	return function() {
 		return x;
 	};
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/data.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/data.js
 function bindIndex(parent, group, enter, update, exit, data) {
 	var i = 0, node, groupLength = group.length, dataLength = data.length;
 	for (; i < dataLength; ++i) if (node = group[i]) {
@@ -37500,11 +37675,11 @@ function data_default(value, key) {
 function arraylike(data) {
 	return typeof data === "object" && "length" in data ? data : Array.from(data);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/exit.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/exit.js
 function exit_default() {
 	return new Selection$1(this._exit || this._groups.map(sparse_default), this._parents);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/join.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/join.js
 function join_default(onenter, onupdate, onexit) {
 	var enter = this.enter(), update = this, exit = this.exit();
 	if (typeof onenter === "function") {
@@ -37519,14 +37694,14 @@ function join_default(onenter, onupdate, onexit) {
 	else onexit(exit);
 	return enter && update ? enter.merge(update).order() : update;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/merge.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/merge.js
 function merge_default$1(context) {
 	var selection = context.selection ? context.selection() : context;
 	for (var groups0 = this._groups, groups1 = selection._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) for (var group0 = groups0[j], group1 = groups1[j], n = group0.length, merge = merges[j] = new Array(n), node, i = 0; i < n; ++i) if (node = group0[i] || group1[i]) merge[i] = node;
 	for (; j < m0; ++j) merges[j] = groups0[j];
 	return new Selection$1(merges, this._parents);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/order.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/order.js
 function order_default() {
 	for (var groups = this._groups, j = -1, m = groups.length; ++j < m;) for (var group = groups[j], i = group.length - 1, next = group[i], node; --i >= 0;) if (node = group[i]) {
 		if (next && node.compareDocumentPosition(next) ^ 4) next.parentNode.insertBefore(node, next);
@@ -37534,7 +37709,7 @@ function order_default() {
 	}
 	return this;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/sort.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/sort.js
 function sort_default(compare) {
 	if (!compare) compare = ascending;
 	function compareNode(a, b) {
@@ -37549,18 +37724,18 @@ function sort_default(compare) {
 function ascending(a, b) {
 	return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/call.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/call.js
 function call_default() {
 	var callback = arguments[0];
 	arguments[0] = this;
 	callback.apply(null, arguments);
 	return this;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/nodes.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/nodes.js
 function nodes_default() {
 	return Array.from(this);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/node.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/node.js
 function node_default() {
 	for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) for (var group = groups[j], i = 0, n = group.length; i < n; ++i) {
 		var node = group[i];
@@ -37568,22 +37743,22 @@ function node_default() {
 	}
 	return null;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/size.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/size.js
 function size_default() {
 	let size = 0;
 	for (const node of this) ++size;
 	return size;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/empty.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/empty.js
 function empty_default() {
 	return !this.node();
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/each.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/each.js
 function each_default(callback) {
 	for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) for (var group = groups[j], i = 0, n = group.length, node; i < n; ++i) if (node = group[i]) callback.call(node, node.__data__, i, group);
 	return this;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/attr.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/attr.js
 function attrRemove$1(name) {
 	return function() {
 		this.removeAttribute(name);
@@ -37626,11 +37801,11 @@ function attr_default$1(name, value) {
 	}
 	return this.each((value == null ? fullname.local ? attrRemoveNS$1 : attrRemove$1 : typeof value === "function" ? fullname.local ? attrFunctionNS$1 : attrFunction$1 : fullname.local ? attrConstantNS$1 : attrConstant$1)(fullname, value));
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/window.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/window.js
 function window_default(node) {
 	return node.ownerDocument && node.ownerDocument.defaultView || node.document && node || node.defaultView;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/style.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/style.js
 function styleRemove$1(name) {
 	return function() {
 		this.style.removeProperty(name);
@@ -37654,7 +37829,7 @@ function style_default$1(name, value, priority) {
 function styleValue(node, name) {
 	return node.style.getPropertyValue(name) || window_default(node).getComputedStyle(node, null).getPropertyValue(name);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/property.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/property.js
 function propertyRemove(name) {
 	return function() {
 		delete this[name];
@@ -37675,7 +37850,7 @@ function propertyFunction(name, value) {
 function property_default(name, value) {
 	return arguments.length > 1 ? this.each((value == null ? propertyRemove : typeof value === "function" ? propertyFunction : propertyConstant)(name, value)) : this.node()[name];
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/classed.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/classed.js
 function classArray(string) {
 	return string.trim().split(/^|\s+/);
 }
@@ -37736,7 +37911,7 @@ function classed_default(name, value) {
 	}
 	return this.each((typeof value === "function" ? classedFunction : value ? classedTrue : classedFalse)(names, value));
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/text.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/text.js
 function textRemove() {
 	this.textContent = "";
 }
@@ -37754,7 +37929,7 @@ function textFunction$1(value) {
 function text_default$1(value) {
 	return arguments.length ? this.each(value == null ? textRemove : (typeof value === "function" ? textFunction$1 : textConstant$1)(value)) : this.node().textContent;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/html.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/html.js
 function htmlRemove() {
 	this.innerHTML = "";
 }
@@ -37772,28 +37947,28 @@ function htmlFunction(value) {
 function html_default(value) {
 	return arguments.length ? this.each(value == null ? htmlRemove : (typeof value === "function" ? htmlFunction : htmlConstant)(value)) : this.node().innerHTML;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/raise.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/raise.js
 function raise() {
 	if (this.nextSibling) this.parentNode.appendChild(this);
 }
 function raise_default() {
 	return this.each(raise);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/lower.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/lower.js
 function lower() {
 	if (this.previousSibling) this.parentNode.insertBefore(this, this.parentNode.firstChild);
 }
 function lower_default() {
 	return this.each(lower);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/append.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/append.js
 function append_default(name) {
 	var create = typeof name === "function" ? name : creator_default(name);
 	return this.select(function() {
 		return this.appendChild(create.apply(this, arguments));
 	});
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/insert.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/insert.js
 function constantNull() {
 	return null;
 }
@@ -37803,7 +37978,7 @@ function insert_default(name, before) {
 		return this.insertBefore(create.apply(this, arguments), select.apply(this, arguments) || null);
 	});
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/remove.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/remove.js
 function remove() {
 	var parent = this.parentNode;
 	if (parent) parent.removeChild(this);
@@ -37811,7 +37986,7 @@ function remove() {
 function remove_default$1() {
 	return this.each(remove);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/clone.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/clone.js
 function selection_cloneShallow() {
 	var clone = this.cloneNode(false), parent = this.parentNode;
 	return parent ? parent.insertBefore(clone, this.nextSibling) : clone;
@@ -37823,11 +37998,11 @@ function selection_cloneDeep() {
 function clone_default(deep) {
 	return this.select(deep ? selection_cloneDeep : selection_cloneShallow);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/datum.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/datum.js
 function datum_default(value) {
 	return arguments.length ? this.property("__data__", value) : this.node().__data__;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/on.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/on.js
 function contextListener(listener) {
 	return function(event) {
 		listener.call(this, event, this.__data__);
@@ -37889,7 +38064,7 @@ function on_default$1(typename, value, options) {
 	for (i = 0; i < n; ++i) this.each(on(typenames[i], value, options));
 	return this;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/dispatch.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/dispatch.js
 function dispatchEvent(node, type, params) {
 	var window = window_default(node), event = window.CustomEvent;
 	if (typeof event === "function") event = new event(type, params);
@@ -37913,11 +38088,11 @@ function dispatchFunction(type, params) {
 function dispatch_default(type, params) {
 	return this.each((typeof params === "function" ? dispatchFunction : dispatchConstant)(type, params));
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/iterator.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/iterator.js
 function* iterator_default() {
 	for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) for (var group = groups[j], i = 0, n = group.length, node; i < n; ++i) if (node = group[i]) yield node;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/selection/index.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/index.js
 var root = [null];
 function Selection$1(groups, parents) {
 	this._groups = groups;
@@ -37967,17 +38142,17 @@ Selection$1.prototype = selection.prototype = {
 	dispatch: dispatch_default,
 	[Symbol.iterator]: iterator_default
 };
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/select.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/select.js
 function select_default$1(selector) {
 	return typeof selector === "string" ? new Selection$1([[document.querySelector(selector)]], [document.documentElement]) : new Selection$1([[selector]], root);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/sourceEvent.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/sourceEvent.js
 function sourceEvent_default(event) {
 	let sourceEvent;
 	while (sourceEvent = event.sourceEvent) event = sourceEvent;
 	return event;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-selection/src/pointer.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/pointer.js
 function pointer_default(event, node) {
 	event = sourceEvent_default(event);
 	if (node === void 0) node = event.currentTarget;
@@ -37996,7 +38171,7 @@ function pointer_default(event, node) {
 	}
 	return [event.pageX, event.pageY];
 }
-// ../Telegram bot /work/production-web/node_modules/d3-drag/src/noevent.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-drag/src/noevent.js
 var nonpassive = { passive: false };
 var nonpassivecapture = {
 	capture: true,
@@ -38009,7 +38184,7 @@ function noevent_default$1(event) {
 	event.preventDefault();
 	event.stopImmediatePropagation();
 }
-// ../Telegram bot /work/production-web/node_modules/d3-drag/src/nodrag.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-drag/src/nodrag.js
 function nodrag_default(view) {
 	var root = view.document.documentElement, selection = select_default$1(view).on("dragstart.drag", noevent_default$1, nonpassivecapture);
 	if ("onselectstart" in root) selection.on("selectstart.drag", noevent_default$1, nonpassivecapture);
@@ -38032,9 +38207,9 @@ function yesdrag(view, noclick) {
 		delete root.__noselect;
 	}
 }
-// ../Telegram bot /work/production-web/node_modules/d3-drag/src/constant.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-drag/src/constant.js
 var constant_default$2 = (x) => () => x;
-// ../Telegram bot /work/production-web/node_modules/d3-drag/src/event.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-drag/src/event.js
 function DragEvent(type, { sourceEvent, subject, target, identifier, active, x, y, dx, dy, dispatch }) {
 	Object.defineProperties(this, {
 		type: {
@@ -38094,7 +38269,7 @@ DragEvent.prototype.on = function() {
 	var value = this._.on.apply(this._, arguments);
 	return value === this._ ? this : value;
 };
-// ../Telegram bot /work/production-web/node_modules/d3-drag/src/drag.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-drag/src/drag.js
 function defaultFilter$1(event) {
 	return !event.ctrlKey && !event.button;
 }
@@ -38226,7 +38401,7 @@ function drag_default() {
 	};
 	return drag;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-color/src/define.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-color/src/define.js
 function define_default(constructor, factory, prototype) {
 	constructor.prototype = factory.prototype = prototype;
 	prototype.constructor = constructor;
@@ -38236,7 +38411,7 @@ function extend(parent, definition) {
 	for (var key in definition) prototype[key] = definition[key];
 	return prototype;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-color/src/color.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-color/src/color.js
 function Color() {}
 var darker = .7;
 var brighter = 1 / darker;
@@ -38562,9 +38737,9 @@ function clampt(value) {
 function hsl2rgb(h, m1, m2) {
 	return (h < 60 ? m1 + (m2 - m1) * h / 60 : h < 180 ? m2 : h < 240 ? m1 + (m2 - m1) * (240 - h) / 60 : m1) * 255;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/constant.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/constant.js
 var constant_default$1 = (x) => () => x;
-// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/color.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/color.js
 function linear(a, d) {
 	return function(t) {
 		return a + t * d;
@@ -38584,7 +38759,7 @@ function nogamma(a, b) {
 	var d = b - a;
 	return d ? linear(a, d) : constant_default$1(isNaN(a) ? b : a);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/rgb.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/rgb.js
 var rgb_default = (function rgbGamma(y) {
 	var color = gamma(y);
 	function rgb$1(start, end) {
@@ -38600,7 +38775,7 @@ var rgb_default = (function rgbGamma(y) {
 	rgb$1.gamma = rgbGamma;
 	return rgb$1;
 })(1);
-// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/numberArray.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/numberArray.js
 function numberArray_default(a, b) {
 	if (!b) b = [];
 	var n = a ? Math.min(b.length, a.length) : 0, c = b.slice(), i;
@@ -38612,7 +38787,7 @@ function numberArray_default(a, b) {
 function isNumberArray(x) {
 	return ArrayBuffer.isView(x) && !(x instanceof DataView);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/array.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/array.js
 function genericArray(a, b) {
 	var nb = b ? b.length : 0, na = a ? Math.min(nb, a.length) : 0, x = new Array(na), c = new Array(nb), i = 0;
 	for (; i < na; ++i) x[i] = value_default(a[i], b[i]);
@@ -38622,20 +38797,20 @@ function genericArray(a, b) {
 		return c;
 	};
 }
-// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/date.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/date.js
 function date_default(a, b) {
 	var d = /* @__PURE__ */ new Date();
 	return a = +a, b = +b, function(t) {
 		return d.setTime(a * (1 - t) + b * t), d;
 	};
 }
-// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/number.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/number.js
 function number_default(a, b) {
 	return a = +a, b = +b, function(t) {
 		return a * (1 - t) + b * t;
 	};
 }
-// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/object.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/object.js
 function object_default(a, b) {
 	var i = {}, c = {}, k;
 	if (a === null || typeof a !== "object") a = {};
@@ -38647,7 +38822,7 @@ function object_default(a, b) {
 		return c;
 	};
 }
-// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/string.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/string.js
 var reA = /[-+]?(?:\d+\.?\d*|\.?\d+)(?:[eE][-+]?\d+)?/g;
 var reB = new RegExp(reA.source, "g");
 function zero(b) {
@@ -38691,12 +38866,12 @@ function string_default(a, b) {
 		return s.join("");
 	});
 }
-// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/value.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/value.js
 function value_default(a, b) {
 	var t = typeof b, c;
 	return b == null || t === "boolean" ? constant_default$1(b) : (t === "number" ? number_default : t === "string" ? (c = color(b)) ? (b = c, rgb_default) : string_default : b instanceof color ? rgb_default : b instanceof Date ? date_default : isNumberArray(b) ? numberArray_default : Array.isArray(b) ? genericArray : typeof b.valueOf !== "function" && typeof b.toString !== "function" || isNaN(b) ? object_default : number_default)(a, b);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/transform/decompose.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/transform/decompose.js
 var degrees = 180 / Math.PI;
 var identity$2 = {
 	translateX: 0,
@@ -38721,7 +38896,7 @@ function decompose_default(a, b, c, d, e, f) {
 		scaleY
 	};
 }
-// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/transform/parse.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/transform/parse.js
 var svgNode;
 function parseCss(value) {
 	const m = new (typeof DOMMatrix === "function" ? DOMMatrix : WebKitCSSMatrix)(value + "");
@@ -38735,7 +38910,7 @@ function parseSvg(value) {
 	value = value.matrix;
 	return decompose_default(value.a, value.b, value.c, value.d, value.e, value.f);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/transform/index.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/transform/index.js
 function interpolateTransform(parse, pxComma, pxParen, degParen) {
 	function pop(s) {
 		return s.length ? s.pop() + " " : "";
@@ -38798,7 +38973,7 @@ function interpolateTransform(parse, pxComma, pxParen, degParen) {
 }
 var interpolateTransformCss = interpolateTransform(parseCss, "px, ", "px)", "deg)");
 var interpolateTransformSvg = interpolateTransform(parseSvg, ", ", ")", ")");
-// ../Telegram bot /work/production-web/node_modules/d3-interpolate/src/zoom.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/zoom.js
 var epsilon2 = 1e-12;
 function cosh(x) {
 	return ((x = Math.exp(x)) + 1 / x) / 2;
@@ -38842,7 +39017,7 @@ var zoom_default$1 = (function zoomRho(rho, rho2, rho4) {
 	};
 	return zoom;
 })(Math.SQRT2, 2, 4);
-// ../Telegram bot /work/production-web/node_modules/d3-timer/src/timer.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-timer/src/timer.js
 var frame = 0;
 var timeout = 0;
 var interval = 0;
@@ -38940,7 +39115,7 @@ function sleep(time) {
 		frame = 1, setFrame(wake);
 	}
 }
-// ../Telegram bot /work/production-web/node_modules/d3-timer/src/timeout.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-timer/src/timeout.js
 function timeout_default(callback, delay, time) {
 	var t = new Timer();
 	delay = delay == null ? 0 : +delay;
@@ -38950,7 +39125,7 @@ function timeout_default(callback, delay, time) {
 	}, delay, time);
 	return t;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/schedule.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/schedule.js
 var emptyOn = dispatch("start", "end", "cancel", "interrupt");
 var emptyTween = [];
 function schedule_default(node, name, id, index, group, timing) {
@@ -39045,7 +39220,7 @@ function create(node, id, self) {
 		delete node.__transition;
 	}
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/interrupt.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/interrupt.js
 function interrupt_default$1(node, name) {
 	var schedules = node.__transition, schedule, active, empty = true, i;
 	if (!schedules) return;
@@ -39063,13 +39238,13 @@ function interrupt_default$1(node, name) {
 	}
 	if (empty) delete node.__transition;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/selection/interrupt.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/selection/interrupt.js
 function interrupt_default(name) {
 	return this.each(function() {
 		interrupt_default$1(this, name);
 	});
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/tween.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/tween.js
 function tweenRemove(id, name) {
 	var tween0, tween1;
 	return function() {
@@ -39124,12 +39299,12 @@ function tweenValue(transition, name, value) {
 		return get(node, id).value[name];
 	};
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/interpolate.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/interpolate.js
 function interpolate_default(a, b) {
 	var c;
 	return (typeof b === "number" ? number_default : b instanceof color ? rgb_default : (c = color(b)) ? (b = c, rgb_default) : string_default)(a, b);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/attr.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/attr.js
 function attrRemove(name) {
 	return function() {
 		this.removeAttribute(name);
@@ -39178,7 +39353,7 @@ function attr_default(name, value) {
 	var fullname = namespace_default(name), i = fullname === "transform" ? interpolateTransformSvg : interpolate_default;
 	return this.attrTween(name, typeof value === "function" ? (fullname.local ? attrFunctionNS : attrFunction)(fullname, i, tweenValue(this, "attr." + name, value)) : value == null ? (fullname.local ? attrRemoveNS : attrRemove)(fullname) : (fullname.local ? attrConstantNS : attrConstant)(fullname, i, value));
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/attrTween.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/attrTween.js
 function attrInterpolate(name, i) {
 	return function(t) {
 		this.setAttribute(name, i.call(this, t));
@@ -39217,7 +39392,7 @@ function attrTween_default(name, value) {
 	var fullname = namespace_default(name);
 	return this.tween(key, (fullname.local ? attrTweenNS : attrTween)(fullname, value));
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/delay.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/delay.js
 function delayFunction(id, value) {
 	return function() {
 		init(this, id).delay = +value.apply(this, arguments);
@@ -39232,7 +39407,7 @@ function delay_default(value) {
 	var id = this._id;
 	return arguments.length ? this.each((typeof value === "function" ? delayFunction : delayConstant)(id, value)) : get(this.node(), id).delay;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/duration.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/duration.js
 function durationFunction(id, value) {
 	return function() {
 		set(this, id).duration = +value.apply(this, arguments);
@@ -39247,7 +39422,7 @@ function duration_default(value) {
 	var id = this._id;
 	return arguments.length ? this.each((typeof value === "function" ? durationFunction : durationConstant)(id, value)) : get(this.node(), id).duration;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/ease.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/ease.js
 function easeConstant(id, value) {
 	if (typeof value !== "function") throw new Error();
 	return function() {
@@ -39258,7 +39433,7 @@ function ease_default(value) {
 	var id = this._id;
 	return arguments.length ? this.each(easeConstant(id, value)) : get(this.node(), id).ease;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/easeVarying.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/easeVarying.js
 function easeVarying(id, value) {
 	return function() {
 		var v = value.apply(this, arguments);
@@ -39270,20 +39445,20 @@ function easeVarying_default(value) {
 	if (typeof value !== "function") throw new Error();
 	return this.each(easeVarying(this._id, value));
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/filter.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/filter.js
 function filter_default(match) {
 	if (typeof match !== "function") match = matcher_default(match);
 	for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) for (var group = groups[j], n = group.length, subgroup = subgroups[j] = [], node, i = 0; i < n; ++i) if ((node = group[i]) && match.call(node, node.__data__, i, group)) subgroup.push(node);
 	return new Transition(subgroups, this._parents, this._name, this._id);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/merge.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/merge.js
 function merge_default(transition) {
 	if (transition._id !== this._id) throw new Error();
 	for (var groups0 = this._groups, groups1 = transition._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) for (var group0 = groups0[j], group1 = groups1[j], n = group0.length, merge = merges[j] = new Array(n), node, i = 0; i < n; ++i) if (node = group0[i] || group1[i]) merge[i] = node;
 	for (; j < m0; ++j) merges[j] = groups0[j];
 	return new Transition(merges, this._parents, this._name, this._id);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/on.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/on.js
 function start(name) {
 	return (name + "").trim().split(/^|\s+/).every(function(t) {
 		var i = t.indexOf(".");
@@ -39303,7 +39478,7 @@ function on_default(name, listener) {
 	var id = this._id;
 	return arguments.length < 2 ? get(this.node(), id).on.on(name) : this.each(onFunction(id, name, listener));
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/remove.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/remove.js
 function removeFunction(id) {
 	return function() {
 		var parent = this.parentNode;
@@ -39314,7 +39489,7 @@ function removeFunction(id) {
 function remove_default() {
 	return this.on("end.remove", removeFunction(this._id));
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/select.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/select.js
 function select_default(select) {
 	var name = this._name, id = this._id;
 	if (typeof select !== "function") select = selector_default(select);
@@ -39325,7 +39500,7 @@ function select_default(select) {
 	}
 	return new Transition(subgroups, this._parents, name, id);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/selectAll.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/selectAll.js
 function selectAll_default(select) {
 	var name = this._name, id = this._id;
 	if (typeof select !== "function") select = selectorAll_default(select);
@@ -39336,12 +39511,12 @@ function selectAll_default(select) {
 	}
 	return new Transition(subgroups, parents, name, id);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/selection.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/selection.js
 var Selection = selection.prototype.constructor;
 function selection_default() {
 	return new Selection(this._groups, this._parents);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/style.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/style.js
 function styleNull(name, interpolate) {
 	var string00, string10, interpolate0;
 	return function() {
@@ -39381,7 +39556,7 @@ function style_default(name, value, priority) {
 	var i = (name += "") === "transform" ? interpolateTransformCss : interpolate_default;
 	return value == null ? this.styleTween(name, styleNull(name, i)).on("end.style." + name, styleRemove(name)) : typeof value === "function" ? this.styleTween(name, styleFunction(name, i, tweenValue(this, "style." + name, value))).each(styleMaybeRemove(this._id, name)) : this.styleTween(name, styleConstant(name, i, value), priority).on("end.style." + name, null);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/styleTween.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/styleTween.js
 function styleInterpolate(name, i, priority) {
 	return function(t) {
 		this.style.setProperty(name, i.call(this, t), priority);
@@ -39404,7 +39579,7 @@ function styleTween_default(name, value, priority) {
 	if (typeof value !== "function") throw new Error();
 	return this.tween(key, styleTween(name, value, priority == null ? "" : priority));
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/text.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/text.js
 function textConstant(value) {
 	return function() {
 		this.textContent = value;
@@ -39419,7 +39594,7 @@ function textFunction(value) {
 function text_default(value) {
 	return this.tween("text", typeof value === "function" ? textFunction(tweenValue(this, "text", value)) : textConstant(value == null ? "" : value + ""));
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/textTween.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/textTween.js
 function textInterpolate(i) {
 	return function(t) {
 		this.textContent = i.call(this, t);
@@ -39442,7 +39617,7 @@ function textTween_default(value) {
 	if (typeof value !== "function") throw new Error();
 	return this.tween(key, textTween(value));
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/transition.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/transition.js
 function transition_default$1() {
 	var name = this._name, id0 = this._id, id1 = newId();
 	for (var groups = this._groups, m = groups.length, j = 0; j < m; ++j) for (var group = groups[j], n = group.length, node, i = 0; i < n; ++i) if (node = group[i]) {
@@ -39456,7 +39631,7 @@ function transition_default$1() {
 	}
 	return new Transition(groups, this._parents, name, id1);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/end.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/end.js
 function end_default() {
 	var on0, on1, that = this, id = that._id, size = that.size();
 	return new Promise(function(resolve, reject) {
@@ -39476,7 +39651,7 @@ function end_default() {
 		if (size === 0) resolve();
 	});
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/transition/index.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/index.js
 var id = 0;
 function Transition(groups, parents, name, id) {
 	this._groups = groups;
@@ -39523,11 +39698,11 @@ Transition.prototype = transition.prototype = {
 	end: end_default,
 	[Symbol.iterator]: selection_prototype[Symbol.iterator]
 };
-// ../Telegram bot /work/production-web/node_modules/d3-ease/src/cubic.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-ease/src/cubic.js
 function cubicInOut(t) {
 	return ((t *= 2) <= 1 ? t * t * t : (t -= 2) * t * t + 2) / 2;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/selection/transition.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/selection/transition.js
 var defaultTiming = {
 	time: null,
 	delay: 0,
@@ -39546,12 +39721,12 @@ function transition_default(name) {
 	for (var groups = this._groups, m = groups.length, j = 0; j < m; ++j) for (var group = groups[j], n = group.length, node, i = 0; i < n; ++i) if (node = group[i]) schedule_default(node, name, id, i, group, timing || inherit(node, id));
 	return new Transition(groups, this._parents, name, id);
 }
-// ../Telegram bot /work/production-web/node_modules/d3-transition/src/selection/index.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/selection/index.js
 selection.prototype.interrupt = interrupt_default;
 selection.prototype.transition = transition_default;
-// ../Telegram bot /work/production-web/node_modules/d3-zoom/src/constant.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-zoom/src/constant.js
 var constant_default = (x) => () => x;
-// ../Telegram bot /work/production-web/node_modules/d3-zoom/src/event.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-zoom/src/event.js
 function ZoomEvent(type, { sourceEvent, target, transform, dispatch }) {
 	Object.defineProperties(this, {
 		type: {
@@ -39577,7 +39752,7 @@ function ZoomEvent(type, { sourceEvent, target, transform, dispatch }) {
 		_: { value: dispatch }
 	});
 }
-// ../Telegram bot /work/production-web/node_modules/d3-zoom/src/transform.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-zoom/src/transform.js
 function Transform(k, x, y) {
 	this.k = k;
 	this.x = x;
@@ -39625,7 +39800,7 @@ function transform(node) {
 	while (!node.__zoom) if (!(node = node.parentNode)) return identity$1;
 	return node.__zoom;
 }
-// ../Telegram bot /work/production-web/node_modules/d3-zoom/src/noevent.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-zoom/src/noevent.js
 function nopropagation(event) {
 	event.stopImmediatePropagation();
 }
@@ -39633,7 +39808,7 @@ function noevent_default(event) {
 	event.preventDefault();
 	event.stopImmediatePropagation();
 }
-// ../Telegram bot /work/production-web/node_modules/d3-zoom/src/zoom.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-zoom/src/zoom.js
 function defaultFilter(event) {
 	return (!event.ctrlKey || event.type === "wheel") && !event.button;
 }
@@ -39931,7 +40106,7 @@ function zoom_default() {
 	};
 	return zoom;
 }
-// ../Telegram bot /work/production-web/node_modules/@xyflow/system/dist/esm/index.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@xyflow/system/dist/esm/index.js
 var errorMessages = {
 	error001: (lib = "react") => `Seems like you have not used ${lib === "svelte" ? "SvelteFlowProvider" : "ReactFlowProvider"} as an ancestor. Help: https://${lib}flow.dev/error#001`,
 	error002: () => "It looks like you've created a new nodeTypes or edgeTypes object. If this wasn't on purpose please define the nodeTypes/edgeTypes outside of the component or memoize them.",
@@ -42756,7 +42931,7 @@ function XYResizer({ domNode, nodeId, getStoreItems, onChange, onEnd }) {
 		destroy
 	};
 }
-// ../Telegram bot /work/production-web/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.production.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.production.js
 /**
 * @license React
 * use-sync-external-store-shim.production.js
@@ -42815,11 +42990,11 @@ var require_use_sync_external_store_shim_production = /* @__PURE__ */ __commonJS
 	var shim = "undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement ? useSyncExternalStore$1 : useSyncExternalStore$2;
 	exports.useSyncExternalStore = void 0 !== React.useSyncExternalStore ? React.useSyncExternalStore : shim;
 }));
-// ../Telegram bot /work/production-web/node_modules/use-sync-external-store/shim/index.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/use-sync-external-store/shim/index.js
 var require_shim = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_use_sync_external_store_shim_production();
 }));
-// ../Telegram bot /work/production-web/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.production.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.production.js
 /**
 * @license React
 * use-sync-external-store-shim/with-selector.production.js
@@ -42890,7 +43065,7 @@ var require_with_selector_production = /* @__PURE__ */ __commonJSMin(((exports) 
 		return value;
 	};
 }));
-// ../Telegram bot /work/production-web/node_modules/zustand/esm/vanilla.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/zustand/esm/vanilla.mjs
 var import_with_selector = /* @__PURE__ */ __toESM((/* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_with_selector_production();
 })))(), 1);
@@ -42925,7 +43100,7 @@ var createStoreImpl = (createState) => {
 	return api;
 };
 var createStore$1 = (createState) => createState ? createStoreImpl(createState) : createStoreImpl;
-// ../Telegram bot /work/production-web/node_modules/zustand/esm/traditional.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/zustand/esm/traditional.mjs
 var { useDebugValue } = import_react.default;
 var { useSyncExternalStoreWithSelector } = import_with_selector.default;
 var identity = (arg) => arg;
@@ -42941,7 +43116,7 @@ var createWithEqualityFnImpl = (createState, defaultEqualityFn) => {
 	return useBoundStoreWithEqualityFn;
 };
 var createWithEqualityFn = (createState, defaultEqualityFn) => createState ? createWithEqualityFnImpl(createState, defaultEqualityFn) : createWithEqualityFnImpl;
-// ../Telegram bot /work/production-web/node_modules/zustand/esm/shallow.mjs
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/zustand/esm/shallow.mjs
 function shallow$1(objA, objB) {
 	if (Object.is(objA, objB)) return true;
 	if (typeof objA !== "object" || objA === null || typeof objB !== "object" || objB === null) return false;
@@ -42960,7 +43135,7 @@ function shallow$1(objA, objB) {
 	for (const keyA of keysA) if (!Object.prototype.hasOwnProperty.call(objB, keyA) || !Object.is(objA[keyA], objB[keyA])) return false;
 	return true;
 }
-// ../Telegram bot /work/production-web/node_modules/@xyflow/react/dist/esm/index.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@xyflow/react/dist/esm/index.js
 var StoreContext = (0, import_react.createContext)(null);
 var Provider$1 = StoreContext.Provider;
 var zustandErrorMessage = errorMessages["error001"]("react");
@@ -47990,7 +48165,7 @@ var nodeTypes$1 = { stage: StageNode };
 function StageConnections({ projectId, stages = [], tasks = [], onChanged }) {
 	const normalized = connectionTasks(tasks), fingerprint = connectionFingerprint(normalized), saved = stageLinksFor(normalized);
 	const [expanded, setExpanded] = (0, import_react.useState)(false);
-	const [links, setLinks] = (0, import_react.useState)(saved), [type, setType] = (0, import_react.useState)("FS"), [source, setSource] = (0, import_react.useState)(""), [target, setTarget] = (0, import_react.useState)(""), [preview, setPreview] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [notice, setNotice] = (0, import_react.useState)("");
+	const [links, setLinks] = (0, import_react.useState)(saved), [type, setType] = (0, import_react.useState)("FS"), [source, setSource] = (0, import_react.useState)(""), [target, setTarget] = (0, import_react.useState)(""), [preview, setPreview] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false);
 	(0, import_react.useEffect)(() => {
 		setLinks(saved);
 		setPreview(null);
@@ -47998,7 +48173,6 @@ function StageConnections({ projectId, stages = [], tasks = [], onChanged }) {
 	const change = (next) => {
 		setLinks(next);
 		setPreview(null);
-		setNotice("");
 	};
 	const connect = (connection) => {
 		if (!connection.source || !connection.target || connection.source === connection.target) return;
@@ -48043,7 +48217,7 @@ function StageConnections({ projectId, stages = [], tasks = [], onChanged }) {
 				}
 			});
 			if (apply) {
-				setNotice("Stage connections and schedule saved.");
+				toast("Stage connections and schedule saved.");
 				setPreview(null);
 				onChanged?.(result);
 			} else setPreview(result);
@@ -48195,18 +48369,13 @@ function StageConnections({ projectId, stages = [], tasks = [], onChanged }) {
 				role: "alert",
 				className: "mt-2 text-sm text-destructive",
 				children: error
-			}),
-			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				role: "status",
-				className: "mt-2 text-sm text-success",
-				children: notice
 			})
 		]
 	});
 }
 // frontend/src/features/timeline/PlanTemplates.jsx
 function PlanTemplates({ projectId, spaces = [], onChanged }) {
-	const [templates, setTemplates] = (0, import_react.useState)([]), [name, setName] = (0, import_react.useState)(""), [selected, setSelected] = (0, import_react.useState)(""), [draft, setDraft] = (0, import_react.useState)([]), [start, setStart] = (0, import_react.useState)(todayInput()), [preview, setPreview] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false), [notice, setNotice] = (0, import_react.useState)("");
+	const [templates, setTemplates] = (0, import_react.useState)([]), [name, setName] = (0, import_react.useState)(""), [selected, setSelected] = (0, import_react.useState)(""), [draft, setDraft] = (0, import_react.useState)([]), [start, setStart] = (0, import_react.useState)(todayInput()), [preview, setPreview] = (0, import_react.useState)(null), [error, setError] = (0, import_react.useState)(""), [busy, setBusy] = (0, import_react.useState)(false);
 	const load = async () => {
 		try {
 			setTemplates((await request$1("/api/founder/plan-templates")).templates);
@@ -48275,7 +48444,7 @@ function PlanTemplates({ projectId, spaces = [], onChanged }) {
 			});
 			setName("");
 			await load();
-			setNotice("Reusable template saved for the workspace.");
+			toast("Reusable template saved for the workspace.");
 		} catch (problem) {
 			setError(problem.message);
 		} finally {
@@ -48290,7 +48459,7 @@ function PlanTemplates({ projectId, spaces = [], onChanged }) {
 			const result = await (apply ? applyStages : previewStages)(projectId, { stages });
 			if (apply) {
 				setPreview(null);
-				setNotice("Template stages added to this project.");
+				toast("Template stages added to this project.");
 				onChanged?.(result);
 			} else setPreview({
 				...result,
@@ -48431,11 +48600,6 @@ function PlanTemplates({ projectId, spaces = [], onChanged }) {
 				role: "alert",
 				className: "mt-2 text-sm text-destructive",
 				children: error
-			}),
-			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				role: "status",
-				className: "mt-2 text-sm text-success",
-				children: notice
 			})
 		]
 	});
@@ -50702,7 +50866,7 @@ function ProjectTimelineWorkspace({ tasks = [], stages = [], members = [], space
 		})
 	});
 }
-// ../Telegram bot /work/production-web/node_modules/@dagrejs/dagre/dist/dagre.esm.js
+// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@dagrejs/dagre/dist/dagre.esm.js
 var Te = Object.defineProperty;
 var In = (e, n, t) => n in e ? Te(e, n, {
 	enumerable: !0,
@@ -54109,14 +54273,7 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	const [tldrExpanded, setTldrExpanded] = (0, import_react.useState)(false);
 	const [removeTarget, setRemoveTarget] = (0, import_react.useState)(null);
 	const [removingMember, setRemovingMember] = (0, import_react.useState)(false);
-	const [notice, setNotice] = (0, import_react.useState)(null);
-	const showNotice = (message, error = false) => {
-		setNotice({
-			message,
-			error
-		});
-		setTimeout(() => setNotice(null), 3500);
-	};
+	const showNotice = (message, error = false) => toast(message, { error });
 	const loadProjectTasks = (0, import_react.useCallback)(async ({ background = false } = {}) => {
 		if (!project?.id) return;
 		if (!background) setLoadingTasks(true);
@@ -54386,11 +54543,6 @@ function ProjectDetailView({ project, allProjects = [], employees = [], decision
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "iksha-project-detail space-y-6",
 		children: [
-			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				role: "status",
-				className: "fixed right-4 bottom-24 z-[60] max-w-sm rounded-lg border bg-card px-4 py-3 text-sm shadow-lg lg:bottom-4",
-				children: [notice.error ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "mr-2 inline size-4 text-destructive" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "mr-2 inline size-4 text-success" }), notice.message]
-			}),
 			project.workflowAnnouncementStatus && project.workflowAnnouncementStatus !== "Sent" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				role: "alert",
 				className: "card-box border-warning-border bg-warning-bg text-sm",
@@ -55537,7 +55689,6 @@ function FounderApp() {
 	const [clientNameError, setClientNameError] = (0, import_react.useState)("");
 	const [trashConfirmOpen, setTrashConfirmOpen] = (0, import_react.useState)(false);
 	const [completeConfirmOpen, setCompleteConfirmOpen] = (0, import_react.useState)(false);
-	const [notice, setNotice] = (0, import_react.useState)(null);
 	const [busy, setBusy] = (0, import_react.useState)(false);
 	const selectedProject = projects.find((p) => p.id === selectedProjectId) || null;
 	useDocumentTitle(founderPageTitle({
@@ -55551,13 +55702,7 @@ function FounderApp() {
 	const openProjectIds = new Set(projects.filter((p) => !["Completed", "Abandoned"].includes(p.status)).map((p) => p.id));
 	const pendingDecisionsCount = decisionRequests.filter((req) => needsQueryAttention(req) && (!req.projectId || openProjectIds.has(req.projectId))).length;
 	projects.filter((p) => p.telegramSetupPending).length;
-	const showNotice = (message, error = false) => {
-		setNotice({
-			message,
-			error
-		});
-		setTimeout(() => setNotice(null), 3500);
-	};
+	const showNotice = (message, error = false) => toast(message, { error });
 	const loadProjects = async () => {
 		try {
 			const data = await api$1("/api/founder/projects");
@@ -56258,11 +56403,6 @@ function FounderApp() {
 						]
 					}, selectedProject.id)]
 				})
-			}),
-			notice && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				role: "status",
-				className: "fixed right-4 bottom-24 z-[60] max-w-sm rounded-lg border bg-card px-4 py-3 text-sm shadow-lg md:bottom-4",
-				children: [notice.error ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(X$1, { className: "mr-2 inline size-4 text-destructive" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "mr-2 inline size-4 text-success" }), notice.message]
 			})
 		]
 	});
@@ -57200,5 +57340,5 @@ function EmployeeApp() {
 var rootElement = document.getElementById("app");
 if (rootElement) {
 	const isClientView = window.location.pathname.startsWith("/c/");
-	import_client.createRoot(rootElement).render(/* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react.StrictMode, { children: isClientView ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClientApp, {}) : window.location.pathname.startsWith("/employee") ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmployeeApp, {}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderApp, {}) }));
+	import_client.createRoot(rootElement).render(/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_react.StrictMode, { children: [isClientView ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClientApp, {}) : window.location.pathname.startsWith("/employee") ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmployeeApp, {}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderApp, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Toaster, {})] }));
 }

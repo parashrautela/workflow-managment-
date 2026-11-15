@@ -1,3 +1,4 @@
+import { toast } from '@/components/ui/toaster';
 import { PersonalReminders } from '@/features/operations/PersonalReminders';
 import { matchesRole } from '@/features/people/lib/roles';
 import { LocationProjectPicker } from '@/features/projects/LocationProjectPicker';
@@ -331,14 +332,12 @@ function SupervisorTools({ employees, projects, onChanged }) {
     [preview, setPreview] = useState(null),
     [error, setError] = useState(''),
     [busy, setBusy] = useState(false),
-    [notice, setNotice] = useState(''),
     [settings, setSettings] = useState(null),
     [deliveries, setDeliveries] = useState([]),
     [connections, setConnections] = useState([]);
   const change = (next) => {
     setForm(next);
     setPreview(null);
-    setNotice('');
   };
   const run = async (apply) => {
     setBusy(true);
@@ -353,7 +352,7 @@ function SupervisorTools({ employees, projects, onChanged }) {
       );
       if (apply) {
         setPreview(null);
-        setNotice('Supervisor responsibilities transferred. Completed work was preserved.');
+        toast('Supervisor responsibilities transferred. Completed work was preserved.');
         onChanged();
       } else setPreview(result);
     } catch (problem) {
@@ -376,7 +375,7 @@ function SupervisorTools({ employees, projects, onChanged }) {
     setBusy(true);
     try {
       await request('/api/founder/operations-settings', { method: 'POST', body: settings });
-      setNotice('Morning digest schedule saved.');
+      toast('Morning digest schedule saved.');
     } catch (problem) {
       setError(problem.message);
     } finally {
@@ -528,11 +527,6 @@ function SupervisorTools({ employees, projects, onChanged }) {
       {error && (
         <p role="alert" className="text-sm text-destructive">
           {error}
-        </p>
-      )}
-      {notice && (
-        <p role="status" className="text-sm text-success">
-          {notice}
         </p>
       )}
     </div>

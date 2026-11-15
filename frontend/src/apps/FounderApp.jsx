@@ -1,3 +1,4 @@
+import { toast } from '@/components/ui/toaster';
 import { CalendarDays } from 'lucide-react';
 import { MeetingsView } from '@/features/meetings/Meetings';
 import { ProjectConversations } from '@/features/collaboration/ProjectConversations';
@@ -33,7 +34,6 @@ import {
   Trash2,
   Users,
   UserPlus,
-  X,
 } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
@@ -227,7 +227,6 @@ export default function FounderApp() {
   const [clientNameError, setClientNameError] = useState('');
   const [trashConfirmOpen, setTrashConfirmOpen] = useState(false);
   const [completeConfirmOpen, setCompleteConfirmOpen] = useState(false);
-  const [notice, setNotice] = useState(null);
   const [busy, setBusy] = useState(false);
 
   const selectedProject = projects.find((p) => p.id === selectedProjectId) || null;
@@ -257,10 +256,7 @@ export default function FounderApp() {
   ).length;
   const pendingGroupsCount = projects.filter((p) => p.telegramSetupPending).length;
 
-  const showNotice = (message, error = false) => {
-    setNotice({ message, error });
-    setTimeout(() => setNotice(null), 3500);
-  };
+  const showNotice = (message, error = false) => toast(message, { error });
 
   const loadProjects = async () => {
     try {
@@ -1084,21 +1080,6 @@ export default function FounderApp() {
           )}
         </DialogContent>
       </Dialog>
-
-      {/* Toast Notice */}
-      {notice && (
-        <div
-          role="status"
-          className="fixed right-4 bottom-24 z-[60] max-w-sm rounded-lg border bg-card px-4 py-3 text-sm shadow-lg md:bottom-4"
-        >
-          {notice.error ? (
-            <X className="mr-2 inline size-4 text-destructive" />
-          ) : (
-            <Check className="mr-2 inline size-4 text-success" />
-          )}
-          {notice.message}
-        </div>
-      )}
     </div>
   );
 }

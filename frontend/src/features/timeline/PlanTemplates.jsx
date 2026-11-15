@@ -1,3 +1,4 @@
+import { toast } from '@/components/ui/toaster';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -11,8 +12,7 @@ export function PlanTemplates({ projectId, spaces = [], onChanged }) {
     [start, setStart] = useState(todayInput()),
     [preview, setPreview] = useState(null),
     [error, setError] = useState(''),
-    [busy, setBusy] = useState(false),
-    [notice, setNotice] = useState('');
+    [busy, setBusy] = useState(false);
   const load = async () => {
     try {
       setTemplates((await request('/api/founder/plan-templates')).templates);
@@ -79,7 +79,7 @@ export function PlanTemplates({ projectId, spaces = [], onChanged }) {
       });
       setName('');
       await load();
-      setNotice('Reusable template saved for the workspace.');
+      toast('Reusable template saved for the workspace.');
     } catch (problem) {
       setError(problem.message);
     } finally {
@@ -96,7 +96,7 @@ export function PlanTemplates({ projectId, spaces = [], onChanged }) {
       });
       if (apply) {
         setPreview(null);
-        setNotice('Template stages added to this project.');
+        toast('Template stages added to this project.');
         onChanged?.(result);
       } else setPreview({ ...result, stagesInput: stages });
     } catch (problem) {
@@ -222,11 +222,6 @@ export function PlanTemplates({ projectId, spaces = [], onChanged }) {
       {error && (
         <p role="alert" className="mt-2 text-sm text-destructive">
           {error}
-        </p>
-      )}
-      {notice && (
-        <p role="status" className="mt-2 text-sm text-success">
-          {notice}
         </p>
       )}
     </details>

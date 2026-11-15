@@ -223,6 +223,14 @@ such as `bg-card` or a status tint.
 Rows that are options in a list keep their tighter padding, and so do chat bubbles. Whole panels
 such as the inbox shell and the graph use panel corners.
 
+### Toasts
+
+`toast(message)` from `components/ui/toaster.jsx` shows a saved, removed or sent confirmation at the
+bottom of the screen, and `toast(message, { error: true })` shows a failed action there. One `Toaster`
+is mounted in `main.jsx` for every app. Never print a confirmation inline at the top of a page: the
+reader may be scrolled far away from it. An error that belongs to one field or card stays on that
+field or card.
+
 ## Timeline and platform
 
 Use the existing founder and employee authentication and production APIs.

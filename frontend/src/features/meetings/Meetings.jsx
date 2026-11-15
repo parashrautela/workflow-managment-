@@ -1,3 +1,4 @@
+import { toast } from '@/components/ui/toaster';
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
@@ -25,16 +26,12 @@ export function MeetingsView({
   const Heading = embedded ? 'h2' : 'h1';
   const [meetings, setMeetings] = useState([]),
     [error, setError] = useState(''),
-    [notice, setNotice] = useState(''),
     [edit, setEdit] = useState(null),
     [action, setAction] = useState(null),
     [history, setHistory] = useState(false),
     [busy, setBusy] = useState(false),
     [selectedTask, setSelectedTask] = useState(null);
-  const showNotice = (msg) => {
-    setNotice(msg);
-    setTimeout(() => setNotice(''), 3500);
-  };
+  const showNotice = (msg) => toast(msg);
   const load = async () => {
     try {
       const data = await request(
@@ -104,11 +101,6 @@ export function MeetingsView({
           Refresh
         </Button>
       </div>
-      {notice && (
-        <p role="status" className="rounded-md bg-success-bg p-2 text-xs text-success">
-          {notice}
-        </p>
-      )}
       <label className="flex gap-2 text-sm">
         <input type="checkbox" checked={history} onChange={(e) => setHistory(e.target.checked)} />
         Include completed and cancelled meetings

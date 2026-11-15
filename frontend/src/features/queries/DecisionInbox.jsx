@@ -1,3 +1,4 @@
+import { toast } from '@/components/ui/toaster';
 import {
   INBOX_TABS,
   needsQueryAttention,
@@ -107,7 +108,6 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
   const [settingsProjectId, setSettingsProjectId] = useState('');
   const [groupId, setGroupId] = useState('');
   const [error, setError] = useState('');
-  const [notice, setNotice] = useState('');
   const [busy, setBusy] = useState(false);
 
   // Accept / Reject are the only decisions; both dialogs confirm before anything reaches Telegram.
@@ -236,14 +236,13 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
   const run = async (action, success) => {
     setBusy(true);
     setError('');
-    setNotice('');
     try {
       await action();
       await load();
-      setNotice(success);
+      toast(success);
       return true;
     } catch (failure) {
-      setError(failure.message);
+      toast(failure.message, { error: true });
       return false;
     } finally {
       setBusy(false);
@@ -335,14 +334,6 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
           className="card-box border-overdue-border bg-overdue-bg text-sm text-overdue"
         >
           {error}
-        </p>
-      )}
-      {notice && (
-        <p
-          role="status"
-          className="card-box border-success-border bg-success-bg text-sm text-success"
-        >
-          {notice}
         </p>
       )}
 
@@ -833,7 +824,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
           request={selected}
           onDone={async (result) => {
             await load();
-            setNotice(result?.summary || 'Query updated.');
+            toast(result?.summary || 'Query updated.');
           }}
         />
       )}
@@ -844,7 +835,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
           request={selected}
           onDone={async () => {
             await load();
-            setNotice('Client query rejected and the reply was sent.');
+            toast('Client query rejected and the reply was sent.');
           }}
         />
       )}
