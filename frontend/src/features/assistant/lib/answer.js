@@ -54,6 +54,19 @@ export function parseAnswer(text) {
   return answer;
 }
 
+// A short conversational answer (no headings, no task lists): paragraphs, and "-" lines grouped into one list.
+export function proseBlocks(text) {
+  const blocks = [];
+  for (const raw of String(text || '').split('\n')) {
+    const line = raw.trim();
+    if (!line) continue;
+    if (!line.startsWith('- ')) blocks.push({ text: line });
+    else if (blocks.at(-1)?.items) blocks.at(-1).items.push(line.slice(2));
+    else blocks.push({ items: [line.slice(2)] });
+  }
+  return blocks;
+}
+
 // The same tones the rest of the app uses: late work is overdue even while it waits for approval.
 export function statusTone(status) {
   if (/overdue/i.test(status)) return 'overdue';

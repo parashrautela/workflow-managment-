@@ -54,7 +54,7 @@ Rules:
 - If "decision" is present, it is what the studio has just decided about this message. Lead with it, plainly, and do not contradict it with older schedule facts.
 - Do not add a sign-off or the founder's name. Output only the message text.`;
 
-export async function suggestReply(context, { instruction = '', apiKey = process.env.OPENAI_API_KEY, model = process.env.OPENAI_MODEL || 'gpt-5-mini', fetchImpl = fetch } = {}) {
+export async function suggestReply(context, { instruction = '', apiKey = process.env.OPENAI_API_KEY, model = process.env.OPENAI_MODEL || 'gpt-6.1-terra', fetchImpl = fetch } = {}) {
   if (apiKey) {
     try {
       const response = await fetchImpl('https://api.openai.com/v1/responses', {

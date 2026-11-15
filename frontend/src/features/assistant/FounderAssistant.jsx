@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { StatusChip } from '@/components/ui/status-chip';
 import { Textarea } from '@/components/ui/textarea';
 import { Time } from '@/components/ui/time';
-import { parseAnswer, statusTone } from '@/features/assistant/lib/answer';
+import { parseAnswer, proseBlocks, statusTone } from '@/features/assistant/lib/answer';
 
 const suggestions = [
   { text: 'Summarize all ongoing projects', icon: ListChecks },
@@ -61,9 +61,29 @@ function GroupTitle({ index, name, count }) {
   );
 }
 
-// Answers read as a short report: a title and one line of context, then one card per project.
+// Answers with no heading or task list (the AI's, and short updates) read as plain chat text.
+function Prose({ answer }) {
+  return (
+    <div className="assistant-prose">
+      {proseBlocks(answer).map((block, index) =>
+        block.items ? (
+          <ul key={index}>
+            {block.items.map((text, row) => (
+              <li key={row}>{text}</li>
+            ))}
+          </ul>
+        ) : (
+          <p key={index}>{block.text}</p>
+        ),
+      )}
+    </div>
+  );
+}
+
+// Anything structured reads as a short report: a title and one line of context, then one card per project.
 function Answer({ answer }) {
   const { title, intro, sections, tasks } = parseAnswer(answer);
+  if (!title && !sections.length && !tasks.length) return <Prose answer={answer} />;
   const projects = new Map();
   for (const task of tasks)
     projects.set(task.project, [...(projects.get(task.project) || []), task]);
@@ -141,12 +161,20 @@ function Answer({ answer }) {
 // hovering one previews the question and clicking it jumps there.
 function TurnRail({ messages, scrollRef }) {
   const [active, setActive] = useState(0);
+  // After a click the chosen tick stays lit while the page glides there, and until the reader scrolls
+  // themselves; otherwise it steps through every tick on the way, and the last turns never reach the top.
+  const pinned = useRef(false);
   useEffect(() => {
     const thread = scrollRef.current;
     if (!thread) return undefined;
     let frame = 0;
+    pinned.current = false;
+    const release = () => {
+      pinned.current = false;
+    };
     const update = () => {
       frame = 0;
+      if (pinned.current) return;
       const turns = [...thread.querySelectorAll('.assistant-turn')];
       const atEnd = thread.scrollTop + thread.clientHeight >= thread.scrollHeight - 4;
       const line = thread.getBoundingClientRect().top + 48;
@@ -160,17 +188,23 @@ function TurnRail({ messages, scrollRef }) {
       if (!frame) frame = requestAnimationFrame(update);
     };
     update();
+    const input = ['wheel', 'pointerdown', 'keydown'];
     thread.addEventListener('scroll', onScroll, { passive: true });
+    input.forEach((type) => thread.addEventListener(type, release, { passive: true }));
     return () => {
       thread.removeEventListener('scroll', onScroll);
+      input.forEach((type) => thread.removeEventListener(type, release));
       cancelAnimationFrame(frame);
     };
   }, [messages.length, scrollRef]);
-  const jump = (index) =>
+  const jump = (index) => {
+    pinned.current = true;
+    setActive(index);
     scrollRef.current?.querySelectorAll('.assistant-turn')[index]?.scrollIntoView({
       block: 'start',
       behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
     });
+  };
   return (
     <nav className="assistant-rail" aria-label="Jump to a question">
       {messages.map((item, index) => (

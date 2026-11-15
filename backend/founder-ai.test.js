@@ -69,6 +69,14 @@ test('an HTTP error, an empty answer or a timeout rejects', async () => {
   await assert.rejects(run(fakeApp(), hang, { timeoutMs: 50 }));
 });
 
+test('reasoning models, gpt-6 included, get their reasoning passed back; others do not', async () => {
+  for (const [model, wanted] of [['gpt-6.1-terra', true], ['gpt-5-mini', true], ['gpt-4.1', false]]) {
+    const ai = scripted([say('Ok.')]);
+    await run(fakeApp({}), ai, { model });
+    assert.deepEqual(ai.bodies[0].include, wanted ? ['reasoning.encrypted_content'] : undefined, model);
+  }
+});
+
 test('storage is off, the read-only rule is sent, and long tool results are cut', async () => {
   const app = fakeApp({ note: 'x'.repeat(40000) }), ai = scripted([call('list_team', {}), say('Done.')]);
   await run(app, ai, { history: [{ question: 'Earlier?', answer: 'Earlier answer.' }] });
@@ -121,6 +129,18 @@ test('founder Assistant: flag off keeps the rule-based answer and makes no outbo
   assert.match(message.answer, /^# No projects yet/);
   assert.equal(message.ai, undefined);
   assert.equal(f.requests.length, 0);
+});
+
+test('founder Assistant: without the model, "who are you" is answered and one project gets a short update', async (t) => {
+  const f = await fixture(t, { flag: '', replies: [] });
+  await f.api('/api/founder/projects', 'POST', { name: 'Kumar Residence', clientName: 'Asha Kumar' });
+  const who = (await f.ask('Who are you?')).message.answer;
+  assert.match(who, /^I'm the Iksha assistant/);
+  assert.doesNotMatch(who, /Kumar Residence — |Client:/, 'no project dump');
+  const brief = (await f.ask("How's Kumar Residence going?")).message.answer;
+  assert.match(brief, /^Kumar Residence is /);
+  assert.doesNotMatch(brief, /Not recorded|Location:|Client:/);
+  assert.ok(brief.split('\n').length <= 4);
 });
 
 test('founder Assistant: flag on answers with the model, remembers the conversation, and falls back on failure', async (t) => {

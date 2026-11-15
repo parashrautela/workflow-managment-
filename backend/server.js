@@ -154,7 +154,7 @@ async function answerProjectQuestion(project, question) {
     try {
       const response = await fetch('https://api.openai.com/v1/responses', {
         method: 'POST', headers: { authorization: `Bearer ${process.env.OPENAI_API_KEY}`, 'content-type': 'application/json' },
-        body: JSON.stringify({ model: process.env.OPENAI_MODEL || 'gpt-5-mini', store: false, input: [
+        body: JSON.stringify({ model: process.env.OPENAI_MODEL || 'gpt-6.1-terra', store: false, input: [
           { role: 'system', content: 'You are Studio Iksha project’s client update assistant. Answer only from the supplied project facts. Be concise and friendly. Never invent progress, dates, tasks, decisions, or promises. If a fact is missing, say it is not available in the project update and suggest asking the project founder. Do not reveal private/internal data.' },
           { role: 'user', content: `Project facts: ${JSON.stringify(facts)}\nClient question: ${question}` },
         ] }), signal: AbortSignal.timeout(20000),
@@ -174,7 +174,28 @@ async function answerProjectQuestion(project, question) {
   return `The project is ${facts.overall_status}, currently in ${facts.current_phase}. The latest task recorded is ${facts.recent_task}. Ask me about the current phase, recent task, blocker, or next milestone.`;
 }
 
+function taskCounts(project) {
+  const tasks = (state.tasks || []).filter((task) => task.projectId === project.id && !task.deletedAt);
+  const isDone = (task) => ['Completed', 'completed', 'Done', 'done'].includes(task.status);
+  const today = calendarDate(dayAt(new Date()));
+  const overdue = tasks.filter((task) => !isDone(task) && !['Cancelled', 'cancelled'].includes(task.status)
+    && taskStatus(task, { stage: project.stages?.find((s) => s.id === task.stageId), today }).overdue).length;
+  return { total: tasks.length, done: tasks.filter(isDone).length, overdue };
+}
+// A sentence of status, then only the facts that are recorded.
+function projectBrief(project) {
+  const { total, done, overdue } = taskCounts(project);
+  const head = [`${project.name} is ${(project.status || 'Setup').toLowerCase()}${project.phase ? `, in ${project.phase}` : ''}.`,
+    total && `${done} of ${total} tasks are done${overdue ? `, ${overdue} overdue` : ''}.`].filter(Boolean).join(' ');
+  const facts = [['Next milestone', project.nextMilestone], ['Blocker', project.blocker], ['Latest', project.recentTask]].filter(([, value]) => value).map(([label, value]) => `- ${label}: ${value}`);
+  return [head, ...facts].join('\n');
+}
+
 function founderAssistantAnswer(question) {
+  if (/^\s*(hi+|hello|hey|who are you|what are you|what can you do|what do you do|help)\s*[?!.]*\s*$/i.test(question)) {
+    const sample = state.projects.find((project) => project.status !== 'Completed')?.name || 'a project name';
+    return `I'm the Iksha assistant. I read your saved project records and tell you where things stand: what needs you today, how a project is going, what's overdue or blocked, who's working on what, and which client questions are waiting.\nTry "What needs me today?" or "How is ${sample} going?"`;
+  }
   // "What should I do?" gets a real to-do list from saved records, not a project dump.
   if (/what.*(should|supposed|need|have|must).*\b(do|focus|handle|attend)|to-?do|priorit|focus on|needs? (my )?attention|where (do|should) i start|what.*\b(today|this week)\b/i.test(question)) return founderBriefing(state);
   const isProjectSummary = /summari[sz]e.*(project|all)|ongoing.*project|project.*summary/i.test(question);
@@ -198,6 +219,8 @@ function founderAssistantAnswer(question) {
   }
   let projects = named.length ? named : state.projects.filter((project) => wantsCompleted ? project.status === 'Completed' : wantsAll || project.status !== 'Completed');
   if (!named.length && wantsBlockers) projects = projects.filter((project) => project.blocker || project.status === 'At risk');
+  // One project asked about in general ("how is X going?") gets a short update, not every field.
+  if (named.length === 1 && !(wantsClientQuestions || wantsTeam || wantsMilestones || wantsBlockers)) return projectBrief(named[0]);
   if (!projects.length) return state.projects.length ? '# No matching projects\nTry a project name, or ask about ongoing projects, blockers, team members, or milestones.' : '# No projects yet\nCreate a project to start tracking progress here.';
   const title = wantsClientQuestions ? 'Client questions' : wantsTeam ? 'Project teams' : wantsMilestones ? 'Next milestones' : wantsBlockers ? 'Blockers and risks' : wantsCompleted ? 'Completed projects' : wantsAll ? 'All projects' : 'Ongoing projects';
   const lines = [`# ${named.length === 1 ? 'Project details' : title}`, `${projects.length} ${projects.length === 1 ? 'project' : 'projects'} found in saved workspace records.`];
@@ -216,17 +239,8 @@ function founderAssistantAnswer(question) {
     }
     if (wantsMilestones) { lines.push(`- Next milestone: ${project.nextMilestone || 'Not recorded'}`, `- Current phase: ${project.phase || 'Not recorded'}`); continue; }
     if (wantsBlockers) { lines.push(`- Status: ${project.status || 'Setup'}`, `- Blocker: ${project.blocker || 'Marked at risk; details not recorded'}`); continue; }
-    const projectTasks = (state.tasks || []).filter((task) => task.projectId === project.id && !task.deletedAt);
-    const openTasks = projectTasks.filter((task) => !['Completed', 'completed', 'Done', 'done', 'Cancelled', 'cancelled'].includes(task.status));
-    const completedTasks = projectTasks.filter((task) => ['Completed', 'completed', 'Done', 'done'].includes(task.status));
-    const today = calendarDate(dayAt(new Date()));
-    const overdueCount = openTasks.filter((task) => {
-      const stage = project.stages?.find((s) => s.id === task.stageId);
-      return taskStatus(task, { stage, today }).overdue;
-    }).length;
-    const progressText = projectTasks.length
-      ? `${completedTasks.length}/${projectTasks.length} tasks completed${overdueCount ? ` · ${overdueCount} overdue` : ''}`
-      : 'No tasks recorded';
+    const { total, done, overdue } = taskCounts(project);
+    const progressText = total ? `${done}/${total} tasks completed${overdue ? ` · ${overdue} overdue` : ''}` : 'No tasks recorded';
     lines.push(`- Client: ${project.clientName || 'Not recorded'}`, `- Status: ${project.status || 'Setup'} · ${project.phase || 'Phase not set'}`, `- Progress: ${progressText}`, `- Location: ${project.location || 'Not recorded'}`, `- Recent work: ${project.recentTask || 'Not recorded'}`, `- Next milestone: ${project.nextMilestone || 'Not recorded'}`, `- Blocker: ${project.blocker || 'None recorded'}`, `- Team: ${project.members?.length ? project.members.map((member) => member.name).join(', ') : 'No one assigned'}`);
   }
   if (projects.length > 20) lines.push(`${projects.length - 20} more matching projects. Ask for a project by name.`);
@@ -656,7 +670,7 @@ async function handleRequest(req, res) {
         aiStatus = 'unavailable';
         try {
           answer = await answerWithAi({ question, history: state.founderChat.slice(-6), ...founderTools(handleRequest, req, founder(req)),
-            apiKey: process.env.OPENAI_API_KEY, model: process.env.OPENAI_MODEL || 'gpt-5-mini', baseUrl: process.env.OPENAI_BASE_URL || undefined });
+            apiKey: process.env.OPENAI_API_KEY, model: process.env.OPENAI_MODEL || 'gpt-6.1-terra', baseUrl: process.env.OPENAI_BASE_URL || undefined });
           ai = Boolean(answer); if (ai) aiStatus = 'ai';
         } catch (error) { console.error('Founder AI unavailable:', String(error?.message || error).slice(0, 200)); answer = ''; }
       }
