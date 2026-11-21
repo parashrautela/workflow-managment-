@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { request } from '@/lib/api';
 let sdk;
-function loadGoogle() {
+export function loadGoogle() {
   if (window.google?.accounts?.id) return Promise.resolve(window.google.accounts.id);
   if (!sdk)
     sdk = new Promise((resolve, reject) => {

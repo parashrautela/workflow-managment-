@@ -20,7 +20,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 	value: mod,
 	enumerable: true
 }) : target, mod));
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react/cjs/react.production.js
+// ../Global iska /node_modules/react/cjs/react.production.js
 /**
 * @license React
 * react.production.js
@@ -406,11 +406,11 @@ var require_react_production = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 	exports.version = "19.3.0";
 }));
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react/index.js
+// ../Global iska /node_modules/react/index.js
 var require_react = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_react_production();
 }));
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/scheduler/cjs/scheduler.production.js
+// ../Global iska /node_modules/scheduler/cjs/scheduler.production.js
 /**
 * @license React
 * scheduler.production.js
@@ -664,11 +664,11 @@ var require_scheduler_production = /* @__PURE__ */ __commonJSMin(((exports) => {
 		};
 	};
 }));
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/scheduler/index.js
+// ../Global iska /node_modules/scheduler/index.js
 var require_scheduler = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_scheduler_production();
 }));
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-dom/cjs/react-dom.production.js
+// ../Global iska /node_modules/react-dom/cjs/react-dom.production.js
 /**
 * @license React
 * react-dom.production.js
@@ -820,7 +820,7 @@ var require_react_dom_production = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 	exports.version = "19.3.0";
 }));
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-dom/index.js
+// ../Global iska /node_modules/react-dom/index.js
 var require_react_dom = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	function checkDCE() {
 		if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") return;
@@ -833,7 +833,7 @@ var require_react_dom = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	checkDCE();
 	module.exports = require_react_dom_production();
 }));
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-dom/cjs/react-dom-client.production.js
+// ../Global iska /node_modules/react-dom/cjs/react-dom-client.production.js
 /**
 * @license React
 * react-dom-client.production.js
@@ -11407,7 +11407,7 @@ var require_react_dom_client_production = /* @__PURE__ */ __commonJSMin(((export
 		return new ReactDOMRoot(options);
 	};
 }));
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-dom/client.js
+// ../Global iska /node_modules/react-dom/client.js
 var require_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	function checkDCE() {
 		if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") return;
@@ -11420,7 +11420,7 @@ var require_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	checkDCE();
 	module.exports = require_react_dom_client_production();
 }));
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toKebabCase.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/shared/src/utils/toKebabCase.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11428,7 +11428,7 @@ var require_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 * See the LICENSE file in the root directory of this source tree.
 */
 var toKebabCase = (string) => string?.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toLucideIconData.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/shared/src/utils/toLucideIconData.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11444,7 +11444,7 @@ function toLucideIconData(iconName, iconNode, aliases = []) {
 		...aliases.length > 0 ? { aliases } : {}
 	};
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toCamelCase.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/shared/src/utils/toCamelCase.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11465,7 +11465,7 @@ var toCamelCase = (string) => {
 	}
 	return out;
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/toPascalCase.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/shared/src/utils/toPascalCase.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11476,7 +11476,7 @@ var toPascalCase = (string) => {
 	const camelCase = toCamelCase(string);
 	return camelCase.charAt(0).toUpperCase() + camelCase.slice(1);
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/mergeClasses.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/shared/src/utils/mergeClasses.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11486,7 +11486,7 @@ var toPascalCase = (string) => {
 var mergeClasses = (...classes) => classes.filter((className, index, array) => {
 	return Boolean(className) && className.trim() !== "" && array.indexOf(className) === index;
 }).join(" ").trim();
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/build/defaultAttributes.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/shared/src/build/defaultAttributes.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11504,7 +11504,7 @@ var defaultAttributes = {
 	"stroke-linecap": "round",
 	"stroke-linejoin": "round"
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconNode.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconNode.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11558,7 +11558,7 @@ function buildLucideIconNode(icon, params = {}) {
 		})
 	];
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconForReact.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconForReact.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11578,7 +11578,7 @@ function buildLucideIconForReact(icon, params = {}) {
 		}
 	});
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/shared/src/utils/hasA11yProp.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/shared/src/utils/hasA11yProp.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11589,7 +11589,7 @@ var hasA11yProp = (props) => {
 	for (const prop in props) if (prop.startsWith("aria-") || prop === "role" || prop === "title") return true;
 	return false;
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/context.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/context.mjs
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11599,7 +11599,7 @@ var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 */
 var LucideContext = (0, import_react.createContext)({});
 var useLucideContext = () => (0, import_react.useContext)(LucideContext);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/Icon.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/Icon.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11629,7 +11629,7 @@ var Icon = (0, import_react.forwardRef)(({ color, size, width, height, strokeWid
 		...svgAttributes
 	}, [...builtIconNode.map(([tag, attrs]) => (0, import_react.createElement)(tag, attrs)), ...Array.isArray(children) ? children : [children]]);
 });
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/createLucideIcon.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/createLucideIcon.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11647,7 +11647,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 	if (iconData.name) Component.displayName = toPascalCase(iconData.name);
 	return Component;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-left.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/arrow-left.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11667,7 +11667,7 @@ var __iconData$63 = {
 };
 __iconData$63.node;
 var ArrowLeft = createLucideIcon(__iconData$63);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11687,7 +11687,7 @@ var __iconData$62 = {
 };
 __iconData$62.node;
 var ArrowRight = createLucideIcon(__iconData$62);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11707,7 +11707,7 @@ var __iconData$61 = {
 };
 __iconData$61.node;
 var ArrowUpRight = createLucideIcon(__iconData$61);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11727,7 +11727,7 @@ var __iconData$60 = {
 };
 __iconData$60.node;
 var ArrowUp = createLucideIcon(__iconData$60);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/building-complex.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11763,7 +11763,7 @@ var __iconData$59 = {
 };
 __iconData$59.node;
 var BuildingComplex = createLucideIcon(__iconData$59);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11822,7 +11822,7 @@ var __iconData$58 = {
 };
 __iconData$58.node;
 var CalendarDays = createLucideIcon(__iconData$58);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/calendar.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/calendar.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11857,7 +11857,7 @@ var __iconData$57 = {
 };
 __iconData$57.node;
 var Calendar = createLucideIcon(__iconData$57);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/check.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11874,7 +11874,7 @@ var __iconData$56 = {
 };
 __iconData$56.node;
 var Check = createLucideIcon(__iconData$56);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11891,7 +11891,7 @@ var __iconData$55 = {
 };
 __iconData$55.node;
 var ChevronDown = createLucideIcon(__iconData$55);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11908,7 +11908,7 @@ var __iconData$54 = {
 };
 __iconData$54.node;
 var ChevronRight = createLucideIcon(__iconData$54);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11925,7 +11925,7 @@ var __iconData$53 = {
 };
 __iconData$53.node;
 var ChevronUp = createLucideIcon(__iconData$53);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11961,7 +11961,7 @@ var __iconData$52 = {
 };
 __iconData$52.node;
 var CircleAlert = createLucideIcon(__iconData$52);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-check.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -11984,7 +11984,7 @@ var __iconData$51 = {
 };
 __iconData$51.node;
 var CircleCheck = createLucideIcon(__iconData$51);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12020,7 +12020,7 @@ var __iconData$50 = {
 };
 __iconData$50.node;
 var CirclePause = createLucideIcon(__iconData$50);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12050,7 +12050,7 @@ var __iconData$49 = {
 };
 __iconData$49.node;
 var CircleQuestionMark = createLucideIcon(__iconData$49);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle-x.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/circle-x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12080,7 +12080,7 @@ var __iconData$48 = {
 };
 __iconData$48.node;
 var CircleX = createLucideIcon(__iconData$48);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/circle.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12099,7 +12099,7 @@ var __iconData$47 = {
 };
 __iconData$47.node;
 var Circle = createLucideIcon(__iconData$47);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/clock-3.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12121,7 +12121,7 @@ var __iconData$46 = {
 };
 __iconData$46.node;
 var Clock3 = createLucideIcon(__iconData$46);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/clock.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12143,7 +12143,7 @@ var __iconData$45 = {
 };
 __iconData$45.node;
 var Clock = createLucideIcon(__iconData$45);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/copy.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12168,7 +12168,7 @@ var __iconData$44 = {
 };
 __iconData$44.node;
 var Copy = createLucideIcon(__iconData$44);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/ellipsis-vertical.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/ellipsis-vertical.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12202,7 +12202,7 @@ var __iconData$43 = {
 };
 __iconData$43.node;
 var EllipsisVertical = createLucideIcon(__iconData$43);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/external-link.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/external-link.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12229,7 +12229,7 @@ var __iconData$42 = {
 };
 __iconData$42.node;
 var ExternalLink = createLucideIcon(__iconData$42);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/file-text.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/file-text.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12264,7 +12264,7 @@ var __iconData$41 = {
 };
 __iconData$41.node;
 var FileText = createLucideIcon(__iconData$41);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/flag.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/flag.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12281,7 +12281,7 @@ var __iconData$40 = {
 };
 __iconData$40.node;
 var Flag = createLucideIcon(__iconData$40);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12312,7 +12312,7 @@ var __iconData$39 = {
 };
 __iconData$39.node;
 var FolderKanban = createLucideIcon(__iconData$39);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/folder-open.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/folder-open.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12329,7 +12329,7 @@ var __iconData$38 = {
 };
 __iconData$38.node;
 var FolderOpen = createLucideIcon(__iconData$38);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/funnel.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/funnel.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12347,7 +12347,7 @@ var __iconData$37 = {
 };
 __iconData$37.node;
 var Funnel = createLucideIcon(__iconData$37);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/grip-vertical.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/grip-vertical.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12398,7 +12398,7 @@ var __iconData$36 = {
 };
 __iconData$36.node;
 var GripVertical = createLucideIcon(__iconData$36);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/hourglass.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/hard-drive.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12406,6 +12406,37 @@ var GripVertical = createLucideIcon(__iconData$36);
 * See the LICENSE file in the root directory of this source tree.
 */
 var __iconData$35 = {
+	name: "hard-drive",
+	size: 24,
+	node: [
+		["path", {
+			d: "M10 16h.01",
+			key: "1bzywj"
+		}],
+		["path", {
+			d: "M2.212 11.577a2 2 0 0 0-.212.896V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5.527a2 2 0 0 0-.212-.896L18.55 5.11A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z",
+			key: "18tbho"
+		}],
+		["path", {
+			d: "M21.946 12.013H2.054",
+			key: "zqlbp7"
+		}],
+		["path", {
+			d: "M6 16h.01",
+			key: "1pmjb7"
+		}]
+	]
+};
+__iconData$35.node;
+var HardDrive = createLucideIcon(__iconData$35);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/hourglass.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$34 = {
 	name: "hourglass",
 	size: 24,
 	node: [
@@ -12427,16 +12458,16 @@ var __iconData$35 = {
 		}]
 	]
 };
-__iconData$35.node;
-var Hourglass = createLucideIcon(__iconData$35);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/layers.mjs
+__iconData$34.node;
+var Hourglass = createLucideIcon(__iconData$34);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/layers.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$34 = {
+var __iconData$33 = {
 	name: "layers",
 	size: 24,
 	node: [
@@ -12455,16 +12486,16 @@ var __iconData$34 = {
 	],
 	aliases: ["layers-3"]
 };
-__iconData$34.node;
-var Layers = createLucideIcon(__iconData$34);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/link-2.mjs
+__iconData$33.node;
+var Layers = createLucideIcon(__iconData$33);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/link-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$33 = {
+var __iconData$32 = {
 	name: "link-2",
 	size: 24,
 	node: [
@@ -12485,16 +12516,16 @@ var __iconData$33 = {
 		}]
 	]
 };
-__iconData$33.node;
-var Link2 = createLucideIcon(__iconData$33);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/list-checks.mjs
+__iconData$32.node;
+var Link2 = createLucideIcon(__iconData$32);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/list-checks.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$32 = {
+var __iconData$31 = {
 	name: "list-checks",
 	size: 24,
 	node: [
@@ -12520,16 +12551,16 @@ var __iconData$32 = {
 		}]
 	]
 };
-__iconData$32.node;
-var ListChecks = createLucideIcon(__iconData$32);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/list-plus.mjs
+__iconData$31.node;
+var ListChecks = createLucideIcon(__iconData$31);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/list-plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$31 = {
+var __iconData$30 = {
 	name: "list-plus",
 	size: 24,
 	node: [
@@ -12555,16 +12586,16 @@ var __iconData$31 = {
 		}]
 	]
 };
-__iconData$31.node;
-var ListPlus = createLucideIcon(__iconData$31);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/loader-circle.mjs
+__iconData$30.node;
+var ListPlus = createLucideIcon(__iconData$30);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/loader-circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$30 = {
+var __iconData$29 = {
 	name: "loader-circle",
 	size: 24,
 	node: [["path", {
@@ -12573,16 +12604,16 @@ var __iconData$30 = {
 	}]],
 	aliases: ["loader-2"]
 };
-__iconData$30.node;
-var LoaderCircle = createLucideIcon(__iconData$30);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/lock-keyhole.mjs
+__iconData$29.node;
+var LoaderCircle = createLucideIcon(__iconData$29);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/lock-keyhole.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$29 = {
+var __iconData$28 = {
 	name: "lock-keyhole",
 	size: 24,
 	node: [
@@ -12606,16 +12637,16 @@ var __iconData$29 = {
 		}]
 	]
 };
-__iconData$29.node;
-var LockKeyhole = createLucideIcon(__iconData$29);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/log-out.mjs
+__iconData$28.node;
+var LockKeyhole = createLucideIcon(__iconData$28);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/log-out.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$28 = {
+var __iconData$27 = {
 	name: "log-out",
 	size: 24,
 	node: [
@@ -12633,16 +12664,16 @@ var __iconData$28 = {
 		}]
 	]
 };
-__iconData$28.node;
-var LogOut = createLucideIcon(__iconData$28);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/map-pin.mjs
+__iconData$27.node;
+var LogOut = createLucideIcon(__iconData$27);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/map-pin.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$27 = {
+var __iconData$26 = {
 	name: "map-pin",
 	size: 24,
 	node: [["path", {
@@ -12655,16 +12686,16 @@ var __iconData$27 = {
 		key: "ilqhr7"
 	}]]
 };
-__iconData$27.node;
-var MapPin = createLucideIcon(__iconData$27);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/maximize-2.mjs
+__iconData$26.node;
+var MapPin = createLucideIcon(__iconData$26);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/maximize-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$26 = {
+var __iconData$25 = {
 	name: "maximize-2",
 	size: 24,
 	node: [
@@ -12686,16 +12717,16 @@ var __iconData$26 = {
 		}]
 	]
 };
-__iconData$26.node;
-var Maximize2 = createLucideIcon(__iconData$26);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/menu.mjs
+__iconData$25.node;
+var Maximize2 = createLucideIcon(__iconData$25);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/menu.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$25 = {
+var __iconData$24 = {
 	name: "menu",
 	size: 24,
 	node: [
@@ -12713,26 +12744,9 @@ var __iconData$25 = {
 		}]
 	]
 };
-__iconData$25.node;
-var Menu$1 = createLucideIcon(__iconData$25);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/message-square.mjs
-/**
-* @license lucide-react v1.48.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
-var __iconData$24 = {
-	name: "message-square",
-	size: 24,
-	node: [["path", {
-		d: "M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z",
-		key: "18887p"
-	}]]
-};
 __iconData$24.node;
-var MessageSquare = createLucideIcon(__iconData$24);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/mic.mjs
+var Menu$1 = createLucideIcon(__iconData$24);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/message-square.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12740,6 +12754,23 @@ var MessageSquare = createLucideIcon(__iconData$24);
 * See the LICENSE file in the root directory of this source tree.
 */
 var __iconData$23 = {
+	name: "message-square",
+	size: 24,
+	node: [["path", {
+		d: "M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z",
+		key: "18887p"
+	}]]
+};
+__iconData$23.node;
+var MessageSquare = createLucideIcon(__iconData$23);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/mic.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$22 = {
 	name: "mic",
 	size: 24,
 	node: [
@@ -12761,26 +12792,9 @@ var __iconData$23 = {
 		}]
 	]
 };
-__iconData$23.node;
-var Mic = createLucideIcon(__iconData$23);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/minus.mjs
-/**
-* @license lucide-react v1.48.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
-var __iconData$22 = {
-	name: "minus",
-	size: 24,
-	node: [["path", {
-		d: "M5 12h14",
-		key: "1ays0h"
-	}]]
-};
 __iconData$22.node;
-var Minus = createLucideIcon(__iconData$22);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/octagon.mjs
+var Mic = createLucideIcon(__iconData$22);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/minus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12788,16 +12802,16 @@ var Minus = createLucideIcon(__iconData$22);
 * See the LICENSE file in the root directory of this source tree.
 */
 var __iconData$21 = {
-	name: "octagon",
+	name: "minus",
 	size: 24,
 	node: [["path", {
-		d: "M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z",
-		key: "2d38gg"
+		d: "M5 12h14",
+		key: "1ays0h"
 	}]]
 };
 __iconData$21.node;
-var Octagon = createLucideIcon(__iconData$21);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/paperclip.mjs
+var Minus = createLucideIcon(__iconData$21);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/octagon.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12805,16 +12819,16 @@ var Octagon = createLucideIcon(__iconData$21);
 * See the LICENSE file in the root directory of this source tree.
 */
 var __iconData$20 = {
-	name: "paperclip",
+	name: "octagon",
 	size: 24,
 	node: [["path", {
-		d: "m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551",
-		key: "1miecu"
+		d: "M2.586 16.726A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2h6.624a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586z",
+		key: "2d38gg"
 	}]]
 };
 __iconData$20.node;
-var Paperclip = createLucideIcon(__iconData$20);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/pause.mjs
+var Octagon = createLucideIcon(__iconData$20);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/paperclip.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12822,6 +12836,23 @@ var Paperclip = createLucideIcon(__iconData$20);
 * See the LICENSE file in the root directory of this source tree.
 */
 var __iconData$19 = {
+	name: "paperclip",
+	size: 24,
+	node: [["path", {
+		d: "m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551",
+		key: "1miecu"
+	}]]
+};
+__iconData$19.node;
+var Paperclip = createLucideIcon(__iconData$19);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/pause.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$18 = {
 	name: "pause",
 	size: 24,
 	node: [["rect", {
@@ -12840,16 +12871,16 @@ var __iconData$19 = {
 		key: "1wsw3u"
 	}]]
 };
-__iconData$19.node;
-var Pause = createLucideIcon(__iconData$19);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/pencil.mjs
+__iconData$18.node;
+var Pause = createLucideIcon(__iconData$18);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/pencil.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$18 = {
+var __iconData$17 = {
 	name: "pencil",
 	size: 24,
 	node: [["path", {
@@ -12860,26 +12891,9 @@ var __iconData$18 = {
 		key: "1mk7zo"
 	}]]
 };
-__iconData$18.node;
-var Pencil = createLucideIcon(__iconData$18);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/play.mjs
-/**
-* @license lucide-react v1.48.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
-var __iconData$17 = {
-	name: "play",
-	size: 24,
-	node: [["path", {
-		d: "M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z",
-		key: "10ikf1"
-	}]]
-};
 __iconData$17.node;
-var Play = createLucideIcon(__iconData$17);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/plus.mjs
+var Pencil = createLucideIcon(__iconData$17);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/play.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12887,6 +12901,23 @@ var Play = createLucideIcon(__iconData$17);
 * See the LICENSE file in the root directory of this source tree.
 */
 var __iconData$16 = {
+	name: "play",
+	size: 24,
+	node: [["path", {
+		d: "M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z",
+		key: "10ikf1"
+	}]]
+};
+__iconData$16.node;
+var Play = createLucideIcon(__iconData$16);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/plus.mjs
+/**
+* @license lucide-react v1.48.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var __iconData$15 = {
 	name: "plus",
 	size: 24,
 	node: [["path", {
@@ -12897,16 +12928,16 @@ var __iconData$16 = {
 		key: "s699le"
 	}]]
 };
-__iconData$16.node;
-var Plus = createLucideIcon(__iconData$16);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/refresh-cw.mjs
+__iconData$15.node;
+var Plus = createLucideIcon(__iconData$15);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/refresh-cw.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$15 = {
+var __iconData$14 = {
 	name: "refresh-cw",
 	size: 24,
 	node: [
@@ -12928,37 +12959,9 @@ var __iconData$15 = {
 		}]
 	]
 };
-__iconData$15.node;
-var RefreshCw = createLucideIcon(__iconData$15);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/rotate-ccw-clock.mjs
-/**
-* @license lucide-react v1.48.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
-var __iconData$14 = {
-	name: "rotate-ccw-clock",
-	size: 24,
-	node: [
-		["path", {
-			d: "M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8",
-			key: "1357e3"
-		}],
-		["path", {
-			d: "M3 3v5h5",
-			key: "1xhq8a"
-		}],
-		["path", {
-			d: "M12 7v5l4 2",
-			key: "1fdv2h"
-		}]
-	],
-	aliases: ["history"]
-};
 __iconData$14.node;
-var RotateCcwClock = createLucideIcon(__iconData$14);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/search.mjs
+var RefreshCw = createLucideIcon(__iconData$14);
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/search.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -12980,7 +12983,7 @@ var __iconData$13 = {
 };
 __iconData$13.node;
 var Search = createLucideIcon(__iconData$13);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/send.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/send.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13000,7 +13003,7 @@ var __iconData$12 = {
 };
 __iconData$12.node;
 var Send = createLucideIcon(__iconData$12);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/settings-2.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/settings-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13035,7 +13038,7 @@ var __iconData$11 = {
 };
 __iconData$11.node;
 var Settings2 = createLucideIcon(__iconData$11);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/shield-check.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/shield-check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13055,7 +13058,7 @@ var __iconData$10 = {
 };
 __iconData$10.node;
 var ShieldCheck = createLucideIcon(__iconData$10);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/sparkles.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/sparkles.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13089,7 +13092,7 @@ var __iconData$9 = {
 };
 __iconData$9.node;
 var Sparkles = createLucideIcon(__iconData$9);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/trash.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/trash.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13125,7 +13128,7 @@ var __iconData$8 = {
 };
 __iconData$8.node;
 var Trash = createLucideIcon(__iconData$8);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/triangle-alert.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/triangle-alert.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13153,7 +13156,7 @@ var __iconData$7 = {
 };
 __iconData$7.node;
 var TriangleAlert = createLucideIcon(__iconData$7);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/undo-2.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/undo-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13173,7 +13176,7 @@ var __iconData$6 = {
 };
 __iconData$6.node;
 var Undo2 = createLucideIcon(__iconData$6);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user-plus.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/user-plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13212,7 +13215,7 @@ var __iconData$5 = {
 };
 __iconData$5.node;
 var UserPlus = createLucideIcon(__iconData$5);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user-round.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/user-round.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13235,7 +13238,7 @@ var __iconData$4 = {
 };
 __iconData$4.node;
 var UserRound = createLucideIcon(__iconData$4);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user-x.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/user-x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13274,7 +13277,7 @@ var __iconData$3 = {
 };
 __iconData$3.node;
 var UserX = createLucideIcon(__iconData$3);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/user.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/user.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13296,7 +13299,7 @@ var __iconData$2 = {
 };
 __iconData$2.node;
 var User = createLucideIcon(__iconData$2);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/users.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/users.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13329,7 +13332,7 @@ var __iconData$1 = {
 };
 __iconData$1.node;
 var Users = createLucideIcon(__iconData$1);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/lucide-react/dist/esm/icons/x.mjs
+// ../Global iska /node_modules/lucide-react/dist/esm/icons/x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
 *
@@ -13349,7 +13352,7 @@ var __iconData = {
 };
 __iconData.node;
 var X$1 = createLucideIcon(__iconData);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react/cjs/react-jsx-runtime.production.js
+// ../Global iska /node_modules/react/cjs/react-jsx-runtime.production.js
 /**
 * @license React
 * react-jsx-runtime.production.js
@@ -13383,7 +13386,7 @@ var require_react_jsx_runtime_production = /* @__PURE__ */ __commonJSMin(((expor
 	exports.jsx = jsxProd;
 	exports.jsxs = jsxProd;
 }));
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react/jsx-runtime.js
+// ../Global iska /node_modules/react/jsx-runtime.js
 var require_jsx_runtime = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_react_jsx_runtime_production();
 }));
@@ -13422,7 +13425,7 @@ function Toaster() {
 		}, item.id))
 	});
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/clsx/dist/clsx.mjs
+// ../Global iska /node_modules/clsx/dist/clsx.mjs
 function r(e) {
 	var t, f, n = "";
 	if ("string" == typeof e || "number" == typeof e) n += e;
@@ -13436,7 +13439,7 @@ function clsx() {
 	for (var e, t, f = 0, n = "", o = arguments.length; f < o; f++) (e = arguments[f]) && (t = r(e)) && (n && (n += " "), n += t);
 	return n;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/class-variance-authority/dist/index.mjs
+// ../Global iska /node_modules/class-variance-authority/dist/index.mjs
 /**
 * Copyright 2022 Joe Bell. All rights reserved.
 *
@@ -13488,7 +13491,7 @@ var cva = (base, config) => (props) => {
 		] : acc;
 	}, []), props === null || props === void 0 ? void 0 : props.class, props === null || props === void 0 ? void 0 : props.className);
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/tailwind-merge/dist/bundle-mjs.mjs
+// ../Global iska /node_modules/tailwind-merge/dist/bundle-mjs.mjs
 /**
 * Concatenates two arrays faster than the array spread operator.
 */
@@ -16950,7 +16953,7 @@ var twMerge = /*#__PURE__*/ createTailwindMerge(getDefaultConfig);
 function cn$1(...inputs) {
 	return twMerge(clsx(inputs));
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-compose-refs/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-compose-refs/dist/index.mjs
 var __defProp$27 = Object.defineProperty;
 var __name$27 = (target, value) => __defProp$27(target, "name", {
 	value,
@@ -16983,7 +16986,7 @@ function useComposedRefs(...refs) {
 	return import_react.useCallback(composeRefs(...refs), refs);
 }
 __name$27(useComposedRefs, "useComposedRefs");
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-slot/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-slot/dist/index.mjs
 var __defProp$26 = Object.defineProperty;
 var __name$26 = (target, value) => __defProp$26(target, "name", {
 	value,
@@ -17095,7 +17098,7 @@ var createSlottableError = /* @__PURE__ */ __name$26((ownerName) => {
 	return `${ownerName} failed to slot onto its \`Slottable\`. Expected \`Slottable\` to receive a single React element child.`;
 }, "createSlottableError");
 var use = import_react[" use ".trim().toString()];
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-primitive/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-primitive/dist/index.mjs
 var import_react_dom = /* @__PURE__ */ __toESM(require_react_dom(), 1);
 var __defProp$25 = Object.defineProperty;
 var __name$25 = (target, value) => __defProp$25(target, "name", {
@@ -17141,7 +17144,7 @@ function dispatchDiscreteCustomEvent(target, event) {
 	if (target) import_react_dom.flushSync(() => target.dispatchEvent(event));
 }
 __name$25(dispatchDiscreteCustomEvent, "dispatchDiscreteCustomEvent");
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-context/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-context/dist/index.mjs
 var __defProp$24 = Object.defineProperty;
 var __name$24 = (target, value) => __defProp$24(target, "name", {
 	value,
@@ -17242,7 +17245,7 @@ function composeContextScopes(...scopes) {
 	return createScope;
 }
 __name$24(composeContextScopes, "composeContextScopes");
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-collection/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-collection/dist/index.mjs
 var __defProp$23 = Object.defineProperty;
 var __name$23 = (target, value) => __defProp$23(target, "name", {
 	value,
@@ -17770,7 +17773,7 @@ function getChildListObserver(callback) {
 	});
 }
 __name$23(getChildListObserver, "getChildListObserver");
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/primitive/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/primitive/dist/index.mjs
 var __defProp$22 = Object.defineProperty;
 var __name$22 = (target, value) => __defProp$22(target, "name", {
 	value,
@@ -17812,9 +17815,9 @@ function isFrame(element) {
 	return element.tagName === "IFRAME";
 }
 __name$22(isFrame, "isFrame");
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-use-layout-effect/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-use-layout-effect/dist/index.mjs
 var useLayoutEffect2 = globalThis?.document ? import_react.useLayoutEffect : () => {};
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-use-effect-event/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-use-effect-event/dist/index.mjs
 var __defProp$21 = Object.defineProperty;
 var __name$21 = (target, value) => __defProp$21(target, "name", {
 	value,
@@ -17836,7 +17839,7 @@ function useEffectEvent(callback) {
 	return import_react.useMemo(() => ((...args) => ref.current?.(...args)), []);
 }
 __name$21(useEffectEvent, "useEffectEvent");
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-use-controllable-state/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-use-controllable-state/dist/index.mjs
 var __defProp$20 = Object.defineProperty;
 var __name$20 = (target, value) => __defProp$20(target, "name", {
 	value,
@@ -17937,7 +17940,7 @@ function useControllableStateReducer(reducer, userArgs, initialArg, init) {
 	return [state, dispatch];
 }
 __name$20(useControllableStateReducer, "useControllableStateReducer");
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-presence/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-presence/dist/index.mjs
 var __defProp$19 = Object.defineProperty;
 var __name$19 = (target, value) => __defProp$19(target, "name", {
 	value,
@@ -18078,7 +18081,7 @@ function getElementRef(element) {
 	return element.props.ref || element.ref;
 }
 __name$19(getElementRef, "getElementRef");
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-id/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-id/dist/index.mjs
 var __defProp$18 = Object.defineProperty;
 var __name$18 = (target, value) => __defProp$18(target, "name", {
 	value,
@@ -18094,7 +18097,7 @@ function useId$2(deterministicId) {
 	return deterministicId || (id ? `radix-${id}` : "");
 }
 __name$18(useId$2, "useId");
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-direction/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-direction/dist/index.mjs
 var __defProp$17 = Object.defineProperty;
 var __name$17 = (target, value) => __defProp$17(target, "name", {
 	value,
@@ -18106,7 +18109,7 @@ function useDirection(localDir) {
 	return localDir || globalDir || "ltr";
 }
 __name$17(useDirection, "useDirection");
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-use-callback-ref/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-use-callback-ref/dist/index.mjs
 var __defProp$16 = Object.defineProperty;
 var __name$16 = (target, value) => __defProp$16(target, "name", {
 	value,
@@ -18120,7 +18123,7 @@ function useCallbackRef$1(callback) {
 	return import_react.useMemo(() => ((...args) => callbackRef.current?.(...args)), []);
 }
 __name$16(useCallbackRef$1, "useCallbackRef");
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs
 var __defProp$15 = Object.defineProperty;
 var __name$15 = (target, value) => __defProp$15(target, "name", {
 	value,
@@ -18383,7 +18386,7 @@ function handleAndDispatchCustomEvent(name, handler, detail, { discrete }) {
 	else target.dispatchEvent(event);
 }
 __name$15(handleAndDispatchCustomEvent, "handleAndDispatchCustomEvent");
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-focus-scope/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-focus-scope/dist/index.mjs
 var __defProp$14 = Object.defineProperty;
 var __name$14 = (target, value) => __defProp$14(target, "name", {
 	value,
@@ -18588,7 +18591,7 @@ function removeLinks(items) {
 	return items.filter((item) => item.tagName !== "A");
 }
 __name$14(removeLinks, "removeLinks");
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-portal/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-portal/dist/index.mjs
 var __defProp$13 = Object.defineProperty;
 var __name$13 = (target, value) => __defProp$13(target, "name", {
 	value,
@@ -18604,7 +18607,7 @@ var Portal$1 = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$13
 		ref: forwardedRef
 	}), container) : null;
 }, "Portal"));
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-focus-guards/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-focus-guards/dist/index.mjs
 var __defProp$12 = Object.defineProperty;
 var __name$12 = (target, value) => __defProp$12(target, "name", {
 	value,
@@ -18649,7 +18652,7 @@ function createFocusGuard() {
 	return element;
 }
 __name$12(createFocusGuard, "createFocusGuard");
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/tslib/tslib.es6.mjs
+// ../Global iska /node_modules/tslib/tslib.es6.mjs
 var __assign = function() {
 	__assign = Object.assign || function __assign(t) {
 		for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -18677,7 +18680,7 @@ function __spreadArray(to, from, pack) {
 	}
 	return to.concat(ar || Array.prototype.slice.call(from));
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll-bar/dist/es2015/constants.js
+// ../Global iska /node_modules/react-remove-scroll-bar/dist/es2015/constants.js
 var zeroRightClassName = "right-scroll-bar-position";
 var fullWidthClassName = "width-before-scroll-bar";
 var noScrollbarsClassName = "with-scroll-bars-hidden";
@@ -18686,7 +18689,7 @@ var noScrollbarsClassName = "with-scroll-bars-hidden";
 * ! might be undefined ! use will fallback!
 */
 var removedBarSizeVariable = "--removed-body-scroll-bar-size";
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/use-callback-ref/dist/es2015/assignRef.js
+// ../Global iska /node_modules/use-callback-ref/dist/es2015/assignRef.js
 /**
 * Assigns a value for a given ref, no matter of the ref format
 * @param {RefObject} ref - a callback function or ref object
@@ -18705,7 +18708,7 @@ function assignRef(ref, value) {
 	else if (ref) ref.current = value;
 	return ref;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/use-callback-ref/dist/es2015/useRef.js
+// ../Global iska /node_modules/use-callback-ref/dist/es2015/useRef.js
 /**
 * creates a MutableRef with ref change callback
 * @param initialValue - initial ref value
@@ -18742,7 +18745,7 @@ function useCallbackRef(initialValue, callback) {
 	ref.callback = callback;
 	return ref.facade;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/use-callback-ref/dist/es2015/useMergeRef.js
+// ../Global iska /node_modules/use-callback-ref/dist/es2015/useMergeRef.js
 var useIsomorphicLayoutEffect$1 = typeof window !== "undefined" ? import_react.useLayoutEffect : import_react.useEffect;
 var currentValues = /* @__PURE__ */ new WeakMap();
 /**
@@ -18782,7 +18785,7 @@ function useMergeRefs(refs, defaultValue) {
 	}, [refs]);
 	return callbackRef;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/use-sidecar/dist/es2015/medium.js
+// ../Global iska /node_modules/use-sidecar/dist/es2015/medium.js
 function ItoI(a) {
 	return a;
 }
@@ -18861,7 +18864,7 @@ function createSidecarMedium(options) {
 	}, options);
 	return medium;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/use-sidecar/dist/es2015/exports.js
+// ../Global iska /node_modules/use-sidecar/dist/es2015/exports.js
 var SideCar = function(_a) {
 	var sideCar = _a.sideCar, rest = __rest(_a, ["sideCar"]);
 	if (!sideCar) throw new Error("Sidecar: please provide `sideCar` property to import the right car");
@@ -18874,9 +18877,9 @@ function exportSidecar(medium, exported) {
 	medium.useMedium(exported);
 	return SideCar;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/medium.js
+// ../Global iska /node_modules/react-remove-scroll/dist/es2015/medium.js
 var effectCar = createSidecarMedium();
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/UI.js
+// ../Global iska /node_modules/react-remove-scroll/dist/es2015/UI.js
 var nothing = function() {};
 /**
 * Removes scrollbar from the page and contain the scroll within the Lock
@@ -18934,7 +18937,7 @@ RemoveScroll.classNames = {
 var getNonce = function() {
 	if (typeof __webpack_nonce__ !== "undefined") return __webpack_nonce__;
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-style-singleton/dist/es2015/singleton.js
+// ../Global iska /node_modules/react-style-singleton/dist/es2015/singleton.js
 function makeStyleTag() {
 	if (!document) return null;
 	var tag = document.createElement("style");
@@ -18972,7 +18975,7 @@ var stylesheetSingleton = function() {
 		}
 	};
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-style-singleton/dist/es2015/hook.js
+// ../Global iska /node_modules/react-style-singleton/dist/es2015/hook.js
 /**
 * creates a hook to control style singleton
 * @see {@link styleSingleton} for a safer component version
@@ -18993,7 +18996,7 @@ var styleHookSingleton = function() {
 		}, [styles && isDynamic]);
 	};
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-style-singleton/dist/es2015/component.js
+// ../Global iska /node_modules/react-style-singleton/dist/es2015/component.js
 /**
 * create a Component to add styles on demand
 * - styles are added when first instance is mounted
@@ -19009,7 +19012,7 @@ var styleSingleton = function() {
 	};
 	return Sheet;
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll-bar/dist/es2015/utils.js
+// ../Global iska /node_modules/react-remove-scroll-bar/dist/es2015/utils.js
 var zeroGap = {
 	left: 0,
 	top: 0,
@@ -19043,7 +19046,7 @@ var getGapWidth = function(gapMode) {
 		gap: Math.max(0, windowWidth - documentWidth + offsets[2] - offsets[0])
 	};
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll-bar/dist/es2015/component.js
+// ../Global iska /node_modules/react-remove-scroll-bar/dist/es2015/component.js
 var Style = styleSingleton();
 var lockAttribute = "data-scroll-locked";
 var getStyles = function(_a, allowRelative, gapMode, important) {
@@ -19080,7 +19083,7 @@ var RemoveScrollBar = function(_a) {
 	}, [gapMode]);
 	return import_react.createElement(Style, { styles: getStyles(gap, !noRelative, gapMode, !noImportant ? "!important" : "") });
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/aggresiveCapture.js
+// ../Global iska /node_modules/react-remove-scroll/dist/es2015/aggresiveCapture.js
 var passiveSupported = false;
 if (typeof window !== "undefined") try {
 	var options = Object.defineProperty({}, "passive", { get: function() {
@@ -19093,7 +19096,7 @@ if (typeof window !== "undefined") try {
 	passiveSupported = false;
 }
 var nonPassive = passiveSupported ? { passive: false } : false;
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/handleScroll.js
+// ../Global iska /node_modules/react-remove-scroll/dist/es2015/handleScroll.js
 var alwaysContainsScroll = function(node) {
 	return node.tagName === "TEXTAREA";
 };
@@ -19175,7 +19178,7 @@ var handleScroll = function(axis, endTarget, event, sourceDelta, noOverscroll) {
 	else if (!isDeltaPositive && (noOverscroll && Math.abs(availableScrollTop) < 1 || !noOverscroll && -delta > availableScrollTop)) shouldCancelScroll = true;
 	return shouldCancelScroll;
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/SideEffect.js
+// ../Global iska /node_modules/react-remove-scroll/dist/es2015/SideEffect.js
 var getTouchXY = function(event) {
 	return "changedTouches" in event ? [event.changedTouches[0].clientX, event.changedTouches[0].clientY] : [0, 0];
 };
@@ -19329,9 +19332,9 @@ function getOutermostShadowParent(node) {
 	}
 	return shadowParent;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/sidecar.js
+// ../Global iska /node_modules/react-remove-scroll/dist/es2015/sidecar.js
 var sidecar_default = exportSidecar(effectCar, RemoveScrollSideCar);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/react-remove-scroll/dist/es2015/Combination.js
+// ../Global iska /node_modules/react-remove-scroll/dist/es2015/Combination.js
 var ReactRemoveScroll = import_react.forwardRef(function(props, ref) {
 	return import_react.createElement(RemoveScroll, __assign({}, props, {
 		ref,
@@ -19339,7 +19342,7 @@ var ReactRemoveScroll = import_react.forwardRef(function(props, ref) {
 	}));
 });
 ReactRemoveScroll.classNames = RemoveScroll.classNames;
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/aria-hidden/dist/es2015/index.js
+// ../Global iska /node_modules/aria-hidden/dist/es2015/index.js
 var getDefaultParent = function(originalTarget) {
 	if (typeof document === "undefined") return null;
 	return (Array.isArray(originalTarget) ? originalTarget[0] : originalTarget).ownerDocument.body;
@@ -19444,7 +19447,7 @@ var hideOthers = function(originalTarget, parentNode, markerName) {
 	targets.push.apply(targets, Array.from(activeParentNode.querySelectorAll("[aria-live], script")));
 	return applyAttributeToOthers(targets, activeParentNode, markerName, "aria-hidden");
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-dialog/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-dialog/dist/index.mjs
 var __defProp$11 = Object.defineProperty;
 var __name$11 = (target, value) => __defProp$11(target, "name", {
 	value,
@@ -19673,7 +19676,7 @@ function getState(open) {
 	return open ? "open" : "closed";
 }
 __name$11(getState, "getState");
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-avatar/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-avatar/dist/index.mjs
 var __defProp$10 = Object.defineProperty;
 var __name$10 = (target, value) => __defProp$10(target, "name", {
 	value,
@@ -19757,7 +19760,7 @@ function useImageCount() {
 __name$10(useImageCount, "useImageCount");
 function useUpdateImageCount(setImageCount) {}
 __name$10(useUpdateImageCount, "useUpdateImageCount");
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-use-size/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-use-size/dist/index.mjs
 var __defProp$9 = Object.defineProperty;
 var __name$9 = (target, value) => __defProp$9(target, "name", {
 	value,
@@ -19798,7 +19801,7 @@ function useSize(element) {
 	return size;
 }
 __name$9(useSize, "useSize");
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@floating-ui/utils/dist/floating-ui.utils.mjs
+// ../Global iska /node_modules/@floating-ui/utils/dist/floating-ui.utils.mjs
 /**
 * Custom positioning reference element.
 * @see https://floating-ui.com/docs/virtual-elements
@@ -19926,7 +19929,7 @@ function rectToClientRect(rect) {
 		y
 	};
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@floating-ui/core/dist/floating-ui.core.mjs
+// ../Global iska /node_modules/@floating-ui/core/dist/floating-ui.core.mjs
 function computeCoordsFromPlacement(_ref, placement, rtl) {
 	let { reference, floating } = _ref;
 	const sideAxis = getSideAxis(placement);
@@ -20466,7 +20469,7 @@ var size$1 = function(options) {
 		}
 	};
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@floating-ui/utils/dist/floating-ui.utils.dom.mjs
+// ../Global iska /node_modules/@floating-ui/utils/dist/floating-ui.utils.dom.mjs
 function hasWindow() {
 	return typeof window !== "undefined";
 }
@@ -20578,7 +20581,7 @@ function getOverflowAncestors(node, list, traverseIframes) {
 function getFrameElement(win) {
 	return win.parent && Object.getPrototypeOf(win.parent) ? win.frameElement : null;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs
+// ../Global iska /node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs
 function getCssDimensions(element) {
 	const css = getComputedStyle$1(element);
 	let width = parseFloat(css.width) || 0;
@@ -21111,7 +21114,7 @@ var computePosition = (reference, floating, options) => {
 		platform: platformWithCache
 	});
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.mjs
+// ../Global iska /node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.mjs
 var index$1 = typeof document !== "undefined" ? import_react.useLayoutEffect : function noop() {};
 function deepEqual(a, b) {
 	if (a === b) return true;
@@ -21424,7 +21427,7 @@ var arrow = (options, deps) => {
 		options: [options, deps]
 	};
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-popper/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-popper/dist/index.mjs
 var __defProp$8 = Object.defineProperty;
 var __name$8 = (target, value) => __defProp$8(target, "name", {
 	value,
@@ -21648,7 +21651,7 @@ __name$8(getSideAndAlignFromPlacement, "getSideAndAlignFromPlacement");
 var Root2$2 = Popper;
 var Anchor = PopperAnchor;
 var Content$1 = PopperContent;
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-use-is-hydrated/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-use-is-hydrated/dist/index.mjs
 var __defProp$7 = Object.defineProperty;
 var __name$7 = (target, value) => __defProp$7(target, "name", {
 	value,
@@ -21676,7 +21679,7 @@ function useIsHydratedModern() {
 }
 __name$7(useIsHydratedModern, "useIsHydratedModern");
 var useIsHydrated2 = typeof useReactSyncExternalStore === "function" ? useIsHydratedModern : useIsHydrated;
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-roving-focus/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-roving-focus/dist/index.mjs
 var __defProp$6 = Object.defineProperty;
 var __name$6 = (target, value) => __defProp$6(target, "name", {
 	value,
@@ -21877,7 +21880,7 @@ function wrapArray$1(array, startIndex) {
 __name$6(wrapArray$1, "wrapArray");
 var Root$1 = RovingFocusGroup;
 var Item = RovingFocusGroupItem;
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-menu/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-menu/dist/index.mjs
 var __defProp$5 = Object.defineProperty;
 var __name$5 = (target, value) => __defProp$5(target, "name", {
 	value,
@@ -22338,7 +22341,7 @@ var Anchor2 = MenuAnchor;
 var Portal = MenuPortal;
 var Content2$1 = MenuContent;
 var Item2$1 = MenuItem;
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-dropdown-menu/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-dropdown-menu/dist/index.mjs
 var __defProp$4 = Object.defineProperty;
 var __name$4 = (target, value) => __defProp$4(target, "name", {
 	value,
@@ -22471,7 +22474,7 @@ var Trigger$1 = DropdownMenuTrigger;
 var Portal2 = DropdownMenuPortal;
 var Content2 = DropdownMenuContent;
 var Item2 = DropdownMenuItem;
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-separator/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-separator/dist/index.mjs
 var __defProp$3 = Object.defineProperty;
 var __name$3 = (target, value) => __defProp$3(target, "name", {
 	value,
@@ -22498,7 +22501,7 @@ function isValidOrientation(orientation) {
 }
 __name$3(isValidOrientation, "isValidOrientation");
 var Root = Separator$1;
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-tabs/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-tabs/dist/index.mjs
 var __defProp$2 = Object.defineProperty;
 var __name$2 = (target, value) => __defProp$2(target, "name", {
 	value,
@@ -22635,7 +22638,7 @@ var Root2 = Tabs$1;
 var List = TabsList$1;
 var Trigger = TabsTrigger$1;
 var Content = TabsContent$1;
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-toggle/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-toggle/dist/index.mjs
 var __defProp$1 = Object.defineProperty;
 var __name$1 = (target, value) => __defProp$1(target, "name", {
 	value,
@@ -22662,7 +22665,7 @@ var Toggle = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name$1(fu
 		})
 	});
 }, "Toggle"));
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@radix-ui/react-toggle-group/dist/index.mjs
+// ../Global iska /node_modules/@radix-ui/react-toggle-group/dist/index.mjs
 var __defProp = Object.defineProperty;
 var __name = (target, value) => __defProp(target, "name", {
 	value,
@@ -25090,7 +25093,7 @@ var sections = /* @__PURE__ */ new Set([
 	"chats",
 	"assistant",
 	"employees",
-	"activity",
+	"drive",
 	"trash"
 ]);
 var tabs = /* @__PURE__ */ new Set([
@@ -25149,8 +25152,8 @@ var founderSections = [
 		group: "workspace"
 	},
 	{
-		id: "activity",
-		label: "Activity",
+		id: "drive",
+		label: "Google Drive",
 		group: "workspace"
 	},
 	{
@@ -25530,6 +25533,13 @@ function CardTitle({ className, ...props }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		"data-slot": "card-title",
 		className: cn$1("type-heading-16", className),
+		...props
+	});
+}
+function CardDescription({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "card-description",
+		className: cn$1("text-sm text-muted-foreground", className),
 		...props
 	});
 }
@@ -26882,20 +26892,6 @@ function SupervisorTools({ employees, projects, onChanged }) {
 		]
 	});
 }
-// frontend/src/lib/pageTitle.js
-var pageTitle = (...parts) => [...parts.filter(Boolean), "Studio Iksha"].join(" | ");
-function founderPageTitle({ authState, section, projectId, projectName, projectTab }) {
-	if (authState === "checking") return pageTitle();
-	if (authState === "signed-out") return pageTitle("Sign in");
-	if (section === "projects" && projectName) return pageTitle(founderProjectTabs[founderProjectTab(projectTab)], projectName);
-	if (section === "projects" && projectId) return pageTitle("Project not found");
-	return pageTitle(founderSectionLabel(section));
-}
-function useDocumentTitle(title) {
-	(0, import_react.useEffect)(() => {
-		document.title = title;
-	}, [title]);
-}
 // frontend/src/features/auth/GoogleSignIn.jsx
 var sdk;
 function loadGoogle() {
@@ -27018,6 +27014,499 @@ function GoogleSignIn({ mode = "login", onComplete }) {
 			})
 		]
 	});
+}
+// frontend/src/features/drive/lib/driveLink.js
+function folderIdFrom(value) {
+	const text = String(value || "").trim();
+	const id = text.match(/\/folders\/([\w-]+)/)?.[1] || text.match(/[?&]id=([\w-]+)/)?.[1] || text;
+	return /^[\w-]{10,200}$/.test(id) ? id : "";
+}
+// frontend/src/components/ui/alert.jsx
+var alertVariants = cva("relative grid w-full grid-cols-[0_1fr] items-start gap-y-1 rounded-xl border px-4 py-3 text-sm has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current", {
+	variants: { variant: {
+		default: "bg-card text-card-foreground",
+		destructive: "bg-card text-destructive *:data-[slot=alert-description]:text-destructive/90 [&>svg]:text-current"
+	} },
+	defaultVariants: { variant: "default" }
+});
+function Alert({ className, variant, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "alert",
+		role: "alert",
+		className: cn$1(alertVariants({ variant }), className),
+		...props
+	});
+}
+function AlertTitle({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "alert-title",
+		className: cn$1("col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight", className),
+		...props
+	});
+}
+function AlertDescription({ className, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-slot": "alert-description",
+		className: cn$1("col-start-2 grid justify-items-start gap-1 text-sm text-muted-foreground [&_p]:leading-copy", className),
+		...props
+	});
+}
+// frontend/src/features/drive/GoogleDrive.jsx
+var FOLDER_TYPE = "application/vnd.google-apps.folder";
+var pickerScript;
+function loadPicker() {
+	pickerScript ||= new Promise((resolve, reject) => {
+		const failed = () => {
+			script.remove();
+			pickerScript = null;
+			reject(Error("Google’s folder picker could not load. Try again."));
+		};
+		const script = document.createElement("script");
+		script.src = "https://apis.google.com/js/api.js";
+		script.async = true;
+		script.onload = () => window.gapi.load("picker", {
+			callback: () => resolve(window.google.picker),
+			onerror: failed
+		});
+		script.onerror = failed;
+		document.head.appendChild(script);
+	});
+	return pickerScript;
+}
+async function chooseFolder({ accessToken, pickerKey, appId, folderId }) {
+	const picker = await loadPicker();
+	return new Promise((resolve) => {
+		const view = new picker.DocsView(picker.ViewId.FOLDERS).setIncludeFolders(true).setSelectFolderEnabled(true).setMimeTypes(FOLDER_TYPE);
+		if (folderId && view.setFileIds) view.setFileIds(folderId);
+		new picker.PickerBuilder().addView(view).setOAuthToken(accessToken).setDeveloperKey(pickerKey).setAppId(appId).setTitle("Choose the folder for Iksha").setCallback((data) => {
+			if (data.action === picker.Action.PICKED) resolve(data.docs?.[0]?.id || null);
+			else if (data.action === picker.Action.CANCEL) resolve(null);
+		}).build().setVisible(true);
+	});
+}
+var choices = [
+	{
+		id: "create",
+		title: "Create a new “Iksha Studio” folder",
+		text: "Iksha makes the folder in your Drive and keeps each project in its own folder inside it."
+	},
+	{
+		id: "pick",
+		title: "Choose a folder from my Drive",
+		text: "Pick a folder you already use in Google’s folder picker.",
+		needsPicker: true
+	},
+	{
+		id: "paste",
+		title: "Paste a folder link",
+		text: "Paste the link from Drive’s address bar, then confirm it once in Google.",
+		needsPicker: true
+	}
+];
+var actionLabel = {
+	create: "Create folder",
+	pick: "Choose in Google",
+	paste: "Confirm in Google"
+};
+function FolderChoice({ drive, busy, problem, onSave, onCancel }) {
+	const [choice, setChoice] = (0, import_react.useState)(drive.connection.folder ? "pick" : "create");
+	const [link, setLink] = (0, import_react.useState)("");
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, { children: "Where should files go?" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardDescription, { children: [
+		"Connected as ",
+		drive.connection.email,
+		"."
+	] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+		className: "space-y-3",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "grid gap-2",
+				role: "radiogroup",
+				"aria-label": "Drive folder",
+				children: choices.map((option) => {
+					const off = option.needsPicker && !drive.picker;
+					return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: `card-box ${choice === option.id ? "border-primary bg-primary/5" : ""} ${off ? "opacity-50" : "cursor-pointer"}`,
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "flex items-center gap-2 text-sm font-medium",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+								type: "radio",
+								name: "drive-folder",
+								disabled: off,
+								checked: choice === option.id,
+								onChange: () => setChoice(option.id)
+							}), option.title]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "mt-1 block text-xs text-muted-foreground",
+							children: off ? "Needs GOOGLE_PICKER_API_KEY on the server." : option.text
+						})]
+					}, option.id);
+				})
+			}),
+			choice === "paste" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+				autoFocus: true,
+				value: link,
+				onChange: (event) => setLink(event.target.value),
+				placeholder: "https://drive.google.com/drive/folders/…",
+				"aria-label": "Drive folder link"
+			}),
+			problem && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "text-sm text-destructive",
+				children: problem
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex justify-end gap-2",
+				children: [onCancel && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: "outline",
+					onClick: onCancel,
+					children: "Cancel"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					disabled: busy,
+					onClick: () => onSave(choice, link),
+					children: busy ? "Saving…" : actionLabel[choice]
+				})]
+			})
+		]
+	})] });
+}
+function Row({ label, children, action }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "flex flex-wrap items-center gap-3 py-3 first:pt-0 last:pb-0",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				className: "w-20 shrink-0 text-xs text-muted-foreground",
+				children: label
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "min-w-0 flex-1 basis-48 text-sm break-words",
+				children
+			}),
+			action
+		]
+	});
+}
+var counts = (row) => [
+	`${row.saved} saved`,
+	row.waiting && `${row.waiting} waiting`,
+	row.problems && `${row.problems} need attention`
+].filter(Boolean).join(" · ");
+function Connected({ drive, onChange, onDisconnect }) {
+	const { connection, totals, projects, problems } = drive;
+	const { folder } = connection;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, { children: "Connection" }) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
+			className: "divide-y",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Row, {
+					label: "Account",
+					action: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "destructive-outline",
+						size: "sm",
+						onClick: onDisconnect,
+						children: "Disconnect"
+					}),
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "font-medium",
+						children: connection.email
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						className: "text-muted-foreground",
+						children: [
+							" ",
+							"· Connected ",
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Time, {
+								value: connection.connectedAt,
+								format: "date"
+							})
+						]
+					})]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Row, {
+					label: "Folder",
+					action: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "outline",
+						size: "sm",
+						onClick: onChange,
+						children: "Change folder"
+					}),
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+						href: folder.url,
+						target: "_blank",
+						rel: "noreferrer",
+						className: "inline-flex items-center gap-1 font-medium underline-offset-4 hover:underline",
+						children: [folder.name, /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, {
+							className: "size-3",
+							"aria-hidden": "true"
+						})]
+					})
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Row, {
+					label: "Status",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex flex-wrap gap-2",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(StatusChip, {
+								tone: "success",
+								children: [totals.saved, " saved"]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(StatusChip, {
+								tone: "neutral",
+								children: [totals.waiting, " waiting"]
+							}),
+							totals.problems > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(StatusChip, {
+								tone: "warning",
+								children: [totals.problems, " need attention"]
+							})
+						]
+					})
+				})
+			]
+		})] }),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, { children: "Projects" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardDescription, { children: "Files shared in each project and where they stand." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
+			className: "divide-y",
+			children: projects.length ? projects.map((project) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-wrap items-center gap-3 py-3 first:pt-0 last:pb-0",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderOpen, {
+						className: "size-4 shrink-0 text-muted-foreground",
+						"aria-hidden": "true"
+					}),
+					project.url ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+						href: project.url,
+						target: "_blank",
+						rel: "noreferrer",
+						className: "min-w-0 flex-1 basis-40 truncate text-sm font-medium underline-offset-4 hover:underline",
+						children: project.name
+					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "min-w-0 flex-1 basis-40 truncate text-sm font-medium",
+						children: project.name
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-xs text-muted-foreground",
+						children: project.lastAt ? counts(project) : "No files yet"
+					}),
+					project.lastAt && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Time, {
+						value: project.lastAt,
+						className: "text-xs text-muted-foreground"
+					})
+				]
+			}, project.id)) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
+				className: "border-0",
+				icon: FolderOpen,
+				title: "No projects yet",
+				description: "Projects appear here with their files once they are set up."
+			})
+		})] }),
+		problems.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, { children: "Files that didn’t save" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardDescription, { children: "Iksha keeps retrying. Files over 20 MB can’t be fetched from Telegram, so ask for a smaller copy." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
+			className: "divide-y",
+			children: problems.map((file) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "py-3 first:pt-0 last:pb-0",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+					className: "flex flex-wrap items-center gap-2 text-sm",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "min-w-0 truncate font-medium",
+						children: file.name
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						className: "text-xs text-muted-foreground",
+						children: [file.project, file.at && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [" · ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Time, { value: file.at })] })]
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "mt-1 text-xs text-muted-foreground",
+					children: file.error
+				})]
+			}, file.id))
+		})] }),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, { children: "Who can open these folders" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardDescription, { children: [
+			"Only ",
+			connection.email,
+			". Your team keeps using Files in each project. To give someone access in Drive, share the folder with them there."
+		] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+			variant: "outline",
+			size: "sm",
+			asChild: true,
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+				href: folder.url,
+				target: "_blank",
+				rel: "noreferrer",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, {}), "Manage sharing in Drive"]
+			})
+		}) })] })
+	] });
+}
+function GoogleDrive() {
+	const [drive, setDrive] = (0, import_react.useState)(null);
+	const [loadError, setLoadError] = (0, import_react.useState)("");
+	const [busy, setBusy] = (0, import_react.useState)("");
+	const [problem, setProblem] = (0, import_react.useState)("");
+	const [changing, setChanging] = (0, import_react.useState)(false);
+	const [confirmOff, setConfirmOff] = (0, import_react.useState)(false);
+	const load = async () => {
+		try {
+			setDrive(await request$1("/api/founder/drive"));
+			setLoadError("");
+		} catch (error) {
+			setLoadError(error.message || "Could not load the Google Drive connection.");
+		}
+	};
+	(0, import_react.useEffect)(() => {
+		load();
+	}, []);
+	const connected = Boolean(drive?.connection);
+	(0, import_react.useEffect)(() => {
+		if (drive?.ready && !connected) loadGoogle().catch(() => {});
+	}, [drive?.ready, connected]);
+	const connect = async () => {
+		setBusy("connect");
+		try {
+			await loadGoogle();
+			const result = await request$1("/api/founder/drive/connect", {
+				method: "POST",
+				body: { code: await new Promise((resolve, reject) => {
+					window.google.accounts.oauth2.initCodeClient({
+						client_id: drive.clientId,
+						scope: drive.scope,
+						ux_mode: "popup",
+						callback: (response) => response.code ? resolve(response.code) : reject(Error("Google sign-in didn’t finish. Try again.")),
+						error_callback: () => reject(Error("Google sign-in closed before it finished."))
+					}).requestCode();
+				}) }
+			});
+			setDrive(result);
+			toast(`Connected ${result.connection.email}`);
+		} catch (error) {
+			toast(error.message || "Could not connect Google Drive.", { error: true });
+		} finally {
+			setBusy("");
+		}
+	};
+	const saveFolder = async (choice, link) => {
+		setBusy("folder");
+		setProblem("");
+		try {
+			let input = { create: true };
+			if (choice !== "create") {
+				const pasted = choice === "paste" ? folderIdFrom(link) : "";
+				if (choice === "paste" && !pasted) throw Error("Paste a Drive folder link, like drive.google.com/drive/folders/…");
+				const { accessToken } = await request$1("/api/founder/drive/token", {
+					method: "POST",
+					body: {}
+				});
+				const folderId = await chooseFolder({
+					accessToken,
+					pickerKey: drive.pickerKey,
+					appId: drive.appId,
+					folderId: pasted
+				});
+				if (!folderId) return;
+				input = {
+					folderId,
+					how: choice
+				};
+			}
+			const result = await request$1("/api/founder/drive/folder", {
+				method: "POST",
+				body: input
+			});
+			setDrive(result);
+			setChanging(false);
+			toast(`Files will go to ${result.connection.folder.name}`);
+		} catch (error) {
+			setProblem(error.message || "Could not save the folder.");
+		} finally {
+			setBusy("");
+		}
+	};
+	const disconnect = async () => {
+		setBusy("disconnect");
+		try {
+			setDrive(await request$1("/api/founder/drive/disconnect", {
+				method: "POST",
+				body: {}
+			}));
+			setConfirmOff(false);
+			setChanging(false);
+			toast("Google Drive disconnected");
+		} catch (error) {
+			toast(error.message || "Could not disconnect Google Drive.", { error: true });
+		} finally {
+			setBusy("");
+		}
+	};
+	const connection = drive?.connection;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "space-y-6",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex items-start justify-between gap-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", { children: "Google Drive" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "mt-1 text-sm text-muted-foreground",
+					children: "Back up every project photo, document and video to your Drive."
+				})] }), connection?.folder && !changing && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshButton, { onRefresh: load })]
+			}),
+			!drive ? loadError ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "alert",
+				className: "text-sm text-destructive",
+				children: loadError
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				role: "status",
+				className: "text-sm text-muted-foreground",
+				children: "Loading…"
+			}) : !drive.ready ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Alert, { children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(HardDrive, {}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertTitle, { children: "Google Drive isn’t set up on the server yet" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertDescription, { children: "Add GOOGLE_CLIENT_SECRET to the server, and GOOGLE_PICKER_API_KEY to choose or paste a folder, then refresh this page." })
+			] }) : !connection ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, { children: "Connect Google Drive" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardDescription, { children: "Choose the Google account whose Drive should hold the files. Iksha can only see the files it saves there, never the rest of your Drive." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+				disabled: busy === "connect",
+				onClick: connect,
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(HardDrive, {}), busy === "connect" ? "Connecting…" : "Connect Google Drive"]
+			}) })] }) : !connection.folder || changing ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderChoice, {
+				drive,
+				busy: busy === "folder",
+				problem,
+				onSave: saveFolder,
+				onCancel: connection.folder ? () => {
+					setChanging(false);
+					setProblem("");
+				} : null
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Connected, {
+				drive,
+				onChange: () => setChanging(true),
+				onDisconnect: () => setConfirmOff(true)
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				open: confirmOff,
+				onOpenChange: setConfirmOff,
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: "Disconnect Google Drive?" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogDescription, { children: [
+					"New files wait in Iksha until you connect again. Files already saved stay in",
+					" ",
+					connection?.email,
+					"’s Drive."
+				] })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogFooter, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: "outline",
+					onClick: () => setConfirmOff(false),
+					children: "Cancel"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: "destructive",
+					disabled: busy === "disconnect",
+					onClick: disconnect,
+					children: "Disconnect"
+				})] })] })
+			})
+		]
+	});
+}
+// frontend/src/lib/pageTitle.js
+var pageTitle = (...parts) => [...parts.filter(Boolean), "Studio Iksha"].join(" | ");
+function founderPageTitle({ authState, section, projectId, projectName, projectTab }) {
+	if (authState === "checking") return pageTitle();
+	if (authState === "signed-out") return pageTitle("Sign in");
+	if (section === "projects" && projectName) return pageTitle(founderProjectTabs[founderProjectTab(projectTab)], projectName);
+	if (section === "projects" && projectId) return pageTitle("Project not found");
+	return pageTitle(founderSectionLabel(section));
+}
+function useDocumentTitle(title) {
+	(0, import_react.useEffect)(() => {
+		document.title = title;
+	}, [title]);
 }
 // frontend/src/features/auth/WorkspaceAccess.jsx
 function IkshaBrand({ compact = false }) {
@@ -27157,36 +27646,6 @@ function WorkspaceAccess({ team = false, children }) {
 		})
 	});
 }
-// frontend/src/components/ui/alert.jsx
-var alertVariants = cva("relative grid w-full grid-cols-[0_1fr] items-start gap-y-1 rounded-xl border px-4 py-3 text-sm has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current", {
-	variants: { variant: {
-		default: "bg-card text-card-foreground",
-		destructive: "bg-card text-destructive *:data-[slot=alert-description]:text-destructive/90 [&>svg]:text-current"
-	} },
-	defaultVariants: { variant: "default" }
-});
-function Alert({ className, variant, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "alert",
-		role: "alert",
-		className: cn$1(alertVariants({ variant }), className),
-		...props
-	});
-}
-function AlertTitle({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "alert-title",
-		className: cn$1("col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight", className),
-		...props
-	});
-}
-function AlertDescription({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-slot": "alert-description",
-		className: cn$1("col-start-2 grid justify-items-start gap-1 text-sm text-muted-foreground [&_p]:leading-copy", className),
-		...props
-	});
-}
 // frontend/src/components/ui/sidebar.jsx
 function SidebarGroup({ className, ...props }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
@@ -27245,7 +27704,7 @@ function Separator({ className, orientation = "horizontal", decorative = true, .
 		...props
 	});
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/liquid-gooey/dist/index.js
+// ../Global iska /node_modules/liquid-gooey/dist/index.js
 var GooeyContext = (0, import_react.createContext)(null);
 function useGooeyContext() {
 	const ctx = (0, import_react.useContext)(GooeyContext);
@@ -30985,7 +31444,7 @@ function EmployeeManager({ employees, projects, onAdd, onUpdated, onViewWork }) 
 		]
 	});
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/thinking-orbs/dist/index-B8WsUNf5.js
+// ../Global iska /node_modules/thinking-orbs/dist/index-B8WsUNf5.js
 function lerp(a, b, f) {
 	return a + (b - a) * f;
 }
@@ -32010,7 +32469,7 @@ function resolvePreset(state, size) {
 	cache.set(key, resolved);
 	return resolved;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/thinking-orbs/dist/index.es.js
+// ../Global iska /node_modules/thinking-orbs/dist/index.es.js
 function ancestorTheme(el) {
 	let node = el;
 	while (node) {
@@ -37606,7 +38065,7 @@ function StageOrderGrip({ stage, reorder }) {
 		})
 	});
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/classcat/index.js
+// ../Global iska /node_modules/classcat/index.js
 function cc(names) {
 	if (typeof names === "string" || typeof names === "number") return "" + names;
 	let out = "";
@@ -37615,7 +38074,7 @@ function cc(names) {
 	} else for (let k in names) if (names[k]) out += (out && " ") + k;
 	return out;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-dispatch/src/dispatch.js
+// ../Global iska /node_modules/d3-dispatch/src/dispatch.js
 var noop = { value: () => {} };
 function dispatch() {
 	for (var i = 0, n = arguments.length, _ = {}, t; i < n; ++i) {
@@ -37687,7 +38146,7 @@ var namespaces_default = {
 	xml: "http://www.w3.org/XML/1998/namespace",
 	xmlns: "http://www.w3.org/2000/xmlns/"
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/namespace.js
+// ../Global iska /node_modules/d3-selection/src/namespace.js
 function namespace_default(name) {
 	var prefix = name += "", i = prefix.indexOf(":");
 	if (i >= 0 && (prefix = name.slice(0, i)) !== "xmlns") name = name.slice(i + 1);
@@ -37696,7 +38155,7 @@ function namespace_default(name) {
 		local: name
 	} : name;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/creator.js
+// ../Global iska /node_modules/d3-selection/src/creator.js
 function creatorInherit(name) {
 	return function() {
 		var document = this.ownerDocument, uri = this.namespaceURI;
@@ -37712,14 +38171,14 @@ function creator_default(name) {
 	var fullname = namespace_default(name);
 	return (fullname.local ? creatorFixed : creatorInherit)(fullname);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selector.js
+// ../Global iska /node_modules/d3-selection/src/selector.js
 function none() {}
 function selector_default(selector) {
 	return selector == null ? none : function() {
 		return this.querySelector(selector);
 	};
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/select.js
+// ../Global iska /node_modules/d3-selection/src/selection/select.js
 function select_default$2(select) {
 	if (typeof select !== "function") select = selector_default(select);
 	for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) for (var group = groups[j], n = group.length, subgroup = subgroups[j] = new Array(n), node, subnode, i = 0; i < n; ++i) if ((node = group[i]) && (subnode = select.call(node, node.__data__, i, group))) {
@@ -37728,11 +38187,11 @@ function select_default$2(select) {
 	}
 	return new Selection$1(subgroups, this._parents);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/array.js
+// ../Global iska /node_modules/d3-selection/src/array.js
 function array(x) {
 	return x == null ? [] : Array.isArray(x) ? x : Array.from(x);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selectorAll.js
+// ../Global iska /node_modules/d3-selection/src/selectorAll.js
 function empty() {
 	return [];
 }
@@ -37741,7 +38200,7 @@ function selectorAll_default(selector) {
 		return this.querySelectorAll(selector);
 	};
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/selectAll.js
+// ../Global iska /node_modules/d3-selection/src/selection/selectAll.js
 function arrayAll(select) {
 	return function() {
 		return array(select.apply(this, arguments));
@@ -37756,7 +38215,7 @@ function selectAll_default$1(select) {
 	}
 	return new Selection$1(subgroups, parents);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/matcher.js
+// ../Global iska /node_modules/d3-selection/src/matcher.js
 function matcher_default(selector) {
 	return function() {
 		return this.matches(selector);
@@ -37767,7 +38226,7 @@ function childMatcher(selector) {
 		return node.matches(selector);
 	};
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/selectChild.js
+// ../Global iska /node_modules/d3-selection/src/selection/selectChild.js
 var find = Array.prototype.find;
 function childFind(match) {
 	return function() {
@@ -37780,7 +38239,7 @@ function childFirst() {
 function selectChild_default(match) {
 	return this.select(match == null ? childFirst : childFind(typeof match === "function" ? match : childMatcher(match)));
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/selectChildren.js
+// ../Global iska /node_modules/d3-selection/src/selection/selectChildren.js
 var filter = Array.prototype.filter;
 function children() {
 	return Array.from(this.children);
@@ -37793,17 +38252,17 @@ function childrenFilter(match) {
 function selectChildren_default(match) {
 	return this.selectAll(match == null ? children : childrenFilter(typeof match === "function" ? match : childMatcher(match)));
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/filter.js
+// ../Global iska /node_modules/d3-selection/src/selection/filter.js
 function filter_default$1(match) {
 	if (typeof match !== "function") match = matcher_default(match);
 	for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) for (var group = groups[j], n = group.length, subgroup = subgroups[j] = [], node, i = 0; i < n; ++i) if ((node = group[i]) && match.call(node, node.__data__, i, group)) subgroup.push(node);
 	return new Selection$1(subgroups, this._parents);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/sparse.js
+// ../Global iska /node_modules/d3-selection/src/selection/sparse.js
 function sparse_default(update) {
 	return new Array(update.length);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/enter.js
+// ../Global iska /node_modules/d3-selection/src/selection/enter.js
 function enter_default() {
 	return new Selection$1(this._enter || this._groups.map(sparse_default), this._parents);
 }
@@ -37829,13 +38288,13 @@ EnterNode.prototype = {
 		return this._parent.querySelectorAll(selector);
 	}
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/constant.js
+// ../Global iska /node_modules/d3-selection/src/constant.js
 function constant_default$3(x) {
 	return function() {
 		return x;
 	};
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/data.js
+// ../Global iska /node_modules/d3-selection/src/selection/data.js
 function bindIndex(parent, group, enter, update, exit, data) {
 	var i = 0, node, groupLength = group.length, dataLength = data.length;
 	for (; i < dataLength; ++i) if (node = group[i]) {
@@ -37885,11 +38344,11 @@ function data_default(value, key) {
 function arraylike(data) {
 	return typeof data === "object" && "length" in data ? data : Array.from(data);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/exit.js
+// ../Global iska /node_modules/d3-selection/src/selection/exit.js
 function exit_default() {
 	return new Selection$1(this._exit || this._groups.map(sparse_default), this._parents);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/join.js
+// ../Global iska /node_modules/d3-selection/src/selection/join.js
 function join_default(onenter, onupdate, onexit) {
 	var enter = this.enter(), update = this, exit = this.exit();
 	if (typeof onenter === "function") {
@@ -37904,14 +38363,14 @@ function join_default(onenter, onupdate, onexit) {
 	else onexit(exit);
 	return enter && update ? enter.merge(update).order() : update;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/merge.js
+// ../Global iska /node_modules/d3-selection/src/selection/merge.js
 function merge_default$1(context) {
 	var selection = context.selection ? context.selection() : context;
 	for (var groups0 = this._groups, groups1 = selection._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) for (var group0 = groups0[j], group1 = groups1[j], n = group0.length, merge = merges[j] = new Array(n), node, i = 0; i < n; ++i) if (node = group0[i] || group1[i]) merge[i] = node;
 	for (; j < m0; ++j) merges[j] = groups0[j];
 	return new Selection$1(merges, this._parents);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/order.js
+// ../Global iska /node_modules/d3-selection/src/selection/order.js
 function order_default() {
 	for (var groups = this._groups, j = -1, m = groups.length; ++j < m;) for (var group = groups[j], i = group.length - 1, next = group[i], node; --i >= 0;) if (node = group[i]) {
 		if (next && node.compareDocumentPosition(next) ^ 4) next.parentNode.insertBefore(node, next);
@@ -37919,7 +38378,7 @@ function order_default() {
 	}
 	return this;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/sort.js
+// ../Global iska /node_modules/d3-selection/src/selection/sort.js
 function sort_default(compare) {
 	if (!compare) compare = ascending;
 	function compareNode(a, b) {
@@ -37934,18 +38393,18 @@ function sort_default(compare) {
 function ascending(a, b) {
 	return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/call.js
+// ../Global iska /node_modules/d3-selection/src/selection/call.js
 function call_default() {
 	var callback = arguments[0];
 	arguments[0] = this;
 	callback.apply(null, arguments);
 	return this;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/nodes.js
+// ../Global iska /node_modules/d3-selection/src/selection/nodes.js
 function nodes_default() {
 	return Array.from(this);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/node.js
+// ../Global iska /node_modules/d3-selection/src/selection/node.js
 function node_default() {
 	for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) for (var group = groups[j], i = 0, n = group.length; i < n; ++i) {
 		var node = group[i];
@@ -37953,22 +38412,22 @@ function node_default() {
 	}
 	return null;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/size.js
+// ../Global iska /node_modules/d3-selection/src/selection/size.js
 function size_default() {
 	let size = 0;
 	for (const node of this) ++size;
 	return size;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/empty.js
+// ../Global iska /node_modules/d3-selection/src/selection/empty.js
 function empty_default() {
 	return !this.node();
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/each.js
+// ../Global iska /node_modules/d3-selection/src/selection/each.js
 function each_default(callback) {
 	for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) for (var group = groups[j], i = 0, n = group.length, node; i < n; ++i) if (node = group[i]) callback.call(node, node.__data__, i, group);
 	return this;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/attr.js
+// ../Global iska /node_modules/d3-selection/src/selection/attr.js
 function attrRemove$1(name) {
 	return function() {
 		this.removeAttribute(name);
@@ -38011,11 +38470,11 @@ function attr_default$1(name, value) {
 	}
 	return this.each((value == null ? fullname.local ? attrRemoveNS$1 : attrRemove$1 : typeof value === "function" ? fullname.local ? attrFunctionNS$1 : attrFunction$1 : fullname.local ? attrConstantNS$1 : attrConstant$1)(fullname, value));
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/window.js
+// ../Global iska /node_modules/d3-selection/src/window.js
 function window_default(node) {
 	return node.ownerDocument && node.ownerDocument.defaultView || node.document && node || node.defaultView;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/style.js
+// ../Global iska /node_modules/d3-selection/src/selection/style.js
 function styleRemove$1(name) {
 	return function() {
 		this.style.removeProperty(name);
@@ -38039,7 +38498,7 @@ function style_default$1(name, value, priority) {
 function styleValue(node, name) {
 	return node.style.getPropertyValue(name) || window_default(node).getComputedStyle(node, null).getPropertyValue(name);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/property.js
+// ../Global iska /node_modules/d3-selection/src/selection/property.js
 function propertyRemove(name) {
 	return function() {
 		delete this[name];
@@ -38060,7 +38519,7 @@ function propertyFunction(name, value) {
 function property_default(name, value) {
 	return arguments.length > 1 ? this.each((value == null ? propertyRemove : typeof value === "function" ? propertyFunction : propertyConstant)(name, value)) : this.node()[name];
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/classed.js
+// ../Global iska /node_modules/d3-selection/src/selection/classed.js
 function classArray(string) {
 	return string.trim().split(/^|\s+/);
 }
@@ -38121,7 +38580,7 @@ function classed_default(name, value) {
 	}
 	return this.each((typeof value === "function" ? classedFunction : value ? classedTrue : classedFalse)(names, value));
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/text.js
+// ../Global iska /node_modules/d3-selection/src/selection/text.js
 function textRemove() {
 	this.textContent = "";
 }
@@ -38139,7 +38598,7 @@ function textFunction$1(value) {
 function text_default$1(value) {
 	return arguments.length ? this.each(value == null ? textRemove : (typeof value === "function" ? textFunction$1 : textConstant$1)(value)) : this.node().textContent;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/html.js
+// ../Global iska /node_modules/d3-selection/src/selection/html.js
 function htmlRemove() {
 	this.innerHTML = "";
 }
@@ -38157,28 +38616,28 @@ function htmlFunction(value) {
 function html_default(value) {
 	return arguments.length ? this.each(value == null ? htmlRemove : (typeof value === "function" ? htmlFunction : htmlConstant)(value)) : this.node().innerHTML;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/raise.js
+// ../Global iska /node_modules/d3-selection/src/selection/raise.js
 function raise() {
 	if (this.nextSibling) this.parentNode.appendChild(this);
 }
 function raise_default() {
 	return this.each(raise);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/lower.js
+// ../Global iska /node_modules/d3-selection/src/selection/lower.js
 function lower() {
 	if (this.previousSibling) this.parentNode.insertBefore(this, this.parentNode.firstChild);
 }
 function lower_default() {
 	return this.each(lower);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/append.js
+// ../Global iska /node_modules/d3-selection/src/selection/append.js
 function append_default(name) {
 	var create = typeof name === "function" ? name : creator_default(name);
 	return this.select(function() {
 		return this.appendChild(create.apply(this, arguments));
 	});
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/insert.js
+// ../Global iska /node_modules/d3-selection/src/selection/insert.js
 function constantNull() {
 	return null;
 }
@@ -38188,7 +38647,7 @@ function insert_default(name, before) {
 		return this.insertBefore(create.apply(this, arguments), select.apply(this, arguments) || null);
 	});
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/remove.js
+// ../Global iska /node_modules/d3-selection/src/selection/remove.js
 function remove() {
 	var parent = this.parentNode;
 	if (parent) parent.removeChild(this);
@@ -38196,7 +38655,7 @@ function remove() {
 function remove_default$1() {
 	return this.each(remove);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/clone.js
+// ../Global iska /node_modules/d3-selection/src/selection/clone.js
 function selection_cloneShallow() {
 	var clone = this.cloneNode(false), parent = this.parentNode;
 	return parent ? parent.insertBefore(clone, this.nextSibling) : clone;
@@ -38208,11 +38667,11 @@ function selection_cloneDeep() {
 function clone_default(deep) {
 	return this.select(deep ? selection_cloneDeep : selection_cloneShallow);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/datum.js
+// ../Global iska /node_modules/d3-selection/src/selection/datum.js
 function datum_default(value) {
 	return arguments.length ? this.property("__data__", value) : this.node().__data__;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/on.js
+// ../Global iska /node_modules/d3-selection/src/selection/on.js
 function contextListener(listener) {
 	return function(event) {
 		listener.call(this, event, this.__data__);
@@ -38274,7 +38733,7 @@ function on_default$1(typename, value, options) {
 	for (i = 0; i < n; ++i) this.each(on(typenames[i], value, options));
 	return this;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/dispatch.js
+// ../Global iska /node_modules/d3-selection/src/selection/dispatch.js
 function dispatchEvent(node, type, params) {
 	var window = window_default(node), event = window.CustomEvent;
 	if (typeof event === "function") event = new event(type, params);
@@ -38298,11 +38757,11 @@ function dispatchFunction(type, params) {
 function dispatch_default(type, params) {
 	return this.each((typeof params === "function" ? dispatchFunction : dispatchConstant)(type, params));
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/iterator.js
+// ../Global iska /node_modules/d3-selection/src/selection/iterator.js
 function* iterator_default() {
 	for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) for (var group = groups[j], i = 0, n = group.length, node; i < n; ++i) if (node = group[i]) yield node;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/selection/index.js
+// ../Global iska /node_modules/d3-selection/src/selection/index.js
 var root = [null];
 function Selection$1(groups, parents) {
 	this._groups = groups;
@@ -38352,17 +38811,17 @@ Selection$1.prototype = selection.prototype = {
 	dispatch: dispatch_default,
 	[Symbol.iterator]: iterator_default
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/select.js
+// ../Global iska /node_modules/d3-selection/src/select.js
 function select_default$1(selector) {
 	return typeof selector === "string" ? new Selection$1([[document.querySelector(selector)]], [document.documentElement]) : new Selection$1([[selector]], root);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/sourceEvent.js
+// ../Global iska /node_modules/d3-selection/src/sourceEvent.js
 function sourceEvent_default(event) {
 	let sourceEvent;
 	while (sourceEvent = event.sourceEvent) event = sourceEvent;
 	return event;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-selection/src/pointer.js
+// ../Global iska /node_modules/d3-selection/src/pointer.js
 function pointer_default(event, node) {
 	event = sourceEvent_default(event);
 	if (node === void 0) node = event.currentTarget;
@@ -38381,7 +38840,7 @@ function pointer_default(event, node) {
 	}
 	return [event.pageX, event.pageY];
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-drag/src/noevent.js
+// ../Global iska /node_modules/d3-drag/src/noevent.js
 var nonpassive = { passive: false };
 var nonpassivecapture = {
 	capture: true,
@@ -38394,7 +38853,7 @@ function noevent_default$1(event) {
 	event.preventDefault();
 	event.stopImmediatePropagation();
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-drag/src/nodrag.js
+// ../Global iska /node_modules/d3-drag/src/nodrag.js
 function nodrag_default(view) {
 	var root = view.document.documentElement, selection = select_default$1(view).on("dragstart.drag", noevent_default$1, nonpassivecapture);
 	if ("onselectstart" in root) selection.on("selectstart.drag", noevent_default$1, nonpassivecapture);
@@ -38417,9 +38876,9 @@ function yesdrag(view, noclick) {
 		delete root.__noselect;
 	}
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-drag/src/constant.js
+// ../Global iska /node_modules/d3-drag/src/constant.js
 var constant_default$2 = (x) => () => x;
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-drag/src/event.js
+// ../Global iska /node_modules/d3-drag/src/event.js
 function DragEvent(type, { sourceEvent, subject, target, identifier, active, x, y, dx, dy, dispatch }) {
 	Object.defineProperties(this, {
 		type: {
@@ -38479,7 +38938,7 @@ DragEvent.prototype.on = function() {
 	var value = this._.on.apply(this._, arguments);
 	return value === this._ ? this : value;
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-drag/src/drag.js
+// ../Global iska /node_modules/d3-drag/src/drag.js
 function defaultFilter$1(event) {
 	return !event.ctrlKey && !event.button;
 }
@@ -38611,7 +39070,7 @@ function drag_default() {
 	};
 	return drag;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-color/src/define.js
+// ../Global iska /node_modules/d3-color/src/define.js
 function define_default(constructor, factory, prototype) {
 	constructor.prototype = factory.prototype = prototype;
 	prototype.constructor = constructor;
@@ -38621,7 +39080,7 @@ function extend(parent, definition) {
 	for (var key in definition) prototype[key] = definition[key];
 	return prototype;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-color/src/color.js
+// ../Global iska /node_modules/d3-color/src/color.js
 function Color() {}
 var darker = .7;
 var brighter = 1 / darker;
@@ -38947,9 +39406,9 @@ function clampt(value) {
 function hsl2rgb(h, m1, m2) {
 	return (h < 60 ? m1 + (m2 - m1) * h / 60 : h < 180 ? m2 : h < 240 ? m1 + (m2 - m1) * (240 - h) / 60 : m1) * 255;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/constant.js
+// ../Global iska /node_modules/d3-interpolate/src/constant.js
 var constant_default$1 = (x) => () => x;
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/color.js
+// ../Global iska /node_modules/d3-interpolate/src/color.js
 function linear(a, d) {
 	return function(t) {
 		return a + t * d;
@@ -38969,7 +39428,7 @@ function nogamma(a, b) {
 	var d = b - a;
 	return d ? linear(a, d) : constant_default$1(isNaN(a) ? b : a);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/rgb.js
+// ../Global iska /node_modules/d3-interpolate/src/rgb.js
 var rgb_default = (function rgbGamma(y) {
 	var color = gamma(y);
 	function rgb$1(start, end) {
@@ -38985,7 +39444,7 @@ var rgb_default = (function rgbGamma(y) {
 	rgb$1.gamma = rgbGamma;
 	return rgb$1;
 })(1);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/numberArray.js
+// ../Global iska /node_modules/d3-interpolate/src/numberArray.js
 function numberArray_default(a, b) {
 	if (!b) b = [];
 	var n = a ? Math.min(b.length, a.length) : 0, c = b.slice(), i;
@@ -38997,7 +39456,7 @@ function numberArray_default(a, b) {
 function isNumberArray(x) {
 	return ArrayBuffer.isView(x) && !(x instanceof DataView);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/array.js
+// ../Global iska /node_modules/d3-interpolate/src/array.js
 function genericArray(a, b) {
 	var nb = b ? b.length : 0, na = a ? Math.min(nb, a.length) : 0, x = new Array(na), c = new Array(nb), i = 0;
 	for (; i < na; ++i) x[i] = value_default(a[i], b[i]);
@@ -39007,20 +39466,20 @@ function genericArray(a, b) {
 		return c;
 	};
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/date.js
+// ../Global iska /node_modules/d3-interpolate/src/date.js
 function date_default(a, b) {
 	var d = /* @__PURE__ */ new Date();
 	return a = +a, b = +b, function(t) {
 		return d.setTime(a * (1 - t) + b * t), d;
 	};
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/number.js
+// ../Global iska /node_modules/d3-interpolate/src/number.js
 function number_default(a, b) {
 	return a = +a, b = +b, function(t) {
 		return a * (1 - t) + b * t;
 	};
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/object.js
+// ../Global iska /node_modules/d3-interpolate/src/object.js
 function object_default(a, b) {
 	var i = {}, c = {}, k;
 	if (a === null || typeof a !== "object") a = {};
@@ -39032,7 +39491,7 @@ function object_default(a, b) {
 		return c;
 	};
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/string.js
+// ../Global iska /node_modules/d3-interpolate/src/string.js
 var reA = /[-+]?(?:\d+\.?\d*|\.?\d+)(?:[eE][-+]?\d+)?/g;
 var reB = new RegExp(reA.source, "g");
 function zero(b) {
@@ -39076,12 +39535,12 @@ function string_default(a, b) {
 		return s.join("");
 	});
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/value.js
+// ../Global iska /node_modules/d3-interpolate/src/value.js
 function value_default(a, b) {
 	var t = typeof b, c;
 	return b == null || t === "boolean" ? constant_default$1(b) : (t === "number" ? number_default : t === "string" ? (c = color(b)) ? (b = c, rgb_default) : string_default : b instanceof color ? rgb_default : b instanceof Date ? date_default : isNumberArray(b) ? numberArray_default : Array.isArray(b) ? genericArray : typeof b.valueOf !== "function" && typeof b.toString !== "function" || isNaN(b) ? object_default : number_default)(a, b);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/transform/decompose.js
+// ../Global iska /node_modules/d3-interpolate/src/transform/decompose.js
 var degrees = 180 / Math.PI;
 var identity$2 = {
 	translateX: 0,
@@ -39106,7 +39565,7 @@ function decompose_default(a, b, c, d, e, f) {
 		scaleY
 	};
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/transform/parse.js
+// ../Global iska /node_modules/d3-interpolate/src/transform/parse.js
 var svgNode;
 function parseCss(value) {
 	const m = new (typeof DOMMatrix === "function" ? DOMMatrix : WebKitCSSMatrix)(value + "");
@@ -39120,7 +39579,7 @@ function parseSvg(value) {
 	value = value.matrix;
 	return decompose_default(value.a, value.b, value.c, value.d, value.e, value.f);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/transform/index.js
+// ../Global iska /node_modules/d3-interpolate/src/transform/index.js
 function interpolateTransform(parse, pxComma, pxParen, degParen) {
 	function pop(s) {
 		return s.length ? s.pop() + " " : "";
@@ -39183,7 +39642,7 @@ function interpolateTransform(parse, pxComma, pxParen, degParen) {
 }
 var interpolateTransformCss = interpolateTransform(parseCss, "px, ", "px)", "deg)");
 var interpolateTransformSvg = interpolateTransform(parseSvg, ", ", ")", ")");
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-interpolate/src/zoom.js
+// ../Global iska /node_modules/d3-interpolate/src/zoom.js
 var epsilon2 = 1e-12;
 function cosh(x) {
 	return ((x = Math.exp(x)) + 1 / x) / 2;
@@ -39227,7 +39686,7 @@ var zoom_default$1 = (function zoomRho(rho, rho2, rho4) {
 	};
 	return zoom;
 })(Math.SQRT2, 2, 4);
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-timer/src/timer.js
+// ../Global iska /node_modules/d3-timer/src/timer.js
 var frame = 0;
 var timeout = 0;
 var interval = 0;
@@ -39325,7 +39784,7 @@ function sleep(time) {
 		frame = 1, setFrame(wake);
 	}
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-timer/src/timeout.js
+// ../Global iska /node_modules/d3-timer/src/timeout.js
 function timeout_default(callback, delay, time) {
 	var t = new Timer();
 	delay = delay == null ? 0 : +delay;
@@ -39335,7 +39794,7 @@ function timeout_default(callback, delay, time) {
 	}, delay, time);
 	return t;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/schedule.js
+// ../Global iska /node_modules/d3-transition/src/transition/schedule.js
 var emptyOn = dispatch("start", "end", "cancel", "interrupt");
 var emptyTween = [];
 function schedule_default(node, name, id, index, group, timing) {
@@ -39430,7 +39889,7 @@ function create(node, id, self) {
 		delete node.__transition;
 	}
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/interrupt.js
+// ../Global iska /node_modules/d3-transition/src/interrupt.js
 function interrupt_default$1(node, name) {
 	var schedules = node.__transition, schedule, active, empty = true, i;
 	if (!schedules) return;
@@ -39448,13 +39907,13 @@ function interrupt_default$1(node, name) {
 	}
 	if (empty) delete node.__transition;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/selection/interrupt.js
+// ../Global iska /node_modules/d3-transition/src/selection/interrupt.js
 function interrupt_default(name) {
 	return this.each(function() {
 		interrupt_default$1(this, name);
 	});
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/tween.js
+// ../Global iska /node_modules/d3-transition/src/transition/tween.js
 function tweenRemove(id, name) {
 	var tween0, tween1;
 	return function() {
@@ -39509,12 +39968,12 @@ function tweenValue(transition, name, value) {
 		return get(node, id).value[name];
 	};
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/interpolate.js
+// ../Global iska /node_modules/d3-transition/src/transition/interpolate.js
 function interpolate_default(a, b) {
 	var c;
 	return (typeof b === "number" ? number_default : b instanceof color ? rgb_default : (c = color(b)) ? (b = c, rgb_default) : string_default)(a, b);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/attr.js
+// ../Global iska /node_modules/d3-transition/src/transition/attr.js
 function attrRemove(name) {
 	return function() {
 		this.removeAttribute(name);
@@ -39563,7 +40022,7 @@ function attr_default(name, value) {
 	var fullname = namespace_default(name), i = fullname === "transform" ? interpolateTransformSvg : interpolate_default;
 	return this.attrTween(name, typeof value === "function" ? (fullname.local ? attrFunctionNS : attrFunction)(fullname, i, tweenValue(this, "attr." + name, value)) : value == null ? (fullname.local ? attrRemoveNS : attrRemove)(fullname) : (fullname.local ? attrConstantNS : attrConstant)(fullname, i, value));
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/attrTween.js
+// ../Global iska /node_modules/d3-transition/src/transition/attrTween.js
 function attrInterpolate(name, i) {
 	return function(t) {
 		this.setAttribute(name, i.call(this, t));
@@ -39602,7 +40061,7 @@ function attrTween_default(name, value) {
 	var fullname = namespace_default(name);
 	return this.tween(key, (fullname.local ? attrTweenNS : attrTween)(fullname, value));
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/delay.js
+// ../Global iska /node_modules/d3-transition/src/transition/delay.js
 function delayFunction(id, value) {
 	return function() {
 		init(this, id).delay = +value.apply(this, arguments);
@@ -39617,7 +40076,7 @@ function delay_default(value) {
 	var id = this._id;
 	return arguments.length ? this.each((typeof value === "function" ? delayFunction : delayConstant)(id, value)) : get(this.node(), id).delay;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/duration.js
+// ../Global iska /node_modules/d3-transition/src/transition/duration.js
 function durationFunction(id, value) {
 	return function() {
 		set(this, id).duration = +value.apply(this, arguments);
@@ -39632,7 +40091,7 @@ function duration_default(value) {
 	var id = this._id;
 	return arguments.length ? this.each((typeof value === "function" ? durationFunction : durationConstant)(id, value)) : get(this.node(), id).duration;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/ease.js
+// ../Global iska /node_modules/d3-transition/src/transition/ease.js
 function easeConstant(id, value) {
 	if (typeof value !== "function") throw new Error();
 	return function() {
@@ -39643,7 +40102,7 @@ function ease_default(value) {
 	var id = this._id;
 	return arguments.length ? this.each(easeConstant(id, value)) : get(this.node(), id).ease;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/easeVarying.js
+// ../Global iska /node_modules/d3-transition/src/transition/easeVarying.js
 function easeVarying(id, value) {
 	return function() {
 		var v = value.apply(this, arguments);
@@ -39655,20 +40114,20 @@ function easeVarying_default(value) {
 	if (typeof value !== "function") throw new Error();
 	return this.each(easeVarying(this._id, value));
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/filter.js
+// ../Global iska /node_modules/d3-transition/src/transition/filter.js
 function filter_default(match) {
 	if (typeof match !== "function") match = matcher_default(match);
 	for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) for (var group = groups[j], n = group.length, subgroup = subgroups[j] = [], node, i = 0; i < n; ++i) if ((node = group[i]) && match.call(node, node.__data__, i, group)) subgroup.push(node);
 	return new Transition(subgroups, this._parents, this._name, this._id);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/merge.js
+// ../Global iska /node_modules/d3-transition/src/transition/merge.js
 function merge_default(transition) {
 	if (transition._id !== this._id) throw new Error();
 	for (var groups0 = this._groups, groups1 = transition._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) for (var group0 = groups0[j], group1 = groups1[j], n = group0.length, merge = merges[j] = new Array(n), node, i = 0; i < n; ++i) if (node = group0[i] || group1[i]) merge[i] = node;
 	for (; j < m0; ++j) merges[j] = groups0[j];
 	return new Transition(merges, this._parents, this._name, this._id);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/on.js
+// ../Global iska /node_modules/d3-transition/src/transition/on.js
 function start(name) {
 	return (name + "").trim().split(/^|\s+/).every(function(t) {
 		var i = t.indexOf(".");
@@ -39688,7 +40147,7 @@ function on_default(name, listener) {
 	var id = this._id;
 	return arguments.length < 2 ? get(this.node(), id).on.on(name) : this.each(onFunction(id, name, listener));
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/remove.js
+// ../Global iska /node_modules/d3-transition/src/transition/remove.js
 function removeFunction(id) {
 	return function() {
 		var parent = this.parentNode;
@@ -39699,7 +40158,7 @@ function removeFunction(id) {
 function remove_default() {
 	return this.on("end.remove", removeFunction(this._id));
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/select.js
+// ../Global iska /node_modules/d3-transition/src/transition/select.js
 function select_default(select) {
 	var name = this._name, id = this._id;
 	if (typeof select !== "function") select = selector_default(select);
@@ -39710,7 +40169,7 @@ function select_default(select) {
 	}
 	return new Transition(subgroups, this._parents, name, id);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/selectAll.js
+// ../Global iska /node_modules/d3-transition/src/transition/selectAll.js
 function selectAll_default(select) {
 	var name = this._name, id = this._id;
 	if (typeof select !== "function") select = selectorAll_default(select);
@@ -39721,12 +40180,12 @@ function selectAll_default(select) {
 	}
 	return new Transition(subgroups, parents, name, id);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/selection.js
+// ../Global iska /node_modules/d3-transition/src/transition/selection.js
 var Selection = selection.prototype.constructor;
 function selection_default() {
 	return new Selection(this._groups, this._parents);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/style.js
+// ../Global iska /node_modules/d3-transition/src/transition/style.js
 function styleNull(name, interpolate) {
 	var string00, string10, interpolate0;
 	return function() {
@@ -39766,7 +40225,7 @@ function style_default(name, value, priority) {
 	var i = (name += "") === "transform" ? interpolateTransformCss : interpolate_default;
 	return value == null ? this.styleTween(name, styleNull(name, i)).on("end.style." + name, styleRemove(name)) : typeof value === "function" ? this.styleTween(name, styleFunction(name, i, tweenValue(this, "style." + name, value))).each(styleMaybeRemove(this._id, name)) : this.styleTween(name, styleConstant(name, i, value), priority).on("end.style." + name, null);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/styleTween.js
+// ../Global iska /node_modules/d3-transition/src/transition/styleTween.js
 function styleInterpolate(name, i, priority) {
 	return function(t) {
 		this.style.setProperty(name, i.call(this, t), priority);
@@ -39789,7 +40248,7 @@ function styleTween_default(name, value, priority) {
 	if (typeof value !== "function") throw new Error();
 	return this.tween(key, styleTween(name, value, priority == null ? "" : priority));
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/text.js
+// ../Global iska /node_modules/d3-transition/src/transition/text.js
 function textConstant(value) {
 	return function() {
 		this.textContent = value;
@@ -39804,7 +40263,7 @@ function textFunction(value) {
 function text_default(value) {
 	return this.tween("text", typeof value === "function" ? textFunction(tweenValue(this, "text", value)) : textConstant(value == null ? "" : value + ""));
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/textTween.js
+// ../Global iska /node_modules/d3-transition/src/transition/textTween.js
 function textInterpolate(i) {
 	return function(t) {
 		this.textContent = i.call(this, t);
@@ -39827,7 +40286,7 @@ function textTween_default(value) {
 	if (typeof value !== "function") throw new Error();
 	return this.tween(key, textTween(value));
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/transition.js
+// ../Global iska /node_modules/d3-transition/src/transition/transition.js
 function transition_default$1() {
 	var name = this._name, id0 = this._id, id1 = newId();
 	for (var groups = this._groups, m = groups.length, j = 0; j < m; ++j) for (var group = groups[j], n = group.length, node, i = 0; i < n; ++i) if (node = group[i]) {
@@ -39841,7 +40300,7 @@ function transition_default$1() {
 	}
 	return new Transition(groups, this._parents, name, id1);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/end.js
+// ../Global iska /node_modules/d3-transition/src/transition/end.js
 function end_default() {
 	var on0, on1, that = this, id = that._id, size = that.size();
 	return new Promise(function(resolve, reject) {
@@ -39861,7 +40320,7 @@ function end_default() {
 		if (size === 0) resolve();
 	});
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/transition/index.js
+// ../Global iska /node_modules/d3-transition/src/transition/index.js
 var id = 0;
 function Transition(groups, parents, name, id) {
 	this._groups = groups;
@@ -39908,11 +40367,11 @@ Transition.prototype = transition.prototype = {
 	end: end_default,
 	[Symbol.iterator]: selection_prototype[Symbol.iterator]
 };
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-ease/src/cubic.js
+// ../Global iska /node_modules/d3-ease/src/cubic.js
 function cubicInOut(t) {
 	return ((t *= 2) <= 1 ? t * t * t : (t -= 2) * t * t + 2) / 2;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/selection/transition.js
+// ../Global iska /node_modules/d3-transition/src/selection/transition.js
 var defaultTiming = {
 	time: null,
 	delay: 0,
@@ -39931,12 +40390,12 @@ function transition_default(name) {
 	for (var groups = this._groups, m = groups.length, j = 0; j < m; ++j) for (var group = groups[j], n = group.length, node, i = 0; i < n; ++i) if (node = group[i]) schedule_default(node, name, id, i, group, timing || inherit(node, id));
 	return new Transition(groups, this._parents, name, id);
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-transition/src/selection/index.js
+// ../Global iska /node_modules/d3-transition/src/selection/index.js
 selection.prototype.interrupt = interrupt_default;
 selection.prototype.transition = transition_default;
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-zoom/src/constant.js
+// ../Global iska /node_modules/d3-zoom/src/constant.js
 var constant_default = (x) => () => x;
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-zoom/src/event.js
+// ../Global iska /node_modules/d3-zoom/src/event.js
 function ZoomEvent(type, { sourceEvent, target, transform, dispatch }) {
 	Object.defineProperties(this, {
 		type: {
@@ -39962,7 +40421,7 @@ function ZoomEvent(type, { sourceEvent, target, transform, dispatch }) {
 		_: { value: dispatch }
 	});
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-zoom/src/transform.js
+// ../Global iska /node_modules/d3-zoom/src/transform.js
 function Transform(k, x, y) {
 	this.k = k;
 	this.x = x;
@@ -40010,7 +40469,7 @@ function transform(node) {
 	while (!node.__zoom) if (!(node = node.parentNode)) return identity$1;
 	return node.__zoom;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-zoom/src/noevent.js
+// ../Global iska /node_modules/d3-zoom/src/noevent.js
 function nopropagation(event) {
 	event.stopImmediatePropagation();
 }
@@ -40018,7 +40477,7 @@ function noevent_default(event) {
 	event.preventDefault();
 	event.stopImmediatePropagation();
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/d3-zoom/src/zoom.js
+// ../Global iska /node_modules/d3-zoom/src/zoom.js
 function defaultFilter(event) {
 	return (!event.ctrlKey || event.type === "wheel") && !event.button;
 }
@@ -40316,7 +40775,7 @@ function zoom_default() {
 	};
 	return zoom;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@xyflow/system/dist/esm/index.js
+// ../Global iska /node_modules/@xyflow/system/dist/esm/index.js
 var errorMessages = {
 	error001: (lib = "react") => `Seems like you have not used ${lib === "svelte" ? "SvelteFlowProvider" : "ReactFlowProvider"} as an ancestor. Help: https://${lib}flow.dev/error#001`,
 	error002: () => "It looks like you've created a new nodeTypes or edgeTypes object. If this wasn't on purpose please define the nodeTypes/edgeTypes outside of the component or memoize them.",
@@ -43141,7 +43600,7 @@ function XYResizer({ domNode, nodeId, getStoreItems, onChange, onEnd }) {
 		destroy
 	};
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.production.js
+// ../Global iska /node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.production.js
 /**
 * @license React
 * use-sync-external-store-shim.production.js
@@ -43200,11 +43659,11 @@ var require_use_sync_external_store_shim_production = /* @__PURE__ */ __commonJS
 	var shim = "undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement ? useSyncExternalStore$1 : useSyncExternalStore$2;
 	exports.useSyncExternalStore = void 0 !== React.useSyncExternalStore ? React.useSyncExternalStore : shim;
 }));
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/use-sync-external-store/shim/index.js
+// ../Global iska /node_modules/use-sync-external-store/shim/index.js
 var require_shim = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_use_sync_external_store_shim_production();
 }));
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.production.js
+// ../Global iska /node_modules/use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.production.js
 /**
 * @license React
 * use-sync-external-store-shim/with-selector.production.js
@@ -43275,7 +43734,7 @@ var require_with_selector_production = /* @__PURE__ */ __commonJSMin(((exports) 
 		return value;
 	};
 }));
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/zustand/esm/vanilla.mjs
+// ../Global iska /node_modules/zustand/esm/vanilla.mjs
 var import_with_selector = /* @__PURE__ */ __toESM((/* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_with_selector_production();
 })))(), 1);
@@ -43310,7 +43769,7 @@ var createStoreImpl = (createState) => {
 	return api;
 };
 var createStore$1 = (createState) => createState ? createStoreImpl(createState) : createStoreImpl;
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/zustand/esm/traditional.mjs
+// ../Global iska /node_modules/zustand/esm/traditional.mjs
 var { useDebugValue } = import_react.default;
 var { useSyncExternalStoreWithSelector } = import_with_selector.default;
 var identity = (arg) => arg;
@@ -43326,7 +43785,7 @@ var createWithEqualityFnImpl = (createState, defaultEqualityFn) => {
 	return useBoundStoreWithEqualityFn;
 };
 var createWithEqualityFn = (createState, defaultEqualityFn) => createState ? createWithEqualityFnImpl(createState, defaultEqualityFn) : createWithEqualityFnImpl;
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/zustand/esm/shallow.mjs
+// ../Global iska /node_modules/zustand/esm/shallow.mjs
 function shallow$1(objA, objB) {
 	if (Object.is(objA, objB)) return true;
 	if (typeof objA !== "object" || objA === null || typeof objB !== "object" || objB === null) return false;
@@ -43345,7 +43804,7 @@ function shallow$1(objA, objB) {
 	for (const keyA of keysA) if (!Object.prototype.hasOwnProperty.call(objB, keyA) || !Object.is(objA[keyA], objB[keyA])) return false;
 	return true;
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@xyflow/react/dist/esm/index.js
+// ../Global iska /node_modules/@xyflow/react/dist/esm/index.js
 var StoreContext = (0, import_react.createContext)(null);
 var Provider$1 = StoreContext.Provider;
 var zustandErrorMessage = errorMessages["error001"]("react");
@@ -51076,7 +51535,7 @@ function ProjectTimelineWorkspace({ tasks = [], stages = [], members = [], space
 		})
 	});
 }
-// ../../../../../../../Users/parashrautela/Documents/studio iksha final boss/Telegram bot /work/production-web/node_modules/@dagrejs/dagre/dist/dagre.esm.js
+// ../Global iska /node_modules/@dagrejs/dagre/dist/dagre.esm.js
 var Te = Object.defineProperty;
 var In = (e, n, t) => n in e ? Te(e, n, {
 	enumerable: !0,
@@ -55793,73 +56252,6 @@ var patch = (url, data = {}) => api$1(url, {
 	body: JSON.stringify(data)
 });
 var initials$1 = (name = "") => name.trim().split(/\s+/).map((part) => part[0]).slice(0, 2).join("").toUpperCase() || "P";
-var activityWho = {
-	client_link_claimed: "Client",
-	client_link_created: "Founder",
-	decision_request_received: "Client",
-	telegram_project_discovered: "Telegram"
-};
-var activityWhat = {
-	client_assigned: "assigned a client",
-	client_link_claimed: "opened the client link",
-	client_link_created: "created a client link",
-	decision_request_comment: "commented on a client query",
-	decision_request_received: "sent a query",
-	decision_request_resolved: "resolved a client query",
-	employee_assigned: "assigned a team member",
-	employee_created: "added an employee",
-	employee_updated: "updated an employee",
-	founder_invited: "invited a founder",
-	google_access_requested: "requested access",
-	member_added: "added a team member",
-	project_closed: "closed the project",
-	project_created: "created the project",
-	project_member_removed: "removed a team member",
-	project_moved_to_trash: "moved the project to trash",
-	project_restored: "restored the project",
-	project_reopened: "reopened the project",
-	project_spaces_updated: "updated the project spaces",
-	query_accepted: "accepted a client query",
-	reply_suggested: "drafted a reply",
-	schedule_changed: "changed the schedule",
-	stage_added: "added a stage",
-	stage_connections_updated: "updated stage links",
-	stage_order_changed: "reordered stages",
-	stage_renamed: "renamed a stage",
-	stage_task_added: "added a task to a stage",
-	task_created: "created a task",
-	task_deleted: "deleted a task",
-	task_message: "posted in a task thread",
-	task_message_published: "sent a task update",
-	task_plan_edited: "edited a task plan",
-	task_updated: "updated a task",
-	team_message: "posted in the project chat",
-	telegram_project_discovered: "found a new Telegram group",
-	workflow_started: "started the workflow"
-};
-function describeActivity(item, { projects, employees }) {
-	const details = item.details || {};
-	const action = item.action || "";
-	const person = (id) => employees.find((employee) => employee.id === id)?.name;
-	const who = details.sender || person(details.actorId) || activityWho[action] || (action.startsWith("google_access_") ? "A teammate" : "Founder");
-	let what = activityWhat[action] || (action.startsWith("query_") ? `${action.slice(6).replace(/_/g, " ")} a client query` : "") || action.replace(/_/g, " ");
-	if (action === "project_closed") what = details.outcome === "Completed" ? "marked the project complete" : "abandoned the project";
-	if (action === "project_update") {
-		const changes = details.changes;
-		const fields = Array.isArray(changes) ? changes : Object.keys(changes || {});
-		what = fields.length ? `changed ${fields.join(", ")}` : "edited project details";
-	}
-	if (action === "stage_renamed" && details.name) what = `renamed a stage to ${details.name}`;
-	if (action === "project_created" && details.name) what = `created ${details.name}`;
-	const target = person(details.employeeId || details.memberId);
-	if (target && /member|employee/.test(action)) what += `: ${target}`;
-	const project = projects.find((p) => p.id === item.projectId)?.name;
-	return {
-		who,
-		what,
-		project
-	};
-}
 function Brand({ compact = false }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(IkshaBrand, { compact });
 }
@@ -55889,7 +56281,6 @@ function FounderApp() {
 	const currentTab = navigationState.section;
 	const selectedProjectId = navigationState.projectId;
 	const viewMode = selectedProjectId ? "detail" : "directory";
-	const [activities, setActivities] = (0, import_react.useState)([]);
 	const [workPerson, setWorkPerson] = (0, import_react.useState)("founder");
 	const [searchQuery, setSearchQuery] = (0, import_react.useState)("");
 	const [sidebarOpen, setSidebarOpen] = (0, import_react.useState)(false);
@@ -55934,14 +56325,6 @@ function FounderApp() {
 			const data = await api$1("/api/founder/decision-requests");
 			setDecisionRequests(data.requests || []);
 		} catch {}
-	};
-	const loadActivities = async () => {
-		try {
-			const data = await api$1("/api/founder/activity");
-			setActivities(data.activity || []);
-		} catch {
-			setActivities([]);
-		}
 	};
 	const loadEmployees = async () => {
 		try {
@@ -56002,10 +56385,6 @@ function FounderApp() {
 	};
 	(0, import_react.useEffect)(() => {
 		if (authState !== "signed-in") return;
-		if (currentTab === "activity") {
-			loadActivities();
-			loadEmployees();
-		}
 		if (currentTab === "employees") loadEmployees();
 		if (currentTab === "trash") loadTrash();
 		if (currentTab === "decisions") loadDecisionRequests();
@@ -56116,7 +56495,7 @@ function FounderApp() {
 		projects: FolderKanban,
 		groups: Send,
 		employees: Users,
-		activity: Clock3,
+		drive: HardDrive,
 		trash: Trash
 	};
 	const sectionBadges = { decisions: pendingDecisionsCount };
@@ -56354,52 +56733,7 @@ function FounderApp() {
 								title: "Trash is empty",
 								description: "Projects you move to trash stay here until you restore them."
 							})]
-						}) : currentTab === "activity" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-start justify-between gap-3",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", { children: "Activity" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "mt-1 text-sm text-muted-foreground",
-								children: "Recent updates across your projects."
-							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshButton, { onRefresh: loadActivities })]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-							className: "divide-y",
-							children: activities.length ? activities.map((item, index) => {
-								const { who, what, project } = describeActivity(item, {
-									projects,
-									employees
-								});
-								return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex gap-3 py-4 first:pt-0",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, {
-										name: who,
-										className: "size-8"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "min-w-0 flex-1",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-											className: "text-sm",
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-													className: "font-semibold",
-													children: who
-												}),
-												" ",
-												what
-											]
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-											className: "mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground",
-											children: [project && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "truncate",
-												children: project
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Time, { value: item.at })]
-										})]
-									})]
-								}, item.id || index);
-							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
-								className: "border-0",
-								icon: RotateCcwClock,
-								title: "No activity yet",
-								description: "Project changes appear here as they happen."
-							})
-						}) })] }) : currentTab === "projects" && viewMode === "directory" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectDirectoryView, {
+						}) : currentTab === "drive" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GoogleDrive, {}) : currentTab === "projects" && viewMode === "directory" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectDirectoryView, {
 							projects,
 							decisionRequests,
 							onSelectProject: handleSelectProjectFromDir,

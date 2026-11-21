@@ -18,7 +18,7 @@ const sections = new Set([
   'chats',
   'assistant',
   'employees',
-  'activity',
+  'drive',
   'trash',
 ]);
 const tabs = new Set([
@@ -43,7 +43,7 @@ export const founderSections = [
   { id: 'projects', label: 'Projects', phone: 'Projects', group: 'workspace' },
   { id: 'groups', label: 'Telegram groups', group: 'workspace' },
   { id: 'employees', label: 'Employees', group: 'workspace' },
-  { id: 'activity', label: 'Activity', group: 'workspace' },
+  { id: 'drive', label: 'Google Drive', group: 'workspace' },
   { id: 'trash', label: 'Trash', group: 'workspace' },
 ];
 export const founderSectionLabel = (id) =>

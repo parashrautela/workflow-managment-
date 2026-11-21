@@ -138,8 +138,9 @@ globalThis.fetch = async (url, options) => {
     assert.equal((await call(`/api/founder/projects/${linkedId}/files`)).status,401);
     assert.equal((await call(`/api/founder/projects/${linkedId}/files`,'GET',undefined,cookie)).data.files[0].status,'Pending');
     await call('/api/integrations/telegram/resources','POST',{...resource,DriveStatus:'Stored',DriveFileID:'stored-file'},bridgeHeaders);
-    const files=(await call(`/api/founder/projects/${linkedId}/files`,'GET',undefined,cookie)).data.files;assert.equal(files.length,1);assert.equal(files[0].status,'Stored');assert.equal(files[0].driveFileId,undefined);
-    const downloaded=await fetch(base+`/api/founder/projects/${linkedId}/files/RES--456-15`,{headers:cookie});assert.equal(downloaded.status,200);assert.equal(await downloaded.text(),'FILE');
+    // The web app saves files to Drive itself now, so the bot's old Drive status no longer marks a file saved.
+    const files=(await call(`/api/founder/projects/${linkedId}/files`,'GET',undefined,cookie)).data.files;assert.equal(files.length,1);assert.equal(files[0].status,'Pending');assert.equal(files[0].driveFileId,undefined);
+    assert.equal((await fetch(base+`/api/founder/projects/${linkedId}/files/RES--456-15`,{headers:cookie})).status,404);
     await call(`/api/founder/employees/${created.data.project.members[0].employeeId}`,'PATCH',{email:'painter@gmail.com'},cookie);
     const staffSession=await google.signIn(base,{sub:'painter-google',email:'painter@gmail.com',name:'Painter'});const staffCookie={cookie:staffSession.cookie.split(';')[0]};
     assert.equal((await call(`/api/employee/projects/${linkedId}/files`,'GET',undefined,staffCookie)).status,200);

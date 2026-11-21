@@ -163,6 +163,7 @@ export function createCollaborationRoutes({
   stateStore,
   checkpoint = () => {},
   notifyQuery = async () => {},
+  kickDrive = () => {},
 }) {
   return async (req, res, url) => {
     const match = url.pathname.match(
@@ -287,11 +288,13 @@ export function createCollaborationRoutes({
         type: input.type,
         size: bytes.length,
         authorId: user.id,
+        authorName: user.name,
         at: new Date().toISOString(),
       };
       await stateStore.putAttachment(uploaded.id, bytes);
       state.taskFiles.push(uploaded);
       await save();
+      kickDrive();
       json(res, 201, { file: uploaded });
       return true;
     }
