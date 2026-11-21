@@ -131,6 +131,18 @@ Returns the latest 30 client question-and-answer pairs, newest first:
 
 Returns the latest 40 basic audit events: `{ "activity": [...] }`.
 
+### Google Drive (founder)
+
+The founder connects one Google account's Drive with the `drive.file` scope, so Iksha only sees files it creates or the founder picks. Needs `GOOGLE_CLIENT_SECRET`; choosing or pasting a folder also needs `GOOGLE_PICKER_API_KEY`. The refresh token is stored sealed with a key derived from the client secret and is never returned.
+
+- `GET /api/founder/drive` returns `{ ready, picker, clientId?, scope?, pickerKey?, appId?, connection: { email, name, connectedAt, folder: { id, name, url, how, setAt } | null } | null, totals: { saved, waiting, problems }, projects: [...], problems: [...] }`.
+- `POST /api/founder/drive/connect` with `{ code }` from Google's popup code flow stores the account. Reconnecting the same account keeps its folder.
+- `POST /api/founder/drive/token` returns a short-lived `{ accessToken }` for Google's folder picker.
+- `POST /api/founder/drive/folder` with `{ create: true }` makes an "Iksha Studio" folder, or with `{ folderId, how: "pick" | "paste" }` checks a picked folder is one the founder can add files to.
+- `POST /api/founder/drive/disconnect` revokes the grant at Google and forgets the connection.
+
+Once a folder is chosen, the server saves every group photo, document and video (`/api/integrations/telegram/resources`, now also `ResourceType: "Video"` and `Caption`) and every task attachment into `<folder>/<Project>/<N Stage>/<Photos|Documents|Videos>/`, or `<Project>/Unsorted/<type>/` when no stage applies. Names read `YYYY-MM-DD Sender caption.ext`; documents and task attachments keep their own name after the date and sender, and photos or videos without a caption are numbered per sender and day. A group file's stage is the project's current stage when it arrives. Folders are made with their first file, and project or stage renames and reorders rename them. The worker runs off the request line every minute and right after a new file; the bot's `DriveStatus` is no longer read. Each file record carries `status` (`Stored` or `Pending`), `error` and, server-side only, `driveFileId`.
+
 ## Employees, team chat, and founder assistant
 
 The founder creates an employee account with `POST /api/founder/employees` using `name`, `designation`, optional `email` and `phone`, `role`, and `projectId`. The response includes a login link, employee ID, and generated password. The password is returned once and only a salted hash is saved. `GET /api/founder/employees` returns employee profiles and active project IDs, without passwords.

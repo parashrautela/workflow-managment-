@@ -4,6 +4,7 @@ import { MeetingsView } from '@/features/meetings/Meetings';
 import { ProjectConversations } from '@/features/collaboration/ProjectConversations';
 import { needsQueryAttention } from '@/features/queries/lib/queryStatus';
 import { WorkQueue } from '@/features/operations/WorkQueue';
+import { GoogleDrive } from '@/features/drive/GoogleDrive';
 import React, { useEffect, useState } from 'react';
 import {
   useNavigation,
@@ -21,9 +22,8 @@ import {
   Building2,
   Check,
   CheckCircle2,
-  Clock3,
   FolderKanban,
-  History,
+  HardDrive,
   LogOut,
   Menu,
   MessageSquare,
@@ -39,7 +39,6 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { RefreshButton } from '@/components/ui/refresh-button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Dialog,
@@ -69,7 +68,6 @@ import { DecisionInbox } from '@/features/queries/DecisionInbox';
 import { TelegramGroups } from '@/features/telegram/TelegramGroups';
 import { ProjectDetailView } from '@/features/projects/ProjectDetailView';
 import { ProjectDirectoryView } from '@/features/projects/ProjectDirectoryView';
-import { Time } from '@/components/ui/time';
 import { Empty } from '@/components/ui/empty';
 
 const api = async (url, options = {}) => {
@@ -109,80 +107,6 @@ const phaseOptions = [
 ];
 const statusOptions = ['Setup', 'On track', 'At risk', 'On hold', 'Completed'];
 
-// Activity rows read as "who did what", from whatever the activity API returns.
-const activityWho = {
-  client_link_claimed: 'Client',
-  client_link_created: 'Founder',
-  decision_request_received: 'Client',
-  telegram_project_discovered: 'Telegram',
-};
-const activityWhat = {
-  client_assigned: 'assigned a client',
-  client_link_claimed: 'opened the client link',
-  client_link_created: 'created a client link',
-  decision_request_comment: 'commented on a client query',
-  decision_request_received: 'sent a query',
-  decision_request_resolved: 'resolved a client query',
-  employee_assigned: 'assigned a team member',
-  employee_created: 'added an employee',
-  employee_updated: 'updated an employee',
-  founder_invited: 'invited a founder',
-  google_access_requested: 'requested access',
-  member_added: 'added a team member',
-  project_closed: 'closed the project',
-  project_created: 'created the project',
-  project_member_removed: 'removed a team member',
-  project_moved_to_trash: 'moved the project to trash',
-  project_restored: 'restored the project',
-  project_reopened: 'reopened the project',
-  project_spaces_updated: 'updated the project spaces',
-  query_accepted: 'accepted a client query',
-  reply_suggested: 'drafted a reply',
-  schedule_changed: 'changed the schedule',
-  stage_added: 'added a stage',
-  stage_connections_updated: 'updated stage links',
-  stage_order_changed: 'reordered stages',
-  stage_renamed: 'renamed a stage',
-  stage_task_added: 'added a task to a stage',
-  task_created: 'created a task',
-  task_deleted: 'deleted a task',
-  task_message: 'posted in a task thread',
-  task_message_published: 'sent a task update',
-  task_plan_edited: 'edited a task plan',
-  task_updated: 'updated a task',
-  team_message: 'posted in the project chat',
-  telegram_project_discovered: 'found a new Telegram group',
-  workflow_started: 'started the workflow',
-};
-function describeActivity(item, { projects, employees }) {
-  const details = item.details || {};
-  const action = item.action || '';
-  const person = (id) => employees.find((employee) => employee.id === id)?.name;
-  const who =
-    details.sender ||
-    person(details.actorId) ||
-    activityWho[action] ||
-    (action.startsWith('google_access_') ? 'A teammate' : 'Founder');
-  let what =
-    activityWhat[action] ||
-    (action.startsWith('query_') ? `${action.slice(6).replace(/_/g, ' ')} a client query` : '') ||
-    action.replace(/_/g, ' ');
-  if (action === 'project_closed') {
-    what = details.outcome === 'Completed' ? 'marked the project complete' : 'abandoned the project';
-  }
-  if (action === 'project_update') {
-    const changes = details.changes;
-    const fields = Array.isArray(changes) ? changes : Object.keys(changes || {});
-    what = fields.length ? `changed ${fields.join(', ')}` : 'edited project details';
-  }
-  if (action === 'stage_renamed' && details.name) what = `renamed a stage to ${details.name}`;
-  if (action === 'project_created' && details.name) what = `created ${details.name}`;
-  const target = person(details.employeeId || details.memberId);
-  if (target && /member|employee/.test(action)) what += `: ${target}`;
-  const project = projects.find((p) => p.id === item.projectId)?.name;
-  return { who, what, project };
-}
-
 function Brand({ compact = false }) {
   return <IkshaBrand compact={compact} />;
 }
@@ -217,7 +141,6 @@ export default function FounderApp() {
   const currentTab = navigationState.section;
   const selectedProjectId = navigationState.projectId;
   const viewMode = selectedProjectId ? 'detail' : 'directory';
-  const [activities, setActivities] = useState([]);
   const [workPerson, setWorkPerson] = useState('founder');
   const [searchQuery, setSearchQuery] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -283,15 +206,6 @@ export default function FounderApp() {
       setDecisionRequests(data.requests || []);
     } catch {
       // Preserve the last loaded queries during temporary connection failures.
-    }
-  };
-
-  const loadActivities = async () => {
-    try {
-      const data = await api('/api/founder/activity');
-      setActivities(data.activity || []);
-    } catch {
-      setActivities([]);
     }
   };
 
@@ -366,10 +280,6 @@ export default function FounderApp() {
 
   useEffect(() => {
     if (authState !== 'signed-in') return;
-    if (currentTab === 'activity') {
-      loadActivities();
-      loadEmployees();
-    }
     if (currentTab === 'employees') loadEmployees();
     if (currentTab === 'trash') loadTrash();
     if (currentTab === 'decisions') loadDecisionRequests();
@@ -509,7 +419,7 @@ export default function FounderApp() {
     projects: FolderKanban,
     groups: Send,
     employees: Users,
-    activity: Clock3,
+    drive: HardDrive,
     trash: Trash2,
   };
   const sectionBadges = { decisions: pendingDecisionsCount };
@@ -780,51 +690,8 @@ export default function FounderApp() {
                   />
                 )}
               </div>
-            ) : currentTab === 'activity' ? (
-              <>
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <h1>Activity</h1>
-                    <p className="mt-1 text-sm text-muted-foreground">
-                      Recent updates across your projects.
-                    </p>
-                  </div>
-                  <RefreshButton onRefresh={loadActivities} />
-                </div>
-                <Card>
-                  <CardContent className="divide-y">
-                    {activities.length ? (
-                      activities.map((item, index) => {
-                        const { who, what, project } = describeActivity(item, {
-                          projects,
-                          employees,
-                        });
-                        return (
-                          <div key={item.id || index} className="flex gap-3 py-4 first:pt-0">
-                            <InitialAvatar name={who} className="size-8" />
-                            <div className="min-w-0 flex-1">
-                              <p className="text-sm">
-                                <strong className="font-semibold">{who}</strong> {what}
-                              </p>
-                              <p className="mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-                                {project && <span className="truncate">{project}</span>}
-                                <Time value={item.at} />
-                              </p>
-                            </div>
-                          </div>
-                        );
-                      })
-                    ) : (
-                      <Empty
-                        className="border-0"
-                        icon={History}
-                        title="No activity yet"
-                        description="Project changes appear here as they happen."
-                      />
-                    )}
-                  </CardContent>
-                </Card>
-              </>
+            ) : currentTab === 'drive' ? (
+              <GoogleDrive />
             ) : currentTab === 'projects' && viewMode === 'directory' ? (
               /* Actionable 21: Obvious All Projects Directory Screen */
               <ProjectDirectoryView

@@ -5,6 +5,8 @@ import { createMeetingRoutes, initializeMeetings } from './meetings.js';
 import { loginEmail, reserveGoogleAccess, migrateGoogleOnlyAccess } from './google-access.js';
 import { createGoogleAuthRoutes } from './google-auth.js';
 import { createMcpRoutes, founderTools } from './mcp.js';
+import { createDriveClient, createDriveRoutes } from './google-drive.js';
+import { createDriveSync, currentStageId, initializeDrive } from './drive-sync.js';
 import { answerWithAi } from './founder-ai.js';
 import {createStageLinksRoutes} from './stage-links-routes.js';
 import { createStageOrderRoutes } from './stage-order-routes.js';
@@ -58,6 +60,7 @@ let state = stateStore.state;
 if (initializePilot(state)) await stateStore.save(state);
 if (initializeMeetings(state)) await stateStore.save(state);
 if (migrateGoogleOnlyAccess(state, process.env.INITIAL_FOUNDER_EMAIL || '')) await stateStore.save(state);
+if (initializeDrive(state)) await stateStore.save(state);
 console.log(`Project data store connected: ${stateStore.kind}.`);
 let saveQueue = Promise.resolve();
 const publishingRequests = new Set();
@@ -326,7 +329,7 @@ const notifyQuery = createQueryNotifier({ save, checkpoint, callBotBridge, sendU
   const result = await response.json();
   return response.ok && result.ok ? result : { ok: false, deliveryStatus: result.ok === false && response.status < 500 ? 'Failed' : 'Unknown' };
 } });
-const collaborationRoutes = createCollaborationRoutes({notifyQuery,getState:()=>state, founder, employeeSession, body, json, save, audit, callBotBridge, stateStore, checkpoint});
+const collaborationRoutes = createCollaborationRoutes({notifyQuery,getState:()=>state, founder, employeeSession, body, json, save, audit, callBotBridge, stateStore, checkpoint, kickDrive:()=>driveSync.kick()});
 const meetingRoutes = createMeetingRoutes({getState:()=>state, founder, employeeSession, body, json, save, audit, callBotBridge, checkpoint});
 const pilotRoutes = createPilotRoutes({ notifyQuery, getState: () => state, founder, employeeSession, body, json, save, audit, projectView, callBotBridge });
 const stageLinksRoutes=createStageLinksRoutes({getState:()=>state,founder,body,json,save,audit,callBotBridge});
@@ -334,6 +337,17 @@ const stageOrderRoutes = createStageOrderRoutes({ getState: () => state, founder
 const operationsRoutes = createOperationsRoutes({getState:()=>state,founder,employeeSession,body,json,save,audit,callBotBridge,integrationSecret,checkpoint});
 const googleAuthRoutes = createGoogleAuthRoutes({getState:()=>state,founder,body,json,save,audit,cookie,production});
 const mcpRoutes = createMcpRoutes({getState:()=>state,handleRequest,json,body});
+// A group file's bytes come from Telegram through the bot; a task file's from the app's own store.
+async function loadDriveBytes(source) {
+  if (source.attachmentId) return stateStore.getAttachment(source.attachmentId);
+  if (!botBridgeUrl || !integrationSecret) return (await loadTelegramAttachment(source, process.env.GROUP_BOT_TOKEN)).bytes;
+  const stored = await callBotBridge('/api/integrations/web/resources/content', { groupChatId: source.groupChatId, submissionId: source.submissionId }).catch((error) => { throw new ApiError(error.message, error.botStatus || 502); });
+  if (typeof stored.bytes !== 'string' || stored.bytes.length > 27000000) throw new ApiError('File is too large to fetch from Telegram.', 413);
+  return Buffer.from(stored.bytes, 'base64');
+}
+const driveClient = createDriveClient();
+const driveSync = createDriveSync({ getState: () => state, inLine, save, client: driveClient, loadBytes: loadDriveBytes });
+const driveRoutes = createDriveRoutes({getState:()=>state,body,json,save,audit,client:driveClient,onReady:()=>driveSync.kick()});
 async function handleRequest(req, res) {
   let before = structuredClone(state);
   externalRollbackState = null;
@@ -365,12 +379,13 @@ async function handleRequest(req, res) {
       if(!project)return json(res,409,{error:'Link this Telegram project first.'});
       const member=state.telegramGroups.find((group)=>group.groupChatId===groupId)?.members.find((item)=>item.telegramUserId===String(input.TelegramUserID) && item.membershipStatus==='Active' && item.assignedRole);
       if(!member)return json(res,403,{error:'Resource sender is not an assigned member.'});
-      if(!/^\d+$/.test(String(input.SourceMessageID || '')) || ![groupId,...state.telegramMigrations.filter(row=>row.to===groupId).map(row=>row.from)].some(id=>input.SubmissionID===`RES-${id}-${input.SourceMessageID}`) || !shortText(input.FileName,200) || !['Photo','Document'].includes(input.ResourceType) || !shortText(input.TelegramFileID,300))return json(res,400,{error:'Invalid project resource.'});
+      if(!/^\d+$/.test(String(input.SourceMessageID || '')) || ![groupId,...state.telegramMigrations.filter(row=>row.to===groupId).map(row=>row.from)].some(id=>input.SubmissionID===`RES-${id}-${input.SourceMessageID}`) || !shortText(input.FileName,200) || !['Photo','Document','Video'].includes(input.ResourceType) || !shortText(input.TelegramFileID,300))return json(res,400,{error:'Invalid project resource.'});
       let file=state.projectFiles.find((item)=>item.id===input.SubmissionID);
       if(file && file.projectId!==project.id)return json(res,409,{error:'File identity belongs to another project.'});
-      if(!file){file={id:input.SubmissionID,projectId:project.id};state.projectFiles.push(file);}
-      Object.assign(file,{name:input.FileName,type:input.ResourceType,fileId:input.TelegramFileID,mimeType:shortText(input.MimeType,200) || '',submittedBy:shortText(input.SubmittedByName,160) || 'Team member',submittedAt:shortText(input.SubmittedAt,40) || new Date().toISOString(),status:input.DriveStatus==='Stored'?'Stored':'Pending',error:shortText(input.DriveError,300) || '',driveFileId:shortText(input.DriveFileID,200) || ''});
-      await save();return json(res,200,{ok:true});
+      // The web app owns the Drive copy; the stage is the one current when the file arrives.
+      if(!file){file={id:input.SubmissionID,projectId:project.id,status:'Pending',error:'',stageId:currentStageId(state,project)};state.projectFiles.push(file);}
+      Object.assign(file,{name:input.FileName,type:input.ResourceType,fileId:input.TelegramFileID,mimeType:shortText(input.MimeType,200) || '',submittedBy:shortText(input.SubmittedByName,160) || 'Team member',submittedAt:shortText(input.SubmittedAt,40) || new Date().toISOString(),caption:shortText(input.Caption,1000) || ''});
+      await save();driveSync.kick();return json(res,200,{ok:true});
     }
     if (req.method === 'POST' && url.pathname === '/api/integrations/telegram/requests') {
       const supplied = (req.headers.authorization || '').replace(/^Bearer /i, '');
@@ -474,6 +489,7 @@ async function handleRequest(req, res) {
     }
     if (url.pathname.startsWith('/api/employee/')) return json(res, 404, { error: 'Not found.' });
     if (url.pathname.startsWith('/api/founder/') && !founder(req)) return json(res, 401, { error: 'Founder session required.' });
+    if (await driveRoutes(req,res,url)) return;
     const projectWorkflows=url.pathname.match(/^\/api\/founder\/projects\/([^/]+)\/workflows$/);
     if(req.method==='GET' && projectWorkflows){
       const project=state.projects.find((item)=>item.id===projectWorkflows[1]);if(!project)return json(res,404,{error:'Project not found.'});
@@ -964,7 +980,11 @@ async function handleRequest(req, res) {
 }
 // Single writer prevents overlapping mutations and makes persistence rollback deterministic.
 let requestQueue = Promise.resolve();
+// Runs work on the same single line as requests, for the Drive worker's short reads and writes.
+function inLine(fn) { const run = requestQueue.catch(() => {}).then(() => { externalRollbackState = null; return fn(); }); requestQueue = run; return run; }
 const server = http.createServer((req,res) => { requestQueue = requestQueue.catch(() => {}).then(() => handleRequest(req,res)); });
 server.listen(port, () => console.log(`Studio Iksha V1 listening on http://localhost:${port}`));
+// Drive uploads run off the request line; new files also start one straight away.
+if (process.env.NODE_ENV !== 'test') { setInterval(() => driveSync.run(), 60000).unref(); driveSync.kick(); }
 
 if (process.env.NODE_ENV !== 'test') { const timer=setInterval(()=>{requestQueue=requestQueue.catch(()=>{}).then(async()=>{externalRollbackState=null;try{await meetingRoutes.tick();}catch{console.warn('Meeting notification check failed.');}try{await operationsRoutes.tick();}catch{console.warn('Morning digest check failed.');}});},60000);timer.unref(); }

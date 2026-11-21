@@ -22,7 +22,7 @@ test('every founder section has its own title', () => {
     chats: 'Project chats | Studio Iksha',
     assistant: 'Assistant | Studio Iksha',
     employees: 'Employees | Studio Iksha',
-    activity: 'Activity | Studio Iksha',
+    drive: 'Google Drive | Studio Iksha',
     trash: 'Trash | Studio Iksha',
   };
   for (const [section, title] of Object.entries(titles)) {

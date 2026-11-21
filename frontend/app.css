@@ -2412,6 +2412,14 @@
     flex-grow: 1;
   }
 
+  .basis-40 {
+    flex-basis: calc(var(--spacing) * 40);
+  }
+
+  .basis-48 {
+    flex-basis: calc(var(--spacing) * 48);
+  }
+
   .basis-56 {
     flex-basis: calc(var(--spacing) * 56);
   }
@@ -4295,6 +4303,10 @@
 
   .first\:pt-0:first-child {
     padding-top: 0;
+  }
+
+  .last\:pb-0:last-child {
+    padding-bottom: 0;
   }
 
   @media (hover: hover) {
