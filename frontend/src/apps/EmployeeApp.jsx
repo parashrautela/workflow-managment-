@@ -23,7 +23,7 @@ import {
   FolderKanban,
   LogOut,
   Menu,
-  MessageSquare,
+  MessagesSquare,
   User,
   RefreshCw,
   Loader2,
@@ -57,7 +57,7 @@ const EMPLOYEE_SECTIONS = ['actions', 'meetings', 'chats', 'projects'];
 const sectionIcons = {
   actions: CheckCircle2,
   meetings: CalendarDays,
-  chats: MessageSquare,
+  chats: MessagesSquare,
   projects: FolderKanban,
 };
 const initials = (name = '') =>
@@ -331,7 +331,11 @@ export default function EmployeeApp() {
   );
 
   return (
-    <div className="iksha-workspace app-glow min-h-dvh bg-background pb-[max(24px,env(safe-area-inset-bottom))] lg:pb-0">
+    <div
+      className={`iksha-workspace app-glow min-h-dvh bg-background ${
+        section === 'chats' ? '' : 'pb-[max(24px,env(safe-area-inset-bottom))] lg:pb-0'
+      }`}
+    >
       <aside className="iksha-sidebar fixed inset-y-0 left-0 hidden w-64 px-3 py-3 lg:block">
         {sidebar}
       </aside>
@@ -400,7 +404,7 @@ export default function EmployeeApp() {
           <main
             className={
               section === 'chats'
-                ? 'h-[calc(100dvh-9rem)] lg:h-[calc(100dvh-5rem)]'
+                ? 'h-[calc(100dvh-4rem)] lg:h-[calc(100dvh-5rem)]'
                 : 'mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:px-8 sm:py-8'
             }
           >
@@ -512,11 +516,13 @@ export default function EmployeeApp() {
                   className="space-y-4"
                 >
                   <TabsList className="iksha-project-tabs" aria-label="Project sections">
-                    <TabsTrigger value="timeline">Timeline</TabsTrigger>
-                    <TabsTrigger value="tasks">
+                    <TabsTrigger value="timeline" className="max-sm:order-4">
+                      Timeline
+                    </TabsTrigger>
+                    <TabsTrigger value="tasks" className="max-sm:order-1">
                       Tasks <span className="ml-1 font-normal tabular-nums">{tasks.length}</span>
                     </TabsTrigger>
-                    <TabsTrigger value="queries">
+                    <TabsTrigger value="queries" className="max-sm:order-3">
                       Client queries
                       {pendingQueriesCount > 0 && (
                         <Badge
@@ -527,9 +533,15 @@ export default function EmployeeApp() {
                         </Badge>
                       )}
                     </TabsTrigger>
-                    <TabsTrigger value="chat">Team chat</TabsTrigger>
-                    <TabsTrigger value="files">Files</TabsTrigger>
-                    <TabsTrigger value="overview">Overview</TabsTrigger>
+                    <TabsTrigger value="chat" className="max-sm:order-2">
+                      Team chat
+                    </TabsTrigger>
+                    <TabsTrigger value="files" className="max-sm:order-5">
+                      Files
+                    </TabsTrigger>
+                    <TabsTrigger value="overview" className="max-sm:order-6">
+                      Overview
+                    </TabsTrigger>
                   </TabsList>
 
                   <TabsContent value="timeline">

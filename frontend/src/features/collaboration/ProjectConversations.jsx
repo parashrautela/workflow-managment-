@@ -100,7 +100,7 @@ export function ProjectConversations({
           <ul
             role="listbox"
             aria-label="Active project chats"
-            className="max-h-72 overflow-y-auto overscroll-contain p-1.5"
+            className="max-h-[min(18rem,45dvh)] overflow-y-auto overscroll-contain p-1.5"
           >
             {visible.length ? (
               visible.map((row) => {
@@ -115,7 +115,7 @@ export function ProjectConversations({
                         setPickerOpen(false);
                         setSearch('');
                       }}
-                      className={`flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-left text-sm transition-colors ${
+                      className={`flex min-h-11 w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-left text-sm transition-colors ${
                         isSelected
                           ? 'bg-accent font-medium text-foreground'
                           : 'text-foreground hover:bg-muted'
@@ -168,7 +168,7 @@ export function ProjectConversations({
     <section
       className={embedded ? 'space-y-3' : 'flex h-full min-h-0 flex-col'}
     >
-      <div className={embedded ? '' : 'shrink-0 border-b px-4 pt-1 pb-4 sm:px-8'}>
+      <div className={embedded ? '' : 'max-lg:sr-only shrink-0 border-b px-4 pt-1 pb-4 sm:px-8'}>
         <Heading>Project chats</Heading>
         <p className="text-xs text-muted-foreground">
           Internal conversations with the founders and project team. Task-specific references stay

@@ -10,6 +10,7 @@ const fields = {
   conversationId: 'conversation',
 };
 const sections = new Set([
+  'today',
   'actions',
   'projects',
   'groups',
@@ -35,10 +36,11 @@ const tabs = new Set([
 // One list of founder sections, read by the sidebar, the breadcrumb, the page title and the phone tabs.
 // `phone` is the short label used in the phone tab bar. Names are decided: one name per page everywhere.
 export const founderSections = [
-  { id: 'actions', label: 'Actions needed', phone: 'Actions', group: 'main' },
+  { id: 'today', label: 'Today', phone: 'Today', group: 'main', mobileOnly: true },
+  { id: 'actions', label: 'Actions needed', group: 'main' },
   { id: 'decisions', label: 'Client queries', phone: 'Queries', group: 'main' },
   { id: 'meetings', label: 'Meetings', group: 'main' },
-  { id: 'chats', label: 'Project chats', group: 'main' },
+  { id: 'chats', label: 'Project chats', phone: 'Chats', group: 'main' },
   { id: 'assistant', label: 'Assistant', group: 'main' },
   { id: 'projects', label: 'Projects', phone: 'Projects', group: 'workspace' },
   { id: 'groups', label: 'Telegram groups', group: 'workspace' },

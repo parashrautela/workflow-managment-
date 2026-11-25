@@ -299,6 +299,20 @@
 .safe-bottom {
   padding-bottom: max(var(--space-16), env(safe-area-inset-bottom));
 }
+.iksha-mobile-shell {
+  padding-bottom: 0;
+}
+.iksha-mobile-fullheight {
+  height: calc(100dvh - 5rem);
+}
+@media (max-width: 1023px) {
+  .iksha-mobile-shell {
+    padding-bottom: calc(4.5rem + max(var(--space-16), env(safe-area-inset-bottom)));
+  }
+  .iksha-mobile-fullheight {
+    height: calc(100dvh - 7.5rem - max(var(--space-16), env(safe-area-inset-bottom)));
+  }
+}
 .no-scrollbar {
   scrollbar-width: none;
 }

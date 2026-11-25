@@ -11,7 +11,7 @@ function Tabs({ className, orientation = 'horizontal', ...props }) {
       data-slot="tabs"
       data-orientation={orientation}
       orientation={orientation}
-      className={cn('group/tabs flex gap-2 data-[orientation=horizontal]:flex-col', className)}
+      className={cn('group/tabs flex min-w-0 max-w-full gap-2 data-[orientation=horizontal]:flex-col', className)}
       {...props}
     />
   );

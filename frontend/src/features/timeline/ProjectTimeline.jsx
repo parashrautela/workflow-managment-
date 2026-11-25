@@ -235,6 +235,7 @@ export function ProjectTimeline({
   const [helpOpen, setHelpOpen] = useState(false);
   const [helpModalOpen, setHelpModalOpen] = useState(false);
   const [search, setSearch] = useState('');
+  const [mobileView, setMobileView] = useState('stages');
   const [selectedStageId, setSelectedStageId] = useState(null);
   const [drag, setDrag] = useState(null);
   const [picked, setPicked] = useState(null);
@@ -750,7 +751,7 @@ export function ProjectTimeline({
   };
 
   return (
-    <div className="iksha-timeline">
+    <div className="iksha-timeline" data-mobile-view={mobileView}>
       <div className="iksha-timeline-heading">
         <div>
           <h2>{headline.length ? headline.join(' · ') : 'Nothing overdue or blocked'}</h2>
@@ -766,6 +767,26 @@ export function ProjectTimeline({
           {scheduled.length} scheduled · {items.length - scheduled.length} without dates
         </span>
       </div>
+
+      {items.length > 0 && (
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-2 sm:hidden">
+          <SegmentedControl
+            label="Schedule layout"
+            value={mobileView}
+            onValueChange={setMobileView}
+            options={[
+              { value: 'stages', label: 'Stages' },
+              { value: 'grid', label: 'Timeline grid' },
+            ]}
+          />
+          {canPlan && mobileView === 'stages' && (
+            <Button size="sm" onClick={() => setAddStage({})}>
+              <Plus />
+              Add stage
+            </Button>
+          )}
+        </div>
+      )}
 
       <div className="iksha-timeline-toolbar" role="toolbar" aria-label="Timeline view">
         <div className="iksha-date-nav">
@@ -955,10 +976,136 @@ export function ProjectTimeline({
           />
         )
       ) : (
-        <div
-          className={`iksha-schedule-frame ${compactHeader ? 'iksha-plan-fit' : ''} ${todayInView ? 'has-today' : ''} ${drag ? 'is-dragging-any' : ''}`}
-          style={gridStyle}
-        >
+        <>
+          {mobileView === 'stages' && (
+            <div className="space-y-3 sm:hidden" aria-label="Project stages">
+              {allGroups.map((stage, index) => {
+                const group = visible.filter((item) => (item.stage?.id || 'other') === stage.id);
+                if (!group.length) return null;
+                const scheduledGroup = group.filter(
+                  (item) => item.start !== null && item.end !== null,
+                );
+                const groupStart = scheduledGroup.length
+                  ? Math.min(...scheduledGroup.map((item) => item.start))
+                  : calendarDate(stage.startDate);
+                const groupEnd = scheduledGroup.length
+                  ? Math.max(...scheduledGroup.map((item) => item.end))
+                  : null;
+                const lateCount = group.filter((item) => itemStatus(item, today).late).length;
+                const doneCount = group.filter((item) => complete(item.task)).length;
+                const isCollapsed = collapsed.has(stage.id) && !query;
+                const ordered = [...group].sort(
+                  (a, b) =>
+                    (Number(a.task.sourceSequence) || 0) - (Number(b.task.sourceSequence) || 0) ||
+                    String(a.task.createdAt || '').localeCompare(String(b.task.createdAt || '')),
+                );
+                return (
+                  <section
+                    key={`mobile-${stage.id}`}
+                    className={`iksha-stage color-${index % 8} overflow-hidden rounded-xl border bg-card`}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => toggle(stage.id)}
+                      aria-expanded={!isCollapsed}
+                      className="flex min-h-12 w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors hover:bg-muted/50"
+                    >
+                      <div className="flex min-w-0 items-center gap-3">
+                        <span className="iksha-stage-number shrink-0">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <div className="min-w-0">
+                          <strong className="block truncate text-sm font-semibold">
+                            {stage.name}
+                          </strong>
+                          <span className="mt-0.5 block truncate text-xs text-muted-foreground">
+                            {groupStart !== null && groupEnd !== null
+                              ? `${dateLabel(groupStart)} – ${dateLabel(groupEnd - DAY)} · `
+                              : ''}
+                            {doneCount}/{group.length} done
+                            {lateCount > 0 && (
+                              <span className="text-overdue"> · {lateCount} overdue</span>
+                            )}
+                          </span>
+                        </div>
+                      </div>
+                      {isCollapsed ? (
+                        <ChevronRight className="size-4 shrink-0 text-muted-foreground" />
+                      ) : (
+                        <ChevronDown className="size-4 shrink-0 text-muted-foreground" />
+                      )}
+                    </button>
+
+                    {!isCollapsed && (
+                      <div className="divide-y border-t">
+                        {stage.id !== 'other' && (
+                          <div className="flex items-center justify-between bg-subtle px-4 py-2">
+                            <span className="text-xs text-muted-foreground">Stage schedule</span>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => setSelectedStageId(stage.id)}
+                            >
+                              Stage details
+                              <ArrowUpRight className="size-3.5" />
+                            </Button>
+                          </div>
+                        )}
+                        {ordered.map((item) => {
+                          const status = itemStatus(item, today);
+                          const hasDates = item.start !== null && item.end !== null;
+                          return (
+                            <button
+                              key={`mobile-task-${item.task.id}`}
+                              type="button"
+                              onClick={() => onOpenTask(item.task)}
+                              className="flex min-h-12 w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors hover:bg-muted/50"
+                            >
+                              <div className="flex min-w-0 items-center gap-3">
+                                <span className={`iksha-task-state shrink-0 state-${status.key}`}>
+                                  {complete(item.task) && <Check size={10} />}
+                                </span>
+                                <div className="min-w-0">
+                                  <strong className="block truncate text-sm font-medium">
+                                    {shortTitle(item.task, item.stage)}
+                                  </strong>
+                                  <small className="block truncate text-xs text-muted-foreground">
+                                    {ownerName(item.task)}
+                                    {hasDates
+                                      ? ` · ${dateLabel(item.start)} – ${dateLabel(item.end - DAY)}`
+                                      : ' · No dates'}
+                                  </small>
+                                </div>
+                              </div>
+                              <span
+                                className={`shrink-0 text-xs font-medium ${
+                                  status.late
+                                    ? 'text-overdue'
+                                    : status.key === 'waiting' || status.key === 'blocked'
+                                      ? 'text-warning'
+                                      : 'text-muted-foreground'
+                                }`}
+                              >
+                                {status.label}
+                              </span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </section>
+                );
+              })}
+              {!visible.length && (
+                <p className="iksha-empty-search">No tasks match your search.</p>
+              )}
+            </div>
+          )}
+
+          <div
+            className={`iksha-schedule-frame ${compactHeader ? 'iksha-plan-fit' : ''} ${todayInView ? 'has-today' : ''} ${drag ? 'is-dragging-any' : ''}`}
+            style={gridStyle}
+          >
           <div className="iksha-schedule-headbar">
             <div className="iksha-schedule-label">Stage / task</div>
             <div className="iksha-headbar-viewport">
@@ -1369,7 +1516,8 @@ export function ProjectTimeline({
               )}
             </div>
           </div>
-        </div>
+          </div>
+        </>
       )}
 
       {undated.length > 0 && (

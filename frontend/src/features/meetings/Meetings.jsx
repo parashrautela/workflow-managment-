@@ -1,5 +1,6 @@
 import { toast } from '@/components/ui/toaster';
 import { useEffect, useState } from 'react';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -13,9 +14,10 @@ import { request } from '@/lib/api';
 import { MeetingEditor } from '@/features/meetings/MeetingEditor';
 import { TaskThreadDrawer } from '@/features/tasks/TaskThreadDrawer';
 import { formatDateTime, STUDIO_TIME_ZONE } from '@/lib/dates';
+import { partitionMeetings } from '@/features/today/lib/todaySummary';
 import { Empty } from '@/components/ui/empty';
 import { navigate } from '@/lib/navigation';
-import { CalendarDays } from 'lucide-react';
+import { ArrowLeft, CalendarDays } from 'lucide-react';
 const when = (value) => `${formatDateTime(value, { timeZone: STUDIO_TIME_ZONE })} IST`;
 export function MeetingsView({
   namespace = 'founder',
@@ -85,9 +87,113 @@ export function MeetingsView({
       setError(problem.message);
     }
   };
-  const visible = meetings.filter((meeting) => history || meeting.status === 'Scheduled');
+  const scheduledGroups = partitionMeetings(meetings);
+  const upcomingSections = [
+    { key: 'today', label: 'Today', rows: scheduledGroups.today },
+    { key: 'tomorrow', label: 'Tomorrow', rows: scheduledGroups.tomorrow },
+    { key: 'upcoming', label: 'Upcoming', rows: scheduledGroups.upcoming },
+  ].filter((group) => group.rows.length > 0);
+  const closedMeetings = history
+    ? [...meetings].filter((meeting) => meeting.status !== 'Scheduled').reverse()
+    : [];
+  const hasVisibleMeetings =
+    upcomingSections.length > 0 || scheduledGroups.past.length > 0 || closedMeetings.length > 0;
+
+  const renderMeetingCard = (meeting) => {
+    const isPastTime = meeting.status === 'Scheduled' && Date.parse(meeting.startsAt) < Date.now();
+    return (
+      <article key={meeting.id} className="space-y-3 card-box bg-card">
+        <div className="flex flex-wrap items-start justify-between gap-2">
+          <div className="min-w-0">
+            <p className="text-xs text-primary">
+              {meeting.projectName} · {meeting.status}
+            </p>
+            <h3 className="type-label-14-strong">{meeting.title}</h3>
+            <p className="text-sm">{when(meeting.startsAt)}</p>
+            <p className="text-xs text-muted-foreground">
+              {meeting.location || 'Location to be confirmed'}
+            </p>
+          </div>
+          {isPastTime && <Badge variant="secondary">Past</Badge>}
+        </div>
+        <p className="text-xs">
+          Attendees: {meeting.attendees.map((row) => row.name).join(', ')}
+        </p>
+        {meeting.attendees.some((row) => !row.connected) && (
+          <p className="text-xs text-warning">
+            {meeting.attendees
+              .filter((row) => !row.connected)
+              .map((row) => row.name)
+              .join(', ')}
+            : personal Telegram unavailable
+            {meeting.groupFallback ? '; group fallback enabled' : '; group fallback off'}.
+          </p>
+        )}
+        <div className="flex flex-wrap gap-2">
+          <Button variant="outline" size="sm" onClick={() => openTask(meeting)}>
+            Open task
+          </Button>
+          {namespace === 'founder' && meeting.status === 'Scheduled' && (
+            <>
+              <Button variant="outline" size="sm" onClick={() => setEdit(meeting)}>
+                Edit
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setAction({ meeting, status: 'Completed' })}
+              >
+                Mark meeting complete
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setAction({ meeting, status: 'Cancelled' })}
+              >
+                Cancel meeting
+              </Button>
+            </>
+          )}
+        </div>
+        {namespace === 'founder' && (
+          <details className="card-box">
+            <summary className="text-xs">
+              Notification history · {meeting.deliveries.length}
+            </summary>
+            <div className="max-h-52 overflow-y-auto space-y-1 pt-2">
+              {meeting.deliveries
+                .slice()
+                .reverse()
+                .map((row) => (
+                  <p key={row.id} className="text-xs">
+                    {meeting.attendees.find((person) => person.id === row.attendeeId)?.name ||
+                      row.attendeeId}{' '}
+                    · {row.kind} · {row.channel || 'Personal'} · {row.status}
+                    {row.error ? ' — ' + row.error : ''}
+                  </p>
+                ))}
+            </div>
+          </details>
+        )}
+      </article>
+    );
+  };
+
   return (
     <section className="space-y-4">
+      {!embedded && namespace === 'founder' && (
+        <div className="lg:hidden">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="-ml-2 text-muted-foreground"
+            onClick={() => navigate({ section: 'today' })}
+          >
+            <ArrowLeft className="size-4" />
+            Today
+          </Button>
+        </div>
+      )}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <Heading>Meetings</Heading>
@@ -101,8 +207,13 @@ export function MeetingsView({
           Refresh
         </Button>
       </div>
-      <label className="flex gap-2 text-sm">
-        <input type="checkbox" checked={history} onChange={(e) => setHistory(e.target.checked)} />
+      <label className="inline-flex min-h-11 cursor-pointer items-center gap-2 text-sm">
+        <input
+          type="checkbox"
+          className="size-4"
+          checked={history}
+          onChange={(e) => setHistory(e.target.checked)}
+        />
         Include completed and cancelled meetings
       </label>
       {error && (
@@ -110,85 +221,31 @@ export function MeetingsView({
           {error}
         </p>
       )}
-      {visible.map((meeting) => (
-        <article key={meeting.id} className="space-y-3 card-box bg-card">
-          <div className="flex flex-wrap justify-between gap-2">
-            <div>
-              <p className="text-xs text-primary">
-                {meeting.projectName} · {meeting.status}
-              </p>
-              <h3 className="type-label-14-strong">{meeting.title}</h3>
-              <p className="text-sm">{when(meeting.startsAt)}</p>
-              <p className="text-xs text-muted-foreground">
-                {meeting.location || 'Location to be confirmed'}
-              </p>
-            </div>
-            {Date.parse(meeting.startsAt) < Date.now() && <span>Past</span>}
-          </div>
-          <p className="text-xs">
-            Attendees: {meeting.attendees.map((row) => row.name).join(', ')}
-          </p>
-          {meeting.attendees.some((row) => !row.connected) && (
-            <p className="text-xs text-warning">
-              {meeting.attendees
-                .filter((row) => !row.connected)
-                .map((row) => row.name)
-                .join(', ')}
-              : personal Telegram unavailable
-              {meeting.groupFallback ? '; group fallback enabled' : '; group fallback off'}.
-            </p>
-          )}
-          <div className="flex flex-wrap gap-2">
-            {
-              <Button variant="outline" size="sm" onClick={() => openTask(meeting)}>
-                Open task
-              </Button>
-            }
-            {namespace === 'founder' && meeting.status === 'Scheduled' && (
-              <>
-                <Button variant="outline" size="sm" onClick={() => setEdit(meeting)}>
-                  Edit
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setAction({ meeting, status: 'Completed' })}
-                >
-                  Mark meeting complete
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setAction({ meeting, status: 'Cancelled' })}
-                >
-                  Cancel meeting
-                </Button>
-              </>
-            )}
-          </div>
-          {namespace === 'founder' && (
-            <details className="card-box">
-              <summary className="text-xs">
-                Notification history · {meeting.deliveries.length}
-              </summary>
-              <div className="max-h-52 overflow-y-auto space-y-1 pt-2">
-                {meeting.deliveries
-                  .slice()
-                  .reverse()
-                  .map((row) => (
-                    <p key={row.id} className="text-xs">
-                      {meeting.attendees.find((person) => person.id === row.attendeeId)?.name ||
-                        row.attendeeId}{' '}
-                      · {row.kind} · {row.channel || 'Personal'} · {row.status}
-                      {row.error ? ' — ' + row.error : ''}
-                    </p>
-                  ))}
-              </div>
-            </details>
-          )}
-        </article>
+      {upcomingSections.map((group) => (
+        <div key={group.key} className="space-y-3">
+          <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            {group.label} · {group.rows.length}
+          </h3>
+          {group.rows.map(renderMeetingCard)}
+        </div>
       ))}
-      {!visible.length && (
+      {scheduledGroups.past.length > 0 && (
+        <details className="card-box bg-card">
+          <summary className="text-sm font-medium">
+            Earlier unmarked meetings · {scheduledGroups.past.length}
+          </summary>
+          <div className="space-y-3 pt-3">{scheduledGroups.past.map(renderMeetingCard)}</div>
+        </details>
+      )}
+      {closedMeetings.length > 0 && (
+        <div className="space-y-3">
+          <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            Completed &amp; cancelled · {closedMeetings.length}
+          </h3>
+          {closedMeetings.map(renderMeetingCard)}
+        </div>
+      )}
+      {!hasVisibleMeetings && (
         <Empty
           icon={CalendarDays}
           title="No scheduled meetings"

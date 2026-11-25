@@ -82,6 +82,7 @@ export function ProjectDirectoryView({
           label="Filter projects by status"
           value={filter}
           onValueChange={setFilter}
+          className="max-sm:flex-nowrap max-sm:overflow-x-auto max-sm:no-scrollbar"
           options={[
             { value: 'all', label: `All (${projects.length})` },
             { value: 'ongoing', label: `Ongoing (${ongoingCount})` },
@@ -93,7 +94,7 @@ export function ProjectDirectoryView({
           ]}
         />
 
-        <div className="relative min-w-56 max-w-xs">
+        <div className="relative w-full sm:w-auto sm:min-w-56 sm:max-w-xs">
           <Search className="pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={search}
