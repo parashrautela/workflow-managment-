@@ -100,7 +100,7 @@ export function ProjectTaskList({
   return (
     <>
       <div className="flex flex-wrap items-center gap-2">
-        <div className="relative min-w-44 max-w-sm flex-1">
+        <div className="relative w-full sm:w-auto sm:min-w-44 sm:max-w-sm sm:flex-1">
           <Search className="pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={filters.search}
@@ -118,7 +118,7 @@ export function ProjectTaskList({
           <Filter className="size-4" />
           Filters{filters.activeCount > 0 ? ` (${filters.activeCount})` : ''}
         </Button>
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex flex-wrap items-center gap-2">
           <SegmentedControl
             label="Task view"
             value={viewMode}
@@ -220,9 +220,9 @@ export function ProjectTaskList({
               return (
                 <div
                   key={t.id}
-                  className={`group grid items-center gap-x-3 gap-y-1 card-box bg-card transition-all hover:border-primary/40 ${
+                  className={`group grid items-center gap-x-3 gap-y-2 card-box bg-card transition-all hover:border-primary/40 ${
                     canToggle
-                      ? 'grid-cols-[32px_minmax(0,1fr)_auto] sm:grid-cols-[32px_minmax(0,1fr)_112px_136px_112px_auto]'
+                      ? 'grid-cols-[44px_minmax(0,1fr)_auto] sm:grid-cols-[32px_minmax(0,1fr)_112px_136px_112px_auto]'
                       : 'grid-cols-[minmax(0,1fr)_auto] sm:grid-cols-[minmax(0,1fr)_112px_136px_112px_auto]'
                   }`}
                 >
@@ -231,14 +231,18 @@ export function ProjectTaskList({
                     <button
                       type="button"
                       onClick={() => onToggleTask(t)}
-                      className={`grid size-8 place-items-center rounded-md border transition-colors ${
-                        isCompleted
-                          ? 'bg-success-fill border-success-fill text-white'
-                          : 'border-muted-foreground/30 hover:border-primary'
-                      }`}
+                      className="grid size-11 -ml-1.5 place-items-center rounded-md sm:ml-0 sm:size-8"
                       aria-label="Toggle task completion"
                     >
-                      {isCompleted && <Check className="size-4" />}
+                      <span
+                        className={`grid size-8 place-items-center rounded-md border transition-colors ${
+                          isCompleted
+                            ? 'bg-success-fill border-success-fill text-white'
+                            : 'border-muted-foreground/30 hover:border-primary'
+                        }`}
+                      >
+                        {isCompleted && <Check className="size-4" />}
+                      </span>
                     </button>
                   )}
 
@@ -262,23 +266,25 @@ export function ProjectTaskList({
                     <StatusChip status={filters.statusOf(t)} />
                   </div>
 
-                  <span
-                    className={`${canToggle ? 'col-start-2' : 'col-start-1'} flex min-w-0 items-center gap-1 truncate text-xs text-muted-foreground sm:col-start-auto`}
+                  <div
+                    className={`${canToggle ? 'col-start-2' : 'col-start-1'} row-start-2 flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1 sm:contents`}
                   >
-                    <User className="size-3 shrink-0" />
-                    <span className="truncate">
-                      {assigneeName(t.assigneeId) || t.assigneeName || t.role || t.sourceRole || 'Unassigned'}
+                    <span className="flex min-w-0 items-center gap-1 truncate text-xs text-muted-foreground">
+                      <User className="size-3 shrink-0" />
+                      <span className="truncate">
+                        {assigneeName(t.assigneeId) || t.assigneeName || t.role || t.sourceRole || 'Unassigned'}
+                      </span>
                     </span>
-                  </span>
 
-                  <span className="whitespace-nowrap flex items-center gap-1 text-xs text-muted-foreground">
-                    {(t.deadline || t.dueDate) && (
-                      <>
-                        <Calendar className="size-3 shrink-0" />
-                        <Time value={t.deadline || t.dueDate} format="calendar" />
-                      </>
-                    )}
-                  </span>
+                    <span className="whitespace-nowrap flex items-center gap-1 text-xs text-muted-foreground">
+                      {(t.deadline || t.dueDate) && (
+                        <>
+                          <Calendar className="size-3 shrink-0" />
+                          <Time value={t.deadline || t.dueDate} format="calendar" />
+                        </>
+                      )}
+                    </span>
+                  </div>
 
                   <Button
                     variant="outline"

@@ -27,6 +27,7 @@ test('navigation URLs preserve the app host, preview path and unrelated paramete
     queryId: '',
     conversationId: '',
   });
+  assert.equal(readNavigation('http://localhost/?section=today').section, 'today');
   assert.equal(readNavigation('http://localhost/?section=unknown&tab=unknown').section, 'actions');
   assert.equal(readNavigation('http://localhost/?tab=unknown').projectTab, '');
 });

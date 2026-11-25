@@ -14,6 +14,7 @@ test('titles list the most specific part first and skip empty parts', () => {
 
 test('every founder section has its own title', () => {
   const titles = {
+    today: 'Today | Studio Iksha',
     projects: 'Projects | Studio Iksha',
     actions: 'Actions needed | Studio Iksha',
     groups: 'Telegram groups | Studio Iksha',

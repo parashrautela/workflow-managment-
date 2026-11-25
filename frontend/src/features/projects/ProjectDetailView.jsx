@@ -2,7 +2,7 @@ import { toast } from '@/components/ui/toaster';
 import { MeetingsView } from '@/features/meetings/Meetings';
 import { needsQueryAttention } from '@/features/queries/lib/queryStatus';
 // frontend/src/components/ProjectDetailView.jsx
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { founderProjectTab, useNavigation, navigate, goBack } from '@/lib/navigation';
 import {
   AlertCircle,
@@ -108,6 +108,12 @@ export function ProjectDetailView({
   const navigation = useNavigation();
   const activeTab = founderProjectTab(navigation.projectTab);
   const setActiveTab = (projectTab) => navigate({ projectTab });
+  const tabsListRef = useRef(null);
+  useEffect(() => {
+    tabsListRef.current
+      ?.querySelector('[data-state="active"]')
+      ?.scrollIntoView({ inline: 'nearest', block: 'nearest' });
+  }, [activeTab]);
   const [templateModalOpen, setTemplateModalOpen] = useState(false);
   const [taskSelection, setTaskSelection] = useState(null);
   const selectedTask =
@@ -565,7 +571,7 @@ export function ProjectDetailView({
           </StatusChip>
         </div>
 
-        <p className="truncate text-sm text-muted-foreground">
+        <p className="break-words text-sm text-muted-foreground sm:truncate">
           <span className="font-medium text-foreground">{project.clientName || 'Unassigned'}</span>
           {' · '}
           {project.location || 'Location not set'}
@@ -761,14 +767,20 @@ export function ProjectDetailView({
 
       {/* Tabs System */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
-        <TabsList className="iksha-project-tabs" aria-label="Project sections">
-          <TabsTrigger value="schedule">Timeline</TabsTrigger>
-          <TabsTrigger value="tasks">
+        <TabsList ref={tabsListRef} className="iksha-project-tabs" aria-label="Project sections">
+          <TabsTrigger value="schedule" className="max-sm:order-4">
+            Timeline
+          </TabsTrigger>
+          <TabsTrigger value="tasks" className="max-sm:order-1">
             Tasks <span className="ml-1 font-normal tabular-nums">{tasks.length}</span>
           </TabsTrigger>
-          <TabsTrigger value="meetings">Meetings</TabsTrigger>
-          <TabsTrigger value="chat">Team chat</TabsTrigger>
-          <TabsTrigger value="queries">
+          <TabsTrigger value="meetings" className="max-sm:order-5">
+            Meetings
+          </TabsTrigger>
+          <TabsTrigger value="chat" className="max-sm:order-2">
+            Team chat
+          </TabsTrigger>
+          <TabsTrigger value="queries" className="max-sm:order-3">
             Client queries
             {pendingQueriesCount > 0 && (
               <Badge
@@ -779,8 +791,10 @@ export function ProjectDetailView({
               </Badge>
             )}
           </TabsTrigger>
-          <TabsTrigger value="files">Files</TabsTrigger>
-          <TabsTrigger value="team">
+          <TabsTrigger value="files" className="max-sm:order-6">
+            Files
+          </TabsTrigger>
+          <TabsTrigger value="team" className="max-sm:order-7">
             Team <span className="ml-1 font-normal tabular-nums">{teamCount}</span>
           </TabsTrigger>
         </TabsList>
@@ -966,25 +980,29 @@ export function ProjectDetailView({
 
                 return (
                   <Card key={memberId || idx} className="py-0">
-                    <CardContent className="flex items-center justify-between gap-3 py-2">
+                    <CardContent className="flex flex-col gap-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:py-2">
                       <div className="flex min-w-0 items-center gap-3">
-                        <Avatar className="size-9">
+                        <Avatar className="size-9 shrink-0">
                           <AvatarFallback className="bg-secondary text-xs font-semibold">
                             {member.name?.slice(0, 2).toUpperCase() || 'TM'}
                           </AvatarFallback>
                         </Avatar>
-                        <div className="min-w-0">
-                          <p className="text-xs font-semibold text-foreground">{member.name}</p>
-                          <p className="text-xs text-muted-foreground">
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                            <p className="truncate text-xs font-semibold text-foreground">
+                              {member.name}
+                            </p>
+                            <Badge variant="secondary" className="min-w-0 shrink text-xs">
+                              <span className="truncate">{member.role || 'Designer'}</span>
+                            </Badge>
+                          </div>
+                          <p className="truncate text-xs text-muted-foreground">
                             {member.designation || member.role || 'Member'}
                           </p>
                         </div>
-                        <Badge variant="secondary" className="ml-1 min-w-0 shrink text-xs">
-                          <span className="truncate">{member.role || 'Designer'}</span>
-                        </Badge>
                       </div>
 
-                      <div className="flex shrink-0 items-center gap-3">
+                      <div className="flex shrink-0 items-center justify-between gap-3 sm:justify-end">
                         <span className="text-xs text-muted-foreground">
                           {memberTasksCount} task{memberTasksCount === 1 ? '' : 's'}
                         </span>
@@ -1123,7 +1141,7 @@ export function ProjectDetailView({
               />
             </label>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <label className="grid gap-2 text-xs font-semibold">
                 Project stage
                 <NativeSelect
@@ -1157,7 +1175,7 @@ export function ProjectDetailView({
               </label>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <label className="grid gap-2 text-xs font-semibold">
                 Deadline
                 <Input

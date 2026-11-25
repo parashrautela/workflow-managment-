@@ -3,7 +3,7 @@ import { PersonalReminders } from '@/features/operations/PersonalReminders';
 import { matchesRole } from '@/features/people/lib/roles';
 import { LocationProjectPicker } from '@/features/projects/LocationProjectPicker';
 import { useEffect, useState } from 'react';
-import { CheckCircle2, FolderOpen } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, FolderOpen, SlidersHorizontal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { RefreshButton } from '@/components/ui/refresh-button';
 import { Input } from '@/components/ui/input';
@@ -58,7 +58,9 @@ export function WorkQueue({
     [link, setLink] = useState(''),
     [syncWarning, setSyncWarning] = useState(''),
     [connected, setConnected] = useState(false),
-    [railGroup, setRailGroup] = useState('');
+    [railGroup, setRailGroup] = useState(''),
+    [filtersExpanded, setFiltersExpanded] = useState(() => isFounder && initialPersonId !== 'founder');
+  const activePickerCount = (isFounder && person !== 'founder' ? 1 : 0) + (projectId ? 1 : 0);
   const navigation = useNavigation();
   const selected =
     navigation.section === 'actions'
@@ -89,7 +91,8 @@ export function WorkQueue({
   };
   useEffect(() => {
     setPerson(initialPersonId);
-  }, [initialPersonId]);
+    if (isFounder && initialPersonId !== 'founder') setFiltersExpanded(true);
+  }, [initialPersonId, isFounder]);
   useEffect(() => {
     load();
     const timer = setInterval(() => {
@@ -107,6 +110,19 @@ export function WorkQueue({
   };
   return (
     <section className="work-queue">
+      {isFounder && (
+        <div className="lg:hidden">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="-ml-2 text-muted-foreground"
+            onClick={() => navigate({ section: 'today' })}
+          >
+            <ArrowLeft className="size-4" />
+            Today
+          </Button>
+        </div>
+      )}
       <div className="work-queue-header flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1>Actions needed</h1>
@@ -114,15 +130,25 @@ export function WorkQueue({
             Review approvals and follow up on project work
           </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <Button
-            className="work-connection"
+            className={`work-connection ${connected ? 'max-sm:hidden' : ''}`}
             data-connected={connected}
             variant="outline"
             size="sm"
             onClick={connect}
           >
             {connected ? 'Telegram connected' : 'Connect Telegram digests'}
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            className="sm:hidden"
+            aria-expanded={filtersExpanded}
+            onClick={() => setFiltersExpanded((current) => !current)}
+          >
+            <SlidersHorizontal className="size-3.5" />
+            Filters{activePickerCount > 0 ? ` (${activePickerCount})` : ''}
           </Button>
           <RefreshButton onRefresh={load} />
         </div>
@@ -144,7 +170,10 @@ export function WorkQueue({
           options={STATUS_FILTERS}
           className="work-queue-status no-scrollbar"
         />
-        <div className="work-queue-pickers">
+        <div
+          className="work-queue-pickers"
+          data-collapsed={!filtersExpanded ? 'true' : undefined}
+        >
           {isFounder && (
             <NativeSelect
               size="sm"

@@ -75,12 +75,16 @@
 /* Project tabs: always one row. Phones scroll sideways instead of wrapping. */
 .iksha-project-tabs[data-slot='tabs-list'] {
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   flex-wrap: nowrap;
   justify-content: flex-start;
   gap: var(--space-24);
   height: auto;
   overflow-x: auto;
   overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
   scrollbar-width: none;
 }
 .iksha-project-tabs[data-slot='tabs-list']::-webkit-scrollbar {
@@ -90,11 +94,17 @@
   flex: none;
   min-height: 40px;
   white-space: nowrap;
+  scroll-snap-align: start;
   font-size: var(--text-sm);
 }
 @media (max-width: 639px) {
+  .iksha-project-tabs[data-slot='tabs-list'] {
+    gap: var(--space-16);
+    padding-right: var(--space-16);
+  }
   .iksha-project-tabs [data-slot='tabs-trigger'] {
     min-height: 44px;
+    padding-inline: var(--space-4);
   }
 }
 [data-slot='dialog-title'],
@@ -1882,6 +1892,11 @@ details.iksha-help > summary:hover {
 }
 
 @media (max-width: 639px) {
+  .iksha-timeline[data-mobile-view='stages'] .iksha-timeline-toolbar,
+  .iksha-timeline[data-mobile-view='stages'] .iksha-schedule-frame,
+  .iksha-timeline[data-mobile-view='stages'] .iksha-schedule-caption {
+    display: none;
+  }
   .task-thread-header-actions button,
   .task-thread-steps button {
     min-height: 44px;

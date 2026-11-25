@@ -120,19 +120,6 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
   // conversation list and the thread scroll inside it, like a mail app. Below 420px tall it falls back to page scrolling.
   const panelRef = useRef(null);
   const [panelHeight, setPanelHeight] = useState(null);
-  useLayoutEffect(() => {
-    const fit = () => {
-      const panel = panelRef.current;
-      if (!panel) return;
-      const top = panel.getBoundingClientRect().top + window.scrollY;
-      const bottomGap = window.matchMedia('(min-width: 768px)').matches ? 32 : 104; // page padding, plus the phone tab bar
-      const next = Math.max(420, Math.floor(window.innerHeight - top - bottomGap));
-      setPanelHeight((current) => (current === next ? current : next));
-    };
-    fit();
-    window.addEventListener('resize', fit);
-    return () => window.removeEventListener('resize', fit);
-  });
 
   const load = async () => {
     try {
@@ -198,6 +185,23 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
   const mobileThread = Boolean(navigation.queryId && selected);
   const selectedProject = projects.find((item) => item.id === selected?.projectId);
   const openCount = requests.filter((item) => needsQueryAttention(item)).length;
+
+  useLayoutEffect(() => {
+    const fit = () => {
+      const panel = panelRef.current;
+      if (!panel) return;
+      const top = panel.getBoundingClientRect().top + window.scrollY;
+      const mobileNav = document.querySelector('nav[aria-label="Mobile navigation"]');
+      const navHeight = mobileNav ? mobileNav.getBoundingClientRect().height : 0;
+      const bottomGap = navHeight > 0 ? Math.ceil(navHeight) + 12 : 32;
+      const minPanel = navHeight > 0 ? 320 : 420;
+      const next = Math.max(minPanel, Math.floor(window.innerHeight - top - bottomGap));
+      setPanelHeight((current) => (current === next ? current : next));
+    };
+    fit();
+    window.addEventListener('resize', fit);
+    return () => window.removeEventListener('resize', fit);
+  }, [mobileThread, settingsOpen, error, requests.length]);
   const text = selected
     ? mode === 'internal'
       ? notes[selected.id] || ''
@@ -308,7 +312,9 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-wrap items-start justify-between gap-3">
+      <div
+        className={`${mobileThread ? 'hidden lg:flex' : 'flex'} flex-wrap items-start justify-between gap-3`}
+      >
         <div>
           <h1>Client queries</h1>
           <p className="mt-1 text-sm text-muted-foreground">
@@ -374,7 +380,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
       <div
         ref={panelRef}
         style={panelHeight ? { height: panelHeight } : undefined}
-        className="flex min-h-[420px] flex-col overflow-hidden rounded-2xl border bg-card shadow-sm"
+        className="flex min-h-[320px] flex-col overflow-hidden rounded-2xl border bg-card shadow-sm lg:min-h-[420px]"
       >
         <Tabs
           value={tab}
@@ -407,7 +413,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
             className={`${mobileThread ? 'hidden lg:flex' : 'flex'} min-h-0 min-w-0 flex-col border-r`}
             aria-label="Decision conversations"
           >
-            <div className="flex gap-2 border-b p-3">
+            <div className="flex flex-col gap-2 border-b p-3 sm:flex-row">
               <label className="relative block min-w-0 flex-1">
                 <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
                 <Input
@@ -422,7 +428,7 @@ export function DecisionInbox({ projects, onProjectsChanged }) {
                 value={projectFilter}
                 onChange={(event) => setProjectFilter(event.target.value)}
                 aria-label="Filter by project"
-                className="w-32 shrink-0"
+                className="w-full shrink-0 sm:w-36"
               >
                 <option>All projects</option>
                 {projects.map((project) => (

@@ -26,8 +26,11 @@
   gap: var(--space-12);
 }
 .work-queue-status[data-slot='segmented-control'] {
+  min-width: 0;
+  max-width: 100%;
   flex-wrap: nowrap;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   white-space: nowrap;
 }
 .work-queue-pickers {
@@ -179,19 +182,27 @@
   color: var(--foreground);
 }
 @media (max-width: 639px) {
+  .work-queue > * + * {
+    margin-top: var(--space-16);
+  }
   .work-queue-header {
-    gap: var(--space-16);
+    gap: var(--space-12);
   }
   .work-queue-pickers {
     width: 100%;
+    flex-wrap: wrap;
+  }
+  .work-queue-pickers[data-collapsed='true'] {
+    display: none;
   }
   .work-queue-pickers select {
-    flex: 1 1 0;
+    flex: 1 1 100%;
     max-width: none;
   }
   .work-queue-item {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
+    min-height: 48px;
     gap: var(--space-12);
   }
   .work-queue-item-meta {

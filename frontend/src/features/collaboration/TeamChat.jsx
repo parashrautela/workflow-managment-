@@ -202,12 +202,12 @@ export function TeamChat({
             {team.length > 0 && (
               <ul
                 aria-label="Assigned project employees"
-                className="mt-1.5 flex flex-wrap gap-1.5"
+                className="no-scrollbar mt-1.5 flex flex-nowrap gap-1.5 overflow-x-auto sm:flex-wrap sm:overflow-visible"
               >
                 {team.map((member) => (
                   <li
                     key={member.employeeId}
-                    className="max-w-full break-words rounded-lg bg-secondary px-2 py-0.5 text-xs"
+                    className="max-w-full shrink-0 whitespace-nowrap rounded-lg bg-secondary px-2 py-0.5 text-xs sm:shrink sm:whitespace-normal sm:break-words"
                   >
                     <span className="font-medium">{member.name}</span>
                     <span className="text-muted-foreground">
@@ -225,7 +225,7 @@ export function TeamChat({
       <div
         ref={scrollRef}
         className={`chat-scroll min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain [scrollbar-gutter:stable] ${
-          fullHeight ? 'px-4 py-6 sm:px-8' : 'min-h-64 max-h-[50dvh] px-4 py-4'
+          fullHeight ? 'px-4 py-4 sm:px-8 sm:py-6' : 'min-h-64 max-h-[50dvh] px-4 py-4'
         }`}
         aria-label="Project team messages"
         aria-live="polite"
@@ -374,6 +374,7 @@ export function TeamChat({
             onBlur={() => setMention(null)}
             rows={1}
             maxLength={2000}
+            enterKeyHint="send"
             placeholder="Message your team… Type @ to mention"
             aria-label="Message your team"
             role="combobox"

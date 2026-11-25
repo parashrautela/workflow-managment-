@@ -5,7 +5,7 @@ import { ProjectConversations } from '@/features/collaboration/ProjectConversati
 import { needsQueryAttention } from '@/features/queries/lib/queryStatus';
 import { WorkQueue } from '@/features/operations/WorkQueue';
 import { GoogleDrive } from '@/features/drive/GoogleDrive';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   useNavigation,
   navigate,
@@ -24,13 +24,16 @@ import {
   CheckCircle2,
   FolderKanban,
   HardDrive,
+  Inbox,
   LogOut,
   Menu,
   MessageSquare,
+  MessagesSquare,
   Plus,
   Search,
   Send,
   Sparkles,
+  Sun,
   Trash2,
   Users,
   UserPlus,
@@ -61,9 +64,9 @@ import {
 } from '@/components/ui/sheet';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Textarea } from '@/components/ui/textarea';
-import { GooeyNewButton } from '@/components/GooeyNewButton';
 import { EmployeeDialog, EmployeeManager } from '@/features/people/EmployeeManager';
 import { FounderAssistant } from '@/features/assistant/FounderAssistant';
+import { MobileToday } from '@/features/today/MobileToday';
 import { DecisionInbox } from '@/features/queries/DecisionInbox';
 import { TelegramGroups } from '@/features/telegram/TelegramGroups';
 import { ProjectDetailView } from '@/features/projects/ProjectDetailView';
@@ -278,6 +281,24 @@ export default function FounderApp() {
     setSidebarOpen(false);
   };
 
+  const initializedMobileLandingRef = useRef(false);
+  useEffect(() => {
+    if (authState !== 'signed-in' || initializedMobileLandingRef.current) return;
+    initializedMobileLandingRef.current = true;
+    const isPhoneOrTablet = window.matchMedia?.('(max-width: 1023px)').matches;
+    const params = new URLSearchParams(window.location.search);
+    if (
+      isPhoneOrTablet &&
+      !params.get('section') &&
+      !params.get('project') &&
+      !params.get('task') &&
+      !params.get('query') &&
+      !params.get('conversation')
+    ) {
+      navigate({ section: 'today' }, { replace: true });
+    }
+  }, [authState]);
+
   useEffect(() => {
     if (authState !== 'signed-in') return;
     if (currentTab === 'employees') loadEmployees();
@@ -287,7 +308,12 @@ export default function FounderApp() {
   }, [currentTab, authState]);
 
   const handleSelectProjectFromDir = (projectId) => {
-    navigate({ section: 'projects', projectId });
+    const isMobile = window.matchMedia?.('(max-width: 1023px)').matches;
+    navigate({
+      section: 'projects',
+      projectId,
+      ...(isMobile ? { projectTab: 'tasks' } : {}),
+    });
     setSidebarOpen(false);
   };
 
@@ -411,10 +437,11 @@ export default function FounderApp() {
   }
 
   const sectionIcons = {
+    today: Sun,
     actions: CheckCircle2,
-    decisions: MessageSquare,
+    decisions: Inbox,
     meetings: CalendarDays,
-    chats: MessageSquare,
+    chats: MessagesSquare,
     assistant: Sparkles,
     projects: FolderKanban,
     groups: Send,
@@ -469,7 +496,9 @@ export default function FounderApp() {
       <div className="iksha-nav-scroll -mx-1 min-h-0 flex-1 space-y-3 overflow-y-auto px-1 py-1">
         <nav aria-label="Workspace" className="grid gap-3">
           <SidebarGroup>
-            {founderSections.filter((s) => s.group === 'main').map(renderSectionItem)}
+            {founderSections
+              .filter((s) => s.group === 'main' && !s.mobileOnly)
+              .map(renderSectionItem)}
           </SidebarGroup>
           <SidebarGroup>
             <SidebarGroupLabel>Workspace</SidebarGroupLabel>
@@ -523,8 +552,49 @@ export default function FounderApp() {
     </div>
   );
 
+  // Mobile overflow drawer: secondary shortcuts + desktop-oriented admin tools (no project tree clutter).
+  const mobileNavigation = (
+    <div className="iksha-navigation flex h-full min-h-0 flex-col">
+      <Brand compact />
+      <div className="iksha-nav-scroll -mx-1 min-h-0 flex-1 space-y-4 overflow-y-auto px-1 py-1">
+        <nav aria-label="Workspace overflow" className="grid gap-4">
+          <SidebarGroup>
+            <SidebarGroupLabel>More</SidebarGroupLabel>
+            {founderSections
+              .filter((s) => ['actions', 'meetings', 'assistant'].includes(s.id))
+              .map(renderSectionItem)}
+          </SidebarGroup>
+          <Separator />
+          <SidebarGroup>
+            <SidebarGroupLabel>Admin &amp; workspace</SidebarGroupLabel>
+            {founderSections
+              .filter((s) => ['employees', 'groups', 'drive', 'trash'].includes(s.id))
+              .map(renderSectionItem)}
+          </SidebarGroup>
+        </nav>
+      </div>
+
+      <div className="flex items-center gap-3 border-t pt-3">
+        <InitialAvatar name={founderProfile?.name || 'Project founder'} />
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-xs font-semibold">{founderProfile?.name || 'Project founder'}</p>
+          <p className="truncate text-xs text-muted-foreground">
+            {founderProfile?.email || 'Workspace founder'}
+          </p>
+        </div>
+        <Button variant="ghost" size="icon" aria-label="Sign out" onClick={handleLogout}>
+          <LogOut />
+        </Button>
+      </div>
+    </div>
+  );
+
+  const isFullHeightTab = currentTab === 'assistant' || currentTab === 'chats';
+
   return (
-    <div className="iksha-workspace app-glow min-h-dvh bg-background pb-20 lg:pb-0">
+    <div
+      className={`iksha-workspace app-glow min-h-dvh bg-background ${isFullHeightTab ? '' : 'iksha-mobile-shell'}`}
+    >
       {/* Desktop Sidebar Navigation */}
       <aside className="iksha-sidebar fixed inset-y-0 left-0 hidden w-64 px-3 py-3 lg:block">
         {navigation}
@@ -535,9 +605,9 @@ export default function FounderApp() {
         <SheetContent side="left" className="w-[min(88vw,19rem)] gap-0 px-3 py-3">
           <SheetHeader className="sr-only">
             <SheetTitle>Workspace navigation</SheetTitle>
-            <SheetDescription>Choose a project or section</SheetDescription>
+            <SheetDescription>Overflow views and workspace administration</SheetDescription>
           </SheetHeader>
-          {navigation}
+          {mobileNavigation}
         </SheetContent>
       </Sheet>
 
@@ -599,12 +669,33 @@ export default function FounderApp() {
           {/* Main Content Area */}
           <main
             className={
-              currentTab === 'assistant' || currentTab === 'chats'
-                ? 'h-[calc(100dvh-9rem)] lg:h-[calc(100dvh-5rem)]'
-                : 'mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:px-8 sm:py-8'
+              isFullHeightTab
+                ? 'iksha-mobile-fullheight'
+                : 'mx-auto w-full max-w-6xl space-y-6 px-4 py-5 sm:px-8 sm:py-8'
             }
           >
-            {currentTab === 'assistant' ? (
+            {currentTab === 'today' ? (
+              <MobileToday
+                projects={projects}
+                decisionRequests={decisionRequests}
+                founderProfile={founderProfile}
+                onOpenActions={(personId = 'founder') => {
+                  setWorkPerson(personId);
+                  openTab('actions');
+                }}
+                onOpenMeetings={() => openTab('meetings')}
+                onOpenQueries={(queryId = '') =>
+                  queryId ? navigate({ section: 'decisions', queryId }) : openTab('decisions')
+                }
+                onOpenChat={(projectId = '') =>
+                  projectId
+                    ? navigate({ section: 'chats', conversationId: projectId })
+                    : openTab('chats')
+                }
+                onOpenProject={(projectId) => handleSelectProjectFromDir(projectId)}
+                onOpenAssistant={() => openTab('assistant')}
+              />
+            ) : currentTab === 'assistant' ? (
               <FounderAssistant />
             ) : currentTab === 'meetings' ? (
               <MeetingsView />
@@ -739,37 +830,42 @@ export default function FounderApp() {
         </div>
       </div>
 
-      {/* Mobile Sticky Navigation Footer (Actionable 22: Responsive mobile usability) */}
+      {/* Mobile Sticky Navigation Footer: fixed 4 core destinations */}
       <nav
-        className={`safe-bottom fixed inset-x-0 bottom-0 z-30 grid ${selectedProject ? 'grid-cols-4' : 'grid-cols-3'} items-center overflow-visible border-t bg-card/95 px-2 pt-3 backdrop-blur lg:hidden`}
+        className="safe-bottom fixed inset-x-0 bottom-0 z-30 grid grid-cols-4 items-center border-t bg-card/95 px-2 pt-2 backdrop-blur lg:hidden"
         aria-label="Mobile navigation"
       >
-        {['projects', 'decisions', 'actions'].map((id) => {
+        {['today', 'decisions', 'chats', 'projects'].map((id) => {
           const Icon = sectionIcons[id];
-          const label = founderSections.find((section) => section.id === id).phone;
+          const section = founderSections.find((item) => item.id === id);
+          const label = section?.phone || section?.label || id;
+          const active = currentTab === id;
           return (
             <Button
               key={id}
               variant="ghost"
-              className={`relative h-12 flex-col gap-1 text-xs ${currentTab === id ? 'text-primary font-semibold' : 'text-muted-foreground'}`}
-              aria-current={currentTab === id ? 'page' : undefined}
+              className={`relative h-12 min-h-12 w-full flex-col gap-1 px-1 text-xs ${
+                active ? 'text-primary font-semibold' : 'text-muted-foreground'
+              }`}
+              aria-current={active ? 'page' : undefined}
               onClick={() => openTab(id)}
             >
-              <Icon className="size-4" />
-              {label}
+              <span className="relative inline-flex">
+                <Icon className="size-4" aria-hidden="true" />
+                {id === 'decisions' && pendingDecisionsCount > 0 && (
+                  <span
+                    aria-hidden="true"
+                    className="size-2 rounded-full bg-warning-fill absolute -top-0.5 -right-1"
+                  />
+                )}
+              </span>
+              <span>{label}</span>
               {id === 'decisions' && pendingDecisionsCount > 0 && (
-                <span className="size-1.5 rounded-full bg-warning-fill absolute top-2 right-6" />
+                <span className="sr-only">{pendingDecisionsCount} pending</span>
               )}
             </Button>
           );
         })}
-        <GooeyNewButton
-          hasProject={!!selectedProject}
-          onAddMember={() => {
-            setMemberDialogLabel('Add team member');
-            setMemberOpen(true);
-          }}
-        />
       </nav>
 
       {/* Add Employee Modal */}
