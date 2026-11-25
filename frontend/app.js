@@ -25633,7 +25633,7 @@ function Skeleton({ className, ...props }) {
 	});
 }
 // frontend/src/features/collaboration/TeamChat.jsx
-function TeamChat({ endpoint, currentActor, members = [] }) {
+function TeamChat({ endpoint, currentActor, members = [], fullHeight = false, headerTitle = null, headerActions = null }) {
 	const [messages, setMessages] = (0, import_react.useState)([]);
 	const [loaded, setLoaded] = (0, import_react.useState)(false);
 	const [draft, setDraft] = (0, import_react.useState)("");
@@ -25673,7 +25673,14 @@ function TeamChat({ endpoint, currentActor, members = [] }) {
 		});
 	};
 	const handleKeyDown = (event) => {
-		if (!mention || event.nativeEvent.isComposing) return;
+		if (event.nativeEvent.isComposing) return;
+		if (!mention) {
+			if (event.key === "Enter" && !event.shiftKey) {
+				event.preventDefault();
+				if (draft.trim() && !sending) send(event);
+			}
+			return;
+		}
 		if (event.key === "Escape") {
 			event.preventDefault();
 			setMention(null);
@@ -25744,34 +25751,43 @@ function TeamChat({ endpoint, currentActor, members = [] }) {
 			setSending(false);
 		}
 	};
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-		className: "flex min-h-[420px] gap-0 overflow-hidden p-0",
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(fullHeight ? "div" : Card, {
+		className: fullHeight ? "flex h-full min-h-0 flex-col bg-card lg:rounded-b-xl" : "flex min-h-[420px] gap-0 overflow-hidden p-0",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex items-start gap-3 border-b px-4 py-3",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "grid size-9 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-4" })
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "min-w-0",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+				className: `flex shrink-0 items-center justify-between gap-3 border-b ${fullHeight ? "px-4 py-3 sm:px-8" : "px-4 py-3"}`,
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex min-w-0 flex-1 items-center gap-3",
+					children: [!headerTitle && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "grid size-9 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-4" })
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "min-w-0 flex-1",
+						children: [headerTitle ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "-ml-2 flex flex-wrap items-center gap-x-2 gap-y-0.5",
+							children: [headerTitle, /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "px-2 text-xs text-muted-foreground sm:px-0",
+								children: [
+									"Founder ·",
+									" ",
+									team.length ? `${team.length} ${team.length === 1 ? "member" : "members"}` : "No employees assigned yet"
+								]
+							})]
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 							className: "type-label-14-strong",
 							children: "Project team chat"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 							className: "text-xs text-muted-foreground",
 							children: [
 								"Founder ·",
 								" ",
 								team.length ? `${team.length} assigned ${team.length === 1 ? "employee" : "employees"}` : "No employees assigned yet"
 							]
-						}),
-						team.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+						})] }), team.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
 							"aria-label": "Assigned project employees",
-							className: "mt-2 flex flex-wrap gap-2",
+							className: "mt-1.5 flex flex-wrap gap-1.5",
 							children: team.map((member) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
-								className: "max-w-full break-words rounded-lg bg-secondary px-2 py-1 text-xs",
+								className: "max-w-full break-words rounded-lg bg-secondary px-2 py-0.5 text-xs",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "font-medium",
 									children: member.name
@@ -25784,13 +25800,13 @@ function TeamChat({ endpoint, currentActor, members = [] }) {
 									]
 								})]
 							}, member.employeeId))
-						})
-					]
-				})]
+						})]
+					})]
+				}), headerActions]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				ref: scrollRef,
-				className: "chat-scroll min-h-64 max-h-[50dvh] flex-1 space-y-4 overflow-y-auto px-4 py-4",
+				className: `chat-scroll min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain [scrollbar-gutter:stable] ${fullHeight ? "px-4 py-6 sm:px-8" : "min-h-64 max-h-[50dvh] px-4 py-4"}`,
 				"aria-label": "Project team messages",
 				"aria-live": "polite",
 				children: !loaded ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -25845,16 +25861,19 @@ function TeamChat({ endpoint, currentActor, members = [] }) {
 							})]
 						})]
 					}, item.id);
-				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
-					className: "border-0",
-					icon: MessageSquare,
-					title: "Start the team conversation",
-					description: "Updates and questions shared here stay with this project team."
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: fullHeight ? "flex h-full min-h-[240px] items-center justify-center" : "",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
+						className: "border-0",
+						icon: MessageSquare,
+						title: "Start the team conversation",
+						description: "Updates and questions shared here stay with this project team."
+					})
 				})
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 				onSubmit: send,
-				className: "flex items-end gap-2 border-t p-3",
+				className: `flex shrink-0 items-end gap-2 border-t bg-card ${fullHeight ? "px-4 py-3 sm:px-8 sm:py-4" : "p-3"}`,
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "relative min-w-0 flex-1",
 					children: [mention && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -25940,56 +25959,169 @@ function TeamChat({ endpoint, currentActor, members = [] }) {
 			}),
 			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				role: "alert",
-				className: "px-4 pb-3 text-xs text-destructive",
+				className: `pb-3 text-xs text-destructive ${fullHeight ? "px-4 sm:px-8" : "px-4"}`,
 				children: error
 			})
 		]
 	});
 }
 // frontend/src/features/collaboration/ProjectConversations.jsx
+var isActiveChatProject = (project) => ![
+	"Completed",
+	"Abandoned",
+	"Setup",
+	"Needs setup"
+].includes(project.status) && !project.telegramSetupPending;
 function ProjectConversations({ projects = [], namespace = "founder", actor = "founder", embedded = false }) {
 	const Heading = embedded ? "h2" : "h1";
 	const selected = useNavigation().conversationId;
 	const [search, setSearch] = (0, import_react.useState)("");
-	const visible = projects.filter((project) => `${project.name} ${project.location || ""}`.toLowerCase().includes(search.toLowerCase()));
-	const project = projects.find((row) => row.id === selected) || visible[0];
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-		className: "space-y-4",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Heading, { children: "Project chats" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-			className: "text-xs text-muted-foreground",
-			children: "Internal conversations with the founders and project team. Task-specific references stay in their task threads."
-		})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-[200px_minmax(0,1fr)]",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("aside", {
-				className: "min-w-0 space-y-1",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-					"aria-label": "Search project conversations",
-					value: search,
-					onChange: (e) => setSearch(e.target.value),
-					placeholder: "Find a project or city…"
-				}), visible.map((row) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-					onClick: () => navigate({ conversationId: row.id }),
-					title: [row.name, row.location].filter(Boolean).join(" · "),
-					"aria-current": row.id === project?.id ? "true" : void 0,
-					className: `block min-h-8 w-full truncate rounded-lg px-3 py-1 text-left text-sm hover:bg-muted ${row.id === project?.id ? "bg-primary/10 font-medium text-primary" : ""}`,
-					children: row.name
-				}, row.id))]
-			}), project ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "min-w-0",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-					className: "mb-2 type-label-14-strong",
+	const [pickerOpen, setPickerOpen] = (0, import_react.useState)(false);
+	const pickerRef = (0, import_react.useRef)(null);
+	const searchInputRef = (0, import_react.useRef)(null);
+	const activeProjects = projects.filter(isActiveChatProject);
+	const project = activeProjects.find((row) => row.id === selected) || activeProjects[0] || null;
+	const visible = activeProjects.filter((row) => `${row.name} ${row.location || ""}`.toLowerCase().includes(search.trim().toLowerCase()));
+	(0, import_react.useEffect)(() => {
+		if (!pickerOpen) return;
+		requestAnimationFrame(() => searchInputRef.current?.focus());
+		const onPointerDown = (event) => {
+			if (!pickerRef.current?.contains(event.target)) setPickerOpen(false);
+		};
+		const onKeyDown = (event) => {
+			if (event.key === "Escape") setPickerOpen(false);
+		};
+		document.addEventListener("pointerdown", onPointerDown);
+		document.addEventListener("keydown", onKeyDown);
+		return () => {
+			document.removeEventListener("pointerdown", onPointerDown);
+			document.removeEventListener("keydown", onKeyDown);
+		};
+	}, [pickerOpen]);
+	if (!project) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "flex h-full min-h-0 items-center justify-center p-6",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
+			kind: "first-use",
+			icon: MessageSquare,
+			title: "No active project chats",
+			description: "Ongoing projects get an internal team chat once setup is complete."
+		})
+	});
+	const projectSwitcher = /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		ref: pickerRef,
+		className: "relative min-w-0",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+			type: "button",
+			onClick: () => setPickerOpen((open) => !open),
+			"aria-expanded": pickerOpen,
+			"aria-haspopup": "listbox",
+			className: "group flex max-w-full items-center gap-2 rounded-lg px-2 py-1 text-left transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "size-2 shrink-0 rounded-full bg-success-fill",
+					"aria-hidden": "true"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "min-w-0 truncate type-heading-16",
 					children: project.name
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TeamChat, {
-					endpoint: `/api/${namespace}/projects/${project.id}/team-chat`,
-					currentActor: actor,
-					members: project.members
-				}, project.id)]
-			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
-				kind: projects.length ? "no-results" : "first-use",
-				icon: MessageSquare,
-				title: projects.length ? "No matching project chats" : "No project chats yet",
-				description: projects.length ? "Try another project name or city." : "Each project gets a team chat once it exists."
+				}),
+				project.location && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+					className: "hidden truncate text-xs text-muted-foreground sm:inline",
+					children: ["· ", project.location]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, { className: `size-4 shrink-0 text-muted-foreground transition-transform duration-150 ${pickerOpen ? "rotate-180" : ""}` })
+			]
+		}), pickerOpen && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "absolute top-full left-0 z-30 mt-2 w-[min(22rem,calc(100vw-2rem))] overflow-hidden rounded-xl border bg-card shadow-lg",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "border-b p-2",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "relative",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "pointer-events-none absolute top-1/2 left-2.5 size-3.5 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+						ref: searchInputRef,
+						"aria-label": "Search active project chats",
+						value: search,
+						onChange: (e) => setSearch(e.target.value),
+						placeholder: "Switch project chat…",
+						className: "h-9 pl-8 text-sm"
+					})]
+				})
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+				role: "listbox",
+				"aria-label": "Active project chats",
+				className: "max-h-72 overflow-y-auto overscroll-contain p-1.5",
+				children: visible.length ? visible.map((row) => {
+					const isSelected = row.id === project.id;
+					const memberCount = (row.members || []).length;
+					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
+						role: "option",
+						"aria-selected": isSelected,
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							type: "button",
+							onClick: () => {
+								navigate({ conversationId: row.id });
+								setPickerOpen(false);
+								setSearch("");
+							},
+							className: `flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-left text-sm transition-colors ${isSelected ? "bg-accent font-medium text-foreground" : "text-foreground hover:bg-muted"}`,
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "size-2 shrink-0 rounded-full bg-success-fill",
+									"aria-hidden": "true"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "min-w-0 flex-1",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "block truncate",
+										children: row.name
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "block truncate text-xs text-muted-foreground",
+										children: [row.location, memberCount ? `${memberCount} ${memberCount === 1 ? "member" : "members"}` : "Founder only"].filter(Boolean).join(" · ")
+									})]
+								}),
+								isSelected && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-4 shrink-0 text-primary" })
+							]
+						})
+					}, row.id);
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
+					className: "px-3 py-4 text-center text-xs text-muted-foreground",
+					children: "No matching active projects."
+				})
 			})]
+		})]
+	});
+	const openProjectAction = /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+		type: "button",
+		variant: "ghost",
+		size: "sm",
+		className: "shrink-0 text-xs text-muted-foreground hover:text-foreground",
+		onClick: () => navigate({
+			section: "projects",
+			projectId: project.id
+		}),
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+			className: "hidden sm:inline",
+			children: "Open project"
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { className: "size-3.5" })]
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: embedded ? "space-y-3" : "flex h-full min-h-0 flex-col",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: embedded ? "" : "shrink-0 border-b px-4 pt-1 pb-4 sm:px-8",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Heading, { children: "Project chats" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-xs text-muted-foreground",
+				children: "Internal conversations with the founders and project team. Task-specific references stay in their task threads."
+			})]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: embedded ? "" : "min-h-0 flex-1",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TeamChat, {
+				endpoint: `/api/${namespace}/projects/${project.id}/team-chat`,
+				currentActor: actor,
+				members: project.members,
+				fullHeight: !embedded,
+				headerTitle: projectSwitcher,
+				headerActions: openProjectAction
+			}, project.id)
 		})]
 	});
 }
@@ -56569,7 +56701,7 @@ function FounderApp() {
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, { name: founderProfile?.name || "Project founder" })
 						})]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
-						className: currentTab === "assistant" ? "h-[calc(100dvh-9rem)] lg:h-[calc(100dvh-5rem)]" : "mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:px-8 sm:py-8",
+						className: currentTab === "assistant" || currentTab === "chats" ? "h-[calc(100dvh-9rem)] lg:h-[calc(100dvh-5rem)]" : "mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:px-8 sm:py-8",
 						children: currentTab === "assistant" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderAssistant, {}) : currentTab === "meetings" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MeetingsView, {}) : currentTab === "chats" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectConversations, { projects }) : currentTab === "actions" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkQueue, {
 							projects,
 							initialPersonId: workPerson,
@@ -57504,7 +57636,7 @@ function EmployeeApp() {
 							children: initials(employee?.name)
 						}) })]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
-						className: "mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:px-8 sm:py-8",
+						className: section === "chats" ? "h-[calc(100dvh-9rem)] lg:h-[calc(100dvh-5rem)]" : "mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:px-8 sm:py-8",
 						children: [error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							role: "alert",
 							className: "card-box border-destructive/30 bg-destructive/10 text-sm text-destructive",
