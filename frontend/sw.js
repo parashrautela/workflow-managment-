@@ -1,10 +1,13 @@
-const CACHE_NAME = 'studio-iksha-shell-v7';
+const CACHE_NAME = 'studio-iksha-shell-v8';
 const APP_SHELL = [
   '/',
   '/client.html',
   '/app.css',
   '/app.js',
-  '/assets/studio-iksha-access.png',
+  '/assets/sign-in-sky.jpg',
+  '/assets/sign-in-app.png',
+  '/assets/sign-in-logo.svg',
+  '/assets/google-g.png',
   '/manifest.webmanifest',
   '/icons/icon-192.png',
   '/icons/icon-512.png',

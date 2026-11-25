@@ -397,7 +397,13 @@ export default function EmployeeApp() {
             </Avatar>
           </header>
 
-          <main className="mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:px-8 sm:py-8">
+          <main
+            className={
+              section === 'chats'
+                ? 'h-[calc(100dvh-9rem)] lg:h-[calc(100dvh-5rem)]'
+                : 'mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:px-8 sm:py-8'
+            }
+          >
             {error && (
               <p
                 role="alert"

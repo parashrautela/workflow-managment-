@@ -77,7 +77,7 @@ export function GoogleSignIn({ mode = 'login', onComplete }) {
         size: 'large',
         text: 'continue_with',
         shape: 'rectangular',
-        width: Math.min(360, host.current.clientWidth || 300),
+        width: Math.min(400, host.current.clientWidth || 300),
       });
     })().catch((problem) => {
       if (!cancelled) setError(problem.message);
@@ -88,8 +88,17 @@ export function GoogleSignIn({ mode = 'login', onComplete }) {
   }, [mode, attempt]);
   if (!enabled && !error) return null;
   return (
-    <div className="mt-6 space-y-3">
-      <div className={busy ? 'pointer-events-none opacity-60' : ''} ref={host} />
+    <div className="iksha-google">
+      {enabled && (
+        <div className={`iksha-google-button ${busy ? 'pointer-events-none opacity-60' : ''}`}>
+          <span aria-hidden="true">
+            <img src="/assets/google-g.png" alt="" width="34" height="32" />
+            Continue with Google
+          </span>
+          {/* Google's real button sits invisibly on top of the drawn one; Google doesn't allow restyling it. */}
+          <div className="iksha-google-hit" ref={host} />
+        </div>
+      )}
       {busy && <p className="text-sm text-muted-foreground">Checking your Google account…</p>}
       {message && (
         <p role="status" className="card-box bg-secondary text-sm">
@@ -111,9 +120,10 @@ export function GoogleSignIn({ mode = 'login', onComplete }) {
         </p>
       )}
       {mode === 'login' && enabled && (
-        <p className="text-xs text-muted-foreground">
-          Already added by a founder? Use that exact Google email for immediate access. New accounts
-          need founder approval.
+        <p className="iksha-google-help">
+          Already added by a founder? Use that exact Google email for immediate access.
+          <br />
+          New accounts need founder approval.
         </p>
       )}
     </div>

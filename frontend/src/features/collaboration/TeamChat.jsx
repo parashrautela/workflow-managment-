@@ -19,7 +19,14 @@ import { Time } from '@/components/ui/time';
 import { Empty } from '@/components/ui/empty';
 import { Skeleton } from '@/components/ui/skeleton';
 
-export function TeamChat({ endpoint, currentActor, members = [] }) {
+export function TeamChat({
+  endpoint,
+  currentActor,
+  members = [],
+  fullHeight = false,
+  headerTitle = null,
+  headerActions = null,
+}) {
   const [messages, setMessages] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [draft, setDraft] = useState('');
@@ -65,7 +72,14 @@ export function TeamChat({ endpoint, currentActor, members = [] }) {
     });
   };
   const handleKeyDown = (event) => {
-    if (!mention || event.nativeEvent.isComposing) return;
+    if (event.nativeEvent.isComposing) return;
+    if (!mention) {
+      if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        if (draft.trim() && !sending) send(event);
+      }
+      return;
+    }
     if (event.key === 'Escape') {
       event.preventDefault();
       setMention(null);
@@ -145,41 +159,74 @@ export function TeamChat({ endpoint, currentActor, members = [] }) {
     }
   };
 
+  const Wrapper = fullHeight ? 'div' : Card;
+  const wrapperClass = fullHeight
+    ? 'flex h-full min-h-0 flex-col bg-card lg:rounded-b-xl'
+    : 'flex min-h-[420px] gap-0 overflow-hidden p-0';
+
   return (
-    <Card className="flex min-h-[420px] gap-0 overflow-hidden p-0">
-      <div className="flex items-start gap-3 border-b px-4 py-3">
-        <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
-          <MessageSquare className="size-4" />
-        </span>
-        <div className="min-w-0">
-          <h2 className="type-label-14-strong">Project team chat</h2>
-          <p className="text-xs text-muted-foreground">
-            Founder ·{' '}
-            {team.length
-              ? `${team.length} assigned ${team.length === 1 ? 'employee' : 'employees'}`
-              : 'No employees assigned yet'}
-          </p>
-          {team.length > 0 && (
-            <ul aria-label="Assigned project employees" className="mt-2 flex flex-wrap gap-2">
-              {team.map((member) => (
-                <li
-                  key={member.employeeId}
-                  className="max-w-full break-words rounded-lg bg-secondary px-2 py-1 text-xs"
-                >
-                  <span className="font-medium">{member.name}</span>
-                  <span className="text-muted-foreground">
-                    {' '}
-                    · {member.role || member.designation || 'Team member'}
-                  </span>
-                </li>
-              ))}
-            </ul>
+    <Wrapper className={wrapperClass}>
+      <div
+        className={`flex shrink-0 items-center justify-between gap-3 border-b ${
+          fullHeight ? 'px-4 py-3 sm:px-8' : 'px-4 py-3'
+        }`}
+      >
+        <div className="flex min-w-0 flex-1 items-center gap-3">
+          {!headerTitle && (
+            <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
+              <MessageSquare className="size-4" />
+            </span>
           )}
+          <div className="min-w-0 flex-1">
+            {headerTitle ? (
+              <div className="-ml-2 flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                {headerTitle}
+                <span className="px-2 text-xs text-muted-foreground sm:px-0">
+                  Founder ·{' '}
+                  {team.length
+                    ? `${team.length} ${team.length === 1 ? 'member' : 'members'}`
+                    : 'No employees assigned yet'}
+                </span>
+              </div>
+            ) : (
+              <>
+                <h2 className="type-label-14-strong">Project team chat</h2>
+                <p className="text-xs text-muted-foreground">
+                  Founder ·{' '}
+                  {team.length
+                    ? `${team.length} assigned ${team.length === 1 ? 'employee' : 'employees'}`
+                    : 'No employees assigned yet'}
+                </p>
+              </>
+            )}
+            {team.length > 0 && (
+              <ul
+                aria-label="Assigned project employees"
+                className="mt-1.5 flex flex-wrap gap-1.5"
+              >
+                {team.map((member) => (
+                  <li
+                    key={member.employeeId}
+                    className="max-w-full break-words rounded-lg bg-secondary px-2 py-0.5 text-xs"
+                  >
+                    <span className="font-medium">{member.name}</span>
+                    <span className="text-muted-foreground">
+                      {' '}
+                      · {member.role || member.designation || 'Team member'}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
+        {headerActions}
       </div>
       <div
         ref={scrollRef}
-        className="chat-scroll min-h-64 max-h-[50dvh] flex-1 space-y-4 overflow-y-auto px-4 py-4"
+        className={`chat-scroll min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain [scrollbar-gutter:stable] ${
+          fullHeight ? 'px-4 py-6 sm:px-8' : 'min-h-64 max-h-[50dvh] px-4 py-4'
+        }`}
         aria-label="Project team messages"
         aria-live="polite"
       >
@@ -253,15 +300,22 @@ export function TeamChat({ endpoint, currentActor, members = [] }) {
             );
           })
         ) : (
-          <Empty
-            className="border-0"
-            icon={MessageSquare}
-            title="Start the team conversation"
-            description="Updates and questions shared here stay with this project team."
-          />
+          <div className={fullHeight ? 'flex h-full min-h-[240px] items-center justify-center' : ''}>
+            <Empty
+              className="border-0"
+              icon={MessageSquare}
+              title="Start the team conversation"
+              description="Updates and questions shared here stay with this project team."
+            />
+          </div>
         )}
       </div>
-      <form onSubmit={send} className="flex items-end gap-2 border-t p-3">
+      <form
+        onSubmit={send}
+        className={`flex shrink-0 items-end gap-2 border-t bg-card ${
+          fullHeight ? 'px-4 py-3 sm:px-8 sm:py-4' : 'p-3'
+        }`}
+      >
         <div className="relative min-w-0 flex-1">
           {mention && (
             <div className="absolute bottom-full z-20 mb-2 w-full rounded-xl border bg-popover p-1 text-popover-foreground shadow-md">
@@ -342,10 +396,10 @@ export function TeamChat({ endpoint, currentActor, members = [] }) {
         </Button>
       </form>
       {error && (
-        <p role="alert" className="px-4 pb-3 text-xs text-destructive">
+        <p role="alert" className={`pb-3 text-xs text-destructive ${fullHeight ? 'px-4 sm:px-8' : 'px-4'}`}>
           {error}
         </p>
       )}
-    </Card>
+    </Wrapper>
   );
 }

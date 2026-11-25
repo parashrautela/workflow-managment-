@@ -11654,7 +11654,7 @@ function createLucideIcon(iconDataOrName, iconNode = [], aliases = []) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$63 = {
+var __iconData$62 = {
 	name: "arrow-left",
 	size: 24,
 	node: [["path", {
@@ -11665,8 +11665,8 @@ var __iconData$63 = {
 		key: "x3x0zl"
 	}]]
 };
-__iconData$63.node;
-var ArrowLeft = createLucideIcon(__iconData$63);
+__iconData$62.node;
+var ArrowLeft = createLucideIcon(__iconData$62);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/arrow-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11674,7 +11674,7 @@ var ArrowLeft = createLucideIcon(__iconData$63);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$62 = {
+var __iconData$61 = {
 	name: "arrow-right",
 	size: 24,
 	node: [["path", {
@@ -11685,8 +11685,8 @@ var __iconData$62 = {
 		key: "xquz4c"
 	}]]
 };
-__iconData$62.node;
-var ArrowRight = createLucideIcon(__iconData$62);
+__iconData$61.node;
+var ArrowRight = createLucideIcon(__iconData$61);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11694,7 +11694,7 @@ var ArrowRight = createLucideIcon(__iconData$62);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$61 = {
+var __iconData$60 = {
 	name: "arrow-up-right",
 	size: 24,
 	node: [["path", {
@@ -11705,8 +11705,8 @@ var __iconData$61 = {
 		key: "1vkiza"
 	}]]
 };
-__iconData$61.node;
-var ArrowUpRight = createLucideIcon(__iconData$61);
+__iconData$60.node;
+var ArrowUpRight = createLucideIcon(__iconData$60);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/arrow-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11714,7 +11714,7 @@ var ArrowUpRight = createLucideIcon(__iconData$61);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$60 = {
+var __iconData$59 = {
 	name: "arrow-up",
 	size: 24,
 	node: [["path", {
@@ -11725,8 +11725,8 @@ var __iconData$60 = {
 		key: "x0mq9r"
 	}]]
 };
-__iconData$60.node;
-var ArrowUp = createLucideIcon(__iconData$60);
+__iconData$59.node;
+var ArrowUp = createLucideIcon(__iconData$59);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/building-complex.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11734,7 +11734,7 @@ var ArrowUp = createLucideIcon(__iconData$60);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$59 = {
+var __iconData$58 = {
 	name: "building-complex",
 	size: 24,
 	node: [
@@ -11761,8 +11761,8 @@ var __iconData$59 = {
 	],
 	aliases: ["building-2"]
 };
-__iconData$59.node;
-var BuildingComplex = createLucideIcon(__iconData$59);
+__iconData$58.node;
+var BuildingComplex = createLucideIcon(__iconData$58);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/calendar-days.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11770,7 +11770,7 @@ var BuildingComplex = createLucideIcon(__iconData$59);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$58 = {
+var __iconData$57 = {
 	name: "calendar-days",
 	size: 24,
 	node: [
@@ -11820,8 +11820,8 @@ var __iconData$58 = {
 		}]
 	]
 };
-__iconData$58.node;
-var CalendarDays = createLucideIcon(__iconData$58);
+__iconData$57.node;
+var CalendarDays = createLucideIcon(__iconData$57);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/calendar.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11829,7 +11829,7 @@ var CalendarDays = createLucideIcon(__iconData$58);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$57 = {
+var __iconData$56 = {
 	name: "calendar",
 	size: 24,
 	node: [
@@ -11855,8 +11855,8 @@ var __iconData$57 = {
 		}]
 	]
 };
-__iconData$57.node;
-var Calendar = createLucideIcon(__iconData$57);
+__iconData$56.node;
+var Calendar = createLucideIcon(__iconData$56);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11864,7 +11864,7 @@ var Calendar = createLucideIcon(__iconData$57);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$56 = {
+var __iconData$55 = {
 	name: "check",
 	size: 24,
 	node: [["path", {
@@ -11872,8 +11872,8 @@ var __iconData$56 = {
 		key: "1gmf2c"
 	}]]
 };
-__iconData$56.node;
-var Check = createLucideIcon(__iconData$56);
+__iconData$55.node;
+var Check = createLucideIcon(__iconData$55);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/chevron-down.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11881,7 +11881,7 @@ var Check = createLucideIcon(__iconData$56);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$55 = {
+var __iconData$54 = {
 	name: "chevron-down",
 	size: 24,
 	node: [["path", {
@@ -11889,8 +11889,8 @@ var __iconData$55 = {
 		key: "qrunsl"
 	}]]
 };
-__iconData$55.node;
-var ChevronDown = createLucideIcon(__iconData$55);
+__iconData$54.node;
+var ChevronDown = createLucideIcon(__iconData$54);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/chevron-right.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11898,7 +11898,7 @@ var ChevronDown = createLucideIcon(__iconData$55);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$54 = {
+var __iconData$53 = {
 	name: "chevron-right",
 	size: 24,
 	node: [["path", {
@@ -11906,8 +11906,8 @@ var __iconData$54 = {
 		key: "mthhwq"
 	}]]
 };
-__iconData$54.node;
-var ChevronRight = createLucideIcon(__iconData$54);
+__iconData$53.node;
+var ChevronRight = createLucideIcon(__iconData$53);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/chevron-up.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11915,7 +11915,7 @@ var ChevronRight = createLucideIcon(__iconData$54);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$53 = {
+var __iconData$52 = {
 	name: "chevron-up",
 	size: 24,
 	node: [["path", {
@@ -11923,8 +11923,8 @@ var __iconData$53 = {
 		key: "153udz"
 	}]]
 };
-__iconData$53.node;
-var ChevronUp = createLucideIcon(__iconData$53);
+__iconData$52.node;
+var ChevronUp = createLucideIcon(__iconData$52);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/circle-alert.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11932,7 +11932,7 @@ var ChevronUp = createLucideIcon(__iconData$53);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$52 = {
+var __iconData$51 = {
 	name: "circle-alert",
 	size: 24,
 	node: [
@@ -11959,8 +11959,8 @@ var __iconData$52 = {
 	],
 	aliases: ["alert-circle"]
 };
-__iconData$52.node;
-var CircleAlert = createLucideIcon(__iconData$52);
+__iconData$51.node;
+var CircleAlert = createLucideIcon(__iconData$51);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/circle-check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11968,7 +11968,7 @@ var CircleAlert = createLucideIcon(__iconData$52);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$51 = {
+var __iconData$50 = {
 	name: "circle-check",
 	size: 24,
 	node: [["circle", {
@@ -11982,8 +11982,8 @@ var __iconData$51 = {
 	}]],
 	aliases: ["check-circle-2"]
 };
-__iconData$51.node;
-var CircleCheck = createLucideIcon(__iconData$51);
+__iconData$50.node;
+var CircleCheck = createLucideIcon(__iconData$50);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/circle-pause.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -11991,7 +11991,7 @@ var CircleCheck = createLucideIcon(__iconData$51);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$50 = {
+var __iconData$49 = {
 	name: "circle-pause",
 	size: 24,
 	node: [
@@ -12018,8 +12018,8 @@ var __iconData$50 = {
 	],
 	aliases: ["pause-circle"]
 };
-__iconData$50.node;
-var CirclePause = createLucideIcon(__iconData$50);
+__iconData$49.node;
+var CirclePause = createLucideIcon(__iconData$49);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/circle-question-mark.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12027,7 +12027,7 @@ var CirclePause = createLucideIcon(__iconData$50);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$49 = {
+var __iconData$48 = {
 	name: "circle-question-mark",
 	size: 24,
 	node: [
@@ -12048,8 +12048,8 @@ var __iconData$49 = {
 	],
 	aliases: ["help-circle", "circle-help"]
 };
-__iconData$49.node;
-var CircleQuestionMark = createLucideIcon(__iconData$49);
+__iconData$48.node;
+var CircleQuestionMark = createLucideIcon(__iconData$48);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/circle-x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12057,7 +12057,7 @@ var CircleQuestionMark = createLucideIcon(__iconData$49);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$48 = {
+var __iconData$47 = {
 	name: "circle-x",
 	size: 24,
 	node: [
@@ -12078,8 +12078,8 @@ var __iconData$48 = {
 	],
 	aliases: ["x-circle"]
 };
-__iconData$48.node;
-var CircleX = createLucideIcon(__iconData$48);
+__iconData$47.node;
+var CircleX = createLucideIcon(__iconData$47);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12087,7 +12087,7 @@ var CircleX = createLucideIcon(__iconData$48);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$47 = {
+var __iconData$46 = {
 	name: "circle",
 	size: 24,
 	node: [["circle", {
@@ -12097,8 +12097,8 @@ var __iconData$47 = {
 		key: "1mglay"
 	}]]
 };
-__iconData$47.node;
-var Circle = createLucideIcon(__iconData$47);
+__iconData$46.node;
+var Circle = createLucideIcon(__iconData$46);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/clock-3.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12106,7 +12106,7 @@ var Circle = createLucideIcon(__iconData$47);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$46 = {
+var __iconData$45 = {
 	name: "clock-3",
 	size: 24,
 	node: [["circle", {
@@ -12119,8 +12119,8 @@ var __iconData$46 = {
 		key: "135r8i"
 	}]]
 };
-__iconData$46.node;
-var Clock3 = createLucideIcon(__iconData$46);
+__iconData$45.node;
+var Clock3 = createLucideIcon(__iconData$45);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/clock.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12128,7 +12128,7 @@ var Clock3 = createLucideIcon(__iconData$46);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$45 = {
+var __iconData$44 = {
 	name: "clock",
 	size: 24,
 	node: [["circle", {
@@ -12141,8 +12141,8 @@ var __iconData$45 = {
 		key: "mmk7yg"
 	}]]
 };
-__iconData$45.node;
-var Clock = createLucideIcon(__iconData$45);
+__iconData$44.node;
+var Clock = createLucideIcon(__iconData$44);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/copy.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12150,7 +12150,7 @@ var Clock = createLucideIcon(__iconData$45);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$44 = {
+var __iconData$43 = {
 	name: "copy",
 	size: 24,
 	node: [["rect", {
@@ -12166,8 +12166,8 @@ var __iconData$44 = {
 		key: "zix9uf"
 	}]]
 };
-__iconData$44.node;
-var Copy = createLucideIcon(__iconData$44);
+__iconData$43.node;
+var Copy = createLucideIcon(__iconData$43);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/ellipsis-vertical.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12175,7 +12175,7 @@ var Copy = createLucideIcon(__iconData$44);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$43 = {
+var __iconData$42 = {
 	name: "ellipsis-vertical",
 	size: 24,
 	node: [
@@ -12200,8 +12200,8 @@ var __iconData$43 = {
 	],
 	aliases: ["more-vertical"]
 };
-__iconData$43.node;
-var EllipsisVertical = createLucideIcon(__iconData$43);
+__iconData$42.node;
+var EllipsisVertical = createLucideIcon(__iconData$42);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/external-link.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12209,7 +12209,7 @@ var EllipsisVertical = createLucideIcon(__iconData$43);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$42 = {
+var __iconData$41 = {
 	name: "external-link",
 	size: 24,
 	node: [
@@ -12227,8 +12227,8 @@ var __iconData$42 = {
 		}]
 	]
 };
-__iconData$42.node;
-var ExternalLink = createLucideIcon(__iconData$42);
+__iconData$41.node;
+var ExternalLink = createLucideIcon(__iconData$41);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/file-text.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12236,7 +12236,7 @@ var ExternalLink = createLucideIcon(__iconData$42);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$41 = {
+var __iconData$40 = {
 	name: "file-text",
 	size: 24,
 	node: [
@@ -12262,8 +12262,8 @@ var __iconData$41 = {
 		}]
 	]
 };
-__iconData$41.node;
-var FileText = createLucideIcon(__iconData$41);
+__iconData$40.node;
+var FileText = createLucideIcon(__iconData$40);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/flag.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12271,7 +12271,7 @@ var FileText = createLucideIcon(__iconData$41);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$40 = {
+var __iconData$39 = {
 	name: "flag",
 	size: 24,
 	node: [["path", {
@@ -12279,8 +12279,8 @@ var __iconData$40 = {
 		key: "1jaruq"
 	}]]
 };
-__iconData$40.node;
-var Flag = createLucideIcon(__iconData$40);
+__iconData$39.node;
+var Flag = createLucideIcon(__iconData$39);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/folder-kanban.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12288,7 +12288,7 @@ var Flag = createLucideIcon(__iconData$40);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$39 = {
+var __iconData$38 = {
 	name: "folder-kanban",
 	size: 24,
 	node: [
@@ -12310,8 +12310,8 @@ var __iconData$39 = {
 		}]
 	]
 };
-__iconData$39.node;
-var FolderKanban = createLucideIcon(__iconData$39);
+__iconData$38.node;
+var FolderKanban = createLucideIcon(__iconData$38);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/folder-open.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12319,7 +12319,7 @@ var FolderKanban = createLucideIcon(__iconData$39);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$38 = {
+var __iconData$37 = {
 	name: "folder-open",
 	size: 24,
 	node: [["path", {
@@ -12327,8 +12327,8 @@ var __iconData$38 = {
 		key: "usdka0"
 	}]]
 };
-__iconData$38.node;
-var FolderOpen = createLucideIcon(__iconData$38);
+__iconData$37.node;
+var FolderOpen = createLucideIcon(__iconData$37);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/funnel.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12336,7 +12336,7 @@ var FolderOpen = createLucideIcon(__iconData$38);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$37 = {
+var __iconData$36 = {
 	name: "funnel",
 	size: 24,
 	node: [["path", {
@@ -12345,8 +12345,8 @@ var __iconData$37 = {
 	}]],
 	aliases: ["filter"]
 };
-__iconData$37.node;
-var Funnel = createLucideIcon(__iconData$37);
+__iconData$36.node;
+var Funnel = createLucideIcon(__iconData$36);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/grip-vertical.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12354,7 +12354,7 @@ var Funnel = createLucideIcon(__iconData$37);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$36 = {
+var __iconData$35 = {
 	name: "grip-vertical",
 	size: 24,
 	node: [
@@ -12396,8 +12396,8 @@ var __iconData$36 = {
 		}]
 	]
 };
-__iconData$36.node;
-var GripVertical = createLucideIcon(__iconData$36);
+__iconData$35.node;
+var GripVertical = createLucideIcon(__iconData$35);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/hard-drive.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12405,7 +12405,7 @@ var GripVertical = createLucideIcon(__iconData$36);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$35 = {
+var __iconData$34 = {
 	name: "hard-drive",
 	size: 24,
 	node: [
@@ -12427,8 +12427,8 @@ var __iconData$35 = {
 		}]
 	]
 };
-__iconData$35.node;
-var HardDrive = createLucideIcon(__iconData$35);
+__iconData$34.node;
+var HardDrive = createLucideIcon(__iconData$34);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/hourglass.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12436,7 +12436,7 @@ var HardDrive = createLucideIcon(__iconData$35);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$34 = {
+var __iconData$33 = {
 	name: "hourglass",
 	size: 24,
 	node: [
@@ -12458,8 +12458,8 @@ var __iconData$34 = {
 		}]
 	]
 };
-__iconData$34.node;
-var Hourglass = createLucideIcon(__iconData$34);
+__iconData$33.node;
+var Hourglass = createLucideIcon(__iconData$33);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/layers.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12467,7 +12467,7 @@ var Hourglass = createLucideIcon(__iconData$34);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$33 = {
+var __iconData$32 = {
 	name: "layers",
 	size: 24,
 	node: [
@@ -12486,8 +12486,8 @@ var __iconData$33 = {
 	],
 	aliases: ["layers-3"]
 };
-__iconData$33.node;
-var Layers = createLucideIcon(__iconData$33);
+__iconData$32.node;
+var Layers = createLucideIcon(__iconData$32);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/link-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12495,7 +12495,7 @@ var Layers = createLucideIcon(__iconData$33);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$32 = {
+var __iconData$31 = {
 	name: "link-2",
 	size: 24,
 	node: [
@@ -12516,8 +12516,8 @@ var __iconData$32 = {
 		}]
 	]
 };
-__iconData$32.node;
-var Link2 = createLucideIcon(__iconData$32);
+__iconData$31.node;
+var Link2 = createLucideIcon(__iconData$31);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/list-checks.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12525,7 +12525,7 @@ var Link2 = createLucideIcon(__iconData$32);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$31 = {
+var __iconData$30 = {
 	name: "list-checks",
 	size: 24,
 	node: [
@@ -12551,8 +12551,8 @@ var __iconData$31 = {
 		}]
 	]
 };
-__iconData$31.node;
-var ListChecks = createLucideIcon(__iconData$31);
+__iconData$30.node;
+var ListChecks = createLucideIcon(__iconData$30);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/list-plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12560,7 +12560,7 @@ var ListChecks = createLucideIcon(__iconData$31);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$30 = {
+var __iconData$29 = {
 	name: "list-plus",
 	size: 24,
 	node: [
@@ -12586,8 +12586,8 @@ var __iconData$30 = {
 		}]
 	]
 };
-__iconData$30.node;
-var ListPlus = createLucideIcon(__iconData$30);
+__iconData$29.node;
+var ListPlus = createLucideIcon(__iconData$29);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/loader-circle.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12595,7 +12595,7 @@ var ListPlus = createLucideIcon(__iconData$30);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$29 = {
+var __iconData$28 = {
 	name: "loader-circle",
 	size: 24,
 	node: [["path", {
@@ -12604,8 +12604,8 @@ var __iconData$29 = {
 	}]],
 	aliases: ["loader-2"]
 };
-__iconData$29.node;
-var LoaderCircle = createLucideIcon(__iconData$29);
+__iconData$28.node;
+var LoaderCircle = createLucideIcon(__iconData$28);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/lock-keyhole.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12613,7 +12613,7 @@ var LoaderCircle = createLucideIcon(__iconData$29);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$28 = {
+var __iconData$27 = {
 	name: "lock-keyhole",
 	size: 24,
 	node: [
@@ -12637,8 +12637,8 @@ var __iconData$28 = {
 		}]
 	]
 };
-__iconData$28.node;
-var LockKeyhole = createLucideIcon(__iconData$28);
+__iconData$27.node;
+var LockKeyhole = createLucideIcon(__iconData$27);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/log-out.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12646,7 +12646,7 @@ var LockKeyhole = createLucideIcon(__iconData$28);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$27 = {
+var __iconData$26 = {
 	name: "log-out",
 	size: 24,
 	node: [
@@ -12664,8 +12664,8 @@ var __iconData$27 = {
 		}]
 	]
 };
-__iconData$27.node;
-var LogOut = createLucideIcon(__iconData$27);
+__iconData$26.node;
+var LogOut = createLucideIcon(__iconData$26);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/map-pin.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12673,7 +12673,7 @@ var LogOut = createLucideIcon(__iconData$27);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$26 = {
+var __iconData$25 = {
 	name: "map-pin",
 	size: 24,
 	node: [["path", {
@@ -12686,8 +12686,8 @@ var __iconData$26 = {
 		key: "ilqhr7"
 	}]]
 };
-__iconData$26.node;
-var MapPin = createLucideIcon(__iconData$26);
+__iconData$25.node;
+var MapPin = createLucideIcon(__iconData$25);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/maximize-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12695,7 +12695,7 @@ var MapPin = createLucideIcon(__iconData$26);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$25 = {
+var __iconData$24 = {
 	name: "maximize-2",
 	size: 24,
 	node: [
@@ -12717,8 +12717,8 @@ var __iconData$25 = {
 		}]
 	]
 };
-__iconData$25.node;
-var Maximize2 = createLucideIcon(__iconData$25);
+__iconData$24.node;
+var Maximize2 = createLucideIcon(__iconData$24);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/menu.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12726,7 +12726,7 @@ var Maximize2 = createLucideIcon(__iconData$25);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$24 = {
+var __iconData$23 = {
 	name: "menu",
 	size: 24,
 	node: [
@@ -12744,8 +12744,8 @@ var __iconData$24 = {
 		}]
 	]
 };
-__iconData$24.node;
-var Menu$1 = createLucideIcon(__iconData$24);
+__iconData$23.node;
+var Menu$1 = createLucideIcon(__iconData$23);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/message-square.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12753,7 +12753,7 @@ var Menu$1 = createLucideIcon(__iconData$24);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$23 = {
+var __iconData$22 = {
 	name: "message-square",
 	size: 24,
 	node: [["path", {
@@ -12761,8 +12761,8 @@ var __iconData$23 = {
 		key: "18887p"
 	}]]
 };
-__iconData$23.node;
-var MessageSquare = createLucideIcon(__iconData$23);
+__iconData$22.node;
+var MessageSquare = createLucideIcon(__iconData$22);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/mic.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12770,7 +12770,7 @@ var MessageSquare = createLucideIcon(__iconData$23);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$22 = {
+var __iconData$21 = {
 	name: "mic",
 	size: 24,
 	node: [
@@ -12792,8 +12792,8 @@ var __iconData$22 = {
 		}]
 	]
 };
-__iconData$22.node;
-var Mic = createLucideIcon(__iconData$22);
+__iconData$21.node;
+var Mic = createLucideIcon(__iconData$21);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/minus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12801,7 +12801,7 @@ var Mic = createLucideIcon(__iconData$22);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$21 = {
+var __iconData$20 = {
 	name: "minus",
 	size: 24,
 	node: [["path", {
@@ -12809,8 +12809,8 @@ var __iconData$21 = {
 		key: "1ays0h"
 	}]]
 };
-__iconData$21.node;
-var Minus = createLucideIcon(__iconData$21);
+__iconData$20.node;
+var Minus = createLucideIcon(__iconData$20);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/octagon.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12818,7 +12818,7 @@ var Minus = createLucideIcon(__iconData$21);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$20 = {
+var __iconData$19 = {
 	name: "octagon",
 	size: 24,
 	node: [["path", {
@@ -12826,8 +12826,8 @@ var __iconData$20 = {
 		key: "2d38gg"
 	}]]
 };
-__iconData$20.node;
-var Octagon = createLucideIcon(__iconData$20);
+__iconData$19.node;
+var Octagon = createLucideIcon(__iconData$19);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/paperclip.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12835,7 +12835,7 @@ var Octagon = createLucideIcon(__iconData$20);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$19 = {
+var __iconData$18 = {
 	name: "paperclip",
 	size: 24,
 	node: [["path", {
@@ -12843,8 +12843,8 @@ var __iconData$19 = {
 		key: "1miecu"
 	}]]
 };
-__iconData$19.node;
-var Paperclip = createLucideIcon(__iconData$19);
+__iconData$18.node;
+var Paperclip = createLucideIcon(__iconData$18);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/pause.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12852,7 +12852,7 @@ var Paperclip = createLucideIcon(__iconData$19);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$18 = {
+var __iconData$17 = {
 	name: "pause",
 	size: 24,
 	node: [["rect", {
@@ -12871,8 +12871,8 @@ var __iconData$18 = {
 		key: "1wsw3u"
 	}]]
 };
-__iconData$18.node;
-var Pause = createLucideIcon(__iconData$18);
+__iconData$17.node;
+var Pause = createLucideIcon(__iconData$17);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/pencil.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12880,7 +12880,7 @@ var Pause = createLucideIcon(__iconData$18);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$17 = {
+var __iconData$16 = {
 	name: "pencil",
 	size: 24,
 	node: [["path", {
@@ -12891,8 +12891,8 @@ var __iconData$17 = {
 		key: "1mk7zo"
 	}]]
 };
-__iconData$17.node;
-var Pencil = createLucideIcon(__iconData$17);
+__iconData$16.node;
+var Pencil = createLucideIcon(__iconData$16);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/play.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12900,7 +12900,7 @@ var Pencil = createLucideIcon(__iconData$17);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$16 = {
+var __iconData$15 = {
 	name: "play",
 	size: 24,
 	node: [["path", {
@@ -12908,8 +12908,8 @@ var __iconData$16 = {
 		key: "10ikf1"
 	}]]
 };
-__iconData$16.node;
-var Play = createLucideIcon(__iconData$16);
+__iconData$15.node;
+var Play = createLucideIcon(__iconData$15);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12917,7 +12917,7 @@ var Play = createLucideIcon(__iconData$16);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$15 = {
+var __iconData$14 = {
 	name: "plus",
 	size: 24,
 	node: [["path", {
@@ -12928,8 +12928,8 @@ var __iconData$15 = {
 		key: "s699le"
 	}]]
 };
-__iconData$15.node;
-var Plus = createLucideIcon(__iconData$15);
+__iconData$14.node;
+var Plus = createLucideIcon(__iconData$14);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/refresh-cw.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12937,7 +12937,7 @@ var Plus = createLucideIcon(__iconData$15);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$14 = {
+var __iconData$13 = {
 	name: "refresh-cw",
 	size: 24,
 	node: [
@@ -12959,8 +12959,8 @@ var __iconData$14 = {
 		}]
 	]
 };
-__iconData$14.node;
-var RefreshCw = createLucideIcon(__iconData$14);
+__iconData$13.node;
+var RefreshCw = createLucideIcon(__iconData$13);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/search.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12968,7 +12968,7 @@ var RefreshCw = createLucideIcon(__iconData$14);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$13 = {
+var __iconData$12 = {
 	name: "search",
 	size: 24,
 	node: [["path", {
@@ -12981,8 +12981,8 @@ var __iconData$13 = {
 		key: "4ej97u"
 	}]]
 };
-__iconData$13.node;
-var Search = createLucideIcon(__iconData$13);
+__iconData$12.node;
+var Search = createLucideIcon(__iconData$12);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/send.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -12990,7 +12990,7 @@ var Search = createLucideIcon(__iconData$13);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$12 = {
+var __iconData$11 = {
 	name: "send",
 	size: 24,
 	node: [["path", {
@@ -13001,8 +13001,8 @@ var __iconData$12 = {
 		key: "12cjpa"
 	}]]
 };
-__iconData$12.node;
-var Send = createLucideIcon(__iconData$12);
+__iconData$11.node;
+var Send = createLucideIcon(__iconData$11);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/settings-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -13010,7 +13010,7 @@ var Send = createLucideIcon(__iconData$12);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$11 = {
+var __iconData$10 = {
 	name: "settings-2",
 	size: 24,
 	node: [
@@ -13036,8 +13036,8 @@ var __iconData$11 = {
 		}]
 	]
 };
-__iconData$11.node;
-var Settings2 = createLucideIcon(__iconData$11);
+__iconData$10.node;
+var Settings2 = createLucideIcon(__iconData$10);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/shield-check.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -13045,7 +13045,7 @@ var Settings2 = createLucideIcon(__iconData$11);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$10 = {
+var __iconData$9 = {
 	name: "shield-check",
 	size: 24,
 	node: [["path", {
@@ -13056,8 +13056,8 @@ var __iconData$10 = {
 		key: "dzmm74"
 	}]]
 };
-__iconData$10.node;
-var ShieldCheck = createLucideIcon(__iconData$10);
+__iconData$9.node;
+var ShieldCheck = createLucideIcon(__iconData$9);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/sparkles.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -13065,7 +13065,7 @@ var ShieldCheck = createLucideIcon(__iconData$10);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$9 = {
+var __iconData$8 = {
 	name: "sparkles",
 	size: 24,
 	node: [
@@ -13090,8 +13090,8 @@ var __iconData$9 = {
 	],
 	aliases: ["stars"]
 };
-__iconData$9.node;
-var Sparkles = createLucideIcon(__iconData$9);
+__iconData$8.node;
+var Sparkles = createLucideIcon(__iconData$8);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/trash.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -13099,7 +13099,7 @@ var Sparkles = createLucideIcon(__iconData$9);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$8 = {
+var __iconData$7 = {
 	name: "trash",
 	size: 24,
 	node: [
@@ -13126,8 +13126,8 @@ var __iconData$8 = {
 	],
 	aliases: ["trash-2"]
 };
-__iconData$8.node;
-var Trash = createLucideIcon(__iconData$8);
+__iconData$7.node;
+var Trash = createLucideIcon(__iconData$7);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/triangle-alert.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -13135,7 +13135,7 @@ var Trash = createLucideIcon(__iconData$8);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$7 = {
+var __iconData$6 = {
 	name: "triangle-alert",
 	size: 24,
 	node: [
@@ -13154,8 +13154,8 @@ var __iconData$7 = {
 	],
 	aliases: ["alert-triangle"]
 };
-__iconData$7.node;
-var TriangleAlert = createLucideIcon(__iconData$7);
+__iconData$6.node;
+var TriangleAlert = createLucideIcon(__iconData$6);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/undo-2.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -13163,7 +13163,7 @@ var TriangleAlert = createLucideIcon(__iconData$7);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$6 = {
+var __iconData$5 = {
 	name: "undo-2",
 	size: 24,
 	node: [["path", {
@@ -13174,8 +13174,8 @@ var __iconData$6 = {
 		key: "f3b9sd"
 	}]]
 };
-__iconData$6.node;
-var Undo2 = createLucideIcon(__iconData$6);
+__iconData$5.node;
+var Undo2 = createLucideIcon(__iconData$5);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/user-plus.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -13183,7 +13183,7 @@ var Undo2 = createLucideIcon(__iconData$6);
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var __iconData$5 = {
+var __iconData$4 = {
 	name: "user-plus",
 	size: 24,
 	node: [
@@ -13213,31 +13213,8 @@ var __iconData$5 = {
 		}]
 	]
 };
-__iconData$5.node;
-var UserPlus = createLucideIcon(__iconData$5);
-// ../Global iska /node_modules/lucide-react/dist/esm/icons/user-round.mjs
-/**
-* @license lucide-react v1.48.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
-var __iconData$4 = {
-	name: "user-round",
-	size: 24,
-	node: [["circle", {
-		cx: "12",
-		cy: "8",
-		r: "5",
-		key: "1hypcn"
-	}], ["path", {
-		d: "M20 21a8 8 0 0 0-16 0",
-		key: "rfgkzh"
-	}]],
-	aliases: ["user-2"]
-};
 __iconData$4.node;
-var UserRound = createLucideIcon(__iconData$4);
+var UserPlus = createLucideIcon(__iconData$4);
 // ../Global iska /node_modules/lucide-react/dist/esm/icons/user-x.mjs
 /**
 * @license lucide-react v1.48.0 - ISC
@@ -25656,7 +25633,7 @@ function Skeleton({ className, ...props }) {
 	});
 }
 // frontend/src/features/collaboration/TeamChat.jsx
-function TeamChat({ endpoint, currentActor, members = [] }) {
+function TeamChat({ endpoint, currentActor, members = [], fullHeight = false, headerTitle = null, headerActions = null }) {
 	const [messages, setMessages] = (0, import_react.useState)([]);
 	const [loaded, setLoaded] = (0, import_react.useState)(false);
 	const [draft, setDraft] = (0, import_react.useState)("");
@@ -25696,7 +25673,14 @@ function TeamChat({ endpoint, currentActor, members = [] }) {
 		});
 	};
 	const handleKeyDown = (event) => {
-		if (!mention || event.nativeEvent.isComposing) return;
+		if (event.nativeEvent.isComposing) return;
+		if (!mention) {
+			if (event.key === "Enter" && !event.shiftKey) {
+				event.preventDefault();
+				if (draft.trim() && !sending) send(event);
+			}
+			return;
+		}
 		if (event.key === "Escape") {
 			event.preventDefault();
 			setMention(null);
@@ -25767,34 +25751,43 @@ function TeamChat({ endpoint, currentActor, members = [] }) {
 			setSending(false);
 		}
 	};
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-		className: "flex min-h-[420px] gap-0 overflow-hidden p-0",
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(fullHeight ? "div" : Card, {
+		className: fullHeight ? "flex h-full min-h-0 flex-col bg-card lg:rounded-b-xl" : "flex min-h-[420px] gap-0 overflow-hidden p-0",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex items-start gap-3 border-b px-4 py-3",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "grid size-9 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-4" })
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "min-w-0",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+				className: `flex shrink-0 items-center justify-between gap-3 border-b ${fullHeight ? "px-4 py-3 sm:px-8" : "px-4 py-3"}`,
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex min-w-0 flex-1 items-center gap-3",
+					children: [!headerTitle && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "grid size-9 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, { className: "size-4" })
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "min-w-0 flex-1",
+						children: [headerTitle ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "-ml-2 flex flex-wrap items-center gap-x-2 gap-y-0.5",
+							children: [headerTitle, /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "px-2 text-xs text-muted-foreground sm:px-0",
+								children: [
+									"Founder ·",
+									" ",
+									team.length ? `${team.length} ${team.length === 1 ? "member" : "members"}` : "No employees assigned yet"
+								]
+							})]
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 							className: "type-label-14-strong",
 							children: "Project team chat"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 							className: "text-xs text-muted-foreground",
 							children: [
 								"Founder ·",
 								" ",
 								team.length ? `${team.length} assigned ${team.length === 1 ? "employee" : "employees"}` : "No employees assigned yet"
 							]
-						}),
-						team.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+						})] }), team.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
 							"aria-label": "Assigned project employees",
-							className: "mt-2 flex flex-wrap gap-2",
+							className: "mt-1.5 flex flex-wrap gap-1.5",
 							children: team.map((member) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
-								className: "max-w-full break-words rounded-lg bg-secondary px-2 py-1 text-xs",
+								className: "max-w-full break-words rounded-lg bg-secondary px-2 py-0.5 text-xs",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "font-medium",
 									children: member.name
@@ -25807,13 +25800,13 @@ function TeamChat({ endpoint, currentActor, members = [] }) {
 									]
 								})]
 							}, member.employeeId))
-						})
-					]
-				})]
+						})]
+					})]
+				}), headerActions]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				ref: scrollRef,
-				className: "chat-scroll min-h-64 max-h-[50dvh] flex-1 space-y-4 overflow-y-auto px-4 py-4",
+				className: `chat-scroll min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain [scrollbar-gutter:stable] ${fullHeight ? "px-4 py-6 sm:px-8" : "min-h-64 max-h-[50dvh] px-4 py-4"}`,
 				"aria-label": "Project team messages",
 				"aria-live": "polite",
 				children: !loaded ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -25868,16 +25861,19 @@ function TeamChat({ endpoint, currentActor, members = [] }) {
 							})]
 						})]
 					}, item.id);
-				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
-					className: "border-0",
-					icon: MessageSquare,
-					title: "Start the team conversation",
-					description: "Updates and questions shared here stay with this project team."
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: fullHeight ? "flex h-full min-h-[240px] items-center justify-center" : "",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
+						className: "border-0",
+						icon: MessageSquare,
+						title: "Start the team conversation",
+						description: "Updates and questions shared here stay with this project team."
+					})
 				})
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 				onSubmit: send,
-				className: "flex items-end gap-2 border-t p-3",
+				className: `flex shrink-0 items-end gap-2 border-t bg-card ${fullHeight ? "px-4 py-3 sm:px-8 sm:py-4" : "p-3"}`,
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "relative min-w-0 flex-1",
 					children: [mention && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -25963,56 +25959,169 @@ function TeamChat({ endpoint, currentActor, members = [] }) {
 			}),
 			error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				role: "alert",
-				className: "px-4 pb-3 text-xs text-destructive",
+				className: `pb-3 text-xs text-destructive ${fullHeight ? "px-4 sm:px-8" : "px-4"}`,
 				children: error
 			})
 		]
 	});
 }
 // frontend/src/features/collaboration/ProjectConversations.jsx
+var isActiveChatProject = (project) => ![
+	"Completed",
+	"Abandoned",
+	"Setup",
+	"Needs setup"
+].includes(project.status) && !project.telegramSetupPending;
 function ProjectConversations({ projects = [], namespace = "founder", actor = "founder", embedded = false }) {
 	const Heading = embedded ? "h2" : "h1";
 	const selected = useNavigation().conversationId;
 	const [search, setSearch] = (0, import_react.useState)("");
-	const visible = projects.filter((project) => `${project.name} ${project.location || ""}`.toLowerCase().includes(search.toLowerCase()));
-	const project = projects.find((row) => row.id === selected) || visible[0];
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-		className: "space-y-4",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Heading, { children: "Project chats" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-			className: "text-xs text-muted-foreground",
-			children: "Internal conversations with the founders and project team. Task-specific references stay in their task threads."
-		})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-[200px_minmax(0,1fr)]",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("aside", {
-				className: "min-w-0 space-y-1",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-					"aria-label": "Search project conversations",
-					value: search,
-					onChange: (e) => setSearch(e.target.value),
-					placeholder: "Find a project or city…"
-				}), visible.map((row) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-					onClick: () => navigate({ conversationId: row.id }),
-					title: [row.name, row.location].filter(Boolean).join(" · "),
-					"aria-current": row.id === project?.id ? "true" : void 0,
-					className: `block min-h-8 w-full truncate rounded-lg px-3 py-1 text-left text-sm hover:bg-muted ${row.id === project?.id ? "bg-primary/10 font-medium text-primary" : ""}`,
-					children: row.name
-				}, row.id))]
-			}), project ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "min-w-0",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-					className: "mb-2 type-label-14-strong",
+	const [pickerOpen, setPickerOpen] = (0, import_react.useState)(false);
+	const pickerRef = (0, import_react.useRef)(null);
+	const searchInputRef = (0, import_react.useRef)(null);
+	const activeProjects = projects.filter(isActiveChatProject);
+	const project = activeProjects.find((row) => row.id === selected) || activeProjects[0] || null;
+	const visible = activeProjects.filter((row) => `${row.name} ${row.location || ""}`.toLowerCase().includes(search.trim().toLowerCase()));
+	(0, import_react.useEffect)(() => {
+		if (!pickerOpen) return;
+		requestAnimationFrame(() => searchInputRef.current?.focus());
+		const onPointerDown = (event) => {
+			if (!pickerRef.current?.contains(event.target)) setPickerOpen(false);
+		};
+		const onKeyDown = (event) => {
+			if (event.key === "Escape") setPickerOpen(false);
+		};
+		document.addEventListener("pointerdown", onPointerDown);
+		document.addEventListener("keydown", onKeyDown);
+		return () => {
+			document.removeEventListener("pointerdown", onPointerDown);
+			document.removeEventListener("keydown", onKeyDown);
+		};
+	}, [pickerOpen]);
+	if (!project) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "flex h-full min-h-0 items-center justify-center p-6",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
+			kind: "first-use",
+			icon: MessageSquare,
+			title: "No active project chats",
+			description: "Ongoing projects get an internal team chat once setup is complete."
+		})
+	});
+	const projectSwitcher = /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		ref: pickerRef,
+		className: "relative min-w-0",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+			type: "button",
+			onClick: () => setPickerOpen((open) => !open),
+			"aria-expanded": pickerOpen,
+			"aria-haspopup": "listbox",
+			className: "group flex max-w-full items-center gap-2 rounded-lg px-2 py-1 text-left transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "size-2 shrink-0 rounded-full bg-success-fill",
+					"aria-hidden": "true"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "min-w-0 truncate type-heading-16",
 					children: project.name
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TeamChat, {
-					endpoint: `/api/${namespace}/projects/${project.id}/team-chat`,
-					currentActor: actor,
-					members: project.members
-				}, project.id)]
-			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Empty, {
-				kind: projects.length ? "no-results" : "first-use",
-				icon: MessageSquare,
-				title: projects.length ? "No matching project chats" : "No project chats yet",
-				description: projects.length ? "Try another project name or city." : "Each project gets a team chat once it exists."
+				}),
+				project.location && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+					className: "hidden truncate text-xs text-muted-foreground sm:inline",
+					children: ["· ", project.location]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, { className: `size-4 shrink-0 text-muted-foreground transition-transform duration-150 ${pickerOpen ? "rotate-180" : ""}` })
+			]
+		}), pickerOpen && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "absolute top-full left-0 z-30 mt-2 w-[min(22rem,calc(100vw-2rem))] overflow-hidden rounded-xl border bg-card shadow-lg",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "border-b p-2",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "relative",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "pointer-events-none absolute top-1/2 left-2.5 size-3.5 -translate-y-1/2 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+						ref: searchInputRef,
+						"aria-label": "Search active project chats",
+						value: search,
+						onChange: (e) => setSearch(e.target.value),
+						placeholder: "Switch project chat…",
+						className: "h-9 pl-8 text-sm"
+					})]
+				})
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+				role: "listbox",
+				"aria-label": "Active project chats",
+				className: "max-h-72 overflow-y-auto overscroll-contain p-1.5",
+				children: visible.length ? visible.map((row) => {
+					const isSelected = row.id === project.id;
+					const memberCount = (row.members || []).length;
+					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
+						role: "option",
+						"aria-selected": isSelected,
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							type: "button",
+							onClick: () => {
+								navigate({ conversationId: row.id });
+								setPickerOpen(false);
+								setSearch("");
+							},
+							className: `flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-left text-sm transition-colors ${isSelected ? "bg-accent font-medium text-foreground" : "text-foreground hover:bg-muted"}`,
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "size-2 shrink-0 rounded-full bg-success-fill",
+									"aria-hidden": "true"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "min-w-0 flex-1",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "block truncate",
+										children: row.name
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "block truncate text-xs text-muted-foreground",
+										children: [row.location, memberCount ? `${memberCount} ${memberCount === 1 ? "member" : "members"}` : "Founder only"].filter(Boolean).join(" · ")
+									})]
+								}),
+								isSelected && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-4 shrink-0 text-primary" })
+							]
+						})
+					}, row.id);
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
+					className: "px-3 py-4 text-center text-xs text-muted-foreground",
+					children: "No matching active projects."
+				})
 			})]
+		})]
+	});
+	const openProjectAction = /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+		type: "button",
+		variant: "ghost",
+		size: "sm",
+		className: "shrink-0 text-xs text-muted-foreground hover:text-foreground",
+		onClick: () => navigate({
+			section: "projects",
+			projectId: project.id
+		}),
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+			className: "hidden sm:inline",
+			children: "Open project"
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { className: "size-3.5" })]
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: embedded ? "space-y-3" : "flex h-full min-h-0 flex-col",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: embedded ? "" : "shrink-0 border-b px-4 pt-1 pb-4 sm:px-8",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Heading, { children: "Project chats" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-xs text-muted-foreground",
+				children: "Internal conversations with the founders and project team. Task-specific references stay in their task threads."
+			})]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: embedded ? "" : "min-h-0 flex-1",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TeamChat, {
+				endpoint: `/api/${namespace}/projects/${project.id}/team-chat`,
+				currentActor: actor,
+				members: project.members,
+				fullHeight: !embedded,
+				headerTitle: projectSwitcher,
+				headerActions: openProjectAction
+			}, project.id)
 		})]
 	});
 }
@@ -26966,7 +27075,7 @@ function GoogleSignIn({ mode = "login", onComplete }) {
 				size: "large",
 				text: "continue_with",
 				shape: "rectangular",
-				width: Math.min(360, host.current.clientWidth || 300)
+				width: Math.min(400, host.current.clientWidth || 300)
 			});
 		})().catch((problem) => {
 			if (!cancelled) setError(problem.message);
@@ -26977,11 +27086,22 @@ function GoogleSignIn({ mode = "login", onComplete }) {
 	}, [mode, attempt]);
 	if (!enabled && !error) return null;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "mt-6 space-y-3",
+		className: "iksha-google",
 		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: busy ? "pointer-events-none opacity-60" : "",
-				ref: host
+			enabled && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: `iksha-google-button ${busy ? "pointer-events-none opacity-60" : ""}`,
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+					"aria-hidden": "true",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+						src: "/assets/google-g.png",
+						alt: "",
+						width: "34",
+						height: "32"
+					}), "Continue with Google"]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "iksha-google-hit",
+					ref: host
+				})]
 			}),
 			busy && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				className: "text-sm text-muted-foreground",
@@ -27008,9 +27128,13 @@ function GoogleSignIn({ mode = "login", onComplete }) {
 					})
 				]
 			}),
-			mode === "login" && enabled && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "text-xs text-muted-foreground",
-				children: "Already added by a founder? Use that exact Google email for immediate access. New accounts need founder approval."
+			mode === "login" && enabled && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "iksha-google-help",
+				children: [
+					"Already added by a founder? Use that exact Google email for immediate access.",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
+					"New accounts need founder approval."
+				]
 			})
 		]
 	});
@@ -27519,131 +27643,45 @@ function IkshaBrand({ compact = false }) {
 		]
 	});
 }
-var ARCHES = [
-	{
-		turn: -66,
-		scale: .86
-	},
-	{
-		turn: -31,
-		scale: 1
-	},
-	{
-		turn: 4,
-		scale: .96
-	},
-	{
-		turn: 39,
-		scale: .84
-	}
-];
-function GlassArches() {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "iksha-glass",
-		"aria-hidden": "true",
-		children: [ARCHES.map(({ turn, scale }, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-			className: "iksha-glass-arch",
-			style: {
-				"--turn": `${turn}deg`,
-				"--scale": scale,
-				"--delay": `${index * .09}s`
-			}
-		}, turn)), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "iksha-glass-base" })]
-	});
-}
-function WorkspaceAccess({ team = false, children }) {
-	const page = (0, import_react.useRef)(null);
-	const followPointer = (event) => {
-		const x = event.clientX / window.innerWidth - .5;
-		const y = event.clientY / window.innerHeight - .5;
-		page.current?.style.setProperty("--pointer-x", x.toFixed(3));
-		page.current?.style.setProperty("--pointer-y", y.toFixed(3));
-	};
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
+function WorkspaceAccess({ children }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
 		className: "iksha-access",
-		ref: page,
-		onPointerMove: followPointer,
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "iksha-access-card",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-				className: "iksha-access-form",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
-						className: "iksha-access-top",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(IkshaBrand, { compact: true }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-							className: "iksha-access-tag",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LockKeyhole, { "aria-hidden": "true" }), "Private workspace"]
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "iksha-access-body",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "iksha-access-icon",
-								"aria-hidden": "true",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(UserRound, {}) })
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", { children: "Welcome back" }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Use your Google account to enter your workspace." }),
-							children,
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(GoogleSignIn, {})
-						]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("footer", {
-						className: "iksha-access-foot",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
-							"© ",
-							(/* @__PURE__ */ new Date()).getFullYear(),
-							" Studio Iksha"
-						] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
-							href: "/privacy",
-							children: "Privacy"
-						})]
-					})
-				]
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-				className: "iksha-access-story",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
-						className: "iksha-access-grain",
-						"aria-hidden": "true",
-						focusable: "false",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("filter", {
-							id: "access-grain",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("feTurbulence", {
-								type: "fractalNoise",
-								baseFrequency: "0.9",
-								numOctaves: "2"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feColorMatrix", {
-								type: "saturate",
-								values: "0"
-							})]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
-							width: "100%",
-							height: "100%",
-							filter: "url(#access-grain)"
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(GlassArches, {}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "iksha-access-brand",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "iksha-access-tile",
-								"aria-hidden": "true",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: ["i", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", { children: "." })] })
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", { children: "Studio Iksha" }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: ["Thoughtful spaces. ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Connected people." })] })
-						]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("dl", {
-						className: "iksha-access-notes",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "Get access" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: "Ask a founder to add your Google email." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: "For clients" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: "Project updates continue in Telegram." })] })]
-					})
-				]
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "iksha-access-art",
+			"aria-hidden": "true",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+				className: "iksha-access-sky",
+				src: "/assets/sign-in-sky.jpg",
+				alt: ""
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "iksha-access-shot",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+					src: "/assets/sign-in-app.png",
+					alt: ""
+				}) })
 			})]
-		})
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+			className: "iksha-access-panel",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "iksha-access-intro",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+						src: "/assets/sign-in-logo.svg",
+						alt: "",
+						width: "53",
+						height: "53"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", { children: "Keep every project moving from design to handover." }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Timelines, tasks, site updates, approvals and client questions, in one workspace." })
+				]
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "iksha-access-actions",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [children, /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GoogleSignIn, {})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+					href: "/privacy",
+					children: "Privacy"
+				})]
+			})]
+		})]
 	});
 }
 // frontend/src/components/ui/sidebar.jsx
@@ -56663,7 +56701,7 @@ function FounderApp() {
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InitialAvatar, { name: founderProfile?.name || "Project founder" })
 						})]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
-						className: currentTab === "assistant" ? "h-[calc(100dvh-9rem)] lg:h-[calc(100dvh-5rem)]" : "mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:px-8 sm:py-8",
+						className: currentTab === "assistant" || currentTab === "chats" ? "h-[calc(100dvh-9rem)] lg:h-[calc(100dvh-5rem)]" : "mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:px-8 sm:py-8",
 						children: currentTab === "assistant" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FounderAssistant, {}) : currentTab === "meetings" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MeetingsView, {}) : currentTab === "chats" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectConversations, { projects }) : currentTab === "actions" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WorkQueue, {
 							projects,
 							initialPersonId: workPerson,
@@ -57598,7 +57636,7 @@ function EmployeeApp() {
 							children: initials(employee?.name)
 						}) })]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
-						className: "mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:px-8 sm:py-8",
+						className: section === "chats" ? "h-[calc(100dvh-9rem)] lg:h-[calc(100dvh-5rem)]" : "mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:px-8 sm:py-8",
 						children: [error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							role: "alert",
 							className: "card-box border-destructive/30 bg-destructive/10 text-sm text-destructive",
