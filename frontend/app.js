@@ -13895,15 +13895,15 @@ var renameWorkType = (projectId, stageId, input) => post$2(`/api/founder/project
 // frontend/src/features/birthday/BirthdayOverlay.jsx
 var RAYS = [
 	{
-		x: 425,
-		y: 247,
-		gx: 435,
-		gy: 228,
+		x: 91,
+		y: 249,
+		gx: 101,
+		gy: 230,
 		delay: 0
 	},
 	{
-		x: 1090,
-		y: 249,
+		x: 1341,
+		y: 269,
 		delay: 120
 	},
 	{
@@ -13917,13 +13917,13 @@ var RAYS = [
 		delay: 380
 	},
 	{
-		x: 101,
+		x: 401,
 		y: 518,
 		delay: 520
 	},
 	{
-		x: 1328,
-		y: 427,
+		x: 1089,
+		y: 480,
 		delay: 640
 	}
 ];
@@ -14061,37 +14061,35 @@ function BirthdaySequence({ name }) {
 		"aria-labelledby": "bday-title",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "bday-veil" }),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "bday-sky",
 				"aria-hidden": "true",
-				children: RAYS.map((ray, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-					style: { "--d": `${ray.delay}ms` },
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", {
+				children: [
+					RAYS.map((ray, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						style: { "--d": `${ray.delay}ms` },
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", {
 							className: "bday-ray bday-ray-solid",
 							style: {
 								left: `${ray.x / 14.4}vw`,
 								top: `${ray.y / 9.19}vh`
 							}
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", {
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", {
 							className: "bday-ray bday-ray-curtain",
 							style: {
 								left: `${(ray.gx ?? ray.x) / 14.4}vw`,
 								top: `${(ray.gy ?? ray.y) / 9.19}vh`
 							}
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", {
-							className: "bday-ray bday-ray-core",
-							style: {
-								left: `${(ray.gx ?? ray.x) / 14.4}vw`,
-								top: `${(ray.gy ?? ray.y) / 9.19}vh`
-							}
-						})
-					]
-				}, index))
+						})]
+					}, index)),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", { className: "bday-pool bday-pool-left" }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", { className: "bday-pool bday-pool-right" })
+				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "bday-black" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "bday-stars",
+				"aria-hidden": "true"
+			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 				type: "button",
 				className: `bday-music${sound ? "" : " is-off"}`,

@@ -2,15 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 import { request } from '@/lib/api';
 import './birthday.css';
 
-// Figma "Frame 1" (388:1228) is drawn on a 1440 x 919 canvas; rays keep those proportions.
-// Each ray is a solid glow plus a gradient curtain; the first pair is offset in the design.
+// Rays from Figma "Frame 1" (388:1228, a 1440 x 919 canvas): tallest at the edges, stepping down toward
+// the text. Each is a soft #0f9 glow plus a gradient bar; the left-edge pair is offset in the design.
 const RAYS = [
-  { x: 425, y: 247, gx: 435, gy: 228, delay: 0 },
-  { x: 1090, y: 249, delay: 120 },
+  { x: 91, y: 249, gx: 101, gy: 230, delay: 0 },
+  { x: 1341, y: 269, delay: 120 },
   { x: 263, y: 377, delay: 260 },
   { x: 1209, y: 352, delay: 380 },
-  { x: 101, y: 518, delay: 520 },
-  { x: 1328, y: 427, delay: 640 },
+  { x: 401, y: 518, delay: 520 },
+  { x: 1089, y: 480, delay: 640 },
 ];
 const LEAVE_MS = 900;
 // ElevenLabs voice pre-mixed over Polarizer: music ducked under the voice, swelling up once it ends.
@@ -130,11 +130,13 @@ function BirthdaySequence({ name }) {
           <span key={index} style={{ '--d': `${ray.delay}ms` }}>
             <i className="bday-ray bday-ray-solid" style={{ left: `${ray.x / 14.4}vw`, top: `${ray.y / 9.19}vh` }} />
             <i className="bday-ray bday-ray-curtain" style={{ left: `${(ray.gx ?? ray.x) / 14.4}vw`, top: `${(ray.gy ?? ray.y) / 9.19}vh` }} />
-            <i className="bday-ray bday-ray-core" style={{ left: `${(ray.gx ?? ray.x) / 14.4}vw`, top: `${(ray.gy ?? ray.y) / 9.19}vh` }} />
           </span>
         ))}
+        <i className="bday-pool bday-pool-left" />
+        <i className="bday-pool bday-pool-right" />
       </div>
       <div className="bday-black" />
+      <div className="bday-stars" aria-hidden="true" />
 
       <button
         type="button"

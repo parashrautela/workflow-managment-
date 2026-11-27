@@ -1,6 +1,6 @@
 /* Birthday overlay, built from Figma "Frame 1" (388:1228).
-   Order: black screen lifts -> app comes into focus behind a blur -> orbs appear and
-   stretch into aurora rays -> date -> "Happy Birthday" -> name -> approval line -> punchline -> exit link.
+   Order: black screen lifts -> stars appear -> app comes into focus behind a blur -> orbs stretch into
+   aurora rays and the bottom glows rise -> date -> "Happy Birthday" -> name -> approval line -> punchline -> exit link.
    Text is timed to the voice in birthday-music.mp3 (voice starts 0.3 s in): "It's the twenty-seventh
    of November" at 4.8 s, "It's about you" at 9.9 s, music swells from 10.7 s. */
 
@@ -33,32 +33,77 @@
   animation: bday-lift 1.6s ease 0.5s both;
 }
 
-/* ---- aurora: each ray starts as a glowing orb, then unfurls into a curtain and sways */
+/* ---- aurora, matched to Figma "Frame 1": each ray starts as a green orb and stretches into a 10px bar
+   blurred into soft mist (a #0f9 glow plus a #0f9 -> #001f13 bar). Two big blurred green pools in the
+   bottom corners (Figma "Group 4/5") melt the rays into the background. No sideways motion. */
 .bday-sky { position: absolute; inset: 0; pointer-events: none; }
 .bday-ray {
   position: absolute;
-  width: var(--w);
+  width: 10px;
   height: 79.3vh; /* 729 / 919 */
-  border-radius: 999px;
+  border-radius: 29px;
   animation:
     bday-ray-form 2.6s cubic-bezier(0.45, 0, 0.2, 1) calc(1.2s + var(--d)) both,
-    bday-shimmer 4s ease-in-out calc(3.8s + var(--d)) infinite alternate;
+    bday-breathe 5s ease-in-out calc(3.8s + var(--d)) infinite alternate;
 }
-/* brighter than the Figma (user asked for more glow): wider halo + curtain, plus a bright core */
-.bday-ray-solid { --w: 28px; --blur: 70px; background: #0f9; filter: blur(70px); }
+.bday-ray-solid { --blur: 38.4px; background: #0f9; filter: blur(38.4px); } /* Figma layer blur 76.85 renders like CSS blur at half */
 .bday-ray-curtain {
-  --w: 18px;
-  --blur: 30px;
+  --blur: 22.6px; /* Figma 45.15 */
   background: linear-gradient(to bottom, #0f9, #001f13);
-  filter: blur(30px);
+  filter: blur(22.6px);
   mix-blend-mode: screen;
 }
-.bday-ray-core {
-  --w: 4px;
-  --blur: 9px;
-  background: linear-gradient(to bottom, #c8ffe9, rgba(0, 255, 153, 0.35) 70%, transparent);
-  filter: blur(9px);
-  mix-blend-mode: screen;
+/* bottom glow (Figma "Group 4/5", green pools in the bottom corners): a tall, soft gradient rising from the
+   bottom so the rays melt into the background with no dark band between the app and the glow */
+.bday-pool {
+  position: absolute;
+  bottom: 0;
+  width: 74vw; /* wide enough that the two glows overlap and light the middle of the bottom row */
+  height: 78vh;
+  background: radial-gradient(ellipse 50% 100% at 50% 100%,
+    rgba(0, 226, 139, 0.62) 0%, rgba(0, 226, 139, 0.38) 28%, rgba(0, 226, 139, 0.17) 56%,
+    rgba(0, 226, 139, 0.06) 80%, transparent 100%);
+  mix-blend-mode: plus-lighter;
+  animation: bday-pool-in 3s ease 2.4s both;
+}
+.bday-sky::after { /* even green wash along the whole bottom, so the middle of the row isn't dark */
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 50vh;
+  background: linear-gradient(to top, rgba(0, 226, 139, 0.22), rgba(0, 226, 139, 0.08) 45%, transparent);
+  mix-blend-mode: plus-lighter;
+  animation: bday-pool-in 3s ease 2.4s both;
+}
+.bday-pool-left { left: -15.3vw; } /* centred on the Figma pool at x 312 */
+.bday-pool-right { left: 49vw; } /* centred on the Figma pool at x 1238 */
+
+/* stars across the top: two layers of tiny dots on uneven tile sizes (so no visible grid), twinkling out of step */
+.bday-stars,
+.bday-stars::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.bday-stars {
+  bottom: 38%;
+  -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent);
+  mask-image: linear-gradient(to bottom, #000 45%, transparent);
+  background:
+    radial-gradient(1.3px 1.3px at 23px 41px, rgba(255, 255, 255, 0.9), transparent) 0 0 / 173px 151px,
+    radial-gradient(1px 1px at 97px 13px, rgba(255, 255, 255, 0.7), transparent) 0 0 / 241px 197px,
+    radial-gradient(1.5px 1.5px at 61px 88px, rgba(210, 255, 240, 0.85), transparent) 0 0 / 311px 263px,
+    radial-gradient(1px 1px at 120px 60px, rgba(255, 255, 255, 0.6), transparent) 0 0 / 137px 229px;
+  animation: bday-fade-in 2.5s ease 1s both, bday-twinkle 3.1s ease-in-out 3.5s infinite alternate;
+}
+.bday-stars::after {
+  content: '';
+  background:
+    radial-gradient(1.2px 1.2px at 40px 150px, rgba(255, 255, 255, 0.8), transparent) 0 0 / 389px 181px,
+    radial-gradient(1px 1px at 180px 30px, rgba(220, 240, 255, 0.75), transparent) 0 0 / 211px 293px,
+    radial-gradient(1.6px 1.6px at 75px 110px, rgba(255, 255, 255, 0.9), transparent) 0 0 / 457px 167px,
+    radial-gradient(0.9px 0.9px at 10px 5px, rgba(255, 255, 255, 0.6), transparent) 0 0 / 103px 127px;
+  animation: bday-twinkle 4.3s ease-in-out 3.5s infinite alternate-reverse;
 }
 
 .bday-music {
@@ -184,17 +229,16 @@
 @keyframes bday-focus {
   from { -webkit-backdrop-filter: blur(28px); backdrop-filter: blur(28px); }
 }
+@keyframes bday-breathe { to { opacity: 0.8; } }
 @keyframes bday-ray-form {
-  0% { width: 34px; height: 34px; translate: -12px -12px; scale: 0.2; opacity: 0; filter: blur(2px); }
-  24% { width: 34px; height: 34px; translate: -12px -12px; scale: 1; opacity: 1; filter: blur(4px); }
-  40% { width: 30px; height: 30px; translate: -10px -10px; scale: 1; opacity: 1; filter: blur(6px); }
-  100% { width: var(--w); height: 79.3vh; translate: none; scale: none; opacity: 1; filter: blur(var(--blur)); }
+  0% { width: 34px; height: 34px; translate: -12px -12px; scale: 0.2; opacity: 0; filter: blur(4px); }
+  24% { width: 34px; height: 34px; translate: -12px -12px; scale: 1; opacity: 1; filter: blur(6px); }
+  40% { width: 30px; height: 30px; translate: -10px -10px; scale: 1; opacity: 1; filter: blur(8px); }
+  100% { width: 10px; height: 79.3vh; translate: none; scale: none; opacity: 1; filter: blur(var(--blur)); }
 }
-@keyframes bday-shimmer {
-  /* glow only; the user tried a sideways drift and dropped it */
-  from { opacity: 1; }
-  to { opacity: 0.8; }
-}
+@keyframes bday-twinkle { to { opacity: 0.45; } }
+@keyframes bday-fade-in { from { opacity: 0; } }
+@keyframes bday-pool-in { from { opacity: 0; } }
 @keyframes bday-rise {
   from { opacity: 0; translate: 0 12px; filter: blur(8px); }
   to { opacity: 1; translate: none; filter: none; }
