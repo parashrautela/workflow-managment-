@@ -176,19 +176,13 @@ function birthdayEmail(req) {
   const email = account?.email?.toLowerCase();
   return email && birthdayEmails.includes(email) && Date.now() < BIRTHDAY_UNTIL ? email : '';
 }
-// The birthday track is not in the (public) repo: it is downloaded once from BIRTHDAY_AUDIO_URL, a private link.
-let birthdayAudio;
+// The birthday track lives in the app's own database (uploaded once by a listed account with PUT
+// /api/birthday/audio), never in this public repo. Each upload gets a new id; state remembers the latest.
 async function sendBirthdayAudio(res) {
-  if (!process.env.BIRTHDAY_AUDIO_URL) return sendFile(res, 'frontend/assets/birthday/birthday-music.mp3'); // local dev copy
-  try {
-    birthdayAudio ||= await fetch(process.env.BIRTHDAY_AUDIO_URL, { signal: AbortSignal.timeout(20000) }).then((r) =>
-      r.ok && !(r.headers.get('content-type') || '').includes('text/html') ? r.arrayBuffer() : Promise.reject(new Error(`audio link returned ${r.status} ${r.headers.get('content-type')} (needs a direct MP3 download link)`)));
-  } catch (error) {
-    console.error('Birthday audio download failed:', error.message);
-    res.writeHead(502); return res.end('Audio unavailable');
-  }
+  const audio = state.birthdayAudioId && await stateStore.getAttachment(state.birthdayAudioId).catch(() => null);
+  if (!audio) return sendFile(res, 'frontend/assets/birthday/birthday-music.mp3'); // local dev copy (git-ignored); 404 in production
   res.writeHead(200, { 'content-type': 'audio/mpeg', 'cache-control': 'private, no-store' });
-  res.end(Buffer.from(birthdayAudio));
+  res.end(Buffer.from(audio));
 }
 function clientSession(req) {
   const sid = cookieValue(req, 'iksha_client');
@@ -396,6 +390,18 @@ async function handleRequest(req, res) {
     if (req.method === 'GET' && url.pathname === '/api/birthday/audio') { // under /api so Vercel forwards it to this server
       if (!birthdayEmail(req)) { res.writeHead(404); return res.end('Not found'); }
       return sendBirthdayAudio(res);
+    }
+    if (req.method === 'PUT' && url.pathname === '/api/birthday/audio') {
+      if (!birthdayEmail(req)) return json(res, 404, { error: 'Not found.' });
+      const chunks = []; let size = 0;
+      for await (const chunk of req) { size += chunk.length; if (size > 8_000_000) return json(res, 413, { error: 'Request too large.' }); chunks.push(chunk); }
+      const bytes = Buffer.concat(chunks);
+      const isMp3 = bytes.subarray(0, 3).toString('latin1') === 'ID3' || (bytes[0] === 0xff && (bytes[1] & 0xe0) === 0xe0);
+      if (!isMp3) return json(res, 400, { error: 'Upload an MP3 file.' });
+      const id = `birthday-audio-${Date.now()}`;
+      await stateStore.putAttachment(id, bytes);
+      state.birthdayAudioId = id; await save();
+      return json(res, 200, { ok: true, bytes: bytes.length });
     }
     if (req.method === 'POST' && url.pathname === '/api/integrations/telegram/connect') {
       const supplied=(req.headers.authorization || '').replace(/^Bearer /i,'');
