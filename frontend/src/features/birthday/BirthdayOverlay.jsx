@@ -14,7 +14,7 @@ const RAYS = [
 ];
 const LEAVE_MS = 900;
 // ElevenLabs voice pre-mixed over Polarizer: music ducked under the voice, swelling up once it ends.
-const AUDIO_URL = '/assets/birthday/birthday-music.mp3';
+const AUDIO_URL = '/api/birthday/audio';
 // music badge bars from the Figma export (x, top, bottom); drawn inline so they can move with the music
 const BARS = [[20, 26, 56], [27, 29, 52], [35, 30, 52], [43, 26, 56], [51, 30, 52], [59, 27, 55], [67, 24, 58], [75, 30, 51]];
 

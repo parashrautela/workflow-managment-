@@ -13928,7 +13928,7 @@ var RAYS = [
 	}
 ];
 var LEAVE_MS = 900;
-var AUDIO_URL = "/assets/birthday/birthday-music.mp3";
+var AUDIO_URL = "/api/birthday/audio";
 var BARS = [
 	[
 		20,

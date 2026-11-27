@@ -393,7 +393,7 @@ async function handleRequest(req, res) {
       if (email && !state.birthdaySeen.includes(email)) { state.birthdaySeen.push(email); await save(); }
       return json(res, 200, { ok: true });
     }
-    if (req.method === 'GET' && url.pathname === '/assets/birthday/birthday-music.mp3') {
+    if (req.method === 'GET' && url.pathname === '/api/birthday/audio') { // under /api so Vercel forwards it to this server
       if (!birthdayEmail(req)) { res.writeHead(404); return res.end('Not found'); }
       return sendBirthdayAudio(res);
     }
