@@ -1,4 +1,5 @@
 import { toast } from '@/components/ui/toaster';
+import { BirthdayOverlay } from '@/features/birthday/BirthdayOverlay';
 import { CalendarDays } from 'lucide-react';
 import { MeetingsView } from '@/features/meetings/Meetings';
 import { ProjectConversations } from '@/features/collaboration/ProjectConversations';
@@ -595,6 +596,7 @@ export default function FounderApp() {
     <div
       className={`iksha-workspace app-glow min-h-dvh bg-background ${isFullHeightTab ? '' : 'iksha-mobile-shell'}`}
     >
+      <BirthdayOverlay />
       {/* Desktop Sidebar Navigation */}
       <aside className="iksha-sidebar fixed inset-y-0 left-0 hidden w-64 px-3 py-3 lg:block">
         {navigation}

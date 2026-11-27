@@ -165,13 +165,38 @@ function founder(req) {
   const sid = cookieValue(req, 'iksha_founder');
   return state.founderSessions.find((item) => safeEqual(item.idHash, hash(sid)) && item.expiresAt > Date.now() && state.googleAccounts.some(account => account.id === item.googleAccountId && account.subject && account.kind === 'founder' && account.status === 'Approved'));
 }
+// Birthday screen: only for the Google emails in BIRTHDAY_EMAILS (comma-separated), once each, until BIRTHDAY_UNTIL.
+const birthdayEmails = (process.env.BIRTHDAY_EMAILS || '').split(',').map((email) => email.trim().toLowerCase()).filter(Boolean);
+const BIRTHDAY_NAME = 'Gousic';
+const BIRTHDAY_UNTIL = Date.parse('2026-12-08T00:00:00+05:30');
+function birthdayEmail(req) {
+  const session = founder(req);
+  const employee = !session && employeeSession(req);
+  const account = state.googleAccounts.find((row) => (session ? row.id === session.googleAccountId : employee && row.kind === 'employee' && row.status === 'Approved' && row.employeeId === employee.id));
+  const email = account?.email?.toLowerCase();
+  return email && birthdayEmails.includes(email) && Date.now() < BIRTHDAY_UNTIL ? email : '';
+}
+// The birthday track is not in the (public) repo: it is downloaded once from BIRTHDAY_AUDIO_URL, a private link.
+let birthdayAudio;
+async function sendBirthdayAudio(res) {
+  if (!process.env.BIRTHDAY_AUDIO_URL) return sendFile(res, 'frontend/assets/birthday/birthday-music.mp3'); // local dev copy
+  try {
+    birthdayAudio ||= await fetch(process.env.BIRTHDAY_AUDIO_URL, { signal: AbortSignal.timeout(20000) }).then((r) =>
+      r.ok && !(r.headers.get('content-type') || '').includes('text/html') ? r.arrayBuffer() : Promise.reject(new Error(`audio link returned ${r.status} ${r.headers.get('content-type')} (needs a direct MP3 download link)`)));
+  } catch (error) {
+    console.error('Birthday audio download failed:', error.message);
+    res.writeHead(502); return res.end('Audio unavailable');
+  }
+  res.writeHead(200, { 'content-type': 'audio/mpeg', 'cache-control': 'private, no-store' });
+  res.end(Buffer.from(birthdayAudio));
+}
 function clientSession(req) {
   const sid = cookieValue(req, 'iksha_client');
   return state.clientSessions.find((item) => safeEqual(item.idHash, hash(sid)) && item.expiresAt > Date.now());
 }
 function sendFile(res, filename) {
   const ext = path.extname(filename);
-  const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webmanifest': 'application/manifest+json' };
+  const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.mp3': 'audio/mpeg', '.webmanifest': 'application/manifest+json' };
   readFile(path.join(root, filename)).then((content) => { res.writeHead(200, { 'content-type': types[ext] || 'application/octet-stream', 'cache-control': 'no-cache' }); res.end(content); }).catch(() => { res.writeHead(404); res.end('Not found'); });
 }
 async function answerProjectQuestion(project, question) {
@@ -358,6 +383,20 @@ async function handleRequest(req, res) {
     if (!['GET','HEAD'].includes(req.method) && url.pathname.startsWith('/api/') && !url.pathname.startsWith('/api/integrations/') && req.headers.origin && req.headers.origin !== (process.env.PUBLIC_URL?.replace(/\/$/, '') || `http://${req.headers.host}`)) return json(res,403,{error:'Origin is not allowed.'});
     if (await googleAuthRoutes(req,res,url)) return;
     if (await mcpRoutes(req,res,url)) return;
+    if (req.method === 'GET' && url.pathname === '/api/birthday') {
+      const email = birthdayEmail(req);
+      const show = email && (url.searchParams.has('replay') || !state.birthdaySeen.includes(email));
+      return json(res, 200, show ? { name: BIRTHDAY_NAME } : {});
+    }
+    if (req.method === 'POST' && url.pathname === '/api/birthday/seen') {
+      const email = birthdayEmail(req);
+      if (email && !state.birthdaySeen.includes(email)) { state.birthdaySeen.push(email); await save(); }
+      return json(res, 200, { ok: true });
+    }
+    if (req.method === 'GET' && url.pathname === '/api/birthday/audio') { // under /api so Vercel forwards it to this server
+      if (!birthdayEmail(req)) { res.writeHead(404); return res.end('Not found'); }
+      return sendBirthdayAudio(res);
+    }
     if (req.method === 'POST' && url.pathname === '/api/integrations/telegram/connect') {
       const supplied=(req.headers.authorization || '').replace(/^Bearer /i,'');
       if(!integrationSecret || !safeEqual(supplied,integrationSecret))return json(res,401,{error:'Integration authentication required.'});

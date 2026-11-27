@@ -13546,6 +13546,647 @@ function Toaster() {
 		}, item.id))
 	});
 }
+// frontend/src/lib/api.js
+var ApiError = class extends Error {
+	constructor(message, status = 400, data = {}) {
+		super(message);
+		this.name = "ApiError";
+		this.status = status;
+		this.data = data;
+	}
+};
+/**
+* Core HTTP fetch wrapper with same-origin credentials and JSON payload support
+*/
+async function request$1(url, options = {}) {
+	const method = options.method || "GET";
+	const headers = {
+		Accept: "application/json",
+		...options.headers || {}
+	};
+	if (options.body && typeof options.body === "object" && !(options.body instanceof FormData)) {
+		headers["content-type"] = "application/json";
+		options.body = JSON.stringify(options.body);
+	}
+	const fetchOptions = {
+		credentials: "same-origin",
+		...options,
+		method,
+		headers
+	};
+	let response;
+	try {
+		response = await fetch(url, fetchOptions);
+	} catch (netErr) {
+		throw new ApiError(netErr.message || "Network connection failure. Please check your connection.", 0);
+	}
+	const data = (response.headers.get("content-type") || "").includes("application/json") ? await response.json().catch(() => ({})) : {};
+	if (!response.ok) {
+		const errorMsg = data.error || data.message || `Request failed with status ${response.status}`;
+		if (response.status === 401) {
+			if (!url.endsWith("/login") && !url.startsWith("/api/auth/") && typeof window !== "undefined") window.dispatchEvent(new CustomEvent("studio-iksha:unauthorized", { detail: { url } }));
+			throw new ApiError(errorMsg, 401, data);
+		}
+		if (response.status === 403) throw new ApiError(errorMsg || "Restricted action: You do not have permission to perform this update.", 403, data);
+		if (response.status === 404) throw new ApiError(errorMsg || "Record or access is no longer available in your workspace.", 404, data);
+		if (response.status === 409) throw new ApiError(errorMsg || "Conflict with current project or task state.", 409, data);
+		if (response.status === 429) throw new ApiError("Too many requests from this address. Please wait a moment before trying again.", 429, data);
+		if (response.status === 502) throw new ApiError(errorMsg || "Upstream delivery error from external service (Telegram/Bot).", 502, data);
+		throw new ApiError(errorMsg, response.status, data);
+	}
+	return data;
+}
+var get$2 = (url, options = {}) => request$1(url, {
+	method: "GET",
+	...options
+});
+var post$2 = (url, body, options = {}) => request$1(url, {
+	method: "POST",
+	body,
+	...options
+});
+var patch$1 = (url, body, options = {}) => request$1(url, {
+	method: "PATCH",
+	body,
+	...options
+});
+var del = (url, options = {}) => request$1(url, {
+	method: "DELETE",
+	...options
+});
+function generateIdempotencyKey(prefix = "reply") {
+	if (typeof crypto !== "undefined" && crypto.randomUUID) return `${prefix}-${crypto.randomUUID()}`;
+	return `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+}
+var DEFAULT_PILOT_WORKFLOWS = [{
+	id: "PILOT-DESIGN-V1",
+	name: "Design pilot",
+	category: "Design",
+	estimatedDays: 6,
+	stages: [
+		{
+			id: "stage-resources",
+			name: "Resources",
+			durationDays: 1,
+			tasks: ["Collect site plans and client references"]
+		},
+		{
+			id: "stage-design",
+			name: "Design",
+			durationDays: 3,
+			tasks: ["Prepare concept and review with client"]
+		},
+		{
+			id: "stage-delivery",
+			name: "Delivery",
+			durationDays: 2,
+			tasks: ["Deliver approved drawings"]
+		}
+	]
+}, {
+	id: "PILOT-PAINTING-V1",
+	name: "Painting pilot",
+	category: "Finishing",
+	estimatedDays: 6,
+	stages: [
+		{
+			id: "stage-paint-resources",
+			name: "Resources",
+			durationDays: 1,
+			tasks: ["Collect site photos and measurements"]
+		},
+		{
+			id: "stage-prep",
+			name: "Preparation",
+			durationDays: 2,
+			tasks: ["Prepare walls and approve colour sample"]
+		},
+		{
+			id: "stage-paint",
+			name: "Painting",
+			durationDays: 3,
+			tasks: ["Apply coats and inspect finish"]
+		}
+	]
+}];
+/**
+* Fetch available workflow templates (GET /api/{founder|employee}/workflows)
+*/
+async function fetchWorkflows(namespace = "founder", projectId = "") {
+	try {
+		const data = await get$2(projectId ? `/api/${namespace}/projects/${projectId}/workflows` : `/api/${namespace}/workflows`);
+		if (data.workflows && data.workflows.length > 0) return data.workflows;
+	} catch (err) {
+		if (err.status === 404 && !projectId) return DEFAULT_PILOT_WORKFLOWS;
+		throw err;
+	}
+	return projectId ? [] : DEFAULT_PILOT_WORKFLOWS;
+}
+/**
+* Assign client name and Telegram User ID (POST /api/founder/projects/:id/client)
+*/
+async function assignClient(projectId, { clientName, clientTelegramId = "" }) {
+	try {
+		return await post$2(`/api/founder/projects/${projectId}/client`, {
+			clientName: clientName.trim(),
+			clientTelegramId: clientTelegramId.trim()
+		});
+	} catch (err) {
+		if (err.status === 404) {
+			const res = await patch$1(`/api/founder/projects/${projectId}`, { clientName: clientName.trim() });
+			return { project: res.project || res };
+		}
+		throw err;
+	}
+}
+/**
+* Start project workflow pipeline (POST /api/founder/projects/:id/workflow/start)
+*/
+async function startWorkflow(projectId, { workflowId, startDate, assigneeId }) {
+	return await post$2(`/api/founder/projects/${projectId}/workflow/start`, {
+		workflowId,
+		startDate: startDate || void 0,
+		assigneeId: assigneeId || void 0
+	});
+}
+/**
+* Fetch complete project workspace (GET /api/{founder|employee}/projects/:id/workspace)
+*/
+async function fetchProjectWorkspace(projectId, namespace = "founder") {
+	return await get$2(`/api/${namespace}/projects/${projectId}/workspace`);
+}
+/**
+* List tasks for a project (GET /api/{founder|employee}/projects/:id/tasks)
+*/
+async function fetchTasks(projectId, namespace = "founder") {
+	return await get$2(`/api/${namespace}/projects/${projectId}/tasks`);
+}
+/**
+* Create task (POST /api/founder/projects/:id/tasks) - Founder only
+*/
+async function createTask(projectId, taskData) {
+	return await post$2(`/api/founder/projects/${projectId}/tasks`, {
+		title: taskData.title.trim(),
+		description: taskData.description ? taskData.description.trim() : "",
+		assigneeId: taskData.assigneeId !== void 0 ? taskData.assigneeId : void 0,
+		deadline: taskData.deadline || void 0,
+		stageId: taskData.stageId || void 0,
+		status: taskData.status || "Open"
+	});
+}
+/**
+* Update task (PATCH /api/{founder|employee}/tasks/:id)
+*/
+/**
+* Preview a founder timeline change (POST /api/founder/projects/:id/schedule/preview).
+* The bot checks dependencies against the Google Sheet and lists every task that would move.
+*/
+async function previewSchedule(projectId, moves, options = {}) {
+	return await post$2(`/api/founder/projects/${projectId}/schedule/preview`, {
+		moves,
+		...options
+	});
+}
+/**
+* Save a founder timeline change to the Google Sheet (POST /api/founder/projects/:id/schedule/apply).
+*/
+async function applySchedule(projectId, moves, options = {}) {
+	return await post$2(`/api/founder/projects/${projectId}/schedule/apply`, {
+		moves,
+		...options
+	});
+}
+async function updateTask(taskId, updates, namespace = "founder") {
+	return await patch$1(`/api/${namespace}/tasks/${taskId}`, updates);
+}
+/**
+* Delete task (DELETE /api/founder/tasks/:id) - Founder only soft delete
+*/
+async function deleteTask(taskId) {
+	return await del(`/api/founder/tasks/${taskId}`);
+}
+/**
+* Fetch task messages (GET /api/{founder|employee}/tasks/:id/messages?after=...&limit=100)
+*/
+async function fetchTaskMessages(taskId, after = "", limit = 100, namespace = "founder") {
+	const query = new URLSearchParams();
+	if (after) query.set("after", after);
+	if (limit) query.set("limit", String(limit));
+	return await get$2(`/api/${namespace}/tasks/${taskId}/messages${query.toString() ? `?${query.toString()}` : ""}`);
+}
+/**
+* Mark read cursor for task (POST /api/{founder|employee}/tasks/:id/read)
+*/
+async function markTaskRead(taskId, lastMessageId, namespace = "founder") {
+	if (!lastMessageId) return { ok: true };
+	return await post$2(`/api/${namespace}/tasks/${taskId}/read`, { lastMessageId });
+}
+/**
+* List client queries (GET /api/{founder|employee}/decision-requests)
+*/
+async function fetchDecisionRequests(namespace = "founder") {
+	return await get$2(`/api/${namespace}/decision-requests`);
+}
+/**
+* Add private internal comment (POST /api/{founder|employee}/decision-requests/:id/comment)
+*/
+async function addDecisionComment(requestId, text, namespace = "founder") {
+	return await post$2(`/api/${namespace}/decision-requests/${encodeURIComponent(requestId)}/comment`, { text: text.trim() });
+}
+/**
+* Reject query (POST /api/founder/decision-requests/:id/reject) - Founder only
+*/
+async function rejectDecisionRequest(requestId, reason) {
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/reject`, { reason: reason.trim() });
+}
+/**
+* Convert query to task (POST /api/founder/decision-requests/:id/convert) - Founder only
+*/
+async function convertDecisionRequest(requestId, taskFields) {
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/convert`, taskFields);
+}
+/**
+* Publish final reply to Telegram (POST /api/founder/decision-requests/:id/publish) - Founder only
+*/
+async function publishDecisionReply(requestId, { response, idempotencyKey }) {
+	const key = idempotencyKey || generateIdempotencyKey(`reply-${requestId}`);
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/publish`, {
+		response: response.trim(),
+		idempotencyKey: key
+	});
+}
+/**
+* Authenticated media/attachment URL for Telegram photos & documents
+*/
+function getAttachmentUrl(requestId, index = 0, namespace = "founder") {
+	return `/api/${namespace}/decision-requests/${encodeURIComponent(requestId)}/attachments/${index}`;
+}
+/** Transcribe a voice note with the AI provider (POST /api/founder/decision-requests/:id/attachments/:index/transcript). Opt-in per studio. */
+async function transcribeVoiceNote(requestId, index) {
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/attachments/${index}/transcript`, {});
+}
+/**
+* Remove project member (DELETE /api/founder/projects/:id/members/:memberId)
+*/
+async function removeProjectMember(projectId, memberId) {
+	return await del(`/api/founder/projects/${projectId}/members/${memberId}`);
+}
+/**
+* Disable employee account (POST /api/founder/employees/:employeeId/disable)
+*/
+/** Edit an employee's profile (PATCH /api/founder/employees/:id). */
+async function updateEmployee(employeeId, fields) {
+	return await request$1(`/api/founder/employees/${employeeId}`, {
+		method: "PATCH",
+		body: fields
+	});
+}
+/** Ask for an AI-suggested reply to a client query, built from project records (POST /api/founder/decision-requests/:id/suggest-reply). Sends nothing. */
+async function suggestDecisionReply(requestId, instruction = "", outcome = "") {
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/suggest-reply`, {
+		...instruction ? { instruction } : {},
+		...outcome ? { outcome } : {}
+	});
+}
+async function enableEmployee(employeeId) {
+	return await post$2(`/api/founder/employees/${encodeURIComponent(employeeId)}/enable`, {});
+}
+async function disableEmployee(employeeId) {
+	return await post$2(`/api/founder/employees/${employeeId}/disable`, {});
+}
+/**
+* Founder-built plans: add one or more stages of six tasks (POST /api/founder/projects/:id/stages/preview|apply).
+* Pass { stage } or { stages: [...] }. The bot works out every date; preview writes nothing.
+*/
+async function previewStages(projectId, input) {
+	return await post$2(`/api/founder/projects/${projectId}/stages/preview`, input);
+}
+async function applyStages(projectId, input) {
+	return await post$2(`/api/founder/projects/${projectId}/stages/apply`, input);
+}
+/** Add one task inside a stage, after another task of it (POST .../stages/insert-task/preview|apply). */
+async function previewInsertTask(projectId, task) {
+	return await post$2(`/api/founder/projects/${projectId}/stages/insert-task/preview`, { task });
+}
+async function applyInsertTask(projectId, task) {
+	return await post$2(`/api/founder/projects/${projectId}/stages/insert-task/apply`, { task });
+}
+/** The founders' default plan (INTERIOR 1) as six-task stages, for review before creating it. */
+async function fetchDefaultPlan(projectId) {
+	return await get$2(`/api/founder/projects/${projectId}/default-plan`);
+}
+/**
+* Accept a query: link it to a task and delay/redo/complete it, or add a new stage for it.
+* target: { kind: 'task', taskId, action: { type, days } } | { kind: 'new-stage', stage, linkTaskKey }
+* Preview sends nothing. Confirming a decision sends its reviewed status update to the source query.
+*/
+async function previewAcceptDecision(requestId, target) {
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept-preview`, { target });
+}
+async function acceptDecisionRequest(requestId, target, notificationText) {
+	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept`, {
+		target,
+		notificationText
+	});
+}
+var previewTaskPlan = (taskId, input) => post$2(`/api/founder/tasks/${taskId}/plan/preview`, input);
+var applyTaskPlan = (taskId, input) => post$2(`/api/founder/tasks/${taskId}/plan/apply`, input);
+var renameWorkType = (projectId, stageId, input) => post$2(`/api/founder/projects/${projectId}/stages/${stageId}/rename/apply`, input);
+// frontend/src/features/birthday/BirthdayOverlay.jsx
+var RAYS = [
+	{
+		x: 91,
+		y: 249,
+		gx: 101,
+		gy: 230,
+		delay: 0
+	},
+	{
+		x: 1341,
+		y: 269,
+		delay: 120
+	},
+	{
+		x: 263,
+		y: 377,
+		delay: 260
+	},
+	{
+		x: 1209,
+		y: 352,
+		delay: 380
+	},
+	{
+		x: 401,
+		y: 518,
+		delay: 520
+	},
+	{
+		x: 1089,
+		y: 480,
+		delay: 640
+	}
+];
+var LEAVE_MS = 900;
+var AUDIO_URL = "/api/birthday/audio";
+var BARS = [
+	[
+		20,
+		26,
+		56
+	],
+	[
+		27,
+		29,
+		52
+	],
+	[
+		35,
+		30,
+		52
+	],
+	[
+		43,
+		26,
+		56
+	],
+	[
+		51,
+		30,
+		52
+	],
+	[
+		59,
+		27,
+		55
+	],
+	[
+		67,
+		24,
+		58
+	],
+	[
+		75,
+		30,
+		51
+	]
+];
+var blobUrl = (url) => fetch(url).then((res) => res.ok ? res.blob() : Promise.reject(new Error(url))).then((blob) => URL.createObjectURL(blob));
+function Layered({ className, children }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+		className,
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+			className: "bday-glow",
+			"aria-hidden": "true",
+			children
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+			className: "bday-face",
+			children
+		})]
+	});
+}
+function BirthdayOverlay() {
+	const [name, setName] = (0, import_react.useState)("");
+	(0, import_react.useEffect)(() => {
+		request$1(`/api/birthday${new URLSearchParams(window.location.search).has("birthday") ? "?replay=1" : ""}`).then((data) => setName(data.name || "")).catch(() => {});
+	}, []);
+	return name ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BirthdaySequence, { name }) : null;
+}
+function BirthdaySequence({ name }) {
+	const [state, setState] = (0, import_react.useState)("open");
+	const button = (0, import_react.useRef)(null);
+	const player = (0, import_react.useRef)(null);
+	const [sound, setSound] = (0, import_react.useState)(false);
+	const [running, setRunning] = (0, import_react.useState)(false);
+	const startedAt = (0, import_react.useRef)(0);
+	(0, import_react.useEffect)(() => {
+		let alive = true;
+		let url;
+		const fallback = setTimeout(() => setRunning(true), 4e3);
+		blobUrl(AUDIO_URL).then((loaded) => {
+			url = loaded;
+			if (!alive) return URL.revokeObjectURL(url);
+			const audio = new Audio(url);
+			audio.onplay = () => setSound(true);
+			audio.onpause = () => setSound(false);
+			audio.addEventListener("playing", () => setRunning(true), { once: true });
+			player.current = audio;
+			return audio.play();
+		}).catch(() => setRunning(true));
+		return () => {
+			alive = false;
+			clearTimeout(fallback);
+			player.current?.pause();
+			if (url) URL.revokeObjectURL(url);
+		};
+	}, []);
+	(0, import_react.useEffect)(() => {
+		if (running) startedAt.current = performance.now();
+	}, [running]);
+	const toggleSound = () => {
+		const audio = player.current;
+		if (!audio) return;
+		if (sound) return audio.pause();
+		if (audio.currentTime === 0 && startedAt.current) audio.currentTime = (performance.now() - startedAt.current) / 1e3;
+		audio.play().catch(() => {});
+	};
+	(0, import_react.useEffect)(() => {
+		if (state !== "open") return void 0;
+		button.current?.focus({ preventScroll: true });
+		const onKey = (event) => event.key === "Escape" && setState("leaving");
+		window.addEventListener("keydown", onKey);
+		return () => window.removeEventListener("keydown", onKey);
+	}, [state]);
+	(0, import_react.useEffect)(() => {
+		if (state !== "leaving") return void 0;
+		request$1("/api/birthday/seen", { method: "POST" }).catch(() => {});
+		const audio = player.current;
+		const from = audio?.volume ?? 0;
+		let tick = 0;
+		const fade = setInterval(() => {
+			tick += 1;
+			if (audio) audio.volume = Math.max(0, from * (1 - tick / 18));
+		}, LEAVE_MS / 18);
+		const timer = setTimeout(() => setState("closed"), LEAVE_MS);
+		return () => {
+			clearTimeout(timer);
+			clearInterval(fade);
+		};
+	}, [state]);
+	if (state === "closed") return null;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: `bday${running ? " is-running" : ""}${state === "leaving" ? " is-leaving" : ""}`,
+		role: "dialog",
+		"aria-modal": "true",
+		"aria-labelledby": "bday-title",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "bday-veil" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "bday-sky",
+				"aria-hidden": "true",
+				children: [
+					RAYS.map((ray, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						style: { "--d": `${ray.delay}ms` },
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", {
+							className: "bday-ray bday-ray-solid",
+							style: {
+								left: `${ray.x / 14.4}vw`,
+								top: `${ray.y / 9.19}vh`
+							}
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", {
+							className: "bday-ray bday-ray-curtain",
+							style: {
+								left: `${(ray.gx ?? ray.x) / 14.4}vw`,
+								top: `${(ray.gy ?? ray.y) / 9.19}vh`
+							}
+						})]
+					}, index)),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", { className: "bday-pool bday-pool-left" }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", { className: "bday-pool bday-pool-right" })
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "bday-black" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "bday-stars",
+				"aria-hidden": "true"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+				type: "button",
+				className: `bday-music${sound ? "" : " is-off"}`,
+				"aria-label": sound ? "Pause birthday music" : "Play birthday music",
+				title: sound ? "Pause music" : "Play music",
+				onClick: toggleSound,
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+					width: "94",
+					height: "82",
+					viewBox: "0 0 94 82",
+					fill: "none",
+					"aria-hidden": "true",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("defs", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("linearGradient", {
+							id: "bday-badge-edge",
+							x1: "47",
+							y1: "82",
+							x2: "47",
+							y2: "0",
+							gradientUnits: "userSpaceOnUse",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", { stopColor: "#373636" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+								offset: "1",
+								stopColor: "#B1B1B1"
+							})]
+						}), BARS.map(([x, top, bottom], i) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("linearGradient", {
+							id: `bday-bar-${i}`,
+							x1: x + .5,
+							y1: bottom,
+							x2: x + .5,
+							y2: top,
+							gradientUnits: "userSpaceOnUse",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", { stopColor: "#7F7F7F" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+								offset: "1",
+								stopColor: "#B1B1B1"
+							})]
+						}, i))] }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+							x: "0.5",
+							y: "0.5",
+							width: "93",
+							height: "81",
+							fill: "white",
+							fillOpacity: "0.1",
+							stroke: "url(#bday-badge-edge)"
+						}),
+						BARS.map(([x, top, bottom], i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+							className: "bday-bar",
+							d: `M${x} ${top}V${bottom}`,
+							stroke: `url(#bday-bar-${i})`,
+							style: { "--i": i }
+						}, i))
+					]
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "bday-content",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "bday-date",
+						children: "It’s 27 November"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", {
+						id: "bday-title",
+						className: "bday-title",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layered, {
+							className: "bday-line bday-line-1",
+							children: "Happy Birthday"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layered, {
+							className: "bday-line bday-line-2",
+							children: name
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "bday-note",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layered, {
+							className: "bday-line bday-note-line",
+							children: "Approval pending: another year of being the nicest person on every call."
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layered, {
+							className: "bday-line bday-note-line bday-note-punch",
+							children: "We’ve already approved it."
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+						ref: button,
+						type: "button",
+						className: "bday-leave",
+						onClick: () => setState("leaving"),
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Enough celebration, let’s get " }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "bday-leave-link",
+							children: "Back to work→"
+						})]
+					})
+				]
+			})
+		]
+	});
+}
 // ../Global iska /node_modules/clsx/dist/clsx.mjs
 function r(e) {
 	var t, f, n = "";
@@ -23061,352 +23702,6 @@ function DialogDescription({ className, ...props }) {
 		...props
 	});
 }
-// frontend/src/lib/api.js
-var ApiError = class extends Error {
-	constructor(message, status = 400, data = {}) {
-		super(message);
-		this.name = "ApiError";
-		this.status = status;
-		this.data = data;
-	}
-};
-/**
-* Core HTTP fetch wrapper with same-origin credentials and JSON payload support
-*/
-async function request$1(url, options = {}) {
-	const method = options.method || "GET";
-	const headers = {
-		Accept: "application/json",
-		...options.headers || {}
-	};
-	if (options.body && typeof options.body === "object" && !(options.body instanceof FormData)) {
-		headers["content-type"] = "application/json";
-		options.body = JSON.stringify(options.body);
-	}
-	const fetchOptions = {
-		credentials: "same-origin",
-		...options,
-		method,
-		headers
-	};
-	let response;
-	try {
-		response = await fetch(url, fetchOptions);
-	} catch (netErr) {
-		throw new ApiError(netErr.message || "Network connection failure. Please check your connection.", 0);
-	}
-	const data = (response.headers.get("content-type") || "").includes("application/json") ? await response.json().catch(() => ({})) : {};
-	if (!response.ok) {
-		const errorMsg = data.error || data.message || `Request failed with status ${response.status}`;
-		if (response.status === 401) {
-			if (!url.endsWith("/login") && !url.startsWith("/api/auth/") && typeof window !== "undefined") window.dispatchEvent(new CustomEvent("studio-iksha:unauthorized", { detail: { url } }));
-			throw new ApiError(errorMsg, 401, data);
-		}
-		if (response.status === 403) throw new ApiError(errorMsg || "Restricted action: You do not have permission to perform this update.", 403, data);
-		if (response.status === 404) throw new ApiError(errorMsg || "Record or access is no longer available in your workspace.", 404, data);
-		if (response.status === 409) throw new ApiError(errorMsg || "Conflict with current project or task state.", 409, data);
-		if (response.status === 429) throw new ApiError("Too many requests from this address. Please wait a moment before trying again.", 429, data);
-		if (response.status === 502) throw new ApiError(errorMsg || "Upstream delivery error from external service (Telegram/Bot).", 502, data);
-		throw new ApiError(errorMsg, response.status, data);
-	}
-	return data;
-}
-var get$2 = (url, options = {}) => request$1(url, {
-	method: "GET",
-	...options
-});
-var post$2 = (url, body, options = {}) => request$1(url, {
-	method: "POST",
-	body,
-	...options
-});
-var patch$1 = (url, body, options = {}) => request$1(url, {
-	method: "PATCH",
-	body,
-	...options
-});
-var del = (url, options = {}) => request$1(url, {
-	method: "DELETE",
-	...options
-});
-function generateIdempotencyKey(prefix = "reply") {
-	if (typeof crypto !== "undefined" && crypto.randomUUID) return `${prefix}-${crypto.randomUUID()}`;
-	return `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
-}
-var DEFAULT_PILOT_WORKFLOWS = [{
-	id: "PILOT-DESIGN-V1",
-	name: "Design pilot",
-	category: "Design",
-	estimatedDays: 6,
-	stages: [
-		{
-			id: "stage-resources",
-			name: "Resources",
-			durationDays: 1,
-			tasks: ["Collect site plans and client references"]
-		},
-		{
-			id: "stage-design",
-			name: "Design",
-			durationDays: 3,
-			tasks: ["Prepare concept and review with client"]
-		},
-		{
-			id: "stage-delivery",
-			name: "Delivery",
-			durationDays: 2,
-			tasks: ["Deliver approved drawings"]
-		}
-	]
-}, {
-	id: "PILOT-PAINTING-V1",
-	name: "Painting pilot",
-	category: "Finishing",
-	estimatedDays: 6,
-	stages: [
-		{
-			id: "stage-paint-resources",
-			name: "Resources",
-			durationDays: 1,
-			tasks: ["Collect site photos and measurements"]
-		},
-		{
-			id: "stage-prep",
-			name: "Preparation",
-			durationDays: 2,
-			tasks: ["Prepare walls and approve colour sample"]
-		},
-		{
-			id: "stage-paint",
-			name: "Painting",
-			durationDays: 3,
-			tasks: ["Apply coats and inspect finish"]
-		}
-	]
-}];
-/**
-* Fetch available workflow templates (GET /api/{founder|employee}/workflows)
-*/
-async function fetchWorkflows(namespace = "founder", projectId = "") {
-	try {
-		const data = await get$2(projectId ? `/api/${namespace}/projects/${projectId}/workflows` : `/api/${namespace}/workflows`);
-		if (data.workflows && data.workflows.length > 0) return data.workflows;
-	} catch (err) {
-		if (err.status === 404 && !projectId) return DEFAULT_PILOT_WORKFLOWS;
-		throw err;
-	}
-	return projectId ? [] : DEFAULT_PILOT_WORKFLOWS;
-}
-/**
-* Assign client name and Telegram User ID (POST /api/founder/projects/:id/client)
-*/
-async function assignClient(projectId, { clientName, clientTelegramId = "" }) {
-	try {
-		return await post$2(`/api/founder/projects/${projectId}/client`, {
-			clientName: clientName.trim(),
-			clientTelegramId: clientTelegramId.trim()
-		});
-	} catch (err) {
-		if (err.status === 404) {
-			const res = await patch$1(`/api/founder/projects/${projectId}`, { clientName: clientName.trim() });
-			return { project: res.project || res };
-		}
-		throw err;
-	}
-}
-/**
-* Start project workflow pipeline (POST /api/founder/projects/:id/workflow/start)
-*/
-async function startWorkflow(projectId, { workflowId, startDate, assigneeId }) {
-	return await post$2(`/api/founder/projects/${projectId}/workflow/start`, {
-		workflowId,
-		startDate: startDate || void 0,
-		assigneeId: assigneeId || void 0
-	});
-}
-/**
-* Fetch complete project workspace (GET /api/{founder|employee}/projects/:id/workspace)
-*/
-async function fetchProjectWorkspace(projectId, namespace = "founder") {
-	return await get$2(`/api/${namespace}/projects/${projectId}/workspace`);
-}
-/**
-* List tasks for a project (GET /api/{founder|employee}/projects/:id/tasks)
-*/
-async function fetchTasks(projectId, namespace = "founder") {
-	return await get$2(`/api/${namespace}/projects/${projectId}/tasks`);
-}
-/**
-* Create task (POST /api/founder/projects/:id/tasks) - Founder only
-*/
-async function createTask(projectId, taskData) {
-	return await post$2(`/api/founder/projects/${projectId}/tasks`, {
-		title: taskData.title.trim(),
-		description: taskData.description ? taskData.description.trim() : "",
-		assigneeId: taskData.assigneeId !== void 0 ? taskData.assigneeId : void 0,
-		deadline: taskData.deadline || void 0,
-		stageId: taskData.stageId || void 0,
-		status: taskData.status || "Open"
-	});
-}
-/**
-* Update task (PATCH /api/{founder|employee}/tasks/:id)
-*/
-/**
-* Preview a founder timeline change (POST /api/founder/projects/:id/schedule/preview).
-* The bot checks dependencies against the Google Sheet and lists every task that would move.
-*/
-async function previewSchedule(projectId, moves, options = {}) {
-	return await post$2(`/api/founder/projects/${projectId}/schedule/preview`, {
-		moves,
-		...options
-	});
-}
-/**
-* Save a founder timeline change to the Google Sheet (POST /api/founder/projects/:id/schedule/apply).
-*/
-async function applySchedule(projectId, moves, options = {}) {
-	return await post$2(`/api/founder/projects/${projectId}/schedule/apply`, {
-		moves,
-		...options
-	});
-}
-async function updateTask(taskId, updates, namespace = "founder") {
-	return await patch$1(`/api/${namespace}/tasks/${taskId}`, updates);
-}
-/**
-* Delete task (DELETE /api/founder/tasks/:id) - Founder only soft delete
-*/
-async function deleteTask(taskId) {
-	return await del(`/api/founder/tasks/${taskId}`);
-}
-/**
-* Fetch task messages (GET /api/{founder|employee}/tasks/:id/messages?after=...&limit=100)
-*/
-async function fetchTaskMessages(taskId, after = "", limit = 100, namespace = "founder") {
-	const query = new URLSearchParams();
-	if (after) query.set("after", after);
-	if (limit) query.set("limit", String(limit));
-	return await get$2(`/api/${namespace}/tasks/${taskId}/messages${query.toString() ? `?${query.toString()}` : ""}`);
-}
-/**
-* Mark read cursor for task (POST /api/{founder|employee}/tasks/:id/read)
-*/
-async function markTaskRead(taskId, lastMessageId, namespace = "founder") {
-	if (!lastMessageId) return { ok: true };
-	return await post$2(`/api/${namespace}/tasks/${taskId}/read`, { lastMessageId });
-}
-/**
-* List client queries (GET /api/{founder|employee}/decision-requests)
-*/
-async function fetchDecisionRequests(namespace = "founder") {
-	return await get$2(`/api/${namespace}/decision-requests`);
-}
-/**
-* Add private internal comment (POST /api/{founder|employee}/decision-requests/:id/comment)
-*/
-async function addDecisionComment(requestId, text, namespace = "founder") {
-	return await post$2(`/api/${namespace}/decision-requests/${encodeURIComponent(requestId)}/comment`, { text: text.trim() });
-}
-/**
-* Reject query (POST /api/founder/decision-requests/:id/reject) - Founder only
-*/
-async function rejectDecisionRequest(requestId, reason) {
-	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/reject`, { reason: reason.trim() });
-}
-/**
-* Convert query to task (POST /api/founder/decision-requests/:id/convert) - Founder only
-*/
-async function convertDecisionRequest(requestId, taskFields) {
-	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/convert`, taskFields);
-}
-/**
-* Publish final reply to Telegram (POST /api/founder/decision-requests/:id/publish) - Founder only
-*/
-async function publishDecisionReply(requestId, { response, idempotencyKey }) {
-	const key = idempotencyKey || generateIdempotencyKey(`reply-${requestId}`);
-	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/publish`, {
-		response: response.trim(),
-		idempotencyKey: key
-	});
-}
-/**
-* Authenticated media/attachment URL for Telegram photos & documents
-*/
-function getAttachmentUrl(requestId, index = 0, namespace = "founder") {
-	return `/api/${namespace}/decision-requests/${encodeURIComponent(requestId)}/attachments/${index}`;
-}
-/** Transcribe a voice note with the AI provider (POST /api/founder/decision-requests/:id/attachments/:index/transcript). Opt-in per studio. */
-async function transcribeVoiceNote(requestId, index) {
-	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/attachments/${index}/transcript`, {});
-}
-/**
-* Remove project member (DELETE /api/founder/projects/:id/members/:memberId)
-*/
-async function removeProjectMember(projectId, memberId) {
-	return await del(`/api/founder/projects/${projectId}/members/${memberId}`);
-}
-/**
-* Disable employee account (POST /api/founder/employees/:employeeId/disable)
-*/
-/** Edit an employee's profile (PATCH /api/founder/employees/:id). */
-async function updateEmployee(employeeId, fields) {
-	return await request$1(`/api/founder/employees/${employeeId}`, {
-		method: "PATCH",
-		body: fields
-	});
-}
-/** Ask for an AI-suggested reply to a client query, built from project records (POST /api/founder/decision-requests/:id/suggest-reply). Sends nothing. */
-async function suggestDecisionReply(requestId, instruction = "", outcome = "") {
-	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/suggest-reply`, {
-		...instruction ? { instruction } : {},
-		...outcome ? { outcome } : {}
-	});
-}
-async function enableEmployee(employeeId) {
-	return await post$2(`/api/founder/employees/${encodeURIComponent(employeeId)}/enable`, {});
-}
-async function disableEmployee(employeeId) {
-	return await post$2(`/api/founder/employees/${employeeId}/disable`, {});
-}
-/**
-* Founder-built plans: add one or more stages of six tasks (POST /api/founder/projects/:id/stages/preview|apply).
-* Pass { stage } or { stages: [...] }. The bot works out every date; preview writes nothing.
-*/
-async function previewStages(projectId, input) {
-	return await post$2(`/api/founder/projects/${projectId}/stages/preview`, input);
-}
-async function applyStages(projectId, input) {
-	return await post$2(`/api/founder/projects/${projectId}/stages/apply`, input);
-}
-/** Add one task inside a stage, after another task of it (POST .../stages/insert-task/preview|apply). */
-async function previewInsertTask(projectId, task) {
-	return await post$2(`/api/founder/projects/${projectId}/stages/insert-task/preview`, { task });
-}
-async function applyInsertTask(projectId, task) {
-	return await post$2(`/api/founder/projects/${projectId}/stages/insert-task/apply`, { task });
-}
-/** The founders' default plan (INTERIOR 1) as six-task stages, for review before creating it. */
-async function fetchDefaultPlan(projectId) {
-	return await get$2(`/api/founder/projects/${projectId}/default-plan`);
-}
-/**
-* Accept a query: link it to a task and delay/redo/complete it, or add a new stage for it.
-* target: { kind: 'task', taskId, action: { type, days } } | { kind: 'new-stage', stage, linkTaskKey }
-* Preview sends nothing. Confirming a decision sends its reviewed status update to the source query.
-*/
-async function previewAcceptDecision(requestId, target) {
-	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept-preview`, { target });
-}
-async function acceptDecisionRequest(requestId, target, notificationText) {
-	return await post$2(`/api/founder/decision-requests/${encodeURIComponent(requestId)}/accept`, {
-		target,
-		notificationText
-	});
-}
-var previewTaskPlan = (taskId, input) => post$2(`/api/founder/tasks/${taskId}/plan/preview`, input);
-var applyTaskPlan = (taskId, input) => post$2(`/api/founder/tasks/${taskId}/plan/apply`, input);
-var renameWorkType = (projectId, stageId, input) => post$2(`/api/founder/projects/${projectId}/stages/${stageId}/rename/apply`, input);
 // frontend/src/components/ui/input.jsx
 function Input({ className, type, ...props }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
@@ -54804,6 +55099,7 @@ function FounderApp() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: `iksha-workspace app-glow min-h-dvh bg-background ${isFullHeightTab ? "" : "iksha-mobile-shell"}`,
 		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(BirthdayOverlay, {}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("aside", {
 				className: "iksha-sidebar fixed inset-y-0 left-0 hidden w-64 px-3 py-3 lg:block",
 				children: navigation
@@ -55768,6 +56064,7 @@ function EmployeeApp() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: `iksha-workspace app-glow min-h-dvh bg-background ${section === "chats" ? "" : "pb-[max(24px,env(safe-area-inset-bottom))] lg:pb-0"}`,
 		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(BirthdayOverlay, {}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("aside", {
 				className: "iksha-sidebar fixed inset-y-0 left-0 hidden w-64 px-3 py-3 lg:block",
 				children: sidebar

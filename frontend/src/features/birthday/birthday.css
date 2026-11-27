@@ -1,0 +1,263 @@
+/* Birthday overlay, built from Figma "Frame 1" (388:1228).
+   Order: black screen lifts -> stars appear -> app comes into focus behind a blur -> orbs stretch into
+   aurora rays and the bottom glows rise -> date -> "Happy Birthday" -> name -> approval line -> punchline -> exit link.
+   Text is timed to the voice in birthday-music.mp3 (voice starts 0.3 s in): "It's the twenty-seventh
+   of November" at 4.8 s, "It's about you" at 9.9 s, music swells from 10.7 s. */
+
+.bday {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow: hidden;
+  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.bday.is-leaving { animation: bday-fade-out 0.9s ease forwards; pointer-events: none; }
+/* hold everything on black until the sound starts (or is blocked), so the text stays in step with the voice */
+.bday:not(.is-running),
+.bday:not(.is-running) * { animation-play-state: paused; }
+
+.bday-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.68), #00150f);
+  -webkit-backdrop-filter: blur(1.5px);
+  backdrop-filter: blur(1.5px);
+  animation: bday-focus 2.6s ease-out 0.5s both;
+}
+
+.bday-black {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  pointer-events: none;
+  animation: bday-lift 1.6s ease 0.5s both;
+}
+
+/* ---- aurora, matched to Figma "Frame 1": each ray starts as a green orb and stretches into a 10px bar
+   blurred into soft mist (a #0f9 glow plus a #0f9 -> #001f13 bar). Two big blurred green pools in the
+   bottom corners (Figma "Group 4/5") melt the rays into the background. No sideways motion. */
+.bday-sky { position: absolute; inset: 0; pointer-events: none; }
+.bday-ray {
+  position: absolute;
+  width: 10px;
+  height: 79.3vh; /* 729 / 919 */
+  border-radius: 29px;
+  animation:
+    bday-ray-form 2.6s cubic-bezier(0.45, 0, 0.2, 1) calc(1.2s + var(--d)) both,
+    bday-breathe 5s ease-in-out calc(3.8s + var(--d)) infinite alternate;
+}
+.bday-ray-solid { --blur: 38.4px; background: #0f9; filter: blur(38.4px); } /* Figma layer blur 76.85 renders like CSS blur at half */
+.bday-ray-curtain {
+  --blur: 22.6px; /* Figma 45.15 */
+  background: linear-gradient(to bottom, #0f9, #001f13);
+  filter: blur(22.6px);
+  mix-blend-mode: screen;
+}
+/* bottom glow (Figma "Group 4/5", green pools in the bottom corners): a tall, soft gradient rising from the
+   bottom so the rays melt into the background with no dark band between the app and the glow */
+.bday-pool {
+  position: absolute;
+  bottom: 0;
+  width: 74vw; /* wide enough that the two glows overlap and light the middle of the bottom row */
+  height: 78vh;
+  background: radial-gradient(ellipse 50% 100% at 50% 100%,
+    rgba(0, 226, 139, 0.62) 0%, rgba(0, 226, 139, 0.38) 28%, rgba(0, 226, 139, 0.17) 56%,
+    rgba(0, 226, 139, 0.06) 80%, transparent 100%);
+  mix-blend-mode: plus-lighter;
+  animation: bday-pool-in 3s ease 2.4s both;
+}
+.bday-sky::after { /* even green wash along the whole bottom, so the middle of the row isn't dark */
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 50vh;
+  background: linear-gradient(to top, rgba(0, 226, 139, 0.22), rgba(0, 226, 139, 0.08) 45%, transparent);
+  mix-blend-mode: plus-lighter;
+  animation: bday-pool-in 3s ease 2.4s both;
+}
+.bday-pool-left { left: -15.3vw; } /* centred on the Figma pool at x 312 */
+.bday-pool-right { left: 49vw; } /* centred on the Figma pool at x 1238 */
+
+/* stars across the top: two layers of tiny dots on uneven tile sizes (so no visible grid), twinkling out of step */
+.bday-stars,
+.bday-stars::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.bday-stars {
+  bottom: 38%;
+  -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent);
+  mask-image: linear-gradient(to bottom, #000 45%, transparent);
+  background:
+    radial-gradient(1.3px 1.3px at 23px 41px, rgba(255, 255, 255, 0.9), transparent) 0 0 / 173px 151px,
+    radial-gradient(1px 1px at 97px 13px, rgba(255, 255, 255, 0.7), transparent) 0 0 / 241px 197px,
+    radial-gradient(1.5px 1.5px at 61px 88px, rgba(210, 255, 240, 0.85), transparent) 0 0 / 311px 263px,
+    radial-gradient(1px 1px at 120px 60px, rgba(255, 255, 255, 0.6), transparent) 0 0 / 137px 229px;
+  animation: bday-fade-in 2.5s ease 1s both, bday-twinkle 3.1s ease-in-out 3.5s infinite alternate;
+}
+.bday-stars::after {
+  content: '';
+  background:
+    radial-gradient(1.2px 1.2px at 40px 150px, rgba(255, 255, 255, 0.8), transparent) 0 0 / 389px 181px,
+    radial-gradient(1px 1px at 180px 30px, rgba(220, 240, 255, 0.75), transparent) 0 0 / 211px 293px,
+    radial-gradient(1.6px 1.6px at 75px 110px, rgba(255, 255, 255, 0.9), transparent) 0 0 / 457px 167px,
+    radial-gradient(0.9px 0.9px at 10px 5px, rgba(255, 255, 255, 0.6), transparent) 0 0 / 103px 127px;
+  animation: bday-twinkle 4.3s ease-in-out 3.5s infinite alternate-reverse;
+}
+
+.bday-music {
+  position: absolute;
+  z-index: 1; /* above the full-screen text layer, so it can be tapped */
+  top: 47px;
+  right: clamp(16px, 6.5vw, 94px);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(11.05px);
+  backdrop-filter: blur(11.05px);
+  animation: bday-rise 1s ease 2s both;
+}
+.bday-music svg { display: block; }
+/* bars ripple as a wave while sound plays; a tap pauses the sound and the bars settle */
+.bday-bar {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bday-bar 0.9s ease-in-out calc(var(--i) * -0.15s) infinite alternate;
+}
+.bday-music.is-off .bday-bar { animation: none; opacity: 0.55; }
+.bday-music:focus-visible { outline: 1px solid rgba(255, 255, 255, 0.6); outline-offset: 4px; }
+
+/* ---- text. padding-top pushes the centred block down 8vh, as in the design */
+.bday-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: calc(24px + 16vh) 24px 24px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.bday-date {
+  margin: 0 0 24px;
+  color: #c8c8c8;
+  animation: bday-rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) 4.7s both;
+}
+
+.bday-line { display: grid; }
+.bday-line > * { grid-area: 1 / 1; }
+
+.bday-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0 28px;
+  font-family: 'Denton Test', 'Roboto Slab', Georgia, serif;
+  font-weight: 400;
+  font-size: min(100px, 13vw);
+  line-height: 1.12;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.bday-title .bday-glow {
+  color: rgba(229, 253, 246, 0.5);
+  filter: blur(2.45px);
+  mix-blend-mode: color-dodge;
+}
+/* one gradient across both lines: each line shows its half of a 2-line-tall background */
+.bday-title .bday-face {
+  background: linear-gradient(179.29deg, rgb(220 233 229) 0.04em, rgb(146 170 163) 1.47em) 0 0 / 100% 2.24em;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.43));
+}
+.bday-line-2 .bday-face { background-position: 0 -1.12em; }
+.bday-line-1 { animation: bday-rise-big 1.5s cubic-bezier(0.2, 0.7, 0.2, 1) 9.7s both; }
+.bday-line-2 { animation: bday-rise-big 1.5s cubic-bezier(0.2, 0.7, 0.2, 1) 10.4s both; }
+
+.bday-note {
+  display: flex;
+  flex-direction: column;
+  width: min(434px, 100%);
+  margin: 0 0 min(128px, 14vh);
+}
+.bday-note .bday-glow { color: rgba(255, 255, 255, 0.31); filter: blur(1.15px); }
+.bday-note .bday-face { color: #fff; }
+.bday-note-line { animation: bday-rise 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) 12.6s both; }
+.bday-note-punch { line-height: 2; animation-delay: 14s; }
+.bday-note-punch .bday-face {
+  background: linear-gradient(to bottom, #fff 0.12em, #999 0.85em);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bday-leave {
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  color: #c6d4cf;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+  animation: bday-rise 1s ease 15s both;
+}
+.bday-leave > span { display: block; }
+.bday-leave-link {
+  margin: 0 auto;
+  width: fit-content;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 9.5%;
+  text-decoration-skip-ink: none;
+}
+.bday-leave:hover .bday-leave-link { color: #fff; }
+.bday-leave:focus-visible { outline: 1px solid rgba(255, 255, 255, 0.6); outline-offset: 4px; }
+
+/* ---- keyframes. Reveals end on none/1 so the title's color-dodge glow blends with the sky again */
+@keyframes bday-lift { to { opacity: 0; visibility: hidden; } }
+@keyframes bday-focus {
+  from { -webkit-backdrop-filter: blur(28px); backdrop-filter: blur(28px); }
+}
+@keyframes bday-breathe { to { opacity: 0.8; } }
+@keyframes bday-ray-form {
+  0% { width: 34px; height: 34px; translate: -12px -12px; scale: 0.2; opacity: 0; filter: blur(4px); }
+  24% { width: 34px; height: 34px; translate: -12px -12px; scale: 1; opacity: 1; filter: blur(6px); }
+  40% { width: 30px; height: 30px; translate: -10px -10px; scale: 1; opacity: 1; filter: blur(8px); }
+  100% { width: 10px; height: 79.3vh; translate: none; scale: none; opacity: 1; filter: blur(var(--blur)); }
+}
+@keyframes bday-twinkle { to { opacity: 0.45; } }
+@keyframes bday-fade-in { from { opacity: 0; } }
+@keyframes bday-pool-in { from { opacity: 0; } }
+@keyframes bday-rise {
+  from { opacity: 0; translate: 0 12px; filter: blur(8px); }
+  to { opacity: 1; translate: none; filter: none; }
+}
+@keyframes bday-rise-big {
+  from { opacity: 0; translate: 0 24px; filter: blur(18px); }
+  to { opacity: 1; translate: none; filter: none; }
+}
+@keyframes bday-fade-out { to { opacity: 0; } }
+@keyframes bday-bar {
+  from { transform: scaleY(0.3); }
+  to { transform: scaleY(1.15); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bday,
+  .bday * {
+    animation-duration: 1ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+  }
+}

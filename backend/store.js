@@ -31,6 +31,7 @@ const emptyState = () => ({
   telegramMigrations: [],
   projectFiles: [],
   trashedProjects: [],
+  birthdaySeen: [],
 });
 
 function normalizeState(value = {}) {
