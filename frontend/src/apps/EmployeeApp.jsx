@@ -1,4 +1,5 @@
 import { MeetingsView } from '@/features/meetings/Meetings';
+import { BirthdayOverlay } from '@/features/birthday/BirthdayOverlay';
 import { countUpcomingEmployeeMeetings } from '@/features/meetings/lib/meetingNotice';
 import { ProjectConversations } from '@/features/collaboration/ProjectConversations';
 import { needsQueryAttention } from '@/features/queries/lib/queryStatus';
@@ -336,6 +337,7 @@ export default function EmployeeApp() {
         section === 'chats' ? '' : 'pb-[max(24px,env(safe-area-inset-bottom))] lg:pb-0'
       }`}
     >
+      <BirthdayOverlay />
       <aside className="iksha-sidebar fixed inset-y-0 left-0 hidden w-64 px-3 py-3 lg:block">
         {sidebar}
       </aside>

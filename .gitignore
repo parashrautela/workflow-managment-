@@ -4,3 +4,5 @@ node_modules/
 .DS_Store
 
 backend/*.json.files/
+# birthday track is hosted privately (BIRTHDAY_AUDIO_URL), never committed
+frontend/assets/birthday/*.mp3
